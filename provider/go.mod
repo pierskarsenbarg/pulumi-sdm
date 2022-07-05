@@ -1,6 +1,6 @@
-module github.com/pulumi/pulumi-xyz/provider
+module github.com/pierskarsenbarg/pulumi-sdm/provider
 
-go 1.18
+go 1.17
 
 replace (
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
