@@ -1,7 +1,7 @@
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   PR_COMMIT_SHA: ${{ github.event.client_payload.pull_request.head.sha }}
-  PROVIDER: nutanix
+  PROVIDER: sdm
   PULUMI_API: https://api.pulumi.com
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
