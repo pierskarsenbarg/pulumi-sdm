@@ -1,0 +1,5 @@
+{
+  "resource": true,
+  "name": "sdm",
+  "server": "https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/${VERSION}"
+}

@@ -54,12 +54,12 @@ func Provider() tfbridge.ProviderInfo {
 		Name: "sdm",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
-		DisplayName: "",
+		DisplayName: "StrongDM",
 		// The default publisher for all packages is Pulumi.
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "Pulumi",
+		Publisher: "Piers Karsenbarg",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -69,7 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "",
+		PluginDownloadURL: "https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/${VERSION}",
 		Description:       "A Pulumi package for creating and managing sdm cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
@@ -79,7 +79,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:   "https://www.pulumi.com",
 		Repository: "https://github.com/pierskarsenbarg/pulumi-sdm",
 		// The GitHub Org for the provider - defaults to `terraform-providers`
-		GitHubOrg: "",
+		GitHubOrg: "strongdm",
 		Config:    map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
@@ -89,9 +89,19 @@ func Provider() tfbridge.ProviderInfo {
 			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
 			// 	},
 			// },
+			// "api_access_key": {
+			// 	Default: &tfbridge.DefaultInfo{
+			// 		EnvVars: []string{"SDM_API_ACCESS_KEY"},
+			// 	},
+			// },
+			// "api_secret_key": {
+			// 	Default: &tfbridge.DefaultInfo{
+			// 		EnvVars: []string{"SDM_API_SECRET_KEY"},
+			// 	},
+			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -104,11 +114,33 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+			"sdm_account":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Account")},
+			"sdm_account_attachment": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccountAttachment")},
+			"sdm_account_grant":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccountGrant")},
+			"sdm_node":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Node")},
+			"sdm_remote_identity":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RemoteIdentity")},
+			"sdm_resource":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource")},
+			"sdm_role":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
+			"sdm_role_attachment":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RoleAttachment")},
+			"sdm_role_grant":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RoleGrant")},
+			"sdm_secret_store":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretStore")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
+			"sdm_account":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAccount")},
+			"sdm_account_attachment":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAccountAttachment")},
+			"sdm_account_grant":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAccountGrant")},
+			"sdm_node":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNode")},
+			"sdm_remote_identity":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRemoteIdentity")},
+			"sdm_remote_identity_group": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRemoteIdentityGroup")},
+			"sdm_resource":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getResource")},
+			"sdm_role":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRole")},
+			"sdm_role_attachment":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRoleAttachment")},
+			"sdm_role_grant":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRoleGrant")},
+			"sdm_secret_store":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSecretStore")},
+			"sdm_ssh_ca_pubkey":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSshCaPubkey")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -119,6 +151,7 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
+			PackageName: "@pierskarsenbarg/strongdm",
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
@@ -132,7 +165,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/pierskarsenbarg/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
@@ -140,6 +173,7 @@ func Provider() tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RootNamespace: "PiersKarsenbarg",
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
