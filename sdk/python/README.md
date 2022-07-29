@@ -1,6 +1,6 @@
 # StrongDM Resource Provider
 
-The Foo Resource Provider lets you manage [FStrongDMoo](http://strongdm.com) resources.
+The StrongDM Resource Provider lets you manage [StrongDM](http://strongdm.com) resources.
 
 ## Installing
 
