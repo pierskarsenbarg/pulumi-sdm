@@ -4,9 +4,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Piers Karsenbarg</Authors>
     <Company>Piers Karsenbarg</Company>
-    <Description>A Pulumi package for creating and managing sdm cloud resources.</Description>
+    <Description>A Pulumi package for creating and managing StrongDM cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <PackageProjectUrl>https://www.pulumi.com</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/pierskarsenbarg/pulumi-sdm</PackageProjectUrl>
     <RepositoryUrl>https://github.com/pierskarsenbarg/pulumi-sdm</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
 

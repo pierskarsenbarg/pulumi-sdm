@@ -1,13 +1,13 @@
 {
     "name": "@pierskarsenbarg/sdm",
     "version": "${VERSION}",
-    "description": "A Pulumi package for creating and managing sdm cloud resources.",
+    "description": "A Pulumi package for creating and managing StrongDM cloud resources.",
     "keywords": [
         "pulumi",
         "sdm",
         "category/cloud"
     ],
-    "homepage": "https://www.pulumi.com",
+    "homepage": "https://github.com/pierskarsenbarg/pulumi-sdm",
     "repository": "https://github.com/pierskarsenbarg/pulumi-sdm",
     "license": "Apache-2.0",
     "scripts": {

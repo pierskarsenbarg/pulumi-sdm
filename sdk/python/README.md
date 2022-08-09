@@ -11,13 +11,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @pierskarsenbarg/strongdm
+npm install @pierskarsenbarg/sdm
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @pierskarsenbarg/strongdm
+yarn add @pierskarsenbarg/sdm
 ```
 
 ### Python

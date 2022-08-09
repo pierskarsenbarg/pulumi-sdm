@@ -70,13 +70,13 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/${VERSION}",
-		Description:       "A Pulumi package for creating and managing sdm cloud resources.",
+		Description:       "A Pulumi package for creating and managing StrongDM cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
 		Keywords:   []string{"pulumi", "sdm", "category/cloud"},
 		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
+		Homepage:   "https://github.com/pierskarsenbarg/pulumi-sdm",
 		Repository: "https://github.com/pierskarsenbarg/pulumi-sdm",
 		// The GitHub Org for the provider - defaults to `terraform-providers`
 		GitHubOrg: "strongdm",

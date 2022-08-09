@@ -39,14 +39,14 @@ def readme():
 
 setup(name='pulumi_sdm',
       version=VERSION,
-      description="A Pulumi package for creating and managing sdm cloud resources.",
+      description="A Pulumi package for creating and managing StrongDM cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={
           'install': InstallPluginCommand,
       },
       keywords='pulumi sdm category/cloud',
-      url='https://www.pulumi.com',
+      url='https://github.com/pierskarsenbarg/pulumi-sdm',
       project_urls={
           'Repository': 'https://github.com/pierskarsenbarg/pulumi-sdm'
       },
