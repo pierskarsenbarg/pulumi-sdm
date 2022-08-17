@@ -5411,4 +5411,3 @@ export interface SecretStoreVaultToken {
      */
     tags?: {[key: string]: string};
 }
-
