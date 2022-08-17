@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class AccountUserGetArgs : Pulumi.ResourceArgs
+    public sealed class AccountUserGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The User's email address. Must be unique.
@@ -52,5 +52,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public AccountUserGetArgs()
         {
         }
+        public static new AccountUserGetArgs Empty => new AccountUserGetArgs();
     }
 }

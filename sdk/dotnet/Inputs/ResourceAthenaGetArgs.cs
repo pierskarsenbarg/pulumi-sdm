@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAthenaGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAthenaGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -97,5 +97,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceAthenaGetArgs()
         {
         }
+        public static new ResourceAthenaGetArgs Empty => new ResourceAthenaGetArgs();
     }
 }

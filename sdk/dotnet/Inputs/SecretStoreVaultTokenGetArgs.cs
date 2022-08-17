@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class SecretStoreVaultTokenGetArgs : Pulumi.ResourceArgs
+    public sealed class SecretStoreVaultTokenGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique human-readable name of the SecretStore.
@@ -40,5 +40,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public SecretStoreVaultTokenGetArgs()
         {
         }
+        public static new SecretStoreVaultTokenGetArgs Empty => new SecretStoreVaultTokenGetArgs();
     }
 }

@@ -14,37 +14,6 @@ import (
 //
 //	of the Role have access to. An Account can be a member of multiple Roles via
 //	AccountAttachments.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupRole(ctx, &GetRoleArgs{
-//				Composite: true,
-//				Tags: map[string]interface{}{
-//					"env":    "dev",
-//					"region": "us-west",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult

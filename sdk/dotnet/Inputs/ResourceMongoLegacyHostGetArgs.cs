@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMongoLegacyHostGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceMongoLegacyHostGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("authDatabase", required: true)]
         public Input<string> AuthDatabase { get; set; } = null!;
@@ -88,5 +88,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceMongoLegacyHostGetArgs()
         {
         }
+        public static new ResourceMongoLegacyHostGetArgs Empty => new ResourceMongoLegacyHostGetArgs();
     }
 }

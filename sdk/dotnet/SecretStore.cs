@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/secretStore:SecretStore")]
-    public partial class SecretStore : Pulumi.CustomResource
+    public partial class SecretStore : global::Pulumi.CustomResource
     {
         [Output("aws")]
         public Output<Outputs.SecretStoreAws?> Aws { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace PiersKarsenbarg.Sdm
         }
     }
 
-    public sealed class SecretStoreArgs : Pulumi.ResourceArgs
+    public sealed class SecretStoreArgs : global::Pulumi.ResourceArgs
     {
         [Input("aws")]
         public Input<Inputs.SecretStoreAwsArgs>? Aws { get; set; }
@@ -108,9 +108,10 @@ namespace PiersKarsenbarg.Sdm
         public SecretStoreArgs()
         {
         }
+        public static new SecretStoreArgs Empty => new SecretStoreArgs();
     }
 
-    public sealed class SecretStoreState : Pulumi.ResourceArgs
+    public sealed class SecretStoreState : global::Pulumi.ResourceArgs
     {
         [Input("aws")]
         public Input<Inputs.SecretStoreAwsGetArgs>? Aws { get; set; }
@@ -133,5 +134,6 @@ namespace PiersKarsenbarg.Sdm
         public SecretStoreState()
         {
         }
+        public static new SecretStoreState Empty => new SecretStoreState();
     }
 }

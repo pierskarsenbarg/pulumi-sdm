@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAzureGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAzureGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -82,5 +82,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceAzureGetArgs()
         {
         }
+        public static new ResourceAzureGetArgs Empty => new ResourceAzureGetArgs();
     }
 }

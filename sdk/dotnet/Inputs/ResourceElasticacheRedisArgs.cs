@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceElasticacheRedisArgs : Pulumi.ResourceArgs
+    public sealed class ResourceElasticacheRedisArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -73,5 +73,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceElasticacheRedisArgs()
         {
         }
+        public static new ResourceElasticacheRedisArgs Empty => new ResourceElasticacheRedisArgs();
     }
 }

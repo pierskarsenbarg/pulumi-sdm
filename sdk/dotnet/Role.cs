@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/role:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// AccessRules is a list of access rules defining the resources this Role has access to.
@@ -85,7 +85,7 @@ namespace PiersKarsenbarg.Sdm
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AccessRules is a list of access rules defining the resources this Role has access to.
@@ -114,9 +114,10 @@ namespace PiersKarsenbarg.Sdm
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 
-    public sealed class RoleState : Pulumi.ResourceArgs
+    public sealed class RoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AccessRules is a list of access rules defining the resources this Role has access to.
@@ -145,5 +146,6 @@ namespace PiersKarsenbarg.Sdm
         public RoleState()
         {
         }
+        public static new RoleState Empty => new RoleState();
     }
 }

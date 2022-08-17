@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceDocumentDbReplicaSetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceDocumentDbReplicaSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("authDatabase", required: true)]
         public Input<string> AuthDatabase { get; set; } = null!;
@@ -85,5 +85,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceDocumentDbReplicaSetArgs()
         {
         }
+        public static new ResourceDocumentDbReplicaSetArgs Empty => new ResourceDocumentDbReplicaSetArgs();
     }
 }

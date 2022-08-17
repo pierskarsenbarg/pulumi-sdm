@@ -16,33 +16,6 @@ namespace PiersKarsenbarg.Sdm
         /// A Role has a list of access rules which determine which Resources the members
         ///  of the Role have access to. An Account can be a member of multiple Roles via
         ///  AccountAttachments.
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Sdm = Pulumi.Sdm;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var compositeRoleQuery = Output.Create(Sdm.GetRole.InvokeAsync(new Sdm.GetRoleArgs
-        ///         {
-        ///             Composite = true,
-        ///             Tags = 
-        ///             {
-        ///                 { "env", "dev" },
-        ///                 { "region", "us-west" },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRoleResult> InvokeAsync(GetRoleArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleArgs(), options.WithDefaults());
@@ -51,40 +24,13 @@ namespace PiersKarsenbarg.Sdm
         /// A Role has a list of access rules which determine which Resources the members
         ///  of the Role have access to. An Account can be a member of multiple Roles via
         ///  AccountAttachments.
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Sdm = Pulumi.Sdm;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var compositeRoleQuery = Output.Create(Sdm.GetRole.InvokeAsync(new Sdm.GetRoleArgs
-        ///         {
-        ///             Composite = true,
-        ///             Tags = 
-        ///             {
-        ///                 { "env", "dev" },
-        ///                 { "region", "us-west" },
-        ///             },
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetRoleArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Unique identifier of the Role.
@@ -113,9 +59,10 @@ namespace PiersKarsenbarg.Sdm
         public GetRoleArgs()
         {
         }
+        public static new GetRoleArgs Empty => new GetRoleArgs();
     }
 
-    public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Unique identifier of the Role.
@@ -144,6 +91,7 @@ namespace PiersKarsenbarg.Sdm
         public GetRoleInvokeArgs()
         {
         }
+        public static new GetRoleInvokeArgs Empty => new GetRoleInvokeArgs();
     }
 
 

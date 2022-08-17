@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMongoShardedClusterArgs : Pulumi.ResourceArgs
+    public sealed class ResourceMongoShardedClusterArgs : global::Pulumi.ResourceArgs
     {
         [Input("authDatabase", required: true)]
         public Input<string> AuthDatabase { get; set; } = null!;
@@ -82,5 +82,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceMongoShardedClusterArgs()
         {
         }
+        public static new ResourceMongoShardedClusterArgs Empty => new ResourceMongoShardedClusterArgs();
     }
 }

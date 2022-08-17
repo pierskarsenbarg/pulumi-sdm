@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAzureCertificateGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAzureCertificateGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("appId")]
         public Input<string>? AppId { get; set; }
@@ -82,5 +82,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceAzureCertificateGetArgs()
         {
         }
+        public static new ResourceAzureCertificateGetArgs Empty => new ResourceAzureCertificateGetArgs();
     }
 }

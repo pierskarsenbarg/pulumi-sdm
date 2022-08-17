@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceRedshiftGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceRedshiftGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -85,5 +85,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceRedshiftGetArgs()
         {
         }
+        public static new ResourceRedshiftGetArgs Empty => new ResourceRedshiftGetArgs();
     }
 }

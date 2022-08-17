@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceSnowflakeArgs : Pulumi.ResourceArgs
+    public sealed class ResourceSnowflakeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -82,5 +82,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceSnowflakeArgs()
         {
         }
+        public static new ResourceSnowflakeArgs Empty => new ResourceSnowflakeArgs();
     }
 }

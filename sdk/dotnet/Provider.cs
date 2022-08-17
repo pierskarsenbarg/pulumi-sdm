@@ -17,7 +17,7 @@ namespace PiersKarsenbarg.Sdm
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [SdmResourceType("pulumi:providers:sdm")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// A GUID identifying the API key used to authenticate with the StrongDM API.
@@ -64,7 +64,7 @@ namespace PiersKarsenbarg.Sdm
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A GUID identifying the API key used to authenticate with the StrongDM API.
@@ -93,5 +93,6 @@ namespace PiersKarsenbarg.Sdm
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

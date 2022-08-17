@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourcePrestoGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePrestoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -79,5 +79,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourcePrestoGetArgs()
         {
         }
+        public static new ResourcePrestoGetArgs Empty => new ResourcePrestoGetArgs();
     }
 }

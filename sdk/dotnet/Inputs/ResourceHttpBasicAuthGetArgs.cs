@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceHttpBasicAuthGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceHttpBasicAuthGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -88,5 +88,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceHttpBasicAuthGetArgs()
         {
         }
+        public static new ResourceHttpBasicAuthGetArgs Empty => new ResourceHttpBasicAuthGetArgs();
     }
 }

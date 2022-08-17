@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMemcachedArgs : Pulumi.ResourceArgs
+    public sealed class ResourceMemcachedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -61,5 +61,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceMemcachedArgs()
         {
         }
+        public static new ResourceMemcachedArgs Empty => new ResourceMemcachedArgs();
     }
 }

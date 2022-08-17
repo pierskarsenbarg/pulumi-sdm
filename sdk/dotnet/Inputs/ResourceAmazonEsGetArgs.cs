@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAmazonEsGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAmazonEsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
@@ -97,5 +97,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceAmazonEsGetArgs()
         {
         }
+        public static new ResourceAmazonEsGetArgs Empty => new ResourceAmazonEsGetArgs();
     }
 }

@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/node:Node")]
-    public partial class Node : Pulumi.CustomResource
+    public partial class Node : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Gateway represents a StrongDM CLI installation running in gateway mode.
@@ -79,7 +79,7 @@ namespace PiersKarsenbarg.Sdm
         }
     }
 
-    public sealed class NodeArgs : Pulumi.ResourceArgs
+    public sealed class NodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Gateway represents a StrongDM CLI installation running in gateway mode.
@@ -96,9 +96,10 @@ namespace PiersKarsenbarg.Sdm
         public NodeArgs()
         {
         }
+        public static new NodeArgs Empty => new NodeArgs();
     }
 
-    public sealed class NodeState : Pulumi.ResourceArgs
+    public sealed class NodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Gateway represents a StrongDM CLI installation running in gateway mode.
@@ -115,5 +116,6 @@ namespace PiersKarsenbarg.Sdm
         public NodeState()
         {
         }
+        public static new NodeState Empty => new NodeState();
     }
 }

@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/accountAttachment:AccountAttachment")]
-    public partial class AccountAttachment : Pulumi.CustomResource
+    public partial class AccountAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The id of the account of this AccountAttachment.
@@ -79,7 +79,7 @@ namespace PiersKarsenbarg.Sdm
         }
     }
 
-    public sealed class AccountAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class AccountAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the account of this AccountAttachment.
@@ -96,9 +96,10 @@ namespace PiersKarsenbarg.Sdm
         public AccountAttachmentArgs()
         {
         }
+        public static new AccountAttachmentArgs Empty => new AccountAttachmentArgs();
     }
 
-    public sealed class AccountAttachmentState : Pulumi.ResourceArgs
+    public sealed class AccountAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the account of this AccountAttachment.
@@ -115,5 +116,6 @@ namespace PiersKarsenbarg.Sdm
         public AccountAttachmentState()
         {
         }
+        public static new AccountAttachmentState Empty => new AccountAttachmentState();
     }
 }

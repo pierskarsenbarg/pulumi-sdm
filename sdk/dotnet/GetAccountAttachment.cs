@@ -19,20 +19,18 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
         ///     {
-        ///         var accountAttachmentQuery = Output.Create(Sdm.GetAccountAttachment.InvokeAsync(new Sdm.GetAccountAttachmentArgs
-        ///         {
-        ///             AccountId = "a-00000054",
-        ///         }));
-        ///     }
+        ///         AccountId = "a-00000054",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -47,20 +45,18 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
         ///     {
-        ///         var accountAttachmentQuery = Output.Create(Sdm.GetAccountAttachment.InvokeAsync(new Sdm.GetAccountAttachmentArgs
-        ///         {
-        ///             AccountId = "a-00000054",
-        ///         }));
-        ///     }
+        ///         AccountId = "a-00000054",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -70,7 +66,7 @@ namespace PiersKarsenbarg.Sdm
     }
 
 
-    public sealed class GetAccountAttachmentArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountAttachmentArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the account of this AccountAttachment.
@@ -93,9 +89,10 @@ namespace PiersKarsenbarg.Sdm
         public GetAccountAttachmentArgs()
         {
         }
+        public static new GetAccountAttachmentArgs Empty => new GetAccountAttachmentArgs();
     }
 
-    public sealed class GetAccountAttachmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountAttachmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The id of the account of this AccountAttachment.
@@ -118,6 +115,7 @@ namespace PiersKarsenbarg.Sdm
         public GetAccountAttachmentInvokeArgs()
         {
         }
+        public static new GetAccountAttachmentInvokeArgs Empty => new GetAccountAttachmentInvokeArgs();
     }
 
 

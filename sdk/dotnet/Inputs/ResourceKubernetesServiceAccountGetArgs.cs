@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceKubernetesServiceAccountGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceKubernetesServiceAccountGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -85,5 +85,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceKubernetesServiceAccountGetArgs()
         {
         }
+        public static new ResourceKubernetesServiceAccountGetArgs Empty => new ResourceKubernetesServiceAccountGetArgs();
     }
 }

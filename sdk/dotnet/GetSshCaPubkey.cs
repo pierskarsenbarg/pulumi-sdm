@@ -19,17 +19,15 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sshPubkeyQuery = Output.Create(Sdm.GetSshCaPubkey.InvokeAsync());
-        ///     }
+        ///     var sshPubkeyQuery = Sdm.GetSshCaPubkey.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -44,17 +42,15 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var sshPubkeyQuery = Output.Create(Sdm.GetSshCaPubkey.InvokeAsync());
-        ///     }
+        ///     var sshPubkeyQuery = Sdm.GetSshCaPubkey.Invoke();
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -64,7 +60,7 @@ namespace PiersKarsenbarg.Sdm
     }
 
 
-    public sealed class GetSshCaPubkeyArgs : Pulumi.InvokeArgs
+    public sealed class GetSshCaPubkeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// a generated id representing this request.
@@ -81,9 +77,10 @@ namespace PiersKarsenbarg.Sdm
         public GetSshCaPubkeyArgs()
         {
         }
+        public static new GetSshCaPubkeyArgs Empty => new GetSshCaPubkeyArgs();
     }
 
-    public sealed class GetSshCaPubkeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSshCaPubkeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// a generated id representing this request.
@@ -100,6 +97,7 @@ namespace PiersKarsenbarg.Sdm
         public GetSshCaPubkeyInvokeArgs()
         {
         }
+        public static new GetSshCaPubkeyInvokeArgs Empty => new GetSshCaPubkeyInvokeArgs();
     }
 
 

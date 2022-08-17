@@ -75,7 +75,7 @@ namespace PiersKarsenbarg.Sdm
         }
     }
 
-    internal sealed class SdmResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class SdmResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public SdmResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

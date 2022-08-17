@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceRedisGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceRedisGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -70,5 +70,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceRedisGetArgs()
         {
         }
+        public static new ResourceRedisGetArgs Empty => new ResourceRedisGetArgs();
     }
 }

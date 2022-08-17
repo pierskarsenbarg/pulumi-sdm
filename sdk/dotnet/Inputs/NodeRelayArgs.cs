@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class NodeRelayArgs : Pulumi.ResourceArgs
+    public sealed class NodeRelayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// GatewayFilter can be used to restrict the peering between relays and gateways.
@@ -43,5 +43,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public NodeRelayArgs()
         {
         }
+        public static new NodeRelayArgs Empty => new NodeRelayArgs();
     }
 }

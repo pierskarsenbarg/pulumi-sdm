@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceClustrixGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceClustrixGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -82,5 +82,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceClustrixGetArgs()
         {
         }
+        public static new ResourceClustrixGetArgs Empty => new ResourceClustrixGetArgs();
     }
 }
