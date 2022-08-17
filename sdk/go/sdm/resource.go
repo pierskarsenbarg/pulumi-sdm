@@ -15,7 +15,9 @@ import (
 // Resource can be imported using the id, e.g.,
 //
 // ```sh
-//  $ pulumi import sdm:index/resource:Resource example rs-12345678
+//
+//	$ pulumi import sdm:index/resource:Resource example rs-12345678
+//
 // ```
 type Resource struct {
 	pulumi.CustomResourceState
@@ -449,7 +451,7 @@ func (i *Resource) ToResourceOutputWithContext(ctx context.Context) ResourceOutp
 // ResourceArrayInput is an input type that accepts ResourceArray and ResourceArrayOutput values.
 // You can construct a concrete instance of `ResourceArrayInput` via:
 //
-//          ResourceArray{ ResourceArgs{...} }
+//	ResourceArray{ ResourceArgs{...} }
 type ResourceArrayInput interface {
 	pulumi.Input
 
@@ -474,7 +476,7 @@ func (i ResourceArray) ToResourceArrayOutputWithContext(ctx context.Context) Res
 // ResourceMapInput is an input type that accepts ResourceMap and ResourceMapOutput values.
 // You can construct a concrete instance of `ResourceMapInput` via:
 //
-//          ResourceMap{ "key": ResourceArgs{...} }
+//	ResourceMap{ "key": ResourceArgs{...} }
 type ResourceMapInput interface {
 	pulumi.Input
 

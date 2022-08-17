@@ -29,12 +29,6 @@ namespace PiersKarsenbarg.Sdm
         public Output<string> AccessRules { get; private set; } = null!;
 
         /// <summary>
-        /// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        /// </summary>
-        [Output("composite")]
-        public Output<bool?> Composite { get; private set; } = null!;
-
-        /// <summary>
         /// Unique human-readable name of the Role.
         /// </summary>
         [Output("name")]
@@ -100,12 +94,6 @@ namespace PiersKarsenbarg.Sdm
         public Input<string>? AccessRules { get; set; }
 
         /// <summary>
-        /// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        /// </summary>
-        [Input("composite")]
-        public Input<bool>? Composite { get; set; }
-
-        /// <summary>
         /// Unique human-readable name of the Role.
         /// </summary>
         [Input("name")]
@@ -135,12 +123,6 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("accessRules")]
         public Input<string>? AccessRules { get; set; }
-
-        /// <summary>
-        /// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        /// </summary>
-        [Input("composite")]
-        public Input<bool>? Composite { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Role.

@@ -46,6 +46,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        [Input("portOverride")]
+        public Input<int>? PortOverride { get; set; }
+
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>

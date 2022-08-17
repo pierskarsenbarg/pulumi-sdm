@@ -33,7 +33,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Name;
         public readonly int? Port;
-        public readonly int PortOverride;
+        public readonly int? PortOverride;
         public readonly string? Region;
         public readonly string? RoleArn;
         public readonly string? RoleExternalId;
@@ -63,7 +63,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? port,
 
-            int portOverride,
+            int? portOverride,
 
             string? region,
 

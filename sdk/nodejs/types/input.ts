@@ -105,6 +105,7 @@ export interface ResourceAks {
      */
     name: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     remoteIdentityGroupId?: pulumi.Input<string>;
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     secretStoreCertificateAuthorityKey?: pulumi.Input<string>;
@@ -143,6 +144,7 @@ export interface ResourceAksBasicAuth {
     name: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -177,6 +179,7 @@ export interface ResourceAksServiceAccount {
      */
     name: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     remoteIdentityGroupId?: pulumi.Input<string>;
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     /**
@@ -214,6 +217,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     name: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -252,6 +256,7 @@ export interface ResourceAksUserImpersonation {
      */
     name: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     secretStoreCertificateAuthorityKey?: pulumi.Input<string>;
     secretStoreCertificateAuthorityPath?: pulumi.Input<string>;
     secretStoreClientCertificateKey?: pulumi.Input<string>;
@@ -1361,6 +1366,7 @@ export interface ResourceKubernetes {
      */
     name: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     remoteIdentityGroupId?: pulumi.Input<string>;
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     secretStoreCertificateAuthorityKey?: pulumi.Input<string>;
@@ -1399,6 +1405,7 @@ export interface ResourceKubernetesBasicAuth {
     name: pulumi.Input<string>;
     password?: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1433,6 +1440,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     name: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     remoteIdentityGroupId?: pulumi.Input<string>;
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     /**
@@ -1470,6 +1478,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     name: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1508,6 +1517,7 @@ export interface ResourceKubernetesUserImpersonation {
      */
     name: pulumi.Input<string>;
     port: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
     secretStoreCertificateAuthorityKey?: pulumi.Input<string>;
     secretStoreCertificateAuthorityPath?: pulumi.Input<string>;
     secretStoreClientCertificateKey?: pulumi.Input<string>;
@@ -2350,9 +2360,6 @@ export interface ResourceSsh {
     port: pulumi.Input<number>;
     portForwarding?: pulumi.Input<boolean>;
     portOverride?: pulumi.Input<number>;
-    /**
-     * * ssh_cert:
-     */
     publicKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.

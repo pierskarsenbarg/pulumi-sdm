@@ -15,7 +15,9 @@ import (
 // Node can be imported using the id, e.g.,
 //
 // ```sh
-//  $ pulumi import sdm:index/node:Node example n-12345678
+//
+//	$ pulumi import sdm:index/node:Node example n-12345678
+//
 // ```
 type Node struct {
 	pulumi.CustomResourceState
@@ -114,7 +116,7 @@ func (i *Node) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 // NodeArrayInput is an input type that accepts NodeArray and NodeArrayOutput values.
 // You can construct a concrete instance of `NodeArrayInput` via:
 //
-//          NodeArray{ NodeArgs{...} }
+//	NodeArray{ NodeArgs{...} }
 type NodeArrayInput interface {
 	pulumi.Input
 
@@ -139,7 +141,7 @@ func (i NodeArray) ToNodeArrayOutputWithContext(ctx context.Context) NodeArrayOu
 // NodeMapInput is an input type that accepts NodeMap and NodeMapOutput values.
 // You can construct a concrete instance of `NodeMapInput` via:
 //
-//          NodeMap{ "key": NodeArgs{...} }
+//	NodeMap{ "key": NodeArgs{...} }
 type NodeMapInput interface {
 	pulumi.Input
 

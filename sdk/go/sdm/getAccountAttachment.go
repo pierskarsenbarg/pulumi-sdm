@@ -17,22 +17,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sdm.LookupAccountAttachment(ctx, &GetAccountAttachmentArgs{
-// 			AccountId: pulumi.StringRef("a-00000054"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.LookupAccountAttachment(ctx, &GetAccountAttachmentArgs{
+//				AccountId: pulumi.StringRef("a-00000054"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAccountAttachment(ctx *pulumi.Context, args *LookupAccountAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupAccountAttachmentResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)

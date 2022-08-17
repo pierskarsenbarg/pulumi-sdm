@@ -32,7 +32,6 @@ export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promis
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("sdm:index/getRole:getRole", {
-        "composite": args.composite,
         "id": args.id,
         "name": args.name,
         "tags": args.tags,
@@ -43,12 +42,6 @@ export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleArgs {
-    /**
-     * Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-     *
-     * @deprecated composite is deprecated, see docs for more info
-     */
-    composite?: boolean;
     /**
      * Unique identifier of the Role.
      */
@@ -67,12 +60,6 @@ export interface GetRoleArgs {
  * A collection of values returned by getRole.
  */
 export interface GetRoleResult {
-    /**
-     * Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-     *
-     * @deprecated composite is deprecated, see docs for more info
-     */
-    readonly composite?: boolean;
     /**
      * Unique identifier of the Role.
      */
@@ -103,12 +90,6 @@ export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getRole.
  */
 export interface GetRoleOutputArgs {
-    /**
-     * Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-     *
-     * @deprecated composite is deprecated, see docs for more info
-     */
-    composite?: pulumi.Input<boolean>;
     /**
      * Unique identifier of the Role.
      */

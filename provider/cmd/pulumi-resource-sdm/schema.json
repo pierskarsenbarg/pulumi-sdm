@@ -354,6 +354,14 @@
                         }
                     }
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "remoteIdentityGroupId": {
                     "type": "string",
                     "language": {
@@ -452,7 +460,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -512,6 +521,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -593,7 +610,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -645,6 +663,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -727,7 +753,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -779,6 +806,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -845,7 +880,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -928,6 +964,14 @@
                         }
                     }
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "secretStoreCertificateAuthorityKey": {
                     "type": "string",
                     "language": {
@@ -1010,7 +1054,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -5858,6 +5903,14 @@
                         }
                     }
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "remoteIdentityGroupId": {
                     "type": "string",
                     "language": {
@@ -5956,7 +6009,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -6016,6 +6070,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -6097,7 +6159,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -6149,6 +6212,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -6231,7 +6302,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -6283,6 +6355,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -6349,7 +6429,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -6432,6 +6513,14 @@
                         }
                     }
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "secretStoreCertificateAuthorityKey": {
                     "type": "string",
                     "language": {
@@ -6514,7 +6603,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port"
+                        "port",
+                        "portOverride"
                     ]
                 }
             }
@@ -10290,7 +10380,6 @@
                 },
                 "publicKey": {
                     "type": "string",
-                    "description": "* ssh_cert:\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11546,38 +11635,6 @@
             },
             "type": "object"
         },
-        "sdm:index/getAccountGrantAccountGrant:getAccountGrantAccountGrant": {
-            "properties": {
-                "accountId": {
-                    "type": "string",
-                    "description": "The account id of this AccountGrant.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of the AccountGrant.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "resourceId": {
-                    "type": "string",
-                    "description": "The resource id of this AccountGrant.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object"
-        },
         "sdm:index/getNodeNode:getNodeNode": {
             "properties": {
                 "gateways": {
@@ -12735,6 +12792,14 @@
                         }
                     }
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "remoteIdentityGroupId": {
                     "type": "string",
                     "language": {
@@ -12846,6 +12911,14 @@
                         }
                     }
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
@@ -12934,6 +13007,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -13046,6 +13127,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -13166,6 +13255,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -13313,15 +13410,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceAmazonEk:getResourceResourceAmazonEk": {
             "properties": {
@@ -13717,15 +13806,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceAthena:getResourceResourceAthena": {
             "properties": {
@@ -13843,15 +13924,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceAuroraMysql:getResourceResourceAuroraMysql": {
             "properties": {
@@ -13961,15 +14034,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceAuroraPostgre:getResourceResourceAuroraPostgre": {
             "properties": {
@@ -14087,15 +14152,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceAw:getResourceResourceAw": {
             "properties": {
@@ -14489,15 +14546,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceBigQuery:getResourceResourceBigQuery": {
             "properties": {
@@ -14599,15 +14648,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceCassandra:getResourceResourceCassandra": {
             "properties": {
@@ -14717,15 +14758,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceCitus:getResourceResourceCitus": {
             "properties": {
@@ -14843,15 +14876,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceClustrix:getResourceResourceClustrix": {
             "properties": {
@@ -14961,15 +14986,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceCockroach:getResourceResourceCockroach": {
             "properties": {
@@ -15087,15 +15104,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceDb2I:getResourceResourceDb2I": {
             "properties": {
@@ -15205,15 +15214,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceDb2Luw:getResourceResourceDb2Luw": {
             "properties": {
@@ -15323,15 +15324,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceDocumentDbHost:getResourceResourceDocumentDbHost": {
             "properties": {
@@ -15441,15 +15434,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceDocumentDbReplicaSet:getResourceResourceDocumentDbReplicaSet": {
             "properties": {
@@ -15567,15 +15552,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceDruid:getResourceResourceDruid": {
             "properties": {
@@ -15677,15 +15654,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceDynamoDb:getResourceResourceDynamoDb": {
             "properties": {
@@ -15803,15 +15772,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceElastic:getResourceResourceElastic": {
             "properties": {
@@ -15921,15 +15882,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceElasticacheRedi:getResourceResourceElasticacheRedi": {
             "properties": {
@@ -16031,15 +15984,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceGcp:getResourceResourceGcp": {
             "properties": {
@@ -16441,15 +16386,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceHttpAuth:getResourceResourceHttpAuth": {
             "properties": {
@@ -16871,6 +16808,14 @@
                         }
                     }
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "remoteIdentityGroupId": {
                     "type": "string",
                     "language": {
@@ -16982,6 +16927,14 @@
                         }
                     }
                 },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
@@ -17070,6 +17023,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -17182,6 +17143,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -17302,6 +17271,14 @@
                     }
                 },
                 "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
                     "type": "integer",
                     "language": {
                         "python": {
@@ -17441,15 +17418,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMemcached:getResourceResourceMemcached": {
             "properties": {
@@ -17535,15 +17504,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMemsql:getResourceResourceMemsql": {
             "properties": {
@@ -17653,15 +17614,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMongoHost:getResourceResourceMongoHost": {
             "properties": {
@@ -17779,15 +17732,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMongoLegacyHost:getResourceResourceMongoLegacyHost": {
             "properties": {
@@ -17913,15 +17858,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMongoLegacyReplicaset:getResourceResourceMongoLegacyReplicaset": {
             "properties": {
@@ -18055,15 +17992,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMongoReplicaSet:getResourceResourceMongoReplicaSet": {
             "properties": {
@@ -18197,15 +18126,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMongoShardedCluster:getResourceResourceMongoShardedCluster": {
             "properties": {
@@ -18315,15 +18236,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMtlsMysql:getResourceResourceMtlsMysql": {
             "properties": {
@@ -18465,15 +18378,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMtlsPostgre:getResourceResourceMtlsPostgre": {
             "properties": {
@@ -18623,15 +18528,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceMysql:getResourceResourceMysql": {
             "properties": {
@@ -18741,15 +18638,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceNeptune:getResourceResourceNeptune": {
             "properties": {
@@ -18835,15 +18724,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceNeptuneIam:getResourceResourceNeptuneIam": {
             "properties": {
@@ -18969,15 +18850,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceOracle:getResourceResourceOracle": {
             "properties": {
@@ -19095,15 +18968,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourcePostgre:getResourceResourcePostgre": {
             "properties": {
@@ -19221,15 +19086,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourcePresto:getResourceResourcePresto": {
             "properties": {
@@ -19347,15 +19204,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceRabbitmqAmqp091:getResourceResourceRabbitmqAmqp091": {
             "properties": {
@@ -19465,15 +19314,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceRawTcp:getResourceResourceRawTcp": {
             "properties": {
@@ -19559,15 +19400,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceRdp:getResourceResourceRdp": {
             "properties": {
@@ -19677,15 +19510,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceRedi:getResourceResourceRedi": {
             "properties": {
@@ -19779,15 +19604,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceRedshift:getResourceResourceRedshift": {
             "properties": {
@@ -19905,15 +19722,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceSingleStore:getResourceResourceSingleStore": {
             "properties": {
@@ -20023,15 +19832,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceSnowflake:getResourceResourceSnowflake": {
             "properties": {
@@ -20141,15 +19942,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceSqlServer:getResourceResourceSqlServer": {
             "properties": {
@@ -20275,15 +20068,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceSsh:getResourceResourceSsh": {
             "properties": {
@@ -20411,7 +20196,6 @@
             },
             "type": "object",
             "required": [
-                "portOverride",
                 "publicKey"
             ],
             "language": {
@@ -20552,15 +20336,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceSshCustomerKey:getResourceResourceSshCustomerKey": {
             "properties": {
@@ -20678,15 +20454,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceSybase:getResourceResourceSybase": {
             "properties": {
@@ -20788,15 +20556,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceSybaseIq:getResourceResourceSybaseIq": {
             "properties": {
@@ -20898,15 +20658,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
+            "type": "object"
         },
         "sdm:index/getResourceResourceTeradata:getResourceResourceTeradata": {
             "properties": {
@@ -21008,78 +20760,6 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "portOverride"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
-        "sdm:index/getRoleAttachmentRoleAttachment:getRoleAttachmentRoleAttachment": {
-            "properties": {
-                "attachedRoleId": {
-                    "type": "string",
-                    "description": "The id of the attached role of this RoleAttachment.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "compositeRoleId": {
-                    "type": "string",
-                    "description": "The id of the composite role of this RoleAttachment.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of the RoleAttachment.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
-            "type": "object"
-        },
-        "sdm:index/getRoleGrantRoleGrant:getRoleGrantRoleGrant": {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of the RoleGrant.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "resourceId": {
-                    "type": "string",
-                    "description": "The id of the resource of this RoleGrant.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "roleId": {
-                    "type": "string",
-                    "description": "The id of the attached role of this RoleGrant.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                }
-            },
             "type": "object"
         },
         "sdm:index/getRoleRole:getRoleRole": {
@@ -21087,16 +20767,6 @@
                 "accessRules": {
                     "type": "string",
                     "description": "AccessRules is a list of access rules defining the resources this Role has access to.\n",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
-                "composite": {
-                    "type": "boolean",
-                    "description": "Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.\n",
-                    "deprecationMessage": "composite is deprecated, see docs for more info",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -21648,55 +21318,6 @@
                     "roleId": {
                         "type": "string",
                         "description": "The id of the attached role of this AccountAttachment.\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "sdm:index/accountGrant:AccountGrant": {
-            "description": "\n\n\n## Import\n\nAccountGrant can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/accountGrant:AccountGrant example ag-12345678\n```\n\n ",
-            "properties": {
-                "accountId": {
-                    "type": "string",
-                    "description": "The account id of this AccountGrant.\n"
-                },
-                "resourceId": {
-                    "type": "string",
-                    "description": "The resource id of this AccountGrant.\n"
-                }
-            },
-            "required": [
-                "accountId",
-                "resourceId"
-            ],
-            "inputProperties": {
-                "accountId": {
-                    "type": "string",
-                    "description": "The account id of this AccountGrant.\n",
-                    "willReplaceOnChanges": true
-                },
-                "resourceId": {
-                    "type": "string",
-                    "description": "The resource id of this AccountGrant.\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "accountId",
-                "resourceId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering AccountGrant resources.\n",
-                "properties": {
-                    "accountId": {
-                        "type": "string",
-                        "description": "The account id of this AccountGrant.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "resourceId": {
-                        "type": "string",
-                        "description": "The resource id of this AccountGrant.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -22458,11 +22079,6 @@
                     "type": "string",
                     "description": "AccessRules is a list of access rules defining the resources this Role has access to.\n"
                 },
-                "composite": {
-                    "type": "boolean",
-                    "description": "Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.\n",
-                    "deprecationMessage": "composite is deprecated, see docs for more info"
-                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Role.\n"
@@ -22484,12 +22100,6 @@
                     "type": "string",
                     "description": "AccessRules is a list of access rules defining the resources this Role has access to.\n"
                 },
-                "composite": {
-                    "type": "boolean",
-                    "description": "Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.\n",
-                    "deprecationMessage": "composite is deprecated, see docs for more info",
-                    "willReplaceOnChanges": true
-                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Role.\n"
@@ -22509,12 +22119,6 @@
                         "type": "string",
                         "description": "AccessRules is a list of access rules defining the resources this Role has access to.\n"
                     },
-                    "composite": {
-                        "type": "boolean",
-                        "description": "Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.\n",
-                        "deprecationMessage": "composite is deprecated, see docs for more info",
-                        "willReplaceOnChanges": true
-                    },
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the Role.\n"
@@ -22525,104 +22129,6 @@
                             "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "sdm:index/roleAttachment:RoleAttachment": {
-            "description": "\n\n\n## Import\n\nRoleAttachment can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/roleAttachment:RoleAttachment example ra-12345678\n```\n\n ",
-            "properties": {
-                "attachedRoleId": {
-                    "type": "string",
-                    "description": "The id of the attached role of this RoleAttachment.\n"
-                },
-                "compositeRoleId": {
-                    "type": "string",
-                    "description": "The id of the composite role of this RoleAttachment.\n"
-                }
-            },
-            "required": [
-                "attachedRoleId",
-                "compositeRoleId"
-            ],
-            "inputProperties": {
-                "attachedRoleId": {
-                    "type": "string",
-                    "description": "The id of the attached role of this RoleAttachment.\n",
-                    "willReplaceOnChanges": true
-                },
-                "compositeRoleId": {
-                    "type": "string",
-                    "description": "The id of the composite role of this RoleAttachment.\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "attachedRoleId",
-                "compositeRoleId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering RoleAttachment resources.\n",
-                "properties": {
-                    "attachedRoleId": {
-                        "type": "string",
-                        "description": "The id of the attached role of this RoleAttachment.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "compositeRoleId": {
-                        "type": "string",
-                        "description": "The id of the composite role of this RoleAttachment.\n",
-                        "willReplaceOnChanges": true
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "sdm:index/roleGrant:RoleGrant": {
-            "description": "\n\n\n## Import\n\nRoleGrant can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/roleGrant:RoleGrant example rg-12345678\n```\n\n ",
-            "properties": {
-                "resourceId": {
-                    "type": "string",
-                    "description": "The id of the resource of this RoleGrant.\n"
-                },
-                "roleId": {
-                    "type": "string",
-                    "description": "The id of the attached role of this RoleGrant.\n"
-                }
-            },
-            "required": [
-                "resourceId",
-                "roleId"
-            ],
-            "inputProperties": {
-                "resourceId": {
-                    "type": "string",
-                    "description": "The id of the resource of this RoleGrant.\n",
-                    "willReplaceOnChanges": true
-                },
-                "roleId": {
-                    "type": "string",
-                    "description": "The id of the attached role of this RoleGrant.\n",
-                    "willReplaceOnChanges": true
-                }
-            },
-            "requiredInputs": [
-                "resourceId",
-                "roleId"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering RoleGrant resources.\n",
-                "properties": {
-                    "resourceId": {
-                        "type": "string",
-                        "description": "The id of the resource of this RoleGrant.\n",
-                        "willReplaceOnChanges": true
-                    },
-                    "roleId": {
-                        "type": "string",
-                        "description": "The id of the attached role of this RoleGrant.\n",
-                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -22852,63 +22358,6 @@
                 "type": "object",
                 "required": [
                     "accountAttachments",
-                    "ids"
-                ]
-            }
-        },
-        "sdm:index/getAccountGrant:getAccountGrant": {
-            "description": "AccountGrants connect a resource directly to an account, giving the account the permission to connect to that resource.\nThis data source is deprecated.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst accountGrantQuery = pulumi.output(sdm.getAccountGrant({\n    accountId: \"a-00000054\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\naccount_grant_query = sdm.get_account_grant(account_id=\"a-00000054\")\n```\n```csharp\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var accountGrantQuery = Output.Create(Sdm.GetAccountGrant.InvokeAsync(new Sdm.GetAccountGrantArgs\n        {\n            AccountId = \"a-00000054\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupAccountGrant(ctx, \u0026GetAccountGrantArgs{\n\t\t\tAccountId: pulumi.StringRef(\"a-00000054\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var accountGrantQuery = Output.of(SdmFunctions.getAccountGrant(GetAccountGrantArgs.builder()\n            .accountId(\"a-00000054\")\n            .build()));\n\n    }\n}\n```\n```yaml\nvariables:\n  accountGrantQuery:\n    Fn::Invoke:\n      Function: sdm:getAccountGrant\n      Arguments:\n        accountId: a-00000054\n```\n{{% /example %}}\n{{% /examples %}}",
-            "inputs": {
-                "description": "A collection of arguments for invoking getAccountGrant.\n",
-                "properties": {
-                    "accountId": {
-                        "type": "string",
-                        "description": "The account id of this AccountGrant.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the AccountGrant.\n"
-                    },
-                    "resourceId": {
-                        "type": "string",
-                        "description": "The resource id of this AccountGrant.\n"
-                    }
-                },
-                "type": "object"
-            },
-            "outputs": {
-                "description": "A collection of values returned by getAccountGrant.\n",
-                "properties": {
-                    "accountGrants": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/sdm:index/getAccountGrantAccountGrant:getAccountGrantAccountGrant"
-                        },
-                        "description": "A list where each element has the following attributes:\n"
-                    },
-                    "accountId": {
-                        "type": "string",
-                        "description": "The account id of this AccountGrant.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the AccountGrant.\n"
-                    },
-                    "ids": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
-                    },
-                    "resourceId": {
-                        "type": "string",
-                        "description": "The resource id of this AccountGrant.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "accountGrants",
                     "ids"
                 ]
             }
@@ -23202,15 +22651,10 @@
             }
         },
         "sdm:index/getRole:getRole": {
-            "description": "A Role has a list of access rules which determine which Resources the members\n of the Role have access to. An Account can be a member of multiple Roles via\n AccountAttachments.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst compositeRoleQuery = pulumi.output(sdm.getRole({\n    composite: true,\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\ncomposite_role_query = sdm.get_role(composite=True,\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    })\n```\n```csharp\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var compositeRoleQuery = Output.Create(Sdm.GetRole.InvokeAsync(new Sdm.GetRoleArgs\n        {\n            Composite = true,\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupRole(ctx, \u0026GetRoleArgs{\n\t\t\tComposite: pulumi.BoolRef(true),\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t\"region\": \"us-west\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var compositeRoleQuery = Output.of(SdmFunctions.getRole(GetRoleArgs.builder()\n            .composite(true)\n            .tags(Map.ofEntries(\n                Map.entry(\"env\", \"dev\"),\n                Map.entry(\"region\", \"us-west\")\n            ))\n            .build()));\n\n    }\n}\n```\n```yaml\nvariables:\n  compositeRoleQuery:\n    Fn::Invoke:\n      Function: sdm:getRole\n      Arguments:\n        composite: true\n        tags:\n          env: dev\n          region: us-west\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "A Role has a list of access rules which determine which Resources the members\n of the Role have access to. An Account can be a member of multiple Roles via\n AccountAttachments.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst compositeRoleQuery = pulumi.output(sdm.getRole({\n    composite: true,\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\ncomposite_role_query = sdm.get_role(composite=True,\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    })\n```\n```csharp\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var compositeRoleQuery = Output.Create(Sdm.GetRole.InvokeAsync(new Sdm.GetRoleArgs\n        {\n            Composite = true,\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupRole(ctx, \u0026GetRoleArgs{\n\t\t\tComposite: true,\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t\"region\": \"us-west\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var compositeRoleQuery = Output.of(SdmFunctions.getRole(GetRoleArgs.builder()\n            .composite(true)\n            .tags(Map.ofEntries(\n                Map.entry(\"env\", \"dev\"),\n                Map.entry(\"region\", \"us-west\")\n            ))\n            .build()));\n\n    }\n}\n```\n```yaml\nvariables:\n  compositeRoleQuery:\n    Fn::Invoke:\n      Function: sdm:getRole\n      Arguments:\n        composite: true\n        tags:\n          env: dev\n          region: us-west\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getRole.\n",
                 "properties": {
-                    "composite": {
-                        "type": "boolean",
-                        "description": "Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.\n",
-                        "deprecationMessage": "composite is deprecated, see docs for more info"
-                    },
                     "id": {
                         "type": "string",
                         "description": "Unique identifier of the Role.\n"
@@ -23232,11 +22676,6 @@
             "outputs": {
                 "description": "A collection of values returned by getRole.\n",
                 "properties": {
-                    "composite": {
-                        "type": "boolean",
-                        "description": "Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.\n",
-                        "deprecationMessage": "composite is deprecated, see docs for more info"
-                    },
                     "id": {
                         "type": "string",
                         "description": "Unique identifier of the Role.\n"
@@ -23271,120 +22710,6 @@
                 "required": [
                     "ids",
                     "roles"
-                ]
-            }
-        },
-        "sdm:index/getRoleAttachment:getRoleAttachment": {
-            "description": "A RoleAttachment assigns a role to a composite role.\n \n Deprecated: use multi-role via AccountAttachments instead.\nThis data source is deprecated.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst roleAttachmentQuery = pulumi.output(sdm.getRoleAttachment({\n    compositeRoleId: \"r-233332245\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nrole_attachment_query = sdm.get_role_attachment(composite_role_id=\"r-233332245\")\n```\n```csharp\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var roleAttachmentQuery = Output.Create(Sdm.GetRoleAttachment.InvokeAsync(new Sdm.GetRoleAttachmentArgs\n        {\n            CompositeRoleId = \"r-233332245\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupRoleAttachment(ctx, \u0026GetRoleAttachmentArgs{\n\t\t\tCompositeRoleId: pulumi.StringRef(\"r-233332245\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var roleAttachmentQuery = Output.of(SdmFunctions.getRoleAttachment(GetRoleAttachmentArgs.builder()\n            .compositeRoleId(\"r-233332245\")\n            .build()));\n\n    }\n}\n```\n```yaml\nvariables:\n  roleAttachmentQuery:\n    Fn::Invoke:\n      Function: sdm:getRoleAttachment\n      Arguments:\n        compositeRoleId: r-233332245\n```\n{{% /example %}}\n{{% /examples %}}",
-            "inputs": {
-                "description": "A collection of arguments for invoking getRoleAttachment.\n",
-                "properties": {
-                    "attachedRoleId": {
-                        "type": "string",
-                        "description": "The id of the attached role of this RoleAttachment.\n"
-                    },
-                    "compositeRoleId": {
-                        "type": "string",
-                        "description": "The id of the composite role of this RoleAttachment.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the RoleAttachment.\n"
-                    }
-                },
-                "type": "object"
-            },
-            "outputs": {
-                "description": "A collection of values returned by getRoleAttachment.\n",
-                "properties": {
-                    "attachedRoleId": {
-                        "type": "string",
-                        "description": "The id of the attached role of this RoleAttachment.\n"
-                    },
-                    "compositeRoleId": {
-                        "type": "string",
-                        "description": "The id of the composite role of this RoleAttachment.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the RoleAttachment.\n"
-                    },
-                    "ids": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
-                    },
-                    "roleAttachments": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/sdm:index/getRoleAttachmentRoleAttachment:getRoleAttachmentRoleAttachment"
-                        },
-                        "description": "A list where each element has the following attributes:\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "ids",
-                    "roleAttachments"
-                ]
-            }
-        },
-        "sdm:index/getRoleGrant:getRoleGrant": {
-            "description": "A RoleGrant connects a resource to a role, granting members of the role access to that resource.\n\n Deprecated: use Role access rules instead.\nThis data source is deprecated.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst roleGrantQuery = pulumi.output(sdm.getRoleGrant({\n    roleId: \"r-0009994\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nrole_grant_query = sdm.get_role_grant(role_id=\"r-0009994\")\n```\n```csharp\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var roleGrantQuery = Output.Create(Sdm.GetRoleGrant.InvokeAsync(new Sdm.GetRoleGrantArgs\n        {\n            RoleId = \"r-0009994\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupRoleGrant(ctx, \u0026GetRoleGrantArgs{\n\t\t\tRoleId: pulumi.StringRef(\"r-0009994\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport java.util.*;\nimport java.io.*;\nimport java.nio.*;\nimport com.pulumi.*;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var roleGrantQuery = Output.of(SdmFunctions.getRoleGrant(GetRoleGrantArgs.builder()\n            .roleId(\"r-0009994\")\n            .build()));\n\n    }\n}\n```\n```yaml\nvariables:\n  roleGrantQuery:\n    Fn::Invoke:\n      Function: sdm:getRoleGrant\n      Arguments:\n        roleId: r-0009994\n```\n{{% /example %}}\n{{% /examples %}}",
-            "inputs": {
-                "description": "A collection of arguments for invoking getRoleGrant.\n",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the RoleGrant.\n"
-                    },
-                    "resourceId": {
-                        "type": "string",
-                        "description": "The id of the resource of this RoleGrant.\n"
-                    },
-                    "roleId": {
-                        "type": "string",
-                        "description": "The id of the attached role of this RoleGrant.\n"
-                    }
-                },
-                "type": "object"
-            },
-            "outputs": {
-                "description": "A collection of values returned by getRoleGrant.\n",
-                "properties": {
-                    "id": {
-                        "type": "string",
-                        "description": "Unique identifier of the RoleGrant.\n"
-                    },
-                    "ids": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
-                    },
-                    "resourceId": {
-                        "type": "string",
-                        "description": "The id of the resource of this RoleGrant.\n"
-                    },
-                    "roleGrants": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/sdm:index/getRoleGrantRoleGrant:getRoleGrantRoleGrant"
-                        },
-                        "description": "A list where each element has the following attributes:\n"
-                    },
-                    "roleId": {
-                        "type": "string",
-                        "description": "The id of the attached role of this RoleGrant.\n"
-                    }
-                },
-                "type": "object",
-                "required": [
-                    "ids",
-                    "roleGrants"
                 ]
             }
         },

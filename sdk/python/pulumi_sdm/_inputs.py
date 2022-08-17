@@ -419,6 +419,7 @@ class ResourceAksArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
@@ -452,6 +453,8 @@ class ResourceAksArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -565,6 +568,15 @@ class ResourceAksArgs:
     @healthcheck_namespace.setter
     def healthcheck_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "healthcheck_namespace", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
 
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
@@ -673,6 +685,7 @@ class ResourceAksBasicAuthArgs:
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  secret_store_password_key: Optional[pulumi.Input[str]] = None,
                  secret_store_password_path: Optional[pulumi.Input[str]] = None,
@@ -699,6 +712,8 @@ class ResourceAksBasicAuthArgs:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_password_key is not None:
@@ -790,6 +805,15 @@ class ResourceAksBasicAuthArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -868,6 +892,7 @@ class ResourceAksServiceAccountArgs:
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
@@ -893,6 +918,8 @@ class ResourceAksServiceAccountArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -973,6 +1000,15 @@ class ResourceAksServiceAccountArgs:
     @healthcheck_namespace.setter
     def healthcheck_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "healthcheck_namespace", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
 
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
@@ -1056,6 +1092,7 @@ class ResourceAksServiceAccountUserImpersonationArgs:
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  secret_store_token_key: Optional[pulumi.Input[str]] = None,
                  secret_store_token_path: Optional[pulumi.Input[str]] = None,
@@ -1079,6 +1116,8 @@ class ResourceAksServiceAccountUserImpersonationArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_token_key is not None:
@@ -1157,6 +1196,15 @@ class ResourceAksServiceAccountUserImpersonationArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1223,6 +1271,7 @@ class ResourceAksUserImpersonationArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
                  secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
                  secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
@@ -1254,6 +1303,8 @@ class ResourceAksUserImpersonationArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_certificate_authority_key is not None:
             pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
         if secret_store_certificate_authority_path is not None:
@@ -1363,6 +1414,15 @@ class ResourceAksUserImpersonationArgs:
     @healthcheck_namespace.setter
     def healthcheck_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "healthcheck_namespace", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
 
     @property
     @pulumi.getter(name="secretStoreCertificateAuthorityKey")
@@ -8077,6 +8137,7 @@ class ResourceKubernetesArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
@@ -8110,6 +8171,8 @@ class ResourceKubernetesArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -8223,6 +8286,15 @@ class ResourceKubernetesArgs:
     @healthcheck_namespace.setter
     def healthcheck_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "healthcheck_namespace", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
 
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
@@ -8331,6 +8403,7 @@ class ResourceKubernetesBasicAuthArgs:
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  secret_store_password_key: Optional[pulumi.Input[str]] = None,
                  secret_store_password_path: Optional[pulumi.Input[str]] = None,
@@ -8357,6 +8430,8 @@ class ResourceKubernetesBasicAuthArgs:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_password_key is not None:
@@ -8448,6 +8523,15 @@ class ResourceKubernetesBasicAuthArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -8526,6 +8610,7 @@ class ResourceKubernetesServiceAccountArgs:
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
@@ -8551,6 +8636,8 @@ class ResourceKubernetesServiceAccountArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -8631,6 +8718,15 @@ class ResourceKubernetesServiceAccountArgs:
     @healthcheck_namespace.setter
     def healthcheck_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "healthcheck_namespace", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
 
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
@@ -8714,6 +8810,7 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  secret_store_token_key: Optional[pulumi.Input[str]] = None,
                  secret_store_token_path: Optional[pulumi.Input[str]] = None,
@@ -8737,6 +8834,8 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_token_key is not None:
@@ -8815,6 +8914,15 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -8881,6 +8989,7 @@ class ResourceKubernetesUserImpersonationArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
                  secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
                  secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
@@ -8912,6 +9021,8 @@ class ResourceKubernetesUserImpersonationArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_certificate_authority_key is not None:
             pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
         if secret_store_certificate_authority_path is not None:
@@ -9021,6 +9132,15 @@ class ResourceKubernetesUserImpersonationArgs:
     @healthcheck_namespace.setter
     def healthcheck_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "healthcheck_namespace", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
 
     @property
     @pulumi.getter(name="secretStoreCertificateAuthorityKey")
@@ -14201,7 +14321,6 @@ class ResourceSshArgs:
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param pulumi.Input[str] public_key: * ssh_cert:
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -14326,9 +14445,6 @@ class ResourceSshArgs:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * ssh_cert:
-        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter

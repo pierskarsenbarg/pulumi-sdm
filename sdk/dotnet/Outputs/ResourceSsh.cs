@@ -32,9 +32,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly int Port;
         public readonly bool? PortForwarding;
         public readonly int? PortOverride;
-        /// <summary>
-        /// * ssh_cert:
-        /// </summary>
         public readonly string? PublicKey;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.

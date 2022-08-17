@@ -14,23 +14,16 @@ __all__ = ['RoleArgs', 'Role']
 class RoleArgs:
     def __init__(__self__, *,
                  access_rules: Optional[pulumi.Input[str]] = None,
-                 composite: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Role resource.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
-        :param pulumi.Input[bool] composite: Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
         :param pulumi.Input[str] name: Unique human-readable name of the Role.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         if access_rules is not None:
             pulumi.set(__self__, "access_rules", access_rules)
-        if composite is not None:
-            warnings.warn("""composite is deprecated, see docs for more info""", DeprecationWarning)
-            pulumi.log.warn("""composite is deprecated: composite is deprecated, see docs for more info""")
-        if composite is not None:
-            pulumi.set(__self__, "composite", composite)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
@@ -47,18 +40,6 @@ class RoleArgs:
     @access_rules.setter
     def access_rules(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_rules", value)
-
-    @property
-    @pulumi.getter
-    def composite(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        """
-        return pulumi.get(self, "composite")
-
-    @composite.setter
-    def composite(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "composite", value)
 
     @property
     @pulumi.getter
@@ -89,23 +70,16 @@ class RoleArgs:
 class _RoleState:
     def __init__(__self__, *,
                  access_rules: Optional[pulumi.Input[str]] = None,
-                 composite: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
-        :param pulumi.Input[bool] composite: Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
         :param pulumi.Input[str] name: Unique human-readable name of the Role.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         if access_rules is not None:
             pulumi.set(__self__, "access_rules", access_rules)
-        if composite is not None:
-            warnings.warn("""composite is deprecated, see docs for more info""", DeprecationWarning)
-            pulumi.log.warn("""composite is deprecated: composite is deprecated, see docs for more info""")
-        if composite is not None:
-            pulumi.set(__self__, "composite", composite)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
@@ -122,18 +96,6 @@ class _RoleState:
     @access_rules.setter
     def access_rules(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_rules", value)
-
-    @property
-    @pulumi.getter
-    def composite(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        """
-        return pulumi.get(self, "composite")
-
-    @composite.setter
-    def composite(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "composite", value)
 
     @property
     @pulumi.getter
@@ -166,7 +128,6 @@ class Role(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_rules: Optional[pulumi.Input[str]] = None,
-                 composite: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -182,7 +143,6 @@ class Role(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
-        :param pulumi.Input[bool] composite: Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
         :param pulumi.Input[str] name: Unique human-readable name of the Role.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -217,7 +177,6 @@ class Role(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_rules: Optional[pulumi.Input[str]] = None,
-                 composite: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -235,10 +194,6 @@ class Role(pulumi.CustomResource):
             __props__ = RoleArgs.__new__(RoleArgs)
 
             __props__.__dict__["access_rules"] = access_rules
-            if composite is not None and not opts.urn:
-                warnings.warn("""composite is deprecated, see docs for more info""", DeprecationWarning)
-                pulumi.log.warn("""composite is deprecated: composite is deprecated, see docs for more info""")
-            __props__.__dict__["composite"] = composite
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
         super(Role, __self__).__init__(
@@ -252,7 +207,6 @@ class Role(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_rules: Optional[pulumi.Input[str]] = None,
-            composite: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Role':
         """
@@ -263,7 +217,6 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
-        :param pulumi.Input[bool] composite: Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
         :param pulumi.Input[str] name: Unique human-readable name of the Role.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -272,7 +225,6 @@ class Role(pulumi.CustomResource):
         __props__ = _RoleState.__new__(_RoleState)
 
         __props__.__dict__["access_rules"] = access_rules
-        __props__.__dict__["composite"] = composite
         __props__.__dict__["name"] = name
         __props__.__dict__["tags"] = tags
         return Role(resource_name, opts=opts, __props__=__props__)
@@ -284,14 +236,6 @@ class Role(pulumi.CustomResource):
         AccessRules is a list of access rules defining the resources this Role has access to.
         """
         return pulumi.get(self, "access_rules")
-
-    @property
-    @pulumi.getter
-    def composite(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        """
-        return pulumi.get(self, "composite")
 
     @property
     @pulumi.getter

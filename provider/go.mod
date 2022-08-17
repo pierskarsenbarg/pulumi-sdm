@@ -12,7 +12,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.16.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.24.1
 	github.com/pulumi/pulumi/sdk/v3 v3.33.1
-	github.com/strongdm/terraform-provider-sdm v1.0.40-0.20220629192836-e734b685cf9a
+	github.com/strongdm/terraform-provider-sdm v1.0.40-0.20220815140043-dcfd1ef0ad5f
 )
 
 require (

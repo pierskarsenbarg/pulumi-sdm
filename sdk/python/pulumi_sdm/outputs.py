@@ -95,7 +95,6 @@ __all__ = [
     'GetAccountAccountServiceResult',
     'GetAccountAccountUserResult',
     'GetAccountAttachmentAccountAttachmentResult',
-    'GetAccountGrantAccountGrantResult',
     'GetNodeNodeResult',
     'GetNodeNodeGatewayResult',
     'GetNodeNodeRelayResult',
@@ -173,8 +172,6 @@ __all__ = [
     'GetResourceResourceSybaseResult',
     'GetResourceResourceSybaseIqResult',
     'GetResourceResourceTeradataResult',
-    'GetRoleAttachmentRoleAttachmentResult',
-    'GetRoleGrantRoleGrantResult',
     'GetRoleRoleResult',
     'GetSecretStoreSecretStoreResult',
     'GetSecretStoreSecretStoreAwResult',
@@ -498,6 +495,8 @@ class ResourceAks(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "remoteIdentityGroupId":
             suggest = "remote_identity_group_id"
         elif key == "remoteIdentityHealthcheckUsername":
@@ -538,6 +537,7 @@ class ResourceAks(dict):
                  client_key: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_certificate_authority_key: Optional[str] = None,
@@ -571,6 +571,8 @@ class ResourceAks(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -648,6 +650,11 @@ class ResourceAks(dict):
         The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
@@ -717,6 +724,8 @@ class ResourceAksBasicAuth(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "secretStorePasswordKey":
@@ -747,6 +756,7 @@ class ResourceAksBasicAuth(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  password: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  secret_store_password_key: Optional[str] = None,
                  secret_store_password_path: Optional[str] = None,
@@ -773,6 +783,8 @@ class ResourceAksBasicAuth(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_password_key is not None:
@@ -836,6 +848,11 @@ class ResourceAksBasicAuth(dict):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -888,6 +905,8 @@ class ResourceAksServiceAccount(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "remoteIdentityGroupId":
             suggest = "remote_identity_group_id"
         elif key == "remoteIdentityHealthcheckUsername":
@@ -917,6 +936,7 @@ class ResourceAksServiceAccount(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -942,6 +962,8 @@ class ResourceAksServiceAccount(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -1000,6 +1022,11 @@ class ResourceAksServiceAccount(dict):
         return pulumi.get(self, "healthcheck_namespace")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[str]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -1055,6 +1082,8 @@ class ResourceAksServiceAccountUserImpersonation(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "secretStoreTokenKey":
@@ -1080,6 +1109,7 @@ class ResourceAksServiceAccountUserImpersonation(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  secret_store_token_key: Optional[str] = None,
                  secret_store_token_path: Optional[str] = None,
@@ -1103,6 +1133,8 @@ class ResourceAksServiceAccountUserImpersonation(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_token_key is not None:
@@ -1157,6 +1189,11 @@ class ResourceAksServiceAccountUserImpersonation(dict):
         return pulumi.get(self, "healthcheck_namespace")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -1208,6 +1245,8 @@ class ResourceAksUserImpersonation(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreCertificateAuthorityKey":
             suggest = "secret_store_certificate_authority_key"
         elif key == "secretStoreCertificateAuthorityPath":
@@ -1244,6 +1283,7 @@ class ResourceAksUserImpersonation(dict):
                  client_key: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_certificate_authority_key: Optional[str] = None,
                  secret_store_certificate_authority_path: Optional[str] = None,
                  secret_store_client_certificate_key: Optional[str] = None,
@@ -1275,6 +1315,8 @@ class ResourceAksUserImpersonation(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_certificate_authority_key is not None:
             pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
         if secret_store_certificate_authority_path is not None:
@@ -1348,6 +1390,11 @@ class ResourceAksUserImpersonation(dict):
         The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreCertificateAuthorityKey")
@@ -7212,6 +7259,8 @@ class ResourceKubernetes(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "remoteIdentityGroupId":
             suggest = "remote_identity_group_id"
         elif key == "remoteIdentityHealthcheckUsername":
@@ -7252,6 +7301,7 @@ class ResourceKubernetes(dict):
                  client_key: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_certificate_authority_key: Optional[str] = None,
@@ -7285,6 +7335,8 @@ class ResourceKubernetes(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -7362,6 +7414,11 @@ class ResourceKubernetes(dict):
         The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
@@ -7431,6 +7488,8 @@ class ResourceKubernetesBasicAuth(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "secretStorePasswordKey":
@@ -7461,6 +7520,7 @@ class ResourceKubernetesBasicAuth(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  password: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  secret_store_password_key: Optional[str] = None,
                  secret_store_password_path: Optional[str] = None,
@@ -7487,6 +7547,8 @@ class ResourceKubernetesBasicAuth(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_password_key is not None:
@@ -7550,6 +7612,11 @@ class ResourceKubernetesBasicAuth(dict):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -7602,6 +7669,8 @@ class ResourceKubernetesServiceAccount(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "remoteIdentityGroupId":
             suggest = "remote_identity_group_id"
         elif key == "remoteIdentityHealthcheckUsername":
@@ -7631,6 +7700,7 @@ class ResourceKubernetesServiceAccount(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -7656,6 +7726,8 @@ class ResourceKubernetesServiceAccount(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -7714,6 +7786,11 @@ class ResourceKubernetesServiceAccount(dict):
         return pulumi.get(self, "healthcheck_namespace")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[str]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -7769,6 +7846,8 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "secretStoreTokenKey":
@@ -7794,6 +7873,7 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  secret_store_token_key: Optional[str] = None,
                  secret_store_token_path: Optional[str] = None,
@@ -7817,6 +7897,8 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_token_key is not None:
@@ -7871,6 +7953,11 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
         return pulumi.get(self, "healthcheck_namespace")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -7922,6 +8009,8 @@ class ResourceKubernetesUserImpersonation(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreCertificateAuthorityKey":
             suggest = "secret_store_certificate_authority_key"
         elif key == "secretStoreCertificateAuthorityPath":
@@ -7958,6 +8047,7 @@ class ResourceKubernetesUserImpersonation(dict):
                  client_key: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_certificate_authority_key: Optional[str] = None,
                  secret_store_certificate_authority_path: Optional[str] = None,
                  secret_store_client_certificate_key: Optional[str] = None,
@@ -7989,6 +8079,8 @@ class ResourceKubernetesUserImpersonation(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_certificate_authority_key is not None:
             pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
         if secret_store_certificate_authority_path is not None:
@@ -8062,6 +8154,11 @@ class ResourceKubernetesUserImpersonation(dict):
         The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreCertificateAuthorityKey")
@@ -12559,7 +12656,6 @@ class ResourceSsh(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
-        :param str public_key: * ssh_cert:
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -12648,9 +12744,6 @@ class ResourceSsh(dict):
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[str]:
-        """
-        * ssh_cert:
-        """
         return pulumi.get(self, "public_key")
 
     @property
@@ -14127,49 +14220,6 @@ class GetAccountAttachmentAccountAttachmentResult(dict):
 
 
 @pulumi.output_type
-class GetAccountGrantAccountGrantResult(dict):
-    def __init__(__self__, *,
-                 account_id: Optional[str] = None,
-                 id: Optional[str] = None,
-                 resource_id: Optional[str] = None):
-        """
-        :param str account_id: The account id of this AccountGrant.
-        :param str id: Unique identifier of the AccountGrant.
-        :param str resource_id: The resource id of this AccountGrant.
-        """
-        if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
-
-    @property
-    @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[str]:
-        """
-        The account id of this AccountGrant.
-        """
-        return pulumi.get(self, "account_id")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        Unique identifier of the AccountGrant.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[str]:
-        """
-        The resource id of this AccountGrant.
-        """
-        return pulumi.get(self, "resource_id")
-
-
-@pulumi.output_type
 class GetNodeNodeResult(dict):
     def __init__(__self__, *,
                  gateways: Sequence['outputs.GetNodeNodeGatewayResult'],
@@ -14923,6 +14973,7 @@ class GetResourceResourceAkResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -14956,6 +15007,8 @@ class GetResourceResourceAkResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -15031,6 +15084,11 @@ class GetResourceResourceAkResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[str]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -15068,6 +15126,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -15096,6 +15155,8 @@ class GetResourceResourceAksBasicAuthResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -15159,6 +15220,11 @@ class GetResourceResourceAksBasicAuthResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -15190,6 +15256,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -15219,6 +15286,8 @@ class GetResourceResourceAksServiceAccountResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -15281,6 +15350,11 @@ class GetResourceResourceAksServiceAccountResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[str]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -15325,6 +15399,7 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  token: Optional[str] = None):
@@ -15352,6 +15427,8 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -15410,6 +15487,11 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -15447,6 +15529,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
@@ -15478,6 +15561,8 @@ class GetResourceResourceAksUserImpersonationResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -15549,6 +15634,11 @@ class GetResourceResourceAksUserImpersonationResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -15568,13 +15658,13 @@ class GetResourceResourceAksUserImpersonationResult(dict):
 @pulumi.output_type
 class GetResourceResourceAmazonEResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  access_key: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  endpoint: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -15589,7 +15679,6 @@ class GetResourceResourceAmazonEResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if bind_interface is not None:
@@ -15602,6 +15691,8 @@ class GetResourceResourceAmazonEResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -15614,11 +15705,6 @@ class GetResourceResourceAmazonEResult(dict):
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="accessKey")
@@ -15661,6 +15747,11 @@ class GetResourceResourceAmazonEResult(dict):
         Unique human-readable name of the Resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter
@@ -16028,7 +16119,6 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
 @pulumi.output_type
 class GetResourceResourceAmazonmqAmqp091Result(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -16036,6 +16126,7 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -16048,7 +16139,6 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -16063,6 +16153,8 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -16071,11 +16163,6 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -16125,6 +16212,11 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -16154,13 +16246,13 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
 @pulumi.output_type
 class GetResourceResourceAthenaResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  access_key: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  output: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -16175,7 +16267,6 @@ class GetResourceResourceAthenaResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if bind_interface is not None:
@@ -16188,6 +16279,8 @@ class GetResourceResourceAthenaResult(dict):
             pulumi.set(__self__, "name", name)
         if output is not None:
             pulumi.set(__self__, "output", output)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -16200,11 +16293,6 @@ class GetResourceResourceAthenaResult(dict):
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="accessKey")
@@ -16249,6 +16337,11 @@ class GetResourceResourceAthenaResult(dict):
         return pulumi.get(self, "output")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -16288,7 +16381,6 @@ class GetResourceResourceAthenaResult(dict):
 @pulumi.output_type
 class GetResourceResourceAuroraMysqlResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -16297,6 +16389,7 @@ class GetResourceResourceAuroraMysqlResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -16308,7 +16401,6 @@ class GetResourceResourceAuroraMysqlResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -16325,17 +16417,14 @@ class GetResourceResourceAuroraMysqlResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -16390,6 +16479,11 @@ class GetResourceResourceAuroraMysqlResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -16414,7 +16508,6 @@ class GetResourceResourceAuroraMysqlResult(dict):
 @pulumi.output_type
 class GetResourceResourceAuroraPostgreResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -16424,6 +16517,7 @@ class GetResourceResourceAuroraPostgreResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -16435,7 +16529,6 @@ class GetResourceResourceAuroraPostgreResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -16454,17 +16547,14 @@ class GetResourceResourceAuroraPostgreResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -16522,6 +16612,11 @@ class GetResourceResourceAuroraPostgreResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -16881,7 +16976,6 @@ class GetResourceResourceAzureCertificateResult(dict):
 @pulumi.output_type
 class GetResourceResourceAzurePostgreResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -16891,6 +16985,7 @@ class GetResourceResourceAzurePostgreResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -16902,7 +16997,6 @@ class GetResourceResourceAzurePostgreResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -16921,17 +17015,14 @@ class GetResourceResourceAzurePostgreResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -16991,6 +17082,11 @@ class GetResourceResourceAzurePostgreResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -17015,12 +17111,12 @@ class GetResourceResourceAzurePostgreResult(dict):
 @pulumi.output_type
 class GetResourceResourceBigQueryResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  endpoint: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  private_key: Optional[str] = None,
                  project: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -17034,7 +17130,6 @@ class GetResourceResourceBigQueryResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -17045,6 +17140,8 @@ class GetResourceResourceBigQueryResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if project is not None:
@@ -17055,11 +17152,6 @@ class GetResourceResourceBigQueryResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -17099,6 +17191,11 @@ class GetResourceResourceBigQueryResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[str]:
         return pulumi.get(self, "private_key")
@@ -17133,7 +17230,6 @@ class GetResourceResourceBigQueryResult(dict):
 @pulumi.output_type
 class GetResourceResourceCassandraResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -17141,6 +17237,7 @@ class GetResourceResourceCassandraResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -17153,7 +17250,6 @@ class GetResourceResourceCassandraResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -17168,6 +17264,8 @@ class GetResourceResourceCassandraResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -17176,11 +17274,6 @@ class GetResourceResourceCassandraResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -17228,6 +17321,11 @@ class GetResourceResourceCassandraResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -17259,7 +17357,6 @@ class GetResourceResourceCassandraResult(dict):
 @pulumi.output_type
 class GetResourceResourceCitusResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -17269,6 +17366,7 @@ class GetResourceResourceCitusResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -17280,7 +17378,6 @@ class GetResourceResourceCitusResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -17299,17 +17396,14 @@ class GetResourceResourceCitusResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -17367,6 +17461,11 @@ class GetResourceResourceCitusResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -17393,7 +17492,6 @@ class GetResourceResourceCitusResult(dict):
 @pulumi.output_type
 class GetResourceResourceClustrixResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -17402,6 +17500,7 @@ class GetResourceResourceClustrixResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -17413,7 +17512,6 @@ class GetResourceResourceClustrixResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -17430,17 +17528,14 @@ class GetResourceResourceClustrixResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -17495,6 +17590,11 @@ class GetResourceResourceClustrixResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -17519,7 +17619,6 @@ class GetResourceResourceClustrixResult(dict):
 @pulumi.output_type
 class GetResourceResourceCockroachResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -17529,6 +17628,7 @@ class GetResourceResourceCockroachResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -17540,7 +17640,6 @@ class GetResourceResourceCockroachResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -17559,17 +17658,14 @@ class GetResourceResourceCockroachResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -17629,6 +17725,11 @@ class GetResourceResourceCockroachResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -17653,7 +17754,6 @@ class GetResourceResourceCockroachResult(dict):
 @pulumi.output_type
 class GetResourceResourceDb2IResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -17661,6 +17761,7 @@ class GetResourceResourceDb2IResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -17673,7 +17774,6 @@ class GetResourceResourceDb2IResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -17688,6 +17788,8 @@ class GetResourceResourceDb2IResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -17696,11 +17798,6 @@ class GetResourceResourceDb2IResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -17748,6 +17845,11 @@ class GetResourceResourceDb2IResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -17779,7 +17881,6 @@ class GetResourceResourceDb2IResult(dict):
 @pulumi.output_type
 class GetResourceResourceDb2LuwResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -17788,6 +17889,7 @@ class GetResourceResourceDb2LuwResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -17799,7 +17901,6 @@ class GetResourceResourceDb2LuwResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -17816,17 +17917,14 @@ class GetResourceResourceDb2LuwResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -17881,6 +17979,11 @@ class GetResourceResourceDb2LuwResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -17905,7 +18008,6 @@ class GetResourceResourceDb2LuwResult(dict):
 @pulumi.output_type
 class GetResourceResourceDocumentDbHostResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  auth_database: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -17914,6 +18016,7 @@ class GetResourceResourceDocumentDbHostResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -17925,7 +18028,6 @@ class GetResourceResourceDocumentDbHostResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if auth_database is not None:
             pulumi.set(__self__, "auth_database", auth_database)
         if bind_interface is not None:
@@ -17942,17 +18044,14 @@ class GetResourceResourceDocumentDbHostResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="authDatabase")
@@ -18007,6 +18106,11 @@ class GetResourceResourceDocumentDbHostResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -18031,7 +18135,6 @@ class GetResourceResourceDocumentDbHostResult(dict):
 @pulumi.output_type
 class GetResourceResourceDocumentDbReplicaSetResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  auth_database: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  connect_to_replica: Optional[bool] = None,
@@ -18040,6 +18143,7 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  password: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -18052,7 +18156,6 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if auth_database is not None:
             pulumi.set(__self__, "auth_database", auth_database)
         if bind_interface is not None:
@@ -18069,6 +18172,8 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if replica_set is not None:
             pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
@@ -18077,11 +18182,6 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="authDatabase")
@@ -18136,6 +18236,11 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="replicaSet")
     def replica_set(self) -> Optional[str]:
         return pulumi.get(self, "replica_set")
@@ -18165,7 +18270,6 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
 @pulumi.output_type
 class GetResourceResourceDruidResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -18173,6 +18277,7 @@ class GetResourceResourceDruidResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -18184,7 +18289,6 @@ class GetResourceResourceDruidResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -18199,17 +18303,14 @@ class GetResourceResourceDruidResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -18259,6 +18360,11 @@ class GetResourceResourceDruidResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -18283,13 +18389,13 @@ class GetResourceResourceDruidResult(dict):
 @pulumi.output_type
 class GetResourceResourceDynamoDbResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  access_key: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  endpoint: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -18304,7 +18410,6 @@ class GetResourceResourceDynamoDbResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if bind_interface is not None:
@@ -18317,6 +18422,8 @@ class GetResourceResourceDynamoDbResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -18329,11 +18436,6 @@ class GetResourceResourceDynamoDbResult(dict):
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="accessKey")
@@ -18378,6 +18480,11 @@ class GetResourceResourceDynamoDbResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -18417,7 +18524,6 @@ class GetResourceResourceDynamoDbResult(dict):
 @pulumi.output_type
 class GetResourceResourceElasticResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -18425,6 +18531,7 @@ class GetResourceResourceElasticResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -18437,7 +18544,6 @@ class GetResourceResourceElasticResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -18452,6 +18558,8 @@ class GetResourceResourceElasticResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -18460,11 +18568,6 @@ class GetResourceResourceElasticResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -18512,6 +18615,11 @@ class GetResourceResourceElasticResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -18543,7 +18651,6 @@ class GetResourceResourceElasticResult(dict):
 @pulumi.output_type
 class GetResourceResourceElasticacheRediResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -18551,6 +18658,7 @@ class GetResourceResourceElasticacheRediResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None):
@@ -18562,7 +18670,6 @@ class GetResourceResourceElasticacheRediResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -18577,17 +18684,14 @@ class GetResourceResourceElasticacheRediResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tls_required is not None:
             pulumi.set(__self__, "tls_required", tls_required)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -18635,6 +18739,11 @@ class GetResourceResourceElasticacheRediResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -19002,7 +19111,6 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
 @pulumi.output_type
 class GetResourceResourceGreenplumResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -19012,6 +19120,7 @@ class GetResourceResourceGreenplumResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -19023,7 +19132,6 @@ class GetResourceResourceGreenplumResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -19042,17 +19150,14 @@ class GetResourceResourceGreenplumResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -19110,6 +19215,11 @@ class GetResourceResourceGreenplumResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -19539,6 +19649,7 @@ class GetResourceResourceKuberneteResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -19572,6 +19683,8 @@ class GetResourceResourceKuberneteResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -19647,6 +19760,11 @@ class GetResourceResourceKuberneteResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[str]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -19684,6 +19802,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -19712,6 +19831,8 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -19775,6 +19896,11 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -19806,6 +19932,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -19835,6 +19962,8 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -19895,6 +20024,11 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
@@ -19941,6 +20075,7 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  token: Optional[str] = None):
@@ -19968,6 +20103,8 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -20026,6 +20163,11 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -20063,6 +20205,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
@@ -20094,6 +20237,8 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -20165,6 +20310,11 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -20184,7 +20334,6 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
 @pulumi.output_type
 class GetResourceResourceMariaResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -20193,6 +20342,7 @@ class GetResourceResourceMariaResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -20204,7 +20354,6 @@ class GetResourceResourceMariaResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -20221,17 +20370,14 @@ class GetResourceResourceMariaResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -20284,6 +20430,11 @@ class GetResourceResourceMariaResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -20310,13 +20461,13 @@ class GetResourceResourceMariaResult(dict):
 @pulumi.output_type
 class GetResourceResourceMemcachedResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
@@ -20327,7 +20478,6 @@ class GetResourceResourceMemcachedResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -20340,15 +20490,12 @@ class GetResourceResourceMemcachedResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -20393,6 +20540,11 @@ class GetResourceResourceMemcachedResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -20412,7 +20564,6 @@ class GetResourceResourceMemcachedResult(dict):
 @pulumi.output_type
 class GetResourceResourceMemsqlResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -20421,6 +20572,7 @@ class GetResourceResourceMemsqlResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -20432,7 +20584,6 @@ class GetResourceResourceMemsqlResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -20449,17 +20600,14 @@ class GetResourceResourceMemsqlResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -20514,6 +20662,11 @@ class GetResourceResourceMemsqlResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -20538,7 +20691,6 @@ class GetResourceResourceMemsqlResult(dict):
 @pulumi.output_type
 class GetResourceResourceMongoHostResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  auth_database: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -20547,6 +20699,7 @@ class GetResourceResourceMongoHostResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -20559,7 +20712,6 @@ class GetResourceResourceMongoHostResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if auth_database is not None:
             pulumi.set(__self__, "auth_database", auth_database)
         if bind_interface is not None:
@@ -20576,6 +20728,8 @@ class GetResourceResourceMongoHostResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -20584,11 +20738,6 @@ class GetResourceResourceMongoHostResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="authDatabase")
@@ -20641,6 +20790,11 @@ class GetResourceResourceMongoHostResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -20672,7 +20826,6 @@ class GetResourceResourceMongoHostResult(dict):
 @pulumi.output_type
 class GetResourceResourceMongoLegacyHostResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  auth_database: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -20681,6 +20834,7 @@ class GetResourceResourceMongoLegacyHostResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -20694,7 +20848,6 @@ class GetResourceResourceMongoLegacyHostResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if auth_database is not None:
             pulumi.set(__self__, "auth_database", auth_database)
         if bind_interface is not None:
@@ -20711,6 +20864,8 @@ class GetResourceResourceMongoLegacyHostResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if replica_set is not None:
             pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
@@ -20721,11 +20876,6 @@ class GetResourceResourceMongoLegacyHostResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="authDatabase")
@@ -20778,6 +20928,11 @@ class GetResourceResourceMongoLegacyHostResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="replicaSet")
@@ -20814,7 +20969,6 @@ class GetResourceResourceMongoLegacyHostResult(dict):
 @pulumi.output_type
 class GetResourceResourceMongoLegacyReplicasetResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  auth_database: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  connect_to_replica: Optional[bool] = None,
@@ -20824,6 +20978,7 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -20837,7 +20992,6 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if auth_database is not None:
             pulumi.set(__self__, "auth_database", auth_database)
         if bind_interface is not None:
@@ -20856,6 +21010,8 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if replica_set is not None:
             pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
@@ -20866,11 +21022,6 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="authDatabase")
@@ -20928,6 +21079,11 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="replicaSet")
@@ -20964,7 +21120,6 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
 @pulumi.output_type
 class GetResourceResourceMongoReplicaSetResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  auth_database: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  connect_to_replica: Optional[bool] = None,
@@ -20974,6 +21129,7 @@ class GetResourceResourceMongoReplicaSetResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -20987,7 +21143,6 @@ class GetResourceResourceMongoReplicaSetResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if auth_database is not None:
             pulumi.set(__self__, "auth_database", auth_database)
         if bind_interface is not None:
@@ -21006,6 +21161,8 @@ class GetResourceResourceMongoReplicaSetResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if replica_set is not None:
             pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
@@ -21016,11 +21173,6 @@ class GetResourceResourceMongoReplicaSetResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="authDatabase")
@@ -21080,6 +21232,11 @@ class GetResourceResourceMongoReplicaSetResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="replicaSet")
     def replica_set(self) -> Optional[str]:
         return pulumi.get(self, "replica_set")
@@ -21114,7 +21271,6 @@ class GetResourceResourceMongoReplicaSetResult(dict):
 @pulumi.output_type
 class GetResourceResourceMongoShardedClusterResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  auth_database: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -21122,6 +21278,7 @@ class GetResourceResourceMongoShardedClusterResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  password: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -21134,7 +21291,6 @@ class GetResourceResourceMongoShardedClusterResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if auth_database is not None:
             pulumi.set(__self__, "auth_database", auth_database)
         if bind_interface is not None:
@@ -21149,6 +21305,8 @@ class GetResourceResourceMongoShardedClusterResult(dict):
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -21157,11 +21315,6 @@ class GetResourceResourceMongoShardedClusterResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="authDatabase")
@@ -21211,6 +21364,11 @@ class GetResourceResourceMongoShardedClusterResult(dict):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -21240,7 +21398,6 @@ class GetResourceResourceMongoShardedClusterResult(dict):
 @pulumi.output_type
 class GetResourceResourceMtlsMysqlResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  certificate_authority: Optional[str] = None,
                  client_certificate: Optional[str] = None,
@@ -21252,6 +21409,7 @@ class GetResourceResourceMtlsMysqlResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  server_name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -21264,7 +21422,6 @@ class GetResourceResourceMtlsMysqlResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
@@ -21287,6 +21444,8 @@ class GetResourceResourceMtlsMysqlResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if server_name is not None:
@@ -21295,11 +21454,6 @@ class GetResourceResourceMtlsMysqlResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -21369,6 +21523,11 @@ class GetResourceResourceMtlsMysqlResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -21398,7 +21557,6 @@ class GetResourceResourceMtlsMysqlResult(dict):
 @pulumi.output_type
 class GetResourceResourceMtlsPostgreResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  certificate_authority: Optional[str] = None,
                  client_certificate: Optional[str] = None,
@@ -21411,6 +21569,7 @@ class GetResourceResourceMtlsPostgreResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  server_name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -21423,7 +21582,6 @@ class GetResourceResourceMtlsPostgreResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
@@ -21448,6 +21606,8 @@ class GetResourceResourceMtlsPostgreResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if server_name is not None:
@@ -21456,11 +21616,6 @@ class GetResourceResourceMtlsPostgreResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -21535,6 +21690,11 @@ class GetResourceResourceMtlsPostgreResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -21564,7 +21724,6 @@ class GetResourceResourceMtlsPostgreResult(dict):
 @pulumi.output_type
 class GetResourceResourceMysqlResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -21573,6 +21732,7 @@ class GetResourceResourceMysqlResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -21584,7 +21744,6 @@ class GetResourceResourceMysqlResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -21601,17 +21760,14 @@ class GetResourceResourceMysqlResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -21666,6 +21822,11 @@ class GetResourceResourceMysqlResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -21690,13 +21851,13 @@ class GetResourceResourceMysqlResult(dict):
 @pulumi.output_type
 class GetResourceResourceNeptuneResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  endpoint: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
@@ -21707,7 +21868,6 @@ class GetResourceResourceNeptuneResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -21720,15 +21880,12 @@ class GetResourceResourceNeptuneResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -21773,6 +21930,11 @@ class GetResourceResourceNeptuneResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -21792,7 +21954,6 @@ class GetResourceResourceNeptuneResult(dict):
 @pulumi.output_type
 class GetResourceResourceNeptuneIamResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  access_key: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -21800,6 +21961,7 @@ class GetResourceResourceNeptuneIamResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -21814,7 +21976,6 @@ class GetResourceResourceNeptuneIamResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if bind_interface is not None:
@@ -21829,6 +21990,8 @@ class GetResourceResourceNeptuneIamResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -21841,11 +22004,6 @@ class GetResourceResourceNeptuneIamResult(dict):
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="accessKey")
@@ -21895,6 +22053,11 @@ class GetResourceResourceNeptuneIamResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
@@ -21934,7 +22097,6 @@ class GetResourceResourceNeptuneIamResult(dict):
 @pulumi.output_type
 class GetResourceResourceOracleResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -21943,6 +22105,7 @@ class GetResourceResourceOracleResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -21955,7 +22118,6 @@ class GetResourceResourceOracleResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -21972,6 +22134,8 @@ class GetResourceResourceOracleResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -21980,11 +22144,6 @@ class GetResourceResourceOracleResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -22039,6 +22198,11 @@ class GetResourceResourceOracleResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22068,7 +22232,6 @@ class GetResourceResourceOracleResult(dict):
 @pulumi.output_type
 class GetResourceResourcePostgreResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -22078,6 +22241,7 @@ class GetResourceResourcePostgreResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -22089,7 +22253,6 @@ class GetResourceResourcePostgreResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -22108,17 +22271,14 @@ class GetResourceResourcePostgreResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -22178,6 +22338,11 @@ class GetResourceResourcePostgreResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22202,7 +22367,6 @@ class GetResourceResourcePostgreResult(dict):
 @pulumi.output_type
 class GetResourceResourcePrestoResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -22211,6 +22375,7 @@ class GetResourceResourcePrestoResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -22223,7 +22388,6 @@ class GetResourceResourcePrestoResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -22240,6 +22404,8 @@ class GetResourceResourcePrestoResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -22248,11 +22414,6 @@ class GetResourceResourcePrestoResult(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -22307,6 +22468,11 @@ class GetResourceResourcePrestoResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22336,7 +22502,6 @@ class GetResourceResourcePrestoResult(dict):
 @pulumi.output_type
 class GetResourceResourceRabbitmqAmqp091Result(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -22344,6 +22509,7 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tls_required: Optional[bool] = None,
@@ -22356,7 +22522,6 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -22371,6 +22536,8 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -22379,11 +22546,6 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
             pulumi.set(__self__, "tls_required", tls_required)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -22433,6 +22595,11 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22462,13 +22629,13 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
 @pulumi.output_type
 class GetResourceResourceRawTcpResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
@@ -22479,7 +22646,6 @@ class GetResourceResourceRawTcpResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -22492,15 +22658,12 @@ class GetResourceResourceRawTcpResult(dict):
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -22545,6 +22708,11 @@ class GetResourceResourceRawTcpResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22564,7 +22732,6 @@ class GetResourceResourceRawTcpResult(dict):
 @pulumi.output_type
 class GetResourceResourceRdpResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  downgrade_nla_connections: Optional[bool] = None,
                  egress_filter: Optional[str] = None,
@@ -22573,6 +22740,7 @@ class GetResourceResourceRdpResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -22584,7 +22752,6 @@ class GetResourceResourceRdpResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if downgrade_nla_connections is not None:
@@ -22601,17 +22768,14 @@ class GetResourceResourceRdpResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -22666,6 +22830,11 @@ class GetResourceResourceRdpResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22690,7 +22859,6 @@ class GetResourceResourceRdpResult(dict):
 @pulumi.output_type
 class GetResourceResourceRediResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -22698,6 +22866,7 @@ class GetResourceResourceRediResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
@@ -22708,7 +22877,6 @@ class GetResourceResourceRediResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -22723,15 +22891,12 @@ class GetResourceResourceRediResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -22781,6 +22946,11 @@ class GetResourceResourceRediResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22800,7 +22970,6 @@ class GetResourceResourceRediResult(dict):
 @pulumi.output_type
 class GetResourceResourceRedshiftResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -22810,6 +22979,7 @@ class GetResourceResourceRedshiftResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -22821,7 +22991,6 @@ class GetResourceResourceRedshiftResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -22840,17 +23009,14 @@ class GetResourceResourceRedshiftResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -22910,6 +23076,11 @@ class GetResourceResourceRedshiftResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22934,7 +23105,6 @@ class GetResourceResourceRedshiftResult(dict):
 @pulumi.output_type
 class GetResourceResourceSingleStoreResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -22943,6 +23113,7 @@ class GetResourceResourceSingleStoreResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -22954,7 +23125,6 @@ class GetResourceResourceSingleStoreResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -22971,17 +23141,14 @@ class GetResourceResourceSingleStoreResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -23036,6 +23203,11 @@ class GetResourceResourceSingleStoreResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -23060,7 +23232,6 @@ class GetResourceResourceSingleStoreResult(dict):
 @pulumi.output_type
 class GetResourceResourceSnowflakeResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -23068,6 +23239,7 @@ class GetResourceResourceSnowflakeResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  password: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -23080,7 +23252,6 @@ class GetResourceResourceSnowflakeResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -23095,6 +23266,8 @@ class GetResourceResourceSnowflakeResult(dict):
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
@@ -23103,11 +23276,6 @@ class GetResourceResourceSnowflakeResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -23155,6 +23323,11 @@ class GetResourceResourceSnowflakeResult(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter
@@ -23186,7 +23359,6 @@ class GetResourceResourceSnowflakeResult(dict):
 @pulumi.output_type
 class GetResourceResourceSqlServerResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -23196,6 +23368,7 @@ class GetResourceResourceSqlServerResult(dict):
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -23208,7 +23381,6 @@ class GetResourceResourceSqlServerResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -23227,6 +23399,8 @@ class GetResourceResourceSqlServerResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
@@ -23235,11 +23409,6 @@ class GetResourceResourceSqlServerResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -23299,6 +23468,11 @@ class GetResourceResourceSqlServerResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
         return pulumi.get(self, "schema")
@@ -23328,7 +23502,6 @@ class GetResourceResourceSqlServerResult(dict):
 @pulumi.output_type
 class GetResourceResourceSshResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  public_key: str,
                  allow_deprecated_key_exchanges: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
@@ -23339,6 +23512,7 @@ class GetResourceResourceSshResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_forwarding: Optional[bool] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -23350,7 +23524,6 @@ class GetResourceResourceSshResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         pulumi.set(__self__, "public_key", public_key)
         if allow_deprecated_key_exchanges is not None:
             pulumi.set(__self__, "allow_deprecated_key_exchanges", allow_deprecated_key_exchanges)
@@ -23370,17 +23543,14 @@ class GetResourceResourceSshResult(dict):
             pulumi.set(__self__, "port", port)
         if port_forwarding is not None:
             pulumi.set(__self__, "port_forwarding", port_forwarding)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="publicKey")
@@ -23445,6 +23615,11 @@ class GetResourceResourceSshResult(dict):
         return pulumi.get(self, "port_forwarding")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -23469,7 +23644,6 @@ class GetResourceResourceSshResult(dict):
 @pulumi.output_type
 class GetResourceResourceSshCertResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  allow_deprecated_key_exchanges: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -23479,6 +23653,7 @@ class GetResourceResourceSshCertResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_forwarding: Optional[bool] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -23492,7 +23667,6 @@ class GetResourceResourceSshCertResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if allow_deprecated_key_exchanges is not None:
             pulumi.set(__self__, "allow_deprecated_key_exchanges", allow_deprecated_key_exchanges)
         if bind_interface is not None:
@@ -23511,6 +23685,8 @@ class GetResourceResourceSshCertResult(dict):
             pulumi.set(__self__, "port", port)
         if port_forwarding is not None:
             pulumi.set(__self__, "port_forwarding", port_forwarding)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -23521,11 +23697,6 @@ class GetResourceResourceSshCertResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="allowDeprecatedKeyExchanges")
@@ -23585,6 +23756,11 @@ class GetResourceResourceSshCertResult(dict):
         return pulumi.get(self, "port_forwarding")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[str]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -23619,7 +23795,6 @@ class GetResourceResourceSshCertResult(dict):
 @pulumi.output_type
 class GetResourceResourceSshCustomerKeyResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  allow_deprecated_key_exchanges: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -23628,6 +23803,7 @@ class GetResourceResourceSshCustomerKeyResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_forwarding: Optional[bool] = None,
+                 port_override: Optional[int] = None,
                  private_key: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -23640,7 +23816,6 @@ class GetResourceResourceSshCustomerKeyResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if allow_deprecated_key_exchanges is not None:
             pulumi.set(__self__, "allow_deprecated_key_exchanges", allow_deprecated_key_exchanges)
         if bind_interface is not None:
@@ -23657,6 +23832,8 @@ class GetResourceResourceSshCustomerKeyResult(dict):
             pulumi.set(__self__, "port", port)
         if port_forwarding is not None:
             pulumi.set(__self__, "port_forwarding", port_forwarding)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if secret_store_id is not None:
@@ -23665,11 +23842,6 @@ class GetResourceResourceSshCustomerKeyResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="allowDeprecatedKeyExchanges")
@@ -23724,6 +23896,11 @@ class GetResourceResourceSshCustomerKeyResult(dict):
         return pulumi.get(self, "port_forwarding")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[str]:
         return pulumi.get(self, "private_key")
@@ -23753,7 +23930,6 @@ class GetResourceResourceSshCustomerKeyResult(dict):
 @pulumi.output_type
 class GetResourceResourceSybaseResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -23761,6 +23937,7 @@ class GetResourceResourceSybaseResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -23772,7 +23949,6 @@ class GetResourceResourceSybaseResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -23787,17 +23963,14 @@ class GetResourceResourceSybaseResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -23845,6 +24018,11 @@ class GetResourceResourceSybaseResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -23871,7 +24049,6 @@ class GetResourceResourceSybaseResult(dict):
 @pulumi.output_type
 class GetResourceResourceSybaseIqResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -23879,6 +24056,7 @@ class GetResourceResourceSybaseIqResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -23890,7 +24068,6 @@ class GetResourceResourceSybaseIqResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -23905,17 +24082,14 @@ class GetResourceResourceSybaseIqResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -23963,6 +24137,11 @@ class GetResourceResourceSybaseIqResult(dict):
     @pulumi.getter
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -23989,7 +24168,6 @@ class GetResourceResourceSybaseIqResult(dict):
 @pulumi.output_type
 class GetResourceResourceTeradataResult(dict):
     def __init__(__self__, *,
-                 port_override: int,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  hostname: Optional[str] = None,
@@ -23997,6 +24175,7 @@ class GetResourceResourceTeradataResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -24008,7 +24187,6 @@ class GetResourceResourceTeradataResult(dict):
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
-        pulumi.set(__self__, "port_override", port_override)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
@@ -24023,17 +24201,14 @@ class GetResourceResourceTeradataResult(dict):
             pulumi.set(__self__, "password", password)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter(name="portOverride")
-    def port_override(self) -> int:
-        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -24083,6 +24258,11 @@ class GetResourceResourceTeradataResult(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -24105,110 +24285,20 @@ class GetResourceResourceTeradataResult(dict):
 
 
 @pulumi.output_type
-class GetRoleAttachmentRoleAttachmentResult(dict):
-    def __init__(__self__, *,
-                 attached_role_id: Optional[str] = None,
-                 composite_role_id: Optional[str] = None,
-                 id: Optional[str] = None):
-        """
-        :param str attached_role_id: The id of the attached role of this RoleAttachment.
-        :param str composite_role_id: The id of the composite role of this RoleAttachment.
-        :param str id: Unique identifier of the RoleAttachment.
-        """
-        if attached_role_id is not None:
-            pulumi.set(__self__, "attached_role_id", attached_role_id)
-        if composite_role_id is not None:
-            pulumi.set(__self__, "composite_role_id", composite_role_id)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-
-    @property
-    @pulumi.getter(name="attachedRoleId")
-    def attached_role_id(self) -> Optional[str]:
-        """
-        The id of the attached role of this RoleAttachment.
-        """
-        return pulumi.get(self, "attached_role_id")
-
-    @property
-    @pulumi.getter(name="compositeRoleId")
-    def composite_role_id(self) -> Optional[str]:
-        """
-        The id of the composite role of this RoleAttachment.
-        """
-        return pulumi.get(self, "composite_role_id")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        Unique identifier of the RoleAttachment.
-        """
-        return pulumi.get(self, "id")
-
-
-@pulumi.output_type
-class GetRoleGrantRoleGrantResult(dict):
-    def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 resource_id: Optional[str] = None,
-                 role_id: Optional[str] = None):
-        """
-        :param str id: Unique identifier of the RoleGrant.
-        :param str resource_id: The id of the resource of this RoleGrant.
-        :param str role_id: The id of the attached role of this RoleGrant.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
-        if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        Unique identifier of the RoleGrant.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[str]:
-        """
-        The id of the resource of this RoleGrant.
-        """
-        return pulumi.get(self, "resource_id")
-
-    @property
-    @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[str]:
-        """
-        The id of the attached role of this RoleGrant.
-        """
-        return pulumi.get(self, "role_id")
-
-
-@pulumi.output_type
 class GetRoleRoleResult(dict):
     def __init__(__self__, *,
                  access_rules: Optional[str] = None,
-                 composite: Optional[bool] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
-        :param bool composite: Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
         :param str id: Unique identifier of the Role.
         :param str name: Unique human-readable name of the Role.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         if access_rules is not None:
             pulumi.set(__self__, "access_rules", access_rules)
-        if composite is not None:
-            pulumi.set(__self__, "composite", composite)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if name is not None:
@@ -24223,14 +24313,6 @@ class GetRoleRoleResult(dict):
         AccessRules is a list of access rules defining the resources this Role has access to.
         """
         return pulumi.get(self, "access_rules")
-
-    @property
-    @pulumi.getter
-    def composite(self) -> Optional[bool]:
-        """
-        Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        """
-        return pulumi.get(self, "composite")
 
     @property
     @pulumi.getter

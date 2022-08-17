@@ -46,12 +46,6 @@ export class Role extends pulumi.CustomResource {
      */
     public readonly accessRules!: pulumi.Output<string>;
     /**
-     * Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-     *
-     * @deprecated composite is deprecated, see docs for more info
-     */
-    public readonly composite!: pulumi.Output<boolean | undefined>;
-    /**
      * Unique human-readable name of the Role.
      */
     public readonly name!: pulumi.Output<string>;
@@ -74,13 +68,11 @@ export class Role extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
             resourceInputs["accessRules"] = state ? state.accessRules : undefined;
-            resourceInputs["composite"] = state ? state.composite : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
             resourceInputs["accessRules"] = args ? args.accessRules : undefined;
-            resourceInputs["composite"] = args ? args.composite : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
         }
@@ -97,12 +89,6 @@ export interface RoleState {
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
     accessRules?: pulumi.Input<string>;
-    /**
-     * Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-     *
-     * @deprecated composite is deprecated, see docs for more info
-     */
-    composite?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Role.
      */
@@ -121,12 +107,6 @@ export interface RoleArgs {
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
     accessRules?: pulumi.Input<string>;
-    /**
-     * Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-     *
-     * @deprecated composite is deprecated, see docs for more info
-     */
-    composite?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Role.
      */

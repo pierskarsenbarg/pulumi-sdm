@@ -52,6 +52,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        [Input("portOverride")]
+        public Input<int>? PortOverride { get; set; }
+
         [Input("secretStoreCertificateAuthorityKey")]
         public Input<string>? SecretStoreCertificateAuthorityKey { get; set; }
 

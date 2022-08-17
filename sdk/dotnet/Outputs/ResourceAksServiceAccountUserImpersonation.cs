@@ -32,6 +32,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Name;
         public readonly int Port;
+        public readonly int? PortOverride;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -61,6 +62,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int port,
 
+            int? portOverride,
+
             string? secretStoreId,
 
             string? secretStoreTokenKey,
@@ -77,6 +80,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Hostname = hostname;
             Name = name;
             Port = port;
+            PortOverride = portOverride;
             SecretStoreId = secretStoreId;
             SecretStoreTokenKey = secretStoreTokenKey;
             SecretStoreTokenPath = secretStoreTokenPath;

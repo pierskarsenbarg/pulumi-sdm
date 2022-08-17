@@ -11,35 +11,40 @@ import (
 )
 
 // Nodes make up the strongDM network, and allow your users to connect securely to your resources.
-//  There are two types of nodes:
-//  1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
-//  2. **Gateways:** a relay that also listens for connections from strongDM clients
+//
+//	There are two types of nodes:
+//	1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+//	2. **Gateways:** a relay that also listens for connections from strongDM clients
+//
 // ## Example Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sdm.LookupNode(ctx, &GetNodeArgs{
-// 			Tags: map[string]interface{}{
-// 				"env":    "dev",
-// 				"region": "us-west",
-// 			},
-// 			Type: pulumi.StringRef("gateway"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.LookupNode(ctx, &GetNodeArgs{
+//				Tags: map[string]interface{}{
+//					"env":    "dev",
+//					"region": "us-west",
+//				},
+//				Type: pulumi.StringRef("gateway"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupNode(ctx *pulumi.Context, args *LookupNodeArgs, opts ...pulumi.InvokeOption) (*LookupNodeResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
