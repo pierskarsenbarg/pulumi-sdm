@@ -43,6 +43,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        [Input("portOverride")]
+        public Input<int>? PortOverride { get; set; }
+
         [Input("remoteIdentityGroupId")]
         public Input<string>? RemoteIdentityGroupId { get; set; }
 

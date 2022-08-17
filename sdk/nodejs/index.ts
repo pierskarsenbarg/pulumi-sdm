@@ -7,17 +7,13 @@ import * as utilities from "./utilities";
 // Export members:
 export * from "./account";
 export * from "./accountAttachment";
-export * from "./accountGrant";
 export * from "./getAccount";
 export * from "./getAccountAttachment";
-export * from "./getAccountGrant";
 export * from "./getNode";
 export * from "./getRemoteIdentity";
 export * from "./getRemoteIdentityGroup";
 export * from "./getResource";
 export * from "./getRole";
-export * from "./getRoleAttachment";
-export * from "./getRoleGrant";
 export * from "./getSecretStore";
 export * from "./getSshCaPubkey";
 export * from "./node";
@@ -25,8 +21,6 @@ export * from "./provider";
 export * from "./remoteIdentity";
 export * from "./resource";
 export * from "./role";
-export * from "./roleAttachment";
-export * from "./roleGrant";
 export * from "./secretStore";
 
 // Export sub-modules:
@@ -41,13 +35,10 @@ export {
 // Import resources to register:
 import { Account } from "./account";
 import { AccountAttachment } from "./accountAttachment";
-import { AccountGrant } from "./accountGrant";
 import { Node } from "./node";
 import { RemoteIdentity } from "./remoteIdentity";
 import { Resource } from "./resource";
 import { Role } from "./role";
-import { RoleAttachment } from "./roleAttachment";
-import { RoleGrant } from "./roleGrant";
 import { SecretStore } from "./secretStore";
 
 const _module = {
@@ -58,8 +49,6 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "sdm:index/accountAttachment:AccountAttachment":
                 return new AccountAttachment(name, <any>undefined, { urn })
-            case "sdm:index/accountGrant:AccountGrant":
-                return new AccountGrant(name, <any>undefined, { urn })
             case "sdm:index/node:Node":
                 return new Node(name, <any>undefined, { urn })
             case "sdm:index/remoteIdentity:RemoteIdentity":
@@ -68,10 +57,6 @@ const _module = {
                 return new Resource(name, <any>undefined, { urn })
             case "sdm:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
-            case "sdm:index/roleAttachment:RoleAttachment":
-                return new RoleAttachment(name, <any>undefined, { urn })
-            case "sdm:index/roleGrant:RoleGrant":
-                return new RoleGrant(name, <any>undefined, { urn })
             case "sdm:index/secretStore:SecretStore":
                 return new SecretStore(name, <any>undefined, { urn })
             default:
@@ -81,13 +66,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("sdm", "index/account", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/accountAttachment", _module)
-pulumi.runtime.registerResourceModule("sdm", "index/accountGrant", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/node", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/remoteIdentity", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/resource", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/role", _module)
-pulumi.runtime.registerResourceModule("sdm", "index/roleAttachment", _module)
-pulumi.runtime.registerResourceModule("sdm", "index/roleGrant", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/secretStore", _module)
 
 import { Provider } from "./provider";

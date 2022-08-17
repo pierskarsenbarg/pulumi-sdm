@@ -16,7 +16,9 @@ import (
 // RemoteIdentity can be imported using the id, e.g.,
 //
 // ```sh
-//  $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678
+//
+//	$ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678
+//
 // ```
 type RemoteIdentity struct {
 	pulumi.CustomResourceState
@@ -134,7 +136,7 @@ func (i *RemoteIdentity) ToRemoteIdentityOutputWithContext(ctx context.Context) 
 // RemoteIdentityArrayInput is an input type that accepts RemoteIdentityArray and RemoteIdentityArrayOutput values.
 // You can construct a concrete instance of `RemoteIdentityArrayInput` via:
 //
-//          RemoteIdentityArray{ RemoteIdentityArgs{...} }
+//	RemoteIdentityArray{ RemoteIdentityArgs{...} }
 type RemoteIdentityArrayInput interface {
 	pulumi.Input
 
@@ -159,7 +161,7 @@ func (i RemoteIdentityArray) ToRemoteIdentityArrayOutputWithContext(ctx context.
 // RemoteIdentityMapInput is an input type that accepts RemoteIdentityMap and RemoteIdentityMapOutput values.
 // You can construct a concrete instance of `RemoteIdentityMapInput` via:
 //
-//          RemoteIdentityMap{ "key": RemoteIdentityArgs{...} }
+//	RemoteIdentityMap{ "key": RemoteIdentityArgs{...} }
 type RemoteIdentityMapInput interface {
 	pulumi.Input
 

@@ -109,21 +109,6 @@ export interface GetAccountAttachmentAccountAttachment {
     roleId?: string;
 }
 
-export interface GetAccountGrantAccountGrant {
-    /**
-     * The account id of this AccountGrant.
-     */
-    accountId?: string;
-    /**
-     * Unique identifier of the AccountGrant.
-     */
-    id?: string;
-    /**
-     * The resource id of this AccountGrant.
-     */
-    resourceId?: string;
-}
-
 export interface GetNodeNode {
     gateways: outputs.GetNodeNodeGateway[];
     relays: outputs.GetNodeNodeRelay[];
@@ -305,6 +290,7 @@ export interface GetResourceResourceAk {
      */
     name?: string;
     port?: number;
+    portOverride?: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     /**
@@ -341,6 +327,7 @@ export interface GetResourceResourceAksBasicAuth {
     name?: string;
     password?: string;
     port?: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -375,6 +362,7 @@ export interface GetResourceResourceAksServiceAccount {
      */
     name?: string;
     port?: number;
+    portOverride?: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     /**
@@ -414,6 +402,7 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
      */
     name?: string;
     port?: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -454,6 +443,7 @@ export interface GetResourceResourceAksUserImpersonation {
      */
     name?: string;
     port?: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -483,7 +473,7 @@ export interface GetResourceResourceAmazonE {
      * Unique human-readable name of the Resource.
      */
     name?: string;
-    portOverride: number;
+    portOverride?: number;
     region?: string;
     roleArn?: string;
     roleExternalId?: string;
@@ -598,7 +588,7 @@ export interface GetResourceResourceAmazonmqAmqp091 {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -630,7 +620,7 @@ export interface GetResourceResourceAthena {
      */
     name?: string;
     output?: string;
-    portOverride: number;
+    portOverride?: number;
     region?: string;
     roleArn?: string;
     roleExternalId?: string;
@@ -666,7 +656,7 @@ export interface GetResourceResourceAuroraMysql {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -700,7 +690,7 @@ export interface GetResourceResourceAuroraPostgre {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -832,7 +822,7 @@ export interface GetResourceResourceAzurePostgre {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -862,7 +852,7 @@ export interface GetResourceResourceBigQuery {
      * Unique human-readable name of the Resource.
      */
     name?: string;
-    portOverride: number;
+    portOverride?: number;
     privateKey?: string;
     project?: string;
     /**
@@ -896,7 +886,7 @@ export interface GetResourceResourceCassandra {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -931,7 +921,7 @@ export interface GetResourceResourceCitus {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -964,7 +954,7 @@ export interface GetResourceResourceClustrix {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -998,7 +988,7 @@ export interface GetResourceResourceCockroach {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1030,7 +1020,7 @@ export interface GetResourceResourceDb2I {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1064,7 +1054,7 @@ export interface GetResourceResourceDb2Luw {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1097,7 +1087,7 @@ export interface GetResourceResourceDocumentDbHost {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1130,7 +1120,7 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      */
     name?: string;
     password?: string;
-    portOverride: number;
+    portOverride?: number;
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1163,7 +1153,7 @@ export interface GetResourceResourceDruid {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1194,7 +1184,7 @@ export interface GetResourceResourceDynamoDb {
      * Unique human-readable name of the Resource.
      */
     name?: string;
-    portOverride: number;
+    portOverride?: number;
     region?: string;
     roleArn?: string;
     roleExternalId?: string;
@@ -1229,7 +1219,7 @@ export interface GetResourceResourceElastic {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1262,7 +1252,7 @@ export interface GetResourceResourceElasticacheRedi {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1395,7 +1385,7 @@ export interface GetResourceResourceGreenplum {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1541,6 +1531,7 @@ export interface GetResourceResourceKubernete {
      */
     name?: string;
     port?: number;
+    portOverride?: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     /**
@@ -1577,6 +1568,7 @@ export interface GetResourceResourceKubernetesBasicAuth {
     name?: string;
     password?: string;
     port?: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1611,6 +1603,7 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     name?: string;
     port?: number;
+    portOverride?: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     /**
@@ -1650,6 +1643,7 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
      */
     name?: string;
     port?: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1690,6 +1684,7 @@ export interface GetResourceResourceKubernetesUserImpersonation {
      */
     name?: string;
     port?: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1721,7 +1716,7 @@ export interface GetResourceResourceMaria {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1752,7 +1747,7 @@ export interface GetResourceResourceMemcached {
      */
     name?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1784,7 +1779,7 @@ export interface GetResourceResourceMemsql {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1817,7 +1812,7 @@ export interface GetResourceResourceMongoHost {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1851,7 +1846,7 @@ export interface GetResourceResourceMongoLegacyHost {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1887,7 +1882,7 @@ export interface GetResourceResourceMongoLegacyReplicaset {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1923,7 +1918,7 @@ export interface GetResourceResourceMongoReplicaSet {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1957,7 +1952,7 @@ export interface GetResourceResourceMongoShardedCluster {
      */
     name?: string;
     password?: string;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1994,7 +1989,7 @@ export interface GetResourceResourceMtlsMysql {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2032,7 +2027,7 @@ export interface GetResourceResourceMtlsPostgre {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2066,7 +2061,7 @@ export interface GetResourceResourceMysql {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2097,7 +2092,7 @@ export interface GetResourceResourceNeptune {
      */
     name?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2128,7 +2123,7 @@ export interface GetResourceResourceNeptuneIam {
      */
     name?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     region?: string;
     roleArn?: string;
     roleExternalId?: string;
@@ -2164,7 +2159,7 @@ export interface GetResourceResourceOracle {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2199,7 +2194,7 @@ export interface GetResourceResourcePostgre {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2232,7 +2227,7 @@ export interface GetResourceResourcePresto {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2265,7 +2260,7 @@ export interface GetResourceResourceRabbitmqAmqp091 {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2297,7 +2292,7 @@ export interface GetResourceResourceRawTcp {
      */
     name?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2329,7 +2324,7 @@ export interface GetResourceResourceRdp {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2361,7 +2356,7 @@ export interface GetResourceResourceRedi {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2394,7 +2389,7 @@ export interface GetResourceResourceRedshift {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2427,7 +2422,7 @@ export interface GetResourceResourceSingleStore {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2459,7 +2454,7 @@ export interface GetResourceResourceSnowflake {
      */
     name?: string;
     password?: string;
-    portOverride: number;
+    portOverride?: number;
     schema?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2494,7 +2489,7 @@ export interface GetResourceResourceSqlServer {
     overrideDatabase?: boolean;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     schema?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2529,7 +2524,7 @@ export interface GetResourceResourceSsh {
     name?: string;
     port?: number;
     portForwarding?: boolean;
-    portOverride: number;
+    portOverride?: number;
     publicKey: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2564,7 +2559,7 @@ export interface GetResourceResourceSshCert {
     name?: string;
     port?: number;
     portForwarding?: boolean;
-    portOverride: number;
+    portOverride?: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     /**
@@ -2599,7 +2594,7 @@ export interface GetResourceResourceSshCustomerKey {
     name?: string;
     port?: number;
     portForwarding?: boolean;
-    portOverride: number;
+    portOverride?: number;
     privateKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2632,7 +2627,7 @@ export interface GetResourceResourceSybase {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2664,7 +2659,7 @@ export interface GetResourceResourceSybaseIq {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2696,7 +2691,7 @@ export interface GetResourceResourceTeradata {
     name?: string;
     password?: string;
     port?: number;
-    portOverride: number;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2708,47 +2703,11 @@ export interface GetResourceResourceTeradata {
     username?: string;
 }
 
-export interface GetRoleAttachmentRoleAttachment {
-    /**
-     * The id of the attached role of this RoleAttachment.
-     */
-    attachedRoleId?: string;
-    /**
-     * The id of the composite role of this RoleAttachment.
-     */
-    compositeRoleId?: string;
-    /**
-     * Unique identifier of the RoleAttachment.
-     */
-    id?: string;
-}
-
-export interface GetRoleGrantRoleGrant {
-    /**
-     * Unique identifier of the RoleGrant.
-     */
-    id?: string;
-    /**
-     * The id of the resource of this RoleGrant.
-     */
-    resourceId?: string;
-    /**
-     * The id of the attached role of this RoleGrant.
-     */
-    roleId?: string;
-}
-
 export interface GetRoleRole {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
      */
     accessRules?: string;
-    /**
-     * Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-     *
-     * @deprecated composite is deprecated, see docs for more info
-     */
-    composite?: boolean;
     /**
      * Unique identifier of the Role.
      */
@@ -2939,6 +2898,7 @@ export interface ResourceAks {
      */
     name: string;
     port: number;
+    portOverride: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     secretStoreCertificateAuthorityKey?: string;
@@ -2977,6 +2937,7 @@ export interface ResourceAksBasicAuth {
     name: string;
     password?: string;
     port: number;
+    portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3011,6 +2972,7 @@ export interface ResourceAksServiceAccount {
      */
     name: string;
     port: number;
+    portOverride: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     /**
@@ -3048,6 +3010,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     name: string;
     port: number;
+    portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3086,6 +3049,7 @@ export interface ResourceAksUserImpersonation {
      */
     name: string;
     port: number;
+    portOverride: number;
     secretStoreCertificateAuthorityKey?: string;
     secretStoreCertificateAuthorityPath?: string;
     secretStoreClientCertificateKey?: string;
@@ -4195,6 +4159,7 @@ export interface ResourceKubernetes {
      */
     name: string;
     port: number;
+    portOverride: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     secretStoreCertificateAuthorityKey?: string;
@@ -4233,6 +4198,7 @@ export interface ResourceKubernetesBasicAuth {
     name: string;
     password?: string;
     port: number;
+    portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4267,6 +4233,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     name: string;
     port: number;
+    portOverride: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     /**
@@ -4304,6 +4271,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     name: string;
     port: number;
+    portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4342,6 +4310,7 @@ export interface ResourceKubernetesUserImpersonation {
      */
     name: string;
     port: number;
+    portOverride: number;
     secretStoreCertificateAuthorityKey?: string;
     secretStoreCertificateAuthorityPath?: string;
     secretStoreClientCertificateKey?: string;
@@ -5184,9 +5153,6 @@ export interface ResourceSsh {
     port: number;
     portForwarding?: boolean;
     portOverride: number;
-    /**
-     * * ssh_cert:
-     */
     publicKey: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5445,3 +5411,4 @@ export interface SecretStoreVaultToken {
      */
     tags?: {[key: string]: string};
 }
+

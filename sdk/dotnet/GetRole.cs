@@ -87,12 +87,6 @@ namespace PiersKarsenbarg.Sdm
     public sealed class GetRoleArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        /// </summary>
-        [Input("composite")]
-        public bool? Composite { get; set; }
-
-        /// <summary>
         /// Unique identifier of the Role.
         /// </summary>
         [Input("id")]
@@ -123,12 +117,6 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        /// </summary>
-        [Input("composite")]
-        public Input<bool>? Composite { get; set; }
-
         /// <summary>
         /// Unique identifier of the Role.
         /// </summary>
@@ -163,10 +151,6 @@ namespace PiersKarsenbarg.Sdm
     public sealed class GetRoleResult
     {
         /// <summary>
-        /// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        /// </summary>
-        public readonly bool? Composite;
-        /// <summary>
         /// Unique identifier of the Role.
         /// </summary>
         public readonly string? Id;
@@ -189,8 +173,6 @@ namespace PiersKarsenbarg.Sdm
 
         [OutputConstructor]
         private GetRoleResult(
-            bool? composite,
-
             string? id,
 
             ImmutableArray<string> ids,
@@ -201,7 +183,6 @@ namespace PiersKarsenbarg.Sdm
 
             ImmutableDictionary<string, string>? tags)
         {
-            Composite = composite;
             Id = id;
             Ids = ids;
             Name = name;

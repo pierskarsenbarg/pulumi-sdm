@@ -35,6 +35,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Name;
         public readonly int Port;
+        public readonly int? PortOverride;
         public readonly string? RemoteIdentityGroupId;
         public readonly string? RemoteIdentityHealthcheckUsername;
         public readonly string? SecretStoreCertificateAuthorityKey;
@@ -72,6 +73,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int port,
 
+            int? portOverride,
+
             string? remoteIdentityGroupId,
 
             string? remoteIdentityHealthcheckUsername,
@@ -101,6 +104,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Hostname = hostname;
             Name = name;
             Port = port;
+            PortOverride = portOverride;
             RemoteIdentityGroupId = remoteIdentityGroupId;
             RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
             SecretStoreCertificateAuthorityKey = secretStoreCertificateAuthorityKey;

@@ -11,7 +11,8 @@ import (
 )
 
 // A SecretStore is a server where resource secrets (passwords, keys) are stored.
-//  Coming soon support for HashiCorp Vault and AWS Secret Store. Contact support@strongdm.com to request access to the beta.
+//
+//	Coming soon support for HashiCorp Vault and AWS Secret Store. Contact support@strongdm.com to request access to the beta.
 func LookupSecretStore(ctx *pulumi.Context, args *LookupSecretStoreArgs, opts ...pulumi.InvokeOption) (*LookupSecretStoreResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv LookupSecretStoreResult

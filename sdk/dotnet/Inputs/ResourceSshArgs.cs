@@ -49,9 +49,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
-        /// <summary>
-        /// * ssh_cert:
-        /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
 

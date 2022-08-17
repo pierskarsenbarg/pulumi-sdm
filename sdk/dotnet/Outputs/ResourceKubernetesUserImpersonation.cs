@@ -35,6 +35,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Name;
         public readonly int Port;
+        public readonly int? PortOverride;
         public readonly string? SecretStoreCertificateAuthorityKey;
         public readonly string? SecretStoreCertificateAuthorityPath;
         public readonly string? SecretStoreClientCertificateKey;
@@ -70,6 +71,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int port,
 
+            int? portOverride,
+
             string? secretStoreCertificateAuthorityKey,
 
             string? secretStoreCertificateAuthorityPath,
@@ -95,6 +98,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Hostname = hostname;
             Name = name;
             Port = port;
+            PortOverride = portOverride;
             SecretStoreCertificateAuthorityKey = secretStoreCertificateAuthorityKey;
             SecretStoreCertificateAuthorityPath = secretStoreCertificateAuthorityPath;
             SecretStoreClientCertificateKey = secretStoreClientCertificateKey;

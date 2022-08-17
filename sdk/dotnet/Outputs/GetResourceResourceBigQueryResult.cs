@@ -31,7 +31,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
-        public readonly int PortOverride;
+        public readonly int? PortOverride;
         public readonly string? PrivateKey;
         public readonly string? Project;
         /// <summary>
@@ -56,7 +56,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? name,
 
-            int portOverride,
+            int? portOverride,
 
             string? privateKey,
 

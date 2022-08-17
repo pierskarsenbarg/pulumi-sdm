@@ -15,17 +15,15 @@ import (
 // Role can be imported using the id, e.g.,
 //
 // ```sh
-//  $ pulumi import sdm:index/role:Role example r-12345678
+//
+//	$ pulumi import sdm:index/role:Role example r-12345678
+//
 // ```
 type Role struct {
 	pulumi.CustomResourceState
 
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules pulumi.StringOutput `pulumi:"accessRules"`
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite pulumi.BoolPtrOutput `pulumi:"composite"`
 	// Unique human-readable name of the Role.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
@@ -64,10 +62,6 @@ func GetRole(ctx *pulumi.Context,
 type roleState struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules *string `pulumi:"accessRules"`
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite *bool `pulumi:"composite"`
 	// Unique human-readable name of the Role.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
@@ -77,10 +71,6 @@ type roleState struct {
 type RoleState struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules pulumi.StringPtrInput
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite pulumi.BoolPtrInput
 	// Unique human-readable name of the Role.
 	Name pulumi.StringPtrInput
 	// Tags is a map of key, value pairs.
@@ -94,10 +84,6 @@ func (RoleState) ElementType() reflect.Type {
 type roleArgs struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules *string `pulumi:"accessRules"`
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite *bool `pulumi:"composite"`
 	// Unique human-readable name of the Role.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
@@ -108,10 +94,6 @@ type roleArgs struct {
 type RoleArgs struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules pulumi.StringPtrInput
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite pulumi.BoolPtrInput
 	// Unique human-readable name of the Role.
 	Name pulumi.StringPtrInput
 	// Tags is a map of key, value pairs.
@@ -144,7 +126,7 @@ func (i *Role) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 // RoleArrayInput is an input type that accepts RoleArray and RoleArrayOutput values.
 // You can construct a concrete instance of `RoleArrayInput` via:
 //
-//          RoleArray{ RoleArgs{...} }
+//	RoleArray{ RoleArgs{...} }
 type RoleArrayInput interface {
 	pulumi.Input
 
@@ -169,7 +151,7 @@ func (i RoleArray) ToRoleArrayOutputWithContext(ctx context.Context) RoleArrayOu
 // RoleMapInput is an input type that accepts RoleMap and RoleMapOutput values.
 // You can construct a concrete instance of `RoleMapInput` via:
 //
-//          RoleMap{ "key": RoleArgs{...} }
+//	RoleMap{ "key": RoleArgs{...} }
 type RoleMapInput interface {
 	pulumi.Input
 
@@ -208,13 +190,6 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 // AccessRules is a list of access rules defining the resources this Role has access to.
 func (o RoleOutput) AccessRules() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.AccessRules }).(pulumi.StringOutput)
-}
-
-// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-//
-// Deprecated: composite is deprecated, see docs for more info
-func (o RoleOutput) Composite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Role) pulumi.BoolPtrOutput { return v.Composite }).(pulumi.BoolPtrOutput)
 }
 
 // Unique human-readable name of the Role.

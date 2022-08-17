@@ -7,17 +7,13 @@ import typing
 # Export this package's modules as members:
 from .account import *
 from .account_attachment import *
-from .account_grant import *
 from .get_account import *
 from .get_account_attachment import *
-from .get_account_grant import *
 from .get_node import *
 from .get_remote_identity import *
 from .get_remote_identity_group import *
 from .get_resource import *
 from .get_role import *
-from .get_role_attachment import *
-from .get_role_grant import *
 from .get_secret_store import *
 from .get_ssh_ca_pubkey import *
 from .node import *
@@ -25,8 +21,6 @@ from .provider import *
 from .remote_identity import *
 from .resource import *
 from .role import *
-from .role_attachment import *
-from .role_grant import *
 from .secret_store import *
 from ._inputs import *
 from . import outputs
@@ -59,14 +53,6 @@ _utilities.register(
  },
  {
   "pkg": "sdm",
-  "mod": "index/accountGrant",
-  "fqn": "pulumi_sdm",
-  "classes": {
-   "sdm:index/accountGrant:AccountGrant": "AccountGrant"
-  }
- },
- {
-  "pkg": "sdm",
   "mod": "index/node",
   "fqn": "pulumi_sdm",
   "classes": {
@@ -95,22 +81,6 @@ _utilities.register(
   "fqn": "pulumi_sdm",
   "classes": {
    "sdm:index/role:Role": "Role"
-  }
- },
- {
-  "pkg": "sdm",
-  "mod": "index/roleAttachment",
-  "fqn": "pulumi_sdm",
-  "classes": {
-   "sdm:index/roleAttachment:RoleAttachment": "RoleAttachment"
-  }
- },
- {
-  "pkg": "sdm",
-  "mod": "index/roleGrant",
-  "fqn": "pulumi_sdm",
-  "classes": {
-   "sdm:index/roleGrant:RoleGrant": "RoleGrant"
   }
  },
  {

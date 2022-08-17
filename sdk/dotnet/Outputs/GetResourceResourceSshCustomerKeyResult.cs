@@ -34,7 +34,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? Name;
         public readonly int? Port;
         public readonly bool? PortForwarding;
-        public readonly int PortOverride;
+        public readonly int? PortOverride;
         public readonly string? PrivateKey;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
@@ -64,7 +64,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             bool? portForwarding,
 
-            int portOverride,
+            int? portOverride,
 
             string? privateKey,
 

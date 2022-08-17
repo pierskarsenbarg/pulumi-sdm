@@ -16,7 +16,9 @@ import (
 // AccountAttachment can be imported using the id, e.g.,
 //
 // ```sh
-//  $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
+//
+//	$ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
+//
 // ```
 type AccountAttachment struct {
 	pulumi.CustomResourceState
@@ -121,7 +123,7 @@ func (i *AccountAttachment) ToAccountAttachmentOutputWithContext(ctx context.Con
 // AccountAttachmentArrayInput is an input type that accepts AccountAttachmentArray and AccountAttachmentArrayOutput values.
 // You can construct a concrete instance of `AccountAttachmentArrayInput` via:
 //
-//          AccountAttachmentArray{ AccountAttachmentArgs{...} }
+//	AccountAttachmentArray{ AccountAttachmentArgs{...} }
 type AccountAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -146,7 +148,7 @@ func (i AccountAttachmentArray) ToAccountAttachmentArrayOutputWithContext(ctx co
 // AccountAttachmentMapInput is an input type that accepts AccountAttachmentMap and AccountAttachmentMapOutput values.
 // You can construct a concrete instance of `AccountAttachmentMapInput` via:
 //
-//          AccountAttachmentMap{ "key": AccountAttachmentArgs{...} }
+//	AccountAttachmentMap{ "key": AccountAttachmentArgs{...} }
 type AccountAttachmentMapInput interface {
 	pulumi.Input
 

@@ -19,10 +19,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? AccessRules;
         /// <summary>
-        /// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        /// </summary>
-        public readonly bool? Composite;
-        /// <summary>
         /// Unique identifier of the Role.
         /// </summary>
         public readonly string? Id;
@@ -39,8 +35,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private GetRoleRoleResult(
             string? accessRules,
 
-            bool? composite,
-
             string? id,
 
             string? name,
@@ -48,7 +42,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableDictionary<string, string>? tags)
         {
             AccessRules = accessRules;
-            Composite = composite;
             Id = id;
             Name = name;
             Tags = tags;

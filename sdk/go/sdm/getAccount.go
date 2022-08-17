@@ -13,33 +13,37 @@ import (
 // Accounts are users that have access to strongDM. There are two types of accounts:
 //  1. **Users:** humans who are authenticated through username and password or SSO.
 //  2. **Service Accounts:** machines that are authenticated using a service token.
+//
 // ## Example Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sdm.LookupAccount(ctx, &GetAccountArgs{
-// 			Email: pulumi.StringRef("*@strongdm.com"),
-// 			Tags: map[string]interface{}{
-// 				"env":    "dev",
-// 				"region": "us-west",
-// 			},
-// 			Type: pulumi.StringRef("user"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.LookupAccount(ctx, &GetAccountArgs{
+//				Email: pulumi.StringRef("*@strongdm.com"),
+//				Tags: map[string]interface{}{
+//					"env":    "dev",
+//					"region": "us-west",
+//				},
+//				Type: pulumi.StringRef("user"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)

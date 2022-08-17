@@ -36,6 +36,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Name;
         public readonly int? Port;
+        public readonly int? PortOverride;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -65,6 +66,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? port,
 
+            int? portOverride,
+
             string? secretStoreId,
 
             ImmutableDictionary<string, string>? tags,
@@ -78,6 +81,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Id = id;
             Name = name;
             Port = port;
+            PortOverride = portOverride;
             SecretStoreId = secretStoreId;
             Tags = tags;
             Token = token;

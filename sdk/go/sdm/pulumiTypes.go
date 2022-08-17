@@ -23,7 +23,7 @@ type AccountService struct {
 // AccountServiceInput is an input type that accepts AccountServiceArgs and AccountServiceOutput values.
 // You can construct a concrete instance of `AccountServiceInput` via:
 //
-//          AccountServiceArgs{...}
+//	AccountServiceArgs{...}
 type AccountServiceInput interface {
 	pulumi.Input
 
@@ -64,11 +64,11 @@ func (i AccountServiceArgs) ToAccountServicePtrOutputWithContext(ctx context.Con
 // AccountServicePtrInput is an input type that accepts AccountServiceArgs, AccountServicePtr and AccountServicePtrOutput values.
 // You can construct a concrete instance of `AccountServicePtrInput` via:
 //
-//          AccountServiceArgs{...}
+//	        AccountServiceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccountServicePtrInput interface {
 	pulumi.Input
 
@@ -216,7 +216,7 @@ type AccountUser struct {
 // AccountUserInput is an input type that accepts AccountUserArgs and AccountUserOutput values.
 // You can construct a concrete instance of `AccountUserInput` via:
 //
-//          AccountUserArgs{...}
+//	AccountUserArgs{...}
 type AccountUserInput interface {
 	pulumi.Input
 
@@ -260,11 +260,11 @@ func (i AccountUserArgs) ToAccountUserPtrOutputWithContext(ctx context.Context) 
 // AccountUserPtrInput is an input type that accepts AccountUserArgs, AccountUserPtr and AccountUserPtrOutput values.
 // You can construct a concrete instance of `AccountUserPtrInput` via:
 //
-//          AccountUserArgs{...}
+//	        AccountUserArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccountUserPtrInput interface {
 	pulumi.Input
 
@@ -430,7 +430,7 @@ type NodeGateway struct {
 // NodeGatewayInput is an input type that accepts NodeGatewayArgs and NodeGatewayOutput values.
 // You can construct a concrete instance of `NodeGatewayInput` via:
 //
-//          NodeGatewayArgs{...}
+//	NodeGatewayArgs{...}
 type NodeGatewayInput interface {
 	pulumi.Input
 
@@ -475,11 +475,11 @@ func (i NodeGatewayArgs) ToNodeGatewayPtrOutputWithContext(ctx context.Context) 
 // NodeGatewayPtrInput is an input type that accepts NodeGatewayArgs, NodeGatewayPtr and NodeGatewayPtrOutput values.
 // You can construct a concrete instance of `NodeGatewayPtrInput` via:
 //
-//          NodeGatewayArgs{...}
+//	        NodeGatewayArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NodeGatewayPtrInput interface {
 	pulumi.Input
 
@@ -654,7 +654,7 @@ type NodeRelay struct {
 // NodeRelayInput is an input type that accepts NodeRelayArgs and NodeRelayOutput values.
 // You can construct a concrete instance of `NodeRelayInput` via:
 //
-//          NodeRelayArgs{...}
+//	NodeRelayArgs{...}
 type NodeRelayInput interface {
 	pulumi.Input
 
@@ -695,11 +695,11 @@ func (i NodeRelayArgs) ToNodeRelayPtrOutputWithContext(ctx context.Context) Node
 // NodeRelayPtrInput is an input type that accepts NodeRelayArgs, NodeRelayPtr and NodeRelayPtrOutput values.
 // You can construct a concrete instance of `NodeRelayPtrInput` via:
 //
-//          NodeRelayArgs{...}
+//	        NodeRelayArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NodeRelayPtrInput interface {
 	pulumi.Input
 
@@ -845,6 +845,7 @@ type ResourceAks struct {
 	// Unique human-readable name of the Resource.
 	Name                                string  `pulumi:"name"`
 	Port                                int     `pulumi:"port"`
+	PortOverride                        *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
@@ -862,7 +863,7 @@ type ResourceAks struct {
 // ResourceAksInput is an input type that accepts ResourceAksArgs and ResourceAksOutput values.
 // You can construct a concrete instance of `ResourceAksInput` via:
 //
-//          ResourceAksArgs{...}
+//	ResourceAksArgs{...}
 type ResourceAksInput interface {
 	pulumi.Input
 
@@ -884,6 +885,7 @@ type ResourceAksArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                                pulumi.StringInput    `pulumi:"name"`
 	Port                                pulumi.IntInput       `pulumi:"port"`
+	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
@@ -921,11 +923,11 @@ func (i ResourceAksArgs) ToResourceAksPtrOutputWithContext(ctx context.Context) 
 // ResourceAksPtrInput is an input type that accepts ResourceAksArgs, ResourceAksPtr and ResourceAksPtrOutput values.
 // You can construct a concrete instance of `ResourceAksPtrInput` via:
 //
-//          ResourceAksArgs{...}
+//	        ResourceAksArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAksPtrInput interface {
 	pulumi.Input
 
@@ -1013,6 +1015,10 @@ func (o ResourceAksOutput) Name() pulumi.StringOutput {
 
 func (o ResourceAksOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceAks) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceAksOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAks) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o ResourceAksOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
@@ -1166,6 +1172,15 @@ func (o ResourceAksPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAksPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAks) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAksPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAks) *string {
 		if v == nil {
@@ -1267,9 +1282,10 @@ type ResourceAksBasicAuth struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	Hostname             string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name     string  `pulumi:"name"`
-	Password *string `pulumi:"password"`
-	Port     int     `pulumi:"port"`
+	Name         string  `pulumi:"name"`
+	Password     *string `pulumi:"password"`
+	Port         int     `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           *string `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
@@ -1284,7 +1300,7 @@ type ResourceAksBasicAuth struct {
 // ResourceAksBasicAuthInput is an input type that accepts ResourceAksBasicAuthArgs and ResourceAksBasicAuthOutput values.
 // You can construct a concrete instance of `ResourceAksBasicAuthInput` via:
 //
-//          ResourceAksBasicAuthArgs{...}
+//	ResourceAksBasicAuthArgs{...}
 type ResourceAksBasicAuthInput interface {
 	pulumi.Input
 
@@ -1301,9 +1317,10 @@ type ResourceAksBasicAuthArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	Hostname             pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name     pulumi.StringInput    `pulumi:"name"`
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.IntInput       `pulumi:"port"`
+	Name         pulumi.StringInput    `pulumi:"name"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
+	Port         pulumi.IntInput       `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
@@ -1338,11 +1355,11 @@ func (i ResourceAksBasicAuthArgs) ToResourceAksBasicAuthPtrOutputWithContext(ctx
 // ResourceAksBasicAuthPtrInput is an input type that accepts ResourceAksBasicAuthArgs, ResourceAksBasicAuthPtr and ResourceAksBasicAuthPtrOutput values.
 // You can construct a concrete instance of `ResourceAksBasicAuthPtrInput` via:
 //
-//          ResourceAksBasicAuthArgs{...}
+//	        ResourceAksBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAksBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -1422,6 +1439,10 @@ func (o ResourceAksBasicAuthOutput) Password() pulumi.StringPtrOutput {
 
 func (o ResourceAksBasicAuthOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceAksBasicAuth) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceAksBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAksBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -1545,6 +1566,15 @@ func (o ResourceAksBasicAuthPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAksBasicAuthPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAksBasicAuth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksBasicAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksBasicAuth) *string {
@@ -1621,6 +1651,7 @@ type ResourceAksServiceAccount struct {
 	// Unique human-readable name of the Resource.
 	Name                              string  `pulumi:"name"`
 	Port                              int     `pulumi:"port"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -1636,7 +1667,7 @@ type ResourceAksServiceAccount struct {
 // ResourceAksServiceAccountInput is an input type that accepts ResourceAksServiceAccountArgs and ResourceAksServiceAccountOutput values.
 // You can construct a concrete instance of `ResourceAksServiceAccountInput` via:
 //
-//          ResourceAksServiceAccountArgs{...}
+//	ResourceAksServiceAccountArgs{...}
 type ResourceAksServiceAccountInput interface {
 	pulumi.Input
 
@@ -1655,6 +1686,7 @@ type ResourceAksServiceAccountArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringInput    `pulumi:"name"`
 	Port                              pulumi.IntInput       `pulumi:"port"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -1690,11 +1722,11 @@ func (i ResourceAksServiceAccountArgs) ToResourceAksServiceAccountPtrOutputWithC
 // ResourceAksServiceAccountPtrInput is an input type that accepts ResourceAksServiceAccountArgs, ResourceAksServiceAccountPtr and ResourceAksServiceAccountPtrOutput values.
 // You can construct a concrete instance of `ResourceAksServiceAccountPtrInput` via:
 //
-//          ResourceAksServiceAccountArgs{...}
+//	        ResourceAksServiceAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAksServiceAccountPtrInput interface {
 	pulumi.Input
 
@@ -1770,6 +1802,10 @@ func (o ResourceAksServiceAccountOutput) Name() pulumi.StringOutput {
 
 func (o ResourceAksServiceAccountOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceAksServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o ResourceAksServiceAccountOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
@@ -1885,6 +1921,15 @@ func (o ResourceAksServiceAccountPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAksServiceAccountPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAksServiceAccountPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
 		if v == nil {
@@ -1960,8 +2005,9 @@ type ResourceAksServiceAccountUserImpersonation struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	Hostname             string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name string `pulumi:"name"`
-	Port int    `pulumi:"port"`
+	Name         string `pulumi:"name"`
+	Port         int    `pulumi:"port"`
+	PortOverride *int   `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// * kubernetes_user_impersonation:
@@ -1975,7 +2021,7 @@ type ResourceAksServiceAccountUserImpersonation struct {
 // ResourceAksServiceAccountUserImpersonationInput is an input type that accepts ResourceAksServiceAccountUserImpersonationArgs and ResourceAksServiceAccountUserImpersonationOutput values.
 // You can construct a concrete instance of `ResourceAksServiceAccountUserImpersonationInput` via:
 //
-//          ResourceAksServiceAccountUserImpersonationArgs{...}
+//	ResourceAksServiceAccountUserImpersonationArgs{...}
 type ResourceAksServiceAccountUserImpersonationInput interface {
 	pulumi.Input
 
@@ -1992,8 +2038,9 @@ type ResourceAksServiceAccountUserImpersonationArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	Hostname             pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	Port pulumi.IntInput    `pulumi:"port"`
+	Name         pulumi.StringInput `pulumi:"name"`
+	Port         pulumi.IntInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// * kubernetes_user_impersonation:
@@ -2027,11 +2074,11 @@ func (i ResourceAksServiceAccountUserImpersonationArgs) ToResourceAksServiceAcco
 // ResourceAksServiceAccountUserImpersonationPtrInput is an input type that accepts ResourceAksServiceAccountUserImpersonationArgs, ResourceAksServiceAccountUserImpersonationPtr and ResourceAksServiceAccountUserImpersonationPtrOutput values.
 // You can construct a concrete instance of `ResourceAksServiceAccountUserImpersonationPtrInput` via:
 //
-//          ResourceAksServiceAccountUserImpersonationArgs{...}
+//	        ResourceAksServiceAccountUserImpersonationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAksServiceAccountUserImpersonationPtrInput interface {
 	pulumi.Input
 
@@ -2107,6 +2154,10 @@ func (o ResourceAksServiceAccountUserImpersonationOutput) Name() pulumi.StringOu
 
 func (o ResourceAksServiceAccountUserImpersonationOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceAksServiceAccountUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -2214,6 +2265,15 @@ func (o ResourceAksServiceAccountUserImpersonationPtrOutput) Port() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAksServiceAccountUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccountUserImpersonation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksServiceAccountUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccountUserImpersonation) *string {
@@ -2276,6 +2336,7 @@ type ResourceAksUserImpersonation struct {
 	// Unique human-readable name of the Resource.
 	Name                                string  `pulumi:"name"`
 	Port                                int     `pulumi:"port"`
+	PortOverride                        *int    `pulumi:"portOverride"`
 	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
 	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
 	SecretStoreClientCertificateKey     *string `pulumi:"secretStoreClientCertificateKey"`
@@ -2291,7 +2352,7 @@ type ResourceAksUserImpersonation struct {
 // ResourceAksUserImpersonationInput is an input type that accepts ResourceAksUserImpersonationArgs and ResourceAksUserImpersonationOutput values.
 // You can construct a concrete instance of `ResourceAksUserImpersonationInput` via:
 //
-//          ResourceAksUserImpersonationArgs{...}
+//	ResourceAksUserImpersonationArgs{...}
 type ResourceAksUserImpersonationInput interface {
 	pulumi.Input
 
@@ -2313,6 +2374,7 @@ type ResourceAksUserImpersonationArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                                pulumi.StringInput    `pulumi:"name"`
 	Port                                pulumi.IntInput       `pulumi:"port"`
+	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
 	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
 	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
 	SecretStoreClientCertificateKey     pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
@@ -2348,11 +2410,11 @@ func (i ResourceAksUserImpersonationArgs) ToResourceAksUserImpersonationPtrOutpu
 // ResourceAksUserImpersonationPtrInput is an input type that accepts ResourceAksUserImpersonationArgs, ResourceAksUserImpersonationPtr and ResourceAksUserImpersonationPtrOutput values.
 // You can construct a concrete instance of `ResourceAksUserImpersonationPtrInput` via:
 //
-//          ResourceAksUserImpersonationArgs{...}
+//	        ResourceAksUserImpersonationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAksUserImpersonationPtrInput interface {
 	pulumi.Input
 
@@ -2440,6 +2502,10 @@ func (o ResourceAksUserImpersonationOutput) Name() pulumi.StringOutput {
 
 func (o ResourceAksUserImpersonationOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceAksUserImpersonation) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceAksUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o ResourceAksUserImpersonationOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
@@ -2585,6 +2651,15 @@ func (o ResourceAksUserImpersonationPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAksUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAksUserImpersonation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAksUserImpersonationPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
 		if v == nil {
@@ -2697,7 +2772,7 @@ type ResourceAmazonEks struct {
 // ResourceAmazonEksInput is an input type that accepts ResourceAmazonEksArgs and ResourceAmazonEksOutput values.
 // You can construct a concrete instance of `ResourceAmazonEksInput` via:
 //
-//          ResourceAmazonEksArgs{...}
+//	ResourceAmazonEksArgs{...}
 type ResourceAmazonEksInput interface {
 	pulumi.Input
 
@@ -2763,11 +2838,11 @@ func (i ResourceAmazonEksArgs) ToResourceAmazonEksPtrOutputWithContext(ctx conte
 // ResourceAmazonEksPtrInput is an input type that accepts ResourceAmazonEksArgs, ResourceAmazonEksPtr and ResourceAmazonEksPtrOutput values.
 // You can construct a concrete instance of `ResourceAmazonEksPtrInput` via:
 //
-//          ResourceAmazonEksArgs{...}
+//	        ResourceAmazonEksArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAmazonEksPtrInput interface {
 	pulumi.Input
 
@@ -3227,7 +3302,7 @@ type ResourceAmazonEksUserImpersonation struct {
 // ResourceAmazonEksUserImpersonationInput is an input type that accepts ResourceAmazonEksUserImpersonationArgs and ResourceAmazonEksUserImpersonationOutput values.
 // You can construct a concrete instance of `ResourceAmazonEksUserImpersonationInput` via:
 //
-//          ResourceAmazonEksUserImpersonationArgs{...}
+//	ResourceAmazonEksUserImpersonationArgs{...}
 type ResourceAmazonEksUserImpersonationInput interface {
 	pulumi.Input
 
@@ -3291,11 +3366,11 @@ func (i ResourceAmazonEksUserImpersonationArgs) ToResourceAmazonEksUserImpersona
 // ResourceAmazonEksUserImpersonationPtrInput is an input type that accepts ResourceAmazonEksUserImpersonationArgs, ResourceAmazonEksUserImpersonationPtr and ResourceAmazonEksUserImpersonationPtrOutput values.
 // You can construct a concrete instance of `ResourceAmazonEksUserImpersonationPtrInput` via:
 //
-//          ResourceAmazonEksUserImpersonationArgs{...}
+//	        ResourceAmazonEksUserImpersonationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAmazonEksUserImpersonationPtrInput interface {
 	pulumi.Input
 
@@ -3724,7 +3799,7 @@ type ResourceAmazonEs struct {
 // ResourceAmazonEsInput is an input type that accepts ResourceAmazonEsArgs and ResourceAmazonEsOutput values.
 // You can construct a concrete instance of `ResourceAmazonEsInput` via:
 //
-//          ResourceAmazonEsArgs{...}
+//	ResourceAmazonEsArgs{...}
 type ResourceAmazonEsInput interface {
 	pulumi.Input
 
@@ -3783,11 +3858,11 @@ func (i ResourceAmazonEsArgs) ToResourceAmazonEsPtrOutputWithContext(ctx context
 // ResourceAmazonEsPtrInput is an input type that accepts ResourceAmazonEsArgs, ResourceAmazonEsPtr and ResourceAmazonEsPtrOutput values.
 // You can construct a concrete instance of `ResourceAmazonEsPtrInput` via:
 //
-//          ResourceAmazonEsArgs{...}
+//	        ResourceAmazonEsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAmazonEsPtrInput interface {
 	pulumi.Input
 
@@ -4157,7 +4232,7 @@ type ResourceAmazonmqAmqp091 struct {
 // ResourceAmazonmqAmqp091Input is an input type that accepts ResourceAmazonmqAmqp091Args and ResourceAmazonmqAmqp091Output values.
 // You can construct a concrete instance of `ResourceAmazonmqAmqp091Input` via:
 //
-//          ResourceAmazonmqAmqp091Args{...}
+//	ResourceAmazonmqAmqp091Args{...}
 type ResourceAmazonmqAmqp091Input interface {
 	pulumi.Input
 
@@ -4211,11 +4286,11 @@ func (i ResourceAmazonmqAmqp091Args) ToResourceAmazonmqAmqp091PtrOutputWithConte
 // ResourceAmazonmqAmqp091PtrInput is an input type that accepts ResourceAmazonmqAmqp091Args, ResourceAmazonmqAmqp091Ptr and ResourceAmazonmqAmqp091PtrOutput values.
 // You can construct a concrete instance of `ResourceAmazonmqAmqp091PtrInput` via:
 //
-//          ResourceAmazonmqAmqp091Args{...}
+//	        ResourceAmazonmqAmqp091Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAmazonmqAmqp091PtrInput interface {
 	pulumi.Input
 
@@ -4525,7 +4600,7 @@ type ResourceAthena struct {
 // ResourceAthenaInput is an input type that accepts ResourceAthenaArgs and ResourceAthenaOutput values.
 // You can construct a concrete instance of `ResourceAthenaInput` via:
 //
-//          ResourceAthenaArgs{...}
+//	ResourceAthenaArgs{...}
 type ResourceAthenaInput interface {
 	pulumi.Input
 
@@ -4584,11 +4659,11 @@ func (i ResourceAthenaArgs) ToResourceAthenaPtrOutputWithContext(ctx context.Con
 // ResourceAthenaPtrInput is an input type that accepts ResourceAthenaArgs, ResourceAthenaPtr and ResourceAthenaPtrOutput values.
 // You can construct a concrete instance of `ResourceAthenaPtrInput` via:
 //
-//          ResourceAthenaArgs{...}
+//	        ResourceAthenaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAthenaPtrInput interface {
 	pulumi.Input
 
@@ -4958,7 +5033,7 @@ type ResourceAuroraMysql struct {
 // ResourceAuroraMysqlInput is an input type that accepts ResourceAuroraMysqlArgs and ResourceAuroraMysqlOutput values.
 // You can construct a concrete instance of `ResourceAuroraMysqlInput` via:
 //
-//          ResourceAuroraMysqlArgs{...}
+//	ResourceAuroraMysqlArgs{...}
 type ResourceAuroraMysqlInput interface {
 	pulumi.Input
 
@@ -5012,11 +5087,11 @@ func (i ResourceAuroraMysqlArgs) ToResourceAuroraMysqlPtrOutputWithContext(ctx c
 // ResourceAuroraMysqlPtrInput is an input type that accepts ResourceAuroraMysqlArgs, ResourceAuroraMysqlPtr and ResourceAuroraMysqlPtrOutput values.
 // You can construct a concrete instance of `ResourceAuroraMysqlPtrInput` via:
 //
-//          ResourceAuroraMysqlArgs{...}
+//	        ResourceAuroraMysqlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAuroraMysqlPtrInput interface {
 	pulumi.Input
 
@@ -5322,7 +5397,7 @@ type ResourceAuroraPostgres struct {
 // ResourceAuroraPostgresInput is an input type that accepts ResourceAuroraPostgresArgs and ResourceAuroraPostgresOutput values.
 // You can construct a concrete instance of `ResourceAuroraPostgresInput` via:
 //
-//          ResourceAuroraPostgresArgs{...}
+//	ResourceAuroraPostgresArgs{...}
 type ResourceAuroraPostgresInput interface {
 	pulumi.Input
 
@@ -5377,11 +5452,11 @@ func (i ResourceAuroraPostgresArgs) ToResourceAuroraPostgresPtrOutputWithContext
 // ResourceAuroraPostgresPtrInput is an input type that accepts ResourceAuroraPostgresArgs, ResourceAuroraPostgresPtr and ResourceAuroraPostgresPtrOutput values.
 // You can construct a concrete instance of `ResourceAuroraPostgresPtrInput` via:
 //
-//          ResourceAuroraPostgresArgs{...}
+//	        ResourceAuroraPostgresArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAuroraPostgresPtrInput interface {
 	pulumi.Input
 
@@ -5702,7 +5777,7 @@ type ResourceAws struct {
 // ResourceAwsInput is an input type that accepts ResourceAwsArgs and ResourceAwsOutput values.
 // You can construct a concrete instance of `ResourceAwsInput` via:
 //
-//          ResourceAwsArgs{...}
+//	ResourceAwsArgs{...}
 type ResourceAwsInput interface {
 	pulumi.Input
 
@@ -5759,11 +5834,11 @@ func (i ResourceAwsArgs) ToResourceAwsPtrOutputWithContext(ctx context.Context) 
 // ResourceAwsPtrInput is an input type that accepts ResourceAwsArgs, ResourceAwsPtr and ResourceAwsPtrOutput values.
 // You can construct a concrete instance of `ResourceAwsPtrInput` via:
 //
-//          ResourceAwsArgs{...}
+//	        ResourceAwsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAwsPtrInput interface {
 	pulumi.Input
 
@@ -6107,7 +6182,7 @@ type ResourceAzure struct {
 // ResourceAzureInput is an input type that accepts ResourceAzureArgs and ResourceAzureOutput values.
 // You can construct a concrete instance of `ResourceAzureInput` via:
 //
-//          ResourceAzureArgs{...}
+//	ResourceAzureArgs{...}
 type ResourceAzureInput interface {
 	pulumi.Input
 
@@ -6161,11 +6236,11 @@ func (i ResourceAzureArgs) ToResourceAzurePtrOutputWithContext(ctx context.Conte
 // ResourceAzurePtrInput is an input type that accepts ResourceAzureArgs, ResourceAzurePtr and ResourceAzurePtrOutput values.
 // You can construct a concrete instance of `ResourceAzurePtrInput` via:
 //
-//          ResourceAzureArgs{...}
+//	        ResourceAzureArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAzurePtrInput interface {
 	pulumi.Input
 
@@ -6459,7 +6534,7 @@ type ResourceAzureCertificate struct {
 // ResourceAzureCertificateInput is an input type that accepts ResourceAzureCertificateArgs and ResourceAzureCertificateOutput values.
 // You can construct a concrete instance of `ResourceAzureCertificateInput` via:
 //
-//          ResourceAzureCertificateArgs{...}
+//	ResourceAzureCertificateArgs{...}
 type ResourceAzureCertificateInput interface {
 	pulumi.Input
 
@@ -6513,11 +6588,11 @@ func (i ResourceAzureCertificateArgs) ToResourceAzureCertificatePtrOutputWithCon
 // ResourceAzureCertificatePtrInput is an input type that accepts ResourceAzureCertificateArgs, ResourceAzureCertificatePtr and ResourceAzureCertificatePtrOutput values.
 // You can construct a concrete instance of `ResourceAzureCertificatePtrInput` via:
 //
-//          ResourceAzureCertificateArgs{...}
+//	        ResourceAzureCertificateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAzureCertificatePtrInput interface {
 	pulumi.Input
 
@@ -6812,7 +6887,7 @@ type ResourceAzurePostgres struct {
 // ResourceAzurePostgresInput is an input type that accepts ResourceAzurePostgresArgs and ResourceAzurePostgresOutput values.
 // You can construct a concrete instance of `ResourceAzurePostgresInput` via:
 //
-//          ResourceAzurePostgresArgs{...}
+//	ResourceAzurePostgresArgs{...}
 type ResourceAzurePostgresInput interface {
 	pulumi.Input
 
@@ -6867,11 +6942,11 @@ func (i ResourceAzurePostgresArgs) ToResourceAzurePostgresPtrOutputWithContext(c
 // ResourceAzurePostgresPtrInput is an input type that accepts ResourceAzurePostgresArgs, ResourceAzurePostgresPtr and ResourceAzurePostgresPtrOutput values.
 // You can construct a concrete instance of `ResourceAzurePostgresPtrInput` via:
 //
-//          ResourceAzurePostgresArgs{...}
+//	        ResourceAzurePostgresArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAzurePostgresPtrInput interface {
 	pulumi.Input
 
@@ -7186,7 +7261,7 @@ type ResourceBigQuery struct {
 // ResourceBigQueryInput is an input type that accepts ResourceBigQueryArgs and ResourceBigQueryOutput values.
 // You can construct a concrete instance of `ResourceBigQueryInput` via:
 //
-//          ResourceBigQueryArgs{...}
+//	ResourceBigQueryArgs{...}
 type ResourceBigQueryInput interface {
 	pulumi.Input
 
@@ -7237,11 +7312,11 @@ func (i ResourceBigQueryArgs) ToResourceBigQueryPtrOutputWithContext(ctx context
 // ResourceBigQueryPtrInput is an input type that accepts ResourceBigQueryArgs, ResourceBigQueryPtr and ResourceBigQueryPtrOutput values.
 // You can construct a concrete instance of `ResourceBigQueryPtrInput` via:
 //
-//          ResourceBigQueryArgs{...}
+//	        ResourceBigQueryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceBigQueryPtrInput interface {
 	pulumi.Input
 
@@ -7507,7 +7582,7 @@ type ResourceCassandra struct {
 // ResourceCassandraInput is an input type that accepts ResourceCassandraArgs and ResourceCassandraOutput values.
 // You can construct a concrete instance of `ResourceCassandraInput` via:
 //
-//          ResourceCassandraArgs{...}
+//	ResourceCassandraArgs{...}
 type ResourceCassandraInput interface {
 	pulumi.Input
 
@@ -7561,11 +7636,11 @@ func (i ResourceCassandraArgs) ToResourceCassandraPtrOutputWithContext(ctx conte
 // ResourceCassandraPtrInput is an input type that accepts ResourceCassandraArgs, ResourceCassandraPtr and ResourceCassandraPtrOutput values.
 // You can construct a concrete instance of `ResourceCassandraPtrInput` via:
 //
-//          ResourceCassandraArgs{...}
+//	        ResourceCassandraArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceCassandraPtrInput interface {
 	pulumi.Input
 
@@ -7871,7 +7946,7 @@ type ResourceCitus struct {
 // ResourceCitusInput is an input type that accepts ResourceCitusArgs and ResourceCitusOutput values.
 // You can construct a concrete instance of `ResourceCitusInput` via:
 //
-//          ResourceCitusArgs{...}
+//	ResourceCitusArgs{...}
 type ResourceCitusInput interface {
 	pulumi.Input
 
@@ -7926,11 +8001,11 @@ func (i ResourceCitusArgs) ToResourceCitusPtrOutputWithContext(ctx context.Conte
 // ResourceCitusPtrInput is an input type that accepts ResourceCitusArgs, ResourceCitusPtr and ResourceCitusPtrOutput values.
 // You can construct a concrete instance of `ResourceCitusPtrInput` via:
 //
-//          ResourceCitusArgs{...}
+//	        ResourceCitusArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceCitusPtrInput interface {
 	pulumi.Input
 
@@ -8248,7 +8323,7 @@ type ResourceClustrix struct {
 // ResourceClustrixInput is an input type that accepts ResourceClustrixArgs and ResourceClustrixOutput values.
 // You can construct a concrete instance of `ResourceClustrixInput` via:
 //
-//          ResourceClustrixArgs{...}
+//	ResourceClustrixArgs{...}
 type ResourceClustrixInput interface {
 	pulumi.Input
 
@@ -8302,11 +8377,11 @@ func (i ResourceClustrixArgs) ToResourceClustrixPtrOutputWithContext(ctx context
 // ResourceClustrixPtrInput is an input type that accepts ResourceClustrixArgs, ResourceClustrixPtr and ResourceClustrixPtrOutput values.
 // You can construct a concrete instance of `ResourceClustrixPtrInput` via:
 //
-//          ResourceClustrixArgs{...}
+//	        ResourceClustrixArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceClustrixPtrInput interface {
 	pulumi.Input
 
@@ -8612,7 +8687,7 @@ type ResourceCockroach struct {
 // ResourceCockroachInput is an input type that accepts ResourceCockroachArgs and ResourceCockroachOutput values.
 // You can construct a concrete instance of `ResourceCockroachInput` via:
 //
-//          ResourceCockroachArgs{...}
+//	ResourceCockroachArgs{...}
 type ResourceCockroachInput interface {
 	pulumi.Input
 
@@ -8667,11 +8742,11 @@ func (i ResourceCockroachArgs) ToResourceCockroachPtrOutputWithContext(ctx conte
 // ResourceCockroachPtrInput is an input type that accepts ResourceCockroachArgs, ResourceCockroachPtr and ResourceCockroachPtrOutput values.
 // You can construct a concrete instance of `ResourceCockroachPtrInput` via:
 //
-//          ResourceCockroachArgs{...}
+//	        ResourceCockroachArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceCockroachPtrInput interface {
 	pulumi.Input
 
@@ -8989,7 +9064,7 @@ type ResourceDb2I struct {
 // ResourceDb2IInput is an input type that accepts ResourceDb2IArgs and ResourceDb2IOutput values.
 // You can construct a concrete instance of `ResourceDb2IInput` via:
 //
-//          ResourceDb2IArgs{...}
+//	ResourceDb2IArgs{...}
 type ResourceDb2IInput interface {
 	pulumi.Input
 
@@ -9043,11 +9118,11 @@ func (i ResourceDb2IArgs) ToResourceDb2IPtrOutputWithContext(ctx context.Context
 // ResourceDb2IPtrInput is an input type that accepts ResourceDb2IArgs, ResourceDb2IPtr and ResourceDb2IPtrOutput values.
 // You can construct a concrete instance of `ResourceDb2IPtrInput` via:
 //
-//          ResourceDb2IArgs{...}
+//	        ResourceDb2IArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceDb2IPtrInput interface {
 	pulumi.Input
 
@@ -9352,7 +9427,7 @@ type ResourceDb2Luw struct {
 // ResourceDb2LuwInput is an input type that accepts ResourceDb2LuwArgs and ResourceDb2LuwOutput values.
 // You can construct a concrete instance of `ResourceDb2LuwInput` via:
 //
-//          ResourceDb2LuwArgs{...}
+//	ResourceDb2LuwArgs{...}
 type ResourceDb2LuwInput interface {
 	pulumi.Input
 
@@ -9406,11 +9481,11 @@ func (i ResourceDb2LuwArgs) ToResourceDb2LuwPtrOutputWithContext(ctx context.Con
 // ResourceDb2LuwPtrInput is an input type that accepts ResourceDb2LuwArgs, ResourceDb2LuwPtr and ResourceDb2LuwPtrOutput values.
 // You can construct a concrete instance of `ResourceDb2LuwPtrInput` via:
 //
-//          ResourceDb2LuwArgs{...}
+//	        ResourceDb2LuwArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceDb2LuwPtrInput interface {
 	pulumi.Input
 
@@ -9715,7 +9790,7 @@ type ResourceDocumentDbHost struct {
 // ResourceDocumentDbHostInput is an input type that accepts ResourceDocumentDbHostArgs and ResourceDocumentDbHostOutput values.
 // You can construct a concrete instance of `ResourceDocumentDbHostInput` via:
 //
-//          ResourceDocumentDbHostArgs{...}
+//	ResourceDocumentDbHostArgs{...}
 type ResourceDocumentDbHostInput interface {
 	pulumi.Input
 
@@ -9769,11 +9844,11 @@ func (i ResourceDocumentDbHostArgs) ToResourceDocumentDbHostPtrOutputWithContext
 // ResourceDocumentDbHostPtrInput is an input type that accepts ResourceDocumentDbHostArgs, ResourceDocumentDbHostPtr and ResourceDocumentDbHostPtrOutput values.
 // You can construct a concrete instance of `ResourceDocumentDbHostPtrInput` via:
 //
-//          ResourceDocumentDbHostArgs{...}
+//	        ResourceDocumentDbHostArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceDocumentDbHostPtrInput interface {
 	pulumi.Input
 
@@ -10079,7 +10154,7 @@ type ResourceDocumentDbReplicaSet struct {
 // ResourceDocumentDbReplicaSetInput is an input type that accepts ResourceDocumentDbReplicaSetArgs and ResourceDocumentDbReplicaSetOutput values.
 // You can construct a concrete instance of `ResourceDocumentDbReplicaSetInput` via:
 //
-//          ResourceDocumentDbReplicaSetArgs{...}
+//	ResourceDocumentDbReplicaSetArgs{...}
 type ResourceDocumentDbReplicaSetInput interface {
 	pulumi.Input
 
@@ -10134,11 +10209,11 @@ func (i ResourceDocumentDbReplicaSetArgs) ToResourceDocumentDbReplicaSetPtrOutpu
 // ResourceDocumentDbReplicaSetPtrInput is an input type that accepts ResourceDocumentDbReplicaSetArgs, ResourceDocumentDbReplicaSetPtr and ResourceDocumentDbReplicaSetPtrOutput values.
 // You can construct a concrete instance of `ResourceDocumentDbReplicaSetPtrInput` via:
 //
-//          ResourceDocumentDbReplicaSetArgs{...}
+//	        ResourceDocumentDbReplicaSetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceDocumentDbReplicaSetPtrInput interface {
 	pulumi.Input
 
@@ -10455,7 +10530,7 @@ type ResourceDruid struct {
 // ResourceDruidInput is an input type that accepts ResourceDruidArgs and ResourceDruidOutput values.
 // You can construct a concrete instance of `ResourceDruidInput` via:
 //
-//          ResourceDruidArgs{...}
+//	ResourceDruidArgs{...}
 type ResourceDruidInput interface {
 	pulumi.Input
 
@@ -10508,11 +10583,11 @@ func (i ResourceDruidArgs) ToResourceDruidPtrOutputWithContext(ctx context.Conte
 // ResourceDruidPtrInput is an input type that accepts ResourceDruidArgs, ResourceDruidPtr and ResourceDruidPtrOutput values.
 // You can construct a concrete instance of `ResourceDruidPtrInput` via:
 //
-//          ResourceDruidArgs{...}
+//	        ResourceDruidArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceDruidPtrInput interface {
 	pulumi.Input
 
@@ -10809,7 +10884,7 @@ type ResourceDynamoDb struct {
 // ResourceDynamoDbInput is an input type that accepts ResourceDynamoDbArgs and ResourceDynamoDbOutput values.
 // You can construct a concrete instance of `ResourceDynamoDbInput` via:
 //
-//          ResourceDynamoDbArgs{...}
+//	ResourceDynamoDbArgs{...}
 type ResourceDynamoDbInput interface {
 	pulumi.Input
 
@@ -10868,11 +10943,11 @@ func (i ResourceDynamoDbArgs) ToResourceDynamoDbPtrOutputWithContext(ctx context
 // ResourceDynamoDbPtrInput is an input type that accepts ResourceDynamoDbArgs, ResourceDynamoDbPtr and ResourceDynamoDbPtrOutput values.
 // You can construct a concrete instance of `ResourceDynamoDbPtrInput` via:
 //
-//          ResourceDynamoDbArgs{...}
+//	        ResourceDynamoDbArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceDynamoDbPtrInput interface {
 	pulumi.Input
 
@@ -11242,7 +11317,7 @@ type ResourceElastic struct {
 // ResourceElasticInput is an input type that accepts ResourceElasticArgs and ResourceElasticOutput values.
 // You can construct a concrete instance of `ResourceElasticInput` via:
 //
-//          ResourceElasticArgs{...}
+//	ResourceElasticArgs{...}
 type ResourceElasticInput interface {
 	pulumi.Input
 
@@ -11296,11 +11371,11 @@ func (i ResourceElasticArgs) ToResourceElasticPtrOutputWithContext(ctx context.C
 // ResourceElasticPtrInput is an input type that accepts ResourceElasticArgs, ResourceElasticPtr and ResourceElasticPtrOutput values.
 // You can construct a concrete instance of `ResourceElasticPtrInput` via:
 //
-//          ResourceElasticArgs{...}
+//	        ResourceElasticArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceElasticPtrInput interface {
 	pulumi.Input
 
@@ -11602,7 +11677,7 @@ type ResourceElasticacheRedis struct {
 // ResourceElasticacheRedisInput is an input type that accepts ResourceElasticacheRedisArgs and ResourceElasticacheRedisOutput values.
 // You can construct a concrete instance of `ResourceElasticacheRedisInput` via:
 //
-//          ResourceElasticacheRedisArgs{...}
+//	ResourceElasticacheRedisArgs{...}
 type ResourceElasticacheRedisInput interface {
 	pulumi.Input
 
@@ -11653,11 +11728,11 @@ func (i ResourceElasticacheRedisArgs) ToResourceElasticacheRedisPtrOutputWithCon
 // ResourceElasticacheRedisPtrInput is an input type that accepts ResourceElasticacheRedisArgs, ResourceElasticacheRedisPtr and ResourceElasticacheRedisPtrOutput values.
 // You can construct a concrete instance of `ResourceElasticacheRedisPtrInput` via:
 //
-//          ResourceElasticacheRedisArgs{...}
+//	        ResourceElasticacheRedisArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceElasticacheRedisPtrInput interface {
 	pulumi.Input
 
@@ -11917,7 +11992,7 @@ type ResourceGcp struct {
 // ResourceGcpInput is an input type that accepts ResourceGcpArgs and ResourceGcpOutput values.
 // You can construct a concrete instance of `ResourceGcpInput` via:
 //
-//          ResourceGcpArgs{...}
+//	ResourceGcpArgs{...}
 type ResourceGcpInput interface {
 	pulumi.Input
 
@@ -11965,11 +12040,11 @@ func (i ResourceGcpArgs) ToResourceGcpPtrOutputWithContext(ctx context.Context) 
 // ResourceGcpPtrInput is an input type that accepts ResourceGcpArgs, ResourceGcpPtr and ResourceGcpPtrOutput values.
 // You can construct a concrete instance of `ResourceGcpPtrInput` via:
 //
-//          ResourceGcpArgs{...}
+//	        ResourceGcpArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceGcpPtrInput interface {
 	pulumi.Input
 
@@ -12197,7 +12272,7 @@ type ResourceGoogleGke struct {
 // ResourceGoogleGkeInput is an input type that accepts ResourceGoogleGkeArgs and ResourceGoogleGkeOutput values.
 // You can construct a concrete instance of `ResourceGoogleGkeInput` via:
 //
-//          ResourceGoogleGkeArgs{...}
+//	ResourceGoogleGkeArgs{...}
 type ResourceGoogleGkeInput interface {
 	pulumi.Input
 
@@ -12252,11 +12327,11 @@ func (i ResourceGoogleGkeArgs) ToResourceGoogleGkePtrOutputWithContext(ctx conte
 // ResourceGoogleGkePtrInput is an input type that accepts ResourceGoogleGkeArgs, ResourceGoogleGkePtr and ResourceGoogleGkePtrOutput values.
 // You can construct a concrete instance of `ResourceGoogleGkePtrInput` via:
 //
-//          ResourceGoogleGkeArgs{...}
+//	        ResourceGoogleGkeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceGoogleGkePtrInput interface {
 	pulumi.Input
 
@@ -12562,7 +12637,7 @@ type ResourceGoogleGkeUserImpersonation struct {
 // ResourceGoogleGkeUserImpersonationInput is an input type that accepts ResourceGoogleGkeUserImpersonationArgs and ResourceGoogleGkeUserImpersonationOutput values.
 // You can construct a concrete instance of `ResourceGoogleGkeUserImpersonationInput` via:
 //
-//          ResourceGoogleGkeUserImpersonationArgs{...}
+//	ResourceGoogleGkeUserImpersonationArgs{...}
 type ResourceGoogleGkeUserImpersonationInput interface {
 	pulumi.Input
 
@@ -12615,11 +12690,11 @@ func (i ResourceGoogleGkeUserImpersonationArgs) ToResourceGoogleGkeUserImpersona
 // ResourceGoogleGkeUserImpersonationPtrInput is an input type that accepts ResourceGoogleGkeUserImpersonationArgs, ResourceGoogleGkeUserImpersonationPtr and ResourceGoogleGkeUserImpersonationPtrOutput values.
 // You can construct a concrete instance of `ResourceGoogleGkeUserImpersonationPtrInput` via:
 //
-//          ResourceGoogleGkeUserImpersonationArgs{...}
+//	        ResourceGoogleGkeUserImpersonationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceGoogleGkeUserImpersonationPtrInput interface {
 	pulumi.Input
 
@@ -12901,7 +12976,7 @@ type ResourceGreenplum struct {
 // ResourceGreenplumInput is an input type that accepts ResourceGreenplumArgs and ResourceGreenplumOutput values.
 // You can construct a concrete instance of `ResourceGreenplumInput` via:
 //
-//          ResourceGreenplumArgs{...}
+//	ResourceGreenplumArgs{...}
 type ResourceGreenplumInput interface {
 	pulumi.Input
 
@@ -12956,11 +13031,11 @@ func (i ResourceGreenplumArgs) ToResourceGreenplumPtrOutputWithContext(ctx conte
 // ResourceGreenplumPtrInput is an input type that accepts ResourceGreenplumArgs, ResourceGreenplumPtr and ResourceGreenplumPtrOutput values.
 // You can construct a concrete instance of `ResourceGreenplumPtrInput` via:
 //
-//          ResourceGreenplumArgs{...}
+//	        ResourceGreenplumArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceGreenplumPtrInput interface {
 	pulumi.Input
 
@@ -13277,7 +13352,7 @@ type ResourceHttpAuth struct {
 // ResourceHttpAuthInput is an input type that accepts ResourceHttpAuthArgs and ResourceHttpAuthOutput values.
 // You can construct a concrete instance of `ResourceHttpAuthInput` via:
 //
-//          ResourceHttpAuthArgs{...}
+//	ResourceHttpAuthArgs{...}
 type ResourceHttpAuthInput interface {
 	pulumi.Input
 
@@ -13330,11 +13405,11 @@ func (i ResourceHttpAuthArgs) ToResourceHttpAuthPtrOutputWithContext(ctx context
 // ResourceHttpAuthPtrInput is an input type that accepts ResourceHttpAuthArgs, ResourceHttpAuthPtr and ResourceHttpAuthPtrOutput values.
 // You can construct a concrete instance of `ResourceHttpAuthPtrInput` via:
 //
-//          ResourceHttpAuthArgs{...}
+//	        ResourceHttpAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceHttpAuthPtrInput interface {
 	pulumi.Input
 
@@ -13617,7 +13692,7 @@ type ResourceHttpBasicAuth struct {
 // ResourceHttpBasicAuthInput is an input type that accepts ResourceHttpBasicAuthArgs and ResourceHttpBasicAuthOutput values.
 // You can construct a concrete instance of `ResourceHttpBasicAuthInput` via:
 //
-//          ResourceHttpBasicAuthArgs{...}
+//	ResourceHttpBasicAuthArgs{...}
 type ResourceHttpBasicAuthInput interface {
 	pulumi.Input
 
@@ -13673,11 +13748,11 @@ func (i ResourceHttpBasicAuthArgs) ToResourceHttpBasicAuthPtrOutputWithContext(c
 // ResourceHttpBasicAuthPtrInput is an input type that accepts ResourceHttpBasicAuthArgs, ResourceHttpBasicAuthPtr and ResourceHttpBasicAuthPtrOutput values.
 // You can construct a concrete instance of `ResourceHttpBasicAuthPtrInput` via:
 //
-//          ResourceHttpBasicAuthArgs{...}
+//	        ResourceHttpBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceHttpBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -13993,7 +14068,7 @@ type ResourceHttpNoAuth struct {
 // ResourceHttpNoAuthInput is an input type that accepts ResourceHttpNoAuthArgs and ResourceHttpNoAuthOutput values.
 // You can construct a concrete instance of `ResourceHttpNoAuthInput` via:
 //
-//          ResourceHttpNoAuthArgs{...}
+//	ResourceHttpNoAuthArgs{...}
 type ResourceHttpNoAuthInput interface {
 	pulumi.Input
 
@@ -14043,11 +14118,11 @@ func (i ResourceHttpNoAuthArgs) ToResourceHttpNoAuthPtrOutputWithContext(ctx con
 // ResourceHttpNoAuthPtrInput is an input type that accepts ResourceHttpNoAuthArgs, ResourceHttpNoAuthPtr and ResourceHttpNoAuthPtrOutput values.
 // You can construct a concrete instance of `ResourceHttpNoAuthPtrInput` via:
 //
-//          ResourceHttpNoAuthArgs{...}
+//	        ResourceHttpNoAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceHttpNoAuthPtrInput interface {
 	pulumi.Input
 
@@ -14277,6 +14352,7 @@ type ResourceKubernetes struct {
 	// Unique human-readable name of the Resource.
 	Name                                string  `pulumi:"name"`
 	Port                                int     `pulumi:"port"`
+	PortOverride                        *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
@@ -14294,7 +14370,7 @@ type ResourceKubernetes struct {
 // ResourceKubernetesInput is an input type that accepts ResourceKubernetesArgs and ResourceKubernetesOutput values.
 // You can construct a concrete instance of `ResourceKubernetesInput` via:
 //
-//          ResourceKubernetesArgs{...}
+//	ResourceKubernetesArgs{...}
 type ResourceKubernetesInput interface {
 	pulumi.Input
 
@@ -14316,6 +14392,7 @@ type ResourceKubernetesArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                                pulumi.StringInput    `pulumi:"name"`
 	Port                                pulumi.IntInput       `pulumi:"port"`
+	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
@@ -14353,11 +14430,11 @@ func (i ResourceKubernetesArgs) ToResourceKubernetesPtrOutputWithContext(ctx con
 // ResourceKubernetesPtrInput is an input type that accepts ResourceKubernetesArgs, ResourceKubernetesPtr and ResourceKubernetesPtrOutput values.
 // You can construct a concrete instance of `ResourceKubernetesPtrInput` via:
 //
-//          ResourceKubernetesArgs{...}
+//	        ResourceKubernetesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceKubernetesPtrInput interface {
 	pulumi.Input
 
@@ -14445,6 +14522,10 @@ func (o ResourceKubernetesOutput) Name() pulumi.StringOutput {
 
 func (o ResourceKubernetesOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceKubernetes) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceKubernetesOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetes) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o ResourceKubernetesOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
@@ -14598,6 +14679,15 @@ func (o ResourceKubernetesPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceKubernetesPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetes) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceKubernetesPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetes) *string {
 		if v == nil {
@@ -14699,9 +14789,10 @@ type ResourceKubernetesBasicAuth struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	Hostname             string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name     string  `pulumi:"name"`
-	Password *string `pulumi:"password"`
-	Port     int     `pulumi:"port"`
+	Name         string  `pulumi:"name"`
+	Password     *string `pulumi:"password"`
+	Port         int     `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           *string `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
@@ -14716,7 +14807,7 @@ type ResourceKubernetesBasicAuth struct {
 // ResourceKubernetesBasicAuthInput is an input type that accepts ResourceKubernetesBasicAuthArgs and ResourceKubernetesBasicAuthOutput values.
 // You can construct a concrete instance of `ResourceKubernetesBasicAuthInput` via:
 //
-//          ResourceKubernetesBasicAuthArgs{...}
+//	ResourceKubernetesBasicAuthArgs{...}
 type ResourceKubernetesBasicAuthInput interface {
 	pulumi.Input
 
@@ -14733,9 +14824,10 @@ type ResourceKubernetesBasicAuthArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	Hostname             pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name     pulumi.StringInput    `pulumi:"name"`
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.IntInput       `pulumi:"port"`
+	Name         pulumi.StringInput    `pulumi:"name"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
+	Port         pulumi.IntInput       `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
@@ -14770,11 +14862,11 @@ func (i ResourceKubernetesBasicAuthArgs) ToResourceKubernetesBasicAuthPtrOutputW
 // ResourceKubernetesBasicAuthPtrInput is an input type that accepts ResourceKubernetesBasicAuthArgs, ResourceKubernetesBasicAuthPtr and ResourceKubernetesBasicAuthPtrOutput values.
 // You can construct a concrete instance of `ResourceKubernetesBasicAuthPtrInput` via:
 //
-//          ResourceKubernetesBasicAuthArgs{...}
+//	        ResourceKubernetesBasicAuthArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceKubernetesBasicAuthPtrInput interface {
 	pulumi.Input
 
@@ -14854,6 +14946,10 @@ func (o ResourceKubernetesBasicAuthOutput) Password() pulumi.StringPtrOutput {
 
 func (o ResourceKubernetesBasicAuthOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceKubernetesBasicAuth) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceKubernetesBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -14977,6 +15073,15 @@ func (o ResourceKubernetesBasicAuthPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceKubernetesBasicAuthPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesBasicAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *string {
@@ -15053,6 +15158,7 @@ type ResourceKubernetesServiceAccount struct {
 	// Unique human-readable name of the Resource.
 	Name                              string  `pulumi:"name"`
 	Port                              int     `pulumi:"port"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -15068,7 +15174,7 @@ type ResourceKubernetesServiceAccount struct {
 // ResourceKubernetesServiceAccountInput is an input type that accepts ResourceKubernetesServiceAccountArgs and ResourceKubernetesServiceAccountOutput values.
 // You can construct a concrete instance of `ResourceKubernetesServiceAccountInput` via:
 //
-//          ResourceKubernetesServiceAccountArgs{...}
+//	ResourceKubernetesServiceAccountArgs{...}
 type ResourceKubernetesServiceAccountInput interface {
 	pulumi.Input
 
@@ -15087,6 +15193,7 @@ type ResourceKubernetesServiceAccountArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringInput    `pulumi:"name"`
 	Port                              pulumi.IntInput       `pulumi:"port"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -15122,11 +15229,11 @@ func (i ResourceKubernetesServiceAccountArgs) ToResourceKubernetesServiceAccount
 // ResourceKubernetesServiceAccountPtrInput is an input type that accepts ResourceKubernetesServiceAccountArgs, ResourceKubernetesServiceAccountPtr and ResourceKubernetesServiceAccountPtrOutput values.
 // You can construct a concrete instance of `ResourceKubernetesServiceAccountPtrInput` via:
 //
-//          ResourceKubernetesServiceAccountArgs{...}
+//	        ResourceKubernetesServiceAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceKubernetesServiceAccountPtrInput interface {
 	pulumi.Input
 
@@ -15202,6 +15309,10 @@ func (o ResourceKubernetesServiceAccountOutput) Name() pulumi.StringOutput {
 
 func (o ResourceKubernetesServiceAccountOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceKubernetesServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o ResourceKubernetesServiceAccountOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
@@ -15317,6 +15428,15 @@ func (o ResourceKubernetesServiceAccountPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceKubernetesServiceAccountPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceKubernetesServiceAccountPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
 		if v == nil {
@@ -15392,8 +15512,9 @@ type ResourceKubernetesServiceAccountUserImpersonation struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	Hostname             string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name string `pulumi:"name"`
-	Port int    `pulumi:"port"`
+	Name         string `pulumi:"name"`
+	Port         int    `pulumi:"port"`
+	PortOverride *int   `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// * kubernetes_user_impersonation:
@@ -15407,7 +15528,7 @@ type ResourceKubernetesServiceAccountUserImpersonation struct {
 // ResourceKubernetesServiceAccountUserImpersonationInput is an input type that accepts ResourceKubernetesServiceAccountUserImpersonationArgs and ResourceKubernetesServiceAccountUserImpersonationOutput values.
 // You can construct a concrete instance of `ResourceKubernetesServiceAccountUserImpersonationInput` via:
 //
-//          ResourceKubernetesServiceAccountUserImpersonationArgs{...}
+//	ResourceKubernetesServiceAccountUserImpersonationArgs{...}
 type ResourceKubernetesServiceAccountUserImpersonationInput interface {
 	pulumi.Input
 
@@ -15424,8 +15545,9 @@ type ResourceKubernetesServiceAccountUserImpersonationArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	Hostname             pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	Port pulumi.IntInput    `pulumi:"port"`
+	Name         pulumi.StringInput `pulumi:"name"`
+	Port         pulumi.IntInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// * kubernetes_user_impersonation:
@@ -15459,11 +15581,11 @@ func (i ResourceKubernetesServiceAccountUserImpersonationArgs) ToResourceKuberne
 // ResourceKubernetesServiceAccountUserImpersonationPtrInput is an input type that accepts ResourceKubernetesServiceAccountUserImpersonationArgs, ResourceKubernetesServiceAccountUserImpersonationPtr and ResourceKubernetesServiceAccountUserImpersonationPtrOutput values.
 // You can construct a concrete instance of `ResourceKubernetesServiceAccountUserImpersonationPtrInput` via:
 //
-//          ResourceKubernetesServiceAccountUserImpersonationArgs{...}
+//	        ResourceKubernetesServiceAccountUserImpersonationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceKubernetesServiceAccountUserImpersonationPtrInput interface {
 	pulumi.Input
 
@@ -15539,6 +15661,10 @@ func (o ResourceKubernetesServiceAccountUserImpersonationOutput) Name() pulumi.S
 
 func (o ResourceKubernetesServiceAccountUserImpersonationOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceKubernetesServiceAccountUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -15646,6 +15772,15 @@ func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) Port() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccountUserImpersonation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccountUserImpersonation) *string {
@@ -15708,6 +15843,7 @@ type ResourceKubernetesUserImpersonation struct {
 	// Unique human-readable name of the Resource.
 	Name                                string  `pulumi:"name"`
 	Port                                int     `pulumi:"port"`
+	PortOverride                        *int    `pulumi:"portOverride"`
 	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
 	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
 	SecretStoreClientCertificateKey     *string `pulumi:"secretStoreClientCertificateKey"`
@@ -15723,7 +15859,7 @@ type ResourceKubernetesUserImpersonation struct {
 // ResourceKubernetesUserImpersonationInput is an input type that accepts ResourceKubernetesUserImpersonationArgs and ResourceKubernetesUserImpersonationOutput values.
 // You can construct a concrete instance of `ResourceKubernetesUserImpersonationInput` via:
 //
-//          ResourceKubernetesUserImpersonationArgs{...}
+//	ResourceKubernetesUserImpersonationArgs{...}
 type ResourceKubernetesUserImpersonationInput interface {
 	pulumi.Input
 
@@ -15745,6 +15881,7 @@ type ResourceKubernetesUserImpersonationArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                                pulumi.StringInput    `pulumi:"name"`
 	Port                                pulumi.IntInput       `pulumi:"port"`
+	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
 	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
 	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
 	SecretStoreClientCertificateKey     pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
@@ -15780,11 +15917,11 @@ func (i ResourceKubernetesUserImpersonationArgs) ToResourceKubernetesUserImperso
 // ResourceKubernetesUserImpersonationPtrInput is an input type that accepts ResourceKubernetesUserImpersonationArgs, ResourceKubernetesUserImpersonationPtr and ResourceKubernetesUserImpersonationPtrOutput values.
 // You can construct a concrete instance of `ResourceKubernetesUserImpersonationPtrInput` via:
 //
-//          ResourceKubernetesUserImpersonationArgs{...}
+//	        ResourceKubernetesUserImpersonationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceKubernetesUserImpersonationPtrInput interface {
 	pulumi.Input
 
@@ -15872,6 +16009,10 @@ func (o ResourceKubernetesUserImpersonationOutput) Name() pulumi.StringOutput {
 
 func (o ResourceKubernetesUserImpersonationOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o ResourceKubernetesUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o ResourceKubernetesUserImpersonationOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
@@ -16017,6 +16158,15 @@ func (o ResourceKubernetesUserImpersonationPtrOutput) Port() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceKubernetesUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
 		if v == nil {
@@ -16117,7 +16267,7 @@ type ResourceMaria struct {
 // ResourceMariaInput is an input type that accepts ResourceMariaArgs and ResourceMariaOutput values.
 // You can construct a concrete instance of `ResourceMariaInput` via:
 //
-//          ResourceMariaArgs{...}
+//	ResourceMariaArgs{...}
 type ResourceMariaInput interface {
 	pulumi.Input
 
@@ -16171,11 +16321,11 @@ func (i ResourceMariaArgs) ToResourceMariaPtrOutputWithContext(ctx context.Conte
 // ResourceMariaPtrInput is an input type that accepts ResourceMariaArgs, ResourceMariaPtr and ResourceMariaPtrOutput values.
 // You can construct a concrete instance of `ResourceMariaPtrInput` via:
 //
-//          ResourceMariaArgs{...}
+//	        ResourceMariaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMariaPtrInput interface {
 	pulumi.Input
 
@@ -16473,7 +16623,7 @@ type ResourceMemcached struct {
 // ResourceMemcachedInput is an input type that accepts ResourceMemcachedArgs and ResourceMemcachedOutput values.
 // You can construct a concrete instance of `ResourceMemcachedInput` via:
 //
-//          ResourceMemcachedArgs{...}
+//	ResourceMemcachedArgs{...}
 type ResourceMemcachedInput interface {
 	pulumi.Input
 
@@ -16520,11 +16670,11 @@ func (i ResourceMemcachedArgs) ToResourceMemcachedPtrOutputWithContext(ctx conte
 // ResourceMemcachedPtrInput is an input type that accepts ResourceMemcachedArgs, ResourceMemcachedPtr and ResourceMemcachedPtrOutput values.
 // You can construct a concrete instance of `ResourceMemcachedPtrInput` via:
 //
-//          ResourceMemcachedArgs{...}
+//	        ResourceMemcachedArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMemcachedPtrInput interface {
 	pulumi.Input
 
@@ -16738,7 +16888,7 @@ type ResourceMemsql struct {
 // ResourceMemsqlInput is an input type that accepts ResourceMemsqlArgs and ResourceMemsqlOutput values.
 // You can construct a concrete instance of `ResourceMemsqlInput` via:
 //
-//          ResourceMemsqlArgs{...}
+//	ResourceMemsqlArgs{...}
 type ResourceMemsqlInput interface {
 	pulumi.Input
 
@@ -16792,11 +16942,11 @@ func (i ResourceMemsqlArgs) ToResourceMemsqlPtrOutputWithContext(ctx context.Con
 // ResourceMemsqlPtrInput is an input type that accepts ResourceMemsqlArgs, ResourceMemsqlPtr and ResourceMemsqlPtrOutput values.
 // You can construct a concrete instance of `ResourceMemsqlPtrInput` via:
 //
-//          ResourceMemsqlArgs{...}
+//	        ResourceMemsqlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMemsqlPtrInput interface {
 	pulumi.Input
 
@@ -17102,7 +17252,7 @@ type ResourceMongoHost struct {
 // ResourceMongoHostInput is an input type that accepts ResourceMongoHostArgs and ResourceMongoHostOutput values.
 // You can construct a concrete instance of `ResourceMongoHostInput` via:
 //
-//          ResourceMongoHostArgs{...}
+//	ResourceMongoHostArgs{...}
 type ResourceMongoHostInput interface {
 	pulumi.Input
 
@@ -17157,11 +17307,11 @@ func (i ResourceMongoHostArgs) ToResourceMongoHostPtrOutputWithContext(ctx conte
 // ResourceMongoHostPtrInput is an input type that accepts ResourceMongoHostArgs, ResourceMongoHostPtr and ResourceMongoHostPtrOutput values.
 // You can construct a concrete instance of `ResourceMongoHostPtrInput` via:
 //
-//          ResourceMongoHostArgs{...}
+//	        ResourceMongoHostArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMongoHostPtrInput interface {
 	pulumi.Input
 
@@ -17481,7 +17631,7 @@ type ResourceMongoLegacyHost struct {
 // ResourceMongoLegacyHostInput is an input type that accepts ResourceMongoLegacyHostArgs and ResourceMongoLegacyHostOutput values.
 // You can construct a concrete instance of `ResourceMongoLegacyHostInput` via:
 //
-//          ResourceMongoLegacyHostArgs{...}
+//	ResourceMongoLegacyHostArgs{...}
 type ResourceMongoLegacyHostInput interface {
 	pulumi.Input
 
@@ -17537,11 +17687,11 @@ func (i ResourceMongoLegacyHostArgs) ToResourceMongoLegacyHostPtrOutputWithConte
 // ResourceMongoLegacyHostPtrInput is an input type that accepts ResourceMongoLegacyHostArgs, ResourceMongoLegacyHostPtr and ResourceMongoLegacyHostPtrOutput values.
 // You can construct a concrete instance of `ResourceMongoLegacyHostPtrInput` via:
 //
-//          ResourceMongoLegacyHostArgs{...}
+//	        ResourceMongoLegacyHostArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMongoLegacyHostPtrInput interface {
 	pulumi.Input
 
@@ -17875,7 +18025,7 @@ type ResourceMongoLegacyReplicaset struct {
 // ResourceMongoLegacyReplicasetInput is an input type that accepts ResourceMongoLegacyReplicasetArgs and ResourceMongoLegacyReplicasetOutput values.
 // You can construct a concrete instance of `ResourceMongoLegacyReplicasetInput` via:
 //
-//          ResourceMongoLegacyReplicasetArgs{...}
+//	ResourceMongoLegacyReplicasetArgs{...}
 type ResourceMongoLegacyReplicasetInput interface {
 	pulumi.Input
 
@@ -17932,11 +18082,11 @@ func (i ResourceMongoLegacyReplicasetArgs) ToResourceMongoLegacyReplicasetPtrOut
 // ResourceMongoLegacyReplicasetPtrInput is an input type that accepts ResourceMongoLegacyReplicasetArgs, ResourceMongoLegacyReplicasetPtr and ResourceMongoLegacyReplicasetPtrOutput values.
 // You can construct a concrete instance of `ResourceMongoLegacyReplicasetPtrInput` via:
 //
-//          ResourceMongoLegacyReplicasetArgs{...}
+//	        ResourceMongoLegacyReplicasetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMongoLegacyReplicasetPtrInput interface {
 	pulumi.Input
 
@@ -18283,7 +18433,7 @@ type ResourceMongoReplicaSet struct {
 // ResourceMongoReplicaSetInput is an input type that accepts ResourceMongoReplicaSetArgs and ResourceMongoReplicaSetOutput values.
 // You can construct a concrete instance of `ResourceMongoReplicaSetInput` via:
 //
-//          ResourceMongoReplicaSetArgs{...}
+//	ResourceMongoReplicaSetArgs{...}
 type ResourceMongoReplicaSetInput interface {
 	pulumi.Input
 
@@ -18340,11 +18490,11 @@ func (i ResourceMongoReplicaSetArgs) ToResourceMongoReplicaSetPtrOutputWithConte
 // ResourceMongoReplicaSetPtrInput is an input type that accepts ResourceMongoReplicaSetArgs, ResourceMongoReplicaSetPtr and ResourceMongoReplicaSetPtrOutput values.
 // You can construct a concrete instance of `ResourceMongoReplicaSetPtrInput` via:
 //
-//          ResourceMongoReplicaSetArgs{...}
+//	        ResourceMongoReplicaSetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMongoReplicaSetPtrInput interface {
 	pulumi.Input
 
@@ -18688,7 +18838,7 @@ type ResourceMongoShardedCluster struct {
 // ResourceMongoShardedClusterInput is an input type that accepts ResourceMongoShardedClusterArgs and ResourceMongoShardedClusterOutput values.
 // You can construct a concrete instance of `ResourceMongoShardedClusterInput` via:
 //
-//          ResourceMongoShardedClusterArgs{...}
+//	ResourceMongoShardedClusterArgs{...}
 type ResourceMongoShardedClusterInput interface {
 	pulumi.Input
 
@@ -18742,11 +18892,11 @@ func (i ResourceMongoShardedClusterArgs) ToResourceMongoShardedClusterPtrOutputW
 // ResourceMongoShardedClusterPtrInput is an input type that accepts ResourceMongoShardedClusterArgs, ResourceMongoShardedClusterPtr and ResourceMongoShardedClusterPtrOutput values.
 // You can construct a concrete instance of `ResourceMongoShardedClusterPtrInput` via:
 //
-//          ResourceMongoShardedClusterArgs{...}
+//	        ResourceMongoShardedClusterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMongoShardedClusterPtrInput interface {
 	pulumi.Input
 
@@ -19061,7 +19211,7 @@ type ResourceMtlsMysql struct {
 // ResourceMtlsMysqlInput is an input type that accepts ResourceMtlsMysqlArgs and ResourceMtlsMysqlOutput values.
 // You can construct a concrete instance of `ResourceMtlsMysqlInput` via:
 //
-//          ResourceMtlsMysqlArgs{...}
+//	ResourceMtlsMysqlArgs{...}
 type ResourceMtlsMysqlInput interface {
 	pulumi.Input
 
@@ -19125,11 +19275,11 @@ func (i ResourceMtlsMysqlArgs) ToResourceMtlsMysqlPtrOutputWithContext(ctx conte
 // ResourceMtlsMysqlPtrInput is an input type that accepts ResourceMtlsMysqlArgs, ResourceMtlsMysqlPtr and ResourceMtlsMysqlPtrOutput values.
 // You can construct a concrete instance of `ResourceMtlsMysqlPtrInput` via:
 //
-//          ResourceMtlsMysqlArgs{...}
+//	        ResourceMtlsMysqlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMtlsMysqlPtrInput interface {
 	pulumi.Input
 
@@ -19575,7 +19725,7 @@ type ResourceMtlsPostgres struct {
 // ResourceMtlsPostgresInput is an input type that accepts ResourceMtlsPostgresArgs and ResourceMtlsPostgresOutput values.
 // You can construct a concrete instance of `ResourceMtlsPostgresInput` via:
 //
-//          ResourceMtlsPostgresArgs{...}
+//	ResourceMtlsPostgresArgs{...}
 type ResourceMtlsPostgresInput interface {
 	pulumi.Input
 
@@ -19640,11 +19790,11 @@ func (i ResourceMtlsPostgresArgs) ToResourceMtlsPostgresPtrOutputWithContext(ctx
 // ResourceMtlsPostgresPtrInput is an input type that accepts ResourceMtlsPostgresArgs, ResourceMtlsPostgresPtr and ResourceMtlsPostgresPtrOutput values.
 // You can construct a concrete instance of `ResourceMtlsPostgresPtrInput` via:
 //
-//          ResourceMtlsPostgresArgs{...}
+//	        ResourceMtlsPostgresArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMtlsPostgresPtrInput interface {
 	pulumi.Input
 
@@ -20092,7 +20242,7 @@ type ResourceMysql struct {
 // ResourceMysqlInput is an input type that accepts ResourceMysqlArgs and ResourceMysqlOutput values.
 // You can construct a concrete instance of `ResourceMysqlInput` via:
 //
-//          ResourceMysqlArgs{...}
+//	ResourceMysqlArgs{...}
 type ResourceMysqlInput interface {
 	pulumi.Input
 
@@ -20146,11 +20296,11 @@ func (i ResourceMysqlArgs) ToResourceMysqlPtrOutputWithContext(ctx context.Conte
 // ResourceMysqlPtrInput is an input type that accepts ResourceMysqlArgs, ResourceMysqlPtr and ResourceMysqlPtrOutput values.
 // You can construct a concrete instance of `ResourceMysqlPtrInput` via:
 //
-//          ResourceMysqlArgs{...}
+//	        ResourceMysqlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceMysqlPtrInput interface {
 	pulumi.Input
 
@@ -20448,7 +20598,7 @@ type ResourceNeptune struct {
 // ResourceNeptuneInput is an input type that accepts ResourceNeptuneArgs and ResourceNeptuneOutput values.
 // You can construct a concrete instance of `ResourceNeptuneInput` via:
 //
-//          ResourceNeptuneArgs{...}
+//	ResourceNeptuneArgs{...}
 type ResourceNeptuneInput interface {
 	pulumi.Input
 
@@ -20495,11 +20645,11 @@ func (i ResourceNeptuneArgs) ToResourceNeptunePtrOutputWithContext(ctx context.C
 // ResourceNeptunePtrInput is an input type that accepts ResourceNeptuneArgs, ResourceNeptunePtr and ResourceNeptunePtrOutput values.
 // You can construct a concrete instance of `ResourceNeptunePtrInput` via:
 //
-//          ResourceNeptuneArgs{...}
+//	        ResourceNeptuneArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceNeptunePtrInput interface {
 	pulumi.Input
 
@@ -20719,7 +20869,7 @@ type ResourceNeptuneIam struct {
 // ResourceNeptuneIamInput is an input type that accepts ResourceNeptuneIamArgs and ResourceNeptuneIamOutput values.
 // You can construct a concrete instance of `ResourceNeptuneIamInput` via:
 //
-//          ResourceNeptuneIamArgs{...}
+//	ResourceNeptuneIamArgs{...}
 type ResourceNeptuneIamInput interface {
 	pulumi.Input
 
@@ -20779,11 +20929,11 @@ func (i ResourceNeptuneIamArgs) ToResourceNeptuneIamPtrOutputWithContext(ctx con
 // ResourceNeptuneIamPtrInput is an input type that accepts ResourceNeptuneIamArgs, ResourceNeptuneIamPtr and ResourceNeptuneIamPtrOutput values.
 // You can construct a concrete instance of `ResourceNeptuneIamPtrInput` via:
 //
-//          ResourceNeptuneIamArgs{...}
+//	        ResourceNeptuneIamArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceNeptuneIamPtrInput interface {
 	pulumi.Input
 
@@ -21167,7 +21317,7 @@ type ResourceOracle struct {
 // ResourceOracleInput is an input type that accepts ResourceOracleArgs and ResourceOracleOutput values.
 // You can construct a concrete instance of `ResourceOracleInput` via:
 //
-//          ResourceOracleArgs{...}
+//	ResourceOracleArgs{...}
 type ResourceOracleInput interface {
 	pulumi.Input
 
@@ -21222,11 +21372,11 @@ func (i ResourceOracleArgs) ToResourceOraclePtrOutputWithContext(ctx context.Con
 // ResourceOraclePtrInput is an input type that accepts ResourceOracleArgs, ResourceOraclePtr and ResourceOraclePtrOutput values.
 // You can construct a concrete instance of `ResourceOraclePtrInput` via:
 //
-//          ResourceOracleArgs{...}
+//	        ResourceOracleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceOraclePtrInput interface {
 	pulumi.Input
 
@@ -21545,7 +21695,7 @@ type ResourcePostgres struct {
 // ResourcePostgresInput is an input type that accepts ResourcePostgresArgs and ResourcePostgresOutput values.
 // You can construct a concrete instance of `ResourcePostgresInput` via:
 //
-//          ResourcePostgresArgs{...}
+//	ResourcePostgresArgs{...}
 type ResourcePostgresInput interface {
 	pulumi.Input
 
@@ -21600,11 +21750,11 @@ func (i ResourcePostgresArgs) ToResourcePostgresPtrOutputWithContext(ctx context
 // ResourcePostgresPtrInput is an input type that accepts ResourcePostgresArgs, ResourcePostgresPtr and ResourcePostgresPtrOutput values.
 // You can construct a concrete instance of `ResourcePostgresPtrInput` via:
 //
-//          ResourcePostgresArgs{...}
+//	        ResourcePostgresArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourcePostgresPtrInput interface {
 	pulumi.Input
 
@@ -21921,7 +22071,7 @@ type ResourcePresto struct {
 // ResourcePrestoInput is an input type that accepts ResourcePrestoArgs and ResourcePrestoOutput values.
 // You can construct a concrete instance of `ResourcePrestoInput` via:
 //
-//          ResourcePrestoArgs{...}
+//	ResourcePrestoArgs{...}
 type ResourcePrestoInput interface {
 	pulumi.Input
 
@@ -21974,11 +22124,11 @@ func (i ResourcePrestoArgs) ToResourcePrestoPtrOutputWithContext(ctx context.Con
 // ResourcePrestoPtrInput is an input type that accepts ResourcePrestoArgs, ResourcePrestoPtr and ResourcePrestoPtrOutput values.
 // You can construct a concrete instance of `ResourcePrestoPtrInput` via:
 //
-//          ResourcePrestoArgs{...}
+//	        ResourcePrestoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourcePrestoPtrInput interface {
 	pulumi.Input
 
@@ -22270,7 +22420,7 @@ type ResourceRabbitmqAmqp091 struct {
 // ResourceRabbitmqAmqp091Input is an input type that accepts ResourceRabbitmqAmqp091Args and ResourceRabbitmqAmqp091Output values.
 // You can construct a concrete instance of `ResourceRabbitmqAmqp091Input` via:
 //
-//          ResourceRabbitmqAmqp091Args{...}
+//	ResourceRabbitmqAmqp091Args{...}
 type ResourceRabbitmqAmqp091Input interface {
 	pulumi.Input
 
@@ -22324,11 +22474,11 @@ func (i ResourceRabbitmqAmqp091Args) ToResourceRabbitmqAmqp091PtrOutputWithConte
 // ResourceRabbitmqAmqp091PtrInput is an input type that accepts ResourceRabbitmqAmqp091Args, ResourceRabbitmqAmqp091Ptr and ResourceRabbitmqAmqp091PtrOutput values.
 // You can construct a concrete instance of `ResourceRabbitmqAmqp091PtrInput` via:
 //
-//          ResourceRabbitmqAmqp091Args{...}
+//	        ResourceRabbitmqAmqp091Args{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceRabbitmqAmqp091PtrInput interface {
 	pulumi.Input
 
@@ -22626,7 +22776,7 @@ type ResourceRawTcp struct {
 // ResourceRawTcpInput is an input type that accepts ResourceRawTcpArgs and ResourceRawTcpOutput values.
 // You can construct a concrete instance of `ResourceRawTcpInput` via:
 //
-//          ResourceRawTcpArgs{...}
+//	ResourceRawTcpArgs{...}
 type ResourceRawTcpInput interface {
 	pulumi.Input
 
@@ -22673,11 +22823,11 @@ func (i ResourceRawTcpArgs) ToResourceRawTcpPtrOutputWithContext(ctx context.Con
 // ResourceRawTcpPtrInput is an input type that accepts ResourceRawTcpArgs, ResourceRawTcpPtr and ResourceRawTcpPtrOutput values.
 // You can construct a concrete instance of `ResourceRawTcpPtrInput` via:
 //
-//          ResourceRawTcpArgs{...}
+//	        ResourceRawTcpArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceRawTcpPtrInput interface {
 	pulumi.Input
 
@@ -22891,7 +23041,7 @@ type ResourceRdp struct {
 // ResourceRdpInput is an input type that accepts ResourceRdpArgs and ResourceRdpOutput values.
 // You can construct a concrete instance of `ResourceRdpInput` via:
 //
-//          ResourceRdpArgs{...}
+//	ResourceRdpArgs{...}
 type ResourceRdpInput interface {
 	pulumi.Input
 
@@ -22945,11 +23095,11 @@ func (i ResourceRdpArgs) ToResourceRdpPtrOutputWithContext(ctx context.Context) 
 // ResourceRdpPtrInput is an input type that accepts ResourceRdpArgs, ResourceRdpPtr and ResourceRdpPtrOutput values.
 // You can construct a concrete instance of `ResourceRdpPtrInput` via:
 //
-//          ResourceRdpArgs{...}
+//	        ResourceRdpArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceRdpPtrInput interface {
 	pulumi.Input
 
@@ -23250,7 +23400,7 @@ type ResourceRedis struct {
 // ResourceRedisInput is an input type that accepts ResourceRedisArgs and ResourceRedisOutput values.
 // You can construct a concrete instance of `ResourceRedisInput` via:
 //
-//          ResourceRedisArgs{...}
+//	ResourceRedisArgs{...}
 type ResourceRedisInput interface {
 	pulumi.Input
 
@@ -23300,11 +23450,11 @@ func (i ResourceRedisArgs) ToResourceRedisPtrOutputWithContext(ctx context.Conte
 // ResourceRedisPtrInput is an input type that accepts ResourceRedisArgs, ResourceRedisPtr and ResourceRedisPtrOutput values.
 // You can construct a concrete instance of `ResourceRedisPtrInput` via:
 //
-//          ResourceRedisArgs{...}
+//	        ResourceRedisArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceRedisPtrInput interface {
 	pulumi.Input
 
@@ -23558,7 +23708,7 @@ type ResourceRedshift struct {
 // ResourceRedshiftInput is an input type that accepts ResourceRedshiftArgs and ResourceRedshiftOutput values.
 // You can construct a concrete instance of `ResourceRedshiftInput` via:
 //
-//          ResourceRedshiftArgs{...}
+//	ResourceRedshiftArgs{...}
 type ResourceRedshiftInput interface {
 	pulumi.Input
 
@@ -23613,11 +23763,11 @@ func (i ResourceRedshiftArgs) ToResourceRedshiftPtrOutputWithContext(ctx context
 // ResourceRedshiftPtrInput is an input type that accepts ResourceRedshiftArgs, ResourceRedshiftPtr and ResourceRedshiftPtrOutput values.
 // You can construct a concrete instance of `ResourceRedshiftPtrInput` via:
 //
-//          ResourceRedshiftArgs{...}
+//	        ResourceRedshiftArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceRedshiftPtrInput interface {
 	pulumi.Input
 
@@ -23935,7 +24085,7 @@ type ResourceSingleStore struct {
 // ResourceSingleStoreInput is an input type that accepts ResourceSingleStoreArgs and ResourceSingleStoreOutput values.
 // You can construct a concrete instance of `ResourceSingleStoreInput` via:
 //
-//          ResourceSingleStoreArgs{...}
+//	ResourceSingleStoreArgs{...}
 type ResourceSingleStoreInput interface {
 	pulumi.Input
 
@@ -23989,11 +24139,11 @@ func (i ResourceSingleStoreArgs) ToResourceSingleStorePtrOutputWithContext(ctx c
 // ResourceSingleStorePtrInput is an input type that accepts ResourceSingleStoreArgs, ResourceSingleStorePtr and ResourceSingleStorePtrOutput values.
 // You can construct a concrete instance of `ResourceSingleStorePtrInput` via:
 //
-//          ResourceSingleStoreArgs{...}
+//	        ResourceSingleStoreArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSingleStorePtrInput interface {
 	pulumi.Input
 
@@ -24298,7 +24448,7 @@ type ResourceSnowflake struct {
 // ResourceSnowflakeInput is an input type that accepts ResourceSnowflakeArgs and ResourceSnowflakeOutput values.
 // You can construct a concrete instance of `ResourceSnowflakeInput` via:
 //
-//          ResourceSnowflakeArgs{...}
+//	ResourceSnowflakeArgs{...}
 type ResourceSnowflakeInput interface {
 	pulumi.Input
 
@@ -24352,11 +24502,11 @@ func (i ResourceSnowflakeArgs) ToResourceSnowflakePtrOutputWithContext(ctx conte
 // ResourceSnowflakePtrInput is an input type that accepts ResourceSnowflakeArgs, ResourceSnowflakePtr and ResourceSnowflakePtrOutput values.
 // You can construct a concrete instance of `ResourceSnowflakePtrInput` via:
 //
-//          ResourceSnowflakeArgs{...}
+//	        ResourceSnowflakeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSnowflakePtrInput interface {
 	pulumi.Input
 
@@ -24663,7 +24813,7 @@ type ResourceSqlServer struct {
 // ResourceSqlServerInput is an input type that accepts ResourceSqlServerArgs and ResourceSqlServerOutput values.
 // You can construct a concrete instance of `ResourceSqlServerInput` via:
 //
-//          ResourceSqlServerArgs{...}
+//	ResourceSqlServerArgs{...}
 type ResourceSqlServerInput interface {
 	pulumi.Input
 
@@ -24719,11 +24869,11 @@ func (i ResourceSqlServerArgs) ToResourceSqlServerPtrOutputWithContext(ctx conte
 // ResourceSqlServerPtrInput is an input type that accepts ResourceSqlServerArgs, ResourceSqlServerPtr and ResourceSqlServerPtrOutput values.
 // You can construct a concrete instance of `ResourceSqlServerPtrInput` via:
 //
-//          ResourceSqlServerArgs{...}
+//	        ResourceSqlServerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSqlServerPtrInput interface {
 	pulumi.Input
 
@@ -25037,12 +25187,11 @@ type ResourceSsh struct {
 	Hostname     string  `pulumi:"hostname"`
 	KeyType      *string `pulumi:"keyType"`
 	// Unique human-readable name of the Resource.
-	Name           string `pulumi:"name"`
-	Port           int    `pulumi:"port"`
-	PortForwarding *bool  `pulumi:"portForwarding"`
-	PortOverride   *int   `pulumi:"portOverride"`
-	// * ssh_cert:
-	PublicKey *string `pulumi:"publicKey"`
+	Name           string  `pulumi:"name"`
+	Port           int     `pulumi:"port"`
+	PortForwarding *bool   `pulumi:"portForwarding"`
+	PortOverride   *int    `pulumi:"portOverride"`
+	PublicKey      *string `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           *string `pulumi:"secretStoreId"`
 	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
@@ -25055,7 +25204,7 @@ type ResourceSsh struct {
 // ResourceSshInput is an input type that accepts ResourceSshArgs and ResourceSshOutput values.
 // You can construct a concrete instance of `ResourceSshInput` via:
 //
-//          ResourceSshArgs{...}
+//	ResourceSshArgs{...}
 type ResourceSshInput interface {
 	pulumi.Input
 
@@ -25072,12 +25221,11 @@ type ResourceSshArgs struct {
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	KeyType      pulumi.StringPtrInput `pulumi:"keyType"`
 	// Unique human-readable name of the Resource.
-	Name           pulumi.StringInput  `pulumi:"name"`
-	Port           pulumi.IntInput     `pulumi:"port"`
-	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
-	PortOverride   pulumi.IntPtrInput  `pulumi:"portOverride"`
-	// * ssh_cert:
-	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	Name           pulumi.StringInput    `pulumi:"name"`
+	Port           pulumi.IntInput       `pulumi:"port"`
+	PortForwarding pulumi.BoolPtrInput   `pulumi:"portForwarding"`
+	PortOverride   pulumi.IntPtrInput    `pulumi:"portOverride"`
+	PublicKey      pulumi.StringPtrInput `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
@@ -25110,11 +25258,11 @@ func (i ResourceSshArgs) ToResourceSshPtrOutputWithContext(ctx context.Context) 
 // ResourceSshPtrInput is an input type that accepts ResourceSshArgs, ResourceSshPtr and ResourceSshPtrOutput values.
 // You can construct a concrete instance of `ResourceSshPtrInput` via:
 //
-//          ResourceSshArgs{...}
+//	        ResourceSshArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSshPtrInput interface {
 	pulumi.Input
 
@@ -25203,7 +25351,6 @@ func (o ResourceSshOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSsh) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
-// * ssh_cert:
 func (o ResourceSshOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSsh) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
@@ -25338,7 +25485,6 @@ func (o ResourceSshPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// * ssh_cert:
 func (o ResourceSshPtrOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSsh) *string {
 		if v == nil {
@@ -25422,7 +25568,7 @@ type ResourceSshCert struct {
 // ResourceSshCertInput is an input type that accepts ResourceSshCertArgs and ResourceSshCertOutput values.
 // You can construct a concrete instance of `ResourceSshCertInput` via:
 //
-//          ResourceSshCertArgs{...}
+//	ResourceSshCertArgs{...}
 type ResourceSshCertInput interface {
 	pulumi.Input
 
@@ -25477,11 +25623,11 @@ func (i ResourceSshCertArgs) ToResourceSshCertPtrOutputWithContext(ctx context.C
 // ResourceSshCertPtrInput is an input type that accepts ResourceSshCertArgs, ResourceSshCertPtr and ResourceSshCertPtrOutput values.
 // You can construct a concrete instance of `ResourceSshCertPtrInput` via:
 //
-//          ResourceSshCertArgs{...}
+//	        ResourceSshCertArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSshCertPtrInput interface {
 	pulumi.Input
 
@@ -25800,7 +25946,7 @@ type ResourceSshCustomerKey struct {
 // ResourceSshCustomerKeyInput is an input type that accepts ResourceSshCustomerKeyArgs and ResourceSshCustomerKeyOutput values.
 // You can construct a concrete instance of `ResourceSshCustomerKeyInput` via:
 //
-//          ResourceSshCustomerKeyArgs{...}
+//	ResourceSshCustomerKeyArgs{...}
 type ResourceSshCustomerKeyInput interface {
 	pulumi.Input
 
@@ -25855,11 +26001,11 @@ func (i ResourceSshCustomerKeyArgs) ToResourceSshCustomerKeyPtrOutputWithContext
 // ResourceSshCustomerKeyPtrInput is an input type that accepts ResourceSshCustomerKeyArgs, ResourceSshCustomerKeyPtr and ResourceSshCustomerKeyPtrOutput values.
 // You can construct a concrete instance of `ResourceSshCustomerKeyPtrInput` via:
 //
-//          ResourceSshCustomerKeyArgs{...}
+//	        ResourceSshCustomerKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSshCustomerKeyPtrInput interface {
 	pulumi.Input
 
@@ -26176,7 +26322,7 @@ type ResourceSybase struct {
 // ResourceSybaseInput is an input type that accepts ResourceSybaseArgs and ResourceSybaseOutput values.
 // You can construct a concrete instance of `ResourceSybaseInput` via:
 //
-//          ResourceSybaseArgs{...}
+//	ResourceSybaseArgs{...}
 type ResourceSybaseInput interface {
 	pulumi.Input
 
@@ -26229,11 +26375,11 @@ func (i ResourceSybaseArgs) ToResourceSybasePtrOutputWithContext(ctx context.Con
 // ResourceSybasePtrInput is an input type that accepts ResourceSybaseArgs, ResourceSybasePtr and ResourceSybasePtrOutput values.
 // You can construct a concrete instance of `ResourceSybasePtrInput` via:
 //
-//          ResourceSybaseArgs{...}
+//	        ResourceSybaseArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSybasePtrInput interface {
 	pulumi.Input
 
@@ -26524,7 +26670,7 @@ type ResourceSybaseIq struct {
 // ResourceSybaseIqInput is an input type that accepts ResourceSybaseIqArgs and ResourceSybaseIqOutput values.
 // You can construct a concrete instance of `ResourceSybaseIqInput` via:
 //
-//          ResourceSybaseIqArgs{...}
+//	ResourceSybaseIqArgs{...}
 type ResourceSybaseIqInput interface {
 	pulumi.Input
 
@@ -26577,11 +26723,11 @@ func (i ResourceSybaseIqArgs) ToResourceSybaseIqPtrOutputWithContext(ctx context
 // ResourceSybaseIqPtrInput is an input type that accepts ResourceSybaseIqArgs, ResourceSybaseIqPtr and ResourceSybaseIqPtrOutput values.
 // You can construct a concrete instance of `ResourceSybaseIqPtrInput` via:
 //
-//          ResourceSybaseIqArgs{...}
+//	        ResourceSybaseIqArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSybaseIqPtrInput interface {
 	pulumi.Input
 
@@ -26872,7 +27018,7 @@ type ResourceTeradata struct {
 // ResourceTeradataInput is an input type that accepts ResourceTeradataArgs and ResourceTeradataOutput values.
 // You can construct a concrete instance of `ResourceTeradataInput` via:
 //
-//          ResourceTeradataArgs{...}
+//	ResourceTeradataArgs{...}
 type ResourceTeradataInput interface {
 	pulumi.Input
 
@@ -26925,11 +27071,11 @@ func (i ResourceTeradataArgs) ToResourceTeradataPtrOutputWithContext(ctx context
 // ResourceTeradataPtrInput is an input type that accepts ResourceTeradataArgs, ResourceTeradataPtr and ResourceTeradataPtrOutput values.
 // You can construct a concrete instance of `ResourceTeradataPtrInput` via:
 //
-//          ResourceTeradataArgs{...}
+//	        ResourceTeradataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceTeradataPtrInput interface {
 	pulumi.Input
 
@@ -27206,7 +27352,7 @@ type SecretStoreAws struct {
 // SecretStoreAwsInput is an input type that accepts SecretStoreAwsArgs and SecretStoreAwsOutput values.
 // You can construct a concrete instance of `SecretStoreAwsInput` via:
 //
-//          SecretStoreAwsArgs{...}
+//	SecretStoreAwsArgs{...}
 type SecretStoreAwsInput interface {
 	pulumi.Input
 
@@ -27245,11 +27391,11 @@ func (i SecretStoreAwsArgs) ToSecretStoreAwsPtrOutputWithContext(ctx context.Con
 // SecretStoreAwsPtrInput is an input type that accepts SecretStoreAwsArgs, SecretStoreAwsPtr and SecretStoreAwsPtrOutput values.
 // You can construct a concrete instance of `SecretStoreAwsPtrInput` via:
 //
-//          SecretStoreAwsArgs{...}
+//	        SecretStoreAwsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretStoreAwsPtrInput interface {
 	pulumi.Input
 
@@ -27378,7 +27524,7 @@ type SecretStoreAzureStore struct {
 // SecretStoreAzureStoreInput is an input type that accepts SecretStoreAzureStoreArgs and SecretStoreAzureStoreOutput values.
 // You can construct a concrete instance of `SecretStoreAzureStoreInput` via:
 //
-//          SecretStoreAzureStoreArgs{...}
+//	SecretStoreAzureStoreArgs{...}
 type SecretStoreAzureStoreInput interface {
 	pulumi.Input
 
@@ -27418,11 +27564,11 @@ func (i SecretStoreAzureStoreArgs) ToSecretStoreAzureStorePtrOutputWithContext(c
 // SecretStoreAzureStorePtrInput is an input type that accepts SecretStoreAzureStoreArgs, SecretStoreAzureStorePtr and SecretStoreAzureStorePtrOutput values.
 // You can construct a concrete instance of `SecretStoreAzureStorePtrInput` via:
 //
-//          SecretStoreAzureStoreArgs{...}
+//	        SecretStoreAzureStoreArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretStoreAzureStorePtrInput interface {
 	pulumi.Input
 
@@ -27552,7 +27698,7 @@ type SecretStoreGcpStore struct {
 // SecretStoreGcpStoreInput is an input type that accepts SecretStoreGcpStoreArgs and SecretStoreGcpStoreOutput values.
 // You can construct a concrete instance of `SecretStoreGcpStoreInput` via:
 //
-//          SecretStoreGcpStoreArgs{...}
+//	SecretStoreGcpStoreArgs{...}
 type SecretStoreGcpStoreInput interface {
 	pulumi.Input
 
@@ -27591,11 +27737,11 @@ func (i SecretStoreGcpStoreArgs) ToSecretStoreGcpStorePtrOutputWithContext(ctx c
 // SecretStoreGcpStorePtrInput is an input type that accepts SecretStoreGcpStoreArgs, SecretStoreGcpStorePtr and SecretStoreGcpStorePtrOutput values.
 // You can construct a concrete instance of `SecretStoreGcpStorePtrInput` via:
 //
-//          SecretStoreGcpStoreArgs{...}
+//	        SecretStoreGcpStoreArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretStoreGcpStorePtrInput interface {
 	pulumi.Input
 
@@ -27724,7 +27870,7 @@ type SecretStoreVaultApprole struct {
 // SecretStoreVaultApproleInput is an input type that accepts SecretStoreVaultApproleArgs and SecretStoreVaultApproleOutput values.
 // You can construct a concrete instance of `SecretStoreVaultApproleInput` via:
 //
-//          SecretStoreVaultApproleArgs{...}
+//	SecretStoreVaultApproleArgs{...}
 type SecretStoreVaultApproleInput interface {
 	pulumi.Input
 
@@ -27764,11 +27910,11 @@ func (i SecretStoreVaultApproleArgs) ToSecretStoreVaultApprolePtrOutputWithConte
 // SecretStoreVaultApprolePtrInput is an input type that accepts SecretStoreVaultApproleArgs, SecretStoreVaultApprolePtr and SecretStoreVaultApprolePtrOutput values.
 // You can construct a concrete instance of `SecretStoreVaultApprolePtrInput` via:
 //
-//          SecretStoreVaultApproleArgs{...}
+//	        SecretStoreVaultApproleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretStoreVaultApprolePtrInput interface {
 	pulumi.Input
 
@@ -27913,7 +28059,7 @@ type SecretStoreVaultTls struct {
 // SecretStoreVaultTlsInput is an input type that accepts SecretStoreVaultTlsArgs and SecretStoreVaultTlsOutput values.
 // You can construct a concrete instance of `SecretStoreVaultTlsInput` via:
 //
-//          SecretStoreVaultTlsArgs{...}
+//	SecretStoreVaultTlsArgs{...}
 type SecretStoreVaultTlsInput interface {
 	pulumi.Input
 
@@ -27956,11 +28102,11 @@ func (i SecretStoreVaultTlsArgs) ToSecretStoreVaultTlsPtrOutputWithContext(ctx c
 // SecretStoreVaultTlsPtrInput is an input type that accepts SecretStoreVaultTlsArgs, SecretStoreVaultTlsPtr and SecretStoreVaultTlsPtrOutput values.
 // You can construct a concrete instance of `SecretStoreVaultTlsPtrInput` via:
 //
-//          SecretStoreVaultTlsArgs{...}
+//	        SecretStoreVaultTlsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretStoreVaultTlsPtrInput interface {
 	pulumi.Input
 
@@ -28141,7 +28287,7 @@ type SecretStoreVaultToken struct {
 // SecretStoreVaultTokenInput is an input type that accepts SecretStoreVaultTokenArgs and SecretStoreVaultTokenOutput values.
 // You can construct a concrete instance of `SecretStoreVaultTokenInput` via:
 //
-//          SecretStoreVaultTokenArgs{...}
+//	SecretStoreVaultTokenArgs{...}
 type SecretStoreVaultTokenInput interface {
 	pulumi.Input
 
@@ -28181,11 +28327,11 @@ func (i SecretStoreVaultTokenArgs) ToSecretStoreVaultTokenPtrOutputWithContext(c
 // SecretStoreVaultTokenPtrInput is an input type that accepts SecretStoreVaultTokenArgs, SecretStoreVaultTokenPtr and SecretStoreVaultTokenPtrOutput values.
 // You can construct a concrete instance of `SecretStoreVaultTokenPtrInput` via:
 //
-//          SecretStoreVaultTokenArgs{...}
+//	        SecretStoreVaultTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretStoreVaultTokenPtrInput interface {
 	pulumi.Input
 
@@ -28323,7 +28469,7 @@ type GetAccountAccount struct {
 // GetAccountAccountInput is an input type that accepts GetAccountAccountArgs and GetAccountAccountOutput values.
 // You can construct a concrete instance of `GetAccountAccountInput` via:
 //
-//          GetAccountAccountArgs{...}
+//	GetAccountAccountArgs{...}
 type GetAccountAccountInput interface {
 	pulumi.Input
 
@@ -28351,7 +28497,7 @@ func (i GetAccountAccountArgs) ToGetAccountAccountOutputWithContext(ctx context.
 // GetAccountAccountArrayInput is an input type that accepts GetAccountAccountArray and GetAccountAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountAccountArrayInput` via:
 //
-//          GetAccountAccountArray{ GetAccountAccountArgs{...} }
+//	GetAccountAccountArray{ GetAccountAccountArgs{...} }
 type GetAccountAccountArrayInput interface {
 	pulumi.Input
 
@@ -28429,7 +28575,7 @@ type GetAccountAccountService struct {
 // GetAccountAccountServiceInput is an input type that accepts GetAccountAccountServiceArgs and GetAccountAccountServiceOutput values.
 // You can construct a concrete instance of `GetAccountAccountServiceInput` via:
 //
-//          GetAccountAccountServiceArgs{...}
+//	GetAccountAccountServiceArgs{...}
 type GetAccountAccountServiceInput interface {
 	pulumi.Input
 
@@ -28463,7 +28609,7 @@ func (i GetAccountAccountServiceArgs) ToGetAccountAccountServiceOutputWithContex
 // GetAccountAccountServiceArrayInput is an input type that accepts GetAccountAccountServiceArray and GetAccountAccountServiceArrayOutput values.
 // You can construct a concrete instance of `GetAccountAccountServiceArrayInput` via:
 //
-//          GetAccountAccountServiceArray{ GetAccountAccountServiceArgs{...} }
+//	GetAccountAccountServiceArray{ GetAccountAccountServiceArgs{...} }
 type GetAccountAccountServiceArrayInput interface {
 	pulumi.Input
 
@@ -28557,7 +28703,7 @@ type GetAccountAccountUser struct {
 // GetAccountAccountUserInput is an input type that accepts GetAccountAccountUserArgs and GetAccountAccountUserOutput values.
 // You can construct a concrete instance of `GetAccountAccountUserInput` via:
 //
-//          GetAccountAccountUserArgs{...}
+//	GetAccountAccountUserArgs{...}
 type GetAccountAccountUserInput interface {
 	pulumi.Input
 
@@ -28595,7 +28741,7 @@ func (i GetAccountAccountUserArgs) ToGetAccountAccountUserOutputWithContext(ctx 
 // GetAccountAccountUserArrayInput is an input type that accepts GetAccountAccountUserArray and GetAccountAccountUserArrayOutput values.
 // You can construct a concrete instance of `GetAccountAccountUserArrayInput` via:
 //
-//          GetAccountAccountUserArray{ GetAccountAccountUserArgs{...} }
+//	GetAccountAccountUserArray{ GetAccountAccountUserArgs{...} }
 type GetAccountAccountUserArrayInput interface {
 	pulumi.Input
 
@@ -28693,7 +28839,7 @@ type GetAccountAttachmentAccountAttachment struct {
 // GetAccountAttachmentAccountAttachmentInput is an input type that accepts GetAccountAttachmentAccountAttachmentArgs and GetAccountAttachmentAccountAttachmentOutput values.
 // You can construct a concrete instance of `GetAccountAttachmentAccountAttachmentInput` via:
 //
-//          GetAccountAttachmentAccountAttachmentArgs{...}
+//	GetAccountAttachmentAccountAttachmentArgs{...}
 type GetAccountAttachmentAccountAttachmentInput interface {
 	pulumi.Input
 
@@ -28725,7 +28871,7 @@ func (i GetAccountAttachmentAccountAttachmentArgs) ToGetAccountAttachmentAccount
 // GetAccountAttachmentAccountAttachmentArrayInput is an input type that accepts GetAccountAttachmentAccountAttachmentArray and GetAccountAttachmentAccountAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetAccountAttachmentAccountAttachmentArrayInput` via:
 //
-//          GetAccountAttachmentAccountAttachmentArray{ GetAccountAttachmentAccountAttachmentArgs{...} }
+//	GetAccountAttachmentAccountAttachmentArray{ GetAccountAttachmentAccountAttachmentArgs{...} }
 type GetAccountAttachmentAccountAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -28796,121 +28942,6 @@ func (o GetAccountAttachmentAccountAttachmentArrayOutput) Index(i pulumi.IntInpu
 	}).(GetAccountAttachmentAccountAttachmentOutput)
 }
 
-type GetAccountGrantAccountGrant struct {
-	// The account id of this AccountGrant.
-	AccountId *string `pulumi:"accountId"`
-	// Unique identifier of the AccountGrant.
-	Id *string `pulumi:"id"`
-	// The resource id of this AccountGrant.
-	ResourceId *string `pulumi:"resourceId"`
-}
-
-// GetAccountGrantAccountGrantInput is an input type that accepts GetAccountGrantAccountGrantArgs and GetAccountGrantAccountGrantOutput values.
-// You can construct a concrete instance of `GetAccountGrantAccountGrantInput` via:
-//
-//          GetAccountGrantAccountGrantArgs{...}
-type GetAccountGrantAccountGrantInput interface {
-	pulumi.Input
-
-	ToGetAccountGrantAccountGrantOutput() GetAccountGrantAccountGrantOutput
-	ToGetAccountGrantAccountGrantOutputWithContext(context.Context) GetAccountGrantAccountGrantOutput
-}
-
-type GetAccountGrantAccountGrantArgs struct {
-	// The account id of this AccountGrant.
-	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
-	// Unique identifier of the AccountGrant.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The resource id of this AccountGrant.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-}
-
-func (GetAccountGrantAccountGrantArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountGrantAccountGrant)(nil)).Elem()
-}
-
-func (i GetAccountGrantAccountGrantArgs) ToGetAccountGrantAccountGrantOutput() GetAccountGrantAccountGrantOutput {
-	return i.ToGetAccountGrantAccountGrantOutputWithContext(context.Background())
-}
-
-func (i GetAccountGrantAccountGrantArgs) ToGetAccountGrantAccountGrantOutputWithContext(ctx context.Context) GetAccountGrantAccountGrantOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountGrantAccountGrantOutput)
-}
-
-// GetAccountGrantAccountGrantArrayInput is an input type that accepts GetAccountGrantAccountGrantArray and GetAccountGrantAccountGrantArrayOutput values.
-// You can construct a concrete instance of `GetAccountGrantAccountGrantArrayInput` via:
-//
-//          GetAccountGrantAccountGrantArray{ GetAccountGrantAccountGrantArgs{...} }
-type GetAccountGrantAccountGrantArrayInput interface {
-	pulumi.Input
-
-	ToGetAccountGrantAccountGrantArrayOutput() GetAccountGrantAccountGrantArrayOutput
-	ToGetAccountGrantAccountGrantArrayOutputWithContext(context.Context) GetAccountGrantAccountGrantArrayOutput
-}
-
-type GetAccountGrantAccountGrantArray []GetAccountGrantAccountGrantInput
-
-func (GetAccountGrantAccountGrantArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAccountGrantAccountGrant)(nil)).Elem()
-}
-
-func (i GetAccountGrantAccountGrantArray) ToGetAccountGrantAccountGrantArrayOutput() GetAccountGrantAccountGrantArrayOutput {
-	return i.ToGetAccountGrantAccountGrantArrayOutputWithContext(context.Background())
-}
-
-func (i GetAccountGrantAccountGrantArray) ToGetAccountGrantAccountGrantArrayOutputWithContext(ctx context.Context) GetAccountGrantAccountGrantArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetAccountGrantAccountGrantArrayOutput)
-}
-
-type GetAccountGrantAccountGrantOutput struct{ *pulumi.OutputState }
-
-func (GetAccountGrantAccountGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountGrantAccountGrant)(nil)).Elem()
-}
-
-func (o GetAccountGrantAccountGrantOutput) ToGetAccountGrantAccountGrantOutput() GetAccountGrantAccountGrantOutput {
-	return o
-}
-
-func (o GetAccountGrantAccountGrantOutput) ToGetAccountGrantAccountGrantOutputWithContext(ctx context.Context) GetAccountGrantAccountGrantOutput {
-	return o
-}
-
-// The account id of this AccountGrant.
-func (o GetAccountGrantAccountGrantOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountGrantAccountGrant) *string { return v.AccountId }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the AccountGrant.
-func (o GetAccountGrantAccountGrantOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountGrantAccountGrant) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The resource id of this AccountGrant.
-func (o GetAccountGrantAccountGrantOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountGrantAccountGrant) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-type GetAccountGrantAccountGrantArrayOutput struct{ *pulumi.OutputState }
-
-func (GetAccountGrantAccountGrantArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetAccountGrantAccountGrant)(nil)).Elem()
-}
-
-func (o GetAccountGrantAccountGrantArrayOutput) ToGetAccountGrantAccountGrantArrayOutput() GetAccountGrantAccountGrantArrayOutput {
-	return o
-}
-
-func (o GetAccountGrantAccountGrantArrayOutput) ToGetAccountGrantAccountGrantArrayOutputWithContext(ctx context.Context) GetAccountGrantAccountGrantArrayOutput {
-	return o
-}
-
-func (o GetAccountGrantAccountGrantArrayOutput) Index(i pulumi.IntInput) GetAccountGrantAccountGrantOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountGrantAccountGrant {
-		return vs[0].([]GetAccountGrantAccountGrant)[vs[1].(int)]
-	}).(GetAccountGrantAccountGrantOutput)
-}
-
 type GetNodeNode struct {
 	Gateways []GetNodeNodeGateway `pulumi:"gateways"`
 	Relays   []GetNodeNodeRelay   `pulumi:"relays"`
@@ -28919,7 +28950,7 @@ type GetNodeNode struct {
 // GetNodeNodeInput is an input type that accepts GetNodeNodeArgs and GetNodeNodeOutput values.
 // You can construct a concrete instance of `GetNodeNodeInput` via:
 //
-//          GetNodeNodeArgs{...}
+//	GetNodeNodeArgs{...}
 type GetNodeNodeInput interface {
 	pulumi.Input
 
@@ -28947,7 +28978,7 @@ func (i GetNodeNodeArgs) ToGetNodeNodeOutputWithContext(ctx context.Context) Get
 // GetNodeNodeArrayInput is an input type that accepts GetNodeNodeArray and GetNodeNodeArrayOutput values.
 // You can construct a concrete instance of `GetNodeNodeArrayInput` via:
 //
-//          GetNodeNodeArray{ GetNodeNodeArgs{...} }
+//	GetNodeNodeArray{ GetNodeNodeArgs{...} }
 type GetNodeNodeArrayInput interface {
 	pulumi.Input
 
@@ -29029,7 +29060,7 @@ type GetNodeNodeGateway struct {
 // GetNodeNodeGatewayInput is an input type that accepts GetNodeNodeGatewayArgs and GetNodeNodeGatewayOutput values.
 // You can construct a concrete instance of `GetNodeNodeGatewayInput` via:
 //
-//          GetNodeNodeGatewayArgs{...}
+//	GetNodeNodeGatewayArgs{...}
 type GetNodeNodeGatewayInput interface {
 	pulumi.Input
 
@@ -29067,7 +29098,7 @@ func (i GetNodeNodeGatewayArgs) ToGetNodeNodeGatewayOutputWithContext(ctx contex
 // GetNodeNodeGatewayArrayInput is an input type that accepts GetNodeNodeGatewayArray and GetNodeNodeGatewayArrayOutput values.
 // You can construct a concrete instance of `GetNodeNodeGatewayArrayInput` via:
 //
-//          GetNodeNodeGatewayArray{ GetNodeNodeGatewayArgs{...} }
+//	GetNodeNodeGatewayArray{ GetNodeNodeGatewayArgs{...} }
 type GetNodeNodeGatewayArrayInput interface {
 	pulumi.Input
 
@@ -29167,7 +29198,7 @@ type GetNodeNodeRelay struct {
 // GetNodeNodeRelayInput is an input type that accepts GetNodeNodeRelayArgs and GetNodeNodeRelayOutput values.
 // You can construct a concrete instance of `GetNodeNodeRelayInput` via:
 //
-//          GetNodeNodeRelayArgs{...}
+//	GetNodeNodeRelayArgs{...}
 type GetNodeNodeRelayInput interface {
 	pulumi.Input
 
@@ -29201,7 +29232,7 @@ func (i GetNodeNodeRelayArgs) ToGetNodeNodeRelayOutputWithContext(ctx context.Co
 // GetNodeNodeRelayArrayInput is an input type that accepts GetNodeNodeRelayArray and GetNodeNodeRelayArrayOutput values.
 // You can construct a concrete instance of `GetNodeNodeRelayArrayInput` via:
 //
-//          GetNodeNodeRelayArray{ GetNodeNodeRelayArgs{...} }
+//	GetNodeNodeRelayArray{ GetNodeNodeRelayArgs{...} }
 type GetNodeNodeRelayArrayInput interface {
 	pulumi.Input
 
@@ -29287,7 +29318,7 @@ type GetRemoteIdentityGroupRemoteIdentityGroup struct {
 // GetRemoteIdentityGroupRemoteIdentityGroupInput is an input type that accepts GetRemoteIdentityGroupRemoteIdentityGroupArgs and GetRemoteIdentityGroupRemoteIdentityGroupOutput values.
 // You can construct a concrete instance of `GetRemoteIdentityGroupRemoteIdentityGroupInput` via:
 //
-//          GetRemoteIdentityGroupRemoteIdentityGroupArgs{...}
+//	GetRemoteIdentityGroupRemoteIdentityGroupArgs{...}
 type GetRemoteIdentityGroupRemoteIdentityGroupInput interface {
 	pulumi.Input
 
@@ -29317,7 +29348,7 @@ func (i GetRemoteIdentityGroupRemoteIdentityGroupArgs) ToGetRemoteIdentityGroupR
 // GetRemoteIdentityGroupRemoteIdentityGroupArrayInput is an input type that accepts GetRemoteIdentityGroupRemoteIdentityGroupArray and GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput values.
 // You can construct a concrete instance of `GetRemoteIdentityGroupRemoteIdentityGroupArrayInput` via:
 //
-//          GetRemoteIdentityGroupRemoteIdentityGroupArray{ GetRemoteIdentityGroupRemoteIdentityGroupArgs{...} }
+//	GetRemoteIdentityGroupRemoteIdentityGroupArray{ GetRemoteIdentityGroupRemoteIdentityGroupArgs{...} }
 type GetRemoteIdentityGroupRemoteIdentityGroupArrayInput interface {
 	pulumi.Input
 
@@ -29397,7 +29428,7 @@ type GetRemoteIdentityRemoteIdentity struct {
 // GetRemoteIdentityRemoteIdentityInput is an input type that accepts GetRemoteIdentityRemoteIdentityArgs and GetRemoteIdentityRemoteIdentityOutput values.
 // You can construct a concrete instance of `GetRemoteIdentityRemoteIdentityInput` via:
 //
-//          GetRemoteIdentityRemoteIdentityArgs{...}
+//	GetRemoteIdentityRemoteIdentityArgs{...}
 type GetRemoteIdentityRemoteIdentityInput interface {
 	pulumi.Input
 
@@ -29431,7 +29462,7 @@ func (i GetRemoteIdentityRemoteIdentityArgs) ToGetRemoteIdentityRemoteIdentityOu
 // GetRemoteIdentityRemoteIdentityArrayInput is an input type that accepts GetRemoteIdentityRemoteIdentityArray and GetRemoteIdentityRemoteIdentityArrayOutput values.
 // You can construct a concrete instance of `GetRemoteIdentityRemoteIdentityArrayInput` via:
 //
-//          GetRemoteIdentityRemoteIdentityArray{ GetRemoteIdentityRemoteIdentityArgs{...} }
+//	GetRemoteIdentityRemoteIdentityArray{ GetRemoteIdentityRemoteIdentityArgs{...} }
 type GetRemoteIdentityRemoteIdentityArrayInput interface {
 	pulumi.Input
 
@@ -29584,7 +29615,7 @@ type GetResourceResource struct {
 // GetResourceResourceInput is an input type that accepts GetResourceResourceArgs and GetResourceResourceOutput values.
 // You can construct a concrete instance of `GetResourceResourceInput` via:
 //
-//          GetResourceResourceArgs{...}
+//	GetResourceResourceArgs{...}
 type GetResourceResourceInput interface {
 	pulumi.Input
 
@@ -29681,7 +29712,7 @@ func (i GetResourceResourceArgs) ToGetResourceResourceOutputWithContext(ctx cont
 // GetResourceResourceArrayInput is an input type that accepts GetResourceResourceArray and GetResourceResourceArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceArrayInput` via:
 //
-//          GetResourceResourceArray{ GetResourceResourceArgs{...} }
+//	GetResourceResourceArray{ GetResourceResourceArgs{...} }
 type GetResourceResourceArrayInput interface {
 	pulumi.Input
 
@@ -30051,6 +30082,7 @@ type GetResourceResourceAk struct {
 	// Unique human-readable name of the Resource.
 	Name                              *string `pulumi:"name"`
 	Port                              *int    `pulumi:"port"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -30062,7 +30094,7 @@ type GetResourceResourceAk struct {
 // GetResourceResourceAkInput is an input type that accepts GetResourceResourceAkArgs and GetResourceResourceAkOutput values.
 // You can construct a concrete instance of `GetResourceResourceAkInput` via:
 //
-//          GetResourceResourceAkArgs{...}
+//	GetResourceResourceAkArgs{...}
 type GetResourceResourceAkInput interface {
 	pulumi.Input
 
@@ -30086,6 +30118,7 @@ type GetResourceResourceAkArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringPtrInput `pulumi:"name"`
 	Port                              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -30109,7 +30142,7 @@ func (i GetResourceResourceAkArgs) ToGetResourceResourceAkOutputWithContext(ctx 
 // GetResourceResourceAkArrayInput is an input type that accepts GetResourceResourceAkArray and GetResourceResourceAkArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAkArrayInput` via:
 //
-//          GetResourceResourceAkArray{ GetResourceResourceAkArgs{...} }
+//	GetResourceResourceAkArray{ GetResourceResourceAkArgs{...} }
 type GetResourceResourceAkArrayInput interface {
 	pulumi.Input
 
@@ -30190,6 +30223,10 @@ func (o GetResourceResourceAkOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAk) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceAkOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAk) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o GetResourceResourceAkOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
 }
@@ -30239,9 +30276,10 @@ type GetResourceResourceAksBasicAuth struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name     *string `pulumi:"name"`
-	Password *string `pulumi:"password"`
-	Port     *int    `pulumi:"port"`
+	Name         *string `pulumi:"name"`
+	Password     *string `pulumi:"password"`
+	Port         *int    `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -30252,7 +30290,7 @@ type GetResourceResourceAksBasicAuth struct {
 // GetResourceResourceAksBasicAuthInput is an input type that accepts GetResourceResourceAksBasicAuthArgs and GetResourceResourceAksBasicAuthOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksBasicAuthInput` via:
 //
-//          GetResourceResourceAksBasicAuthArgs{...}
+//	GetResourceResourceAksBasicAuthArgs{...}
 type GetResourceResourceAksBasicAuthInput interface {
 	pulumi.Input
 
@@ -30271,9 +30309,10 @@ type GetResourceResourceAksBasicAuthArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name     pulumi.StringPtrInput `pulumi:"name"`
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -30296,7 +30335,7 @@ func (i GetResourceResourceAksBasicAuthArgs) ToGetResourceResourceAksBasicAuthOu
 // GetResourceResourceAksBasicAuthArrayInput is an input type that accepts GetResourceResourceAksBasicAuthArray and GetResourceResourceAksBasicAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksBasicAuthArrayInput` via:
 //
-//          GetResourceResourceAksBasicAuthArray{ GetResourceResourceAksBasicAuthArgs{...} }
+//	GetResourceResourceAksBasicAuthArray{ GetResourceResourceAksBasicAuthArgs{...} }
 type GetResourceResourceAksBasicAuthArrayInput interface {
 	pulumi.Input
 
@@ -30369,6 +30408,10 @@ func (o GetResourceResourceAksBasicAuthOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksBasicAuth) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceAksBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAksBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -30416,6 +30459,7 @@ type GetResourceResourceAksServiceAccount struct {
 	// Unique human-readable name of the Resource.
 	Name                              *string `pulumi:"name"`
 	Port                              *int    `pulumi:"port"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -30429,7 +30473,7 @@ type GetResourceResourceAksServiceAccount struct {
 // GetResourceResourceAksServiceAccountInput is an input type that accepts GetResourceResourceAksServiceAccountArgs and GetResourceResourceAksServiceAccountOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksServiceAccountInput` via:
 //
-//          GetResourceResourceAksServiceAccountArgs{...}
+//	GetResourceResourceAksServiceAccountArgs{...}
 type GetResourceResourceAksServiceAccountInput interface {
 	pulumi.Input
 
@@ -30450,6 +30494,7 @@ type GetResourceResourceAksServiceAccountArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringPtrInput `pulumi:"name"`
 	Port                              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -30475,7 +30520,7 @@ func (i GetResourceResourceAksServiceAccountArgs) ToGetResourceResourceAksServic
 // GetResourceResourceAksServiceAccountArrayInput is an input type that accepts GetResourceResourceAksServiceAccountArray and GetResourceResourceAksServiceAccountArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksServiceAccountArrayInput` via:
 //
-//          GetResourceResourceAksServiceAccountArray{ GetResourceResourceAksServiceAccountArgs{...} }
+//	GetResourceResourceAksServiceAccountArray{ GetResourceResourceAksServiceAccountArgs{...} }
 type GetResourceResourceAksServiceAccountArrayInput interface {
 	pulumi.Input
 
@@ -30544,6 +30589,10 @@ func (o GetResourceResourceAksServiceAccountOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceAksServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o GetResourceResourceAksServiceAccountOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
 }
@@ -30598,8 +30647,9 @@ type GetResourceResourceAksServiceAccountUserImpersonation struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name *string `pulumi:"name"`
-	Port *int    `pulumi:"port"`
+	Name         *string `pulumi:"name"`
+	Port         *int    `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -30611,7 +30661,7 @@ type GetResourceResourceAksServiceAccountUserImpersonation struct {
 // GetResourceResourceAksServiceAccountUserImpersonationInput is an input type that accepts GetResourceResourceAksServiceAccountUserImpersonationArgs and GetResourceResourceAksServiceAccountUserImpersonationOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksServiceAccountUserImpersonationInput` via:
 //
-//          GetResourceResourceAksServiceAccountUserImpersonationArgs{...}
+//	GetResourceResourceAksServiceAccountUserImpersonationArgs{...}
 type GetResourceResourceAksServiceAccountUserImpersonationInput interface {
 	pulumi.Input
 
@@ -30630,8 +30680,9 @@ type GetResourceResourceAksServiceAccountUserImpersonationArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Port pulumi.IntPtrInput    `pulumi:"port"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -30655,7 +30706,7 @@ func (i GetResourceResourceAksServiceAccountUserImpersonationArgs) ToGetResource
 // GetResourceResourceAksServiceAccountUserImpersonationArrayInput is an input type that accepts GetResourceResourceAksServiceAccountUserImpersonationArray and GetResourceResourceAksServiceAccountUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksServiceAccountUserImpersonationArrayInput` via:
 //
-//          GetResourceResourceAksServiceAccountUserImpersonationArray{ GetResourceResourceAksServiceAccountUserImpersonationArgs{...} }
+//	GetResourceResourceAksServiceAccountUserImpersonationArray{ GetResourceResourceAksServiceAccountUserImpersonationArgs{...} }
 type GetResourceResourceAksServiceAccountUserImpersonationArrayInput interface {
 	pulumi.Input
 
@@ -30724,6 +30775,10 @@ func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) Port() pulu
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccountUserImpersonation) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccountUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccountUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -30773,8 +30828,9 @@ type GetResourceResourceAksUserImpersonation struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name *string `pulumi:"name"`
-	Port *int    `pulumi:"port"`
+	Name         *string `pulumi:"name"`
+	Port         *int    `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -30784,7 +30840,7 @@ type GetResourceResourceAksUserImpersonation struct {
 // GetResourceResourceAksUserImpersonationInput is an input type that accepts GetResourceResourceAksUserImpersonationArgs and GetResourceResourceAksUserImpersonationOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksUserImpersonationInput` via:
 //
-//          GetResourceResourceAksUserImpersonationArgs{...}
+//	GetResourceResourceAksUserImpersonationArgs{...}
 type GetResourceResourceAksUserImpersonationInput interface {
 	pulumi.Input
 
@@ -30806,8 +30862,9 @@ type GetResourceResourceAksUserImpersonationArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Port pulumi.IntPtrInput    `pulumi:"port"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -30829,7 +30886,7 @@ func (i GetResourceResourceAksUserImpersonationArgs) ToGetResourceResourceAksUse
 // GetResourceResourceAksUserImpersonationArrayInput is an input type that accepts GetResourceResourceAksUserImpersonationArray and GetResourceResourceAksUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksUserImpersonationArrayInput` via:
 //
-//          GetResourceResourceAksUserImpersonationArray{ GetResourceResourceAksUserImpersonationArgs{...} }
+//	GetResourceResourceAksUserImpersonationArray{ GetResourceResourceAksUserImpersonationArgs{...} }
 type GetResourceResourceAksUserImpersonationArrayInput interface {
 	pulumi.Input
 
@@ -30910,6 +30967,10 @@ func (o GetResourceResourceAksUserImpersonationOutput) Port() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v GetResourceResourceAksUserImpersonation) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceAksUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAksUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -30951,7 +31012,7 @@ type GetResourceResourceAmazonE struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name            *string `pulumi:"name"`
-	PortOverride    int     `pulumi:"portOverride"`
+	PortOverride    *int    `pulumi:"portOverride"`
 	Region          *string `pulumi:"region"`
 	RoleArn         *string `pulumi:"roleArn"`
 	RoleExternalId  *string `pulumi:"roleExternalId"`
@@ -30965,7 +31026,7 @@ type GetResourceResourceAmazonE struct {
 // GetResourceResourceAmazonEInput is an input type that accepts GetResourceResourceAmazonEArgs and GetResourceResourceAmazonEOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEInput` via:
 //
-//          GetResourceResourceAmazonEArgs{...}
+//	GetResourceResourceAmazonEArgs{...}
 type GetResourceResourceAmazonEInput interface {
 	pulumi.Input
 
@@ -30984,7 +31045,7 @@ type GetResourceResourceAmazonEArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name            pulumi.StringPtrInput `pulumi:"name"`
-	PortOverride    pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region          pulumi.StringPtrInput `pulumi:"region"`
 	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
 	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
@@ -31010,7 +31071,7 @@ func (i GetResourceResourceAmazonEArgs) ToGetResourceResourceAmazonEOutputWithCo
 // GetResourceResourceAmazonEArrayInput is an input type that accepts GetResourceResourceAmazonEArray and GetResourceResourceAmazonEArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEArrayInput` via:
 //
-//          GetResourceResourceAmazonEArray{ GetResourceResourceAmazonEArgs{...} }
+//	GetResourceResourceAmazonEArray{ GetResourceResourceAmazonEArgs{...} }
 type GetResourceResourceAmazonEArrayInput interface {
 	pulumi.Input
 
@@ -31074,8 +31135,8 @@ func (o GetResourceResourceAmazonEOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonE) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o GetResourceResourceAmazonEOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceAmazonE) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceAmazonEOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonE) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceAmazonEOutput) Region() pulumi.StringPtrOutput {
@@ -31154,7 +31215,7 @@ type GetResourceResourceAmazonEk struct {
 // GetResourceResourceAmazonEkInput is an input type that accepts GetResourceResourceAmazonEkArgs and GetResourceResourceAmazonEkOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEkInput` via:
 //
-//          GetResourceResourceAmazonEkArgs{...}
+//	GetResourceResourceAmazonEkArgs{...}
 type GetResourceResourceAmazonEkInput interface {
 	pulumi.Input
 
@@ -31204,7 +31265,7 @@ func (i GetResourceResourceAmazonEkArgs) ToGetResourceResourceAmazonEkOutputWith
 // GetResourceResourceAmazonEkArrayInput is an input type that accepts GetResourceResourceAmazonEkArray and GetResourceResourceAmazonEkArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEkArrayInput` via:
 //
-//          GetResourceResourceAmazonEkArray{ GetResourceResourceAmazonEkArgs{...} }
+//	GetResourceResourceAmazonEkArray{ GetResourceResourceAmazonEkArgs{...} }
 type GetResourceResourceAmazonEkArrayInput interface {
 	pulumi.Input
 
@@ -31363,7 +31424,7 @@ type GetResourceResourceAmazonEksUserImpersonation struct {
 // GetResourceResourceAmazonEksUserImpersonationInput is an input type that accepts GetResourceResourceAmazonEksUserImpersonationArgs and GetResourceResourceAmazonEksUserImpersonationOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEksUserImpersonationInput` via:
 //
-//          GetResourceResourceAmazonEksUserImpersonationArgs{...}
+//	GetResourceResourceAmazonEksUserImpersonationArgs{...}
 type GetResourceResourceAmazonEksUserImpersonationInput interface {
 	pulumi.Input
 
@@ -31411,7 +31472,7 @@ func (i GetResourceResourceAmazonEksUserImpersonationArgs) ToGetResourceResource
 // GetResourceResourceAmazonEksUserImpersonationArrayInput is an input type that accepts GetResourceResourceAmazonEksUserImpersonationArray and GetResourceResourceAmazonEksUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEksUserImpersonationArrayInput` via:
 //
-//          GetResourceResourceAmazonEksUserImpersonationArray{ GetResourceResourceAmazonEksUserImpersonationArgs{...} }
+//	GetResourceResourceAmazonEksUserImpersonationArray{ GetResourceResourceAmazonEksUserImpersonationArgs{...} }
 type GetResourceResourceAmazonEksUserImpersonationArrayInput interface {
 	pulumi.Input
 
@@ -31546,7 +31607,7 @@ type GetResourceResourceAmazonmqAmqp091 struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -31558,7 +31619,7 @@ type GetResourceResourceAmazonmqAmqp091 struct {
 // GetResourceResourceAmazonmqAmqp091Input is an input type that accepts GetResourceResourceAmazonmqAmqp091Args and GetResourceResourceAmazonmqAmqp091Output values.
 // You can construct a concrete instance of `GetResourceResourceAmazonmqAmqp091Input` via:
 //
-//          GetResourceResourceAmazonmqAmqp091Args{...}
+//	GetResourceResourceAmazonmqAmqp091Args{...}
 type GetResourceResourceAmazonmqAmqp091Input interface {
 	pulumi.Input
 
@@ -31578,7 +31639,7 @@ type GetResourceResourceAmazonmqAmqp091Args struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -31602,7 +31663,7 @@ func (i GetResourceResourceAmazonmqAmqp091Args) ToGetResourceResourceAmazonmqAmq
 // GetResourceResourceAmazonmqAmqp091ArrayInput is an input type that accepts GetResourceResourceAmazonmqAmqp091Array and GetResourceResourceAmazonmqAmqp091ArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonmqAmqp091ArrayInput` via:
 //
-//          GetResourceResourceAmazonmqAmqp091Array{ GetResourceResourceAmazonmqAmqp091Args{...} }
+//	GetResourceResourceAmazonmqAmqp091Array{ GetResourceResourceAmazonmqAmqp091Args{...} }
 type GetResourceResourceAmazonmqAmqp091ArrayInput interface {
 	pulumi.Input
 
@@ -31670,8 +31731,8 @@ func (o GetResourceResourceAmazonmqAmqp091Output) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp091) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceAmazonmqAmqp091Output) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp091) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceAmazonmqAmqp091Output) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp091) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -31723,7 +31784,7 @@ type GetResourceResourceAthena struct {
 	// Unique human-readable name of the Resource.
 	Name            *string `pulumi:"name"`
 	Output          *string `pulumi:"output"`
-	PortOverride    int     `pulumi:"portOverride"`
+	PortOverride    *int    `pulumi:"portOverride"`
 	Region          *string `pulumi:"region"`
 	RoleArn         *string `pulumi:"roleArn"`
 	RoleExternalId  *string `pulumi:"roleExternalId"`
@@ -31737,7 +31798,7 @@ type GetResourceResourceAthena struct {
 // GetResourceResourceAthenaInput is an input type that accepts GetResourceResourceAthenaArgs and GetResourceResourceAthenaOutput values.
 // You can construct a concrete instance of `GetResourceResourceAthenaInput` via:
 //
-//          GetResourceResourceAthenaArgs{...}
+//	GetResourceResourceAthenaArgs{...}
 type GetResourceResourceAthenaInput interface {
 	pulumi.Input
 
@@ -31756,7 +31817,7 @@ type GetResourceResourceAthenaArgs struct {
 	// Unique human-readable name of the Resource.
 	Name            pulumi.StringPtrInput `pulumi:"name"`
 	Output          pulumi.StringPtrInput `pulumi:"output"`
-	PortOverride    pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region          pulumi.StringPtrInput `pulumi:"region"`
 	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
 	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
@@ -31782,7 +31843,7 @@ func (i GetResourceResourceAthenaArgs) ToGetResourceResourceAthenaOutputWithCont
 // GetResourceResourceAthenaArrayInput is an input type that accepts GetResourceResourceAthenaArray and GetResourceResourceAthenaArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAthenaArrayInput` via:
 //
-//          GetResourceResourceAthenaArray{ GetResourceResourceAthenaArgs{...} }
+//	GetResourceResourceAthenaArray{ GetResourceResourceAthenaArgs{...} }
 type GetResourceResourceAthenaArrayInput interface {
 	pulumi.Input
 
@@ -31846,8 +31907,8 @@ func (o GetResourceResourceAthenaOutput) Output() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAthena) *string { return v.Output }).(pulumi.StringPtrOutput)
 }
 
-func (o GetResourceResourceAthenaOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceAthena) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceAthenaOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthena) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceAthenaOutput) Region() pulumi.StringPtrOutput {
@@ -31909,7 +31970,7 @@ type GetResourceResourceAuroraMysql struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -31920,7 +31981,7 @@ type GetResourceResourceAuroraMysql struct {
 // GetResourceResourceAuroraMysqlInput is an input type that accepts GetResourceResourceAuroraMysqlArgs and GetResourceResourceAuroraMysqlOutput values.
 // You can construct a concrete instance of `GetResourceResourceAuroraMysqlInput` via:
 //
-//          GetResourceResourceAuroraMysqlArgs{...}
+//	GetResourceResourceAuroraMysqlArgs{...}
 type GetResourceResourceAuroraMysqlInput interface {
 	pulumi.Input
 
@@ -31941,7 +32002,7 @@ type GetResourceResourceAuroraMysqlArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -31964,7 +32025,7 @@ func (i GetResourceResourceAuroraMysqlArgs) ToGetResourceResourceAuroraMysqlOutp
 // GetResourceResourceAuroraMysqlArrayInput is an input type that accepts GetResourceResourceAuroraMysqlArray and GetResourceResourceAuroraMysqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAuroraMysqlArrayInput` via:
 //
-//          GetResourceResourceAuroraMysqlArray{ GetResourceResourceAuroraMysqlArgs{...} }
+//	GetResourceResourceAuroraMysqlArray{ GetResourceResourceAuroraMysqlArgs{...} }
 type GetResourceResourceAuroraMysqlArrayInput interface {
 	pulumi.Input
 
@@ -32036,8 +32097,8 @@ func (o GetResourceResourceAuroraMysqlOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceAuroraMysqlOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceAuroraMysql) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceAuroraMysqlOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -32088,7 +32149,7 @@ type GetResourceResourceAuroraPostgre struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -32099,7 +32160,7 @@ type GetResourceResourceAuroraPostgre struct {
 // GetResourceResourceAuroraPostgreInput is an input type that accepts GetResourceResourceAuroraPostgreArgs and GetResourceResourceAuroraPostgreOutput values.
 // You can construct a concrete instance of `GetResourceResourceAuroraPostgreInput` via:
 //
-//          GetResourceResourceAuroraPostgreArgs{...}
+//	GetResourceResourceAuroraPostgreArgs{...}
 type GetResourceResourceAuroraPostgreInput interface {
 	pulumi.Input
 
@@ -32121,7 +32182,7 @@ type GetResourceResourceAuroraPostgreArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -32144,7 +32205,7 @@ func (i GetResourceResourceAuroraPostgreArgs) ToGetResourceResourceAuroraPostgre
 // GetResourceResourceAuroraPostgreArrayInput is an input type that accepts GetResourceResourceAuroraPostgreArray and GetResourceResourceAuroraPostgreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAuroraPostgreArrayInput` via:
 //
-//          GetResourceResourceAuroraPostgreArray{ GetResourceResourceAuroraPostgreArgs{...} }
+//	GetResourceResourceAuroraPostgreArray{ GetResourceResourceAuroraPostgreArgs{...} }
 type GetResourceResourceAuroraPostgreArrayInput interface {
 	pulumi.Input
 
@@ -32220,8 +32281,8 @@ func (o GetResourceResourceAuroraPostgreOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAuroraPostgre) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceAuroraPostgreOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceAuroraPostgre) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceAuroraPostgreOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgre) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -32281,7 +32342,7 @@ type GetResourceResourceAw struct {
 // GetResourceResourceAwInput is an input type that accepts GetResourceResourceAwArgs and GetResourceResourceAwOutput values.
 // You can construct a concrete instance of `GetResourceResourceAwInput` via:
 //
-//          GetResourceResourceAwArgs{...}
+//	GetResourceResourceAwArgs{...}
 type GetResourceResourceAwInput interface {
 	pulumi.Input
 
@@ -32324,7 +32385,7 @@ func (i GetResourceResourceAwArgs) ToGetResourceResourceAwOutputWithContext(ctx 
 // GetResourceResourceAwArrayInput is an input type that accepts GetResourceResourceAwArray and GetResourceResourceAwArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAwArrayInput` via:
 //
-//          GetResourceResourceAwArray{ GetResourceResourceAwArgs{...} }
+//	GetResourceResourceAwArray{ GetResourceResourceAwArgs{...} }
 type GetResourceResourceAwArrayInput interface {
 	pulumi.Input
 
@@ -32452,7 +32513,7 @@ type GetResourceResourceAzure struct {
 // GetResourceResourceAzureInput is an input type that accepts GetResourceResourceAzureArgs and GetResourceResourceAzureOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzureInput` via:
 //
-//          GetResourceResourceAzureArgs{...}
+//	GetResourceResourceAzureArgs{...}
 type GetResourceResourceAzureInput interface {
 	pulumi.Input
 
@@ -32494,7 +32555,7 @@ func (i GetResourceResourceAzureArgs) ToGetResourceResourceAzureOutputWithContex
 // GetResourceResourceAzureArrayInput is an input type that accepts GetResourceResourceAzureArray and GetResourceResourceAzureArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzureArrayInput` via:
 //
-//          GetResourceResourceAzureArray{ GetResourceResourceAzureArgs{...} }
+//	GetResourceResourceAzureArray{ GetResourceResourceAzureArgs{...} }
 type GetResourceResourceAzureArrayInput interface {
 	pulumi.Input
 
@@ -32615,7 +32676,7 @@ type GetResourceResourceAzureCertificate struct {
 // GetResourceResourceAzureCertificateInput is an input type that accepts GetResourceResourceAzureCertificateArgs and GetResourceResourceAzureCertificateOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzureCertificateInput` via:
 //
-//          GetResourceResourceAzureCertificateArgs{...}
+//	GetResourceResourceAzureCertificateArgs{...}
 type GetResourceResourceAzureCertificateInput interface {
 	pulumi.Input
 
@@ -32657,7 +32718,7 @@ func (i GetResourceResourceAzureCertificateArgs) ToGetResourceResourceAzureCerti
 // GetResourceResourceAzureCertificateArrayInput is an input type that accepts GetResourceResourceAzureCertificateArray and GetResourceResourceAzureCertificateArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzureCertificateArrayInput` via:
 //
-//          GetResourceResourceAzureCertificateArray{ GetResourceResourceAzureCertificateArgs{...} }
+//	GetResourceResourceAzureCertificateArray{ GetResourceResourceAzureCertificateArgs{...} }
 type GetResourceResourceAzureCertificateArrayInput interface {
 	pulumi.Input
 
@@ -32770,7 +32831,7 @@ type GetResourceResourceAzurePostgre struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -32781,7 +32842,7 @@ type GetResourceResourceAzurePostgre struct {
 // GetResourceResourceAzurePostgreInput is an input type that accepts GetResourceResourceAzurePostgreArgs and GetResourceResourceAzurePostgreOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzurePostgreInput` via:
 //
-//          GetResourceResourceAzurePostgreArgs{...}
+//	GetResourceResourceAzurePostgreArgs{...}
 type GetResourceResourceAzurePostgreInput interface {
 	pulumi.Input
 
@@ -32803,7 +32864,7 @@ type GetResourceResourceAzurePostgreArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -32826,7 +32887,7 @@ func (i GetResourceResourceAzurePostgreArgs) ToGetResourceResourceAzurePostgreOu
 // GetResourceResourceAzurePostgreArrayInput is an input type that accepts GetResourceResourceAzurePostgreArray and GetResourceResourceAzurePostgreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzurePostgreArrayInput` via:
 //
-//          GetResourceResourceAzurePostgreArray{ GetResourceResourceAzurePostgreArgs{...} }
+//	GetResourceResourceAzurePostgreArray{ GetResourceResourceAzurePostgreArgs{...} }
 type GetResourceResourceAzurePostgreArrayInput interface {
 	pulumi.Input
 
@@ -32902,8 +32963,8 @@ func (o GetResourceResourceAzurePostgreOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzurePostgre) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceAzurePostgreOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceAzurePostgre) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceAzurePostgreOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzurePostgre) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -32950,7 +33011,7 @@ type GetResourceResourceBigQuery struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name         *string `pulumi:"name"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	PrivateKey   *string `pulumi:"privateKey"`
 	Project      *string `pulumi:"project"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -32963,7 +33024,7 @@ type GetResourceResourceBigQuery struct {
 // GetResourceResourceBigQueryInput is an input type that accepts GetResourceResourceBigQueryArgs and GetResourceResourceBigQueryOutput values.
 // You can construct a concrete instance of `GetResourceResourceBigQueryInput` via:
 //
-//          GetResourceResourceBigQueryArgs{...}
+//	GetResourceResourceBigQueryArgs{...}
 type GetResourceResourceBigQueryInput interface {
 	pulumi.Input
 
@@ -32981,7 +33042,7 @@ type GetResourceResourceBigQueryArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringPtrInput `pulumi:"name"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	PrivateKey   pulumi.StringPtrInput `pulumi:"privateKey"`
 	Project      pulumi.StringPtrInput `pulumi:"project"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -33006,7 +33067,7 @@ func (i GetResourceResourceBigQueryArgs) ToGetResourceResourceBigQueryOutputWith
 // GetResourceResourceBigQueryArrayInput is an input type that accepts GetResourceResourceBigQueryArray and GetResourceResourceBigQueryArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceBigQueryArrayInput` via:
 //
-//          GetResourceResourceBigQueryArray{ GetResourceResourceBigQueryArgs{...} }
+//	GetResourceResourceBigQueryArray{ GetResourceResourceBigQueryArgs{...} }
 type GetResourceResourceBigQueryArrayInput interface {
 	pulumi.Input
 
@@ -33066,8 +33127,8 @@ func (o GetResourceResourceBigQueryOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceBigQuery) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o GetResourceResourceBigQueryOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceBigQuery) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceBigQueryOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceBigQuery) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceBigQueryOutput) PrivateKey() pulumi.StringPtrOutput {
@@ -33124,7 +33185,7 @@ type GetResourceResourceCassandra struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33136,7 +33197,7 @@ type GetResourceResourceCassandra struct {
 // GetResourceResourceCassandraInput is an input type that accepts GetResourceResourceCassandraArgs and GetResourceResourceCassandraOutput values.
 // You can construct a concrete instance of `GetResourceResourceCassandraInput` via:
 //
-//          GetResourceResourceCassandraArgs{...}
+//	GetResourceResourceCassandraArgs{...}
 type GetResourceResourceCassandraInput interface {
 	pulumi.Input
 
@@ -33156,7 +33217,7 @@ type GetResourceResourceCassandraArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33180,7 +33241,7 @@ func (i GetResourceResourceCassandraArgs) ToGetResourceResourceCassandraOutputWi
 // GetResourceResourceCassandraArrayInput is an input type that accepts GetResourceResourceCassandraArray and GetResourceResourceCassandraArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceCassandraArrayInput` via:
 //
-//          GetResourceResourceCassandraArray{ GetResourceResourceCassandraArgs{...} }
+//	GetResourceResourceCassandraArray{ GetResourceResourceCassandraArgs{...} }
 type GetResourceResourceCassandraArrayInput interface {
 	pulumi.Input
 
@@ -33248,8 +33309,8 @@ func (o GetResourceResourceCassandraOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCassandra) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceCassandraOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceCassandra) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceCassandraOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCassandra) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -33304,7 +33365,7 @@ type GetResourceResourceCitus struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33315,7 +33376,7 @@ type GetResourceResourceCitus struct {
 // GetResourceResourceCitusInput is an input type that accepts GetResourceResourceCitusArgs and GetResourceResourceCitusOutput values.
 // You can construct a concrete instance of `GetResourceResourceCitusInput` via:
 //
-//          GetResourceResourceCitusArgs{...}
+//	GetResourceResourceCitusArgs{...}
 type GetResourceResourceCitusInput interface {
 	pulumi.Input
 
@@ -33337,7 +33398,7 @@ type GetResourceResourceCitusArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33360,7 +33421,7 @@ func (i GetResourceResourceCitusArgs) ToGetResourceResourceCitusOutputWithContex
 // GetResourceResourceCitusArrayInput is an input type that accepts GetResourceResourceCitusArray and GetResourceResourceCitusArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceCitusArrayInput` via:
 //
-//          GetResourceResourceCitusArray{ GetResourceResourceCitusArgs{...} }
+//	GetResourceResourceCitusArray{ GetResourceResourceCitusArgs{...} }
 type GetResourceResourceCitusArrayInput interface {
 	pulumi.Input
 
@@ -33436,8 +33497,8 @@ func (o GetResourceResourceCitusOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCitus) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceCitusOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceCitus) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceCitusOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCitus) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -33487,7 +33548,7 @@ type GetResourceResourceClustrix struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33498,7 +33559,7 @@ type GetResourceResourceClustrix struct {
 // GetResourceResourceClustrixInput is an input type that accepts GetResourceResourceClustrixArgs and GetResourceResourceClustrixOutput values.
 // You can construct a concrete instance of `GetResourceResourceClustrixInput` via:
 //
-//          GetResourceResourceClustrixArgs{...}
+//	GetResourceResourceClustrixArgs{...}
 type GetResourceResourceClustrixInput interface {
 	pulumi.Input
 
@@ -33519,7 +33580,7 @@ type GetResourceResourceClustrixArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33542,7 +33603,7 @@ func (i GetResourceResourceClustrixArgs) ToGetResourceResourceClustrixOutputWith
 // GetResourceResourceClustrixArrayInput is an input type that accepts GetResourceResourceClustrixArray and GetResourceResourceClustrixArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceClustrixArrayInput` via:
 //
-//          GetResourceResourceClustrixArray{ GetResourceResourceClustrixArgs{...} }
+//	GetResourceResourceClustrixArray{ GetResourceResourceClustrixArgs{...} }
 type GetResourceResourceClustrixArrayInput interface {
 	pulumi.Input
 
@@ -33614,8 +33675,8 @@ func (o GetResourceResourceClustrixOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceClustrix) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceClustrixOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceClustrix) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceClustrixOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClustrix) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -33666,7 +33727,7 @@ type GetResourceResourceCockroach struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33677,7 +33738,7 @@ type GetResourceResourceCockroach struct {
 // GetResourceResourceCockroachInput is an input type that accepts GetResourceResourceCockroachArgs and GetResourceResourceCockroachOutput values.
 // You can construct a concrete instance of `GetResourceResourceCockroachInput` via:
 //
-//          GetResourceResourceCockroachArgs{...}
+//	GetResourceResourceCockroachArgs{...}
 type GetResourceResourceCockroachInput interface {
 	pulumi.Input
 
@@ -33699,7 +33760,7 @@ type GetResourceResourceCockroachArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33722,7 +33783,7 @@ func (i GetResourceResourceCockroachArgs) ToGetResourceResourceCockroachOutputWi
 // GetResourceResourceCockroachArrayInput is an input type that accepts GetResourceResourceCockroachArray and GetResourceResourceCockroachArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceCockroachArrayInput` via:
 //
-//          GetResourceResourceCockroachArray{ GetResourceResourceCockroachArgs{...} }
+//	GetResourceResourceCockroachArray{ GetResourceResourceCockroachArgs{...} }
 type GetResourceResourceCockroachArrayInput interface {
 	pulumi.Input
 
@@ -33798,8 +33859,8 @@ func (o GetResourceResourceCockroachOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCockroach) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceCockroachOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceCockroach) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceCockroachOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCockroach) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -33848,7 +33909,7 @@ type GetResourceResourceDb2I struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33860,7 +33921,7 @@ type GetResourceResourceDb2I struct {
 // GetResourceResourceDb2IInput is an input type that accepts GetResourceResourceDb2IArgs and GetResourceResourceDb2IOutput values.
 // You can construct a concrete instance of `GetResourceResourceDb2IInput` via:
 //
-//          GetResourceResourceDb2IArgs{...}
+//	GetResourceResourceDb2IArgs{...}
 type GetResourceResourceDb2IInput interface {
 	pulumi.Input
 
@@ -33880,7 +33941,7 @@ type GetResourceResourceDb2IArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -33904,7 +33965,7 @@ func (i GetResourceResourceDb2IArgs) ToGetResourceResourceDb2IOutputWithContext(
 // GetResourceResourceDb2IArrayInput is an input type that accepts GetResourceResourceDb2IArray and GetResourceResourceDb2IArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDb2IArrayInput` via:
 //
-//          GetResourceResourceDb2IArray{ GetResourceResourceDb2IArgs{...} }
+//	GetResourceResourceDb2IArray{ GetResourceResourceDb2IArgs{...} }
 type GetResourceResourceDb2IArrayInput interface {
 	pulumi.Input
 
@@ -33972,8 +34033,8 @@ func (o GetResourceResourceDb2IOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDb2I) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceDb2IOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceDb2I) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceDb2IOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDb2I) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -34027,7 +34088,7 @@ type GetResourceResourceDb2Luw struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -34038,7 +34099,7 @@ type GetResourceResourceDb2Luw struct {
 // GetResourceResourceDb2LuwInput is an input type that accepts GetResourceResourceDb2LuwArgs and GetResourceResourceDb2LuwOutput values.
 // You can construct a concrete instance of `GetResourceResourceDb2LuwInput` via:
 //
-//          GetResourceResourceDb2LuwArgs{...}
+//	GetResourceResourceDb2LuwArgs{...}
 type GetResourceResourceDb2LuwInput interface {
 	pulumi.Input
 
@@ -34059,7 +34120,7 @@ type GetResourceResourceDb2LuwArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -34082,7 +34143,7 @@ func (i GetResourceResourceDb2LuwArgs) ToGetResourceResourceDb2LuwOutputWithCont
 // GetResourceResourceDb2LuwArrayInput is an input type that accepts GetResourceResourceDb2LuwArray and GetResourceResourceDb2LuwArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDb2LuwArrayInput` via:
 //
-//          GetResourceResourceDb2LuwArray{ GetResourceResourceDb2LuwArgs{...} }
+//	GetResourceResourceDb2LuwArray{ GetResourceResourceDb2LuwArgs{...} }
 type GetResourceResourceDb2LuwArrayInput interface {
 	pulumi.Input
 
@@ -34154,8 +34215,8 @@ func (o GetResourceResourceDb2LuwOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDb2Luw) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceDb2LuwOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceDb2Luw) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceDb2LuwOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDb2Luw) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -34205,7 +34266,7 @@ type GetResourceResourceDocumentDbHost struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -34216,7 +34277,7 @@ type GetResourceResourceDocumentDbHost struct {
 // GetResourceResourceDocumentDbHostInput is an input type that accepts GetResourceResourceDocumentDbHostArgs and GetResourceResourceDocumentDbHostOutput values.
 // You can construct a concrete instance of `GetResourceResourceDocumentDbHostInput` via:
 //
-//          GetResourceResourceDocumentDbHostArgs{...}
+//	GetResourceResourceDocumentDbHostArgs{...}
 type GetResourceResourceDocumentDbHostInput interface {
 	pulumi.Input
 
@@ -34237,7 +34298,7 @@ type GetResourceResourceDocumentDbHostArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -34260,7 +34321,7 @@ func (i GetResourceResourceDocumentDbHostArgs) ToGetResourceResourceDocumentDbHo
 // GetResourceResourceDocumentDbHostArrayInput is an input type that accepts GetResourceResourceDocumentDbHostArray and GetResourceResourceDocumentDbHostArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDocumentDbHostArrayInput` via:
 //
-//          GetResourceResourceDocumentDbHostArray{ GetResourceResourceDocumentDbHostArgs{...} }
+//	GetResourceResourceDocumentDbHostArray{ GetResourceResourceDocumentDbHostArgs{...} }
 type GetResourceResourceDocumentDbHostArrayInput interface {
 	pulumi.Input
 
@@ -34332,8 +34393,8 @@ func (o GetResourceResourceDocumentDbHostOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDocumentDbHost) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceDocumentDbHostOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceDocumentDbHost) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceDocumentDbHostOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -34383,7 +34444,7 @@ type GetResourceResourceDocumentDbReplicaSet struct {
 	// Unique human-readable name of the Resource.
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	ReplicaSet   *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
@@ -34395,7 +34456,7 @@ type GetResourceResourceDocumentDbReplicaSet struct {
 // GetResourceResourceDocumentDbReplicaSetInput is an input type that accepts GetResourceResourceDocumentDbReplicaSetArgs and GetResourceResourceDocumentDbReplicaSetOutput values.
 // You can construct a concrete instance of `GetResourceResourceDocumentDbReplicaSetInput` via:
 //
-//          GetResourceResourceDocumentDbReplicaSetArgs{...}
+//	GetResourceResourceDocumentDbReplicaSetArgs{...}
 type GetResourceResourceDocumentDbReplicaSetInput interface {
 	pulumi.Input
 
@@ -34416,7 +34477,7 @@ type GetResourceResourceDocumentDbReplicaSetArgs struct {
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	ReplicaSet   pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -34440,7 +34501,7 @@ func (i GetResourceResourceDocumentDbReplicaSetArgs) ToGetResourceResourceDocume
 // GetResourceResourceDocumentDbReplicaSetArrayInput is an input type that accepts GetResourceResourceDocumentDbReplicaSetArray and GetResourceResourceDocumentDbReplicaSetArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDocumentDbReplicaSetArrayInput` via:
 //
-//          GetResourceResourceDocumentDbReplicaSetArray{ GetResourceResourceDocumentDbReplicaSetArgs{...} }
+//	GetResourceResourceDocumentDbReplicaSetArray{ GetResourceResourceDocumentDbReplicaSetArgs{...} }
 type GetResourceResourceDocumentDbReplicaSetArrayInput interface {
 	pulumi.Input
 
@@ -34512,8 +34573,8 @@ func (o GetResourceResourceDocumentDbReplicaSetOutput) Password() pulumi.StringP
 	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSet) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o GetResourceResourceDocumentDbReplicaSetOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSet) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceDocumentDbReplicaSetOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSet) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceDocumentDbReplicaSetOutput) ReplicaSet() pulumi.StringPtrOutput {
@@ -34566,7 +34627,7 @@ type GetResourceResourceDruid struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -34577,7 +34638,7 @@ type GetResourceResourceDruid struct {
 // GetResourceResourceDruidInput is an input type that accepts GetResourceResourceDruidArgs and GetResourceResourceDruidOutput values.
 // You can construct a concrete instance of `GetResourceResourceDruidInput` via:
 //
-//          GetResourceResourceDruidArgs{...}
+//	GetResourceResourceDruidArgs{...}
 type GetResourceResourceDruidInput interface {
 	pulumi.Input
 
@@ -34597,7 +34658,7 @@ type GetResourceResourceDruidArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -34620,7 +34681,7 @@ func (i GetResourceResourceDruidArgs) ToGetResourceResourceDruidOutputWithContex
 // GetResourceResourceDruidArrayInput is an input type that accepts GetResourceResourceDruidArray and GetResourceResourceDruidArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDruidArrayInput` via:
 //
-//          GetResourceResourceDruidArray{ GetResourceResourceDruidArgs{...} }
+//	GetResourceResourceDruidArray{ GetResourceResourceDruidArgs{...} }
 type GetResourceResourceDruidArrayInput interface {
 	pulumi.Input
 
@@ -34688,8 +34749,8 @@ func (o GetResourceResourceDruidOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDruid) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceDruidOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceDruid) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceDruidOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDruid) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -34737,7 +34798,7 @@ type GetResourceResourceDynamoDb struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name            *string `pulumi:"name"`
-	PortOverride    int     `pulumi:"portOverride"`
+	PortOverride    *int    `pulumi:"portOverride"`
 	Region          *string `pulumi:"region"`
 	RoleArn         *string `pulumi:"roleArn"`
 	RoleExternalId  *string `pulumi:"roleExternalId"`
@@ -34751,7 +34812,7 @@ type GetResourceResourceDynamoDb struct {
 // GetResourceResourceDynamoDbInput is an input type that accepts GetResourceResourceDynamoDbArgs and GetResourceResourceDynamoDbOutput values.
 // You can construct a concrete instance of `GetResourceResourceDynamoDbInput` via:
 //
-//          GetResourceResourceDynamoDbArgs{...}
+//	GetResourceResourceDynamoDbArgs{...}
 type GetResourceResourceDynamoDbInput interface {
 	pulumi.Input
 
@@ -34770,7 +34831,7 @@ type GetResourceResourceDynamoDbArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name            pulumi.StringPtrInput `pulumi:"name"`
-	PortOverride    pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region          pulumi.StringPtrInput `pulumi:"region"`
 	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
 	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
@@ -34796,7 +34857,7 @@ func (i GetResourceResourceDynamoDbArgs) ToGetResourceResourceDynamoDbOutputWith
 // GetResourceResourceDynamoDbArrayInput is an input type that accepts GetResourceResourceDynamoDbArray and GetResourceResourceDynamoDbArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDynamoDbArrayInput` via:
 //
-//          GetResourceResourceDynamoDbArray{ GetResourceResourceDynamoDbArgs{...} }
+//	GetResourceResourceDynamoDbArray{ GetResourceResourceDynamoDbArgs{...} }
 type GetResourceResourceDynamoDbArrayInput interface {
 	pulumi.Input
 
@@ -34860,8 +34921,8 @@ func (o GetResourceResourceDynamoDbOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDynamoDb) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o GetResourceResourceDynamoDbOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceDynamoDb) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceDynamoDbOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDb) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceDynamoDbOutput) Region() pulumi.StringPtrOutput {
@@ -34922,7 +34983,7 @@ type GetResourceResourceElastic struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -34934,7 +34995,7 @@ type GetResourceResourceElastic struct {
 // GetResourceResourceElasticInput is an input type that accepts GetResourceResourceElasticArgs and GetResourceResourceElasticOutput values.
 // You can construct a concrete instance of `GetResourceResourceElasticInput` via:
 //
-//          GetResourceResourceElasticArgs{...}
+//	GetResourceResourceElasticArgs{...}
 type GetResourceResourceElasticInput interface {
 	pulumi.Input
 
@@ -34954,7 +35015,7 @@ type GetResourceResourceElasticArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -34978,7 +35039,7 @@ func (i GetResourceResourceElasticArgs) ToGetResourceResourceElasticOutputWithCo
 // GetResourceResourceElasticArrayInput is an input type that accepts GetResourceResourceElasticArray and GetResourceResourceElasticArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceElasticArrayInput` via:
 //
-//          GetResourceResourceElasticArray{ GetResourceResourceElasticArgs{...} }
+//	GetResourceResourceElasticArray{ GetResourceResourceElasticArgs{...} }
 type GetResourceResourceElasticArrayInput interface {
 	pulumi.Input
 
@@ -35046,8 +35107,8 @@ func (o GetResourceResourceElasticOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceElastic) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceElasticOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceElastic) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceElasticOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceElastic) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -35100,7 +35161,7 @@ type GetResourceResourceElasticacheRedi struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -35111,7 +35172,7 @@ type GetResourceResourceElasticacheRedi struct {
 // GetResourceResourceElasticacheRediInput is an input type that accepts GetResourceResourceElasticacheRediArgs and GetResourceResourceElasticacheRediOutput values.
 // You can construct a concrete instance of `GetResourceResourceElasticacheRediInput` via:
 //
-//          GetResourceResourceElasticacheRediArgs{...}
+//	GetResourceResourceElasticacheRediArgs{...}
 type GetResourceResourceElasticacheRediInput interface {
 	pulumi.Input
 
@@ -35131,7 +35192,7 @@ type GetResourceResourceElasticacheRediArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -35154,7 +35215,7 @@ func (i GetResourceResourceElasticacheRediArgs) ToGetResourceResourceElasticache
 // GetResourceResourceElasticacheRediArrayInput is an input type that accepts GetResourceResourceElasticacheRediArray and GetResourceResourceElasticacheRediArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceElasticacheRediArrayInput` via:
 //
-//          GetResourceResourceElasticacheRediArray{ GetResourceResourceElasticacheRediArgs{...} }
+//	GetResourceResourceElasticacheRediArray{ GetResourceResourceElasticacheRediArgs{...} }
 type GetResourceResourceElasticacheRediArrayInput interface {
 	pulumi.Input
 
@@ -35222,8 +35283,8 @@ func (o GetResourceResourceElasticacheRediOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceElasticacheRedi) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceElasticacheRediOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceElasticacheRedi) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceElasticacheRediOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceElasticacheRedi) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -35280,7 +35341,7 @@ type GetResourceResourceGcp struct {
 // GetResourceResourceGcpInput is an input type that accepts GetResourceResourceGcpArgs and GetResourceResourceGcpOutput values.
 // You can construct a concrete instance of `GetResourceResourceGcpInput` via:
 //
-//          GetResourceResourceGcpArgs{...}
+//	GetResourceResourceGcpArgs{...}
 type GetResourceResourceGcpInput interface {
 	pulumi.Input
 
@@ -35320,7 +35381,7 @@ func (i GetResourceResourceGcpArgs) ToGetResourceResourceGcpOutputWithContext(ct
 // GetResourceResourceGcpArrayInput is an input type that accepts GetResourceResourceGcpArray and GetResourceResourceGcpArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceGcpArrayInput` via:
 //
-//          GetResourceResourceGcpArray{ GetResourceResourceGcpArgs{...} }
+//	GetResourceResourceGcpArray{ GetResourceResourceGcpArgs{...} }
 type GetResourceResourceGcpArrayInput interface {
 	pulumi.Input
 
@@ -35439,7 +35500,7 @@ type GetResourceResourceGoogleGke struct {
 // GetResourceResourceGoogleGkeInput is an input type that accepts GetResourceResourceGoogleGkeArgs and GetResourceResourceGoogleGkeOutput values.
 // You can construct a concrete instance of `GetResourceResourceGoogleGkeInput` via:
 //
-//          GetResourceResourceGoogleGkeArgs{...}
+//	GetResourceResourceGoogleGkeArgs{...}
 type GetResourceResourceGoogleGkeInput interface {
 	pulumi.Input
 
@@ -35484,7 +35545,7 @@ func (i GetResourceResourceGoogleGkeArgs) ToGetResourceResourceGoogleGkeOutputWi
 // GetResourceResourceGoogleGkeArrayInput is an input type that accepts GetResourceResourceGoogleGkeArray and GetResourceResourceGoogleGkeArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceGoogleGkeArrayInput` via:
 //
-//          GetResourceResourceGoogleGkeArray{ GetResourceResourceGoogleGkeArgs{...} }
+//	GetResourceResourceGoogleGkeArray{ GetResourceResourceGoogleGkeArgs{...} }
 type GetResourceResourceGoogleGkeArrayInput interface {
 	pulumi.Input
 
@@ -35618,7 +35679,7 @@ type GetResourceResourceGoogleGkeUserImpersonation struct {
 // GetResourceResourceGoogleGkeUserImpersonationInput is an input type that accepts GetResourceResourceGoogleGkeUserImpersonationArgs and GetResourceResourceGoogleGkeUserImpersonationOutput values.
 // You can construct a concrete instance of `GetResourceResourceGoogleGkeUserImpersonationInput` via:
 //
-//          GetResourceResourceGoogleGkeUserImpersonationArgs{...}
+//	GetResourceResourceGoogleGkeUserImpersonationArgs{...}
 type GetResourceResourceGoogleGkeUserImpersonationInput interface {
 	pulumi.Input
 
@@ -35661,7 +35722,7 @@ func (i GetResourceResourceGoogleGkeUserImpersonationArgs) ToGetResourceResource
 // GetResourceResourceGoogleGkeUserImpersonationArrayInput is an input type that accepts GetResourceResourceGoogleGkeUserImpersonationArray and GetResourceResourceGoogleGkeUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceGoogleGkeUserImpersonationArrayInput` via:
 //
-//          GetResourceResourceGoogleGkeUserImpersonationArray{ GetResourceResourceGoogleGkeUserImpersonationArgs{...} }
+//	GetResourceResourceGoogleGkeUserImpersonationArray{ GetResourceResourceGoogleGkeUserImpersonationArgs{...} }
 type GetResourceResourceGoogleGkeUserImpersonationArrayInput interface {
 	pulumi.Input
 
@@ -35778,7 +35839,7 @@ type GetResourceResourceGreenplum struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -35789,7 +35850,7 @@ type GetResourceResourceGreenplum struct {
 // GetResourceResourceGreenplumInput is an input type that accepts GetResourceResourceGreenplumArgs and GetResourceResourceGreenplumOutput values.
 // You can construct a concrete instance of `GetResourceResourceGreenplumInput` via:
 //
-//          GetResourceResourceGreenplumArgs{...}
+//	GetResourceResourceGreenplumArgs{...}
 type GetResourceResourceGreenplumInput interface {
 	pulumi.Input
 
@@ -35811,7 +35872,7 @@ type GetResourceResourceGreenplumArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -35834,7 +35895,7 @@ func (i GetResourceResourceGreenplumArgs) ToGetResourceResourceGreenplumOutputWi
 // GetResourceResourceGreenplumArrayInput is an input type that accepts GetResourceResourceGreenplumArray and GetResourceResourceGreenplumArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceGreenplumArrayInput` via:
 //
-//          GetResourceResourceGreenplumArray{ GetResourceResourceGreenplumArgs{...} }
+//	GetResourceResourceGreenplumArray{ GetResourceResourceGreenplumArgs{...} }
 type GetResourceResourceGreenplumArrayInput interface {
 	pulumi.Input
 
@@ -35910,8 +35971,8 @@ func (o GetResourceResourceGreenplumOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGreenplum) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceGreenplumOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceGreenplum) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceGreenplumOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGreenplum) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -35973,7 +36034,7 @@ type GetResourceResourceHttpAuth struct {
 // GetResourceResourceHttpAuthInput is an input type that accepts GetResourceResourceHttpAuthArgs and GetResourceResourceHttpAuthOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpAuthInput` via:
 //
-//          GetResourceResourceHttpAuthArgs{...}
+//	GetResourceResourceHttpAuthArgs{...}
 type GetResourceResourceHttpAuthInput interface {
 	pulumi.Input
 
@@ -36018,7 +36079,7 @@ func (i GetResourceResourceHttpAuthArgs) ToGetResourceResourceHttpAuthOutputWith
 // GetResourceResourceHttpAuthArrayInput is an input type that accepts GetResourceResourceHttpAuthArray and GetResourceResourceHttpAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpAuthArrayInput` via:
 //
-//          GetResourceResourceHttpAuthArray{ GetResourceResourceHttpAuthArgs{...} }
+//	GetResourceResourceHttpAuthArray{ GetResourceResourceHttpAuthArgs{...} }
 type GetResourceResourceHttpAuthArrayInput interface {
 	pulumi.Input
 
@@ -36155,7 +36216,7 @@ type GetResourceResourceHttpBasicAuth struct {
 // GetResourceResourceHttpBasicAuthInput is an input type that accepts GetResourceResourceHttpBasicAuthArgs and GetResourceResourceHttpBasicAuthOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpBasicAuthInput` via:
 //
-//          GetResourceResourceHttpBasicAuthArgs{...}
+//	GetResourceResourceHttpBasicAuthArgs{...}
 type GetResourceResourceHttpBasicAuthInput interface {
 	pulumi.Input
 
@@ -36201,7 +36262,7 @@ func (i GetResourceResourceHttpBasicAuthArgs) ToGetResourceResourceHttpBasicAuth
 // GetResourceResourceHttpBasicAuthArrayInput is an input type that accepts GetResourceResourceHttpBasicAuthArray and GetResourceResourceHttpBasicAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpBasicAuthArrayInput` via:
 //
-//          GetResourceResourceHttpBasicAuthArray{ GetResourceResourceHttpBasicAuthArgs{...} }
+//	GetResourceResourceHttpBasicAuthArray{ GetResourceResourceHttpBasicAuthArgs{...} }
 type GetResourceResourceHttpBasicAuthArrayInput interface {
 	pulumi.Input
 
@@ -36340,7 +36401,7 @@ type GetResourceResourceHttpNoAuth struct {
 // GetResourceResourceHttpNoAuthInput is an input type that accepts GetResourceResourceHttpNoAuthArgs and GetResourceResourceHttpNoAuthOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpNoAuthInput` via:
 //
-//          GetResourceResourceHttpNoAuthArgs{...}
+//	GetResourceResourceHttpNoAuthArgs{...}
 type GetResourceResourceHttpNoAuthInput interface {
 	pulumi.Input
 
@@ -36384,7 +36445,7 @@ func (i GetResourceResourceHttpNoAuthArgs) ToGetResourceResourceHttpNoAuthOutput
 // GetResourceResourceHttpNoAuthArrayInput is an input type that accepts GetResourceResourceHttpNoAuthArray and GetResourceResourceHttpNoAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpNoAuthArrayInput` via:
 //
-//          GetResourceResourceHttpNoAuthArray{ GetResourceResourceHttpNoAuthArgs{...} }
+//	GetResourceResourceHttpNoAuthArray{ GetResourceResourceHttpNoAuthArgs{...} }
 type GetResourceResourceHttpNoAuthArrayInput interface {
 	pulumi.Input
 
@@ -36507,6 +36568,7 @@ type GetResourceResourceKubernete struct {
 	// Unique human-readable name of the Resource.
 	Name                              *string `pulumi:"name"`
 	Port                              *int    `pulumi:"port"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -36518,7 +36580,7 @@ type GetResourceResourceKubernete struct {
 // GetResourceResourceKuberneteInput is an input type that accepts GetResourceResourceKuberneteArgs and GetResourceResourceKuberneteOutput values.
 // You can construct a concrete instance of `GetResourceResourceKuberneteInput` via:
 //
-//          GetResourceResourceKuberneteArgs{...}
+//	GetResourceResourceKuberneteArgs{...}
 type GetResourceResourceKuberneteInput interface {
 	pulumi.Input
 
@@ -36542,6 +36604,7 @@ type GetResourceResourceKuberneteArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringPtrInput `pulumi:"name"`
 	Port                              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -36565,7 +36628,7 @@ func (i GetResourceResourceKuberneteArgs) ToGetResourceResourceKuberneteOutputWi
 // GetResourceResourceKuberneteArrayInput is an input type that accepts GetResourceResourceKuberneteArray and GetResourceResourceKuberneteArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKuberneteArrayInput` via:
 //
-//          GetResourceResourceKuberneteArray{ GetResourceResourceKuberneteArgs{...} }
+//	GetResourceResourceKuberneteArray{ GetResourceResourceKuberneteArgs{...} }
 type GetResourceResourceKuberneteArrayInput interface {
 	pulumi.Input
 
@@ -36646,6 +36709,10 @@ func (o GetResourceResourceKuberneteOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernete) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceKuberneteOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernete) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o GetResourceResourceKuberneteOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
 }
@@ -36695,9 +36762,10 @@ type GetResourceResourceKubernetesBasicAuth struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name     *string `pulumi:"name"`
-	Password *string `pulumi:"password"`
-	Port     *int    `pulumi:"port"`
+	Name         *string `pulumi:"name"`
+	Password     *string `pulumi:"password"`
+	Port         *int    `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -36708,7 +36776,7 @@ type GetResourceResourceKubernetesBasicAuth struct {
 // GetResourceResourceKubernetesBasicAuthInput is an input type that accepts GetResourceResourceKubernetesBasicAuthArgs and GetResourceResourceKubernetesBasicAuthOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesBasicAuthInput` via:
 //
-//          GetResourceResourceKubernetesBasicAuthArgs{...}
+//	GetResourceResourceKubernetesBasicAuthArgs{...}
 type GetResourceResourceKubernetesBasicAuthInput interface {
 	pulumi.Input
 
@@ -36727,9 +36795,10 @@ type GetResourceResourceKubernetesBasicAuthArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name     pulumi.StringPtrInput `pulumi:"name"`
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -36752,7 +36821,7 @@ func (i GetResourceResourceKubernetesBasicAuthArgs) ToGetResourceResourceKuberne
 // GetResourceResourceKubernetesBasicAuthArrayInput is an input type that accepts GetResourceResourceKubernetesBasicAuthArray and GetResourceResourceKubernetesBasicAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesBasicAuthArrayInput` via:
 //
-//          GetResourceResourceKubernetesBasicAuthArray{ GetResourceResourceKubernetesBasicAuthArgs{...} }
+//	GetResourceResourceKubernetesBasicAuthArray{ GetResourceResourceKubernetesBasicAuthArgs{...} }
 type GetResourceResourceKubernetesBasicAuthArrayInput interface {
 	pulumi.Input
 
@@ -36825,6 +36894,10 @@ func (o GetResourceResourceKubernetesBasicAuthOutput) Port() pulumi.IntPtrOutput
 	return o.ApplyT(func(v GetResourceResourceKubernetesBasicAuth) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceKubernetesBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceKubernetesBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -36872,6 +36945,7 @@ type GetResourceResourceKubernetesServiceAccount struct {
 	// Unique human-readable name of the Resource.
 	Name                              *string `pulumi:"name"`
 	Port                              *int    `pulumi:"port"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -36885,7 +36959,7 @@ type GetResourceResourceKubernetesServiceAccount struct {
 // GetResourceResourceKubernetesServiceAccountInput is an input type that accepts GetResourceResourceKubernetesServiceAccountArgs and GetResourceResourceKubernetesServiceAccountOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesServiceAccountInput` via:
 //
-//          GetResourceResourceKubernetesServiceAccountArgs{...}
+//	GetResourceResourceKubernetesServiceAccountArgs{...}
 type GetResourceResourceKubernetesServiceAccountInput interface {
 	pulumi.Input
 
@@ -36906,6 +36980,7 @@ type GetResourceResourceKubernetesServiceAccountArgs struct {
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringPtrInput `pulumi:"name"`
 	Port                              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -36931,7 +37006,7 @@ func (i GetResourceResourceKubernetesServiceAccountArgs) ToGetResourceResourceKu
 // GetResourceResourceKubernetesServiceAccountArrayInput is an input type that accepts GetResourceResourceKubernetesServiceAccountArray and GetResourceResourceKubernetesServiceAccountArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesServiceAccountArrayInput` via:
 //
-//          GetResourceResourceKubernetesServiceAccountArray{ GetResourceResourceKubernetesServiceAccountArgs{...} }
+//	GetResourceResourceKubernetesServiceAccountArray{ GetResourceResourceKubernetesServiceAccountArgs{...} }
 type GetResourceResourceKubernetesServiceAccountArrayInput interface {
 	pulumi.Input
 
@@ -37000,6 +37075,10 @@ func (o GetResourceResourceKubernetesServiceAccountOutput) Port() pulumi.IntPtrO
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceKubernetesServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o GetResourceResourceKubernetesServiceAccountOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
 }
@@ -37056,8 +37135,9 @@ type GetResourceResourceKubernetesServiceAccountUserImpersonation struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name *string `pulumi:"name"`
-	Port *int    `pulumi:"port"`
+	Name         *string `pulumi:"name"`
+	Port         *int    `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37069,7 +37149,7 @@ type GetResourceResourceKubernetesServiceAccountUserImpersonation struct {
 // GetResourceResourceKubernetesServiceAccountUserImpersonationInput is an input type that accepts GetResourceResourceKubernetesServiceAccountUserImpersonationArgs and GetResourceResourceKubernetesServiceAccountUserImpersonationOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesServiceAccountUserImpersonationInput` via:
 //
-//          GetResourceResourceKubernetesServiceAccountUserImpersonationArgs{...}
+//	GetResourceResourceKubernetesServiceAccountUserImpersonationArgs{...}
 type GetResourceResourceKubernetesServiceAccountUserImpersonationInput interface {
 	pulumi.Input
 
@@ -37088,8 +37168,9 @@ type GetResourceResourceKubernetesServiceAccountUserImpersonationArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Port pulumi.IntPtrInput    `pulumi:"port"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37113,7 +37194,7 @@ func (i GetResourceResourceKubernetesServiceAccountUserImpersonationArgs) ToGetR
 // GetResourceResourceKubernetesServiceAccountUserImpersonationArrayInput is an input type that accepts GetResourceResourceKubernetesServiceAccountUserImpersonationArray and GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesServiceAccountUserImpersonationArrayInput` via:
 //
-//          GetResourceResourceKubernetesServiceAccountUserImpersonationArray{ GetResourceResourceKubernetesServiceAccountUserImpersonationArgs{...} }
+//	GetResourceResourceKubernetesServiceAccountUserImpersonationArray{ GetResourceResourceKubernetesServiceAccountUserImpersonationArgs{...} }
 type GetResourceResourceKubernetesServiceAccountUserImpersonationArrayInput interface {
 	pulumi.Input
 
@@ -37184,6 +37265,10 @@ func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) Port
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccountUserImpersonation) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccountUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccountUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -37233,8 +37318,9 @@ type GetResourceResourceKubernetesUserImpersonation struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name *string `pulumi:"name"`
-	Port *int    `pulumi:"port"`
+	Name         *string `pulumi:"name"`
+	Port         *int    `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37244,7 +37330,7 @@ type GetResourceResourceKubernetesUserImpersonation struct {
 // GetResourceResourceKubernetesUserImpersonationInput is an input type that accepts GetResourceResourceKubernetesUserImpersonationArgs and GetResourceResourceKubernetesUserImpersonationOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesUserImpersonationInput` via:
 //
-//          GetResourceResourceKubernetesUserImpersonationArgs{...}
+//	GetResourceResourceKubernetesUserImpersonationArgs{...}
 type GetResourceResourceKubernetesUserImpersonationInput interface {
 	pulumi.Input
 
@@ -37266,8 +37352,9 @@ type GetResourceResourceKubernetesUserImpersonationArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	Port pulumi.IntPtrInput    `pulumi:"port"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37289,7 +37376,7 @@ func (i GetResourceResourceKubernetesUserImpersonationArgs) ToGetResourceResourc
 // GetResourceResourceKubernetesUserImpersonationArrayInput is an input type that accepts GetResourceResourceKubernetesUserImpersonationArray and GetResourceResourceKubernetesUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesUserImpersonationArrayInput` via:
 //
-//          GetResourceResourceKubernetesUserImpersonationArray{ GetResourceResourceKubernetesUserImpersonationArgs{...} }
+//	GetResourceResourceKubernetesUserImpersonationArray{ GetResourceResourceKubernetesUserImpersonationArgs{...} }
 type GetResourceResourceKubernetesUserImpersonationArrayInput interface {
 	pulumi.Input
 
@@ -37370,6 +37457,10 @@ func (o GetResourceResourceKubernetesUserImpersonationOutput) Port() pulumi.IntP
 	return o.ApplyT(func(v GetResourceResourceKubernetesUserImpersonation) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceKubernetesUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceKubernetesUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -37413,7 +37504,7 @@ type GetResourceResourceMaria struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37424,7 +37515,7 @@ type GetResourceResourceMaria struct {
 // GetResourceResourceMariaInput is an input type that accepts GetResourceResourceMariaArgs and GetResourceResourceMariaOutput values.
 // You can construct a concrete instance of `GetResourceResourceMariaInput` via:
 //
-//          GetResourceResourceMariaArgs{...}
+//	GetResourceResourceMariaArgs{...}
 type GetResourceResourceMariaInput interface {
 	pulumi.Input
 
@@ -37445,7 +37536,7 @@ type GetResourceResourceMariaArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37468,7 +37559,7 @@ func (i GetResourceResourceMariaArgs) ToGetResourceResourceMariaOutputWithContex
 // GetResourceResourceMariaArrayInput is an input type that accepts GetResourceResourceMariaArray and GetResourceResourceMariaArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMariaArrayInput` via:
 //
-//          GetResourceResourceMariaArray{ GetResourceResourceMariaArgs{...} }
+//	GetResourceResourceMariaArray{ GetResourceResourceMariaArgs{...} }
 type GetResourceResourceMariaArrayInput interface {
 	pulumi.Input
 
@@ -37540,8 +37631,8 @@ func (o GetResourceResourceMariaOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMaria) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMariaOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMaria) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMariaOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMaria) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -37589,7 +37680,7 @@ type GetResourceResourceMemcached struct {
 	// Unique human-readable name of the Resource.
 	Name         *string `pulumi:"name"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37599,7 +37690,7 @@ type GetResourceResourceMemcached struct {
 // GetResourceResourceMemcachedInput is an input type that accepts GetResourceResourceMemcachedArgs and GetResourceResourceMemcachedOutput values.
 // You can construct a concrete instance of `GetResourceResourceMemcachedInput` via:
 //
-//          GetResourceResourceMemcachedArgs{...}
+//	GetResourceResourceMemcachedArgs{...}
 type GetResourceResourceMemcachedInput interface {
 	pulumi.Input
 
@@ -37618,7 +37709,7 @@ type GetResourceResourceMemcachedArgs struct {
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37640,7 +37731,7 @@ func (i GetResourceResourceMemcachedArgs) ToGetResourceResourceMemcachedOutputWi
 // GetResourceResourceMemcachedArrayInput is an input type that accepts GetResourceResourceMemcachedArray and GetResourceResourceMemcachedArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMemcachedArrayInput` via:
 //
-//          GetResourceResourceMemcachedArray{ GetResourceResourceMemcachedArgs{...} }
+//	GetResourceResourceMemcachedArray{ GetResourceResourceMemcachedArgs{...} }
 type GetResourceResourceMemcachedArrayInput interface {
 	pulumi.Input
 
@@ -37704,8 +37795,8 @@ func (o GetResourceResourceMemcachedOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMemcached) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMemcachedOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMemcached) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMemcachedOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMemcached) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -37751,7 +37842,7 @@ type GetResourceResourceMemsql struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37762,7 +37853,7 @@ type GetResourceResourceMemsql struct {
 // GetResourceResourceMemsqlInput is an input type that accepts GetResourceResourceMemsqlArgs and GetResourceResourceMemsqlOutput values.
 // You can construct a concrete instance of `GetResourceResourceMemsqlInput` via:
 //
-//          GetResourceResourceMemsqlArgs{...}
+//	GetResourceResourceMemsqlArgs{...}
 type GetResourceResourceMemsqlInput interface {
 	pulumi.Input
 
@@ -37783,7 +37874,7 @@ type GetResourceResourceMemsqlArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37806,7 +37897,7 @@ func (i GetResourceResourceMemsqlArgs) ToGetResourceResourceMemsqlOutputWithCont
 // GetResourceResourceMemsqlArrayInput is an input type that accepts GetResourceResourceMemsqlArray and GetResourceResourceMemsqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMemsqlArrayInput` via:
 //
-//          GetResourceResourceMemsqlArray{ GetResourceResourceMemsqlArgs{...} }
+//	GetResourceResourceMemsqlArray{ GetResourceResourceMemsqlArgs{...} }
 type GetResourceResourceMemsqlArrayInput interface {
 	pulumi.Input
 
@@ -37878,8 +37969,8 @@ func (o GetResourceResourceMemsqlOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMemsql) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMemsqlOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMemsql) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMemsqlOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMemsql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -37929,7 +38020,7 @@ type GetResourceResourceMongoHost struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37941,7 +38032,7 @@ type GetResourceResourceMongoHost struct {
 // GetResourceResourceMongoHostInput is an input type that accepts GetResourceResourceMongoHostArgs and GetResourceResourceMongoHostOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoHostInput` via:
 //
-//          GetResourceResourceMongoHostArgs{...}
+//	GetResourceResourceMongoHostArgs{...}
 type GetResourceResourceMongoHostInput interface {
 	pulumi.Input
 
@@ -37962,7 +38053,7 @@ type GetResourceResourceMongoHostArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -37986,7 +38077,7 @@ func (i GetResourceResourceMongoHostArgs) ToGetResourceResourceMongoHostOutputWi
 // GetResourceResourceMongoHostArrayInput is an input type that accepts GetResourceResourceMongoHostArray and GetResourceResourceMongoHostArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoHostArrayInput` via:
 //
-//          GetResourceResourceMongoHostArray{ GetResourceResourceMongoHostArgs{...} }
+//	GetResourceResourceMongoHostArray{ GetResourceResourceMongoHostArgs{...} }
 type GetResourceResourceMongoHostArrayInput interface {
 	pulumi.Input
 
@@ -38058,8 +38149,8 @@ func (o GetResourceResourceMongoHostOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoHost) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMongoHostOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMongoHost) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMongoHostOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -38113,7 +38204,7 @@ type GetResourceResourceMongoLegacyHost struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	ReplicaSet   *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
@@ -38126,7 +38217,7 @@ type GetResourceResourceMongoLegacyHost struct {
 // GetResourceResourceMongoLegacyHostInput is an input type that accepts GetResourceResourceMongoLegacyHostArgs and GetResourceResourceMongoLegacyHostOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoLegacyHostInput` via:
 //
-//          GetResourceResourceMongoLegacyHostArgs{...}
+//	GetResourceResourceMongoLegacyHostArgs{...}
 type GetResourceResourceMongoLegacyHostInput interface {
 	pulumi.Input
 
@@ -38147,7 +38238,7 @@ type GetResourceResourceMongoLegacyHostArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	ReplicaSet   pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -38172,7 +38263,7 @@ func (i GetResourceResourceMongoLegacyHostArgs) ToGetResourceResourceMongoLegacy
 // GetResourceResourceMongoLegacyHostArrayInput is an input type that accepts GetResourceResourceMongoLegacyHostArray and GetResourceResourceMongoLegacyHostArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoLegacyHostArrayInput` via:
 //
-//          GetResourceResourceMongoLegacyHostArray{ GetResourceResourceMongoLegacyHostArgs{...} }
+//	GetResourceResourceMongoLegacyHostArray{ GetResourceResourceMongoLegacyHostArgs{...} }
 type GetResourceResourceMongoLegacyHostArrayInput interface {
 	pulumi.Input
 
@@ -38244,8 +38335,8 @@ func (o GetResourceResourceMongoLegacyHostOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoLegacyHost) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMongoLegacyHostOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMongoLegacyHost) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMongoLegacyHostOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoLegacyHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceMongoLegacyHostOutput) ReplicaSet() pulumi.StringPtrOutput {
@@ -38304,7 +38395,7 @@ type GetResourceResourceMongoLegacyReplicaset struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	ReplicaSet   *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
@@ -38317,7 +38408,7 @@ type GetResourceResourceMongoLegacyReplicaset struct {
 // GetResourceResourceMongoLegacyReplicasetInput is an input type that accepts GetResourceResourceMongoLegacyReplicasetArgs and GetResourceResourceMongoLegacyReplicasetOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoLegacyReplicasetInput` via:
 //
-//          GetResourceResourceMongoLegacyReplicasetArgs{...}
+//	GetResourceResourceMongoLegacyReplicasetArgs{...}
 type GetResourceResourceMongoLegacyReplicasetInput interface {
 	pulumi.Input
 
@@ -38339,7 +38430,7 @@ type GetResourceResourceMongoLegacyReplicasetArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	ReplicaSet   pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -38364,7 +38455,7 @@ func (i GetResourceResourceMongoLegacyReplicasetArgs) ToGetResourceResourceMongo
 // GetResourceResourceMongoLegacyReplicasetArrayInput is an input type that accepts GetResourceResourceMongoLegacyReplicasetArray and GetResourceResourceMongoLegacyReplicasetArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoLegacyReplicasetArrayInput` via:
 //
-//          GetResourceResourceMongoLegacyReplicasetArray{ GetResourceResourceMongoLegacyReplicasetArgs{...} }
+//	GetResourceResourceMongoLegacyReplicasetArray{ GetResourceResourceMongoLegacyReplicasetArgs{...} }
 type GetResourceResourceMongoLegacyReplicasetArrayInput interface {
 	pulumi.Input
 
@@ -38440,8 +38531,8 @@ func (o GetResourceResourceMongoLegacyReplicasetOutput) Port() pulumi.IntPtrOutp
 	return o.ApplyT(func(v GetResourceResourceMongoLegacyReplicaset) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMongoLegacyReplicasetOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMongoLegacyReplicaset) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMongoLegacyReplicasetOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoLegacyReplicaset) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceMongoLegacyReplicasetOutput) ReplicaSet() pulumi.StringPtrOutput {
@@ -38500,7 +38591,7 @@ type GetResourceResourceMongoReplicaSet struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	ReplicaSet   *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
@@ -38513,7 +38604,7 @@ type GetResourceResourceMongoReplicaSet struct {
 // GetResourceResourceMongoReplicaSetInput is an input type that accepts GetResourceResourceMongoReplicaSetArgs and GetResourceResourceMongoReplicaSetOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoReplicaSetInput` via:
 //
-//          GetResourceResourceMongoReplicaSetArgs{...}
+//	GetResourceResourceMongoReplicaSetArgs{...}
 type GetResourceResourceMongoReplicaSetInput interface {
 	pulumi.Input
 
@@ -38535,7 +38626,7 @@ type GetResourceResourceMongoReplicaSetArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	ReplicaSet   pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -38560,7 +38651,7 @@ func (i GetResourceResourceMongoReplicaSetArgs) ToGetResourceResourceMongoReplic
 // GetResourceResourceMongoReplicaSetArrayInput is an input type that accepts GetResourceResourceMongoReplicaSetArray and GetResourceResourceMongoReplicaSetArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoReplicaSetArrayInput` via:
 //
-//          GetResourceResourceMongoReplicaSetArray{ GetResourceResourceMongoReplicaSetArgs{...} }
+//	GetResourceResourceMongoReplicaSetArray{ GetResourceResourceMongoReplicaSetArgs{...} }
 type GetResourceResourceMongoReplicaSetArrayInput interface {
 	pulumi.Input
 
@@ -38636,8 +38727,8 @@ func (o GetResourceResourceMongoReplicaSetOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMongoReplicaSetOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMongoReplicaSetOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceMongoReplicaSetOutput) ReplicaSet() pulumi.StringPtrOutput {
@@ -38694,7 +38785,7 @@ type GetResourceResourceMongoShardedCluster struct {
 	// Unique human-readable name of the Resource.
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -38706,7 +38797,7 @@ type GetResourceResourceMongoShardedCluster struct {
 // GetResourceResourceMongoShardedClusterInput is an input type that accepts GetResourceResourceMongoShardedClusterArgs and GetResourceResourceMongoShardedClusterOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoShardedClusterInput` via:
 //
-//          GetResourceResourceMongoShardedClusterArgs{...}
+//	GetResourceResourceMongoShardedClusterArgs{...}
 type GetResourceResourceMongoShardedClusterInput interface {
 	pulumi.Input
 
@@ -38726,7 +38817,7 @@ type GetResourceResourceMongoShardedClusterArgs struct {
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -38750,7 +38841,7 @@ func (i GetResourceResourceMongoShardedClusterArgs) ToGetResourceResourceMongoSh
 // GetResourceResourceMongoShardedClusterArrayInput is an input type that accepts GetResourceResourceMongoShardedClusterArray and GetResourceResourceMongoShardedClusterArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoShardedClusterArrayInput` via:
 //
-//          GetResourceResourceMongoShardedClusterArray{ GetResourceResourceMongoShardedClusterArgs{...} }
+//	GetResourceResourceMongoShardedClusterArray{ GetResourceResourceMongoShardedClusterArgs{...} }
 type GetResourceResourceMongoShardedClusterArrayInput interface {
 	pulumi.Input
 
@@ -38818,8 +38909,8 @@ func (o GetResourceResourceMongoShardedClusterOutput) Password() pulumi.StringPt
 	return o.ApplyT(func(v GetResourceResourceMongoShardedCluster) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o GetResourceResourceMongoShardedClusterOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMongoShardedCluster) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMongoShardedClusterOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoShardedCluster) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -38876,7 +38967,7 @@ type GetResourceResourceMtlsMysql struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	ServerName    *string `pulumi:"serverName"`
@@ -38888,7 +38979,7 @@ type GetResourceResourceMtlsMysql struct {
 // GetResourceResourceMtlsMysqlInput is an input type that accepts GetResourceResourceMtlsMysqlArgs and GetResourceResourceMtlsMysqlOutput values.
 // You can construct a concrete instance of `GetResourceResourceMtlsMysqlInput` via:
 //
-//          GetResourceResourceMtlsMysqlArgs{...}
+//	GetResourceResourceMtlsMysqlArgs{...}
 type GetResourceResourceMtlsMysqlInput interface {
 	pulumi.Input
 
@@ -38912,7 +39003,7 @@ type GetResourceResourceMtlsMysqlArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	ServerName    pulumi.StringPtrInput `pulumi:"serverName"`
@@ -38936,7 +39027,7 @@ func (i GetResourceResourceMtlsMysqlArgs) ToGetResourceResourceMtlsMysqlOutputWi
 // GetResourceResourceMtlsMysqlArrayInput is an input type that accepts GetResourceResourceMtlsMysqlArray and GetResourceResourceMtlsMysqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMtlsMysqlArrayInput` via:
 //
-//          GetResourceResourceMtlsMysqlArray{ GetResourceResourceMtlsMysqlArgs{...} }
+//	GetResourceResourceMtlsMysqlArray{ GetResourceResourceMtlsMysqlArgs{...} }
 type GetResourceResourceMtlsMysqlArrayInput interface {
 	pulumi.Input
 
@@ -39020,8 +39111,8 @@ func (o GetResourceResourceMtlsMysqlOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMtlsMysqlOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMtlsMysql) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMtlsMysqlOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -39079,7 +39170,7 @@ type GetResourceResourceMtlsPostgre struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	ServerName    *string `pulumi:"serverName"`
@@ -39091,7 +39182,7 @@ type GetResourceResourceMtlsPostgre struct {
 // GetResourceResourceMtlsPostgreInput is an input type that accepts GetResourceResourceMtlsPostgreArgs and GetResourceResourceMtlsPostgreOutput values.
 // You can construct a concrete instance of `GetResourceResourceMtlsPostgreInput` via:
 //
-//          GetResourceResourceMtlsPostgreArgs{...}
+//	GetResourceResourceMtlsPostgreArgs{...}
 type GetResourceResourceMtlsPostgreInput interface {
 	pulumi.Input
 
@@ -39116,7 +39207,7 @@ type GetResourceResourceMtlsPostgreArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	ServerName    pulumi.StringPtrInput `pulumi:"serverName"`
@@ -39140,7 +39231,7 @@ func (i GetResourceResourceMtlsPostgreArgs) ToGetResourceResourceMtlsPostgreOutp
 // GetResourceResourceMtlsPostgreArrayInput is an input type that accepts GetResourceResourceMtlsPostgreArray and GetResourceResourceMtlsPostgreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMtlsPostgreArrayInput` via:
 //
-//          GetResourceResourceMtlsPostgreArray{ GetResourceResourceMtlsPostgreArgs{...} }
+//	GetResourceResourceMtlsPostgreArray{ GetResourceResourceMtlsPostgreArgs{...} }
 type GetResourceResourceMtlsPostgreArrayInput interface {
 	pulumi.Input
 
@@ -39228,8 +39319,8 @@ func (o GetResourceResourceMtlsPostgreOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMtlsPostgre) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMtlsPostgreOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMtlsPostgre) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMtlsPostgreOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMtlsPostgre) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -39283,7 +39374,7 @@ type GetResourceResourceMysql struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -39294,7 +39385,7 @@ type GetResourceResourceMysql struct {
 // GetResourceResourceMysqlInput is an input type that accepts GetResourceResourceMysqlArgs and GetResourceResourceMysqlOutput values.
 // You can construct a concrete instance of `GetResourceResourceMysqlInput` via:
 //
-//          GetResourceResourceMysqlArgs{...}
+//	GetResourceResourceMysqlArgs{...}
 type GetResourceResourceMysqlInput interface {
 	pulumi.Input
 
@@ -39315,7 +39406,7 @@ type GetResourceResourceMysqlArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -39338,7 +39429,7 @@ func (i GetResourceResourceMysqlArgs) ToGetResourceResourceMysqlOutputWithContex
 // GetResourceResourceMysqlArrayInput is an input type that accepts GetResourceResourceMysqlArray and GetResourceResourceMysqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMysqlArrayInput` via:
 //
-//          GetResourceResourceMysqlArray{ GetResourceResourceMysqlArgs{...} }
+//	GetResourceResourceMysqlArray{ GetResourceResourceMysqlArgs{...} }
 type GetResourceResourceMysqlArrayInput interface {
 	pulumi.Input
 
@@ -39410,8 +39501,8 @@ func (o GetResourceResourceMysqlOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMysql) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceMysqlOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceMysql) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceMysqlOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -39459,7 +39550,7 @@ type GetResourceResourceNeptune struct {
 	// Unique human-readable name of the Resource.
 	Name         *string `pulumi:"name"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -39469,7 +39560,7 @@ type GetResourceResourceNeptune struct {
 // GetResourceResourceNeptuneInput is an input type that accepts GetResourceResourceNeptuneArgs and GetResourceResourceNeptuneOutput values.
 // You can construct a concrete instance of `GetResourceResourceNeptuneInput` via:
 //
-//          GetResourceResourceNeptuneArgs{...}
+//	GetResourceResourceNeptuneArgs{...}
 type GetResourceResourceNeptuneInput interface {
 	pulumi.Input
 
@@ -39488,7 +39579,7 @@ type GetResourceResourceNeptuneArgs struct {
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -39510,7 +39601,7 @@ func (i GetResourceResourceNeptuneArgs) ToGetResourceResourceNeptuneOutputWithCo
 // GetResourceResourceNeptuneArrayInput is an input type that accepts GetResourceResourceNeptuneArray and GetResourceResourceNeptuneArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceNeptuneArrayInput` via:
 //
-//          GetResourceResourceNeptuneArray{ GetResourceResourceNeptuneArgs{...} }
+//	GetResourceResourceNeptuneArray{ GetResourceResourceNeptuneArgs{...} }
 type GetResourceResourceNeptuneArrayInput interface {
 	pulumi.Input
 
@@ -39574,8 +39665,8 @@ func (o GetResourceResourceNeptuneOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceNeptune) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceNeptuneOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceNeptune) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceNeptuneOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceNeptune) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -39620,7 +39711,7 @@ type GetResourceResourceNeptuneIam struct {
 	// Unique human-readable name of the Resource.
 	Name            *string `pulumi:"name"`
 	Port            *int    `pulumi:"port"`
-	PortOverride    int     `pulumi:"portOverride"`
+	PortOverride    *int    `pulumi:"portOverride"`
 	Region          *string `pulumi:"region"`
 	RoleArn         *string `pulumi:"roleArn"`
 	RoleExternalId  *string `pulumi:"roleExternalId"`
@@ -39634,7 +39725,7 @@ type GetResourceResourceNeptuneIam struct {
 // GetResourceResourceNeptuneIamInput is an input type that accepts GetResourceResourceNeptuneIamArgs and GetResourceResourceNeptuneIamOutput values.
 // You can construct a concrete instance of `GetResourceResourceNeptuneIamInput` via:
 //
-//          GetResourceResourceNeptuneIamArgs{...}
+//	GetResourceResourceNeptuneIamArgs{...}
 type GetResourceResourceNeptuneIamInput interface {
 	pulumi.Input
 
@@ -39654,7 +39745,7 @@ type GetResourceResourceNeptuneIamArgs struct {
 	// Unique human-readable name of the Resource.
 	Name            pulumi.StringPtrInput `pulumi:"name"`
 	Port            pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride    pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region          pulumi.StringPtrInput `pulumi:"region"`
 	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
 	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
@@ -39680,7 +39771,7 @@ func (i GetResourceResourceNeptuneIamArgs) ToGetResourceResourceNeptuneIamOutput
 // GetResourceResourceNeptuneIamArrayInput is an input type that accepts GetResourceResourceNeptuneIamArray and GetResourceResourceNeptuneIamArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceNeptuneIamArrayInput` via:
 //
-//          GetResourceResourceNeptuneIamArray{ GetResourceResourceNeptuneIamArgs{...} }
+//	GetResourceResourceNeptuneIamArray{ GetResourceResourceNeptuneIamArgs{...} }
 type GetResourceResourceNeptuneIamArrayInput interface {
 	pulumi.Input
 
@@ -39748,8 +39839,8 @@ func (o GetResourceResourceNeptuneIamOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceNeptuneIam) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceNeptuneIamOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceNeptuneIam) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceNeptuneIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceNeptuneIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceNeptuneIamOutput) Region() pulumi.StringPtrOutput {
@@ -39811,7 +39902,7 @@ type GetResourceResourceOracle struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -39823,7 +39914,7 @@ type GetResourceResourceOracle struct {
 // GetResourceResourceOracleInput is an input type that accepts GetResourceResourceOracleArgs and GetResourceResourceOracleOutput values.
 // You can construct a concrete instance of `GetResourceResourceOracleInput` via:
 //
-//          GetResourceResourceOracleArgs{...}
+//	GetResourceResourceOracleArgs{...}
 type GetResourceResourceOracleInput interface {
 	pulumi.Input
 
@@ -39844,7 +39935,7 @@ type GetResourceResourceOracleArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -39868,7 +39959,7 @@ func (i GetResourceResourceOracleArgs) ToGetResourceResourceOracleOutputWithCont
 // GetResourceResourceOracleArrayInput is an input type that accepts GetResourceResourceOracleArray and GetResourceResourceOracleArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceOracleArrayInput` via:
 //
-//          GetResourceResourceOracleArray{ GetResourceResourceOracleArgs{...} }
+//	GetResourceResourceOracleArray{ GetResourceResourceOracleArgs{...} }
 type GetResourceResourceOracleArrayInput interface {
 	pulumi.Input
 
@@ -39940,8 +40031,8 @@ func (o GetResourceResourceOracleOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceOracle) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceOracleOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceOracle) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceOracleOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracle) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -39996,7 +40087,7 @@ type GetResourceResourcePostgre struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40007,7 +40098,7 @@ type GetResourceResourcePostgre struct {
 // GetResourceResourcePostgreInput is an input type that accepts GetResourceResourcePostgreArgs and GetResourceResourcePostgreOutput values.
 // You can construct a concrete instance of `GetResourceResourcePostgreInput` via:
 //
-//          GetResourceResourcePostgreArgs{...}
+//	GetResourceResourcePostgreArgs{...}
 type GetResourceResourcePostgreInput interface {
 	pulumi.Input
 
@@ -40029,7 +40120,7 @@ type GetResourceResourcePostgreArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40052,7 +40143,7 @@ func (i GetResourceResourcePostgreArgs) ToGetResourceResourcePostgreOutputWithCo
 // GetResourceResourcePostgreArrayInput is an input type that accepts GetResourceResourcePostgreArray and GetResourceResourcePostgreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourcePostgreArrayInput` via:
 //
-//          GetResourceResourcePostgreArray{ GetResourceResourcePostgreArgs{...} }
+//	GetResourceResourcePostgreArray{ GetResourceResourcePostgreArgs{...} }
 type GetResourceResourcePostgreArrayInput interface {
 	pulumi.Input
 
@@ -40128,8 +40219,8 @@ func (o GetResourceResourcePostgreOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourcePostgre) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourcePostgreOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourcePostgre) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourcePostgreOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourcePostgre) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -40179,7 +40270,7 @@ type GetResourceResourcePresto struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40191,7 +40282,7 @@ type GetResourceResourcePresto struct {
 // GetResourceResourcePrestoInput is an input type that accepts GetResourceResourcePrestoArgs and GetResourceResourcePrestoOutput values.
 // You can construct a concrete instance of `GetResourceResourcePrestoInput` via:
 //
-//          GetResourceResourcePrestoArgs{...}
+//	GetResourceResourcePrestoArgs{...}
 type GetResourceResourcePrestoInput interface {
 	pulumi.Input
 
@@ -40212,7 +40303,7 @@ type GetResourceResourcePrestoArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40236,7 +40327,7 @@ func (i GetResourceResourcePrestoArgs) ToGetResourceResourcePrestoOutputWithCont
 // GetResourceResourcePrestoArrayInput is an input type that accepts GetResourceResourcePrestoArray and GetResourceResourcePrestoArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourcePrestoArrayInput` via:
 //
-//          GetResourceResourcePrestoArray{ GetResourceResourcePrestoArgs{...} }
+//	GetResourceResourcePrestoArray{ GetResourceResourcePrestoArgs{...} }
 type GetResourceResourcePrestoArrayInput interface {
 	pulumi.Input
 
@@ -40308,8 +40399,8 @@ func (o GetResourceResourcePrestoOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourcePresto) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourcePrestoOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourcePresto) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourcePrestoOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourcePresto) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -40362,7 +40453,7 @@ type GetResourceResourceRabbitmqAmqp091 struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40374,7 +40465,7 @@ type GetResourceResourceRabbitmqAmqp091 struct {
 // GetResourceResourceRabbitmqAmqp091Input is an input type that accepts GetResourceResourceRabbitmqAmqp091Args and GetResourceResourceRabbitmqAmqp091Output values.
 // You can construct a concrete instance of `GetResourceResourceRabbitmqAmqp091Input` via:
 //
-//          GetResourceResourceRabbitmqAmqp091Args{...}
+//	GetResourceResourceRabbitmqAmqp091Args{...}
 type GetResourceResourceRabbitmqAmqp091Input interface {
 	pulumi.Input
 
@@ -40394,7 +40485,7 @@ type GetResourceResourceRabbitmqAmqp091Args struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40418,7 +40509,7 @@ func (i GetResourceResourceRabbitmqAmqp091Args) ToGetResourceResourceRabbitmqAmq
 // GetResourceResourceRabbitmqAmqp091ArrayInput is an input type that accepts GetResourceResourceRabbitmqAmqp091Array and GetResourceResourceRabbitmqAmqp091ArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRabbitmqAmqp091ArrayInput` via:
 //
-//          GetResourceResourceRabbitmqAmqp091Array{ GetResourceResourceRabbitmqAmqp091Args{...} }
+//	GetResourceResourceRabbitmqAmqp091Array{ GetResourceResourceRabbitmqAmqp091Args{...} }
 type GetResourceResourceRabbitmqAmqp091ArrayInput interface {
 	pulumi.Input
 
@@ -40486,8 +40577,8 @@ func (o GetResourceResourceRabbitmqAmqp091Output) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRabbitmqAmqp091) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceRabbitmqAmqp091Output) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceRabbitmqAmqp091) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceRabbitmqAmqp091Output) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRabbitmqAmqp091) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -40539,7 +40630,7 @@ type GetResourceResourceRawTcp struct {
 	// Unique human-readable name of the Resource.
 	Name         *string `pulumi:"name"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40549,7 +40640,7 @@ type GetResourceResourceRawTcp struct {
 // GetResourceResourceRawTcpInput is an input type that accepts GetResourceResourceRawTcpArgs and GetResourceResourceRawTcpOutput values.
 // You can construct a concrete instance of `GetResourceResourceRawTcpInput` via:
 //
-//          GetResourceResourceRawTcpArgs{...}
+//	GetResourceResourceRawTcpArgs{...}
 type GetResourceResourceRawTcpInput interface {
 	pulumi.Input
 
@@ -40568,7 +40659,7 @@ type GetResourceResourceRawTcpArgs struct {
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40590,7 +40681,7 @@ func (i GetResourceResourceRawTcpArgs) ToGetResourceResourceRawTcpOutputWithCont
 // GetResourceResourceRawTcpArrayInput is an input type that accepts GetResourceResourceRawTcpArray and GetResourceResourceRawTcpArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRawTcpArrayInput` via:
 //
-//          GetResourceResourceRawTcpArray{ GetResourceResourceRawTcpArgs{...} }
+//	GetResourceResourceRawTcpArray{ GetResourceResourceRawTcpArgs{...} }
 type GetResourceResourceRawTcpArrayInput interface {
 	pulumi.Input
 
@@ -40654,8 +40745,8 @@ func (o GetResourceResourceRawTcpOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRawTcp) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceRawTcpOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceRawTcp) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceRawTcpOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRawTcp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -40701,7 +40792,7 @@ type GetResourceResourceRdp struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40712,7 +40803,7 @@ type GetResourceResourceRdp struct {
 // GetResourceResourceRdpInput is an input type that accepts GetResourceResourceRdpArgs and GetResourceResourceRdpOutput values.
 // You can construct a concrete instance of `GetResourceResourceRdpInput` via:
 //
-//          GetResourceResourceRdpArgs{...}
+//	GetResourceResourceRdpArgs{...}
 type GetResourceResourceRdpInput interface {
 	pulumi.Input
 
@@ -40733,7 +40824,7 @@ type GetResourceResourceRdpArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40756,7 +40847,7 @@ func (i GetResourceResourceRdpArgs) ToGetResourceResourceRdpOutputWithContext(ct
 // GetResourceResourceRdpArrayInput is an input type that accepts GetResourceResourceRdpArray and GetResourceResourceRdpArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRdpArrayInput` via:
 //
-//          GetResourceResourceRdpArray{ GetResourceResourceRdpArgs{...} }
+//	GetResourceResourceRdpArray{ GetResourceResourceRdpArgs{...} }
 type GetResourceResourceRdpArrayInput interface {
 	pulumi.Input
 
@@ -40828,8 +40919,8 @@ func (o GetResourceResourceRdpOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdp) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceRdpOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceRdp) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceRdpOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -40878,7 +40969,7 @@ type GetResourceResourceRedi struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40888,7 +40979,7 @@ type GetResourceResourceRedi struct {
 // GetResourceResourceRediInput is an input type that accepts GetResourceResourceRediArgs and GetResourceResourceRediOutput values.
 // You can construct a concrete instance of `GetResourceResourceRediInput` via:
 //
-//          GetResourceResourceRediArgs{...}
+//	GetResourceResourceRediArgs{...}
 type GetResourceResourceRediInput interface {
 	pulumi.Input
 
@@ -40908,7 +40999,7 @@ type GetResourceResourceRediArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -40930,7 +41021,7 @@ func (i GetResourceResourceRediArgs) ToGetResourceResourceRediOutputWithContext(
 // GetResourceResourceRediArrayInput is an input type that accepts GetResourceResourceRediArray and GetResourceResourceRediArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRediArrayInput` via:
 //
-//          GetResourceResourceRediArray{ GetResourceResourceRediArgs{...} }
+//	GetResourceResourceRediArray{ GetResourceResourceRediArgs{...} }
 type GetResourceResourceRediArrayInput interface {
 	pulumi.Input
 
@@ -40998,8 +41089,8 @@ func (o GetResourceResourceRediOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRedi) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceRediOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceRedi) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceRediOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedi) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -41046,7 +41137,7 @@ type GetResourceResourceRedshift struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -41057,7 +41148,7 @@ type GetResourceResourceRedshift struct {
 // GetResourceResourceRedshiftInput is an input type that accepts GetResourceResourceRedshiftArgs and GetResourceResourceRedshiftOutput values.
 // You can construct a concrete instance of `GetResourceResourceRedshiftInput` via:
 //
-//          GetResourceResourceRedshiftArgs{...}
+//	GetResourceResourceRedshiftArgs{...}
 type GetResourceResourceRedshiftInput interface {
 	pulumi.Input
 
@@ -41079,7 +41170,7 @@ type GetResourceResourceRedshiftArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -41102,7 +41193,7 @@ func (i GetResourceResourceRedshiftArgs) ToGetResourceResourceRedshiftOutputWith
 // GetResourceResourceRedshiftArrayInput is an input type that accepts GetResourceResourceRedshiftArray and GetResourceResourceRedshiftArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRedshiftArrayInput` via:
 //
-//          GetResourceResourceRedshiftArray{ GetResourceResourceRedshiftArgs{...} }
+//	GetResourceResourceRedshiftArray{ GetResourceResourceRedshiftArgs{...} }
 type GetResourceResourceRedshiftArrayInput interface {
 	pulumi.Input
 
@@ -41178,8 +41269,8 @@ func (o GetResourceResourceRedshiftOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRedshift) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceRedshiftOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceRedshift) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceRedshiftOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshift) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -41229,7 +41320,7 @@ type GetResourceResourceSingleStore struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -41240,7 +41331,7 @@ type GetResourceResourceSingleStore struct {
 // GetResourceResourceSingleStoreInput is an input type that accepts GetResourceResourceSingleStoreArgs and GetResourceResourceSingleStoreOutput values.
 // You can construct a concrete instance of `GetResourceResourceSingleStoreInput` via:
 //
-//          GetResourceResourceSingleStoreArgs{...}
+//	GetResourceResourceSingleStoreArgs{...}
 type GetResourceResourceSingleStoreInput interface {
 	pulumi.Input
 
@@ -41261,7 +41352,7 @@ type GetResourceResourceSingleStoreArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -41284,7 +41375,7 @@ func (i GetResourceResourceSingleStoreArgs) ToGetResourceResourceSingleStoreOutp
 // GetResourceResourceSingleStoreArrayInput is an input type that accepts GetResourceResourceSingleStoreArray and GetResourceResourceSingleStoreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSingleStoreArrayInput` via:
 //
-//          GetResourceResourceSingleStoreArray{ GetResourceResourceSingleStoreArgs{...} }
+//	GetResourceResourceSingleStoreArray{ GetResourceResourceSingleStoreArgs{...} }
 type GetResourceResourceSingleStoreArrayInput interface {
 	pulumi.Input
 
@@ -41356,8 +41447,8 @@ func (o GetResourceResourceSingleStoreOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSingleStore) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceSingleStoreOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceSingleStore) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceSingleStoreOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSingleStore) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -41406,7 +41497,7 @@ type GetResourceResourceSnowflake struct {
 	// Unique human-readable name of the Resource.
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	Schema       *string `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
@@ -41418,7 +41509,7 @@ type GetResourceResourceSnowflake struct {
 // GetResourceResourceSnowflakeInput is an input type that accepts GetResourceResourceSnowflakeArgs and GetResourceResourceSnowflakeOutput values.
 // You can construct a concrete instance of `GetResourceResourceSnowflakeInput` via:
 //
-//          GetResourceResourceSnowflakeArgs{...}
+//	GetResourceResourceSnowflakeArgs{...}
 type GetResourceResourceSnowflakeInput interface {
 	pulumi.Input
 
@@ -41438,7 +41529,7 @@ type GetResourceResourceSnowflakeArgs struct {
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Schema       pulumi.StringPtrInput `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -41462,7 +41553,7 @@ func (i GetResourceResourceSnowflakeArgs) ToGetResourceResourceSnowflakeOutputWi
 // GetResourceResourceSnowflakeArrayInput is an input type that accepts GetResourceResourceSnowflakeArray and GetResourceResourceSnowflakeArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSnowflakeArrayInput` via:
 //
-//          GetResourceResourceSnowflakeArray{ GetResourceResourceSnowflakeArgs{...} }
+//	GetResourceResourceSnowflakeArray{ GetResourceResourceSnowflakeArgs{...} }
 type GetResourceResourceSnowflakeArrayInput interface {
 	pulumi.Input
 
@@ -41530,8 +41621,8 @@ func (o GetResourceResourceSnowflakeOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSnowflake) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o GetResourceResourceSnowflakeOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceSnowflake) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceSnowflakeOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowflake) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceSnowflakeOutput) Schema() pulumi.StringPtrOutput {
@@ -41586,7 +41677,7 @@ type GetResourceResourceSqlServer struct {
 	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
 	Password         *string `pulumi:"password"`
 	Port             *int    `pulumi:"port"`
-	PortOverride     int     `pulumi:"portOverride"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	Schema           *string `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
@@ -41598,7 +41689,7 @@ type GetResourceResourceSqlServer struct {
 // GetResourceResourceSqlServerInput is an input type that accepts GetResourceResourceSqlServerArgs and GetResourceResourceSqlServerOutput values.
 // You can construct a concrete instance of `GetResourceResourceSqlServerInput` via:
 //
-//          GetResourceResourceSqlServerArgs{...}
+//	GetResourceResourceSqlServerArgs{...}
 type GetResourceResourceSqlServerInput interface {
 	pulumi.Input
 
@@ -41620,7 +41711,7 @@ type GetResourceResourceSqlServerArgs struct {
 	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
 	Password         pulumi.StringPtrInput `pulumi:"password"`
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride     pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Schema           pulumi.StringPtrInput `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -41644,7 +41735,7 @@ func (i GetResourceResourceSqlServerArgs) ToGetResourceResourceSqlServerOutputWi
 // GetResourceResourceSqlServerArrayInput is an input type that accepts GetResourceResourceSqlServerArray and GetResourceResourceSqlServerArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSqlServerArrayInput` via:
 //
-//          GetResourceResourceSqlServerArray{ GetResourceResourceSqlServerArgs{...} }
+//	GetResourceResourceSqlServerArray{ GetResourceResourceSqlServerArgs{...} }
 type GetResourceResourceSqlServerArrayInput interface {
 	pulumi.Input
 
@@ -41720,8 +41811,8 @@ func (o GetResourceResourceSqlServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSqlServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceSqlServerOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceSqlServer) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceSqlServerOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServer) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceSqlServerOutput) Schema() pulumi.StringPtrOutput {
@@ -41776,7 +41867,7 @@ type GetResourceResourceSsh struct {
 	Name           *string `pulumi:"name"`
 	Port           *int    `pulumi:"port"`
 	PortForwarding *bool   `pulumi:"portForwarding"`
-	PortOverride   int     `pulumi:"portOverride"`
+	PortOverride   *int    `pulumi:"portOverride"`
 	PublicKey      string  `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
@@ -41788,7 +41879,7 @@ type GetResourceResourceSsh struct {
 // GetResourceResourceSshInput is an input type that accepts GetResourceResourceSshArgs and GetResourceResourceSshOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshInput` via:
 //
-//          GetResourceResourceSshArgs{...}
+//	GetResourceResourceSshArgs{...}
 type GetResourceResourceSshInput interface {
 	pulumi.Input
 
@@ -41810,7 +41901,7 @@ type GetResourceResourceSshArgs struct {
 	Name           pulumi.StringPtrInput `pulumi:"name"`
 	Port           pulumi.IntPtrInput    `pulumi:"port"`
 	PortForwarding pulumi.BoolPtrInput   `pulumi:"portForwarding"`
-	PortOverride   pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride   pulumi.IntPtrInput    `pulumi:"portOverride"`
 	PublicKey      pulumi.StringInput    `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -41834,7 +41925,7 @@ func (i GetResourceResourceSshArgs) ToGetResourceResourceSshOutputWithContext(ct
 // GetResourceResourceSshArrayInput is an input type that accepts GetResourceResourceSshArray and GetResourceResourceSshArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshArrayInput` via:
 //
-//          GetResourceResourceSshArray{ GetResourceResourceSshArgs{...} }
+//	GetResourceResourceSshArray{ GetResourceResourceSshArgs{...} }
 type GetResourceResourceSshArrayInput interface {
 	pulumi.Input
 
@@ -41910,8 +42001,8 @@ func (o GetResourceResourceSshOutput) PortForwarding() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSsh) *bool { return v.PortForwarding }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetResourceResourceSshOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceSsh) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceSshOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSsh) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceSshOutput) PublicKey() pulumi.StringOutput {
@@ -41966,7 +42057,7 @@ type GetResourceResourceSshCert struct {
 	Name                              *string `pulumi:"name"`
 	Port                              *int    `pulumi:"port"`
 	PortForwarding                    *bool   `pulumi:"portForwarding"`
-	PortOverride                      int     `pulumi:"portOverride"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -41979,7 +42070,7 @@ type GetResourceResourceSshCert struct {
 // GetResourceResourceSshCertInput is an input type that accepts GetResourceResourceSshCertArgs and GetResourceResourceSshCertOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshCertInput` via:
 //
-//          GetResourceResourceSshCertArgs{...}
+//	GetResourceResourceSshCertArgs{...}
 type GetResourceResourceSshCertInput interface {
 	pulumi.Input
 
@@ -42001,7 +42092,7 @@ type GetResourceResourceSshCertArgs struct {
 	Name                              pulumi.StringPtrInput `pulumi:"name"`
 	Port                              pulumi.IntPtrInput    `pulumi:"port"`
 	PortForwarding                    pulumi.BoolPtrInput   `pulumi:"portForwarding"`
-	PortOverride                      pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -42026,7 +42117,7 @@ func (i GetResourceResourceSshCertArgs) ToGetResourceResourceSshCertOutputWithCo
 // GetResourceResourceSshCertArrayInput is an input type that accepts GetResourceResourceSshCertArray and GetResourceResourceSshCertArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshCertArrayInput` via:
 //
-//          GetResourceResourceSshCertArray{ GetResourceResourceSshCertArgs{...} }
+//	GetResourceResourceSshCertArray{ GetResourceResourceSshCertArgs{...} }
 type GetResourceResourceSshCertArrayInput interface {
 	pulumi.Input
 
@@ -42102,8 +42193,8 @@ func (o GetResourceResourceSshCertOutput) PortForwarding() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v GetResourceResourceSshCert) *bool { return v.PortForwarding }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetResourceResourceSshCertOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceSshCert) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceSshCertOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceSshCertOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
@@ -42161,7 +42252,7 @@ type GetResourceResourceSshCustomerKey struct {
 	Name           *string `pulumi:"name"`
 	Port           *int    `pulumi:"port"`
 	PortForwarding *bool   `pulumi:"portForwarding"`
-	PortOverride   int     `pulumi:"portOverride"`
+	PortOverride   *int    `pulumi:"portOverride"`
 	PrivateKey     *string `pulumi:"privateKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
@@ -42173,7 +42264,7 @@ type GetResourceResourceSshCustomerKey struct {
 // GetResourceResourceSshCustomerKeyInput is an input type that accepts GetResourceResourceSshCustomerKeyArgs and GetResourceResourceSshCustomerKeyOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshCustomerKeyInput` via:
 //
-//          GetResourceResourceSshCustomerKeyArgs{...}
+//	GetResourceResourceSshCustomerKeyArgs{...}
 type GetResourceResourceSshCustomerKeyInput interface {
 	pulumi.Input
 
@@ -42194,7 +42285,7 @@ type GetResourceResourceSshCustomerKeyArgs struct {
 	Name           pulumi.StringPtrInput `pulumi:"name"`
 	Port           pulumi.IntPtrInput    `pulumi:"port"`
 	PortForwarding pulumi.BoolPtrInput   `pulumi:"portForwarding"`
-	PortOverride   pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride   pulumi.IntPtrInput    `pulumi:"portOverride"`
 	PrivateKey     pulumi.StringPtrInput `pulumi:"privateKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -42218,7 +42309,7 @@ func (i GetResourceResourceSshCustomerKeyArgs) ToGetResourceResourceSshCustomerK
 // GetResourceResourceSshCustomerKeyArrayInput is an input type that accepts GetResourceResourceSshCustomerKeyArray and GetResourceResourceSshCustomerKeyArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshCustomerKeyArrayInput` via:
 //
-//          GetResourceResourceSshCustomerKeyArray{ GetResourceResourceSshCustomerKeyArgs{...} }
+//	GetResourceResourceSshCustomerKeyArray{ GetResourceResourceSshCustomerKeyArgs{...} }
 type GetResourceResourceSshCustomerKeyArrayInput interface {
 	pulumi.Input
 
@@ -42290,8 +42381,8 @@ func (o GetResourceResourceSshCustomerKeyOutput) PortForwarding() pulumi.BoolPtr
 	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) *bool { return v.PortForwarding }).(pulumi.BoolPtrOutput)
 }
 
-func (o GetResourceResourceSshCustomerKeyOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceSshCustomerKeyOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceSshCustomerKeyOutput) PrivateKey() pulumi.StringPtrOutput {
@@ -42344,7 +42435,7 @@ type GetResourceResourceSybase struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -42355,7 +42446,7 @@ type GetResourceResourceSybase struct {
 // GetResourceResourceSybaseInput is an input type that accepts GetResourceResourceSybaseArgs and GetResourceResourceSybaseOutput values.
 // You can construct a concrete instance of `GetResourceResourceSybaseInput` via:
 //
-//          GetResourceResourceSybaseArgs{...}
+//	GetResourceResourceSybaseArgs{...}
 type GetResourceResourceSybaseInput interface {
 	pulumi.Input
 
@@ -42375,7 +42466,7 @@ type GetResourceResourceSybaseArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -42398,7 +42489,7 @@ func (i GetResourceResourceSybaseArgs) ToGetResourceResourceSybaseOutputWithCont
 // GetResourceResourceSybaseArrayInput is an input type that accepts GetResourceResourceSybaseArray and GetResourceResourceSybaseArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSybaseArrayInput` via:
 //
-//          GetResourceResourceSybaseArray{ GetResourceResourceSybaseArgs{...} }
+//	GetResourceResourceSybaseArray{ GetResourceResourceSybaseArgs{...} }
 type GetResourceResourceSybaseArrayInput interface {
 	pulumi.Input
 
@@ -42466,8 +42557,8 @@ func (o GetResourceResourceSybaseOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSybase) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceSybaseOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceSybase) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceSybaseOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSybase) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -42516,7 +42607,7 @@ type GetResourceResourceSybaseIq struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -42527,7 +42618,7 @@ type GetResourceResourceSybaseIq struct {
 // GetResourceResourceSybaseIqInput is an input type that accepts GetResourceResourceSybaseIqArgs and GetResourceResourceSybaseIqOutput values.
 // You can construct a concrete instance of `GetResourceResourceSybaseIqInput` via:
 //
-//          GetResourceResourceSybaseIqArgs{...}
+//	GetResourceResourceSybaseIqArgs{...}
 type GetResourceResourceSybaseIqInput interface {
 	pulumi.Input
 
@@ -42547,7 +42638,7 @@ type GetResourceResourceSybaseIqArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -42570,7 +42661,7 @@ func (i GetResourceResourceSybaseIqArgs) ToGetResourceResourceSybaseIqOutputWith
 // GetResourceResourceSybaseIqArrayInput is an input type that accepts GetResourceResourceSybaseIqArray and GetResourceResourceSybaseIqArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSybaseIqArrayInput` via:
 //
-//          GetResourceResourceSybaseIqArray{ GetResourceResourceSybaseIqArgs{...} }
+//	GetResourceResourceSybaseIqArray{ GetResourceResourceSybaseIqArgs{...} }
 type GetResourceResourceSybaseIqArrayInput interface {
 	pulumi.Input
 
@@ -42638,8 +42729,8 @@ func (o GetResourceResourceSybaseIqOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSybaseIq) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceSybaseIqOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceSybaseIq) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceSybaseIqOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSybaseIq) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -42688,7 +42779,7 @@ type GetResourceResourceTeradata struct {
 	Name         *string `pulumi:"name"`
 	Password     *string `pulumi:"password"`
 	Port         *int    `pulumi:"port"`
-	PortOverride int     `pulumi:"portOverride"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -42699,7 +42790,7 @@ type GetResourceResourceTeradata struct {
 // GetResourceResourceTeradataInput is an input type that accepts GetResourceResourceTeradataArgs and GetResourceResourceTeradataOutput values.
 // You can construct a concrete instance of `GetResourceResourceTeradataInput` via:
 //
-//          GetResourceResourceTeradataArgs{...}
+//	GetResourceResourceTeradataArgs{...}
 type GetResourceResourceTeradataInput interface {
 	pulumi.Input
 
@@ -42719,7 +42810,7 @@ type GetResourceResourceTeradataArgs struct {
 	Name         pulumi.StringPtrInput `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntInput       `pulumi:"portOverride"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
@@ -42742,7 +42833,7 @@ func (i GetResourceResourceTeradataArgs) ToGetResourceResourceTeradataOutputWith
 // GetResourceResourceTeradataArrayInput is an input type that accepts GetResourceResourceTeradataArray and GetResourceResourceTeradataArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceTeradataArrayInput` via:
 //
-//          GetResourceResourceTeradataArray{ GetResourceResourceTeradataArgs{...} }
+//	GetResourceResourceTeradataArray{ GetResourceResourceTeradataArgs{...} }
 type GetResourceResourceTeradataArrayInput interface {
 	pulumi.Input
 
@@ -42810,8 +42901,8 @@ func (o GetResourceResourceTeradataOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceTeradata) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-func (o GetResourceResourceTeradataOutput) PortOverride() pulumi.IntOutput {
-	return o.ApplyT(func(v GetResourceResourceTeradata) int { return v.PortOverride }).(pulumi.IntOutput)
+func (o GetResourceResourceTeradataOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceTeradata) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -42848,243 +42939,9 @@ func (o GetResourceResourceTeradataArrayOutput) Index(i pulumi.IntInput) GetReso
 	}).(GetResourceResourceTeradataOutput)
 }
 
-type GetRoleAttachmentRoleAttachment struct {
-	// The id of the attached role of this RoleAttachment.
-	AttachedRoleId *string `pulumi:"attachedRoleId"`
-	// The id of the composite role of this RoleAttachment.
-	CompositeRoleId *string `pulumi:"compositeRoleId"`
-	// Unique identifier of the RoleAttachment.
-	Id *string `pulumi:"id"`
-}
-
-// GetRoleAttachmentRoleAttachmentInput is an input type that accepts GetRoleAttachmentRoleAttachmentArgs and GetRoleAttachmentRoleAttachmentOutput values.
-// You can construct a concrete instance of `GetRoleAttachmentRoleAttachmentInput` via:
-//
-//          GetRoleAttachmentRoleAttachmentArgs{...}
-type GetRoleAttachmentRoleAttachmentInput interface {
-	pulumi.Input
-
-	ToGetRoleAttachmentRoleAttachmentOutput() GetRoleAttachmentRoleAttachmentOutput
-	ToGetRoleAttachmentRoleAttachmentOutputWithContext(context.Context) GetRoleAttachmentRoleAttachmentOutput
-}
-
-type GetRoleAttachmentRoleAttachmentArgs struct {
-	// The id of the attached role of this RoleAttachment.
-	AttachedRoleId pulumi.StringPtrInput `pulumi:"attachedRoleId"`
-	// The id of the composite role of this RoleAttachment.
-	CompositeRoleId pulumi.StringPtrInput `pulumi:"compositeRoleId"`
-	// Unique identifier of the RoleAttachment.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (GetRoleAttachmentRoleAttachmentArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRoleAttachmentRoleAttachment)(nil)).Elem()
-}
-
-func (i GetRoleAttachmentRoleAttachmentArgs) ToGetRoleAttachmentRoleAttachmentOutput() GetRoleAttachmentRoleAttachmentOutput {
-	return i.ToGetRoleAttachmentRoleAttachmentOutputWithContext(context.Background())
-}
-
-func (i GetRoleAttachmentRoleAttachmentArgs) ToGetRoleAttachmentRoleAttachmentOutputWithContext(ctx context.Context) GetRoleAttachmentRoleAttachmentOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRoleAttachmentRoleAttachmentOutput)
-}
-
-// GetRoleAttachmentRoleAttachmentArrayInput is an input type that accepts GetRoleAttachmentRoleAttachmentArray and GetRoleAttachmentRoleAttachmentArrayOutput values.
-// You can construct a concrete instance of `GetRoleAttachmentRoleAttachmentArrayInput` via:
-//
-//          GetRoleAttachmentRoleAttachmentArray{ GetRoleAttachmentRoleAttachmentArgs{...} }
-type GetRoleAttachmentRoleAttachmentArrayInput interface {
-	pulumi.Input
-
-	ToGetRoleAttachmentRoleAttachmentArrayOutput() GetRoleAttachmentRoleAttachmentArrayOutput
-	ToGetRoleAttachmentRoleAttachmentArrayOutputWithContext(context.Context) GetRoleAttachmentRoleAttachmentArrayOutput
-}
-
-type GetRoleAttachmentRoleAttachmentArray []GetRoleAttachmentRoleAttachmentInput
-
-func (GetRoleAttachmentRoleAttachmentArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRoleAttachmentRoleAttachment)(nil)).Elem()
-}
-
-func (i GetRoleAttachmentRoleAttachmentArray) ToGetRoleAttachmentRoleAttachmentArrayOutput() GetRoleAttachmentRoleAttachmentArrayOutput {
-	return i.ToGetRoleAttachmentRoleAttachmentArrayOutputWithContext(context.Background())
-}
-
-func (i GetRoleAttachmentRoleAttachmentArray) ToGetRoleAttachmentRoleAttachmentArrayOutputWithContext(ctx context.Context) GetRoleAttachmentRoleAttachmentArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRoleAttachmentRoleAttachmentArrayOutput)
-}
-
-type GetRoleAttachmentRoleAttachmentOutput struct{ *pulumi.OutputState }
-
-func (GetRoleAttachmentRoleAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRoleAttachmentRoleAttachment)(nil)).Elem()
-}
-
-func (o GetRoleAttachmentRoleAttachmentOutput) ToGetRoleAttachmentRoleAttachmentOutput() GetRoleAttachmentRoleAttachmentOutput {
-	return o
-}
-
-func (o GetRoleAttachmentRoleAttachmentOutput) ToGetRoleAttachmentRoleAttachmentOutputWithContext(ctx context.Context) GetRoleAttachmentRoleAttachmentOutput {
-	return o
-}
-
-// The id of the attached role of this RoleAttachment.
-func (o GetRoleAttachmentRoleAttachmentOutput) AttachedRoleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRoleAttachmentRoleAttachment) *string { return v.AttachedRoleId }).(pulumi.StringPtrOutput)
-}
-
-// The id of the composite role of this RoleAttachment.
-func (o GetRoleAttachmentRoleAttachmentOutput) CompositeRoleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRoleAttachmentRoleAttachment) *string { return v.CompositeRoleId }).(pulumi.StringPtrOutput)
-}
-
-// Unique identifier of the RoleAttachment.
-func (o GetRoleAttachmentRoleAttachmentOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRoleAttachmentRoleAttachment) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type GetRoleAttachmentRoleAttachmentArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRoleAttachmentRoleAttachmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRoleAttachmentRoleAttachment)(nil)).Elem()
-}
-
-func (o GetRoleAttachmentRoleAttachmentArrayOutput) ToGetRoleAttachmentRoleAttachmentArrayOutput() GetRoleAttachmentRoleAttachmentArrayOutput {
-	return o
-}
-
-func (o GetRoleAttachmentRoleAttachmentArrayOutput) ToGetRoleAttachmentRoleAttachmentArrayOutputWithContext(ctx context.Context) GetRoleAttachmentRoleAttachmentArrayOutput {
-	return o
-}
-
-func (o GetRoleAttachmentRoleAttachmentArrayOutput) Index(i pulumi.IntInput) GetRoleAttachmentRoleAttachmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoleAttachmentRoleAttachment {
-		return vs[0].([]GetRoleAttachmentRoleAttachment)[vs[1].(int)]
-	}).(GetRoleAttachmentRoleAttachmentOutput)
-}
-
-type GetRoleGrantRoleGrant struct {
-	// Unique identifier of the RoleGrant.
-	Id *string `pulumi:"id"`
-	// The id of the resource of this RoleGrant.
-	ResourceId *string `pulumi:"resourceId"`
-	// The id of the attached role of this RoleGrant.
-	RoleId *string `pulumi:"roleId"`
-}
-
-// GetRoleGrantRoleGrantInput is an input type that accepts GetRoleGrantRoleGrantArgs and GetRoleGrantRoleGrantOutput values.
-// You can construct a concrete instance of `GetRoleGrantRoleGrantInput` via:
-//
-//          GetRoleGrantRoleGrantArgs{...}
-type GetRoleGrantRoleGrantInput interface {
-	pulumi.Input
-
-	ToGetRoleGrantRoleGrantOutput() GetRoleGrantRoleGrantOutput
-	ToGetRoleGrantRoleGrantOutputWithContext(context.Context) GetRoleGrantRoleGrantOutput
-}
-
-type GetRoleGrantRoleGrantArgs struct {
-	// Unique identifier of the RoleGrant.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The id of the resource of this RoleGrant.
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// The id of the attached role of this RoleGrant.
-	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
-}
-
-func (GetRoleGrantRoleGrantArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRoleGrantRoleGrant)(nil)).Elem()
-}
-
-func (i GetRoleGrantRoleGrantArgs) ToGetRoleGrantRoleGrantOutput() GetRoleGrantRoleGrantOutput {
-	return i.ToGetRoleGrantRoleGrantOutputWithContext(context.Background())
-}
-
-func (i GetRoleGrantRoleGrantArgs) ToGetRoleGrantRoleGrantOutputWithContext(ctx context.Context) GetRoleGrantRoleGrantOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRoleGrantRoleGrantOutput)
-}
-
-// GetRoleGrantRoleGrantArrayInput is an input type that accepts GetRoleGrantRoleGrantArray and GetRoleGrantRoleGrantArrayOutput values.
-// You can construct a concrete instance of `GetRoleGrantRoleGrantArrayInput` via:
-//
-//          GetRoleGrantRoleGrantArray{ GetRoleGrantRoleGrantArgs{...} }
-type GetRoleGrantRoleGrantArrayInput interface {
-	pulumi.Input
-
-	ToGetRoleGrantRoleGrantArrayOutput() GetRoleGrantRoleGrantArrayOutput
-	ToGetRoleGrantRoleGrantArrayOutputWithContext(context.Context) GetRoleGrantRoleGrantArrayOutput
-}
-
-type GetRoleGrantRoleGrantArray []GetRoleGrantRoleGrantInput
-
-func (GetRoleGrantRoleGrantArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRoleGrantRoleGrant)(nil)).Elem()
-}
-
-func (i GetRoleGrantRoleGrantArray) ToGetRoleGrantRoleGrantArrayOutput() GetRoleGrantRoleGrantArrayOutput {
-	return i.ToGetRoleGrantRoleGrantArrayOutputWithContext(context.Background())
-}
-
-func (i GetRoleGrantRoleGrantArray) ToGetRoleGrantRoleGrantArrayOutputWithContext(ctx context.Context) GetRoleGrantRoleGrantArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRoleGrantRoleGrantArrayOutput)
-}
-
-type GetRoleGrantRoleGrantOutput struct{ *pulumi.OutputState }
-
-func (GetRoleGrantRoleGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRoleGrantRoleGrant)(nil)).Elem()
-}
-
-func (o GetRoleGrantRoleGrantOutput) ToGetRoleGrantRoleGrantOutput() GetRoleGrantRoleGrantOutput {
-	return o
-}
-
-func (o GetRoleGrantRoleGrantOutput) ToGetRoleGrantRoleGrantOutputWithContext(ctx context.Context) GetRoleGrantRoleGrantOutput {
-	return o
-}
-
-// Unique identifier of the RoleGrant.
-func (o GetRoleGrantRoleGrantOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRoleGrantRoleGrant) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The id of the resource of this RoleGrant.
-func (o GetRoleGrantRoleGrantOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRoleGrantRoleGrant) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The id of the attached role of this RoleGrant.
-func (o GetRoleGrantRoleGrantOutput) RoleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRoleGrantRoleGrant) *string { return v.RoleId }).(pulumi.StringPtrOutput)
-}
-
-type GetRoleGrantRoleGrantArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRoleGrantRoleGrantArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRoleGrantRoleGrant)(nil)).Elem()
-}
-
-func (o GetRoleGrantRoleGrantArrayOutput) ToGetRoleGrantRoleGrantArrayOutput() GetRoleGrantRoleGrantArrayOutput {
-	return o
-}
-
-func (o GetRoleGrantRoleGrantArrayOutput) ToGetRoleGrantRoleGrantArrayOutputWithContext(ctx context.Context) GetRoleGrantRoleGrantArrayOutput {
-	return o
-}
-
-func (o GetRoleGrantRoleGrantArrayOutput) Index(i pulumi.IntInput) GetRoleGrantRoleGrantOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRoleGrantRoleGrant {
-		return vs[0].([]GetRoleGrantRoleGrant)[vs[1].(int)]
-	}).(GetRoleGrantRoleGrantOutput)
-}
-
 type GetRoleRole struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules *string `pulumi:"accessRules"`
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite *bool `pulumi:"composite"`
 	// Unique identifier of the Role.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Role.
@@ -43096,7 +42953,7 @@ type GetRoleRole struct {
 // GetRoleRoleInput is an input type that accepts GetRoleRoleArgs and GetRoleRoleOutput values.
 // You can construct a concrete instance of `GetRoleRoleInput` via:
 //
-//          GetRoleRoleArgs{...}
+//	GetRoleRoleArgs{...}
 type GetRoleRoleInput interface {
 	pulumi.Input
 
@@ -43107,10 +42964,6 @@ type GetRoleRoleInput interface {
 type GetRoleRoleArgs struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules pulumi.StringPtrInput `pulumi:"accessRules"`
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite pulumi.BoolPtrInput `pulumi:"composite"`
 	// Unique identifier of the Role.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Role.
@@ -43134,7 +42987,7 @@ func (i GetRoleRoleArgs) ToGetRoleRoleOutputWithContext(ctx context.Context) Get
 // GetRoleRoleArrayInput is an input type that accepts GetRoleRoleArray and GetRoleRoleArrayOutput values.
 // You can construct a concrete instance of `GetRoleRoleArrayInput` via:
 //
-//          GetRoleRoleArray{ GetRoleRoleArgs{...} }
+//	GetRoleRoleArray{ GetRoleRoleArgs{...} }
 type GetRoleRoleArrayInput interface {
 	pulumi.Input
 
@@ -43173,13 +43026,6 @@ func (o GetRoleRoleOutput) ToGetRoleRoleOutputWithContext(ctx context.Context) G
 // AccessRules is a list of access rules defining the resources this Role has access to.
 func (o GetRoleRoleOutput) AccessRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRoleRole) *string { return v.AccessRules }).(pulumi.StringPtrOutput)
-}
-
-// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-//
-// Deprecated: composite is deprecated, see docs for more info
-func (o GetRoleRoleOutput) Composite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetRoleRole) *bool { return v.Composite }).(pulumi.BoolPtrOutput)
 }
 
 // Unique identifier of the Role.
@@ -43229,7 +43075,7 @@ type GetSecretStoreSecretStore struct {
 // GetSecretStoreSecretStoreInput is an input type that accepts GetSecretStoreSecretStoreArgs and GetSecretStoreSecretStoreOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreInput` via:
 //
-//          GetSecretStoreSecretStoreArgs{...}
+//	GetSecretStoreSecretStoreArgs{...}
 type GetSecretStoreSecretStoreInput interface {
 	pulumi.Input
 
@@ -43261,7 +43107,7 @@ func (i GetSecretStoreSecretStoreArgs) ToGetSecretStoreSecretStoreOutputWithCont
 // GetSecretStoreSecretStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreArray and GetSecretStoreSecretStoreArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreArrayInput` via:
 //
-//          GetSecretStoreSecretStoreArray{ GetSecretStoreSecretStoreArgs{...} }
+//	GetSecretStoreSecretStoreArray{ GetSecretStoreSecretStoreArgs{...} }
 type GetSecretStoreSecretStoreArrayInput interface {
 	pulumi.Input
 
@@ -43354,7 +43200,7 @@ type GetSecretStoreSecretStoreAw struct {
 // GetSecretStoreSecretStoreAwInput is an input type that accepts GetSecretStoreSecretStoreAwArgs and GetSecretStoreSecretStoreAwOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreAwInput` via:
 //
-//          GetSecretStoreSecretStoreAwArgs{...}
+//	GetSecretStoreSecretStoreAwArgs{...}
 type GetSecretStoreSecretStoreAwInput interface {
 	pulumi.Input
 
@@ -43387,7 +43233,7 @@ func (i GetSecretStoreSecretStoreAwArgs) ToGetSecretStoreSecretStoreAwOutputWith
 // GetSecretStoreSecretStoreAwArrayInput is an input type that accepts GetSecretStoreSecretStoreAwArray and GetSecretStoreSecretStoreAwArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreAwArrayInput` via:
 //
-//          GetSecretStoreSecretStoreAwArray{ GetSecretStoreSecretStoreAwArgs{...} }
+//	GetSecretStoreSecretStoreAwArray{ GetSecretStoreSecretStoreAwArgs{...} }
 type GetSecretStoreSecretStoreAwArrayInput interface {
 	pulumi.Input
 
@@ -43476,7 +43322,7 @@ type GetSecretStoreSecretStoreAzureStore struct {
 // GetSecretStoreSecretStoreAzureStoreInput is an input type that accepts GetSecretStoreSecretStoreAzureStoreArgs and GetSecretStoreSecretStoreAzureStoreOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreAzureStoreInput` via:
 //
-//          GetSecretStoreSecretStoreAzureStoreArgs{...}
+//	GetSecretStoreSecretStoreAzureStoreArgs{...}
 type GetSecretStoreSecretStoreAzureStoreInput interface {
 	pulumi.Input
 
@@ -43510,7 +43356,7 @@ func (i GetSecretStoreSecretStoreAzureStoreArgs) ToGetSecretStoreSecretStoreAzur
 // GetSecretStoreSecretStoreAzureStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreAzureStoreArray and GetSecretStoreSecretStoreAzureStoreArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreAzureStoreArrayInput` via:
 //
-//          GetSecretStoreSecretStoreAzureStoreArray{ GetSecretStoreSecretStoreAzureStoreArgs{...} }
+//	GetSecretStoreSecretStoreAzureStoreArray{ GetSecretStoreSecretStoreAzureStoreArgs{...} }
 type GetSecretStoreSecretStoreAzureStoreArrayInput interface {
 	pulumi.Input
 
@@ -43599,7 +43445,7 @@ type GetSecretStoreSecretStoreGcpStore struct {
 // GetSecretStoreSecretStoreGcpStoreInput is an input type that accepts GetSecretStoreSecretStoreGcpStoreArgs and GetSecretStoreSecretStoreGcpStoreOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreGcpStoreInput` via:
 //
-//          GetSecretStoreSecretStoreGcpStoreArgs{...}
+//	GetSecretStoreSecretStoreGcpStoreArgs{...}
 type GetSecretStoreSecretStoreGcpStoreInput interface {
 	pulumi.Input
 
@@ -43632,7 +43478,7 @@ func (i GetSecretStoreSecretStoreGcpStoreArgs) ToGetSecretStoreSecretStoreGcpSto
 // GetSecretStoreSecretStoreGcpStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreGcpStoreArray and GetSecretStoreSecretStoreGcpStoreArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreGcpStoreArrayInput` via:
 //
-//          GetSecretStoreSecretStoreGcpStoreArray{ GetSecretStoreSecretStoreGcpStoreArgs{...} }
+//	GetSecretStoreSecretStoreGcpStoreArray{ GetSecretStoreSecretStoreGcpStoreArgs{...} }
 type GetSecretStoreSecretStoreGcpStoreArrayInput interface {
 	pulumi.Input
 
@@ -43721,7 +43567,7 @@ type GetSecretStoreSecretStoreVaultApprole struct {
 // GetSecretStoreSecretStoreVaultApproleInput is an input type that accepts GetSecretStoreSecretStoreVaultApproleArgs and GetSecretStoreSecretStoreVaultApproleOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultApproleInput` via:
 //
-//          GetSecretStoreSecretStoreVaultApproleArgs{...}
+//	GetSecretStoreSecretStoreVaultApproleArgs{...}
 type GetSecretStoreSecretStoreVaultApproleInput interface {
 	pulumi.Input
 
@@ -43755,7 +43601,7 @@ func (i GetSecretStoreSecretStoreVaultApproleArgs) ToGetSecretStoreSecretStoreVa
 // GetSecretStoreSecretStoreVaultApproleArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultApproleArray and GetSecretStoreSecretStoreVaultApproleArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultApproleArrayInput` via:
 //
-//          GetSecretStoreSecretStoreVaultApproleArray{ GetSecretStoreSecretStoreVaultApproleArgs{...} }
+//	GetSecretStoreSecretStoreVaultApproleArray{ GetSecretStoreSecretStoreVaultApproleArgs{...} }
 type GetSecretStoreSecretStoreVaultApproleArrayInput interface {
 	pulumi.Input
 
@@ -43851,7 +43697,7 @@ type GetSecretStoreSecretStoreVaultTl struct {
 // GetSecretStoreSecretStoreVaultTlInput is an input type that accepts GetSecretStoreSecretStoreVaultTlArgs and GetSecretStoreSecretStoreVaultTlOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTlInput` via:
 //
-//          GetSecretStoreSecretStoreVaultTlArgs{...}
+//	GetSecretStoreSecretStoreVaultTlArgs{...}
 type GetSecretStoreSecretStoreVaultTlInput interface {
 	pulumi.Input
 
@@ -43888,7 +43734,7 @@ func (i GetSecretStoreSecretStoreVaultTlArgs) ToGetSecretStoreSecretStoreVaultTl
 // GetSecretStoreSecretStoreVaultTlArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultTlArray and GetSecretStoreSecretStoreVaultTlArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTlArrayInput` via:
 //
-//          GetSecretStoreSecretStoreVaultTlArray{ GetSecretStoreSecretStoreVaultTlArgs{...} }
+//	GetSecretStoreSecretStoreVaultTlArray{ GetSecretStoreSecretStoreVaultTlArgs{...} }
 type GetSecretStoreSecretStoreVaultTlArrayInput interface {
 	pulumi.Input
 
@@ -43993,7 +43839,7 @@ type GetSecretStoreSecretStoreVaultToken struct {
 // GetSecretStoreSecretStoreVaultTokenInput is an input type that accepts GetSecretStoreSecretStoreVaultTokenArgs and GetSecretStoreSecretStoreVaultTokenOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTokenInput` via:
 //
-//          GetSecretStoreSecretStoreVaultTokenArgs{...}
+//	GetSecretStoreSecretStoreVaultTokenArgs{...}
 type GetSecretStoreSecretStoreVaultTokenInput interface {
 	pulumi.Input
 
@@ -44027,7 +43873,7 @@ func (i GetSecretStoreSecretStoreVaultTokenArgs) ToGetSecretStoreSecretStoreVaul
 // GetSecretStoreSecretStoreVaultTokenArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultTokenArray and GetSecretStoreSecretStoreVaultTokenArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTokenArrayInput` via:
 //
-//          GetSecretStoreSecretStoreVaultTokenArray{ GetSecretStoreSecretStoreVaultTokenArgs{...} }
+//	GetSecretStoreSecretStoreVaultTokenArray{ GetSecretStoreSecretStoreVaultTokenArgs{...} }
 type GetSecretStoreSecretStoreVaultTokenArrayInput interface {
 	pulumi.Input
 
@@ -44277,8 +44123,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountUserArrayInput)(nil)).Elem(), GetAccountAccountUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAttachmentAccountAttachmentInput)(nil)).Elem(), GetAccountAttachmentAccountAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAttachmentAccountAttachmentArrayInput)(nil)).Elem(), GetAccountAttachmentAccountAttachmentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountGrantAccountGrantInput)(nil)).Elem(), GetAccountGrantAccountGrantArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountGrantAccountGrantArrayInput)(nil)).Elem(), GetAccountGrantAccountGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeInput)(nil)).Elem(), GetNodeNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeArrayInput)(nil)).Elem(), GetNodeNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeGatewayInput)(nil)).Elem(), GetNodeNodeGatewayArgs{})
@@ -44433,10 +44277,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSybaseIqArrayInput)(nil)).Elem(), GetResourceResourceSybaseIqArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceTeradataInput)(nil)).Elem(), GetResourceResourceTeradataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceTeradataArrayInput)(nil)).Elem(), GetResourceResourceTeradataArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAttachmentRoleAttachmentInput)(nil)).Elem(), GetRoleAttachmentRoleAttachmentArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleAttachmentRoleAttachmentArrayInput)(nil)).Elem(), GetRoleAttachmentRoleAttachmentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleGrantRoleGrantInput)(nil)).Elem(), GetRoleGrantRoleGrantArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleGrantRoleGrantArrayInput)(nil)).Elem(), GetRoleGrantRoleGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleRoleInput)(nil)).Elem(), GetRoleRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleRoleArrayInput)(nil)).Elem(), GetRoleRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreArgs{})
@@ -44623,8 +44463,6 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountAccountUserArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAttachmentAccountAttachmentOutput{})
 	pulumi.RegisterOutputType(GetAccountAttachmentAccountAttachmentArrayOutput{})
-	pulumi.RegisterOutputType(GetAccountGrantAccountGrantOutput{})
-	pulumi.RegisterOutputType(GetAccountGrantAccountGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeGatewayOutput{})
@@ -44779,10 +44617,6 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceSybaseIqArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceTeradataOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceTeradataArrayOutput{})
-	pulumi.RegisterOutputType(GetRoleAttachmentRoleAttachmentOutput{})
-	pulumi.RegisterOutputType(GetRoleAttachmentRoleAttachmentArrayOutput{})
-	pulumi.RegisterOutputType(GetRoleGrantRoleGrantOutput{})
-	pulumi.RegisterOutputType(GetRoleGrantRoleGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetRoleRoleOutput{})
 	pulumi.RegisterOutputType(GetRoleRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreOutput{})

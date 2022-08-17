@@ -11,34 +11,39 @@ import (
 )
 
 // A Role has a list of access rules which determine which Resources the members
-//  of the Role have access to. An Account can be a member of multiple Roles via
-//  AccountAttachments.
+//
+//	of the Role have access to. An Account can be a member of multiple Roles via
+//	AccountAttachments.
+//
 // ## Example Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sdm.LookupRole(ctx, &GetRoleArgs{
-// 			Composite: pulumi.BoolRef(true),
-// 			Tags: map[string]interface{}{
-// 				"env":    "dev",
-// 				"region": "us-west",
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.LookupRole(ctx, &GetRoleArgs{
+//				Composite: true,
+//				Tags: map[string]interface{}{
+//					"env":    "dev",
+//					"region": "us-west",
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
@@ -52,10 +57,6 @@ func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getRole.
 type LookupRoleArgs struct {
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite *bool `pulumi:"composite"`
 	// Unique identifier of the Role.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Role.
@@ -66,10 +67,6 @@ type LookupRoleArgs struct {
 
 // A collection of values returned by getRole.
 type LookupRoleResult struct {
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite *bool `pulumi:"composite"`
 	// Unique identifier of the Role.
 	Id *string `pulumi:"id"`
 	// a list of strings of ids of data sources that match the given arguments.
@@ -97,10 +94,6 @@ func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getRole.
 type LookupRoleOutputArgs struct {
-	// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-	//
-	// Deprecated: composite is deprecated, see docs for more info
-	Composite pulumi.BoolPtrInput `pulumi:"composite"`
 	// Unique identifier of the Role.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Role.
@@ -126,13 +119,6 @@ func (o LookupRoleResultOutput) ToLookupRoleResultOutput() LookupRoleResultOutpu
 
 func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.Context) LookupRoleResultOutput {
 	return o
-}
-
-// Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-//
-// Deprecated: composite is deprecated, see docs for more info
-func (o LookupRoleResultOutput) Composite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupRoleResult) *bool { return v.Composite }).(pulumi.BoolPtrOutput)
 }
 
 // Unique identifier of the Role.

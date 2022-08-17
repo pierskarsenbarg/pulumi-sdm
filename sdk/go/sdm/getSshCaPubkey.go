@@ -17,20 +17,23 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sdm.GetSshCaPubkey(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.GetSshCaPubkey(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetSshCaPubkey(ctx *pulumi.Context, args *GetSshCaPubkeyArgs, opts ...pulumi.InvokeOption) (*GetSshCaPubkeyResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)

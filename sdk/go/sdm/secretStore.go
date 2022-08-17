@@ -15,7 +15,9 @@ import (
 // SecretStore can be imported using the id, e.g.,
 //
 // ```sh
-//  $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
+//
+//	$ pulumi import sdm:index/secretStore:SecretStore example se-12345678
+//
 // ```
 type SecretStore struct {
 	pulumi.CustomResourceState
@@ -124,7 +126,7 @@ func (i *SecretStore) ToSecretStoreOutputWithContext(ctx context.Context) Secret
 // SecretStoreArrayInput is an input type that accepts SecretStoreArray and SecretStoreArrayOutput values.
 // You can construct a concrete instance of `SecretStoreArrayInput` via:
 //
-//          SecretStoreArray{ SecretStoreArgs{...} }
+//	SecretStoreArray{ SecretStoreArgs{...} }
 type SecretStoreArrayInput interface {
 	pulumi.Input
 
@@ -149,7 +151,7 @@ func (i SecretStoreArray) ToSecretStoreArrayOutputWithContext(ctx context.Contex
 // SecretStoreMapInput is an input type that accepts SecretStoreMap and SecretStoreMapOutput values.
 // You can construct a concrete instance of `SecretStoreMapInput` via:
 //
-//          SecretStoreMap{ "key": SecretStoreArgs{...} }
+//	SecretStoreMap{ "key": SecretStoreArgs{...} }
 type SecretStoreMapInput interface {
 	pulumi.Input
 

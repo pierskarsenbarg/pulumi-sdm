@@ -35,7 +35,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly bool? OverrideDatabase;
         public readonly string? Password;
         public readonly int? Port;
-        public readonly int PortOverride;
+        public readonly int? PortOverride;
         public readonly string? Schema;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
@@ -67,7 +67,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? port,
 
-            int portOverride,
+            int? portOverride,
 
             string? schema,
 

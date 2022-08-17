@@ -24,8 +24,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "sdm:index/accountAttachment:AccountAttachment":
 		r = &AccountAttachment{}
-	case "sdm:index/accountGrant:AccountGrant":
-		r = &AccountGrant{}
 	case "sdm:index/node:Node":
 		r = &Node{}
 	case "sdm:index/remoteIdentity:RemoteIdentity":
@@ -34,10 +32,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Resource{}
 	case "sdm:index/role:Role":
 		r = &Role{}
-	case "sdm:index/roleAttachment:RoleAttachment":
-		r = &RoleAttachment{}
-	case "sdm:index/roleGrant:RoleGrant":
-		r = &RoleGrant{}
 	case "sdm:index/secretStore:SecretStore":
 		r = &SecretStore{}
 	default:
@@ -80,11 +74,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"sdm",
-		"index/accountGrant",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"sdm",
 		"index/node",
 		&module{version},
 	)
@@ -101,16 +90,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sdm",
 		"index/role",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"sdm",
-		"index/roleAttachment",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"sdm",
-		"index/roleGrant",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

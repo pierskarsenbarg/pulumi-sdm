@@ -11,34 +11,39 @@ import (
 )
 
 // A Resource is a database, server, cluster, website, or cloud that strongDM
-//  delegates access to.
+//
+//	delegates access to.
+//
 // ## Example Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sdm.LookupResource(ctx, &GetResourceArgs{
-// 			Name: pulumi.StringRef("us-west*"),
-// 			Tags: map[string]interface{}{
-// 				"env":    "dev",
-// 				"region": "us-west",
-// 			},
-// 			Type: pulumi.StringRef("mysql"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.LookupResource(ctx, &GetResourceArgs{
+//				Name: pulumi.StringRef("us-west*"),
+//				Tags: map[string]interface{}{
+//					"env":    "dev",
+//					"region": "us-west",
+//				},
+//				Type: pulumi.StringRef("mysql"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulumi.InvokeOption) (*LookupResourceResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)

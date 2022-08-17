@@ -11,30 +11,35 @@ import (
 )
 
 // RemoteIdentities define the username to be used for a specific account
-//  when connecting to a remote resource using that group.
+//
+//	when connecting to a remote resource using that group.
+//
 // ## Example Usage
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := sdm.LookupRemoteIdentity(ctx, &GetRemoteIdentityArgs{
-// 			Id:       pulumi.StringRef("i-0900909"),
-// 			Username: pulumi.StringRef("user"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.LookupRemoteIdentity(ctx, &GetRemoteIdentityArgs{
+//				Id:       pulumi.StringRef("i-0900909"),
+//				Username: pulumi.StringRef("user"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 func LookupRemoteIdentity(ctx *pulumi.Context, args *LookupRemoteIdentityArgs, opts ...pulumi.InvokeOption) (*LookupRemoteIdentityResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)

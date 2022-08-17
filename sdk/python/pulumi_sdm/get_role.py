@@ -21,14 +21,7 @@ class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, composite=None, id=None, ids=None, name=None, roles=None, tags=None):
-        if composite and not isinstance(composite, bool):
-            raise TypeError("Expected argument 'composite' to be a bool")
-        if composite is not None:
-            warnings.warn("""composite is deprecated, see docs for more info""", DeprecationWarning)
-            pulumi.log.warn("""composite is deprecated: composite is deprecated, see docs for more info""")
-
-        pulumi.set(__self__, "composite", composite)
+    def __init__(__self__, id=None, ids=None, name=None, roles=None, tags=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,14 +37,6 @@ class GetRoleResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter
-    def composite(self) -> Optional[bool]:
-        """
-        Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
-        """
-        return pulumi.get(self, "composite")
 
     @property
     @pulumi.getter
@@ -100,7 +85,6 @@ class AwaitableGetRoleResult(GetRoleResult):
         if False:
             yield self
         return GetRoleResult(
-            composite=self.composite,
             id=self.id,
             ids=self.ids,
             name=self.name,
@@ -108,8 +92,7 @@ class AwaitableGetRoleResult(GetRoleResult):
             tags=self.tags)
 
 
-def get_role(composite: Optional[bool] = None,
-             id: Optional[str] = None,
+def get_role(id: Optional[str] = None,
              name: Optional[str] = None,
              tags: Optional[Mapping[str, str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoleResult:
@@ -131,13 +114,11 @@ def get_role(composite: Optional[bool] = None,
     ```
 
 
-    :param bool composite: Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
     :param str id: Unique identifier of the Role.
     :param str name: Unique human-readable name of the Role.
     :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     """
     __args__ = dict()
-    __args__['composite'] = composite
     __args__['id'] = id
     __args__['name'] = name
     __args__['tags'] = tags
@@ -150,7 +131,6 @@ def get_role(composite: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        composite=__ret__.composite,
         id=__ret__.id,
         ids=__ret__.ids,
         name=__ret__.name,
@@ -159,8 +139,7 @@ def get_role(composite: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_role)
-def get_role_output(composite: Optional[pulumi.Input[Optional[bool]]] = None,
-                    id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRoleResult]:
@@ -182,7 +161,6 @@ def get_role_output(composite: Optional[pulumi.Input[Optional[bool]]] = None,
     ```
 
 
-    :param bool composite: Composite is true if the Role is a composite role.  Deprecated: composite roles are deprecated, use multi-role via AccountAttachments instead.
     :param str id: Unique identifier of the Role.
     :param str name: Unique human-readable name of the Role.
     :param Mapping[str, str] tags: Tags is a map of key, value pairs.
