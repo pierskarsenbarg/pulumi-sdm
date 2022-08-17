@@ -19,20 +19,18 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Sdm.GetRemoteIdentityGroup.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Sdm.GetRemoteIdentityGroup.InvokeAsync(new Sdm.GetRemoteIdentityGroupArgs
-        ///         {
-        ///             Name = "default",
-        ///         }));
-        ///     }
+        ///         Name = "default",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -47,20 +45,18 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var @default = Sdm.GetRemoteIdentityGroup.Invoke(new()
         ///     {
-        ///         var @default = Output.Create(Sdm.GetRemoteIdentityGroup.InvokeAsync(new Sdm.GetRemoteIdentityGroupArgs
-        ///         {
-        ///             Name = "default",
-        ///         }));
-        ///     }
+        ///         Name = "default",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -70,7 +66,7 @@ namespace PiersKarsenbarg.Sdm
     }
 
 
-    public sealed class GetRemoteIdentityGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetRemoteIdentityGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Unique identifier of the RemoteIdentityGroup.
@@ -87,9 +83,10 @@ namespace PiersKarsenbarg.Sdm
         public GetRemoteIdentityGroupArgs()
         {
         }
+        public static new GetRemoteIdentityGroupArgs Empty => new GetRemoteIdentityGroupArgs();
     }
 
-    public sealed class GetRemoteIdentityGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRemoteIdentityGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Unique identifier of the RemoteIdentityGroup.
@@ -106,6 +103,7 @@ namespace PiersKarsenbarg.Sdm
         public GetRemoteIdentityGroupInvokeArgs()
         {
         }
+        public static new GetRemoteIdentityGroupInvokeArgs Empty => new GetRemoteIdentityGroupInvokeArgs();
     }
 
 

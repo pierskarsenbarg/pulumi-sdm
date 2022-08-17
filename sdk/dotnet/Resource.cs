@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/resource:Resource")]
-    public partial class Resource : Pulumi.CustomResource
+    public partial class Resource : global::Pulumi.CustomResource
     {
         [Output("aks")]
         public Output<Outputs.ResourceAks?> Aks { get; private set; } = null!;
@@ -280,7 +280,7 @@ namespace PiersKarsenbarg.Sdm
         }
     }
 
-    public sealed class ResourceArgs : Pulumi.ResourceArgs
+    public sealed class ResourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("aks")]
         public Input<Inputs.ResourceAksArgs>? Aks { get; set; }
@@ -498,9 +498,10 @@ namespace PiersKarsenbarg.Sdm
         public ResourceArgs()
         {
         }
+        public static new ResourceArgs Empty => new ResourceArgs();
     }
 
-    public sealed class ResourceState : Pulumi.ResourceArgs
+    public sealed class ResourceState : global::Pulumi.ResourceArgs
     {
         [Input("aks")]
         public Input<Inputs.ResourceAksGetArgs>? Aks { get; set; }
@@ -718,5 +719,6 @@ namespace PiersKarsenbarg.Sdm
         public ResourceState()
         {
         }
+        public static new ResourceState Empty => new ResourceState();
     }
 }

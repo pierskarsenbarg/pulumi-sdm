@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceSshCertGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceSshCertGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowDeprecatedKeyExchanges")]
         public Input<bool>? AllowDeprecatedKeyExchanges { get; set; }
@@ -85,5 +85,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceSshCertGetArgs()
         {
         }
+        public static new ResourceSshCertGetArgs Empty => new ResourceSshCertGetArgs();
     }
 }

@@ -22,25 +22,23 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
         ///     {
-        ///         var gatewayQuery = Output.Create(Sdm.GetNode.InvokeAsync(new Sdm.GetNodeArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "env", "dev" },
-        ///                 { "region", "us-west" },
-        ///             },
-        ///             Type = "gateway",
-        ///         }));
-        ///     }
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "gateway",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -58,25 +56,23 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
         ///     {
-        ///         var gatewayQuery = Output.Create(Sdm.GetNode.InvokeAsync(new Sdm.GetNodeArgs
+        ///         Tags = 
         ///         {
-        ///             Tags = 
-        ///             {
-        ///                 { "env", "dev" },
-        ///                 { "region", "us-west" },
-        ///             },
-        ///             Type = "gateway",
-        ///         }));
-        ///     }
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "gateway",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -86,7 +82,7 @@ namespace PiersKarsenbarg.Sdm
     }
 
 
-    public sealed class GetNodeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -133,9 +129,10 @@ namespace PiersKarsenbarg.Sdm
         public GetNodeArgs()
         {
         }
+        public static new GetNodeArgs Empty => new GetNodeArgs();
     }
 
-    public sealed class GetNodeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -182,6 +179,7 @@ namespace PiersKarsenbarg.Sdm
         public GetNodeInvokeArgs()
         {
         }
+        public static new GetNodeInvokeArgs Empty => new GetNodeInvokeArgs();
     }
 
 

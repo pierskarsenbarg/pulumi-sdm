@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceRawTcpGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceRawTcpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -61,5 +61,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceRawTcpGetArgs()
         {
         }
+        public static new ResourceRawTcpGetArgs Empty => new ResourceRawTcpGetArgs();
     }
 }

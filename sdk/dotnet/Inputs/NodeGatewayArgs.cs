@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class NodeGatewayArgs : Pulumi.ResourceArgs
+    public sealed class NodeGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -55,5 +55,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public NodeGatewayArgs()
         {
         }
+        public static new NodeGatewayArgs Empty => new NodeGatewayArgs();
     }
 }

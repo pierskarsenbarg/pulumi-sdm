@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceCockroachArgs : Pulumi.ResourceArgs
+    public sealed class ResourceCockroachArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -85,5 +85,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceCockroachArgs()
         {
         }
+        public static new ResourceCockroachArgs Empty => new ResourceCockroachArgs();
     }
 }

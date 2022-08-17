@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceGoogleGkeUserImpersonationGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceGoogleGkeUserImpersonationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -79,5 +79,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceGoogleGkeUserImpersonationGetArgs()
         {
         }
+        public static new ResourceGoogleGkeUserImpersonationGetArgs Empty => new ResourceGoogleGkeUserImpersonationGetArgs();
     }
 }

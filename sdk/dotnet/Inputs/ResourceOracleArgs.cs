@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceOracleArgs : Pulumi.ResourceArgs
+    public sealed class ResourceOracleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -85,5 +85,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceOracleArgs()
         {
         }
+        public static new ResourceOracleArgs Empty => new ResourceOracleArgs();
     }
 }

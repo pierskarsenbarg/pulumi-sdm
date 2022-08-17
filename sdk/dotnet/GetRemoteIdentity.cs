@@ -20,21 +20,19 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user = Sdm.GetRemoteIdentity.Invoke(new()
         ///     {
-        ///         var user = Output.Create(Sdm.GetRemoteIdentity.InvokeAsync(new Sdm.GetRemoteIdentityArgs
-        ///         {
-        ///             Id = "i-0900909",
-        ///             Username = "user",
-        ///         }));
-        ///     }
+        ///         Id = "i-0900909",
+        ///         Username = "user",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -50,21 +48,19 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user = Sdm.GetRemoteIdentity.Invoke(new()
         ///     {
-        ///         var user = Output.Create(Sdm.GetRemoteIdentity.InvokeAsync(new Sdm.GetRemoteIdentityArgs
-        ///         {
-        ///             Id = "i-0900909",
-        ///             Username = "user",
-        ///         }));
-        ///     }
+        ///         Id = "i-0900909",
+        ///         Username = "user",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -74,7 +70,7 @@ namespace PiersKarsenbarg.Sdm
     }
 
 
-    public sealed class GetRemoteIdentityArgs : Pulumi.InvokeArgs
+    public sealed class GetRemoteIdentityArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The account for this remote identity.
@@ -103,9 +99,10 @@ namespace PiersKarsenbarg.Sdm
         public GetRemoteIdentityArgs()
         {
         }
+        public static new GetRemoteIdentityArgs Empty => new GetRemoteIdentityArgs();
     }
 
-    public sealed class GetRemoteIdentityInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRemoteIdentityInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The account for this remote identity.
@@ -134,6 +131,7 @@ namespace PiersKarsenbarg.Sdm
         public GetRemoteIdentityInvokeArgs()
         {
         }
+        public static new GetRemoteIdentityInvokeArgs Empty => new GetRemoteIdentityInvokeArgs();
     }
 
 

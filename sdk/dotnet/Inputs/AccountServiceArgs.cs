@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class AccountServiceArgs : Pulumi.ResourceArgs
+    public sealed class AccountServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique human-readable name of the Service.
@@ -43,5 +43,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public AccountServiceArgs()
         {
         }
+        public static new AccountServiceArgs Empty => new AccountServiceArgs();
     }
 }

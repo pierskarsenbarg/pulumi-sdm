@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceHttpAuthArgs : Pulumi.ResourceArgs
+    public sealed class ResourceHttpAuthArgs : global::Pulumi.ResourceArgs
     {
         [Input("authHeader")]
         public Input<string>? AuthHeader { get; set; }
@@ -79,5 +79,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceHttpAuthArgs()
         {
         }
+        public static new ResourceHttpAuthArgs Empty => new ResourceHttpAuthArgs();
     }
 }

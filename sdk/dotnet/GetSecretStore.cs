@@ -28,7 +28,7 @@ namespace PiersKarsenbarg.Sdm
     }
 
 
-    public sealed class GetSecretStoreArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretStoreArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Unique identifier of the SecretStore.
@@ -63,9 +63,10 @@ namespace PiersKarsenbarg.Sdm
         public GetSecretStoreArgs()
         {
         }
+        public static new GetSecretStoreArgs Empty => new GetSecretStoreArgs();
     }
 
-    public sealed class GetSecretStoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretStoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Unique identifier of the SecretStore.
@@ -100,6 +101,7 @@ namespace PiersKarsenbarg.Sdm
         public GetSecretStoreInvokeArgs()
         {
         }
+        public static new GetSecretStoreInvokeArgs Empty => new GetSecretStoreInvokeArgs();
     }
 
 

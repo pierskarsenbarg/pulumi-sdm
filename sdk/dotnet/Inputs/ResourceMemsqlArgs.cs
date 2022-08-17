@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMemsqlArgs : Pulumi.ResourceArgs
+    public sealed class ResourceMemsqlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -82,5 +82,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceMemsqlArgs()
         {
         }
+        public static new ResourceMemsqlArgs Empty => new ResourceMemsqlArgs();
     }
 }

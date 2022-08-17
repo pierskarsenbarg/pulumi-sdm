@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceSybaseIqGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceSybaseIqGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -79,5 +79,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceSybaseIqGetArgs()
         {
         }
+        public static new ResourceSybaseIqGetArgs Empty => new ResourceSybaseIqGetArgs();
     }
 }

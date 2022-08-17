@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceBigQueryGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceBigQueryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -73,5 +73,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceBigQueryGetArgs()
         {
         }
+        public static new ResourceBigQueryGetArgs Empty => new ResourceBigQueryGetArgs();
     }
 }

@@ -20,26 +20,24 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
         ///     {
-        ///         var mysqlDatasources = Output.Create(Sdm.GetResource.InvokeAsync(new Sdm.GetResourceArgs
+        ///         Name = "us-west*",
+        ///         Tags = 
         ///         {
-        ///             Name = "us-west*",
-        ///             Tags = 
-        ///             {
-        ///                 { "env", "dev" },
-        ///                 { "region", "us-west" },
-        ///             },
-        ///             Type = "mysql",
-        ///         }));
-        ///     }
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "mysql",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -55,26 +53,24 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
         ///     {
-        ///         var mysqlDatasources = Output.Create(Sdm.GetResource.InvokeAsync(new Sdm.GetResourceArgs
+        ///         Name = "us-west*",
+        ///         Tags = 
         ///         {
-        ///             Name = "us-west*",
-        ///             Tags = 
-        ///             {
-        ///                 { "env", "dev" },
-        ///                 { "region", "us-west" },
-        ///             },
-        ///             Type = "mysql",
-        ///         }));
-        ///     }
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "mysql",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -84,7 +80,7 @@ namespace PiersKarsenbarg.Sdm
     }
 
 
-    public sealed class GetResourceArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceArgs : global::Pulumi.InvokeArgs
     {
         [Input("hostname")]
         public string? Hostname { get; set; }
@@ -128,9 +124,10 @@ namespace PiersKarsenbarg.Sdm
         public GetResourceArgs()
         {
         }
+        public static new GetResourceArgs Empty => new GetResourceArgs();
     }
 
-    public sealed class GetResourceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResourceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
@@ -174,6 +171,7 @@ namespace PiersKarsenbarg.Sdm
         public GetResourceInvokeArgs()
         {
         }
+        public static new GetResourceInvokeArgs Empty => new GetResourceInvokeArgs();
     }
 
 

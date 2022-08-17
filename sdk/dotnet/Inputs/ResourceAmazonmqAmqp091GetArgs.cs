@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAmazonmqAmqp091GetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAmazonmqAmqp091GetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -82,5 +82,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceAmazonmqAmqp091GetArgs()
         {
         }
+        public static new ResourceAmazonmqAmqp091GetArgs Empty => new ResourceAmazonmqAmqp091GetArgs();
     }
 }

@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAuroraPostgresGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAuroraPostgresGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -85,5 +85,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceAuroraPostgresGetArgs()
         {
         }
+        public static new ResourceAuroraPostgresGetArgs Empty => new ResourceAuroraPostgresGetArgs();
     }
 }

@@ -21,26 +21,24 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user_queries = Sdm.GetAccount.Invoke(new()
         ///     {
-        ///         var user_queries = Output.Create(Sdm.GetAccount.InvokeAsync(new Sdm.GetAccountArgs
+        ///         Email = "*@strongdm.com",
+        ///         Tags = 
         ///         {
-        ///             Email = "*@strongdm.com",
-        ///             Tags = 
-        ///             {
-        ///                 { "env", "dev" },
-        ///                 { "region", "us-west" },
-        ///             },
-        ///             Type = "user",
-        ///         }));
-        ///     }
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "user",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -57,26 +55,24 @@ namespace PiersKarsenbarg.Sdm
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var user_queries = Sdm.GetAccount.Invoke(new()
         ///     {
-        ///         var user_queries = Output.Create(Sdm.GetAccount.InvokeAsync(new Sdm.GetAccountArgs
+        ///         Email = "*@strongdm.com",
+        ///         Tags = 
         ///         {
-        ///             Email = "*@strongdm.com",
-        ///             Tags = 
-        ///             {
-        ///                 { "env", "dev" },
-        ///                 { "region", "us-west" },
-        ///             },
-        ///             Type = "user",
-        ///         }));
-        ///     }
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "user",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -86,7 +82,7 @@ namespace PiersKarsenbarg.Sdm
     }
 
 
-    public sealed class GetAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The User's email address. Must be unique.
@@ -145,9 +141,10 @@ namespace PiersKarsenbarg.Sdm
         public GetAccountArgs()
         {
         }
+        public static new GetAccountArgs Empty => new GetAccountArgs();
     }
 
-    public sealed class GetAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The User's email address. Must be unique.
@@ -206,6 +203,7 @@ namespace PiersKarsenbarg.Sdm
         public GetAccountInvokeArgs()
         {
         }
+        public static new GetAccountInvokeArgs Empty => new GetAccountInvokeArgs();
     }
 
 

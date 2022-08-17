@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/remoteIdentity:RemoteIdentity")]
-    public partial class RemoteIdentity : Pulumi.CustomResource
+    public partial class RemoteIdentity : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The account for this remote identity.
@@ -85,7 +85,7 @@ namespace PiersKarsenbarg.Sdm
         }
     }
 
-    public sealed class RemoteIdentityArgs : Pulumi.ResourceArgs
+    public sealed class RemoteIdentityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account for this remote identity.
@@ -108,9 +108,10 @@ namespace PiersKarsenbarg.Sdm
         public RemoteIdentityArgs()
         {
         }
+        public static new RemoteIdentityArgs Empty => new RemoteIdentityArgs();
     }
 
-    public sealed class RemoteIdentityState : Pulumi.ResourceArgs
+    public sealed class RemoteIdentityState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account for this remote identity.
@@ -133,5 +134,6 @@ namespace PiersKarsenbarg.Sdm
         public RemoteIdentityState()
         {
         }
+        public static new RemoteIdentityState Empty => new RemoteIdentityState();
     }
 }

@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAzurePostgresArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAzurePostgresArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -85,5 +85,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceAzurePostgresArgs()
         {
         }
+        public static new ResourceAzurePostgresArgs Empty => new ResourceAzurePostgresArgs();
     }
 }

@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAuroraMysqlGetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAuroraMysqlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -82,5 +82,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public ResourceAuroraMysqlGetArgs()
         {
         }
+        public static new ResourceAuroraMysqlGetArgs Empty => new ResourceAuroraMysqlGetArgs();
     }
 }

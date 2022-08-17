@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class SecretStoreVaultTlsGetArgs : Pulumi.ResourceArgs
+    public sealed class SecretStoreVaultTlsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("caCertPath")]
         public Input<string>? CaCertPath { get; set; }
@@ -49,5 +49,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public SecretStoreVaultTlsGetArgs()
         {
         }
+        public static new SecretStoreVaultTlsGetArgs Empty => new SecretStoreVaultTlsGetArgs();
     }
 }
