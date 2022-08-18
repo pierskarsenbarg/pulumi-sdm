@@ -263,10 +263,18 @@ jobs:
     - name: Check contents of install-pulumi-plugin.js
       run: cat ${{github.workspace}}/sdk/nodejs/scripts/install-pulumi-plugin.js
     - run: python -m pip install pip twine
-    - env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      name: Publish SDKs
-      run: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
+    - name: Publish NPM package
+      uses: JS-DevTools/npm-publish@v1
+      with: 
+        access: "public"
+        token: ${{ secrets.NPM_TOKEN }}
+        package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+    - name: Publish PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: ${{ env.PYPI_USERNAME }}
+          password: ${{ env.PYPI_PASSWORD }}
+          packages_dir: ${{github.workspace}}/sdk/python/bin/dist
     - name: Publish Nuget package
       env: 
         NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
