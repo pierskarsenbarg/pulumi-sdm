@@ -271,10 +271,10 @@ jobs:
         package: ${{github.workspace}}/sdk/nodejs/bin/package.json
     - name: Publish PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: ${{ env.PYPI_USERNAME }}
-          password: ${{ env.PYPI_PASSWORD }}
-          packages_dir: ${{github.workspace}}/sdk/python/bin/dist
+      with:
+        user: ${{ env.PYPI_USERNAME }}
+        password: ${{ env.PYPI_PASSWORD }}
+        packages_dir: ${{github.workspace}}/sdk/python/bin/dist
     - name: Publish Nuget package
       env: 
         NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
