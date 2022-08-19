@@ -53,7 +53,7 @@ namespace PiersKarsenbarg.Sdm
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/${VERSION}";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/v${VERSION}";
             return dst;
         }
 

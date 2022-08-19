@@ -15,7 +15,7 @@ class InstallPluginCommand(install):
     def run(self):
         install.run(self)
         try:
-            check_call(['pulumi', 'plugin', 'install', 'resource', 'sdm', PLUGIN_VERSION, '--server', 'https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/${VERSION}'])
+            check_call(['pulumi', 'plugin', 'install', 'resource', 'sdm', PLUGIN_VERSION, '--server', 'https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/v${VERSION}'])
         except OSError as error:
             if error.errno == errno.ENOENT:
                 print(f"""

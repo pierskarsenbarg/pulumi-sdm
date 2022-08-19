@@ -11,7 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`sdm` Terraform Provider](https://github.com/strongdm/terraform-provider-sdm).",
     "repository": "https://github.com/pierskarsenbarg/pulumi-sdm",
-    "pluginDownloadURL": "https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/${VERSION}",
+    "pluginDownloadURL": "https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/v${VERSION}",
     "publisher": "Piers Karsenbarg",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
