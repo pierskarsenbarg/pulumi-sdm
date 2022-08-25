@@ -22,8 +22,15 @@ import (
 type SecretStore struct {
 	pulumi.CustomResourceState
 
-	Aws          SecretStoreAwsPtrOutput          `pulumi:"aws"`
-	AzureStore   SecretStoreAzureStorePtrOutput   `pulumi:"azureStore"`
+	Aws        SecretStoreAwsPtrOutput        `pulumi:"aws"`
+	AzureStore SecretStoreAzureStorePtrOutput `pulumi:"azureStore"`
+	// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	CyberarkConjur SecretStoreCyberarkConjurPtrOutput `pulumi:"cyberarkConjur"`
+	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrOutput `pulumi:"cyberarkPamExperimental"`
+	// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	DelineaStore SecretStoreDelineaStorePtrOutput `pulumi:"delineaStore"`
 	GcpStore     SecretStoreGcpStorePtrOutput     `pulumi:"gcpStore"`
 	VaultApprole SecretStoreVaultApprolePtrOutput `pulumi:"vaultApprole"`
 	VaultTls     SecretStoreVaultTlsPtrOutput     `pulumi:"vaultTls"`
@@ -60,8 +67,15 @@ func GetSecretStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretStore resources.
 type secretStoreState struct {
-	Aws          *SecretStoreAws          `pulumi:"aws"`
-	AzureStore   *SecretStoreAzureStore   `pulumi:"azureStore"`
+	Aws        *SecretStoreAws        `pulumi:"aws"`
+	AzureStore *SecretStoreAzureStore `pulumi:"azureStore"`
+	// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	CyberarkConjur *SecretStoreCyberarkConjur `pulumi:"cyberarkConjur"`
+	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	CyberarkPamExperimental *SecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimental"`
+	// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	DelineaStore *SecretStoreDelineaStore `pulumi:"delineaStore"`
 	GcpStore     *SecretStoreGcpStore     `pulumi:"gcpStore"`
 	VaultApprole *SecretStoreVaultApprole `pulumi:"vaultApprole"`
 	VaultTls     *SecretStoreVaultTls     `pulumi:"vaultTls"`
@@ -69,8 +83,15 @@ type secretStoreState struct {
 }
 
 type SecretStoreState struct {
-	Aws          SecretStoreAwsPtrInput
-	AzureStore   SecretStoreAzureStorePtrInput
+	Aws        SecretStoreAwsPtrInput
+	AzureStore SecretStoreAzureStorePtrInput
+	// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	CyberarkConjur SecretStoreCyberarkConjurPtrInput
+	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrInput
+	// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	DelineaStore SecretStoreDelineaStorePtrInput
 	GcpStore     SecretStoreGcpStorePtrInput
 	VaultApprole SecretStoreVaultApprolePtrInput
 	VaultTls     SecretStoreVaultTlsPtrInput
@@ -82,8 +103,15 @@ func (SecretStoreState) ElementType() reflect.Type {
 }
 
 type secretStoreArgs struct {
-	Aws          *SecretStoreAws          `pulumi:"aws"`
-	AzureStore   *SecretStoreAzureStore   `pulumi:"azureStore"`
+	Aws        *SecretStoreAws        `pulumi:"aws"`
+	AzureStore *SecretStoreAzureStore `pulumi:"azureStore"`
+	// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	CyberarkConjur *SecretStoreCyberarkConjur `pulumi:"cyberarkConjur"`
+	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	CyberarkPamExperimental *SecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimental"`
+	// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	DelineaStore *SecretStoreDelineaStore `pulumi:"delineaStore"`
 	GcpStore     *SecretStoreGcpStore     `pulumi:"gcpStore"`
 	VaultApprole *SecretStoreVaultApprole `pulumi:"vaultApprole"`
 	VaultTls     *SecretStoreVaultTls     `pulumi:"vaultTls"`
@@ -92,8 +120,15 @@ type secretStoreArgs struct {
 
 // The set of arguments for constructing a SecretStore resource.
 type SecretStoreArgs struct {
-	Aws          SecretStoreAwsPtrInput
-	AzureStore   SecretStoreAzureStorePtrInput
+	Aws        SecretStoreAwsPtrInput
+	AzureStore SecretStoreAzureStorePtrInput
+	// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	CyberarkConjur SecretStoreCyberarkConjurPtrInput
+	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrInput
+	// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	DelineaStore SecretStoreDelineaStorePtrInput
 	GcpStore     SecretStoreGcpStorePtrInput
 	VaultApprole SecretStoreVaultApprolePtrInput
 	VaultTls     SecretStoreVaultTlsPtrInput
@@ -193,6 +228,22 @@ func (o SecretStoreOutput) Aws() SecretStoreAwsPtrOutput {
 
 func (o SecretStoreOutput) AzureStore() SecretStoreAzureStorePtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreAzureStorePtrOutput { return v.AzureStore }).(SecretStoreAzureStorePtrOutput)
+}
+
+// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretStoreOutput) CyberarkConjur() SecretStoreCyberarkConjurPtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreCyberarkConjurPtrOutput { return v.CyberarkConjur }).(SecretStoreCyberarkConjurPtrOutput)
+}
+
+// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
+// version bump.
+func (o SecretStoreOutput) CyberarkPamExperimental() SecretStoreCyberarkPamExperimentalPtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreCyberarkPamExperimentalPtrOutput { return v.CyberarkPamExperimental }).(SecretStoreCyberarkPamExperimentalPtrOutput)
+}
+
+// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o SecretStoreOutput) DelineaStore() SecretStoreDelineaStorePtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreDelineaStorePtrOutput { return v.DelineaStore }).(SecretStoreDelineaStorePtrOutput)
 }
 
 func (o SecretStoreOutput) GcpStore() SecretStoreGcpStorePtrOutput {

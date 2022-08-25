@@ -55,6 +55,15 @@ export class Resource extends pulumi.CustomResource {
     public readonly auroraMysql!: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
     public readonly auroraPostgres!: pulumi.Output<outputs.ResourceAuroraPostgres | undefined>;
     public readonly aws!: pulumi.Output<outputs.ResourceAws | undefined>;
+    /**
+     * AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly awsConsole!: pulumi.Output<outputs.ResourceAwsConsole | undefined>;
+    /**
+     * AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    public readonly awsConsoleStaticKeyPair!: pulumi.Output<outputs.ResourceAwsConsoleStaticKeyPair | undefined>;
     public readonly azure!: pulumi.Output<outputs.ResourceAzure | undefined>;
     public readonly azureCertificate!: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
     public readonly azurePostgres!: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
@@ -86,16 +95,31 @@ export class Resource extends pulumi.CustomResource {
     public readonly maria!: pulumi.Output<outputs.ResourceMaria | undefined>;
     public readonly memcached!: pulumi.Output<outputs.ResourceMemcached | undefined>;
     public readonly memsql!: pulumi.Output<outputs.ResourceMemsql | undefined>;
+    /**
+     * MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     public readonly mongoHost!: pulumi.Output<outputs.ResourceMongoHost | undefined>;
     public readonly mongoLegacyHost!: pulumi.Output<outputs.ResourceMongoLegacyHost | undefined>;
     public readonly mongoLegacyReplicaset!: pulumi.Output<outputs.ResourceMongoLegacyReplicaset | undefined>;
+    /**
+     * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     public readonly mongoReplicaSet!: pulumi.Output<outputs.ResourceMongoReplicaSet | undefined>;
+    /**
+     * MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     public readonly mongoShardedCluster!: pulumi.Output<outputs.ResourceMongoShardedCluster | undefined>;
+    /**
+     * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     public readonly mtlsMysql!: pulumi.Output<outputs.ResourceMtlsMysql | undefined>;
     public readonly mtlsPostgres!: pulumi.Output<outputs.ResourceMtlsPostgres | undefined>;
     public readonly mysql!: pulumi.Output<outputs.ResourceMysql | undefined>;
     public readonly neptune!: pulumi.Output<outputs.ResourceNeptune | undefined>;
     public readonly neptuneIam!: pulumi.Output<outputs.ResourceNeptuneIam | undefined>;
+    /**
+     * Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     public readonly oracle!: pulumi.Output<outputs.ResourceOracle | undefined>;
     public readonly postgres!: pulumi.Output<outputs.ResourcePostgres | undefined>;
     public readonly presto!: pulumi.Output<outputs.ResourcePresto | undefined>;
@@ -140,6 +164,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["auroraMysql"] = state ? state.auroraMysql : undefined;
             resourceInputs["auroraPostgres"] = state ? state.auroraPostgres : undefined;
             resourceInputs["aws"] = state ? state.aws : undefined;
+            resourceInputs["awsConsole"] = state ? state.awsConsole : undefined;
+            resourceInputs["awsConsoleStaticKeyPair"] = state ? state.awsConsoleStaticKeyPair : undefined;
             resourceInputs["azure"] = state ? state.azure : undefined;
             resourceInputs["azureCertificate"] = state ? state.azureCertificate : undefined;
             resourceInputs["azurePostgres"] = state ? state.azurePostgres : undefined;
@@ -213,6 +239,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["auroraMysql"] = args ? args.auroraMysql : undefined;
             resourceInputs["auroraPostgres"] = args ? args.auroraPostgres : undefined;
             resourceInputs["aws"] = args ? args.aws : undefined;
+            resourceInputs["awsConsole"] = args ? args.awsConsole : undefined;
+            resourceInputs["awsConsoleStaticKeyPair"] = args ? args.awsConsoleStaticKeyPair : undefined;
             resourceInputs["azure"] = args ? args.azure : undefined;
             resourceInputs["azureCertificate"] = args ? args.azureCertificate : undefined;
             resourceInputs["azurePostgres"] = args ? args.azurePostgres : undefined;
@@ -294,6 +322,15 @@ export interface ResourceState {
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
     aws?: pulumi.Input<inputs.ResourceAws>;
+    /**
+     * AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
+    /**
+     * AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
@@ -325,16 +362,31 @@ export interface ResourceState {
     maria?: pulumi.Input<inputs.ResourceMaria>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
     memsql?: pulumi.Input<inputs.ResourceMemsql>;
+    /**
+     * MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
     mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost>;
     mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
+    /**
+     * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
+    /**
+     * MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
+    /**
+     * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     mtlsMysql?: pulumi.Input<inputs.ResourceMtlsMysql>;
     mtlsPostgres?: pulumi.Input<inputs.ResourceMtlsPostgres>;
     mysql?: pulumi.Input<inputs.ResourceMysql>;
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
+    /**
+     * Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     oracle?: pulumi.Input<inputs.ResourceOracle>;
     postgres?: pulumi.Input<inputs.ResourcePostgres>;
     presto?: pulumi.Input<inputs.ResourcePresto>;
@@ -371,6 +423,15 @@ export interface ResourceArgs {
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
     aws?: pulumi.Input<inputs.ResourceAws>;
+    /**
+     * AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
+    /**
+     * AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+     * bump.
+     */
+    awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
@@ -402,16 +463,31 @@ export interface ResourceArgs {
     maria?: pulumi.Input<inputs.ResourceMaria>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
     memsql?: pulumi.Input<inputs.ResourceMemsql>;
+    /**
+     * MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
     mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost>;
     mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
+    /**
+     * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
+    /**
+     * MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
+    /**
+     * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     mtlsMysql?: pulumi.Input<inputs.ResourceMtlsMysql>;
     mtlsPostgres?: pulumi.Input<inputs.ResourceMtlsPostgres>;
     mysql?: pulumi.Input<inputs.ResourceMysql>;
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
+    /**
+     * Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     oracle?: pulumi.Input<inputs.ResourceOracle>;
     postgres?: pulumi.Input<inputs.ResourcePostgres>;
     presto?: pulumi.Input<inputs.ResourcePresto>;

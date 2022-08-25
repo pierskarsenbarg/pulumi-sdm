@@ -61,6 +61,19 @@ namespace PiersKarsenbarg.Sdm
         [Output("aws")]
         public Output<Outputs.ResourceAws?> Aws { get; private set; } = null!;
 
+        /// <summary>
+        /// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("awsConsole")]
+        public Output<Outputs.ResourceAwsConsole?> AwsConsole { get; private set; } = null!;
+
+        /// <summary>
+        /// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Output("awsConsoleStaticKeyPair")]
+        public Output<Outputs.ResourceAwsConsoleStaticKeyPair?> AwsConsoleStaticKeyPair { get; private set; } = null!;
+
         [Output("azure")]
         public Output<Outputs.ResourceAzure?> Azure { get; private set; } = null!;
 
@@ -154,6 +167,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("memsql")]
         public Output<Outputs.ResourceMemsql?> Memsql { get; private set; } = null!;
 
+        /// <summary>
+        /// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("mongoHost")]
         public Output<Outputs.ResourceMongoHost?> MongoHost { get; private set; } = null!;
 
@@ -163,12 +179,21 @@ namespace PiersKarsenbarg.Sdm
         [Output("mongoLegacyReplicaset")]
         public Output<Outputs.ResourceMongoLegacyReplicaset?> MongoLegacyReplicaset { get; private set; } = null!;
 
+        /// <summary>
+        /// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("mongoReplicaSet")]
         public Output<Outputs.ResourceMongoReplicaSet?> MongoReplicaSet { get; private set; } = null!;
 
+        /// <summary>
+        /// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("mongoShardedCluster")]
         public Output<Outputs.ResourceMongoShardedCluster?> MongoShardedCluster { get; private set; } = null!;
 
+        /// <summary>
+        /// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("mtlsMysql")]
         public Output<Outputs.ResourceMtlsMysql?> MtlsMysql { get; private set; } = null!;
 
@@ -184,6 +209,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("neptuneIam")]
         public Output<Outputs.ResourceNeptuneIam?> NeptuneIam { get; private set; } = null!;
 
+        /// <summary>
+        /// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("oracle")]
         public Output<Outputs.ResourceOracle?> Oracle { get; private set; } = null!;
 
@@ -321,6 +349,19 @@ namespace PiersKarsenbarg.Sdm
         [Input("aws")]
         public Input<Inputs.ResourceAwsArgs>? Aws { get; set; }
 
+        /// <summary>
+        /// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("awsConsole")]
+        public Input<Inputs.ResourceAwsConsoleArgs>? AwsConsole { get; set; }
+
+        /// <summary>
+        /// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Input("awsConsoleStaticKeyPair")]
+        public Input<Inputs.ResourceAwsConsoleStaticKeyPairArgs>? AwsConsoleStaticKeyPair { get; set; }
+
         [Input("azure")]
         public Input<Inputs.ResourceAzureArgs>? Azure { get; set; }
 
@@ -414,6 +455,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("memsql")]
         public Input<Inputs.ResourceMemsqlArgs>? Memsql { get; set; }
 
+        /// <summary>
+        /// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoHost")]
         public Input<Inputs.ResourceMongoHostArgs>? MongoHost { get; set; }
 
@@ -423,12 +467,21 @@ namespace PiersKarsenbarg.Sdm
         [Input("mongoLegacyReplicaset")]
         public Input<Inputs.ResourceMongoLegacyReplicasetArgs>? MongoLegacyReplicaset { get; set; }
 
+        /// <summary>
+        /// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoReplicaSet")]
         public Input<Inputs.ResourceMongoReplicaSetArgs>? MongoReplicaSet { get; set; }
 
+        /// <summary>
+        /// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoShardedCluster")]
         public Input<Inputs.ResourceMongoShardedClusterArgs>? MongoShardedCluster { get; set; }
 
+        /// <summary>
+        /// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mtlsMysql")]
         public Input<Inputs.ResourceMtlsMysqlArgs>? MtlsMysql { get; set; }
 
@@ -444,6 +497,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("neptuneIam")]
         public Input<Inputs.ResourceNeptuneIamArgs>? NeptuneIam { get; set; }
 
+        /// <summary>
+        /// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("oracle")]
         public Input<Inputs.ResourceOracleArgs>? Oracle { get; set; }
 
@@ -542,6 +598,19 @@ namespace PiersKarsenbarg.Sdm
         [Input("aws")]
         public Input<Inputs.ResourceAwsGetArgs>? Aws { get; set; }
 
+        /// <summary>
+        /// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("awsConsole")]
+        public Input<Inputs.ResourceAwsConsoleGetArgs>? AwsConsole { get; set; }
+
+        /// <summary>
+        /// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+        /// bump.
+        /// </summary>
+        [Input("awsConsoleStaticKeyPair")]
+        public Input<Inputs.ResourceAwsConsoleStaticKeyPairGetArgs>? AwsConsoleStaticKeyPair { get; set; }
+
         [Input("azure")]
         public Input<Inputs.ResourceAzureGetArgs>? Azure { get; set; }
 
@@ -635,6 +704,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("memsql")]
         public Input<Inputs.ResourceMemsqlGetArgs>? Memsql { get; set; }
 
+        /// <summary>
+        /// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoHost")]
         public Input<Inputs.ResourceMongoHostGetArgs>? MongoHost { get; set; }
 
@@ -644,12 +716,21 @@ namespace PiersKarsenbarg.Sdm
         [Input("mongoLegacyReplicaset")]
         public Input<Inputs.ResourceMongoLegacyReplicasetGetArgs>? MongoLegacyReplicaset { get; set; }
 
+        /// <summary>
+        /// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoReplicaSet")]
         public Input<Inputs.ResourceMongoReplicaSetGetArgs>? MongoReplicaSet { get; set; }
 
+        /// <summary>
+        /// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoShardedCluster")]
         public Input<Inputs.ResourceMongoShardedClusterGetArgs>? MongoShardedCluster { get; set; }
 
+        /// <summary>
+        /// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mtlsMysql")]
         public Input<Inputs.ResourceMtlsMysqlGetArgs>? MtlsMysql { get; set; }
 
@@ -665,6 +746,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("neptuneIam")]
         public Input<Inputs.ResourceNeptuneIamGetArgs>? NeptuneIam { get; set; }
 
+        /// <summary>
+        /// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("oracle")]
         public Input<Inputs.ResourceOracleGetArgs>? Oracle { get; set; }
 

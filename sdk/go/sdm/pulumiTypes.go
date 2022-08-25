@@ -6156,6 +6156,897 @@ func (o ResourceAwsPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type ResourceAwsConsole struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter       *string `pulumi:"egressFilter"`
+	EnableEnvVariables *bool   `pulumi:"enableEnvVariables"`
+	// Unique human-readable name of the Resource.
+	Name                              string  `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	Region                            string  `pulumi:"region"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           *string `pulumi:"roleArn"`
+	RoleExternalId                    *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId                 *string `pulumi:"secretStoreId"`
+	SecretStoreRoleArnKey         *string `pulumi:"secretStoreRoleArnKey"`
+	SecretStoreRoleArnPath        *string `pulumi:"secretStoreRoleArnPath"`
+	SecretStoreRoleExternalIdKey  *string `pulumi:"secretStoreRoleExternalIdKey"`
+	SecretStoreRoleExternalIdPath *string `pulumi:"secretStoreRoleExternalIdPath"`
+	SessionExpiry                 *int    `pulumi:"sessionExpiry"`
+	Subdomain                     string  `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceAwsConsoleInput is an input type that accepts ResourceAwsConsoleArgs and ResourceAwsConsoleOutput values.
+// You can construct a concrete instance of `ResourceAwsConsoleInput` via:
+//
+//	ResourceAwsConsoleArgs{...}
+type ResourceAwsConsoleInput interface {
+	pulumi.Input
+
+	ToResourceAwsConsoleOutput() ResourceAwsConsoleOutput
+	ToResourceAwsConsoleOutputWithContext(context.Context) ResourceAwsConsoleOutput
+}
+
+type ResourceAwsConsoleArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter       pulumi.StringPtrInput `pulumi:"egressFilter"`
+	EnableEnvVariables pulumi.BoolPtrInput   `pulumi:"enableEnvVariables"`
+	// Unique human-readable name of the Resource.
+	Name                              pulumi.StringInput    `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region                            pulumi.StringInput    `pulumi:"region"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId                 pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SecretStoreRoleArnKey         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
+	SecretStoreRoleArnPath        pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
+	SecretStoreRoleExternalIdKey  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
+	SecretStoreRoleExternalIdPath pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
+	SessionExpiry                 pulumi.IntPtrInput    `pulumi:"sessionExpiry"`
+	Subdomain                     pulumi.StringInput    `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceAwsConsoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAwsConsole)(nil)).Elem()
+}
+
+func (i ResourceAwsConsoleArgs) ToResourceAwsConsoleOutput() ResourceAwsConsoleOutput {
+	return i.ToResourceAwsConsoleOutputWithContext(context.Background())
+}
+
+func (i ResourceAwsConsoleArgs) ToResourceAwsConsoleOutputWithContext(ctx context.Context) ResourceAwsConsoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsoleOutput)
+}
+
+func (i ResourceAwsConsoleArgs) ToResourceAwsConsolePtrOutput() ResourceAwsConsolePtrOutput {
+	return i.ToResourceAwsConsolePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAwsConsoleArgs) ToResourceAwsConsolePtrOutputWithContext(ctx context.Context) ResourceAwsConsolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsoleOutput).ToResourceAwsConsolePtrOutputWithContext(ctx)
+}
+
+// ResourceAwsConsolePtrInput is an input type that accepts ResourceAwsConsoleArgs, ResourceAwsConsolePtr and ResourceAwsConsolePtrOutput values.
+// You can construct a concrete instance of `ResourceAwsConsolePtrInput` via:
+//
+//	        ResourceAwsConsoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAwsConsolePtrInput interface {
+	pulumi.Input
+
+	ToResourceAwsConsolePtrOutput() ResourceAwsConsolePtrOutput
+	ToResourceAwsConsolePtrOutputWithContext(context.Context) ResourceAwsConsolePtrOutput
+}
+
+type resourceAwsConsolePtrType ResourceAwsConsoleArgs
+
+func ResourceAwsConsolePtr(v *ResourceAwsConsoleArgs) ResourceAwsConsolePtrInput {
+	return (*resourceAwsConsolePtrType)(v)
+}
+
+func (*resourceAwsConsolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAwsConsole)(nil)).Elem()
+}
+
+func (i *resourceAwsConsolePtrType) ToResourceAwsConsolePtrOutput() ResourceAwsConsolePtrOutput {
+	return i.ToResourceAwsConsolePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAwsConsolePtrType) ToResourceAwsConsolePtrOutputWithContext(ctx context.Context) ResourceAwsConsolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsolePtrOutput)
+}
+
+type ResourceAwsConsoleOutput struct{ *pulumi.OutputState }
+
+func (ResourceAwsConsoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAwsConsole)(nil)).Elem()
+}
+
+func (o ResourceAwsConsoleOutput) ToResourceAwsConsoleOutput() ResourceAwsConsoleOutput {
+	return o
+}
+
+func (o ResourceAwsConsoleOutput) ToResourceAwsConsoleOutputWithContext(ctx context.Context) ResourceAwsConsoleOutput {
+	return o
+}
+
+func (o ResourceAwsConsoleOutput) ToResourceAwsConsolePtrOutput() ResourceAwsConsolePtrOutput {
+	return o.ToResourceAwsConsolePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAwsConsoleOutput) ToResourceAwsConsolePtrOutputWithContext(ctx context.Context) ResourceAwsConsolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAwsConsole) *ResourceAwsConsole {
+		return &v
+	}).(ResourceAwsConsolePtrOutput)
+}
+
+// Bind interface
+func (o ResourceAwsConsoleOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAwsConsoleOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) EnableEnvVariables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *bool { return v.EnableEnvVariables }).(pulumi.BoolPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAwsConsoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceAwsConsoleOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o ResourceAwsConsoleOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAwsConsoleOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAwsConsoleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceAwsConsolePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAwsConsolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAwsConsole)(nil)).Elem()
+}
+
+func (o ResourceAwsConsolePtrOutput) ToResourceAwsConsolePtrOutput() ResourceAwsConsolePtrOutput {
+	return o
+}
+
+func (o ResourceAwsConsolePtrOutput) ToResourceAwsConsolePtrOutputWithContext(ctx context.Context) ResourceAwsConsolePtrOutput {
+	return o
+}
+
+func (o ResourceAwsConsolePtrOutput) Elem() ResourceAwsConsoleOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) ResourceAwsConsole {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAwsConsole
+		return ret
+	}).(ResourceAwsConsoleOutput)
+}
+
+// Bind interface
+func (o ResourceAwsConsolePtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAwsConsolePtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) EnableEnvVariables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEnvVariables
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAwsConsolePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIdentityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIdentityHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAwsConsolePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleArnKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleArnPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleExternalIdKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleExternalIdPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionExpiry
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAwsConsolePtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAwsConsolePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type ResourceAwsConsoleStaticKeyPair struct {
+	AccessKey *string `pulumi:"accessKey"`
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique human-readable name of the Resource.
+	Name                              string  `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	Region                            string  `pulumi:"region"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           *string `pulumi:"roleArn"`
+	RoleExternalId                    *string `pulumi:"roleExternalId"`
+	SecretAccessKey                   *string `pulumi:"secretAccessKey"`
+	SecretStoreAccessKeyKey           *string `pulumi:"secretStoreAccessKeyKey"`
+	SecretStoreAccessKeyPath          *string `pulumi:"secretStoreAccessKeyPath"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId                  *string `pulumi:"secretStoreId"`
+	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
+	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
+	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
+	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
+	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
+	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
+	SessionExpiry                  *int    `pulumi:"sessionExpiry"`
+	Subdomain                      string  `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceAwsConsoleStaticKeyPairInput is an input type that accepts ResourceAwsConsoleStaticKeyPairArgs and ResourceAwsConsoleStaticKeyPairOutput values.
+// You can construct a concrete instance of `ResourceAwsConsoleStaticKeyPairInput` via:
+//
+//	ResourceAwsConsoleStaticKeyPairArgs{...}
+type ResourceAwsConsoleStaticKeyPairInput interface {
+	pulumi.Input
+
+	ToResourceAwsConsoleStaticKeyPairOutput() ResourceAwsConsoleStaticKeyPairOutput
+	ToResourceAwsConsoleStaticKeyPairOutputWithContext(context.Context) ResourceAwsConsoleStaticKeyPairOutput
+}
+
+type ResourceAwsConsoleStaticKeyPairArgs struct {
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique human-readable name of the Resource.
+	Name                              pulumi.StringInput    `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region                            pulumi.StringInput    `pulumi:"region"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey                   pulumi.StringPtrInput `pulumi:"secretAccessKey"`
+	SecretStoreAccessKeyKey           pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
+	SecretStoreAccessKeyPath          pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
+	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
+	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
+	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
+	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
+	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
+	SessionExpiry                  pulumi.IntPtrInput    `pulumi:"sessionExpiry"`
+	Subdomain                      pulumi.StringInput    `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceAwsConsoleStaticKeyPairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAwsConsoleStaticKeyPair)(nil)).Elem()
+}
+
+func (i ResourceAwsConsoleStaticKeyPairArgs) ToResourceAwsConsoleStaticKeyPairOutput() ResourceAwsConsoleStaticKeyPairOutput {
+	return i.ToResourceAwsConsoleStaticKeyPairOutputWithContext(context.Background())
+}
+
+func (i ResourceAwsConsoleStaticKeyPairArgs) ToResourceAwsConsoleStaticKeyPairOutputWithContext(ctx context.Context) ResourceAwsConsoleStaticKeyPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsoleStaticKeyPairOutput)
+}
+
+func (i ResourceAwsConsoleStaticKeyPairArgs) ToResourceAwsConsoleStaticKeyPairPtrOutput() ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return i.ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAwsConsoleStaticKeyPairArgs) ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(ctx context.Context) ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsoleStaticKeyPairOutput).ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(ctx)
+}
+
+// ResourceAwsConsoleStaticKeyPairPtrInput is an input type that accepts ResourceAwsConsoleStaticKeyPairArgs, ResourceAwsConsoleStaticKeyPairPtr and ResourceAwsConsoleStaticKeyPairPtrOutput values.
+// You can construct a concrete instance of `ResourceAwsConsoleStaticKeyPairPtrInput` via:
+//
+//	        ResourceAwsConsoleStaticKeyPairArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAwsConsoleStaticKeyPairPtrInput interface {
+	pulumi.Input
+
+	ToResourceAwsConsoleStaticKeyPairPtrOutput() ResourceAwsConsoleStaticKeyPairPtrOutput
+	ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(context.Context) ResourceAwsConsoleStaticKeyPairPtrOutput
+}
+
+type resourceAwsConsoleStaticKeyPairPtrType ResourceAwsConsoleStaticKeyPairArgs
+
+func ResourceAwsConsoleStaticKeyPairPtr(v *ResourceAwsConsoleStaticKeyPairArgs) ResourceAwsConsoleStaticKeyPairPtrInput {
+	return (*resourceAwsConsoleStaticKeyPairPtrType)(v)
+}
+
+func (*resourceAwsConsoleStaticKeyPairPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAwsConsoleStaticKeyPair)(nil)).Elem()
+}
+
+func (i *resourceAwsConsoleStaticKeyPairPtrType) ToResourceAwsConsoleStaticKeyPairPtrOutput() ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return i.ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAwsConsoleStaticKeyPairPtrType) ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(ctx context.Context) ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsoleStaticKeyPairPtrOutput)
+}
+
+type ResourceAwsConsoleStaticKeyPairOutput struct{ *pulumi.OutputState }
+
+func (ResourceAwsConsoleStaticKeyPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAwsConsoleStaticKeyPair)(nil)).Elem()
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) ToResourceAwsConsoleStaticKeyPairOutput() ResourceAwsConsoleStaticKeyPairOutput {
+	return o
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) ToResourceAwsConsoleStaticKeyPairOutputWithContext(ctx context.Context) ResourceAwsConsoleStaticKeyPairOutput {
+	return o
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) ToResourceAwsConsoleStaticKeyPairPtrOutput() ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return o.ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(ctx context.Context) ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAwsConsoleStaticKeyPair) *ResourceAwsConsoleStaticKeyPair {
+		return &v
+	}).(ResourceAwsConsoleStaticKeyPairPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// Bind interface
+func (o ResourceAwsConsoleStaticKeyPairOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAwsConsoleStaticKeyPairOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAwsConsoleStaticKeyPairOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAwsConsoleStaticKeyPairOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceAwsConsoleStaticKeyPairPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAwsConsoleStaticKeyPairPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAwsConsoleStaticKeyPair)(nil)).Elem()
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) ToResourceAwsConsoleStaticKeyPairPtrOutput() ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return o
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(ctx context.Context) ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return o
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Elem() ResourceAwsConsoleStaticKeyPairOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) ResourceAwsConsoleStaticKeyPair {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAwsConsoleStaticKeyPair
+		return ret
+	}).(ResourceAwsConsoleStaticKeyPairOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Bind interface
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIdentityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIdentityHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreAccessKeyKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreAccessKeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleArnKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleArnPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleExternalIdKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleExternalIdPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreSecretAccessKeyKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreSecretAccessKeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionExpiry
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type ResourceAzure struct {
 	AppId *string `pulumi:"appId"`
 	// Bind interface
@@ -27517,7 +28408,7 @@ type SecretStoreAzureStore struct {
 	Name string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// * gcp_store:
+	// * cyberark_conjur:
 	VaultUri string `pulumi:"vaultUri"`
 }
 
@@ -27537,7 +28428,7 @@ type SecretStoreAzureStoreArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// * gcp_store:
+	// * cyberark_conjur:
 	VaultUri pulumi.StringInput `pulumi:"vaultUri"`
 }
 
@@ -27628,7 +28519,7 @@ func (o SecretStoreAzureStoreOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SecretStoreAzureStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// * gcp_store:
+// * cyberark_conjur:
 func (o SecretStoreAzureStoreOutput) VaultUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretStoreAzureStore) string { return v.VaultUri }).(pulumi.StringOutput)
 }
@@ -27677,13 +28568,545 @@ func (o SecretStoreAzureStorePtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// * gcp_store:
+// * cyberark_conjur:
 func (o SecretStoreAzureStorePtrOutput) VaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretStoreAzureStore) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.VaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretStoreCyberarkConjur struct {
+	AppUrl string `pulumi:"appUrl"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreCyberarkConjurInput is an input type that accepts SecretStoreCyberarkConjurArgs and SecretStoreCyberarkConjurOutput values.
+// You can construct a concrete instance of `SecretStoreCyberarkConjurInput` via:
+//
+//	SecretStoreCyberarkConjurArgs{...}
+type SecretStoreCyberarkConjurInput interface {
+	pulumi.Input
+
+	ToSecretStoreCyberarkConjurOutput() SecretStoreCyberarkConjurOutput
+	ToSecretStoreCyberarkConjurOutputWithContext(context.Context) SecretStoreCyberarkConjurOutput
+}
+
+type SecretStoreCyberarkConjurArgs struct {
+	AppUrl pulumi.StringInput `pulumi:"appUrl"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreCyberarkConjurArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreCyberarkConjur)(nil)).Elem()
+}
+
+func (i SecretStoreCyberarkConjurArgs) ToSecretStoreCyberarkConjurOutput() SecretStoreCyberarkConjurOutput {
+	return i.ToSecretStoreCyberarkConjurOutputWithContext(context.Background())
+}
+
+func (i SecretStoreCyberarkConjurArgs) ToSecretStoreCyberarkConjurOutputWithContext(ctx context.Context) SecretStoreCyberarkConjurOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkConjurOutput)
+}
+
+func (i SecretStoreCyberarkConjurArgs) ToSecretStoreCyberarkConjurPtrOutput() SecretStoreCyberarkConjurPtrOutput {
+	return i.ToSecretStoreCyberarkConjurPtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreCyberarkConjurArgs) ToSecretStoreCyberarkConjurPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkConjurPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkConjurOutput).ToSecretStoreCyberarkConjurPtrOutputWithContext(ctx)
+}
+
+// SecretStoreCyberarkConjurPtrInput is an input type that accepts SecretStoreCyberarkConjurArgs, SecretStoreCyberarkConjurPtr and SecretStoreCyberarkConjurPtrOutput values.
+// You can construct a concrete instance of `SecretStoreCyberarkConjurPtrInput` via:
+//
+//	        SecretStoreCyberarkConjurArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreCyberarkConjurPtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreCyberarkConjurPtrOutput() SecretStoreCyberarkConjurPtrOutput
+	ToSecretStoreCyberarkConjurPtrOutputWithContext(context.Context) SecretStoreCyberarkConjurPtrOutput
+}
+
+type secretStoreCyberarkConjurPtrType SecretStoreCyberarkConjurArgs
+
+func SecretStoreCyberarkConjurPtr(v *SecretStoreCyberarkConjurArgs) SecretStoreCyberarkConjurPtrInput {
+	return (*secretStoreCyberarkConjurPtrType)(v)
+}
+
+func (*secretStoreCyberarkConjurPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreCyberarkConjur)(nil)).Elem()
+}
+
+func (i *secretStoreCyberarkConjurPtrType) ToSecretStoreCyberarkConjurPtrOutput() SecretStoreCyberarkConjurPtrOutput {
+	return i.ToSecretStoreCyberarkConjurPtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreCyberarkConjurPtrType) ToSecretStoreCyberarkConjurPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkConjurPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkConjurPtrOutput)
+}
+
+type SecretStoreCyberarkConjurOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreCyberarkConjurOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreCyberarkConjur)(nil)).Elem()
+}
+
+func (o SecretStoreCyberarkConjurOutput) ToSecretStoreCyberarkConjurOutput() SecretStoreCyberarkConjurOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkConjurOutput) ToSecretStoreCyberarkConjurOutputWithContext(ctx context.Context) SecretStoreCyberarkConjurOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkConjurOutput) ToSecretStoreCyberarkConjurPtrOutput() SecretStoreCyberarkConjurPtrOutput {
+	return o.ToSecretStoreCyberarkConjurPtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreCyberarkConjurOutput) ToSecretStoreCyberarkConjurPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkConjurPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreCyberarkConjur) *SecretStoreCyberarkConjur {
+		return &v
+	}).(SecretStoreCyberarkConjurPtrOutput)
+}
+
+func (o SecretStoreCyberarkConjurOutput) AppUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkConjur) string { return v.AppUrl }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreCyberarkConjurOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkConjur) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreCyberarkConjurOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkConjur) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreCyberarkConjurPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreCyberarkConjurPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreCyberarkConjur)(nil)).Elem()
+}
+
+func (o SecretStoreCyberarkConjurPtrOutput) ToSecretStoreCyberarkConjurPtrOutput() SecretStoreCyberarkConjurPtrOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkConjurPtrOutput) ToSecretStoreCyberarkConjurPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkConjurPtrOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkConjurPtrOutput) Elem() SecretStoreCyberarkConjurOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkConjur) SecretStoreCyberarkConjur {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreCyberarkConjur
+		return ret
+	}).(SecretStoreCyberarkConjurOutput)
+}
+
+func (o SecretStoreCyberarkConjurPtrOutput) AppUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkConjur) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreCyberarkConjurPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkConjur) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreCyberarkConjurPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkConjur) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type SecretStoreCyberarkPamExperimental struct {
+	AppUrl string `pulumi:"appUrl"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreCyberarkPamExperimentalInput is an input type that accepts SecretStoreCyberarkPamExperimentalArgs and SecretStoreCyberarkPamExperimentalOutput values.
+// You can construct a concrete instance of `SecretStoreCyberarkPamExperimentalInput` via:
+//
+//	SecretStoreCyberarkPamExperimentalArgs{...}
+type SecretStoreCyberarkPamExperimentalInput interface {
+	pulumi.Input
+
+	ToSecretStoreCyberarkPamExperimentalOutput() SecretStoreCyberarkPamExperimentalOutput
+	ToSecretStoreCyberarkPamExperimentalOutputWithContext(context.Context) SecretStoreCyberarkPamExperimentalOutput
+}
+
+type SecretStoreCyberarkPamExperimentalArgs struct {
+	AppUrl pulumi.StringInput `pulumi:"appUrl"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreCyberarkPamExperimentalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreCyberarkPamExperimental)(nil)).Elem()
+}
+
+func (i SecretStoreCyberarkPamExperimentalArgs) ToSecretStoreCyberarkPamExperimentalOutput() SecretStoreCyberarkPamExperimentalOutput {
+	return i.ToSecretStoreCyberarkPamExperimentalOutputWithContext(context.Background())
+}
+
+func (i SecretStoreCyberarkPamExperimentalArgs) ToSecretStoreCyberarkPamExperimentalOutputWithContext(ctx context.Context) SecretStoreCyberarkPamExperimentalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamExperimentalOutput)
+}
+
+func (i SecretStoreCyberarkPamExperimentalArgs) ToSecretStoreCyberarkPamExperimentalPtrOutput() SecretStoreCyberarkPamExperimentalPtrOutput {
+	return i.ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreCyberarkPamExperimentalArgs) ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamExperimentalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamExperimentalOutput).ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(ctx)
+}
+
+// SecretStoreCyberarkPamExperimentalPtrInput is an input type that accepts SecretStoreCyberarkPamExperimentalArgs, SecretStoreCyberarkPamExperimentalPtr and SecretStoreCyberarkPamExperimentalPtrOutput values.
+// You can construct a concrete instance of `SecretStoreCyberarkPamExperimentalPtrInput` via:
+//
+//	        SecretStoreCyberarkPamExperimentalArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreCyberarkPamExperimentalPtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreCyberarkPamExperimentalPtrOutput() SecretStoreCyberarkPamExperimentalPtrOutput
+	ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(context.Context) SecretStoreCyberarkPamExperimentalPtrOutput
+}
+
+type secretStoreCyberarkPamExperimentalPtrType SecretStoreCyberarkPamExperimentalArgs
+
+func SecretStoreCyberarkPamExperimentalPtr(v *SecretStoreCyberarkPamExperimentalArgs) SecretStoreCyberarkPamExperimentalPtrInput {
+	return (*secretStoreCyberarkPamExperimentalPtrType)(v)
+}
+
+func (*secretStoreCyberarkPamExperimentalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreCyberarkPamExperimental)(nil)).Elem()
+}
+
+func (i *secretStoreCyberarkPamExperimentalPtrType) ToSecretStoreCyberarkPamExperimentalPtrOutput() SecretStoreCyberarkPamExperimentalPtrOutput {
+	return i.ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreCyberarkPamExperimentalPtrType) ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamExperimentalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamExperimentalPtrOutput)
+}
+
+type SecretStoreCyberarkPamExperimentalOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreCyberarkPamExperimentalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreCyberarkPamExperimental)(nil)).Elem()
+}
+
+func (o SecretStoreCyberarkPamExperimentalOutput) ToSecretStoreCyberarkPamExperimentalOutput() SecretStoreCyberarkPamExperimentalOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkPamExperimentalOutput) ToSecretStoreCyberarkPamExperimentalOutputWithContext(ctx context.Context) SecretStoreCyberarkPamExperimentalOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkPamExperimentalOutput) ToSecretStoreCyberarkPamExperimentalPtrOutput() SecretStoreCyberarkPamExperimentalPtrOutput {
+	return o.ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreCyberarkPamExperimentalOutput) ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamExperimentalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreCyberarkPamExperimental) *SecretStoreCyberarkPamExperimental {
+		return &v
+	}).(SecretStoreCyberarkPamExperimentalPtrOutput)
+}
+
+func (o SecretStoreCyberarkPamExperimentalOutput) AppUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkPamExperimental) string { return v.AppUrl }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreCyberarkPamExperimentalOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkPamExperimental) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreCyberarkPamExperimentalOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkPamExperimental) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreCyberarkPamExperimentalPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreCyberarkPamExperimentalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreCyberarkPamExperimental)(nil)).Elem()
+}
+
+func (o SecretStoreCyberarkPamExperimentalPtrOutput) ToSecretStoreCyberarkPamExperimentalPtrOutput() SecretStoreCyberarkPamExperimentalPtrOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkPamExperimentalPtrOutput) ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamExperimentalPtrOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkPamExperimentalPtrOutput) Elem() SecretStoreCyberarkPamExperimentalOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkPamExperimental) SecretStoreCyberarkPamExperimental {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreCyberarkPamExperimental
+		return ret
+	}).(SecretStoreCyberarkPamExperimentalOutput)
+}
+
+func (o SecretStoreCyberarkPamExperimentalPtrOutput) AppUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkPamExperimental) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreCyberarkPamExperimentalPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkPamExperimental) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreCyberarkPamExperimentalPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkPamExperimental) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type SecretStoreDelineaStore struct {
+	// Unique human-readable name of the SecretStore.
+	Name      string  `pulumi:"name"`
+	ServerUrl *string `pulumi:"serverUrl"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// * gcp_store:
+	TenantName *string `pulumi:"tenantName"`
+}
+
+// SecretStoreDelineaStoreInput is an input type that accepts SecretStoreDelineaStoreArgs and SecretStoreDelineaStoreOutput values.
+// You can construct a concrete instance of `SecretStoreDelineaStoreInput` via:
+//
+//	SecretStoreDelineaStoreArgs{...}
+type SecretStoreDelineaStoreInput interface {
+	pulumi.Input
+
+	ToSecretStoreDelineaStoreOutput() SecretStoreDelineaStoreOutput
+	ToSecretStoreDelineaStoreOutputWithContext(context.Context) SecretStoreDelineaStoreOutput
+}
+
+type SecretStoreDelineaStoreArgs struct {
+	// Unique human-readable name of the SecretStore.
+	Name      pulumi.StringInput    `pulumi:"name"`
+	ServerUrl pulumi.StringPtrInput `pulumi:"serverUrl"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * gcp_store:
+	TenantName pulumi.StringPtrInput `pulumi:"tenantName"`
+}
+
+func (SecretStoreDelineaStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreDelineaStore)(nil)).Elem()
+}
+
+func (i SecretStoreDelineaStoreArgs) ToSecretStoreDelineaStoreOutput() SecretStoreDelineaStoreOutput {
+	return i.ToSecretStoreDelineaStoreOutputWithContext(context.Background())
+}
+
+func (i SecretStoreDelineaStoreArgs) ToSecretStoreDelineaStoreOutputWithContext(ctx context.Context) SecretStoreDelineaStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreDelineaStoreOutput)
+}
+
+func (i SecretStoreDelineaStoreArgs) ToSecretStoreDelineaStorePtrOutput() SecretStoreDelineaStorePtrOutput {
+	return i.ToSecretStoreDelineaStorePtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreDelineaStoreArgs) ToSecretStoreDelineaStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreDelineaStoreOutput).ToSecretStoreDelineaStorePtrOutputWithContext(ctx)
+}
+
+// SecretStoreDelineaStorePtrInput is an input type that accepts SecretStoreDelineaStoreArgs, SecretStoreDelineaStorePtr and SecretStoreDelineaStorePtrOutput values.
+// You can construct a concrete instance of `SecretStoreDelineaStorePtrInput` via:
+//
+//	        SecretStoreDelineaStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreDelineaStorePtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreDelineaStorePtrOutput() SecretStoreDelineaStorePtrOutput
+	ToSecretStoreDelineaStorePtrOutputWithContext(context.Context) SecretStoreDelineaStorePtrOutput
+}
+
+type secretStoreDelineaStorePtrType SecretStoreDelineaStoreArgs
+
+func SecretStoreDelineaStorePtr(v *SecretStoreDelineaStoreArgs) SecretStoreDelineaStorePtrInput {
+	return (*secretStoreDelineaStorePtrType)(v)
+}
+
+func (*secretStoreDelineaStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreDelineaStore)(nil)).Elem()
+}
+
+func (i *secretStoreDelineaStorePtrType) ToSecretStoreDelineaStorePtrOutput() SecretStoreDelineaStorePtrOutput {
+	return i.ToSecretStoreDelineaStorePtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreDelineaStorePtrType) ToSecretStoreDelineaStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreDelineaStorePtrOutput)
+}
+
+type SecretStoreDelineaStoreOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreDelineaStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreDelineaStore)(nil)).Elem()
+}
+
+func (o SecretStoreDelineaStoreOutput) ToSecretStoreDelineaStoreOutput() SecretStoreDelineaStoreOutput {
+	return o
+}
+
+func (o SecretStoreDelineaStoreOutput) ToSecretStoreDelineaStoreOutputWithContext(ctx context.Context) SecretStoreDelineaStoreOutput {
+	return o
+}
+
+func (o SecretStoreDelineaStoreOutput) ToSecretStoreDelineaStorePtrOutput() SecretStoreDelineaStorePtrOutput {
+	return o.ToSecretStoreDelineaStorePtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreDelineaStoreOutput) ToSecretStoreDelineaStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreDelineaStore) *SecretStoreDelineaStore {
+		return &v
+	}).(SecretStoreDelineaStorePtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreDelineaStoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreDelineaStore) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SecretStoreDelineaStoreOutput) ServerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreDelineaStore) *string { return v.ServerUrl }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreDelineaStoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreDelineaStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// * gcp_store:
+func (o SecretStoreDelineaStoreOutput) TenantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreDelineaStore) *string { return v.TenantName }).(pulumi.StringPtrOutput)
+}
+
+type SecretStoreDelineaStorePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreDelineaStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreDelineaStore)(nil)).Elem()
+}
+
+func (o SecretStoreDelineaStorePtrOutput) ToSecretStoreDelineaStorePtrOutput() SecretStoreDelineaStorePtrOutput {
+	return o
+}
+
+func (o SecretStoreDelineaStorePtrOutput) ToSecretStoreDelineaStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaStorePtrOutput {
+	return o
+}
+
+func (o SecretStoreDelineaStorePtrOutput) Elem() SecretStoreDelineaStoreOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaStore) SecretStoreDelineaStore {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreDelineaStore
+		return ret
+	}).(SecretStoreDelineaStoreOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreDelineaStorePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SecretStoreDelineaStorePtrOutput) ServerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreDelineaStorePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaStore) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// * gcp_store:
+func (o SecretStoreDelineaStorePtrOutput) TenantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreDelineaStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29552,6 +30975,8 @@ type GetResourceResource struct {
 	AuroraMysqls                               []GetResourceResourceAuroraMysql                               `pulumi:"auroraMysqls"`
 	AuroraPostgres                             []GetResourceResourceAuroraPostgre                             `pulumi:"auroraPostgres"`
 	Aws                                        []GetResourceResourceAw                                        `pulumi:"aws"`
+	AwsConsoleStaticKeyPairs                   []GetResourceResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPairs"`
+	AwsConsoles                                []GetResourceResourceAwsConsole                                `pulumi:"awsConsoles"`
 	AzureCertificates                          []GetResourceResourceAzureCertificate                          `pulumi:"azureCertificates"`
 	AzurePostgres                              []GetResourceResourceAzurePostgre                              `pulumi:"azurePostgres"`
 	Azures                                     []GetResourceResourceAzure                                     `pulumi:"azures"`
@@ -29637,6 +31062,8 @@ type GetResourceResourceArgs struct {
 	AuroraMysqls                               GetResourceResourceAuroraMysqlArrayInput                               `pulumi:"auroraMysqls"`
 	AuroraPostgres                             GetResourceResourceAuroraPostgreArrayInput                             `pulumi:"auroraPostgres"`
 	Aws                                        GetResourceResourceAwArrayInput                                        `pulumi:"aws"`
+	AwsConsoleStaticKeyPairs                   GetResourceResourceAwsConsoleStaticKeyPairArrayInput                   `pulumi:"awsConsoleStaticKeyPairs"`
+	AwsConsoles                                GetResourceResourceAwsConsoleArrayInput                                `pulumi:"awsConsoles"`
 	AzureCertificates                          GetResourceResourceAzureCertificateArrayInput                          `pulumi:"azureCertificates"`
 	AzurePostgres                              GetResourceResourceAzurePostgreArrayInput                              `pulumi:"azurePostgres"`
 	Azures                                     GetResourceResourceAzureArrayInput                                     `pulumi:"azures"`
@@ -29802,6 +31229,16 @@ func (o GetResourceResourceOutput) AuroraPostgres() GetResourceResourceAuroraPos
 
 func (o GetResourceResourceOutput) Aws() GetResourceResourceAwArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAw { return v.Aws }).(GetResourceResourceAwArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AwsConsoleStaticKeyPairs() GetResourceResourceAwsConsoleStaticKeyPairArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAwsConsoleStaticKeyPair {
+		return v.AwsConsoleStaticKeyPairs
+	}).(GetResourceResourceAwsConsoleStaticKeyPairArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AwsConsoles() GetResourceResourceAwsConsoleArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAwsConsole { return v.AwsConsoles }).(GetResourceResourceAwsConsoleArrayOutput)
 }
 
 func (o GetResourceResourceOutput) AzureCertificates() GetResourceResourceAzureCertificateArrayOutput {
@@ -32489,6 +33926,404 @@ func (o GetResourceResourceAwArrayOutput) Index(i pulumi.IntInput) GetResourceRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAw {
 		return vs[0].([]GetResourceResourceAw)[vs[1].(int)]
 	}).(GetResourceResourceAwOutput)
+}
+
+type GetResourceResourceAwsConsole struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter       *string `pulumi:"egressFilter"`
+	EnableEnvVariables *bool   `pulumi:"enableEnvVariables"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name                              *string `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	Region                            *string `pulumi:"region"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           *string `pulumi:"roleArn"`
+	RoleExternalId                    *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	SessionExpiry *int    `pulumi:"sessionExpiry"`
+	Subdomain     *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceAwsConsoleInput is an input type that accepts GetResourceResourceAwsConsoleArgs and GetResourceResourceAwsConsoleOutput values.
+// You can construct a concrete instance of `GetResourceResourceAwsConsoleInput` via:
+//
+//	GetResourceResourceAwsConsoleArgs{...}
+type GetResourceResourceAwsConsoleInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAwsConsoleOutput() GetResourceResourceAwsConsoleOutput
+	ToGetResourceResourceAwsConsoleOutputWithContext(context.Context) GetResourceResourceAwsConsoleOutput
+}
+
+type GetResourceResourceAwsConsoleArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter       pulumi.StringPtrInput `pulumi:"egressFilter"`
+	EnableEnvVariables pulumi.BoolPtrInput   `pulumi:"enableEnvVariables"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name                              pulumi.StringPtrInput `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region                            pulumi.StringPtrInput `pulumi:"region"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SessionExpiry pulumi.IntPtrInput    `pulumi:"sessionExpiry"`
+	Subdomain     pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceAwsConsoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAwsConsole)(nil)).Elem()
+}
+
+func (i GetResourceResourceAwsConsoleArgs) ToGetResourceResourceAwsConsoleOutput() GetResourceResourceAwsConsoleOutput {
+	return i.ToGetResourceResourceAwsConsoleOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAwsConsoleArgs) ToGetResourceResourceAwsConsoleOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsConsoleOutput)
+}
+
+// GetResourceResourceAwsConsoleArrayInput is an input type that accepts GetResourceResourceAwsConsoleArray and GetResourceResourceAwsConsoleArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAwsConsoleArrayInput` via:
+//
+//	GetResourceResourceAwsConsoleArray{ GetResourceResourceAwsConsoleArgs{...} }
+type GetResourceResourceAwsConsoleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAwsConsoleArrayOutput() GetResourceResourceAwsConsoleArrayOutput
+	ToGetResourceResourceAwsConsoleArrayOutputWithContext(context.Context) GetResourceResourceAwsConsoleArrayOutput
+}
+
+type GetResourceResourceAwsConsoleArray []GetResourceResourceAwsConsoleInput
+
+func (GetResourceResourceAwsConsoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAwsConsole)(nil)).Elem()
+}
+
+func (i GetResourceResourceAwsConsoleArray) ToGetResourceResourceAwsConsoleArrayOutput() GetResourceResourceAwsConsoleArrayOutput {
+	return i.ToGetResourceResourceAwsConsoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAwsConsoleArray) ToGetResourceResourceAwsConsoleArrayOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsConsoleArrayOutput)
+}
+
+type GetResourceResourceAwsConsoleOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAwsConsoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAwsConsole)(nil)).Elem()
+}
+
+func (o GetResourceResourceAwsConsoleOutput) ToGetResourceResourceAwsConsoleOutput() GetResourceResourceAwsConsoleOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsConsoleOutput) ToGetResourceResourceAwsConsoleOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleOutput {
+	return o
+}
+
+// Bind interface
+func (o GetResourceResourceAwsConsoleOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAwsConsoleOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) EnableEnvVariables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *bool { return v.EnableEnvVariables }).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAwsConsoleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAwsConsoleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAwsConsoleOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAwsConsoleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceAwsConsoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAwsConsoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAwsConsole)(nil)).Elem()
+}
+
+func (o GetResourceResourceAwsConsoleArrayOutput) ToGetResourceResourceAwsConsoleArrayOutput() GetResourceResourceAwsConsoleArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsConsoleArrayOutput) ToGetResourceResourceAwsConsoleArrayOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsConsoleArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAwsConsoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAwsConsole {
+		return vs[0].([]GetResourceResourceAwsConsole)[vs[1].(int)]
+	}).(GetResourceResourceAwsConsoleOutput)
+}
+
+type GetResourceResourceAwsConsoleStaticKeyPair struct {
+	AccessKey *string `pulumi:"accessKey"`
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name                              *string `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	Region                            *string `pulumi:"region"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           *string `pulumi:"roleArn"`
+	RoleExternalId                    *string `pulumi:"roleExternalId"`
+	SecretAccessKey                   *string `pulumi:"secretAccessKey"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	SessionExpiry *int    `pulumi:"sessionExpiry"`
+	Subdomain     *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceAwsConsoleStaticKeyPairInput is an input type that accepts GetResourceResourceAwsConsoleStaticKeyPairArgs and GetResourceResourceAwsConsoleStaticKeyPairOutput values.
+// You can construct a concrete instance of `GetResourceResourceAwsConsoleStaticKeyPairInput` via:
+//
+//	GetResourceResourceAwsConsoleStaticKeyPairArgs{...}
+type GetResourceResourceAwsConsoleStaticKeyPairInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAwsConsoleStaticKeyPairOutput() GetResourceResourceAwsConsoleStaticKeyPairOutput
+	ToGetResourceResourceAwsConsoleStaticKeyPairOutputWithContext(context.Context) GetResourceResourceAwsConsoleStaticKeyPairOutput
+}
+
+type GetResourceResourceAwsConsoleStaticKeyPairArgs struct {
+	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name                              pulumi.StringPtrInput `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region                            pulumi.StringPtrInput `pulumi:"region"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey                   pulumi.StringPtrInput `pulumi:"secretAccessKey"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SessionExpiry pulumi.IntPtrInput    `pulumi:"sessionExpiry"`
+	Subdomain     pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceAwsConsoleStaticKeyPairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAwsConsoleStaticKeyPair)(nil)).Elem()
+}
+
+func (i GetResourceResourceAwsConsoleStaticKeyPairArgs) ToGetResourceResourceAwsConsoleStaticKeyPairOutput() GetResourceResourceAwsConsoleStaticKeyPairOutput {
+	return i.ToGetResourceResourceAwsConsoleStaticKeyPairOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAwsConsoleStaticKeyPairArgs) ToGetResourceResourceAwsConsoleStaticKeyPairOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleStaticKeyPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsConsoleStaticKeyPairOutput)
+}
+
+// GetResourceResourceAwsConsoleStaticKeyPairArrayInput is an input type that accepts GetResourceResourceAwsConsoleStaticKeyPairArray and GetResourceResourceAwsConsoleStaticKeyPairArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAwsConsoleStaticKeyPairArrayInput` via:
+//
+//	GetResourceResourceAwsConsoleStaticKeyPairArray{ GetResourceResourceAwsConsoleStaticKeyPairArgs{...} }
+type GetResourceResourceAwsConsoleStaticKeyPairArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAwsConsoleStaticKeyPairArrayOutput() GetResourceResourceAwsConsoleStaticKeyPairArrayOutput
+	ToGetResourceResourceAwsConsoleStaticKeyPairArrayOutputWithContext(context.Context) GetResourceResourceAwsConsoleStaticKeyPairArrayOutput
+}
+
+type GetResourceResourceAwsConsoleStaticKeyPairArray []GetResourceResourceAwsConsoleStaticKeyPairInput
+
+func (GetResourceResourceAwsConsoleStaticKeyPairArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAwsConsoleStaticKeyPair)(nil)).Elem()
+}
+
+func (i GetResourceResourceAwsConsoleStaticKeyPairArray) ToGetResourceResourceAwsConsoleStaticKeyPairArrayOutput() GetResourceResourceAwsConsoleStaticKeyPairArrayOutput {
+	return i.ToGetResourceResourceAwsConsoleStaticKeyPairArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAwsConsoleStaticKeyPairArray) ToGetResourceResourceAwsConsoleStaticKeyPairArrayOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleStaticKeyPairArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsConsoleStaticKeyPairArrayOutput)
+}
+
+type GetResourceResourceAwsConsoleStaticKeyPairOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAwsConsoleStaticKeyPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAwsConsoleStaticKeyPair)(nil)).Elem()
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) ToGetResourceResourceAwsConsoleStaticKeyPairOutput() GetResourceResourceAwsConsoleStaticKeyPairOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) ToGetResourceResourceAwsConsoleStaticKeyPairOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleStaticKeyPairOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// Bind interface
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceAwsConsoleStaticKeyPairArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAwsConsoleStaticKeyPairArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAwsConsoleStaticKeyPair)(nil)).Elem()
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairArrayOutput) ToGetResourceResourceAwsConsoleStaticKeyPairArrayOutput() GetResourceResourceAwsConsoleStaticKeyPairArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairArrayOutput) ToGetResourceResourceAwsConsoleStaticKeyPairArrayOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleStaticKeyPairArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAwsConsoleStaticKeyPairOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAwsConsoleStaticKeyPair {
+		return vs[0].([]GetResourceResourceAwsConsoleStaticKeyPair)[vs[1].(int)]
+	}).(GetResourceResourceAwsConsoleStaticKeyPairOutput)
 }
 
 type GetResourceResourceAzure struct {
@@ -43064,12 +44899,15 @@ func (o GetRoleRoleArrayOutput) Index(i pulumi.IntInput) GetRoleRoleOutput {
 }
 
 type GetSecretStoreSecretStore struct {
-	Aws           []GetSecretStoreSecretStoreAw           `pulumi:"aws"`
-	AzureStores   []GetSecretStoreSecretStoreAzureStore   `pulumi:"azureStores"`
-	GcpStores     []GetSecretStoreSecretStoreGcpStore     `pulumi:"gcpStores"`
-	VaultApproles []GetSecretStoreSecretStoreVaultApprole `pulumi:"vaultApproles"`
-	VaultTls      []GetSecretStoreSecretStoreVaultTl      `pulumi:"vaultTls"`
-	VaultTokens   []GetSecretStoreSecretStoreVaultToken   `pulumi:"vaultTokens"`
+	Aws                      []GetSecretStoreSecretStoreAw                      `pulumi:"aws"`
+	AzureStores              []GetSecretStoreSecretStoreAzureStore              `pulumi:"azureStores"`
+	CyberarkConjurs          []GetSecretStoreSecretStoreCyberarkConjur          `pulumi:"cyberarkConjurs"`
+	CyberarkPamExperimentals []GetSecretStoreSecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimentals"`
+	DelineaStores            []GetSecretStoreSecretStoreDelineaStore            `pulumi:"delineaStores"`
+	GcpStores                []GetSecretStoreSecretStoreGcpStore                `pulumi:"gcpStores"`
+	VaultApproles            []GetSecretStoreSecretStoreVaultApprole            `pulumi:"vaultApproles"`
+	VaultTls                 []GetSecretStoreSecretStoreVaultTl                 `pulumi:"vaultTls"`
+	VaultTokens              []GetSecretStoreSecretStoreVaultToken              `pulumi:"vaultTokens"`
 }
 
 // GetSecretStoreSecretStoreInput is an input type that accepts GetSecretStoreSecretStoreArgs and GetSecretStoreSecretStoreOutput values.
@@ -43084,12 +44922,15 @@ type GetSecretStoreSecretStoreInput interface {
 }
 
 type GetSecretStoreSecretStoreArgs struct {
-	Aws           GetSecretStoreSecretStoreAwArrayInput           `pulumi:"aws"`
-	AzureStores   GetSecretStoreSecretStoreAzureStoreArrayInput   `pulumi:"azureStores"`
-	GcpStores     GetSecretStoreSecretStoreGcpStoreArrayInput     `pulumi:"gcpStores"`
-	VaultApproles GetSecretStoreSecretStoreVaultApproleArrayInput `pulumi:"vaultApproles"`
-	VaultTls      GetSecretStoreSecretStoreVaultTlArrayInput      `pulumi:"vaultTls"`
-	VaultTokens   GetSecretStoreSecretStoreVaultTokenArrayInput   `pulumi:"vaultTokens"`
+	Aws                      GetSecretStoreSecretStoreAwArrayInput                      `pulumi:"aws"`
+	AzureStores              GetSecretStoreSecretStoreAzureStoreArrayInput              `pulumi:"azureStores"`
+	CyberarkConjurs          GetSecretStoreSecretStoreCyberarkConjurArrayInput          `pulumi:"cyberarkConjurs"`
+	CyberarkPamExperimentals GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput `pulumi:"cyberarkPamExperimentals"`
+	DelineaStores            GetSecretStoreSecretStoreDelineaStoreArrayInput            `pulumi:"delineaStores"`
+	GcpStores                GetSecretStoreSecretStoreGcpStoreArrayInput                `pulumi:"gcpStores"`
+	VaultApproles            GetSecretStoreSecretStoreVaultApproleArrayInput            `pulumi:"vaultApproles"`
+	VaultTls                 GetSecretStoreSecretStoreVaultTlArrayInput                 `pulumi:"vaultTls"`
+	VaultTokens              GetSecretStoreSecretStoreVaultTokenArrayInput              `pulumi:"vaultTokens"`
 }
 
 func (GetSecretStoreSecretStoreArgs) ElementType() reflect.Type {
@@ -43149,6 +44990,20 @@ func (o GetSecretStoreSecretStoreOutput) Aws() GetSecretStoreSecretStoreAwArrayO
 
 func (o GetSecretStoreSecretStoreOutput) AzureStores() GetSecretStoreSecretStoreAzureStoreArrayOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreAzureStore { return v.AzureStores }).(GetSecretStoreSecretStoreAzureStoreArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) CyberarkConjurs() GetSecretStoreSecretStoreCyberarkConjurArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreCyberarkConjur { return v.CyberarkConjurs }).(GetSecretStoreSecretStoreCyberarkConjurArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) CyberarkPamExperimentals() GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreCyberarkPamExperimental {
+		return v.CyberarkPamExperimentals
+	}).(GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) DelineaStores() GetSecretStoreSecretStoreDelineaStoreArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreDelineaStore { return v.DelineaStores }).(GetSecretStoreSecretStoreDelineaStoreArrayOutput)
 }
 
 func (o GetSecretStoreSecretStoreOutput) GcpStores() GetSecretStoreSecretStoreGcpStoreArrayOutput {
@@ -43315,7 +45170,7 @@ type GetSecretStoreSecretStoreAzureStore struct {
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// * gcp_store:
+	// * cyberark_conjur:
 	VaultUri *string `pulumi:"vaultUri"`
 }
 
@@ -43337,7 +45192,7 @@ type GetSecretStoreSecretStoreAzureStoreArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// * gcp_store:
+	// * cyberark_conjur:
 	VaultUri pulumi.StringPtrInput `pulumi:"vaultUri"`
 }
 
@@ -43407,7 +45262,7 @@ func (o GetSecretStoreSecretStoreAzureStoreOutput) Tags() pulumi.StringMapOutput
 	return o.ApplyT(func(v GetSecretStoreSecretStoreAzureStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// * gcp_store:
+// * cyberark_conjur:
 func (o GetSecretStoreSecretStoreAzureStoreOutput) VaultUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStoreAzureStore) *string { return v.VaultUri }).(pulumi.StringPtrOutput)
 }
@@ -43430,6 +45285,378 @@ func (o GetSecretStoreSecretStoreAzureStoreArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreAzureStore {
 		return vs[0].([]GetSecretStoreSecretStoreAzureStore)[vs[1].(int)]
 	}).(GetSecretStoreSecretStoreAzureStoreOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkConjur struct {
+	AppUrl *string `pulumi:"appUrl"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreCyberarkConjurInput is an input type that accepts GetSecretStoreSecretStoreCyberarkConjurArgs and GetSecretStoreSecretStoreCyberarkConjurOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkConjurInput` via:
+//
+//	GetSecretStoreSecretStoreCyberarkConjurArgs{...}
+type GetSecretStoreSecretStoreCyberarkConjurInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreCyberarkConjurOutput() GetSecretStoreSecretStoreCyberarkConjurOutput
+	ToGetSecretStoreSecretStoreCyberarkConjurOutputWithContext(context.Context) GetSecretStoreSecretStoreCyberarkConjurOutput
+}
+
+type GetSecretStoreSecretStoreCyberarkConjurArgs struct {
+	AppUrl pulumi.StringPtrInput `pulumi:"appUrl"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreCyberarkConjurArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkConjur)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreCyberarkConjurArgs) ToGetSecretStoreSecretStoreCyberarkConjurOutput() GetSecretStoreSecretStoreCyberarkConjurOutput {
+	return i.ToGetSecretStoreSecretStoreCyberarkConjurOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreCyberarkConjurArgs) ToGetSecretStoreSecretStoreCyberarkConjurOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkConjurOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkConjurOutput)
+}
+
+// GetSecretStoreSecretStoreCyberarkConjurArrayInput is an input type that accepts GetSecretStoreSecretStoreCyberarkConjurArray and GetSecretStoreSecretStoreCyberarkConjurArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkConjurArrayInput` via:
+//
+//	GetSecretStoreSecretStoreCyberarkConjurArray{ GetSecretStoreSecretStoreCyberarkConjurArgs{...} }
+type GetSecretStoreSecretStoreCyberarkConjurArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreCyberarkConjurArrayOutput() GetSecretStoreSecretStoreCyberarkConjurArrayOutput
+	ToGetSecretStoreSecretStoreCyberarkConjurArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreCyberarkConjurArrayOutput
+}
+
+type GetSecretStoreSecretStoreCyberarkConjurArray []GetSecretStoreSecretStoreCyberarkConjurInput
+
+func (GetSecretStoreSecretStoreCyberarkConjurArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreCyberarkConjur)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreCyberarkConjurArray) ToGetSecretStoreSecretStoreCyberarkConjurArrayOutput() GetSecretStoreSecretStoreCyberarkConjurArrayOutput {
+	return i.ToGetSecretStoreSecretStoreCyberarkConjurArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreCyberarkConjurArray) ToGetSecretStoreSecretStoreCyberarkConjurArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkConjurArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkConjurArrayOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkConjurOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreCyberarkConjurOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkConjur)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreCyberarkConjurOutput) ToGetSecretStoreSecretStoreCyberarkConjurOutput() GetSecretStoreSecretStoreCyberarkConjurOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkConjurOutput) ToGetSecretStoreSecretStoreCyberarkConjurOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkConjurOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkConjurOutput) AppUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkConjur) *string { return v.AppUrl }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreCyberarkConjurOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkConjur) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreCyberarkConjurOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkConjur) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreCyberarkConjurOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkConjur) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkConjurArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreCyberarkConjurArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreCyberarkConjur)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreCyberarkConjurArrayOutput) ToGetSecretStoreSecretStoreCyberarkConjurArrayOutput() GetSecretStoreSecretStoreCyberarkConjurArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkConjurArrayOutput) ToGetSecretStoreSecretStoreCyberarkConjurArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkConjurArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkConjurArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreCyberarkConjurOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreCyberarkConjur {
+		return vs[0].([]GetSecretStoreSecretStoreCyberarkConjur)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreCyberarkConjurOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkPamExperimental struct {
+	AppUrl *string `pulumi:"appUrl"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreCyberarkPamExperimentalInput is an input type that accepts GetSecretStoreSecretStoreCyberarkPamExperimentalArgs and GetSecretStoreSecretStoreCyberarkPamExperimentalOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkPamExperimentalInput` via:
+//
+//	GetSecretStoreSecretStoreCyberarkPamExperimentalArgs{...}
+type GetSecretStoreSecretStoreCyberarkPamExperimentalInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutput() GetSecretStoreSecretStoreCyberarkPamExperimentalOutput
+	ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutputWithContext(context.Context) GetSecretStoreSecretStoreCyberarkPamExperimentalOutput
+}
+
+type GetSecretStoreSecretStoreCyberarkPamExperimentalArgs struct {
+	AppUrl pulumi.StringPtrInput `pulumi:"appUrl"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreCyberarkPamExperimentalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimental)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreCyberarkPamExperimentalArgs) ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutput() GetSecretStoreSecretStoreCyberarkPamExperimentalOutput {
+	return i.ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreCyberarkPamExperimentalArgs) ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamExperimentalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkPamExperimentalOutput)
+}
+
+// GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput is an input type that accepts GetSecretStoreSecretStoreCyberarkPamExperimentalArray and GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput` via:
+//
+//	GetSecretStoreSecretStoreCyberarkPamExperimentalArray{ GetSecretStoreSecretStoreCyberarkPamExperimentalArgs{...} }
+type GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput() GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput
+	ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput
+}
+
+type GetSecretStoreSecretStoreCyberarkPamExperimentalArray []GetSecretStoreSecretStoreCyberarkPamExperimentalInput
+
+func (GetSecretStoreSecretStoreCyberarkPamExperimentalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreCyberarkPamExperimental)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreCyberarkPamExperimentalArray) ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput() GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput {
+	return i.ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreCyberarkPamExperimentalArray) ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkPamExperimentalOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimental)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutput() GetSecretStoreSecretStoreCyberarkPamExperimentalOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamExperimentalOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) AppUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkPamExperimental) *string { return v.AppUrl }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkPamExperimental) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkPamExperimental) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkPamExperimental) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreCyberarkPamExperimental)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput() GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreCyberarkPamExperimentalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreCyberarkPamExperimental {
+		return vs[0].([]GetSecretStoreSecretStoreCyberarkPamExperimental)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreCyberarkPamExperimentalOutput)
+}
+
+type GetSecretStoreSecretStoreDelineaStore struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name      *string `pulumi:"name"`
+	ServerUrl *string `pulumi:"serverUrl"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// * gcp_store:
+	TenantName *string `pulumi:"tenantName"`
+}
+
+// GetSecretStoreSecretStoreDelineaStoreInput is an input type that accepts GetSecretStoreSecretStoreDelineaStoreArgs and GetSecretStoreSecretStoreDelineaStoreOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreDelineaStoreInput` via:
+//
+//	GetSecretStoreSecretStoreDelineaStoreArgs{...}
+type GetSecretStoreSecretStoreDelineaStoreInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreDelineaStoreOutput() GetSecretStoreSecretStoreDelineaStoreOutput
+	ToGetSecretStoreSecretStoreDelineaStoreOutputWithContext(context.Context) GetSecretStoreSecretStoreDelineaStoreOutput
+}
+
+type GetSecretStoreSecretStoreDelineaStoreArgs struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	ServerUrl pulumi.StringPtrInput `pulumi:"serverUrl"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * gcp_store:
+	TenantName pulumi.StringPtrInput `pulumi:"tenantName"`
+}
+
+func (GetSecretStoreSecretStoreDelineaStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStore)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreDelineaStoreArgs) ToGetSecretStoreSecretStoreDelineaStoreOutput() GetSecretStoreSecretStoreDelineaStoreOutput {
+	return i.ToGetSecretStoreSecretStoreDelineaStoreOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreDelineaStoreArgs) ToGetSecretStoreSecretStoreDelineaStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreDelineaStoreOutput)
+}
+
+// GetSecretStoreSecretStoreDelineaStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreDelineaStoreArray and GetSecretStoreSecretStoreDelineaStoreArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreDelineaStoreArrayInput` via:
+//
+//	GetSecretStoreSecretStoreDelineaStoreArray{ GetSecretStoreSecretStoreDelineaStoreArgs{...} }
+type GetSecretStoreSecretStoreDelineaStoreArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreDelineaStoreArrayOutput() GetSecretStoreSecretStoreDelineaStoreArrayOutput
+	ToGetSecretStoreSecretStoreDelineaStoreArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreDelineaStoreArrayOutput
+}
+
+type GetSecretStoreSecretStoreDelineaStoreArray []GetSecretStoreSecretStoreDelineaStoreInput
+
+func (GetSecretStoreSecretStoreDelineaStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreDelineaStore)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreDelineaStoreArray) ToGetSecretStoreSecretStoreDelineaStoreArrayOutput() GetSecretStoreSecretStoreDelineaStoreArrayOutput {
+	return i.ToGetSecretStoreSecretStoreDelineaStoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreDelineaStoreArray) ToGetSecretStoreSecretStoreDelineaStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreDelineaStoreArrayOutput)
+}
+
+type GetSecretStoreSecretStoreDelineaStoreOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreDelineaStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStore)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreDelineaStoreOutput) ToGetSecretStoreSecretStoreDelineaStoreOutput() GetSecretStoreSecretStoreDelineaStoreOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreDelineaStoreOutput) ToGetSecretStoreSecretStoreDelineaStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaStoreOutput {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreDelineaStoreOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaStore) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreDelineaStoreOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaStore) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetSecretStoreSecretStoreDelineaStoreOutput) ServerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaStore) *string { return v.ServerUrl }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreDelineaStoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// * gcp_store:
+func (o GetSecretStoreSecretStoreDelineaStoreOutput) TenantName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreDelineaStore) *string { return v.TenantName }).(pulumi.StringPtrOutput)
+}
+
+type GetSecretStoreSecretStoreDelineaStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreDelineaStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreDelineaStore)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreDelineaStoreArrayOutput) ToGetSecretStoreSecretStoreDelineaStoreArrayOutput() GetSecretStoreSecretStoreDelineaStoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreDelineaStoreArrayOutput) ToGetSecretStoreSecretStoreDelineaStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaStoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreDelineaStoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreDelineaStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreDelineaStore {
+		return vs[0].([]GetSecretStoreSecretStoreDelineaStore)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreDelineaStoreOutput)
 }
 
 type GetSecretStoreSecretStoreGcpStore struct {
@@ -43987,6 +46214,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraPostgresPtrInput)(nil)).Elem(), ResourceAuroraPostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsInput)(nil)).Elem(), ResourceAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsPtrInput)(nil)).Elem(), ResourceAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsConsoleInput)(nil)).Elem(), ResourceAwsConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsConsolePtrInput)(nil)).Elem(), ResourceAwsConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsConsoleStaticKeyPairInput)(nil)).Elem(), ResourceAwsConsoleStaticKeyPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsConsoleStaticKeyPairPtrInput)(nil)).Elem(), ResourceAwsConsoleStaticKeyPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureInput)(nil)).Elem(), ResourceAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePtrInput)(nil)).Elem(), ResourceAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureCertificateInput)(nil)).Elem(), ResourceAzureCertificateArgs{})
@@ -44107,6 +46338,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAwsPtrInput)(nil)).Elem(), SecretStoreAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAzureStoreInput)(nil)).Elem(), SecretStoreAzureStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAzureStorePtrInput)(nil)).Elem(), SecretStoreAzureStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkConjurInput)(nil)).Elem(), SecretStoreCyberarkConjurArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkConjurPtrInput)(nil)).Elem(), SecretStoreCyberarkConjurArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamExperimentalInput)(nil)).Elem(), SecretStoreCyberarkPamExperimentalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamExperimentalPtrInput)(nil)).Elem(), SecretStoreCyberarkPamExperimentalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaStoreInput)(nil)).Elem(), SecretStoreDelineaStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaStorePtrInput)(nil)).Elem(), SecretStoreDelineaStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpStoreInput)(nil)).Elem(), SecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpStorePtrInput)(nil)).Elem(), SecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleInput)(nil)).Elem(), SecretStoreVaultApproleArgs{})
@@ -44161,6 +46398,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraPostgreArrayInput)(nil)).Elem(), GetResourceResourceAuroraPostgreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwInput)(nil)).Elem(), GetResourceResourceAwArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwArrayInput)(nil)).Elem(), GetResourceResourceAwArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsConsoleInput)(nil)).Elem(), GetResourceResourceAwsConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsConsoleArrayInput)(nil)).Elem(), GetResourceResourceAwsConsoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsConsoleStaticKeyPairInput)(nil)).Elem(), GetResourceResourceAwsConsoleStaticKeyPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsConsoleStaticKeyPairArrayInput)(nil)).Elem(), GetResourceResourceAwsConsoleStaticKeyPairArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureInput)(nil)).Elem(), GetResourceResourceAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureArrayInput)(nil)).Elem(), GetResourceResourceAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureCertificateInput)(nil)).Elem(), GetResourceResourceAzureCertificateArgs{})
@@ -44285,6 +46526,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAwArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreAwArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAzureStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreAzureStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAzureStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreAzureStoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkConjurInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkConjurArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkConjurArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkConjurArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimentalInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamExperimentalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamExperimentalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleArgs{})
@@ -44327,6 +46574,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAuroraPostgresPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAwsOutput{})
 	pulumi.RegisterOutputType(ResourceAwsPtrOutput{})
+	pulumi.RegisterOutputType(ResourceAwsConsoleOutput{})
+	pulumi.RegisterOutputType(ResourceAwsConsolePtrOutput{})
+	pulumi.RegisterOutputType(ResourceAwsConsoleStaticKeyPairOutput{})
+	pulumi.RegisterOutputType(ResourceAwsConsoleStaticKeyPairPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzureOutput{})
 	pulumi.RegisterOutputType(ResourceAzurePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzureCertificateOutput{})
@@ -44447,6 +46698,12 @@ func init() {
 	pulumi.RegisterOutputType(SecretStoreAwsPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreAzureStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreAzureStorePtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreCyberarkConjurOutput{})
+	pulumi.RegisterOutputType(SecretStoreCyberarkConjurPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreCyberarkPamExperimentalOutput{})
+	pulumi.RegisterOutputType(SecretStoreCyberarkPamExperimentalPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreDelineaStoreOutput{})
+	pulumi.RegisterOutputType(SecretStoreDelineaStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultApproleOutput{})
@@ -44501,6 +46758,10 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAuroraPostgreArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAwOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAwArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAwsConsoleOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAwsConsoleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAwsConsoleStaticKeyPairOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAwsConsoleStaticKeyPairArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureCertificateOutput{})
@@ -44625,6 +46886,12 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAwArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAzureStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAzureStoreArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkConjurOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkConjurArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamExperimentalOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaStoreOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleOutput{})
