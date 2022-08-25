@@ -27,6 +27,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraMysqlResult> AuroraMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraPostgreResult> AuroraPostgres;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwResult> Aws;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleStaticKeyPairResult> AwsConsoleStaticKeyPairs;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> AwsConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> AzureCertificates;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> AzurePostgres;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureResult> Azures;
@@ -113,6 +115,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAuroraPostgreResult> auroraPostgres,
 
             ImmutableArray<Outputs.GetResourceResourceAwResult> aws,
+
+            ImmutableArray<Outputs.GetResourceResourceAwsConsoleStaticKeyPairResult> awsConsoleStaticKeyPairs,
+
+            ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> awsConsoles,
 
             ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> azureCertificates,
 
@@ -243,6 +249,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AuroraMysqls = auroraMysqls;
             AuroraPostgres = auroraPostgres;
             Aws = aws;
+            AwsConsoleStaticKeyPairs = awsConsoleStaticKeyPairs;
+            AwsConsoles = awsConsoles;
             AzureCertificates = azureCertificates;
             AzurePostgres = azurePostgres;
             Azures = azures;

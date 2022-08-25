@@ -12,8 +12,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetSecretStoreSecretStoreAzureStoreResult
+    public sealed class GetSecretStoreSecretStoreCyberarkConjurResult
     {
+        public readonly string? AppUrl;
         /// <summary>
         /// Unique identifier of the SecretStore.
         /// </summary>
@@ -26,25 +27,21 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        /// <summary>
-        /// * cyberark_conjur:
-        /// </summary>
-        public readonly string? VaultUri;
 
         [OutputConstructor]
-        private GetSecretStoreSecretStoreAzureStoreResult(
+        private GetSecretStoreSecretStoreCyberarkConjurResult(
+            string? appUrl,
+
             string? id,
 
             string? name,
 
-            ImmutableDictionary<string, string>? tags,
-
-            string? vaultUri)
+            ImmutableDictionary<string, string>? tags)
         {
+            AppUrl = appUrl;
             Id = id;
             Name = name;
             Tags = tags;
-            VaultUri = vaultUri;
         }
     }
 }

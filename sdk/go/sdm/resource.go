@@ -22,19 +22,24 @@ import (
 type Resource struct {
 	pulumi.CustomResourceState
 
-	Aks                                       ResourceAksPtrOutput                                       `pulumi:"aks"`
-	AksBasicAuth                              ResourceAksBasicAuthPtrOutput                              `pulumi:"aksBasicAuth"`
-	AksServiceAccount                         ResourceAksServiceAccountPtrOutput                         `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrOutput        `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation                      ResourceAksUserImpersonationPtrOutput                      `pulumi:"aksUserImpersonation"`
-	AmazonEks                                 ResourceAmazonEksPtrOutput                                 `pulumi:"amazonEks"`
-	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrOutput                `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                                  ResourceAmazonEsPtrOutput                                  `pulumi:"amazonEs"`
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrOutput                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    ResourceAthenaPtrOutput                                    `pulumi:"athena"`
-	AuroraMysql                               ResourceAuroraMysqlPtrOutput                               `pulumi:"auroraMysql"`
-	AuroraPostgres                            ResourceAuroraPostgresPtrOutput                            `pulumi:"auroraPostgres"`
-	Aws                                       ResourceAwsPtrOutput                                       `pulumi:"aws"`
+	Aks                                ResourceAksPtrOutput                                `pulumi:"aks"`
+	AksBasicAuth                       ResourceAksBasicAuthPtrOutput                       `pulumi:"aksBasicAuth"`
+	AksServiceAccount                  ResourceAksServiceAccountPtrOutput                  `pulumi:"aksServiceAccount"`
+	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrOutput `pulumi:"aksServiceAccountUserImpersonation"`
+	AksUserImpersonation               ResourceAksUserImpersonationPtrOutput               `pulumi:"aksUserImpersonation"`
+	AmazonEks                          ResourceAmazonEksPtrOutput                          `pulumi:"amazonEks"`
+	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrOutput         `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                           ResourceAmazonEsPtrOutput                           `pulumi:"amazonEs"`
+	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrOutput                    `pulumi:"amazonmqAmqp091"`
+	Athena                             ResourceAthenaPtrOutput                             `pulumi:"athena"`
+	AuroraMysql                        ResourceAuroraMysqlPtrOutput                        `pulumi:"auroraMysql"`
+	AuroraPostgres                     ResourceAuroraPostgresPtrOutput                     `pulumi:"auroraPostgres"`
+	Aws                                ResourceAwsPtrOutput                                `pulumi:"aws"`
+	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsole ResourceAwsConsolePtrOutput `pulumi:"awsConsole"`
+	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrOutput                   `pulumi:"awsConsoleStaticKeyPair"`
 	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
 	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
 	AzurePostgres                             ResourceAzurePostgresPtrOutput                             `pulumi:"azurePostgres"`
@@ -66,33 +71,38 @@ type Resource struct {
 	Maria                                     ResourceMariaPtrOutput                                     `pulumi:"maria"`
 	Memcached                                 ResourceMemcachedPtrOutput                                 `pulumi:"memcached"`
 	Memsql                                    ResourceMemsqlPtrOutput                                    `pulumi:"memsql"`
-	MongoHost                                 ResourceMongoHostPtrOutput                                 `pulumi:"mongoHost"`
-	MongoLegacyHost                           ResourceMongoLegacyHostPtrOutput                           `pulumi:"mongoLegacyHost"`
-	MongoLegacyReplicaset                     ResourceMongoLegacyReplicasetPtrOutput                     `pulumi:"mongoLegacyReplicaset"`
-	MongoReplicaSet                           ResourceMongoReplicaSetPtrOutput                           `pulumi:"mongoReplicaSet"`
-	MongoShardedCluster                       ResourceMongoShardedClusterPtrOutput                       `pulumi:"mongoShardedCluster"`
-	MtlsMysql                                 ResourceMtlsMysqlPtrOutput                                 `pulumi:"mtlsMysql"`
-	MtlsPostgres                              ResourceMtlsPostgresPtrOutput                              `pulumi:"mtlsPostgres"`
-	Mysql                                     ResourceMysqlPtrOutput                                     `pulumi:"mysql"`
-	Neptune                                   ResourceNeptunePtrOutput                                   `pulumi:"neptune"`
-	NeptuneIam                                ResourceNeptuneIamPtrOutput                                `pulumi:"neptuneIam"`
-	Oracle                                    ResourceOraclePtrOutput                                    `pulumi:"oracle"`
-	Postgres                                  ResourcePostgresPtrOutput                                  `pulumi:"postgres"`
-	Presto                                    ResourcePrestoPtrOutput                                    `pulumi:"presto"`
-	RabbitmqAmqp091                           ResourceRabbitmqAmqp091PtrOutput                           `pulumi:"rabbitmqAmqp091"`
-	RawTcp                                    ResourceRawTcpPtrOutput                                    `pulumi:"rawTcp"`
-	Rdp                                       ResourceRdpPtrOutput                                       `pulumi:"rdp"`
-	Redis                                     ResourceRedisPtrOutput                                     `pulumi:"redis"`
-	Redshift                                  ResourceRedshiftPtrOutput                                  `pulumi:"redshift"`
-	SingleStore                               ResourceSingleStorePtrOutput                               `pulumi:"singleStore"`
-	Snowflake                                 ResourceSnowflakePtrOutput                                 `pulumi:"snowflake"`
-	SqlServer                                 ResourceSqlServerPtrOutput                                 `pulumi:"sqlServer"`
-	Ssh                                       ResourceSshPtrOutput                                       `pulumi:"ssh"`
-	SshCert                                   ResourceSshCertPtrOutput                                   `pulumi:"sshCert"`
-	SshCustomerKey                            ResourceSshCustomerKeyPtrOutput                            `pulumi:"sshCustomerKey"`
-	Sybase                                    ResourceSybasePtrOutput                                    `pulumi:"sybase"`
-	SybaseIq                                  ResourceSybaseIqPtrOutput                                  `pulumi:"sybaseIq"`
-	Teradata                                  ResourceTeradataPtrOutput                                  `pulumi:"teradata"`
+	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoHost             ResourceMongoHostPtrOutput             `pulumi:"mongoHost"`
+	MongoLegacyHost       ResourceMongoLegacyHostPtrOutput       `pulumi:"mongoLegacyHost"`
+	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrOutput `pulumi:"mongoLegacyReplicaset"`
+	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet ResourceMongoReplicaSetPtrOutput `pulumi:"mongoReplicaSet"`
+	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoShardedCluster ResourceMongoShardedClusterPtrOutput `pulumi:"mongoShardedCluster"`
+	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    ResourceMtlsMysqlPtrOutput    `pulumi:"mtlsMysql"`
+	MtlsPostgres ResourceMtlsPostgresPtrOutput `pulumi:"mtlsPostgres"`
+	Mysql        ResourceMysqlPtrOutput        `pulumi:"mysql"`
+	Neptune      ResourceNeptunePtrOutput      `pulumi:"neptune"`
+	NeptuneIam   ResourceNeptuneIamPtrOutput   `pulumi:"neptuneIam"`
+	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Oracle          ResourceOraclePtrOutput          `pulumi:"oracle"`
+	Postgres        ResourcePostgresPtrOutput        `pulumi:"postgres"`
+	Presto          ResourcePrestoPtrOutput          `pulumi:"presto"`
+	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrOutput `pulumi:"rabbitmqAmqp091"`
+	RawTcp          ResourceRawTcpPtrOutput          `pulumi:"rawTcp"`
+	Rdp             ResourceRdpPtrOutput             `pulumi:"rdp"`
+	Redis           ResourceRedisPtrOutput           `pulumi:"redis"`
+	Redshift        ResourceRedshiftPtrOutput        `pulumi:"redshift"`
+	SingleStore     ResourceSingleStorePtrOutput     `pulumi:"singleStore"`
+	Snowflake       ResourceSnowflakePtrOutput       `pulumi:"snowflake"`
+	SqlServer       ResourceSqlServerPtrOutput       `pulumi:"sqlServer"`
+	Ssh             ResourceSshPtrOutput             `pulumi:"ssh"`
+	SshCert         ResourceSshCertPtrOutput         `pulumi:"sshCert"`
+	SshCustomerKey  ResourceSshCustomerKeyPtrOutput  `pulumi:"sshCustomerKey"`
+	Sybase          ResourceSybasePtrOutput          `pulumi:"sybase"`
+	SybaseIq        ResourceSybaseIqPtrOutput        `pulumi:"sybaseIq"`
+	Teradata        ResourceTeradataPtrOutput        `pulumi:"teradata"`
 }
 
 // NewResource registers a new resource with the given unique name, arguments, and options.
@@ -125,19 +135,24 @@ func GetResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resource resources.
 type resourceState struct {
-	Aks                                       *ResourceAks                                       `pulumi:"aks"`
-	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
-	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation        *ResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation                      *ResourceAksUserImpersonation                      `pulumi:"aksUserImpersonation"`
-	AmazonEks                                 *ResourceAmazonEks                                 `pulumi:"amazonEks"`
-	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
-	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
-	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
-	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
-	Aws                                       *ResourceAws                                       `pulumi:"aws"`
+	Aks                                *ResourceAks                                `pulumi:"aks"`
+	AksBasicAuth                       *ResourceAksBasicAuth                       `pulumi:"aksBasicAuth"`
+	AksServiceAccount                  *ResourceAksServiceAccount                  `pulumi:"aksServiceAccount"`
+	AksServiceAccountUserImpersonation *ResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonation"`
+	AksUserImpersonation               *ResourceAksUserImpersonation               `pulumi:"aksUserImpersonation"`
+	AmazonEks                          *ResourceAmazonEks                          `pulumi:"amazonEks"`
+	AmazonEksUserImpersonation         *ResourceAmazonEksUserImpersonation         `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                           *ResourceAmazonEs                           `pulumi:"amazonEs"`
+	AmazonmqAmqp091                    *ResourceAmazonmqAmqp091                    `pulumi:"amazonmqAmqp091"`
+	Athena                             *ResourceAthena                             `pulumi:"athena"`
+	AuroraMysql                        *ResourceAuroraMysql                        `pulumi:"auroraMysql"`
+	AuroraPostgres                     *ResourceAuroraPostgres                     `pulumi:"auroraPostgres"`
+	Aws                                *ResourceAws                                `pulumi:"aws"`
+	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
+	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
 	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
 	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
 	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
@@ -169,49 +184,59 @@ type resourceState struct {
 	Maria                                     *ResourceMaria                                     `pulumi:"maria"`
 	Memcached                                 *ResourceMemcached                                 `pulumi:"memcached"`
 	Memsql                                    *ResourceMemsql                                    `pulumi:"memsql"`
-	MongoHost                                 *ResourceMongoHost                                 `pulumi:"mongoHost"`
-	MongoLegacyHost                           *ResourceMongoLegacyHost                           `pulumi:"mongoLegacyHost"`
-	MongoLegacyReplicaset                     *ResourceMongoLegacyReplicaset                     `pulumi:"mongoLegacyReplicaset"`
-	MongoReplicaSet                           *ResourceMongoReplicaSet                           `pulumi:"mongoReplicaSet"`
-	MongoShardedCluster                       *ResourceMongoShardedCluster                       `pulumi:"mongoShardedCluster"`
-	MtlsMysql                                 *ResourceMtlsMysql                                 `pulumi:"mtlsMysql"`
-	MtlsPostgres                              *ResourceMtlsPostgres                              `pulumi:"mtlsPostgres"`
-	Mysql                                     *ResourceMysql                                     `pulumi:"mysql"`
-	Neptune                                   *ResourceNeptune                                   `pulumi:"neptune"`
-	NeptuneIam                                *ResourceNeptuneIam                                `pulumi:"neptuneIam"`
-	Oracle                                    *ResourceOracle                                    `pulumi:"oracle"`
-	Postgres                                  *ResourcePostgres                                  `pulumi:"postgres"`
-	Presto                                    *ResourcePresto                                    `pulumi:"presto"`
-	RabbitmqAmqp091                           *ResourceRabbitmqAmqp091                           `pulumi:"rabbitmqAmqp091"`
-	RawTcp                                    *ResourceRawTcp                                    `pulumi:"rawTcp"`
-	Rdp                                       *ResourceRdp                                       `pulumi:"rdp"`
-	Redis                                     *ResourceRedis                                     `pulumi:"redis"`
-	Redshift                                  *ResourceRedshift                                  `pulumi:"redshift"`
-	SingleStore                               *ResourceSingleStore                               `pulumi:"singleStore"`
-	Snowflake                                 *ResourceSnowflake                                 `pulumi:"snowflake"`
-	SqlServer                                 *ResourceSqlServer                                 `pulumi:"sqlServer"`
-	Ssh                                       *ResourceSsh                                       `pulumi:"ssh"`
-	SshCert                                   *ResourceSshCert                                   `pulumi:"sshCert"`
-	SshCustomerKey                            *ResourceSshCustomerKey                            `pulumi:"sshCustomerKey"`
-	Sybase                                    *ResourceSybase                                    `pulumi:"sybase"`
-	SybaseIq                                  *ResourceSybaseIq                                  `pulumi:"sybaseIq"`
-	Teradata                                  *ResourceTeradata                                  `pulumi:"teradata"`
+	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoHost             *ResourceMongoHost             `pulumi:"mongoHost"`
+	MongoLegacyHost       *ResourceMongoLegacyHost       `pulumi:"mongoLegacyHost"`
+	MongoLegacyReplicaset *ResourceMongoLegacyReplicaset `pulumi:"mongoLegacyReplicaset"`
+	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet *ResourceMongoReplicaSet `pulumi:"mongoReplicaSet"`
+	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoShardedCluster *ResourceMongoShardedCluster `pulumi:"mongoShardedCluster"`
+	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    *ResourceMtlsMysql    `pulumi:"mtlsMysql"`
+	MtlsPostgres *ResourceMtlsPostgres `pulumi:"mtlsPostgres"`
+	Mysql        *ResourceMysql        `pulumi:"mysql"`
+	Neptune      *ResourceNeptune      `pulumi:"neptune"`
+	NeptuneIam   *ResourceNeptuneIam   `pulumi:"neptuneIam"`
+	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Oracle          *ResourceOracle          `pulumi:"oracle"`
+	Postgres        *ResourcePostgres        `pulumi:"postgres"`
+	Presto          *ResourcePresto          `pulumi:"presto"`
+	RabbitmqAmqp091 *ResourceRabbitmqAmqp091 `pulumi:"rabbitmqAmqp091"`
+	RawTcp          *ResourceRawTcp          `pulumi:"rawTcp"`
+	Rdp             *ResourceRdp             `pulumi:"rdp"`
+	Redis           *ResourceRedis           `pulumi:"redis"`
+	Redshift        *ResourceRedshift        `pulumi:"redshift"`
+	SingleStore     *ResourceSingleStore     `pulumi:"singleStore"`
+	Snowflake       *ResourceSnowflake       `pulumi:"snowflake"`
+	SqlServer       *ResourceSqlServer       `pulumi:"sqlServer"`
+	Ssh             *ResourceSsh             `pulumi:"ssh"`
+	SshCert         *ResourceSshCert         `pulumi:"sshCert"`
+	SshCustomerKey  *ResourceSshCustomerKey  `pulumi:"sshCustomerKey"`
+	Sybase          *ResourceSybase          `pulumi:"sybase"`
+	SybaseIq        *ResourceSybaseIq        `pulumi:"sybaseIq"`
+	Teradata        *ResourceTeradata        `pulumi:"teradata"`
 }
 
 type ResourceState struct {
-	Aks                                       ResourceAksPtrInput
-	AksBasicAuth                              ResourceAksBasicAuthPtrInput
-	AksServiceAccount                         ResourceAksServiceAccountPtrInput
-	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrInput
-	AksUserImpersonation                      ResourceAksUserImpersonationPtrInput
-	AmazonEks                                 ResourceAmazonEksPtrInput
-	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
-	AmazonEs                                  ResourceAmazonEsPtrInput
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
-	Athena                                    ResourceAthenaPtrInput
-	AuroraMysql                               ResourceAuroraMysqlPtrInput
-	AuroraPostgres                            ResourceAuroraPostgresPtrInput
-	Aws                                       ResourceAwsPtrInput
+	Aks                                ResourceAksPtrInput
+	AksBasicAuth                       ResourceAksBasicAuthPtrInput
+	AksServiceAccount                  ResourceAksServiceAccountPtrInput
+	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrInput
+	AksUserImpersonation               ResourceAksUserImpersonationPtrInput
+	AmazonEks                          ResourceAmazonEksPtrInput
+	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrInput
+	AmazonEs                           ResourceAmazonEsPtrInput
+	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrInput
+	Athena                             ResourceAthenaPtrInput
+	AuroraMysql                        ResourceAuroraMysqlPtrInput
+	AuroraPostgres                     ResourceAuroraPostgresPtrInput
+	Aws                                ResourceAwsPtrInput
+	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsole ResourceAwsConsolePtrInput
+	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
 	Azure                                     ResourceAzurePtrInput
 	AzureCertificate                          ResourceAzureCertificatePtrInput
 	AzurePostgres                             ResourceAzurePostgresPtrInput
@@ -243,33 +268,38 @@ type ResourceState struct {
 	Maria                                     ResourceMariaPtrInput
 	Memcached                                 ResourceMemcachedPtrInput
 	Memsql                                    ResourceMemsqlPtrInput
-	MongoHost                                 ResourceMongoHostPtrInput
-	MongoLegacyHost                           ResourceMongoLegacyHostPtrInput
-	MongoLegacyReplicaset                     ResourceMongoLegacyReplicasetPtrInput
-	MongoReplicaSet                           ResourceMongoReplicaSetPtrInput
-	MongoShardedCluster                       ResourceMongoShardedClusterPtrInput
-	MtlsMysql                                 ResourceMtlsMysqlPtrInput
-	MtlsPostgres                              ResourceMtlsPostgresPtrInput
-	Mysql                                     ResourceMysqlPtrInput
-	Neptune                                   ResourceNeptunePtrInput
-	NeptuneIam                                ResourceNeptuneIamPtrInput
-	Oracle                                    ResourceOraclePtrInput
-	Postgres                                  ResourcePostgresPtrInput
-	Presto                                    ResourcePrestoPtrInput
-	RabbitmqAmqp091                           ResourceRabbitmqAmqp091PtrInput
-	RawTcp                                    ResourceRawTcpPtrInput
-	Rdp                                       ResourceRdpPtrInput
-	Redis                                     ResourceRedisPtrInput
-	Redshift                                  ResourceRedshiftPtrInput
-	SingleStore                               ResourceSingleStorePtrInput
-	Snowflake                                 ResourceSnowflakePtrInput
-	SqlServer                                 ResourceSqlServerPtrInput
-	Ssh                                       ResourceSshPtrInput
-	SshCert                                   ResourceSshCertPtrInput
-	SshCustomerKey                            ResourceSshCustomerKeyPtrInput
-	Sybase                                    ResourceSybasePtrInput
-	SybaseIq                                  ResourceSybaseIqPtrInput
-	Teradata                                  ResourceTeradataPtrInput
+	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoHost             ResourceMongoHostPtrInput
+	MongoLegacyHost       ResourceMongoLegacyHostPtrInput
+	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrInput
+	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet ResourceMongoReplicaSetPtrInput
+	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoShardedCluster ResourceMongoShardedClusterPtrInput
+	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    ResourceMtlsMysqlPtrInput
+	MtlsPostgres ResourceMtlsPostgresPtrInput
+	Mysql        ResourceMysqlPtrInput
+	Neptune      ResourceNeptunePtrInput
+	NeptuneIam   ResourceNeptuneIamPtrInput
+	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Oracle          ResourceOraclePtrInput
+	Postgres        ResourcePostgresPtrInput
+	Presto          ResourcePrestoPtrInput
+	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrInput
+	RawTcp          ResourceRawTcpPtrInput
+	Rdp             ResourceRdpPtrInput
+	Redis           ResourceRedisPtrInput
+	Redshift        ResourceRedshiftPtrInput
+	SingleStore     ResourceSingleStorePtrInput
+	Snowflake       ResourceSnowflakePtrInput
+	SqlServer       ResourceSqlServerPtrInput
+	Ssh             ResourceSshPtrInput
+	SshCert         ResourceSshCertPtrInput
+	SshCustomerKey  ResourceSshCustomerKeyPtrInput
+	Sybase          ResourceSybasePtrInput
+	SybaseIq        ResourceSybaseIqPtrInput
+	Teradata        ResourceTeradataPtrInput
 }
 
 func (ResourceState) ElementType() reflect.Type {
@@ -277,19 +307,24 @@ func (ResourceState) ElementType() reflect.Type {
 }
 
 type resourceArgs struct {
-	Aks                                       *ResourceAks                                       `pulumi:"aks"`
-	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
-	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation        *ResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation                      *ResourceAksUserImpersonation                      `pulumi:"aksUserImpersonation"`
-	AmazonEks                                 *ResourceAmazonEks                                 `pulumi:"amazonEks"`
-	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
-	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
-	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
-	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
-	Aws                                       *ResourceAws                                       `pulumi:"aws"`
+	Aks                                *ResourceAks                                `pulumi:"aks"`
+	AksBasicAuth                       *ResourceAksBasicAuth                       `pulumi:"aksBasicAuth"`
+	AksServiceAccount                  *ResourceAksServiceAccount                  `pulumi:"aksServiceAccount"`
+	AksServiceAccountUserImpersonation *ResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonation"`
+	AksUserImpersonation               *ResourceAksUserImpersonation               `pulumi:"aksUserImpersonation"`
+	AmazonEks                          *ResourceAmazonEks                          `pulumi:"amazonEks"`
+	AmazonEksUserImpersonation         *ResourceAmazonEksUserImpersonation         `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                           *ResourceAmazonEs                           `pulumi:"amazonEs"`
+	AmazonmqAmqp091                    *ResourceAmazonmqAmqp091                    `pulumi:"amazonmqAmqp091"`
+	Athena                             *ResourceAthena                             `pulumi:"athena"`
+	AuroraMysql                        *ResourceAuroraMysql                        `pulumi:"auroraMysql"`
+	AuroraPostgres                     *ResourceAuroraPostgres                     `pulumi:"auroraPostgres"`
+	Aws                                *ResourceAws                                `pulumi:"aws"`
+	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
+	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
 	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
 	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
 	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
@@ -321,50 +356,60 @@ type resourceArgs struct {
 	Maria                                     *ResourceMaria                                     `pulumi:"maria"`
 	Memcached                                 *ResourceMemcached                                 `pulumi:"memcached"`
 	Memsql                                    *ResourceMemsql                                    `pulumi:"memsql"`
-	MongoHost                                 *ResourceMongoHost                                 `pulumi:"mongoHost"`
-	MongoLegacyHost                           *ResourceMongoLegacyHost                           `pulumi:"mongoLegacyHost"`
-	MongoLegacyReplicaset                     *ResourceMongoLegacyReplicaset                     `pulumi:"mongoLegacyReplicaset"`
-	MongoReplicaSet                           *ResourceMongoReplicaSet                           `pulumi:"mongoReplicaSet"`
-	MongoShardedCluster                       *ResourceMongoShardedCluster                       `pulumi:"mongoShardedCluster"`
-	MtlsMysql                                 *ResourceMtlsMysql                                 `pulumi:"mtlsMysql"`
-	MtlsPostgres                              *ResourceMtlsPostgres                              `pulumi:"mtlsPostgres"`
-	Mysql                                     *ResourceMysql                                     `pulumi:"mysql"`
-	Neptune                                   *ResourceNeptune                                   `pulumi:"neptune"`
-	NeptuneIam                                *ResourceNeptuneIam                                `pulumi:"neptuneIam"`
-	Oracle                                    *ResourceOracle                                    `pulumi:"oracle"`
-	Postgres                                  *ResourcePostgres                                  `pulumi:"postgres"`
-	Presto                                    *ResourcePresto                                    `pulumi:"presto"`
-	RabbitmqAmqp091                           *ResourceRabbitmqAmqp091                           `pulumi:"rabbitmqAmqp091"`
-	RawTcp                                    *ResourceRawTcp                                    `pulumi:"rawTcp"`
-	Rdp                                       *ResourceRdp                                       `pulumi:"rdp"`
-	Redis                                     *ResourceRedis                                     `pulumi:"redis"`
-	Redshift                                  *ResourceRedshift                                  `pulumi:"redshift"`
-	SingleStore                               *ResourceSingleStore                               `pulumi:"singleStore"`
-	Snowflake                                 *ResourceSnowflake                                 `pulumi:"snowflake"`
-	SqlServer                                 *ResourceSqlServer                                 `pulumi:"sqlServer"`
-	Ssh                                       *ResourceSsh                                       `pulumi:"ssh"`
-	SshCert                                   *ResourceSshCert                                   `pulumi:"sshCert"`
-	SshCustomerKey                            *ResourceSshCustomerKey                            `pulumi:"sshCustomerKey"`
-	Sybase                                    *ResourceSybase                                    `pulumi:"sybase"`
-	SybaseIq                                  *ResourceSybaseIq                                  `pulumi:"sybaseIq"`
-	Teradata                                  *ResourceTeradata                                  `pulumi:"teradata"`
+	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoHost             *ResourceMongoHost             `pulumi:"mongoHost"`
+	MongoLegacyHost       *ResourceMongoLegacyHost       `pulumi:"mongoLegacyHost"`
+	MongoLegacyReplicaset *ResourceMongoLegacyReplicaset `pulumi:"mongoLegacyReplicaset"`
+	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet *ResourceMongoReplicaSet `pulumi:"mongoReplicaSet"`
+	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoShardedCluster *ResourceMongoShardedCluster `pulumi:"mongoShardedCluster"`
+	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    *ResourceMtlsMysql    `pulumi:"mtlsMysql"`
+	MtlsPostgres *ResourceMtlsPostgres `pulumi:"mtlsPostgres"`
+	Mysql        *ResourceMysql        `pulumi:"mysql"`
+	Neptune      *ResourceNeptune      `pulumi:"neptune"`
+	NeptuneIam   *ResourceNeptuneIam   `pulumi:"neptuneIam"`
+	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Oracle          *ResourceOracle          `pulumi:"oracle"`
+	Postgres        *ResourcePostgres        `pulumi:"postgres"`
+	Presto          *ResourcePresto          `pulumi:"presto"`
+	RabbitmqAmqp091 *ResourceRabbitmqAmqp091 `pulumi:"rabbitmqAmqp091"`
+	RawTcp          *ResourceRawTcp          `pulumi:"rawTcp"`
+	Rdp             *ResourceRdp             `pulumi:"rdp"`
+	Redis           *ResourceRedis           `pulumi:"redis"`
+	Redshift        *ResourceRedshift        `pulumi:"redshift"`
+	SingleStore     *ResourceSingleStore     `pulumi:"singleStore"`
+	Snowflake       *ResourceSnowflake       `pulumi:"snowflake"`
+	SqlServer       *ResourceSqlServer       `pulumi:"sqlServer"`
+	Ssh             *ResourceSsh             `pulumi:"ssh"`
+	SshCert         *ResourceSshCert         `pulumi:"sshCert"`
+	SshCustomerKey  *ResourceSshCustomerKey  `pulumi:"sshCustomerKey"`
+	Sybase          *ResourceSybase          `pulumi:"sybase"`
+	SybaseIq        *ResourceSybaseIq        `pulumi:"sybaseIq"`
+	Teradata        *ResourceTeradata        `pulumi:"teradata"`
 }
 
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
-	Aks                                       ResourceAksPtrInput
-	AksBasicAuth                              ResourceAksBasicAuthPtrInput
-	AksServiceAccount                         ResourceAksServiceAccountPtrInput
-	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrInput
-	AksUserImpersonation                      ResourceAksUserImpersonationPtrInput
-	AmazonEks                                 ResourceAmazonEksPtrInput
-	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
-	AmazonEs                                  ResourceAmazonEsPtrInput
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
-	Athena                                    ResourceAthenaPtrInput
-	AuroraMysql                               ResourceAuroraMysqlPtrInput
-	AuroraPostgres                            ResourceAuroraPostgresPtrInput
-	Aws                                       ResourceAwsPtrInput
+	Aks                                ResourceAksPtrInput
+	AksBasicAuth                       ResourceAksBasicAuthPtrInput
+	AksServiceAccount                  ResourceAksServiceAccountPtrInput
+	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrInput
+	AksUserImpersonation               ResourceAksUserImpersonationPtrInput
+	AmazonEks                          ResourceAmazonEksPtrInput
+	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrInput
+	AmazonEs                           ResourceAmazonEsPtrInput
+	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrInput
+	Athena                             ResourceAthenaPtrInput
+	AuroraMysql                        ResourceAuroraMysqlPtrInput
+	AuroraPostgres                     ResourceAuroraPostgresPtrInput
+	Aws                                ResourceAwsPtrInput
+	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsole ResourceAwsConsolePtrInput
+	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+	// bump.
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
 	Azure                                     ResourceAzurePtrInput
 	AzureCertificate                          ResourceAzureCertificatePtrInput
 	AzurePostgres                             ResourceAzurePostgresPtrInput
@@ -396,33 +441,38 @@ type ResourceArgs struct {
 	Maria                                     ResourceMariaPtrInput
 	Memcached                                 ResourceMemcachedPtrInput
 	Memsql                                    ResourceMemsqlPtrInput
-	MongoHost                                 ResourceMongoHostPtrInput
-	MongoLegacyHost                           ResourceMongoLegacyHostPtrInput
-	MongoLegacyReplicaset                     ResourceMongoLegacyReplicasetPtrInput
-	MongoReplicaSet                           ResourceMongoReplicaSetPtrInput
-	MongoShardedCluster                       ResourceMongoShardedClusterPtrInput
-	MtlsMysql                                 ResourceMtlsMysqlPtrInput
-	MtlsPostgres                              ResourceMtlsPostgresPtrInput
-	Mysql                                     ResourceMysqlPtrInput
-	Neptune                                   ResourceNeptunePtrInput
-	NeptuneIam                                ResourceNeptuneIamPtrInput
-	Oracle                                    ResourceOraclePtrInput
-	Postgres                                  ResourcePostgresPtrInput
-	Presto                                    ResourcePrestoPtrInput
-	RabbitmqAmqp091                           ResourceRabbitmqAmqp091PtrInput
-	RawTcp                                    ResourceRawTcpPtrInput
-	Rdp                                       ResourceRdpPtrInput
-	Redis                                     ResourceRedisPtrInput
-	Redshift                                  ResourceRedshiftPtrInput
-	SingleStore                               ResourceSingleStorePtrInput
-	Snowflake                                 ResourceSnowflakePtrInput
-	SqlServer                                 ResourceSqlServerPtrInput
-	Ssh                                       ResourceSshPtrInput
-	SshCert                                   ResourceSshCertPtrInput
-	SshCustomerKey                            ResourceSshCustomerKeyPtrInput
-	Sybase                                    ResourceSybasePtrInput
-	SybaseIq                                  ResourceSybaseIqPtrInput
-	Teradata                                  ResourceTeradataPtrInput
+	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoHost             ResourceMongoHostPtrInput
+	MongoLegacyHost       ResourceMongoLegacyHostPtrInput
+	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrInput
+	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet ResourceMongoReplicaSetPtrInput
+	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoShardedCluster ResourceMongoShardedClusterPtrInput
+	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql    ResourceMtlsMysqlPtrInput
+	MtlsPostgres ResourceMtlsPostgresPtrInput
+	Mysql        ResourceMysqlPtrInput
+	Neptune      ResourceNeptunePtrInput
+	NeptuneIam   ResourceNeptuneIamPtrInput
+	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Oracle          ResourceOraclePtrInput
+	Postgres        ResourcePostgresPtrInput
+	Presto          ResourcePrestoPtrInput
+	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrInput
+	RawTcp          ResourceRawTcpPtrInput
+	Rdp             ResourceRdpPtrInput
+	Redis           ResourceRedisPtrInput
+	Redshift        ResourceRedshiftPtrInput
+	SingleStore     ResourceSingleStorePtrInput
+	Snowflake       ResourceSnowflakePtrInput
+	SqlServer       ResourceSqlServerPtrInput
+	Ssh             ResourceSshPtrInput
+	SshCert         ResourceSshCertPtrInput
+	SshCustomerKey  ResourceSshCustomerKeyPtrInput
+	Sybase          ResourceSybasePtrInput
+	SybaseIq        ResourceSybaseIqPtrInput
+	Teradata        ResourceTeradataPtrInput
 }
 
 func (ResourceArgs) ElementType() reflect.Type {
@@ -566,6 +616,17 @@ func (o ResourceOutput) Aws() ResourceAwsPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAwsPtrOutput { return v.Aws }).(ResourceAwsPtrOutput)
 }
 
+// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) AwsConsole() ResourceAwsConsolePtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAwsConsolePtrOutput { return v.AwsConsole }).(ResourceAwsConsolePtrOutput)
+}
+
+// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+// bump.
+func (o ResourceOutput) AwsConsoleStaticKeyPair() ResourceAwsConsoleStaticKeyPairPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAwsConsoleStaticKeyPairPtrOutput { return v.AwsConsoleStaticKeyPair }).(ResourceAwsConsoleStaticKeyPairPtrOutput)
+}
+
 func (o ResourceOutput) Azure() ResourceAzurePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzurePtrOutput { return v.Azure }).(ResourceAzurePtrOutput)
 }
@@ -692,6 +753,7 @@ func (o ResourceOutput) Memsql() ResourceMemsqlPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMemsqlPtrOutput { return v.Memsql }).(ResourceMemsqlPtrOutput)
 }
 
+// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MongoHost() ResourceMongoHostPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoHostPtrOutput { return v.MongoHost }).(ResourceMongoHostPtrOutput)
 }
@@ -704,14 +766,17 @@ func (o ResourceOutput) MongoLegacyReplicaset() ResourceMongoLegacyReplicasetPtr
 	return o.ApplyT(func(v *Resource) ResourceMongoLegacyReplicasetPtrOutput { return v.MongoLegacyReplicaset }).(ResourceMongoLegacyReplicasetPtrOutput)
 }
 
+// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MongoReplicaSet() ResourceMongoReplicaSetPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoReplicaSetPtrOutput { return v.MongoReplicaSet }).(ResourceMongoReplicaSetPtrOutput)
 }
 
+// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MongoShardedCluster() ResourceMongoShardedClusterPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoShardedClusterPtrOutput { return v.MongoShardedCluster }).(ResourceMongoShardedClusterPtrOutput)
 }
 
+// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MtlsMysql() ResourceMtlsMysqlPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMtlsMysqlPtrOutput { return v.MtlsMysql }).(ResourceMtlsMysqlPtrOutput)
 }
@@ -732,6 +797,7 @@ func (o ResourceOutput) NeptuneIam() ResourceNeptuneIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceNeptuneIamPtrOutput { return v.NeptuneIam }).(ResourceNeptuneIamPtrOutput)
 }
 
+// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) Oracle() ResourceOraclePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceOraclePtrOutput { return v.Oracle }).(ResourceOraclePtrOutput)
 }

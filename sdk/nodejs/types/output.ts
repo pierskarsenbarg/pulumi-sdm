@@ -204,6 +204,8 @@ export interface GetResourceResource {
     auroraMysqls: outputs.GetResourceResourceAuroraMysql[];
     auroraPostgres: outputs.GetResourceResourceAuroraPostgre[];
     aws: outputs.GetResourceResourceAw[];
+    awsConsoleStaticKeyPairs: outputs.GetResourceResourceAwsConsoleStaticKeyPair[];
+    awsConsoles: outputs.GetResourceResourceAwsConsole[];
     azureCertificates: outputs.GetResourceResourceAzureCertificate[];
     azurePostgres: outputs.GetResourceResourceAzurePostgre[];
     azures: outputs.GetResourceResourceAzure[];
@@ -728,6 +730,79 @@ export interface GetResourceResourceAw {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceAwsConsole {
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    enableEnvVariables?: boolean;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    portOverride?: number;
+    region?: string;
+    remoteIdentityGroupId?: string;
+    remoteIdentityHealthcheckUsername?: string;
+    roleArn?: string;
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    sessionExpiry?: number;
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceAwsConsoleStaticKeyPair {
+    accessKey?: string;
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    portOverride?: number;
+    region?: string;
+    remoteIdentityGroupId?: string;
+    remoteIdentityHealthcheckUsername?: string;
+    roleArn?: string;
+    roleExternalId?: string;
+    secretAccessKey?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    sessionExpiry?: number;
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2725,6 +2800,9 @@ export interface GetRoleRole {
 export interface GetSecretStoreSecretStore {
     aws: outputs.GetSecretStoreSecretStoreAw[];
     azureStores: outputs.GetSecretStoreSecretStoreAzureStore[];
+    cyberarkConjurs: outputs.GetSecretStoreSecretStoreCyberarkConjur[];
+    cyberarkPamExperimentals: outputs.GetSecretStoreSecretStoreCyberarkPamExperimental[];
+    delineaStores: outputs.GetSecretStoreSecretStoreDelineaStore[];
     gcpStores: outputs.GetSecretStoreSecretStoreGcpStore[];
     vaultApproles: outputs.GetSecretStoreSecretStoreVaultApprole[];
     vaultTls: outputs.GetSecretStoreSecretStoreVaultTl[];
@@ -2761,9 +2839,61 @@ export interface GetSecretStoreSecretStoreAzureStore {
      */
     tags?: {[key: string]: string};
     /**
-     * * gcp_store:
+     * * cyberark_conjur:
      */
     vaultUri?: string;
+}
+
+export interface GetSecretStoreSecretStoreCyberarkConjur {
+    appUrl?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreCyberarkPamExperimental {
+    appUrl?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreDelineaStore {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    serverUrl?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * * gcp_store:
+     */
+    tenantName?: string;
 }
 
 export interface GetSecretStoreSecretStoreGcpStore {
@@ -3364,6 +3494,83 @@ export interface ResourceAws {
     secretStoreRoleExternalIdPath?: string;
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface ResourceAwsConsole {
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    enableEnvVariables?: boolean;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    portOverride: number;
+    region: string;
+    remoteIdentityGroupId?: string;
+    remoteIdentityHealthcheckUsername?: string;
+    roleArn?: string;
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    secretStoreRoleArnKey?: string;
+    secretStoreRoleArnPath?: string;
+    secretStoreRoleExternalIdKey?: string;
+    secretStoreRoleExternalIdPath?: string;
+    sessionExpiry?: number;
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface ResourceAwsConsoleStaticKeyPair {
+    accessKey?: string;
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    portOverride: number;
+    region: string;
+    remoteIdentityGroupId?: string;
+    remoteIdentityHealthcheckUsername?: string;
+    roleArn?: string;
+    roleExternalId?: string;
+    secretAccessKey?: string;
+    secretStoreAccessKeyKey?: string;
+    secretStoreAccessKeyPath?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    secretStoreRoleArnKey?: string;
+    secretStoreRoleArnPath?: string;
+    secretStoreRoleExternalIdKey?: string;
+    secretStoreRoleExternalIdPath?: string;
+    secretStoreSecretAccessKeyKey?: string;
+    secretStoreSecretAccessKeyPath?: string;
+    sessionExpiry?: number;
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5353,9 +5560,49 @@ export interface SecretStoreAzureStore {
      */
     tags?: {[key: string]: string};
     /**
-     * * gcp_store:
+     * * cyberark_conjur:
      */
     vaultUri: string;
+}
+
+export interface SecretStoreCyberarkConjur {
+    appUrl: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreCyberarkPamExperimental {
+    appUrl: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreDelineaStore {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    serverUrl?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * * gcp_store:
+     */
+    tenantName?: string;
 }
 
 export interface SecretStoreGcpStore {
