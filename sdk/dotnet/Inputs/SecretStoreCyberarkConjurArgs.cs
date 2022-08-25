@@ -11,8 +11,11 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class SecretStoreAzureStoreGetArgs : global::Pulumi.ResourceArgs
+    public sealed class SecretStoreCyberarkConjurArgs : global::Pulumi.ResourceArgs
     {
+        [Input("appUrl", required: true)]
+        public Input<string> AppUrl { get; set; } = null!;
+
         /// <summary>
         /// Unique human-readable name of the SecretStore.
         /// </summary>
@@ -31,15 +34,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// * cyberark_conjur:
-        /// </summary>
-        [Input("vaultUri", required: true)]
-        public Input<string> VaultUri { get; set; } = null!;
-
-        public SecretStoreAzureStoreGetArgs()
+        public SecretStoreCyberarkConjurArgs()
         {
         }
-        public static new SecretStoreAzureStoreGetArgs Empty => new SecretStoreAzureStoreGetArgs();
+        public static new SecretStoreCyberarkConjurArgs Empty => new SecretStoreCyberarkConjurArgs();
     }
 }

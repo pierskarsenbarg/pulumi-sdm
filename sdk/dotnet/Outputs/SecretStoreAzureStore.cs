@@ -23,7 +23,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// * gcp_store:
+        /// * cyberark_conjur:
         /// </summary>
         public readonly string VaultUri;
 

@@ -32,7 +32,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// * gcp_store:
+        /// * cyberark_conjur:
         /// </summary>
         [Input("vaultUri", required: true)]
         public Input<string> VaultUri { get; set; } = null!;

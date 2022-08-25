@@ -29,6 +29,8 @@ class ResourceArgs:
                  aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
                  aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
                  aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
+                 aws_console: Optional[pulumi.Input['ResourceAwsConsoleArgs']] = None,
+                 aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
                  azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
@@ -89,6 +91,14 @@ class ResourceArgs:
                  teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
+        :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
+        :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceOracleArgs'] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
@@ -116,6 +126,10 @@ class ResourceArgs:
             pulumi.set(__self__, "aurora_postgres", aurora_postgres)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if aws_console is not None:
+            pulumi.set(__self__, "aws_console", aws_console)
+        if aws_console_static_key_pair is not None:
+            pulumi.set(__self__, "aws_console_static_key_pair", aws_console_static_key_pair)
         if azure is not None:
             pulumi.set(__self__, "azure", azure)
         if azure_certificate is not None:
@@ -349,6 +363,31 @@ class ResourceArgs:
     @aws.setter
     def aws(self, value: Optional[pulumi.Input['ResourceAwsArgs']]):
         pulumi.set(self, "aws", value)
+
+    @property
+    @pulumi.getter(name="awsConsole")
+    def aws_console(self) -> Optional[pulumi.Input['ResourceAwsConsoleArgs']]:
+        """
+        AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aws_console")
+
+    @aws_console.setter
+    def aws_console(self, value: Optional[pulumi.Input['ResourceAwsConsoleArgs']]):
+        pulumi.set(self, "aws_console", value)
+
+    @property
+    @pulumi.getter(name="awsConsoleStaticKeyPair")
+    def aws_console_static_key_pair(self) -> Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]:
+        """
+        AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "aws_console_static_key_pair")
+
+    @aws_console_static_key_pair.setter
+    def aws_console_static_key_pair(self, value: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]):
+        pulumi.set(self, "aws_console_static_key_pair", value)
 
     @property
     @pulumi.getter
@@ -632,6 +671,9 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mongoHost")
     def mongo_host(self) -> Optional[pulumi.Input['ResourceMongoHostArgs']]:
+        """
+        MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_host")
 
     @mongo_host.setter
@@ -659,6 +701,9 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mongoReplicaSet")
     def mongo_replica_set(self) -> Optional[pulumi.Input['ResourceMongoReplicaSetArgs']]:
+        """
+        MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_replica_set")
 
     @mongo_replica_set.setter
@@ -668,6 +713,9 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mongoShardedCluster")
     def mongo_sharded_cluster(self) -> Optional[pulumi.Input['ResourceMongoShardedClusterArgs']]:
+        """
+        MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_sharded_cluster")
 
     @mongo_sharded_cluster.setter
@@ -677,6 +725,9 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mtlsMysql")
     def mtls_mysql(self) -> Optional[pulumi.Input['ResourceMtlsMysqlArgs']]:
+        """
+        MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mtls_mysql")
 
     @mtls_mysql.setter
@@ -722,6 +773,9 @@ class ResourceArgs:
     @property
     @pulumi.getter
     def oracle(self) -> Optional[pulumi.Input['ResourceOracleArgs']]:
+        """
+        Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "oracle")
 
     @oracle.setter
@@ -889,6 +943,8 @@ class _ResourceState:
                  aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
                  aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
                  aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
+                 aws_console: Optional[pulumi.Input['ResourceAwsConsoleArgs']] = None,
+                 aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
                  azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
@@ -949,6 +1005,14 @@ class _ResourceState:
                  teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+        :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
+        :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceOracleArgs'] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
@@ -976,6 +1040,10 @@ class _ResourceState:
             pulumi.set(__self__, "aurora_postgres", aurora_postgres)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if aws_console is not None:
+            pulumi.set(__self__, "aws_console", aws_console)
+        if aws_console_static_key_pair is not None:
+            pulumi.set(__self__, "aws_console_static_key_pair", aws_console_static_key_pair)
         if azure is not None:
             pulumi.set(__self__, "azure", azure)
         if azure_certificate is not None:
@@ -1209,6 +1277,31 @@ class _ResourceState:
     @aws.setter
     def aws(self, value: Optional[pulumi.Input['ResourceAwsArgs']]):
         pulumi.set(self, "aws", value)
+
+    @property
+    @pulumi.getter(name="awsConsole")
+    def aws_console(self) -> Optional[pulumi.Input['ResourceAwsConsoleArgs']]:
+        """
+        AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aws_console")
+
+    @aws_console.setter
+    def aws_console(self, value: Optional[pulumi.Input['ResourceAwsConsoleArgs']]):
+        pulumi.set(self, "aws_console", value)
+
+    @property
+    @pulumi.getter(name="awsConsoleStaticKeyPair")
+    def aws_console_static_key_pair(self) -> Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]:
+        """
+        AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "aws_console_static_key_pair")
+
+    @aws_console_static_key_pair.setter
+    def aws_console_static_key_pair(self, value: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]):
+        pulumi.set(self, "aws_console_static_key_pair", value)
 
     @property
     @pulumi.getter
@@ -1492,6 +1585,9 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mongoHost")
     def mongo_host(self) -> Optional[pulumi.Input['ResourceMongoHostArgs']]:
+        """
+        MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_host")
 
     @mongo_host.setter
@@ -1519,6 +1615,9 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mongoReplicaSet")
     def mongo_replica_set(self) -> Optional[pulumi.Input['ResourceMongoReplicaSetArgs']]:
+        """
+        MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_replica_set")
 
     @mongo_replica_set.setter
@@ -1528,6 +1627,9 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mongoShardedCluster")
     def mongo_sharded_cluster(self) -> Optional[pulumi.Input['ResourceMongoShardedClusterArgs']]:
+        """
+        MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_sharded_cluster")
 
     @mongo_sharded_cluster.setter
@@ -1537,6 +1639,9 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mtlsMysql")
     def mtls_mysql(self) -> Optional[pulumi.Input['ResourceMtlsMysqlArgs']]:
+        """
+        MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mtls_mysql")
 
     @mtls_mysql.setter
@@ -1582,6 +1687,9 @@ class _ResourceState:
     @property
     @pulumi.getter
     def oracle(self) -> Optional[pulumi.Input['ResourceOracleArgs']]:
+        """
+        Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "oracle")
 
     @oracle.setter
@@ -1751,6 +1859,8 @@ class Resource(pulumi.CustomResource):
                  aurora_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraMysqlArgs']]] = None,
                  aurora_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresArgs']]] = None,
                  aws: Optional[pulumi.Input[pulumi.InputType['ResourceAwsArgs']]] = None,
+                 aws_console: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']]] = None,
+                 aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
                  azure: Optional[pulumi.Input[pulumi.InputType['ResourceAzureArgs']]] = None,
                  azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
                  azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
@@ -1821,6 +1931,14 @@ class Resource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceOracleArgs']] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -1865,6 +1983,8 @@ class Resource(pulumi.CustomResource):
                  aurora_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraMysqlArgs']]] = None,
                  aurora_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresArgs']]] = None,
                  aws: Optional[pulumi.Input[pulumi.InputType['ResourceAwsArgs']]] = None,
+                 aws_console: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']]] = None,
+                 aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
                  azure: Optional[pulumi.Input[pulumi.InputType['ResourceAzureArgs']]] = None,
                  azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
                  azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
@@ -1945,6 +2065,8 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["aurora_mysql"] = aurora_mysql
             __props__.__dict__["aurora_postgres"] = aurora_postgres
             __props__.__dict__["aws"] = aws
+            __props__.__dict__["aws_console"] = aws_console
+            __props__.__dict__["aws_console_static_key_pair"] = aws_console_static_key_pair
             __props__.__dict__["azure"] = azure
             __props__.__dict__["azure_certificate"] = azure_certificate
             __props__.__dict__["azure_postgres"] = azure_postgres
@@ -2026,6 +2148,8 @@ class Resource(pulumi.CustomResource):
             aurora_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraMysqlArgs']]] = None,
             aurora_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresArgs']]] = None,
             aws: Optional[pulumi.Input[pulumi.InputType['ResourceAwsArgs']]] = None,
+            aws_console: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']]] = None,
+            aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
             azure: Optional[pulumi.Input[pulumi.InputType['ResourceAzureArgs']]] = None,
             azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
             azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
@@ -2091,6 +2215,14 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+               bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceOracleArgs']] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2109,6 +2241,8 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["aurora_mysql"] = aurora_mysql
         __props__.__dict__["aurora_postgres"] = aurora_postgres
         __props__.__dict__["aws"] = aws
+        __props__.__dict__["aws_console"] = aws_console
+        __props__.__dict__["aws_console_static_key_pair"] = aws_console_static_key_pair
         __props__.__dict__["azure"] = azure
         __props__.__dict__["azure_certificate"] = azure_certificate
         __props__.__dict__["azure_postgres"] = azure_postgres
@@ -2233,6 +2367,23 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter
     def aws(self) -> pulumi.Output[Optional['outputs.ResourceAws']]:
         return pulumi.get(self, "aws")
+
+    @property
+    @pulumi.getter(name="awsConsole")
+    def aws_console(self) -> pulumi.Output[Optional['outputs.ResourceAwsConsole']]:
+        """
+        AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aws_console")
+
+    @property
+    @pulumi.getter(name="awsConsoleStaticKeyPair")
+    def aws_console_static_key_pair(self) -> pulumi.Output[Optional['outputs.ResourceAwsConsoleStaticKeyPair']]:
+        """
+        AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
+        bump.
+        """
+        return pulumi.get(self, "aws_console_static_key_pair")
 
     @property
     @pulumi.getter
@@ -2392,6 +2543,9 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="mongoHost")
     def mongo_host(self) -> pulumi.Output[Optional['outputs.ResourceMongoHost']]:
+        """
+        MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_host")
 
     @property
@@ -2407,16 +2561,25 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="mongoReplicaSet")
     def mongo_replica_set(self) -> pulumi.Output[Optional['outputs.ResourceMongoReplicaSet']]:
+        """
+        MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_replica_set")
 
     @property
     @pulumi.getter(name="mongoShardedCluster")
     def mongo_sharded_cluster(self) -> pulumi.Output[Optional['outputs.ResourceMongoShardedCluster']]:
+        """
+        MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_sharded_cluster")
 
     @property
     @pulumi.getter(name="mtlsMysql")
     def mtls_mysql(self) -> pulumi.Output[Optional['outputs.ResourceMtlsMysql']]:
+        """
+        MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mtls_mysql")
 
     @property
@@ -2442,6 +2605,9 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def oracle(self) -> pulumi.Output[Optional['outputs.ResourceOracle']]:
+        """
+        Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "oracle")
 
     @property

@@ -577,6 +577,83 @@ export interface ResourceAws {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface ResourceAwsConsole {
+    /**
+     * Bind interface
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    enableEnvVariables?: pulumi.Input<boolean>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    portOverride?: pulumi.Input<number>;
+    region: pulumi.Input<string>;
+    remoteIdentityGroupId?: pulumi.Input<string>;
+    remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
+    roleExternalId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    secretStoreRoleArnKey?: pulumi.Input<string>;
+    secretStoreRoleArnPath?: pulumi.Input<string>;
+    secretStoreRoleExternalIdKey?: pulumi.Input<string>;
+    secretStoreRoleExternalIdPath?: pulumi.Input<string>;
+    sessionExpiry?: pulumi.Input<number>;
+    subdomain: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface ResourceAwsConsoleStaticKeyPair {
+    accessKey?: pulumi.Input<string>;
+    /**
+     * Bind interface
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    portOverride?: pulumi.Input<number>;
+    region: pulumi.Input<string>;
+    remoteIdentityGroupId?: pulumi.Input<string>;
+    remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
+    roleExternalId?: pulumi.Input<string>;
+    secretAccessKey?: pulumi.Input<string>;
+    secretStoreAccessKeyKey?: pulumi.Input<string>;
+    secretStoreAccessKeyPath?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    secretStoreRoleArnKey?: pulumi.Input<string>;
+    secretStoreRoleArnPath?: pulumi.Input<string>;
+    secretStoreRoleExternalIdKey?: pulumi.Input<string>;
+    secretStoreRoleExternalIdPath?: pulumi.Input<string>;
+    secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
+    secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
+    sessionExpiry?: pulumi.Input<number>;
+    subdomain: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface ResourceAzure {
     appId?: pulumi.Input<string>;
     /**
@@ -2560,9 +2637,49 @@ export interface SecretStoreAzureStore {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * * gcp_store:
+     * * cyberark_conjur:
      */
     vaultUri: pulumi.Input<string>;
+}
+
+export interface SecretStoreCyberarkConjur {
+    appUrl: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreCyberarkPamExperimental {
+    appUrl: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreDelineaStore {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    serverUrl?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * * gcp_store:
+     */
+    tenantName?: pulumi.Input<string>;
 }
 
 export interface SecretStoreGcpStore {

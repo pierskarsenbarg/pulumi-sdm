@@ -860,8 +860,8 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.2 h1:4jaiDzPyXQvSd7D0EjG45355tLlV3VOECpq10pLC+8s=
 github.com/stretchr/testify v1.7.2/go.mod h1:R6va5+xMeoiuVRoj+gSkQ7d3FALtqAAGI1FQKckRals=
-github.com/strongdm/terraform-provider-sdm v1.0.40-0.20220815140043-dcfd1ef0ad5f h1:HjMIfantnl2ddT8IcdQZKOe+c2xo1D8L/0IlL9mCO0w=
-github.com/strongdm/terraform-provider-sdm v1.0.40-0.20220815140043-dcfd1ef0ad5f/go.mod h1:+polPO/E3r2Bdf5rwCPXbwNuZAH17myQcq+8N65jKeg=
+github.com/strongdm/terraform-provider-sdm v1.0.40-0.20220822163057-82f14d9ac9d4 h1:TXEQ3PRtKP74ddMPcThRTBgTSbs3ehNX0VLvosZqPeI=
+github.com/strongdm/terraform-provider-sdm v1.0.40-0.20220822163057-82f14d9ac9d4/go.mod h1:+polPO/E3r2Bdf5rwCPXbwNuZAH17myQcq+8N65jKeg=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
