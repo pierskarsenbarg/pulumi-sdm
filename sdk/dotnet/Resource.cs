@@ -242,6 +242,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("snowflake")]
         public Output<Outputs.ResourceSnowflake?> Snowflake { get; private set; } = null!;
 
+        /// <summary>
+        /// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("snowsight")]
+        public Output<Outputs.ResourceSnowsight?> Snowsight { get; private set; } = null!;
+
         [Output("sqlServer")]
         public Output<Outputs.ResourceSqlServer?> SqlServer { get; private set; } = null!;
 
@@ -530,6 +536,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("snowflake")]
         public Input<Inputs.ResourceSnowflakeArgs>? Snowflake { get; set; }
 
+        /// <summary>
+        /// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("snowsight")]
+        public Input<Inputs.ResourceSnowsightArgs>? Snowsight { get; set; }
+
         [Input("sqlServer")]
         public Input<Inputs.ResourceSqlServerArgs>? SqlServer { get; set; }
 
@@ -778,6 +790,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("snowflake")]
         public Input<Inputs.ResourceSnowflakeGetArgs>? Snowflake { get; set; }
+
+        /// <summary>
+        /// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("snowsight")]
+        public Input<Inputs.ResourceSnowsightGetArgs>? Snowsight { get; set; }
 
         [Input("sqlServer")]
         public Input<Inputs.ResourceSqlServerGetArgs>? SqlServer { get; set; }

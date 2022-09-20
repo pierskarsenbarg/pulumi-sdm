@@ -96,13 +96,15 @@ type Resource struct {
 	Redshift        ResourceRedshiftPtrOutput        `pulumi:"redshift"`
 	SingleStore     ResourceSingleStorePtrOutput     `pulumi:"singleStore"`
 	Snowflake       ResourceSnowflakePtrOutput       `pulumi:"snowflake"`
-	SqlServer       ResourceSqlServerPtrOutput       `pulumi:"sqlServer"`
-	Ssh             ResourceSshPtrOutput             `pulumi:"ssh"`
-	SshCert         ResourceSshCertPtrOutput         `pulumi:"sshCert"`
-	SshCustomerKey  ResourceSshCustomerKeyPtrOutput  `pulumi:"sshCustomerKey"`
-	Sybase          ResourceSybasePtrOutput          `pulumi:"sybase"`
-	SybaseIq        ResourceSybaseIqPtrOutput        `pulumi:"sybaseIq"`
-	Teradata        ResourceTeradataPtrOutput        `pulumi:"teradata"`
+	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Snowsight      ResourceSnowsightPtrOutput      `pulumi:"snowsight"`
+	SqlServer      ResourceSqlServerPtrOutput      `pulumi:"sqlServer"`
+	Ssh            ResourceSshPtrOutput            `pulumi:"ssh"`
+	SshCert        ResourceSshCertPtrOutput        `pulumi:"sshCert"`
+	SshCustomerKey ResourceSshCustomerKeyPtrOutput `pulumi:"sshCustomerKey"`
+	Sybase         ResourceSybasePtrOutput         `pulumi:"sybase"`
+	SybaseIq       ResourceSybaseIqPtrOutput       `pulumi:"sybaseIq"`
+	Teradata       ResourceTeradataPtrOutput       `pulumi:"teradata"`
 }
 
 // NewResource registers a new resource with the given unique name, arguments, and options.
@@ -209,13 +211,15 @@ type resourceState struct {
 	Redshift        *ResourceRedshift        `pulumi:"redshift"`
 	SingleStore     *ResourceSingleStore     `pulumi:"singleStore"`
 	Snowflake       *ResourceSnowflake       `pulumi:"snowflake"`
-	SqlServer       *ResourceSqlServer       `pulumi:"sqlServer"`
-	Ssh             *ResourceSsh             `pulumi:"ssh"`
-	SshCert         *ResourceSshCert         `pulumi:"sshCert"`
-	SshCustomerKey  *ResourceSshCustomerKey  `pulumi:"sshCustomerKey"`
-	Sybase          *ResourceSybase          `pulumi:"sybase"`
-	SybaseIq        *ResourceSybaseIq        `pulumi:"sybaseIq"`
-	Teradata        *ResourceTeradata        `pulumi:"teradata"`
+	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Snowsight      *ResourceSnowsight      `pulumi:"snowsight"`
+	SqlServer      *ResourceSqlServer      `pulumi:"sqlServer"`
+	Ssh            *ResourceSsh            `pulumi:"ssh"`
+	SshCert        *ResourceSshCert        `pulumi:"sshCert"`
+	SshCustomerKey *ResourceSshCustomerKey `pulumi:"sshCustomerKey"`
+	Sybase         *ResourceSybase         `pulumi:"sybase"`
+	SybaseIq       *ResourceSybaseIq       `pulumi:"sybaseIq"`
+	Teradata       *ResourceTeradata       `pulumi:"teradata"`
 }
 
 type ResourceState struct {
@@ -293,13 +297,15 @@ type ResourceState struct {
 	Redshift        ResourceRedshiftPtrInput
 	SingleStore     ResourceSingleStorePtrInput
 	Snowflake       ResourceSnowflakePtrInput
-	SqlServer       ResourceSqlServerPtrInput
-	Ssh             ResourceSshPtrInput
-	SshCert         ResourceSshCertPtrInput
-	SshCustomerKey  ResourceSshCustomerKeyPtrInput
-	Sybase          ResourceSybasePtrInput
-	SybaseIq        ResourceSybaseIqPtrInput
-	Teradata        ResourceTeradataPtrInput
+	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Snowsight      ResourceSnowsightPtrInput
+	SqlServer      ResourceSqlServerPtrInput
+	Ssh            ResourceSshPtrInput
+	SshCert        ResourceSshCertPtrInput
+	SshCustomerKey ResourceSshCustomerKeyPtrInput
+	Sybase         ResourceSybasePtrInput
+	SybaseIq       ResourceSybaseIqPtrInput
+	Teradata       ResourceTeradataPtrInput
 }
 
 func (ResourceState) ElementType() reflect.Type {
@@ -381,13 +387,15 @@ type resourceArgs struct {
 	Redshift        *ResourceRedshift        `pulumi:"redshift"`
 	SingleStore     *ResourceSingleStore     `pulumi:"singleStore"`
 	Snowflake       *ResourceSnowflake       `pulumi:"snowflake"`
-	SqlServer       *ResourceSqlServer       `pulumi:"sqlServer"`
-	Ssh             *ResourceSsh             `pulumi:"ssh"`
-	SshCert         *ResourceSshCert         `pulumi:"sshCert"`
-	SshCustomerKey  *ResourceSshCustomerKey  `pulumi:"sshCustomerKey"`
-	Sybase          *ResourceSybase          `pulumi:"sybase"`
-	SybaseIq        *ResourceSybaseIq        `pulumi:"sybaseIq"`
-	Teradata        *ResourceTeradata        `pulumi:"teradata"`
+	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Snowsight      *ResourceSnowsight      `pulumi:"snowsight"`
+	SqlServer      *ResourceSqlServer      `pulumi:"sqlServer"`
+	Ssh            *ResourceSsh            `pulumi:"ssh"`
+	SshCert        *ResourceSshCert        `pulumi:"sshCert"`
+	SshCustomerKey *ResourceSshCustomerKey `pulumi:"sshCustomerKey"`
+	Sybase         *ResourceSybase         `pulumi:"sybase"`
+	SybaseIq       *ResourceSybaseIq       `pulumi:"sybaseIq"`
+	Teradata       *ResourceTeradata       `pulumi:"teradata"`
 }
 
 // The set of arguments for constructing a Resource resource.
@@ -466,13 +474,15 @@ type ResourceArgs struct {
 	Redshift        ResourceRedshiftPtrInput
 	SingleStore     ResourceSingleStorePtrInput
 	Snowflake       ResourceSnowflakePtrInput
-	SqlServer       ResourceSqlServerPtrInput
-	Ssh             ResourceSshPtrInput
-	SshCert         ResourceSshCertPtrInput
-	SshCustomerKey  ResourceSshCustomerKeyPtrInput
-	Sybase          ResourceSybasePtrInput
-	SybaseIq        ResourceSybaseIqPtrInput
-	Teradata        ResourceTeradataPtrInput
+	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Snowsight      ResourceSnowsightPtrInput
+	SqlServer      ResourceSqlServerPtrInput
+	Ssh            ResourceSshPtrInput
+	SshCert        ResourceSshCertPtrInput
+	SshCustomerKey ResourceSshCustomerKeyPtrInput
+	Sybase         ResourceSybasePtrInput
+	SybaseIq       ResourceSybaseIqPtrInput
+	Teradata       ResourceTeradataPtrInput
 }
 
 func (ResourceArgs) ElementType() reflect.Type {
@@ -836,6 +846,11 @@ func (o ResourceOutput) SingleStore() ResourceSingleStorePtrOutput {
 
 func (o ResourceOutput) Snowflake() ResourceSnowflakePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceSnowflakePtrOutput { return v.Snowflake }).(ResourceSnowflakePtrOutput)
+}
+
+// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) Snowsight() ResourceSnowsightPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceSnowsightPtrOutput { return v.Snowsight }).(ResourceSnowsightPtrOutput)
 }
 
 func (o ResourceOutput) SqlServer() ResourceSqlServerPtrOutput {

@@ -37,6 +37,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("healthcheckPath", required: true)]
         public Input<string> HealthcheckPath { get; set; } = null!;
 
+        [Input("hostOverride")]
+        public Input<string>? HostOverride { get; set; }
+
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>

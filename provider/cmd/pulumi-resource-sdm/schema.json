@@ -4242,7 +4242,8 @@
             "type": "object",
             "required": [
                 "hostname",
-                "name"
+                "name",
+                "port"
             ],
             "language": {
                 "nodejs": {
@@ -4250,6 +4251,7 @@
                         "bindInterface",
                         "hostname",
                         "name",
+                        "port",
                         "portOverride"
                     ]
                 }
@@ -5895,6 +5897,14 @@
                         }
                     }
                 },
+                "hostOverride": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n",
@@ -6015,6 +6025,14 @@
                     }
                 },
                 "healthcheckPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostOverride": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -6174,6 +6192,14 @@
                     }
                 },
                 "healthcheckPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostOverride": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -10559,6 +10585,123 @@
                 }
             }
         },
+        "sdm:index/ResourceSnowsight:ResourceSnowsight": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthcheckUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "samlMetadata": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreSamlMetadataKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreSamlMetadataPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "healthcheckUsername",
+                "name",
+                "subdomain"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "healthcheckUsername",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceSqlServer:ResourceSqlServer": {
             "properties": {
                 "bindInterface": {
@@ -10866,6 +11009,7 @@
                     "requiredOutputs": [
                         "bindInterface",
                         "hostname",
+                        "keyType",
                         "name",
                         "port",
                         "portOverride",
@@ -11024,6 +11168,7 @@
                     "requiredOutputs": [
                         "bindInterface",
                         "hostname",
+                        "keyType",
                         "name",
                         "port",
                         "portOverride"
@@ -13114,6 +13259,17 @@
                         }
                     }
                 },
+                "snowsights": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceSnowsight:getResourceResourceSnowsight"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "sqlServers": {
                     "type": "array",
                     "items": {
@@ -13260,6 +13416,7 @@
                 "redshifts",
                 "singleStores",
                 "snowflakes",
+                "snowsights",
                 "sqlServers",
                 "sshes",
                 "sshCerts",
@@ -17285,6 +17442,14 @@
                         }
                     }
                 },
+                "hostOverride": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "id": {
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n",
@@ -17381,6 +17546,14 @@
                     }
                 },
                 "healthcheckPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostOverride": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -17500,6 +17673,14 @@
                     }
                 },
                 "healthcheckPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostOverride": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -20789,6 +20970,100 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceSnowsight:getResourceResourceSnowsight": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthcheckUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "samlMetadata": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceSqlServer:getResourceResourceSqlServer": {
             "properties": {
                 "bindInterface": {
@@ -22647,6 +22922,10 @@
                 "snowflake": {
                     "$ref": "#/types/sdm:index/ResourceSnowflake:ResourceSnowflake"
                 },
+                "snowsight": {
+                    "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight",
+                    "description": "Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "sqlServer": {
                     "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"
                 },
@@ -22874,6 +23153,10 @@
                 },
                 "snowflake": {
                     "$ref": "#/types/sdm:index/ResourceSnowflake:ResourceSnowflake"
+                },
+                "snowsight": {
+                    "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight",
+                    "description": "Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "sqlServer": {
                     "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"
@@ -23104,6 +23387,10 @@
                     },
                     "snowflake": {
                         "$ref": "#/types/sdm:index/ResourceSnowflake:ResourceSnowflake"
+                    },
+                    "snowsight": {
+                        "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight",
+                        "description": "Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "sqlServer": {
                         "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"

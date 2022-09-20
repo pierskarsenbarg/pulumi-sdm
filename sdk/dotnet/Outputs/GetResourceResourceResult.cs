@@ -80,6 +80,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceRedshiftResult> Redshifts;
         public readonly ImmutableArray<Outputs.GetResourceResourceSingleStoreResult> SingleStores;
         public readonly ImmutableArray<Outputs.GetResourceResourceSnowflakeResult> Snowflakes;
+        public readonly ImmutableArray<Outputs.GetResourceResourceSnowsightResult> Snowsights;
         public readonly ImmutableArray<Outputs.GetResourceResourceSqlServerResult> SqlServers;
         public readonly ImmutableArray<Outputs.GetResourceResourceSshCertResult> SshCerts;
         public readonly ImmutableArray<Outputs.GetResourceResourceSshCustomerKeyResult> SshCustomerKeys;
@@ -222,6 +223,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceSnowflakeResult> snowflakes,
 
+            ImmutableArray<Outputs.GetResourceResourceSnowsightResult> snowsights,
+
             ImmutableArray<Outputs.GetResourceResourceSqlServerResult> sqlServers,
 
             ImmutableArray<Outputs.GetResourceResourceSshCertResult> sshCerts,
@@ -302,6 +305,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Redshifts = redshifts;
             SingleStores = singleStores;
             Snowflakes = snowflakes;
+            Snowsights = snowsights;
             SqlServers = sqlServers;
             SshCerts = sshCerts;
             SshCustomerKeys = sshCustomerKeys;

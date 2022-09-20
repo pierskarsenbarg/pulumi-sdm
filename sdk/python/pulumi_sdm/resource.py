@@ -82,6 +82,7 @@ class ResourceArgs:
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
                  single_store: Optional[pulumi.Input['ResourceSingleStoreArgs']] = None,
                  snowflake: Optional[pulumi.Input['ResourceSnowflakeArgs']] = None,
+                 snowsight: Optional[pulumi.Input['ResourceSnowsightArgs']] = None,
                  sql_server: Optional[pulumi.Input['ResourceSqlServerArgs']] = None,
                  ssh: Optional[pulumi.Input['ResourceSshArgs']] = None,
                  ssh_cert: Optional[pulumi.Input['ResourceSshCertArgs']] = None,
@@ -99,6 +100,7 @@ class ResourceArgs:
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceOracleArgs'] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceSnowsightArgs'] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
@@ -232,6 +234,8 @@ class ResourceArgs:
             pulumi.set(__self__, "single_store", single_store)
         if snowflake is not None:
             pulumi.set(__self__, "snowflake", snowflake)
+        if snowsight is not None:
+            pulumi.set(__self__, "snowsight", snowsight)
         if sql_server is not None:
             pulumi.set(__self__, "sql_server", sql_server)
         if ssh is not None:
@@ -862,6 +866,18 @@ class ResourceArgs:
     @snowflake.setter
     def snowflake(self, value: Optional[pulumi.Input['ResourceSnowflakeArgs']]):
         pulumi.set(self, "snowflake", value)
+
+    @property
+    @pulumi.getter
+    def snowsight(self) -> Optional[pulumi.Input['ResourceSnowsightArgs']]:
+        """
+        Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "snowsight")
+
+    @snowsight.setter
+    def snowsight(self, value: Optional[pulumi.Input['ResourceSnowsightArgs']]):
+        pulumi.set(self, "snowsight", value)
 
     @property
     @pulumi.getter(name="sqlServer")
@@ -996,6 +1012,7 @@ class _ResourceState:
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
                  single_store: Optional[pulumi.Input['ResourceSingleStoreArgs']] = None,
                  snowflake: Optional[pulumi.Input['ResourceSnowflakeArgs']] = None,
+                 snowsight: Optional[pulumi.Input['ResourceSnowsightArgs']] = None,
                  sql_server: Optional[pulumi.Input['ResourceSqlServerArgs']] = None,
                  ssh: Optional[pulumi.Input['ResourceSshArgs']] = None,
                  ssh_cert: Optional[pulumi.Input['ResourceSshCertArgs']] = None,
@@ -1013,6 +1030,7 @@ class _ResourceState:
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceOracleArgs'] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceSnowsightArgs'] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
@@ -1146,6 +1164,8 @@ class _ResourceState:
             pulumi.set(__self__, "single_store", single_store)
         if snowflake is not None:
             pulumi.set(__self__, "snowflake", snowflake)
+        if snowsight is not None:
+            pulumi.set(__self__, "snowsight", snowsight)
         if sql_server is not None:
             pulumi.set(__self__, "sql_server", sql_server)
         if ssh is not None:
@@ -1776,6 +1796,18 @@ class _ResourceState:
     @snowflake.setter
     def snowflake(self, value: Optional[pulumi.Input['ResourceSnowflakeArgs']]):
         pulumi.set(self, "snowflake", value)
+
+    @property
+    @pulumi.getter
+    def snowsight(self) -> Optional[pulumi.Input['ResourceSnowsightArgs']]:
+        """
+        Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "snowsight")
+
+    @snowsight.setter
+    def snowsight(self, value: Optional[pulumi.Input['ResourceSnowsightArgs']]):
+        pulumi.set(self, "snowsight", value)
 
     @property
     @pulumi.getter(name="sqlServer")
@@ -1912,6 +1944,7 @@ class Resource(pulumi.CustomResource):
                  redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
                  single_store: Optional[pulumi.Input[pulumi.InputType['ResourceSingleStoreArgs']]] = None,
                  snowflake: Optional[pulumi.Input[pulumi.InputType['ResourceSnowflakeArgs']]] = None,
+                 snowsight: Optional[pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']]] = None,
                  sql_server: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerArgs']]] = None,
                  ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
                  ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
@@ -1939,6 +1972,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceOracleArgs']] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -2036,6 +2070,7 @@ class Resource(pulumi.CustomResource):
                  redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
                  single_store: Optional[pulumi.Input[pulumi.InputType['ResourceSingleStoreArgs']]] = None,
                  snowflake: Optional[pulumi.Input[pulumi.InputType['ResourceSnowflakeArgs']]] = None,
+                 snowsight: Optional[pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']]] = None,
                  sql_server: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerArgs']]] = None,
                  ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
                  ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
@@ -2118,6 +2153,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["redshift"] = redshift
             __props__.__dict__["single_store"] = single_store
             __props__.__dict__["snowflake"] = snowflake
+            __props__.__dict__["snowsight"] = snowsight
             __props__.__dict__["sql_server"] = sql_server
             __props__.__dict__["ssh"] = ssh
             __props__.__dict__["ssh_cert"] = ssh_cert
@@ -2201,6 +2237,7 @@ class Resource(pulumi.CustomResource):
             redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
             single_store: Optional[pulumi.Input[pulumi.InputType['ResourceSingleStoreArgs']]] = None,
             snowflake: Optional[pulumi.Input[pulumi.InputType['ResourceSnowflakeArgs']]] = None,
+            snowsight: Optional[pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']]] = None,
             sql_server: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerArgs']]] = None,
             ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
             ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
@@ -2223,6 +2260,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceOracleArgs']] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2294,6 +2332,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["redshift"] = redshift
         __props__.__dict__["single_store"] = single_store
         __props__.__dict__["snowflake"] = snowflake
+        __props__.__dict__["snowsight"] = snowsight
         __props__.__dict__["sql_server"] = sql_server
         __props__.__dict__["ssh"] = ssh
         __props__.__dict__["ssh_cert"] = ssh_cert
@@ -2654,6 +2693,14 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter
     def snowflake(self) -> pulumi.Output[Optional['outputs.ResourceSnowflake']]:
         return pulumi.get(self, "snowflake")
+
+    @property
+    @pulumi.getter
+    def snowsight(self) -> pulumi.Output[Optional['outputs.ResourceSnowsight']]:
+        """
+        Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "snowsight")
 
     @property
     @pulumi.getter(name="sqlServer")

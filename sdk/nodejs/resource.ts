@@ -130,6 +130,10 @@ export class Resource extends pulumi.CustomResource {
     public readonly redshift!: pulumi.Output<outputs.ResourceRedshift | undefined>;
     public readonly singleStore!: pulumi.Output<outputs.ResourceSingleStore | undefined>;
     public readonly snowflake!: pulumi.Output<outputs.ResourceSnowflake | undefined>;
+    /**
+     * Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly snowsight!: pulumi.Output<outputs.ResourceSnowsight | undefined>;
     public readonly sqlServer!: pulumi.Output<outputs.ResourceSqlServer | undefined>;
     public readonly ssh!: pulumi.Output<outputs.ResourceSsh | undefined>;
     public readonly sshCert!: pulumi.Output<outputs.ResourceSshCert | undefined>;
@@ -217,6 +221,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["redshift"] = state ? state.redshift : undefined;
             resourceInputs["singleStore"] = state ? state.singleStore : undefined;
             resourceInputs["snowflake"] = state ? state.snowflake : undefined;
+            resourceInputs["snowsight"] = state ? state.snowsight : undefined;
             resourceInputs["sqlServer"] = state ? state.sqlServer : undefined;
             resourceInputs["ssh"] = state ? state.ssh : undefined;
             resourceInputs["sshCert"] = state ? state.sshCert : undefined;
@@ -292,6 +297,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["redshift"] = args ? args.redshift : undefined;
             resourceInputs["singleStore"] = args ? args.singleStore : undefined;
             resourceInputs["snowflake"] = args ? args.snowflake : undefined;
+            resourceInputs["snowsight"] = args ? args.snowsight : undefined;
             resourceInputs["sqlServer"] = args ? args.sqlServer : undefined;
             resourceInputs["ssh"] = args ? args.ssh : undefined;
             resourceInputs["sshCert"] = args ? args.sshCert : undefined;
@@ -397,6 +403,10 @@ export interface ResourceState {
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
     singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
     snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
+    /**
+     * Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
     sqlServer?: pulumi.Input<inputs.ResourceSqlServer>;
     ssh?: pulumi.Input<inputs.ResourceSsh>;
     sshCert?: pulumi.Input<inputs.ResourceSshCert>;
@@ -498,6 +508,10 @@ export interface ResourceArgs {
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
     singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
     snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
+    /**
+     * Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
     sqlServer?: pulumi.Input<inputs.ResourceSqlServer>;
     ssh?: pulumi.Input<inputs.ResourceSsh>;
     sshCert?: pulumi.Input<inputs.ResourceSshCert>;
