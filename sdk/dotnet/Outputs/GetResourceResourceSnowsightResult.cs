@@ -12,21 +12,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetResourceResourceHttpAuthResult
+    public sealed class GetResourceResourceSnowsightResult
     {
-        public readonly string? AuthHeader;
         /// <summary>
         /// Bind interface
         /// </summary>
         public readonly string? BindInterface;
-        public readonly string? DefaultPath;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
-        public readonly string? HeadersBlacklist;
-        public readonly string? HealthcheckPath;
-        public readonly string? HostOverride;
+        public readonly string? HealthcheckUsername;
         /// <summary>
         /// Unique identifier of the Resource.
         /// </summary>
@@ -35,6 +31,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
+        public readonly int? PortOverride;
+        public readonly string? SamlMetadata;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -44,52 +42,39 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        /// <summary>
-        /// * kubernetes:
-        /// </summary>
-        public readonly string? Url;
 
         [OutputConstructor]
-        private GetResourceResourceHttpAuthResult(
-            string? authHeader,
-
+        private GetResourceResourceSnowsightResult(
             string? bindInterface,
-
-            string? defaultPath,
 
             string? egressFilter,
 
-            string? headersBlacklist,
-
-            string? healthcheckPath,
-
-            string? hostOverride,
+            string? healthcheckUsername,
 
             string? id,
 
             string? name,
 
+            int? portOverride,
+
+            string? samlMetadata,
+
             string? secretStoreId,
 
             string? subdomain,
 
-            ImmutableDictionary<string, string>? tags,
-
-            string? url)
+            ImmutableDictionary<string, string>? tags)
         {
-            AuthHeader = authHeader;
             BindInterface = bindInterface;
-            DefaultPath = defaultPath;
             EgressFilter = egressFilter;
-            HeadersBlacklist = headersBlacklist;
-            HealthcheckPath = healthcheckPath;
-            HostOverride = hostOverride;
+            HealthcheckUsername = healthcheckUsername;
             Id = id;
             Name = name;
+            PortOverride = portOverride;
+            SamlMetadata = samlMetadata;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
-            Url = url;
         }
     }
 }

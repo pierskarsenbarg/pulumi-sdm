@@ -9938,7 +9938,7 @@ type ResourceDb2I struct {
 	// Unique human-readable name of the Resource.
 	Name         string  `pulumi:"name"`
 	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
+	Port         int     `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           *string `pulumi:"secretStoreId"`
@@ -9972,7 +9972,7 @@ type ResourceDb2IArgs struct {
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringInput    `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	Port         pulumi.IntInput       `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -10086,8 +10086,8 @@ func (o ResourceDb2IOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDb2I) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDb2IOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ResourceDb2I) *int { return v.Port }).(pulumi.IntPtrOutput)
+func (o ResourceDb2IOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourceDb2I) int { return v.Port }).(pulumi.IntOutput)
 }
 
 func (o ResourceDb2IOutput) PortOverride() pulumi.IntPtrOutput {
@@ -10205,7 +10205,7 @@ func (o ResourceDb2IPtrOutput) Port() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Port
+		return &v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -14227,6 +14227,7 @@ type ResourceHttpAuth struct {
 	EgressFilter     *string `pulumi:"egressFilter"`
 	HeadersBlacklist *string `pulumi:"headersBlacklist"`
 	HealthcheckPath  string  `pulumi:"healthcheckPath"`
+	HostOverride     *string `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name                      string  `pulumi:"name"`
 	SecretStoreAuthHeaderKey  *string `pulumi:"secretStoreAuthHeaderKey"`
@@ -14260,6 +14261,7 @@ type ResourceHttpAuthArgs struct {
 	EgressFilter     pulumi.StringPtrInput `pulumi:"egressFilter"`
 	HeadersBlacklist pulumi.StringPtrInput `pulumi:"headersBlacklist"`
 	HealthcheckPath  pulumi.StringInput    `pulumi:"healthcheckPath"`
+	HostOverride     pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name                      pulumi.StringInput    `pulumi:"name"`
 	SecretStoreAuthHeaderKey  pulumi.StringPtrInput `pulumi:"secretStoreAuthHeaderKey"`
@@ -14376,6 +14378,10 @@ func (o ResourceHttpAuthOutput) HealthcheckPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpAuth) string { return v.HealthcheckPath }).(pulumi.StringOutput)
 }
 
+func (o ResourceHttpAuthOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceHttpAuth) *string { return v.HostOverride }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceHttpAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpAuth) string { return v.Name }).(pulumi.StringOutput)
@@ -14488,6 +14494,15 @@ func (o ResourceHttpAuthPtrOutput) HealthcheckPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceHttpAuthPtrOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostOverride
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceHttpAuthPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceHttpAuth) *string {
@@ -14563,6 +14578,7 @@ type ResourceHttpBasicAuth struct {
 	EgressFilter     *string `pulumi:"egressFilter"`
 	HeadersBlacklist *string `pulumi:"headersBlacklist"`
 	HealthcheckPath  string  `pulumi:"healthcheckPath"`
+	HostOverride     *string `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name     string  `pulumi:"name"`
 	Password *string `pulumi:"password"`
@@ -14599,6 +14615,7 @@ type ResourceHttpBasicAuthArgs struct {
 	EgressFilter     pulumi.StringPtrInput `pulumi:"egressFilter"`
 	HeadersBlacklist pulumi.StringPtrInput `pulumi:"headersBlacklist"`
 	HealthcheckPath  pulumi.StringInput    `pulumi:"healthcheckPath"`
+	HostOverride     pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name     pulumi.StringInput    `pulumi:"name"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
@@ -14713,6 +14730,10 @@ func (o ResourceHttpBasicAuthOutput) HeadersBlacklist() pulumi.StringPtrOutput {
 
 func (o ResourceHttpBasicAuthOutput) HealthcheckPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpBasicAuth) string { return v.HealthcheckPath }).(pulumi.StringOutput)
+}
+
+func (o ResourceHttpBasicAuthOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.HostOverride }).(pulumi.StringPtrOutput)
 }
 
 // Unique human-readable name of the Resource.
@@ -14834,6 +14855,15 @@ func (o ResourceHttpBasicAuthPtrOutput) HealthcheckPath() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceHttpBasicAuthPtrOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostOverride
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceHttpBasicAuthPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
@@ -14945,6 +14975,7 @@ type ResourceHttpNoAuth struct {
 	EgressFilter     *string `pulumi:"egressFilter"`
 	HeadersBlacklist *string `pulumi:"headersBlacklist"`
 	HealthcheckPath  string  `pulumi:"healthcheckPath"`
+	HostOverride     *string `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -14975,6 +15006,7 @@ type ResourceHttpNoAuthArgs struct {
 	EgressFilter     pulumi.StringPtrInput `pulumi:"egressFilter"`
 	HeadersBlacklist pulumi.StringPtrInput `pulumi:"headersBlacklist"`
 	HealthcheckPath  pulumi.StringInput    `pulumi:"healthcheckPath"`
+	HostOverride     pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -15085,6 +15117,10 @@ func (o ResourceHttpNoAuthOutput) HealthcheckPath() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpNoAuth) string { return v.HealthcheckPath }).(pulumi.StringOutput)
 }
 
+func (o ResourceHttpNoAuthOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceHttpNoAuth) *string { return v.HostOverride }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceHttpNoAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpNoAuth) string { return v.Name }).(pulumi.StringOutput)
@@ -15177,6 +15213,15 @@ func (o ResourceHttpNoAuthPtrOutput) HealthcheckPath() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.HealthcheckPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceHttpNoAuthPtrOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpNoAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostOverride
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25676,6 +25721,309 @@ func (o ResourceSnowflakePtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceSnowsight struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter        *string `pulumi:"egressFilter"`
+	HealthcheckUsername string  `pulumi:"healthcheckUsername"`
+	// Unique human-readable name of the Resource.
+	Name         string  `pulumi:"name"`
+	PortOverride *int    `pulumi:"portOverride"`
+	SamlMetadata *string `pulumi:"samlMetadata"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId               *string `pulumi:"secretStoreId"`
+	SecretStoreSamlMetadataKey  *string `pulumi:"secretStoreSamlMetadataKey"`
+	SecretStoreSamlMetadataPath *string `pulumi:"secretStoreSamlMetadataPath"`
+	Subdomain                   string  `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceSnowsightInput is an input type that accepts ResourceSnowsightArgs and ResourceSnowsightOutput values.
+// You can construct a concrete instance of `ResourceSnowsightInput` via:
+//
+//	ResourceSnowsightArgs{...}
+type ResourceSnowsightInput interface {
+	pulumi.Input
+
+	ToResourceSnowsightOutput() ResourceSnowsightOutput
+	ToResourceSnowsightOutputWithContext(context.Context) ResourceSnowsightOutput
+}
+
+type ResourceSnowsightArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter        pulumi.StringPtrInput `pulumi:"egressFilter"`
+	HealthcheckUsername pulumi.StringInput    `pulumi:"healthcheckUsername"`
+	// Unique human-readable name of the Resource.
+	Name         pulumi.StringInput    `pulumi:"name"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	SamlMetadata pulumi.StringPtrInput `pulumi:"samlMetadata"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId               pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SecretStoreSamlMetadataKey  pulumi.StringPtrInput `pulumi:"secretStoreSamlMetadataKey"`
+	SecretStoreSamlMetadataPath pulumi.StringPtrInput `pulumi:"secretStoreSamlMetadataPath"`
+	Subdomain                   pulumi.StringInput    `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceSnowsightArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceSnowsight)(nil)).Elem()
+}
+
+func (i ResourceSnowsightArgs) ToResourceSnowsightOutput() ResourceSnowsightOutput {
+	return i.ToResourceSnowsightOutputWithContext(context.Background())
+}
+
+func (i ResourceSnowsightArgs) ToResourceSnowsightOutputWithContext(ctx context.Context) ResourceSnowsightOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSnowsightOutput)
+}
+
+func (i ResourceSnowsightArgs) ToResourceSnowsightPtrOutput() ResourceSnowsightPtrOutput {
+	return i.ToResourceSnowsightPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceSnowsightArgs) ToResourceSnowsightPtrOutputWithContext(ctx context.Context) ResourceSnowsightPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSnowsightOutput).ToResourceSnowsightPtrOutputWithContext(ctx)
+}
+
+// ResourceSnowsightPtrInput is an input type that accepts ResourceSnowsightArgs, ResourceSnowsightPtr and ResourceSnowsightPtrOutput values.
+// You can construct a concrete instance of `ResourceSnowsightPtrInput` via:
+//
+//	        ResourceSnowsightArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceSnowsightPtrInput interface {
+	pulumi.Input
+
+	ToResourceSnowsightPtrOutput() ResourceSnowsightPtrOutput
+	ToResourceSnowsightPtrOutputWithContext(context.Context) ResourceSnowsightPtrOutput
+}
+
+type resourceSnowsightPtrType ResourceSnowsightArgs
+
+func ResourceSnowsightPtr(v *ResourceSnowsightArgs) ResourceSnowsightPtrInput {
+	return (*resourceSnowsightPtrType)(v)
+}
+
+func (*resourceSnowsightPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceSnowsight)(nil)).Elem()
+}
+
+func (i *resourceSnowsightPtrType) ToResourceSnowsightPtrOutput() ResourceSnowsightPtrOutput {
+	return i.ToResourceSnowsightPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceSnowsightPtrType) ToResourceSnowsightPtrOutputWithContext(ctx context.Context) ResourceSnowsightPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSnowsightPtrOutput)
+}
+
+type ResourceSnowsightOutput struct{ *pulumi.OutputState }
+
+func (ResourceSnowsightOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceSnowsight)(nil)).Elem()
+}
+
+func (o ResourceSnowsightOutput) ToResourceSnowsightOutput() ResourceSnowsightOutput {
+	return o
+}
+
+func (o ResourceSnowsightOutput) ToResourceSnowsightOutputWithContext(ctx context.Context) ResourceSnowsightOutput {
+	return o
+}
+
+func (o ResourceSnowsightOutput) ToResourceSnowsightPtrOutput() ResourceSnowsightPtrOutput {
+	return o.ToResourceSnowsightPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceSnowsightOutput) ToResourceSnowsightPtrOutputWithContext(ctx context.Context) ResourceSnowsightPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSnowsight) *ResourceSnowsight {
+		return &v
+	}).(ResourceSnowsightPtrOutput)
+}
+
+// Bind interface
+func (o ResourceSnowsightOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowsight) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceSnowsightOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowsight) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightOutput) HealthcheckUsername() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSnowsight) string { return v.HealthcheckUsername }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceSnowsightOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSnowsight) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceSnowsightOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceSnowsight) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSnowsightOutput) SamlMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowsight) *string { return v.SamlMetadata }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceSnowsightOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowsight) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightOutput) SecretStoreSamlMetadataKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowsight) *string { return v.SecretStoreSamlMetadataKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightOutput) SecretStoreSamlMetadataPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowsight) *string { return v.SecretStoreSamlMetadataPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSnowsight) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceSnowsightOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceSnowsight) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceSnowsightPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceSnowsightPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceSnowsight)(nil)).Elem()
+}
+
+func (o ResourceSnowsightPtrOutput) ToResourceSnowsightPtrOutput() ResourceSnowsightPtrOutput {
+	return o
+}
+
+func (o ResourceSnowsightPtrOutput) ToResourceSnowsightPtrOutputWithContext(ctx context.Context) ResourceSnowsightPtrOutput {
+	return o
+}
+
+func (o ResourceSnowsightPtrOutput) Elem() ResourceSnowsightOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) ResourceSnowsight {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceSnowsight
+		return ret
+	}).(ResourceSnowsightOutput)
+}
+
+// Bind interface
+func (o ResourceSnowsightPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceSnowsightPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightPtrOutput) HealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceSnowsightPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSnowsightPtrOutput) SamlMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SamlMetadata
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceSnowsightPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightPtrOutput) SecretStoreSamlMetadataKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreSamlMetadataKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightPtrOutput) SecretStoreSamlMetadataPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreSamlMetadataPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSnowsightPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceSnowsightPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type ResourceSqlServer struct {
 	// Bind interface
 	BindInterface *string `pulumi:"bindInterface"`
@@ -31028,6 +31376,7 @@ type GetResourceResource struct {
 	Redshifts                                  []GetResourceResourceRedshift                                  `pulumi:"redshifts"`
 	SingleStores                               []GetResourceResourceSingleStore                               `pulumi:"singleStores"`
 	Snowflakes                                 []GetResourceResourceSnowflake                                 `pulumi:"snowflakes"`
+	Snowsights                                 []GetResourceResourceSnowsight                                 `pulumi:"snowsights"`
 	SqlServers                                 []GetResourceResourceSqlServer                                 `pulumi:"sqlServers"`
 	SshCerts                                   []GetResourceResourceSshCert                                   `pulumi:"sshCerts"`
 	SshCustomerKeys                            []GetResourceResourceSshCustomerKey                            `pulumi:"sshCustomerKeys"`
@@ -31115,6 +31464,7 @@ type GetResourceResourceArgs struct {
 	Redshifts                                  GetResourceResourceRedshiftArrayInput                                  `pulumi:"redshifts"`
 	SingleStores                               GetResourceResourceSingleStoreArrayInput                               `pulumi:"singleStores"`
 	Snowflakes                                 GetResourceResourceSnowflakeArrayInput                                 `pulumi:"snowflakes"`
+	Snowsights                                 GetResourceResourceSnowsightArrayInput                                 `pulumi:"snowsights"`
 	SqlServers                                 GetResourceResourceSqlServerArrayInput                                 `pulumi:"sqlServers"`
 	SshCerts                                   GetResourceResourceSshCertArrayInput                                   `pulumi:"sshCerts"`
 	SshCustomerKeys                            GetResourceResourceSshCustomerKeyArrayInput                            `pulumi:"sshCustomerKeys"`
@@ -31453,6 +31803,10 @@ func (o GetResourceResourceOutput) SingleStores() GetResourceResourceSingleStore
 
 func (o GetResourceResourceOutput) Snowflakes() GetResourceResourceSnowflakeArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceSnowflake { return v.Snowflakes }).(GetResourceResourceSnowflakeArrayOutput)
+}
+
+func (o GetResourceResourceOutput) Snowsights() GetResourceResourceSnowsightArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceSnowsight { return v.Snowsights }).(GetResourceResourceSnowsightArrayOutput)
 }
 
 func (o GetResourceResourceOutput) SqlServers() GetResourceResourceSqlServerArrayOutput {
@@ -37853,6 +38207,7 @@ type GetResourceResourceHttpAuth struct {
 	EgressFilter     *string `pulumi:"egressFilter"`
 	HeadersBlacklist *string `pulumi:"headersBlacklist"`
 	HealthcheckPath  *string `pulumi:"healthcheckPath"`
+	HostOverride     *string `pulumi:"hostOverride"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -37886,6 +38241,7 @@ type GetResourceResourceHttpAuthArgs struct {
 	EgressFilter     pulumi.StringPtrInput `pulumi:"egressFilter"`
 	HeadersBlacklist pulumi.StringPtrInput `pulumi:"headersBlacklist"`
 	HealthcheckPath  pulumi.StringPtrInput `pulumi:"healthcheckPath"`
+	HostOverride     pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -37976,6 +38332,10 @@ func (o GetResourceResourceHttpAuthOutput) HealthcheckPath() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetResourceResourceHttpAuth) *string { return v.HealthcheckPath }).(pulumi.StringPtrOutput)
 }
 
+func (o GetResourceResourceHttpAuthOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpAuth) *string { return v.HostOverride }).(pulumi.StringPtrOutput)
+}
+
 // Unique identifier of the Resource.
 func (o GetResourceResourceHttpAuthOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpAuth) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -38033,6 +38393,7 @@ type GetResourceResourceHttpBasicAuth struct {
 	EgressFilter     *string `pulumi:"egressFilter"`
 	HeadersBlacklist *string `pulumi:"headersBlacklist"`
 	HealthcheckPath  *string `pulumi:"healthcheckPath"`
+	HostOverride     *string `pulumi:"hostOverride"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -38067,6 +38428,7 @@ type GetResourceResourceHttpBasicAuthArgs struct {
 	EgressFilter     pulumi.StringPtrInput `pulumi:"egressFilter"`
 	HeadersBlacklist pulumi.StringPtrInput `pulumi:"headersBlacklist"`
 	HealthcheckPath  pulumi.StringPtrInput `pulumi:"healthcheckPath"`
+	HostOverride     pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -38155,6 +38517,10 @@ func (o GetResourceResourceHttpBasicAuthOutput) HealthcheckPath() pulumi.StringP
 	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *string { return v.HealthcheckPath }).(pulumi.StringPtrOutput)
 }
 
+func (o GetResourceResourceHttpBasicAuthOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *string { return v.HostOverride }).(pulumi.StringPtrOutput)
+}
+
 // Unique identifier of the Resource.
 func (o GetResourceResourceHttpBasicAuthOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -38220,6 +38586,7 @@ type GetResourceResourceHttpNoAuth struct {
 	EgressFilter     *string `pulumi:"egressFilter"`
 	HeadersBlacklist *string `pulumi:"headersBlacklist"`
 	HealthcheckPath  *string `pulumi:"healthcheckPath"`
+	HostOverride     *string `pulumi:"hostOverride"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -38252,6 +38619,7 @@ type GetResourceResourceHttpNoAuthArgs struct {
 	EgressFilter     pulumi.StringPtrInput `pulumi:"egressFilter"`
 	HeadersBlacklist pulumi.StringPtrInput `pulumi:"headersBlacklist"`
 	HealthcheckPath  pulumi.StringPtrInput `pulumi:"healthcheckPath"`
+	HostOverride     pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
@@ -38336,6 +38704,10 @@ func (o GetResourceResourceHttpNoAuthOutput) HeadersBlacklist() pulumi.StringPtr
 
 func (o GetResourceResourceHttpNoAuthOutput) HealthcheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpNoAuth) *string { return v.HealthcheckPath }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceHttpNoAuthOutput) HostOverride() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpNoAuth) *string { return v.HostOverride }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the Resource.
@@ -43498,6 +43870,172 @@ func (o GetResourceResourceSnowflakeArrayOutput) Index(i pulumi.IntInput) GetRes
 	}).(GetResourceResourceSnowflakeOutput)
 }
 
+type GetResourceResourceSnowsight struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter        *string `pulumi:"egressFilter"`
+	HealthcheckUsername *string `pulumi:"healthcheckUsername"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name         *string `pulumi:"name"`
+	PortOverride *int    `pulumi:"portOverride"`
+	SamlMetadata *string `pulumi:"samlMetadata"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	Subdomain     *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceSnowsightInput is an input type that accepts GetResourceResourceSnowsightArgs and GetResourceResourceSnowsightOutput values.
+// You can construct a concrete instance of `GetResourceResourceSnowsightInput` via:
+//
+//	GetResourceResourceSnowsightArgs{...}
+type GetResourceResourceSnowsightInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceSnowsightOutput() GetResourceResourceSnowsightOutput
+	ToGetResourceResourceSnowsightOutputWithContext(context.Context) GetResourceResourceSnowsightOutput
+}
+
+type GetResourceResourceSnowsightArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter        pulumi.StringPtrInput `pulumi:"egressFilter"`
+	HealthcheckUsername pulumi.StringPtrInput `pulumi:"healthcheckUsername"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	SamlMetadata pulumi.StringPtrInput `pulumi:"samlMetadata"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	Subdomain     pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceSnowsightArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceSnowsight)(nil)).Elem()
+}
+
+func (i GetResourceResourceSnowsightArgs) ToGetResourceResourceSnowsightOutput() GetResourceResourceSnowsightOutput {
+	return i.ToGetResourceResourceSnowsightOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceSnowsightArgs) ToGetResourceResourceSnowsightOutputWithContext(ctx context.Context) GetResourceResourceSnowsightOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSnowsightOutput)
+}
+
+// GetResourceResourceSnowsightArrayInput is an input type that accepts GetResourceResourceSnowsightArray and GetResourceResourceSnowsightArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceSnowsightArrayInput` via:
+//
+//	GetResourceResourceSnowsightArray{ GetResourceResourceSnowsightArgs{...} }
+type GetResourceResourceSnowsightArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceSnowsightArrayOutput() GetResourceResourceSnowsightArrayOutput
+	ToGetResourceResourceSnowsightArrayOutputWithContext(context.Context) GetResourceResourceSnowsightArrayOutput
+}
+
+type GetResourceResourceSnowsightArray []GetResourceResourceSnowsightInput
+
+func (GetResourceResourceSnowsightArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceSnowsight)(nil)).Elem()
+}
+
+func (i GetResourceResourceSnowsightArray) ToGetResourceResourceSnowsightArrayOutput() GetResourceResourceSnowsightArrayOutput {
+	return i.ToGetResourceResourceSnowsightArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceSnowsightArray) ToGetResourceResourceSnowsightArrayOutputWithContext(ctx context.Context) GetResourceResourceSnowsightArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSnowsightArrayOutput)
+}
+
+type GetResourceResourceSnowsightOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceSnowsightOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceSnowsight)(nil)).Elem()
+}
+
+func (o GetResourceResourceSnowsightOutput) ToGetResourceResourceSnowsightOutput() GetResourceResourceSnowsightOutput {
+	return o
+}
+
+func (o GetResourceResourceSnowsightOutput) ToGetResourceResourceSnowsightOutputWithContext(ctx context.Context) GetResourceResourceSnowsightOutput {
+	return o
+}
+
+// Bind interface
+func (o GetResourceResourceSnowsightOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceSnowsightOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSnowsightOutput) HealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.HealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceSnowsightOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceSnowsightOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSnowsightOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceSnowsightOutput) SamlMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.SamlMetadata }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceSnowsightOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSnowsightOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceSnowsightOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceSnowsightArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceSnowsightArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceSnowsight)(nil)).Elem()
+}
+
+func (o GetResourceResourceSnowsightArrayOutput) ToGetResourceResourceSnowsightArrayOutput() GetResourceResourceSnowsightArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceSnowsightArrayOutput) ToGetResourceResourceSnowsightArrayOutputWithContext(ctx context.Context) GetResourceResourceSnowsightArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceSnowsightArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSnowsightOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSnowsight {
+		return vs[0].([]GetResourceResourceSnowsight)[vs[1].(int)]
+	}).(GetResourceResourceSnowsightOutput)
+}
+
 type GetResourceResourceSqlServer struct {
 	// Bind interface
 	BindInterface *string `pulumi:"bindInterface"`
@@ -46320,6 +46858,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSingleStorePtrInput)(nil)).Elem(), ResourceSingleStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSnowflakeInput)(nil)).Elem(), ResourceSnowflakeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSnowflakePtrInput)(nil)).Elem(), ResourceSnowflakeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSnowsightInput)(nil)).Elem(), ResourceSnowsightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSnowsightPtrInput)(nil)).Elem(), ResourceSnowsightArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSqlServerInput)(nil)).Elem(), ResourceSqlServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSqlServerPtrInput)(nil)).Elem(), ResourceSqlServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshInput)(nil)).Elem(), ResourceSshArgs{})
@@ -46504,6 +47044,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSingleStoreArrayInput)(nil)).Elem(), GetResourceResourceSingleStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSnowflakeInput)(nil)).Elem(), GetResourceResourceSnowflakeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSnowflakeArrayInput)(nil)).Elem(), GetResourceResourceSnowflakeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSnowsightInput)(nil)).Elem(), GetResourceResourceSnowsightArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSnowsightArrayInput)(nil)).Elem(), GetResourceResourceSnowsightArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSqlServerInput)(nil)).Elem(), GetResourceResourceSqlServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSqlServerArrayInput)(nil)).Elem(), GetResourceResourceSqlServerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshInput)(nil)).Elem(), GetResourceResourceSshArgs{})
@@ -46680,6 +47222,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceSingleStorePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSnowflakeOutput{})
 	pulumi.RegisterOutputType(ResourceSnowflakePtrOutput{})
+	pulumi.RegisterOutputType(ResourceSnowsightOutput{})
+	pulumi.RegisterOutputType(ResourceSnowsightPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSqlServerOutput{})
 	pulumi.RegisterOutputType(ResourceSqlServerPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSshOutput{})
@@ -46864,6 +47408,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceSingleStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSnowflakeOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSnowflakeArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceSnowsightOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceSnowsightArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSqlServerOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSqlServerArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSshOutput{})

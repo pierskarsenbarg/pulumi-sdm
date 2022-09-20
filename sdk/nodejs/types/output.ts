@@ -257,6 +257,7 @@ export interface GetResourceResource {
     redshifts: outputs.GetResourceResourceRedshift[];
     singleStores: outputs.GetResourceResourceSingleStore[];
     snowflakes: outputs.GetResourceResourceSnowflake[];
+    snowsights: outputs.GetResourceResourceSnowsight[];
     sqlServers: outputs.GetResourceResourceSqlServer[];
     sshCerts: outputs.GetResourceResourceSshCert[];
     sshCustomerKeys: outputs.GetResourceResourceSshCustomerKey[];
@@ -1485,6 +1486,7 @@ export interface GetResourceResourceHttpAuth {
     egressFilter?: string;
     headersBlacklist?: string;
     healthcheckPath?: string;
+    hostOverride?: string;
     /**
      * Unique identifier of the Resource.
      */
@@ -1520,6 +1522,7 @@ export interface GetResourceResourceHttpBasicAuth {
     egressFilter?: string;
     headersBlacklist?: string;
     healthcheckPath?: string;
+    hostOverride?: string;
     /**
      * Unique identifier of the Resource.
      */
@@ -1557,6 +1560,7 @@ export interface GetResourceResourceHttpNoAuth {
     egressFilter?: string;
     headersBlacklist?: string;
     healthcheckPath?: string;
+    hostOverride?: string;
     /**
      * Unique identifier of the Resource.
      */
@@ -2540,6 +2544,37 @@ export interface GetResourceResourceSnowflake {
      */
     tags?: {[key: string]: string};
     username?: string;
+}
+
+export interface GetResourceResourceSnowsight {
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    healthcheckUsername?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    portOverride?: number;
+    samlMetadata?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
 }
 
 export interface GetResourceResourceSqlServer {
@@ -3860,7 +3895,7 @@ export interface ResourceDb2I {
      */
     name: string;
     password?: string;
-    port?: number;
+    port: number;
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4255,6 +4290,7 @@ export interface ResourceHttpAuth {
     egressFilter?: string;
     headersBlacklist?: string;
     healthcheckPath: string;
+    hostOverride?: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -4288,6 +4324,7 @@ export interface ResourceHttpBasicAuth {
     egressFilter?: string;
     headersBlacklist?: string;
     healthcheckPath: string;
+    hostOverride?: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -4325,6 +4362,7 @@ export interface ResourceHttpNoAuth {
     egressFilter?: string;
     headersBlacklist?: string;
     healthcheckPath: string;
+    hostOverride?: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -5306,6 +5344,35 @@ export interface ResourceSnowflake {
     username?: string;
 }
 
+export interface ResourceSnowsight {
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    healthcheckUsername: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    portOverride: number;
+    samlMetadata?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    secretStoreSamlMetadataKey?: string;
+    secretStoreSamlMetadataPath?: string;
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ResourceSqlServer {
     /**
      * Bind interface
@@ -5352,7 +5419,7 @@ export interface ResourceSsh {
      */
     egressFilter?: string;
     hostname: string;
-    keyType?: string;
+    keyType: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -5385,7 +5452,7 @@ export interface ResourceSshCert {
      */
     egressFilter?: string;
     hostname: string;
-    keyType?: string;
+    keyType: string;
     /**
      * Unique human-readable name of the Resource.
      */

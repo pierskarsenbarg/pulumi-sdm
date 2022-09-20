@@ -80,6 +80,7 @@ __all__ = [
     'ResourceRedshiftArgs',
     'ResourceSingleStoreArgs',
     'ResourceSnowflakeArgs',
+    'ResourceSnowsightArgs',
     'ResourceSqlServerArgs',
     'ResourceSshArgs',
     'ResourceSshCertArgs',
@@ -5725,10 +5726,10 @@ class ResourceDb2IArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
+                 port: pulumi.Input[int],
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  secret_store_password_key: Optional[pulumi.Input[str]] = None,
@@ -5747,14 +5748,13 @@ class ResourceDb2IArgs:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
@@ -5796,6 +5796,15 @@ class ResourceDb2IArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5827,15 +5836,6 @@ class ResourceDb2IArgs:
     @password.setter
     def password(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="portOverride")
@@ -8134,6 +8134,7 @@ class ResourceHttpAuthArgs:
                  default_path: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  headers_blacklist: Optional[pulumi.Input[str]] = None,
+                 host_override: Optional[pulumi.Input[str]] = None,
                  secret_store_auth_header_key: Optional[pulumi.Input[str]] = None,
                  secret_store_auth_header_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
@@ -8160,6 +8161,8 @@ class ResourceHttpAuthArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if headers_blacklist is not None:
             pulumi.set(__self__, "headers_blacklist", headers_blacklist)
+        if host_override is not None:
+            pulumi.set(__self__, "host_override", host_override)
         if secret_store_auth_header_key is not None:
             pulumi.set(__self__, "secret_store_auth_header_key", secret_store_auth_header_key)
         if secret_store_auth_header_path is not None:
@@ -8263,6 +8266,15 @@ class ResourceHttpAuthArgs:
         pulumi.set(self, "headers_blacklist", value)
 
     @property
+    @pulumi.getter(name="hostOverride")
+    def host_override(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "host_override")
+
+    @host_override.setter
+    def host_override(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_override", value)
+
+    @property
     @pulumi.getter(name="secretStoreAuthHeaderKey")
     def secret_store_auth_header_key(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "secret_store_auth_header_key")
@@ -8316,6 +8328,7 @@ class ResourceHttpBasicAuthArgs:
                  default_path: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  headers_blacklist: Optional[pulumi.Input[str]] = None,
+                 host_override: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  secret_store_password_key: Optional[pulumi.Input[str]] = None,
@@ -8344,6 +8357,8 @@ class ResourceHttpBasicAuthArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if headers_blacklist is not None:
             pulumi.set(__self__, "headers_blacklist", headers_blacklist)
+        if host_override is not None:
+            pulumi.set(__self__, "host_override", host_override)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if secret_store_id is not None:
@@ -8446,6 +8461,15 @@ class ResourceHttpBasicAuthArgs:
         pulumi.set(self, "headers_blacklist", value)
 
     @property
+    @pulumi.getter(name="hostOverride")
+    def host_override(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "host_override")
+
+    @host_override.setter
+    def host_override(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_override", value)
+
+    @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "password")
@@ -8535,6 +8559,7 @@ class ResourceHttpNoAuthArgs:
                  default_path: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  headers_blacklist: Optional[pulumi.Input[str]] = None,
+                 host_override: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -8557,6 +8582,8 @@ class ResourceHttpNoAuthArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if headers_blacklist is not None:
             pulumi.set(__self__, "headers_blacklist", headers_blacklist)
+        if host_override is not None:
+            pulumi.set(__self__, "host_override", host_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -8645,6 +8672,15 @@ class ResourceHttpNoAuthArgs:
     @headers_blacklist.setter
     def headers_blacklist(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "headers_blacklist", value)
+
+    @property
+    @pulumi.getter(name="hostOverride")
+    def host_override(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "host_override")
+
+    @host_override.setter
+    def host_override(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_override", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -14615,6 +14651,162 @@ class ResourceSnowflakeArgs:
     @username.setter
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class ResourceSnowsightArgs:
+    def __init__(__self__, *,
+                 healthcheck_username: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 subdomain: pulumi.Input[str],
+                 bind_interface: Optional[pulumi.Input[str]] = None,
+                 egress_filter: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
+                 saml_metadata: Optional[pulumi.Input[str]] = None,
+                 secret_store_id: Optional[pulumi.Input[str]] = None,
+                 secret_store_saml_metadata_key: Optional[pulumi.Input[str]] = None,
+                 secret_store_saml_metadata_path: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "healthcheck_username", healthcheck_username)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subdomain", subdomain)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if saml_metadata is not None:
+            pulumi.set(__self__, "saml_metadata", saml_metadata)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if secret_store_saml_metadata_key is not None:
+            pulumi.set(__self__, "secret_store_saml_metadata_key", secret_store_saml_metadata_key)
+        if secret_store_saml_metadata_path is not None:
+            pulumi.set(__self__, "secret_store_saml_metadata_path", secret_store_saml_metadata_path)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="healthcheckUsername")
+    def healthcheck_username(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "healthcheck_username")
+
+    @healthcheck_username.setter
+    def healthcheck_username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "healthcheck_username", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @bind_interface.setter
+    def bind_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @egress_filter.setter
+    def egress_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter(name="samlMetadata")
+    def saml_metadata(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "saml_metadata")
+
+    @saml_metadata.setter
+    def saml_metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_metadata", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter(name="secretStoreSamlMetadataKey")
+    def secret_store_saml_metadata_key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_store_saml_metadata_key")
+
+    @secret_store_saml_metadata_key.setter
+    def secret_store_saml_metadata_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_store_saml_metadata_key", value)
+
+    @property
+    @pulumi.getter(name="secretStoreSamlMetadataPath")
+    def secret_store_saml_metadata_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret_store_saml_metadata_path")
+
+    @secret_store_saml_metadata_path.setter
+    def secret_store_saml_metadata_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_store_saml_metadata_path", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type

@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceHttpBasicAuthArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceSnowsightGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -19,23 +19,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
 
-        [Input("defaultPath")]
-        public Input<string>? DefaultPath { get; set; }
-
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
 
-        [Input("headersBlacklist")]
-        public Input<string>? HeadersBlacklist { get; set; }
-
-        [Input("healthcheckPath", required: true)]
-        public Input<string> HealthcheckPath { get; set; } = null!;
-
-        [Input("hostOverride")]
-        public Input<string>? HostOverride { get; set; }
+        [Input("healthcheckUsername", required: true)]
+        public Input<string> HealthcheckUsername { get; set; } = null!;
 
         /// <summary>
         /// Unique human-readable name of the Resource.
@@ -43,8 +34,11 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Input("portOverride")]
+        public Input<int>? PortOverride { get; set; }
+
+        [Input("samlMetadata")]
+        public Input<string>? SamlMetadata { get; set; }
 
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
@@ -52,17 +46,11 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
 
-        [Input("secretStorePasswordKey")]
-        public Input<string>? SecretStorePasswordKey { get; set; }
+        [Input("secretStoreSamlMetadataKey")]
+        public Input<string>? SecretStoreSamlMetadataKey { get; set; }
 
-        [Input("secretStorePasswordPath")]
-        public Input<string>? SecretStorePasswordPath { get; set; }
-
-        [Input("secretStoreUsernameKey")]
-        public Input<string>? SecretStoreUsernameKey { get; set; }
-
-        [Input("secretStoreUsernamePath")]
-        public Input<string>? SecretStoreUsernamePath { get; set; }
+        [Input("secretStoreSamlMetadataPath")]
+        public Input<string>? SecretStoreSamlMetadataPath { get; set; }
 
         [Input("subdomain", required: true)]
         public Input<string> Subdomain { get; set; } = null!;
@@ -79,18 +67,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
-        /// <summary>
-        /// * kubernetes:
-        /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
-
-        [Input("username")]
-        public Input<string>? Username { get; set; }
-
-        public ResourceHttpBasicAuthArgs()
+        public ResourceSnowsightGetArgs()
         {
         }
-        public static new ResourceHttpBasicAuthArgs Empty => new ResourceHttpBasicAuthArgs();
+        public static new ResourceSnowsightGetArgs Empty => new ResourceSnowsightGetArgs();
     }
 }

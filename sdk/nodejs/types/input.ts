@@ -937,7 +937,7 @@ export interface ResourceDb2I {
      */
     name: pulumi.Input<string>;
     password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
+    port: pulumi.Input<number>;
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1332,6 +1332,7 @@ export interface ResourceHttpAuth {
     egressFilter?: pulumi.Input<string>;
     headersBlacklist?: pulumi.Input<string>;
     healthcheckPath: pulumi.Input<string>;
+    hostOverride?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -1365,6 +1366,7 @@ export interface ResourceHttpBasicAuth {
     egressFilter?: pulumi.Input<string>;
     headersBlacklist?: pulumi.Input<string>;
     healthcheckPath: pulumi.Input<string>;
+    hostOverride?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -1402,6 +1404,7 @@ export interface ResourceHttpNoAuth {
     egressFilter?: pulumi.Input<string>;
     headersBlacklist?: pulumi.Input<string>;
     healthcheckPath: pulumi.Input<string>;
+    hostOverride?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -2381,6 +2384,35 @@ export interface ResourceSnowflake {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     username?: pulumi.Input<string>;
+}
+
+export interface ResourceSnowsight {
+    /**
+     * Bind interface
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    healthcheckUsername: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    portOverride?: pulumi.Input<number>;
+    samlMetadata?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    secretStoreSamlMetadataKey?: pulumi.Input<string>;
+    secretStoreSamlMetadataPath?: pulumi.Input<string>;
+    subdomain: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface ResourceSqlServer {

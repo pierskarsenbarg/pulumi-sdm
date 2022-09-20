@@ -25,6 +25,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? EgressFilter;
         public readonly string? HeadersBlacklist;
         public readonly string? HealthcheckPath;
+        public readonly string? HostOverride;
         /// <summary>
         /// Unique identifier of the Resource.
         /// </summary>
@@ -59,6 +60,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? healthcheckPath,
 
+            string? hostOverride,
+
             string? id,
 
             string? name,
@@ -76,6 +79,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EgressFilter = egressFilter;
             HeadersBlacklist = headersBlacklist;
             HealthcheckPath = healthcheckPath;
+            HostOverride = hostOverride;
             Id = id;
             Name = name;
             SecretStoreId = secretStoreId;
