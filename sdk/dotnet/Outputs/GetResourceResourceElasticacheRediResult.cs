@@ -43,6 +43,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         public readonly bool? TlsRequired;
+        public readonly string? Username;
 
         [OutputConstructor]
         private GetResourceResourceElasticacheRediResult(
@@ -66,7 +67,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
-            bool? tlsRequired)
+            bool? tlsRequired,
+
+            string? username)
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
@@ -79,6 +82,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             Tags = tags;
             TlsRequired = tlsRequired;
+            Username = username;
         }
     }
 }

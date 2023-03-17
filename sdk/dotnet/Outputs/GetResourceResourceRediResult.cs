@@ -42,6 +42,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly bool? TlsRequired;
+        public readonly string? Username;
 
         [OutputConstructor]
         private GetResourceResourceRediResult(
@@ -63,7 +65,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            ImmutableDictionary<string, string>? tags)
+            ImmutableDictionary<string, string>? tags,
+
+            bool? tlsRequired,
+
+            string? username)
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
@@ -75,6 +81,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             PortOverride = portOverride;
             SecretStoreId = secretStoreId;
             Tags = tags;
+            TlsRequired = tlsRequired;
+            Username = username;
         }
     }
 }

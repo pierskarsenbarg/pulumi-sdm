@@ -20,6 +20,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAksServiceAccountResult> AksServiceAccounts;
         public readonly ImmutableArray<Outputs.GetResourceResourceAksUserImpersonationResult> AksUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEkResult> AmazonEks;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileResult> AmazonEksInstanceProfiles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksUserImpersonationResult> AmazonEksUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEResult> AmazonEs;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> AmazonmqAmqp091s;
@@ -30,6 +31,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleStaticKeyPairResult> AwsConsoleStaticKeyPairs;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> AwsConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> AzureCertificates;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> AzureMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> AzurePostgres;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureResult> Azures;
         public readonly ImmutableArray<Outputs.GetResourceResourceBigQueryResult> BigQueries;
@@ -103,6 +105,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceAmazonEkResult> amazonEks,
 
+            ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileResult> amazonEksInstanceProfiles,
+
             ImmutableArray<Outputs.GetResourceResourceAmazonEksUserImpersonationResult> amazonEksUserImpersonations,
 
             ImmutableArray<Outputs.GetResourceResourceAmazonEResult> amazonEs,
@@ -122,6 +126,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> awsConsoles,
 
             ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> azureCertificates,
+
+            ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> azureMysqls,
 
             ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> azurePostgres,
 
@@ -245,6 +251,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AksServiceAccounts = aksServiceAccounts;
             AksUserImpersonations = aksUserImpersonations;
             AmazonEks = amazonEks;
+            AmazonEksInstanceProfiles = amazonEksInstanceProfiles;
             AmazonEksUserImpersonations = amazonEksUserImpersonations;
             AmazonEs = amazonEs;
             AmazonmqAmqp091s = amazonmqAmqp091s;
@@ -255,6 +262,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AwsConsoleStaticKeyPairs = awsConsoleStaticKeyPairs;
             AwsConsoles = awsConsoles;
             AzureCertificates = azureCertificates;
+            AzureMysqls = azureMysqls;
             AzurePostgres = azurePostgres;
             Azures = azures;
             BigQueries = bigQueries;

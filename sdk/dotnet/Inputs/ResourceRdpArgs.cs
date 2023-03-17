@@ -40,8 +40,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("password")]
         public Input<string>? Password { get; set; }
 
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }

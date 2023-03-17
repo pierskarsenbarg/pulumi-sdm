@@ -91,6 +91,12 @@ namespace PiersKarsenbarg.Sdm
         public string? Email { get; set; }
 
         /// <summary>
+        /// External ID is an alternative unique ID this user is represented by within an external service.
+        /// </summary>
+        [Input("externalId")]
+        public string? ExternalId { get; set; }
+
+        /// <summary>
         /// The User's first name.
         /// </summary>
         [Input("firstName")]
@@ -151,6 +157,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
+
+        /// <summary>
+        /// External ID is an alternative unique ID this user is represented by within an external service.
+        /// </summary>
+        [Input("externalId")]
+        public Input<string>? ExternalId { get; set; }
 
         /// <summary>
         /// The User's first name.
@@ -220,6 +232,10 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string? Email;
         /// <summary>
+        /// External ID is an alternative unique ID this user is represented by within an external service.
+        /// </summary>
+        public readonly string? ExternalId;
+        /// <summary>
         /// The User's first name.
         /// </summary>
         public readonly string? FirstName;
@@ -255,6 +271,8 @@ namespace PiersKarsenbarg.Sdm
 
             string? email,
 
+            string? externalId,
+
             string? firstName,
 
             string? id,
@@ -273,6 +291,7 @@ namespace PiersKarsenbarg.Sdm
         {
             Accounts = accounts;
             Email = email;
+            ExternalId = externalId;
             FirstName = firstName;
             Id = id;
             Ids = ids;

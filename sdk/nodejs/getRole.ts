@@ -69,6 +69,10 @@ export interface GetRoleResult {
      */
     readonly ids: string[];
     /**
+     * Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+     */
+    readonly managedBy: string;
+    /**
      * Unique human-readable name of the Role.
      */
     readonly name?: string;

@@ -22,13 +22,16 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, accounts=None, email=None, first_name=None, id=None, ids=None, last_name=None, name=None, suspended=None, tags=None, type=None):
+    def __init__(__self__, accounts=None, email=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, name=None, suspended=None, tags=None, type=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
+        if external_id and not isinstance(external_id, str):
+            raise TypeError("Expected argument 'external_id' to be a str")
+        pulumi.set(__self__, "external_id", external_id)
         if first_name and not isinstance(first_name, str):
             raise TypeError("Expected argument 'first_name' to be a str")
         pulumi.set(__self__, "first_name", first_name)
@@ -70,6 +73,14 @@ class GetAccountResult:
         The User's email address. Must be unique.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        """
+        External ID is an alternative unique ID this user is represented by within an external service.
+        """
+        return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter(name="firstName")
@@ -141,6 +152,7 @@ class AwaitableGetAccountResult(GetAccountResult):
         return GetAccountResult(
             accounts=self.accounts,
             email=self.email,
+            external_id=self.external_id,
             first_name=self.first_name,
             id=self.id,
             ids=self.ids,
@@ -152,6 +164,7 @@ class AwaitableGetAccountResult(GetAccountResult):
 
 
 def get_account(email: Optional[str] = None,
+                external_id: Optional[str] = None,
                 first_name: Optional[str] = None,
                 id: Optional[str] = None,
                 last_name: Optional[str] = None,
@@ -180,6 +193,7 @@ def get_account(email: Optional[str] = None,
 
 
     :param str email: The User's email address. Must be unique.
+    :param str external_id: External ID is an alternative unique ID this user is represented by within an external service.
     :param str first_name: The User's first name.
     :param str id: Unique identifier of the User.
     :param str last_name: The User's last name.
@@ -190,6 +204,7 @@ def get_account(email: Optional[str] = None,
     """
     __args__ = dict()
     __args__['email'] = email
+    __args__['externalId'] = external_id
     __args__['firstName'] = first_name
     __args__['id'] = id
     __args__['lastName'] = last_name
@@ -203,6 +218,7 @@ def get_account(email: Optional[str] = None,
     return AwaitableGetAccountResult(
         accounts=__ret__.accounts,
         email=__ret__.email,
+        external_id=__ret__.external_id,
         first_name=__ret__.first_name,
         id=__ret__.id,
         ids=__ret__.ids,
@@ -215,6 +231,7 @@ def get_account(email: Optional[str] = None,
 
 @_utilities.lift_output_func(get_account)
 def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
+                       external_id: Optional[pulumi.Input[Optional[str]]] = None,
                        first_name: Optional[pulumi.Input[Optional[str]]] = None,
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        last_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -243,6 +260,7 @@ def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str email: The User's email address. Must be unique.
+    :param str external_id: External ID is an alternative unique ID this user is represented by within an external service.
     :param str first_name: The User's first name.
     :param str id: Unique identifier of the User.
     :param str last_name: The User's last name.

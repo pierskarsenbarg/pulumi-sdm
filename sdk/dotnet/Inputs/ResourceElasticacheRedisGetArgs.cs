@@ -55,6 +55,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("secretStorePasswordPath")]
         public Input<string>? SecretStorePasswordPath { get; set; }
 
+        [Input("secretStoreUsernameKey")]
+        public Input<string>? SecretStoreUsernameKey { get; set; }
+
+        [Input("secretStoreUsernamePath")]
+        public Input<string>? SecretStoreUsernamePath { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
@@ -69,6 +75,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         [Input("tlsRequired")]
         public Input<bool>? TlsRequired { get; set; }
+
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public ResourceElasticacheRedisGetArgs()
         {

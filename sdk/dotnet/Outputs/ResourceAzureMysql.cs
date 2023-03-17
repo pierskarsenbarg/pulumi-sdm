@@ -12,12 +12,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceElasticacheRedis
+    public sealed class ResourceAzureMysql
     {
         /// <summary>
         /// Bind interface
         /// </summary>
         public readonly string? BindInterface;
+        public readonly string Database;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
@@ -42,12 +43,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        public readonly bool? TlsRequired;
         public readonly string? Username;
 
         [OutputConstructor]
-        private ResourceElasticacheRedis(
+        private ResourceAzureMysql(
             string? bindInterface,
+
+            string database,
 
             string? egressFilter,
 
@@ -73,11 +75,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
-            bool? tlsRequired,
-
             string? username)
         {
             BindInterface = bindInterface;
+            Database = database;
             EgressFilter = egressFilter;
             Hostname = hostname;
             Name = name;
@@ -90,7 +91,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreUsernameKey = secretStoreUsernameKey;
             SecretStoreUsernamePath = secretStoreUsernamePath;
             Tags = tags;
-            TlsRequired = tlsRequired;
             Username = username;
         }
     }

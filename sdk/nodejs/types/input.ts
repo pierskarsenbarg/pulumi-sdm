@@ -26,6 +26,10 @@ export interface AccountUser {
      */
     email: pulumi.Input<string>;
     /**
+     * External ID is an alternative unique ID this user is represented by within an external service.
+     */
+    externalId?: pulumi.Input<string>;
+    /**
      * The User's first name.
      */
     firstName: pulumi.Input<string>;
@@ -33,6 +37,14 @@ export interface AccountUser {
      * The User's last name.
      */
     lastName: pulumi.Input<string>;
+    /**
+     * Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+     */
+    managedBy?: pulumi.Input<string>;
+    /**
+     * PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+     */
+    permissionLevel?: pulumi.Input<string>;
     /**
      * The User's suspended state.
      */
@@ -49,6 +61,10 @@ export interface NodeGateway {
      */
     bindAddress?: pulumi.Input<string>;
     /**
+     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     */
+    device?: pulumi.Input<string>;
+    /**
      * GatewayFilter can be used to restrict the peering between relays and gateways.
      */
     gatewayFilter?: pulumi.Input<string>;
@@ -57,6 +73,10 @@ export interface NodeGateway {
      */
     listenAddress: pulumi.Input<string>;
     /**
+     * Location is a read only network location uploaded by the gateway process when it comes online.
+     */
+    location?: pulumi.Input<string>;
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name?: pulumi.Input<string>;
@@ -65,14 +85,26 @@ export interface NodeGateway {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     token?: pulumi.Input<string>;
+    /**
+     * Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+     */
+    version?: pulumi.Input<string>;
 }
 
 export interface NodeRelay {
+    /**
+     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     */
+    device?: pulumi.Input<string>;
     /**
      * GatewayFilter can be used to restrict the peering between relays and gateways.
      */
     gatewayFilter?: pulumi.Input<string>;
     /**
+     * Location is a read only network location uploaded by the gateway process when it comes online.
+     */
+    location?: pulumi.Input<string>;
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name?: pulumi.Input<string>;
@@ -81,6 +113,10 @@ export interface NodeRelay {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     token?: pulumi.Input<string>;
+    /**
+     * Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+     */
+    version?: pulumi.Input<string>;
 }
 
 export interface ResourceAks {
@@ -314,6 +350,47 @@ export interface ResourceAmazonEks {
     secretStoreRoleExternalIdPath?: pulumi.Input<string>;
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface ResourceAmazonEksInstanceProfile {
+    /**
+     * Bind interface
+     */
+    bindInterface?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string>;
+    clusterName: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    endpoint: pulumi.Input<string>;
+    /**
+     * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+     */
+    healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    remoteIdentityGroupId?: pulumi.Input<string>;
+    remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
+    roleExternalId?: pulumi.Input<string>;
+    secretStoreCertificateAuthorityKey?: pulumi.Input<string>;
+    secretStoreCertificateAuthorityPath?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    secretStoreRoleArnKey?: pulumi.Input<string>;
+    secretStoreRoleArnPath?: pulumi.Input<string>;
+    secretStoreRoleExternalIdKey?: pulumi.Input<string>;
+    secretStoreRoleExternalIdPath?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -678,7 +755,7 @@ export interface ResourceAzure {
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
     /**
-     * * azure_postgres:
+     * * azure_mysql:
      */
     secretStoreTenantIdKey?: pulumi.Input<string>;
     secretStoreTenantIdPath?: pulumi.Input<string>;
@@ -713,7 +790,7 @@ export interface ResourceAzureCertificate {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * * azure_postgres:
+     * * azure_mysql:
      */
     secretStoreTenantIdKey?: pulumi.Input<string>;
     secretStoreTenantIdPath?: pulumi.Input<string>;
@@ -722,6 +799,39 @@ export interface ResourceAzureCertificate {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     tenantId?: pulumi.Input<string>;
+}
+
+export interface ResourceAzureMysql {
+    /**
+     * Bind interface
+     */
+    bindInterface?: pulumi.Input<string>;
+    database: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    secretStorePasswordKey?: pulumi.Input<string>;
+    secretStorePasswordPath?: pulumi.Input<string>;
+    secretStoreUsernameKey?: pulumi.Input<string>;
+    secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    username?: pulumi.Input<string>;
 }
 
 export interface ResourceAzurePostgres {
@@ -1181,11 +1291,14 @@ export interface ResourceElasticacheRedis {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    secretStoreUsernameKey?: pulumi.Input<string>;
+    secretStoreUsernamePath?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     tlsRequired?: pulumi.Input<boolean>;
+    username?: pulumi.Input<string>;
 }
 
 export interface ResourceGcp {
@@ -2240,7 +2353,7 @@ export interface ResourceRdp {
      */
     name: pulumi.Input<string>;
     password?: pulumi.Input<string>;
-    port: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2280,10 +2393,14 @@ export interface ResourceRedis {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    secretStoreUsernameKey?: pulumi.Input<string>;
+    secretStoreUsernamePath?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tlsRequired?: pulumi.Input<boolean>;
+    username?: pulumi.Input<string>;
 }
 
 export interface ResourceRedshift {
@@ -2675,6 +2792,18 @@ export interface SecretStoreAzureStore {
 }
 
 export interface SecretStoreCyberarkConjur {
+    appUrl: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreCyberarkPam {
     appUrl: pulumi.Input<string>;
     /**
      * Unique human-readable name of the SecretStore.

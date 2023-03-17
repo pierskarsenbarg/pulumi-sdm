@@ -24,6 +24,8 @@ type Role struct {
 
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules pulumi.StringOutput `pulumi:"accessRules"`
+	// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
 	// Unique human-readable name of the Role.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
@@ -62,6 +64,8 @@ func GetRole(ctx *pulumi.Context,
 type roleState struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules *string `pulumi:"accessRules"`
+	// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+	ManagedBy *string `pulumi:"managedBy"`
 	// Unique human-readable name of the Role.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
@@ -71,6 +75,8 @@ type roleState struct {
 type RoleState struct {
 	// AccessRules is a list of access rules defining the resources this Role has access to.
 	AccessRules pulumi.StringPtrInput
+	// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+	ManagedBy pulumi.StringPtrInput
 	// Unique human-readable name of the Role.
 	Name pulumi.StringPtrInput
 	// Tags is a map of key, value pairs.
@@ -190,6 +196,11 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 // AccessRules is a list of access rules defining the resources this Role has access to.
 func (o RoleOutput) AccessRules() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.AccessRules }).(pulumi.StringOutput)
+}
+
+// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+func (o RoleOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
 // Unique human-readable name of the Role.

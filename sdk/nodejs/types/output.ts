@@ -26,6 +26,10 @@ export interface AccountUser {
      */
     email: string;
     /**
+     * External ID is an alternative unique ID this user is represented by within an external service.
+     */
+    externalId?: string;
+    /**
      * The User's first name.
      */
     firstName: string;
@@ -33,6 +37,14 @@ export interface AccountUser {
      * The User's last name.
      */
     lastName: string;
+    /**
+     * Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+     */
+    managedBy: string;
+    /**
+     * PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+     */
+    permissionLevel: string;
     /**
      * The User's suspended state.
      */
@@ -73,6 +85,10 @@ export interface GetAccountAccountUser {
      */
     email?: string;
     /**
+     * External ID is an alternative unique ID this user is represented by within an external service.
+     */
+    externalId?: string;
+    /**
      * The User's first name.
      */
     firstName?: string;
@@ -84,6 +100,14 @@ export interface GetAccountAccountUser {
      * The User's last name.
      */
     lastName?: string;
+    /**
+     * Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+     */
+    managedBy: string;
+    /**
+     * PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+     */
+    permissionLevel: string;
     /**
      * The User's suspended state.
      */
@@ -120,6 +144,10 @@ export interface GetNodeNodeGateway {
      */
     bindAddress?: string;
     /**
+     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     */
+    device: string;
+    /**
      * GatewayFilter can be used to restrict the peering between relays and gateways.
      */
     gatewayFilter?: string;
@@ -132,6 +160,10 @@ export interface GetNodeNodeGateway {
      */
     listenAddress?: string;
     /**
+     * Location is a read only network location uploaded by the gateway process when it comes online.
+     */
+    location: string;
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name?: string;
@@ -139,9 +171,17 @@ export interface GetNodeNodeGateway {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+     */
+    version: string;
 }
 
 export interface GetNodeNodeRelay {
+    /**
+     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     */
+    device: string;
     /**
      * GatewayFilter can be used to restrict the peering between relays and gateways.
      */
@@ -151,6 +191,10 @@ export interface GetNodeNodeRelay {
      */
     id?: string;
     /**
+     * Location is a read only network location uploaded by the gateway process when it comes online.
+     */
+    location: string;
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name?: string;
@@ -158,6 +202,10 @@ export interface GetNodeNodeRelay {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+     */
+    version: string;
 }
 
 export interface GetRemoteIdentityGroupRemoteIdentityGroup {
@@ -197,6 +245,7 @@ export interface GetResourceResource {
     aksServiceAccounts: outputs.GetResourceResourceAksServiceAccount[];
     aksUserImpersonations: outputs.GetResourceResourceAksUserImpersonation[];
     amazonEks: outputs.GetResourceResourceAmazonEk[];
+    amazonEksInstanceProfiles: outputs.GetResourceResourceAmazonEksInstanceProfile[];
     amazonEksUserImpersonations: outputs.GetResourceResourceAmazonEksUserImpersonation[];
     amazonEs: outputs.GetResourceResourceAmazonE[];
     amazonmqAmqp091s: outputs.GetResourceResourceAmazonmqAmqp091[];
@@ -207,6 +256,7 @@ export interface GetResourceResource {
     awsConsoleStaticKeyPairs: outputs.GetResourceResourceAwsConsoleStaticKeyPair[];
     awsConsoles: outputs.GetResourceResourceAwsConsole[];
     azureCertificates: outputs.GetResourceResourceAzureCertificate[];
+    azureMysqls: outputs.GetResourceResourceAzureMysql[];
     azurePostgres: outputs.GetResourceResourceAzurePostgre[];
     azures: outputs.GetResourceResourceAzure[];
     bigQueries: outputs.GetResourceResourceBigQuery[];
@@ -532,6 +582,45 @@ export interface GetResourceResourceAmazonEk {
     tags?: {[key: string]: string};
 }
 
+export interface GetResourceResourceAmazonEksInstanceProfile {
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    certificateAuthority?: string;
+    clusterName?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    endpoint?: string;
+    /**
+     * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+     */
+    healthcheckNamespace?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    region?: string;
+    remoteIdentityGroupId?: string;
+    remoteIdentityHealthcheckUsername?: string;
+    roleArn?: string;
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetResourceResourceAmazonEksUserImpersonation {
     accessKey?: string;
     /**
@@ -838,7 +927,7 @@ export interface GetResourceResourceAzure {
      */
     tags?: {[key: string]: string};
     /**
-     * * azure_postgres:
+     * * azure_mysql:
      */
     tenantId?: string;
 }
@@ -871,9 +960,42 @@ export interface GetResourceResourceAzureCertificate {
      */
     tags?: {[key: string]: string};
     /**
-     * * azure_postgres:
+     * * azure_mysql:
      */
     tenantId?: string;
+}
+
+export interface GetResourceResourceAzureMysql {
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    password?: string;
+    port?: number;
+    portOverride?: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    username?: string;
 }
 
 export interface GetResourceResourceAzurePostgre {
@@ -1338,6 +1460,7 @@ export interface GetResourceResourceElasticacheRedi {
      */
     tags?: {[key: string]: string};
     tlsRequired?: boolean;
+    username?: string;
 }
 
 export interface GetResourceResourceGcp {
@@ -2444,6 +2567,8 @@ export interface GetResourceResourceRedi {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    tlsRequired?: boolean;
+    username?: string;
 }
 
 export interface GetResourceResourceRedshift {
@@ -2823,6 +2948,10 @@ export interface GetRoleRole {
      */
     id?: string;
     /**
+     * Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+     */
+    managedBy: string;
+    /**
      * Unique human-readable name of the Role.
      */
     name?: string;
@@ -2837,6 +2966,7 @@ export interface GetSecretStoreSecretStore {
     azureStores: outputs.GetSecretStoreSecretStoreAzureStore[];
     cyberarkConjurs: outputs.GetSecretStoreSecretStoreCyberarkConjur[];
     cyberarkPamExperimentals: outputs.GetSecretStoreSecretStoreCyberarkPamExperimental[];
+    cyberarkPams: outputs.GetSecretStoreSecretStoreCyberarkPam[];
     delineaStores: outputs.GetSecretStoreSecretStoreDelineaStore[];
     gcpStores: outputs.GetSecretStoreSecretStoreGcpStore[];
     vaultApproles: outputs.GetSecretStoreSecretStoreVaultApprole[];
@@ -2880,6 +3010,22 @@ export interface GetSecretStoreSecretStoreAzureStore {
 }
 
 export interface GetSecretStoreSecretStoreCyberarkConjur {
+    appUrl?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreCyberarkPam {
     appUrl?: string;
     /**
      * Unique identifier of the SecretStore.
@@ -3007,6 +3153,10 @@ export interface NodeGateway {
      */
     bindAddress: string;
     /**
+     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     */
+    device: string;
+    /**
      * GatewayFilter can be used to restrict the peering between relays and gateways.
      */
     gatewayFilter?: string;
@@ -3015,6 +3165,10 @@ export interface NodeGateway {
      */
     listenAddress: string;
     /**
+     * Location is a read only network location uploaded by the gateway process when it comes online.
+     */
+    location: string;
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name: string;
@@ -3023,14 +3177,26 @@ export interface NodeGateway {
      */
     tags?: {[key: string]: string};
     token: string;
+    /**
+     * Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+     */
+    version: string;
 }
 
 export interface NodeRelay {
+    /**
+     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     */
+    device: string;
     /**
      * GatewayFilter can be used to restrict the peering between relays and gateways.
      */
     gatewayFilter?: string;
     /**
+     * Location is a read only network location uploaded by the gateway process when it comes online.
+     */
+    location: string;
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name: string;
@@ -3039,6 +3205,10 @@ export interface NodeRelay {
      */
     tags?: {[key: string]: string};
     token: string;
+    /**
+     * Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+     */
+    version: string;
 }
 
 export interface ResourceAks {
@@ -3272,6 +3442,47 @@ export interface ResourceAmazonEks {
     secretStoreRoleExternalIdPath?: string;
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface ResourceAmazonEksInstanceProfile {
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    certificateAuthority?: string;
+    clusterName: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    endpoint: string;
+    /**
+     * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+     */
+    healthcheckNamespace?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    region: string;
+    remoteIdentityGroupId?: string;
+    remoteIdentityHealthcheckUsername?: string;
+    roleArn?: string;
+    roleExternalId?: string;
+    secretStoreCertificateAuthorityKey?: string;
+    secretStoreCertificateAuthorityPath?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    secretStoreRoleArnKey?: string;
+    secretStoreRoleArnPath?: string;
+    secretStoreRoleExternalIdKey?: string;
+    secretStoreRoleExternalIdPath?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3636,7 +3847,7 @@ export interface ResourceAzure {
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
     /**
-     * * azure_postgres:
+     * * azure_mysql:
      */
     secretStoreTenantIdKey?: string;
     secretStoreTenantIdPath?: string;
@@ -3671,7 +3882,7 @@ export interface ResourceAzureCertificate {
      */
     secretStoreId?: string;
     /**
-     * * azure_postgres:
+     * * azure_mysql:
      */
     secretStoreTenantIdKey?: string;
     secretStoreTenantIdPath?: string;
@@ -3680,6 +3891,39 @@ export interface ResourceAzureCertificate {
      */
     tags?: {[key: string]: string};
     tenantId?: string;
+}
+
+export interface ResourceAzureMysql {
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    password?: string;
+    port?: number;
+    portOverride: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    secretStorePasswordKey?: string;
+    secretStorePasswordPath?: string;
+    secretStoreUsernameKey?: string;
+    secretStoreUsernamePath?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    username?: string;
 }
 
 export interface ResourceAzurePostgres {
@@ -4139,11 +4383,14 @@ export interface ResourceElasticacheRedis {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    secretStoreUsernameKey?: string;
+    secretStoreUsernamePath?: string;
     /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
     tlsRequired?: boolean;
+    username?: string;
 }
 
 export interface ResourceGcp {
@@ -5198,7 +5445,7 @@ export interface ResourceRdp {
      */
     name: string;
     password?: string;
-    port: number;
+    port?: number;
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5238,10 +5485,14 @@ export interface ResourceRedis {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    secretStoreUsernameKey?: string;
+    secretStoreUsernamePath?: string;
     /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    tlsRequired?: boolean;
+    username?: string;
 }
 
 export interface ResourceRedshift {
@@ -5633,6 +5884,18 @@ export interface SecretStoreAzureStore {
 }
 
 export interface SecretStoreCyberarkConjur {
+    appUrl: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreCyberarkPam {
     appUrl: string;
     /**
      * Unique human-readable name of the SecretStore.

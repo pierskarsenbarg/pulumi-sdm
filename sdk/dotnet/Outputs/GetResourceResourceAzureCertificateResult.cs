@@ -41,7 +41,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// * azure_postgres:
+        /// * azure_mysql:
         /// </summary>
         public readonly string? TenantId;
 

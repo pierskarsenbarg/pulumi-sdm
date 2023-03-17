@@ -19,6 +19,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? BindAddress;
         /// <summary>
+        /// Device is a read only device name uploaded by the gateway process when  it comes online.
+        /// </summary>
+        public readonly string? Device;
+        /// <summary>
         /// GatewayFilter can be used to restrict the peering between relays and gateways.
         /// </summary>
         public readonly string? GatewayFilter;
@@ -26,6 +30,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The public hostname/port tuple at which the gateway will be accessible to clients.
         /// </summary>
         public readonly string ListenAddress;
+        /// <summary>
+        /// Location is a read only network location uploaded by the gateway process when it comes online.
+        /// </summary>
+        public readonly string? Location;
         /// <summary>
         /// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
         /// </summary>
@@ -35,27 +43,40 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         public readonly string? Token;
+        /// <summary>
+        /// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private NodeGateway(
             string? bindAddress,
 
+            string? device,
+
             string? gatewayFilter,
 
             string listenAddress,
+
+            string? location,
 
             string? name,
 
             ImmutableDictionary<string, string>? tags,
 
-            string? token)
+            string? token,
+
+            string? version)
         {
             BindAddress = bindAddress;
+            Device = device;
             GatewayFilter = gatewayFilter;
             ListenAddress = listenAddress;
+            Location = location;
             Name = name;
             Tags = tags;
             Token = token;
+            Version = version;
         }
     }
 }

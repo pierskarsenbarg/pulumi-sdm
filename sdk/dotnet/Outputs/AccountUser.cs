@@ -19,6 +19,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Email;
         /// <summary>
+        /// External ID is an alternative unique ID this user is represented by within an external service.
+        /// </summary>
+        public readonly string? ExternalId;
+        /// <summary>
         /// The User's first name.
         /// </summary>
         public readonly string FirstName;
@@ -26,6 +30,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The User's last name.
         /// </summary>
         public readonly string LastName;
+        /// <summary>
+        /// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+        /// </summary>
+        public readonly string? ManagedBy;
+        /// <summary>
+        /// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+        /// </summary>
+        public readonly string? PermissionLevel;
         /// <summary>
         /// The User's suspended state.
         /// </summary>
@@ -39,17 +51,26 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private AccountUser(
             string email,
 
+            string? externalId,
+
             string firstName,
 
             string lastName,
+
+            string? managedBy,
+
+            string? permissionLevel,
 
             bool? suspended,
 
             ImmutableDictionary<string, string>? tags)
         {
             Email = email;
+            ExternalId = externalId;
             FirstName = firstName;
             LastName = lastName;
+            ManagedBy = managedBy;
+            PermissionLevel = permissionLevel;
             Suspended = suspended;
             Tags = tags;
         }

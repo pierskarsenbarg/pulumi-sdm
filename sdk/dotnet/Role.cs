@@ -29,6 +29,12 @@ namespace PiersKarsenbarg.Sdm
         public Output<string> AccessRules { get; private set; } = null!;
 
         /// <summary>
+        /// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+        /// </summary>
+        [Output("managedBy")]
+        public Output<string> ManagedBy { get; private set; } = null!;
+
+        /// <summary>
         /// Unique human-readable name of the Role.
         /// </summary>
         [Output("name")]
@@ -124,6 +130,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("accessRules")]
         public Input<string>? AccessRules { get; set; }
+
+        /// <summary>
+        /// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+        /// </summary>
+        [Input("managedBy")]
+        public Input<string>? ManagedBy { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Role.

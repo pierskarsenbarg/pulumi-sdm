@@ -71,16 +71,20 @@ class RoleArgs:
 class _RoleState:
     def __init__(__self__, *,
                  access_rules: Optional[pulumi.Input[str]] = None,
+                 managed_by: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Role resources.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
+        :param pulumi.Input[str] managed_by: Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
         :param pulumi.Input[str] name: Unique human-readable name of the Role.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         if access_rules is not None:
             pulumi.set(__self__, "access_rules", access_rules)
+        if managed_by is not None:
+            pulumi.set(__self__, "managed_by", managed_by)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
@@ -97,6 +101,18 @@ class _RoleState:
     @access_rules.setter
     def access_rules(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_rules", value)
+
+    @property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+        """
+        return pulumi.get(self, "managed_by")
+
+    @managed_by.setter
+    def managed_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "managed_by", value)
 
     @property
     @pulumi.getter
@@ -192,6 +208,7 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["access_rules"] = access_rules
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["managed_by"] = None
         super(Role, __self__).__init__(
             'sdm:index/role:Role',
             resource_name,
@@ -203,6 +220,7 @@ class Role(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_rules: Optional[pulumi.Input[str]] = None,
+            managed_by: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Role':
         """
@@ -213,6 +231,7 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
+        :param pulumi.Input[str] managed_by: Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
         :param pulumi.Input[str] name: Unique human-readable name of the Role.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -221,6 +240,7 @@ class Role(pulumi.CustomResource):
         __props__ = _RoleState.__new__(_RoleState)
 
         __props__.__dict__["access_rules"] = access_rules
+        __props__.__dict__["managed_by"] = managed_by
         __props__.__dict__["name"] = name
         __props__.__dict__["tags"] = tags
         return Role(resource_name, opts=opts, __props__=__props__)
@@ -232,6 +252,14 @@ class Role(pulumi.CustomResource):
         AccessRules is a list of access rules defining the resources this Role has access to.
         """
         return pulumi.get(self, "access_rules")
+
+    @property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> pulumi.Output[str]:
+        """
+        Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+        """
+        return pulumi.get(self, "managed_by")
 
     @property
     @pulumi.getter
