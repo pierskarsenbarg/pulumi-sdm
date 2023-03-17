@@ -18,6 +18,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreAzureStoreResult> AzureStores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkConjurResult> CyberarkConjurs;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkPamExperimentalResult> CyberarkPamExperimentals;
+        public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkPamResult> CyberarkPams;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreDelineaStoreResult> DelineaStores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpStoreResult> GcpStores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleResult> VaultApproles;
@@ -34,6 +35,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkPamExperimentalResult> cyberarkPamExperimentals,
 
+            ImmutableArray<Outputs.GetSecretStoreSecretStoreCyberarkPamResult> cyberarkPams,
+
             ImmutableArray<Outputs.GetSecretStoreSecretStoreDelineaStoreResult> delineaStores,
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpStoreResult> gcpStores,
@@ -48,6 +51,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AzureStores = azureStores;
             CyberarkConjurs = cyberarkConjurs;
             CyberarkPamExperimentals = cyberarkPamExperimentals;
+            CyberarkPams = cyberarkPams;
             DelineaStores = delineaStores;
             GcpStores = gcpStores;
             VaultApproles = vaultApproles;

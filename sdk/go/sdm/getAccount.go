@@ -59,6 +59,8 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 type LookupAccountArgs struct {
 	// The User's email address. Must be unique.
 	Email *string `pulumi:"email"`
+	// External ID is an alternative unique ID this user is represented by within an external service.
+	ExternalId *string `pulumi:"externalId"`
 	// The User's first name.
 	FirstName *string `pulumi:"firstName"`
 	// Unique identifier of the User.
@@ -82,6 +84,8 @@ type LookupAccountResult struct {
 	Accounts []GetAccountAccount `pulumi:"accounts"`
 	// The User's email address. Must be unique.
 	Email *string `pulumi:"email"`
+	// External ID is an alternative unique ID this user is represented by within an external service.
+	ExternalId *string `pulumi:"externalId"`
 	// The User's first name.
 	FirstName *string `pulumi:"firstName"`
 	// Unique identifier of the User.
@@ -116,6 +120,8 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 type LookupAccountOutputArgs struct {
 	// The User's email address. Must be unique.
 	Email pulumi.StringPtrInput `pulumi:"email"`
+	// External ID is an alternative unique ID this user is represented by within an external service.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// The User's first name.
 	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
 	// Unique identifier of the User.
@@ -160,6 +166,11 @@ func (o LookupAccountResultOutput) Accounts() GetAccountAccountArrayOutput {
 // The User's email address. Must be unique.
 func (o LookupAccountResultOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// External ID is an alternative unique ID this user is represented by within an external service.
+func (o LookupAccountResultOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
 }
 
 // The User's first name.

@@ -22,13 +22,16 @@ class GetRoleResult:
     """
     A collection of values returned by getRole.
     """
-    def __init__(__self__, id=None, ids=None, name=None, roles=None, tags=None):
+    def __init__(__self__, id=None, ids=None, managed_by=None, name=None, roles=None, tags=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if managed_by and not isinstance(managed_by, str):
+            raise TypeError("Expected argument 'managed_by' to be a str")
+        pulumi.set(__self__, "managed_by", managed_by)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -54,6 +57,14 @@ class GetRoleResult:
         a list of strings of ids of data sources that match the given arguments.
         """
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> str:
+        """
+        Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+        """
+        return pulumi.get(self, "managed_by")
 
     @property
     @pulumi.getter
@@ -88,6 +99,7 @@ class AwaitableGetRoleResult(GetRoleResult):
         return GetRoleResult(
             id=self.id,
             ids=self.ids,
+            managed_by=self.managed_by,
             name=self.name,
             roles=self.roles,
             tags=self.tags)
@@ -117,6 +129,7 @@ def get_role(id: Optional[str] = None,
     return AwaitableGetRoleResult(
         id=__ret__.id,
         ids=__ret__.ids,
+        managed_by=__ret__.managed_by,
         name=__ret__.name,
         roles=__ret__.roles,
         tags=__ret__.tags)

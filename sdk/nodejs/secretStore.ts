@@ -44,18 +44,13 @@ export class SecretStore extends pulumi.CustomResource {
 
     public readonly aws!: pulumi.Output<outputs.SecretStoreAws | undefined>;
     public readonly azureStore!: pulumi.Output<outputs.SecretStoreAzureStore | undefined>;
-    /**
-     * CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly cyberarkConjur!: pulumi.Output<outputs.SecretStoreCyberarkConjur | undefined>;
+    public readonly cyberarkPam!: pulumi.Output<outputs.SecretStoreCyberarkPam | undefined>;
     /**
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
      * version bump.
      */
     public readonly cyberarkPamExperimental!: pulumi.Output<outputs.SecretStoreCyberarkPamExperimental | undefined>;
-    /**
-     * DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly delineaStore!: pulumi.Output<outputs.SecretStoreDelineaStore | undefined>;
     public readonly gcpStore!: pulumi.Output<outputs.SecretStoreGcpStore | undefined>;
     public readonly vaultApprole!: pulumi.Output<outputs.SecretStoreVaultApprole | undefined>;
@@ -78,6 +73,7 @@ export class SecretStore extends pulumi.CustomResource {
             resourceInputs["aws"] = state ? state.aws : undefined;
             resourceInputs["azureStore"] = state ? state.azureStore : undefined;
             resourceInputs["cyberarkConjur"] = state ? state.cyberarkConjur : undefined;
+            resourceInputs["cyberarkPam"] = state ? state.cyberarkPam : undefined;
             resourceInputs["cyberarkPamExperimental"] = state ? state.cyberarkPamExperimental : undefined;
             resourceInputs["delineaStore"] = state ? state.delineaStore : undefined;
             resourceInputs["gcpStore"] = state ? state.gcpStore : undefined;
@@ -89,6 +85,7 @@ export class SecretStore extends pulumi.CustomResource {
             resourceInputs["aws"] = args ? args.aws : undefined;
             resourceInputs["azureStore"] = args ? args.azureStore : undefined;
             resourceInputs["cyberarkConjur"] = args ? args.cyberarkConjur : undefined;
+            resourceInputs["cyberarkPam"] = args ? args.cyberarkPam : undefined;
             resourceInputs["cyberarkPamExperimental"] = args ? args.cyberarkPamExperimental : undefined;
             resourceInputs["delineaStore"] = args ? args.delineaStore : undefined;
             resourceInputs["gcpStore"] = args ? args.gcpStore : undefined;
@@ -107,18 +104,13 @@ export class SecretStore extends pulumi.CustomResource {
 export interface SecretStoreState {
     aws?: pulumi.Input<inputs.SecretStoreAws>;
     azureStore?: pulumi.Input<inputs.SecretStoreAzureStore>;
-    /**
-     * CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur>;
+    cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam>;
     /**
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
      * version bump.
      */
     cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental>;
-    /**
-     * DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
     vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
@@ -132,18 +124,13 @@ export interface SecretStoreState {
 export interface SecretStoreArgs {
     aws?: pulumi.Input<inputs.SecretStoreAws>;
     azureStore?: pulumi.Input<inputs.SecretStoreAzureStore>;
-    /**
-     * CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur>;
+    cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam>;
     /**
      * CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
      * version bump.
      */
     cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental>;
-    /**
-     * DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
     vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;

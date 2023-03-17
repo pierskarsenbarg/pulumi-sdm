@@ -14,10 +14,22 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class NodeRelayGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Device is a read only device name uploaded by the gateway process when  it comes online.
+        /// </summary>
+        [Input("device")]
+        public Input<string>? Device { get; set; }
+
+        /// <summary>
         /// GatewayFilter can be used to restrict the peering between relays and gateways.
         /// </summary>
         [Input("gatewayFilter")]
         public Input<string>? GatewayFilter { get; set; }
+
+        /// <summary>
+        /// Location is a read only network location uploaded by the gateway process when it comes online.
+        /// </summary>
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
@@ -39,6 +51,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         [Input("token")]
         public Input<string>? Token { get; set; }
+
+        /// <summary>
+        /// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public NodeRelayGetArgs()
         {

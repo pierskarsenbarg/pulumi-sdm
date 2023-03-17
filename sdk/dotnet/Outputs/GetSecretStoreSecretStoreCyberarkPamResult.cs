@@ -12,22 +12,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetRoleRoleResult
+    public sealed class GetSecretStoreSecretStoreCyberarkPamResult
     {
+        public readonly string? AppUrl;
         /// <summary>
-        /// AccessRules is a list of access rules defining the resources this Role has access to.
-        /// </summary>
-        public readonly string? AccessRules;
-        /// <summary>
-        /// Unique identifier of the Role.
+        /// Unique identifier of the SecretStore.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
-        /// </summary>
-        public readonly string ManagedBy;
-        /// <summary>
-        /// Unique human-readable name of the Role.
+        /// Unique human-readable name of the SecretStore.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -36,20 +29,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
-        private GetRoleRoleResult(
-            string? accessRules,
+        private GetSecretStoreSecretStoreCyberarkPamResult(
+            string? appUrl,
 
             string? id,
-
-            string managedBy,
 
             string? name,
 
             ImmutableDictionary<string, string>? tags)
         {
-            AccessRules = accessRules;
+            AppUrl = appUrl;
             Id = id;
-            ManagedBy = managedBy;
             Name = name;
             Tags = tags;
         }

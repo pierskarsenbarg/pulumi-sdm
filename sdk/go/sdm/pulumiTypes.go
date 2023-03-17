@@ -203,10 +203,16 @@ func (o AccountServicePtrOutput) Token() pulumi.StringPtrOutput {
 type AccountUser struct {
 	// The User's email address. Must be unique.
 	Email string `pulumi:"email"`
+	// External ID is an alternative unique ID this user is represented by within an external service.
+	ExternalId *string `pulumi:"externalId"`
 	// The User's first name.
 	FirstName string `pulumi:"firstName"`
 	// The User's last name.
 	LastName string `pulumi:"lastName"`
+	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+	ManagedBy *string `pulumi:"managedBy"`
+	// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+	PermissionLevel *string `pulumi:"permissionLevel"`
 	// The User's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -227,10 +233,16 @@ type AccountUserInput interface {
 type AccountUserArgs struct {
 	// The User's email address. Must be unique.
 	Email pulumi.StringInput `pulumi:"email"`
+	// External ID is an alternative unique ID this user is represented by within an external service.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// The User's first name.
 	FirstName pulumi.StringInput `pulumi:"firstName"`
 	// The User's last name.
 	LastName pulumi.StringInput `pulumi:"lastName"`
+	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+	ManagedBy pulumi.StringPtrInput `pulumi:"managedBy"`
+	// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+	PermissionLevel pulumi.StringPtrInput `pulumi:"permissionLevel"`
 	// The User's suspended state.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -319,6 +331,11 @@ func (o AccountUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountUser) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// External ID is an alternative unique ID this user is represented by within an external service.
+func (o AccountUserOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountUser) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
 // The User's first name.
 func (o AccountUserOutput) FirstName() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountUser) string { return v.FirstName }).(pulumi.StringOutput)
@@ -327,6 +344,16 @@ func (o AccountUserOutput) FirstName() pulumi.StringOutput {
 // The User's last name.
 func (o AccountUserOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountUser) string { return v.LastName }).(pulumi.StringOutput)
+}
+
+// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+func (o AccountUserOutput) ManagedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountUser) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
+}
+
+// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+func (o AccountUserOutput) PermissionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountUser) *string { return v.PermissionLevel }).(pulumi.StringPtrOutput)
 }
 
 // The User's suspended state.
@@ -373,6 +400,16 @@ func (o AccountUserPtrOutput) Email() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// External ID is an alternative unique ID this user is represented by within an external service.
+func (o AccountUserPtrOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The User's first name.
 func (o AccountUserPtrOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountUser) *string {
@@ -390,6 +427,26 @@ func (o AccountUserPtrOutput) LastName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.LastName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+func (o AccountUserPtrOutput) ManagedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+func (o AccountUserPtrOutput) PermissionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccountUser) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PermissionLevel
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -416,15 +473,21 @@ func (o AccountUserPtrOutput) Tags() pulumi.StringMapOutput {
 type NodeGateway struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress *string `pulumi:"bindAddress"`
+	// Device is a read only device name uploaded by the gateway process when  it comes online.
+	Device *string `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways.
 	GatewayFilter *string `pulumi:"gatewayFilter"`
 	// The public hostname/port tuple at which the gateway will be accessible to clients.
 	ListenAddress string `pulumi:"listenAddress"`
+	// Location is a read only network location uploaded by the gateway process when it comes online.
+	Location *string `pulumi:"location"`
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags  map[string]string `pulumi:"tags"`
 	Token *string           `pulumi:"token"`
+	// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+	Version *string `pulumi:"version"`
 }
 
 // NodeGatewayInput is an input type that accepts NodeGatewayArgs and NodeGatewayOutput values.
@@ -441,15 +504,21 @@ type NodeGatewayInput interface {
 type NodeGatewayArgs struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress pulumi.StringPtrInput `pulumi:"bindAddress"`
+	// Device is a read only device name uploaded by the gateway process when  it comes online.
+	Device pulumi.StringPtrInput `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways.
 	GatewayFilter pulumi.StringPtrInput `pulumi:"gatewayFilter"`
 	// The public hostname/port tuple at which the gateway will be accessible to clients.
 	ListenAddress pulumi.StringInput `pulumi:"listenAddress"`
+	// Location is a read only network location uploaded by the gateway process when it comes online.
+	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags  pulumi.StringMapInput `pulumi:"tags"`
 	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (NodeGatewayArgs) ElementType() reflect.Type {
@@ -534,6 +603,11 @@ func (o NodeGatewayOutput) BindAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeGateway) *string { return v.BindAddress }).(pulumi.StringPtrOutput)
 }
 
+// Device is a read only device name uploaded by the gateway process when  it comes online.
+func (o NodeGatewayOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGateway) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
 // GatewayFilter can be used to restrict the peering between relays and gateways.
 func (o NodeGatewayOutput) GatewayFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeGateway) *string { return v.GatewayFilter }).(pulumi.StringPtrOutput)
@@ -542,6 +616,11 @@ func (o NodeGatewayOutput) GatewayFilter() pulumi.StringPtrOutput {
 // The public hostname/port tuple at which the gateway will be accessible to clients.
 func (o NodeGatewayOutput) ListenAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeGateway) string { return v.ListenAddress }).(pulumi.StringOutput)
+}
+
+// Location is a read only network location uploaded by the gateway process when it comes online.
+func (o NodeGatewayOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGateway) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
@@ -556,6 +635,11 @@ func (o NodeGatewayOutput) Tags() pulumi.StringMapOutput {
 
 func (o NodeGatewayOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeGateway) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+func (o NodeGatewayOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGateway) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type NodeGatewayPtrOutput struct{ *pulumi.OutputState }
@@ -592,6 +676,16 @@ func (o NodeGatewayPtrOutput) BindAddress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Device is a read only device name uploaded by the gateway process when  it comes online.
+func (o NodeGatewayPtrOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Device
+	}).(pulumi.StringPtrOutput)
+}
+
 // GatewayFilter can be used to restrict the peering between relays and gateways.
 func (o NodeGatewayPtrOutput) GatewayFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeGateway) *string {
@@ -609,6 +703,16 @@ func (o NodeGatewayPtrOutput) ListenAddress() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ListenAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location is a read only network location uploaded by the gateway process when it comes online.
+func (o NodeGatewayPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -641,14 +745,30 @@ func (o NodeGatewayPtrOutput) Token() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+func (o NodeGatewayPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
 type NodeRelay struct {
+	// Device is a read only device name uploaded by the gateway process when  it comes online.
+	Device *string `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways.
 	GatewayFilter *string `pulumi:"gatewayFilter"`
+	// Location is a read only network location uploaded by the gateway process when it comes online.
+	Location *string `pulumi:"location"`
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags  map[string]string `pulumi:"tags"`
 	Token *string           `pulumi:"token"`
+	// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+	Version *string `pulumi:"version"`
 }
 
 // NodeRelayInput is an input type that accepts NodeRelayArgs and NodeRelayOutput values.
@@ -663,13 +783,19 @@ type NodeRelayInput interface {
 }
 
 type NodeRelayArgs struct {
+	// Device is a read only device name uploaded by the gateway process when  it comes online.
+	Device pulumi.StringPtrInput `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways.
 	GatewayFilter pulumi.StringPtrInput `pulumi:"gatewayFilter"`
+	// Location is a read only network location uploaded by the gateway process when it comes online.
+	Location pulumi.StringPtrInput `pulumi:"location"`
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags  pulumi.StringMapInput `pulumi:"tags"`
 	Token pulumi.StringPtrInput `pulumi:"token"`
+	// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (NodeRelayArgs) ElementType() reflect.Type {
@@ -749,9 +875,19 @@ func (o NodeRelayOutput) ToNodeRelayPtrOutputWithContext(ctx context.Context) No
 	}).(NodeRelayPtrOutput)
 }
 
+// Device is a read only device name uploaded by the gateway process when  it comes online.
+func (o NodeRelayOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeRelay) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
 // GatewayFilter can be used to restrict the peering between relays and gateways.
 func (o NodeRelayOutput) GatewayFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeRelay) *string { return v.GatewayFilter }).(pulumi.StringPtrOutput)
+}
+
+// Location is a read only network location uploaded by the gateway process when it comes online.
+func (o NodeRelayOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeRelay) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
@@ -766,6 +902,11 @@ func (o NodeRelayOutput) Tags() pulumi.StringMapOutput {
 
 func (o NodeRelayOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeRelay) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+func (o NodeRelayOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeRelay) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type NodeRelayPtrOutput struct{ *pulumi.OutputState }
@@ -792,6 +933,16 @@ func (o NodeRelayPtrOutput) Elem() NodeRelayOutput {
 	}).(NodeRelayOutput)
 }
 
+// Device is a read only device name uploaded by the gateway process when  it comes online.
+func (o NodeRelayPtrOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeRelay) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Device
+	}).(pulumi.StringPtrOutput)
+}
+
 // GatewayFilter can be used to restrict the peering between relays and gateways.
 func (o NodeRelayPtrOutput) GatewayFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeRelay) *string {
@@ -799,6 +950,16 @@ func (o NodeRelayPtrOutput) GatewayFilter() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.GatewayFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location is a read only network location uploaded by the gateway process when it comes online.
+func (o NodeRelayPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeRelay) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -828,6 +989,16 @@ func (o NodeRelayPtrOutput) Token() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+func (o NodeRelayPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeRelay) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3259,6 +3430,448 @@ func (o ResourceAmazonEksPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.Stri
 // Tags is a map of key, value pairs.
 func (o ResourceAmazonEksPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceAmazonEks) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type ResourceAmazonEksInstanceProfile struct {
+	// Bind interface
+	BindInterface        *string `pulumi:"bindInterface"`
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	ClusterName          string  `pulumi:"clusterName"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	Endpoint     string  `pulumi:"endpoint"`
+	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
+	// Unique human-readable name of the Resource.
+	Name                                string  `pulumi:"name"`
+	Region                              string  `pulumi:"region"`
+	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                             *string `pulumi:"roleArn"`
+	RoleExternalId                      *string `pulumi:"roleExternalId"`
+	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
+	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId                 *string `pulumi:"secretStoreId"`
+	SecretStoreRoleArnKey         *string `pulumi:"secretStoreRoleArnKey"`
+	SecretStoreRoleArnPath        *string `pulumi:"secretStoreRoleArnPath"`
+	SecretStoreRoleExternalIdKey  *string `pulumi:"secretStoreRoleExternalIdKey"`
+	SecretStoreRoleExternalIdPath *string `pulumi:"secretStoreRoleExternalIdPath"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceAmazonEksInstanceProfileInput is an input type that accepts ResourceAmazonEksInstanceProfileArgs and ResourceAmazonEksInstanceProfileOutput values.
+// You can construct a concrete instance of `ResourceAmazonEksInstanceProfileInput` via:
+//
+//	ResourceAmazonEksInstanceProfileArgs{...}
+type ResourceAmazonEksInstanceProfileInput interface {
+	pulumi.Input
+
+	ToResourceAmazonEksInstanceProfileOutput() ResourceAmazonEksInstanceProfileOutput
+	ToResourceAmazonEksInstanceProfileOutputWithContext(context.Context) ResourceAmazonEksInstanceProfileOutput
+}
+
+type ResourceAmazonEksInstanceProfileArgs struct {
+	// Bind interface
+	BindInterface        pulumi.StringPtrInput `pulumi:"bindInterface"`
+	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	ClusterName          pulumi.StringInput    `pulumi:"clusterName"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	Endpoint     pulumi.StringInput    `pulumi:"endpoint"`
+	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
+	// Unique human-readable name of the Resource.
+	Name                                pulumi.StringInput    `pulumi:"name"`
+	Region                              pulumi.StringInput    `pulumi:"region"`
+	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                             pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                      pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
+	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId                 pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SecretStoreRoleArnKey         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
+	SecretStoreRoleArnPath        pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
+	SecretStoreRoleExternalIdKey  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
+	SecretStoreRoleExternalIdPath pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceAmazonEksInstanceProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAmazonEksInstanceProfile)(nil)).Elem()
+}
+
+func (i ResourceAmazonEksInstanceProfileArgs) ToResourceAmazonEksInstanceProfileOutput() ResourceAmazonEksInstanceProfileOutput {
+	return i.ToResourceAmazonEksInstanceProfileOutputWithContext(context.Background())
+}
+
+func (i ResourceAmazonEksInstanceProfileArgs) ToResourceAmazonEksInstanceProfileOutputWithContext(ctx context.Context) ResourceAmazonEksInstanceProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksInstanceProfileOutput)
+}
+
+func (i ResourceAmazonEksInstanceProfileArgs) ToResourceAmazonEksInstanceProfilePtrOutput() ResourceAmazonEksInstanceProfilePtrOutput {
+	return i.ToResourceAmazonEksInstanceProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAmazonEksInstanceProfileArgs) ToResourceAmazonEksInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAmazonEksInstanceProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksInstanceProfileOutput).ToResourceAmazonEksInstanceProfilePtrOutputWithContext(ctx)
+}
+
+// ResourceAmazonEksInstanceProfilePtrInput is an input type that accepts ResourceAmazonEksInstanceProfileArgs, ResourceAmazonEksInstanceProfilePtr and ResourceAmazonEksInstanceProfilePtrOutput values.
+// You can construct a concrete instance of `ResourceAmazonEksInstanceProfilePtrInput` via:
+//
+//	        ResourceAmazonEksInstanceProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAmazonEksInstanceProfilePtrInput interface {
+	pulumi.Input
+
+	ToResourceAmazonEksInstanceProfilePtrOutput() ResourceAmazonEksInstanceProfilePtrOutput
+	ToResourceAmazonEksInstanceProfilePtrOutputWithContext(context.Context) ResourceAmazonEksInstanceProfilePtrOutput
+}
+
+type resourceAmazonEksInstanceProfilePtrType ResourceAmazonEksInstanceProfileArgs
+
+func ResourceAmazonEksInstanceProfilePtr(v *ResourceAmazonEksInstanceProfileArgs) ResourceAmazonEksInstanceProfilePtrInput {
+	return (*resourceAmazonEksInstanceProfilePtrType)(v)
+}
+
+func (*resourceAmazonEksInstanceProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAmazonEksInstanceProfile)(nil)).Elem()
+}
+
+func (i *resourceAmazonEksInstanceProfilePtrType) ToResourceAmazonEksInstanceProfilePtrOutput() ResourceAmazonEksInstanceProfilePtrOutput {
+	return i.ToResourceAmazonEksInstanceProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAmazonEksInstanceProfilePtrType) ToResourceAmazonEksInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAmazonEksInstanceProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksInstanceProfilePtrOutput)
+}
+
+type ResourceAmazonEksInstanceProfileOutput struct{ *pulumi.OutputState }
+
+func (ResourceAmazonEksInstanceProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAmazonEksInstanceProfile)(nil)).Elem()
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) ToResourceAmazonEksInstanceProfileOutput() ResourceAmazonEksInstanceProfileOutput {
+	return o
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) ToResourceAmazonEksInstanceProfileOutputWithContext(ctx context.Context) ResourceAmazonEksInstanceProfileOutput {
+	return o
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) ToResourceAmazonEksInstanceProfilePtrOutput() ResourceAmazonEksInstanceProfilePtrOutput {
+	return o.ToResourceAmazonEksInstanceProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) ToResourceAmazonEksInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAmazonEksInstanceProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonEksInstanceProfile) *ResourceAmazonEksInstanceProfile {
+		return &v
+	}).(ResourceAmazonEksInstanceProfilePtrOutput)
+}
+
+// Bind interface
+func (o ResourceAmazonEksInstanceProfileOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAmazonEksInstanceProfileOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+func (o ResourceAmazonEksInstanceProfileOutput) HealthcheckNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.HealthcheckNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAmazonEksInstanceProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAmazonEksInstanceProfileOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceAmazonEksInstanceProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAmazonEksInstanceProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAmazonEksInstanceProfile)(nil)).Elem()
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) ToResourceAmazonEksInstanceProfilePtrOutput() ResourceAmazonEksInstanceProfilePtrOutput {
+	return o
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) ToResourceAmazonEksInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAmazonEksInstanceProfilePtrOutput {
+	return o
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) Elem() ResourceAmazonEksInstanceProfileOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) ResourceAmazonEksInstanceProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAmazonEksInstanceProfile
+		return ret
+	}).(ResourceAmazonEksInstanceProfileOutput)
+}
+
+// Bind interface
+func (o ResourceAmazonEksInstanceProfilePtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthority
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) HealthcheckNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthcheckNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIdentityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIdentityHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreCertificateAuthorityKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreCertificateAuthorityPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleArnKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleArnPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleExternalIdKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreRoleExternalIdPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -7062,7 +7675,7 @@ type ResourceAzure struct {
 	SecretStoreId           *string `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
 	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * azure_postgres:
+	// * azure_mysql:
 	SecretStoreTenantIdKey  *string `pulumi:"secretStoreTenantIdKey"`
 	SecretStoreTenantIdPath *string `pulumi:"secretStoreTenantIdPath"`
 	// Tags is a map of key, value pairs.
@@ -7096,7 +7709,7 @@ type ResourceAzureArgs struct {
 	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
 	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * azure_postgres:
+	// * azure_mysql:
 	SecretStoreTenantIdKey  pulumi.StringPtrInput `pulumi:"secretStoreTenantIdKey"`
 	SecretStoreTenantIdPath pulumi.StringPtrInput `pulumi:"secretStoreTenantIdPath"`
 	// Tags is a map of key, value pairs.
@@ -7225,7 +7838,7 @@ func (o ResourceAzureOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
 }
 
-// * azure_postgres:
+// * azure_mysql:
 func (o ResourceAzureOutput) SecretStoreTenantIdKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStoreTenantIdKey }).(pulumi.StringPtrOutput)
 }
@@ -7361,7 +7974,7 @@ func (o ResourceAzurePtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// * azure_postgres:
+// * azure_mysql:
 func (o ResourceAzurePtrOutput) SecretStoreTenantIdKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzure) *string {
 		if v == nil {
@@ -7414,7 +8027,7 @@ type ResourceAzureCertificate struct {
 	SecretStoreClientCertificatePath *string `pulumi:"secretStoreClientCertificatePath"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// * azure_postgres:
+	// * azure_mysql:
 	SecretStoreTenantIdKey  *string `pulumi:"secretStoreTenantIdKey"`
 	SecretStoreTenantIdPath *string `pulumi:"secretStoreTenantIdPath"`
 	// Tags is a map of key, value pairs.
@@ -7448,7 +8061,7 @@ type ResourceAzureCertificateArgs struct {
 	SecretStoreClientCertificatePath pulumi.StringPtrInput `pulumi:"secretStoreClientCertificatePath"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// * azure_postgres:
+	// * azure_mysql:
 	SecretStoreTenantIdKey  pulumi.StringPtrInput `pulumi:"secretStoreTenantIdKey"`
 	SecretStoreTenantIdPath pulumi.StringPtrInput `pulumi:"secretStoreTenantIdPath"`
 	// Tags is a map of key, value pairs.
@@ -7577,7 +8190,7 @@ func (o ResourceAzureCertificateOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// * azure_postgres:
+// * azure_mysql:
 func (o ResourceAzureCertificateOutput) SecretStoreTenantIdKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreTenantIdKey }).(pulumi.StringPtrOutput)
 }
@@ -7713,7 +8326,7 @@ func (o ResourceAzureCertificatePtrOutput) SecretStoreId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// * azure_postgres:
+// * azure_mysql:
 func (o ResourceAzureCertificatePtrOutput) SecretStoreTenantIdKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
 		if v == nil {
@@ -7748,6 +8361,369 @@ func (o ResourceAzureCertificatePtrOutput) TenantId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceAzureMysql struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	Database      string  `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	Hostname     string  `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name         string  `pulumi:"name"`
+	Password     *string `pulumi:"password"`
+	Port         *int    `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId           *string `pulumi:"secretStoreId"`
+	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
+	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
+	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
+	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	// Tags is a map of key, value pairs.
+	Tags     map[string]string `pulumi:"tags"`
+	Username *string           `pulumi:"username"`
+}
+
+// ResourceAzureMysqlInput is an input type that accepts ResourceAzureMysqlArgs and ResourceAzureMysqlOutput values.
+// You can construct a concrete instance of `ResourceAzureMysqlInput` via:
+//
+//	ResourceAzureMysqlArgs{...}
+type ResourceAzureMysqlInput interface {
+	pulumi.Input
+
+	ToResourceAzureMysqlOutput() ResourceAzureMysqlOutput
+	ToResourceAzureMysqlOutputWithContext(context.Context) ResourceAzureMysqlOutput
+}
+
+type ResourceAzureMysqlArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	Database      pulumi.StringInput    `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	Hostname     pulumi.StringInput    `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name         pulumi.StringInput    `pulumi:"name"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
+	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
+	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
+	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	// Tags is a map of key, value pairs.
+	Tags     pulumi.StringMapInput `pulumi:"tags"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceAzureMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAzureMysql)(nil)).Elem()
+}
+
+func (i ResourceAzureMysqlArgs) ToResourceAzureMysqlOutput() ResourceAzureMysqlOutput {
+	return i.ToResourceAzureMysqlOutputWithContext(context.Background())
+}
+
+func (i ResourceAzureMysqlArgs) ToResourceAzureMysqlOutputWithContext(ctx context.Context) ResourceAzureMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureMysqlOutput)
+}
+
+func (i ResourceAzureMysqlArgs) ToResourceAzureMysqlPtrOutput() ResourceAzureMysqlPtrOutput {
+	return i.ToResourceAzureMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAzureMysqlArgs) ToResourceAzureMysqlPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureMysqlOutput).ToResourceAzureMysqlPtrOutputWithContext(ctx)
+}
+
+// ResourceAzureMysqlPtrInput is an input type that accepts ResourceAzureMysqlArgs, ResourceAzureMysqlPtr and ResourceAzureMysqlPtrOutput values.
+// You can construct a concrete instance of `ResourceAzureMysqlPtrInput` via:
+//
+//	        ResourceAzureMysqlArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAzureMysqlPtrInput interface {
+	pulumi.Input
+
+	ToResourceAzureMysqlPtrOutput() ResourceAzureMysqlPtrOutput
+	ToResourceAzureMysqlPtrOutputWithContext(context.Context) ResourceAzureMysqlPtrOutput
+}
+
+type resourceAzureMysqlPtrType ResourceAzureMysqlArgs
+
+func ResourceAzureMysqlPtr(v *ResourceAzureMysqlArgs) ResourceAzureMysqlPtrInput {
+	return (*resourceAzureMysqlPtrType)(v)
+}
+
+func (*resourceAzureMysqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAzureMysql)(nil)).Elem()
+}
+
+func (i *resourceAzureMysqlPtrType) ToResourceAzureMysqlPtrOutput() ResourceAzureMysqlPtrOutput {
+	return i.ToResourceAzureMysqlPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAzureMysqlPtrType) ToResourceAzureMysqlPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureMysqlPtrOutput)
+}
+
+type ResourceAzureMysqlOutput struct{ *pulumi.OutputState }
+
+func (ResourceAzureMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAzureMysql)(nil)).Elem()
+}
+
+func (o ResourceAzureMysqlOutput) ToResourceAzureMysqlOutput() ResourceAzureMysqlOutput {
+	return o
+}
+
+func (o ResourceAzureMysqlOutput) ToResourceAzureMysqlOutputWithContext(ctx context.Context) ResourceAzureMysqlOutput {
+	return o
+}
+
+func (o ResourceAzureMysqlOutput) ToResourceAzureMysqlPtrOutput() ResourceAzureMysqlPtrOutput {
+	return o.ToResourceAzureMysqlPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAzureMysqlOutput) ToResourceAzureMysqlPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAzureMysql) *ResourceAzureMysql {
+		return &v
+	}).(ResourceAzureMysqlPtrOutput)
+}
+
+// Bind interface
+func (o ResourceAzureMysqlOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAzureMysqlOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAzureMysqlOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceAzureMysqlOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAzureMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAzureMysqlOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceAzureMysqlOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceAzureMysqlPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAzureMysqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAzureMysql)(nil)).Elem()
+}
+
+func (o ResourceAzureMysqlPtrOutput) ToResourceAzureMysqlPtrOutput() ResourceAzureMysqlPtrOutput {
+	return o
+}
+
+func (o ResourceAzureMysqlPtrOutput) ToResourceAzureMysqlPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlPtrOutput {
+	return o
+}
+
+func (o ResourceAzureMysqlPtrOutput) Elem() ResourceAzureMysqlOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) ResourceAzureMysql {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAzureMysql
+		return ret
+	}).(ResourceAzureMysqlOutput)
+}
+
+// Bind interface
+func (o ResourceAzureMysqlPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAzureMysqlPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAzureMysqlPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAzureMysqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStorePasswordKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStorePasswordPath
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreUsernameKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreUsernamePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAzureMysqlPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12560,9 +13536,12 @@ type ResourceElasticacheRedis struct {
 	SecretStoreId           *string `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
 	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
+	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
+	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
 	// Tags is a map of key, value pairs.
 	Tags        map[string]string `pulumi:"tags"`
 	TlsRequired *bool             `pulumi:"tlsRequired"`
+	Username    *string           `pulumi:"username"`
 }
 
 // ResourceElasticacheRedisInput is an input type that accepts ResourceElasticacheRedisArgs and ResourceElasticacheRedisOutput values.
@@ -12591,9 +13570,12 @@ type ResourceElasticacheRedisArgs struct {
 	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
 	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
+	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
+	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
 	// Tags is a map of key, value pairs.
 	Tags        pulumi.StringMapInput `pulumi:"tags"`
 	TlsRequired pulumi.BoolPtrInput   `pulumi:"tlsRequired"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceElasticacheRedisArgs) ElementType() reflect.Type {
@@ -12717,6 +13699,14 @@ func (o ResourceElasticacheRedisOutput) SecretStorePasswordPath() pulumi.StringP
 	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceElasticacheRedisOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceElasticacheRedisOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
+}
+
 // Tags is a map of key, value pairs.
 func (o ResourceElasticacheRedisOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceElasticacheRedis) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -12724,6 +13714,10 @@ func (o ResourceElasticacheRedisOutput) Tags() pulumi.StringMapOutput {
 
 func (o ResourceElasticacheRedisOutput) TlsRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ResourceElasticacheRedis) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceElasticacheRedisOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type ResourceElasticacheRedisPtrOutput struct{ *pulumi.OutputState }
@@ -12844,6 +13838,24 @@ func (o ResourceElasticacheRedisPtrOutput) SecretStorePasswordPath() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceElasticacheRedisPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreUsernameKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceElasticacheRedisPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreUsernamePath
+	}).(pulumi.StringPtrOutput)
+}
+
 // Tags is a map of key, value pairs.
 func (o ResourceElasticacheRedisPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceElasticacheRedis) map[string]string {
@@ -12861,6 +13873,15 @@ func (o ResourceElasticacheRedisPtrOutput) TlsRequired() pulumi.BoolPtrOutput {
 		}
 		return v.TlsRequired
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceElasticacheRedisPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceGcp struct {
@@ -23961,7 +24982,7 @@ type ResourceRdp struct {
 	// Unique human-readable name of the Resource.
 	Name         string  `pulumi:"name"`
 	Password     *string `pulumi:"password"`
-	Port         int     `pulumi:"port"`
+	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           *string `pulumi:"secretStoreId"`
@@ -23995,7 +25016,7 @@ type ResourceRdpArgs struct {
 	// Unique human-readable name of the Resource.
 	Name         pulumi.StringInput    `pulumi:"name"`
 	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntInput       `pulumi:"port"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
@@ -24112,8 +25133,8 @@ func (o ResourceRdpOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRdp) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceRdpOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v ResourceRdp) int { return v.Port }).(pulumi.IntOutput)
+func (o ResourceRdpOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRdp) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 func (o ResourceRdpOutput) PortOverride() pulumi.IntPtrOutput {
@@ -24236,7 +25257,7 @@ func (o ResourceRdpPtrOutput) Port() pulumi.IntPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -24329,8 +25350,12 @@ type ResourceRedis struct {
 	SecretStoreId           *string `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
 	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
+	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
+	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]string `pulumi:"tags"`
+	Tags        map[string]string `pulumi:"tags"`
+	TlsRequired *bool             `pulumi:"tlsRequired"`
+	Username    *string           `pulumi:"username"`
 }
 
 // ResourceRedisInput is an input type that accepts ResourceRedisArgs and ResourceRedisOutput values.
@@ -24359,8 +25384,12 @@ type ResourceRedisArgs struct {
 	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
 	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
+	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
+	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
 	// Tags is a map of key, value pairs.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
+	Tags        pulumi.StringMapInput `pulumi:"tags"`
+	TlsRequired pulumi.BoolPtrInput   `pulumi:"tlsRequired"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceRedisArgs) ElementType() reflect.Type {
@@ -24484,9 +25513,25 @@ func (o ResourceRedisOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceRedisOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceRedisOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
+}
+
 // Tags is a map of key, value pairs.
 func (o ResourceRedisOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceRedis) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceRedisOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceRedis) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceRedisOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedis) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type ResourceRedisPtrOutput struct{ *pulumi.OutputState }
@@ -24607,6 +25652,24 @@ func (o ResourceRedisPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceRedisPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreUsernameKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceRedisPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreUsernamePath
+	}).(pulumi.StringPtrOutput)
+}
+
 // Tags is a map of key, value pairs.
 func (o ResourceRedisPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceRedis) map[string]string {
@@ -24615,6 +25678,24 @@ func (o ResourceRedisPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceRedisPtrOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceRedis) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TlsRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceRedisPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceRedshift struct {
@@ -29097,6 +30178,177 @@ func (o SecretStoreCyberarkConjurPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type SecretStoreCyberarkPam struct {
+	AppUrl string `pulumi:"appUrl"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreCyberarkPamInput is an input type that accepts SecretStoreCyberarkPamArgs and SecretStoreCyberarkPamOutput values.
+// You can construct a concrete instance of `SecretStoreCyberarkPamInput` via:
+//
+//	SecretStoreCyberarkPamArgs{...}
+type SecretStoreCyberarkPamInput interface {
+	pulumi.Input
+
+	ToSecretStoreCyberarkPamOutput() SecretStoreCyberarkPamOutput
+	ToSecretStoreCyberarkPamOutputWithContext(context.Context) SecretStoreCyberarkPamOutput
+}
+
+type SecretStoreCyberarkPamArgs struct {
+	AppUrl pulumi.StringInput `pulumi:"appUrl"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreCyberarkPamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreCyberarkPam)(nil)).Elem()
+}
+
+func (i SecretStoreCyberarkPamArgs) ToSecretStoreCyberarkPamOutput() SecretStoreCyberarkPamOutput {
+	return i.ToSecretStoreCyberarkPamOutputWithContext(context.Background())
+}
+
+func (i SecretStoreCyberarkPamArgs) ToSecretStoreCyberarkPamOutputWithContext(ctx context.Context) SecretStoreCyberarkPamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamOutput)
+}
+
+func (i SecretStoreCyberarkPamArgs) ToSecretStoreCyberarkPamPtrOutput() SecretStoreCyberarkPamPtrOutput {
+	return i.ToSecretStoreCyberarkPamPtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreCyberarkPamArgs) ToSecretStoreCyberarkPamPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamOutput).ToSecretStoreCyberarkPamPtrOutputWithContext(ctx)
+}
+
+// SecretStoreCyberarkPamPtrInput is an input type that accepts SecretStoreCyberarkPamArgs, SecretStoreCyberarkPamPtr and SecretStoreCyberarkPamPtrOutput values.
+// You can construct a concrete instance of `SecretStoreCyberarkPamPtrInput` via:
+//
+//	        SecretStoreCyberarkPamArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreCyberarkPamPtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreCyberarkPamPtrOutput() SecretStoreCyberarkPamPtrOutput
+	ToSecretStoreCyberarkPamPtrOutputWithContext(context.Context) SecretStoreCyberarkPamPtrOutput
+}
+
+type secretStoreCyberarkPamPtrType SecretStoreCyberarkPamArgs
+
+func SecretStoreCyberarkPamPtr(v *SecretStoreCyberarkPamArgs) SecretStoreCyberarkPamPtrInput {
+	return (*secretStoreCyberarkPamPtrType)(v)
+}
+
+func (*secretStoreCyberarkPamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreCyberarkPam)(nil)).Elem()
+}
+
+func (i *secretStoreCyberarkPamPtrType) ToSecretStoreCyberarkPamPtrOutput() SecretStoreCyberarkPamPtrOutput {
+	return i.ToSecretStoreCyberarkPamPtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreCyberarkPamPtrType) ToSecretStoreCyberarkPamPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamPtrOutput)
+}
+
+type SecretStoreCyberarkPamOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreCyberarkPamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreCyberarkPam)(nil)).Elem()
+}
+
+func (o SecretStoreCyberarkPamOutput) ToSecretStoreCyberarkPamOutput() SecretStoreCyberarkPamOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkPamOutput) ToSecretStoreCyberarkPamOutputWithContext(ctx context.Context) SecretStoreCyberarkPamOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkPamOutput) ToSecretStoreCyberarkPamPtrOutput() SecretStoreCyberarkPamPtrOutput {
+	return o.ToSecretStoreCyberarkPamPtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreCyberarkPamOutput) ToSecretStoreCyberarkPamPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreCyberarkPam) *SecretStoreCyberarkPam {
+		return &v
+	}).(SecretStoreCyberarkPamPtrOutput)
+}
+
+func (o SecretStoreCyberarkPamOutput) AppUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkPam) string { return v.AppUrl }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreCyberarkPamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkPam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreCyberarkPamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreCyberarkPam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreCyberarkPamPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreCyberarkPamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreCyberarkPam)(nil)).Elem()
+}
+
+func (o SecretStoreCyberarkPamPtrOutput) ToSecretStoreCyberarkPamPtrOutput() SecretStoreCyberarkPamPtrOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkPamPtrOutput) ToSecretStoreCyberarkPamPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamPtrOutput {
+	return o
+}
+
+func (o SecretStoreCyberarkPamPtrOutput) Elem() SecretStoreCyberarkPamOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkPam) SecretStoreCyberarkPam {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreCyberarkPam
+		return ret
+	}).(SecretStoreCyberarkPamOutput)
+}
+
+func (o SecretStoreCyberarkPamPtrOutput) AppUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkPam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AppUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreCyberarkPamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkPam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreCyberarkPamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreCyberarkPam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type SecretStoreCyberarkPamExperimental struct {
 	AppUrl string `pulumi:"appUrl"`
 	// Unique human-readable name of the SecretStore.
@@ -30459,12 +31711,18 @@ func (o GetAccountAccountServiceArrayOutput) Index(i pulumi.IntInput) GetAccount
 type GetAccountAccountUser struct {
 	// The User's email address. Must be unique.
 	Email *string `pulumi:"email"`
+	// External ID is an alternative unique ID this user is represented by within an external service.
+	ExternalId *string `pulumi:"externalId"`
 	// The User's first name.
 	FirstName *string `pulumi:"firstName"`
 	// Unique identifier of the User.
 	Id *string `pulumi:"id"`
 	// The User's last name.
 	LastName *string `pulumi:"lastName"`
+	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+	ManagedBy string `pulumi:"managedBy"`
+	// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+	PermissionLevel string `pulumi:"permissionLevel"`
 	// The User's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -30485,12 +31743,18 @@ type GetAccountAccountUserInput interface {
 type GetAccountAccountUserArgs struct {
 	// The User's email address. Must be unique.
 	Email pulumi.StringPtrInput `pulumi:"email"`
+	// External ID is an alternative unique ID this user is represented by within an external service.
+	ExternalId pulumi.StringPtrInput `pulumi:"externalId"`
 	// The User's first name.
 	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
 	// Unique identifier of the User.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The User's last name.
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
+	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+	ManagedBy pulumi.StringInput `pulumi:"managedBy"`
+	// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+	PermissionLevel pulumi.StringInput `pulumi:"permissionLevel"`
 	// The User's suspended state.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -30553,6 +31817,11 @@ func (o GetAccountAccountUserOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountUser) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
 
+// External ID is an alternative unique ID this user is represented by within an external service.
+func (o GetAccountAccountUserOutput) ExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountUser) *string { return v.ExternalId }).(pulumi.StringPtrOutput)
+}
+
 // The User's first name.
 func (o GetAccountAccountUserOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountUser) *string { return v.FirstName }).(pulumi.StringPtrOutput)
@@ -30566,6 +31835,16 @@ func (o GetAccountAccountUserOutput) Id() pulumi.StringPtrOutput {
 // The User's last name.
 func (o GetAccountAccountUserOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountUser) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+func (o GetAccountAccountUserOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountAccountUser) string { return v.ManagedBy }).(pulumi.StringOutput)
+}
+
+// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+func (o GetAccountAccountUserOutput) PermissionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountAccountUser) string { return v.PermissionLevel }).(pulumi.StringOutput)
 }
 
 // The User's suspended state.
@@ -30816,16 +32095,22 @@ func (o GetNodeNodeArrayOutput) Index(i pulumi.IntInput) GetNodeNodeOutput {
 type GetNodeNodeGateway struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress *string `pulumi:"bindAddress"`
+	// Device is a read only device name uploaded by the gateway process when  it comes online.
+	Device string `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways.
 	GatewayFilter *string `pulumi:"gatewayFilter"`
 	// Unique identifier of the Relay.
 	Id *string `pulumi:"id"`
 	// The public hostname/port tuple at which the gateway will be accessible to clients.
 	ListenAddress *string `pulumi:"listenAddress"`
+	// Location is a read only network location uploaded by the gateway process when it comes online.
+	Location string `pulumi:"location"`
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
+	// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+	Version string `pulumi:"version"`
 }
 
 // GetNodeNodeGatewayInput is an input type that accepts GetNodeNodeGatewayArgs and GetNodeNodeGatewayOutput values.
@@ -30842,16 +32127,22 @@ type GetNodeNodeGatewayInput interface {
 type GetNodeNodeGatewayArgs struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress pulumi.StringPtrInput `pulumi:"bindAddress"`
+	// Device is a read only device name uploaded by the gateway process when  it comes online.
+	Device pulumi.StringInput `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways.
 	GatewayFilter pulumi.StringPtrInput `pulumi:"gatewayFilter"`
 	// Unique identifier of the Relay.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The public hostname/port tuple at which the gateway will be accessible to clients.
 	ListenAddress pulumi.StringPtrInput `pulumi:"listenAddress"`
+	// Location is a read only network location uploaded by the gateway process when it comes online.
+	Location pulumi.StringInput `pulumi:"location"`
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetNodeNodeGatewayArgs) ElementType() reflect.Type {
@@ -30910,6 +32201,11 @@ func (o GetNodeNodeGatewayOutput) BindAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeNodeGateway) *string { return v.BindAddress }).(pulumi.StringPtrOutput)
 }
 
+// Device is a read only device name uploaded by the gateway process when  it comes online.
+func (o GetNodeNodeGatewayOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeNodeGateway) string { return v.Device }).(pulumi.StringOutput)
+}
+
 // GatewayFilter can be used to restrict the peering between relays and gateways.
 func (o GetNodeNodeGatewayOutput) GatewayFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeNodeGateway) *string { return v.GatewayFilter }).(pulumi.StringPtrOutput)
@@ -30925,6 +32221,11 @@ func (o GetNodeNodeGatewayOutput) ListenAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeNodeGateway) *string { return v.ListenAddress }).(pulumi.StringPtrOutput)
 }
 
+// Location is a read only network location uploaded by the gateway process when it comes online.
+func (o GetNodeNodeGatewayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeNodeGateway) string { return v.Location }).(pulumi.StringOutput)
+}
+
 // Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 func (o GetNodeNodeGatewayOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeNodeGateway) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -30933,6 +32234,11 @@ func (o GetNodeNodeGatewayOutput) Name() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetNodeNodeGatewayOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodeNodeGateway) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+func (o GetNodeNodeGatewayOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeNodeGateway) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GetNodeNodeGatewayArrayOutput struct{ *pulumi.OutputState }
@@ -30956,14 +32262,20 @@ func (o GetNodeNodeGatewayArrayOutput) Index(i pulumi.IntInput) GetNodeNodeGatew
 }
 
 type GetNodeNodeRelay struct {
+	// Device is a read only device name uploaded by the gateway process when  it comes online.
+	Device string `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways.
 	GatewayFilter *string `pulumi:"gatewayFilter"`
 	// Unique identifier of the Relay.
 	Id *string `pulumi:"id"`
+	// Location is a read only network location uploaded by the gateway process when it comes online.
+	Location string `pulumi:"location"`
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
+	// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+	Version string `pulumi:"version"`
 }
 
 // GetNodeNodeRelayInput is an input type that accepts GetNodeNodeRelayArgs and GetNodeNodeRelayOutput values.
@@ -30978,14 +32290,20 @@ type GetNodeNodeRelayInput interface {
 }
 
 type GetNodeNodeRelayArgs struct {
+	// Device is a read only device name uploaded by the gateway process when  it comes online.
+	Device pulumi.StringInput `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways.
 	GatewayFilter pulumi.StringPtrInput `pulumi:"gatewayFilter"`
 	// Unique identifier of the Relay.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Location is a read only network location uploaded by the gateway process when it comes online.
+	Location pulumi.StringInput `pulumi:"location"`
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetNodeNodeRelayArgs) ElementType() reflect.Type {
@@ -31039,6 +32357,11 @@ func (o GetNodeNodeRelayOutput) ToGetNodeNodeRelayOutputWithContext(ctx context.
 	return o
 }
 
+// Device is a read only device name uploaded by the gateway process when  it comes online.
+func (o GetNodeNodeRelayOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeNodeRelay) string { return v.Device }).(pulumi.StringOutput)
+}
+
 // GatewayFilter can be used to restrict the peering between relays and gateways.
 func (o GetNodeNodeRelayOutput) GatewayFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeNodeRelay) *string { return v.GatewayFilter }).(pulumi.StringPtrOutput)
@@ -31049,6 +32372,11 @@ func (o GetNodeNodeRelayOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeNodeRelay) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Location is a read only network location uploaded by the gateway process when it comes online.
+func (o GetNodeNodeRelayOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeNodeRelay) string { return v.Location }).(pulumi.StringOutput)
+}
+
 // Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 func (o GetNodeNodeRelayOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeNodeRelay) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -31057,6 +32385,11 @@ func (o GetNodeNodeRelayOutput) Name() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetNodeNodeRelayOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetNodeNodeRelay) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+func (o GetNodeNodeRelayOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeNodeRelay) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GetNodeNodeRelayArrayOutput struct{ *pulumi.OutputState }
@@ -31316,6 +32649,7 @@ type GetResourceResource struct {
 	AksServiceAccounts                         []GetResourceResourceAksServiceAccount                         `pulumi:"aksServiceAccounts"`
 	AksUserImpersonations                      []GetResourceResourceAksUserImpersonation                      `pulumi:"aksUserImpersonations"`
 	AmazonEks                                  []GetResourceResourceAmazonEk                                  `pulumi:"amazonEks"`
+	AmazonEksInstanceProfiles                  []GetResourceResourceAmazonEksInstanceProfile                  `pulumi:"amazonEksInstanceProfiles"`
 	AmazonEksUserImpersonations                []GetResourceResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonations"`
 	AmazonEs                                   []GetResourceResourceAmazonE                                   `pulumi:"amazonEs"`
 	AmazonmqAmqp091s                           []GetResourceResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091s"`
@@ -31326,6 +32660,7 @@ type GetResourceResource struct {
 	AwsConsoleStaticKeyPairs                   []GetResourceResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPairs"`
 	AwsConsoles                                []GetResourceResourceAwsConsole                                `pulumi:"awsConsoles"`
 	AzureCertificates                          []GetResourceResourceAzureCertificate                          `pulumi:"azureCertificates"`
+	AzureMysqls                                []GetResourceResourceAzureMysql                                `pulumi:"azureMysqls"`
 	AzurePostgres                              []GetResourceResourceAzurePostgre                              `pulumi:"azurePostgres"`
 	Azures                                     []GetResourceResourceAzure                                     `pulumi:"azures"`
 	BigQueries                                 []GetResourceResourceBigQuery                                  `pulumi:"bigQueries"`
@@ -31404,6 +32739,7 @@ type GetResourceResourceArgs struct {
 	AksServiceAccounts                         GetResourceResourceAksServiceAccountArrayInput                         `pulumi:"aksServiceAccounts"`
 	AksUserImpersonations                      GetResourceResourceAksUserImpersonationArrayInput                      `pulumi:"aksUserImpersonations"`
 	AmazonEks                                  GetResourceResourceAmazonEkArrayInput                                  `pulumi:"amazonEks"`
+	AmazonEksInstanceProfiles                  GetResourceResourceAmazonEksInstanceProfileArrayInput                  `pulumi:"amazonEksInstanceProfiles"`
 	AmazonEksUserImpersonations                GetResourceResourceAmazonEksUserImpersonationArrayInput                `pulumi:"amazonEksUserImpersonations"`
 	AmazonEs                                   GetResourceResourceAmazonEArrayInput                                   `pulumi:"amazonEs"`
 	AmazonmqAmqp091s                           GetResourceResourceAmazonmqAmqp091ArrayInput                           `pulumi:"amazonmqAmqp091s"`
@@ -31414,6 +32750,7 @@ type GetResourceResourceArgs struct {
 	AwsConsoleStaticKeyPairs                   GetResourceResourceAwsConsoleStaticKeyPairArrayInput                   `pulumi:"awsConsoleStaticKeyPairs"`
 	AwsConsoles                                GetResourceResourceAwsConsoleArrayInput                                `pulumi:"awsConsoles"`
 	AzureCertificates                          GetResourceResourceAzureCertificateArrayInput                          `pulumi:"azureCertificates"`
+	AzureMysqls                                GetResourceResourceAzureMysqlArrayInput                                `pulumi:"azureMysqls"`
 	AzurePostgres                              GetResourceResourceAzurePostgreArrayInput                              `pulumi:"azurePostgres"`
 	Azures                                     GetResourceResourceAzureArrayInput                                     `pulumi:"azures"`
 	BigQueries                                 GetResourceResourceBigQueryArrayInput                                  `pulumi:"bigQueries"`
@@ -31551,6 +32888,12 @@ func (o GetResourceResourceOutput) AmazonEks() GetResourceResourceAmazonEkArrayO
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonEk { return v.AmazonEks }).(GetResourceResourceAmazonEkArrayOutput)
 }
 
+func (o GetResourceResourceOutput) AmazonEksInstanceProfiles() GetResourceResourceAmazonEksInstanceProfileArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonEksInstanceProfile {
+		return v.AmazonEksInstanceProfiles
+	}).(GetResourceResourceAmazonEksInstanceProfileArrayOutput)
+}
+
 func (o GetResourceResourceOutput) AmazonEksUserImpersonations() GetResourceResourceAmazonEksUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonEksUserImpersonation {
 		return v.AmazonEksUserImpersonations
@@ -31593,6 +32936,10 @@ func (o GetResourceResourceOutput) AwsConsoles() GetResourceResourceAwsConsoleAr
 
 func (o GetResourceResourceOutput) AzureCertificates() GetResourceResourceAzureCertificateArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAzureCertificate { return v.AzureCertificates }).(GetResourceResourceAzureCertificateArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AzureMysqls() GetResourceResourceAzureMysqlArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAzureMysql { return v.AzureMysqls }).(GetResourceResourceAzureMysqlArrayOutput)
 }
 
 func (o GetResourceResourceOutput) AzurePostgres() GetResourceResourceAzurePostgreArrayOutput {
@@ -33187,6 +34534,207 @@ func (o GetResourceResourceAmazonEkArrayOutput) Index(i pulumi.IntInput) GetReso
 	}).(GetResourceResourceAmazonEkOutput)
 }
 
+type GetResourceResourceAmazonEksInstanceProfile struct {
+	// Bind interface
+	BindInterface        *string `pulumi:"bindInterface"`
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	ClusterName          *string `pulumi:"clusterName"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	Endpoint     *string `pulumi:"endpoint"`
+	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name                              *string `pulumi:"name"`
+	Region                            *string `pulumi:"region"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           *string `pulumi:"roleArn"`
+	RoleExternalId                    *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceAmazonEksInstanceProfileInput is an input type that accepts GetResourceResourceAmazonEksInstanceProfileArgs and GetResourceResourceAmazonEksInstanceProfileOutput values.
+// You can construct a concrete instance of `GetResourceResourceAmazonEksInstanceProfileInput` via:
+//
+//	GetResourceResourceAmazonEksInstanceProfileArgs{...}
+type GetResourceResourceAmazonEksInstanceProfileInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAmazonEksInstanceProfileOutput() GetResourceResourceAmazonEksInstanceProfileOutput
+	ToGetResourceResourceAmazonEksInstanceProfileOutputWithContext(context.Context) GetResourceResourceAmazonEksInstanceProfileOutput
+}
+
+type GetResourceResourceAmazonEksInstanceProfileArgs struct {
+	// Bind interface
+	BindInterface        pulumi.StringPtrInput `pulumi:"bindInterface"`
+	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	ClusterName          pulumi.StringPtrInput `pulumi:"clusterName"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	Endpoint     pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name                              pulumi.StringPtrInput `pulumi:"name"`
+	Region                            pulumi.StringPtrInput `pulumi:"region"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceAmazonEksInstanceProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAmazonEksInstanceProfile)(nil)).Elem()
+}
+
+func (i GetResourceResourceAmazonEksInstanceProfileArgs) ToGetResourceResourceAmazonEksInstanceProfileOutput() GetResourceResourceAmazonEksInstanceProfileOutput {
+	return i.ToGetResourceResourceAmazonEksInstanceProfileOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAmazonEksInstanceProfileArgs) ToGetResourceResourceAmazonEksInstanceProfileOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksInstanceProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEksInstanceProfileOutput)
+}
+
+// GetResourceResourceAmazonEksInstanceProfileArrayInput is an input type that accepts GetResourceResourceAmazonEksInstanceProfileArray and GetResourceResourceAmazonEksInstanceProfileArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAmazonEksInstanceProfileArrayInput` via:
+//
+//	GetResourceResourceAmazonEksInstanceProfileArray{ GetResourceResourceAmazonEksInstanceProfileArgs{...} }
+type GetResourceResourceAmazonEksInstanceProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAmazonEksInstanceProfileArrayOutput() GetResourceResourceAmazonEksInstanceProfileArrayOutput
+	ToGetResourceResourceAmazonEksInstanceProfileArrayOutputWithContext(context.Context) GetResourceResourceAmazonEksInstanceProfileArrayOutput
+}
+
+type GetResourceResourceAmazonEksInstanceProfileArray []GetResourceResourceAmazonEksInstanceProfileInput
+
+func (GetResourceResourceAmazonEksInstanceProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAmazonEksInstanceProfile)(nil)).Elem()
+}
+
+func (i GetResourceResourceAmazonEksInstanceProfileArray) ToGetResourceResourceAmazonEksInstanceProfileArrayOutput() GetResourceResourceAmazonEksInstanceProfileArrayOutput {
+	return i.ToGetResourceResourceAmazonEksInstanceProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAmazonEksInstanceProfileArray) ToGetResourceResourceAmazonEksInstanceProfileArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksInstanceProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEksInstanceProfileArrayOutput)
+}
+
+type GetResourceResourceAmazonEksInstanceProfileOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAmazonEksInstanceProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAmazonEksInstanceProfile)(nil)).Elem()
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) ToGetResourceResourceAmazonEksInstanceProfileOutput() GetResourceResourceAmazonEksInstanceProfileOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) ToGetResourceResourceAmazonEksInstanceProfileOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksInstanceProfileOutput {
+	return o
+}
+
+// Bind interface
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) HealthcheckNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.HealthcheckNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string {
+		return v.RemoteIdentityHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceAmazonEksInstanceProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAmazonEksInstanceProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAmazonEksInstanceProfile)(nil)).Elem()
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileArrayOutput) ToGetResourceResourceAmazonEksInstanceProfileArrayOutput() GetResourceResourceAmazonEksInstanceProfileArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileArrayOutput) ToGetResourceResourceAmazonEksInstanceProfileArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksInstanceProfileArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonEksInstanceProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAmazonEksInstanceProfile {
+		return vs[0].([]GetResourceResourceAmazonEksInstanceProfile)[vs[1].(int)]
+	}).(GetResourceResourceAmazonEksInstanceProfileOutput)
+}
+
 type GetResourceResourceAmazonEksUserImpersonation struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// Bind interface
@@ -34695,7 +36243,7 @@ type GetResourceResourceAzure struct {
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// * azure_postgres:
+	// * azure_mysql:
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -34725,7 +36273,7 @@ type GetResourceResourceAzureArgs struct {
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// * azure_postgres:
+	// * azure_mysql:
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -34818,7 +36366,7 @@ func (o GetResourceResourceAzureOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceAzure) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// * azure_postgres:
+// * azure_mysql:
 func (o GetResourceResourceAzureOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzure) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -34858,7 +36406,7 @@ type GetResourceResourceAzureCertificate struct {
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// * azure_postgres:
+	// * azure_mysql:
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -34888,7 +36436,7 @@ type GetResourceResourceAzureCertificateArgs struct {
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// * azure_postgres:
+	// * azure_mysql:
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -34981,7 +36529,7 @@ func (o GetResourceResourceAzureCertificateOutput) Tags() pulumi.StringMapOutput
 	return o.ApplyT(func(v GetResourceResourceAzureCertificate) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// * azure_postgres:
+// * azure_mysql:
 func (o GetResourceResourceAzureCertificateOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzureCertificate) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -35004,6 +36552,184 @@ func (o GetResourceResourceAzureCertificateArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAzureCertificate {
 		return vs[0].([]GetResourceResourceAzureCertificate)[vs[1].(int)]
 	}).(GetResourceResourceAzureCertificateOutput)
+}
+
+type GetResourceResourceAzureMysql struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	Database      *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	Hostname     *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name         *string `pulumi:"name"`
+	Password     *string `pulumi:"password"`
+	Port         *int    `pulumi:"port"`
+	PortOverride *int    `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Tags is a map of key, value pairs.
+	Tags     map[string]string `pulumi:"tags"`
+	Username *string           `pulumi:"username"`
+}
+
+// GetResourceResourceAzureMysqlInput is an input type that accepts GetResourceResourceAzureMysqlArgs and GetResourceResourceAzureMysqlOutput values.
+// You can construct a concrete instance of `GetResourceResourceAzureMysqlInput` via:
+//
+//	GetResourceResourceAzureMysqlArgs{...}
+type GetResourceResourceAzureMysqlInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAzureMysqlOutput() GetResourceResourceAzureMysqlOutput
+	ToGetResourceResourceAzureMysqlOutputWithContext(context.Context) GetResourceResourceAzureMysqlOutput
+}
+
+type GetResourceResourceAzureMysqlArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	Database      pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	Hostname     pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
+	Port         pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Tags is a map of key, value pairs.
+	Tags     pulumi.StringMapInput `pulumi:"tags"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceAzureMysqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAzureMysql)(nil)).Elem()
+}
+
+func (i GetResourceResourceAzureMysqlArgs) ToGetResourceResourceAzureMysqlOutput() GetResourceResourceAzureMysqlOutput {
+	return i.ToGetResourceResourceAzureMysqlOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAzureMysqlArgs) ToGetResourceResourceAzureMysqlOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureMysqlOutput)
+}
+
+// GetResourceResourceAzureMysqlArrayInput is an input type that accepts GetResourceResourceAzureMysqlArray and GetResourceResourceAzureMysqlArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAzureMysqlArrayInput` via:
+//
+//	GetResourceResourceAzureMysqlArray{ GetResourceResourceAzureMysqlArgs{...} }
+type GetResourceResourceAzureMysqlArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAzureMysqlArrayOutput() GetResourceResourceAzureMysqlArrayOutput
+	ToGetResourceResourceAzureMysqlArrayOutputWithContext(context.Context) GetResourceResourceAzureMysqlArrayOutput
+}
+
+type GetResourceResourceAzureMysqlArray []GetResourceResourceAzureMysqlInput
+
+func (GetResourceResourceAzureMysqlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAzureMysql)(nil)).Elem()
+}
+
+func (i GetResourceResourceAzureMysqlArray) ToGetResourceResourceAzureMysqlArrayOutput() GetResourceResourceAzureMysqlArrayOutput {
+	return i.ToGetResourceResourceAzureMysqlArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAzureMysqlArray) ToGetResourceResourceAzureMysqlArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureMysqlArrayOutput)
+}
+
+type GetResourceResourceAzureMysqlOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAzureMysqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAzureMysql)(nil)).Elem()
+}
+
+func (o GetResourceResourceAzureMysqlOutput) ToGetResourceResourceAzureMysqlOutput() GetResourceResourceAzureMysqlOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureMysqlOutput) ToGetResourceResourceAzureMysqlOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlOutput {
+	return o
+}
+
+// Bind interface
+func (o GetResourceResourceAzureMysqlOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAzureMysqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAzureMysqlOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAzureMysqlOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAzureMysqlOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAzureMysqlOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAzureMysqlOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAzureMysqlOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceAzureMysqlOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAzureMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAzureMysqlOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceAzureMysqlOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceAzureMysqlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAzureMysqlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAzureMysql)(nil)).Elem()
+}
+
+func (o GetResourceResourceAzureMysqlArrayOutput) ToGetResourceResourceAzureMysqlArrayOutput() GetResourceResourceAzureMysqlArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureMysqlArrayOutput) ToGetResourceResourceAzureMysqlArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAzureMysqlArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAzureMysqlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAzureMysql {
+		return vs[0].([]GetResourceResourceAzureMysql)[vs[1].(int)]
+	}).(GetResourceResourceAzureMysqlOutput)
 }
 
 type GetResourceResourceAzurePostgre struct {
@@ -37356,6 +39082,7 @@ type GetResourceResourceElasticacheRedi struct {
 	// Tags is a map of key, value pairs.
 	Tags        map[string]string `pulumi:"tags"`
 	TlsRequired *bool             `pulumi:"tlsRequired"`
+	Username    *string           `pulumi:"username"`
 }
 
 // GetResourceResourceElasticacheRediInput is an input type that accepts GetResourceResourceElasticacheRediArgs and GetResourceResourceElasticacheRediOutput values.
@@ -37387,6 +39114,7 @@ type GetResourceResourceElasticacheRediArgs struct {
 	// Tags is a map of key, value pairs.
 	Tags        pulumi.StringMapInput `pulumi:"tags"`
 	TlsRequired pulumi.BoolPtrInput   `pulumi:"tlsRequired"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceElasticacheRediArgs) ElementType() reflect.Type {
@@ -37488,6 +39216,10 @@ func (o GetResourceResourceElasticacheRediOutput) Tags() pulumi.StringMapOutput 
 
 func (o GetResourceResourceElasticacheRediOutput) TlsRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceElasticacheRedi) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetResourceResourceElasticacheRediOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceElasticacheRedi) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type GetResourceResourceElasticacheRediArrayOutput struct{ *pulumi.OutputState }
@@ -43180,7 +44912,9 @@ type GetResourceResourceRedi struct {
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]string `pulumi:"tags"`
+	Tags        map[string]string `pulumi:"tags"`
+	TlsRequired *bool             `pulumi:"tlsRequired"`
+	Username    *string           `pulumi:"username"`
 }
 
 // GetResourceResourceRediInput is an input type that accepts GetResourceResourceRediArgs and GetResourceResourceRediOutput values.
@@ -43210,7 +44944,9 @@ type GetResourceResourceRediArgs struct {
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Tags is a map of key, value pairs.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
+	Tags        pulumi.StringMapInput `pulumi:"tags"`
+	TlsRequired pulumi.BoolPtrInput   `pulumi:"tlsRequired"`
+	Username    pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceRediArgs) ElementType() reflect.Type {
@@ -43308,6 +45044,14 @@ func (o GetResourceResourceRediOutput) SecretStoreId() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceRediOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceRedi) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceRediOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedi) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetResourceResourceRediOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedi) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type GetResourceResourceRediArrayOutput struct{ *pulumi.OutputState }
@@ -45317,6 +47061,8 @@ type GetRoleRole struct {
 	AccessRules *string `pulumi:"accessRules"`
 	// Unique identifier of the Role.
 	Id *string `pulumi:"id"`
+	// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+	ManagedBy string `pulumi:"managedBy"`
 	// Unique human-readable name of the Role.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
@@ -45339,6 +47085,8 @@ type GetRoleRoleArgs struct {
 	AccessRules pulumi.StringPtrInput `pulumi:"accessRules"`
 	// Unique identifier of the Role.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+	ManagedBy pulumi.StringInput `pulumi:"managedBy"`
 	// Unique human-readable name of the Role.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
@@ -45406,6 +47154,11 @@ func (o GetRoleRoleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRoleRole) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+func (o GetRoleRoleOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRoleRole) string { return v.ManagedBy }).(pulumi.StringOutput)
+}
+
 // Unique human-readable name of the Role.
 func (o GetRoleRoleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRoleRole) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -45441,6 +47194,7 @@ type GetSecretStoreSecretStore struct {
 	AzureStores              []GetSecretStoreSecretStoreAzureStore              `pulumi:"azureStores"`
 	CyberarkConjurs          []GetSecretStoreSecretStoreCyberarkConjur          `pulumi:"cyberarkConjurs"`
 	CyberarkPamExperimentals []GetSecretStoreSecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimentals"`
+	CyberarkPams             []GetSecretStoreSecretStoreCyberarkPam             `pulumi:"cyberarkPams"`
 	DelineaStores            []GetSecretStoreSecretStoreDelineaStore            `pulumi:"delineaStores"`
 	GcpStores                []GetSecretStoreSecretStoreGcpStore                `pulumi:"gcpStores"`
 	VaultApproles            []GetSecretStoreSecretStoreVaultApprole            `pulumi:"vaultApproles"`
@@ -45464,6 +47218,7 @@ type GetSecretStoreSecretStoreArgs struct {
 	AzureStores              GetSecretStoreSecretStoreAzureStoreArrayInput              `pulumi:"azureStores"`
 	CyberarkConjurs          GetSecretStoreSecretStoreCyberarkConjurArrayInput          `pulumi:"cyberarkConjurs"`
 	CyberarkPamExperimentals GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput `pulumi:"cyberarkPamExperimentals"`
+	CyberarkPams             GetSecretStoreSecretStoreCyberarkPamArrayInput             `pulumi:"cyberarkPams"`
 	DelineaStores            GetSecretStoreSecretStoreDelineaStoreArrayInput            `pulumi:"delineaStores"`
 	GcpStores                GetSecretStoreSecretStoreGcpStoreArrayInput                `pulumi:"gcpStores"`
 	VaultApproles            GetSecretStoreSecretStoreVaultApproleArrayInput            `pulumi:"vaultApproles"`
@@ -45538,6 +47293,10 @@ func (o GetSecretStoreSecretStoreOutput) CyberarkPamExperimentals() GetSecretSto
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreCyberarkPamExperimental {
 		return v.CyberarkPamExperimentals
 	}).(GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) CyberarkPams() GetSecretStoreSecretStoreCyberarkPamArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreCyberarkPam { return v.CyberarkPams }).(GetSecretStoreSecretStoreCyberarkPamArrayOutput)
 }
 
 func (o GetSecretStoreSecretStoreOutput) DelineaStores() GetSecretStoreSecretStoreDelineaStoreArrayOutput {
@@ -45944,6 +47703,127 @@ func (o GetSecretStoreSecretStoreCyberarkConjurArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreCyberarkConjur {
 		return vs[0].([]GetSecretStoreSecretStoreCyberarkConjur)[vs[1].(int)]
 	}).(GetSecretStoreSecretStoreCyberarkConjurOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkPam struct {
+	AppUrl *string `pulumi:"appUrl"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreCyberarkPamInput is an input type that accepts GetSecretStoreSecretStoreCyberarkPamArgs and GetSecretStoreSecretStoreCyberarkPamOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkPamInput` via:
+//
+//	GetSecretStoreSecretStoreCyberarkPamArgs{...}
+type GetSecretStoreSecretStoreCyberarkPamInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreCyberarkPamOutput() GetSecretStoreSecretStoreCyberarkPamOutput
+	ToGetSecretStoreSecretStoreCyberarkPamOutputWithContext(context.Context) GetSecretStoreSecretStoreCyberarkPamOutput
+}
+
+type GetSecretStoreSecretStoreCyberarkPamArgs struct {
+	AppUrl pulumi.StringPtrInput `pulumi:"appUrl"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreCyberarkPamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPam)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreCyberarkPamArgs) ToGetSecretStoreSecretStoreCyberarkPamOutput() GetSecretStoreSecretStoreCyberarkPamOutput {
+	return i.ToGetSecretStoreSecretStoreCyberarkPamOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreCyberarkPamArgs) ToGetSecretStoreSecretStoreCyberarkPamOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkPamOutput)
+}
+
+// GetSecretStoreSecretStoreCyberarkPamArrayInput is an input type that accepts GetSecretStoreSecretStoreCyberarkPamArray and GetSecretStoreSecretStoreCyberarkPamArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkPamArrayInput` via:
+//
+//	GetSecretStoreSecretStoreCyberarkPamArray{ GetSecretStoreSecretStoreCyberarkPamArgs{...} }
+type GetSecretStoreSecretStoreCyberarkPamArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreCyberarkPamArrayOutput() GetSecretStoreSecretStoreCyberarkPamArrayOutput
+	ToGetSecretStoreSecretStoreCyberarkPamArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreCyberarkPamArrayOutput
+}
+
+type GetSecretStoreSecretStoreCyberarkPamArray []GetSecretStoreSecretStoreCyberarkPamInput
+
+func (GetSecretStoreSecretStoreCyberarkPamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreCyberarkPam)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreCyberarkPamArray) ToGetSecretStoreSecretStoreCyberarkPamArrayOutput() GetSecretStoreSecretStoreCyberarkPamArrayOutput {
+	return i.ToGetSecretStoreSecretStoreCyberarkPamArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreCyberarkPamArray) ToGetSecretStoreSecretStoreCyberarkPamArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkPamArrayOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkPamOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreCyberarkPamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPam)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamOutput) ToGetSecretStoreSecretStoreCyberarkPamOutput() GetSecretStoreSecretStoreCyberarkPamOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamOutput) ToGetSecretStoreSecretStoreCyberarkPamOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamOutput) AppUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkPam) *string { return v.AppUrl }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreCyberarkPamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkPam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreCyberarkPamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkPam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreCyberarkPamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreCyberarkPam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreCyberarkPamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreCyberarkPamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreCyberarkPam)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamArrayOutput) ToGetSecretStoreSecretStoreCyberarkPamArrayOutput() GetSecretStoreSecretStoreCyberarkPamArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamArrayOutput) ToGetSecretStoreSecretStoreCyberarkPamArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreCyberarkPamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreCyberarkPam {
+		return vs[0].([]GetSecretStoreSecretStoreCyberarkPam)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreCyberarkPamOutput)
 }
 
 type GetSecretStoreSecretStoreCyberarkPamExperimental struct {
@@ -46738,6 +48618,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAksUserImpersonationPtrInput)(nil)).Elem(), ResourceAksUserImpersonationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEksInput)(nil)).Elem(), ResourceAmazonEksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEksPtrInput)(nil)).Elem(), ResourceAmazonEksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEksInstanceProfileInput)(nil)).Elem(), ResourceAmazonEksInstanceProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEksInstanceProfilePtrInput)(nil)).Elem(), ResourceAmazonEksInstanceProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEksUserImpersonationInput)(nil)).Elem(), ResourceAmazonEksUserImpersonationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEksUserImpersonationPtrInput)(nil)).Elem(), ResourceAmazonEksUserImpersonationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEsInput)(nil)).Elem(), ResourceAmazonEsArgs{})
@@ -46760,6 +48642,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePtrInput)(nil)).Elem(), ResourceAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureCertificateInput)(nil)).Elem(), ResourceAzureCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureCertificatePtrInput)(nil)).Elem(), ResourceAzureCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureMysqlInput)(nil)).Elem(), ResourceAzureMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureMysqlPtrInput)(nil)).Elem(), ResourceAzureMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePostgresInput)(nil)).Elem(), ResourceAzurePostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePostgresPtrInput)(nil)).Elem(), ResourceAzurePostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceBigQueryInput)(nil)).Elem(), ResourceBigQueryArgs{})
@@ -46880,6 +48764,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAzureStorePtrInput)(nil)).Elem(), SecretStoreAzureStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkConjurInput)(nil)).Elem(), SecretStoreCyberarkConjurArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkConjurPtrInput)(nil)).Elem(), SecretStoreCyberarkConjurArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamInput)(nil)).Elem(), SecretStoreCyberarkPamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamPtrInput)(nil)).Elem(), SecretStoreCyberarkPamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamExperimentalInput)(nil)).Elem(), SecretStoreCyberarkPamExperimentalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamExperimentalPtrInput)(nil)).Elem(), SecretStoreCyberarkPamExperimentalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaStoreInput)(nil)).Elem(), SecretStoreDelineaStoreArgs{})
@@ -46926,6 +48812,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEArrayInput)(nil)).Elem(), GetResourceResourceAmazonEArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEkInput)(nil)).Elem(), GetResourceResourceAmazonEkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEkArrayInput)(nil)).Elem(), GetResourceResourceAmazonEkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEksInstanceProfileInput)(nil)).Elem(), GetResourceResourceAmazonEksInstanceProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEksInstanceProfileArrayInput)(nil)).Elem(), GetResourceResourceAmazonEksInstanceProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEksUserImpersonationInput)(nil)).Elem(), GetResourceResourceAmazonEksUserImpersonationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEksUserImpersonationArrayInput)(nil)).Elem(), GetResourceResourceAmazonEksUserImpersonationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonmqAmqp091Input)(nil)).Elem(), GetResourceResourceAmazonmqAmqp091Args{})
@@ -46946,6 +48834,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureArrayInput)(nil)).Elem(), GetResourceResourceAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureCertificateInput)(nil)).Elem(), GetResourceResourceAzureCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureCertificateArrayInput)(nil)).Elem(), GetResourceResourceAzureCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureMysqlInput)(nil)).Elem(), GetResourceResourceAzureMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureMysqlArrayInput)(nil)).Elem(), GetResourceResourceAzureMysqlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzurePostgreInput)(nil)).Elem(), GetResourceResourceAzurePostgreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzurePostgreArrayInput)(nil)).Elem(), GetResourceResourceAzurePostgreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceBigQueryInput)(nil)).Elem(), GetResourceResourceBigQueryArgs{})
@@ -47070,6 +48960,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAzureStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreAzureStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkConjurInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkConjurArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkConjurArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkConjurArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimentalInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamExperimentalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamExperimentalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaStoreArgs{})
@@ -47102,6 +48994,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAksUserImpersonationPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonEksOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonEksPtrOutput{})
+	pulumi.RegisterOutputType(ResourceAmazonEksInstanceProfileOutput{})
+	pulumi.RegisterOutputType(ResourceAmazonEksInstanceProfilePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonEksUserImpersonationOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonEksUserImpersonationPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonEsOutput{})
@@ -47124,6 +49018,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAzurePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzureCertificateOutput{})
 	pulumi.RegisterOutputType(ResourceAzureCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ResourceAzureMysqlOutput{})
+	pulumi.RegisterOutputType(ResourceAzureMysqlPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzurePostgresOutput{})
 	pulumi.RegisterOutputType(ResourceAzurePostgresPtrOutput{})
 	pulumi.RegisterOutputType(ResourceBigQueryOutput{})
@@ -47244,6 +49140,8 @@ func init() {
 	pulumi.RegisterOutputType(SecretStoreAzureStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreCyberarkConjurOutput{})
 	pulumi.RegisterOutputType(SecretStoreCyberarkConjurPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreCyberarkPamOutput{})
+	pulumi.RegisterOutputType(SecretStoreCyberarkPamPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreCyberarkPamExperimentalOutput{})
 	pulumi.RegisterOutputType(SecretStoreCyberarkPamExperimentalPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreDelineaStoreOutput{})
@@ -47290,6 +49188,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEkOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEkArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAmazonEksInstanceProfileOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAmazonEksInstanceProfileArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEksUserImpersonationOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEksUserImpersonationArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonmqAmqp091Output{})
@@ -47310,6 +49210,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAzureArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureCertificateOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureCertificateArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAzureMysqlOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAzureMysqlArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzurePostgreOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzurePostgreArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceBigQueryOutput{})
@@ -47434,6 +49336,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAzureStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkConjurOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkConjurArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamExperimentalOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaStoreOutput{})

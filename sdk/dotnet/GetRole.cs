@@ -107,6 +107,10 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
+        /// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+        /// </summary>
+        public readonly string ManagedBy;
+        /// <summary>
         /// Unique human-readable name of the Role.
         /// </summary>
         public readonly string? Name;
@@ -125,6 +129,8 @@ namespace PiersKarsenbarg.Sdm
 
             ImmutableArray<string> ids,
 
+            string managedBy,
+
             string? name,
 
             ImmutableArray<Outputs.GetRoleRoleResult> roles,
@@ -133,6 +139,7 @@ namespace PiersKarsenbarg.Sdm
         {
             Id = id;
             Ids = ids;
+            ManagedBy = managedBy;
             Name = name;
             Roles = roles;
             Tags = tags;

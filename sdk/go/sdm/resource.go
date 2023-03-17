@@ -28,6 +28,7 @@ type Resource struct {
 	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrOutput `pulumi:"aksServiceAccountUserImpersonation"`
 	AksUserImpersonation               ResourceAksUserImpersonationPtrOutput               `pulumi:"aksUserImpersonation"`
 	AmazonEks                          ResourceAmazonEksPtrOutput                          `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile           ResourceAmazonEksInstanceProfilePtrOutput           `pulumi:"amazonEksInstanceProfile"`
 	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrOutput         `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                           ResourceAmazonEsPtrOutput                           `pulumi:"amazonEs"`
 	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrOutput                    `pulumi:"amazonmqAmqp091"`
@@ -39,9 +40,11 @@ type Resource struct {
 	AwsConsole ResourceAwsConsolePtrOutput `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrOutput                   `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
-	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrOutput `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                   ResourceAzurePtrOutput                   `pulumi:"azure"`
+	AzureCertificate        ResourceAzureCertificatePtrOutput        `pulumi:"azureCertificate"`
+	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureMysql                                ResourceAzureMysqlPtrOutput                                `pulumi:"azureMysql"`
 	AzurePostgres                             ResourceAzurePostgresPtrOutput                             `pulumi:"azurePostgres"`
 	BigQuery                                  ResourceBigQueryPtrOutput                                  `pulumi:"bigQuery"`
 	Cassandra                                 ResourceCassandraPtrOutput                                 `pulumi:"cassandra"`
@@ -80,12 +83,11 @@ type Resource struct {
 	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoShardedCluster ResourceMongoShardedClusterPtrOutput `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql    ResourceMtlsMysqlPtrOutput    `pulumi:"mtlsMysql"`
-	MtlsPostgres ResourceMtlsPostgresPtrOutput `pulumi:"mtlsPostgres"`
-	Mysql        ResourceMysqlPtrOutput        `pulumi:"mysql"`
-	Neptune      ResourceNeptunePtrOutput      `pulumi:"neptune"`
-	NeptuneIam   ResourceNeptuneIamPtrOutput   `pulumi:"neptuneIam"`
-	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql       ResourceMtlsMysqlPtrOutput       `pulumi:"mtlsMysql"`
+	MtlsPostgres    ResourceMtlsPostgresPtrOutput    `pulumi:"mtlsPostgres"`
+	Mysql           ResourceMysqlPtrOutput           `pulumi:"mysql"`
+	Neptune         ResourceNeptunePtrOutput         `pulumi:"neptune"`
+	NeptuneIam      ResourceNeptuneIamPtrOutput      `pulumi:"neptuneIam"`
 	Oracle          ResourceOraclePtrOutput          `pulumi:"oracle"`
 	Postgres        ResourcePostgresPtrOutput        `pulumi:"postgres"`
 	Presto          ResourcePrestoPtrOutput          `pulumi:"presto"`
@@ -143,6 +145,7 @@ type resourceState struct {
 	AksServiceAccountUserImpersonation *ResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonation"`
 	AksUserImpersonation               *ResourceAksUserImpersonation               `pulumi:"aksUserImpersonation"`
 	AmazonEks                          *ResourceAmazonEks                          `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile           *ResourceAmazonEksInstanceProfile           `pulumi:"amazonEksInstanceProfile"`
 	AmazonEksUserImpersonation         *ResourceAmazonEksUserImpersonation         `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                           *ResourceAmazonEs                           `pulumi:"amazonEs"`
 	AmazonmqAmqp091                    *ResourceAmazonmqAmqp091                    `pulumi:"amazonmqAmqp091"`
@@ -154,9 +157,11 @@ type resourceState struct {
 	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
-	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
+	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                   *ResourceAzure                   `pulumi:"azure"`
+	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
+	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
 	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
 	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
 	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
@@ -195,12 +200,11 @@ type resourceState struct {
 	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoShardedCluster *ResourceMongoShardedCluster `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql    *ResourceMtlsMysql    `pulumi:"mtlsMysql"`
-	MtlsPostgres *ResourceMtlsPostgres `pulumi:"mtlsPostgres"`
-	Mysql        *ResourceMysql        `pulumi:"mysql"`
-	Neptune      *ResourceNeptune      `pulumi:"neptune"`
-	NeptuneIam   *ResourceNeptuneIam   `pulumi:"neptuneIam"`
-	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql       *ResourceMtlsMysql       `pulumi:"mtlsMysql"`
+	MtlsPostgres    *ResourceMtlsPostgres    `pulumi:"mtlsPostgres"`
+	Mysql           *ResourceMysql           `pulumi:"mysql"`
+	Neptune         *ResourceNeptune         `pulumi:"neptune"`
+	NeptuneIam      *ResourceNeptuneIam      `pulumi:"neptuneIam"`
 	Oracle          *ResourceOracle          `pulumi:"oracle"`
 	Postgres        *ResourcePostgres        `pulumi:"postgres"`
 	Presto          *ResourcePresto          `pulumi:"presto"`
@@ -229,6 +233,7 @@ type ResourceState struct {
 	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrInput
 	AksUserImpersonation               ResourceAksUserImpersonationPtrInput
 	AmazonEks                          ResourceAmazonEksPtrInput
+	AmazonEksInstanceProfile           ResourceAmazonEksInstanceProfilePtrInput
 	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrInput
 	AmazonEs                           ResourceAmazonEsPtrInput
 	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrInput
@@ -240,9 +245,11 @@ type ResourceState struct {
 	AwsConsole ResourceAwsConsolePtrInput
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
-	Azure                                     ResourceAzurePtrInput
-	AzureCertificate                          ResourceAzureCertificatePtrInput
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
+	Azure                   ResourceAzurePtrInput
+	AzureCertificate        ResourceAzureCertificatePtrInput
+	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureMysql                                ResourceAzureMysqlPtrInput
 	AzurePostgres                             ResourceAzurePostgresPtrInput
 	BigQuery                                  ResourceBigQueryPtrInput
 	Cassandra                                 ResourceCassandraPtrInput
@@ -281,12 +288,11 @@ type ResourceState struct {
 	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoShardedCluster ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql    ResourceMtlsMysqlPtrInput
-	MtlsPostgres ResourceMtlsPostgresPtrInput
-	Mysql        ResourceMysqlPtrInput
-	Neptune      ResourceNeptunePtrInput
-	NeptuneIam   ResourceNeptuneIamPtrInput
-	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql       ResourceMtlsMysqlPtrInput
+	MtlsPostgres    ResourceMtlsPostgresPtrInput
+	Mysql           ResourceMysqlPtrInput
+	Neptune         ResourceNeptunePtrInput
+	NeptuneIam      ResourceNeptuneIamPtrInput
 	Oracle          ResourceOraclePtrInput
 	Postgres        ResourcePostgresPtrInput
 	Presto          ResourcePrestoPtrInput
@@ -319,6 +325,7 @@ type resourceArgs struct {
 	AksServiceAccountUserImpersonation *ResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonation"`
 	AksUserImpersonation               *ResourceAksUserImpersonation               `pulumi:"aksUserImpersonation"`
 	AmazonEks                          *ResourceAmazonEks                          `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile           *ResourceAmazonEksInstanceProfile           `pulumi:"amazonEksInstanceProfile"`
 	AmazonEksUserImpersonation         *ResourceAmazonEksUserImpersonation         `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                           *ResourceAmazonEs                           `pulumi:"amazonEs"`
 	AmazonmqAmqp091                    *ResourceAmazonmqAmqp091                    `pulumi:"amazonmqAmqp091"`
@@ -330,9 +337,11 @@ type resourceArgs struct {
 	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
-	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
+	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                   *ResourceAzure                   `pulumi:"azure"`
+	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
+	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
 	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
 	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
 	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
@@ -371,12 +380,11 @@ type resourceArgs struct {
 	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoShardedCluster *ResourceMongoShardedCluster `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql    *ResourceMtlsMysql    `pulumi:"mtlsMysql"`
-	MtlsPostgres *ResourceMtlsPostgres `pulumi:"mtlsPostgres"`
-	Mysql        *ResourceMysql        `pulumi:"mysql"`
-	Neptune      *ResourceNeptune      `pulumi:"neptune"`
-	NeptuneIam   *ResourceNeptuneIam   `pulumi:"neptuneIam"`
-	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql       *ResourceMtlsMysql       `pulumi:"mtlsMysql"`
+	MtlsPostgres    *ResourceMtlsPostgres    `pulumi:"mtlsPostgres"`
+	Mysql           *ResourceMysql           `pulumi:"mysql"`
+	Neptune         *ResourceNeptune         `pulumi:"neptune"`
+	NeptuneIam      *ResourceNeptuneIam      `pulumi:"neptuneIam"`
 	Oracle          *ResourceOracle          `pulumi:"oracle"`
 	Postgres        *ResourcePostgres        `pulumi:"postgres"`
 	Presto          *ResourcePresto          `pulumi:"presto"`
@@ -406,6 +414,7 @@ type ResourceArgs struct {
 	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrInput
 	AksUserImpersonation               ResourceAksUserImpersonationPtrInput
 	AmazonEks                          ResourceAmazonEksPtrInput
+	AmazonEksInstanceProfile           ResourceAmazonEksInstanceProfilePtrInput
 	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrInput
 	AmazonEs                           ResourceAmazonEsPtrInput
 	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrInput
@@ -417,9 +426,11 @@ type ResourceArgs struct {
 	AwsConsole ResourceAwsConsolePtrInput
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
-	Azure                                     ResourceAzurePtrInput
-	AzureCertificate                          ResourceAzureCertificatePtrInput
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
+	Azure                   ResourceAzurePtrInput
+	AzureCertificate        ResourceAzureCertificatePtrInput
+	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AzureMysql                                ResourceAzureMysqlPtrInput
 	AzurePostgres                             ResourceAzurePostgresPtrInput
 	BigQuery                                  ResourceBigQueryPtrInput
 	Cassandra                                 ResourceCassandraPtrInput
@@ -458,12 +469,11 @@ type ResourceArgs struct {
 	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoShardedCluster ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql    ResourceMtlsMysqlPtrInput
-	MtlsPostgres ResourceMtlsPostgresPtrInput
-	Mysql        ResourceMysqlPtrInput
-	Neptune      ResourceNeptunePtrInput
-	NeptuneIam   ResourceNeptuneIamPtrInput
-	// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MtlsMysql       ResourceMtlsMysqlPtrInput
+	MtlsPostgres    ResourceMtlsPostgresPtrInput
+	Mysql           ResourceMysqlPtrInput
+	Neptune         ResourceNeptunePtrInput
+	NeptuneIam      ResourceNeptuneIamPtrInput
 	Oracle          ResourceOraclePtrInput
 	Postgres        ResourcePostgresPtrInput
 	Presto          ResourcePrestoPtrInput
@@ -598,6 +608,10 @@ func (o ResourceOutput) AmazonEks() ResourceAmazonEksPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEksPtrOutput { return v.AmazonEks }).(ResourceAmazonEksPtrOutput)
 }
 
+func (o ResourceOutput) AmazonEksInstanceProfile() ResourceAmazonEksInstanceProfilePtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAmazonEksInstanceProfilePtrOutput { return v.AmazonEksInstanceProfile }).(ResourceAmazonEksInstanceProfilePtrOutput)
+}
+
 func (o ResourceOutput) AmazonEksUserImpersonation() ResourceAmazonEksUserImpersonationPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEksUserImpersonationPtrOutput { return v.AmazonEksUserImpersonation }).(ResourceAmazonEksUserImpersonationPtrOutput)
 }
@@ -643,6 +657,11 @@ func (o ResourceOutput) Azure() ResourceAzurePtrOutput {
 
 func (o ResourceOutput) AzureCertificate() ResourceAzureCertificatePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzureCertificatePtrOutput { return v.AzureCertificate }).(ResourceAzureCertificatePtrOutput)
+}
+
+// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) AzureMysql() ResourceAzureMysqlPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAzureMysqlPtrOutput { return v.AzureMysql }).(ResourceAzureMysqlPtrOutput)
 }
 
 func (o ResourceOutput) AzurePostgres() ResourceAzurePostgresPtrOutput {
@@ -807,7 +826,6 @@ func (o ResourceOutput) NeptuneIam() ResourceNeptuneIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceNeptuneIamPtrOutput { return v.NeptuneIam }).(ResourceNeptuneIamPtrOutput)
 }
 
-// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) Oracle() ResourceOraclePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceOraclePtrOutput { return v.Oracle }).(ResourceOraclePtrOutput)
 }

@@ -37,7 +37,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreId;
         /// <summary>
-        /// * azure_postgres:
+        /// * azure_mysql:
         /// </summary>
         public readonly string? SecretStoreTenantIdKey;
         public readonly string? SecretStoreTenantIdPath;

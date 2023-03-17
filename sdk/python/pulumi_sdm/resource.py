@@ -22,6 +22,7 @@ class ResourceArgs:
                  aks_service_account_user_impersonation: Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']] = None,
                  aks_user_impersonation: Optional[pulumi.Input['ResourceAksUserImpersonationArgs']] = None,
                  amazon_eks: Optional[pulumi.Input['ResourceAmazonEksArgs']] = None,
+                 amazon_eks_instance_profile: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
@@ -33,6 +34,7 @@ class ResourceArgs:
                  aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
                  azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
+                 azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
                  big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
                  cassandra: Optional[pulumi.Input['ResourceCassandraArgs']] = None,
@@ -95,11 +97,11 @@ class ResourceArgs:
         :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input['ResourceAzureMysqlArgs'] azure_mysql: AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceOracleArgs'] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceSnowsightArgs'] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -114,6 +116,8 @@ class ResourceArgs:
             pulumi.set(__self__, "aks_user_impersonation", aks_user_impersonation)
         if amazon_eks is not None:
             pulumi.set(__self__, "amazon_eks", amazon_eks)
+        if amazon_eks_instance_profile is not None:
+            pulumi.set(__self__, "amazon_eks_instance_profile", amazon_eks_instance_profile)
         if amazon_eks_user_impersonation is not None:
             pulumi.set(__self__, "amazon_eks_user_impersonation", amazon_eks_user_impersonation)
         if amazon_es is not None:
@@ -136,6 +140,8 @@ class ResourceArgs:
             pulumi.set(__self__, "azure", azure)
         if azure_certificate is not None:
             pulumi.set(__self__, "azure_certificate", azure_certificate)
+        if azure_mysql is not None:
+            pulumi.set(__self__, "azure_mysql", azure_mysql)
         if azure_postgres is not None:
             pulumi.set(__self__, "azure_postgres", azure_postgres)
         if big_query is not None:
@@ -306,6 +312,15 @@ class ResourceArgs:
         pulumi.set(self, "amazon_eks", value)
 
     @property
+    @pulumi.getter(name="amazonEksInstanceProfile")
+    def amazon_eks_instance_profile(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]:
+        return pulumi.get(self, "amazon_eks_instance_profile")
+
+    @amazon_eks_instance_profile.setter
+    def amazon_eks_instance_profile(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]):
+        pulumi.set(self, "amazon_eks_instance_profile", value)
+
+    @property
     @pulumi.getter(name="amazonEksUserImpersonation")
     def amazon_eks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_user_impersonation")
@@ -410,6 +425,18 @@ class ResourceArgs:
     @azure_certificate.setter
     def azure_certificate(self, value: Optional[pulumi.Input['ResourceAzureCertificateArgs']]):
         pulumi.set(self, "azure_certificate", value)
+
+    @property
+    @pulumi.getter(name="azureMysql")
+    def azure_mysql(self) -> Optional[pulumi.Input['ResourceAzureMysqlArgs']]:
+        """
+        AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "azure_mysql")
+
+    @azure_mysql.setter
+    def azure_mysql(self, value: Optional[pulumi.Input['ResourceAzureMysqlArgs']]):
+        pulumi.set(self, "azure_mysql", value)
 
     @property
     @pulumi.getter(name="azurePostgres")
@@ -777,9 +804,6 @@ class ResourceArgs:
     @property
     @pulumi.getter
     def oracle(self) -> Optional[pulumi.Input['ResourceOracleArgs']]:
-        """
-        Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "oracle")
 
     @oracle.setter
@@ -952,6 +976,7 @@ class _ResourceState:
                  aks_service_account_user_impersonation: Optional[pulumi.Input['ResourceAksServiceAccountUserImpersonationArgs']] = None,
                  aks_user_impersonation: Optional[pulumi.Input['ResourceAksUserImpersonationArgs']] = None,
                  amazon_eks: Optional[pulumi.Input['ResourceAmazonEksArgs']] = None,
+                 amazon_eks_instance_profile: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
@@ -963,6 +988,7 @@ class _ResourceState:
                  aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
                  azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
+                 azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
                  big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
                  cassandra: Optional[pulumi.Input['ResourceCassandraArgs']] = None,
@@ -1025,11 +1051,11 @@ class _ResourceState:
         :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input['ResourceAzureMysqlArgs'] azure_mysql: AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceOracleArgs'] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceSnowsightArgs'] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -1044,6 +1070,8 @@ class _ResourceState:
             pulumi.set(__self__, "aks_user_impersonation", aks_user_impersonation)
         if amazon_eks is not None:
             pulumi.set(__self__, "amazon_eks", amazon_eks)
+        if amazon_eks_instance_profile is not None:
+            pulumi.set(__self__, "amazon_eks_instance_profile", amazon_eks_instance_profile)
         if amazon_eks_user_impersonation is not None:
             pulumi.set(__self__, "amazon_eks_user_impersonation", amazon_eks_user_impersonation)
         if amazon_es is not None:
@@ -1066,6 +1094,8 @@ class _ResourceState:
             pulumi.set(__self__, "azure", azure)
         if azure_certificate is not None:
             pulumi.set(__self__, "azure_certificate", azure_certificate)
+        if azure_mysql is not None:
+            pulumi.set(__self__, "azure_mysql", azure_mysql)
         if azure_postgres is not None:
             pulumi.set(__self__, "azure_postgres", azure_postgres)
         if big_query is not None:
@@ -1236,6 +1266,15 @@ class _ResourceState:
         pulumi.set(self, "amazon_eks", value)
 
     @property
+    @pulumi.getter(name="amazonEksInstanceProfile")
+    def amazon_eks_instance_profile(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]:
+        return pulumi.get(self, "amazon_eks_instance_profile")
+
+    @amazon_eks_instance_profile.setter
+    def amazon_eks_instance_profile(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]):
+        pulumi.set(self, "amazon_eks_instance_profile", value)
+
+    @property
     @pulumi.getter(name="amazonEksUserImpersonation")
     def amazon_eks_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']]:
         return pulumi.get(self, "amazon_eks_user_impersonation")
@@ -1340,6 +1379,18 @@ class _ResourceState:
     @azure_certificate.setter
     def azure_certificate(self, value: Optional[pulumi.Input['ResourceAzureCertificateArgs']]):
         pulumi.set(self, "azure_certificate", value)
+
+    @property
+    @pulumi.getter(name="azureMysql")
+    def azure_mysql(self) -> Optional[pulumi.Input['ResourceAzureMysqlArgs']]:
+        """
+        AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "azure_mysql")
+
+    @azure_mysql.setter
+    def azure_mysql(self, value: Optional[pulumi.Input['ResourceAzureMysqlArgs']]):
+        pulumi.set(self, "azure_mysql", value)
 
     @property
     @pulumi.getter(name="azurePostgres")
@@ -1707,9 +1758,6 @@ class _ResourceState:
     @property
     @pulumi.getter
     def oracle(self) -> Optional[pulumi.Input['ResourceOracleArgs']]:
-        """
-        Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "oracle")
 
     @oracle.setter
@@ -1884,6 +1932,7 @@ class Resource(pulumi.CustomResource):
                  aks_service_account_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksServiceAccountUserImpersonationArgs']]] = None,
                  aks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksUserImpersonationArgs']]] = None,
                  amazon_eks: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksArgs']]] = None,
+                 amazon_eks_instance_profile: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileArgs']]] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksUserImpersonationArgs']]] = None,
                  amazon_es: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEsArgs']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonmqAmqp091Args']]] = None,
@@ -1895,6 +1944,7 @@ class Resource(pulumi.CustomResource):
                  aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
                  azure: Optional[pulumi.Input[pulumi.InputType['ResourceAzureArgs']]] = None,
                  azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
+                 azure_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']]] = None,
                  azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
                  big_query: Optional[pulumi.Input[pulumi.InputType['ResourceBigQueryArgs']]] = None,
                  cassandra: Optional[pulumi.Input[pulumi.InputType['ResourceCassandraArgs']]] = None,
@@ -1967,11 +2017,11 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']] azure_mysql: AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceOracleArgs']] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
@@ -2010,6 +2060,7 @@ class Resource(pulumi.CustomResource):
                  aks_service_account_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksServiceAccountUserImpersonationArgs']]] = None,
                  aks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksUserImpersonationArgs']]] = None,
                  amazon_eks: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksArgs']]] = None,
+                 amazon_eks_instance_profile: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileArgs']]] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksUserImpersonationArgs']]] = None,
                  amazon_es: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEsArgs']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonmqAmqp091Args']]] = None,
@@ -2021,6 +2072,7 @@ class Resource(pulumi.CustomResource):
                  aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
                  azure: Optional[pulumi.Input[pulumi.InputType['ResourceAzureArgs']]] = None,
                  azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
+                 azure_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']]] = None,
                  azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
                  big_query: Optional[pulumi.Input[pulumi.InputType['ResourceBigQueryArgs']]] = None,
                  cassandra: Optional[pulumi.Input[pulumi.InputType['ResourceCassandraArgs']]] = None,
@@ -2093,6 +2145,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["aks_service_account_user_impersonation"] = aks_service_account_user_impersonation
             __props__.__dict__["aks_user_impersonation"] = aks_user_impersonation
             __props__.__dict__["amazon_eks"] = amazon_eks
+            __props__.__dict__["amazon_eks_instance_profile"] = amazon_eks_instance_profile
             __props__.__dict__["amazon_eks_user_impersonation"] = amazon_eks_user_impersonation
             __props__.__dict__["amazon_es"] = amazon_es
             __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
@@ -2104,6 +2157,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["aws_console_static_key_pair"] = aws_console_static_key_pair
             __props__.__dict__["azure"] = azure
             __props__.__dict__["azure_certificate"] = azure_certificate
+            __props__.__dict__["azure_mysql"] = azure_mysql
             __props__.__dict__["azure_postgres"] = azure_postgres
             __props__.__dict__["big_query"] = big_query
             __props__.__dict__["cassandra"] = cassandra
@@ -2177,6 +2231,7 @@ class Resource(pulumi.CustomResource):
             aks_service_account_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksServiceAccountUserImpersonationArgs']]] = None,
             aks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksUserImpersonationArgs']]] = None,
             amazon_eks: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksArgs']]] = None,
+            amazon_eks_instance_profile: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileArgs']]] = None,
             amazon_eks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksUserImpersonationArgs']]] = None,
             amazon_es: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEsArgs']]] = None,
             amazonmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonmqAmqp091Args']]] = None,
@@ -2188,6 +2243,7 @@ class Resource(pulumi.CustomResource):
             aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
             azure: Optional[pulumi.Input[pulumi.InputType['ResourceAzureArgs']]] = None,
             azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
+            azure_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']]] = None,
             azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
             big_query: Optional[pulumi.Input[pulumi.InputType['ResourceBigQueryArgs']]] = None,
             cassandra: Optional[pulumi.Input[pulumi.InputType['ResourceCassandraArgs']]] = None,
@@ -2255,11 +2311,11 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']] azure_mysql: AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceOracleArgs']] oracle: Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2272,6 +2328,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["aks_service_account_user_impersonation"] = aks_service_account_user_impersonation
         __props__.__dict__["aks_user_impersonation"] = aks_user_impersonation
         __props__.__dict__["amazon_eks"] = amazon_eks
+        __props__.__dict__["amazon_eks_instance_profile"] = amazon_eks_instance_profile
         __props__.__dict__["amazon_eks_user_impersonation"] = amazon_eks_user_impersonation
         __props__.__dict__["amazon_es"] = amazon_es
         __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
@@ -2283,6 +2340,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["aws_console_static_key_pair"] = aws_console_static_key_pair
         __props__.__dict__["azure"] = azure
         __props__.__dict__["azure_certificate"] = azure_certificate
+        __props__.__dict__["azure_mysql"] = azure_mysql
         __props__.__dict__["azure_postgres"] = azure_postgres
         __props__.__dict__["big_query"] = big_query
         __props__.__dict__["cassandra"] = cassandra
@@ -2373,6 +2431,11 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "amazon_eks")
 
     @property
+    @pulumi.getter(name="amazonEksInstanceProfile")
+    def amazon_eks_instance_profile(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEksInstanceProfile']]:
+        return pulumi.get(self, "amazon_eks_instance_profile")
+
+    @property
     @pulumi.getter(name="amazonEksUserImpersonation")
     def amazon_eks_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEksUserImpersonation']]:
         return pulumi.get(self, "amazon_eks_user_impersonation")
@@ -2433,6 +2496,14 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="azureCertificate")
     def azure_certificate(self) -> pulumi.Output[Optional['outputs.ResourceAzureCertificate']]:
         return pulumi.get(self, "azure_certificate")
+
+    @property
+    @pulumi.getter(name="azureMysql")
+    def azure_mysql(self) -> pulumi.Output[Optional['outputs.ResourceAzureMysql']]:
+        """
+        AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "azure_mysql")
 
     @property
     @pulumi.getter(name="azurePostgres")
@@ -2644,9 +2715,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def oracle(self) -> pulumi.Output[Optional['outputs.ResourceOracle']]:
-        """
-        Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "oracle")
 
     @property

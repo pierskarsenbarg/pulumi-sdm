@@ -34,6 +34,7 @@ export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("sdm:index/getAccount:getAccount", {
         "email": args.email,
+        "externalId": args.externalId,
         "firstName": args.firstName,
         "id": args.id,
         "lastName": args.lastName,
@@ -52,6 +53,10 @@ export interface GetAccountArgs {
      * The User's email address. Must be unique.
      */
     email?: string;
+    /**
+     * External ID is an alternative unique ID this user is represented by within an external service.
+     */
+    externalId?: string;
     /**
      * The User's first name.
      */
@@ -96,6 +101,10 @@ export interface GetAccountResult {
      */
     readonly email?: string;
     /**
+     * External ID is an alternative unique ID this user is represented by within an external service.
+     */
+    readonly externalId?: string;
+    /**
      * The User's first name.
      */
     readonly firstName?: string;
@@ -138,6 +147,10 @@ export interface GetAccountOutputArgs {
      * The User's email address. Must be unique.
      */
     email?: pulumi.Input<string>;
+    /**
+     * External ID is an alternative unique ID this user is represented by within an external service.
+     */
+    externalId?: pulumi.Input<string>;
     /**
      * The User's first name.
      */

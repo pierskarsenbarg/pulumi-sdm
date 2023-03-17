@@ -56,7 +56,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? SecretStoreId { get; set; }
 
         /// <summary>
-        /// * azure_postgres:
+        /// * azure_mysql:
         /// </summary>
         [Input("secretStoreTenantIdKey")]
         public Input<string>? SecretStoreTenantIdKey { get; set; }

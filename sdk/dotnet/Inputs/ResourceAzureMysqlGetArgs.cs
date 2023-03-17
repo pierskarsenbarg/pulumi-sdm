@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceRdpGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceAzureMysqlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -19,8 +19,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
 
-        [Input("downgradeNlaConnections")]
-        public Input<bool>? DowngradeNlaConnections { get; set; }
+        [Input("database", required: true)]
+        public Input<string> Database { get; set; } = null!;
 
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
@@ -79,9 +79,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("username")]
         public Input<string>? Username { get; set; }
 
-        public ResourceRdpGetArgs()
+        public ResourceAzureMysqlGetArgs()
         {
         }
-        public static new ResourceRdpGetArgs Empty => new ResourceRdpGetArgs();
+        public static new ResourceAzureMysqlGetArgs Empty => new ResourceAzureMysqlGetArgs();
     }
 }

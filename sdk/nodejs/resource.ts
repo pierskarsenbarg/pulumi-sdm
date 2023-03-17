@@ -48,6 +48,7 @@ export class Resource extends pulumi.CustomResource {
     public readonly aksServiceAccountUserImpersonation!: pulumi.Output<outputs.ResourceAksServiceAccountUserImpersonation | undefined>;
     public readonly aksUserImpersonation!: pulumi.Output<outputs.ResourceAksUserImpersonation | undefined>;
     public readonly amazonEks!: pulumi.Output<outputs.ResourceAmazonEks | undefined>;
+    public readonly amazonEksInstanceProfile!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfile | undefined>;
     public readonly amazonEksUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksUserImpersonation | undefined>;
     public readonly amazonEs!: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
     public readonly amazonmqAmqp091!: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
@@ -66,6 +67,10 @@ export class Resource extends pulumi.CustomResource {
     public readonly awsConsoleStaticKeyPair!: pulumi.Output<outputs.ResourceAwsConsoleStaticKeyPair | undefined>;
     public readonly azure!: pulumi.Output<outputs.ResourceAzure | undefined>;
     public readonly azureCertificate!: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
+    /**
+     * AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly azureMysql!: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
     public readonly azurePostgres!: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
     public readonly bigQuery!: pulumi.Output<outputs.ResourceBigQuery | undefined>;
     public readonly cassandra!: pulumi.Output<outputs.ResourceCassandra | undefined>;
@@ -117,9 +122,6 @@ export class Resource extends pulumi.CustomResource {
     public readonly mysql!: pulumi.Output<outputs.ResourceMysql | undefined>;
     public readonly neptune!: pulumi.Output<outputs.ResourceNeptune | undefined>;
     public readonly neptuneIam!: pulumi.Output<outputs.ResourceNeptuneIam | undefined>;
-    /**
-     * Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly oracle!: pulumi.Output<outputs.ResourceOracle | undefined>;
     public readonly postgres!: pulumi.Output<outputs.ResourcePostgres | undefined>;
     public readonly presto!: pulumi.Output<outputs.ResourcePresto | undefined>;
@@ -161,6 +163,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["aksServiceAccountUserImpersonation"] = state ? state.aksServiceAccountUserImpersonation : undefined;
             resourceInputs["aksUserImpersonation"] = state ? state.aksUserImpersonation : undefined;
             resourceInputs["amazonEks"] = state ? state.amazonEks : undefined;
+            resourceInputs["amazonEksInstanceProfile"] = state ? state.amazonEksInstanceProfile : undefined;
             resourceInputs["amazonEksUserImpersonation"] = state ? state.amazonEksUserImpersonation : undefined;
             resourceInputs["amazonEs"] = state ? state.amazonEs : undefined;
             resourceInputs["amazonmqAmqp091"] = state ? state.amazonmqAmqp091 : undefined;
@@ -172,6 +175,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["awsConsoleStaticKeyPair"] = state ? state.awsConsoleStaticKeyPair : undefined;
             resourceInputs["azure"] = state ? state.azure : undefined;
             resourceInputs["azureCertificate"] = state ? state.azureCertificate : undefined;
+            resourceInputs["azureMysql"] = state ? state.azureMysql : undefined;
             resourceInputs["azurePostgres"] = state ? state.azurePostgres : undefined;
             resourceInputs["bigQuery"] = state ? state.bigQuery : undefined;
             resourceInputs["cassandra"] = state ? state.cassandra : undefined;
@@ -237,6 +241,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["aksServiceAccountUserImpersonation"] = args ? args.aksServiceAccountUserImpersonation : undefined;
             resourceInputs["aksUserImpersonation"] = args ? args.aksUserImpersonation : undefined;
             resourceInputs["amazonEks"] = args ? args.amazonEks : undefined;
+            resourceInputs["amazonEksInstanceProfile"] = args ? args.amazonEksInstanceProfile : undefined;
             resourceInputs["amazonEksUserImpersonation"] = args ? args.amazonEksUserImpersonation : undefined;
             resourceInputs["amazonEs"] = args ? args.amazonEs : undefined;
             resourceInputs["amazonmqAmqp091"] = args ? args.amazonmqAmqp091 : undefined;
@@ -248,6 +253,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["awsConsoleStaticKeyPair"] = args ? args.awsConsoleStaticKeyPair : undefined;
             resourceInputs["azure"] = args ? args.azure : undefined;
             resourceInputs["azureCertificate"] = args ? args.azureCertificate : undefined;
+            resourceInputs["azureMysql"] = args ? args.azureMysql : undefined;
             resourceInputs["azurePostgres"] = args ? args.azurePostgres : undefined;
             resourceInputs["bigQuery"] = args ? args.bigQuery : undefined;
             resourceInputs["cassandra"] = args ? args.cassandra : undefined;
@@ -321,6 +327,7 @@ export interface ResourceState {
     aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation>;
     aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation>;
     amazonEks?: pulumi.Input<inputs.ResourceAmazonEks>;
+    amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile>;
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
@@ -339,6 +346,10 @@ export interface ResourceState {
     awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
+    /**
+     * AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
     cassandra?: pulumi.Input<inputs.ResourceCassandra>;
@@ -390,9 +401,6 @@ export interface ResourceState {
     mysql?: pulumi.Input<inputs.ResourceMysql>;
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
-    /**
-     * Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     oracle?: pulumi.Input<inputs.ResourceOracle>;
     postgres?: pulumi.Input<inputs.ResourcePostgres>;
     presto?: pulumi.Input<inputs.ResourcePresto>;
@@ -426,6 +434,7 @@ export interface ResourceArgs {
     aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation>;
     aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation>;
     amazonEks?: pulumi.Input<inputs.ResourceAmazonEks>;
+    amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile>;
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
@@ -444,6 +453,10 @@ export interface ResourceArgs {
     awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
+    /**
+     * AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
     cassandra?: pulumi.Input<inputs.ResourceCassandra>;
@@ -495,9 +508,6 @@ export interface ResourceArgs {
     mysql?: pulumi.Input<inputs.ResourceMysql>;
     neptune?: pulumi.Input<inputs.ResourceNeptune>;
     neptuneIam?: pulumi.Input<inputs.ResourceNeptuneIam>;
-    /**
-     * Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     oracle?: pulumi.Input<inputs.ResourceOracle>;
     postgres?: pulumi.Input<inputs.ResourcePostgres>;
     presto?: pulumi.Input<inputs.ResourcePresto>;

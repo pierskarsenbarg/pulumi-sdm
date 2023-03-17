@@ -20,6 +20,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
+        /// External ID is an alternative unique ID this user is represented by within an external service.
+        /// </summary>
+        [Input("externalId")]
+        public Input<string>? ExternalId { get; set; }
+
+        /// <summary>
         /// The User's first name.
         /// </summary>
         [Input("firstName", required: true)]
@@ -30,6 +36,18 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// </summary>
         [Input("lastName", required: true)]
         public Input<string> LastName { get; set; } = null!;
+
+        /// <summary>
+        /// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+        /// </summary>
+        [Input("managedBy")]
+        public Input<string>? ManagedBy { get; set; }
+
+        /// <summary>
+        /// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+        /// </summary>
+        [Input("permissionLevel")]
+        public Input<string>? PermissionLevel { get; set; }
 
         /// <summary>
         /// The User's suspended state.

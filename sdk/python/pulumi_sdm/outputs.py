@@ -21,6 +21,7 @@ __all__ = [
     'ResourceAksServiceAccountUserImpersonation',
     'ResourceAksUserImpersonation',
     'ResourceAmazonEks',
+    'ResourceAmazonEksInstanceProfile',
     'ResourceAmazonEksUserImpersonation',
     'ResourceAmazonEs',
     'ResourceAmazonmqAmqp091',
@@ -32,6 +33,7 @@ __all__ = [
     'ResourceAwsConsoleStaticKeyPair',
     'ResourceAzure',
     'ResourceAzureCertificate',
+    'ResourceAzureMysql',
     'ResourceAzurePostgres',
     'ResourceBigQuery',
     'ResourceCassandra',
@@ -92,6 +94,7 @@ __all__ = [
     'SecretStoreAws',
     'SecretStoreAzureStore',
     'SecretStoreCyberarkConjur',
+    'SecretStoreCyberarkPam',
     'SecretStoreCyberarkPamExperimental',
     'SecretStoreDelineaStore',
     'SecretStoreGcpStore',
@@ -115,6 +118,7 @@ __all__ = [
     'GetResourceResourceAksUserImpersonationResult',
     'GetResourceResourceAmazonEResult',
     'GetResourceResourceAmazonEkResult',
+    'GetResourceResourceAmazonEksInstanceProfileResult',
     'GetResourceResourceAmazonEksUserImpersonationResult',
     'GetResourceResourceAmazonmqAmqp091Result',
     'GetResourceResourceAthenaResult',
@@ -125,6 +129,7 @@ __all__ = [
     'GetResourceResourceAwsConsoleStaticKeyPairResult',
     'GetResourceResourceAzureResult',
     'GetResourceResourceAzureCertificateResult',
+    'GetResourceResourceAzureMysqlResult',
     'GetResourceResourceAzurePostgreResult',
     'GetResourceResourceBigQueryResult',
     'GetResourceResourceCassandraResult',
@@ -187,6 +192,7 @@ __all__ = [
     'GetSecretStoreSecretStoreAwResult',
     'GetSecretStoreSecretStoreAzureStoreResult',
     'GetSecretStoreSecretStoreCyberarkConjurResult',
+    'GetSecretStoreSecretStoreCyberarkPamResult',
     'GetSecretStoreSecretStoreCyberarkPamExperimentalResult',
     'GetSecretStoreSecretStoreDelineaStoreResult',
     'GetSecretStoreSecretStoreGcpStoreResult',
@@ -254,6 +260,12 @@ class AccountUser(dict):
             suggest = "first_name"
         elif key == "lastName":
             suggest = "last_name"
+        elif key == "externalId":
+            suggest = "external_id"
+        elif key == "managedBy":
+            suggest = "managed_by"
+        elif key == "permissionLevel":
+            suggest = "permission_level"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccountUser. Access the value via the '{suggest}' property getter instead.")
@@ -270,18 +282,30 @@ class AccountUser(dict):
                  email: str,
                  first_name: str,
                  last_name: str,
+                 external_id: Optional[str] = None,
+                 managed_by: Optional[str] = None,
+                 permission_level: Optional[str] = None,
                  suspended: Optional[bool] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str email: The User's email address. Must be unique.
         :param str first_name: The User's first name.
         :param str last_name: The User's last name.
+        :param str external_id: External ID is an alternative unique ID this user is represented by within an external service.
+        :param str managed_by: Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+        :param str permission_level: PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
         :param bool suspended: The User's suspended state.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "first_name", first_name)
         pulumi.set(__self__, "last_name", last_name)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
+        if managed_by is not None:
+            pulumi.set(__self__, "managed_by", managed_by)
+        if permission_level is not None:
+            pulumi.set(__self__, "permission_level", permission_level)
         if suspended is not None:
             pulumi.set(__self__, "suspended", suspended)
         if tags is not None:
@@ -310,6 +334,30 @@ class AccountUser(dict):
         The User's last name.
         """
         return pulumi.get(self, "last_name")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        """
+        External ID is an alternative unique ID this user is represented by within an external service.
+        """
+        return pulumi.get(self, "external_id")
+
+    @property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> Optional[str]:
+        """
+        Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+        """
+        return pulumi.get(self, "managed_by")
+
+    @property
+    @pulumi.getter(name="permissionLevel")
+    def permission_level(self) -> Optional[str]:
+        """
+        PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+        """
+        return pulumi.get(self, "permission_level")
 
     @property
     @pulumi.getter
@@ -354,28 +402,40 @@ class NodeGateway(dict):
     def __init__(__self__, *,
                  listen_address: str,
                  bind_address: Optional[str] = None,
+                 device: Optional[str] = None,
                  gateway_filter: Optional[str] = None,
+                 location: Optional[str] = None,
                  name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
-                 token: Optional[str] = None):
+                 token: Optional[str] = None,
+                 version: Optional[str] = None):
         """
         :param str listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
         :param str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
+        :param str device: Device is a read only device name uploaded by the gateway process when  it comes online.
         :param str gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways.
+        :param str location: Location is a read only network location uploaded by the gateway process when it comes online.
         :param str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         """
         pulumi.set(__self__, "listen_address", listen_address)
         if bind_address is not None:
             pulumi.set(__self__, "bind_address", bind_address)
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if gateway_filter is not None:
             pulumi.set(__self__, "gateway_filter", gateway_filter)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="listenAddress")
@@ -394,12 +454,28 @@ class NodeGateway(dict):
         return pulumi.get(self, "bind_address")
 
     @property
+    @pulumi.getter
+    def device(self) -> Optional[str]:
+        """
+        Device is a read only device name uploaded by the gateway process when  it comes online.
+        """
+        return pulumi.get(self, "device")
+
+    @property
     @pulumi.getter(name="gatewayFilter")
     def gateway_filter(self) -> Optional[str]:
         """
         GatewayFilter can be used to restrict the peering between relays and gateways.
         """
         return pulumi.get(self, "gateway_filter")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        Location is a read only network location uploaded by the gateway process when it comes online.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -421,6 +497,14 @@ class NodeGateway(dict):
     @pulumi.getter
     def token(self) -> Optional[str]:
         return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -443,23 +527,43 @@ class NodeRelay(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 device: Optional[str] = None,
                  gateway_filter: Optional[str] = None,
+                 location: Optional[str] = None,
                  name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
-                 token: Optional[str] = None):
+                 token: Optional[str] = None,
+                 version: Optional[str] = None):
         """
+        :param str device: Device is a read only device name uploaded by the gateway process when  it comes online.
         :param str gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways.
+        :param str location: Location is a read only network location uploaded by the gateway process when it comes online.
         :param str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         """
+        if device is not None:
+            pulumi.set(__self__, "device", device)
         if gateway_filter is not None:
             pulumi.set(__self__, "gateway_filter", gateway_filter)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if token is not None:
             pulumi.set(__self__, "token", token)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def device(self) -> Optional[str]:
+        """
+        Device is a read only device name uploaded by the gateway process when  it comes online.
+        """
+        return pulumi.get(self, "device")
 
     @property
     @pulumi.getter(name="gatewayFilter")
@@ -468,6 +572,14 @@ class NodeRelay(dict):
         GatewayFilter can be used to restrict the peering between relays and gateways.
         """
         return pulumi.get(self, "gateway_filter")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        Location is a read only network location uploaded by the gateway process when it comes online.
+        """
+        return pulumi.get(self, "location")
 
     @property
     @pulumi.getter
@@ -489,6 +601,14 @@ class NodeRelay(dict):
     @pulumi.getter
     def token(self) -> Optional[str]:
         return pulumi.get(self, "token")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -1740,6 +1860,240 @@ class ResourceAmazonEks(dict):
     @pulumi.getter(name="secretStoreSecretAccessKeyPath")
     def secret_store_secret_access_key_path(self) -> Optional[str]:
         return pulumi.get(self, "secret_store_secret_access_key_path")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ResourceAmazonEksInstanceProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "certificateAuthority":
+            suggest = "certificate_authority"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "healthcheckNamespace":
+            suggest = "healthcheck_namespace"
+        elif key == "remoteIdentityGroupId":
+            suggest = "remote_identity_group_id"
+        elif key == "remoteIdentityHealthcheckUsername":
+            suggest = "remote_identity_healthcheck_username"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "roleExternalId":
+            suggest = "role_external_id"
+        elif key == "secretStoreCertificateAuthorityKey":
+            suggest = "secret_store_certificate_authority_key"
+        elif key == "secretStoreCertificateAuthorityPath":
+            suggest = "secret_store_certificate_authority_path"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+        elif key == "secretStoreRoleArnKey":
+            suggest = "secret_store_role_arn_key"
+        elif key == "secretStoreRoleArnPath":
+            suggest = "secret_store_role_arn_path"
+        elif key == "secretStoreRoleExternalIdKey":
+            suggest = "secret_store_role_external_id_key"
+        elif key == "secretStoreRoleExternalIdPath":
+            suggest = "secret_store_role_external_id_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceAmazonEksInstanceProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceAmazonEksInstanceProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceAmazonEksInstanceProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_name: str,
+                 endpoint: str,
+                 name: str,
+                 region: str,
+                 bind_interface: Optional[str] = None,
+                 certificate_authority: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 healthcheck_namespace: Optional[str] = None,
+                 remote_identity_group_id: Optional[str] = None,
+                 remote_identity_healthcheck_username: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 role_external_id: Optional[str] = None,
+                 secret_store_certificate_authority_key: Optional[str] = None,
+                 secret_store_certificate_authority_path: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 secret_store_role_arn_key: Optional[str] = None,
+                 secret_store_role_arn_path: Optional[str] = None,
+                 secret_store_role_external_id_key: Optional[str] = None,
+                 secret_store_role_external_id_path: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: Unique human-readable name of the Resource.
+        :param str bind_interface: Bind interface
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if healthcheck_namespace is not None:
+            pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if remote_identity_group_id is not None:
+            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
+        if remote_identity_healthcheck_username is not None:
+            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if role_external_id is not None:
+            pulumi.set(__self__, "role_external_id", role_external_id)
+        if secret_store_certificate_authority_key is not None:
+            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
+        if secret_store_certificate_authority_path is not None:
+            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if secret_store_role_arn_key is not None:
+            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
+        if secret_store_role_arn_path is not None:
+            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
+        if secret_store_role_external_id_key is not None:
+            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
+        if secret_store_role_external_id_path is not None:
+            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[str]:
+        return pulumi.get(self, "certificate_authority")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="healthcheckNamespace")
+    def healthcheck_namespace(self) -> Optional[str]:
+        """
+        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        """
+        return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="remoteIdentityGroupId")
+    def remote_identity_group_id(self) -> Optional[str]:
+        return pulumi.get(self, "remote_identity_group_id")
+
+    @property
+    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
+    def remote_identity_healthcheck_username(self) -> Optional[str]:
+        return pulumi.get(self, "remote_identity_healthcheck_username")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="roleExternalId")
+    def role_external_id(self) -> Optional[str]:
+        return pulumi.get(self, "role_external_id")
+
+    @property
+    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
+    def secret_store_certificate_authority_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_certificate_authority_key")
+
+    @property
+    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
+    def secret_store_certificate_authority_path(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_certificate_authority_path")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter(name="secretStoreRoleArnKey")
+    def secret_store_role_arn_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_role_arn_key")
+
+    @property
+    @pulumi.getter(name="secretStoreRoleArnPath")
+    def secret_store_role_arn_path(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_role_arn_path")
+
+    @property
+    @pulumi.getter(name="secretStoreRoleExternalIdKey")
+    def secret_store_role_external_id_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_role_external_id_key")
+
+    @property
+    @pulumi.getter(name="secretStoreRoleExternalIdPath")
+    def secret_store_role_external_id_path(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_role_external_id_path")
 
     @property
     @pulumi.getter
@@ -3773,7 +4127,7 @@ class ResourceAzure(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param str secret_store_tenant_id_key: * azure_postgres:
+        :param str secret_store_tenant_id_key: * azure_mysql:
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -3870,7 +4224,7 @@ class ResourceAzure(dict):
     @pulumi.getter(name="secretStoreTenantIdKey")
     def secret_store_tenant_id_key(self) -> Optional[str]:
         """
-        * azure_postgres:
+        * azure_mysql:
         """
         return pulumi.get(self, "secret_store_tenant_id_key")
 
@@ -3954,7 +4308,7 @@ class ResourceAzureCertificate(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param str secret_store_tenant_id_key: * azure_postgres:
+        :param str secret_store_tenant_id_key: * azure_mysql:
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -4051,7 +4405,7 @@ class ResourceAzureCertificate(dict):
     @pulumi.getter(name="secretStoreTenantIdKey")
     def secret_store_tenant_id_key(self) -> Optional[str]:
         """
-        * azure_postgres:
+        * azure_mysql:
         """
         return pulumi.get(self, "secret_store_tenant_id_key")
 
@@ -4072,6 +4426,181 @@ class ResourceAzureCertificate(dict):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[str]:
         return pulumi.get(self, "tenant_id")
+
+
+@pulumi.output_type
+class ResourceAzureMysql(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+        elif key == "secretStorePasswordKey":
+            suggest = "secret_store_password_key"
+        elif key == "secretStorePasswordPath":
+            suggest = "secret_store_password_path"
+        elif key == "secretStoreUsernameKey":
+            suggest = "secret_store_username_key"
+        elif key == "secretStoreUsernamePath":
+            suggest = "secret_store_username_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceAzureMysql. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceAzureMysql.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceAzureMysql.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 hostname: str,
+                 name: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 secret_store_password_key: Optional[str] = None,
+                 secret_store_password_path: Optional[str] = None,
+                 secret_store_username_key: Optional[str] = None,
+                 secret_store_username_path: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 username: Optional[str] = None):
+        """
+        :param str name: Unique human-readable name of the Resource.
+        :param str bind_interface: Bind interface
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if secret_store_password_key is not None:
+            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
+        if secret_store_password_path is not None:
+            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
+        if secret_store_username_key is not None:
+            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
+        if secret_store_username_path is not None:
+            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter(name="secretStorePasswordKey")
+    def secret_store_password_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_password_key")
+
+    @property
+    @pulumi.getter(name="secretStorePasswordPath")
+    def secret_store_password_path(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_password_path")
+
+    @property
+    @pulumi.getter(name="secretStoreUsernameKey")
+    def secret_store_username_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_username_key")
+
+    @property
+    @pulumi.getter(name="secretStoreUsernamePath")
+    def secret_store_username_path(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_username_path")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -6442,6 +6971,10 @@ class ResourceElasticacheRedis(dict):
             suggest = "secret_store_password_key"
         elif key == "secretStorePasswordPath":
             suggest = "secret_store_password_path"
+        elif key == "secretStoreUsernameKey":
+            suggest = "secret_store_username_key"
+        elif key == "secretStoreUsernamePath":
+            suggest = "secret_store_username_path"
         elif key == "tlsRequired":
             suggest = "tls_required"
 
@@ -6467,8 +7000,11 @@ class ResourceElasticacheRedis(dict):
                  secret_store_id: Optional[str] = None,
                  secret_store_password_key: Optional[str] = None,
                  secret_store_password_path: Optional[str] = None,
+                 secret_store_username_key: Optional[str] = None,
+                 secret_store_username_path: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
-                 tls_required: Optional[bool] = None):
+                 tls_required: Optional[bool] = None,
+                 username: Optional[str] = None):
         """
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: Bind interface
@@ -6494,10 +7030,16 @@ class ResourceElasticacheRedis(dict):
             pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
         if secret_store_password_path is not None:
             pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
+        if secret_store_username_key is not None:
+            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
+        if secret_store_username_path is not None:
+            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tls_required is not None:
             pulumi.set(__self__, "tls_required", tls_required)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -6562,6 +7104,16 @@ class ResourceElasticacheRedis(dict):
         return pulumi.get(self, "secret_store_password_path")
 
     @property
+    @pulumi.getter(name="secretStoreUsernameKey")
+    def secret_store_username_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_username_key")
+
+    @property
+    @pulumi.getter(name="secretStoreUsernamePath")
+    def secret_store_username_path(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_username_path")
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
         """
@@ -6573,6 +7125,11 @@ class ResourceElasticacheRedis(dict):
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[bool]:
         return pulumi.get(self, "tls_required")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -12106,11 +12663,11 @@ class ResourceRdp(dict):
     def __init__(__self__, *,
                  hostname: str,
                  name: str,
-                 port: int,
                  bind_interface: Optional[str] = None,
                  downgrade_nla_connections: Optional[bool] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
+                 port: Optional[int] = None,
                  port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  secret_store_password_key: Optional[str] = None,
@@ -12128,7 +12685,6 @@ class ResourceRdp(dict):
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port", port)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if downgrade_nla_connections is not None:
@@ -12137,6 +12693,8 @@ class ResourceRdp(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
@@ -12168,11 +12726,6 @@ class ResourceRdp(dict):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter
-    def port(self) -> int:
-        return pulumi.get(self, "port")
-
-    @property
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[str]:
         """
@@ -12197,6 +12750,11 @@ class ResourceRdp(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="portOverride")
@@ -12262,6 +12820,12 @@ class ResourceRedis(dict):
             suggest = "secret_store_password_key"
         elif key == "secretStorePasswordPath":
             suggest = "secret_store_password_path"
+        elif key == "secretStoreUsernameKey":
+            suggest = "secret_store_username_key"
+        elif key == "secretStoreUsernamePath":
+            suggest = "secret_store_username_path"
+        elif key == "tlsRequired":
+            suggest = "tls_required"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ResourceRedis. Access the value via the '{suggest}' property getter instead.")
@@ -12285,7 +12849,11 @@ class ResourceRedis(dict):
                  secret_store_id: Optional[str] = None,
                  secret_store_password_key: Optional[str] = None,
                  secret_store_password_path: Optional[str] = None,
-                 tags: Optional[Mapping[str, str]] = None):
+                 secret_store_username_key: Optional[str] = None,
+                 secret_store_username_path: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 tls_required: Optional[bool] = None,
+                 username: Optional[str] = None):
         """
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: Bind interface
@@ -12311,8 +12879,16 @@ class ResourceRedis(dict):
             pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
         if secret_store_password_path is not None:
             pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
+        if secret_store_username_key is not None:
+            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
+        if secret_store_username_path is not None:
+            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_required is not None:
+            pulumi.set(__self__, "tls_required", tls_required)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter
@@ -12377,12 +12953,32 @@ class ResourceRedis(dict):
         return pulumi.get(self, "secret_store_password_path")
 
     @property
+    @pulumi.getter(name="secretStoreUsernameKey")
+    def secret_store_username_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_username_key")
+
+    @property
+    @pulumi.getter(name="secretStoreUsernamePath")
+    def secret_store_username_path(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_username_path")
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
         """
         Tags is a map of key, value pairs.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tlsRequired")
+    def tls_required(self) -> Optional[bool]:
+        return pulumi.get(self, "tls_required")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -14467,6 +15063,60 @@ class SecretStoreCyberarkConjur(dict):
 
 
 @pulumi.output_type
+class SecretStoreCyberarkPam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appUrl":
+            suggest = "app_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretStoreCyberarkPam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretStoreCyberarkPam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretStoreCyberarkPam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 app_url: str,
+                 name: str,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: Unique human-readable name of the SecretStore.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "app_url", app_url)
+        pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="appUrl")
+    def app_url(self) -> str:
+        return pulumi.get(self, "app_url")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class SecretStoreCyberarkPamExperimental(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -14934,22 +15584,32 @@ class GetAccountAccountServiceResult(dict):
 @pulumi.output_type
 class GetAccountAccountUserResult(dict):
     def __init__(__self__, *,
+                 managed_by: str,
+                 permission_level: str,
                  email: Optional[str] = None,
+                 external_id: Optional[str] = None,
                  first_name: Optional[str] = None,
                  id: Optional[str] = None,
                  last_name: Optional[str] = None,
                  suspended: Optional[bool] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
+        :param str managed_by: Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+        :param str permission_level: PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
         :param str email: The User's email address. Must be unique.
+        :param str external_id: External ID is an alternative unique ID this user is represented by within an external service.
         :param str first_name: The User's first name.
         :param str id: Unique identifier of the User.
         :param str last_name: The User's last name.
         :param bool suspended: The User's suspended state.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
+        pulumi.set(__self__, "managed_by", managed_by)
+        pulumi.set(__self__, "permission_level", permission_level)
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
         if first_name is not None:
             pulumi.set(__self__, "first_name", first_name)
         if id is not None:
@@ -14962,12 +15622,36 @@ class GetAccountAccountUserResult(dict):
             pulumi.set(__self__, "tags", tags)
 
     @property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> str:
+        """
+        Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
+        """
+        return pulumi.get(self, "managed_by")
+
+    @property
+    @pulumi.getter(name="permissionLevel")
+    def permission_level(self) -> str:
+        """
+        PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+        """
+        return pulumi.get(self, "permission_level")
+
+    @property
     @pulumi.getter
     def email(self) -> Optional[str]:
         """
         The User's email address. Must be unique.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[str]:
+        """
+        External ID is an alternative unique ID this user is represented by within an external service.
+        """
+        return pulumi.get(self, "external_id")
 
     @property
     @pulumi.getter(name="firstName")
@@ -15075,6 +15759,9 @@ class GetNodeNodeResult(dict):
 @pulumi.output_type
 class GetNodeNodeGatewayResult(dict):
     def __init__(__self__, *,
+                 device: str,
+                 location: str,
+                 version: str,
                  bind_address: Optional[str] = None,
                  gateway_filter: Optional[str] = None,
                  id: Optional[str] = None,
@@ -15082,6 +15769,9 @@ class GetNodeNodeGatewayResult(dict):
                  name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
+        :param str device: Device is a read only device name uploaded by the gateway process when  it comes online.
+        :param str location: Location is a read only network location uploaded by the gateway process when it comes online.
+        :param str version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         :param str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
         :param str gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways.
         :param str id: Unique identifier of the Relay.
@@ -15089,6 +15779,9 @@ class GetNodeNodeGatewayResult(dict):
         :param str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "version", version)
         if bind_address is not None:
             pulumi.set(__self__, "bind_address", bind_address)
         if gateway_filter is not None:
@@ -15101,6 +15794,30 @@ class GetNodeNodeGatewayResult(dict):
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        """
+        Device is a read only device name uploaded by the gateway process when  it comes online.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location is a read only network location uploaded by the gateway process when it comes online.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+        """
+        return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="bindAddress")
@@ -15154,16 +15871,25 @@ class GetNodeNodeGatewayResult(dict):
 @pulumi.output_type
 class GetNodeNodeRelayResult(dict):
     def __init__(__self__, *,
+                 device: str,
+                 location: str,
+                 version: str,
                  gateway_filter: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
+        :param str device: Device is a read only device name uploaded by the gateway process when  it comes online.
+        :param str location: Location is a read only network location uploaded by the gateway process when it comes online.
+        :param str version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         :param str gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways.
         :param str id: Unique identifier of the Relay.
         :param str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "version", version)
         if gateway_filter is not None:
             pulumi.set(__self__, "gateway_filter", gateway_filter)
         if id is not None:
@@ -15172,6 +15898,30 @@ class GetNodeNodeRelayResult(dict):
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def device(self) -> str:
+        """
+        Device is a read only device name uploaded by the gateway process when  it comes online.
+        """
+        return pulumi.get(self, "device")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location is a read only network location uploaded by the gateway process when it comes online.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version is a read only sdm binary version uploaded by the gateway process when it comes online.
+        """
+        return pulumi.get(self, "version")
 
     @property
     @pulumi.getter(name="gatewayFilter")
@@ -15301,6 +16051,7 @@ class GetResourceResourceResult(dict):
                  aks_service_accounts: Sequence['outputs.GetResourceResourceAksServiceAccountResult'],
                  aks_user_impersonations: Sequence['outputs.GetResourceResourceAksUserImpersonationResult'],
                  amazon_eks: Sequence['outputs.GetResourceResourceAmazonEkResult'],
+                 amazon_eks_instance_profiles: Sequence['outputs.GetResourceResourceAmazonEksInstanceProfileResult'],
                  amazon_eks_user_impersonations: Sequence['outputs.GetResourceResourceAmazonEksUserImpersonationResult'],
                  amazon_es: Sequence['outputs.GetResourceResourceAmazonEResult'],
                  amazonmq_amqp091s: Sequence['outputs.GetResourceResourceAmazonmqAmqp091Result'],
@@ -15311,6 +16062,7 @@ class GetResourceResourceResult(dict):
                  aws_console_static_key_pairs: Sequence['outputs.GetResourceResourceAwsConsoleStaticKeyPairResult'],
                  aws_consoles: Sequence['outputs.GetResourceResourceAwsConsoleResult'],
                  azure_certificates: Sequence['outputs.GetResourceResourceAzureCertificateResult'],
+                 azure_mysqls: Sequence['outputs.GetResourceResourceAzureMysqlResult'],
                  azure_postgres: Sequence['outputs.GetResourceResourceAzurePostgreResult'],
                  azures: Sequence['outputs.GetResourceResourceAzureResult'],
                  big_queries: Sequence['outputs.GetResourceResourceBigQueryResult'],
@@ -15375,6 +16127,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "aks_service_accounts", aks_service_accounts)
         pulumi.set(__self__, "aks_user_impersonations", aks_user_impersonations)
         pulumi.set(__self__, "amazon_eks", amazon_eks)
+        pulumi.set(__self__, "amazon_eks_instance_profiles", amazon_eks_instance_profiles)
         pulumi.set(__self__, "amazon_eks_user_impersonations", amazon_eks_user_impersonations)
         pulumi.set(__self__, "amazon_es", amazon_es)
         pulumi.set(__self__, "amazonmq_amqp091s", amazonmq_amqp091s)
@@ -15385,6 +16138,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "aws_console_static_key_pairs", aws_console_static_key_pairs)
         pulumi.set(__self__, "aws_consoles", aws_consoles)
         pulumi.set(__self__, "azure_certificates", azure_certificates)
+        pulumi.set(__self__, "azure_mysqls", azure_mysqls)
         pulumi.set(__self__, "azure_postgres", azure_postgres)
         pulumi.set(__self__, "azures", azures)
         pulumi.set(__self__, "big_queries", big_queries)
@@ -15475,6 +16229,11 @@ class GetResourceResourceResult(dict):
         return pulumi.get(self, "amazon_eks")
 
     @property
+    @pulumi.getter(name="amazonEksInstanceProfiles")
+    def amazon_eks_instance_profiles(self) -> Sequence['outputs.GetResourceResourceAmazonEksInstanceProfileResult']:
+        return pulumi.get(self, "amazon_eks_instance_profiles")
+
+    @property
     @pulumi.getter(name="amazonEksUserImpersonations")
     def amazon_eks_user_impersonations(self) -> Sequence['outputs.GetResourceResourceAmazonEksUserImpersonationResult']:
         return pulumi.get(self, "amazon_eks_user_impersonations")
@@ -15523,6 +16282,11 @@ class GetResourceResourceResult(dict):
     @pulumi.getter(name="azureCertificates")
     def azure_certificates(self) -> Sequence['outputs.GetResourceResourceAzureCertificateResult']:
         return pulumi.get(self, "azure_certificates")
+
+    @property
+    @pulumi.getter(name="azureMysqls")
+    def azure_mysqls(self) -> Sequence['outputs.GetResourceResourceAzureMysqlResult']:
+        return pulumi.get(self, "azure_mysqls")
 
     @property
     @pulumi.getter(name="azurePostgres")
@@ -16817,6 +17581,161 @@ class GetResourceResourceAmazonEkResult(dict):
 
 
 @pulumi.output_type
+class GetResourceResourceAmazonEksInstanceProfileResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 certificate_authority: Optional[str] = None,
+                 cluster_name: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 healthcheck_namespace: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 region: Optional[str] = None,
+                 remote_identity_group_id: Optional[str] = None,
+                 remote_identity_healthcheck_username: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 role_external_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str bind_interface: Bind interface
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if healthcheck_namespace is not None:
+            pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if remote_identity_group_id is not None:
+            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
+        if remote_identity_healthcheck_username is not None:
+            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if role_external_id is not None:
+            pulumi.set(__self__, "role_external_id", role_external_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[str]:
+        return pulumi.get(self, "certificate_authority")
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[str]:
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="healthcheckNamespace")
+    def healthcheck_namespace(self) -> Optional[str]:
+        """
+        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        """
+        return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="remoteIdentityGroupId")
+    def remote_identity_group_id(self) -> Optional[str]:
+        return pulumi.get(self, "remote_identity_group_id")
+
+    @property
+    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
+    def remote_identity_healthcheck_username(self) -> Optional[str]:
+        return pulumi.get(self, "remote_identity_healthcheck_username")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="roleExternalId")
+    def role_external_id(self) -> Optional[str]:
+        return pulumi.get(self, "role_external_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class GetResourceResourceAmazonEksUserImpersonationResult(dict):
     def __init__(__self__, *,
                  access_key: Optional[str] = None,
@@ -17943,7 +18862,7 @@ class GetResourceResourceAzureResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
-        :param str tenant_id: * azure_postgres:
+        :param str tenant_id: * azure_mysql:
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -18026,7 +18945,7 @@ class GetResourceResourceAzureResult(dict):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[str]:
         """
-        * azure_postgres:
+        * azure_mysql:
         """
         return pulumi.get(self, "tenant_id")
 
@@ -18050,7 +18969,7 @@ class GetResourceResourceAzureCertificateResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
-        :param str tenant_id: * azure_postgres:
+        :param str tenant_id: * azure_mysql:
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -18133,9 +19052,136 @@ class GetResourceResourceAzureCertificateResult(dict):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[str]:
         """
-        * azure_postgres:
+        * azure_mysql:
         """
         return pulumi.get(self, "tenant_id")
+
+
+@pulumi.output_type
+class GetResourceResourceAzureMysqlResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 username: Optional[str] = None):
+        """
+        :param str bind_interface: Bind interface
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -19826,7 +20872,8 @@ class GetResourceResourceElasticacheRediResult(dict):
                  port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
-                 tls_required: Optional[bool] = None):
+                 tls_required: Optional[bool] = None,
+                 username: Optional[str] = None):
         """
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -19857,6 +20904,8 @@ class GetResourceResourceElasticacheRediResult(dict):
             pulumi.set(__self__, "tags", tags)
         if tls_required is not None:
             pulumi.set(__self__, "tls_required", tls_required)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -19930,6 +20979,11 @@ class GetResourceResourceElasticacheRediResult(dict):
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[bool]:
         return pulumi.get(self, "tls_required")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -24057,7 +25111,9 @@ class GetResourceResourceRediResult(dict):
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
-                 tags: Optional[Mapping[str, str]] = None):
+                 tags: Optional[Mapping[str, str]] = None,
+                 tls_required: Optional[bool] = None,
+                 username: Optional[str] = None):
         """
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -24086,6 +25142,10 @@ class GetResourceResourceRediResult(dict):
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tls_required is not None:
+            pulumi.set(__self__, "tls_required", tls_required)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -24154,6 +25214,16 @@ class GetResourceResourceRediResult(dict):
         Tags is a map of key, value pairs.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tlsRequired")
+    def tls_required(self) -> Optional[bool]:
+        return pulumi.get(self, "tls_required")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -25587,16 +26657,19 @@ class GetResourceResourceTeradataResult(dict):
 @pulumi.output_type
 class GetRoleRoleResult(dict):
     def __init__(__self__, *,
+                 managed_by: str,
                  access_rules: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
+        :param str managed_by: Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
         :param str access_rules: AccessRules is a list of access rules defining the resources this Role has access to.
         :param str id: Unique identifier of the Role.
         :param str name: Unique human-readable name of the Role.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
+        pulumi.set(__self__, "managed_by", managed_by)
         if access_rules is not None:
             pulumi.set(__self__, "access_rules", access_rules)
         if id is not None:
@@ -25605,6 +26678,14 @@ class GetRoleRoleResult(dict):
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="managedBy")
+    def managed_by(self) -> str:
+        """
+        Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+        """
+        return pulumi.get(self, "managed_by")
 
     @property
     @pulumi.getter(name="accessRules")
@@ -25646,6 +26727,7 @@ class GetSecretStoreSecretStoreResult(dict):
                  azure_stores: Sequence['outputs.GetSecretStoreSecretStoreAzureStoreResult'],
                  cyberark_conjurs: Sequence['outputs.GetSecretStoreSecretStoreCyberarkConjurResult'],
                  cyberark_pam_experimentals: Sequence['outputs.GetSecretStoreSecretStoreCyberarkPamExperimentalResult'],
+                 cyberark_pams: Sequence['outputs.GetSecretStoreSecretStoreCyberarkPamResult'],
                  delinea_stores: Sequence['outputs.GetSecretStoreSecretStoreDelineaStoreResult'],
                  gcp_stores: Sequence['outputs.GetSecretStoreSecretStoreGcpStoreResult'],
                  vault_approles: Sequence['outputs.GetSecretStoreSecretStoreVaultApproleResult'],
@@ -25655,6 +26737,7 @@ class GetSecretStoreSecretStoreResult(dict):
         pulumi.set(__self__, "azure_stores", azure_stores)
         pulumi.set(__self__, "cyberark_conjurs", cyberark_conjurs)
         pulumi.set(__self__, "cyberark_pam_experimentals", cyberark_pam_experimentals)
+        pulumi.set(__self__, "cyberark_pams", cyberark_pams)
         pulumi.set(__self__, "delinea_stores", delinea_stores)
         pulumi.set(__self__, "gcp_stores", gcp_stores)
         pulumi.set(__self__, "vault_approles", vault_approles)
@@ -25680,6 +26763,11 @@ class GetSecretStoreSecretStoreResult(dict):
     @pulumi.getter(name="cyberarkPamExperimentals")
     def cyberark_pam_experimentals(self) -> Sequence['outputs.GetSecretStoreSecretStoreCyberarkPamExperimentalResult']:
         return pulumi.get(self, "cyberark_pam_experimentals")
+
+    @property
+    @pulumi.getter(name="cyberarkPams")
+    def cyberark_pams(self) -> Sequence['outputs.GetSecretStoreSecretStoreCyberarkPamResult']:
+        return pulumi.get(self, "cyberark_pams")
 
     @property
     @pulumi.getter(name="delineaStores")
@@ -25815,6 +26903,57 @@ class GetSecretStoreSecretStoreAzureStoreResult(dict):
 
 @pulumi.output_type
 class GetSecretStoreSecretStoreCyberarkConjurResult(dict):
+    def __init__(__self__, *,
+                 app_url: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str id: Unique identifier of the SecretStore.
+        :param str name: Unique human-readable name of the SecretStore.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if app_url is not None:
+            pulumi.set(__self__, "app_url", app_url)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="appUrl")
+    def app_url(self) -> Optional[str]:
+        return pulumi.get(self, "app_url")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the SecretStore.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetSecretStoreSecretStoreCyberarkPamResult(dict):
     def __init__(__self__, *,
                  app_url: Optional[str] = None,
                  id: Optional[str] = None,

@@ -40,6 +40,8 @@ type LookupRoleResult struct {
 	Id *string `pulumi:"id"`
 	// a list of strings of ids of data sources that match the given arguments.
 	Ids []string `pulumi:"ids"`
+	// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+	ManagedBy string `pulumi:"managedBy"`
 	// Unique human-readable name of the Role.
 	Name *string `pulumi:"name"`
 	// A list where each element has the following attributes:
@@ -98,6 +100,11 @@ func (o LookupRoleResultOutput) Id() pulumi.StringPtrOutput {
 // a list of strings of ids of data sources that match the given arguments.
 func (o LookupRoleResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRoleResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.
+func (o LookupRoleResultOutput) ManagedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleResult) string { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
 // Unique human-readable name of the Role.

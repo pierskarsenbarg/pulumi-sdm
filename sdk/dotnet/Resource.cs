@@ -40,6 +40,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("amazonEks")]
         public Output<Outputs.ResourceAmazonEks?> AmazonEks { get; private set; } = null!;
 
+        [Output("amazonEksInstanceProfile")]
+        public Output<Outputs.ResourceAmazonEksInstanceProfile?> AmazonEksInstanceProfile { get; private set; } = null!;
+
         [Output("amazonEksUserImpersonation")]
         public Output<Outputs.ResourceAmazonEksUserImpersonation?> AmazonEksUserImpersonation { get; private set; } = null!;
 
@@ -79,6 +82,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("azureCertificate")]
         public Output<Outputs.ResourceAzureCertificate?> AzureCertificate { get; private set; } = null!;
+
+        /// <summary>
+        /// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("azureMysql")]
+        public Output<Outputs.ResourceAzureMysql?> AzureMysql { get; private set; } = null!;
 
         [Output("azurePostgres")]
         public Output<Outputs.ResourceAzurePostgres?> AzurePostgres { get; private set; } = null!;
@@ -209,9 +218,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("neptuneIam")]
         public Output<Outputs.ResourceNeptuneIam?> NeptuneIam { get; private set; } = null!;
 
-        /// <summary>
-        /// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("oracle")]
         public Output<Outputs.ResourceOracle?> Oracle { get; private set; } = null!;
 
@@ -334,6 +340,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEks")]
         public Input<Inputs.ResourceAmazonEksArgs>? AmazonEks { get; set; }
 
+        [Input("amazonEksInstanceProfile")]
+        public Input<Inputs.ResourceAmazonEksInstanceProfileArgs>? AmazonEksInstanceProfile { get; set; }
+
         [Input("amazonEksUserImpersonation")]
         public Input<Inputs.ResourceAmazonEksUserImpersonationArgs>? AmazonEksUserImpersonation { get; set; }
 
@@ -373,6 +382,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("azureCertificate")]
         public Input<Inputs.ResourceAzureCertificateArgs>? AzureCertificate { get; set; }
+
+        /// <summary>
+        /// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("azureMysql")]
+        public Input<Inputs.ResourceAzureMysqlArgs>? AzureMysql { get; set; }
 
         [Input("azurePostgres")]
         public Input<Inputs.ResourceAzurePostgresArgs>? AzurePostgres { get; set; }
@@ -503,9 +518,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("neptuneIam")]
         public Input<Inputs.ResourceNeptuneIamArgs>? NeptuneIam { get; set; }
 
-        /// <summary>
-        /// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("oracle")]
         public Input<Inputs.ResourceOracleArgs>? Oracle { get; set; }
 
@@ -589,6 +601,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEks")]
         public Input<Inputs.ResourceAmazonEksGetArgs>? AmazonEks { get; set; }
 
+        [Input("amazonEksInstanceProfile")]
+        public Input<Inputs.ResourceAmazonEksInstanceProfileGetArgs>? AmazonEksInstanceProfile { get; set; }
+
         [Input("amazonEksUserImpersonation")]
         public Input<Inputs.ResourceAmazonEksUserImpersonationGetArgs>? AmazonEksUserImpersonation { get; set; }
 
@@ -628,6 +643,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("azureCertificate")]
         public Input<Inputs.ResourceAzureCertificateGetArgs>? AzureCertificate { get; set; }
+
+        /// <summary>
+        /// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("azureMysql")]
+        public Input<Inputs.ResourceAzureMysqlGetArgs>? AzureMysql { get; set; }
 
         [Input("azurePostgres")]
         public Input<Inputs.ResourceAzurePostgresGetArgs>? AzurePostgres { get; set; }
@@ -758,9 +779,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("neptuneIam")]
         public Input<Inputs.ResourceNeptuneIamGetArgs>? NeptuneIam { get; set; }
 
-        /// <summary>
-        /// Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("oracle")]
         public Input<Inputs.ResourceOracleGetArgs>? Oracle { get; set; }
 

@@ -12,21 +12,26 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceElasticacheRedis
+    public sealed class GetResourceResourceAzureMysqlResult
     {
         /// <summary>
         /// Bind interface
         /// </summary>
         public readonly string? BindInterface;
+        public readonly string? Database;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
-        public readonly string Hostname;
+        public readonly string? Hostname;
+        /// <summary>
+        /// Unique identifier of the Resource.
+        /// </summary>
+        public readonly string? Id;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         public readonly string? Password;
         public readonly int? Port;
         public readonly int? PortOverride;
@@ -34,26 +39,25 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStorePasswordKey;
-        public readonly string? SecretStorePasswordPath;
-        public readonly string? SecretStoreUsernameKey;
-        public readonly string? SecretStoreUsernamePath;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        public readonly bool? TlsRequired;
         public readonly string? Username;
 
         [OutputConstructor]
-        private ResourceElasticacheRedis(
+        private GetResourceResourceAzureMysqlResult(
             string? bindInterface,
+
+            string? database,
 
             string? egressFilter,
 
-            string hostname,
+            string? hostname,
 
-            string name,
+            string? id,
+
+            string? name,
 
             string? password,
 
@@ -63,34 +67,21 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            string? secretStorePasswordKey,
-
-            string? secretStorePasswordPath,
-
-            string? secretStoreUsernameKey,
-
-            string? secretStoreUsernamePath,
-
             ImmutableDictionary<string, string>? tags,
-
-            bool? tlsRequired,
 
             string? username)
         {
             BindInterface = bindInterface;
+            Database = database;
             EgressFilter = egressFilter;
             Hostname = hostname;
+            Id = id;
             Name = name;
             Password = password;
             Port = port;
             PortOverride = portOverride;
             SecretStoreId = secretStoreId;
-            SecretStorePasswordKey = secretStorePasswordKey;
-            SecretStorePasswordPath = secretStorePasswordPath;
-            SecretStoreUsernameKey = secretStoreUsernameKey;
-            SecretStoreUsernamePath = secretStoreUsernamePath;
             Tags = tags;
-            TlsRequired = tlsRequired;
             Username = username;
         }
     }

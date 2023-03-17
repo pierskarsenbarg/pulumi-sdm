@@ -139,6 +139,15 @@
                         }
                     }
                 },
+                "externalId": {
+                    "type": "string",
+                    "description": "External ID is an alternative unique ID this user is represented by within an external service.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "firstName": {
                     "type": "string",
                     "description": "The User's first name.\n",
@@ -151,6 +160,24 @@
                 "lastName": {
                     "type": "string",
                     "description": "The User's last name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "managedBy": {
+                    "type": "string",
+                    "description": "Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissionLevel": {
+                    "type": "string",
+                    "description": "PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -184,7 +211,18 @@
                 "email",
                 "firstName",
                 "lastName"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "email",
+                        "firstName",
+                        "lastName",
+                        "managedBy",
+                        "permissionLevel"
+                    ]
+                }
+            }
         },
         "sdm:index/NodeGateway:NodeGateway": {
             "properties": {
@@ -197,6 +235,15 @@
                         }
                     },
                     "willReplaceOnChanges": true
+                },
+                "device": {
+                    "type": "string",
+                    "description": "Device is a read only device name uploaded by the gateway process when  it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 },
                 "gatewayFilter": {
                     "type": "string",
@@ -217,6 +264,15 @@
                     },
                     "willReplaceOnChanges": true
                 },
+                "location": {
+                    "type": "string",
+                    "description": "Location is a read only network location uploaded by the gateway process when it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.\n",
@@ -240,6 +296,15 @@
                 },
                 "token": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version is a read only sdm binary version uploaded by the gateway process when it comes online.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -255,18 +320,39 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindAddress",
+                        "device",
                         "listenAddress",
+                        "location",
                         "name",
-                        "token"
+                        "token",
+                        "version"
                     ]
                 }
             }
         },
         "sdm:index/NodeRelay:NodeRelay": {
             "properties": {
+                "device": {
+                    "type": "string",
+                    "description": "Device is a read only device name uploaded by the gateway process when  it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "gatewayFilter": {
                     "type": "string",
                     "description": "GatewayFilter can be used to restrict the peering between relays and gateways.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "location": {
+                    "type": "string",
+                    "description": "Location is a read only network location uploaded by the gateway process when it comes online.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -301,14 +387,26 @@
                             "mapCase": false
                         }
                     }
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version is a read only sdm binary version uploaded by the gateway process when it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "device",
+                        "location",
                         "name",
-                        "token"
+                        "token",
+                        "version"
                     ]
                 }
             }
@@ -1297,6 +1395,197 @@
                     }
                 },
                 "secretStoreSecretAccessKeyPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clusterName",
+                "endpoint",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "clusterName",
+                        "endpoint",
+                        "name",
+                        "region"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "certificateAuthority": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthcheckNamespace": {
+                    "type": "string",
+                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remoteIdentityGroupId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remoteIdentityHealthcheckUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreCertificateAuthorityKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreCertificateAuthorityPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreRoleArnKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreRoleArnPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreRoleExternalIdKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreRoleExternalIdPath": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -3030,7 +3319,7 @@
                 },
                 "secretStoreTenantIdKey": {
                     "type": "string",
-                    "description": "* azure_postgres:\n",
+                    "description": "* azure_mysql:\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3167,7 +3456,7 @@
                 },
                 "secretStoreTenantIdKey": {
                     "type": "string",
-                    "description": "* azure_postgres:\n",
+                    "description": "* azure_mysql:\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3212,6 +3501,155 @@
                     "requiredOutputs": [
                         "bindInterface",
                         "name"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceAzureMysql:ResourceAzureMysql": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "database": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStorePasswordKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStorePasswordPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreUsernameKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreUsernamePath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "hostname",
+                        "name",
+                        "portOverride"
                     ]
                 }
             }
@@ -5275,6 +5713,22 @@
                         }
                     }
                 },
+                "secretStoreUsernameKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreUsernamePath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -5289,6 +5743,14 @@
                 },
                 "tlsRequired": {
                     "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10000,8 +10462,7 @@
             "type": "object",
             "required": [
                 "hostname",
-                "name",
-                "port"
+                "name"
             ],
             "language": {
                 "nodejs": {
@@ -10009,7 +10470,6 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "port",
                         "portOverride"
                     ]
                 }
@@ -10101,12 +10561,44 @@
                         }
                     }
                 },
+                "secretStoreUsernameKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreUsernamePath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11865,6 +12357,44 @@
                 "name"
             ]
         },
+        "sdm:index/SecretStoreCyberarkPam:SecretStoreCyberarkPam": {
+            "properties": {
+                "appUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "appUrl",
+                "name"
+            ]
+        },
         "sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental": {
             "properties": {
                 "appUrl": {
@@ -12242,6 +12772,15 @@
                         }
                     }
                 },
+                "externalId": {
+                    "type": "string",
+                    "description": "External ID is an alternative unique ID this user is represented by within an external service.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "firstName": {
                     "type": "string",
                     "description": "The User's first name.\n",
@@ -12263,6 +12802,24 @@
                 "lastName": {
                     "type": "string",
                     "description": "The User's last name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "managedBy": {
+                    "type": "string",
+                    "description": "Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissionLevel": {
+                    "type": "string",
+                    "description": "PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -12291,7 +12848,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "managedBy",
+                "permissionLevel"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getAccountAttachmentAccountAttachment:getAccountAttachmentAccountAttachment": {
             "properties": {
@@ -12372,6 +12938,15 @@
                         }
                     }
                 },
+                "device": {
+                    "type": "string",
+                    "description": "Device is a read only device name uploaded by the gateway process when  it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "gatewayFilter": {
                     "type": "string",
                     "description": "GatewayFilter can be used to restrict the peering between relays and gateways.\n",
@@ -12399,6 +12974,15 @@
                         }
                     }
                 },
+                "location": {
+                    "type": "string",
+                    "description": "Location is a read only network location uploaded by the gateway process when it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.\n",
@@ -12419,12 +13003,40 @@
                             "mapCase": false
                         }
                     }
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version is a read only sdm binary version uploaded by the gateway process when it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "device",
+                "location",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getNodeNodeRelay:getNodeNodeRelay": {
             "properties": {
+                "device": {
+                    "type": "string",
+                    "description": "Device is a read only device name uploaded by the gateway process when  it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "gatewayFilter": {
                     "type": "string",
                     "description": "GatewayFilter can be used to restrict the peering between relays and gateways.\n",
@@ -12443,6 +13055,15 @@
                         }
                     }
                 },
+                "location": {
+                    "type": "string",
+                    "description": "Location is a read only network location uploaded by the gateway process when it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.\n",
@@ -12463,9 +13084,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Version is a read only sdm binary version uploaded by the gateway process when it comes online.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "device",
+                "location",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getRemoteIdentityGroupRemoteIdentityGroup:getRemoteIdentityGroupRemoteIdentityGroup": {
             "properties": {
@@ -12599,6 +13239,17 @@
                         }
                     }
                 },
+                "amazonEksInstanceProfiles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAmazonEksInstanceProfile:getResourceResourceAmazonEksInstanceProfile"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "amazonEksUserImpersonations": {
                     "type": "array",
                     "items": {
@@ -12702,6 +13353,17 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceAzureCertificate:getResourceResourceAzureCertificate"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "azureMysqls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAzureMysql:getResourceResourceAzureMysql"
                     },
                     "language": {
                         "python": {
@@ -13356,6 +14018,7 @@
                 "aksServiceAccountUserImpersonations",
                 "aksUserImpersonations",
                 "amazonEks",
+                "amazonEksInstanceProfiles",
                 "amazonEksUserImpersonations",
                 "amazonEs",
                 "amazonmqAmqp091s",
@@ -13367,6 +14030,7 @@
                 "awsConsoleStaticKeyPairs",
                 "azures",
                 "azureCertificates",
+                "azureMysqls",
                 "azurePostgres",
                 "bigQueries",
                 "cassandras",
@@ -14258,6 +14922,141 @@
                     }
                 },
                 "secretAccessKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAmazonEksInstanceProfile:getResourceResourceAmazonEksInstanceProfile": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "certificateAuthority": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthcheckNamespace": {
+                    "type": "string",
+                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remoteIdentityGroupId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remoteIdentityHealthcheckUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleExternalId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -15335,7 +16134,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "* azure_postgres:\n",
+                    "description": "* azure_mysql:\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15422,7 +16221,117 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "* azure_postgres:\n",
+                    "description": "* azure_mysql:\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAzureMysql:getResourceResourceAzureMysql": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "database": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hostname": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "password": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16979,6 +17888,14 @@
                 },
                 "tlsRequired": {
                     "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20628,6 +21545,22 @@
                             "mapCase": false
                         }
                     }
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "username": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -21902,6 +22835,15 @@
                         }
                     }
                 },
+                "managedBy": {
+                    "type": "string",
+                    "description": "Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Role.\n",
@@ -21924,7 +22866,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "managedBy"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "sdm:index/getSecretStoreSecretStore:getSecretStoreSecretStore": {
             "properties": {
@@ -21965,6 +22915,17 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getSecretStoreSecretStoreCyberarkPamExperimental:getSecretStoreSecretStoreCyberarkPamExperimental"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cyberarkPams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreCyberarkPam:getSecretStoreSecretStoreCyberarkPam"
                     },
                     "language": {
                         "python": {
@@ -22033,6 +22994,7 @@
                 "aws",
                 "azureStores",
                 "cyberarkConjurs",
+                "cyberarkPams",
                 "cyberarkPamExperimentals",
                 "delineaStores",
                 "gcpStores",
@@ -22134,6 +23096,49 @@
             "type": "object"
         },
         "sdm:index/getSecretStoreSecretStoreCyberarkConjur:getSecretStoreSecretStoreCyberarkConjur": {
+            "properties": {
+                "appUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getSecretStoreSecretStoreCyberarkPam:getSecretStoreSecretStoreCyberarkPam": {
             "properties": {
                 "appUrl": {
                     "type": "string",
@@ -22735,6 +23740,9 @@
                 "amazonEks": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEks:ResourceAmazonEks"
                 },
+                "amazonEksInstanceProfile": {
+                    "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
+                },
                 "amazonEksUserImpersonation": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
                 },
@@ -22769,6 +23777,10 @@
                 },
                 "azureCertificate": {
                     "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
+                },
+                "azureMysql": {
+                    "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql",
+                    "description": "AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "azurePostgres": {
                     "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -22892,8 +23904,7 @@
                     "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
                 },
                 "oracle": {
-                    "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle",
-                    "description": "Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
                 },
                 "postgres": {
                     "$ref": "#/types/sdm:index/ResourcePostgres:ResourcePostgres"
@@ -22967,6 +23978,9 @@
                 "amazonEks": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEks:ResourceAmazonEks"
                 },
+                "amazonEksInstanceProfile": {
+                    "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
+                },
                 "amazonEksUserImpersonation": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
                 },
@@ -23001,6 +24015,10 @@
                 },
                 "azureCertificate": {
                     "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
+                },
+                "azureMysql": {
+                    "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql",
+                    "description": "AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "azurePostgres": {
                     "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -23124,8 +24142,7 @@
                     "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
                 },
                 "oracle": {
-                    "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle",
-                    "description": "Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
                 },
                 "postgres": {
                     "$ref": "#/types/sdm:index/ResourcePostgres:ResourcePostgres"
@@ -23201,6 +24218,9 @@
                     "amazonEks": {
                         "$ref": "#/types/sdm:index/ResourceAmazonEks:ResourceAmazonEks"
                     },
+                    "amazonEksInstanceProfile": {
+                        "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
+                    },
                     "amazonEksUserImpersonation": {
                         "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
                     },
@@ -23235,6 +24255,10 @@
                     },
                     "azureCertificate": {
                         "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
+                    },
+                    "azureMysql": {
+                        "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql",
+                        "description": "AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "azurePostgres": {
                         "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -23358,8 +24382,7 @@
                         "$ref": "#/types/sdm:index/ResourceNeptuneIam:ResourceNeptuneIam"
                     },
                     "oracle": {
-                        "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle",
-                        "description": "Oracle is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceOracle:ResourceOracle"
                     },
                     "postgres": {
                         "$ref": "#/types/sdm:index/ResourcePostgres:ResourcePostgres"
@@ -23424,6 +24447,10 @@
                     "type": "string",
                     "description": "AccessRules is a list of access rules defining the resources this Role has access to.\n"
                 },
+                "managedBy": {
+                    "type": "string",
+                    "description": "Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Role.\n"
@@ -23438,6 +24465,7 @@
             },
             "required": [
                 "accessRules",
+                "managedBy",
                 "name"
             ],
             "inputProperties": {
@@ -23464,6 +24492,10 @@
                         "type": "string",
                         "description": "AccessRules is a list of access rules defining the resources this Role has access to.\n"
                     },
+                    "managedBy": {
+                        "type": "string",
+                        "description": "Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the Role.\n"
@@ -23489,16 +24521,17 @@
                     "$ref": "#/types/sdm:index/SecretStoreAzureStore:SecretStoreAzureStore"
                 },
                 "cyberarkConjur": {
-                    "$ref": "#/types/sdm:index/SecretStoreCyberarkConjur:SecretStoreCyberarkConjur",
-                    "description": "CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/SecretStoreCyberarkConjur:SecretStoreCyberarkConjur"
+                },
+                "cyberarkPam": {
+                    "$ref": "#/types/sdm:index/SecretStoreCyberarkPam:SecretStoreCyberarkPam"
                 },
                 "cyberarkPamExperimental": {
                     "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
                     "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
                 },
                 "delineaStore": {
-                    "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore",
-                    "description": "DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"
                 },
                 "gcpStore": {
                     "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
@@ -23521,16 +24554,17 @@
                     "$ref": "#/types/sdm:index/SecretStoreAzureStore:SecretStoreAzureStore"
                 },
                 "cyberarkConjur": {
-                    "$ref": "#/types/sdm:index/SecretStoreCyberarkConjur:SecretStoreCyberarkConjur",
-                    "description": "CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/SecretStoreCyberarkConjur:SecretStoreCyberarkConjur"
+                },
+                "cyberarkPam": {
+                    "$ref": "#/types/sdm:index/SecretStoreCyberarkPam:SecretStoreCyberarkPam"
                 },
                 "cyberarkPamExperimental": {
                     "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
                     "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
                 },
                 "delineaStore": {
-                    "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore",
-                    "description": "DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"
                 },
                 "gcpStore": {
                     "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
@@ -23555,16 +24589,17 @@
                         "$ref": "#/types/sdm:index/SecretStoreAzureStore:SecretStoreAzureStore"
                     },
                     "cyberarkConjur": {
-                        "$ref": "#/types/sdm:index/SecretStoreCyberarkConjur:SecretStoreCyberarkConjur",
-                        "description": "CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/SecretStoreCyberarkConjur:SecretStoreCyberarkConjur"
+                    },
+                    "cyberarkPam": {
+                        "$ref": "#/types/sdm:index/SecretStoreCyberarkPam:SecretStoreCyberarkPam"
                     },
                     "cyberarkPamExperimental": {
                         "$ref": "#/types/sdm:index/SecretStoreCyberarkPamExperimental:SecretStoreCyberarkPamExperimental",
                         "description": "CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
                     },
                     "delineaStore": {
-                        "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore",
-                        "description": "DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/SecretStoreDelineaStore:SecretStoreDelineaStore"
                     },
                     "gcpStore": {
                         "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
@@ -23592,6 +24627,10 @@
                     "email": {
                         "type": "string",
                         "description": "The User's email address. Must be unique.\n"
+                    },
+                    "externalId": {
+                        "type": "string",
+                        "description": "External ID is an alternative unique ID this user is represented by within an external service.\n"
                     },
                     "firstName": {
                         "type": "string",
@@ -23640,6 +24679,10 @@
                     "email": {
                         "type": "string",
                         "description": "The User's email address. Must be unique.\n"
+                    },
+                    "externalId": {
+                        "type": "string",
+                        "description": "External ID is an alternative unique ID this user is represented by within an external service.\n"
                     },
                     "firstName": {
                         "type": "string",
@@ -24068,6 +25111,10 @@
                         },
                         "description": "a list of strings of ids of data sources that match the given arguments.\n"
                     },
+                    "managedBy": {
+                        "type": "string",
+                        "description": "Managed By is a read only field for what service manages this role, e.g. StrongDM, Okta, Azure.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Unique human-readable name of the Role.\n"
@@ -24090,6 +25137,7 @@
                 "type": "object",
                 "required": [
                     "ids",
+                    "managedBy",
                     "roles"
                 ]
             }

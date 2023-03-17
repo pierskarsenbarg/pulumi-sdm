@@ -28,11 +28,11 @@ namespace PiersKarsenbarg.Sdm
         [Output("azureStore")]
         public Output<Outputs.SecretStoreAzureStore?> AzureStore { get; private set; } = null!;
 
-        /// <summary>
-        /// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("cyberarkConjur")]
         public Output<Outputs.SecretStoreCyberarkConjur?> CyberarkConjur { get; private set; } = null!;
+
+        [Output("cyberarkPam")]
+        public Output<Outputs.SecretStoreCyberarkPam?> CyberarkPam { get; private set; } = null!;
 
         /// <summary>
         /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
@@ -41,9 +41,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("cyberarkPamExperimental")]
         public Output<Outputs.SecretStoreCyberarkPamExperimental?> CyberarkPamExperimental { get; private set; } = null!;
 
-        /// <summary>
-        /// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("delineaStore")]
         public Output<Outputs.SecretStoreDelineaStore?> DelineaStore { get; private set; } = null!;
 
@@ -112,11 +109,11 @@ namespace PiersKarsenbarg.Sdm
         [Input("azureStore")]
         public Input<Inputs.SecretStoreAzureStoreArgs>? AzureStore { get; set; }
 
-        /// <summary>
-        /// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("cyberarkConjur")]
         public Input<Inputs.SecretStoreCyberarkConjurArgs>? CyberarkConjur { get; set; }
+
+        [Input("cyberarkPam")]
+        public Input<Inputs.SecretStoreCyberarkPamArgs>? CyberarkPam { get; set; }
 
         /// <summary>
         /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
@@ -125,9 +122,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("cyberarkPamExperimental")]
         public Input<Inputs.SecretStoreCyberarkPamExperimentalArgs>? CyberarkPamExperimental { get; set; }
 
-        /// <summary>
-        /// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("delineaStore")]
         public Input<Inputs.SecretStoreDelineaStoreArgs>? DelineaStore { get; set; }
 
@@ -157,11 +151,11 @@ namespace PiersKarsenbarg.Sdm
         [Input("azureStore")]
         public Input<Inputs.SecretStoreAzureStoreGetArgs>? AzureStore { get; set; }
 
-        /// <summary>
-        /// CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("cyberarkConjur")]
         public Input<Inputs.SecretStoreCyberarkConjurGetArgs>? CyberarkConjur { get; set; }
+
+        [Input("cyberarkPam")]
+        public Input<Inputs.SecretStoreCyberarkPamGetArgs>? CyberarkPam { get; set; }
 
         /// <summary>
         /// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
@@ -170,9 +164,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("cyberarkPamExperimental")]
         public Input<Inputs.SecretStoreCyberarkPamExperimentalGetArgs>? CyberarkPamExperimental { get; set; }
 
-        /// <summary>
-        /// DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("delineaStore")]
         public Input<Inputs.SecretStoreDelineaStoreGetArgs>? DelineaStore { get; set; }
 

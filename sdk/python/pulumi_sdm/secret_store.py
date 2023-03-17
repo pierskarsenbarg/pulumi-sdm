@@ -19,6 +19,7 @@ class SecretStoreArgs:
                  aws: Optional[pulumi.Input['SecretStoreAwsArgs']] = None,
                  azure_store: Optional[pulumi.Input['SecretStoreAzureStoreArgs']] = None,
                  cyberark_conjur: Optional[pulumi.Input['SecretStoreCyberarkConjurArgs']] = None,
+                 cyberark_pam: Optional[pulumi.Input['SecretStoreCyberarkPamArgs']] = None,
                  cyberark_pam_experimental: Optional[pulumi.Input['SecretStoreCyberarkPamExperimentalArgs']] = None,
                  delinea_store: Optional[pulumi.Input['SecretStoreDelineaStoreArgs']] = None,
                  gcp_store: Optional[pulumi.Input['SecretStoreGcpStoreArgs']] = None,
@@ -27,10 +28,8 @@ class SecretStoreArgs:
                  vault_token: Optional[pulumi.Input['SecretStoreVaultTokenArgs']] = None):
         """
         The set of arguments for constructing a SecretStore resource.
-        :param pulumi.Input['SecretStoreCyberarkConjurArgs'] cyberark_conjur: CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
                version bump.
-        :param pulumi.Input['SecretStoreDelineaStoreArgs'] delinea_store: DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
@@ -38,6 +37,8 @@ class SecretStoreArgs:
             pulumi.set(__self__, "azure_store", azure_store)
         if cyberark_conjur is not None:
             pulumi.set(__self__, "cyberark_conjur", cyberark_conjur)
+        if cyberark_pam is not None:
+            pulumi.set(__self__, "cyberark_pam", cyberark_pam)
         if cyberark_pam_experimental is not None:
             pulumi.set(__self__, "cyberark_pam_experimental", cyberark_pam_experimental)
         if delinea_store is not None:
@@ -72,14 +73,20 @@ class SecretStoreArgs:
     @property
     @pulumi.getter(name="cyberarkConjur")
     def cyberark_conjur(self) -> Optional[pulumi.Input['SecretStoreCyberarkConjurArgs']]:
-        """
-        CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "cyberark_conjur")
 
     @cyberark_conjur.setter
     def cyberark_conjur(self, value: Optional[pulumi.Input['SecretStoreCyberarkConjurArgs']]):
         pulumi.set(self, "cyberark_conjur", value)
+
+    @property
+    @pulumi.getter(name="cyberarkPam")
+    def cyberark_pam(self) -> Optional[pulumi.Input['SecretStoreCyberarkPamArgs']]:
+        return pulumi.get(self, "cyberark_pam")
+
+    @cyberark_pam.setter
+    def cyberark_pam(self, value: Optional[pulumi.Input['SecretStoreCyberarkPamArgs']]):
+        pulumi.set(self, "cyberark_pam", value)
 
     @property
     @pulumi.getter(name="cyberarkPamExperimental")
@@ -97,9 +104,6 @@ class SecretStoreArgs:
     @property
     @pulumi.getter(name="delineaStore")
     def delinea_store(self) -> Optional[pulumi.Input['SecretStoreDelineaStoreArgs']]:
-        """
-        DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "delinea_store")
 
     @delinea_store.setter
@@ -149,6 +153,7 @@ class _SecretStoreState:
                  aws: Optional[pulumi.Input['SecretStoreAwsArgs']] = None,
                  azure_store: Optional[pulumi.Input['SecretStoreAzureStoreArgs']] = None,
                  cyberark_conjur: Optional[pulumi.Input['SecretStoreCyberarkConjurArgs']] = None,
+                 cyberark_pam: Optional[pulumi.Input['SecretStoreCyberarkPamArgs']] = None,
                  cyberark_pam_experimental: Optional[pulumi.Input['SecretStoreCyberarkPamExperimentalArgs']] = None,
                  delinea_store: Optional[pulumi.Input['SecretStoreDelineaStoreArgs']] = None,
                  gcp_store: Optional[pulumi.Input['SecretStoreGcpStoreArgs']] = None,
@@ -157,10 +162,8 @@ class _SecretStoreState:
                  vault_token: Optional[pulumi.Input['SecretStoreVaultTokenArgs']] = None):
         """
         Input properties used for looking up and filtering SecretStore resources.
-        :param pulumi.Input['SecretStoreCyberarkConjurArgs'] cyberark_conjur: CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
                version bump.
-        :param pulumi.Input['SecretStoreDelineaStoreArgs'] delinea_store: DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
@@ -168,6 +171,8 @@ class _SecretStoreState:
             pulumi.set(__self__, "azure_store", azure_store)
         if cyberark_conjur is not None:
             pulumi.set(__self__, "cyberark_conjur", cyberark_conjur)
+        if cyberark_pam is not None:
+            pulumi.set(__self__, "cyberark_pam", cyberark_pam)
         if cyberark_pam_experimental is not None:
             pulumi.set(__self__, "cyberark_pam_experimental", cyberark_pam_experimental)
         if delinea_store is not None:
@@ -202,14 +207,20 @@ class _SecretStoreState:
     @property
     @pulumi.getter(name="cyberarkConjur")
     def cyberark_conjur(self) -> Optional[pulumi.Input['SecretStoreCyberarkConjurArgs']]:
-        """
-        CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "cyberark_conjur")
 
     @cyberark_conjur.setter
     def cyberark_conjur(self, value: Optional[pulumi.Input['SecretStoreCyberarkConjurArgs']]):
         pulumi.set(self, "cyberark_conjur", value)
+
+    @property
+    @pulumi.getter(name="cyberarkPam")
+    def cyberark_pam(self) -> Optional[pulumi.Input['SecretStoreCyberarkPamArgs']]:
+        return pulumi.get(self, "cyberark_pam")
+
+    @cyberark_pam.setter
+    def cyberark_pam(self, value: Optional[pulumi.Input['SecretStoreCyberarkPamArgs']]):
+        pulumi.set(self, "cyberark_pam", value)
 
     @property
     @pulumi.getter(name="cyberarkPamExperimental")
@@ -227,9 +238,6 @@ class _SecretStoreState:
     @property
     @pulumi.getter(name="delineaStore")
     def delinea_store(self) -> Optional[pulumi.Input['SecretStoreDelineaStoreArgs']]:
-        """
-        DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "delinea_store")
 
     @delinea_store.setter
@@ -281,6 +289,7 @@ class SecretStore(pulumi.CustomResource):
                  aws: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsArgs']]] = None,
                  azure_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreAzureStoreArgs']]] = None,
                  cyberark_conjur: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkConjurArgs']]] = None,
+                 cyberark_pam: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamArgs']]] = None,
                  cyberark_pam_experimental: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamExperimentalArgs']]] = None,
                  delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
                  gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
@@ -299,10 +308,8 @@ class SecretStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecretStoreCyberarkConjurArgs']] cyberark_conjur: CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamExperimentalArgs']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
                version bump.
-        :param pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']] delinea_store: DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -337,6 +344,7 @@ class SecretStore(pulumi.CustomResource):
                  aws: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsArgs']]] = None,
                  azure_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreAzureStoreArgs']]] = None,
                  cyberark_conjur: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkConjurArgs']]] = None,
+                 cyberark_pam: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamArgs']]] = None,
                  cyberark_pam_experimental: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamExperimentalArgs']]] = None,
                  delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
                  gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
@@ -355,6 +363,7 @@ class SecretStore(pulumi.CustomResource):
             __props__.__dict__["aws"] = aws
             __props__.__dict__["azure_store"] = azure_store
             __props__.__dict__["cyberark_conjur"] = cyberark_conjur
+            __props__.__dict__["cyberark_pam"] = cyberark_pam
             __props__.__dict__["cyberark_pam_experimental"] = cyberark_pam_experimental
             __props__.__dict__["delinea_store"] = delinea_store
             __props__.__dict__["gcp_store"] = gcp_store
@@ -374,6 +383,7 @@ class SecretStore(pulumi.CustomResource):
             aws: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsArgs']]] = None,
             azure_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreAzureStoreArgs']]] = None,
             cyberark_conjur: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkConjurArgs']]] = None,
+            cyberark_pam: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamArgs']]] = None,
             cyberark_pam_experimental: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamExperimentalArgs']]] = None,
             delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
             gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
@@ -387,10 +397,8 @@ class SecretStore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['SecretStoreCyberarkConjurArgs']] cyberark_conjur: CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamExperimentalArgs']] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
                version bump.
-        :param pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']] delinea_store: DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -399,6 +407,7 @@ class SecretStore(pulumi.CustomResource):
         __props__.__dict__["aws"] = aws
         __props__.__dict__["azure_store"] = azure_store
         __props__.__dict__["cyberark_conjur"] = cyberark_conjur
+        __props__.__dict__["cyberark_pam"] = cyberark_pam
         __props__.__dict__["cyberark_pam_experimental"] = cyberark_pam_experimental
         __props__.__dict__["delinea_store"] = delinea_store
         __props__.__dict__["gcp_store"] = gcp_store
@@ -420,10 +429,12 @@ class SecretStore(pulumi.CustomResource):
     @property
     @pulumi.getter(name="cyberarkConjur")
     def cyberark_conjur(self) -> pulumi.Output[Optional['outputs.SecretStoreCyberarkConjur']]:
-        """
-        CyberarkConjurStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "cyberark_conjur")
+
+    @property
+    @pulumi.getter(name="cyberarkPam")
+    def cyberark_pam(self) -> pulumi.Output[Optional['outputs.SecretStoreCyberarkPam']]:
+        return pulumi.get(self, "cyberark_pam")
 
     @property
     @pulumi.getter(name="cyberarkPamExperimental")
@@ -437,9 +448,6 @@ class SecretStore(pulumi.CustomResource):
     @property
     @pulumi.getter(name="delineaStore")
     def delinea_store(self) -> pulumi.Output[Optional['outputs.SecretStoreDelineaStore']]:
-        """
-        DelineaStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "delinea_store")
 
     @property

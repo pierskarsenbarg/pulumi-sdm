@@ -36,10 +36,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? SecretStoreId;
         public readonly string? SecretStorePasswordKey;
         public readonly string? SecretStorePasswordPath;
+        public readonly string? SecretStoreUsernameKey;
+        public readonly string? SecretStoreUsernamePath;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly bool? TlsRequired;
+        public readonly string? Username;
 
         [OutputConstructor]
         private ResourceRedis(
@@ -63,7 +67,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStorePasswordPath,
 
-            ImmutableDictionary<string, string>? tags)
+            string? secretStoreUsernameKey,
+
+            string? secretStoreUsernamePath,
+
+            ImmutableDictionary<string, string>? tags,
+
+            bool? tlsRequired,
+
+            string? username)
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
@@ -75,7 +87,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             SecretStorePasswordKey = secretStorePasswordKey;
             SecretStorePasswordPath = secretStorePasswordPath;
+            SecretStoreUsernameKey = secretStoreUsernameKey;
+            SecretStoreUsernamePath = secretStoreUsernamePath;
             Tags = tags;
+            TlsRequired = tlsRequired;
+            Username = username;
         }
     }
 }
