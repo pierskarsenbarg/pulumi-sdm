@@ -22,20 +22,21 @@ import (
 type Resource struct {
 	pulumi.CustomResourceState
 
-	Aks                                ResourceAksPtrOutput                                `pulumi:"aks"`
-	AksBasicAuth                       ResourceAksBasicAuthPtrOutput                       `pulumi:"aksBasicAuth"`
-	AksServiceAccount                  ResourceAksServiceAccountPtrOutput                  `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrOutput `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation               ResourceAksUserImpersonationPtrOutput               `pulumi:"aksUserImpersonation"`
-	AmazonEks                          ResourceAmazonEksPtrOutput                          `pulumi:"amazonEks"`
-	AmazonEksInstanceProfile           ResourceAmazonEksInstanceProfilePtrOutput           `pulumi:"amazonEksInstanceProfile"`
-	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrOutput         `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                           ResourceAmazonEsPtrOutput                           `pulumi:"amazonEs"`
-	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrOutput                    `pulumi:"amazonmqAmqp091"`
-	Athena                             ResourceAthenaPtrOutput                             `pulumi:"athena"`
-	AuroraMysql                        ResourceAuroraMysqlPtrOutput                        `pulumi:"auroraMysql"`
-	AuroraPostgres                     ResourceAuroraPostgresPtrOutput                     `pulumi:"auroraPostgres"`
-	Aws                                ResourceAwsPtrOutput                                `pulumi:"aws"`
+	Aks                                       ResourceAksPtrOutput                                       `pulumi:"aks"`
+	AksBasicAuth                              ResourceAksBasicAuthPtrOutput                              `pulumi:"aksBasicAuth"`
+	AksServiceAccount                         ResourceAksServiceAccountPtrOutput                         `pulumi:"aksServiceAccount"`
+	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrOutput        `pulumi:"aksServiceAccountUserImpersonation"`
+	AksUserImpersonation                      ResourceAksUserImpersonationPtrOutput                      `pulumi:"aksUserImpersonation"`
+	AmazonEks                                 ResourceAmazonEksPtrOutput                                 `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile                  ResourceAmazonEksInstanceProfilePtrOutput                  `pulumi:"amazonEksInstanceProfile"`
+	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput `pulumi:"amazonEksInstanceProfileUserImpersonation"`
+	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrOutput                `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                                  ResourceAmazonEsPtrOutput                                  `pulumi:"amazonEs"`
+	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrOutput                           `pulumi:"amazonmqAmqp091"`
+	Athena                                    ResourceAthenaPtrOutput                                    `pulumi:"athena"`
+	AuroraMysql                               ResourceAuroraMysqlPtrOutput                               `pulumi:"auroraMysql"`
+	AuroraPostgres                            ResourceAuroraPostgresPtrOutput                            `pulumi:"auroraPostgres"`
+	Aws                                       ResourceAwsPtrOutput                                       `pulumi:"aws"`
 	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AwsConsole ResourceAwsConsolePtrOutput `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
@@ -139,20 +140,21 @@ func GetResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resource resources.
 type resourceState struct {
-	Aks                                *ResourceAks                                `pulumi:"aks"`
-	AksBasicAuth                       *ResourceAksBasicAuth                       `pulumi:"aksBasicAuth"`
-	AksServiceAccount                  *ResourceAksServiceAccount                  `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation *ResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation               *ResourceAksUserImpersonation               `pulumi:"aksUserImpersonation"`
-	AmazonEks                          *ResourceAmazonEks                          `pulumi:"amazonEks"`
-	AmazonEksInstanceProfile           *ResourceAmazonEksInstanceProfile           `pulumi:"amazonEksInstanceProfile"`
-	AmazonEksUserImpersonation         *ResourceAmazonEksUserImpersonation         `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                           *ResourceAmazonEs                           `pulumi:"amazonEs"`
-	AmazonmqAmqp091                    *ResourceAmazonmqAmqp091                    `pulumi:"amazonmqAmqp091"`
-	Athena                             *ResourceAthena                             `pulumi:"athena"`
-	AuroraMysql                        *ResourceAuroraMysql                        `pulumi:"auroraMysql"`
-	AuroraPostgres                     *ResourceAuroraPostgres                     `pulumi:"auroraPostgres"`
-	Aws                                *ResourceAws                                `pulumi:"aws"`
+	Aks                                       *ResourceAks                                       `pulumi:"aks"`
+	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
+	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
+	AksServiceAccountUserImpersonation        *ResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonation"`
+	AksUserImpersonation                      *ResourceAksUserImpersonation                      `pulumi:"aksUserImpersonation"`
+	AmazonEks                                 *ResourceAmazonEks                                 `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile                  *ResourceAmazonEksInstanceProfile                  `pulumi:"amazonEksInstanceProfile"`
+	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
+	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
+	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
+	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
+	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
+	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
+	Aws                                       *ResourceAws                                       `pulumi:"aws"`
 	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
@@ -227,20 +229,21 @@ type resourceState struct {
 }
 
 type ResourceState struct {
-	Aks                                ResourceAksPtrInput
-	AksBasicAuth                       ResourceAksBasicAuthPtrInput
-	AksServiceAccount                  ResourceAksServiceAccountPtrInput
-	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrInput
-	AksUserImpersonation               ResourceAksUserImpersonationPtrInput
-	AmazonEks                          ResourceAmazonEksPtrInput
-	AmazonEksInstanceProfile           ResourceAmazonEksInstanceProfilePtrInput
-	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrInput
-	AmazonEs                           ResourceAmazonEsPtrInput
-	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrInput
-	Athena                             ResourceAthenaPtrInput
-	AuroraMysql                        ResourceAuroraMysqlPtrInput
-	AuroraPostgres                     ResourceAuroraPostgresPtrInput
-	Aws                                ResourceAwsPtrInput
+	Aks                                       ResourceAksPtrInput
+	AksBasicAuth                              ResourceAksBasicAuthPtrInput
+	AksServiceAccount                         ResourceAksServiceAccountPtrInput
+	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrInput
+	AksUserImpersonation                      ResourceAksUserImpersonationPtrInput
+	AmazonEks                                 ResourceAmazonEksPtrInput
+	AmazonEksInstanceProfile                  ResourceAmazonEksInstanceProfilePtrInput
+	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
+	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
+	AmazonEs                                  ResourceAmazonEsPtrInput
+	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
+	Athena                                    ResourceAthenaPtrInput
+	AuroraMysql                               ResourceAuroraMysqlPtrInput
+	AuroraPostgres                            ResourceAuroraPostgresPtrInput
+	Aws                                       ResourceAwsPtrInput
 	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AwsConsole ResourceAwsConsolePtrInput
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
@@ -319,20 +322,21 @@ func (ResourceState) ElementType() reflect.Type {
 }
 
 type resourceArgs struct {
-	Aks                                *ResourceAks                                `pulumi:"aks"`
-	AksBasicAuth                       *ResourceAksBasicAuth                       `pulumi:"aksBasicAuth"`
-	AksServiceAccount                  *ResourceAksServiceAccount                  `pulumi:"aksServiceAccount"`
-	AksServiceAccountUserImpersonation *ResourceAksServiceAccountUserImpersonation `pulumi:"aksServiceAccountUserImpersonation"`
-	AksUserImpersonation               *ResourceAksUserImpersonation               `pulumi:"aksUserImpersonation"`
-	AmazonEks                          *ResourceAmazonEks                          `pulumi:"amazonEks"`
-	AmazonEksInstanceProfile           *ResourceAmazonEksInstanceProfile           `pulumi:"amazonEksInstanceProfile"`
-	AmazonEksUserImpersonation         *ResourceAmazonEksUserImpersonation         `pulumi:"amazonEksUserImpersonation"`
-	AmazonEs                           *ResourceAmazonEs                           `pulumi:"amazonEs"`
-	AmazonmqAmqp091                    *ResourceAmazonmqAmqp091                    `pulumi:"amazonmqAmqp091"`
-	Athena                             *ResourceAthena                             `pulumi:"athena"`
-	AuroraMysql                        *ResourceAuroraMysql                        `pulumi:"auroraMysql"`
-	AuroraPostgres                     *ResourceAuroraPostgres                     `pulumi:"auroraPostgres"`
-	Aws                                *ResourceAws                                `pulumi:"aws"`
+	Aks                                       *ResourceAks                                       `pulumi:"aks"`
+	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
+	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
+	AksServiceAccountUserImpersonation        *ResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonation"`
+	AksUserImpersonation                      *ResourceAksUserImpersonation                      `pulumi:"aksUserImpersonation"`
+	AmazonEks                                 *ResourceAmazonEks                                 `pulumi:"amazonEks"`
+	AmazonEksInstanceProfile                  *ResourceAmazonEksInstanceProfile                  `pulumi:"amazonEksInstanceProfile"`
+	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
+	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
+	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
+	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
+	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
+	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
+	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
+	Aws                                       *ResourceAws                                       `pulumi:"aws"`
 	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
@@ -408,20 +412,21 @@ type resourceArgs struct {
 
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
-	Aks                                ResourceAksPtrInput
-	AksBasicAuth                       ResourceAksBasicAuthPtrInput
-	AksServiceAccount                  ResourceAksServiceAccountPtrInput
-	AksServiceAccountUserImpersonation ResourceAksServiceAccountUserImpersonationPtrInput
-	AksUserImpersonation               ResourceAksUserImpersonationPtrInput
-	AmazonEks                          ResourceAmazonEksPtrInput
-	AmazonEksInstanceProfile           ResourceAmazonEksInstanceProfilePtrInput
-	AmazonEksUserImpersonation         ResourceAmazonEksUserImpersonationPtrInput
-	AmazonEs                           ResourceAmazonEsPtrInput
-	AmazonmqAmqp091                    ResourceAmazonmqAmqp091PtrInput
-	Athena                             ResourceAthenaPtrInput
-	AuroraMysql                        ResourceAuroraMysqlPtrInput
-	AuroraPostgres                     ResourceAuroraPostgresPtrInput
-	Aws                                ResourceAwsPtrInput
+	Aks                                       ResourceAksPtrInput
+	AksBasicAuth                              ResourceAksBasicAuthPtrInput
+	AksServiceAccount                         ResourceAksServiceAccountPtrInput
+	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrInput
+	AksUserImpersonation                      ResourceAksUserImpersonationPtrInput
+	AmazonEks                                 ResourceAmazonEksPtrInput
+	AmazonEksInstanceProfile                  ResourceAmazonEksInstanceProfilePtrInput
+	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
+	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
+	AmazonEs                                  ResourceAmazonEsPtrInput
+	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
+	Athena                                    ResourceAthenaPtrInput
+	AuroraMysql                               ResourceAuroraMysqlPtrInput
+	AuroraPostgres                            ResourceAuroraPostgresPtrInput
+	Aws                                       ResourceAwsPtrInput
 	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AwsConsole ResourceAwsConsolePtrInput
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
@@ -610,6 +615,12 @@ func (o ResourceOutput) AmazonEks() ResourceAmazonEksPtrOutput {
 
 func (o ResourceOutput) AmazonEksInstanceProfile() ResourceAmazonEksInstanceProfilePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEksInstanceProfilePtrOutput { return v.AmazonEksInstanceProfile }).(ResourceAmazonEksInstanceProfilePtrOutput)
+}
+
+func (o ResourceOutput) AmazonEksInstanceProfileUserImpersonation() ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput {
+		return v.AmazonEksInstanceProfileUserImpersonation
+	}).(ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput)
 }
 
 func (o ResourceOutput) AmazonEksUserImpersonation() ResourceAmazonEksUserImpersonationPtrOutput {

@@ -42,6 +42,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? SecretStoreServiceAccountKeyPath;
         public readonly string? ServiceAccountKey;
         /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        public readonly string? Subdomain;
+        /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
@@ -72,6 +76,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? serviceAccountKey,
 
+            string? subdomain,
+
             ImmutableDictionary<string, string>? tags)
         {
             BindInterface = bindInterface;
@@ -86,6 +92,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreServiceAccountKeyKey = secretStoreServiceAccountKeyKey;
             SecretStoreServiceAccountKeyPath = secretStoreServiceAccountKeyPath;
             ServiceAccountKey = serviceAccountKey;
+            Subdomain = subdomain;
             Tags = tags;
         }
     }

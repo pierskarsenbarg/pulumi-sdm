@@ -43,6 +43,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? SecretStoreTokenKey;
         public readonly string? SecretStoreTokenPath;
         /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        public readonly string? Subdomain;
+        /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
@@ -70,6 +74,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreTokenPath,
 
+            string? subdomain,
+
             ImmutableDictionary<string, string>? tags,
 
             string? token)
@@ -84,6 +90,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             SecretStoreTokenKey = secretStoreTokenKey;
             SecretStoreTokenPath = secretStoreTokenPath;
+            Subdomain = subdomain;
             Tags = tags;
             Token = token;
         }

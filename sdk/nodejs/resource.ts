@@ -49,6 +49,7 @@ export class Resource extends pulumi.CustomResource {
     public readonly aksUserImpersonation!: pulumi.Output<outputs.ResourceAksUserImpersonation | undefined>;
     public readonly amazonEks!: pulumi.Output<outputs.ResourceAmazonEks | undefined>;
     public readonly amazonEksInstanceProfile!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfile | undefined>;
+    public readonly amazonEksInstanceProfileUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfileUserImpersonation | undefined>;
     public readonly amazonEksUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksUserImpersonation | undefined>;
     public readonly amazonEs!: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
     public readonly amazonmqAmqp091!: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
@@ -164,6 +165,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["aksUserImpersonation"] = state ? state.aksUserImpersonation : undefined;
             resourceInputs["amazonEks"] = state ? state.amazonEks : undefined;
             resourceInputs["amazonEksInstanceProfile"] = state ? state.amazonEksInstanceProfile : undefined;
+            resourceInputs["amazonEksInstanceProfileUserImpersonation"] = state ? state.amazonEksInstanceProfileUserImpersonation : undefined;
             resourceInputs["amazonEksUserImpersonation"] = state ? state.amazonEksUserImpersonation : undefined;
             resourceInputs["amazonEs"] = state ? state.amazonEs : undefined;
             resourceInputs["amazonmqAmqp091"] = state ? state.amazonmqAmqp091 : undefined;
@@ -242,6 +244,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["aksUserImpersonation"] = args ? args.aksUserImpersonation : undefined;
             resourceInputs["amazonEks"] = args ? args.amazonEks : undefined;
             resourceInputs["amazonEksInstanceProfile"] = args ? args.amazonEksInstanceProfile : undefined;
+            resourceInputs["amazonEksInstanceProfileUserImpersonation"] = args ? args.amazonEksInstanceProfileUserImpersonation : undefined;
             resourceInputs["amazonEksUserImpersonation"] = args ? args.amazonEksUserImpersonation : undefined;
             resourceInputs["amazonEs"] = args ? args.amazonEs : undefined;
             resourceInputs["amazonmqAmqp091"] = args ? args.amazonmqAmqp091 : undefined;
@@ -328,6 +331,7 @@ export interface ResourceState {
     aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation>;
     amazonEks?: pulumi.Input<inputs.ResourceAmazonEks>;
     amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile>;
+    amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
@@ -435,6 +439,7 @@ export interface ResourceArgs {
     aksUserImpersonation?: pulumi.Input<inputs.ResourceAksUserImpersonation>;
     amazonEks?: pulumi.Input<inputs.ResourceAmazonEks>;
     amazonEksInstanceProfile?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfile>;
+    amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
