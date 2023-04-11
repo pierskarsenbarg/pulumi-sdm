@@ -25,6 +25,6 @@
     "pulumi": {
         "resource": true,
         "name": "sdm",
-        "server": "https://github.com/pierskarsenbarg/pulumi-sdm/releases/download/v${VERSION}"
+        "server": "github://api.github.com/pierskarsenbarg/pulumi-sdm"
     }
 }
