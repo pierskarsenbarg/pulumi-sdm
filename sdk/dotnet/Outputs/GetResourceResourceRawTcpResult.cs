@@ -38,6 +38,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreId;
         /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        public readonly string? Subdomain;
+        /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
@@ -60,6 +64,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
+            string? subdomain,
+
             ImmutableDictionary<string, string>? tags)
         {
             BindInterface = bindInterface;
@@ -70,6 +76,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Port = port;
             PortOverride = portOverride;
             SecretStoreId = secretStoreId;
+            Subdomain = subdomain;
             Tags = tags;
         }
     }

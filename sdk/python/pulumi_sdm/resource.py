@@ -23,6 +23,7 @@ class ResourceArgs:
                  aks_user_impersonation: Optional[pulumi.Input['ResourceAksUserImpersonationArgs']] = None,
                  amazon_eks: Optional[pulumi.Input['ResourceAmazonEksArgs']] = None,
                  amazon_eks_instance_profile: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']] = None,
+                 amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
@@ -118,6 +119,8 @@ class ResourceArgs:
             pulumi.set(__self__, "amazon_eks", amazon_eks)
         if amazon_eks_instance_profile is not None:
             pulumi.set(__self__, "amazon_eks_instance_profile", amazon_eks_instance_profile)
+        if amazon_eks_instance_profile_user_impersonation is not None:
+            pulumi.set(__self__, "amazon_eks_instance_profile_user_impersonation", amazon_eks_instance_profile_user_impersonation)
         if amazon_eks_user_impersonation is not None:
             pulumi.set(__self__, "amazon_eks_user_impersonation", amazon_eks_user_impersonation)
         if amazon_es is not None:
@@ -319,6 +322,15 @@ class ResourceArgs:
     @amazon_eks_instance_profile.setter
     def amazon_eks_instance_profile(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]):
         pulumi.set(self, "amazon_eks_instance_profile", value)
+
+    @property
+    @pulumi.getter(name="amazonEksInstanceProfileUserImpersonation")
+    def amazon_eks_instance_profile_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]:
+        return pulumi.get(self, "amazon_eks_instance_profile_user_impersonation")
+
+    @amazon_eks_instance_profile_user_impersonation.setter
+    def amazon_eks_instance_profile_user_impersonation(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]):
+        pulumi.set(self, "amazon_eks_instance_profile_user_impersonation", value)
 
     @property
     @pulumi.getter(name="amazonEksUserImpersonation")
@@ -977,6 +989,7 @@ class _ResourceState:
                  aks_user_impersonation: Optional[pulumi.Input['ResourceAksUserImpersonationArgs']] = None,
                  amazon_eks: Optional[pulumi.Input['ResourceAmazonEksArgs']] = None,
                  amazon_eks_instance_profile: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']] = None,
+                 amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
@@ -1072,6 +1085,8 @@ class _ResourceState:
             pulumi.set(__self__, "amazon_eks", amazon_eks)
         if amazon_eks_instance_profile is not None:
             pulumi.set(__self__, "amazon_eks_instance_profile", amazon_eks_instance_profile)
+        if amazon_eks_instance_profile_user_impersonation is not None:
+            pulumi.set(__self__, "amazon_eks_instance_profile_user_impersonation", amazon_eks_instance_profile_user_impersonation)
         if amazon_eks_user_impersonation is not None:
             pulumi.set(__self__, "amazon_eks_user_impersonation", amazon_eks_user_impersonation)
         if amazon_es is not None:
@@ -1273,6 +1288,15 @@ class _ResourceState:
     @amazon_eks_instance_profile.setter
     def amazon_eks_instance_profile(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileArgs']]):
         pulumi.set(self, "amazon_eks_instance_profile", value)
+
+    @property
+    @pulumi.getter(name="amazonEksInstanceProfileUserImpersonation")
+    def amazon_eks_instance_profile_user_impersonation(self) -> Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]:
+        return pulumi.get(self, "amazon_eks_instance_profile_user_impersonation")
+
+    @amazon_eks_instance_profile_user_impersonation.setter
+    def amazon_eks_instance_profile_user_impersonation(self, value: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]):
+        pulumi.set(self, "amazon_eks_instance_profile_user_impersonation", value)
 
     @property
     @pulumi.getter(name="amazonEksUserImpersonation")
@@ -1933,6 +1957,7 @@ class Resource(pulumi.CustomResource):
                  aks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksUserImpersonationArgs']]] = None,
                  amazon_eks: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksArgs']]] = None,
                  amazon_eks_instance_profile: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileArgs']]] = None,
+                 amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksUserImpersonationArgs']]] = None,
                  amazon_es: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEsArgs']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonmqAmqp091Args']]] = None,
@@ -2061,6 +2086,7 @@ class Resource(pulumi.CustomResource):
                  aks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksUserImpersonationArgs']]] = None,
                  amazon_eks: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksArgs']]] = None,
                  amazon_eks_instance_profile: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileArgs']]] = None,
+                 amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksUserImpersonationArgs']]] = None,
                  amazon_es: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEsArgs']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonmqAmqp091Args']]] = None,
@@ -2146,6 +2172,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["aks_user_impersonation"] = aks_user_impersonation
             __props__.__dict__["amazon_eks"] = amazon_eks
             __props__.__dict__["amazon_eks_instance_profile"] = amazon_eks_instance_profile
+            __props__.__dict__["amazon_eks_instance_profile_user_impersonation"] = amazon_eks_instance_profile_user_impersonation
             __props__.__dict__["amazon_eks_user_impersonation"] = amazon_eks_user_impersonation
             __props__.__dict__["amazon_es"] = amazon_es
             __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
@@ -2232,6 +2259,7 @@ class Resource(pulumi.CustomResource):
             aks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAksUserImpersonationArgs']]] = None,
             amazon_eks: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksArgs']]] = None,
             amazon_eks_instance_profile: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileArgs']]] = None,
+            amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksInstanceProfileUserImpersonationArgs']]] = None,
             amazon_eks_user_impersonation: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEksUserImpersonationArgs']]] = None,
             amazon_es: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonEsArgs']]] = None,
             amazonmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceAmazonmqAmqp091Args']]] = None,
@@ -2329,6 +2357,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["aks_user_impersonation"] = aks_user_impersonation
         __props__.__dict__["amazon_eks"] = amazon_eks
         __props__.__dict__["amazon_eks_instance_profile"] = amazon_eks_instance_profile
+        __props__.__dict__["amazon_eks_instance_profile_user_impersonation"] = amazon_eks_instance_profile_user_impersonation
         __props__.__dict__["amazon_eks_user_impersonation"] = amazon_eks_user_impersonation
         __props__.__dict__["amazon_es"] = amazon_es
         __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
@@ -2434,6 +2463,11 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="amazonEksInstanceProfile")
     def amazon_eks_instance_profile(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEksInstanceProfile']]:
         return pulumi.get(self, "amazon_eks_instance_profile")
+
+    @property
+    @pulumi.getter(name="amazonEksInstanceProfileUserImpersonation")
+    def amazon_eks_instance_profile_user_impersonation(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEksInstanceProfileUserImpersonation']]:
+        return pulumi.get(self, "amazon_eks_instance_profile_user_impersonation")
 
     @property
     @pulumi.getter(name="amazonEksUserImpersonation")

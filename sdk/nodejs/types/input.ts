@@ -155,6 +155,10 @@ export interface ResourceAks {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -189,6 +193,10 @@ export interface ResourceAksBasicAuth {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -228,6 +236,10 @@ export interface ResourceAksServiceAccount {
     secretStoreTokenKey?: pulumi.Input<string>;
     secretStoreTokenPath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -263,6 +275,10 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     secretStoreTokenKey?: pulumi.Input<string>;
     secretStoreTokenPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -303,6 +319,10 @@ export interface ResourceAksUserImpersonation {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -351,6 +371,10 @@ export interface ResourceAmazonEks {
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -391,6 +415,55 @@ export interface ResourceAmazonEksInstanceProfile {
     secretStoreRoleArnPath?: pulumi.Input<string>;
     secretStoreRoleExternalIdKey?: pulumi.Input<string>;
     secretStoreRoleExternalIdPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface ResourceAmazonEksInstanceProfileUserImpersonation {
+    /**
+     * Bind interface
+     */
+    bindInterface?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string>;
+    clusterName: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    endpoint: pulumi.Input<string>;
+    /**
+     * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+     */
+    healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    region: pulumi.Input<string>;
+    remoteIdentityGroupId?: pulumi.Input<string>;
+    remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string>;
+    roleExternalId?: pulumi.Input<string>;
+    secretStoreCertificateAuthorityKey?: pulumi.Input<string>;
+    secretStoreCertificateAuthorityPath?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    secretStoreRoleArnKey?: pulumi.Input<string>;
+    secretStoreRoleArnPath?: pulumi.Input<string>;
+    secretStoreRoleExternalIdKey?: pulumi.Input<string>;
+    secretStoreRoleExternalIdPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -437,6 +510,10 @@ export interface ResourceAmazonEksUserImpersonation {
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -475,6 +552,10 @@ export interface ResourceAmazonEs {
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -505,6 +586,10 @@ export interface ResourceAmazonmqAmqp091 {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -546,6 +631,10 @@ export interface ResourceAthena {
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -577,6 +666,10 @@ export interface ResourceAuroraMysql {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -611,6 +704,10 @@ export interface ResourceAuroraPostgres {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -683,6 +780,9 @@ export interface ResourceAwsConsole {
     secretStoreRoleExternalIdKey?: pulumi.Input<string>;
     secretStoreRoleExternalIdPath?: pulumi.Input<string>;
     sessionExpiry?: pulumi.Input<number>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -724,6 +824,9 @@ export interface ResourceAwsConsoleStaticKeyPair {
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
     sessionExpiry?: pulumi.Input<number>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -828,6 +931,10 @@ export interface ResourceAzureMysql {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -862,6 +969,10 @@ export interface ResourceAzurePostgres {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -891,6 +1002,10 @@ export interface ResourceBigQuery {
     secretStoreId?: pulumi.Input<string>;
     secretStorePrivateKeyKey?: pulumi.Input<string>;
     secretStorePrivateKeyPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -923,6 +1038,10 @@ export interface ResourceCassandra {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -959,6 +1078,10 @@ export interface ResourceCitus {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -991,6 +1114,10 @@ export interface ResourceClustrix {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1026,6 +1153,10 @@ export interface ResourceCockroach {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1057,6 +1188,10 @@ export interface ResourceDb2I {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1092,6 +1227,10 @@ export interface ResourceDb2Luw {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1124,6 +1263,10 @@ export interface ResourceDocumentDbHost {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1159,6 +1302,10 @@ export interface ResourceDocumentDbReplicaSet {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1190,6 +1337,10 @@ export interface ResourceDruid {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1230,6 +1381,10 @@ export interface ResourceDynamoDb {
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1260,6 +1415,10 @@ export interface ResourceElastic {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1293,6 +1452,10 @@ export interface ResourceElasticacheRedis {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1359,6 +1522,10 @@ export interface ResourceGoogleGke {
     secretStoreServiceAccountKeyPath?: pulumi.Input<string>;
     serviceAccountKey?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1393,6 +1560,10 @@ export interface ResourceGoogleGkeUserImpersonation {
     secretStoreServiceAccountKeyPath?: pulumi.Input<string>;
     serviceAccountKey?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1426,6 +1597,10 @@ export interface ResourceGreenplum {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1456,6 +1631,9 @@ export interface ResourceHttpAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -1493,6 +1671,9 @@ export interface ResourceHttpBasicAuth {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -1526,6 +1707,9 @@ export interface ResourceHttpNoAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -1573,6 +1757,10 @@ export interface ResourceKubernetes {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1607,6 +1795,10 @@ export interface ResourceKubernetesBasicAuth {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1646,6 +1838,10 @@ export interface ResourceKubernetesServiceAccount {
     secretStoreTokenKey?: pulumi.Input<string>;
     secretStoreTokenPath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1681,6 +1877,10 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     secretStoreTokenKey?: pulumi.Input<string>;
     secretStoreTokenPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1722,6 +1922,10 @@ export interface ResourceKubernetesUserImpersonation {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1754,6 +1958,10 @@ export interface ResourceMaria {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1780,6 +1988,10 @@ export interface ResourceMemcached {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1813,6 +2025,10 @@ export interface ResourceMemsql {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1845,6 +2061,10 @@ export interface ResourceMongoHost {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1880,6 +2100,10 @@ export interface ResourceMongoLegacyHost {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1917,6 +2141,10 @@ export interface ResourceMongoLegacyReplicaset {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1953,6 +2181,10 @@ export interface ResourceMongoReplicaSet {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1985,6 +2217,10 @@ export interface ResourceMongoShardedCluster {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2030,6 +2266,10 @@ export interface ResourceMtlsMysql {
     secretStoreUsernamePath?: pulumi.Input<string>;
     serverName?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2074,6 +2314,10 @@ export interface ResourceMtlsPostgres {
     secretStoreUsernamePath?: pulumi.Input<string>;
     serverName?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2107,6 +2351,10 @@ export interface ResourceMysql {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2133,6 +2381,10 @@ export interface ResourceNeptune {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2173,6 +2425,10 @@ export interface ResourceNeptuneIam {
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2204,6 +2460,10 @@ export interface ResourceOracle {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2240,6 +2500,10 @@ export interface ResourcePostgres {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2270,6 +2534,10 @@ export interface ResourcePresto {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2304,6 +2572,10 @@ export interface ResourceRabbitmqAmqp091 {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2331,6 +2603,10 @@ export interface ResourceRawTcp {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2364,6 +2640,10 @@ export interface ResourceRdp {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2395,6 +2675,10 @@ export interface ResourceRedis {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2431,6 +2715,10 @@ export interface ResourceRedshift {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2463,6 +2751,10 @@ export interface ResourceSingleStore {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2497,6 +2789,10 @@ export interface ResourceSnowflake {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2525,6 +2821,9 @@ export interface ResourceSnowsight {
     secretStoreId?: pulumi.Input<string>;
     secretStoreSamlMetadataKey?: pulumi.Input<string>;
     secretStoreSamlMetadataPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -2561,6 +2860,10 @@ export interface ResourceSqlServer {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2593,6 +2896,10 @@ export interface ResourceSsh {
     secretStoreId?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2628,6 +2935,10 @@ export interface ResourceSshCert {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2662,6 +2973,10 @@ export interface ResourceSshCustomerKey {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2693,6 +3008,10 @@ export interface ResourceSybase {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2726,6 +3045,10 @@ export interface ResourceSybaseIq {
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -2757,6 +3080,10 @@ export interface ResourceTeradata {
     secretStorePasswordPath?: pulumi.Input<string>;
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */

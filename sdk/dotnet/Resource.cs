@@ -43,6 +43,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("amazonEksInstanceProfile")]
         public Output<Outputs.ResourceAmazonEksInstanceProfile?> AmazonEksInstanceProfile { get; private set; } = null!;
 
+        [Output("amazonEksInstanceProfileUserImpersonation")]
+        public Output<Outputs.ResourceAmazonEksInstanceProfileUserImpersonation?> AmazonEksInstanceProfileUserImpersonation { get; private set; } = null!;
+
         [Output("amazonEksUserImpersonation")]
         public Output<Outputs.ResourceAmazonEksUserImpersonation?> AmazonEksUserImpersonation { get; private set; } = null!;
 
@@ -343,6 +346,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEksInstanceProfile")]
         public Input<Inputs.ResourceAmazonEksInstanceProfileArgs>? AmazonEksInstanceProfile { get; set; }
 
+        [Input("amazonEksInstanceProfileUserImpersonation")]
+        public Input<Inputs.ResourceAmazonEksInstanceProfileUserImpersonationArgs>? AmazonEksInstanceProfileUserImpersonation { get; set; }
+
         [Input("amazonEksUserImpersonation")]
         public Input<Inputs.ResourceAmazonEksUserImpersonationArgs>? AmazonEksUserImpersonation { get; set; }
 
@@ -603,6 +609,9 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("amazonEksInstanceProfile")]
         public Input<Inputs.ResourceAmazonEksInstanceProfileGetArgs>? AmazonEksInstanceProfile { get; set; }
+
+        [Input("amazonEksInstanceProfileUserImpersonation")]
+        public Input<Inputs.ResourceAmazonEksInstanceProfileUserImpersonationGetArgs>? AmazonEksInstanceProfileUserImpersonation { get; set; }
 
         [Input("amazonEksUserImpersonation")]
         public Input<Inputs.ResourceAmazonEksUserImpersonationGetArgs>? AmazonEksUserImpersonation { get; set; }

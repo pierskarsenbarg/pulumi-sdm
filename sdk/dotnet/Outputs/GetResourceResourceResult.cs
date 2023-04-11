@@ -20,6 +20,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAksServiceAccountResult> AksServiceAccounts;
         public readonly ImmutableArray<Outputs.GetResourceResourceAksUserImpersonationResult> AksUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEkResult> AmazonEks;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult> AmazonEksInstanceProfileUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileResult> AmazonEksInstanceProfiles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksUserImpersonationResult> AmazonEksUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEResult> AmazonEs;
@@ -104,6 +105,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAksUserImpersonationResult> aksUserImpersonations,
 
             ImmutableArray<Outputs.GetResourceResourceAmazonEkResult> amazonEks,
+
+            ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult> amazonEksInstanceProfileUserImpersonations,
 
             ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileResult> amazonEksInstanceProfiles,
 
@@ -251,6 +254,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AksServiceAccounts = aksServiceAccounts;
             AksUserImpersonations = aksUserImpersonations;
             AmazonEks = amazonEks;
+            AmazonEksInstanceProfileUserImpersonations = amazonEksInstanceProfileUserImpersonations;
             AmazonEksInstanceProfiles = amazonEksInstanceProfiles;
             AmazonEksUserImpersonations = amazonEksUserImpersonations;
             AmazonEs = amazonEs;

@@ -39,6 +39,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? SecretStorePasswordPath;
         public readonly string? SecretStoreUsernameKey;
         public readonly string? SecretStoreUsernamePath;
+        /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
         public readonly string Subdomain;
         /// <summary>
         /// Tags is a map of key, value pairs.

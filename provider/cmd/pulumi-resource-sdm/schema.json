@@ -570,6 +570,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -596,7 +605,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -712,6 +722,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -746,7 +765,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -855,6 +875,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -889,7 +918,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -982,6 +1012,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1016,7 +1055,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -1164,6 +1204,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1190,7 +1239,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -1402,6 +1452,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1429,7 +1488,8 @@
                         "clusterName",
                         "endpoint",
                         "name",
-                        "region"
+                        "region",
+                        "subdomain"
                     ]
                 }
             }
@@ -1593,6 +1653,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1620,7 +1689,209 @@
                         "clusterName",
                         "endpoint",
                         "name",
-                        "region"
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "certificateAuthority": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthcheckNamespace": {
+                    "type": "string",
+                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remoteIdentityGroupId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remoteIdentityHealthcheckUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreCertificateAuthorityKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreCertificateAuthorityPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreRoleArnKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreRoleArnPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreRoleExternalIdKey": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreRoleExternalIdPath": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "clusterName",
+                "endpoint",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "clusterName",
+                        "endpoint",
+                        "name",
+                        "region",
+                        "subdomain"
                     ]
                 }
             }
@@ -1816,6 +2087,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1843,7 +2123,8 @@
                         "clusterName",
                         "endpoint",
                         "name",
-                        "region"
+                        "region",
+                        "subdomain"
                     ]
                 }
             }
@@ -2006,6 +2287,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -2030,7 +2320,8 @@
                         "bindInterface",
                         "name",
                         "portOverride",
-                        "region"
+                        "region",
+                        "subdomain"
                     ]
                 }
             }
@@ -2137,6 +2428,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -2177,7 +2477,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -2340,6 +2641,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -2364,7 +2674,8 @@
                         "bindInterface",
                         "name",
                         "output",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -2479,6 +2790,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -2513,7 +2833,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -2636,6 +2957,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -2670,7 +3000,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -2981,6 +3312,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3194,6 +3526,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3615,6 +3948,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -3649,7 +3991,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -3772,6 +4115,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -3806,7 +4158,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -3897,6 +4250,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -3931,7 +4293,8 @@
                         "endpoint",
                         "name",
                         "portOverride",
-                        "project"
+                        "project",
+                        "subdomain"
                     ]
                 }
             }
@@ -4038,6 +4401,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -4078,7 +4450,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -4201,6 +4574,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -4235,7 +4617,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -4350,6 +4733,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -4384,7 +4776,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -4507,6 +4900,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -4541,7 +4943,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -4648,6 +5051,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -4690,7 +5102,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -4805,6 +5218,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -4839,7 +5261,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -4954,6 +5377,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -4988,7 +5420,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -5111,6 +5544,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -5147,7 +5589,8 @@
                         "hostname",
                         "name",
                         "portOverride",
-                        "replicaSet"
+                        "replicaSet",
+                        "subdomain"
                     ]
                 }
             }
@@ -5254,6 +5697,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -5286,7 +5738,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -5449,6 +5902,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -5475,7 +5937,8 @@
                         "endpoint",
                         "name",
                         "portOverride",
-                        "region"
+                        "region",
+                        "subdomain"
                     ]
                 }
             }
@@ -5582,6 +6045,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -5622,7 +6094,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -5729,6 +6202,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -5769,7 +6251,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -5991,6 +6474,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -6014,7 +6506,8 @@
                     "requiredOutputs": [
                         "bindInterface",
                         "endpoint",
-                        "name"
+                        "name",
+                        "subdomain"
                     ]
                 }
             }
@@ -6122,6 +6615,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -6145,7 +6647,8 @@
                     "requiredOutputs": [
                         "bindInterface",
                         "endpoint",
-                        "name"
+                        "name",
+                        "subdomain"
                     ]
                 }
             }
@@ -6268,6 +6771,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -6302,7 +6814,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -6403,6 +6916,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6562,6 +7076,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6689,6 +7204,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6895,6 +7411,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -6921,7 +7446,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -7037,6 +7563,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -7071,7 +7606,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -7180,6 +7716,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -7214,7 +7759,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -7307,6 +7853,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -7341,7 +7896,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -7489,6 +8045,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -7515,7 +8080,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -7630,6 +8196,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -7664,7 +8239,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -7731,6 +8307,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -7755,7 +8340,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -7870,6 +8456,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -7904,7 +8499,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -8019,6 +8615,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -8061,7 +8666,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -8184,6 +8790,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -8226,7 +8841,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -8357,6 +8973,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -8401,7 +9026,8 @@
                         "hostname",
                         "name",
                         "portOverride",
-                        "replicaSet"
+                        "replicaSet",
+                        "subdomain"
                     ]
                 }
             }
@@ -8532,6 +9158,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -8576,7 +9211,8 @@
                         "hostname",
                         "name",
                         "portOverride",
-                        "replicaSet"
+                        "replicaSet",
+                        "subdomain"
                     ]
                 }
             }
@@ -8683,6 +9319,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -8725,7 +9370,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -8920,6 +9566,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -8954,7 +9609,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -9157,6 +9813,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -9191,7 +9856,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -9306,6 +9972,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -9340,7 +10015,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -9407,6 +10083,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -9431,7 +10116,8 @@
                         "bindInterface",
                         "endpoint",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -9602,6 +10288,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -9628,7 +10323,8 @@
                         "endpoint",
                         "name",
                         "portOverride",
-                        "region"
+                        "region",
+                        "subdomain"
                     ]
                 }
             }
@@ -9743,6 +10439,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -9787,7 +10492,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -9910,6 +10616,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -9944,7 +10659,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -10043,6 +10759,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10085,7 +10810,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -10192,6 +10918,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10232,7 +10967,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -10299,6 +11035,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10323,7 +11068,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -10438,6 +11184,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10470,7 +11225,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -10577,6 +11333,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10617,7 +11382,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -10740,6 +11506,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10774,7 +11549,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -10889,6 +11665,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -10923,7 +11708,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -11038,6 +11824,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -11072,7 +11867,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -11157,6 +11953,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -11320,6 +12117,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -11354,7 +12160,8 @@
                         "database",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -11469,6 +12276,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -11505,7 +12321,8 @@
                         "name",
                         "port",
                         "portOverride",
-                        "publicKey"
+                        "publicKey",
+                        "subdomain"
                     ]
                 }
             }
@@ -11628,6 +12445,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -11663,7 +12489,8 @@
                         "keyType",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -11786,6 +12613,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -11820,7 +12656,8 @@
                         "hostname",
                         "name",
                         "port",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -11927,6 +12764,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -11959,7 +12805,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -12066,6 +12913,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -12098,7 +12954,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -12205,6 +13062,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -12237,7 +13103,8 @@
                         "bindInterface",
                         "hostname",
                         "name",
-                        "portOverride"
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -13239,6 +14106,17 @@
                         }
                     }
                 },
+                "amazonEksInstanceProfileUserImpersonations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAmazonEksInstanceProfileUserImpersonation:getResourceResourceAmazonEksInstanceProfileUserImpersonation"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "amazonEksInstanceProfiles": {
                     "type": "array",
                     "items": {
@@ -14019,6 +14897,7 @@
                 "aksUserImpersonations",
                 "amazonEks",
                 "amazonEksInstanceProfiles",
+                "amazonEksInstanceProfileUserImpersonations",
                 "amazonEksUserImpersonations",
                 "amazonEs",
                 "amazonmqAmqp091s",
@@ -14215,6 +15094,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -14312,6 +15200,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14437,6 +15334,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -14535,6 +15441,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14669,6 +15584,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -14781,6 +15705,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -14938,6 +15871,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -15067,6 +16009,159 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAmazonEksInstanceProfileUserImpersonation:getResourceResourceAmazonEksInstanceProfileUserImpersonation": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "certificateAuthority": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clusterName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "endpoint": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "healthcheckNamespace": {
+                    "type": "string",
+                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remoteIdentityGroupId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "remoteIdentityHealthcheckUsername": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleArn": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15208,6 +16303,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -15296,6 +16400,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15436,6 +16549,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -15532,6 +16654,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15650,6 +16781,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -15894,6 +17034,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16036,6 +17177,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16318,6 +17460,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -16436,6 +17587,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -16538,6 +17698,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -16634,6 +17803,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16766,6 +17944,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -16870,6 +18057,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -16994,6 +18190,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -17090,6 +18295,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17214,6 +18428,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -17318,6 +18541,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17442,6 +18674,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -17538,6 +18779,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17670,6 +18920,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -17758,6 +19017,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -17868,6 +19136,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -18079,6 +19356,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -18168,6 +19454,15 @@
                 },
                 "serviceAccountKey": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -18278,6 +19573,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -18396,6 +19700,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -18515,6 +19820,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -18634,6 +19940,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -18784,6 +20091,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -18881,6 +20197,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19006,6 +20331,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -19104,6 +20438,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19238,6 +20581,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -19340,6 +20692,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -19428,6 +20789,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19530,6 +20900,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19640,6 +21019,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19766,6 +21154,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -19906,6 +21303,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -20040,6 +21446,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -20144,6 +21559,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20300,6 +21724,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -20450,6 +21883,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -20560,6 +22002,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -20648,6 +22099,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -20780,6 +22240,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -20876,6 +22345,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -21008,6 +22486,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -21112,6 +22599,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -21228,6 +22724,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -21324,6 +22829,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -21432,6 +22946,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -21528,6 +23051,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -21660,6 +23192,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -21764,6 +23305,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -21880,6 +23430,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -21976,6 +23535,7 @@
                 },
                 "subdomain": {
                     "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -22094,6 +23654,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -22220,6 +23789,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -22368,6 +23946,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -22486,6 +24073,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -22582,6 +24178,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -22690,6 +24295,15 @@
                         }
                     }
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -22786,6 +24400,15 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -23743,6 +25366,9 @@
                 "amazonEksInstanceProfile": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
                 },
+                "amazonEksInstanceProfileUserImpersonation": {
+                    "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation"
+                },
                 "amazonEksUserImpersonation": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
                 },
@@ -23980,6 +25606,9 @@
                 },
                 "amazonEksInstanceProfile": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
+                },
+                "amazonEksInstanceProfileUserImpersonation": {
+                    "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation"
                 },
                 "amazonEksUserImpersonation": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
@@ -24220,6 +25849,9 @@
                     },
                     "amazonEksInstanceProfile": {
                         "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile"
+                    },
+                    "amazonEksInstanceProfileUserImpersonation": {
+                        "$ref": "#/types/sdm:index/ResourceAmazonEksInstanceProfileUserImpersonation:ResourceAmazonEksInstanceProfileUserImpersonation"
                     },
                     "amazonEksUserImpersonation": {
                         "$ref": "#/types/sdm:index/ResourceAmazonEksUserImpersonation:ResourceAmazonEksUserImpersonation"
@@ -25143,7 +26775,7 @@
             }
         },
         "sdm:index/getSecretStore:getSecretStore": {
-            "description": "A SecretStore is a server where resource secrets (passwords, keys) are stored.\n Coming soon support for HashiCorp Vault and AWS Secret Store. Contact support@strongdm.com to request access to the beta.\n",
+            "description": "A SecretStore is a server where resource secrets (passwords, keys) are stored.\n Coming soon support for HashiCorp Vault and AWS Secret Store.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSecretStore.\n",
                 "properties": {

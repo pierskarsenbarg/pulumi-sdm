@@ -64,6 +64,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("secretStoreUsernamePath")]
         public Input<string>? SecretStoreUsernamePath { get; set; }
 
+        /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        [Input("subdomain")]
+        public Input<string>? Subdomain { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 

@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 
 /**
  * A SecretStore is a server where resource secrets (passwords, keys) are stored.
- *  Coming soon support for HashiCorp Vault and AWS Secret Store. Contact support@strongdm.com to request access to the beta.
+ *  Coming soon support for HashiCorp Vault and AWS Secret Store.
  */
 export function getSecretStore(args?: GetSecretStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretStoreResult> {
     args = args || {};

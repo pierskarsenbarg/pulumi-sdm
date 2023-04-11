@@ -245,6 +245,7 @@ export interface GetResourceResource {
     aksServiceAccounts: outputs.GetResourceResourceAksServiceAccount[];
     aksUserImpersonations: outputs.GetResourceResourceAksUserImpersonation[];
     amazonEks: outputs.GetResourceResourceAmazonEk[];
+    amazonEksInstanceProfileUserImpersonations: outputs.GetResourceResourceAmazonEksInstanceProfileUserImpersonation[];
     amazonEksInstanceProfiles: outputs.GetResourceResourceAmazonEksInstanceProfile[];
     amazonEksUserImpersonations: outputs.GetResourceResourceAmazonEksUserImpersonation[];
     amazonEs: outputs.GetResourceResourceAmazonE[];
@@ -351,6 +352,10 @@ export interface GetResourceResourceAk {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -385,6 +390,10 @@ export interface GetResourceResourceAksBasicAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -423,6 +432,10 @@ export interface GetResourceResourceAksServiceAccount {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -460,6 +473,10 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -502,6 +519,10 @@ export interface GetResourceResourceAksUserImpersonation {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -535,6 +556,10 @@ export interface GetResourceResourceAmazonE {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -577,6 +602,10 @@ export interface GetResourceResourceAmazonEk {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -615,6 +644,53 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    certificateAuthority?: string;
+    clusterName?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    endpoint?: string;
+    /**
+     * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+     */
+    healthcheckNamespace?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    region?: string;
+    remoteIdentityGroupId?: string;
+    remoteIdentityHealthcheckUsername?: string;
+    roleArn?: string;
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -655,6 +731,10 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -685,6 +765,10 @@ export interface GetResourceResourceAmazonmqAmqp091 {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -722,6 +806,10 @@ export interface GetResourceResourceAthena {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -753,6 +841,10 @@ export interface GetResourceResourceAuroraMysql {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -787,6 +879,10 @@ export interface GetResourceResourceAuroraPostgre {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -855,6 +951,9 @@ export interface GetResourceResourceAwsConsole {
      */
     secretStoreId?: string;
     sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -892,6 +991,9 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      */
     secretStoreId?: string;
     sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -992,6 +1094,10 @@ export interface GetResourceResourceAzureMysql {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1026,6 +1132,10 @@ export interface GetResourceResourceAzurePostgre {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1058,6 +1168,10 @@ export interface GetResourceResourceBigQuery {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1089,6 +1203,10 @@ export interface GetResourceResourceCassandra {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1125,6 +1243,10 @@ export interface GetResourceResourceCitus {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1157,6 +1279,10 @@ export interface GetResourceResourceClustrix {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1192,6 +1318,10 @@ export interface GetResourceResourceCockroach {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1223,6 +1353,10 @@ export interface GetResourceResourceDb2I {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1258,6 +1392,10 @@ export interface GetResourceResourceDb2Luw {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1290,6 +1428,10 @@ export interface GetResourceResourceDocumentDbHost {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1325,6 +1467,10 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1356,6 +1502,10 @@ export interface GetResourceResourceDruid {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1392,6 +1542,10 @@ export interface GetResourceResourceDynamoDb {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1422,6 +1576,10 @@ export interface GetResourceResourceElastic {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1455,6 +1613,10 @@ export interface GetResourceResourceElasticacheRedi {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1523,6 +1685,10 @@ export interface GetResourceResourceGoogleGke {
     secretStoreId?: string;
     serviceAccountKey?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1557,6 +1723,10 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
     secretStoreId?: string;
     serviceAccountKey?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1590,6 +1760,10 @@ export interface GetResourceResourceGreenplum {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1622,6 +1796,9 @@ export interface GetResourceResourceHttpAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -1659,6 +1836,9 @@ export interface GetResourceResourceHttpBasicAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -1696,6 +1876,9 @@ export interface GetResourceResourceHttpNoAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -1741,6 +1924,10 @@ export interface GetResourceResourceKubernete {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1775,6 +1962,10 @@ export interface GetResourceResourceKubernetesBasicAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1813,6 +2004,10 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1850,6 +2045,10 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1892,6 +2091,10 @@ export interface GetResourceResourceKubernetesUserImpersonation {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1924,6 +2127,10 @@ export interface GetResourceResourceMaria {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -1954,6 +2161,10 @@ export interface GetResourceResourceMemcached {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1987,6 +2198,10 @@ export interface GetResourceResourceMemsql {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2019,6 +2234,10 @@ export interface GetResourceResourceMongoHost {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2054,6 +2273,10 @@ export interface GetResourceResourceMongoLegacyHost {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2091,6 +2314,10 @@ export interface GetResourceResourceMongoLegacyReplicaset {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2127,6 +2354,10 @@ export interface GetResourceResourceMongoReplicaSet {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2159,6 +2390,10 @@ export interface GetResourceResourceMongoShardedCluster {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2198,6 +2433,10 @@ export interface GetResourceResourceMtlsMysql {
     secretStoreId?: string;
     serverName?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2236,6 +2475,10 @@ export interface GetResourceResourceMtlsPostgre {
     secretStoreId?: string;
     serverName?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2269,6 +2512,10 @@ export interface GetResourceResourceMysql {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2299,6 +2546,10 @@ export interface GetResourceResourceNeptune {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2335,6 +2586,10 @@ export interface GetResourceResourceNeptuneIam {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2366,6 +2621,10 @@ export interface GetResourceResourceOracle {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2402,6 +2661,10 @@ export interface GetResourceResourcePostgre {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2434,6 +2697,10 @@ export interface GetResourceResourcePresto {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2468,6 +2735,10 @@ export interface GetResourceResourceRabbitmqAmqp091 {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2499,6 +2770,10 @@ export interface GetResourceResourceRawTcp {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2532,6 +2807,10 @@ export interface GetResourceResourceRdp {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2563,6 +2842,10 @@ export interface GetResourceResourceRedi {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2599,6 +2882,10 @@ export interface GetResourceResourceRedshift {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2631,6 +2918,10 @@ export interface GetResourceResourceSingleStore {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2665,6 +2956,10 @@ export interface GetResourceResourceSnowflake {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2695,6 +2990,9 @@ export interface GetResourceResourceSnowsight {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -2731,6 +3029,10 @@ export interface GetResourceResourceSqlServer {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2765,6 +3067,10 @@ export interface GetResourceResourceSsh {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2802,6 +3108,10 @@ export interface GetResourceResourceSshCert {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2836,6 +3146,10 @@ export interface GetResourceResourceSshCustomerKey {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2867,6 +3181,10 @@ export interface GetResourceResourceSybase {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2900,6 +3218,10 @@ export interface GetResourceResourceSybaseIq {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -2931,6 +3253,10 @@ export interface GetResourceResourceTeradata {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3247,6 +3573,10 @@ export interface ResourceAks {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -3281,6 +3611,10 @@ export interface ResourceAksBasicAuth {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3320,6 +3654,10 @@ export interface ResourceAksServiceAccount {
     secretStoreTokenKey?: string;
     secretStoreTokenPath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -3355,6 +3693,10 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     secretStoreTokenKey?: string;
     secretStoreTokenPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3395,6 +3737,10 @@ export interface ResourceAksUserImpersonation {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3443,6 +3789,10 @@ export interface ResourceAmazonEks {
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -3483,6 +3833,55 @@ export interface ResourceAmazonEksInstanceProfile {
     secretStoreRoleArnPath?: string;
     secretStoreRoleExternalIdKey?: string;
     secretStoreRoleExternalIdPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface ResourceAmazonEksInstanceProfileUserImpersonation {
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    certificateAuthority?: string;
+    clusterName: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    endpoint: string;
+    /**
+     * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+     */
+    healthcheckNamespace?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    region: string;
+    remoteIdentityGroupId?: string;
+    remoteIdentityHealthcheckUsername?: string;
+    roleArn?: string;
+    roleExternalId?: string;
+    secretStoreCertificateAuthorityKey?: string;
+    secretStoreCertificateAuthorityPath?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    secretStoreRoleArnKey?: string;
+    secretStoreRoleArnPath?: string;
+    secretStoreRoleExternalIdKey?: string;
+    secretStoreRoleExternalIdPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3529,6 +3928,10 @@ export interface ResourceAmazonEksUserImpersonation {
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -3567,6 +3970,10 @@ export interface ResourceAmazonEs {
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -3597,6 +4004,10 @@ export interface ResourceAmazonmqAmqp091 {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3638,6 +4049,10 @@ export interface ResourceAthena {
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -3669,6 +4084,10 @@ export interface ResourceAuroraMysql {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3703,6 +4122,10 @@ export interface ResourceAuroraPostgres {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3775,6 +4198,9 @@ export interface ResourceAwsConsole {
     secretStoreRoleExternalIdKey?: string;
     secretStoreRoleExternalIdPath?: string;
     sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: string;
     /**
      * Tags is a map of key, value pairs.
@@ -3816,6 +4242,9 @@ export interface ResourceAwsConsoleStaticKeyPair {
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
     sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: string;
     /**
      * Tags is a map of key, value pairs.
@@ -3920,6 +4349,10 @@ export interface ResourceAzureMysql {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -3954,6 +4387,10 @@ export interface ResourceAzurePostgres {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -3983,6 +4420,10 @@ export interface ResourceBigQuery {
     secretStoreId?: string;
     secretStorePrivateKeyKey?: string;
     secretStorePrivateKeyPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4015,6 +4456,10 @@ export interface ResourceCassandra {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4051,6 +4496,10 @@ export interface ResourceCitus {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4083,6 +4532,10 @@ export interface ResourceClustrix {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4118,6 +4571,10 @@ export interface ResourceCockroach {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4149,6 +4606,10 @@ export interface ResourceDb2I {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4184,6 +4645,10 @@ export interface ResourceDb2Luw {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4216,6 +4681,10 @@ export interface ResourceDocumentDbHost {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4251,6 +4720,10 @@ export interface ResourceDocumentDbReplicaSet {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4282,6 +4755,10 @@ export interface ResourceDruid {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4322,6 +4799,10 @@ export interface ResourceDynamoDb {
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4352,6 +4833,10 @@ export interface ResourceElastic {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4385,6 +4870,10 @@ export interface ResourceElasticacheRedis {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4451,6 +4940,10 @@ export interface ResourceGoogleGke {
     secretStoreServiceAccountKeyPath?: string;
     serviceAccountKey?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4485,6 +4978,10 @@ export interface ResourceGoogleGkeUserImpersonation {
     secretStoreServiceAccountKeyPath?: string;
     serviceAccountKey?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4518,6 +5015,10 @@ export interface ResourceGreenplum {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4548,6 +5049,9 @@ export interface ResourceHttpAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: string;
     /**
      * Tags is a map of key, value pairs.
@@ -4585,6 +5089,9 @@ export interface ResourceHttpBasicAuth {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: string;
     /**
      * Tags is a map of key, value pairs.
@@ -4618,6 +5125,9 @@ export interface ResourceHttpNoAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: string;
     /**
      * Tags is a map of key, value pairs.
@@ -4665,6 +5175,10 @@ export interface ResourceKubernetes {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4699,6 +5213,10 @@ export interface ResourceKubernetesBasicAuth {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4738,6 +5256,10 @@ export interface ResourceKubernetesServiceAccount {
     secretStoreTokenKey?: string;
     secretStoreTokenPath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4773,6 +5295,10 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     secretStoreTokenKey?: string;
     secretStoreTokenPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4814,6 +5340,10 @@ export interface ResourceKubernetesUserImpersonation {
      */
     secretStoreId?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4846,6 +5376,10 @@ export interface ResourceMaria {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4872,6 +5406,10 @@ export interface ResourceMemcached {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4905,6 +5443,10 @@ export interface ResourceMemsql {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -4937,6 +5479,10 @@ export interface ResourceMongoHost {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4972,6 +5518,10 @@ export interface ResourceMongoLegacyHost {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5009,6 +5559,10 @@ export interface ResourceMongoLegacyReplicaset {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5045,6 +5599,10 @@ export interface ResourceMongoReplicaSet {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5077,6 +5635,10 @@ export interface ResourceMongoShardedCluster {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5122,6 +5684,10 @@ export interface ResourceMtlsMysql {
     secretStoreUsernamePath?: string;
     serverName?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5166,6 +5732,10 @@ export interface ResourceMtlsPostgres {
     secretStoreUsernamePath?: string;
     serverName?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5199,6 +5769,10 @@ export interface ResourceMysql {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5225,6 +5799,10 @@ export interface ResourceNeptune {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5265,6 +5843,10 @@ export interface ResourceNeptuneIam {
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5296,6 +5878,10 @@ export interface ResourceOracle {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5332,6 +5918,10 @@ export interface ResourcePostgres {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5362,6 +5952,10 @@ export interface ResourcePresto {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5396,6 +5990,10 @@ export interface ResourceRabbitmqAmqp091 {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5423,6 +6021,10 @@ export interface ResourceRawTcp {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5456,6 +6058,10 @@ export interface ResourceRdp {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5487,6 +6093,10 @@ export interface ResourceRedis {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5523,6 +6133,10 @@ export interface ResourceRedshift {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5555,6 +6169,10 @@ export interface ResourceSingleStore {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5589,6 +6207,10 @@ export interface ResourceSnowflake {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5617,6 +6239,9 @@ export interface ResourceSnowsight {
     secretStoreId?: string;
     secretStoreSamlMetadataKey?: string;
     secretStoreSamlMetadataPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
     subdomain: string;
     /**
      * Tags is a map of key, value pairs.
@@ -5653,6 +6278,10 @@ export interface ResourceSqlServer {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5685,6 +6314,10 @@ export interface ResourceSsh {
     secretStoreId?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5720,6 +6353,10 @@ export interface ResourceSshCert {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5754,6 +6391,10 @@ export interface ResourceSshCustomerKey {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5785,6 +6426,10 @@ export interface ResourceSybase {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5818,6 +6463,10 @@ export interface ResourceSybaseIq {
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
@@ -5849,6 +6498,10 @@ export interface ResourceTeradata {
     secretStorePasswordPath?: string;
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
