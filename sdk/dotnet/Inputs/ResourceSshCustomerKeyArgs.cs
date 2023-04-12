@@ -47,7 +47,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<int>? PortOverride { get; set; }
 
         [Input("privateKey")]
-        public Input<string>? PrivateKey { get; set; }
+        private Input<string>? _privateKey;
+        public Input<string>? PrivateKey
+        {
+            get => _privateKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.

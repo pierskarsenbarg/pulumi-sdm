@@ -50,7 +50,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         [Input("token")]
-        public Input<string>? Token { get; set; }
+        private Input<string>? _token;
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Version is a read only sdm binary version uploaded by the gateway process when it comes online.

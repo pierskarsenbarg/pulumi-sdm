@@ -21,6 +21,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
@@ -43,7 +44,7 @@ namespace PiersKarsenbarg.Sdm
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetResourceResult> InvokeAsync(GetResourceArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceArgs(), options.WithDefaults());
 
         /// <summary>
         /// A Resource is a database, server, cluster, website, or cloud that strongDM
@@ -54,6 +55,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
@@ -76,7 +78,7 @@ namespace PiersKarsenbarg.Sdm
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetResourceResult> Invoke(GetResourceInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceInvokeArgs(), options.WithDefaults());
     }
 
 

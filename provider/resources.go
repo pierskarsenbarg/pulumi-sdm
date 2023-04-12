@@ -118,9 +118,22 @@ func Provider() tfbridge.ProviderInfo {
 			"sdm_account_attachment": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccountAttachment")},
 			"sdm_node":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Node")},
 			"sdm_remote_identity":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RemoteIdentity")},
-			"sdm_resource":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource")},
-			"sdm_role":               {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
-			"sdm_secret_store":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretStore")},
+			"sdm_resource": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"athena": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"output": {
+									Name: "athenaOutput",
+								},
+							},
+						},
+					},
+				},
+			},
+			"sdm_role":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
+			"sdm_secret_store": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretStore")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example

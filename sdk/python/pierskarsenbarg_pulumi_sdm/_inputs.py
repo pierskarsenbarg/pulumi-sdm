@@ -3495,8 +3495,8 @@ class ResourceAmazonmqAmqp091Args:
 @pulumi.input_type
 class ResourceAthenaArgs:
     def __init__(__self__, *,
+                 athena_output: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 output: pulumi.Input[str],
                  access_key: Optional[pulumi.Input[str]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
@@ -3524,8 +3524,8 @@ class ResourceAthenaArgs:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
+        pulumi.set(__self__, "athena_output", athena_output)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "output", output)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if bind_interface is not None:
@@ -3566,6 +3566,15 @@ class ResourceAthenaArgs:
             pulumi.set(__self__, "tags", tags)
 
     @property
+    @pulumi.getter(name="athenaOutput")
+    def athena_output(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "athena_output")
+
+    @athena_output.setter
+    def athena_output(self, value: pulumi.Input[str]):
+        pulumi.set(self, "athena_output", value)
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
@@ -3576,15 +3585,6 @@ class ResourceAthenaArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def output(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "output")
-
-    @output.setter
-    def output(self, value: pulumi.Input[str]):
-        pulumi.set(self, "output", value)
 
     @property
     @pulumi.getter(name="accessKey")

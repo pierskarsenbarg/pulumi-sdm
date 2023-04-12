@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,19 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const user = pulumi.output(sdm.getRemoteIdentity({
+ * const user = sdm.getRemoteIdentity({
  *     id: "i-0900909",
  *     username: "user",
- * }));
+ * });
  * ```
  */
 export function getRemoteIdentity(args?: GetRemoteIdentityArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteIdentityResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getRemoteIdentity:getRemoteIdentity", {
         "accountId": args.accountId,
         "id": args.id,
@@ -86,9 +84,23 @@ export interface GetRemoteIdentityResult {
      */
     readonly username?: string;
 }
-
+/**
+ * RemoteIdentities define the username to be used for a specific account
+ *  when connecting to a remote resource using that group.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pulumi/sdm";
+ *
+ * const user = sdm.getRemoteIdentity({
+ *     id: "i-0900909",
+ *     username: "user",
+ * });
+ * ```
+ */
 export function getRemoteIdentityOutput(args?: GetRemoteIdentityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteIdentityResult> {
-    return pulumi.output(args).apply(a => getRemoteIdentity(a, opts))
+    return pulumi.output(args).apply((a: any) => getRemoteIdentity(a, opts))
 }
 
 /**

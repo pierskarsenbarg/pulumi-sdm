@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,23 +15,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const mysqlDatasources = pulumi.output(sdm.getResource({
+ * const mysqlDatasources = sdm.getResource({
  *     name: "us-west*",
  *     tags: {
  *         env: "dev",
  *         region: "us-west",
  *     },
  *     type: "mysql",
- * }));
+ * });
  * ```
  */
 export function getResource(args?: GetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getResource:getResource", {
         "hostname": args.hostname,
         "id": args.id,
@@ -97,9 +95,27 @@ export interface GetResourceResult {
     readonly type?: string;
     readonly username?: string;
 }
-
+/**
+ * A Resource is a database, server, cluster, website, or cloud that strongDM
+ *  delegates access to.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pulumi/sdm";
+ *
+ * const mysqlDatasources = sdm.getResource({
+ *     name: "us-west*",
+ *     tags: {
+ *         env: "dev",
+ *         region: "us-west",
+ *     },
+ *     type: "mysql",
+ * });
+ * ```
+ */
 export function getResourceOutput(args?: GetResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceResult> {
-    return pulumi.output(args).apply(a => getResource(a, opts))
+    return pulumi.output(args).apply((a: any) => getResource(a, opts))
 }
 
 /**

@@ -16,6 +16,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("accessKey")]
         public Input<string>? AccessKey { get; set; }
 
+        [Input("athenaOutput", required: true)]
+        public Input<string> AthenaOutput { get; set; } = null!;
+
         /// <summary>
         /// Bind interface
         /// </summary>
@@ -34,9 +37,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("output", required: true)]
-        public Input<string> Output { get; set; } = null!;
-
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
@@ -50,7 +50,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? RoleExternalId { get; set; }
 
         [Input("secretAccessKey")]
-        public Input<string>? SecretAccessKey { get; set; }
+        private Input<string>? _secretAccessKey;
+        public Input<string>? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("secretStoreAccessKeyKey")]
         public Input<string>? SecretStoreAccessKeyKey { get; set; }
