@@ -37,7 +37,7 @@ def readme():
         return "sdm Pulumi Package - Development Version"
 
 
-setup(name='pulumi_sdm',
+setup(name='pierskarsenbarg_pulumi_sdm',
       version=VERSION,
       description="A Pulumi package for creating and managing StrongDM cloud resources.",
       long_description=readme(),
@@ -53,7 +53,7 @@ setup(name='pulumi_sdm',
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'pulumi_sdm': [
+          'pierskarsenbarg_pulumi_sdm': [
               'py.typed',
               'pulumi-plugin.json',
           ]

@@ -27,10 +27,10 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import pulumi_sdm.config as __config
+    import pierskarsenbarg_pulumi_sdm.config as __config
     config = __config
 else:
-    config = _utilities.lazy_import('pulumi_sdm.config')
+    config = _utilities.lazy_import('pierskarsenbarg_pulumi_sdm.config')
 
 _utilities.register(
     resource_modules="""
@@ -38,7 +38,7 @@ _utilities.register(
  {
   "pkg": "sdm",
   "mod": "index/account",
-  "fqn": "pulumi_sdm",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/account:Account": "Account"
   }
@@ -46,7 +46,7 @@ _utilities.register(
  {
   "pkg": "sdm",
   "mod": "index/accountAttachment",
-  "fqn": "pulumi_sdm",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/accountAttachment:AccountAttachment": "AccountAttachment"
   }
@@ -54,7 +54,7 @@ _utilities.register(
  {
   "pkg": "sdm",
   "mod": "index/node",
-  "fqn": "pulumi_sdm",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/node:Node": "Node"
   }
@@ -62,7 +62,7 @@ _utilities.register(
  {
   "pkg": "sdm",
   "mod": "index/remoteIdentity",
-  "fqn": "pulumi_sdm",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/remoteIdentity:RemoteIdentity": "RemoteIdentity"
   }
@@ -70,7 +70,7 @@ _utilities.register(
  {
   "pkg": "sdm",
   "mod": "index/resource",
-  "fqn": "pulumi_sdm",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/resource:Resource": "Resource"
   }
@@ -78,7 +78,7 @@ _utilities.register(
  {
   "pkg": "sdm",
   "mod": "index/role",
-  "fqn": "pulumi_sdm",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/role:Role": "Role"
   }
@@ -86,7 +86,7 @@ _utilities.register(
  {
   "pkg": "sdm",
   "mod": "index/secretStore",
-  "fqn": "pulumi_sdm",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/secretStore:SecretStore": "SecretStore"
   }
@@ -98,7 +98,7 @@ _utilities.register(
  {
   "pkg": "sdm",
   "token": "pulumi:providers:sdm",
-  "fqn": "pulumi_sdm",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
   "class": "Provider"
  }
 ]
