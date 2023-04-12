@@ -20,13 +20,40 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         [Input("certificateAuthority")]
-        public Input<string>? CertificateAuthority { get; set; }
+        private Input<string>? _certificateAuthority;
+        public Input<string>? CertificateAuthority
+        {
+            get => _certificateAuthority;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateAuthority = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clientCertificate")]
-        public Input<string>? ClientCertificate { get; set; }
+        private Input<string>? _clientCertificate;
+        public Input<string>? ClientCertificate
+        {
+            get => _clientCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        private Input<string>? _clientKey;
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.

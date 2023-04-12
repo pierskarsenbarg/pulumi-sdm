@@ -20,7 +20,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         [Input("certificateAuthority")]
-        public Input<string>? CertificateAuthority { get; set; }
+        private Input<string>? _certificateAuthority;
+        public Input<string>? CertificateAuthority
+        {
+            get => _certificateAuthority;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateAuthority = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
@@ -68,7 +77,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? SecretStoreServiceAccountKeyPath { get; set; }
 
         [Input("serviceAccountKey")]
-        public Input<string>? ServiceAccountKey { get; set; }
+        private Input<string>? _serviceAccountKey;
+        public Input<string>? ServiceAccountKey
+        {
+            get => _serviceAccountKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serviceAccountKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)

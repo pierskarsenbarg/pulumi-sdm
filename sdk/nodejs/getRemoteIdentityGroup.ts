@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,18 +14,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const defaultRemoteIdentityGroup = pulumi.output(sdm.getRemoteIdentityGroup({
+ * const default = sdm.getRemoteIdentityGroup({
  *     name: "default",
- * }));
+ * });
  * ```
  */
 export function getRemoteIdentityGroup(args?: GetRemoteIdentityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteIdentityGroupResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", {
         "id": args.id,
         "name": args.name,
@@ -66,9 +64,21 @@ export interface GetRemoteIdentityGroupResult {
      */
     readonly remoteIdentityGroups: outputs.GetRemoteIdentityGroupRemoteIdentityGroup[];
 }
-
+/**
+ * A RemoteIdentityGroup defines a group of remote identities.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pulumi/sdm";
+ *
+ * const default = sdm.getRemoteIdentityGroup({
+ *     name: "default",
+ * });
+ * ```
+ */
 export function getRemoteIdentityGroupOutput(args?: GetRemoteIdentityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteIdentityGroupResult> {
-    return pulumi.output(args).apply(a => getRemoteIdentityGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getRemoteIdentityGroup(a, opts))
 }
 
 /**

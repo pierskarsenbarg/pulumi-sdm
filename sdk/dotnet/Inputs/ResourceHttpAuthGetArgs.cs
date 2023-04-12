@@ -14,7 +14,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceHttpAuthGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("authHeader")]
-        public Input<string>? AuthHeader { get; set; }
+        private Input<string>? _authHeader;
+        public Input<string>? AuthHeader
+        {
+            get => _authHeader;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authHeader = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Bind interface

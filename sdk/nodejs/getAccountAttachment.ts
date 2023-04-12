@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,18 +14,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const accountAttachmentQuery = pulumi.output(sdm.getAccountAttachment({
+ * const accountAttachmentQuery = sdm.getAccountAttachment({
  *     accountId: "a-00000054",
- * }));
+ * });
  * ```
  */
 export function getAccountAttachment(args?: GetAccountAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAttachmentResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getAccountAttachment:getAccountAttachment", {
         "accountId": args.accountId,
         "id": args.id,
@@ -75,9 +73,21 @@ export interface GetAccountAttachmentResult {
      */
     readonly roleId?: string;
 }
-
+/**
+ * AccountAttachments assign an account to a role.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pulumi/sdm";
+ *
+ * const accountAttachmentQuery = sdm.getAccountAttachment({
+ *     accountId: "a-00000054",
+ * });
+ * ```
+ */
 export function getAccountAttachmentOutput(args?: GetAccountAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAttachmentResult> {
-    return pulumi.output(args).apply(a => getAccountAttachment(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccountAttachment(a, opts))
 }
 
 /**

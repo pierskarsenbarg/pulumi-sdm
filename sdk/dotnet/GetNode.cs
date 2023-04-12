@@ -23,6 +23,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
@@ -44,7 +45,7 @@ namespace PiersKarsenbarg.Sdm
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetNodeResult> InvokeAsync(GetNodeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Nodes make up the strongDM network, and allow your users to connect securely to your resources.
@@ -57,6 +58,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Sdm = Pulumi.Sdm;
         /// 
@@ -78,7 +80,7 @@ namespace PiersKarsenbarg.Sdm
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
     }
 
 

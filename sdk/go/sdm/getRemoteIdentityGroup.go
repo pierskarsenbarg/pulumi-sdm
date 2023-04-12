@@ -19,14 +19,13 @@ import (
 // import (
 //
 //	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.GetRemoteIdentityGroup(ctx, &GetRemoteIdentityGroupArgs{
+//			_, err := sdm.GetRemoteIdentityGroup(ctx, &sdm.GetRemoteIdentityGroupArgs{
 //				Name: pulumi.StringRef("default"),
 //			}, nil)
 //			if err != nil {

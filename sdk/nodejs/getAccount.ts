@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,23 +16,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const user_queries = pulumi.output(sdm.getAccount({
+ * const user-queries = sdm.getAccount({
  *     email: "*@strongdm.com",
  *     tags: {
  *         env: "dev",
  *         region: "us-west",
  *     },
  *     type: "user",
- * }));
+ * });
  * ```
  */
 export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getAccount:getAccount", {
         "email": args.email,
         "externalId": args.externalId,
@@ -134,9 +132,28 @@ export interface GetAccountResult {
     readonly tags?: {[key: string]: any};
     readonly type?: string;
 }
-
+/**
+ * Accounts are users that have access to strongDM. There are two types of accounts:
+ *  1. **Users:** humans who are authenticated through username and password or SSO.
+ *  2. **Service Accounts:** machines that are authenticated using a service token.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pulumi/sdm";
+ *
+ * const user-queries = sdm.getAccount({
+ *     email: "*@strongdm.com",
+ *     tags: {
+ *         env: "dev",
+ *         region: "us-west",
+ *     },
+ *     type: "user",
+ * });
+ * ```
+ */
 export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
-    return pulumi.output(args).apply(a => getAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getAccount(a, opts))
 }
 
 /**

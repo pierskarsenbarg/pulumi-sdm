@@ -2,35 +2,19 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * A Role has a list of access rules which determine which Resources the members
  *  of the Role have access to. An Account can be a member of multiple Roles via
  *  AccountAttachments.
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sdm from "@pulumi/sdm";
- *
- * const compositeRoleQuery = pulumi.output(sdm.getRole({
- *     composite: true,
- *     tags: {
- *         env: "dev",
- *         region: "us-west",
- *     },
- * }));
- * ```
  */
 export function getRole(args?: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getRole:getRole", {
         "id": args.id,
         "name": args.name,
@@ -85,9 +69,13 @@ export interface GetRoleResult {
      */
     readonly tags?: {[key: string]: string};
 }
-
+/**
+ * A Role has a list of access rules which determine which Resources the members
+ *  of the Role have access to. An Account can be a member of multiple Roles via
+ *  AccountAttachments.
+ */
 export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
-    return pulumi.output(args).apply(a => getRole(a, opts))
+    return pulumi.output(args).apply((a: any) => getRole(a, opts))
 }
 
 /**
