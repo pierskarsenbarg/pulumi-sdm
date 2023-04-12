@@ -25,7 +25,7 @@ yarn add @pierskarsenbarg/sdm
 To use from Python, install using `pip`:
 
 ```bash
-pip install pulumi-sdm
+pip install pierskarsenbarg-pulumi-sdm
 ```
 
 ### Go
