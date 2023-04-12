@@ -33,7 +33,7 @@ namespace PiersKarsenbarg.Sdm
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSshCaPubkeyResult> InvokeAsync(GetSshCaPubkeyArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyArgs(), options.WithDefaults());
 
         /// <summary>
         /// The SSH CA Pubkey is a public key used for setting up SSH resources.
@@ -56,7 +56,7 @@ namespace PiersKarsenbarg.Sdm
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSshCaPubkeyResult> Invoke(GetSshCaPubkeyInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -38,7 +38,7 @@ namespace PiersKarsenbarg.Sdm
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetRemoteIdentityResult> InvokeAsync(GetRemoteIdentityArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityArgs(), options.WithDefaults());
 
         /// <summary>
         /// RemoteIdentities define the username to be used for a specific account
@@ -66,7 +66,7 @@ namespace PiersKarsenbarg.Sdm
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetRemoteIdentityResult> Invoke(GetRemoteIdentityInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityInvokeArgs(), options.WithDefaults());
     }
 
 

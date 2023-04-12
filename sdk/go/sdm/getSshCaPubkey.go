@@ -19,7 +19,6 @@ import (
 // import (
 //
 //	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

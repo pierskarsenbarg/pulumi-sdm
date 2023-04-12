@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -11,11 +12,8 @@ import * as utilities from "./utilities";
  */
 export function getSecretStore(args?: GetSecretStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretStoreResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getSecretStore:getSecretStore", {
         "id": args.id,
         "name": args.name,
@@ -73,9 +71,12 @@ export interface GetSecretStoreResult {
     readonly tags?: {[key: string]: any};
     readonly type?: string;
 }
-
+/**
+ * A SecretStore is a server where resource secrets (passwords, keys) are stored.
+ *  Coming soon support for HashiCorp Vault and AWS Secret Store.
+ */
 export function getSecretStoreOutput(args?: GetSecretStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretStoreResult> {
-    return pulumi.output(args).apply(a => getSecretStore(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecretStore(a, opts))
 }
 
 /**

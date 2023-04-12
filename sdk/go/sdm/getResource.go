@@ -22,14 +22,13 @@ import (
 // import (
 //
 //	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupResource(ctx, &GetResourceArgs{
+//			_, err := sdm.LookupResource(ctx, &sdm.LookupResourceArgs{
 //				Name: pulumi.StringRef("us-west*"),
 //				Tags: map[string]interface{}{
 //					"env":    "dev",

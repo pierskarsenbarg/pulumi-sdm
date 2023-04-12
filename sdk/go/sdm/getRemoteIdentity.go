@@ -22,14 +22,13 @@ import (
 // import (
 //
 //	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi-sdm/sdk/go/sdm"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupRemoteIdentity(ctx, &GetRemoteIdentityArgs{
+//			_, err := sdm.LookupRemoteIdentity(ctx, &sdm.LookupRemoteIdentityArgs{
 //				Id:       pulumi.StringRef("i-0900909"),
 //				Username: pulumi.StringRef("user"),
 //			}, nil)

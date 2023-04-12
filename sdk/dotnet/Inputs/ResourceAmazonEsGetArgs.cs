@@ -50,7 +50,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? RoleExternalId { get; set; }
 
         [Input("secretAccessKey")]
-        public Input<string>? SecretAccessKey { get; set; }
+        private Input<string>? _secretAccessKey;
+        public Input<string>? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("secretStoreAccessKeyKey")]
         public Input<string>? SecretStoreAccessKeyKey { get; set; }
