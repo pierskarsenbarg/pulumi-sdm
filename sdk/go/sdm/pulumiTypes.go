@@ -5844,14 +5844,14 @@ func (o ResourceAmazonmqAmqp091PtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type ResourceAthena struct {
-	AccessKey *string `pulumi:"accessKey"`
+	AccessKey    *string `pulumi:"accessKey"`
+	AthenaOutput string  `pulumi:"athenaOutput"`
 	// Bind interface
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// Unique human-readable name of the Resource.
 	Name                     string  `pulumi:"name"`
-	Output                   string  `pulumi:"output"`
 	PortOverride             *int    `pulumi:"portOverride"`
 	Region                   *string `pulumi:"region"`
 	RoleArn                  *string `pulumi:"roleArn"`
@@ -5885,14 +5885,14 @@ type ResourceAthenaInput interface {
 }
 
 type ResourceAthenaArgs struct {
-	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	AccessKey    pulumi.StringPtrInput `pulumi:"accessKey"`
+	AthenaOutput pulumi.StringInput    `pulumi:"athenaOutput"`
 	// Bind interface
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// Unique human-readable name of the Resource.
 	Name                     pulumi.StringInput    `pulumi:"name"`
-	Output                   pulumi.StringInput    `pulumi:"output"`
 	PortOverride             pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region                   pulumi.StringPtrInput `pulumi:"region"`
 	RoleArn                  pulumi.StringPtrInput `pulumi:"roleArn"`
@@ -5995,6 +5995,10 @@ func (o ResourceAthenaOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAthena) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceAthenaOutput) AthenaOutput() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAthena) string { return v.AthenaOutput }).(pulumi.StringOutput)
+}
+
 // Bind interface
 func (o ResourceAthenaOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAthena) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -6008,10 +6012,6 @@ func (o ResourceAthenaOutput) EgressFilter() pulumi.StringPtrOutput {
 // Unique human-readable name of the Resource.
 func (o ResourceAthenaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAthena) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o ResourceAthenaOutput) Output() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceAthena) string { return v.Output }).(pulumi.StringOutput)
 }
 
 func (o ResourceAthenaOutput) PortOverride() pulumi.IntPtrOutput {
@@ -6114,6 +6114,15 @@ func (o ResourceAthenaPtrOutput) AccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceAthenaPtrOutput) AthenaOutput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthena) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AthenaOutput
+	}).(pulumi.StringPtrOutput)
+}
+
 // Bind interface
 func (o ResourceAthenaPtrOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAthena) *string {
@@ -6141,15 +6150,6 @@ func (o ResourceAthenaPtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaPtrOutput) Output() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Output
 	}).(pulumi.StringPtrOutput)
 }
 

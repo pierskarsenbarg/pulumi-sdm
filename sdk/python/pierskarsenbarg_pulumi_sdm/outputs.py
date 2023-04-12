@@ -3161,7 +3161,9 @@ class ResourceAthena(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "accessKey":
+        if key == "athenaOutput":
+            suggest = "athena_output"
+        elif key == "accessKey":
             suggest = "access_key"
         elif key == "bindInterface":
             suggest = "bind_interface"
@@ -3206,8 +3208,8 @@ class ResourceAthena(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 athena_output: str,
                  name: str,
-                 output: str,
                  access_key: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -3235,8 +3237,8 @@ class ResourceAthena(dict):
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
+        pulumi.set(__self__, "athena_output", athena_output)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "output", output)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if bind_interface is not None:
@@ -3277,17 +3279,17 @@ class ResourceAthena(dict):
             pulumi.set(__self__, "tags", tags)
 
     @property
+    @pulumi.getter(name="athenaOutput")
+    def athena_output(self) -> str:
+        return pulumi.get(self, "athena_output")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
         Unique human-readable name of the Resource.
         """
         return pulumi.get(self, "name")
-
-    @property
-    @pulumi.getter
-    def output(self) -> str:
-        return pulumi.get(self, "output")
 
     @property
     @pulumi.getter(name="accessKey")

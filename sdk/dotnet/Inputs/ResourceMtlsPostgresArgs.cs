@@ -20,13 +20,40 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         [Input("certificateAuthority")]
-        public Input<string>? CertificateAuthority { get; set; }
+        private Input<string>? _certificateAuthority;
+        public Input<string>? CertificateAuthority
+        {
+            get => _certificateAuthority;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateAuthority = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clientCertificate")]
-        public Input<string>? ClientCertificate { get; set; }
+        private Input<string>? _clientCertificate;
+        public Input<string>? ClientCertificate
+        {
+            get => _clientCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clientKey")]
-        public Input<string>? ClientKey { get; set; }
+        private Input<string>? _clientKey;
+        public Input<string>? ClientKey
+        {
+            get => _clientKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
@@ -50,7 +77,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<bool>? OverrideDatabase { get; set; }
 
         [Input("password")]
-        public Input<string>? Password { get; set; }
+        private Input<string>? _password;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("port")]
         public Input<int>? Port { get; set; }

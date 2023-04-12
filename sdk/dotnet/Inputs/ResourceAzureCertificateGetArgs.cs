@@ -23,7 +23,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         [Input("clientCertificate")]
-        public Input<string>? ClientCertificate { get; set; }
+        private Input<string>? _clientCertificate;
+        public Input<string>? ClientCertificate
+        {
+            get => _clientCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.

@@ -15,6 +15,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class ResourceAthena
     {
         public readonly string? AccessKey;
+        public readonly string AthenaOutput;
         /// <summary>
         /// Bind interface
         /// </summary>
@@ -27,7 +28,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
-        public readonly string Output;
         public readonly int? PortOverride;
         public readonly string? Region;
         public readonly string? RoleArn;
@@ -58,13 +58,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private ResourceAthena(
             string? accessKey,
 
+            string athenaOutput,
+
             string? bindInterface,
 
             string? egressFilter,
 
             string name,
-
-            string output,
 
             int? portOverride,
 
@@ -99,10 +99,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableDictionary<string, string>? tags)
         {
             AccessKey = accessKey;
+            AthenaOutput = athenaOutput;
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Name = name;
-            Output = output;
             PortOverride = portOverride;
             Region = region;
             RoleArn = roleArn;

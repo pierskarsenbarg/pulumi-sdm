@@ -30,7 +30,7 @@ namespace PiersKarsenbarg.Sdm
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("sdm");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("sdm");
 
         private static readonly __Value<string?> _apiAccessKey = new __Value<string?>(() => __config.Get("apiAccessKey"));
         /// <summary>

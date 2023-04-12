@@ -23,7 +23,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindInterface { get; set; }
 
         [Input("certificateAuthority")]
-        public Input<string>? CertificateAuthority { get; set; }
+        private Input<string>? _certificateAuthority;
+        public Input<string>? CertificateAuthority
+        {
+            get => _certificateAuthority;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateAuthority = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
@@ -59,7 +68,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? RoleExternalId { get; set; }
 
         [Input("secretAccessKey")]
-        public Input<string>? SecretAccessKey { get; set; }
+        private Input<string>? _secretAccessKey;
+        public Input<string>? SecretAccessKey
+        {
+            get => _secretAccessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("secretStoreAccessKeyKey")]
         public Input<string>? SecretStoreAccessKeyKey { get; set; }

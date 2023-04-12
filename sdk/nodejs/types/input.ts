@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AccountService {
     /**
@@ -600,6 +601,7 @@ export interface ResourceAmazonmqAmqp091 {
 
 export interface ResourceAthena {
     accessKey?: pulumi.Input<string>;
+    athenaOutput: pulumi.Input<string>;
     /**
      * Bind interface
      */
@@ -612,7 +614,6 @@ export interface ResourceAthena {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
-    output: pulumi.Input<string>;
     portOverride?: pulumi.Input<number>;
     region?: pulumi.Input<string>;
     roleArn?: pulumi.Input<string>;

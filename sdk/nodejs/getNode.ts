@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,22 +17,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const gatewayQuery = pulumi.output(sdm.getNode({
+ * const gatewayQuery = sdm.getNode({
  *     tags: {
  *         env: "dev",
  *         region: "us-west",
  *     },
  *     type: "gateway",
- * }));
+ * });
  * ```
  */
 export function getNode(args?: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getNode:getNode", {
         "bindAddress": args.bindAddress,
         "id": args.id,
@@ -107,9 +105,28 @@ export interface GetNodeResult {
     readonly tags?: {[key: string]: any};
     readonly type?: string;
 }
-
+/**
+ * Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+ *  There are two types of nodes:
+ *  1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+ *  2. **Gateways:** a relay that also listens for connections from strongDM clients
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pulumi/sdm";
+ *
+ * const gatewayQuery = sdm.getNode({
+ *     tags: {
+ *         env: "dev",
+ *         region: "us-west",
+ *     },
+ *     type: "gateway",
+ * });
+ * ```
+ */
 export function getNodeOutput(args?: GetNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeResult> {
-    return pulumi.output(args).apply(a => getNode(a, opts))
+    return pulumi.output(args).apply((a: any) => getNode(a, opts))
 }
 
 /**

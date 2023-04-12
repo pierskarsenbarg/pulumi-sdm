@@ -26,7 +26,16 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? EgressFilter { get; set; }
 
         [Input("keyfile")]
-        public Input<string>? Keyfile { get; set; }
+        private Input<string>? _keyfile;
+        public Input<string>? Keyfile
+        {
+            get => _keyfile;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _keyfile = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Unique human-readable name of the Resource.
