@@ -38,6 +38,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? SecretStoreId;
         public readonly string? SecretStorePrivateKeyKey;
         public readonly string? SecretStorePrivateKeyPath;
+        /// <summary>
+        /// * trino:
+        /// </summary>
         public readonly string? SecretStoreUsernameKey;
         public readonly string? SecretStoreUsernamePath;
         /// <summary>

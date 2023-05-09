@@ -91,6 +91,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceSybaseIqResult> SybaseIqs;
         public readonly ImmutableArray<Outputs.GetResourceResourceSybaseResult> Sybases;
         public readonly ImmutableArray<Outputs.GetResourceResourceTeradataResult> Teradatas;
+        public readonly ImmutableArray<Outputs.GetResourceResourceTrinoResult> Trinos;
 
         [OutputConstructor]
         private GetResourceResourceResult(
@@ -246,7 +247,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceSybaseResult> sybases,
 
-            ImmutableArray<Outputs.GetResourceResourceTeradataResult> teradatas)
+            ImmutableArray<Outputs.GetResourceResourceTeradataResult> teradatas,
+
+            ImmutableArray<Outputs.GetResourceResourceTrinoResult> trinos)
         {
             Aks = aks;
             AksBasicAuths = aksBasicAuths;
@@ -325,6 +328,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SybaseIqs = sybaseIqs;
             Sybases = sybases;
             Teradatas = teradatas;
+            Trinos = trinos;
         }
     }
 }

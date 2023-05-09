@@ -46,6 +46,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             }
         }
 
+        [Input("portOverride")]
+        public Input<int>? PortOverride { get; set; }
+
         [Input("secretStoreAppIdKey")]
         public Input<string>? SecretStoreAppIdKey { get; set; }
 
@@ -72,6 +75,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         [Input("secretStoreTenantIdPath")]
         public Input<string>? SecretStoreTenantIdPath { get; set; }
+
+        /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        [Input("subdomain")]
+        public Input<string>? Subdomain { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;

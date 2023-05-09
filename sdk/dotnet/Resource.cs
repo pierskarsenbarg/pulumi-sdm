@@ -86,9 +86,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("azureCertificate")]
         public Output<Outputs.ResourceAzureCertificate?> AzureCertificate { get; private set; } = null!;
 
-        /// <summary>
-        /// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("azureMysql")]
         public Output<Outputs.ResourceAzureMysql?> AzureMysql { get; private set; } = null!;
 
@@ -278,6 +275,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("teradata")]
         public Output<Outputs.ResourceTeradata?> Teradata { get; private set; } = null!;
 
+        /// <summary>
+        /// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("trino")]
+        public Output<Outputs.ResourceTrino?> Trino { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Resource resource with the given unique name, arguments, and options.
@@ -389,9 +392,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("azureCertificate")]
         public Input<Inputs.ResourceAzureCertificateArgs>? AzureCertificate { get; set; }
 
-        /// <summary>
-        /// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("azureMysql")]
         public Input<Inputs.ResourceAzureMysqlArgs>? AzureMysql { get; set; }
 
@@ -581,6 +581,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("teradata")]
         public Input<Inputs.ResourceTeradataArgs>? Teradata { get; set; }
 
+        /// <summary>
+        /// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("trino")]
+        public Input<Inputs.ResourceTrinoArgs>? Trino { get; set; }
+
         public ResourceArgs()
         {
         }
@@ -653,9 +659,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("azureCertificate")]
         public Input<Inputs.ResourceAzureCertificateGetArgs>? AzureCertificate { get; set; }
 
-        /// <summary>
-        /// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("azureMysql")]
         public Input<Inputs.ResourceAzureMysqlGetArgs>? AzureMysql { get; set; }
 
@@ -844,6 +847,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("teradata")]
         public Input<Inputs.ResourceTeradataGetArgs>? Teradata { get; set; }
+
+        /// <summary>
+        /// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("trino")]
+        public Input<Inputs.ResourceTrinoGetArgs>? Trino { get; set; }
 
         public ResourceState()
         {

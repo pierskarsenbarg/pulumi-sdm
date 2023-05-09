@@ -32,6 +32,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
+        public readonly int? PortOverride;
         public readonly string? RoleArn;
         public readonly string? RoleExternalId;
         public readonly string? SecretAccessKey;
@@ -39,6 +40,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
+        /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        public readonly string? Subdomain;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
@@ -58,6 +63,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? name,
 
+            int? portOverride,
+
             string? roleArn,
 
             string? roleExternalId,
@@ -65,6 +72,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             string? secretAccessKey,
 
             string? secretStoreId,
+
+            string? subdomain,
 
             ImmutableDictionary<string, string>? tags)
         {
@@ -74,10 +83,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
             HealthcheckRegion = healthcheckRegion;
             Id = id;
             Name = name;
+            PortOverride = portOverride;
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretAccessKey = secretAccessKey;
             SecretStoreId = secretStoreId;
+            Subdomain = subdomain;
             Tags = tags;
         }
     }

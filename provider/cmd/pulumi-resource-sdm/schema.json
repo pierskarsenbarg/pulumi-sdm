@@ -415,7 +415,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -1249,7 +1250,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -1423,7 +1425,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -1506,7 +1509,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -1565,6 +1569,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "roleArn": {
                     "type": "string"
                 },
@@ -1603,6 +1610,10 @@
                 "secretStoreSecretAccessKeyPath": {
                     "type": "string"
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1621,7 +1632,9 @@
                     "requiredOutputs": [
                         "bindInterface",
                         "healthcheckRegion",
-                        "name"
+                        "name",
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -1831,6 +1844,9 @@
                     "type": "string",
                     "secret": true
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "secretStoreAppIdKey": {
                     "type": "string"
                 },
@@ -1854,6 +1870,10 @@
                 "secretStoreTenantIdPath": {
                     "type": "string"
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1873,7 +1893,9 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindInterface",
-                        "name"
+                        "name",
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -1899,6 +1921,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "secretStoreAppIdKey": {
                     "type": "string"
                 },
@@ -1922,6 +1947,10 @@
                 "secretStoreTenantIdPath": {
                     "type": "string"
                 },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
                 "tags": {
                     "type": "object",
                     "additionalProperties": {
@@ -1941,7 +1970,9 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindInterface",
-                        "name"
+                        "name",
+                        "portOverride",
+                        "subdomain"
                     ]
                 }
             }
@@ -1987,7 +2018,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2070,7 +2102,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2218,7 +2251,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2302,7 +2336,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2382,7 +2417,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2465,7 +2501,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2542,7 +2579,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2625,7 +2663,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2705,7 +2744,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2788,7 +2828,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -2867,7 +2908,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -3037,7 +3079,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -3115,7 +3158,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -3173,6 +3217,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "scopes": {
                     "type": "string"
                 },
@@ -3185,6 +3232,10 @@
                 },
                 "secretStoreKeyfilePath": {
                     "type": "string"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
                 },
                 "tags": {
                     "type": "object",
@@ -3204,7 +3255,9 @@
                     "requiredOutputs": [
                         "bindInterface",
                         "name",
-                        "scopes"
+                        "portOverride",
+                        "scopes",
+                        "subdomain"
                     ]
                 }
             }
@@ -3405,7 +3458,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -3560,7 +3614,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -3808,7 +3863,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4132,7 +4188,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4268,7 +4325,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4348,7 +4406,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4434,7 +4493,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4523,7 +4583,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4614,7 +4675,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4696,7 +4758,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4809,7 +4872,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -4925,7 +4989,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5008,7 +5073,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5242,7 +5308,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5330,7 +5397,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5484,7 +5552,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5621,7 +5690,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5696,7 +5766,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5780,7 +5851,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5860,7 +5932,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -5940,7 +6013,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -6089,7 +6163,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -6168,7 +6243,8 @@
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -6252,7 +6328,8 @@
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -6336,7 +6413,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -6413,7 +6491,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -6488,7 +6567,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -6563,7 +6643,8 @@
                     "type": "string"
                 },
                 "secretStoreUsernameKey": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* trino:\n"
                 },
                 "secretStoreUsernamePath": {
                     "type": "string"
@@ -6592,6 +6673,80 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceTrino:ResourceTrino": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n"
+                },
+                "database": {
+                    "type": "string"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "portOverride": {
+                    "type": "integer"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "secretStorePasswordKey": {
+                    "type": "string"
+                },
+                "secretStorePasswordPath": {
+                    "type": "string"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
                         "hostname",
                         "name",
                         "portOverride",
@@ -7597,6 +7752,12 @@
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceTeradata:getResourceResourceTeradata"
                     }
+                },
+                "trinos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceTrino:getResourceResourceTrino"
+                    }
                 }
             },
             "type": "object",
@@ -7677,7 +7838,8 @@
                 "sshCustomerKeys",
                 "sybases",
                 "sybaseIqs",
-                "teradatas"
+                "teradatas",
+                "trinos"
             ],
             "language": {
                 "nodejs": {
@@ -8559,6 +8721,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "roleArn": {
                     "type": "string"
                 },
@@ -8572,6 +8737,10 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8732,9 +8901,16 @@
                     "type": "string",
                     "secret": true
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
                 },
                 "tags": {
                     "type": "object",
@@ -8775,9 +8951,16 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
                 },
                 "tags": {
                     "type": "object",
@@ -9649,12 +9832,19 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "scopes": {
                     "type": "string"
                 },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
                 },
                 "tags": {
                     "type": "object",
@@ -12061,6 +12251,61 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceTrino:getResourceResourceTrino": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n"
+                },
+                "database": {
+                    "type": "string"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "portOverride": {
+                    "type": "integer"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getRoleRole:getRoleRole": {
             "properties": {
                 "accessRules": {
@@ -12718,8 +12963,7 @@
                     "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
                 },
                 "azureMysql": {
-                    "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql",
-                    "description": "AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
                 },
                 "azurePostgres": {
                     "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -12896,6 +13140,10 @@
                 },
                 "teradata": {
                     "$ref": "#/types/sdm:index/ResourceTeradata:ResourceTeradata"
+                },
+                "trino": {
+                    "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
+                    "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 }
             },
             "inputProperties": {
@@ -12959,8 +13207,7 @@
                     "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
                 },
                 "azureMysql": {
-                    "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql",
-                    "description": "AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
                 },
                 "azurePostgres": {
                     "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -13137,6 +13384,10 @@
                 },
                 "teradata": {
                     "$ref": "#/types/sdm:index/ResourceTeradata:ResourceTeradata"
+                },
+                "trino": {
+                    "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
+                    "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 }
             },
             "stateInputs": {
@@ -13202,8 +13453,7 @@
                         "$ref": "#/types/sdm:index/ResourceAzureCertificate:ResourceAzureCertificate"
                     },
                     "azureMysql": {
-                        "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql",
-                        "description": "AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAzureMysql:ResourceAzureMysql"
                     },
                     "azurePostgres": {
                         "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
@@ -13380,6 +13630,10 @@
                     },
                     "teradata": {
                         "$ref": "#/types/sdm:index/ResourceTeradata:ResourceTeradata"
+                    },
+                    "trino": {
+                        "$ref": "#/types/sdm:index/ResourceTrino:ResourceTrino",
+                        "description": "Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     }
                 },
                 "type": "object"

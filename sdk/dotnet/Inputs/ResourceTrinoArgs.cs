@@ -11,7 +11,7 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMemsqlArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceTrinoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bind interface
@@ -68,15 +68,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? SecretStorePasswordPath { get; set; }
 
         /// <summary>
-        /// * trino:
-        /// </summary>
-        [Input("secretStoreUsernameKey")]
-        public Input<string>? SecretStoreUsernameKey { get; set; }
-
-        [Input("secretStoreUsernamePath")]
-        public Input<string>? SecretStoreUsernamePath { get; set; }
-
-        /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
         [Input("subdomain")]
@@ -97,9 +88,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("username")]
         public Input<string>? Username { get; set; }
 
-        public ResourceMemsqlArgs()
+        public ResourceTrinoArgs()
         {
         }
-        public static new ResourceMemsqlArgs Empty => new ResourceMemsqlArgs();
+        public static new ResourceTrinoArgs Empty => new ResourceTrinoArgs();
     }
 }
