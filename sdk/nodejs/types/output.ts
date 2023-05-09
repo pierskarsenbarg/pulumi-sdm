@@ -317,6 +317,7 @@ export interface GetResourceResource {
     sybaseIqs: outputs.GetResourceResourceSybaseIq[];
     sybases: outputs.GetResourceResourceSybase[];
     teradatas: outputs.GetResourceResourceTeradata[];
+    trinos: outputs.GetResourceResourceTrino[];
 }
 
 export interface GetResourceResourceAk {
@@ -910,6 +911,7 @@ export interface GetResourceResourceAw {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    portOverride?: number;
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
@@ -917,6 +919,10 @@ export interface GetResourceResourceAw {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1021,10 +1027,15 @@ export interface GetResourceResourceAzure {
      */
     name?: string;
     password?: string;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1054,10 +1065,15 @@ export interface GetResourceResourceAzureCertificate {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1644,11 +1660,16 @@ export interface GetResourceResourceGcp {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    portOverride?: number;
     scopes?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -3265,6 +3286,43 @@ export interface GetResourceResourceTeradata {
     username?: string;
 }
 
+export interface GetResourceResourceTrino {
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    password?: string;
+    port?: number;
+    portOverride?: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    username?: string;
+}
+
 export interface GetRoleRole {
     /**
      * AccessRules is a list of access rules defining the resources this Role has access to.
@@ -3610,6 +3668,9 @@ export interface ResourceAksBasicAuth {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4003,6 +4064,9 @@ export interface ResourceAmazonmqAmqp091 {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4083,6 +4147,9 @@ export interface ResourceAuroraMysql {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4121,6 +4188,9 @@ export interface ResourceAuroraPostgres {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4149,6 +4219,7 @@ export interface ResourceAws {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    portOverride: number;
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
@@ -4164,6 +4235,10 @@ export interface ResourceAws {
     secretStoreRoleExternalIdPath?: string;
     secretStoreSecretAccessKeyKey?: string;
     secretStoreSecretAccessKeyPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4268,6 +4343,7 @@ export interface ResourceAzure {
      */
     name: string;
     password?: string;
+    portOverride: number;
     secretStoreAppIdKey?: string;
     secretStoreAppIdPath?: string;
     /**
@@ -4281,6 +4357,10 @@ export interface ResourceAzure {
      */
     secretStoreTenantIdKey?: string;
     secretStoreTenantIdPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4303,6 +4383,7 @@ export interface ResourceAzureCertificate {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    portOverride: number;
     secretStoreAppIdKey?: string;
     secretStoreAppIdPath?: string;
     secretStoreClientCertificateKey?: string;
@@ -4316,6 +4397,10 @@ export interface ResourceAzureCertificate {
      */
     secretStoreTenantIdKey?: string;
     secretStoreTenantIdPath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4347,6 +4432,9 @@ export interface ResourceAzureMysql {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4385,6 +4473,9 @@ export interface ResourceAzurePostgres {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4455,6 +4546,9 @@ export interface ResourceCassandra {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4494,6 +4588,9 @@ export interface ResourceCitus {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4531,6 +4628,9 @@ export interface ResourceClustrix {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4569,6 +4669,9 @@ export interface ResourceCockroach {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4605,6 +4708,9 @@ export interface ResourceDb2I {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4643,6 +4749,9 @@ export interface ResourceDb2Luw {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4680,6 +4789,9 @@ export interface ResourceDocumentDbHost {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4718,6 +4830,9 @@ export interface ResourceDocumentDbReplicaSet {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4754,6 +4869,9 @@ export interface ResourceDruid {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4832,6 +4950,9 @@ export interface ResourceElastic {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4869,6 +4990,9 @@ export interface ResourceElasticacheRedis {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -4897,6 +5021,7 @@ export interface ResourceGcp {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    portOverride: number;
     scopes: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4904,6 +5029,10 @@ export interface ResourceGcp {
     secretStoreId?: string;
     secretStoreKeyfileKey?: string;
     secretStoreKeyfilePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5013,6 +5142,9 @@ export interface ResourceGreenplum {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5088,6 +5220,9 @@ export interface ResourceHttpBasicAuth {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5212,6 +5347,9 @@ export interface ResourceKubernetesBasicAuth {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5374,6 +5512,9 @@ export interface ResourceMaria {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5441,6 +5582,9 @@ export interface ResourceMemsql {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5478,6 +5622,9 @@ export interface ResourceMongoHost {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5517,6 +5664,9 @@ export interface ResourceMongoLegacyHost {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5557,6 +5707,9 @@ export interface ResourceMongoLegacyReplicaset {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5597,6 +5750,9 @@ export interface ResourceMongoReplicaSet {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5634,6 +5790,9 @@ export interface ResourceMongoShardedCluster {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5681,6 +5840,9 @@ export interface ResourceMtlsMysql {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     serverName?: string;
@@ -5729,6 +5891,9 @@ export interface ResourceMtlsPostgres {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     serverName?: string;
@@ -5767,6 +5932,9 @@ export interface ResourceMysql {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5877,6 +6045,9 @@ export interface ResourceOracle {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5916,6 +6087,9 @@ export interface ResourcePostgres {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -5988,6 +6162,9 @@ export interface ResourceRabbitmqAmqp091 {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6056,6 +6233,9 @@ export interface ResourceRdp {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6092,6 +6272,9 @@ export interface ResourceRedis {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6131,6 +6314,9 @@ export interface ResourceRedshift {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6168,6 +6354,9 @@ export interface ResourceSingleStore {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6205,6 +6394,9 @@ export interface ResourceSnowflake {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6276,6 +6468,9 @@ export interface ResourceSqlServer {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6313,6 +6508,9 @@ export interface ResourceSsh {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6351,6 +6549,9 @@ export interface ResourceSshCert {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6389,6 +6590,9 @@ export interface ResourceSshCustomerKey {
     secretStoreId?: string;
     secretStorePrivateKeyKey?: string;
     secretStorePrivateKeyPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6425,6 +6629,9 @@ export interface ResourceSybase {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6461,6 +6668,9 @@ export interface ResourceSybaseIq {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
     /**
@@ -6497,8 +6707,46 @@ export interface ResourceTeradata {
     secretStoreId?: string;
     secretStorePasswordKey?: string;
     secretStorePasswordPath?: string;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: string;
     secretStoreUsernamePath?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    username?: string;
+}
+
+export interface ResourceTrino {
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    password?: string;
+    port?: number;
+    portOverride: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    secretStorePasswordKey?: string;
+    secretStorePasswordPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
