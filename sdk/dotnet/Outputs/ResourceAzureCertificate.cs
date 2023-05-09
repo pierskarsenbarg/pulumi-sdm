@@ -28,6 +28,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        public readonly int? PortOverride;
         public readonly string? SecretStoreAppIdKey;
         public readonly string? SecretStoreAppIdPath;
         public readonly string? SecretStoreClientCertificateKey;
@@ -41,6 +42,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreTenantIdKey;
         public readonly string? SecretStoreTenantIdPath;
+        /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        public readonly string? Subdomain;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
@@ -59,6 +64,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string name,
 
+            int? portOverride,
+
             string? secretStoreAppIdKey,
 
             string? secretStoreAppIdPath,
@@ -73,6 +80,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreTenantIdPath,
 
+            string? subdomain,
+
             ImmutableDictionary<string, string>? tags,
 
             string? tenantId)
@@ -82,6 +91,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ClientCertificate = clientCertificate;
             EgressFilter = egressFilter;
             Name = name;
+            PortOverride = portOverride;
             SecretStoreAppIdKey = secretStoreAppIdKey;
             SecretStoreAppIdPath = secretStoreAppIdPath;
             SecretStoreClientCertificateKey = secretStoreClientCertificateKey;
@@ -89,6 +99,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreId = secretStoreId;
             SecretStoreTenantIdKey = secretStoreTenantIdKey;
             SecretStoreTenantIdPath = secretStoreTenantIdPath;
+            Subdomain = subdomain;
             Tags = tags;
             TenantId = tenantId;
         }

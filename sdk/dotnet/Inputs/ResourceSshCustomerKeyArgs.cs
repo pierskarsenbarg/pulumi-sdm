@@ -70,6 +70,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("secretStorePrivateKeyPath")]
         public Input<string>? SecretStorePrivateKeyPath { get; set; }
 
+        /// <summary>
+        /// * trino:
+        /// </summary>
         [Input("secretStoreUsernameKey")]
         public Input<string>? SecretStoreUsernameKey { get; set; }
 

@@ -38,6 +38,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
+        /// <summary>
+        /// * trino:
+        /// </summary>
         public readonly string? SecretStoreUsernameKey;
         public readonly string? SecretStoreUsernamePath;
         /// <summary>

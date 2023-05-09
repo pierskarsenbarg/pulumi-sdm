@@ -28,6 +28,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Name;
         public readonly string? Password;
+        public readonly int? PortOverride;
         public readonly string? SecretStoreAppIdKey;
         public readonly string? SecretStoreAppIdPath;
         /// <summary>
@@ -41,6 +42,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreTenantIdKey;
         public readonly string? SecretStoreTenantIdPath;
+        /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        public readonly string? Subdomain;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
@@ -59,6 +64,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? password,
 
+            int? portOverride,
+
             string? secretStoreAppIdKey,
 
             string? secretStoreAppIdPath,
@@ -73,6 +80,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreTenantIdPath,
 
+            string? subdomain,
+
             ImmutableDictionary<string, string>? tags,
 
             string? tenantId)
@@ -82,6 +91,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EgressFilter = egressFilter;
             Name = name;
             Password = password;
+            PortOverride = portOverride;
             SecretStoreAppIdKey = secretStoreAppIdKey;
             SecretStoreAppIdPath = secretStoreAppIdPath;
             SecretStoreId = secretStoreId;
@@ -89,6 +99,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStorePasswordPath = secretStorePasswordPath;
             SecretStoreTenantIdKey = secretStoreTenantIdKey;
             SecretStoreTenantIdPath = secretStoreTenantIdPath;
+            Subdomain = subdomain;
             Tags = tags;
             TenantId = tenantId;
         }

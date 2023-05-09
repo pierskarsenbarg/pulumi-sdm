@@ -12,13 +12,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceMongoLegacyHost
+    public sealed class ResourceTrino
     {
-        public readonly string AuthDatabase;
         /// <summary>
         /// Bind interface
         /// </summary>
         public readonly string? BindInterface;
+        public readonly string Database;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
@@ -31,18 +31,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? Password;
         public readonly int? Port;
         public readonly int? PortOverride;
-        public readonly string? ReplicaSet;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
         public readonly string? SecretStorePasswordKey;
         public readonly string? SecretStorePasswordPath;
-        /// <summary>
-        /// * trino:
-        /// </summary>
-        public readonly string? SecretStoreUsernameKey;
-        public readonly string? SecretStoreUsernamePath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -51,14 +45,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
-        public readonly bool? TlsRequired;
         public readonly string? Username;
 
         [OutputConstructor]
-        private ResourceMongoLegacyHost(
-            string authDatabase,
-
+        private ResourceTrino(
             string? bindInterface,
+
+            string database,
 
             string? egressFilter,
 
@@ -72,43 +65,31 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
-            string? replicaSet,
-
             string? secretStoreId,
 
             string? secretStorePasswordKey,
 
             string? secretStorePasswordPath,
 
-            string? secretStoreUsernameKey,
-
-            string? secretStoreUsernamePath,
-
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
 
-            bool? tlsRequired,
-
             string? username)
         {
-            AuthDatabase = authDatabase;
             BindInterface = bindInterface;
+            Database = database;
             EgressFilter = egressFilter;
             Hostname = hostname;
             Name = name;
             Password = password;
             Port = port;
             PortOverride = portOverride;
-            ReplicaSet = replicaSet;
             SecretStoreId = secretStoreId;
             SecretStorePasswordKey = secretStorePasswordKey;
             SecretStorePasswordPath = secretStorePasswordPath;
-            SecretStoreUsernameKey = secretStoreUsernameKey;
-            SecretStoreUsernamePath = secretStoreUsernamePath;
             Subdomain = subdomain;
             Tags = tags;
-            TlsRequired = tlsRequired;
             Username = username;
         }
     }

@@ -32,10 +32,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Name;
         public readonly string? Password;
+        public readonly int? PortOverride;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
+        /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        public readonly string? Subdomain;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
@@ -59,7 +64,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? password,
 
+            int? portOverride,
+
             string? secretStoreId,
+
+            string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
 
@@ -71,7 +80,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Id = id;
             Name = name;
             Password = password;
+            PortOverride = portOverride;
             SecretStoreId = secretStoreId;
+            Subdomain = subdomain;
             Tags = tags;
             TenantId = tenantId;
         }

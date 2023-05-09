@@ -28,6 +28,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        public readonly int? PortOverride;
         public readonly string? RoleArn;
         public readonly string? RoleExternalId;
         public readonly string? SecretAccessKey;
@@ -44,6 +45,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? SecretStoreSecretAccessKeyKey;
         public readonly string? SecretStoreSecretAccessKeyPath;
         /// <summary>
+        /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        /// </summary>
+        public readonly string? Subdomain;
+        /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
@@ -59,6 +64,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             string healthcheckRegion,
 
             string name,
+
+            int? portOverride,
 
             string? roleArn,
 
@@ -84,6 +91,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreSecretAccessKeyPath,
 
+            string? subdomain,
+
             ImmutableDictionary<string, string>? tags)
         {
             AccessKey = accessKey;
@@ -91,6 +100,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EgressFilter = egressFilter;
             HealthcheckRegion = healthcheckRegion;
             Name = name;
+            PortOverride = portOverride;
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretAccessKey = secretAccessKey;
@@ -103,6 +113,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SecretStoreRoleExternalIdPath = secretStoreRoleExternalIdPath;
             SecretStoreSecretAccessKeyKey = secretStoreSecretAccessKeyKey;
             SecretStoreSecretAccessKeyPath = secretStoreSecretAccessKeyPath;
+            Subdomain = subdomain;
             Tags = tags;
         }
     }
