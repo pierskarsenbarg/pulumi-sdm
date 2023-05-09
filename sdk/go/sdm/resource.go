@@ -41,10 +41,9 @@ type Resource struct {
 	AwsConsole ResourceAwsConsolePtrOutput `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrOutput `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                   ResourceAzurePtrOutput                   `pulumi:"azure"`
-	AzureCertificate        ResourceAzureCertificatePtrOutput        `pulumi:"azureCertificate"`
-	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrOutput                   `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
+	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
 	AzureMysql                                ResourceAzureMysqlPtrOutput                                `pulumi:"azureMysql"`
 	AzurePostgres                             ResourceAzurePostgresPtrOutput                             `pulumi:"azurePostgres"`
 	BigQuery                                  ResourceBigQueryPtrOutput                                  `pulumi:"bigQuery"`
@@ -108,6 +107,8 @@ type Resource struct {
 	Sybase         ResourceSybasePtrOutput         `pulumi:"sybase"`
 	SybaseIq       ResourceSybaseIqPtrOutput       `pulumi:"sybaseIq"`
 	Teradata       ResourceTeradataPtrOutput       `pulumi:"teradata"`
+	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino ResourceTrinoPtrOutput `pulumi:"trino"`
 }
 
 // NewResource registers a new resource with the given unique name, arguments, and options.
@@ -159,10 +160,9 @@ type resourceState struct {
 	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                   *ResourceAzure                   `pulumi:"azure"`
-	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
-	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
+	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
 	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
 	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
 	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
@@ -226,6 +226,8 @@ type resourceState struct {
 	Sybase         *ResourceSybase         `pulumi:"sybase"`
 	SybaseIq       *ResourceSybaseIq       `pulumi:"sybaseIq"`
 	Teradata       *ResourceTeradata       `pulumi:"teradata"`
+	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino *ResourceTrino `pulumi:"trino"`
 }
 
 type ResourceState struct {
@@ -248,10 +250,9 @@ type ResourceState struct {
 	AwsConsole ResourceAwsConsolePtrInput
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
-	Azure                   ResourceAzurePtrInput
-	AzureCertificate        ResourceAzureCertificatePtrInput
-	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
+	Azure                                     ResourceAzurePtrInput
+	AzureCertificate                          ResourceAzureCertificatePtrInput
 	AzureMysql                                ResourceAzureMysqlPtrInput
 	AzurePostgres                             ResourceAzurePostgresPtrInput
 	BigQuery                                  ResourceBigQueryPtrInput
@@ -315,6 +316,8 @@ type ResourceState struct {
 	Sybase         ResourceSybasePtrInput
 	SybaseIq       ResourceSybaseIqPtrInput
 	Teradata       ResourceTeradataPtrInput
+	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino ResourceTrinoPtrInput
 }
 
 func (ResourceState) ElementType() reflect.Type {
@@ -341,10 +344,9 @@ type resourceArgs struct {
 	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                   *ResourceAzure                   `pulumi:"azure"`
-	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
-	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
+	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
 	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
 	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
 	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
@@ -408,6 +410,8 @@ type resourceArgs struct {
 	Sybase         *ResourceSybase         `pulumi:"sybase"`
 	SybaseIq       *ResourceSybaseIq       `pulumi:"sybaseIq"`
 	Teradata       *ResourceTeradata       `pulumi:"teradata"`
+	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino *ResourceTrino `pulumi:"trino"`
 }
 
 // The set of arguments for constructing a Resource resource.
@@ -431,10 +435,9 @@ type ResourceArgs struct {
 	AwsConsole ResourceAwsConsolePtrInput
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
-	Azure                   ResourceAzurePtrInput
-	AzureCertificate        ResourceAzureCertificatePtrInput
-	// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
+	Azure                                     ResourceAzurePtrInput
+	AzureCertificate                          ResourceAzureCertificatePtrInput
 	AzureMysql                                ResourceAzureMysqlPtrInput
 	AzurePostgres                             ResourceAzurePostgresPtrInput
 	BigQuery                                  ResourceBigQueryPtrInput
@@ -498,6 +501,8 @@ type ResourceArgs struct {
 	Sybase         ResourceSybasePtrInput
 	SybaseIq       ResourceSybaseIqPtrInput
 	Teradata       ResourceTeradataPtrInput
+	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Trino ResourceTrinoPtrInput
 }
 
 func (ResourceArgs) ElementType() reflect.Type {
@@ -670,7 +675,6 @@ func (o ResourceOutput) AzureCertificate() ResourceAzureCertificatePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzureCertificatePtrOutput { return v.AzureCertificate }).(ResourceAzureCertificatePtrOutput)
 }
 
-// AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) AzureMysql() ResourceAzureMysqlPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzureMysqlPtrOutput { return v.AzureMysql }).(ResourceAzureMysqlPtrOutput)
 }
@@ -908,6 +912,11 @@ func (o ResourceOutput) SybaseIq() ResourceSybaseIqPtrOutput {
 
 func (o ResourceOutput) Teradata() ResourceTeradataPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceTeradataPtrOutput { return v.Teradata }).(ResourceTeradataPtrOutput)
+}
+
+// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) Trino() ResourceTrinoPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceTrinoPtrOutput { return v.Trino }).(ResourceTrinoPtrOutput)
 }
 
 type ResourceArrayOutput struct{ *pulumi.OutputState }

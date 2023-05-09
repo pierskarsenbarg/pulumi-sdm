@@ -92,18 +92,19 @@ class ResourceArgs:
                  ssh_customer_key: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']] = None,
                  sybase: Optional[pulumi.Input['ResourceSybaseArgs']] = None,
                  sybase_iq: Optional[pulumi.Input['ResourceSybaseIqArgs']] = None,
-                 teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None):
+                 teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None,
+                 trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
-        :param pulumi.Input['ResourceAzureMysqlArgs'] azure_mysql: AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceSnowsightArgs'] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
@@ -259,6 +260,8 @@ class ResourceArgs:
             pulumi.set(__self__, "sybase_iq", sybase_iq)
         if teradata is not None:
             pulumi.set(__self__, "teradata", teradata)
+        if trino is not None:
+            pulumi.set(__self__, "trino", trino)
 
     @property
     @pulumi.getter
@@ -441,9 +444,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="azureMysql")
     def azure_mysql(self) -> Optional[pulumi.Input['ResourceAzureMysqlArgs']]:
-        """
-        AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "azure_mysql")
 
     @azure_mysql.setter
@@ -977,6 +977,18 @@ class ResourceArgs:
     @teradata.setter
     def teradata(self, value: Optional[pulumi.Input['ResourceTeradataArgs']]):
         pulumi.set(self, "teradata", value)
+
+    @property
+    @pulumi.getter
+    def trino(self) -> Optional[pulumi.Input['ResourceTrinoArgs']]:
+        """
+        Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "trino")
+
+    @trino.setter
+    def trino(self, value: Optional[pulumi.Input['ResourceTrinoArgs']]):
+        pulumi.set(self, "trino", value)
 
 
 @pulumi.input_type
@@ -1058,18 +1070,19 @@ class _ResourceState:
                  ssh_customer_key: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']] = None,
                  sybase: Optional[pulumi.Input['ResourceSybaseArgs']] = None,
                  sybase_iq: Optional[pulumi.Input['ResourceSybaseIqArgs']] = None,
-                 teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None):
+                 teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None,
+                 trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
-        :param pulumi.Input['ResourceAzureMysqlArgs'] azure_mysql: AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceSnowsightArgs'] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
             pulumi.set(__self__, "aks", aks)
@@ -1225,6 +1238,8 @@ class _ResourceState:
             pulumi.set(__self__, "sybase_iq", sybase_iq)
         if teradata is not None:
             pulumi.set(__self__, "teradata", teradata)
+        if trino is not None:
+            pulumi.set(__self__, "trino", trino)
 
     @property
     @pulumi.getter
@@ -1407,9 +1422,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="azureMysql")
     def azure_mysql(self) -> Optional[pulumi.Input['ResourceAzureMysqlArgs']]:
-        """
-        AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "azure_mysql")
 
     @azure_mysql.setter
@@ -1943,6 +1955,18 @@ class _ResourceState:
     @teradata.setter
     def teradata(self, value: Optional[pulumi.Input['ResourceTeradataArgs']]):
         pulumi.set(self, "teradata", value)
+
+    @property
+    @pulumi.getter
+    def trino(self) -> Optional[pulumi.Input['ResourceTrinoArgs']]:
+        """
+        Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "trino")
+
+    @trino.setter
+    def trino(self, value: Optional[pulumi.Input['ResourceTrinoArgs']]):
+        pulumi.set(self, "trino", value)
 
 
 class Resource(pulumi.CustomResource):
@@ -2027,6 +2051,7 @@ class Resource(pulumi.CustomResource):
                  sybase: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseArgs']]] = None,
                  sybase_iq: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseIqArgs']]] = None,
                  teradata: Optional[pulumi.Input[pulumi.InputType['ResourceTeradataArgs']]] = None,
+                 trino: Optional[pulumi.Input[pulumi.InputType['ResourceTrinoArgs']]] = None,
                  __props__=None):
         """
         ## Import
@@ -2042,12 +2067,12 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
-        :param pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']] azure_mysql: AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
     @overload
@@ -2156,6 +2181,7 @@ class Resource(pulumi.CustomResource):
                  sybase: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseArgs']]] = None,
                  sybase_iq: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseIqArgs']]] = None,
                  teradata: Optional[pulumi.Input[pulumi.InputType['ResourceTeradataArgs']]] = None,
+                 trino: Optional[pulumi.Input[pulumi.InputType['ResourceTrinoArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2242,6 +2268,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["sybase"] = sybase
             __props__.__dict__["sybase_iq"] = sybase_iq
             __props__.__dict__["teradata"] = teradata
+            __props__.__dict__["trino"] = trino
         super(Resource, __self__).__init__(
             'sdm:index/resource:Resource',
             resource_name,
@@ -2328,7 +2355,8 @@ class Resource(pulumi.CustomResource):
             ssh_customer_key: Optional[pulumi.Input[pulumi.InputType['ResourceSshCustomerKeyArgs']]] = None,
             sybase: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseArgs']]] = None,
             sybase_iq: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseIqArgs']]] = None,
-            teradata: Optional[pulumi.Input[pulumi.InputType['ResourceTeradataArgs']]] = None) -> 'Resource':
+            teradata: Optional[pulumi.Input[pulumi.InputType['ResourceTeradataArgs']]] = None,
+            trino: Optional[pulumi.Input[pulumi.InputType['ResourceTrinoArgs']]] = None) -> 'Resource':
         """
         Get an existing Resource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2339,12 +2367,12 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
-        :param pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']] azure_mysql: AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2427,6 +2455,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["sybase"] = sybase
         __props__.__dict__["sybase_iq"] = sybase_iq
         __props__.__dict__["teradata"] = teradata
+        __props__.__dict__["trino"] = trino
         return Resource(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2534,9 +2563,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="azureMysql")
     def azure_mysql(self) -> pulumi.Output[Optional['outputs.ResourceAzureMysql']]:
-        """
-        AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "azure_mysql")
 
     @property
@@ -2838,4 +2864,12 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter
     def teradata(self) -> pulumi.Output[Optional['outputs.ResourceTeradata']]:
         return pulumi.get(self, "teradata")
+
+    @property
+    @pulumi.getter
+    def trino(self) -> pulumi.Output[Optional['outputs.ResourceTrino']]:
+        """
+        Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "trino")
 

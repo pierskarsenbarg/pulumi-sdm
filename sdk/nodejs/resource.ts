@@ -69,9 +69,6 @@ export class Resource extends pulumi.CustomResource {
     public readonly awsConsoleStaticKeyPair!: pulumi.Output<outputs.ResourceAwsConsoleStaticKeyPair | undefined>;
     public readonly azure!: pulumi.Output<outputs.ResourceAzure | undefined>;
     public readonly azureCertificate!: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
-    /**
-     * AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly azureMysql!: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
     public readonly azurePostgres!: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
     public readonly bigQuery!: pulumi.Output<outputs.ResourceBigQuery | undefined>;
@@ -145,6 +142,10 @@ export class Resource extends pulumi.CustomResource {
     public readonly sybase!: pulumi.Output<outputs.ResourceSybase | undefined>;
     public readonly sybaseIq!: pulumi.Output<outputs.ResourceSybaseIq | undefined>;
     public readonly teradata!: pulumi.Output<outputs.ResourceTeradata | undefined>;
+    /**
+     * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly trino!: pulumi.Output<outputs.ResourceTrino | undefined>;
 
     /**
      * Create a Resource resource with the given unique name, arguments, and options.
@@ -236,6 +237,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["sybase"] = state ? state.sybase : undefined;
             resourceInputs["sybaseIq"] = state ? state.sybaseIq : undefined;
             resourceInputs["teradata"] = state ? state.teradata : undefined;
+            resourceInputs["trino"] = state ? state.trino : undefined;
         } else {
             const args = argsOrState as ResourceArgs | undefined;
             resourceInputs["aks"] = args ? args.aks : undefined;
@@ -315,6 +317,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["sybase"] = args ? args.sybase : undefined;
             resourceInputs["sybaseIq"] = args ? args.sybaseIq : undefined;
             resourceInputs["teradata"] = args ? args.teradata : undefined;
+            resourceInputs["trino"] = args ? args.trino : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Resource.__pulumiType, name, resourceInputs, opts);
@@ -351,9 +354,6 @@ export interface ResourceState {
     awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
-    /**
-     * AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
@@ -427,6 +427,10 @@ export interface ResourceState {
     sybase?: pulumi.Input<inputs.ResourceSybase>;
     sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
     teradata?: pulumi.Input<inputs.ResourceTeradata>;
+    /**
+     * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    trino?: pulumi.Input<inputs.ResourceTrino>;
 }
 
 /**
@@ -459,9 +463,6 @@ export interface ResourceArgs {
     awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
-    /**
-     * AzureMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
@@ -535,4 +536,8 @@ export interface ResourceArgs {
     sybase?: pulumi.Input<inputs.ResourceSybase>;
     sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
     teradata?: pulumi.Input<inputs.ResourceTeradata>;
+    /**
+     * Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    trino?: pulumi.Input<inputs.ResourceTrino>;
 }

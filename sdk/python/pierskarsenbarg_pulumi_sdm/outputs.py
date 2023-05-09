@@ -92,6 +92,7 @@ __all__ = [
     'ResourceSybase',
     'ResourceSybaseIq',
     'ResourceTeradata',
+    'ResourceTrino',
     'SecretStoreAws',
     'SecretStoreAzureStore',
     'SecretStoreCyberarkConjur',
@@ -189,6 +190,7 @@ __all__ = [
     'GetResourceResourceSybaseResult',
     'GetResourceResourceSybaseIqResult',
     'GetResourceResourceTeradataResult',
+    'GetResourceResourceTrinoResult',
     'GetRoleRoleResult',
     'GetSecretStoreSecretStoreResult',
     'GetSecretStoreSecretStoreAwResult',
@@ -918,6 +920,7 @@ class ResourceAksBasicAuth(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -1024,6 +1027,9 @@ class ResourceAksBasicAuth(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -3023,6 +3029,7 @@ class ResourceAmazonmqAmqp091(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -3122,6 +3129,9 @@ class ResourceAmazonmqAmqp091(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -3457,6 +3467,7 @@ class ResourceAuroraMysql(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -3560,6 +3571,9 @@ class ResourceAuroraMysql(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -3647,6 +3661,7 @@ class ResourceAuroraPostgres(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -3757,6 +3772,9 @@ class ResourceAuroraPostgres(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -3799,6 +3817,8 @@ class ResourceAws(dict):
             suggest = "bind_interface"
         elif key == "egressFilter":
             suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -3841,6 +3861,7 @@ class ResourceAws(dict):
                  access_key: Optional[str] = None,
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -3853,12 +3874,14 @@ class ResourceAws(dict):
                  secret_store_role_external_id_path: Optional[str] = None,
                  secret_store_secret_access_key_key: Optional[str] = None,
                  secret_store_secret_access_key_path: Optional[str] = None,
+                 subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "healthcheck_region", healthcheck_region)
@@ -3869,6 +3892,8 @@ class ResourceAws(dict):
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -3893,6 +3918,8 @@ class ResourceAws(dict):
             pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
         if secret_store_secret_access_key_path is not None:
             pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -3929,6 +3956,11 @@ class ResourceAws(dict):
         A filter applied to the routing logic to pin datasource to nodes.
         """
         return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -3992,6 +4024,14 @@ class ResourceAws(dict):
     @pulumi.getter(name="secretStoreSecretAccessKeyPath")
     def secret_store_secret_access_key_path(self) -> Optional[str]:
         return pulumi.get(self, "secret_store_secret_access_key_path")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
@@ -4493,6 +4533,8 @@ class ResourceAzure(dict):
             suggest = "bind_interface"
         elif key == "egressFilter":
             suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreAppIdKey":
             suggest = "secret_store_app_id_key"
         elif key == "secretStoreAppIdPath":
@@ -4527,6 +4569,7 @@ class ResourceAzure(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_app_id_key: Optional[str] = None,
                  secret_store_app_id_path: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -4534,6 +4577,7 @@ class ResourceAzure(dict):
                  secret_store_password_path: Optional[str] = None,
                  secret_store_tenant_id_key: Optional[str] = None,
                  secret_store_tenant_id_path: Optional[str] = None,
+                 subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tenant_id: Optional[str] = None):
         """
@@ -4542,6 +4586,7 @@ class ResourceAzure(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str secret_store_tenant_id_key: * azure_mysql:
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -4553,6 +4598,8 @@ class ResourceAzure(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_app_id_key is not None:
             pulumi.set(__self__, "secret_store_app_id_key", secret_store_app_id_key)
         if secret_store_app_id_path is not None:
@@ -4567,6 +4614,8 @@ class ResourceAzure(dict):
             pulumi.set(__self__, "secret_store_tenant_id_key", secret_store_tenant_id_key)
         if secret_store_tenant_id_path is not None:
             pulumi.set(__self__, "secret_store_tenant_id_path", secret_store_tenant_id_path)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
@@ -4605,6 +4654,11 @@ class ResourceAzure(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreAppIdKey")
@@ -4649,6 +4703,14 @@ class ResourceAzure(dict):
 
     @property
     @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
         """
         Tags is a map of key, value pairs.
@@ -4674,6 +4736,8 @@ class ResourceAzureCertificate(dict):
             suggest = "client_certificate"
         elif key == "egressFilter":
             suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreAppIdKey":
             suggest = "secret_store_app_id_key"
         elif key == "secretStoreAppIdPath":
@@ -4708,6 +4772,7 @@ class ResourceAzureCertificate(dict):
                  bind_interface: Optional[str] = None,
                  client_certificate: Optional[str] = None,
                  egress_filter: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_app_id_key: Optional[str] = None,
                  secret_store_app_id_path: Optional[str] = None,
                  secret_store_client_certificate_key: Optional[str] = None,
@@ -4715,6 +4780,7 @@ class ResourceAzureCertificate(dict):
                  secret_store_id: Optional[str] = None,
                  secret_store_tenant_id_key: Optional[str] = None,
                  secret_store_tenant_id_path: Optional[str] = None,
+                 subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tenant_id: Optional[str] = None):
         """
@@ -4723,6 +4789,7 @@ class ResourceAzureCertificate(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str secret_store_tenant_id_key: * azure_mysql:
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -4734,6 +4801,8 @@ class ResourceAzureCertificate(dict):
             pulumi.set(__self__, "client_certificate", client_certificate)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_app_id_key is not None:
             pulumi.set(__self__, "secret_store_app_id_key", secret_store_app_id_key)
         if secret_store_app_id_path is not None:
@@ -4748,6 +4817,8 @@ class ResourceAzureCertificate(dict):
             pulumi.set(__self__, "secret_store_tenant_id_key", secret_store_tenant_id_key)
         if secret_store_tenant_id_path is not None:
             pulumi.set(__self__, "secret_store_tenant_id_path", secret_store_tenant_id_path)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
@@ -4786,6 +4857,11 @@ class ResourceAzureCertificate(dict):
         A filter applied to the routing logic to pin datasource to nodes.
         """
         return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreAppIdKey")
@@ -4827,6 +4903,14 @@ class ResourceAzureCertificate(dict):
     @pulumi.getter(name="secretStoreTenantIdPath")
     def secret_store_tenant_id_path(self) -> Optional[str]:
         return pulumi.get(self, "secret_store_tenant_id_path")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
@@ -4897,6 +4981,7 @@ class ResourceAzureMysql(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -5000,6 +5085,9 @@ class ResourceAzureMysql(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -5087,6 +5175,7 @@ class ResourceAzurePostgres(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -5197,6 +5286,9 @@ class ResourceAzurePostgres(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -5444,6 +5536,7 @@ class ResourceCassandra(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -5543,6 +5636,9 @@ class ResourceCassandra(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -5635,6 +5731,7 @@ class ResourceCitus(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -5745,6 +5842,9 @@ class ResourceCitus(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -5829,6 +5929,7 @@ class ResourceClustrix(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -5932,6 +6033,9 @@ class ResourceClustrix(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -6019,6 +6123,7 @@ class ResourceCockroach(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -6129,6 +6234,9 @@ class ResourceCockroach(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -6215,6 +6323,7 @@ class ResourceDb2I(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -6313,6 +6422,9 @@ class ResourceDb2I(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -6402,6 +6514,7 @@ class ResourceDb2Luw(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -6505,6 +6618,9 @@ class ResourceDb2Luw(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -6591,6 +6707,7 @@ class ResourceDocumentDbHost(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -6694,6 +6811,9 @@ class ResourceDocumentDbHost(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -6785,6 +6905,7 @@ class ResourceDocumentDbReplicaSet(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -6894,6 +7015,9 @@ class ResourceDocumentDbReplicaSet(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -6977,6 +7101,7 @@ class ResourceDruid(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -7074,6 +7199,9 @@ class ResourceDruid(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -7403,6 +7531,7 @@ class ResourceElastic(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -7502,6 +7631,9 @@ class ResourceElastic(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -7593,6 +7725,7 @@ class ResourceElasticacheRedis(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -7692,6 +7825,9 @@ class ResourceElasticacheRedis(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -7735,6 +7871,8 @@ class ResourceGcp(dict):
             suggest = "bind_interface"
         elif key == "egressFilter":
             suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "secretStoreKeyfileKey":
@@ -7759,15 +7897,18 @@ class ResourceGcp(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  keyfile: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  secret_store_keyfile_key: Optional[str] = None,
                  secret_store_keyfile_path: Optional[str] = None,
+                 subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -7778,12 +7919,16 @@ class ResourceGcp(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if keyfile is not None:
             pulumi.set(__self__, "keyfile", keyfile)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if secret_store_keyfile_key is not None:
             pulumi.set(__self__, "secret_store_keyfile_key", secret_store_keyfile_key)
         if secret_store_keyfile_path is not None:
             pulumi.set(__self__, "secret_store_keyfile_path", secret_store_keyfile_path)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -7822,6 +7967,11 @@ class ResourceGcp(dict):
         return pulumi.get(self, "keyfile")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -7838,6 +7988,14 @@ class ResourceGcp(dict):
     @pulumi.getter(name="secretStoreKeyfilePath")
     def secret_store_keyfile_path(self) -> Optional[str]:
         return pulumi.get(self, "secret_store_keyfile_path")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
@@ -8286,6 +8444,7 @@ class ResourceGreenplum(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -8396,6 +8555,9 @@ class ResourceGreenplum(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -8667,6 +8829,7 @@ class ResourceHttpBasicAuth(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "healthcheck_path", healthcheck_path)
@@ -8786,6 +8949,9 @@ class ResourceHttpBasicAuth(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -9260,6 +9426,7 @@ class ResourceKubernetesBasicAuth(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -9366,6 +9533,9 @@ class ResourceKubernetesBasicAuth(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -10035,6 +10205,7 @@ class ResourceMaria(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -10138,6 +10309,9 @@ class ResourceMaria(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -10346,6 +10520,7 @@ class ResourceMemsql(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -10449,6 +10624,9 @@ class ResourceMemsql(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -10538,6 +10716,7 @@ class ResourceMongoHost(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -10643,6 +10822,9 @@ class ResourceMongoHost(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -10740,6 +10922,7 @@ class ResourceMongoLegacyHost(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -10852,6 +11035,9 @@ class ResourceMongoLegacyHost(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -10952,6 +11138,7 @@ class ResourceMongoLegacyReplicaset(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -11070,6 +11257,9 @@ class ResourceMongoLegacyReplicaset(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -11170,6 +11360,7 @@ class ResourceMongoReplicaSet(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -11288,6 +11479,9 @@ class ResourceMongoReplicaSet(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -11381,6 +11575,7 @@ class ResourceMongoShardedCluster(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -11479,6 +11674,9 @@ class ResourceMongoShardedCluster(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -11598,6 +11796,7 @@ class ResourceMtlsMysql(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -11766,6 +11965,9 @@ class ResourceMtlsMysql(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -11888,6 +12090,7 @@ class ResourceMtlsPostgres(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -12063,6 +12266,9 @@ class ResourceMtlsPostgres(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -12152,6 +12358,7 @@ class ResourceMysql(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -12255,6 +12462,9 @@ class ResourceMysql(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -12717,6 +12927,7 @@ class ResourceOracle(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -12821,6 +13032,9 @@ class ResourceOracle(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -12913,6 +13127,7 @@ class ResourcePostgres(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -13023,6 +13238,9 @@ class ResourcePostgres(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -13286,6 +13504,7 @@ class ResourceRabbitmqAmqp091(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -13385,6 +13604,9 @@ class ResourceRabbitmqAmqp091(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -13600,6 +13822,7 @@ class ResourceRdp(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -13704,6 +13927,9 @@ class ResourceRdp(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -13790,6 +14016,7 @@ class ResourceRedis(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -13889,6 +14116,9 @@ class ResourceRedis(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -13981,6 +14211,7 @@ class ResourceRedshift(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -14091,6 +14322,9 @@ class ResourceRedshift(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -14175,6 +14409,7 @@ class ResourceSingleStore(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -14278,6 +14513,9 @@ class ResourceSingleStore(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -14362,6 +14600,7 @@ class ResourceSnowflake(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -14465,6 +14704,9 @@ class ResourceSnowflake(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -14700,6 +14942,7 @@ class ResourceSqlServer(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -14817,6 +15060,9 @@ class ResourceSqlServer(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -14905,6 +15151,7 @@ class ResourceSsh(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -15008,6 +15255,9 @@ class ResourceSsh(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -15099,6 +15349,7 @@ class ResourceSshCert(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -15209,6 +15460,9 @@ class ResourceSshCert(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -15300,6 +15554,7 @@ class ResourceSshCustomerKey(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -15410,6 +15665,9 @@ class ResourceSshCustomerKey(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -15493,6 +15751,7 @@ class ResourceSybase(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -15590,6 +15849,9 @@ class ResourceSybase(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -15673,6 +15935,7 @@ class ResourceSybaseIq(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -15770,6 +16033,9 @@ class ResourceSybaseIq(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
@@ -15853,6 +16119,7 @@ class ResourceTeradata(dict):
         :param str bind_interface: Bind interface
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str secret_store_username_key: * trino:
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -15950,12 +16217,182 @@ class ResourceTeradata(dict):
     @property
     @pulumi.getter(name="secretStoreUsernameKey")
     def secret_store_username_key(self) -> Optional[str]:
+        """
+        * trino:
+        """
         return pulumi.get(self, "secret_store_username_key")
 
     @property
     @pulumi.getter(name="secretStoreUsernamePath")
     def secret_store_username_path(self) -> Optional[str]:
         return pulumi.get(self, "secret_store_username_path")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ResourceTrino(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+        elif key == "secretStorePasswordKey":
+            suggest = "secret_store_password_key"
+        elif key == "secretStorePasswordPath":
+            suggest = "secret_store_password_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceTrino. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceTrino.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceTrino.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 hostname: str,
+                 name: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 secret_store_password_key: Optional[str] = None,
+                 secret_store_password_path: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 username: Optional[str] = None):
+        """
+        :param str name: Unique human-readable name of the Resource.
+        :param str bind_interface: Bind interface
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if secret_store_password_key is not None:
+            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
+        if secret_store_password_path is not None:
+            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter(name="secretStorePasswordKey")
+    def secret_store_password_key(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_password_key")
+
+    @property
+    @pulumi.getter(name="secretStorePasswordPath")
+    def secret_store_password_path(self) -> Optional[str]:
+        return pulumi.get(self, "secret_store_password_path")
 
     @property
     @pulumi.getter
@@ -17187,7 +17624,8 @@ class GetResourceResourceResult(dict):
                  sshes: Sequence['outputs.GetResourceResourceSshResult'],
                  sybase_iqs: Sequence['outputs.GetResourceResourceSybaseIqResult'],
                  sybases: Sequence['outputs.GetResourceResourceSybaseResult'],
-                 teradatas: Sequence['outputs.GetResourceResourceTeradataResult']):
+                 teradatas: Sequence['outputs.GetResourceResourceTeradataResult'],
+                 trinos: Sequence['outputs.GetResourceResourceTrinoResult']):
         pulumi.set(__self__, "aks", aks)
         pulumi.set(__self__, "aks_basic_auths", aks_basic_auths)
         pulumi.set(__self__, "aks_service_account_user_impersonations", aks_service_account_user_impersonations)
@@ -17265,6 +17703,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "sybase_iqs", sybase_iqs)
         pulumi.set(__self__, "sybases", sybases)
         pulumi.set(__self__, "teradatas", teradatas)
+        pulumi.set(__self__, "trinos", trinos)
 
     @property
     @pulumi.getter
@@ -17650,6 +18089,11 @@ class GetResourceResourceResult(dict):
     @pulumi.getter
     def teradatas(self) -> Sequence['outputs.GetResourceResourceTeradataResult']:
         return pulumi.get(self, "teradatas")
+
+    @property
+    @pulumi.getter
+    def trinos(self) -> Sequence['outputs.GetResourceResourceTrinoResult']:
+        return pulumi.get(self, "trinos")
 
 
 @pulumi.output_type
@@ -19819,10 +20263,12 @@ class GetResourceResourceAwResult(dict):
                  healthcheck_region: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str bind_interface: Bind interface
@@ -19830,6 +20276,7 @@ class GetResourceResourceAwResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         if access_key is not None:
@@ -19844,6 +20291,8 @@ class GetResourceResourceAwResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -19852,6 +20301,8 @@ class GetResourceResourceAwResult(dict):
             pulumi.set(__self__, "secret_access_key", secret_access_key)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -19898,6 +20349,11 @@ class GetResourceResourceAwResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         return pulumi.get(self, "role_arn")
@@ -19919,6 +20375,14 @@ class GetResourceResourceAwResult(dict):
         ID of the secret store containing credentials for this resource, if any.
         """
         return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
@@ -20256,7 +20720,9 @@ class GetResourceResourceAzureResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  password: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tenant_id: Optional[str] = None):
         """
@@ -20265,6 +20731,7 @@ class GetResourceResourceAzureResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str tenant_id: * azure_mysql:
         """
@@ -20280,8 +20747,12 @@ class GetResourceResourceAzureResult(dict):
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
@@ -20330,12 +20801,25 @@ class GetResourceResourceAzureResult(dict):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
         ID of the secret store containing credentials for this resource, if any.
         """
         return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
@@ -20363,7 +20847,9 @@ class GetResourceResourceAzureCertificateResult(dict):
                  egress_filter: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  tenant_id: Optional[str] = None):
         """
@@ -20372,6 +20858,7 @@ class GetResourceResourceAzureCertificateResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str tenant_id: * azure_mysql:
         """
@@ -20387,8 +20874,12 @@ class GetResourceResourceAzureCertificateResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
@@ -20437,12 +20928,25 @@ class GetResourceResourceAzureCertificateResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
         ID of the secret store containing credentials for this resource, if any.
         """
         return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
@@ -22578,8 +23082,10 @@ class GetResourceResourceGcpResult(dict):
                  id: Optional[str] = None,
                  keyfile: Optional[str] = None,
                  name: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  scopes: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str bind_interface: Bind interface
@@ -22587,6 +23093,7 @@ class GetResourceResourceGcpResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         if bind_interface is not None:
@@ -22599,10 +23106,14 @@ class GetResourceResourceGcpResult(dict):
             pulumi.set(__self__, "keyfile", keyfile)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -22644,6 +23155,11 @@ class GetResourceResourceGcpResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter
     def scopes(self) -> Optional[str]:
         return pulumi.get(self, "scopes")
@@ -22655,6 +23171,14 @@ class GetResourceResourceGcpResult(dict):
         ID of the secret store containing credentials for this resource, if any.
         """
         return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
@@ -28635,6 +29159,145 @@ class GetResourceResourceTeradataResult(dict):
         Bind interface
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetResourceResourceTrinoResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 username: Optional[str] = None):
+        """
+        :param str bind_interface: Bind interface
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")

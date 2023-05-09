@@ -192,6 +192,9 @@ export interface ResourceAksBasicAuth {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -585,6 +588,9 @@ export interface ResourceAmazonmqAmqp091 {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -665,6 +671,9 @@ export interface ResourceAuroraMysql {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -703,6 +712,9 @@ export interface ResourceAuroraPostgres {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -731,6 +743,7 @@ export interface ResourceAws {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    portOverride?: pulumi.Input<number>;
     roleArn?: pulumi.Input<string>;
     roleExternalId?: pulumi.Input<string>;
     secretAccessKey?: pulumi.Input<string>;
@@ -746,6 +759,10 @@ export interface ResourceAws {
     secretStoreRoleExternalIdPath?: pulumi.Input<string>;
     secretStoreSecretAccessKeyKey?: pulumi.Input<string>;
     secretStoreSecretAccessKeyPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -850,6 +867,7 @@ export interface ResourceAzure {
      */
     name: pulumi.Input<string>;
     password?: pulumi.Input<string>;
+    portOverride?: pulumi.Input<number>;
     secretStoreAppIdKey?: pulumi.Input<string>;
     secretStoreAppIdPath?: pulumi.Input<string>;
     /**
@@ -863,6 +881,10 @@ export interface ResourceAzure {
      */
     secretStoreTenantIdKey?: pulumi.Input<string>;
     secretStoreTenantIdPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -885,6 +907,7 @@ export interface ResourceAzureCertificate {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    portOverride?: pulumi.Input<number>;
     secretStoreAppIdKey?: pulumi.Input<string>;
     secretStoreAppIdPath?: pulumi.Input<string>;
     secretStoreClientCertificateKey?: pulumi.Input<string>;
@@ -898,6 +921,10 @@ export interface ResourceAzureCertificate {
      */
     secretStoreTenantIdKey?: pulumi.Input<string>;
     secretStoreTenantIdPath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -929,6 +956,9 @@ export interface ResourceAzureMysql {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -967,6 +997,9 @@ export interface ResourceAzurePostgres {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1037,6 +1070,9 @@ export interface ResourceCassandra {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1076,6 +1112,9 @@ export interface ResourceCitus {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1113,6 +1152,9 @@ export interface ResourceClustrix {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1151,6 +1193,9 @@ export interface ResourceCockroach {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1187,6 +1232,9 @@ export interface ResourceDb2I {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1225,6 +1273,9 @@ export interface ResourceDb2Luw {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1262,6 +1313,9 @@ export interface ResourceDocumentDbHost {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1300,6 +1354,9 @@ export interface ResourceDocumentDbReplicaSet {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1336,6 +1393,9 @@ export interface ResourceDruid {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1414,6 +1474,9 @@ export interface ResourceElastic {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1451,6 +1514,9 @@ export interface ResourceElasticacheRedis {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1479,6 +1545,7 @@ export interface ResourceGcp {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    portOverride?: pulumi.Input<number>;
     scopes: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1486,6 +1553,10 @@ export interface ResourceGcp {
     secretStoreId?: pulumi.Input<string>;
     secretStoreKeyfileKey?: pulumi.Input<string>;
     secretStoreKeyfilePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -1595,6 +1666,9 @@ export interface ResourceGreenplum {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1670,6 +1744,9 @@ export interface ResourceHttpBasicAuth {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1794,6 +1871,9 @@ export interface ResourceKubernetesBasicAuth {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -1956,6 +2036,9 @@ export interface ResourceMaria {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2023,6 +2106,9 @@ export interface ResourceMemsql {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2060,6 +2146,9 @@ export interface ResourceMongoHost {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2099,6 +2188,9 @@ export interface ResourceMongoLegacyHost {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2139,6 +2231,9 @@ export interface ResourceMongoLegacyReplicaset {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2179,6 +2274,9 @@ export interface ResourceMongoReplicaSet {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2216,6 +2314,9 @@ export interface ResourceMongoShardedCluster {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2263,6 +2364,9 @@ export interface ResourceMtlsMysql {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     serverName?: pulumi.Input<string>;
@@ -2311,6 +2415,9 @@ export interface ResourceMtlsPostgres {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     serverName?: pulumi.Input<string>;
@@ -2349,6 +2456,9 @@ export interface ResourceMysql {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2459,6 +2569,9 @@ export interface ResourceOracle {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2498,6 +2611,9 @@ export interface ResourcePostgres {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2570,6 +2686,9 @@ export interface ResourceRabbitmqAmqp091 {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2638,6 +2757,9 @@ export interface ResourceRdp {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2674,6 +2796,9 @@ export interface ResourceRedis {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2713,6 +2838,9 @@ export interface ResourceRedshift {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2750,6 +2878,9 @@ export interface ResourceSingleStore {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2787,6 +2918,9 @@ export interface ResourceSnowflake {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2858,6 +2992,9 @@ export interface ResourceSqlServer {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2895,6 +3032,9 @@ export interface ResourceSsh {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2933,6 +3073,9 @@ export interface ResourceSshCert {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -2971,6 +3114,9 @@ export interface ResourceSshCustomerKey {
     secretStoreId?: pulumi.Input<string>;
     secretStorePrivateKeyKey?: pulumi.Input<string>;
     secretStorePrivateKeyPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -3007,6 +3153,9 @@ export interface ResourceSybase {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -3043,6 +3192,9 @@ export interface ResourceSybaseIq {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
     /**
@@ -3079,8 +3231,46 @@ export interface ResourceTeradata {
     secretStoreId?: pulumi.Input<string>;
     secretStorePasswordKey?: pulumi.Input<string>;
     secretStorePasswordPath?: pulumi.Input<string>;
+    /**
+     * * trino:
+     */
     secretStoreUsernameKey?: pulumi.Input<string>;
     secretStoreUsernamePath?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    username?: pulumi.Input<string>;
+}
+
+export interface ResourceTrino {
+    /**
+     * Bind interface
+     */
+    bindInterface?: pulumi.Input<string>;
+    database: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    secretStorePasswordKey?: pulumi.Input<string>;
+    secretStorePasswordPath?: pulumi.Input<string>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
