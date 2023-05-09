@@ -1801,8 +1801,8 @@ github.com/stretchr/testify v1.8.0/go.mod h1:yNjHg4UonilssWZ8iaSj1OCr/vHnekPRkoO
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/stretchr/testify v1.8.2 h1:+h33VjcLVPDHtOdpUCuF+7gSuG3yGIftsP1YvFihtJ8=
 github.com/stretchr/testify v1.8.2/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
-github.com/strongdm/terraform-provider-sdm v1.0.40-0.20230405194422-c5acbb12c1ab h1:bYkaXcGJR9StTtkTT9ddFClI6CYO+GbpUWVdRc13EyQ=
-github.com/strongdm/terraform-provider-sdm v1.0.40-0.20230405194422-c5acbb12c1ab/go.mod h1:+polPO/E3r2Bdf5rwCPXbwNuZAH17myQcq+8N65jKeg=
+github.com/strongdm/terraform-provider-sdm v1.0.40-0.20230427182335-3c3fde5384b0 h1:M55f17ECrfFUL1NqetH7kJV/IOiNg8tZ8p1BfOwBbNY=
+github.com/strongdm/terraform-provider-sdm v1.0.40-0.20230427182335-3c3fde5384b0/go.mod h1:+polPO/E3r2Bdf5rwCPXbwNuZAH17myQcq+8N65jKeg=
 github.com/subosito/gotenv v1.2.0/go.mod h1:N0PQaV/YGNqwC0u51sEeR/aUtSLEXKX9iv69rRypqCw=
 github.com/syndtr/gocapability v0.0.0-20170704070218-db04d3cc01c8/go.mod h1:hkRG7XYTFWNJGYcbNJQlaLq0fg1yr4J4t/NcTQtrfww=
 github.com/syndtr/gocapability v0.0.0-20180916011248-d98352740cb2/go.mod h1:hkRG7XYTFWNJGYcbNJQlaLq0fg1yr4J4t/NcTQtrfww=
