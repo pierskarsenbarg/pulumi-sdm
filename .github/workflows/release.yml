@@ -30,7 +30,7 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
@@ -38,7 +38,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
+      uses: pulumi/actions@v4
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
@@ -107,7 +107,7 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
@@ -115,7 +115,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
+      uses: pulumi/actions@v4
     - if: github.event_name == 'pull_request'
       name: Install Schema Tools
       uses: jaxxstorm/action-install-gh-release@v1.10.0
@@ -168,7 +168,7 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
@@ -176,7 +176,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
+      uses: pulumi/actions@v4
     - name: Set Release Version
       run: echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
     - name: Run GoReleaser
@@ -211,7 +211,7 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v4
       with:
         go-version: ${{matrix.goversion}}
     - name: Install pulumictl
@@ -219,7 +219,7 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
+      uses: pulumi/actions@v4
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
@@ -305,7 +305,7 @@ jobs:
   #   - name: Unshallow clone for tags
   #     run: git fetch --prune --unshallow --tags
   #   - name: Install Go
-  #     uses: actions/setup-go@v2
+  #     uses: actions/setup-go@v4
   #     with:
   #       go-version: ${{matrix.goversion}}
   #   - name: Install pulumictl
@@ -313,7 +313,7 @@ jobs:
   #     with:
   #       repo: pulumi/pulumictl
   #   - name: Install Pulumi CLI
-  #     uses: pulumi/action-install-pulumi-cli@v2
+  #     uses: pulumi/actions@v4
   #   - name: Setup Node
   #     uses: actions/setup-node@v3
   #     with:
