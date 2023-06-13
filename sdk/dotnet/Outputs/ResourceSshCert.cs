@@ -39,11 +39,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreId;
         /// <summary>
-        /// * trino:
-        /// </summary>
-        public readonly string? SecretStoreUsernameKey;
-        public readonly string? SecretStoreUsernamePath;
-        /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
         public readonly string? Subdomain;
@@ -79,10 +74,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            string? secretStoreUsernameKey,
-
-            string? secretStoreUsernamePath,
-
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
@@ -101,8 +92,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             RemoteIdentityGroupId = remoteIdentityGroupId;
             RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
             SecretStoreId = secretStoreId;
-            SecretStoreUsernameKey = secretStoreUsernameKey;
-            SecretStoreUsernamePath = secretStoreUsernamePath;
             Subdomain = subdomain;
             Tags = tags;
             Username = username;

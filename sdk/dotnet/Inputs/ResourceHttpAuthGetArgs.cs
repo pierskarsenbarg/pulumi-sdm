@@ -55,12 +55,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("secretStoreAuthHeaderKey")]
-        public Input<string>? SecretStoreAuthHeaderKey { get; set; }
-
-        [Input("secretStoreAuthHeaderPath")]
-        public Input<string>? SecretStoreAuthHeaderPath { get; set; }
-
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>

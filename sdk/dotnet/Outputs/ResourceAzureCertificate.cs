@@ -29,19 +29,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Name;
         public readonly int? PortOverride;
-        public readonly string? SecretStoreAppIdKey;
-        public readonly string? SecretStoreAppIdPath;
-        public readonly string? SecretStoreClientCertificateKey;
-        public readonly string? SecretStoreClientCertificatePath;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        /// <summary>
-        /// * azure_mysql:
-        /// </summary>
-        public readonly string? SecretStoreTenantIdKey;
-        public readonly string? SecretStoreTenantIdPath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -50,6 +41,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// * sql_server_kerberos_ad:
+        /// </summary>
         public readonly string? TenantId;
 
         [OutputConstructor]
@@ -66,19 +60,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
-            string? secretStoreAppIdKey,
-
-            string? secretStoreAppIdPath,
-
-            string? secretStoreClientCertificateKey,
-
-            string? secretStoreClientCertificatePath,
-
             string? secretStoreId,
-
-            string? secretStoreTenantIdKey,
-
-            string? secretStoreTenantIdPath,
 
             string? subdomain,
 
@@ -92,13 +74,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EgressFilter = egressFilter;
             Name = name;
             PortOverride = portOverride;
-            SecretStoreAppIdKey = secretStoreAppIdKey;
-            SecretStoreAppIdPath = secretStoreAppIdPath;
-            SecretStoreClientCertificateKey = secretStoreClientCertificateKey;
-            SecretStoreClientCertificatePath = secretStoreClientCertificatePath;
             SecretStoreId = secretStoreId;
-            SecretStoreTenantIdKey = secretStoreTenantIdKey;
-            SecretStoreTenantIdPath = secretStoreTenantIdPath;
             Subdomain = subdomain;
             Tags = tags;
             TenantId = tenantId;

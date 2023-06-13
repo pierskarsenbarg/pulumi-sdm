@@ -33,18 +33,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? RoleArn;
         public readonly string? RoleExternalId;
         public readonly string? SecretAccessKey;
-        public readonly string? SecretStoreAccessKeyKey;
-        public readonly string? SecretStoreAccessKeyPath;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStoreRoleArnKey;
-        public readonly string? SecretStoreRoleArnPath;
-        public readonly string? SecretStoreRoleExternalIdKey;
-        public readonly string? SecretStoreRoleExternalIdPath;
-        public readonly string? SecretStoreSecretAccessKeyKey;
-        public readonly string? SecretStoreSecretAccessKeyPath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -76,23 +68,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretAccessKey,
 
-            string? secretStoreAccessKeyKey,
-
-            string? secretStoreAccessKeyPath,
-
             string? secretStoreId,
-
-            string? secretStoreRoleArnKey,
-
-            string? secretStoreRoleArnPath,
-
-            string? secretStoreRoleExternalIdKey,
-
-            string? secretStoreRoleExternalIdPath,
-
-            string? secretStoreSecretAccessKeyKey,
-
-            string? secretStoreSecretAccessKeyPath,
 
             string? subdomain,
 
@@ -108,15 +84,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretAccessKey = secretAccessKey;
-            SecretStoreAccessKeyKey = secretStoreAccessKeyKey;
-            SecretStoreAccessKeyPath = secretStoreAccessKeyPath;
             SecretStoreId = secretStoreId;
-            SecretStoreRoleArnKey = secretStoreRoleArnKey;
-            SecretStoreRoleArnPath = secretStoreRoleArnPath;
-            SecretStoreRoleExternalIdKey = secretStoreRoleExternalIdKey;
-            SecretStoreRoleExternalIdPath = secretStoreRoleExternalIdPath;
-            SecretStoreSecretAccessKeyKey = secretStoreSecretAccessKeyKey;
-            SecretStoreSecretAccessKeyPath = secretStoreSecretAccessKeyPath;
             Subdomain = subdomain;
             Tags = tags;
         }

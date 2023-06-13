@@ -37,10 +37,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStoreRoleArnKey;
-        public readonly string? SecretStoreRoleArnPath;
-        public readonly string? SecretStoreRoleExternalIdKey;
-        public readonly string? SecretStoreRoleExternalIdPath;
         public readonly int? SessionExpiry;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -75,14 +71,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            string? secretStoreRoleArnKey,
-
-            string? secretStoreRoleArnPath,
-
-            string? secretStoreRoleExternalIdKey,
-
-            string? secretStoreRoleExternalIdPath,
-
             int? sessionExpiry,
 
             string subdomain,
@@ -100,10 +88,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretStoreId = secretStoreId;
-            SecretStoreRoleArnKey = secretStoreRoleArnKey;
-            SecretStoreRoleArnPath = secretStoreRoleArnPath;
-            SecretStoreRoleExternalIdKey = secretStoreRoleExternalIdKey;
-            SecretStoreRoleExternalIdPath = secretStoreRoleExternalIdPath;
             SessionExpiry = sessionExpiry;
             Subdomain = subdomain;
             Tags = tags;

@@ -38,6 +38,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? Password;
         public readonly int? Port;
         public readonly int? PortOverride;
+        public readonly bool? RequireNativeAuth;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -51,6 +52,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly bool? UseAzureSingleServerUsernames;
         public readonly string? Username;
 
         [OutputConstructor]
@@ -79,6 +81,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            bool? requireNativeAuth,
+
             string? secretStoreId,
 
             string? serverName,
@@ -86,6 +90,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
+
+            bool? useAzureSingleServerUsernames,
 
             string? username)
         {
@@ -101,10 +107,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Password = password;
             Port = port;
             PortOverride = portOverride;
+            RequireNativeAuth = requireNativeAuth;
             SecretStoreId = secretStoreId;
             ServerName = serverName;
             Subdomain = subdomain;
             Tags = tags;
+            UseAzureSingleServerUsernames = useAzureSingleServerUsernames;
             Username = username;
         }
     }

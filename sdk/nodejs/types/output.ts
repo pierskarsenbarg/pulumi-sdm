@@ -310,6 +310,8 @@ export interface GetResourceResource {
     singleStores: outputs.GetResourceResourceSingleStore[];
     snowflakes: outputs.GetResourceResourceSnowflake[];
     snowsights: outputs.GetResourceResourceSnowsight[];
+    sqlServerAzureAds: outputs.GetResourceResourceSqlServerAzureAd[];
+    sqlServerKerberosAds: outputs.GetResourceResourceSqlServerKerberosAd[];
     sqlServers: outputs.GetResourceResourceSqlServer[];
     sshCerts: outputs.GetResourceResourceSshCert[];
     sshCustomerKeys: outputs.GetResourceResourceSshCustomerKey[];
@@ -593,6 +595,7 @@ export interface GetResourceResourceAmazonEk {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    portOverride?: number;
     region?: string;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
@@ -637,6 +640,7 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    portOverride?: number;
     region?: string;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
@@ -680,6 +684,7 @@ export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    portOverride?: number;
     region?: string;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
@@ -724,6 +729,7 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    portOverride?: number;
     region?: string;
     roleArn?: string;
     roleExternalId?: string;
@@ -839,6 +845,7 @@ export interface GetResourceResourceAuroraMysql {
     password?: string;
     port?: number;
     portOverride?: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -851,6 +858,7 @@ export interface GetResourceResourceAuroraMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -1041,7 +1049,7 @@ export interface GetResourceResourceAzure {
      */
     tags?: {[key: string]: string};
     /**
-     * * azure_mysql:
+     * * sql_server_kerberos_ad:
      */
     tenantId?: string;
 }
@@ -1079,7 +1087,7 @@ export interface GetResourceResourceAzureCertificate {
      */
     tags?: {[key: string]: string};
     /**
-     * * azure_mysql:
+     * * sql_server_kerberos_ad:
      */
     tenantId?: string;
 }
@@ -1106,6 +1114,7 @@ export interface GetResourceResourceAzureMysql {
     password?: string;
     port?: number;
     portOverride?: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1118,6 +1127,7 @@ export interface GetResourceResourceAzureMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -1292,6 +1302,7 @@ export interface GetResourceResourceClustrix {
     password?: string;
     port?: number;
     portOverride?: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1304,6 +1315,7 @@ export interface GetResourceResourceClustrix {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -2144,6 +2156,7 @@ export interface GetResourceResourceMaria {
     password?: string;
     port?: number;
     portOverride?: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2156,6 +2169,7 @@ export interface GetResourceResourceMaria {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -2215,6 +2229,7 @@ export interface GetResourceResourceMemsql {
     password?: string;
     port?: number;
     portOverride?: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2227,6 +2242,7 @@ export interface GetResourceResourceMemsql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -2449,6 +2465,7 @@ export interface GetResourceResourceMtlsMysql {
     password?: string;
     port?: number;
     portOverride?: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2462,6 +2479,7 @@ export interface GetResourceResourceMtlsMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -2529,6 +2547,7 @@ export interface GetResourceResourceMysql {
     password?: string;
     port?: number;
     portOverride?: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2541,6 +2560,7 @@ export interface GetResourceResourceMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -2936,6 +2956,7 @@ export interface GetResourceResourceSingleStore {
     password?: string;
     port?: number;
     portOverride?: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2948,6 +2969,7 @@ export interface GetResourceResourceSingleStore {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -3050,6 +3072,91 @@ export interface GetResourceResourceSqlServer {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    username?: string;
+}
+
+export interface GetResourceResourceSqlServerAzureAd {
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    clientId?: string;
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    overrideDatabase?: boolean;
+    port?: number;
+    portOverride?: number;
+    schema?: string;
+    secret?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * * sql_server_kerberos_ad:
+     */
+    tenantId?: string;
+}
+
+export interface GetResourceResourceSqlServerKerberosAd {
+    /**
+     * Bind interface
+     */
+    bindInterface?: string;
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    keytab?: string;
+    krbConfig?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    overrideDatabase?: boolean;
+    port?: number;
+    portOverride?: number;
+    realm?: string;
+    schema?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    serverSpn?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -3621,12 +3728,6 @@ export interface ResourceAks {
     portOverride: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
-    secretStoreClientCertificateKey?: string;
-    secretStoreClientCertificatePath?: string;
-    secretStoreClientKeyKey?: string;
-    secretStoreClientKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3666,13 +3767,6 @@ export interface ResourceAksBasicAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -3711,11 +3805,6 @@ export interface ResourceAksServiceAccount {
      */
     secretStoreId?: string;
     /**
-     * * kubernetes_user_impersonation:
-     */
-    secretStoreTokenKey?: string;
-    secretStoreTokenPath?: string;
-    /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
     subdomain: string;
@@ -3723,6 +3812,9 @@ export interface ResourceAksServiceAccount {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * * kubernetes_user_impersonation:
+     */
     token?: string;
 }
 
@@ -3751,11 +3843,6 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * * kubernetes_user_impersonation:
-     */
-    secretStoreTokenKey?: string;
-    secretStoreTokenPath?: string;
-    /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
     subdomain: string;
@@ -3763,6 +3850,9 @@ export interface ResourceAksServiceAccountUserImpersonation {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * * kubernetes_user_impersonation:
+     */
     token?: string;
 }
 
@@ -3789,12 +3879,6 @@ export interface ResourceAksUserImpersonation {
     name: string;
     port: number;
     portOverride: number;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
-    secretStoreClientCertificateKey?: string;
-    secretStoreClientCertificatePath?: string;
-    secretStoreClientKeyKey?: string;
-    secretStoreClientKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3830,26 +3914,17 @@ export interface ResourceAmazonEks {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    portOverride: number;
     region: string;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
-    secretStoreAccessKeyKey?: string;
-    secretStoreAccessKeyPath?: string;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
-    secretStoreSecretAccessKeyKey?: string;
-    secretStoreSecretAccessKeyPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -3880,21 +3955,16 @@ export interface ResourceAmazonEksInstanceProfile {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    portOverride: number;
     region: string;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     roleArn?: string;
     roleExternalId?: string;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -3925,21 +3995,16 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    portOverride: number;
     region: string;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
     roleArn?: string;
     roleExternalId?: string;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -3971,24 +4036,15 @@ export interface ResourceAmazonEksUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    portOverride: number;
     region: string;
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
-    secretStoreAccessKeyKey?: string;
-    secretStoreAccessKeyPath?: string;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
-    secretStoreSecretAccessKeyKey?: string;
-    secretStoreSecretAccessKeyPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4019,18 +4075,10 @@ export interface ResourceAmazonEs {
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
-    secretStoreAccessKeyKey?: string;
-    secretStoreAccessKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
-    secretStoreSecretAccessKeyKey?: string;
-    secretStoreSecretAccessKeyPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4062,13 +4110,6 @@ export interface ResourceAmazonmqAmqp091 {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4101,18 +4142,10 @@ export interface ResourceAthena {
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
-    secretStoreAccessKeyKey?: string;
-    secretStoreAccessKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
-    secretStoreSecretAccessKeyKey?: string;
-    secretStoreSecretAccessKeyPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4141,17 +4174,11 @@ export interface ResourceAuroraMysql {
     password?: string;
     port?: number;
     portOverride: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4160,6 +4187,7 @@ export interface ResourceAuroraMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -4186,13 +4214,6 @@ export interface ResourceAuroraPostgres {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4223,18 +4244,10 @@ export interface ResourceAws {
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
-    secretStoreAccessKeyKey?: string;
-    secretStoreAccessKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
-    secretStoreSecretAccessKeyKey?: string;
-    secretStoreSecretAccessKeyPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4269,10 +4282,6 @@ export interface ResourceAwsConsole {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
     sessionExpiry?: number;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4305,18 +4314,10 @@ export interface ResourceAwsConsoleStaticKeyPair {
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
-    secretStoreAccessKeyKey?: string;
-    secretStoreAccessKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
-    secretStoreSecretAccessKeyKey?: string;
-    secretStoreSecretAccessKeyPath?: string;
     sessionExpiry?: number;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4344,19 +4345,10 @@ export interface ResourceAzure {
     name: string;
     password?: string;
     portOverride: number;
-    secretStoreAppIdKey?: string;
-    secretStoreAppIdPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * azure_mysql:
-     */
-    secretStoreTenantIdKey?: string;
-    secretStoreTenantIdPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4365,6 +4357,9 @@ export interface ResourceAzure {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * * sql_server_kerberos_ad:
+     */
     tenantId?: string;
 }
 
@@ -4384,19 +4379,10 @@ export interface ResourceAzureCertificate {
      */
     name: string;
     portOverride: number;
-    secretStoreAppIdKey?: string;
-    secretStoreAppIdPath?: string;
-    secretStoreClientCertificateKey?: string;
-    secretStoreClientCertificatePath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    /**
-     * * azure_mysql:
-     */
-    secretStoreTenantIdKey?: string;
-    secretStoreTenantIdPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4405,6 +4391,9 @@ export interface ResourceAzureCertificate {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * * sql_server_kerberos_ad:
+     */
     tenantId?: string;
 }
 
@@ -4426,17 +4415,11 @@ export interface ResourceAzureMysql {
     password?: string;
     port?: number;
     portOverride: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4445,6 +4428,7 @@ export interface ResourceAzureMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -4471,13 +4455,6 @@ export interface ResourceAzurePostgres {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4510,8 +4487,6 @@ export interface ResourceBigQuery {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePrivateKeyKey?: string;
-    secretStorePrivateKeyPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4544,13 +4519,6 @@ export interface ResourceCassandra {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4586,13 +4554,6 @@ export interface ResourceCitus {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4622,17 +4583,11 @@ export interface ResourceClustrix {
     password?: string;
     port?: number;
     portOverride: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4641,6 +4596,7 @@ export interface ResourceClustrix {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -4667,13 +4623,6 @@ export interface ResourceCockroach {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4706,13 +4655,6 @@ export interface ResourceDb2I {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4747,13 +4689,6 @@ export interface ResourceDb2Luw {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4787,13 +4722,6 @@ export interface ResourceDocumentDbHost {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4828,13 +4756,6 @@ export interface ResourceDocumentDbReplicaSet {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4867,13 +4788,6 @@ export interface ResourceDruid {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4905,18 +4819,10 @@ export interface ResourceDynamoDb {
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
-    secretStoreAccessKeyKey?: string;
-    secretStoreAccessKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
-    secretStoreSecretAccessKeyKey?: string;
-    secretStoreSecretAccessKeyPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4948,13 +4854,6 @@ export interface ResourceElastic {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -4988,13 +4887,6 @@ export interface ResourceElasticacheRedis {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5027,8 +4919,6 @@ export interface ResourceGcp {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreKeyfileKey?: string;
-    secretStoreKeyfilePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5060,14 +4950,10 @@ export interface ResourceGoogleGke {
     name: string;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreServiceAccountKeyKey?: string;
-    secretStoreServiceAccountKeyPath?: string;
     serviceAccountKey?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5098,14 +4984,10 @@ export interface ResourceGoogleGkeUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: string;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreServiceAccountKeyKey?: string;
-    secretStoreServiceAccountKeyPath?: string;
     serviceAccountKey?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5140,13 +5022,6 @@ export interface ResourceGreenplum {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5176,8 +5051,6 @@ export interface ResourceHttpAuth {
      * Unique human-readable name of the Resource.
      */
     name: string;
-    secretStoreAuthHeaderKey?: string;
-    secretStoreAuthHeaderPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5218,13 +5091,6 @@ export interface ResourceHttpBasicAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5300,12 +5166,6 @@ export interface ResourceKubernetes {
     portOverride: number;
     remoteIdentityGroupId?: string;
     remoteIdentityHealthcheckUsername?: string;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
-    secretStoreClientCertificateKey?: string;
-    secretStoreClientCertificatePath?: string;
-    secretStoreClientKeyKey?: string;
-    secretStoreClientKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5345,13 +5205,6 @@ export interface ResourceKubernetesBasicAuth {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5390,11 +5243,6 @@ export interface ResourceKubernetesServiceAccount {
      */
     secretStoreId?: string;
     /**
-     * * kubernetes_user_impersonation:
-     */
-    secretStoreTokenKey?: string;
-    secretStoreTokenPath?: string;
-    /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
     subdomain: string;
@@ -5402,6 +5250,9 @@ export interface ResourceKubernetesServiceAccount {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * * kubernetes_user_impersonation:
+     */
     token?: string;
 }
 
@@ -5430,11 +5281,6 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     secretStoreId?: string;
     /**
-     * * kubernetes_user_impersonation:
-     */
-    secretStoreTokenKey?: string;
-    secretStoreTokenPath?: string;
-    /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
     subdomain: string;
@@ -5442,6 +5288,9 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * * kubernetes_user_impersonation:
+     */
     token?: string;
 }
 
@@ -5468,12 +5317,6 @@ export interface ResourceKubernetesUserImpersonation {
     name: string;
     port: number;
     portOverride: number;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
-    secretStoreClientCertificateKey?: string;
-    secretStoreClientCertificatePath?: string;
-    secretStoreClientKeyKey?: string;
-    secretStoreClientKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5506,17 +5349,11 @@ export interface ResourceMaria {
     password?: string;
     port?: number;
     portOverride: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5525,6 +5362,7 @@ export interface ResourceMaria {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -5576,17 +5414,11 @@ export interface ResourceMemsql {
     password?: string;
     port?: number;
     portOverride: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5595,6 +5427,7 @@ export interface ResourceMemsql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -5620,13 +5453,6 @@ export interface ResourceMongoHost {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5662,13 +5488,6 @@ export interface ResourceMongoLegacyHost {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5705,13 +5524,6 @@ export interface ResourceMongoLegacyReplicaset {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5748,13 +5560,6 @@ export interface ResourceMongoReplicaSet {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5788,13 +5593,6 @@ export interface ResourceMongoShardedCluster {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5828,23 +5626,11 @@ export interface ResourceMtlsMysql {
     password?: string;
     port?: number;
     portOverride: number;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
-    secretStoreClientCertificateKey?: string;
-    secretStoreClientCertificatePath?: string;
-    secretStoreClientKeyKey?: string;
-    secretStoreClientKeyPath?: string;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     serverName?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5854,6 +5640,7 @@ export interface ResourceMtlsMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -5879,23 +5666,10 @@ export interface ResourceMtlsPostgres {
     password?: string;
     port?: number;
     portOverride: number;
-    secretStoreCertificateAuthorityKey?: string;
-    secretStoreCertificateAuthorityPath?: string;
-    secretStoreClientCertificateKey?: string;
-    secretStoreClientCertificatePath?: string;
-    secretStoreClientKeyKey?: string;
-    secretStoreClientKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     serverName?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5926,17 +5700,11 @@ export interface ResourceMysql {
     password?: string;
     port?: number;
     portOverride: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -5945,6 +5713,7 @@ export interface ResourceMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -5999,18 +5768,10 @@ export interface ResourceNeptuneIam {
     roleArn?: string;
     roleExternalId?: string;
     secretAccessKey?: string;
-    secretStoreAccessKeyKey?: string;
-    secretStoreAccessKeyPath?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreRoleArnKey?: string;
-    secretStoreRoleArnPath?: string;
-    secretStoreRoleExternalIdKey?: string;
-    secretStoreRoleExternalIdPath?: string;
-    secretStoreSecretAccessKeyKey?: string;
-    secretStoreSecretAccessKeyPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6043,13 +5804,6 @@ export interface ResourceOracle {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6085,13 +5839,6 @@ export interface ResourcePostgres {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6125,8 +5872,6 @@ export interface ResourcePresto {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6160,13 +5905,6 @@ export interface ResourceRabbitmqAmqp091 {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6231,13 +5969,6 @@ export interface ResourceRdp {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6270,13 +6001,6 @@ export interface ResourceRedis {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6312,13 +6036,6 @@ export interface ResourceRedshift {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6348,17 +6065,11 @@ export interface ResourceSingleStore {
     password?: string;
     port?: number;
     portOverride: number;
+    requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6367,6 +6078,7 @@ export interface ResourceSingleStore {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    useAzureSingleServerUsernames?: boolean;
     username?: string;
 }
 
@@ -6392,13 +6104,6 @@ export interface ResourceSnowflake {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6430,8 +6135,6 @@ export interface ResourceSnowsight {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStoreSamlMetadataKey?: string;
-    secretStoreSamlMetadataPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6466,13 +6169,83 @@ export interface ResourceSqlServer {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
     /**
-     * * trino:
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    username?: string;
+}
+
+export interface ResourceSqlServerAzureAd {
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    clientId?: string;
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    overrideDatabase?: boolean;
+    port?: number;
+    portOverride: number;
+    schema?: string;
+    secret?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * * sql_server_kerberos_ad:
+     */
+    tenantId?: string;
+}
+
+export interface ResourceSqlServerKerberosAd {
+    /**
+     * Bind interface
+     */
+    bindInterface: string;
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    hostname: string;
+    keytab?: string;
+    krbConfig?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    overrideDatabase?: boolean;
+    port?: number;
+    portOverride: number;
+    realm?: string;
+    schema?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    serverSpn?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6508,11 +6281,6 @@ export interface ResourceSsh {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6550,11 +6318,6 @@ export interface ResourceSshCert {
      */
     secretStoreId?: string;
     /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
-    /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
     subdomain: string;
@@ -6588,13 +6351,6 @@ export interface ResourceSshCustomerKey {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePrivateKeyKey?: string;
-    secretStorePrivateKeyPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6627,13 +6383,6 @@ export interface ResourceSybase {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6666,13 +6415,6 @@ export interface ResourceSybaseIq {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6705,13 +6447,6 @@ export interface ResourceTeradata {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
-    /**
-     * * trino:
-     */
-    secretStoreUsernameKey?: string;
-    secretStoreUsernamePath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -6745,8 +6480,6 @@ export interface ResourceTrino {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
-    secretStorePasswordKey?: string;
-    secretStorePasswordPath?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */

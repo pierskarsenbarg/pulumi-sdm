@@ -36,12 +36,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string Name;
         public readonly int Port;
         public readonly int? PortOverride;
-        public readonly string? SecretStoreCertificateAuthorityKey;
-        public readonly string? SecretStoreCertificateAuthorityPath;
-        public readonly string? SecretStoreClientCertificateKey;
-        public readonly string? SecretStoreClientCertificatePath;
-        public readonly string? SecretStoreClientKeyKey;
-        public readonly string? SecretStoreClientKeyPath;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -77,18 +71,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
-            string? secretStoreCertificateAuthorityKey,
-
-            string? secretStoreCertificateAuthorityPath,
-
-            string? secretStoreClientCertificateKey,
-
-            string? secretStoreClientCertificatePath,
-
-            string? secretStoreClientKeyKey,
-
-            string? secretStoreClientKeyPath,
-
             string? secretStoreId,
 
             string? subdomain,
@@ -105,12 +87,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Name = name;
             Port = port;
             PortOverride = portOverride;
-            SecretStoreCertificateAuthorityKey = secretStoreCertificateAuthorityKey;
-            SecretStoreCertificateAuthorityPath = secretStoreCertificateAuthorityPath;
-            SecretStoreClientCertificateKey = secretStoreClientCertificateKey;
-            SecretStoreClientCertificatePath = secretStoreClientCertificatePath;
-            SecretStoreClientKeyKey = secretStoreClientKeyKey;
-            SecretStoreClientKeyPath = secretStoreClientKeyPath;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;

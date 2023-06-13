@@ -84,6 +84,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceSingleStoreResult> SingleStores;
         public readonly ImmutableArray<Outputs.GetResourceResourceSnowflakeResult> Snowflakes;
         public readonly ImmutableArray<Outputs.GetResourceResourceSnowsightResult> Snowsights;
+        public readonly ImmutableArray<Outputs.GetResourceResourceSqlServerAzureAdResult> SqlServerAzureAds;
+        public readonly ImmutableArray<Outputs.GetResourceResourceSqlServerKerberosAdResult> SqlServerKerberosAds;
         public readonly ImmutableArray<Outputs.GetResourceResourceSqlServerResult> SqlServers;
         public readonly ImmutableArray<Outputs.GetResourceResourceSshCertResult> SshCerts;
         public readonly ImmutableArray<Outputs.GetResourceResourceSshCustomerKeyResult> SshCustomerKeys;
@@ -235,6 +237,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceSnowsightResult> snowsights,
 
+            ImmutableArray<Outputs.GetResourceResourceSqlServerAzureAdResult> sqlServerAzureAds,
+
+            ImmutableArray<Outputs.GetResourceResourceSqlServerKerberosAdResult> sqlServerKerberosAds,
+
             ImmutableArray<Outputs.GetResourceResourceSqlServerResult> sqlServers,
 
             ImmutableArray<Outputs.GetResourceResourceSshCertResult> sshCerts,
@@ -321,6 +327,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SingleStores = singleStores;
             Snowflakes = snowflakes;
             Snowsights = snowsights;
+            SqlServerAzureAds = sqlServerAzureAds;
+            SqlServerKerberosAds = sqlServerKerberosAds;
             SqlServers = sqlServers;
             SshCerts = sshCerts;
             SshCustomerKeys = sshCustomerKeys;

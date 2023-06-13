@@ -87,6 +87,8 @@ class ResourceArgs:
                  snowflake: Optional[pulumi.Input['ResourceSnowflakeArgs']] = None,
                  snowsight: Optional[pulumi.Input['ResourceSnowsightArgs']] = None,
                  sql_server: Optional[pulumi.Input['ResourceSqlServerArgs']] = None,
+                 sql_server_azure_ad: Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']] = None,
+                 sql_server_kerberos_ad: Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']] = None,
                  ssh: Optional[pulumi.Input['ResourceSshArgs']] = None,
                  ssh_cert: Optional[pulumi.Input['ResourceSshCertArgs']] = None,
                  ssh_customer_key: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']] = None,
@@ -248,6 +250,10 @@ class ResourceArgs:
             pulumi.set(__self__, "snowsight", snowsight)
         if sql_server is not None:
             pulumi.set(__self__, "sql_server", sql_server)
+        if sql_server_azure_ad is not None:
+            pulumi.set(__self__, "sql_server_azure_ad", sql_server_azure_ad)
+        if sql_server_kerberos_ad is not None:
+            pulumi.set(__self__, "sql_server_kerberos_ad", sql_server_kerberos_ad)
         if ssh is not None:
             pulumi.set(__self__, "ssh", ssh)
         if ssh_cert is not None:
@@ -925,6 +931,24 @@ class ResourceArgs:
         pulumi.set(self, "sql_server", value)
 
     @property
+    @pulumi.getter(name="sqlServerAzureAd")
+    def sql_server_azure_ad(self) -> Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']]:
+        return pulumi.get(self, "sql_server_azure_ad")
+
+    @sql_server_azure_ad.setter
+    def sql_server_azure_ad(self, value: Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']]):
+        pulumi.set(self, "sql_server_azure_ad", value)
+
+    @property
+    @pulumi.getter(name="sqlServerKerberosAd")
+    def sql_server_kerberos_ad(self) -> Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']]:
+        return pulumi.get(self, "sql_server_kerberos_ad")
+
+    @sql_server_kerberos_ad.setter
+    def sql_server_kerberos_ad(self, value: Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']]):
+        pulumi.set(self, "sql_server_kerberos_ad", value)
+
+    @property
     @pulumi.getter
     def ssh(self) -> Optional[pulumi.Input['ResourceSshArgs']]:
         return pulumi.get(self, "ssh")
@@ -1065,6 +1089,8 @@ class _ResourceState:
                  snowflake: Optional[pulumi.Input['ResourceSnowflakeArgs']] = None,
                  snowsight: Optional[pulumi.Input['ResourceSnowsightArgs']] = None,
                  sql_server: Optional[pulumi.Input['ResourceSqlServerArgs']] = None,
+                 sql_server_azure_ad: Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']] = None,
+                 sql_server_kerberos_ad: Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']] = None,
                  ssh: Optional[pulumi.Input['ResourceSshArgs']] = None,
                  ssh_cert: Optional[pulumi.Input['ResourceSshCertArgs']] = None,
                  ssh_customer_key: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']] = None,
@@ -1226,6 +1252,10 @@ class _ResourceState:
             pulumi.set(__self__, "snowsight", snowsight)
         if sql_server is not None:
             pulumi.set(__self__, "sql_server", sql_server)
+        if sql_server_azure_ad is not None:
+            pulumi.set(__self__, "sql_server_azure_ad", sql_server_azure_ad)
+        if sql_server_kerberos_ad is not None:
+            pulumi.set(__self__, "sql_server_kerberos_ad", sql_server_kerberos_ad)
         if ssh is not None:
             pulumi.set(__self__, "ssh", ssh)
         if ssh_cert is not None:
@@ -1903,6 +1933,24 @@ class _ResourceState:
         pulumi.set(self, "sql_server", value)
 
     @property
+    @pulumi.getter(name="sqlServerAzureAd")
+    def sql_server_azure_ad(self) -> Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']]:
+        return pulumi.get(self, "sql_server_azure_ad")
+
+    @sql_server_azure_ad.setter
+    def sql_server_azure_ad(self, value: Optional[pulumi.Input['ResourceSqlServerAzureAdArgs']]):
+        pulumi.set(self, "sql_server_azure_ad", value)
+
+    @property
+    @pulumi.getter(name="sqlServerKerberosAd")
+    def sql_server_kerberos_ad(self) -> Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']]:
+        return pulumi.get(self, "sql_server_kerberos_ad")
+
+    @sql_server_kerberos_ad.setter
+    def sql_server_kerberos_ad(self, value: Optional[pulumi.Input['ResourceSqlServerKerberosAdArgs']]):
+        pulumi.set(self, "sql_server_kerberos_ad", value)
+
+    @property
     @pulumi.getter
     def ssh(self) -> Optional[pulumi.Input['ResourceSshArgs']]:
         return pulumi.get(self, "ssh")
@@ -2045,6 +2093,8 @@ class Resource(pulumi.CustomResource):
                  snowflake: Optional[pulumi.Input[pulumi.InputType['ResourceSnowflakeArgs']]] = None,
                  snowsight: Optional[pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']]] = None,
                  sql_server: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerArgs']]] = None,
+                 sql_server_azure_ad: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerAzureAdArgs']]] = None,
+                 sql_server_kerberos_ad: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerKerberosAdArgs']]] = None,
                  ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
                  ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
                  ssh_customer_key: Optional[pulumi.Input[pulumi.InputType['ResourceSshCustomerKeyArgs']]] = None,
@@ -2175,6 +2225,8 @@ class Resource(pulumi.CustomResource):
                  snowflake: Optional[pulumi.Input[pulumi.InputType['ResourceSnowflakeArgs']]] = None,
                  snowsight: Optional[pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']]] = None,
                  sql_server: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerArgs']]] = None,
+                 sql_server_azure_ad: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerAzureAdArgs']]] = None,
+                 sql_server_kerberos_ad: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerKerberosAdArgs']]] = None,
                  ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
                  ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
                  ssh_customer_key: Optional[pulumi.Input[pulumi.InputType['ResourceSshCustomerKeyArgs']]] = None,
@@ -2262,6 +2314,8 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["snowflake"] = snowflake
             __props__.__dict__["snowsight"] = snowsight
             __props__.__dict__["sql_server"] = sql_server
+            __props__.__dict__["sql_server_azure_ad"] = sql_server_azure_ad
+            __props__.__dict__["sql_server_kerberos_ad"] = sql_server_kerberos_ad
             __props__.__dict__["ssh"] = ssh
             __props__.__dict__["ssh_cert"] = ssh_cert
             __props__.__dict__["ssh_customer_key"] = ssh_customer_key
@@ -2350,6 +2404,8 @@ class Resource(pulumi.CustomResource):
             snowflake: Optional[pulumi.Input[pulumi.InputType['ResourceSnowflakeArgs']]] = None,
             snowsight: Optional[pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']]] = None,
             sql_server: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerArgs']]] = None,
+            sql_server_azure_ad: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerAzureAdArgs']]] = None,
+            sql_server_kerberos_ad: Optional[pulumi.Input[pulumi.InputType['ResourceSqlServerKerberosAdArgs']]] = None,
             ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
             ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
             ssh_customer_key: Optional[pulumi.Input[pulumi.InputType['ResourceSshCustomerKeyArgs']]] = None,
@@ -2449,6 +2505,8 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["snowflake"] = snowflake
         __props__.__dict__["snowsight"] = snowsight
         __props__.__dict__["sql_server"] = sql_server
+        __props__.__dict__["sql_server_azure_ad"] = sql_server_azure_ad
+        __props__.__dict__["sql_server_kerberos_ad"] = sql_server_kerberos_ad
         __props__.__dict__["ssh"] = ssh
         __props__.__dict__["ssh_cert"] = ssh_cert
         __props__.__dict__["ssh_customer_key"] = ssh_customer_key
@@ -2834,6 +2892,16 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="sqlServer")
     def sql_server(self) -> pulumi.Output[Optional['outputs.ResourceSqlServer']]:
         return pulumi.get(self, "sql_server")
+
+    @property
+    @pulumi.getter(name="sqlServerAzureAd")
+    def sql_server_azure_ad(self) -> pulumi.Output[Optional['outputs.ResourceSqlServerAzureAd']]:
+        return pulumi.get(self, "sql_server_azure_ad")
+
+    @property
+    @pulumi.getter(name="sqlServerKerberosAd")
+    def sql_server_kerberos_ad(self) -> pulumi.Output[Optional['outputs.ResourceSqlServerKerberosAd']]:
+        return pulumi.get(self, "sql_server_kerberos_ad")
 
     @property
     @pulumi.getter

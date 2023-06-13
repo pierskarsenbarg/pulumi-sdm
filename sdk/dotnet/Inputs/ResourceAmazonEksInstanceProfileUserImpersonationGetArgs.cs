@@ -55,6 +55,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("portOverride")]
+        public Input<int>? PortOverride { get; set; }
+
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
@@ -70,29 +73,11 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("roleExternalId")]
         public Input<string>? RoleExternalId { get; set; }
 
-        [Input("secretStoreCertificateAuthorityKey")]
-        public Input<string>? SecretStoreCertificateAuthorityKey { get; set; }
-
-        [Input("secretStoreCertificateAuthorityPath")]
-        public Input<string>? SecretStoreCertificateAuthorityPath { get; set; }
-
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
-
-        [Input("secretStoreRoleArnKey")]
-        public Input<string>? SecretStoreRoleArnKey { get; set; }
-
-        [Input("secretStoreRoleArnPath")]
-        public Input<string>? SecretStoreRoleArnPath { get; set; }
-
-        [Input("secretStoreRoleExternalIdKey")]
-        public Input<string>? SecretStoreRoleExternalIdKey { get; set; }
-
-        [Input("secretStoreRoleExternalIdPath")]
-        public Input<string>? SecretStoreRoleExternalIdPath { get; set; }
 
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)

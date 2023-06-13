@@ -34,8 +34,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStorePrivateKeyKey;
-        public readonly string? SecretStorePrivateKeyPath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -64,10 +62,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            string? secretStorePrivateKeyKey,
-
-            string? secretStorePrivateKeyPath,
-
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
@@ -82,8 +76,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             PrivateKey = privateKey;
             Project = project;
             SecretStoreId = secretStoreId;
-            SecretStorePrivateKeyKey = secretStorePrivateKeyKey;
-            SecretStorePrivateKeyPath = secretStorePrivateKeyPath;
             Subdomain = subdomain;
             Tags = tags;
             Username = username;

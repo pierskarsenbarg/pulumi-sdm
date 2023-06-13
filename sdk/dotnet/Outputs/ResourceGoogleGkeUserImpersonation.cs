@@ -32,14 +32,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
-        public readonly string? SecretStoreCertificateAuthorityKey;
-        public readonly string? SecretStoreCertificateAuthorityPath;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStoreServiceAccountKeyKey;
-        public readonly string? SecretStoreServiceAccountKeyPath;
         public readonly string? ServiceAccountKey;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -64,15 +60,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string name,
 
-            string? secretStoreCertificateAuthorityKey,
-
-            string? secretStoreCertificateAuthorityPath,
-
             string? secretStoreId,
-
-            string? secretStoreServiceAccountKeyKey,
-
-            string? secretStoreServiceAccountKeyPath,
 
             string? serviceAccountKey,
 
@@ -86,11 +74,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Endpoint = endpoint;
             HealthcheckNamespace = healthcheckNamespace;
             Name = name;
-            SecretStoreCertificateAuthorityKey = secretStoreCertificateAuthorityKey;
-            SecretStoreCertificateAuthorityPath = secretStoreCertificateAuthorityPath;
             SecretStoreId = secretStoreId;
-            SecretStoreServiceAccountKeyKey = secretStoreServiceAccountKeyKey;
-            SecretStoreServiceAccountKeyPath = secretStoreServiceAccountKeyPath;
             ServiceAccountKey = serviceAccountKey;
             Subdomain = subdomain;
             Tags = tags;

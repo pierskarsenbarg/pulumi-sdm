@@ -64,35 +64,11 @@ namespace PiersKarsenbarg.Sdm.Inputs
             }
         }
 
-        [Input("secretStoreAccessKeyKey")]
-        public Input<string>? SecretStoreAccessKeyKey { get; set; }
-
-        [Input("secretStoreAccessKeyPath")]
-        public Input<string>? SecretStoreAccessKeyPath { get; set; }
-
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
-
-        [Input("secretStoreRoleArnKey")]
-        public Input<string>? SecretStoreRoleArnKey { get; set; }
-
-        [Input("secretStoreRoleArnPath")]
-        public Input<string>? SecretStoreRoleArnPath { get; set; }
-
-        [Input("secretStoreRoleExternalIdKey")]
-        public Input<string>? SecretStoreRoleExternalIdKey { get; set; }
-
-        [Input("secretStoreRoleExternalIdPath")]
-        public Input<string>? SecretStoreRoleExternalIdPath { get; set; }
-
-        [Input("secretStoreSecretAccessKeyKey")]
-        public Input<string>? SecretStoreSecretAccessKeyKey { get; set; }
-
-        [Input("secretStoreSecretAccessKeyPath")]
-        public Input<string>? SecretStoreSecretAccessKeyPath { get; set; }
 
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)

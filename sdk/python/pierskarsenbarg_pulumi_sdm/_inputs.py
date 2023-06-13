@@ -85,6 +85,8 @@ __all__ = [
     'ResourceSnowflakeArgs',
     'ResourceSnowsightArgs',
     'ResourceSqlServerArgs',
+    'ResourceSqlServerAzureAdArgs',
+    'ResourceSqlServerKerberosAdArgs',
     'ResourceSshArgs',
     'ResourceSshCertArgs',
     'ResourceSshCustomerKeyArgs',
@@ -578,12 +580,6 @@ class ResourceAksArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -617,18 +613,6 @@ class ResourceAksArgs:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
             pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
-        if secret_store_client_certificate_key is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_key", secret_store_client_certificate_key)
-        if secret_store_client_certificate_path is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_path", secret_store_client_certificate_path)
-        if secret_store_client_key_key is not None:
-            pulumi.set(__self__, "secret_store_client_key_key", secret_store_client_key_key)
-        if secret_store_client_key_path is not None:
-            pulumi.set(__self__, "secret_store_client_key_path", secret_store_client_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -757,60 +741,6 @@ class ResourceAksArgs:
         pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificateKey")
-    def secret_store_client_certificate_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_key")
-
-    @secret_store_client_certificate_key.setter
-    def secret_store_client_certificate_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificatePath")
-    def secret_store_client_certificate_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_path")
-
-    @secret_store_client_certificate_path.setter
-    def secret_store_client_certificate_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyKey")
-    def secret_store_client_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_key")
-
-    @secret_store_client_key_key.setter
-    def secret_store_client_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyPath")
-    def secret_store_client_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_path")
-
-    @secret_store_client_key_path.setter
-    def secret_store_client_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -859,10 +789,6 @@ class ResourceAksBasicAuthArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -872,7 +798,6 @@ class ResourceAksBasicAuthArgs:
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -891,14 +816,6 @@ class ResourceAksBasicAuthArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -1003,45 +920,6 @@ class ResourceAksBasicAuthArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1088,8 +966,6 @@ class ResourceAksServiceAccountArgs:
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_token_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_token_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
@@ -1099,9 +975,9 @@ class ResourceAksServiceAccountArgs:
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_token_key: * kubernetes_user_impersonation:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] token: * kubernetes_user_impersonation:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -1120,10 +996,6 @@ class ResourceAksServiceAccountArgs:
             pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_token_key is not None:
-            pulumi.set(__self__, "secret_store_token_key", secret_store_token_key)
-        if secret_store_token_path is not None:
-            pulumi.set(__self__, "secret_store_token_path", secret_store_token_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -1237,27 +1109,6 @@ class ResourceAksServiceAccountArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreTokenKey")
-    def secret_store_token_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * kubernetes_user_impersonation:
-        """
-        return pulumi.get(self, "secret_store_token_key")
-
-    @secret_store_token_key.setter
-    def secret_store_token_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_token_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreTokenPath")
-    def secret_store_token_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_token_path")
-
-    @secret_store_token_path.setter
-    def secret_store_token_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_token_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1284,6 +1135,9 @@ class ResourceAksServiceAccountArgs:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        * kubernetes_user_impersonation:
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -1302,8 +1156,6 @@ class ResourceAksServiceAccountUserImpersonationArgs:
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_token_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_token_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
@@ -1313,9 +1165,9 @@ class ResourceAksServiceAccountUserImpersonationArgs:
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_token_key: * kubernetes_user_impersonation:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] token: * kubernetes_user_impersonation:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -1330,10 +1182,6 @@ class ResourceAksServiceAccountUserImpersonationArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_token_key is not None:
-            pulumi.set(__self__, "secret_store_token_key", secret_store_token_key)
-        if secret_store_token_path is not None:
-            pulumi.set(__self__, "secret_store_token_path", secret_store_token_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -1429,27 +1277,6 @@ class ResourceAksServiceAccountUserImpersonationArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreTokenKey")
-    def secret_store_token_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * kubernetes_user_impersonation:
-        """
-        return pulumi.get(self, "secret_store_token_key")
-
-    @secret_store_token_key.setter
-    def secret_store_token_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_token_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreTokenPath")
-    def secret_store_token_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_token_path")
-
-    @secret_store_token_path.setter
-    def secret_store_token_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_token_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1476,6 +1303,9 @@ class ResourceAksServiceAccountUserImpersonationArgs:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        * kubernetes_user_impersonation:
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -1496,12 +1326,6 @@ class ResourceAksUserImpersonationArgs:
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -1531,18 +1355,6 @@ class ResourceAksUserImpersonationArgs:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
-        if secret_store_client_certificate_key is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_key", secret_store_client_certificate_key)
-        if secret_store_client_certificate_path is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_path", secret_store_client_certificate_path)
-        if secret_store_client_key_key is not None:
-            pulumi.set(__self__, "secret_store_client_key_key", secret_store_client_key_key)
-        if secret_store_client_key_path is not None:
-            pulumi.set(__self__, "secret_store_client_key_path", secret_store_client_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -1653,60 +1465,6 @@ class ResourceAksUserImpersonationArgs:
         pulumi.set(self, "port_override", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificateKey")
-    def secret_store_client_certificate_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_key")
-
-    @secret_store_client_certificate_key.setter
-    def secret_store_client_certificate_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificatePath")
-    def secret_store_client_certificate_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_path")
-
-    @secret_store_client_certificate_path.setter
-    def secret_store_client_certificate_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyKey")
-    def secret_store_client_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_key")
-
-    @secret_store_client_key_key.setter
-    def secret_store_client_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyPath")
-    def secret_store_client_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_path")
-
-    @secret_store_client_key_path.setter
-    def secret_store_client_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1755,22 +1513,13 @@ class ResourceAmazonEksArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -1796,6 +1545,8 @@ class ResourceAmazonEksArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -1806,28 +1557,8 @@ class ResourceAmazonEksArgs:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_store_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_access_key_key", secret_store_access_key_key)
-        if secret_store_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_access_key_path", secret_store_access_key_path)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
-        if secret_store_secret_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
-        if secret_store_secret_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -1927,6 +1658,15 @@ class ResourceAmazonEksArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -1972,42 +1712,6 @@ class ResourceAmazonEksArgs:
         pulumi.set(self, "secret_access_key", value)
 
     @property
-    @pulumi.getter(name="secretStoreAccessKeyKey")
-    def secret_store_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_key")
-
-    @secret_store_access_key_key.setter
-    def secret_store_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAccessKeyPath")
-    def secret_store_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_path")
-
-    @secret_store_access_key_path.setter
-    def secret_store_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2018,60 +1722,6 @@ class ResourceAmazonEksArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyKey")
-    def secret_store_secret_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_key")
-
-    @secret_store_secret_access_key_key.setter
-    def secret_store_secret_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyPath")
-    def secret_store_secret_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_path")
-
-    @secret_store_secret_access_key_path.setter
-    def secret_store_secret_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_path", value)
 
     @property
     @pulumi.getter
@@ -2109,17 +1759,12 @@ class ResourceAmazonEksInstanceProfileArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -2143,6 +1788,8 @@ class ResourceAmazonEksInstanceProfileArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -2151,20 +1798,8 @@ class ResourceAmazonEksInstanceProfileArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
             pulumi.set(__self__, "role_external_id", role_external_id)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -2255,6 +1890,15 @@ class ResourceAmazonEksInstanceProfileArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -2291,24 +1935,6 @@ class ResourceAmazonEksInstanceProfileArgs:
         pulumi.set(self, "role_external_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2319,42 +1945,6 @@ class ResourceAmazonEksInstanceProfileArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
 
     @property
     @pulumi.getter
@@ -2392,17 +1982,12 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -2426,6 +2011,8 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -2434,20 +2021,8 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
             pulumi.set(__self__, "role_external_id", role_external_id)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -2538,6 +2113,15 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "remote_identity_group_id")
@@ -2574,24 +2158,6 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
         pulumi.set(self, "role_external_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2602,42 +2168,6 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
 
     @property
     @pulumi.getter
@@ -2676,20 +2206,11 @@ class ResourceAmazonEksUserImpersonationArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -2715,34 +2236,16 @@ class ResourceAmazonEksUserImpersonationArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_store_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_access_key_key", secret_store_access_key_key)
-        if secret_store_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_access_key_path", secret_store_access_key_path)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
-        if secret_store_secret_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
-        if secret_store_secret_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -2842,6 +2345,15 @@ class ResourceAmazonEksUserImpersonationArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "role_arn")
@@ -2869,42 +2381,6 @@ class ResourceAmazonEksUserImpersonationArgs:
         pulumi.set(self, "secret_access_key", value)
 
     @property
-    @pulumi.getter(name="secretStoreAccessKeyKey")
-    def secret_store_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_key")
-
-    @secret_store_access_key_key.setter
-    def secret_store_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAccessKeyPath")
-    def secret_store_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_path")
-
-    @secret_store_access_key_path.setter
-    def secret_store_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2915,60 +2391,6 @@ class ResourceAmazonEksUserImpersonationArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyKey")
-    def secret_store_secret_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_key")
-
-    @secret_store_secret_access_key_key.setter
-    def secret_store_secret_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyPath")
-    def secret_store_secret_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_path")
-
-    @secret_store_secret_access_key_path.setter
-    def secret_store_secret_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_path", value)
 
     @property
     @pulumi.getter
@@ -3008,15 +2430,7 @@ class ResourceAmazonEsArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -3045,24 +2459,8 @@ class ResourceAmazonEsArgs:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_store_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_access_key_key", secret_store_access_key_key)
-        if secret_store_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_access_key_path", secret_store_access_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
-        if secret_store_secret_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
-        if secret_store_secret_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -3168,24 +2566,6 @@ class ResourceAmazonEsArgs:
         pulumi.set(self, "secret_access_key", value)
 
     @property
-    @pulumi.getter(name="secretStoreAccessKeyKey")
-    def secret_store_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_key")
-
-    @secret_store_access_key_key.setter
-    def secret_store_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAccessKeyPath")
-    def secret_store_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_path")
-
-    @secret_store_access_key_path.setter
-    def secret_store_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3196,60 +2576,6 @@ class ResourceAmazonEsArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyKey")
-    def secret_store_secret_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_key")
-
-    @secret_store_secret_access_key_key.setter
-    def secret_store_secret_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyPath")
-    def secret_store_secret_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_path")
-
-    @secret_store_secret_access_key_path.setter
-    def secret_store_secret_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_path", value)
 
     @property
     @pulumi.getter
@@ -3287,10 +2613,6 @@ class ResourceAmazonmqAmqp091Args:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -3300,7 +2622,6 @@ class ResourceAmazonmqAmqp091Args:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -3318,14 +2639,6 @@ class ResourceAmazonmqAmqp091Args:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -3420,45 +2733,6 @@ class ResourceAmazonmqAmqp091Args:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3514,15 +2788,7 @@ class ResourceAthenaArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -3551,24 +2817,8 @@ class ResourceAthenaArgs:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_store_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_access_key_key", secret_store_access_key_key)
-        if secret_store_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_access_key_path", secret_store_access_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
-        if secret_store_secret_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
-        if secret_store_secret_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -3674,24 +2924,6 @@ class ResourceAthenaArgs:
         pulumi.set(self, "secret_access_key", value)
 
     @property
-    @pulumi.getter(name="secretStoreAccessKeyKey")
-    def secret_store_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_key")
-
-    @secret_store_access_key_key.setter
-    def secret_store_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAccessKeyPath")
-    def secret_store_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_path")
-
-    @secret_store_access_key_path.setter
-    def secret_store_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3702,60 +2934,6 @@ class ResourceAthenaArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyKey")
-    def secret_store_secret_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_key")
-
-    @secret_store_secret_access_key_key.setter
-    def secret_store_secret_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyPath")
-    def secret_store_secret_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_path")
-
-    @secret_store_secret_access_key_path.setter
-    def secret_store_secret_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_path", value)
 
     @property
     @pulumi.getter
@@ -3793,20 +2971,17 @@ class ResourceAuroraMysqlArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
+                 require_native_auth: Optional[pulumi.Input[bool]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -3823,20 +2998,16 @@ class ResourceAuroraMysqlArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if require_native_auth is not None:
+            pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -3922,6 +3093,15 @@ class ResourceAuroraMysqlArgs:
         pulumi.set(self, "port_override", value)
 
     @property
+    @pulumi.getter(name="requireNativeAuth")
+    def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "require_native_auth")
+
+    @require_native_auth.setter
+    def require_native_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_native_auth", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -3932,45 +3112,6 @@ class ResourceAuroraMysqlArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -3997,6 +3138,15 @@ class ResourceAuroraMysqlArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "username")
@@ -4019,10 +3169,6 @@ class ResourceAuroraPostgresArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -4031,7 +3177,6 @@ class ResourceAuroraPostgresArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -4052,14 +3197,6 @@ class ResourceAuroraPostgresArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -4170,45 +3307,6 @@ class ResourceAuroraPostgresArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4254,15 +3352,7 @@ class ResourceAwsArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -4289,24 +3379,8 @@ class ResourceAwsArgs:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_store_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_access_key_key", secret_store_access_key_key)
-        if secret_store_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_access_key_path", secret_store_access_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
-        if secret_store_secret_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
-        if secret_store_secret_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -4403,24 +3477,6 @@ class ResourceAwsArgs:
         pulumi.set(self, "secret_access_key", value)
 
     @property
-    @pulumi.getter(name="secretStoreAccessKeyKey")
-    def secret_store_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_key")
-
-    @secret_store_access_key_key.setter
-    def secret_store_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAccessKeyPath")
-    def secret_store_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_path")
-
-    @secret_store_access_key_path.setter
-    def secret_store_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4431,60 +3487,6 @@ class ResourceAwsArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyKey")
-    def secret_store_secret_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_key")
-
-    @secret_store_secret_access_key_key.setter
-    def secret_store_secret_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyPath")
-    def secret_store_secret_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_path")
-
-    @secret_store_secret_access_key_path.setter
-    def secret_store_secret_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_path", value)
 
     @property
     @pulumi.getter
@@ -4526,10 +3528,6 @@ class ResourceAwsConsoleArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
                  session_expiry: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -4561,14 +3559,6 @@ class ResourceAwsConsoleArgs:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
         if session_expiry is not None:
             pulumi.set(__self__, "session_expiry", session_expiry)
         if tags is not None:
@@ -4698,42 +3688,6 @@ class ResourceAwsConsoleArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "session_expiry")
@@ -4770,15 +3724,7 @@ class ResourceAwsConsoleStaticKeyPairArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_path: Optional[pulumi.Input[str]] = None,
                  session_expiry: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -4810,24 +3756,8 @@ class ResourceAwsConsoleStaticKeyPairArgs:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_store_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_access_key_key", secret_store_access_key_key)
-        if secret_store_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_access_key_path", secret_store_access_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
-        if secret_store_secret_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
-        if secret_store_secret_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
         if session_expiry is not None:
             pulumi.set(__self__, "session_expiry", session_expiry)
         if tags is not None:
@@ -4954,24 +3884,6 @@ class ResourceAwsConsoleStaticKeyPairArgs:
         pulumi.set(self, "secret_access_key", value)
 
     @property
-    @pulumi.getter(name="secretStoreAccessKeyKey")
-    def secret_store_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_key")
-
-    @secret_store_access_key_key.setter
-    def secret_store_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAccessKeyPath")
-    def secret_store_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_path")
-
-    @secret_store_access_key_path.setter
-    def secret_store_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -4982,60 +3894,6 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyKey")
-    def secret_store_secret_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_key")
-
-    @secret_store_secret_access_key_key.setter
-    def secret_store_secret_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyPath")
-    def secret_store_secret_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_path")
-
-    @secret_store_secret_access_key_path.setter
-    def secret_store_secret_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_path", value)
 
     @property
     @pulumi.getter(name="sessionExpiry")
@@ -5068,13 +3926,7 @@ class ResourceAzureArgs:
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 secret_store_app_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_app_id_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_tenant_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_tenant_id_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
@@ -5083,9 +3935,9 @@ class ResourceAzureArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_tenant_id_key: * azure_mysql:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] tenant_id: * sql_server_kerberos_ad:
         """
         pulumi.set(__self__, "name", name)
         if app_id is not None:
@@ -5098,20 +3950,8 @@ class ResourceAzureArgs:
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if secret_store_app_id_key is not None:
-            pulumi.set(__self__, "secret_store_app_id_key", secret_store_app_id_key)
-        if secret_store_app_id_path is not None:
-            pulumi.set(__self__, "secret_store_app_id_path", secret_store_app_id_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_tenant_id_key is not None:
-            pulumi.set(__self__, "secret_store_tenant_id_key", secret_store_tenant_id_key)
-        if secret_store_tenant_id_path is not None:
-            pulumi.set(__self__, "secret_store_tenant_id_path", secret_store_tenant_id_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -5183,24 +4023,6 @@ class ResourceAzureArgs:
         pulumi.set(self, "port_override", value)
 
     @property
-    @pulumi.getter(name="secretStoreAppIdKey")
-    def secret_store_app_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_app_id_key")
-
-    @secret_store_app_id_key.setter
-    def secret_store_app_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_app_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAppIdPath")
-    def secret_store_app_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_app_id_path")
-
-    @secret_store_app_id_path.setter
-    def secret_store_app_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_app_id_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5211,45 +4033,6 @@ class ResourceAzureArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreTenantIdKey")
-    def secret_store_tenant_id_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * azure_mysql:
-        """
-        return pulumi.get(self, "secret_store_tenant_id_key")
-
-    @secret_store_tenant_id_key.setter
-    def secret_store_tenant_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_tenant_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreTenantIdPath")
-    def secret_store_tenant_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_tenant_id_path")
-
-    @secret_store_tenant_id_path.setter
-    def secret_store_tenant_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_tenant_id_path", value)
 
     @property
     @pulumi.getter
@@ -5278,6 +4061,9 @@ class ResourceAzureArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        * sql_server_kerberos_ad:
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -5294,13 +4080,7 @@ class ResourceAzureCertificateArgs:
                  client_certificate: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 secret_store_app_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_app_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_tenant_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_tenant_id_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
@@ -5309,9 +4089,9 @@ class ResourceAzureCertificateArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_tenant_id_key: * azure_mysql:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] tenant_id: * sql_server_kerberos_ad:
         """
         pulumi.set(__self__, "name", name)
         if app_id is not None:
@@ -5324,20 +4104,8 @@ class ResourceAzureCertificateArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if secret_store_app_id_key is not None:
-            pulumi.set(__self__, "secret_store_app_id_key", secret_store_app_id_key)
-        if secret_store_app_id_path is not None:
-            pulumi.set(__self__, "secret_store_app_id_path", secret_store_app_id_path)
-        if secret_store_client_certificate_key is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_key", secret_store_client_certificate_key)
-        if secret_store_client_certificate_path is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_path", secret_store_client_certificate_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_tenant_id_key is not None:
-            pulumi.set(__self__, "secret_store_tenant_id_key", secret_store_tenant_id_key)
-        if secret_store_tenant_id_path is not None:
-            pulumi.set(__self__, "secret_store_tenant_id_path", secret_store_tenant_id_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -5409,42 +4177,6 @@ class ResourceAzureCertificateArgs:
         pulumi.set(self, "port_override", value)
 
     @property
-    @pulumi.getter(name="secretStoreAppIdKey")
-    def secret_store_app_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_app_id_key")
-
-    @secret_store_app_id_key.setter
-    def secret_store_app_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_app_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAppIdPath")
-    def secret_store_app_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_app_id_path")
-
-    @secret_store_app_id_path.setter
-    def secret_store_app_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_app_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificateKey")
-    def secret_store_client_certificate_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_key")
-
-    @secret_store_client_certificate_key.setter
-    def secret_store_client_certificate_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificatePath")
-    def secret_store_client_certificate_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_path")
-
-    @secret_store_client_certificate_path.setter
-    def secret_store_client_certificate_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5455,27 +4187,6 @@ class ResourceAzureCertificateArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreTenantIdKey")
-    def secret_store_tenant_id_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * azure_mysql:
-        """
-        return pulumi.get(self, "secret_store_tenant_id_key")
-
-    @secret_store_tenant_id_key.setter
-    def secret_store_tenant_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_tenant_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreTenantIdPath")
-    def secret_store_tenant_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_tenant_id_path")
-
-    @secret_store_tenant_id_path.setter
-    def secret_store_tenant_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_tenant_id_path", value)
 
     @property
     @pulumi.getter
@@ -5504,6 +4215,9 @@ class ResourceAzureCertificateArgs:
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        * sql_server_kerberos_ad:
+        """
         return pulumi.get(self, "tenant_id")
 
     @tenant_id.setter
@@ -5522,20 +4236,17 @@ class ResourceAzureMysqlArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
+                 require_native_auth: Optional[pulumi.Input[bool]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -5552,20 +4263,16 @@ class ResourceAzureMysqlArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if require_native_auth is not None:
+            pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -5651,6 +4358,15 @@ class ResourceAzureMysqlArgs:
         pulumi.set(self, "port_override", value)
 
     @property
+    @pulumi.getter(name="requireNativeAuth")
+    def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "require_native_auth")
+
+    @require_native_auth.setter
+    def require_native_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_native_auth", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5661,45 +4377,6 @@ class ResourceAzureMysqlArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -5726,6 +4403,15 @@ class ResourceAzureMysqlArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "username")
@@ -5748,10 +4434,6 @@ class ResourceAzurePostgresArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -5760,7 +4442,6 @@ class ResourceAzurePostgresArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -5781,14 +4462,6 @@ class ResourceAzurePostgresArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -5899,45 +4572,6 @@ class ResourceAzurePostgresArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -5982,8 +4616,6 @@ class ResourceBigQueryArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_private_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_private_key_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -6008,10 +4640,6 @@ class ResourceBigQueryArgs:
             pulumi.set(__self__, "private_key", private_key)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_private_key_key is not None:
-            pulumi.set(__self__, "secret_store_private_key_key", secret_store_private_key_key)
-        if secret_store_private_key_path is not None:
-            pulumi.set(__self__, "secret_store_private_key_path", secret_store_private_key_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -6104,24 +4732,6 @@ class ResourceBigQueryArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePrivateKeyKey")
-    def secret_store_private_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_private_key_key")
-
-    @secret_store_private_key_key.setter
-    def secret_store_private_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_private_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePrivateKeyPath")
-    def secret_store_private_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_private_key_path")
-
-    @secret_store_private_key_path.setter
-    def secret_store_private_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_private_key_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6166,10 +4776,6 @@ class ResourceCassandraArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -6179,7 +4785,6 @@ class ResourceCassandraArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -6197,14 +4802,6 @@ class ResourceCassandraArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -6299,45 +4896,6 @@ class ResourceCassandraArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6393,10 +4951,6 @@ class ResourceCitusArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -6405,7 +4959,6 @@ class ResourceCitusArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -6426,14 +4979,6 @@ class ResourceCitusArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -6542,45 +5087,6 @@ class ResourceCitusArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -6627,20 +5133,17 @@ class ResourceClustrixArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
+                 require_native_auth: Optional[pulumi.Input[bool]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -6657,20 +5160,16 @@ class ResourceClustrixArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if require_native_auth is not None:
+            pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -6756,6 +5255,15 @@ class ResourceClustrixArgs:
         pulumi.set(self, "port_override", value)
 
     @property
+    @pulumi.getter(name="requireNativeAuth")
+    def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "require_native_auth")
+
+    @require_native_auth.setter
+    def require_native_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_native_auth", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6766,45 +5274,6 @@ class ResourceClustrixArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -6831,6 +5300,15 @@ class ResourceClustrixArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "username")
@@ -6853,10 +5331,6 @@ class ResourceCockroachArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -6865,7 +5339,6 @@ class ResourceCockroachArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -6886,14 +5359,6 @@ class ResourceCockroachArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -7004,45 +5469,6 @@ class ResourceCockroachArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7087,10 +5513,6 @@ class ResourceDb2IArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -7100,7 +5522,6 @@ class ResourceDb2IArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -7117,14 +5538,6 @@ class ResourceDb2IArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -7219,45 +5632,6 @@ class ResourceDb2IArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7312,10 +5686,6 @@ class ResourceDb2LuwArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -7324,7 +5694,6 @@ class ResourceDb2LuwArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -7343,14 +5712,6 @@ class ResourceDb2LuwArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -7452,45 +5813,6 @@ class ResourceDb2LuwArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7536,10 +5858,6 @@ class ResourceDocumentDbHostArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -7548,7 +5866,6 @@ class ResourceDocumentDbHostArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -7567,14 +5884,6 @@ class ResourceDocumentDbHostArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -7676,45 +5985,6 @@ class ResourceDocumentDbHostArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7761,10 +6031,6 @@ class ResourceDocumentDbReplicaSetArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -7773,7 +6039,6 @@ class ResourceDocumentDbReplicaSetArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -7793,14 +6058,6 @@ class ResourceDocumentDbReplicaSetArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -7911,45 +6168,6 @@ class ResourceDocumentDbReplicaSetArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7994,10 +6212,6 @@ class ResourceDruidArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -8006,7 +6220,6 @@ class ResourceDruidArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -8024,14 +6237,6 @@ class ResourceDruidArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -8124,45 +6329,6 @@ class ResourceDruidArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -8209,15 +6375,7 @@ class ResourceDynamoDbArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -8245,24 +6403,8 @@ class ResourceDynamoDbArgs:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_store_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_access_key_key", secret_store_access_key_key)
-        if secret_store_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_access_key_path", secret_store_access_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
-        if secret_store_secret_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
-        if secret_store_secret_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -8368,24 +6510,6 @@ class ResourceDynamoDbArgs:
         pulumi.set(self, "secret_access_key", value)
 
     @property
-    @pulumi.getter(name="secretStoreAccessKeyKey")
-    def secret_store_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_key")
-
-    @secret_store_access_key_key.setter
-    def secret_store_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAccessKeyPath")
-    def secret_store_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_path")
-
-    @secret_store_access_key_path.setter
-    def secret_store_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -8396,60 +6520,6 @@ class ResourceDynamoDbArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyKey")
-    def secret_store_secret_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_key")
-
-    @secret_store_secret_access_key_key.setter
-    def secret_store_secret_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyPath")
-    def secret_store_secret_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_path")
-
-    @secret_store_secret_access_key_path.setter
-    def secret_store_secret_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_path", value)
 
     @property
     @pulumi.getter
@@ -8487,10 +6557,6 @@ class ResourceElasticArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -8500,7 +6566,6 @@ class ResourceElasticArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -8518,14 +6583,6 @@ class ResourceElasticArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -8618,45 +6675,6 @@ class ResourceElasticArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -8712,10 +6730,6 @@ class ResourceElasticacheRedisArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -8725,7 +6739,6 @@ class ResourceElasticacheRedisArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -8743,14 +6756,6 @@ class ResourceElasticacheRedisArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -8845,45 +6850,6 @@ class ResourceElasticacheRedisArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -8936,8 +6902,6 @@ class ResourceGcpArgs:
                  keyfile: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_keyfile_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_keyfile_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -8960,10 +6924,6 @@ class ResourceGcpArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_keyfile_key is not None:
-            pulumi.set(__self__, "secret_store_keyfile_key", secret_store_keyfile_key)
-        if secret_store_keyfile_path is not None:
-            pulumi.set(__self__, "secret_store_keyfile_path", secret_store_keyfile_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -9045,24 +7005,6 @@ class ResourceGcpArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreKeyfileKey")
-    def secret_store_keyfile_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_keyfile_key")
-
-    @secret_store_keyfile_key.setter
-    def secret_store_keyfile_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_keyfile_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreKeyfilePath")
-    def secret_store_keyfile_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_keyfile_path")
-
-    @secret_store_keyfile_path.setter
-    def secret_store_keyfile_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_keyfile_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -9098,11 +7040,7 @@ class ResourceGoogleGkeArgs:
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_service_account_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_service_account_key_path: Optional[pulumi.Input[str]] = None,
                  service_account_key: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -9129,16 +7067,8 @@ class ResourceGoogleGkeArgs:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
             pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_service_account_key_key is not None:
-            pulumi.set(__self__, "secret_store_service_account_key_key", secret_store_service_account_key_key)
-        if secret_store_service_account_key_path is not None:
-            pulumi.set(__self__, "secret_store_service_account_key_path", secret_store_service_account_key_path)
         if service_account_key is not None:
             pulumi.set(__self__, "service_account_key", service_account_key)
         if subdomain is not None:
@@ -9231,24 +7161,6 @@ class ResourceGoogleGkeArgs:
         pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -9259,24 +7171,6 @@ class ResourceGoogleGkeArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreServiceAccountKeyKey")
-    def secret_store_service_account_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_service_account_key_key")
-
-    @secret_store_service_account_key_key.setter
-    def secret_store_service_account_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_service_account_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreServiceAccountKeyPath")
-    def secret_store_service_account_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_service_account_key_path")
-
-    @secret_store_service_account_key_path.setter
-    def secret_store_service_account_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_service_account_key_path", value)
 
     @property
     @pulumi.getter(name="serviceAccountKey")
@@ -9321,11 +7215,7 @@ class ResourceGoogleGkeUserImpersonationArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_service_account_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_service_account_key_path: Optional[pulumi.Input[str]] = None,
                  service_account_key: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -9348,16 +7238,8 @@ class ResourceGoogleGkeUserImpersonationArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_service_account_key_key is not None:
-            pulumi.set(__self__, "secret_store_service_account_key_key", secret_store_service_account_key_key)
-        if secret_store_service_account_key_path is not None:
-            pulumi.set(__self__, "secret_store_service_account_key_path", secret_store_service_account_key_path)
         if service_account_key is not None:
             pulumi.set(__self__, "service_account_key", service_account_key)
         if subdomain is not None:
@@ -9432,24 +7314,6 @@ class ResourceGoogleGkeUserImpersonationArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -9460,24 +7324,6 @@ class ResourceGoogleGkeUserImpersonationArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreServiceAccountKeyKey")
-    def secret_store_service_account_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_service_account_key_key")
-
-    @secret_store_service_account_key_key.setter
-    def secret_store_service_account_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_service_account_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreServiceAccountKeyPath")
-    def secret_store_service_account_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_service_account_key_path")
-
-    @secret_store_service_account_key_path.setter
-    def secret_store_service_account_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_service_account_key_path", value)
 
     @property
     @pulumi.getter(name="serviceAccountKey")
@@ -9526,10 +7372,6 @@ class ResourceGreenplumArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -9538,7 +7380,6 @@ class ResourceGreenplumArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -9559,14 +7400,6 @@ class ResourceGreenplumArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -9677,45 +7510,6 @@ class ResourceGreenplumArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -9762,8 +7556,6 @@ class ResourceHttpAuthArgs:
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  headers_blacklist: Optional[pulumi.Input[str]] = None,
                  host_override: Optional[pulumi.Input[str]] = None,
-                 secret_store_auth_header_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_auth_header_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -9791,10 +7583,6 @@ class ResourceHttpAuthArgs:
             pulumi.set(__self__, "headers_blacklist", headers_blacklist)
         if host_override is not None:
             pulumi.set(__self__, "host_override", host_override)
-        if secret_store_auth_header_key is not None:
-            pulumi.set(__self__, "secret_store_auth_header_key", secret_store_auth_header_key)
-        if secret_store_auth_header_path is not None:
-            pulumi.set(__self__, "secret_store_auth_header_path", secret_store_auth_header_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -9906,24 +7694,6 @@ class ResourceHttpAuthArgs:
         pulumi.set(self, "host_override", value)
 
     @property
-    @pulumi.getter(name="secretStoreAuthHeaderKey")
-    def secret_store_auth_header_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_auth_header_key")
-
-    @secret_store_auth_header_key.setter
-    def secret_store_auth_header_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_auth_header_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAuthHeaderPath")
-    def secret_store_auth_header_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_auth_header_path")
-
-    @secret_store_auth_header_path.setter
-    def secret_store_auth_header_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_auth_header_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -9962,10 +7732,6 @@ class ResourceHttpBasicAuthArgs:
                  host_override: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
@@ -9975,7 +7741,6 @@ class ResourceHttpBasicAuthArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "healthcheck_path", healthcheck_path)
@@ -9996,14 +7761,6 @@ class ResourceHttpBasicAuthArgs:
             pulumi.set(__self__, "password", password)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
@@ -10125,45 +7882,6 @@ class ResourceHttpBasicAuthArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -10365,12 +8083,6 @@ class ResourceKubernetesArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -10404,18 +8116,6 @@ class ResourceKubernetesArgs:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
             pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
-        if secret_store_client_certificate_key is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_key", secret_store_client_certificate_key)
-        if secret_store_client_certificate_path is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_path", secret_store_client_certificate_path)
-        if secret_store_client_key_key is not None:
-            pulumi.set(__self__, "secret_store_client_key_key", secret_store_client_key_key)
-        if secret_store_client_key_path is not None:
-            pulumi.set(__self__, "secret_store_client_key_path", secret_store_client_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -10544,60 +8244,6 @@ class ResourceKubernetesArgs:
         pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificateKey")
-    def secret_store_client_certificate_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_key")
-
-    @secret_store_client_certificate_key.setter
-    def secret_store_client_certificate_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificatePath")
-    def secret_store_client_certificate_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_path")
-
-    @secret_store_client_certificate_path.setter
-    def secret_store_client_certificate_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyKey")
-    def secret_store_client_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_key")
-
-    @secret_store_client_key_key.setter
-    def secret_store_client_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyPath")
-    def secret_store_client_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_path")
-
-    @secret_store_client_key_path.setter
-    def secret_store_client_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -10646,10 +8292,6 @@ class ResourceKubernetesBasicAuthArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -10659,7 +8301,6 @@ class ResourceKubernetesBasicAuthArgs:
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -10678,14 +8319,6 @@ class ResourceKubernetesBasicAuthArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -10790,45 +8423,6 @@ class ResourceKubernetesBasicAuthArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -10875,8 +8469,6 @@ class ResourceKubernetesServiceAccountArgs:
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_token_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_token_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
@@ -10886,9 +8478,9 @@ class ResourceKubernetesServiceAccountArgs:
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_token_key: * kubernetes_user_impersonation:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] token: * kubernetes_user_impersonation:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -10907,10 +8499,6 @@ class ResourceKubernetesServiceAccountArgs:
             pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_token_key is not None:
-            pulumi.set(__self__, "secret_store_token_key", secret_store_token_key)
-        if secret_store_token_path is not None:
-            pulumi.set(__self__, "secret_store_token_path", secret_store_token_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -11024,27 +8612,6 @@ class ResourceKubernetesServiceAccountArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreTokenKey")
-    def secret_store_token_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * kubernetes_user_impersonation:
-        """
-        return pulumi.get(self, "secret_store_token_key")
-
-    @secret_store_token_key.setter
-    def secret_store_token_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_token_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreTokenPath")
-    def secret_store_token_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_token_path")
-
-    @secret_store_token_path.setter
-    def secret_store_token_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_token_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -11071,6 +8638,9 @@ class ResourceKubernetesServiceAccountArgs:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        * kubernetes_user_impersonation:
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -11089,8 +8659,6 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_token_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_token_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
@@ -11100,9 +8668,9 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_token_key: * kubernetes_user_impersonation:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] token: * kubernetes_user_impersonation:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -11117,10 +8685,6 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_token_key is not None:
-            pulumi.set(__self__, "secret_store_token_key", secret_store_token_key)
-        if secret_store_token_path is not None:
-            pulumi.set(__self__, "secret_store_token_path", secret_store_token_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -11216,27 +8780,6 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreTokenKey")
-    def secret_store_token_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * kubernetes_user_impersonation:
-        """
-        return pulumi.get(self, "secret_store_token_key")
-
-    @secret_store_token_key.setter
-    def secret_store_token_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_token_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreTokenPath")
-    def secret_store_token_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_token_path")
-
-    @secret_store_token_path.setter
-    def secret_store_token_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_token_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -11263,6 +8806,9 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
     @property
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        * kubernetes_user_impersonation:
+        """
         return pulumi.get(self, "token")
 
     @token.setter
@@ -11283,12 +8829,6 @@ class ResourceKubernetesUserImpersonationArgs:
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -11318,18 +8858,6 @@ class ResourceKubernetesUserImpersonationArgs:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
-        if secret_store_client_certificate_key is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_key", secret_store_client_certificate_key)
-        if secret_store_client_certificate_path is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_path", secret_store_client_certificate_path)
-        if secret_store_client_key_key is not None:
-            pulumi.set(__self__, "secret_store_client_key_key", secret_store_client_key_key)
-        if secret_store_client_key_path is not None:
-            pulumi.set(__self__, "secret_store_client_key_path", secret_store_client_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -11440,60 +8968,6 @@ class ResourceKubernetesUserImpersonationArgs:
         pulumi.set(self, "port_override", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificateKey")
-    def secret_store_client_certificate_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_key")
-
-    @secret_store_client_certificate_key.setter
-    def secret_store_client_certificate_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificatePath")
-    def secret_store_client_certificate_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_path")
-
-    @secret_store_client_certificate_path.setter
-    def secret_store_client_certificate_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyKey")
-    def secret_store_client_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_key")
-
-    @secret_store_client_key_key.setter
-    def secret_store_client_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyPath")
-    def secret_store_client_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_path")
-
-    @secret_store_client_key_path.setter
-    def secret_store_client_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -11541,20 +9015,17 @@ class ResourceMariaArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
+                 require_native_auth: Optional[pulumi.Input[bool]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -11571,20 +9042,16 @@ class ResourceMariaArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if require_native_auth is not None:
+            pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -11670,6 +9137,15 @@ class ResourceMariaArgs:
         pulumi.set(self, "port_override", value)
 
     @property
+    @pulumi.getter(name="requireNativeAuth")
+    def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "require_native_auth")
+
+    @require_native_auth.setter
+    def require_native_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_native_auth", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -11680,45 +9156,6 @@ class ResourceMariaArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -11743,6 +9180,15 @@ class ResourceMariaArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
 
     @property
     @pulumi.getter
@@ -11902,20 +9348,17 @@ class ResourceMemsqlArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
+                 require_native_auth: Optional[pulumi.Input[bool]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -11932,20 +9375,16 @@ class ResourceMemsqlArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if require_native_auth is not None:
+            pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -12031,6 +9470,15 @@ class ResourceMemsqlArgs:
         pulumi.set(self, "port_override", value)
 
     @property
+    @pulumi.getter(name="requireNativeAuth")
+    def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "require_native_auth")
+
+    @require_native_auth.setter
+    def require_native_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_native_auth", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -12041,45 +9489,6 @@ class ResourceMemsqlArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -12106,6 +9515,15 @@ class ResourceMemsqlArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "username")
@@ -12127,10 +9545,6 @@ class ResourceMongoHostArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -12140,7 +9554,6 @@ class ResourceMongoHostArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -12159,14 +9572,6 @@ class ResourceMongoHostArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -12270,45 +9675,6 @@ class ResourceMongoHostArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -12364,10 +9730,6 @@ class ResourceMongoLegacyHostArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  replica_set: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -12377,7 +9739,6 @@ class ResourceMongoLegacyHostArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -12398,14 +9759,6 @@ class ResourceMongoLegacyHostArgs:
             pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -12518,45 +9871,6 @@ class ResourceMongoLegacyHostArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -12613,10 +9927,6 @@ class ResourceMongoLegacyReplicasetArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -12626,7 +9936,6 @@ class ResourceMongoLegacyReplicasetArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -12648,14 +9957,6 @@ class ResourceMongoLegacyReplicasetArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -12775,45 +10076,6 @@ class ResourceMongoLegacyReplicasetArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -12872,10 +10134,6 @@ class ResourceMongoReplicaSetArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -12885,7 +10143,6 @@ class ResourceMongoReplicaSetArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -12907,14 +10164,6 @@ class ResourceMongoReplicaSetArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -13036,45 +10285,6 @@ class ResourceMongoReplicaSetArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -13128,10 +10338,6 @@ class ResourceMongoShardedClusterArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -13141,7 +10347,6 @@ class ResourceMongoShardedClusterArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -13158,14 +10363,6 @@ class ResourceMongoShardedClusterArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -13260,45 +10457,6 @@ class ResourceMongoShardedClusterArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -13355,27 +10513,18 @@ class ResourceMtlsMysqlArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_path: Optional[pulumi.Input[str]] = None,
+                 require_native_auth: Optional[pulumi.Input[bool]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  server_name: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -13398,34 +10547,18 @@ class ResourceMtlsMysqlArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
-        if secret_store_client_certificate_key is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_key", secret_store_client_certificate_key)
-        if secret_store_client_certificate_path is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_path", secret_store_client_certificate_path)
-        if secret_store_client_key_key is not None:
-            pulumi.set(__self__, "secret_store_client_key_key", secret_store_client_key_key)
-        if secret_store_client_key_path is not None:
-            pulumi.set(__self__, "secret_store_client_key_path", secret_store_client_key_path)
+        if require_native_auth is not None:
+            pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if server_name is not None:
             pulumi.set(__self__, "server_name", server_name)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -13538,58 +10671,13 @@ class ResourceMtlsMysqlArgs:
         pulumi.set(self, "port_override", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
+    @pulumi.getter(name="requireNativeAuth")
+    def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "require_native_auth")
 
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificateKey")
-    def secret_store_client_certificate_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_key")
-
-    @secret_store_client_certificate_key.setter
-    def secret_store_client_certificate_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificatePath")
-    def secret_store_client_certificate_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_path")
-
-    @secret_store_client_certificate_path.setter
-    def secret_store_client_certificate_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyKey")
-    def secret_store_client_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_key")
-
-    @secret_store_client_key_key.setter
-    def secret_store_client_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyPath")
-    def secret_store_client_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_path")
-
-    @secret_store_client_key_path.setter
-    def secret_store_client_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_path", value)
+    @require_native_auth.setter
+    def require_native_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_native_auth", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -13602,45 +10690,6 @@ class ResourceMtlsMysqlArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter(name="serverName")
@@ -13676,6 +10725,15 @@ class ResourceMtlsMysqlArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "username")
@@ -13700,17 +10758,7 @@ class ResourceMtlsPostgresArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 secret_store_certificate_authority_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_certificate_authority_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_certificate_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_client_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  server_name: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -13720,7 +10768,6 @@ class ResourceMtlsPostgresArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -13745,28 +10792,8 @@ class ResourceMtlsPostgresArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if secret_store_certificate_authority_key is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_key", secret_store_certificate_authority_key)
-        if secret_store_certificate_authority_path is not None:
-            pulumi.set(__self__, "secret_store_certificate_authority_path", secret_store_certificate_authority_path)
-        if secret_store_client_certificate_key is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_key", secret_store_client_certificate_key)
-        if secret_store_client_certificate_path is not None:
-            pulumi.set(__self__, "secret_store_client_certificate_path", secret_store_client_certificate_path)
-        if secret_store_client_key_key is not None:
-            pulumi.set(__self__, "secret_store_client_key_key", secret_store_client_key_key)
-        if secret_store_client_key_path is not None:
-            pulumi.set(__self__, "secret_store_client_key_path", secret_store_client_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if server_name is not None:
             pulumi.set(__self__, "server_name", server_name)
         if subdomain is not None:
@@ -13894,60 +10921,6 @@ class ResourceMtlsPostgresArgs:
         pulumi.set(self, "port_override", value)
 
     @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityKey")
-    def secret_store_certificate_authority_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_key")
-
-    @secret_store_certificate_authority_key.setter
-    def secret_store_certificate_authority_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreCertificateAuthorityPath")
-    def secret_store_certificate_authority_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_certificate_authority_path")
-
-    @secret_store_certificate_authority_path.setter
-    def secret_store_certificate_authority_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_certificate_authority_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificateKey")
-    def secret_store_client_certificate_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_key")
-
-    @secret_store_client_certificate_key.setter
-    def secret_store_client_certificate_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientCertificatePath")
-    def secret_store_client_certificate_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_certificate_path")
-
-    @secret_store_client_certificate_path.setter
-    def secret_store_client_certificate_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_certificate_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyKey")
-    def secret_store_client_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_key")
-
-    @secret_store_client_key_key.setter
-    def secret_store_client_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreClientKeyPath")
-    def secret_store_client_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_client_key_path")
-
-    @secret_store_client_key_path.setter
-    def secret_store_client_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_client_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -13958,45 +10931,6 @@ class ResourceMtlsPostgresArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter(name="serverName")
@@ -14052,20 +10986,17 @@ class ResourceMysqlArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
+                 require_native_auth: Optional[pulumi.Input[bool]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -14082,20 +11013,16 @@ class ResourceMysqlArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if require_native_auth is not None:
+            pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -14181,6 +11108,15 @@ class ResourceMysqlArgs:
         pulumi.set(self, "port_override", value)
 
     @property
+    @pulumi.getter(name="requireNativeAuth")
+    def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "require_native_auth")
+
+    @require_native_auth.setter
+    def require_native_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_native_auth", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -14191,45 +11127,6 @@ class ResourceMysqlArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -14254,6 +11151,15 @@ class ResourceMysqlArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
 
     @property
     @pulumi.getter
@@ -14416,15 +11322,7 @@ class ResourceNeptuneIamArgs:
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_access_key_path: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_arn_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_role_external_id_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_secret_access_key_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -14454,24 +11352,8 @@ class ResourceNeptuneIamArgs:
             pulumi.set(__self__, "role_external_id", role_external_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
-        if secret_store_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_access_key_key", secret_store_access_key_key)
-        if secret_store_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_access_key_path", secret_store_access_key_path)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_role_arn_key is not None:
-            pulumi.set(__self__, "secret_store_role_arn_key", secret_store_role_arn_key)
-        if secret_store_role_arn_path is not None:
-            pulumi.set(__self__, "secret_store_role_arn_path", secret_store_role_arn_path)
-        if secret_store_role_external_id_key is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_key", secret_store_role_external_id_key)
-        if secret_store_role_external_id_path is not None:
-            pulumi.set(__self__, "secret_store_role_external_id_path", secret_store_role_external_id_path)
-        if secret_store_secret_access_key_key is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_key", secret_store_secret_access_key_key)
-        if secret_store_secret_access_key_path is not None:
-            pulumi.set(__self__, "secret_store_secret_access_key_path", secret_store_secret_access_key_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -14586,24 +11468,6 @@ class ResourceNeptuneIamArgs:
         pulumi.set(self, "secret_access_key", value)
 
     @property
-    @pulumi.getter(name="secretStoreAccessKeyKey")
-    def secret_store_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_key")
-
-    @secret_store_access_key_key.setter
-    def secret_store_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreAccessKeyPath")
-    def secret_store_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_access_key_path")
-
-    @secret_store_access_key_path.setter
-    def secret_store_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_access_key_path", value)
-
-    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -14614,60 +11478,6 @@ class ResourceNeptuneIamArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnKey")
-    def secret_store_role_arn_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_key")
-
-    @secret_store_role_arn_key.setter
-    def secret_store_role_arn_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleArnPath")
-    def secret_store_role_arn_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_arn_path")
-
-    @secret_store_role_arn_path.setter
-    def secret_store_role_arn_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_arn_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdKey")
-    def secret_store_role_external_id_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_key")
-
-    @secret_store_role_external_id_key.setter
-    def secret_store_role_external_id_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreRoleExternalIdPath")
-    def secret_store_role_external_id_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_role_external_id_path")
-
-    @secret_store_role_external_id_path.setter
-    def secret_store_role_external_id_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_role_external_id_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyKey")
-    def secret_store_secret_access_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_key")
-
-    @secret_store_secret_access_key_key.setter
-    def secret_store_secret_access_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSecretAccessKeyPath")
-    def secret_store_secret_access_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_secret_access_key_path")
-
-    @secret_store_secret_access_key_path.setter
-    def secret_store_secret_access_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_secret_access_key_path", value)
 
     @property
     @pulumi.getter
@@ -14706,10 +11516,6 @@ class ResourceOracleArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -14719,7 +11525,6 @@ class ResourceOracleArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -14737,14 +11542,6 @@ class ResourceOracleArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -14848,45 +11645,6 @@ class ResourceOracleArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -14942,10 +11700,6 @@ class ResourcePostgresArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -14954,7 +11708,6 @@ class ResourcePostgresArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -14975,14 +11728,6 @@ class ResourcePostgresArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -15093,45 +11838,6 @@ class ResourcePostgresArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -15177,8 +11883,6 @@ class ResourcePrestoArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -15206,10 +11910,6 @@ class ResourcePrestoArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -15313,24 +12013,6 @@ class ResourcePrestoArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -15384,10 +12066,6 @@ class ResourceRabbitmqAmqp091Args:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -15397,7 +12075,6 @@ class ResourceRabbitmqAmqp091Args:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -15415,14 +12092,6 @@ class ResourceRabbitmqAmqp091Args:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -15515,45 +12184,6 @@ class ResourceRabbitmqAmqp091Args:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -15747,10 +12377,6 @@ class ResourceRdpArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -15759,7 +12385,6 @@ class ResourceRdpArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -15779,14 +12404,6 @@ class ResourceRdpArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -15888,45 +12505,6 @@ class ResourceRdpArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -15971,10 +12549,6 @@ class ResourceRedisArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tls_required: Optional[pulumi.Input[bool]] = None,
@@ -15984,7 +12558,6 @@ class ResourceRedisArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -16002,14 +12575,6 @@ class ResourceRedisArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -16104,45 +12669,6 @@ class ResourceRedisArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -16198,10 +12724,6 @@ class ResourceRedshiftArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -16210,7 +12732,6 @@ class ResourceRedshiftArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -16231,14 +12752,6 @@ class ResourceRedshiftArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -16349,45 +12862,6 @@ class ResourceRedshiftArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -16432,20 +12906,17 @@ class ResourceSingleStoreArgs:
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
+                 require_native_auth: Optional[pulumi.Input[bool]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -16462,20 +12933,16 @@ class ResourceSingleStoreArgs:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if require_native_auth is not None:
+            pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -16561,6 +13028,15 @@ class ResourceSingleStoreArgs:
         pulumi.set(self, "port_override", value)
 
     @property
+    @pulumi.getter(name="requireNativeAuth")
+    def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "require_native_auth")
+
+    @require_native_auth.setter
+    def require_native_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "require_native_auth", value)
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -16571,45 +13047,6 @@ class ResourceSingleStoreArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -16636,6 +13073,15 @@ class ResourceSingleStoreArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
+
+    @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "username")
@@ -16657,10 +13103,6 @@ class ResourceSnowflakeArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -16669,7 +13111,6 @@ class ResourceSnowflakeArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -16688,14 +13129,6 @@ class ResourceSnowflakeArgs:
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -16797,45 +13230,6 @@ class ResourceSnowflakeArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -16880,8 +13274,6 @@ class ResourceSnowsightArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  saml_metadata: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_saml_metadata_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_saml_metadata_path: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
@@ -16904,10 +13296,6 @@ class ResourceSnowsightArgs:
             pulumi.set(__self__, "saml_metadata", saml_metadata)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_saml_metadata_key is not None:
-            pulumi.set(__self__, "secret_store_saml_metadata_key", secret_store_saml_metadata_key)
-        if secret_store_saml_metadata_path is not None:
-            pulumi.set(__self__, "secret_store_saml_metadata_path", secret_store_saml_metadata_path)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -16999,24 +13387,6 @@ class ResourceSnowsightArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreSamlMetadataKey")
-    def secret_store_saml_metadata_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_saml_metadata_key")
-
-    @secret_store_saml_metadata_key.setter
-    def secret_store_saml_metadata_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_saml_metadata_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreSamlMetadataPath")
-    def secret_store_saml_metadata_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_saml_metadata_path")
-
-    @secret_store_saml_metadata_path.setter
-    def secret_store_saml_metadata_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_saml_metadata_path", value)
-
-    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -17043,10 +13413,6 @@ class ResourceSqlServerArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -17055,7 +13421,6 @@ class ResourceSqlServerArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -17078,14 +13443,6 @@ class ResourceSqlServerArgs:
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -17205,43 +13562,448 @@ class ResourceSqlServerArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
-        * trino:
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         """
-        return pulumi.get(self, "secret_store_username_key")
+        return pulumi.get(self, "subdomain")
 
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
+    @subdomain.setter
+    def subdomain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subdomain", value)
 
     @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
 
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class ResourceSqlServerAzureAdArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 hostname: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 bind_interface: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 egress_filter: Optional[pulumi.Input[str]] = None,
+                 override_database: Optional[pulumi.Input[bool]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
+                 secret_store_id: Optional[pulumi.Input[str]] = None,
+                 subdomain: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] tenant_id: * sql_server_kerberos_ad:
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if override_database is not None:
+            pulumi.set(__self__, "override_database", override_database)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @bind_interface.setter
+    def bind_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @egress_filter.setter
+    def egress_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter(name="overrideDatabase")
+    def override_database(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "override_database")
+
+    @override_database.setter
+    def override_database(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "override_database", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        * sql_server_kerberos_ad:
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
+
+
+@pulumi.input_type
+class ResourceSqlServerKerberosAdArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 hostname: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 bind_interface: Optional[pulumi.Input[str]] = None,
+                 egress_filter: Optional[pulumi.Input[str]] = None,
+                 keytab: Optional[pulumi.Input[str]] = None,
+                 krb_config: Optional[pulumi.Input[str]] = None,
+                 override_database: Optional[pulumi.Input[bool]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
+                 realm: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None,
+                 secret_store_id: Optional[pulumi.Input[str]] = None,
+                 server_spn: Optional[pulumi.Input[str]] = None,
+                 subdomain: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if keytab is not None:
+            pulumi.set(__self__, "keytab", keytab)
+        if krb_config is not None:
+            pulumi.set(__self__, "krb_config", krb_config)
+        if override_database is not None:
+            pulumi.set(__self__, "override_database", override_database)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if realm is not None:
+            pulumi.set(__self__, "realm", realm)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if server_spn is not None:
+            pulumi.set(__self__, "server_spn", server_spn)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Bind interface
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @bind_interface.setter
+    def bind_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @egress_filter.setter
+    def egress_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter
+    def keytab(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keytab")
+
+    @keytab.setter
+    def keytab(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keytab", value)
+
+    @property
+    @pulumi.getter(name="krbConfig")
+    def krb_config(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "krb_config")
+
+    @krb_config.setter
+    def krb_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "krb_config", value)
+
+    @property
+    @pulumi.getter(name="overrideDatabase")
+    def override_database(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "override_database")
+
+    @override_database.setter
+    def override_database(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "override_database", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter
+    def realm(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "realm")
+
+    @realm.setter
+    def realm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "realm", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter(name="serverSpn")
+    def server_spn(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "server_spn")
+
+    @server_spn.setter
+    def server_spn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_spn", value)
 
     @property
     @pulumi.getter
@@ -17291,8 +14053,6 @@ class ResourceSshArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -17301,7 +14061,6 @@ class ResourceSshArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -17324,10 +14083,6 @@ class ResourceSshArgs:
             pulumi.set(__self__, "public_key", public_key)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -17447,27 +14202,6 @@ class ResourceSshArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -17516,8 +14250,6 @@ class ResourceSshCertArgs:
                  remote_identity_group_id: Optional[pulumi.Input[str]] = None,
                  remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -17526,7 +14258,6 @@ class ResourceSshCertArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -17551,10 +14282,6 @@ class ResourceSshCertArgs:
             pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -17683,27 +14410,6 @@ class ResourceSshCertArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -17750,10 +14456,6 @@ class ResourceSshCustomerKeyArgs:
                  port_override: Optional[pulumi.Input[int]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_private_key_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_private_key_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -17762,7 +14464,6 @@ class ResourceSshCustomerKeyArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -17783,14 +14484,6 @@ class ResourceSshCustomerKeyArgs:
             pulumi.set(__self__, "private_key", private_key)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_private_key_key is not None:
-            pulumi.set(__self__, "secret_store_private_key_key", secret_store_private_key_key)
-        if secret_store_private_key_path is not None:
-            pulumi.set(__self__, "secret_store_private_key_path", secret_store_private_key_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -17901,45 +14594,6 @@ class ResourceSshCustomerKeyArgs:
         pulumi.set(self, "secret_store_id", value)
 
     @property
-    @pulumi.getter(name="secretStorePrivateKeyKey")
-    def secret_store_private_key_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_private_key_key")
-
-    @secret_store_private_key_key.setter
-    def secret_store_private_key_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_private_key_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePrivateKeyPath")
-    def secret_store_private_key_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_private_key_path")
-
-    @secret_store_private_key_path.setter
-    def secret_store_private_key_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_private_key_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
-
-    @property
     @pulumi.getter
     def subdomain(self) -> Optional[pulumi.Input[str]]:
         """
@@ -17984,10 +14638,6 @@ class ResourceSybaseArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -17996,7 +14646,6 @@ class ResourceSybaseArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -18014,14 +14663,6 @@ class ResourceSybaseArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -18112,45 +14753,6 @@ class ResourceSybaseArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -18197,10 +14799,6 @@ class ResourceSybaseIqArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -18209,7 +14807,6 @@ class ResourceSybaseIqArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -18227,14 +14824,6 @@ class ResourceSybaseIqArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -18325,45 +14914,6 @@ class ResourceSybaseIqArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -18410,10 +14960,6 @@ class ResourceTeradataArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_username_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -18422,7 +14968,6 @@ class ResourceTeradataArgs:
         :param pulumi.Input[str] bind_interface: Bind interface
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param pulumi.Input[str] secret_store_username_key: * trino:
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -18440,14 +14985,6 @@ class ResourceTeradataArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
-        if secret_store_username_key is not None:
-            pulumi.set(__self__, "secret_store_username_key", secret_store_username_key)
-        if secret_store_username_path is not None:
-            pulumi.set(__self__, "secret_store_username_path", secret_store_username_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -18538,45 +15075,6 @@ class ResourceTeradataArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernameKey")
-    def secret_store_username_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        * trino:
-        """
-        return pulumi.get(self, "secret_store_username_key")
-
-    @secret_store_username_key.setter
-    def secret_store_username_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_key", value)
-
-    @property
-    @pulumi.getter(name="secretStoreUsernamePath")
-    def secret_store_username_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_username_path")
-
-    @secret_store_username_path.setter
-    def secret_store_username_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_username_path", value)
 
     @property
     @pulumi.getter
@@ -18624,8 +15122,6 @@ class ResourceTrinoArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_key: Optional[pulumi.Input[str]] = None,
-                 secret_store_password_path: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
@@ -18652,10 +15148,6 @@ class ResourceTrinoArgs:
             pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if secret_store_password_key is not None:
-            pulumi.set(__self__, "secret_store_password_key", secret_store_password_key)
-        if secret_store_password_path is not None:
-            pulumi.set(__self__, "secret_store_password_path", secret_store_password_path)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -18755,24 +15247,6 @@ class ResourceTrinoArgs:
     @secret_store_id.setter
     def secret_store_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_store_id", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordKey")
-    def secret_store_password_key(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_key")
-
-    @secret_store_password_key.setter
-    def secret_store_password_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_key", value)
-
-    @property
-    @pulumi.getter(name="secretStorePasswordPath")
-    def secret_store_password_path(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "secret_store_password_path")
-
-    @secret_store_password_path.setter
-    def secret_store_password_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "secret_store_password_path", value)
 
     @property
     @pulumi.getter
