@@ -91,44 +91,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
-        [Input("secretStoreCertificateAuthorityKey")]
-        public Input<string>? SecretStoreCertificateAuthorityKey { get; set; }
-
-        [Input("secretStoreCertificateAuthorityPath")]
-        public Input<string>? SecretStoreCertificateAuthorityPath { get; set; }
-
-        [Input("secretStoreClientCertificateKey")]
-        public Input<string>? SecretStoreClientCertificateKey { get; set; }
-
-        [Input("secretStoreClientCertificatePath")]
-        public Input<string>? SecretStoreClientCertificatePath { get; set; }
-
-        [Input("secretStoreClientKeyKey")]
-        public Input<string>? SecretStoreClientKeyKey { get; set; }
-
-        [Input("secretStoreClientKeyPath")]
-        public Input<string>? SecretStoreClientKeyPath { get; set; }
+        [Input("requireNativeAuth")]
+        public Input<bool>? RequireNativeAuth { get; set; }
 
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
-
-        [Input("secretStorePasswordKey")]
-        public Input<string>? SecretStorePasswordKey { get; set; }
-
-        [Input("secretStorePasswordPath")]
-        public Input<string>? SecretStorePasswordPath { get; set; }
-
-        /// <summary>
-        /// * trino:
-        /// </summary>
-        [Input("secretStoreUsernameKey")]
-        public Input<string>? SecretStoreUsernameKey { get; set; }
-
-        [Input("secretStoreUsernamePath")]
-        public Input<string>? SecretStoreUsernamePath { get; set; }
 
         [Input("serverName")]
         public Input<string>? ServerName { get; set; }
@@ -150,6 +120,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        [Input("useAzureSingleServerUsernames")]
+        public Input<bool>? UseAzureSingleServerUsernames { get; set; }
 
         [Input("username")]
         public Input<string>? Username { get; set; }

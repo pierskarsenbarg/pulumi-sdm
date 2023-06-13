@@ -37,6 +37,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
+        public readonly int? PortOverride;
         public readonly string? Region;
         public readonly string? RemoteIdentityGroupId;
         public readonly string? RemoteIdentityHealthcheckUsername;
@@ -73,6 +74,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? name,
 
+            int? portOverride,
+
             string? region,
 
             string? remoteIdentityGroupId,
@@ -97,6 +100,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             HealthcheckNamespace = healthcheckNamespace;
             Id = id;
             Name = name;
+            PortOverride = portOverride;
             Region = region;
             RemoteIdentityGroupId = remoteIdentityGroupId;
             RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;

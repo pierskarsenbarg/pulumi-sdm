@@ -34,24 +34,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        public readonly int? PortOverride;
         public readonly string Region;
         public readonly string? RoleArn;
         public readonly string? RoleExternalId;
         public readonly string? SecretAccessKey;
-        public readonly string? SecretStoreAccessKeyKey;
-        public readonly string? SecretStoreAccessKeyPath;
-        public readonly string? SecretStoreCertificateAuthorityKey;
-        public readonly string? SecretStoreCertificateAuthorityPath;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStoreRoleArnKey;
-        public readonly string? SecretStoreRoleArnPath;
-        public readonly string? SecretStoreRoleExternalIdKey;
-        public readonly string? SecretStoreRoleExternalIdPath;
-        public readonly string? SecretStoreSecretAccessKeyKey;
-        public readonly string? SecretStoreSecretAccessKeyPath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -79,6 +70,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string name,
 
+            int? portOverride,
+
             string region,
 
             string? roleArn,
@@ -87,27 +80,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretAccessKey,
 
-            string? secretStoreAccessKeyKey,
-
-            string? secretStoreAccessKeyPath,
-
-            string? secretStoreCertificateAuthorityKey,
-
-            string? secretStoreCertificateAuthorityPath,
-
             string? secretStoreId,
-
-            string? secretStoreRoleArnKey,
-
-            string? secretStoreRoleArnPath,
-
-            string? secretStoreRoleExternalIdKey,
-
-            string? secretStoreRoleExternalIdPath,
-
-            string? secretStoreSecretAccessKeyKey,
-
-            string? secretStoreSecretAccessKeyPath,
 
             string? subdomain,
 
@@ -121,21 +94,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Endpoint = endpoint;
             HealthcheckNamespace = healthcheckNamespace;
             Name = name;
+            PortOverride = portOverride;
             Region = region;
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretAccessKey = secretAccessKey;
-            SecretStoreAccessKeyKey = secretStoreAccessKeyKey;
-            SecretStoreAccessKeyPath = secretStoreAccessKeyPath;
-            SecretStoreCertificateAuthorityKey = secretStoreCertificateAuthorityKey;
-            SecretStoreCertificateAuthorityPath = secretStoreCertificateAuthorityPath;
             SecretStoreId = secretStoreId;
-            SecretStoreRoleArnKey = secretStoreRoleArnKey;
-            SecretStoreRoleArnPath = secretStoreRoleArnPath;
-            SecretStoreRoleExternalIdKey = secretStoreRoleExternalIdKey;
-            SecretStoreRoleExternalIdPath = secretStoreRoleExternalIdPath;
-            SecretStoreSecretAccessKeyKey = secretStoreSecretAccessKeyKey;
-            SecretStoreSecretAccessKeyPath = secretStoreSecretAccessKeyPath;
             Subdomain = subdomain;
             Tags = tags;
         }

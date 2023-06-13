@@ -88,24 +88,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("remoteIdentityHealthcheckUsername")]
         public Input<string>? RemoteIdentityHealthcheckUsername { get; set; }
 
-        [Input("secretStoreCertificateAuthorityKey")]
-        public Input<string>? SecretStoreCertificateAuthorityKey { get; set; }
-
-        [Input("secretStoreCertificateAuthorityPath")]
-        public Input<string>? SecretStoreCertificateAuthorityPath { get; set; }
-
-        [Input("secretStoreClientCertificateKey")]
-        public Input<string>? SecretStoreClientCertificateKey { get; set; }
-
-        [Input("secretStoreClientCertificatePath")]
-        public Input<string>? SecretStoreClientCertificatePath { get; set; }
-
-        [Input("secretStoreClientKeyKey")]
-        public Input<string>? SecretStoreClientKeyKey { get; set; }
-
-        [Input("secretStoreClientKeyPath")]
-        public Input<string>? SecretStoreClientKeyPath { get; set; }
-
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>

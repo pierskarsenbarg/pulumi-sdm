@@ -58,18 +58,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
 
-        [Input("secretStoreRoleArnKey")]
-        public Input<string>? SecretStoreRoleArnKey { get; set; }
-
-        [Input("secretStoreRoleArnPath")]
-        public Input<string>? SecretStoreRoleArnPath { get; set; }
-
-        [Input("secretStoreRoleExternalIdKey")]
-        public Input<string>? SecretStoreRoleExternalIdKey { get; set; }
-
-        [Input("secretStoreRoleExternalIdPath")]
-        public Input<string>? SecretStoreRoleExternalIdPath { get; set; }
-
         [Input("sessionExpiry")]
         public Input<int>? SessionExpiry { get; set; }
 

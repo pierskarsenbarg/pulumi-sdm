@@ -34,23 +34,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? Password;
         public readonly int? Port;
         public readonly int? PortOverride;
-        public readonly string? SecretStoreCertificateAuthorityKey;
-        public readonly string? SecretStoreCertificateAuthorityPath;
-        public readonly string? SecretStoreClientCertificateKey;
-        public readonly string? SecretStoreClientCertificatePath;
-        public readonly string? SecretStoreClientKeyKey;
-        public readonly string? SecretStoreClientKeyPath;
+        public readonly bool? RequireNativeAuth;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStorePasswordKey;
-        public readonly string? SecretStorePasswordPath;
-        /// <summary>
-        /// * trino:
-        /// </summary>
-        public readonly string? SecretStoreUsernameKey;
-        public readonly string? SecretStoreUsernamePath;
         public readonly string? ServerName;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60,6 +48,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly bool? UseAzureSingleServerUsernames;
         public readonly string? Username;
 
         [OutputConstructor]
@@ -86,33 +75,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
-            string? secretStoreCertificateAuthorityKey,
-
-            string? secretStoreCertificateAuthorityPath,
-
-            string? secretStoreClientCertificateKey,
-
-            string? secretStoreClientCertificatePath,
-
-            string? secretStoreClientKeyKey,
-
-            string? secretStoreClientKeyPath,
+            bool? requireNativeAuth,
 
             string? secretStoreId,
-
-            string? secretStorePasswordKey,
-
-            string? secretStorePasswordPath,
-
-            string? secretStoreUsernameKey,
-
-            string? secretStoreUsernamePath,
 
             string? serverName,
 
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
+
+            bool? useAzureSingleServerUsernames,
 
             string? username)
         {
@@ -127,20 +100,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Password = password;
             Port = port;
             PortOverride = portOverride;
-            SecretStoreCertificateAuthorityKey = secretStoreCertificateAuthorityKey;
-            SecretStoreCertificateAuthorityPath = secretStoreCertificateAuthorityPath;
-            SecretStoreClientCertificateKey = secretStoreClientCertificateKey;
-            SecretStoreClientCertificatePath = secretStoreClientCertificatePath;
-            SecretStoreClientKeyKey = secretStoreClientKeyKey;
-            SecretStoreClientKeyPath = secretStoreClientKeyPath;
+            RequireNativeAuth = requireNativeAuth;
             SecretStoreId = secretStoreId;
-            SecretStorePasswordKey = secretStorePasswordKey;
-            SecretStorePasswordPath = secretStorePasswordPath;
-            SecretStoreUsernameKey = secretStoreUsernameKey;
-            SecretStoreUsernamePath = secretStoreUsernamePath;
             ServerName = serverName;
             Subdomain = subdomain;
             Tags = tags;
+            UseAzureSingleServerUsernames = useAzureSingleServerUsernames;
             Username = username;
         }
     }

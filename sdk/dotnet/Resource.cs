@@ -257,6 +257,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("sqlServer")]
         public Output<Outputs.ResourceSqlServer?> SqlServer { get; private set; } = null!;
 
+        [Output("sqlServerAzureAd")]
+        public Output<Outputs.ResourceSqlServerAzureAd?> SqlServerAzureAd { get; private set; } = null!;
+
+        [Output("sqlServerKerberosAd")]
+        public Output<Outputs.ResourceSqlServerKerberosAd?> SqlServerKerberosAd { get; private set; } = null!;
+
         [Output("ssh")]
         public Output<Outputs.ResourceSsh?> Ssh { get; private set; } = null!;
 
@@ -563,6 +569,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("sqlServer")]
         public Input<Inputs.ResourceSqlServerArgs>? SqlServer { get; set; }
 
+        [Input("sqlServerAzureAd")]
+        public Input<Inputs.ResourceSqlServerAzureAdArgs>? SqlServerAzureAd { get; set; }
+
+        [Input("sqlServerKerberosAd")]
+        public Input<Inputs.ResourceSqlServerKerberosAdArgs>? SqlServerKerberosAd { get; set; }
+
         [Input("ssh")]
         public Input<Inputs.ResourceSshArgs>? Ssh { get; set; }
 
@@ -829,6 +841,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("sqlServer")]
         public Input<Inputs.ResourceSqlServerGetArgs>? SqlServer { get; set; }
+
+        [Input("sqlServerAzureAd")]
+        public Input<Inputs.ResourceSqlServerAzureAdGetArgs>? SqlServerAzureAd { get; set; }
+
+        [Input("sqlServerKerberosAd")]
+        public Input<Inputs.ResourceSqlServerKerberosAdGetArgs>? SqlServerKerberosAd { get; set; }
 
         [Input("ssh")]
         public Input<Inputs.ResourceSshGetArgs>? Ssh { get; set; }

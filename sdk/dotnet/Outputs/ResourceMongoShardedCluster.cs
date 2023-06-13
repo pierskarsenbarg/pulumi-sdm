@@ -34,13 +34,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStorePasswordKey;
-        public readonly string? SecretStorePasswordPath;
-        /// <summary>
-        /// * trino:
-        /// </summary>
-        public readonly string? SecretStoreUsernameKey;
-        public readonly string? SecretStoreUsernamePath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -70,14 +63,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            string? secretStorePasswordKey,
-
-            string? secretStorePasswordPath,
-
-            string? secretStoreUsernameKey,
-
-            string? secretStoreUsernamePath,
-
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
@@ -94,10 +79,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Password = password;
             PortOverride = portOverride;
             SecretStoreId = secretStoreId;
-            SecretStorePasswordKey = secretStorePasswordKey;
-            SecretStorePasswordPath = secretStorePasswordPath;
-            SecretStoreUsernameKey = secretStoreUsernameKey;
-            SecretStoreUsernamePath = secretStoreUsernamePath;
             Subdomain = subdomain;
             Tags = tags;
             TlsRequired = tlsRequired;

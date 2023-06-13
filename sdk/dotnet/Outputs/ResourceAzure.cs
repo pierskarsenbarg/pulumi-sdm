@@ -29,19 +29,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string Name;
         public readonly string? Password;
         public readonly int? PortOverride;
-        public readonly string? SecretStoreAppIdKey;
-        public readonly string? SecretStoreAppIdPath;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStorePasswordKey;
-        public readonly string? SecretStorePasswordPath;
-        /// <summary>
-        /// * azure_mysql:
-        /// </summary>
-        public readonly string? SecretStoreTenantIdKey;
-        public readonly string? SecretStoreTenantIdPath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -50,6 +41,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// * sql_server_kerberos_ad:
+        /// </summary>
         public readonly string? TenantId;
 
         [OutputConstructor]
@@ -66,19 +60,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
-            string? secretStoreAppIdKey,
-
-            string? secretStoreAppIdPath,
-
             string? secretStoreId,
-
-            string? secretStorePasswordKey,
-
-            string? secretStorePasswordPath,
-
-            string? secretStoreTenantIdKey,
-
-            string? secretStoreTenantIdPath,
 
             string? subdomain,
 
@@ -92,13 +74,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Name = name;
             Password = password;
             PortOverride = portOverride;
-            SecretStoreAppIdKey = secretStoreAppIdKey;
-            SecretStoreAppIdPath = secretStoreAppIdPath;
             SecretStoreId = secretStoreId;
-            SecretStorePasswordKey = secretStorePasswordKey;
-            SecretStorePasswordPath = secretStorePasswordPath;
-            SecretStoreTenantIdKey = secretStoreTenantIdKey;
-            SecretStoreTenantIdPath = secretStoreTenantIdPath;
             Subdomain = subdomain;
             Tags = tags;
             TenantId = tenantId;

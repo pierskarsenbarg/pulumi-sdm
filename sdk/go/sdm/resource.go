@@ -99,14 +99,16 @@ type Resource struct {
 	SingleStore     ResourceSingleStorePtrOutput     `pulumi:"singleStore"`
 	Snowflake       ResourceSnowflakePtrOutput       `pulumi:"snowflake"`
 	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Snowsight      ResourceSnowsightPtrOutput      `pulumi:"snowsight"`
-	SqlServer      ResourceSqlServerPtrOutput      `pulumi:"sqlServer"`
-	Ssh            ResourceSshPtrOutput            `pulumi:"ssh"`
-	SshCert        ResourceSshCertPtrOutput        `pulumi:"sshCert"`
-	SshCustomerKey ResourceSshCustomerKeyPtrOutput `pulumi:"sshCustomerKey"`
-	Sybase         ResourceSybasePtrOutput         `pulumi:"sybase"`
-	SybaseIq       ResourceSybaseIqPtrOutput       `pulumi:"sybaseIq"`
-	Teradata       ResourceTeradataPtrOutput       `pulumi:"teradata"`
+	Snowsight           ResourceSnowsightPtrOutput           `pulumi:"snowsight"`
+	SqlServer           ResourceSqlServerPtrOutput           `pulumi:"sqlServer"`
+	SqlServerAzureAd    ResourceSqlServerAzureAdPtrOutput    `pulumi:"sqlServerAzureAd"`
+	SqlServerKerberosAd ResourceSqlServerKerberosAdPtrOutput `pulumi:"sqlServerKerberosAd"`
+	Ssh                 ResourceSshPtrOutput                 `pulumi:"ssh"`
+	SshCert             ResourceSshCertPtrOutput             `pulumi:"sshCert"`
+	SshCustomerKey      ResourceSshCustomerKeyPtrOutput      `pulumi:"sshCustomerKey"`
+	Sybase              ResourceSybasePtrOutput              `pulumi:"sybase"`
+	SybaseIq            ResourceSybaseIqPtrOutput            `pulumi:"sybaseIq"`
+	Teradata            ResourceTeradataPtrOutput            `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrOutput `pulumi:"trino"`
 }
@@ -218,14 +220,16 @@ type resourceState struct {
 	SingleStore     *ResourceSingleStore     `pulumi:"singleStore"`
 	Snowflake       *ResourceSnowflake       `pulumi:"snowflake"`
 	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Snowsight      *ResourceSnowsight      `pulumi:"snowsight"`
-	SqlServer      *ResourceSqlServer      `pulumi:"sqlServer"`
-	Ssh            *ResourceSsh            `pulumi:"ssh"`
-	SshCert        *ResourceSshCert        `pulumi:"sshCert"`
-	SshCustomerKey *ResourceSshCustomerKey `pulumi:"sshCustomerKey"`
-	Sybase         *ResourceSybase         `pulumi:"sybase"`
-	SybaseIq       *ResourceSybaseIq       `pulumi:"sybaseIq"`
-	Teradata       *ResourceTeradata       `pulumi:"teradata"`
+	Snowsight           *ResourceSnowsight           `pulumi:"snowsight"`
+	SqlServer           *ResourceSqlServer           `pulumi:"sqlServer"`
+	SqlServerAzureAd    *ResourceSqlServerAzureAd    `pulumi:"sqlServerAzureAd"`
+	SqlServerKerberosAd *ResourceSqlServerKerberosAd `pulumi:"sqlServerKerberosAd"`
+	Ssh                 *ResourceSsh                 `pulumi:"ssh"`
+	SshCert             *ResourceSshCert             `pulumi:"sshCert"`
+	SshCustomerKey      *ResourceSshCustomerKey      `pulumi:"sshCustomerKey"`
+	Sybase              *ResourceSybase              `pulumi:"sybase"`
+	SybaseIq            *ResourceSybaseIq            `pulumi:"sybaseIq"`
+	Teradata            *ResourceTeradata            `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
 }
@@ -308,14 +312,16 @@ type ResourceState struct {
 	SingleStore     ResourceSingleStorePtrInput
 	Snowflake       ResourceSnowflakePtrInput
 	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Snowsight      ResourceSnowsightPtrInput
-	SqlServer      ResourceSqlServerPtrInput
-	Ssh            ResourceSshPtrInput
-	SshCert        ResourceSshCertPtrInput
-	SshCustomerKey ResourceSshCustomerKeyPtrInput
-	Sybase         ResourceSybasePtrInput
-	SybaseIq       ResourceSybaseIqPtrInput
-	Teradata       ResourceTeradataPtrInput
+	Snowsight           ResourceSnowsightPtrInput
+	SqlServer           ResourceSqlServerPtrInput
+	SqlServerAzureAd    ResourceSqlServerAzureAdPtrInput
+	SqlServerKerberosAd ResourceSqlServerKerberosAdPtrInput
+	Ssh                 ResourceSshPtrInput
+	SshCert             ResourceSshCertPtrInput
+	SshCustomerKey      ResourceSshCustomerKeyPtrInput
+	Sybase              ResourceSybasePtrInput
+	SybaseIq            ResourceSybaseIqPtrInput
+	Teradata            ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
 }
@@ -402,14 +408,16 @@ type resourceArgs struct {
 	SingleStore     *ResourceSingleStore     `pulumi:"singleStore"`
 	Snowflake       *ResourceSnowflake       `pulumi:"snowflake"`
 	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Snowsight      *ResourceSnowsight      `pulumi:"snowsight"`
-	SqlServer      *ResourceSqlServer      `pulumi:"sqlServer"`
-	Ssh            *ResourceSsh            `pulumi:"ssh"`
-	SshCert        *ResourceSshCert        `pulumi:"sshCert"`
-	SshCustomerKey *ResourceSshCustomerKey `pulumi:"sshCustomerKey"`
-	Sybase         *ResourceSybase         `pulumi:"sybase"`
-	SybaseIq       *ResourceSybaseIq       `pulumi:"sybaseIq"`
-	Teradata       *ResourceTeradata       `pulumi:"teradata"`
+	Snowsight           *ResourceSnowsight           `pulumi:"snowsight"`
+	SqlServer           *ResourceSqlServer           `pulumi:"sqlServer"`
+	SqlServerAzureAd    *ResourceSqlServerAzureAd    `pulumi:"sqlServerAzureAd"`
+	SqlServerKerberosAd *ResourceSqlServerKerberosAd `pulumi:"sqlServerKerberosAd"`
+	Ssh                 *ResourceSsh                 `pulumi:"ssh"`
+	SshCert             *ResourceSshCert             `pulumi:"sshCert"`
+	SshCustomerKey      *ResourceSshCustomerKey      `pulumi:"sshCustomerKey"`
+	Sybase              *ResourceSybase              `pulumi:"sybase"`
+	SybaseIq            *ResourceSybaseIq            `pulumi:"sybaseIq"`
+	Teradata            *ResourceTeradata            `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
 }
@@ -493,14 +501,16 @@ type ResourceArgs struct {
 	SingleStore     ResourceSingleStorePtrInput
 	Snowflake       ResourceSnowflakePtrInput
 	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	Snowsight      ResourceSnowsightPtrInput
-	SqlServer      ResourceSqlServerPtrInput
-	Ssh            ResourceSshPtrInput
-	SshCert        ResourceSshCertPtrInput
-	SshCustomerKey ResourceSshCustomerKeyPtrInput
-	Sybase         ResourceSybasePtrInput
-	SybaseIq       ResourceSybaseIqPtrInput
-	Teradata       ResourceTeradataPtrInput
+	Snowsight           ResourceSnowsightPtrInput
+	SqlServer           ResourceSqlServerPtrInput
+	SqlServerAzureAd    ResourceSqlServerAzureAdPtrInput
+	SqlServerKerberosAd ResourceSqlServerKerberosAdPtrInput
+	Ssh                 ResourceSshPtrInput
+	SshCert             ResourceSshCertPtrInput
+	SshCustomerKey      ResourceSshCustomerKeyPtrInput
+	Sybase              ResourceSybasePtrInput
+	SybaseIq            ResourceSybaseIqPtrInput
+	Teradata            ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
 }
@@ -888,6 +898,14 @@ func (o ResourceOutput) Snowsight() ResourceSnowsightPtrOutput {
 
 func (o ResourceOutput) SqlServer() ResourceSqlServerPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceSqlServerPtrOutput { return v.SqlServer }).(ResourceSqlServerPtrOutput)
+}
+
+func (o ResourceOutput) SqlServerAzureAd() ResourceSqlServerAzureAdPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceSqlServerAzureAdPtrOutput { return v.SqlServerAzureAd }).(ResourceSqlServerAzureAdPtrOutput)
+}
+
+func (o ResourceOutput) SqlServerKerberosAd() ResourceSqlServerKerberosAdPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceSqlServerKerberosAdPtrOutput { return v.SqlServerKerberosAd }).(ResourceSqlServerKerberosAdPtrOutput)
 }
 
 func (o ResourceOutput) Ssh() ResourceSshPtrOutput {

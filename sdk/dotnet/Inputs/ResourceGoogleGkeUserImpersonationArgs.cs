@@ -52,23 +52,11 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("secretStoreCertificateAuthorityKey")]
-        public Input<string>? SecretStoreCertificateAuthorityKey { get; set; }
-
-        [Input("secretStoreCertificateAuthorityPath")]
-        public Input<string>? SecretStoreCertificateAuthorityPath { get; set; }
-
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
-
-        [Input("secretStoreServiceAccountKeyKey")]
-        public Input<string>? SecretStoreServiceAccountKeyKey { get; set; }
-
-        [Input("secretStoreServiceAccountKeyPath")]
-        public Input<string>? SecretStoreServiceAccountKeyPath { get; set; }
 
         [Input("serviceAccountKey")]
         private Input<string>? _serviceAccountKey;

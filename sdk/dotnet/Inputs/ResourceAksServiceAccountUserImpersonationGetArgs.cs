@@ -53,15 +53,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? SecretStoreId { get; set; }
 
         /// <summary>
-        /// * kubernetes_user_impersonation:
-        /// </summary>
-        [Input("secretStoreTokenKey")]
-        public Input<string>? SecretStoreTokenKey { get; set; }
-
-        [Input("secretStoreTokenPath")]
-        public Input<string>? SecretStoreTokenPath { get; set; }
-
-        /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
         [Input("subdomain")]
@@ -81,6 +72,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         [Input("token")]
         private Input<string>? _token;
+
+        /// <summary>
+        /// * kubernetes_user_impersonation:
+        /// </summary>
         public Input<string>? Token
         {
             get => _token;

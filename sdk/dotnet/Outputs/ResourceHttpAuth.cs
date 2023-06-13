@@ -31,8 +31,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
-        public readonly string? SecretStoreAuthHeaderKey;
-        public readonly string? SecretStoreAuthHeaderPath;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -68,10 +66,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string name,
 
-            string? secretStoreAuthHeaderKey,
-
-            string? secretStoreAuthHeaderPath,
-
             string? secretStoreId,
 
             string subdomain,
@@ -88,8 +82,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             HealthcheckPath = healthcheckPath;
             HostOverride = hostOverride;
             Name = name;
-            SecretStoreAuthHeaderKey = secretStoreAuthHeaderKey;
-            SecretStoreAuthHeaderPath = secretStoreAuthHeaderPath;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;

@@ -33,8 +33,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStoreSamlMetadataKey;
-        public readonly string? SecretStoreSamlMetadataPath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -60,10 +58,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            string? secretStoreSamlMetadataKey,
-
-            string? secretStoreSamlMetadataPath,
-
             string subdomain,
 
             ImmutableDictionary<string, string>? tags)
@@ -75,8 +69,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             PortOverride = portOverride;
             SamlMetadata = samlMetadata;
             SecretStoreId = secretStoreId;
-            SecretStoreSamlMetadataKey = secretStoreSamlMetadataKey;
-            SecretStoreSamlMetadataPath = secretStoreSamlMetadataPath;
             Subdomain = subdomain;
             Tags = tags;
         }

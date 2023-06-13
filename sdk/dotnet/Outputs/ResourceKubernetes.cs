@@ -38,12 +38,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly int? PortOverride;
         public readonly string? RemoteIdentityGroupId;
         public readonly string? RemoteIdentityHealthcheckUsername;
-        public readonly string? SecretStoreCertificateAuthorityKey;
-        public readonly string? SecretStoreCertificateAuthorityPath;
-        public readonly string? SecretStoreClientCertificateKey;
-        public readonly string? SecretStoreClientCertificatePath;
-        public readonly string? SecretStoreClientKeyKey;
-        public readonly string? SecretStoreClientKeyPath;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -83,18 +77,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? remoteIdentityHealthcheckUsername,
 
-            string? secretStoreCertificateAuthorityKey,
-
-            string? secretStoreCertificateAuthorityPath,
-
-            string? secretStoreClientCertificateKey,
-
-            string? secretStoreClientCertificatePath,
-
-            string? secretStoreClientKeyKey,
-
-            string? secretStoreClientKeyPath,
-
             string? secretStoreId,
 
             string? subdomain,
@@ -113,12 +95,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             PortOverride = portOverride;
             RemoteIdentityGroupId = remoteIdentityGroupId;
             RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
-            SecretStoreCertificateAuthorityKey = secretStoreCertificateAuthorityKey;
-            SecretStoreCertificateAuthorityPath = secretStoreCertificateAuthorityPath;
-            SecretStoreClientCertificateKey = secretStoreClientCertificateKey;
-            SecretStoreClientCertificatePath = secretStoreClientCertificatePath;
-            SecretStoreClientKeyKey = secretStoreClientKeyKey;
-            SecretStoreClientKeyPath = secretStoreClientKeyPath;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;

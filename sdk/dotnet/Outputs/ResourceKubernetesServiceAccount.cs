@@ -40,11 +40,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreId;
         /// <summary>
-        /// * kubernetes_user_impersonation:
-        /// </summary>
-        public readonly string? SecretStoreTokenKey;
-        public readonly string? SecretStoreTokenPath;
-        /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
         public readonly string? Subdomain;
@@ -52,6 +47,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// * kubernetes_user_impersonation:
+        /// </summary>
         public readonly string? Token;
 
         [OutputConstructor]
@@ -76,10 +74,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            string? secretStoreTokenKey,
-
-            string? secretStoreTokenPath,
-
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
@@ -96,8 +90,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             RemoteIdentityGroupId = remoteIdentityGroupId;
             RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
             SecretStoreId = secretStoreId;
-            SecretStoreTokenKey = secretStoreTokenKey;
-            SecretStoreTokenPath = secretStoreTokenPath;
             Subdomain = subdomain;
             Tags = tags;
             Token = token;

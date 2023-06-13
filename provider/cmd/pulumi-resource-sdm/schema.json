@@ -321,27 +321,10 @@
                 "remoteIdentityHealthcheckUsername": {
                     "type": "string"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificateKey": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificatePath": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -407,20 +390,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -491,14 +462,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreTokenKey": {
-                    "type": "string",
-                    "description": "* kubernetes_user_impersonation:\n"
-                },
-                "secretStoreTokenPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -513,6 +478,7 @@
                 },
                 "token": {
                     "type": "string",
+                    "description": "* kubernetes_user_impersonation:\n",
                     "secret": true
                 }
             },
@@ -564,14 +530,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreTokenKey": {
-                    "type": "string",
-                    "description": "* kubernetes_user_impersonation:\n"
-                },
-                "secretStoreTokenPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -586,6 +546,7 @@
                 },
                 "token": {
                     "type": "string",
+                    "description": "* kubernetes_user_impersonation:\n",
                     "secret": true
                 }
             },
@@ -647,27 +608,10 @@
                 "portOverride": {
                     "type": "integer"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificateKey": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificatePath": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -731,6 +675,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "region": {
                     "type": "string"
                 },
@@ -750,39 +697,10 @@
                     "type": "string",
                     "secret": true
                 },
-                "secretStoreAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreAccessKeyPath": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -810,6 +728,7 @@
                         "clusterName",
                         "endpoint",
                         "name",
+                        "portOverride",
                         "region",
                         "subdomain"
                     ]
@@ -844,6 +763,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "region": {
                     "type": "string"
                 },
@@ -859,27 +781,10 @@
                 "roleExternalId": {
                     "type": "string"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -907,6 +812,7 @@
                         "clusterName",
                         "endpoint",
                         "name",
+                        "portOverride",
                         "region",
                         "subdomain"
                     ]
@@ -941,6 +847,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "region": {
                     "type": "string"
                 },
@@ -956,27 +865,10 @@
                 "roleExternalId": {
                     "type": "string"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1004,6 +896,7 @@
                         "clusterName",
                         "endpoint",
                         "name",
+                        "portOverride",
                         "region",
                         "subdomain"
                     ]
@@ -1041,6 +934,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "region": {
                     "type": "string"
                 },
@@ -1054,39 +950,10 @@
                     "type": "string",
                     "secret": true
                 },
-                "secretStoreAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreAccessKeyPath": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1114,6 +981,7 @@
                         "clusterName",
                         "endpoint",
                         "name",
+                        "portOverride",
                         "region",
                         "subdomain"
                     ]
@@ -1156,33 +1024,10 @@
                     "type": "string",
                     "secret": true
                 },
-                "secretStoreAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreAccessKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1242,20 +1087,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1328,33 +1161,10 @@
                     "type": "string",
                     "secret": true
                 },
-                "secretStoreAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreAccessKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1415,22 +1225,13 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1442,6 +1243,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -1501,20 +1305,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1583,33 +1375,10 @@
                     "type": "string",
                     "secret": true
                 },
-                "secretStoreAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreAccessKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1677,19 +1446,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "sessionExpiry": {
                     "type": "integer"
@@ -1763,33 +1521,10 @@
                     "type": "string",
                     "secret": true
                 },
-                "secretStoreAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreAccessKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "sessionExpiry": {
                     "type": "integer"
@@ -1848,28 +1583,10 @@
                 "portOverride": {
                     "type": "integer"
                 },
-                "secretStoreAppIdKey": {
-                    "type": "string"
-                },
-                "secretStoreAppIdPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreTenantIdKey": {
-                    "type": "string",
-                    "description": "* azure_mysql:\n"
-                },
-                "secretStoreTenantIdPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1883,7 +1600,8 @@
                     "description": "Tags is a map of key, value pairs.\n"
                 },
                 "tenantId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* sql_server_kerberos_ad:\n"
                 }
             },
             "type": "object",
@@ -1925,28 +1643,10 @@
                 "portOverride": {
                     "type": "integer"
                 },
-                "secretStoreAppIdKey": {
-                    "type": "string"
-                },
-                "secretStoreAppIdPath": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificateKey": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificatePath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreTenantIdKey": {
-                    "type": "string",
-                    "description": "* azure_mysql:\n"
-                },
-                "secretStoreTenantIdPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -1960,7 +1660,8 @@
                     "description": "Tags is a map of key, value pairs.\n"
                 },
                 "tenantId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "* sql_server_kerberos_ad:\n"
                 }
             },
             "type": "object",
@@ -2008,22 +1709,13 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2035,6 +1727,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -2094,20 +1789,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2172,13 +1855,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePrivateKeyKey": {
-                    "type": "string"
-                },
-                "secretStorePrivateKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2243,20 +1921,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2328,20 +1994,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2407,22 +2061,13 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2434,6 +2079,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -2493,20 +2141,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2571,20 +2207,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2655,20 +2279,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2736,20 +2348,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2820,20 +2420,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2900,20 +2488,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -2983,33 +2559,10 @@
                     "type": "string",
                     "secret": true
                 },
-                "secretStoreAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreAccessKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3071,20 +2624,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3150,20 +2691,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3226,13 +2755,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreKeyfileKey": {
-                    "type": "string"
-                },
-                "secretStoreKeyfilePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3294,21 +2818,10 @@
                 "remoteIdentityHealthcheckUsername": {
                     "type": "string"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreServiceAccountKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreServiceAccountKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "serviceAccountKey": {
                     "type": "string",
@@ -3367,21 +2880,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreServiceAccountKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreServiceAccountKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "serviceAccountKey": {
                     "type": "string",
@@ -3450,20 +2952,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3529,15 +3019,10 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
-                "secretStoreAuthHeaderKey": {
-                    "type": "string"
-                },
-                "secretStoreAuthHeaderPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3606,20 +3091,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3687,7 +3160,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3769,27 +3243,10 @@
                 "remoteIdentityHealthcheckUsername": {
                     "type": "string"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificateKey": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificatePath": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3855,20 +3312,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3939,14 +3384,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreTokenKey": {
-                    "type": "string",
-                    "description": "* kubernetes_user_impersonation:\n"
-                },
-                "secretStoreTokenPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -3961,6 +3400,7 @@
                 },
                 "token": {
                     "type": "string",
+                    "description": "* kubernetes_user_impersonation:\n",
                     "secret": true
                 }
             },
@@ -4012,14 +3452,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreTokenKey": {
-                    "type": "string",
-                    "description": "* kubernetes_user_impersonation:\n"
-                },
-                "secretStoreTokenPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4034,6 +3468,7 @@
                 },
                 "token": {
                     "type": "string",
+                    "description": "* kubernetes_user_impersonation:\n",
                     "secret": true
                 }
             },
@@ -4095,27 +3530,10 @@
                 "portOverride": {
                     "type": "integer"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificateKey": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificatePath": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4178,22 +3596,13 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4205,6 +3614,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -4254,7 +3666,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4315,22 +3728,13 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4342,6 +3746,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -4398,20 +3805,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4485,20 +3880,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4575,20 +3958,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4667,20 +4038,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4750,20 +4109,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -4844,40 +4191,13 @@
                 "portOverride": {
                     "type": "integer"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificateKey": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificatePath": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyPath": {
-                    "type": "string"
+                "requireNativeAuth": {
+                    "type": "boolean"
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "serverName": {
                     "type": "string"
@@ -4892,6 +4212,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -4961,40 +4284,10 @@
                 "portOverride": {
                     "type": "integer"
                 },
-                "secretStoreCertificateAuthorityKey": {
-                    "type": "string"
-                },
-                "secretStoreCertificateAuthorityPath": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificateKey": {
-                    "type": "string"
-                },
-                "secretStoreClientCertificatePath": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreClientKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "serverName": {
                     "type": "string"
@@ -5063,22 +4356,13 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5090,6 +4374,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -5139,7 +4426,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5209,33 +4497,10 @@
                     "type": "string",
                     "secret": true
                 },
-                "secretStoreAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreAccessKeyPath": {
-                    "type": "string"
-                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreRoleArnKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleArnPath": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdKey": {
-                    "type": "string"
-                },
-                "secretStoreRoleExternalIdPath": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyKey": {
-                    "type": "string"
-                },
-                "secretStoreSecretAccessKeyPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5300,20 +4565,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5389,20 +4642,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5470,13 +4711,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5544,20 +4780,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5619,7 +4843,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5682,20 +4907,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5758,20 +4971,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5843,20 +5044,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5922,22 +5111,13 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -5949,6 +5129,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -6005,20 +5188,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -6079,13 +5250,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreSamlMetadataKey": {
-                    "type": "string"
-                },
-                "secretStoreSamlMetadataPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -6155,19 +5321,171 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
+                "subdomain": {
                     "type": "string",
-                    "description": "* trino:\n"
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
                 },
-                "secretStoreUsernamePath": {
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceSqlServerAzureAd:ResourceSqlServerAzureAd": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "database": {
+                    "type": "string"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean"
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "portOverride": {
+                    "type": "integer"
+                },
+                "schema": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "* sql_server_kerberos_ad:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceSqlServerKerberosAd:ResourceSqlServerKerberosAd": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n"
+                },
+                "database": {
+                    "type": "string"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string"
+                },
+                "keytab": {
+                    "type": "string",
+                    "secret": true
+                },
+                "krbConfig": {
+                    "type": "string",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean"
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "portOverride": {
+                    "type": "integer"
+                },
+                "realm": {
+                    "type": "string"
+                },
+                "schema": {
+                    "type": "string"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "serverSpn": {
                     "type": "string"
                 },
                 "subdomain": {
@@ -6241,14 +5559,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -6326,14 +5638,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -6405,20 +5711,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePrivateKeyKey": {
-                    "type": "string"
-                },
-                "secretStorePrivateKeyPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -6483,20 +5777,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -6559,20 +5841,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -6635,20 +5905,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
-                },
-                "secretStoreUsernameKey": {
-                    "type": "string",
-                    "description": "* trino:\n"
-                },
-                "secretStoreUsernamePath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -6714,13 +5972,8 @@
                 },
                 "secretStoreId": {
                     "type": "string",
-                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
-                },
-                "secretStorePasswordKey": {
-                    "type": "string"
-                },
-                "secretStorePasswordPath": {
-                    "type": "string"
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
                 },
                 "subdomain": {
                     "type": "string",
@@ -7712,6 +6965,18 @@
                         "$ref": "#/types/sdm:index/getResourceResourceSnowsight:getResourceResourceSnowsight"
                     }
                 },
+                "sqlServerAzureAds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceSqlServerAzureAd:getResourceResourceSqlServerAzureAd"
+                    }
+                },
+                "sqlServerKerberosAds": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceSqlServerKerberosAd:getResourceResourceSqlServerKerberosAd"
+                    }
+                },
                 "sqlServers": {
                     "type": "array",
                     "items": {
@@ -7834,6 +7099,8 @@
                 "snowflakes",
                 "snowsights",
                 "sqlServers",
+                "sqlServerAzureAds",
+                "sqlServerKerberosAds",
                 "sshes",
                 "sshCerts",
                 "sshCustomerKeys",
@@ -8239,6 +7506,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "region": {
                     "type": "string"
                 },
@@ -8308,6 +7578,9 @@
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
                 },
+                "portOverride": {
+                    "type": "integer"
+                },
                 "region": {
                     "type": "string"
                 },
@@ -8372,6 +7645,9 @@
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer"
                 },
                 "region": {
                     "type": "string"
@@ -8440,6 +7716,9 @@
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer"
                 },
                 "region": {
                     "type": "string"
@@ -8619,6 +7898,9 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -8633,6 +7915,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -8922,7 +8207,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "* azure_mysql:\n"
+                    "description": "* sql_server_kerberos_ad:\n"
                 }
             },
             "type": "object"
@@ -8972,7 +8257,7 @@
                 },
                 "tenantId": {
                     "type": "string",
-                    "description": "* azure_mysql:\n"
+                    "description": "* sql_server_kerberos_ad:\n"
                 }
             },
             "type": "object"
@@ -9011,6 +8296,9 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -9025,6 +8313,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -9289,6 +8580,9 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -9303,6 +8597,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -10522,6 +9819,9 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -10536,6 +9836,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -10622,6 +9925,9 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -10636,6 +9942,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -10991,6 +10300,9 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -11008,6 +10320,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -11122,6 +10437,9 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -11136,6 +10454,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -11725,6 +11046,9 @@
                 "portOverride": {
                     "type": "integer"
                 },
+                "requireNativeAuth": {
+                    "type": "boolean"
+                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -11739,6 +11063,9 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "useAzureSingleServerUsernames": {
+                    "type": "boolean"
                 },
                 "username": {
                     "type": "string"
@@ -11889,6 +11216,142 @@
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceSqlServerAzureAd:getResourceResourceSqlServerAzureAd": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n"
+                },
+                "clientId": {
+                    "type": "string"
+                },
+                "database": {
+                    "type": "string"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean"
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "portOverride": {
+                    "type": "integer"
+                },
+                "schema": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "string",
+                    "secret": true
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "* sql_server_kerberos_ad:\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceSqlServerKerberosAd:getResourceResourceSqlServerKerberosAd": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "Bind interface\n"
+                },
+                "database": {
+                    "type": "string"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "keytab": {
+                    "type": "string",
+                    "secret": true
+                },
+                "krbConfig": {
+                    "type": "string",
+                    "secret": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean"
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "portOverride": {
+                    "type": "integer"
+                },
+                "realm": {
+                    "type": "string"
+                },
+                "schema": {
+                    "type": "string"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "serverSpn": {
+                    "type": "string"
                 },
                 "subdomain": {
                     "type": "string",
@@ -13124,6 +12587,12 @@
                 "sqlServer": {
                     "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"
                 },
+                "sqlServerAzureAd": {
+                    "$ref": "#/types/sdm:index/ResourceSqlServerAzureAd:ResourceSqlServerAzureAd"
+                },
+                "sqlServerKerberosAd": {
+                    "$ref": "#/types/sdm:index/ResourceSqlServerKerberosAd:ResourceSqlServerKerberosAd"
+                },
                 "ssh": {
                     "$ref": "#/types/sdm:index/ResourceSsh:ResourceSsh"
                 },
@@ -13367,6 +12836,12 @@
                 },
                 "sqlServer": {
                     "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"
+                },
+                "sqlServerAzureAd": {
+                    "$ref": "#/types/sdm:index/ResourceSqlServerAzureAd:ResourceSqlServerAzureAd"
+                },
+                "sqlServerKerberosAd": {
+                    "$ref": "#/types/sdm:index/ResourceSqlServerKerberosAd:ResourceSqlServerKerberosAd"
                 },
                 "ssh": {
                     "$ref": "#/types/sdm:index/ResourceSsh:ResourceSsh"
@@ -13613,6 +13088,12 @@
                     },
                     "sqlServer": {
                         "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"
+                    },
+                    "sqlServerAzureAd": {
+                        "$ref": "#/types/sdm:index/ResourceSqlServerAzureAd:ResourceSqlServerAzureAd"
+                    },
+                    "sqlServerKerberosAd": {
+                        "$ref": "#/types/sdm:index/ResourceSqlServerKerberosAd:ResourceSqlServerKerberosAd"
                     },
                     "ssh": {
                         "$ref": "#/types/sdm:index/ResourceSsh:ResourceSsh"

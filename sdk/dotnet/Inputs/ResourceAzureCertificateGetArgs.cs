@@ -49,32 +49,11 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
-        [Input("secretStoreAppIdKey")]
-        public Input<string>? SecretStoreAppIdKey { get; set; }
-
-        [Input("secretStoreAppIdPath")]
-        public Input<string>? SecretStoreAppIdPath { get; set; }
-
-        [Input("secretStoreClientCertificateKey")]
-        public Input<string>? SecretStoreClientCertificateKey { get; set; }
-
-        [Input("secretStoreClientCertificatePath")]
-        public Input<string>? SecretStoreClientCertificatePath { get; set; }
-
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
-
-        /// <summary>
-        /// * azure_mysql:
-        /// </summary>
-        [Input("secretStoreTenantIdKey")]
-        public Input<string>? SecretStoreTenantIdKey { get; set; }
-
-        [Input("secretStoreTenantIdPath")]
-        public Input<string>? SecretStoreTenantIdPath { get; set; }
 
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -94,6 +73,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// * sql_server_kerberos_ad:
+        /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 

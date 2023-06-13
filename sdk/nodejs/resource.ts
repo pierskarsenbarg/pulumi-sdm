@@ -136,6 +136,8 @@ export class Resource extends pulumi.CustomResource {
      */
     public readonly snowsight!: pulumi.Output<outputs.ResourceSnowsight | undefined>;
     public readonly sqlServer!: pulumi.Output<outputs.ResourceSqlServer | undefined>;
+    public readonly sqlServerAzureAd!: pulumi.Output<outputs.ResourceSqlServerAzureAd | undefined>;
+    public readonly sqlServerKerberosAd!: pulumi.Output<outputs.ResourceSqlServerKerberosAd | undefined>;
     public readonly ssh!: pulumi.Output<outputs.ResourceSsh | undefined>;
     public readonly sshCert!: pulumi.Output<outputs.ResourceSshCert | undefined>;
     public readonly sshCustomerKey!: pulumi.Output<outputs.ResourceSshCustomerKey | undefined>;
@@ -231,6 +233,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["snowflake"] = state ? state.snowflake : undefined;
             resourceInputs["snowsight"] = state ? state.snowsight : undefined;
             resourceInputs["sqlServer"] = state ? state.sqlServer : undefined;
+            resourceInputs["sqlServerAzureAd"] = state ? state.sqlServerAzureAd : undefined;
+            resourceInputs["sqlServerKerberosAd"] = state ? state.sqlServerKerberosAd : undefined;
             resourceInputs["ssh"] = state ? state.ssh : undefined;
             resourceInputs["sshCert"] = state ? state.sshCert : undefined;
             resourceInputs["sshCustomerKey"] = state ? state.sshCustomerKey : undefined;
@@ -311,6 +315,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["snowflake"] = args ? args.snowflake : undefined;
             resourceInputs["snowsight"] = args ? args.snowsight : undefined;
             resourceInputs["sqlServer"] = args ? args.sqlServer : undefined;
+            resourceInputs["sqlServerAzureAd"] = args ? args.sqlServerAzureAd : undefined;
+            resourceInputs["sqlServerKerberosAd"] = args ? args.sqlServerKerberosAd : undefined;
             resourceInputs["ssh"] = args ? args.ssh : undefined;
             resourceInputs["sshCert"] = args ? args.sshCert : undefined;
             resourceInputs["sshCustomerKey"] = args ? args.sshCustomerKey : undefined;
@@ -421,6 +427,8 @@ export interface ResourceState {
      */
     snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
     sqlServer?: pulumi.Input<inputs.ResourceSqlServer>;
+    sqlServerAzureAd?: pulumi.Input<inputs.ResourceSqlServerAzureAd>;
+    sqlServerKerberosAd?: pulumi.Input<inputs.ResourceSqlServerKerberosAd>;
     ssh?: pulumi.Input<inputs.ResourceSsh>;
     sshCert?: pulumi.Input<inputs.ResourceSshCert>;
     sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey>;
@@ -530,6 +538,8 @@ export interface ResourceArgs {
      */
     snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
     sqlServer?: pulumi.Input<inputs.ResourceSqlServer>;
+    sqlServerAzureAd?: pulumi.Input<inputs.ResourceSqlServerAzureAd>;
+    sqlServerKerberosAd?: pulumi.Input<inputs.ResourceSqlServerKerberosAd>;
     ssh?: pulumi.Input<inputs.ResourceSsh>;
     sshCert?: pulumi.Input<inputs.ResourceSshCert>;
     sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey>;

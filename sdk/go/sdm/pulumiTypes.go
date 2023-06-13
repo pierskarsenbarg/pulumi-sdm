@@ -1014,17 +1014,11 @@ type ResourceAks struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	Hostname             string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Port                                int     `pulumi:"port"`
-	PortOverride                        *int    `pulumi:"portOverride"`
-	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     *string `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    *string `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             *string `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            *string `pulumi:"secretStoreClientKeyPath"`
+	Name                              string  `pulumi:"name"`
+	Port                              int     `pulumi:"port"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1056,17 +1050,11 @@ type ResourceAksArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	Hostname             pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Port                                pulumi.IntInput       `pulumi:"port"`
-	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
-	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    pulumi.StringPtrInput `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             pulumi.StringPtrInput `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            pulumi.StringPtrInput `pulumi:"secretStoreClientKeyPath"`
+	Name                              pulumi.StringInput    `pulumi:"name"`
+	Port                              pulumi.IntInput       `pulumi:"port"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1202,30 +1190,6 @@ func (o ResourceAksOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 
 func (o ResourceAksOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAks) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAks) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAks) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAks) *string { return v.SecretStoreClientCertificateKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAks) *string { return v.SecretStoreClientCertificatePath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAks) *string { return v.SecretStoreClientKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAks) *string { return v.SecretStoreClientKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -1379,60 +1343,6 @@ func (o ResourceAksPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAksPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksPtrOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksPtrOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificatePath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksPtrOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksPtrOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAks) *string {
@@ -1477,12 +1387,7 @@ type ResourceAksBasicAuth struct {
 	Port         int     `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -1515,12 +1420,7 @@ type ResourceAksBasicAuthArgs struct {
 	Port         pulumi.IntInput       `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -1644,23 +1544,6 @@ func (o ResourceAksBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksBasicAuthOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksBasicAuth) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksBasicAuthOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksBasicAuth) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAksBasicAuthOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksBasicAuth) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksBasicAuthOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksBasicAuth) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1787,43 +1670,6 @@ func (o ResourceAksBasicAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAksBasicAuthPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksBasicAuthPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAksBasicAuthPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksBasicAuthPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAksBasicAuthPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksBasicAuth) *string {
@@ -1869,14 +1715,12 @@ type ResourceAksServiceAccount struct {
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// * kubernetes_user_impersonation:
-	SecretStoreTokenKey  *string `pulumi:"secretStoreTokenKey"`
-	SecretStoreTokenPath *string `pulumi:"secretStoreTokenPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags  map[string]string `pulumi:"tags"`
-	Token *string           `pulumi:"token"`
+	Tags map[string]string `pulumi:"tags"`
+	// * kubernetes_user_impersonation:
+	Token *string `pulumi:"token"`
 }
 
 // ResourceAksServiceAccountInput is an input type that accepts ResourceAksServiceAccountArgs and ResourceAksServiceAccountOutput values.
@@ -1906,13 +1750,11 @@ type ResourceAksServiceAccountArgs struct {
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// * kubernetes_user_impersonation:
-	SecretStoreTokenKey  pulumi.StringPtrInput `pulumi:"secretStoreTokenKey"`
-	SecretStoreTokenPath pulumi.StringPtrInput `pulumi:"secretStoreTokenPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags  pulumi.StringMapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * kubernetes_user_impersonation:
 	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
@@ -2038,15 +1880,6 @@ func (o ResourceAksServiceAccountOutput) SecretStoreId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// * kubernetes_user_impersonation:
-func (o ResourceAksServiceAccountOutput) SecretStoreTokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.SecretStoreTokenKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksServiceAccountOutput) SecretStoreTokenPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.SecretStoreTokenPath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAksServiceAccountOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -2057,6 +1890,7 @@ func (o ResourceAksServiceAccountOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// * kubernetes_user_impersonation:
 func (o ResourceAksServiceAccountOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
@@ -2180,25 +2014,6 @@ func (o ResourceAksServiceAccountPtrOutput) SecretStoreId() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// * kubernetes_user_impersonation:
-func (o ResourceAksServiceAccountPtrOutput) SecretStoreTokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTokenKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksServiceAccountPtrOutput) SecretStoreTokenPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTokenPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAksServiceAccountPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
@@ -2219,6 +2034,7 @@ func (o ResourceAksServiceAccountPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// * kubernetes_user_impersonation:
 func (o ResourceAksServiceAccountPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
 		if v == nil {
@@ -2242,14 +2058,12 @@ type ResourceAksServiceAccountUserImpersonation struct {
 	PortOverride *int   `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// * kubernetes_user_impersonation:
-	SecretStoreTokenKey  *string `pulumi:"secretStoreTokenKey"`
-	SecretStoreTokenPath *string `pulumi:"secretStoreTokenPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags  map[string]string `pulumi:"tags"`
-	Token *string           `pulumi:"token"`
+	Tags map[string]string `pulumi:"tags"`
+	// * kubernetes_user_impersonation:
+	Token *string `pulumi:"token"`
 }
 
 // ResourceAksServiceAccountUserImpersonationInput is an input type that accepts ResourceAksServiceAccountUserImpersonationArgs and ResourceAksServiceAccountUserImpersonationOutput values.
@@ -2277,13 +2091,11 @@ type ResourceAksServiceAccountUserImpersonationArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// * kubernetes_user_impersonation:
-	SecretStoreTokenKey  pulumi.StringPtrInput `pulumi:"secretStoreTokenKey"`
-	SecretStoreTokenPath pulumi.StringPtrInput `pulumi:"secretStoreTokenPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags  pulumi.StringMapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * kubernetes_user_impersonation:
 	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
@@ -2401,15 +2213,6 @@ func (o ResourceAksServiceAccountUserImpersonationOutput) SecretStoreId() pulumi
 	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// * kubernetes_user_impersonation:
-func (o ResourceAksServiceAccountUserImpersonationOutput) SecretStoreTokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *string { return v.SecretStoreTokenKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksServiceAccountUserImpersonationOutput) SecretStoreTokenPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *string { return v.SecretStoreTokenPath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAksServiceAccountUserImpersonationOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -2420,6 +2223,7 @@ func (o ResourceAksServiceAccountUserImpersonationOutput) Tags() pulumi.StringMa
 	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// * kubernetes_user_impersonation:
 func (o ResourceAksServiceAccountUserImpersonationOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
@@ -2525,25 +2329,6 @@ func (o ResourceAksServiceAccountUserImpersonationPtrOutput) SecretStoreId() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// * kubernetes_user_impersonation:
-func (o ResourceAksServiceAccountUserImpersonationPtrOutput) SecretStoreTokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksServiceAccountUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTokenKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksServiceAccountUserImpersonationPtrOutput) SecretStoreTokenPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksServiceAccountUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTokenPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAksServiceAccountUserImpersonationPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccountUserImpersonation) *string {
@@ -2564,6 +2349,7 @@ func (o ResourceAksServiceAccountUserImpersonationPtrOutput) Tags() pulumi.Strin
 	}).(pulumi.StringMapOutput)
 }
 
+// * kubernetes_user_impersonation:
 func (o ResourceAksServiceAccountUserImpersonationPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccountUserImpersonation) *string {
 		if v == nil {
@@ -2585,15 +2371,9 @@ type ResourceAksUserImpersonation struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	Hostname             string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Port                                int     `pulumi:"port"`
-	PortOverride                        *int    `pulumi:"portOverride"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     *string `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    *string `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             *string `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            *string `pulumi:"secretStoreClientKeyPath"`
+	Name         string `pulumi:"name"`
+	Port         int    `pulumi:"port"`
+	PortOverride *int   `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2625,15 +2405,9 @@ type ResourceAksUserImpersonationArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	Hostname             pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Port                                pulumi.IntInput       `pulumi:"port"`
-	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    pulumi.StringPtrInput `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             pulumi.StringPtrInput `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            pulumi.StringPtrInput `pulumi:"secretStoreClientKeyPath"`
+	Name         pulumi.StringInput `pulumi:"name"`
+	Port         pulumi.IntInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2761,30 +2535,6 @@ func (o ResourceAksUserImpersonationOutput) Port() pulumi.IntOutput {
 
 func (o ResourceAksUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksUserImpersonation) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksUserImpersonation) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksUserImpersonation) *string { return v.SecretStoreClientCertificateKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksUserImpersonation) *string { return v.SecretStoreClientCertificatePath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksUserImpersonation) *string { return v.SecretStoreClientKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksUserImpersonation) *string { return v.SecretStoreClientKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -2920,60 +2670,6 @@ func (o ResourceAksUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceAksUserImpersonationPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationPtrOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationPtrOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificatePath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationPtrOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAksUserImpersonationPtrOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
@@ -3016,25 +2712,16 @@ type ResourceAmazonEks struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Region                              string  `pulumi:"region"`
-	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
-	RoleArn                             *string `pulumi:"roleArn"`
-	RoleExternalId                      *string `pulumi:"roleExternalId"`
-	SecretAccessKey                     *string `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey             *string `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath            *string `pulumi:"secretStoreAccessKeyPath"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name                              string  `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	Region                            string  `pulumi:"region"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           *string `pulumi:"roleArn"`
+	RoleExternalId                    *string `pulumi:"roleExternalId"`
+	SecretAccessKey                   *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -3064,25 +2751,16 @@ type ResourceAmazonEksArgs struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Region                              pulumi.StringInput    `pulumi:"region"`
-	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
-	RoleArn                             pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId                      pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretAccessKey                     pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey             pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath            pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name                              pulumi.StringInput    `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region                            pulumi.StringInput    `pulumi:"region"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey                   pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -3202,6 +2880,10 @@ func (o ResourceAmazonEksOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ResourceAmazonEksOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEks) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAmazonEksOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -3226,49 +2908,9 @@ func (o ResourceAmazonEksOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEksOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEksOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3381,6 +3023,15 @@ func (o ResourceAmazonEksPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceAmazonEksPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEks) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAmazonEksPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEks) *string {
 		if v == nil {
@@ -3435,42 +3086,6 @@ func (o ResourceAmazonEksPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEksPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEksPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEks) *string {
@@ -3478,60 +3093,6 @@ func (o ResourceAmazonEksPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3566,20 +3127,15 @@ type ResourceAmazonEksInstanceProfile struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Region                              string  `pulumi:"region"`
-	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
-	RoleArn                             *string `pulumi:"roleArn"`
-	RoleExternalId                      *string `pulumi:"roleExternalId"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name                              string  `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	Region                            string  `pulumi:"region"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           *string `pulumi:"roleArn"`
+	RoleExternalId                    *string `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                 *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey         *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath        *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey  *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath *string `pulumi:"secretStoreRoleExternalIdPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -3608,20 +3164,15 @@ type ResourceAmazonEksInstanceProfileArgs struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Region                              pulumi.StringInput    `pulumi:"region"`
-	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
-	RoleArn                             pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId                      pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name                              pulumi.StringInput    `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region                            pulumi.StringInput    `pulumi:"region"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                 pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath        pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -3737,6 +3288,10 @@ func (o ResourceAmazonEksInstanceProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ResourceAmazonEksInstanceProfileOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAmazonEksInstanceProfileOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -3757,33 +3312,9 @@ func (o ResourceAmazonEksInstanceProfileOutput) RoleExternalId() pulumi.StringPt
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3887,6 +3418,15 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) Name() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceAmazonEksInstanceProfilePtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAmazonEksInstanceProfilePtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
 		if v == nil {
@@ -3932,24 +3472,6 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) RoleExternalId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
@@ -3957,42 +3479,6 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreId() pulumi.String
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfilePtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4027,20 +3513,15 @@ type ResourceAmazonEksInstanceProfileUserImpersonation struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Region                              string  `pulumi:"region"`
-	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
-	RoleArn                             *string `pulumi:"roleArn"`
-	RoleExternalId                      *string `pulumi:"roleExternalId"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name                              string  `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	Region                            string  `pulumi:"region"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           *string `pulumi:"roleArn"`
+	RoleExternalId                    *string `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                 *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey         *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath        *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey  *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath *string `pulumi:"secretStoreRoleExternalIdPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -4069,20 +3550,15 @@ type ResourceAmazonEksInstanceProfileUserImpersonationArgs struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Region                              pulumi.StringInput    `pulumi:"region"`
-	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
-	RoleArn                             pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId                      pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name                              pulumi.StringInput    `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region                            pulumi.StringInput    `pulumi:"region"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                 pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath        pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -4198,6 +3674,10 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) Name() pulumi.S
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -4220,41 +3700,9 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) RoleExternalId(
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4358,6 +3806,15 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) Name() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
 		if v == nil {
@@ -4403,24 +3860,6 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) RoleExternal
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
@@ -4428,42 +3867,6 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) SecretStoreI
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4499,23 +3902,14 @@ type ResourceAmazonEksUserImpersonation struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Region                              string  `pulumi:"region"`
-	RoleArn                             *string `pulumi:"roleArn"`
-	RoleExternalId                      *string `pulumi:"roleExternalId"`
-	SecretAccessKey                     *string `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey             *string `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath            *string `pulumi:"secretStoreAccessKeyPath"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name            string  `pulumi:"name"`
+	PortOverride    *int    `pulumi:"portOverride"`
+	Region          string  `pulumi:"region"`
+	RoleArn         *string `pulumi:"roleArn"`
+	RoleExternalId  *string `pulumi:"roleExternalId"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -4545,23 +3939,14 @@ type ResourceAmazonEksUserImpersonationArgs struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Region                              pulumi.StringInput    `pulumi:"region"`
-	RoleArn                             pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId                      pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretAccessKey                     pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey             pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath            pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name            pulumi.StringInput    `pulumi:"name"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region          pulumi.StringInput    `pulumi:"region"`
+	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -4681,6 +4066,10 @@ func (o ResourceAmazonEksUserImpersonationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o ResourceAmazonEksUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAmazonEksUserImpersonationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -4697,49 +4086,9 @@ func (o ResourceAmazonEksUserImpersonationOutput) SecretAccessKey() pulumi.Strin
 	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4852,6 +4201,15 @@ func (o ResourceAmazonEksUserImpersonationPtrOutput) Name() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ResourceAmazonEksUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 func (o ResourceAmazonEksUserImpersonationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
 		if v == nil {
@@ -4888,42 +4246,6 @@ func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretAccessKey() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
@@ -4931,60 +4253,6 @@ func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreId() pulumi.Stri
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEksUserImpersonationPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5016,22 +4284,14 @@ type ResourceAmazonEs struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Endpoint     *string `pulumi:"endpoint"`
 	// Unique human-readable name of the Resource.
-	Name                     string  `pulumi:"name"`
-	PortOverride             *int    `pulumi:"portOverride"`
-	Region                   string  `pulumi:"region"`
-	RoleArn                  *string `pulumi:"roleArn"`
-	RoleExternalId           *string `pulumi:"roleExternalId"`
-	SecretAccessKey          *string `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  *string `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath *string `pulumi:"secretStoreAccessKeyPath"`
+	Name            string  `pulumi:"name"`
+	PortOverride    *int    `pulumi:"portOverride"`
+	Region          string  `pulumi:"region"`
+	RoleArn         *string `pulumi:"roleArn"`
+	RoleExternalId  *string `pulumi:"roleExternalId"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -5057,22 +4317,14 @@ type ResourceAmazonEsArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Endpoint     pulumi.StringPtrInput `pulumi:"endpoint"`
 	// Unique human-readable name of the Resource.
-	Name                     pulumi.StringInput    `pulumi:"name"`
-	PortOverride             pulumi.IntPtrInput    `pulumi:"portOverride"`
-	Region                   pulumi.StringInput    `pulumi:"region"`
-	RoleArn                  pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId           pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretAccessKey          pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
+	Name            pulumi.StringInput    `pulumi:"name"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region          pulumi.StringInput    `pulumi:"region"`
+	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -5199,41 +4451,9 @@ func (o ResourceAmazonEsOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEsOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEsOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5363,24 +4583,6 @@ func (o ResourceAmazonEsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonEsPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonEsPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEs) *string {
@@ -5388,60 +4590,6 @@ func (o ResourceAmazonEsPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonEsPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEs) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5477,12 +4625,7 @@ type ResourceAmazonmqAmqp091 struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -5514,12 +4657,7 @@ type ResourceAmazonmqAmqp091Args struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -5641,23 +4779,6 @@ func (o ResourceAmazonmqAmqp091Output) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonmqAmqp091Output) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonmqAmqp091Output) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAmazonmqAmqp091Output) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonmqAmqp091Output) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAmazonmqAmqp091Output) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -5776,43 +4897,6 @@ func (o ResourceAmazonmqAmqp091PtrOutput) SecretStoreId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAmazonmqAmqp091PtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonmqAmqp091) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonmqAmqp091PtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonmqAmqp091) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAmazonmqAmqp091PtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonmqAmqp091) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAmazonmqAmqp091PtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonmqAmqp091) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAmazonmqAmqp091PtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonmqAmqp091) *string {
@@ -5859,22 +4943,14 @@ type ResourceAthena struct {
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// Unique human-readable name of the Resource.
-	Name                     string  `pulumi:"name"`
-	PortOverride             *int    `pulumi:"portOverride"`
-	Region                   *string `pulumi:"region"`
-	RoleArn                  *string `pulumi:"roleArn"`
-	RoleExternalId           *string `pulumi:"roleExternalId"`
-	SecretAccessKey          *string `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  *string `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath *string `pulumi:"secretStoreAccessKeyPath"`
+	Name            string  `pulumi:"name"`
+	PortOverride    *int    `pulumi:"portOverride"`
+	Region          *string `pulumi:"region"`
+	RoleArn         *string `pulumi:"roleArn"`
+	RoleExternalId  *string `pulumi:"roleExternalId"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -5900,22 +4976,14 @@ type ResourceAthenaArgs struct {
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// Unique human-readable name of the Resource.
-	Name                     pulumi.StringInput    `pulumi:"name"`
-	PortOverride             pulumi.IntPtrInput    `pulumi:"portOverride"`
-	Region                   pulumi.StringPtrInput `pulumi:"region"`
-	RoleArn                  pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId           pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretAccessKey          pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
+	Name            pulumi.StringInput    `pulumi:"name"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region          pulumi.StringPtrInput `pulumi:"region"`
+	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -6042,41 +5110,9 @@ func (o ResourceAthenaOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAthenaOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAthenaOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAthena) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6206,24 +5242,6 @@ func (o ResourceAthenaPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAthenaPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAthenaPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAthena) *string {
@@ -6231,60 +5249,6 @@ func (o ResourceAthenaPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAthenaPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAthena) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6316,22 +5280,19 @@ type ResourceAuroraMysql struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         string  `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              string  `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // ResourceAuroraMysqlInput is an input type that accepts ResourceAuroraMysqlArgs and ResourceAuroraMysqlOutput values.
@@ -6353,22 +5314,19 @@ type ResourceAuroraMysqlArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringInput    `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceAuroraMysqlArgs) ElementType() reflect.Type {
@@ -6483,26 +5441,13 @@ func (o ResourceAuroraMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAuroraMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAuroraMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAuroraMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAuroraMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraMysqlOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAuroraMysql) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraMysqlOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAuroraMysql) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAuroraMysqlOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAuroraMysql) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraMysqlOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAuroraMysql) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6513,6 +5458,10 @@ func (o ResourceAuroraMysqlOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceAuroraMysqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceAuroraMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceAuroraMysqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceAuroraMysqlOutput) Username() pulumi.StringPtrOutput {
@@ -6618,6 +5567,15 @@ func (o ResourceAuroraMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAuroraMysqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAuroraMysqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAuroraMysql) *string {
@@ -6625,43 +5583,6 @@ func (o ResourceAuroraMysqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraMysqlPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAuroraMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraMysqlPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAuroraMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAuroraMysqlPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAuroraMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraMysqlPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAuroraMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6683,6 +5604,15 @@ func (o ResourceAuroraMysqlPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceAuroraMysqlPtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceAuroraMysqlPtrOutput) Username() pulumi.StringPtrOutput {
@@ -6708,12 +5638,7 @@ type ResourceAuroraPostgres struct {
 	Port             *int    `pulumi:"port"`
 	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -6746,12 +5671,7 @@ type ResourceAuroraPostgresArgs struct {
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -6878,23 +5798,6 @@ func (o ResourceAuroraPostgresOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAuroraPostgresOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAuroraPostgres) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraPostgresOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAuroraPostgres) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraPostgresOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAuroraPostgres) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAuroraPostgresOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAuroraPostgres) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraPostgresOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAuroraPostgres) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7029,43 +5932,6 @@ func (o ResourceAuroraPostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAuroraPostgresPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAuroraPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraPostgresPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAuroraPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAuroraPostgresPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAuroraPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAuroraPostgresPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAuroraPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAuroraPostgresPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAuroraPostgres) *string {
@@ -7103,21 +5969,13 @@ type ResourceAws struct {
 	EgressFilter      *string `pulumi:"egressFilter"`
 	HealthcheckRegion string  `pulumi:"healthcheckRegion"`
 	// Unique human-readable name of the Resource.
-	Name                     string  `pulumi:"name"`
-	PortOverride             *int    `pulumi:"portOverride"`
-	RoleArn                  *string `pulumi:"roleArn"`
-	RoleExternalId           *string `pulumi:"roleExternalId"`
-	SecretAccessKey          *string `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  *string `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath *string `pulumi:"secretStoreAccessKeyPath"`
+	Name            string  `pulumi:"name"`
+	PortOverride    *int    `pulumi:"portOverride"`
+	RoleArn         *string `pulumi:"roleArn"`
+	RoleExternalId  *string `pulumi:"roleExternalId"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -7143,21 +6001,13 @@ type ResourceAwsArgs struct {
 	EgressFilter      pulumi.StringPtrInput `pulumi:"egressFilter"`
 	HealthcheckRegion pulumi.StringInput    `pulumi:"healthcheckRegion"`
 	// Unique human-readable name of the Resource.
-	Name                     pulumi.StringInput    `pulumi:"name"`
-	PortOverride             pulumi.IntPtrInput    `pulumi:"portOverride"`
-	RoleArn                  pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId           pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretAccessKey          pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
+	Name            pulumi.StringInput    `pulumi:"name"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -7280,41 +6130,9 @@ func (o ResourceAwsOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAws) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAwsOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAwsOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAws) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7435,24 +6253,6 @@ func (o ResourceAwsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAwsPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAws) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAws) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAwsPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAws) *string {
@@ -7460,60 +6260,6 @@ func (o ResourceAwsPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAws) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAws) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAws) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAws) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAws) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAws) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7552,12 +6298,8 @@ type ResourceAwsConsole struct {
 	RoleArn                           *string `pulumi:"roleArn"`
 	RoleExternalId                    *string `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                 *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey         *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath        *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey  *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SessionExpiry                 *int    `pulumi:"sessionExpiry"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	SessionExpiry *int    `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -7590,12 +6332,8 @@ type ResourceAwsConsoleArgs struct {
 	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
 	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                 pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath        pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SessionExpiry                 pulumi.IntPtrInput    `pulumi:"sessionExpiry"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SessionExpiry pulumi.IntPtrInput    `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -7725,22 +6463,6 @@ func (o ResourceAwsConsoleOutput) RoleExternalId() pulumi.StringPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAwsConsoleOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
 }
 
 func (o ResourceAwsConsoleOutput) SessionExpiry() pulumi.IntPtrOutput {
@@ -7884,42 +6606,6 @@ func (o ResourceAwsConsolePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAwsConsolePtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsolePtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsolePtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsolePtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
 func (o ResourceAwsConsolePtrOutput) SessionExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourceAwsConsole) *int {
 		if v == nil {
@@ -7964,17 +6650,9 @@ type ResourceAwsConsoleStaticKeyPair struct {
 	RoleArn                           *string `pulumi:"roleArn"`
 	RoleExternalId                    *string `pulumi:"roleExternalId"`
 	SecretAccessKey                   *string `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey           *string `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath          *string `pulumi:"secretStoreAccessKeyPath"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
-	SessionExpiry                  *int    `pulumi:"sessionExpiry"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	SessionExpiry *int    `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -8007,17 +6685,9 @@ type ResourceAwsConsoleStaticKeyPairArgs struct {
 	RoleArn                           pulumi.StringPtrInput `pulumi:"roleArn"`
 	RoleExternalId                    pulumi.StringPtrInput `pulumi:"roleExternalId"`
 	SecretAccessKey                   pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey           pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath          pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
-	SessionExpiry                  pulumi.IntPtrInput    `pulumi:"sessionExpiry"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	SessionExpiry pulumi.IntPtrInput    `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -8148,41 +6818,9 @@ func (o ResourceAwsConsoleStaticKeyPairOutput) SecretAccessKey() pulumi.StringPt
 	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
 }
 
 func (o ResourceAwsConsoleStaticKeyPairOutput) SessionExpiry() pulumi.IntPtrOutput {
@@ -8325,24 +6963,6 @@ func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretAccessKey() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
@@ -8350,60 +6970,6 @@ func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreId() pulumi.StringP
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8443,23 +7009,17 @@ type ResourceAzure struct {
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// Unique human-readable name of the Resource.
-	Name                 string  `pulumi:"name"`
-	Password             *string `pulumi:"password"`
-	PortOverride         *int    `pulumi:"portOverride"`
-	SecretStoreAppIdKey  *string `pulumi:"secretStoreAppIdKey"`
-	SecretStoreAppIdPath *string `pulumi:"secretStoreAppIdPath"`
+	Name         string  `pulumi:"name"`
+	Password     *string `pulumi:"password"`
+	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * azure_mysql:
-	SecretStoreTenantIdKey  *string `pulumi:"secretStoreTenantIdKey"`
-	SecretStoreTenantIdPath *string `pulumi:"secretStoreTenantIdPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	TenantId *string           `pulumi:"tenantId"`
+	Tags map[string]string `pulumi:"tags"`
+	// * sql_server_kerberos_ad:
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // ResourceAzureInput is an input type that accepts ResourceAzureArgs and ResourceAzureOutput values.
@@ -8480,22 +7040,16 @@ type ResourceAzureArgs struct {
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// Unique human-readable name of the Resource.
-	Name                 pulumi.StringInput    `pulumi:"name"`
-	Password             pulumi.StringPtrInput `pulumi:"password"`
-	PortOverride         pulumi.IntPtrInput    `pulumi:"portOverride"`
-	SecretStoreAppIdKey  pulumi.StringPtrInput `pulumi:"secretStoreAppIdKey"`
-	SecretStoreAppIdPath pulumi.StringPtrInput `pulumi:"secretStoreAppIdPath"`
+	Name         pulumi.StringInput    `pulumi:"name"`
+	Password     pulumi.StringPtrInput `pulumi:"password"`
+	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * azure_mysql:
-	SecretStoreTenantIdKey  pulumi.StringPtrInput `pulumi:"secretStoreTenantIdKey"`
-	SecretStoreTenantIdPath pulumi.StringPtrInput `pulumi:"secretStoreTenantIdPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * sql_server_kerberos_ad:
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -8603,34 +7157,9 @@ func (o ResourceAzureOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAzure) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceAzureOutput) SecretStoreAppIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStoreAppIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureOutput) SecretStoreAppIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStoreAppIdPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzureOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * azure_mysql:
-func (o ResourceAzureOutput) SecretStoreTenantIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStoreTenantIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureOutput) SecretStoreTenantIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStoreTenantIdPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8643,6 +7172,7 @@ func (o ResourceAzureOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceAzure) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// * sql_server_kerberos_ad:
 func (o ResourceAzureOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzure) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -8728,24 +7258,6 @@ func (o ResourceAzurePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceAzurePtrOutput) SecretStoreAppIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzure) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAppIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePtrOutput) SecretStoreAppIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzure) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAppIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzurePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzure) *string {
@@ -8753,43 +7265,6 @@ func (o ResourceAzurePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzure) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzure) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * azure_mysql:
-func (o ResourceAzurePtrOutput) SecretStoreTenantIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzure) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTenantIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePtrOutput) SecretStoreTenantIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzure) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTenantIdPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8813,6 +7288,7 @@ func (o ResourceAzurePtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// * sql_server_kerberos_ad:
 func (o ResourceAzurePtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzure) *string {
 		if v == nil {
@@ -8830,22 +7306,16 @@ type ResourceAzureCertificate struct {
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// Unique human-readable name of the Resource.
-	Name                             string  `pulumi:"name"`
-	PortOverride                     *int    `pulumi:"portOverride"`
-	SecretStoreAppIdKey              *string `pulumi:"secretStoreAppIdKey"`
-	SecretStoreAppIdPath             *string `pulumi:"secretStoreAppIdPath"`
-	SecretStoreClientCertificateKey  *string `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath *string `pulumi:"secretStoreClientCertificatePath"`
+	Name         string `pulumi:"name"`
+	PortOverride *int   `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// * azure_mysql:
-	SecretStoreTenantIdKey  *string `pulumi:"secretStoreTenantIdKey"`
-	SecretStoreTenantIdPath *string `pulumi:"secretStoreTenantIdPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	TenantId *string           `pulumi:"tenantId"`
+	Tags map[string]string `pulumi:"tags"`
+	// * sql_server_kerberos_ad:
+	TenantId *string `pulumi:"tenantId"`
 }
 
 // ResourceAzureCertificateInput is an input type that accepts ResourceAzureCertificateArgs and ResourceAzureCertificateOutput values.
@@ -8867,21 +7337,15 @@ type ResourceAzureCertificateArgs struct {
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// Unique human-readable name of the Resource.
-	Name                             pulumi.StringInput    `pulumi:"name"`
-	PortOverride                     pulumi.IntPtrInput    `pulumi:"portOverride"`
-	SecretStoreAppIdKey              pulumi.StringPtrInput `pulumi:"secretStoreAppIdKey"`
-	SecretStoreAppIdPath             pulumi.StringPtrInput `pulumi:"secretStoreAppIdPath"`
-	SecretStoreClientCertificateKey  pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath pulumi.StringPtrInput `pulumi:"secretStoreClientCertificatePath"`
+	Name         pulumi.StringInput `pulumi:"name"`
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// * azure_mysql:
-	SecretStoreTenantIdKey  pulumi.StringPtrInput `pulumi:"secretStoreTenantIdKey"`
-	SecretStoreTenantIdPath pulumi.StringPtrInput `pulumi:"secretStoreTenantIdPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * sql_server_kerberos_ad:
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -8989,34 +7453,9 @@ func (o ResourceAzureCertificateOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAzureCertificate) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceAzureCertificateOutput) SecretStoreAppIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreAppIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureCertificateOutput) SecretStoreAppIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreAppIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureCertificateOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreClientCertificateKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureCertificateOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreClientCertificatePath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzureCertificateOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-// * azure_mysql:
-func (o ResourceAzureCertificateOutput) SecretStoreTenantIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreTenantIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureCertificateOutput) SecretStoreTenantIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreTenantIdPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9029,6 +7468,7 @@ func (o ResourceAzureCertificateOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceAzureCertificate) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// * sql_server_kerberos_ad:
 func (o ResourceAzureCertificateOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -9114,42 +7554,6 @@ func (o ResourceAzureCertificatePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceAzureCertificatePtrOutput) SecretStoreAppIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAppIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureCertificatePtrOutput) SecretStoreAppIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAppIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureCertificatePtrOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureCertificatePtrOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificatePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzureCertificatePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
@@ -9157,25 +7561,6 @@ func (o ResourceAzureCertificatePtrOutput) SecretStoreId() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-// * azure_mysql:
-func (o ResourceAzureCertificatePtrOutput) SecretStoreTenantIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTenantIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureCertificatePtrOutput) SecretStoreTenantIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTenantIdPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9199,6 +7584,7 @@ func (o ResourceAzureCertificatePtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// * sql_server_kerberos_ad:
 func (o ResourceAzureCertificatePtrOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
 		if v == nil {
@@ -9216,22 +7602,19 @@ type ResourceAzureMysql struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         string  `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              string  `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // ResourceAzureMysqlInput is an input type that accepts ResourceAzureMysqlArgs and ResourceAzureMysqlOutput values.
@@ -9253,22 +7636,19 @@ type ResourceAzureMysqlArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringInput    `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceAzureMysqlArgs) ElementType() reflect.Type {
@@ -9383,26 +7763,13 @@ func (o ResourceAzureMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAzureMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAzureMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzureMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureMysqlOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureMysqlOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAzureMysqlOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureMysqlOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9413,6 +7780,10 @@ func (o ResourceAzureMysqlOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceAzureMysqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceAzureMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceAzureMysqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceAzureMysqlOutput) Username() pulumi.StringPtrOutput {
@@ -9518,6 +7889,15 @@ func (o ResourceAzureMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceAzureMysqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzureMysqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzureMysql) *string {
@@ -9525,43 +7905,6 @@ func (o ResourceAzureMysqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureMysqlPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureMysqlPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAzureMysqlPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzureMysqlPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzureMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9583,6 +7926,15 @@ func (o ResourceAzureMysqlPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceAzureMysqlPtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceAzureMysqlPtrOutput) Username() pulumi.StringPtrOutput {
@@ -9608,12 +7960,7 @@ type ResourceAzurePostgres struct {
 	Port             *int    `pulumi:"port"`
 	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -9646,12 +7993,7 @@ type ResourceAzurePostgresArgs struct {
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -9778,23 +8120,6 @@ func (o ResourceAzurePostgresOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzurePostgresOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzurePostgres) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePostgresOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzurePostgres) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePostgresOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzurePostgres) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAzurePostgresOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzurePostgres) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePostgresOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAzurePostgres) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9929,43 +8254,6 @@ func (o ResourceAzurePostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceAzurePostgresPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzurePostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePostgresPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzurePostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceAzurePostgresPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzurePostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceAzurePostgresPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAzurePostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceAzurePostgresPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzurePostgres) *string {
@@ -10007,9 +8295,7 @@ type ResourceBigQuery struct {
 	PrivateKey   *string `pulumi:"privateKey"`
 	Project      string  `pulumi:"project"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId             *string `pulumi:"secretStoreId"`
-	SecretStorePrivateKeyKey  *string `pulumi:"secretStorePrivateKeyKey"`
-	SecretStorePrivateKeyPath *string `pulumi:"secretStorePrivateKeyPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -10040,9 +8326,7 @@ type ResourceBigQueryArgs struct {
 	PrivateKey   pulumi.StringPtrInput `pulumi:"privateKey"`
 	Project      pulumi.StringInput    `pulumi:"project"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId             pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePrivateKeyKey  pulumi.StringPtrInput `pulumi:"secretStorePrivateKeyKey"`
-	SecretStorePrivateKeyPath pulumi.StringPtrInput `pulumi:"secretStorePrivateKeyPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -10163,14 +8447,6 @@ func (o ResourceBigQueryOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceBigQuery) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceBigQueryOutput) SecretStorePrivateKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceBigQuery) *string { return v.SecretStorePrivateKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceBigQueryOutput) SecretStorePrivateKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceBigQuery) *string { return v.SecretStorePrivateKeyPath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceBigQueryOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceBigQuery) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -10285,24 +8561,6 @@ func (o ResourceBigQueryPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceBigQueryPtrOutput) SecretStorePrivateKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceBigQuery) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePrivateKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceBigQueryPtrOutput) SecretStorePrivateKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceBigQuery) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePrivateKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceBigQueryPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceBigQuery) *string {
@@ -10344,12 +8602,7 @@ type ResourceCassandra struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -10381,12 +8634,7 @@ type ResourceCassandraArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -10508,23 +8756,6 @@ func (o ResourceCassandraOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceCassandra) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceCassandraOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCassandra) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCassandraOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCassandra) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceCassandraOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCassandra) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCassandraOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCassandra) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceCassandraOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceCassandra) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -10643,43 +8874,6 @@ func (o ResourceCassandraPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceCassandraPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCassandra) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCassandraPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCassandra) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceCassandraPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCassandra) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCassandraPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCassandra) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceCassandraPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCassandra) *string {
@@ -10732,12 +8926,7 @@ type ResourceCitus struct {
 	Port             *int    `pulumi:"port"`
 	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -10770,12 +8959,7 @@ type ResourceCitusArgs struct {
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -10902,23 +9086,6 @@ func (o ResourceCitusOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCitusOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceCitus) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCitusOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCitus) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCitusOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCitus) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceCitusOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCitus) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCitusOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCitus) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11053,43 +9220,6 @@ func (o ResourceCitusPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceCitusPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCitus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCitusPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCitus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceCitusPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCitus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCitusPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCitus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceCitusPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCitus) *string {
@@ -11127,22 +9257,19 @@ type ResourceClustrix struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         string  `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              string  `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // ResourceClustrixInput is an input type that accepts ResourceClustrixArgs and ResourceClustrixOutput values.
@@ -11164,22 +9291,19 @@ type ResourceClustrixArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringInput    `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceClustrixArgs) ElementType() reflect.Type {
@@ -11294,26 +9418,13 @@ func (o ResourceClustrixOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceClustrix) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceClustrixOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceClustrix) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceClustrixOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceClustrix) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceClustrixOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceClustrix) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceClustrixOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceClustrix) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceClustrixOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceClustrix) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceClustrixOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceClustrix) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11324,6 +9435,10 @@ func (o ResourceClustrixOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceClustrixOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceClustrix) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceClustrixOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceClustrix) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceClustrixOutput) Username() pulumi.StringPtrOutput {
@@ -11429,6 +9544,15 @@ func (o ResourceClustrixPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceClustrixPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceClustrix) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceClustrixPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceClustrix) *string {
@@ -11436,43 +9560,6 @@ func (o ResourceClustrixPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceClustrixPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceClustrix) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceClustrixPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceClustrix) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceClustrixPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceClustrix) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceClustrixPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceClustrix) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11494,6 +9581,15 @@ func (o ResourceClustrixPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceClustrixPtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceClustrix) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceClustrixPtrOutput) Username() pulumi.StringPtrOutput {
@@ -11519,12 +9615,7 @@ type ResourceCockroach struct {
 	Port             *int    `pulumi:"port"`
 	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -11557,12 +9648,7 @@ type ResourceCockroachArgs struct {
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -11689,23 +9775,6 @@ func (o ResourceCockroachOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCockroachOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceCockroach) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCockroachOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCockroach) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCockroachOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCockroach) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceCockroachOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCockroach) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCockroachOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceCockroach) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11840,43 +9909,6 @@ func (o ResourceCockroachPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceCockroachPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCockroach) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCockroachPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCockroach) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceCockroachPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCockroach) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceCockroachPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceCockroach) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceCockroachPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCockroach) *string {
@@ -11918,12 +9950,7 @@ type ResourceDb2I struct {
 	Port         int     `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -11955,12 +9982,7 @@ type ResourceDb2IArgs struct {
 	Port         pulumi.IntInput       `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -12082,23 +10104,6 @@ func (o ResourceDb2IOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDb2I) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDb2IOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDb2I) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2IOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDb2I) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDb2IOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDb2I) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2IOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDb2I) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceDb2IOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDb2I) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -12217,43 +10222,6 @@ func (o ResourceDb2IPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDb2IPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDb2I) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2IPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDb2I) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDb2IPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDb2I) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2IPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDb2I) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceDb2IPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDb2I) *string {
@@ -12305,12 +10273,7 @@ type ResourceDb2Luw struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -12342,12 +10305,7 @@ type ResourceDb2LuwArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -12470,23 +10428,6 @@ func (o ResourceDb2LuwOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDb2LuwOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDb2Luw) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2LuwOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDb2Luw) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2LuwOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDb2Luw) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDb2LuwOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDb2Luw) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2LuwOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDb2Luw) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12612,43 +10553,6 @@ func (o ResourceDb2LuwPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDb2LuwPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDb2Luw) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2LuwPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDb2Luw) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDb2LuwPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDb2Luw) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDb2LuwPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDb2Luw) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceDb2LuwPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDb2Luw) *string {
@@ -12691,12 +10595,7 @@ type ResourceDocumentDbHost struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -12728,12 +10627,7 @@ type ResourceDocumentDbHostArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -12856,23 +10750,6 @@ func (o ResourceDocumentDbHostOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDocumentDbHostOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDocumentDbHost) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbHostOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDocumentDbHost) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbHostOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDocumentDbHost) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDocumentDbHostOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDocumentDbHost) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbHostOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDocumentDbHost) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12998,43 +10875,6 @@ func (o ResourceDocumentDbHostPtrOutput) SecretStoreId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDocumentDbHostPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDocumentDbHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbHostPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDocumentDbHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDocumentDbHostPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDocumentDbHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbHostPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDocumentDbHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceDocumentDbHostPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDocumentDbHost) *string {
@@ -13078,12 +10918,7 @@ type ResourceDocumentDbReplicaSet struct {
 	PortOverride *int    `pulumi:"portOverride"`
 	ReplicaSet   string  `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -13116,12 +10951,7 @@ type ResourceDocumentDbReplicaSetArgs struct {
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	ReplicaSet   pulumi.StringInput    `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -13248,23 +11078,6 @@ func (o ResourceDocumentDbReplicaSetOutput) ReplicaSet() pulumi.StringOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDocumentDbReplicaSetOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDocumentDbReplicaSet) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbReplicaSetOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDocumentDbReplicaSet) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbReplicaSetOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDocumentDbReplicaSet) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDocumentDbReplicaSetOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDocumentDbReplicaSet) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbReplicaSetOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDocumentDbReplicaSet) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13399,43 +11212,6 @@ func (o ResourceDocumentDbReplicaSetPtrOutput) SecretStoreId() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDocumentDbReplicaSetPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDocumentDbReplicaSet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbReplicaSetPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDocumentDbReplicaSet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDocumentDbReplicaSetPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDocumentDbReplicaSet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDocumentDbReplicaSetPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDocumentDbReplicaSet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceDocumentDbReplicaSetPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDocumentDbReplicaSet) *string {
@@ -13477,12 +11253,7 @@ type ResourceDruid struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -13513,12 +11284,7 @@ type ResourceDruidArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -13639,23 +11405,6 @@ func (o ResourceDruidOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDruid) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDruidOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDruid) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDruidOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDruid) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDruidOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDruid) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDruidOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDruid) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceDruidOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDruid) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -13770,43 +11519,6 @@ func (o ResourceDruidPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDruidPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDruid) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDruidPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDruid) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceDruidPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDruid) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDruidPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDruid) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceDruidPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDruid) *string {
@@ -13844,22 +11556,14 @@ type ResourceDynamoDb struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Endpoint     string  `pulumi:"endpoint"`
 	// Unique human-readable name of the Resource.
-	Name                     string  `pulumi:"name"`
-	PortOverride             *int    `pulumi:"portOverride"`
-	Region                   string  `pulumi:"region"`
-	RoleArn                  *string `pulumi:"roleArn"`
-	RoleExternalId           *string `pulumi:"roleExternalId"`
-	SecretAccessKey          *string `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  *string `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath *string `pulumi:"secretStoreAccessKeyPath"`
+	Name            string  `pulumi:"name"`
+	PortOverride    *int    `pulumi:"portOverride"`
+	Region          string  `pulumi:"region"`
+	RoleArn         *string `pulumi:"roleArn"`
+	RoleExternalId  *string `pulumi:"roleExternalId"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -13885,22 +11589,14 @@ type ResourceDynamoDbArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Endpoint     pulumi.StringInput    `pulumi:"endpoint"`
 	// Unique human-readable name of the Resource.
-	Name                     pulumi.StringInput    `pulumi:"name"`
-	PortOverride             pulumi.IntPtrInput    `pulumi:"portOverride"`
-	Region                   pulumi.StringInput    `pulumi:"region"`
-	RoleArn                  pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId           pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretAccessKey          pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
+	Name            pulumi.StringInput    `pulumi:"name"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region          pulumi.StringInput    `pulumi:"region"`
+	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -14027,41 +11723,9 @@ func (o ResourceDynamoDbOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDynamoDbOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDynamoDbOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14191,24 +11855,6 @@ func (o ResourceDynamoDbPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceDynamoDbPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDynamoDb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDynamoDb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDynamoDbPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDynamoDb) *string {
@@ -14216,60 +11862,6 @@ func (o ResourceDynamoDbPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDynamoDb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDynamoDb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDynamoDb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDynamoDb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDynamoDb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceDynamoDbPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceDynamoDb) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14305,12 +11897,7 @@ type ResourceElastic struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -14342,12 +11929,7 @@ type ResourceElasticArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -14469,23 +12051,6 @@ func (o ResourceElasticOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceElastic) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceElasticOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceElastic) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceElasticOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceElastic) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceElasticOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceElastic) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceElasticOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceElastic) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceElasticOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceElastic) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -14604,43 +12169,6 @@ func (o ResourceElasticPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceElasticPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceElastic) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceElasticPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceElastic) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceElasticPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceElastic) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceElasticPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceElastic) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceElasticPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceElastic) *string {
@@ -14691,12 +12219,7 @@ type ResourceElasticacheRedis struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -14728,12 +12251,7 @@ type ResourceElasticacheRedisArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -14855,23 +12373,6 @@ func (o ResourceElasticacheRedisOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceElasticacheRedisOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceElasticacheRedisOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceElasticacheRedisOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceElasticacheRedisOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceElasticacheRedisOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -14990,43 +12491,6 @@ func (o ResourceElasticacheRedisPtrOutput) SecretStoreId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceElasticacheRedisPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceElasticacheRedisPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceElasticacheRedisPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceElasticacheRedisPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceElasticacheRedisPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
@@ -15076,9 +12540,7 @@ type ResourceGcp struct {
 	PortOverride *int   `pulumi:"portOverride"`
 	Scopes       string `pulumi:"scopes"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId          *string `pulumi:"secretStoreId"`
-	SecretStoreKeyfileKey  *string `pulumi:"secretStoreKeyfileKey"`
-	SecretStoreKeyfilePath *string `pulumi:"secretStoreKeyfilePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -15107,9 +12569,7 @@ type ResourceGcpArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	Scopes       pulumi.StringInput `pulumi:"scopes"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId          pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreKeyfileKey  pulumi.StringPtrInput `pulumi:"secretStoreKeyfileKey"`
-	SecretStoreKeyfilePath pulumi.StringPtrInput `pulumi:"secretStoreKeyfilePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -15225,14 +12685,6 @@ func (o ResourceGcpOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGcp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceGcpOutput) SecretStoreKeyfileKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGcp) *string { return v.SecretStoreKeyfileKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGcpOutput) SecretStoreKeyfilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGcp) *string { return v.SecretStoreKeyfilePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceGcpOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGcp) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -15334,24 +12786,6 @@ func (o ResourceGcpPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceGcpPtrOutput) SecretStoreKeyfileKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGcp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreKeyfileKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGcpPtrOutput) SecretStoreKeyfilePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGcp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreKeyfilePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceGcpPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGcp) *string {
@@ -15382,16 +12816,12 @@ type ResourceGoogleGke struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name                              string  `pulumi:"name"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                    *string `pulumi:"secretStoreId"`
-	SecretStoreServiceAccountKeyKey  *string `pulumi:"secretStoreServiceAccountKeyKey"`
-	SecretStoreServiceAccountKeyPath *string `pulumi:"secretStoreServiceAccountKeyPath"`
-	ServiceAccountKey                *string `pulumi:"serviceAccountKey"`
+	SecretStoreId     *string `pulumi:"secretStoreId"`
+	ServiceAccountKey *string `pulumi:"serviceAccountKey"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -15419,16 +12849,12 @@ type ResourceGoogleGkeArgs struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name                              pulumi.StringInput    `pulumi:"name"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                    pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreServiceAccountKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreServiceAccountKeyKey"`
-	SecretStoreServiceAccountKeyPath pulumi.StringPtrInput `pulumi:"secretStoreServiceAccountKeyPath"`
-	ServiceAccountKey                pulumi.StringPtrInput `pulumi:"serviceAccountKey"`
+	SecretStoreId     pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	ServiceAccountKey pulumi.StringPtrInput `pulumi:"serviceAccountKey"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -15548,25 +12974,9 @@ func (o ResourceGoogleGkeOutput) RemoteIdentityHealthcheckUsername() pulumi.Stri
 	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceGoogleGkeOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGoogleGkeOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeOutput) SecretStoreServiceAccountKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.SecretStoreServiceAccountKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeOutput) SecretStoreServiceAccountKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.SecretStoreServiceAccountKeyPath }).(pulumi.StringPtrOutput)
 }
 
 func (o ResourceGoogleGkeOutput) ServiceAccountKey() pulumi.StringPtrOutput {
@@ -15683,24 +13093,6 @@ func (o ResourceGoogleGkePtrOutput) RemoteIdentityHealthcheckUsername() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceGoogleGkePtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGke) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkePtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGke) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGoogleGkePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGoogleGke) *string {
@@ -15708,24 +13100,6 @@ func (o ResourceGoogleGkePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkePtrOutput) SecretStoreServiceAccountKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGke) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreServiceAccountKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkePtrOutput) SecretStoreServiceAccountKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGke) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreServiceAccountKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15768,14 +13142,10 @@ type ResourceGoogleGkeUserImpersonation struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name string `pulumi:"name"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                    *string `pulumi:"secretStoreId"`
-	SecretStoreServiceAccountKeyKey  *string `pulumi:"secretStoreServiceAccountKeyKey"`
-	SecretStoreServiceAccountKeyPath *string `pulumi:"secretStoreServiceAccountKeyPath"`
-	ServiceAccountKey                *string `pulumi:"serviceAccountKey"`
+	SecretStoreId     *string `pulumi:"secretStoreId"`
+	ServiceAccountKey *string `pulumi:"serviceAccountKey"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -15803,14 +13173,10 @@ type ResourceGoogleGkeUserImpersonationArgs struct {
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                    pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreServiceAccountKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreServiceAccountKeyKey"`
-	SecretStoreServiceAccountKeyPath pulumi.StringPtrInput `pulumi:"secretStoreServiceAccountKeyPath"`
-	ServiceAccountKey                pulumi.StringPtrInput `pulumi:"serviceAccountKey"`
+	SecretStoreId     pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	ServiceAccountKey pulumi.StringPtrInput `pulumi:"serviceAccountKey"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -15922,25 +13288,9 @@ func (o ResourceGoogleGkeUserImpersonationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ResourceGoogleGkeUserImpersonationOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeUserImpersonationOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGoogleGkeUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeUserImpersonationOutput) SecretStoreServiceAccountKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *string { return v.SecretStoreServiceAccountKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeUserImpersonationOutput) SecretStoreServiceAccountKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *string { return v.SecretStoreServiceAccountKeyPath }).(pulumi.StringPtrOutput)
 }
 
 func (o ResourceGoogleGkeUserImpersonationOutput) ServiceAccountKey() pulumi.StringPtrOutput {
@@ -16039,24 +13389,6 @@ func (o ResourceGoogleGkeUserImpersonationPtrOutput) Name() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceGoogleGkeUserImpersonationPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGkeUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeUserImpersonationPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGkeUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGoogleGkeUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGoogleGkeUserImpersonation) *string {
@@ -16064,24 +13396,6 @@ func (o ResourceGoogleGkeUserImpersonationPtrOutput) SecretStoreId() pulumi.Stri
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeUserImpersonationPtrOutput) SecretStoreServiceAccountKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGkeUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreServiceAccountKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGoogleGkeUserImpersonationPtrOutput) SecretStoreServiceAccountKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGkeUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreServiceAccountKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16128,12 +13442,7 @@ type ResourceGreenplum struct {
 	Port             *int    `pulumi:"port"`
 	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -16166,12 +13475,7 @@ type ResourceGreenplumArgs struct {
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -16298,23 +13602,6 @@ func (o ResourceGreenplumOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGreenplumOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGreenplum) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGreenplumOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGreenplum) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGreenplumOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGreenplum) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceGreenplumOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGreenplum) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGreenplumOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGreenplum) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16449,43 +13736,6 @@ func (o ResourceGreenplumPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceGreenplumPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGreenplum) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGreenplumPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGreenplum) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceGreenplumPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGreenplum) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceGreenplumPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGreenplum) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceGreenplumPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGreenplum) *string {
@@ -16526,9 +13776,7 @@ type ResourceHttpAuth struct {
 	HealthcheckPath  string  `pulumi:"healthcheckPath"`
 	HostOverride     *string `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
-	Name                      string  `pulumi:"name"`
-	SecretStoreAuthHeaderKey  *string `pulumi:"secretStoreAuthHeaderKey"`
-	SecretStoreAuthHeaderPath *string `pulumi:"secretStoreAuthHeaderPath"`
+	Name string `pulumi:"name"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16561,9 +13809,7 @@ type ResourceHttpAuthArgs struct {
 	HealthcheckPath  pulumi.StringInput    `pulumi:"healthcheckPath"`
 	HostOverride     pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
-	Name                      pulumi.StringInput    `pulumi:"name"`
-	SecretStoreAuthHeaderKey  pulumi.StringPtrInput `pulumi:"secretStoreAuthHeaderKey"`
-	SecretStoreAuthHeaderPath pulumi.StringPtrInput `pulumi:"secretStoreAuthHeaderPath"`
+	Name pulumi.StringInput `pulumi:"name"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16686,14 +13932,6 @@ func (o ResourceHttpAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpAuth) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o ResourceHttpAuthOutput) SecretStoreAuthHeaderKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceHttpAuth) *string { return v.SecretStoreAuthHeaderKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceHttpAuthOutput) SecretStoreAuthHeaderPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceHttpAuth) *string { return v.SecretStoreAuthHeaderPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceHttpAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceHttpAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -16813,24 +14051,6 @@ func (o ResourceHttpAuthPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceHttpAuthPtrOutput) SecretStoreAuthHeaderKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceHttpAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAuthHeaderKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceHttpAuthPtrOutput) SecretStoreAuthHeaderPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceHttpAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAuthHeaderPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceHttpAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceHttpAuth) *string {
@@ -16884,12 +14104,7 @@ type ResourceHttpBasicAuth struct {
 	Name     string  `pulumi:"name"`
 	Password *string `pulumi:"password"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -16923,12 +14138,7 @@ type ResourceHttpBasicAuthArgs struct {
 	Name     pulumi.StringInput    `pulumi:"name"`
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -17053,23 +14263,6 @@ func (o ResourceHttpBasicAuthOutput) Password() pulumi.StringPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceHttpBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceHttpBasicAuthOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceHttpBasicAuthOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceHttpBasicAuthOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceHttpBasicAuthOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17197,43 +14390,6 @@ func (o ResourceHttpBasicAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceHttpBasicAuthPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceHttpBasicAuthPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceHttpBasicAuthPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceHttpBasicAuthPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17599,17 +14755,11 @@ type ResourceKubernetes struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	Hostname             string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Port                                int     `pulumi:"port"`
-	PortOverride                        *int    `pulumi:"portOverride"`
-	RemoteIdentityGroupId               *string `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   *string `pulumi:"remoteIdentityHealthcheckUsername"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     *string `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    *string `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             *string `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            *string `pulumi:"secretStoreClientKeyPath"`
+	Name                              string  `pulumi:"name"`
+	Port                              int     `pulumi:"port"`
+	PortOverride                      *int    `pulumi:"portOverride"`
+	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17641,17 +14791,11 @@ type ResourceKubernetesArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	Hostname             pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Port                                pulumi.IntInput       `pulumi:"port"`
-	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
-	RemoteIdentityGroupId               pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	RemoteIdentityHealthcheckUsername   pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    pulumi.StringPtrInput `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             pulumi.StringPtrInput `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            pulumi.StringPtrInput `pulumi:"secretStoreClientKeyPath"`
+	Name                              pulumi.StringInput    `pulumi:"name"`
+	Port                              pulumi.IntInput       `pulumi:"port"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17787,30 +14931,6 @@ func (o ResourceKubernetesOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput
 
 func (o ResourceKubernetesOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetes) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetes) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetes) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetes) *string { return v.SecretStoreClientCertificateKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetes) *string { return v.SecretStoreClientCertificatePath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetes) *string { return v.SecretStoreClientKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetes) *string { return v.SecretStoreClientKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -17964,60 +15084,6 @@ func (o ResourceKubernetesPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceKubernetesPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesPtrOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesPtrOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificatePath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesPtrOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesPtrOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetes) *string {
@@ -18062,12 +15128,7 @@ type ResourceKubernetesBasicAuth struct {
 	Port         int     `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -18100,12 +15161,7 @@ type ResourceKubernetesBasicAuthArgs struct {
 	Port         pulumi.IntInput       `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -18229,23 +15285,6 @@ func (o ResourceKubernetesBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesBasicAuthOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesBasicAuthOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceKubernetesBasicAuthOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesBasicAuthOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18372,43 +15411,6 @@ func (o ResourceKubernetesBasicAuthPtrOutput) SecretStoreId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceKubernetesBasicAuthPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesBasicAuthPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceKubernetesBasicAuthPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesBasicAuthPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceKubernetesBasicAuthPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *string {
@@ -18454,14 +15456,12 @@ type ResourceKubernetesServiceAccount struct {
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// * kubernetes_user_impersonation:
-	SecretStoreTokenKey  *string `pulumi:"secretStoreTokenKey"`
-	SecretStoreTokenPath *string `pulumi:"secretStoreTokenPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags  map[string]string `pulumi:"tags"`
-	Token *string           `pulumi:"token"`
+	Tags map[string]string `pulumi:"tags"`
+	// * kubernetes_user_impersonation:
+	Token *string `pulumi:"token"`
 }
 
 // ResourceKubernetesServiceAccountInput is an input type that accepts ResourceKubernetesServiceAccountArgs and ResourceKubernetesServiceAccountOutput values.
@@ -18491,13 +15491,11 @@ type ResourceKubernetesServiceAccountArgs struct {
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// * kubernetes_user_impersonation:
-	SecretStoreTokenKey  pulumi.StringPtrInput `pulumi:"secretStoreTokenKey"`
-	SecretStoreTokenPath pulumi.StringPtrInput `pulumi:"secretStoreTokenPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags  pulumi.StringMapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * kubernetes_user_impersonation:
 	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
@@ -18623,15 +15621,6 @@ func (o ResourceKubernetesServiceAccountOutput) SecretStoreId() pulumi.StringPtr
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// * kubernetes_user_impersonation:
-func (o ResourceKubernetesServiceAccountOutput) SecretStoreTokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.SecretStoreTokenKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesServiceAccountOutput) SecretStoreTokenPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.SecretStoreTokenPath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceKubernetesServiceAccountOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -18642,6 +15631,7 @@ func (o ResourceKubernetesServiceAccountOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// * kubernetes_user_impersonation:
 func (o ResourceKubernetesServiceAccountOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
@@ -18765,25 +15755,6 @@ func (o ResourceKubernetesServiceAccountPtrOutput) SecretStoreId() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// * kubernetes_user_impersonation:
-func (o ResourceKubernetesServiceAccountPtrOutput) SecretStoreTokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTokenKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesServiceAccountPtrOutput) SecretStoreTokenPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTokenPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceKubernetesServiceAccountPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
@@ -18804,6 +15775,7 @@ func (o ResourceKubernetesServiceAccountPtrOutput) Tags() pulumi.StringMapOutput
 	}).(pulumi.StringMapOutput)
 }
 
+// * kubernetes_user_impersonation:
 func (o ResourceKubernetesServiceAccountPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
 		if v == nil {
@@ -18827,14 +15799,12 @@ type ResourceKubernetesServiceAccountUserImpersonation struct {
 	PortOverride *int   `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// * kubernetes_user_impersonation:
-	SecretStoreTokenKey  *string `pulumi:"secretStoreTokenKey"`
-	SecretStoreTokenPath *string `pulumi:"secretStoreTokenPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags  map[string]string `pulumi:"tags"`
-	Token *string           `pulumi:"token"`
+	Tags map[string]string `pulumi:"tags"`
+	// * kubernetes_user_impersonation:
+	Token *string `pulumi:"token"`
 }
 
 // ResourceKubernetesServiceAccountUserImpersonationInput is an input type that accepts ResourceKubernetesServiceAccountUserImpersonationArgs and ResourceKubernetesServiceAccountUserImpersonationOutput values.
@@ -18862,13 +15832,11 @@ type ResourceKubernetesServiceAccountUserImpersonationArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// * kubernetes_user_impersonation:
-	SecretStoreTokenKey  pulumi.StringPtrInput `pulumi:"secretStoreTokenKey"`
-	SecretStoreTokenPath pulumi.StringPtrInput `pulumi:"secretStoreTokenPath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags  pulumi.StringMapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * kubernetes_user_impersonation:
 	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
@@ -18986,15 +15954,6 @@ func (o ResourceKubernetesServiceAccountUserImpersonationOutput) SecretStoreId()
 	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// * kubernetes_user_impersonation:
-func (o ResourceKubernetesServiceAccountUserImpersonationOutput) SecretStoreTokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *string { return v.SecretStoreTokenKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesServiceAccountUserImpersonationOutput) SecretStoreTokenPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *string { return v.SecretStoreTokenPath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceKubernetesServiceAccountUserImpersonationOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -19005,6 +15964,7 @@ func (o ResourceKubernetesServiceAccountUserImpersonationOutput) Tags() pulumi.S
 	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// * kubernetes_user_impersonation:
 func (o ResourceKubernetesServiceAccountUserImpersonationOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
@@ -19110,25 +16070,6 @@ func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) SecretStoreI
 	}).(pulumi.StringPtrOutput)
 }
 
-// * kubernetes_user_impersonation:
-func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) SecretStoreTokenKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesServiceAccountUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTokenKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) SecretStoreTokenPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesServiceAccountUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreTokenPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccountUserImpersonation) *string {
@@ -19149,6 +16090,7 @@ func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) Tags() pulum
 	}).(pulumi.StringMapOutput)
 }
 
+// * kubernetes_user_impersonation:
 func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccountUserImpersonation) *string {
 		if v == nil {
@@ -19170,15 +16112,9 @@ type ResourceKubernetesUserImpersonation struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	Hostname             string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Port                                int     `pulumi:"port"`
-	PortOverride                        *int    `pulumi:"portOverride"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     *string `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    *string `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             *string `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            *string `pulumi:"secretStoreClientKeyPath"`
+	Name         string `pulumi:"name"`
+	Port         int    `pulumi:"port"`
+	PortOverride *int   `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19210,15 +16146,9 @@ type ResourceKubernetesUserImpersonationArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	Hostname             pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Port                                pulumi.IntInput       `pulumi:"port"`
-	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    pulumi.StringPtrInput `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             pulumi.StringPtrInput `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            pulumi.StringPtrInput `pulumi:"secretStoreClientKeyPath"`
+	Name         pulumi.StringInput `pulumi:"name"`
+	Port         pulumi.IntInput    `pulumi:"port"`
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19346,30 +16276,6 @@ func (o ResourceKubernetesUserImpersonationOutput) Port() pulumi.IntOutput {
 
 func (o ResourceKubernetesUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *string { return v.SecretStoreClientCertificateKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *string { return v.SecretStoreClientCertificatePath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *string { return v.SecretStoreClientKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *string { return v.SecretStoreClientKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -19505,60 +16411,6 @@ func (o ResourceKubernetesUserImpersonationPtrOutput) PortOverride() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificatePath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
@@ -19597,22 +16449,19 @@ type ResourceMaria struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         string  `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              string  `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // ResourceMariaInput is an input type that accepts ResourceMariaArgs and ResourceMariaOutput values.
@@ -19634,22 +16483,19 @@ type ResourceMariaArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringInput    `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceMariaArgs) ElementType() reflect.Type {
@@ -19764,26 +16610,13 @@ func (o ResourceMariaOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMaria) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceMariaOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceMaria) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMariaOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMaria) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMariaOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMaria) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMariaOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMaria) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMariaOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMaria) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMariaOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMaria) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19794,6 +16627,10 @@ func (o ResourceMariaOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceMariaOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceMaria) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceMariaOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceMaria) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceMariaOutput) Username() pulumi.StringPtrOutput {
@@ -19899,6 +16736,15 @@ func (o ResourceMariaPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceMariaPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceMaria) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMariaPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMaria) *string {
@@ -19906,43 +16752,6 @@ func (o ResourceMariaPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMariaPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMaria) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMariaPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMaria) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMariaPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMaria) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMariaPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMaria) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19964,6 +16773,15 @@ func (o ResourceMariaPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceMariaPtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceMaria) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceMariaPtrOutput) Username() pulumi.StringPtrOutput {
@@ -20260,22 +17078,19 @@ type ResourceMemsql struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         string  `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              string  `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // ResourceMemsqlInput is an input type that accepts ResourceMemsqlArgs and ResourceMemsqlOutput values.
@@ -20297,22 +17112,19 @@ type ResourceMemsqlArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringInput    `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceMemsqlArgs) ElementType() reflect.Type {
@@ -20427,26 +17239,13 @@ func (o ResourceMemsqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMemsql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceMemsqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceMemsql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMemsqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMemsql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMemsqlOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMemsql) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMemsqlOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMemsql) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMemsqlOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMemsql) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMemsqlOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMemsql) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -20457,6 +17256,10 @@ func (o ResourceMemsqlOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceMemsqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceMemsql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceMemsqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceMemsql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceMemsqlOutput) Username() pulumi.StringPtrOutput {
@@ -20562,6 +17365,15 @@ func (o ResourceMemsqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceMemsqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceMemsql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMemsqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMemsql) *string {
@@ -20569,43 +17381,6 @@ func (o ResourceMemsqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMemsqlPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMemsql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMemsqlPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMemsql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMemsqlPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMemsql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMemsqlPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMemsql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20627,6 +17402,15 @@ func (o ResourceMemsqlPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceMemsqlPtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceMemsql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceMemsqlPtrOutput) Username() pulumi.StringPtrOutput {
@@ -20651,12 +17435,7 @@ type ResourceMongoHost struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -20689,12 +17468,7 @@ type ResourceMongoHostArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -20818,23 +17592,6 @@ func (o ResourceMongoHostOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoHostOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoHost) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoHostOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoHost) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoHostOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoHost) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoHostOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoHost) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoHostOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoHost) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -20964,43 +17721,6 @@ func (o ResourceMongoHostPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceMongoHostPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoHostPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoHostPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoHostPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceMongoHostPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoHost) *string {
@@ -21053,12 +17773,7 @@ type ResourceMongoLegacyHost struct {
 	PortOverride *int    `pulumi:"portOverride"`
 	ReplicaSet   *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -21092,12 +17807,7 @@ type ResourceMongoLegacyHostArgs struct {
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	ReplicaSet   pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -21225,23 +17935,6 @@ func (o ResourceMongoLegacyHostOutput) ReplicaSet() pulumi.StringPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoLegacyHostOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoLegacyHost) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyHostOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyHost) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyHostOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyHost) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoLegacyHostOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyHost) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyHostOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyHost) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -21380,43 +18073,6 @@ func (o ResourceMongoLegacyHostPtrOutput) SecretStoreId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceMongoLegacyHostPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyHostPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoLegacyHostPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyHostPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceMongoLegacyHostPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoLegacyHost) *string {
@@ -21470,12 +18126,7 @@ type ResourceMongoLegacyReplicaset struct {
 	PortOverride *int    `pulumi:"portOverride"`
 	ReplicaSet   string  `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -21510,12 +18161,7 @@ type ResourceMongoLegacyReplicasetArgs struct {
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	ReplicaSet   pulumi.StringInput    `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -21647,23 +18293,6 @@ func (o ResourceMongoLegacyReplicasetOutput) ReplicaSet() pulumi.StringOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoLegacyReplicasetOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoLegacyReplicaset) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyReplicasetOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyReplicaset) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyReplicasetOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyReplicaset) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoLegacyReplicasetOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyReplicaset) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyReplicasetOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyReplicaset) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -21811,43 +18440,6 @@ func (o ResourceMongoLegacyReplicasetPtrOutput) SecretStoreId() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceMongoLegacyReplicasetPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyReplicaset) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyReplicasetPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyReplicaset) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoLegacyReplicasetPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyReplicaset) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoLegacyReplicasetPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyReplicaset) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceMongoLegacyReplicasetPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoLegacyReplicaset) *string {
@@ -21901,12 +18493,7 @@ type ResourceMongoReplicaSet struct {
 	PortOverride *int    `pulumi:"portOverride"`
 	ReplicaSet   string  `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -21941,12 +18528,7 @@ type ResourceMongoReplicaSetArgs struct {
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	ReplicaSet   pulumi.StringInput    `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -22078,23 +18660,6 @@ func (o ResourceMongoReplicaSetOutput) ReplicaSet() pulumi.StringOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoReplicaSetOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoReplicaSet) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoReplicaSetOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoReplicaSet) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoReplicaSetOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoReplicaSet) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoReplicaSetOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoReplicaSet) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoReplicaSetOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoReplicaSet) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -22242,43 +18807,6 @@ func (o ResourceMongoReplicaSetPtrOutput) SecretStoreId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceMongoReplicaSetPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoReplicaSetPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoReplicaSetPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoReplicaSetPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceMongoReplicaSetPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
@@ -22329,12 +18857,7 @@ type ResourceMongoShardedCluster struct {
 	Password     *string `pulumi:"password"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -22366,12 +18889,7 @@ type ResourceMongoShardedClusterArgs struct {
 	Password     pulumi.StringPtrInput `pulumi:"password"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -22493,23 +19011,6 @@ func (o ResourceMongoShardedClusterOutput) SecretStoreId() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceMongoShardedClusterOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoShardedClusterOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoShardedClusterOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoShardedClusterOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceMongoShardedClusterOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -22628,43 +19129,6 @@ func (o ResourceMongoShardedClusterPtrOutput) SecretStoreId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceMongoShardedClusterPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoShardedCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoShardedClusterPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoShardedCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMongoShardedClusterPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoShardedCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMongoShardedClusterPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoShardedCluster) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceMongoShardedClusterPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoShardedCluster) *string {
@@ -22714,29 +19178,20 @@ type ResourceMtlsMysql struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	Password                            *string `pulumi:"password"`
-	Port                                *int    `pulumi:"port"`
-	PortOverride                        *int    `pulumi:"portOverride"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     *string `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    *string `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             *string `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            *string `pulumi:"secretStoreClientKeyPath"`
+	Name              string  `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
-	ServerName              *string `pulumi:"serverName"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	ServerName    *string `pulumi:"serverName"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // ResourceMtlsMysqlInput is an input type that accepts ResourceMtlsMysqlArgs and ResourceMtlsMysqlOutput values.
@@ -22761,29 +19216,20 @@ type ResourceMtlsMysqlArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	Password                            pulumi.StringPtrInput `pulumi:"password"`
-	Port                                pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    pulumi.StringPtrInput `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             pulumi.StringPtrInput `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            pulumi.StringPtrInput `pulumi:"secretStoreClientKeyPath"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
-	ServerName              pulumi.StringPtrInput `pulumi:"serverName"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	ServerName    pulumi.StringPtrInput `pulumi:"serverName"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceMtlsMysqlArgs) ElementType() reflect.Type {
@@ -22910,50 +19356,13 @@ func (o ResourceMtlsMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMtlsMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceMtlsMysqlOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreClientCertificateKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreClientCertificatePath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreClientKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreClientKeyPath }).(pulumi.StringPtrOutput)
+func (o ResourceMtlsMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceMtlsMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMtlsMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMtlsMysqlOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 func (o ResourceMtlsMysqlOutput) ServerName() pulumi.StringPtrOutput {
@@ -22968,6 +19377,10 @@ func (o ResourceMtlsMysqlOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceMtlsMysqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceMtlsMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceMtlsMysqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceMtlsMysql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceMtlsMysqlOutput) Username() pulumi.StringPtrOutput {
@@ -23100,58 +19513,13 @@ func (o ResourceMtlsMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceMtlsMysqlPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
+func (o ResourceMtlsMysqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceMtlsMysql) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlPtrOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlPtrOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificatePath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlPtrOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlPtrOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyPath
-	}).(pulumi.StringPtrOutput)
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -23161,43 +19529,6 @@ func (o ResourceMtlsMysqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMtlsMysqlPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsMysqlPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23230,6 +19561,15 @@ func (o ResourceMtlsMysqlPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+func (o ResourceMtlsMysqlPtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceMtlsMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o ResourceMtlsMysqlPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
 		if v == nil {
@@ -23250,25 +19590,14 @@ type ResourceMtlsPostgres struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                string  `pulumi:"name"`
-	OverrideDatabase                    *bool   `pulumi:"overrideDatabase"`
-	Password                            *string `pulumi:"password"`
-	Port                                *int    `pulumi:"port"`
-	PortOverride                        *int    `pulumi:"portOverride"`
-	SecretStoreCertificateAuthorityKey  *string `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath *string `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     *string `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    *string `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             *string `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            *string `pulumi:"secretStoreClientKeyPath"`
+	Name             string  `pulumi:"name"`
+	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
+	Password         *string `pulumi:"password"`
+	Port             *int    `pulumi:"port"`
+	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
-	ServerName              *string `pulumi:"serverName"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	ServerName    *string `pulumi:"serverName"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -23298,25 +19627,14 @@ type ResourceMtlsPostgresArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name                                pulumi.StringInput    `pulumi:"name"`
-	OverrideDatabase                    pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
-	Password                            pulumi.StringPtrInput `pulumi:"password"`
-	Port                                pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride                        pulumi.IntPtrInput    `pulumi:"portOverride"`
-	SecretStoreCertificateAuthorityKey  pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityKey"`
-	SecretStoreCertificateAuthorityPath pulumi.StringPtrInput `pulumi:"secretStoreCertificateAuthorityPath"`
-	SecretStoreClientCertificateKey     pulumi.StringPtrInput `pulumi:"secretStoreClientCertificateKey"`
-	SecretStoreClientCertificatePath    pulumi.StringPtrInput `pulumi:"secretStoreClientCertificatePath"`
-	SecretStoreClientKeyKey             pulumi.StringPtrInput `pulumi:"secretStoreClientKeyKey"`
-	SecretStoreClientKeyPath            pulumi.StringPtrInput `pulumi:"secretStoreClientKeyPath"`
+	Name             pulumi.StringInput    `pulumi:"name"`
+	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
+	Password         pulumi.StringPtrInput `pulumi:"password"`
+	Port             pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
-	ServerName              pulumi.StringPtrInput `pulumi:"serverName"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	ServerName    pulumi.StringPtrInput `pulumi:"serverName"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -23452,50 +19770,9 @@ func (o ResourceMtlsPostgresOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMtlsPostgres) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceMtlsPostgresOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreCertificateAuthorityKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreCertificateAuthorityPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreClientCertificateKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreClientCertificatePath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreClientKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreClientKeyPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMtlsPostgresOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMtlsPostgresOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 func (o ResourceMtlsPostgresOutput) ServerName() pulumi.StringPtrOutput {
@@ -23651,60 +19928,6 @@ func (o ResourceMtlsPostgresPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-func (o ResourceMtlsPostgresPtrOutput) SecretStoreCertificateAuthorityKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresPtrOutput) SecretStoreCertificateAuthorityPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreCertificateAuthorityPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresPtrOutput) SecretStoreClientCertificateKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificateKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresPtrOutput) SecretStoreClientCertificatePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientCertificatePath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresPtrOutput) SecretStoreClientKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresPtrOutput) SecretStoreClientKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreClientKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMtlsPostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
@@ -23712,43 +19935,6 @@ func (o ResourceMtlsPostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMtlsPostgresPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMtlsPostgresPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23798,22 +19984,19 @@ type ResourceMysql struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         string  `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              string  `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // ResourceMysqlInput is an input type that accepts ResourceMysqlArgs and ResourceMysqlOutput values.
@@ -23835,22 +20018,19 @@ type ResourceMysqlArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringInput    `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceMysqlArgs) ElementType() reflect.Type {
@@ -23965,26 +20145,13 @@ func (o ResourceMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMysqlOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMysql) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMysqlOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMysql) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMysqlOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMysql) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMysqlOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMysql) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -23995,6 +20162,10 @@ func (o ResourceMysqlOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceMysqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceMysqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceMysql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceMysqlOutput) Username() pulumi.StringPtrOutput {
@@ -24100,6 +20271,15 @@ func (o ResourceMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceMysqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMysqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMysql) *string {
@@ -24107,43 +20287,6 @@ func (o ResourceMysqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMysqlPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMysqlPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceMysqlPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceMysqlPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMysql) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24165,6 +20308,15 @@ func (o ResourceMysqlPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceMysqlPtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceMysql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceMysqlPtrOutput) Username() pulumi.StringPtrOutput {
@@ -24461,23 +20613,15 @@ type ResourceNeptuneIam struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Endpoint     string  `pulumi:"endpoint"`
 	// Unique human-readable name of the Resource.
-	Name                     string  `pulumi:"name"`
-	Port                     *int    `pulumi:"port"`
-	PortOverride             *int    `pulumi:"portOverride"`
-	Region                   string  `pulumi:"region"`
-	RoleArn                  *string `pulumi:"roleArn"`
-	RoleExternalId           *string `pulumi:"roleExternalId"`
-	SecretAccessKey          *string `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  *string `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath *string `pulumi:"secretStoreAccessKeyPath"`
+	Name            string  `pulumi:"name"`
+	Port            *int    `pulumi:"port"`
+	PortOverride    *int    `pulumi:"portOverride"`
+	Region          string  `pulumi:"region"`
+	RoleArn         *string `pulumi:"roleArn"`
+	RoleExternalId  *string `pulumi:"roleExternalId"`
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  *string `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          *string `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         *string `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   *string `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  *string `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  *string `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath *string `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -24503,23 +20647,15 @@ type ResourceNeptuneIamArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Endpoint     pulumi.StringInput    `pulumi:"endpoint"`
 	// Unique human-readable name of the Resource.
-	Name                     pulumi.StringInput    `pulumi:"name"`
-	Port                     pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride             pulumi.IntPtrInput    `pulumi:"portOverride"`
-	Region                   pulumi.StringInput    `pulumi:"region"`
-	RoleArn                  pulumi.StringPtrInput `pulumi:"roleArn"`
-	RoleExternalId           pulumi.StringPtrInput `pulumi:"roleExternalId"`
-	SecretAccessKey          pulumi.StringPtrInput `pulumi:"secretAccessKey"`
-	SecretStoreAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyKey"`
-	SecretStoreAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreAccessKeyPath"`
+	Name            pulumi.StringInput    `pulumi:"name"`
+	Port            pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Region          pulumi.StringInput    `pulumi:"region"`
+	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
+	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId                  pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreRoleArnKey          pulumi.StringPtrInput `pulumi:"secretStoreRoleArnKey"`
-	SecretStoreRoleArnPath         pulumi.StringPtrInput `pulumi:"secretStoreRoleArnPath"`
-	SecretStoreRoleExternalIdKey   pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdKey"`
-	SecretStoreRoleExternalIdPath  pulumi.StringPtrInput `pulumi:"secretStoreRoleExternalIdPath"`
-	SecretStoreSecretAccessKeyKey  pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyKey"`
-	SecretStoreSecretAccessKeyPath pulumi.StringPtrInput `pulumi:"secretStoreSecretAccessKeyPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -24650,41 +20786,9 @@ func (o ResourceNeptuneIamOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceNeptuneIamOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreAccessKeyPath }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceNeptuneIamOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreRoleArnKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreRoleArnPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreRoleExternalIdKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreRoleExternalIdPath }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreSecretAccessKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.SecretStoreSecretAccessKeyPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -24823,24 +20927,6 @@ func (o ResourceNeptuneIamPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceNeptuneIamPtrOutput) SecretStoreAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamPtrOutput) SecretStoreAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreAccessKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceNeptuneIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
@@ -24848,60 +20934,6 @@ func (o ResourceNeptuneIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamPtrOutput) SecretStoreRoleArnKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamPtrOutput) SecretStoreRoleArnPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleArnPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamPtrOutput) SecretStoreRoleExternalIdKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamPtrOutput) SecretStoreRoleExternalIdPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreRoleExternalIdPath
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamPtrOutput) SecretStoreSecretAccessKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceNeptuneIamPtrOutput) SecretStoreSecretAccessKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSecretAccessKeyPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24938,12 +20970,7 @@ type ResourceOracle struct {
 	Port         int     `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -24976,12 +21003,7 @@ type ResourceOracleArgs struct {
 	Port         pulumi.IntInput       `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -25105,23 +21127,6 @@ func (o ResourceOracleOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceOracleOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceOracle) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceOracleOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceOracle) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceOracleOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceOracle) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceOracleOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceOracle) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceOracleOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceOracle) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25251,43 +21256,6 @@ func (o ResourceOraclePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceOraclePtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceOracle) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceOraclePtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceOracle) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceOraclePtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceOracle) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceOraclePtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceOracle) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceOraclePtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceOracle) *string {
@@ -25340,12 +21308,7 @@ type ResourcePostgres struct {
 	Port             *int    `pulumi:"port"`
 	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -25378,12 +21341,7 @@ type ResourcePostgresArgs struct {
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -25510,23 +21468,6 @@ func (o ResourcePostgresOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourcePostgresOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePostgres) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePostgresOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePostgres) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePostgresOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePostgres) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourcePostgresOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePostgres) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePostgresOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePostgres) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25661,43 +21602,6 @@ func (o ResourcePostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourcePostgresPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePostgresPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourcePostgresPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePostgresPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePostgres) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourcePostgresPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePostgres) *string {
@@ -25740,9 +21644,7 @@ type ResourcePresto struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -25775,9 +21677,7 @@ type ResourcePrestoArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -25901,14 +21801,6 @@ func (o ResourcePrestoOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourcePrestoOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePresto) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePrestoOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePresto) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePrestoOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourcePresto) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -26038,24 +21930,6 @@ func (o ResourcePrestoPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourcePrestoPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePresto) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourcePrestoPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourcePresto) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourcePrestoPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePresto) *string {
@@ -26106,12 +21980,7 @@ type ResourceRabbitmqAmqp091 struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -26143,12 +22012,7 @@ type ResourceRabbitmqAmqp091Args struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -26270,23 +22134,6 @@ func (o ResourceRabbitmqAmqp091Output) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceRabbitmqAmqp091Output) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRabbitmqAmqp091Output) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceRabbitmqAmqp091Output) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRabbitmqAmqp091Output) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceRabbitmqAmqp091Output) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -26402,43 +22249,6 @@ func (o ResourceRabbitmqAmqp091PtrOutput) SecretStoreId() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRabbitmqAmqp091PtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRabbitmqAmqp091) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRabbitmqAmqp091PtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRabbitmqAmqp091) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceRabbitmqAmqp091PtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRabbitmqAmqp091) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRabbitmqAmqp091PtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRabbitmqAmqp091) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26770,12 +22580,7 @@ type ResourceRdp struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -26807,12 +22612,7 @@ type ResourceRdpArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -26935,23 +22735,6 @@ func (o ResourceRdpOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRdpOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRdp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRdpOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRdp) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRdpOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRdp) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceRdpOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRdp) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRdpOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRdp) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -27077,43 +22860,6 @@ func (o ResourceRdpPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceRdpPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRdp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRdpPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRdp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceRdpPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRdp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRdpPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRdp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceRdpPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRdp) *string {
@@ -27155,12 +22901,7 @@ type ResourceRedis struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -27192,12 +22933,7 @@ type ResourceRedisArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -27319,23 +23055,6 @@ func (o ResourceRedisOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceRedisOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedisOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceRedisOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedisOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceRedisOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRedis) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -27454,43 +23173,6 @@ func (o ResourceRedisPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceRedisPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedisPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceRedisPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedisPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRedis) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceRedisPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRedis) *string {
@@ -27543,12 +23225,7 @@ type ResourceRedshift struct {
 	Port             *int    `pulumi:"port"`
 	PortOverride     *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -27581,12 +23258,7 @@ type ResourceRedshiftArgs struct {
 	Port             pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -27713,23 +23385,6 @@ func (o ResourceRedshiftOutput) PortOverride() pulumi.IntPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRedshiftOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRedshift) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedshiftOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRedshift) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedshiftOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRedshift) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceRedshiftOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRedshift) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedshiftOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRedshift) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -27864,43 +23519,6 @@ func (o ResourceRedshiftPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceRedshiftPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRedshift) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedshiftPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRedshift) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceRedshiftPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRedshift) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceRedshiftPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRedshift) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceRedshiftPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRedshift) *string {
@@ -27938,22 +23556,19 @@ type ResourceSingleStore struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	Hostname     string  `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         string  `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              string  `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // ResourceSingleStoreInput is an input type that accepts ResourceSingleStoreArgs and ResourceSingleStoreOutput values.
@@ -27975,22 +23590,19 @@ type ResourceSingleStoreArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	Hostname     pulumi.StringInput    `pulumi:"hostname"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringInput    `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringInput    `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ResourceSingleStoreArgs) ElementType() reflect.Type {
@@ -28105,26 +23717,13 @@ func (o ResourceSingleStoreOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSingleStore) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceSingleStoreOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSingleStore) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSingleStoreOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSingleStore) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSingleStoreOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSingleStore) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSingleStoreOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSingleStore) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSingleStoreOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSingleStore) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSingleStoreOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSingleStore) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28135,6 +23734,10 @@ func (o ResourceSingleStoreOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceSingleStoreOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ResourceSingleStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceSingleStoreOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSingleStore) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceSingleStoreOutput) Username() pulumi.StringPtrOutput {
@@ -28240,6 +23843,15 @@ func (o ResourceSingleStorePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o ResourceSingleStorePtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSingleStore) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSingleStorePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSingleStore) *string {
@@ -28247,43 +23859,6 @@ func (o ResourceSingleStorePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSingleStorePtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSingleStore) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSingleStorePtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSingleStore) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSingleStorePtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSingleStore) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSingleStorePtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSingleStore) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -28305,6 +23880,15 @@ func (o ResourceSingleStorePtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceSingleStorePtrOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSingleStore) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseAzureSingleServerUsernames
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o ResourceSingleStorePtrOutput) Username() pulumi.StringPtrOutput {
@@ -28329,12 +23913,7 @@ type ResourceSnowflake struct {
 	PortOverride *int    `pulumi:"portOverride"`
 	Schema       *string `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -28366,12 +23945,7 @@ type ResourceSnowflakeArgs struct {
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Schema       pulumi.StringPtrInput `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -28494,23 +24068,6 @@ func (o ResourceSnowflakeOutput) Schema() pulumi.StringPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSnowflakeOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSnowflake) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSnowflakeOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSnowflake) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSnowflakeOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSnowflake) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSnowflakeOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSnowflake) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSnowflakeOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSnowflake) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28636,43 +24193,6 @@ func (o ResourceSnowflakePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSnowflakePtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSnowflake) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSnowflakePtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSnowflake) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSnowflakePtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSnowflake) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSnowflakePtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSnowflake) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSnowflakePtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSnowflake) *string {
@@ -28713,9 +24233,7 @@ type ResourceSnowsight struct {
 	PortOverride *int    `pulumi:"portOverride"`
 	SamlMetadata *string `pulumi:"samlMetadata"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId               *string `pulumi:"secretStoreId"`
-	SecretStoreSamlMetadataKey  *string `pulumi:"secretStoreSamlMetadataKey"`
-	SecretStoreSamlMetadataPath *string `pulumi:"secretStoreSamlMetadataPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -28744,9 +24262,7 @@ type ResourceSnowsightArgs struct {
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	SamlMetadata pulumi.StringPtrInput `pulumi:"samlMetadata"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId               pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStoreSamlMetadataKey  pulumi.StringPtrInput `pulumi:"secretStoreSamlMetadataKey"`
-	SecretStoreSamlMetadataPath pulumi.StringPtrInput `pulumi:"secretStoreSamlMetadataPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -28862,14 +24378,6 @@ func (o ResourceSnowsightOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSnowsight) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSnowsightOutput) SecretStoreSamlMetadataKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSnowsight) *string { return v.SecretStoreSamlMetadataKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSnowsightOutput) SecretStoreSamlMetadataPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSnowsight) *string { return v.SecretStoreSamlMetadataPath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSnowsightOutput) Subdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSnowsight) string { return v.Subdomain }).(pulumi.StringOutput)
@@ -28971,24 +24479,6 @@ func (o ResourceSnowsightPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSnowsightPtrOutput) SecretStoreSamlMetadataKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSnowsight) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSamlMetadataKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSnowsightPtrOutput) SecretStoreSamlMetadataPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSnowsight) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreSamlMetadataPath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSnowsightPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSnowsight) *string {
@@ -29024,12 +24514,7 @@ type ResourceSqlServer struct {
 	PortOverride     *int    `pulumi:"portOverride"`
 	Schema           *string `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -29063,12 +24548,7 @@ type ResourceSqlServerArgs struct {
 	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Schema           pulumi.StringPtrInput `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -29199,23 +24679,6 @@ func (o ResourceSqlServerOutput) Schema() pulumi.StringPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSqlServerOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSqlServer) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSqlServerOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSqlServer) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSqlServerOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSqlServer) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSqlServerOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSqlServer) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSqlServerOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSqlServer) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -29359,43 +24822,6 @@ func (o ResourceSqlServerPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSqlServerPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSqlServer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSqlServerPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSqlServer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSqlServerPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSqlServer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSqlServerPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSqlServer) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSqlServerPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSqlServer) *string {
@@ -29425,6 +24851,774 @@ func (o ResourceSqlServerPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceSqlServerAzureAd struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	ClientId      *string `pulumi:"clientId"`
+	Database      string  `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	Hostname     string  `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name             string  `pulumi:"name"`
+	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
+	Port             *int    `pulumi:"port"`
+	PortOverride     *int    `pulumi:"portOverride"`
+	Schema           *string `pulumi:"schema"`
+	Secret           *string `pulumi:"secret"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// * sql_server_kerberos_ad:
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// ResourceSqlServerAzureAdInput is an input type that accepts ResourceSqlServerAzureAdArgs and ResourceSqlServerAzureAdOutput values.
+// You can construct a concrete instance of `ResourceSqlServerAzureAdInput` via:
+//
+//	ResourceSqlServerAzureAdArgs{...}
+type ResourceSqlServerAzureAdInput interface {
+	pulumi.Input
+
+	ToResourceSqlServerAzureAdOutput() ResourceSqlServerAzureAdOutput
+	ToResourceSqlServerAzureAdOutputWithContext(context.Context) ResourceSqlServerAzureAdOutput
+}
+
+type ResourceSqlServerAzureAdArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	ClientId      pulumi.StringPtrInput `pulumi:"clientId"`
+	Database      pulumi.StringInput    `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	Hostname     pulumi.StringInput    `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name             pulumi.StringInput    `pulumi:"name"`
+	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
+	Port             pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Schema           pulumi.StringPtrInput `pulumi:"schema"`
+	Secret           pulumi.StringPtrInput `pulumi:"secret"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * sql_server_kerberos_ad:
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (ResourceSqlServerAzureAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceSqlServerAzureAd)(nil)).Elem()
+}
+
+func (i ResourceSqlServerAzureAdArgs) ToResourceSqlServerAzureAdOutput() ResourceSqlServerAzureAdOutput {
+	return i.ToResourceSqlServerAzureAdOutputWithContext(context.Background())
+}
+
+func (i ResourceSqlServerAzureAdArgs) ToResourceSqlServerAzureAdOutputWithContext(ctx context.Context) ResourceSqlServerAzureAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerAzureAdOutput)
+}
+
+func (i ResourceSqlServerAzureAdArgs) ToResourceSqlServerAzureAdPtrOutput() ResourceSqlServerAzureAdPtrOutput {
+	return i.ToResourceSqlServerAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceSqlServerAzureAdArgs) ToResourceSqlServerAzureAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerAzureAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerAzureAdOutput).ToResourceSqlServerAzureAdPtrOutputWithContext(ctx)
+}
+
+// ResourceSqlServerAzureAdPtrInput is an input type that accepts ResourceSqlServerAzureAdArgs, ResourceSqlServerAzureAdPtr and ResourceSqlServerAzureAdPtrOutput values.
+// You can construct a concrete instance of `ResourceSqlServerAzureAdPtrInput` via:
+//
+//	        ResourceSqlServerAzureAdArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceSqlServerAzureAdPtrInput interface {
+	pulumi.Input
+
+	ToResourceSqlServerAzureAdPtrOutput() ResourceSqlServerAzureAdPtrOutput
+	ToResourceSqlServerAzureAdPtrOutputWithContext(context.Context) ResourceSqlServerAzureAdPtrOutput
+}
+
+type resourceSqlServerAzureAdPtrType ResourceSqlServerAzureAdArgs
+
+func ResourceSqlServerAzureAdPtr(v *ResourceSqlServerAzureAdArgs) ResourceSqlServerAzureAdPtrInput {
+	return (*resourceSqlServerAzureAdPtrType)(v)
+}
+
+func (*resourceSqlServerAzureAdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceSqlServerAzureAd)(nil)).Elem()
+}
+
+func (i *resourceSqlServerAzureAdPtrType) ToResourceSqlServerAzureAdPtrOutput() ResourceSqlServerAzureAdPtrOutput {
+	return i.ToResourceSqlServerAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceSqlServerAzureAdPtrType) ToResourceSqlServerAzureAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerAzureAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerAzureAdPtrOutput)
+}
+
+type ResourceSqlServerAzureAdOutput struct{ *pulumi.OutputState }
+
+func (ResourceSqlServerAzureAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceSqlServerAzureAd)(nil)).Elem()
+}
+
+func (o ResourceSqlServerAzureAdOutput) ToResourceSqlServerAzureAdOutput() ResourceSqlServerAzureAdOutput {
+	return o
+}
+
+func (o ResourceSqlServerAzureAdOutput) ToResourceSqlServerAzureAdOutputWithContext(ctx context.Context) ResourceSqlServerAzureAdOutput {
+	return o
+}
+
+func (o ResourceSqlServerAzureAdOutput) ToResourceSqlServerAzureAdPtrOutput() ResourceSqlServerAzureAdPtrOutput {
+	return o.ToResourceSqlServerAzureAdPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceSqlServerAzureAdOutput) ToResourceSqlServerAzureAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerAzureAdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSqlServerAzureAd) *ResourceSqlServerAzureAd {
+		return &v
+	}).(ResourceSqlServerAzureAdPtrOutput)
+}
+
+// Bind interface
+func (o ResourceSqlServerAzureAdOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceSqlServerAzureAdOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceSqlServerAzureAdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceSqlServerAzureAdOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceSqlServerAzureAdOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceSqlServerAzureAdOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// * sql_server_kerberos_ad:
+func (o ResourceSqlServerAzureAdOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type ResourceSqlServerAzureAdPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceSqlServerAzureAdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceSqlServerAzureAd)(nil)).Elem()
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) ToResourceSqlServerAzureAdPtrOutput() ResourceSqlServerAzureAdPtrOutput {
+	return o
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) ToResourceSqlServerAzureAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerAzureAdPtrOutput {
+	return o
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) Elem() ResourceSqlServerAzureAdOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) ResourceSqlServerAzureAd {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceSqlServerAzureAd
+		return ret
+	}).(ResourceSqlServerAzureAdOutput)
+}
+
+// Bind interface
+func (o ResourceSqlServerAzureAdPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceSqlServerAzureAdPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceSqlServerAzureAdPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideDatabase
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceSqlServerAzureAdPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceSqlServerAzureAdPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceSqlServerAzureAdPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// * sql_server_kerberos_ad:
+func (o ResourceSqlServerAzureAdPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceSqlServerKerberosAd struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	Database      string  `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	Hostname     string  `pulumi:"hostname"`
+	Keytab       *string `pulumi:"keytab"`
+	KrbConfig    *string `pulumi:"krbConfig"`
+	// Unique human-readable name of the Resource.
+	Name             string  `pulumi:"name"`
+	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
+	Port             *int    `pulumi:"port"`
+	PortOverride     *int    `pulumi:"portOverride"`
+	Realm            *string `pulumi:"realm"`
+	Schema           *string `pulumi:"schema"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	ServerSpn     *string `pulumi:"serverSpn"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags     map[string]string `pulumi:"tags"`
+	Username *string           `pulumi:"username"`
+}
+
+// ResourceSqlServerKerberosAdInput is an input type that accepts ResourceSqlServerKerberosAdArgs and ResourceSqlServerKerberosAdOutput values.
+// You can construct a concrete instance of `ResourceSqlServerKerberosAdInput` via:
+//
+//	ResourceSqlServerKerberosAdArgs{...}
+type ResourceSqlServerKerberosAdInput interface {
+	pulumi.Input
+
+	ToResourceSqlServerKerberosAdOutput() ResourceSqlServerKerberosAdOutput
+	ToResourceSqlServerKerberosAdOutputWithContext(context.Context) ResourceSqlServerKerberosAdOutput
+}
+
+type ResourceSqlServerKerberosAdArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	Database      pulumi.StringInput    `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	Hostname     pulumi.StringInput    `pulumi:"hostname"`
+	Keytab       pulumi.StringPtrInput `pulumi:"keytab"`
+	KrbConfig    pulumi.StringPtrInput `pulumi:"krbConfig"`
+	// Unique human-readable name of the Resource.
+	Name             pulumi.StringInput    `pulumi:"name"`
+	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
+	Port             pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Realm            pulumi.StringPtrInput `pulumi:"realm"`
+	Schema           pulumi.StringPtrInput `pulumi:"schema"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	ServerSpn     pulumi.StringPtrInput `pulumi:"serverSpn"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags     pulumi.StringMapInput `pulumi:"tags"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceSqlServerKerberosAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceSqlServerKerberosAd)(nil)).Elem()
+}
+
+func (i ResourceSqlServerKerberosAdArgs) ToResourceSqlServerKerberosAdOutput() ResourceSqlServerKerberosAdOutput {
+	return i.ToResourceSqlServerKerberosAdOutputWithContext(context.Background())
+}
+
+func (i ResourceSqlServerKerberosAdArgs) ToResourceSqlServerKerberosAdOutputWithContext(ctx context.Context) ResourceSqlServerKerberosAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerKerberosAdOutput)
+}
+
+func (i ResourceSqlServerKerberosAdArgs) ToResourceSqlServerKerberosAdPtrOutput() ResourceSqlServerKerberosAdPtrOutput {
+	return i.ToResourceSqlServerKerberosAdPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceSqlServerKerberosAdArgs) ToResourceSqlServerKerberosAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerKerberosAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerKerberosAdOutput).ToResourceSqlServerKerberosAdPtrOutputWithContext(ctx)
+}
+
+// ResourceSqlServerKerberosAdPtrInput is an input type that accepts ResourceSqlServerKerberosAdArgs, ResourceSqlServerKerberosAdPtr and ResourceSqlServerKerberosAdPtrOutput values.
+// You can construct a concrete instance of `ResourceSqlServerKerberosAdPtrInput` via:
+//
+//	        ResourceSqlServerKerberosAdArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceSqlServerKerberosAdPtrInput interface {
+	pulumi.Input
+
+	ToResourceSqlServerKerberosAdPtrOutput() ResourceSqlServerKerberosAdPtrOutput
+	ToResourceSqlServerKerberosAdPtrOutputWithContext(context.Context) ResourceSqlServerKerberosAdPtrOutput
+}
+
+type resourceSqlServerKerberosAdPtrType ResourceSqlServerKerberosAdArgs
+
+func ResourceSqlServerKerberosAdPtr(v *ResourceSqlServerKerberosAdArgs) ResourceSqlServerKerberosAdPtrInput {
+	return (*resourceSqlServerKerberosAdPtrType)(v)
+}
+
+func (*resourceSqlServerKerberosAdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceSqlServerKerberosAd)(nil)).Elem()
+}
+
+func (i *resourceSqlServerKerberosAdPtrType) ToResourceSqlServerKerberosAdPtrOutput() ResourceSqlServerKerberosAdPtrOutput {
+	return i.ToResourceSqlServerKerberosAdPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceSqlServerKerberosAdPtrType) ToResourceSqlServerKerberosAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerKerberosAdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerKerberosAdPtrOutput)
+}
+
+type ResourceSqlServerKerberosAdOutput struct{ *pulumi.OutputState }
+
+func (ResourceSqlServerKerberosAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceSqlServerKerberosAd)(nil)).Elem()
+}
+
+func (o ResourceSqlServerKerberosAdOutput) ToResourceSqlServerKerberosAdOutput() ResourceSqlServerKerberosAdOutput {
+	return o
+}
+
+func (o ResourceSqlServerKerberosAdOutput) ToResourceSqlServerKerberosAdOutputWithContext(ctx context.Context) ResourceSqlServerKerberosAdOutput {
+	return o
+}
+
+func (o ResourceSqlServerKerberosAdOutput) ToResourceSqlServerKerberosAdPtrOutput() ResourceSqlServerKerberosAdPtrOutput {
+	return o.ToResourceSqlServerKerberosAdPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceSqlServerKerberosAdOutput) ToResourceSqlServerKerberosAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerKerberosAdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSqlServerKerberosAd) *ResourceSqlServerKerberosAd {
+		return &v
+	}).(ResourceSqlServerKerberosAdPtrOutput)
+}
+
+// Bind interface
+func (o ResourceSqlServerKerberosAdOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceSqlServerKerberosAdOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) Keytab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.Keytab }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) KrbConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.KrbConfig }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceSqlServerKerberosAdOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) Realm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.Realm }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceSqlServerKerberosAdOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) ServerSpn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.ServerSpn }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceSqlServerKerberosAdOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceSqlServerKerberosAdOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceSqlServerKerberosAdPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceSqlServerKerberosAdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceSqlServerKerberosAd)(nil)).Elem()
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) ToResourceSqlServerKerberosAdPtrOutput() ResourceSqlServerKerberosAdPtrOutput {
+	return o
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) ToResourceSqlServerKerberosAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerKerberosAdPtrOutput {
+	return o
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) Elem() ResourceSqlServerKerberosAdOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) ResourceSqlServerKerberosAd {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceSqlServerKerberosAd
+		return ret
+	}).(ResourceSqlServerKerberosAdOutput)
+}
+
+// Bind interface
+func (o ResourceSqlServerKerberosAdPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceSqlServerKerberosAdPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) Keytab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Keytab
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) KrbConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KrbConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceSqlServerKerberosAdPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideDatabase
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) Realm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Realm
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schema
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceSqlServerKerberosAdPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) ServerSpn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSpn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceSqlServerKerberosAdPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceSqlServerKerberosAdPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceSsh struct {
 	AllowDeprecatedKeyExchanges *bool `pulumi:"allowDeprecatedKeyExchanges"`
 	// Bind interface
@@ -29441,9 +25635,6 @@ type ResourceSsh struct {
 	PublicKey      *string `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -29478,9 +25669,6 @@ type ResourceSshArgs struct {
 	PublicKey      pulumi.StringPtrInput `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -29611,15 +25799,6 @@ func (o ResourceSshOutput) PublicKey() pulumi.StringPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSshOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSsh) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSshOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSsh) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSsh) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -29763,25 +25942,6 @@ func (o ResourceSshPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// * trino:
-func (o ResourceSshPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSsh) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSsh) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSshPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSsh) *string {
@@ -29828,9 +25988,6 @@ type ResourceSshCert struct {
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -29866,9 +26023,6 @@ type ResourceSshCertArgs struct {
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -30003,15 +26157,6 @@ func (o ResourceSshCertOutput) RemoteIdentityHealthcheckUsername() pulumi.String
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSshCertOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSshCert) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSshCertOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSshCert) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshCertOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSshCert) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -30164,25 +26309,6 @@ func (o ResourceSshCertPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// * trino:
-func (o ResourceSshCertPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSshCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshCertPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSshCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSshCertPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSshCert) *string {
@@ -30226,12 +26352,7 @@ type ResourceSshCustomerKey struct {
 	PortOverride   *int    `pulumi:"portOverride"`
 	PrivateKey     *string `pulumi:"privateKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId             *string `pulumi:"secretStoreId"`
-	SecretStorePrivateKeyKey  *string `pulumi:"secretStorePrivateKeyKey"`
-	SecretStorePrivateKeyPath *string `pulumi:"secretStorePrivateKeyPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -30264,12 +26385,7 @@ type ResourceSshCustomerKeyArgs struct {
 	PortOverride   pulumi.IntPtrInput    `pulumi:"portOverride"`
 	PrivateKey     pulumi.StringPtrInput `pulumi:"privateKey"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId             pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePrivateKeyKey  pulumi.StringPtrInput `pulumi:"secretStorePrivateKeyKey"`
-	SecretStorePrivateKeyPath pulumi.StringPtrInput `pulumi:"secretStorePrivateKeyPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -30396,23 +26512,6 @@ func (o ResourceSshCustomerKeyOutput) PrivateKey() pulumi.StringPtrOutput {
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSshCustomerKeyOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshCustomerKeyOutput) SecretStorePrivateKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.SecretStorePrivateKeyKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshCustomerKeyOutput) SecretStorePrivateKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.SecretStorePrivateKeyPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSshCustomerKeyOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshCustomerKeyOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -30547,43 +26646,6 @@ func (o ResourceSshCustomerKeyPtrOutput) SecretStoreId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSshCustomerKeyPtrOutput) SecretStorePrivateKeyKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePrivateKeyKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshCustomerKeyPtrOutput) SecretStorePrivateKeyPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePrivateKeyPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSshCustomerKeyPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSshCustomerKeyPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSshCustomerKeyPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
@@ -30625,12 +26687,7 @@ type ResourceSybase struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -30661,12 +26718,7 @@ type ResourceSybaseArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -30787,23 +26839,6 @@ func (o ResourceSybaseOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSybase) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSybaseOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSybase) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSybaseOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSybase) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSybaseOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSybase) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSybaseOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSybase) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSybaseOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSybase) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -30918,43 +26953,6 @@ func (o ResourceSybasePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSybasePtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSybase) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSybasePtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSybase) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSybasePtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSybase) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSybasePtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSybase) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSybasePtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSybase) *string {
@@ -30996,12 +26994,7 @@ type ResourceSybaseIq struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -31032,12 +27025,7 @@ type ResourceSybaseIqArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -31158,23 +27146,6 @@ func (o ResourceSybaseIqOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSybaseIq) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSybaseIqOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSybaseIq) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSybaseIqOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSybaseIq) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSybaseIqOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSybaseIq) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSybaseIqOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSybaseIq) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSybaseIqOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSybaseIq) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -31289,43 +27260,6 @@ func (o ResourceSybaseIqPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceSybaseIqPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSybaseIq) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSybaseIqPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSybaseIq) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceSybaseIqPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSybaseIq) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceSybaseIqPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSybaseIq) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceSybaseIqPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSybaseIq) *string {
@@ -31367,12 +27301,7 @@ type ResourceTeradata struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  *string `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath *string `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -31403,12 +27332,7 @@ type ResourceTeradataArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
-	// * trino:
-	SecretStoreUsernameKey  pulumi.StringPtrInput `pulumi:"secretStoreUsernameKey"`
-	SecretStoreUsernamePath pulumi.StringPtrInput `pulumi:"secretStoreUsernamePath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -31529,23 +27453,6 @@ func (o ResourceTeradataOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTeradata) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceTeradataOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceTeradata) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceTeradataOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceTeradata) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceTeradataOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceTeradata) *string { return v.SecretStoreUsernameKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceTeradataOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceTeradata) *string { return v.SecretStoreUsernamePath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceTeradataOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTeradata) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -31660,43 +27567,6 @@ func (o ResourceTeradataPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceTeradataPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceTeradata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceTeradataPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceTeradata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// * trino:
-func (o ResourceTeradataPtrOutput) SecretStoreUsernameKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceTeradata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernameKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceTeradataPtrOutput) SecretStoreUsernamePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceTeradata) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStoreUsernamePath
-	}).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceTeradataPtrOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceTeradata) *string {
@@ -31739,9 +27609,7 @@ type ResourceTrino struct {
 	Port         *int    `pulumi:"port"`
 	PortOverride *int    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           *string `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  *string `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath *string `pulumi:"secretStorePasswordPath"`
+	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -31773,9 +27641,7 @@ type ResourceTrinoArgs struct {
 	Port         pulumi.IntPtrInput    `pulumi:"port"`
 	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
-	SecretStoreId           pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	SecretStorePasswordKey  pulumi.StringPtrInput `pulumi:"secretStorePasswordKey"`
-	SecretStorePasswordPath pulumi.StringPtrInput `pulumi:"secretStorePasswordPath"`
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -31900,14 +27766,6 @@ func (o ResourceTrinoOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTrino) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-func (o ResourceTrinoOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceTrino) *string { return v.SecretStorePasswordKey }).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceTrinoOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceTrino) *string { return v.SecretStorePasswordPath }).(pulumi.StringPtrOutput)
-}
-
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 func (o ResourceTrinoOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTrino) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
@@ -32028,24 +27886,6 @@ func (o ResourceTrinoPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.SecretStoreId
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceTrinoPtrOutput) SecretStorePasswordKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceTrino) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordKey
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ResourceTrinoPtrOutput) SecretStorePasswordPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceTrino) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecretStorePasswordPath
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -35130,6 +30970,8 @@ type GetResourceResource struct {
 	SingleStores                               []GetResourceResourceSingleStore                               `pulumi:"singleStores"`
 	Snowflakes                                 []GetResourceResourceSnowflake                                 `pulumi:"snowflakes"`
 	Snowsights                                 []GetResourceResourceSnowsight                                 `pulumi:"snowsights"`
+	SqlServerAzureAds                          []GetResourceResourceSqlServerAzureAd                          `pulumi:"sqlServerAzureAds"`
+	SqlServerKerberosAds                       []GetResourceResourceSqlServerKerberosAd                       `pulumi:"sqlServerKerberosAds"`
 	SqlServers                                 []GetResourceResourceSqlServer                                 `pulumi:"sqlServers"`
 	SshCerts                                   []GetResourceResourceSshCert                                   `pulumi:"sshCerts"`
 	SshCustomerKeys                            []GetResourceResourceSshCustomerKey                            `pulumi:"sshCustomerKeys"`
@@ -35222,6 +31064,8 @@ type GetResourceResourceArgs struct {
 	SingleStores                               GetResourceResourceSingleStoreArrayInput                               `pulumi:"singleStores"`
 	Snowflakes                                 GetResourceResourceSnowflakeArrayInput                                 `pulumi:"snowflakes"`
 	Snowsights                                 GetResourceResourceSnowsightArrayInput                                 `pulumi:"snowsights"`
+	SqlServerAzureAds                          GetResourceResourceSqlServerAzureAdArrayInput                          `pulumi:"sqlServerAzureAds"`
+	SqlServerKerberosAds                       GetResourceResourceSqlServerKerberosAdArrayInput                       `pulumi:"sqlServerKerberosAds"`
 	SqlServers                                 GetResourceResourceSqlServerArrayInput                                 `pulumi:"sqlServers"`
 	SshCerts                                   GetResourceResourceSshCertArrayInput                                   `pulumi:"sshCerts"`
 	SshCustomerKeys                            GetResourceResourceSshCustomerKeyArrayInput                            `pulumi:"sshCustomerKeys"`
@@ -35581,6 +31425,14 @@ func (o GetResourceResourceOutput) Snowflakes() GetResourceResourceSnowflakeArra
 
 func (o GetResourceResourceOutput) Snowsights() GetResourceResourceSnowsightArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceSnowsight { return v.Snowsights }).(GetResourceResourceSnowsightArrayOutput)
+}
+
+func (o GetResourceResourceOutput) SqlServerAzureAds() GetResourceResourceSqlServerAzureAdArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceSqlServerAzureAd { return v.SqlServerAzureAds }).(GetResourceResourceSqlServerAzureAdArrayOutput)
+}
+
+func (o GetResourceResourceOutput) SqlServerKerberosAds() GetResourceResourceSqlServerKerberosAdArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceSqlServerKerberosAd { return v.SqlServerKerberosAds }).(GetResourceResourceSqlServerKerberosAdArrayOutput)
 }
 
 func (o GetResourceResourceOutput) SqlServers() GetResourceResourceSqlServerArrayOutput {
@@ -36823,6 +32675,7 @@ type GetResourceResourceAmazonEk struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name                              *string `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	Region                            *string `pulumi:"region"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
@@ -36863,6 +32716,7 @@ type GetResourceResourceAmazonEkArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringPtrInput `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region                            pulumi.StringPtrInput `pulumi:"region"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
@@ -36969,6 +32823,10 @@ func (o GetResourceResourceAmazonEkOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o GetResourceResourceAmazonEkOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEk) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o GetResourceResourceAmazonEkOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -37042,6 +32900,7 @@ type GetResourceResourceAmazonEksInstanceProfile struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name                              *string `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	Region                            *string `pulumi:"region"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
@@ -37080,6 +32939,7 @@ type GetResourceResourceAmazonEksInstanceProfileArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringPtrInput `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region                            pulumi.StringPtrInput `pulumi:"region"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
@@ -37181,6 +33041,10 @@ func (o GetResourceResourceAmazonEksInstanceProfileOutput) Name() pulumi.StringP
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o GetResourceResourceAmazonEksInstanceProfileOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -37252,6 +33116,7 @@ type GetResourceResourceAmazonEksInstanceProfileUserImpersonation struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name                              *string `pulumi:"name"`
+	PortOverride                      *int    `pulumi:"portOverride"`
 	Region                            *string `pulumi:"region"`
 	RemoteIdentityGroupId             *string `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
@@ -37290,6 +33155,7 @@ type GetResourceResourceAmazonEksInstanceProfileUserImpersonationArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name                              pulumi.StringPtrInput `pulumi:"name"`
+	PortOverride                      pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region                            pulumi.StringPtrInput `pulumi:"region"`
 	RemoteIdentityGroupId             pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
@@ -37395,6 +33261,10 @@ func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) Name
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
@@ -37469,6 +33339,7 @@ type GetResourceResourceAmazonEksUserImpersonation struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name            *string `pulumi:"name"`
+	PortOverride    *int    `pulumi:"portOverride"`
 	Region          *string `pulumi:"region"`
 	RoleArn         *string `pulumi:"roleArn"`
 	RoleExternalId  *string `pulumi:"roleExternalId"`
@@ -37507,6 +33378,7 @@ type GetResourceResourceAmazonEksUserImpersonationArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name            pulumi.StringPtrInput `pulumi:"name"`
+	PortOverride    pulumi.IntPtrInput    `pulumi:"portOverride"`
 	Region          pulumi.StringPtrInput `pulumi:"region"`
 	RoleArn         pulumi.StringPtrInput `pulumi:"roleArn"`
 	RoleExternalId  pulumi.StringPtrInput `pulumi:"roleExternalId"`
@@ -37609,6 +33481,10 @@ func (o GetResourceResourceAmazonEksUserImpersonationOutput) Id() pulumi.StringP
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceAmazonEksUserImpersonationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksUserImpersonation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceAmazonEksUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 func (o GetResourceResourceAmazonEksUserImpersonationOutput) Region() pulumi.StringPtrOutput {
@@ -38052,17 +33928,19 @@ type GetResourceResourceAuroraMysql struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         *string `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              *string `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // GetResourceResourceAuroraMysqlInput is an input type that accepts GetResourceResourceAuroraMysqlArgs and GetResourceResourceAuroraMysqlOutput values.
@@ -38086,17 +33964,19 @@ type GetResourceResourceAuroraMysqlArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceAuroraMysqlArgs) ElementType() reflect.Type {
@@ -38190,6 +34070,10 @@ func (o GetResourceResourceAuroraMysqlOutput) PortOverride() pulumi.IntPtrOutput
 	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceAuroraMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAuroraMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -38203,6 +34087,10 @@ func (o GetResourceResourceAuroraMysqlOutput) Subdomain() pulumi.StringPtrOutput
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceAuroraMysqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceAuroraMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceAuroraMysqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetResourceResourceAuroraMysqlOutput) Username() pulumi.StringPtrOutput {
@@ -39031,7 +34919,7 @@ type GetResourceResourceAzure struct {
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// * azure_mysql:
+	// * sql_server_kerberos_ad:
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -39064,7 +34952,7 @@ type GetResourceResourceAzureArgs struct {
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// * azure_mysql:
+	// * sql_server_kerberos_ad:
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -39166,7 +35054,7 @@ func (o GetResourceResourceAzureOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceAzure) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// * azure_mysql:
+// * sql_server_kerberos_ad:
 func (o GetResourceResourceAzureOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzure) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -39209,7 +35097,7 @@ type GetResourceResourceAzureCertificate struct {
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// * azure_mysql:
+	// * sql_server_kerberos_ad:
 	TenantId *string `pulumi:"tenantId"`
 }
 
@@ -39242,7 +35130,7 @@ type GetResourceResourceAzureCertificateArgs struct {
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// * azure_mysql:
+	// * sql_server_kerberos_ad:
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
 }
 
@@ -39344,7 +35232,7 @@ func (o GetResourceResourceAzureCertificateOutput) Tags() pulumi.StringMapOutput
 	return o.ApplyT(func(v GetResourceResourceAzureCertificate) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// * azure_mysql:
+// * sql_server_kerberos_ad:
 func (o GetResourceResourceAzureCertificateOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzureCertificate) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
@@ -39379,17 +35267,19 @@ type GetResourceResourceAzureMysql struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         *string `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              *string `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // GetResourceResourceAzureMysqlInput is an input type that accepts GetResourceResourceAzureMysqlArgs and GetResourceResourceAzureMysqlOutput values.
@@ -39413,17 +35303,19 @@ type GetResourceResourceAzureMysqlArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceAzureMysqlArgs) ElementType() reflect.Type {
@@ -39517,6 +35409,10 @@ func (o GetResourceResourceAzureMysqlOutput) PortOverride() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v GetResourceResourceAzureMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceAzureMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAzureMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -39530,6 +35426,10 @@ func (o GetResourceResourceAzureMysqlOutput) Subdomain() pulumi.StringPtrOutput 
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceAzureMysqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceAzureMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceAzureMysqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetResourceResourceAzureMysqlOutput) Username() pulumi.StringPtrOutput {
@@ -40320,17 +36220,19 @@ type GetResourceResourceClustrix struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         *string `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              *string `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // GetResourceResourceClustrixInput is an input type that accepts GetResourceResourceClustrixArgs and GetResourceResourceClustrixOutput values.
@@ -40354,17 +36256,19 @@ type GetResourceResourceClustrixArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceClustrixArgs) ElementType() reflect.Type {
@@ -40458,6 +36362,10 @@ func (o GetResourceResourceClustrixOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceClustrix) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceClustrixOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClustrix) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceClustrixOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceClustrix) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -40471,6 +36379,10 @@ func (o GetResourceResourceClustrixOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceClustrixOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceClustrix) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceClustrixOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClustrix) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetResourceResourceClustrixOutput) Username() pulumi.StringPtrOutput {
@@ -44486,17 +40398,19 @@ type GetResourceResourceMaria struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         *string `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              *string `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // GetResourceResourceMariaInput is an input type that accepts GetResourceResourceMariaArgs and GetResourceResourceMariaOutput values.
@@ -44520,17 +40434,19 @@ type GetResourceResourceMariaArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceMariaArgs) ElementType() reflect.Type {
@@ -44624,6 +40540,10 @@ func (o GetResourceResourceMariaOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMaria) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceMariaOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMaria) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMariaOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMaria) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -44637,6 +40557,10 @@ func (o GetResourceResourceMariaOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceMariaOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceMaria) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceMariaOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMaria) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetResourceResourceMariaOutput) Username() pulumi.StringPtrOutput {
@@ -44842,17 +40766,19 @@ type GetResourceResourceMemsql struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         *string `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              *string `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // GetResourceResourceMemsqlInput is an input type that accepts GetResourceResourceMemsqlArgs and GetResourceResourceMemsqlOutput values.
@@ -44876,17 +40802,19 @@ type GetResourceResourceMemsqlArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceMemsqlArgs) ElementType() reflect.Type {
@@ -44980,6 +40908,10 @@ func (o GetResourceResourceMemsqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMemsql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceMemsqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMemsql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMemsqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMemsql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -44993,6 +40925,10 @@ func (o GetResourceResourceMemsqlOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceMemsqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceMemsql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceMemsqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMemsql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetResourceResourceMemsqlOutput) Username() pulumi.StringPtrOutput {
@@ -46021,18 +41957,20 @@ type GetResourceResourceMtlsMysql struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         *string `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              *string `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	ServerName    *string `pulumi:"serverName"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // GetResourceResourceMtlsMysqlInput is an input type that accepts GetResourceResourceMtlsMysqlArgs and GetResourceResourceMtlsMysqlOutput values.
@@ -46059,18 +41997,20 @@ type GetResourceResourceMtlsMysqlArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	ServerName    pulumi.StringPtrInput `pulumi:"serverName"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceMtlsMysqlArgs) ElementType() reflect.Type {
@@ -46176,6 +42116,10 @@ func (o GetResourceResourceMtlsMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceMtlsMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMtlsMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -46193,6 +42137,10 @@ func (o GetResourceResourceMtlsMysqlOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceMtlsMysqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceMtlsMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceMtlsMysqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetResourceResourceMtlsMysqlOutput) Username() pulumi.StringPtrOutput {
@@ -46446,17 +42394,19 @@ type GetResourceResourceMysql struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         *string `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              *string `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // GetResourceResourceMysqlInput is an input type that accepts GetResourceResourceMysqlArgs and GetResourceResourceMysqlOutput values.
@@ -46480,17 +42430,19 @@ type GetResourceResourceMysqlArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceMysqlArgs) ElementType() reflect.Type {
@@ -46584,6 +42536,10 @@ func (o GetResourceResourceMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMysqlOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMysql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -46597,6 +42553,10 @@ func (o GetResourceResourceMysqlOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceMysqlOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceMysql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceMysqlOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMysql) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetResourceResourceMysqlOutput) Username() pulumi.StringPtrOutput {
@@ -48503,17 +44463,19 @@ type GetResourceResourceSingleStore struct {
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         *string `pulumi:"name"`
-	Password     *string `pulumi:"password"`
-	Port         *int    `pulumi:"port"`
-	PortOverride *int    `pulumi:"portOverride"`
+	Name              *string `pulumi:"name"`
+	Password          *string `pulumi:"password"`
+	Port              *int    `pulumi:"port"`
+	PortOverride      *int    `pulumi:"portOverride"`
+	RequireNativeAuth *bool   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]string `pulumi:"tags"`
-	Username *string           `pulumi:"username"`
+	Tags                          map[string]string `pulumi:"tags"`
+	UseAzureSingleServerUsernames *bool             `pulumi:"useAzureSingleServerUsernames"`
+	Username                      *string           `pulumi:"username"`
 }
 
 // GetResourceResourceSingleStoreInput is an input type that accepts GetResourceResourceSingleStoreArgs and GetResourceResourceSingleStoreOutput values.
@@ -48537,17 +44499,19 @@ type GetResourceResourceSingleStoreArgs struct {
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
-	Name         pulumi.StringPtrInput `pulumi:"name"`
-	Password     pulumi.StringPtrInput `pulumi:"password"`
-	Port         pulumi.IntPtrInput    `pulumi:"port"`
-	PortOverride pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Password          pulumi.StringPtrInput `pulumi:"password"`
+	Port              pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride      pulumi.IntPtrInput    `pulumi:"portOverride"`
+	RequireNativeAuth pulumi.BoolPtrInput   `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
-	Tags     pulumi.StringMapInput `pulumi:"tags"`
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Tags                          pulumi.StringMapInput `pulumi:"tags"`
+	UseAzureSingleServerUsernames pulumi.BoolPtrInput   `pulumi:"useAzureSingleServerUsernames"`
+	Username                      pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (GetResourceResourceSingleStoreArgs) ElementType() reflect.Type {
@@ -48641,6 +44605,10 @@ func (o GetResourceResourceSingleStoreOutput) PortOverride() pulumi.IntPtrOutput
 	return o.ApplyT(func(v GetResourceResourceSingleStore) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+func (o GetResourceResourceSingleStoreOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSingleStore) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceSingleStoreOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSingleStore) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -48654,6 +44622,10 @@ func (o GetResourceResourceSingleStoreOutput) Subdomain() pulumi.StringPtrOutput
 // Tags is a map of key, value pairs.
 func (o GetResourceResourceSingleStoreOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceResourceSingleStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceSingleStoreOutput) UseAzureSingleServerUsernames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSingleStore) *bool { return v.UseAzureSingleServerUsernames }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetResourceResourceSingleStoreOutput) Username() pulumi.StringPtrOutput {
@@ -49233,6 +45205,431 @@ func (o GetResourceResourceSqlServerArrayOutput) Index(i pulumi.IntInput) GetRes
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSqlServer {
 		return vs[0].([]GetResourceResourceSqlServer)[vs[1].(int)]
 	}).(GetResourceResourceSqlServerOutput)
+}
+
+type GetResourceResourceSqlServerAzureAd struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	ClientId      *string `pulumi:"clientId"`
+	Database      *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	Hostname     *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name             *string `pulumi:"name"`
+	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
+	Port             *int    `pulumi:"port"`
+	PortOverride     *int    `pulumi:"portOverride"`
+	Schema           *string `pulumi:"schema"`
+	Secret           *string `pulumi:"secret"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// * sql_server_kerberos_ad:
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// GetResourceResourceSqlServerAzureAdInput is an input type that accepts GetResourceResourceSqlServerAzureAdArgs and GetResourceResourceSqlServerAzureAdOutput values.
+// You can construct a concrete instance of `GetResourceResourceSqlServerAzureAdInput` via:
+//
+//	GetResourceResourceSqlServerAzureAdArgs{...}
+type GetResourceResourceSqlServerAzureAdInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceSqlServerAzureAdOutput() GetResourceResourceSqlServerAzureAdOutput
+	ToGetResourceResourceSqlServerAzureAdOutputWithContext(context.Context) GetResourceResourceSqlServerAzureAdOutput
+}
+
+type GetResourceResourceSqlServerAzureAdArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	ClientId      pulumi.StringPtrInput `pulumi:"clientId"`
+	Database      pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	Hostname     pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
+	Port             pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Schema           pulumi.StringPtrInput `pulumi:"schema"`
+	Secret           pulumi.StringPtrInput `pulumi:"secret"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// * sql_server_kerberos_ad:
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (GetResourceResourceSqlServerAzureAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceSqlServerAzureAd)(nil)).Elem()
+}
+
+func (i GetResourceResourceSqlServerAzureAdArgs) ToGetResourceResourceSqlServerAzureAdOutput() GetResourceResourceSqlServerAzureAdOutput {
+	return i.ToGetResourceResourceSqlServerAzureAdOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceSqlServerAzureAdArgs) ToGetResourceResourceSqlServerAzureAdOutputWithContext(ctx context.Context) GetResourceResourceSqlServerAzureAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerAzureAdOutput)
+}
+
+// GetResourceResourceSqlServerAzureAdArrayInput is an input type that accepts GetResourceResourceSqlServerAzureAdArray and GetResourceResourceSqlServerAzureAdArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceSqlServerAzureAdArrayInput` via:
+//
+//	GetResourceResourceSqlServerAzureAdArray{ GetResourceResourceSqlServerAzureAdArgs{...} }
+type GetResourceResourceSqlServerAzureAdArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceSqlServerAzureAdArrayOutput() GetResourceResourceSqlServerAzureAdArrayOutput
+	ToGetResourceResourceSqlServerAzureAdArrayOutputWithContext(context.Context) GetResourceResourceSqlServerAzureAdArrayOutput
+}
+
+type GetResourceResourceSqlServerAzureAdArray []GetResourceResourceSqlServerAzureAdInput
+
+func (GetResourceResourceSqlServerAzureAdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceSqlServerAzureAd)(nil)).Elem()
+}
+
+func (i GetResourceResourceSqlServerAzureAdArray) ToGetResourceResourceSqlServerAzureAdArrayOutput() GetResourceResourceSqlServerAzureAdArrayOutput {
+	return i.ToGetResourceResourceSqlServerAzureAdArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceSqlServerAzureAdArray) ToGetResourceResourceSqlServerAzureAdArrayOutputWithContext(ctx context.Context) GetResourceResourceSqlServerAzureAdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerAzureAdArrayOutput)
+}
+
+type GetResourceResourceSqlServerAzureAdOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceSqlServerAzureAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceSqlServerAzureAd)(nil)).Elem()
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) ToGetResourceResourceSqlServerAzureAdOutput() GetResourceResourceSqlServerAzureAdOutput {
+	return o
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) ToGetResourceResourceSqlServerAzureAdOutputWithContext(ctx context.Context) GetResourceResourceSqlServerAzureAdOutput {
+	return o
+}
+
+// Bind interface
+func (o GetResourceResourceSqlServerAzureAdOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceSqlServerAzureAdOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceSqlServerAzureAdOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceSqlServerAzureAdOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceSqlServerAzureAdOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceSqlServerAzureAdOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceSqlServerAzureAdOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// * sql_server_kerberos_ad:
+func (o GetResourceResourceSqlServerAzureAdOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceSqlServerAzureAdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceSqlServerAzureAdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceSqlServerAzureAd)(nil)).Elem()
+}
+
+func (o GetResourceResourceSqlServerAzureAdArrayOutput) ToGetResourceResourceSqlServerAzureAdArrayOutput() GetResourceResourceSqlServerAzureAdArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceSqlServerAzureAdArrayOutput) ToGetResourceResourceSqlServerAzureAdArrayOutputWithContext(ctx context.Context) GetResourceResourceSqlServerAzureAdArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceSqlServerAzureAdArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSqlServerAzureAdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSqlServerAzureAd {
+		return vs[0].([]GetResourceResourceSqlServerAzureAd)[vs[1].(int)]
+	}).(GetResourceResourceSqlServerAzureAdOutput)
+}
+
+type GetResourceResourceSqlServerKerberosAd struct {
+	// Bind interface
+	BindInterface *string `pulumi:"bindInterface"`
+	Database      *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	Hostname     *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id        *string `pulumi:"id"`
+	Keytab    *string `pulumi:"keytab"`
+	KrbConfig *string `pulumi:"krbConfig"`
+	// Unique human-readable name of the Resource.
+	Name             *string `pulumi:"name"`
+	OverrideDatabase *bool   `pulumi:"overrideDatabase"`
+	Port             *int    `pulumi:"port"`
+	PortOverride     *int    `pulumi:"portOverride"`
+	Realm            *string `pulumi:"realm"`
+	Schema           *string `pulumi:"schema"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	ServerSpn     *string `pulumi:"serverSpn"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags     map[string]string `pulumi:"tags"`
+	Username *string           `pulumi:"username"`
+}
+
+// GetResourceResourceSqlServerKerberosAdInput is an input type that accepts GetResourceResourceSqlServerKerberosAdArgs and GetResourceResourceSqlServerKerberosAdOutput values.
+// You can construct a concrete instance of `GetResourceResourceSqlServerKerberosAdInput` via:
+//
+//	GetResourceResourceSqlServerKerberosAdArgs{...}
+type GetResourceResourceSqlServerKerberosAdInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceSqlServerKerberosAdOutput() GetResourceResourceSqlServerKerberosAdOutput
+	ToGetResourceResourceSqlServerKerberosAdOutputWithContext(context.Context) GetResourceResourceSqlServerKerberosAdOutput
+}
+
+type GetResourceResourceSqlServerKerberosAdArgs struct {
+	// Bind interface
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	Database      pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	Hostname     pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	Keytab    pulumi.StringPtrInput `pulumi:"keytab"`
+	KrbConfig pulumi.StringPtrInput `pulumi:"krbConfig"`
+	// Unique human-readable name of the Resource.
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	OverrideDatabase pulumi.BoolPtrInput   `pulumi:"overrideDatabase"`
+	Port             pulumi.IntPtrInput    `pulumi:"port"`
+	PortOverride     pulumi.IntPtrInput    `pulumi:"portOverride"`
+	Realm            pulumi.StringPtrInput `pulumi:"realm"`
+	Schema           pulumi.StringPtrInput `pulumi:"schema"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	ServerSpn     pulumi.StringPtrInput `pulumi:"serverSpn"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags     pulumi.StringMapInput `pulumi:"tags"`
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceSqlServerKerberosAdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceSqlServerKerberosAd)(nil)).Elem()
+}
+
+func (i GetResourceResourceSqlServerKerberosAdArgs) ToGetResourceResourceSqlServerKerberosAdOutput() GetResourceResourceSqlServerKerberosAdOutput {
+	return i.ToGetResourceResourceSqlServerKerberosAdOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceSqlServerKerberosAdArgs) ToGetResourceResourceSqlServerKerberosAdOutputWithContext(ctx context.Context) GetResourceResourceSqlServerKerberosAdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerKerberosAdOutput)
+}
+
+// GetResourceResourceSqlServerKerberosAdArrayInput is an input type that accepts GetResourceResourceSqlServerKerberosAdArray and GetResourceResourceSqlServerKerberosAdArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceSqlServerKerberosAdArrayInput` via:
+//
+//	GetResourceResourceSqlServerKerberosAdArray{ GetResourceResourceSqlServerKerberosAdArgs{...} }
+type GetResourceResourceSqlServerKerberosAdArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceSqlServerKerberosAdArrayOutput() GetResourceResourceSqlServerKerberosAdArrayOutput
+	ToGetResourceResourceSqlServerKerberosAdArrayOutputWithContext(context.Context) GetResourceResourceSqlServerKerberosAdArrayOutput
+}
+
+type GetResourceResourceSqlServerKerberosAdArray []GetResourceResourceSqlServerKerberosAdInput
+
+func (GetResourceResourceSqlServerKerberosAdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceSqlServerKerberosAd)(nil)).Elem()
+}
+
+func (i GetResourceResourceSqlServerKerberosAdArray) ToGetResourceResourceSqlServerKerberosAdArrayOutput() GetResourceResourceSqlServerKerberosAdArrayOutput {
+	return i.ToGetResourceResourceSqlServerKerberosAdArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceSqlServerKerberosAdArray) ToGetResourceResourceSqlServerKerberosAdArrayOutputWithContext(ctx context.Context) GetResourceResourceSqlServerKerberosAdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerKerberosAdArrayOutput)
+}
+
+type GetResourceResourceSqlServerKerberosAdOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceSqlServerKerberosAdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceSqlServerKerberosAd)(nil)).Elem()
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) ToGetResourceResourceSqlServerKerberosAdOutput() GetResourceResourceSqlServerKerberosAdOutput {
+	return o
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) ToGetResourceResourceSqlServerKerberosAdOutputWithContext(ctx context.Context) GetResourceResourceSqlServerKerberosAdOutput {
+	return o
+}
+
+// Bind interface
+func (o GetResourceResourceSqlServerKerberosAdOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceSqlServerKerberosAdOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceSqlServerKerberosAdOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) Keytab() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Keytab }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) KrbConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.KrbConfig }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceSqlServerKerberosAdOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) Realm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Realm }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceSqlServerKerberosAdOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) ServerSpn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.ServerSpn }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceSqlServerKerberosAdOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceSqlServerKerberosAdOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceSqlServerKerberosAdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceSqlServerKerberosAdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceSqlServerKerberosAd)(nil)).Elem()
+}
+
+func (o GetResourceResourceSqlServerKerberosAdArrayOutput) ToGetResourceResourceSqlServerKerberosAdArrayOutput() GetResourceResourceSqlServerKerberosAdArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceSqlServerKerberosAdArrayOutput) ToGetResourceResourceSqlServerKerberosAdArrayOutputWithContext(ctx context.Context) GetResourceResourceSqlServerKerberosAdArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceSqlServerKerberosAdArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSqlServerKerberosAdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSqlServerKerberosAd {
+		return vs[0].([]GetResourceResourceSqlServerKerberosAd)[vs[1].(int)]
+	}).(GetResourceResourceSqlServerKerberosAdOutput)
 }
 
 type GetResourceResourceSsh struct {
@@ -52254,6 +48651,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSnowsightPtrInput)(nil)).Elem(), ResourceSnowsightArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSqlServerInput)(nil)).Elem(), ResourceSqlServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSqlServerPtrInput)(nil)).Elem(), ResourceSqlServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSqlServerAzureAdInput)(nil)).Elem(), ResourceSqlServerAzureAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSqlServerAzureAdPtrInput)(nil)).Elem(), ResourceSqlServerAzureAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSqlServerKerberosAdInput)(nil)).Elem(), ResourceSqlServerKerberosAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSqlServerKerberosAdPtrInput)(nil)).Elem(), ResourceSqlServerKerberosAdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshInput)(nil)).Elem(), ResourceSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshPtrInput)(nil)).Elem(), ResourceSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshCertInput)(nil)).Elem(), ResourceSshCertArgs{})
@@ -52450,6 +48851,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSnowsightArrayInput)(nil)).Elem(), GetResourceResourceSnowsightArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSqlServerInput)(nil)).Elem(), GetResourceResourceSqlServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSqlServerArrayInput)(nil)).Elem(), GetResourceResourceSqlServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSqlServerAzureAdInput)(nil)).Elem(), GetResourceResourceSqlServerAzureAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSqlServerAzureAdArrayInput)(nil)).Elem(), GetResourceResourceSqlServerAzureAdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSqlServerKerberosAdInput)(nil)).Elem(), GetResourceResourceSqlServerKerberosAdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSqlServerKerberosAdArrayInput)(nil)).Elem(), GetResourceResourceSqlServerKerberosAdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshInput)(nil)).Elem(), GetResourceResourceSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshArrayInput)(nil)).Elem(), GetResourceResourceSshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshCertInput)(nil)).Elem(), GetResourceResourceSshCertArgs{})
@@ -52638,6 +49043,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceSnowsightPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSqlServerOutput{})
 	pulumi.RegisterOutputType(ResourceSqlServerPtrOutput{})
+	pulumi.RegisterOutputType(ResourceSqlServerAzureAdOutput{})
+	pulumi.RegisterOutputType(ResourceSqlServerAzureAdPtrOutput{})
+	pulumi.RegisterOutputType(ResourceSqlServerKerberosAdOutput{})
+	pulumi.RegisterOutputType(ResourceSqlServerKerberosAdPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSshOutput{})
 	pulumi.RegisterOutputType(ResourceSshPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSshCertOutput{})
@@ -52834,6 +49243,10 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceSnowsightArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSqlServerOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSqlServerArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceSqlServerAzureAdOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceSqlServerAzureAdArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceSqlServerKerberosAdOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceSqlServerKerberosAdArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSshOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSshArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSshCertOutput{})

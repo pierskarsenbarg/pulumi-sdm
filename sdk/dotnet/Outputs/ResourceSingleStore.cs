@@ -31,17 +31,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly string? Password;
         public readonly int? Port;
         public readonly int? PortOverride;
+        public readonly bool? RequireNativeAuth;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        public readonly string? SecretStorePasswordKey;
-        public readonly string? SecretStorePasswordPath;
-        /// <summary>
-        /// * trino:
-        /// </summary>
-        public readonly string? SecretStoreUsernameKey;
-        public readonly string? SecretStoreUsernamePath;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -50,6 +44,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly bool? UseAzureSingleServerUsernames;
         public readonly string? Username;
 
         [OutputConstructor]
@@ -70,19 +65,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            bool? requireNativeAuth,
+
             string? secretStoreId,
-
-            string? secretStorePasswordKey,
-
-            string? secretStorePasswordPath,
-
-            string? secretStoreUsernameKey,
-
-            string? secretStoreUsernamePath,
 
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
+
+            bool? useAzureSingleServerUsernames,
 
             string? username)
         {
@@ -94,13 +85,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Password = password;
             Port = port;
             PortOverride = portOverride;
+            RequireNativeAuth = requireNativeAuth;
             SecretStoreId = secretStoreId;
-            SecretStorePasswordKey = secretStorePasswordKey;
-            SecretStorePasswordPath = secretStorePasswordPath;
-            SecretStoreUsernameKey = secretStoreUsernameKey;
-            SecretStoreUsernamePath = secretStoreUsernamePath;
             Subdomain = subdomain;
             Tags = tags;
+            UseAzureSingleServerUsernames = useAzureSingleServerUsernames;
             Username = username;
         }
     }
