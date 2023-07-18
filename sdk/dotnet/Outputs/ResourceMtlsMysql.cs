@@ -15,30 +15,60 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class ResourceMtlsMysql
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
+        /// <summary>
+        /// The CA to authenticate TLS connections with.
+        /// </summary>
         public readonly string? CertificateAuthority;
+        /// <summary>
+        /// The certificate to authenticate TLS connections with.
+        /// </summary>
         public readonly string? ClientCertificate;
+        /// <summary>
+        /// The key to authenticate TLS connections with.
+        /// </summary>
         public readonly string? ClientKey;
+        /// <summary>
+        /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        /// </summary>
         public readonly string Database;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly string Hostname;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The password to authenticate with.
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
+        /// <summary>
+        /// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        /// </summary>
         public readonly bool? RequireNativeAuth;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
+        /// <summary>
+        /// Server name for TLS verification (unverified by StrongDM if empty)
+        /// </summary>
         public readonly string? ServerName;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48,7 +78,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// If true, appends the hostname to the username when hitting a database.azure.com address
+        /// </summary>
         public readonly bool? UseAzureSingleServerUsernames;
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

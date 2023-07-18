@@ -14,13 +14,17 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceAmazonEksInstanceProfileUserImpersonationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
 
         [Input("certificateAuthority")]
         private Input<string>? _certificateAuthority;
+
+        /// <summary>
+        /// The CA to authenticate TLS connections with.
+        /// </summary>
         public Input<string>? CertificateAuthority
         {
             get => _certificateAuthority;
@@ -31,6 +35,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             }
         }
 
+        /// <summary>
+        /// The name of the cluster to connect to.
+        /// </summary>
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
 
@@ -40,6 +47,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
 
+        /// <summary>
+        /// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
@@ -55,21 +65,39 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
+        /// <summary>
+        /// The AWS region to connect to.
+        /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the remote identity group to use for remote identity connections.
+        /// </summary>
         [Input("remoteIdentityGroupId")]
         public Input<string>? RemoteIdentityGroupId { get; set; }
 
+        /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        /// </summary>
         [Input("remoteIdentityHealthcheckUsername")]
         public Input<string>? RemoteIdentityHealthcheckUsername { get; set; }
 
+        /// <summary>
+        /// The role to assume after logging in.
+        /// </summary>
         [Input("roleArn")]
         public Input<string>? RoleArn { get; set; }
 
+        /// <summary>
+        /// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        /// </summary>
         [Input("roleExternalId")]
         public Input<string>? RoleExternalId { get; set; }
 

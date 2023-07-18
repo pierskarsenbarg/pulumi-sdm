@@ -22,6 +22,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The AWS region to target e.g. us-east-1
+        /// </summary>
         public readonly string? Region;
         /// <summary>
         /// Tags is a map of key, value pairs.

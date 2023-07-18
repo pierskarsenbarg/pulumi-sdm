@@ -13,11 +13,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
     public sealed class ResourceSshCertArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        /// </summary>
         [Input("allowDeprecatedKeyExchanges")]
         public Input<bool>? AllowDeprecatedKeyExchanges { get; set; }
 
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
@@ -28,9 +31,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
 
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
+        /// <summary>
+        /// The key type to use e.g. rsa-2048 or ed25519
+        /// </summary>
         [Input("keyType")]
         public Input<string>? KeyType { get; set; }
 
@@ -40,18 +49,33 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        /// <summary>
+        /// Whether port forwarding is allowed through this server.
+        /// </summary>
         [Input("portForwarding")]
         public Input<bool>? PortForwarding { get; set; }
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
+        /// <summary>
+        /// The ID of the remote identity group to use for remote identity connections.
+        /// </summary>
         [Input("remoteIdentityGroupId")]
         public Input<string>? RemoteIdentityGroupId { get; set; }
 
+        /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        /// </summary>
         [Input("remoteIdentityHealthcheckUsername")]
         public Input<string>? RemoteIdentityHealthcheckUsername { get; set; }
 
@@ -79,6 +103,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

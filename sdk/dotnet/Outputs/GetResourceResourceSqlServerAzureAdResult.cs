@@ -15,15 +15,24 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetResourceResourceSqlServerAzureAdResult
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
+        /// <summary>
+        /// The Azure AD application (client) ID with which to authenticate.
+        /// </summary>
         public readonly string? ClientId;
+        /// <summary>
+        /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        /// </summary>
         public readonly string? Database;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly string? Hostname;
         /// <summary>
         /// Unique identifier of the Resource.
@@ -33,10 +42,25 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        /// </summary>
         public readonly bool? OverrideDatabase;
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
+        /// <summary>
+        /// The Schema to use to direct initial requests.
+        /// </summary>
         public readonly string? Schema;
+        /// <summary>
+        /// The Azure AD client secret (application password) with which to authenticate.
+        /// </summary>
         public readonly string? Secret;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
@@ -51,6 +75,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
+        /// The Azure AD directory (tenant) ID with which to authenticate.
         /// * sql_server_kerberos_ad:
         /// </summary>
         public readonly string? TenantId;

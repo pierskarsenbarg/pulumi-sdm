@@ -18,6 +18,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The GCP project ID to target.
+        /// </summary>
         public readonly string ProjectId;
         /// <summary>
         /// Tags is a map of key, value pairs.

@@ -41,11 +41,14 @@ type Resource struct {
 	AwsConsole ResourceAwsConsolePtrOutput `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrOutput                   `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
-	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
-	AzureMysql                                ResourceAzureMysqlPtrOutput                                `pulumi:"azureMysql"`
-	AzurePostgres                             ResourceAzurePostgresPtrOutput                             `pulumi:"azurePostgres"`
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrOutput `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                   ResourceAzurePtrOutput                   `pulumi:"azure"`
+	AzureCertificate        ResourceAzureCertificatePtrOutput        `pulumi:"azureCertificate"`
+	AzureMysql              ResourceAzureMysqlPtrOutput              `pulumi:"azureMysql"`
+	AzurePostgres           ResourceAzurePostgresPtrOutput           `pulumi:"azurePostgres"`
+	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrOutput              `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                                  ResourceBigQueryPtrOutput                                  `pulumi:"bigQuery"`
 	Cassandra                                 ResourceCassandraPtrOutput                                 `pulumi:"cassandra"`
 	Citus                                     ResourceCitusPtrOutput                                     `pulumi:"citus"`
@@ -162,11 +165,14 @@ type resourceState struct {
 	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
-	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
-	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
-	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
+	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                   *ResourceAzure                   `pulumi:"azure"`
+	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
+	AzureMysql              *ResourceAzureMysql              `pulumi:"azureMysql"`
+	AzurePostgres           *ResourceAzurePostgres           `pulumi:"azurePostgres"`
+	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	AzurePostgresManagedIdentity              *ResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
 	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
 	Citus                                     *ResourceCitus                                     `pulumi:"citus"`
@@ -254,11 +260,14 @@ type ResourceState struct {
 	AwsConsole ResourceAwsConsolePtrInput
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
-	Azure                                     ResourceAzurePtrInput
-	AzureCertificate                          ResourceAzureCertificatePtrInput
-	AzureMysql                                ResourceAzureMysqlPtrInput
-	AzurePostgres                             ResourceAzurePostgresPtrInput
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
+	Azure                   ResourceAzurePtrInput
+	AzureCertificate        ResourceAzureCertificatePtrInput
+	AzureMysql              ResourceAzureMysqlPtrInput
+	AzurePostgres           ResourceAzurePostgresPtrInput
+	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrInput
 	BigQuery                                  ResourceBigQueryPtrInput
 	Cassandra                                 ResourceCassandraPtrInput
 	Citus                                     ResourceCitusPtrInput
@@ -350,11 +359,14 @@ type resourceArgs struct {
 	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
-	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
-	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
-	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
+	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                   *ResourceAzure                   `pulumi:"azure"`
+	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
+	AzureMysql              *ResourceAzureMysql              `pulumi:"azureMysql"`
+	AzurePostgres           *ResourceAzurePostgres           `pulumi:"azurePostgres"`
+	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	AzurePostgresManagedIdentity              *ResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
 	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
 	Citus                                     *ResourceCitus                                     `pulumi:"citus"`
@@ -443,11 +455,14 @@ type ResourceArgs struct {
 	AwsConsole ResourceAwsConsolePtrInput
 	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
 	// bump.
-	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
-	Azure                                     ResourceAzurePtrInput
-	AzureCertificate                          ResourceAzureCertificatePtrInput
-	AzureMysql                                ResourceAzureMysqlPtrInput
-	AzurePostgres                             ResourceAzurePostgresPtrInput
+	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
+	Azure                   ResourceAzurePtrInput
+	AzureCertificate        ResourceAzureCertificatePtrInput
+	AzureMysql              ResourceAzureMysqlPtrInput
+	AzurePostgres           ResourceAzurePostgresPtrInput
+	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+	// version bump.
+	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrInput
 	BigQuery                                  ResourceBigQueryPtrInput
 	Cassandra                                 ResourceCassandraPtrInput
 	Citus                                     ResourceCitusPtrInput
@@ -691,6 +706,12 @@ func (o ResourceOutput) AzureMysql() ResourceAzureMysqlPtrOutput {
 
 func (o ResourceOutput) AzurePostgres() ResourceAzurePostgresPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzurePostgresPtrOutput { return v.AzurePostgres }).(ResourceAzurePostgresPtrOutput)
+}
+
+// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+// version bump.
+func (o ResourceOutput) AzurePostgresManagedIdentity() ResourceAzurePostgresManagedIdentityPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAzurePostgresManagedIdentityPtrOutput { return v.AzurePostgresManagedIdentity }).(ResourceAzurePostgresManagedIdentityPtrOutput)
 }
 
 func (o ResourceOutput) BigQuery() ResourceBigQueryPtrOutput {

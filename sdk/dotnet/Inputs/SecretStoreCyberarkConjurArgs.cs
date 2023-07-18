@@ -13,6 +13,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
     public sealed class SecretStoreCyberarkConjurArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The URL of the Cyberark instance
+        /// </summary>
         [Input("appUrl", required: true)]
         public Input<string> AppUrl { get; set; } = null!;
 

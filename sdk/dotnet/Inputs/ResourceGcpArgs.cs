@@ -14,7 +14,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceGcpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
@@ -27,6 +27,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         [Input("keyfile")]
         private Input<string>? _keyfile;
+
+        /// <summary>
+        /// The service account keyfile to authenticate with.
+        /// </summary>
         public Input<string>? Keyfile
         {
             get => _keyfile;
@@ -43,9 +47,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
+        /// <summary>
+        /// Space separated scopes that this login should assume into when authenticating.
+        /// </summary>
         [Input("scopes", required: true)]
         public Input<string> Scopes { get; set; } = null!;
 

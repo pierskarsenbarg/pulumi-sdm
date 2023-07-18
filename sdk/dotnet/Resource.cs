@@ -92,6 +92,13 @@ namespace PiersKarsenbarg.Sdm
         [Output("azurePostgres")]
         public Output<Outputs.ResourceAzurePostgres?> AzurePostgres { get; private set; } = null!;
 
+        /// <summary>
+        /// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+        /// version bump.
+        /// </summary>
+        [Output("azurePostgresManagedIdentity")]
+        public Output<Outputs.ResourceAzurePostgresManagedIdentity?> AzurePostgresManagedIdentity { get; private set; } = null!;
+
         [Output("bigQuery")]
         public Output<Outputs.ResourceBigQuery?> BigQuery { get; private set; } = null!;
 
@@ -404,6 +411,13 @@ namespace PiersKarsenbarg.Sdm
         [Input("azurePostgres")]
         public Input<Inputs.ResourceAzurePostgresArgs>? AzurePostgres { get; set; }
 
+        /// <summary>
+        /// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+        /// version bump.
+        /// </summary>
+        [Input("azurePostgresManagedIdentity")]
+        public Input<Inputs.ResourceAzurePostgresManagedIdentityArgs>? AzurePostgresManagedIdentity { get; set; }
+
         [Input("bigQuery")]
         public Input<Inputs.ResourceBigQueryArgs>? BigQuery { get; set; }
 
@@ -676,6 +690,13 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("azurePostgres")]
         public Input<Inputs.ResourceAzurePostgresGetArgs>? AzurePostgres { get; set; }
+
+        /// <summary>
+        /// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+        /// version bump.
+        /// </summary>
+        [Input("azurePostgresManagedIdentity")]
+        public Input<Inputs.ResourceAzurePostgresManagedIdentityGetArgs>? AzurePostgresManagedIdentity { get; set; }
 
         [Input("bigQuery")]
         public Input<Inputs.ResourceBigQueryGetArgs>? BigQuery { get; set; }

@@ -34,6 +34,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> AzureCertificates;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> AzureMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> AzurePostgres;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgresManagedIdentityResult> AzurePostgresManagedIdentities;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureResult> Azures;
         public readonly ImmutableArray<Outputs.GetResourceResourceBigQueryResult> BigQueries;
         public readonly ImmutableArray<Outputs.GetResourceResourceCassandraResult> Cassandras;
@@ -136,6 +137,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> azureMysqls,
 
             ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> azurePostgres,
+
+            ImmutableArray<Outputs.GetResourceResourceAzurePostgresManagedIdentityResult> azurePostgresManagedIdentities,
 
             ImmutableArray<Outputs.GetResourceResourceAzureResult> azures,
 
@@ -277,6 +280,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AzureCertificates = azureCertificates;
             AzureMysqls = azureMysqls;
             AzurePostgres = azurePostgres;
+            AzurePostgresManagedIdentities = azurePostgresManagedIdentities;
             Azures = azures;
             BigQueries = bigQueries;
             Cassandras = cassandras;

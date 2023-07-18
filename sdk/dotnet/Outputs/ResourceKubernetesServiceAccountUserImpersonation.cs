@@ -15,7 +15,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class ResourceKubernetesServiceAccountUserImpersonation
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
@@ -26,12 +26,21 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         /// </summary>
         public readonly string? HealthcheckNamespace;
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly string Hostname;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
@@ -46,6 +55,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
+        /// The API token to authenticate with.
         /// * kubernetes_user_impersonation:
         /// </summary>
         public readonly string? Token;

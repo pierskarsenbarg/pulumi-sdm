@@ -13,17 +13,24 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
     public sealed class ResourceAzureCertificateGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The application ID to authenticate with.
+        /// </summary>
         [Input("appId")]
         public Input<string>? AppId { get; set; }
 
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
 
         [Input("clientCertificate")]
         private Input<string>? _clientCertificate;
+
+        /// <summary>
+        /// The certificate to authenticate TLS connections with.
+        /// </summary>
         public Input<string>? ClientCertificate
         {
             get => _clientCertificate;
@@ -46,6 +53,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
@@ -74,6 +84,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
+        /// The Azure AD directory (tenant) ID with which to authenticate.
         /// * sql_server_kerberos_ad:
         /// </summary>
         [Input("tenantId")]

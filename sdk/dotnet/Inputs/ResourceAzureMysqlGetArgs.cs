@@ -14,11 +14,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceAzureMysqlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
 
+        /// <summary>
+        /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        /// </summary>
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
 
@@ -28,6 +31,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
 
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
@@ -39,6 +45,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password to authenticate with.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -49,12 +59,21 @@ namespace PiersKarsenbarg.Sdm.Inputs
             }
         }
 
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
+        /// <summary>
+        /// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        /// </summary>
         [Input("requireNativeAuth")]
         public Input<bool>? RequireNativeAuth { get; set; }
 
@@ -82,9 +101,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// If true, appends the hostname to the username when hitting a database.azure.com address
+        /// </summary>
         [Input("useAzureSingleServerUsernames")]
         public Input<bool>? UseAzureSingleServerUsernames { get; set; }
 
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

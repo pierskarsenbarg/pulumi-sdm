@@ -14,9 +14,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class ResourceAwsConsoleStaticKeyPair
     {
+        /// <summary>
+        /// The Access Key ID to use to authenticate.
+        /// </summary>
         public readonly string? AccessKey;
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
@@ -27,17 +30,41 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
+        /// <summary>
+        /// The AWS region to connect to.
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The ID of the remote identity group to use for remote identity connections.
+        /// </summary>
         public readonly string? RemoteIdentityGroupId;
+        /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        /// </summary>
         public readonly string? RemoteIdentityHealthcheckUsername;
+        /// <summary>
+        /// The role to assume after logging in.
+        /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        /// </summary>
         public readonly string? RoleExternalId;
+        /// <summary>
+        /// The Secret Access Key to use to authenticate.
+        /// </summary>
         public readonly string? SecretAccessKey;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
+        /// <summary>
+        /// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        /// </summary>
         public readonly int? SessionExpiry;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)

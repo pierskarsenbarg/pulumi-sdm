@@ -14,6 +14,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class SecretStoreCyberarkPam
     {
+        /// <summary>
+        /// The URL of the Cyberark instance
+        /// </summary>
         public readonly string AppUrl;
         /// <summary>
         /// Unique human-readable name of the SecretStore.

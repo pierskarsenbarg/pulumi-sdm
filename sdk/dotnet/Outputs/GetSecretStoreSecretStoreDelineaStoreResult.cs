@@ -22,12 +22,16 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The URL of the Delinea instance
+        /// </summary>
         public readonly string? ServerUrl;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
+        /// The tenant name to target
         /// * gcp_store:
         /// </summary>
         public readonly string? TenantName;

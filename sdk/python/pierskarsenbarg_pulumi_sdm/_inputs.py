@@ -13,7 +13,9 @@ __all__ = [
     'AccountServiceArgs',
     'AccountUserArgs',
     'NodeGatewayArgs',
+    'NodeGatewayMaintenanceWindowArgs',
     'NodeRelayArgs',
+    'NodeRelayMaintenanceWindowArgs',
     'ResourceAksArgs',
     'ResourceAksBasicAuthArgs',
     'ResourceAksServiceAccountArgs',
@@ -35,6 +37,7 @@ __all__ = [
     'ResourceAzureCertificateArgs',
     'ResourceAzureMysqlArgs',
     'ResourceAzurePostgresArgs',
+    'ResourceAzurePostgresManagedIdentityArgs',
     'ResourceBigQueryArgs',
     'ResourceCassandraArgs',
     'ResourceCitusArgs',
@@ -309,9 +312,11 @@ class NodeGatewayArgs:
     def __init__(__self__, *,
                  listen_address: pulumi.Input[str],
                  bind_address: Optional[pulumi.Input[str]] = None,
+                 connects_to: Optional[pulumi.Input[str]] = None,
                  device: Optional[pulumi.Input[str]] = None,
                  gateway_filter: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGatewayMaintenanceWindowArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
@@ -319,9 +324,11 @@ class NodeGatewayArgs:
         """
         :param pulumi.Input[str] listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
         :param pulumi.Input[str] bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
-        :param pulumi.Input[str] device: Device is a read only device name uploaded by the gateway process when  it comes online.
-        :param pulumi.Input[str] gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways.
+        :param pulumi.Input[str] connects_to: ConnectsTo can be used to restrict the peering between relays and gateways.
+        :param pulumi.Input[str] device: Device is a read only device name uploaded by the gateway process when it comes online.
+        :param pulumi.Input[str] gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         :param pulumi.Input[str] location: Location is a read only network location uploaded by the gateway process when it comes online.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeGatewayMaintenanceWindowArgs']]] maintenance_windows: Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
         :param pulumi.Input[str] name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[str] version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
@@ -329,12 +336,16 @@ class NodeGatewayArgs:
         pulumi.set(__self__, "listen_address", listen_address)
         if bind_address is not None:
             pulumi.set(__self__, "bind_address", bind_address)
+        if connects_to is not None:
+            pulumi.set(__self__, "connects_to", connects_to)
         if device is not None:
             pulumi.set(__self__, "device", device)
         if gateway_filter is not None:
             pulumi.set(__self__, "gateway_filter", gateway_filter)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_windows is not None:
+            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
@@ -369,10 +380,22 @@ class NodeGatewayArgs:
         pulumi.set(self, "bind_address", value)
 
     @property
+    @pulumi.getter(name="connectsTo")
+    def connects_to(self) -> Optional[pulumi.Input[str]]:
+        """
+        ConnectsTo can be used to restrict the peering between relays and gateways.
+        """
+        return pulumi.get(self, "connects_to")
+
+    @connects_to.setter
+    def connects_to(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connects_to", value)
+
+    @property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[str]]:
         """
-        Device is a read only device name uploaded by the gateway process when  it comes online.
+        Device is a read only device name uploaded by the gateway process when it comes online.
         """
         return pulumi.get(self, "device")
 
@@ -384,7 +407,7 @@ class NodeGatewayArgs:
     @pulumi.getter(name="gatewayFilter")
     def gateway_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        GatewayFilter can be used to restrict the peering between relays and gateways.
+        GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         """
         return pulumi.get(self, "gateway_filter")
 
@@ -403,6 +426,18 @@ class NodeGatewayArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGatewayMaintenanceWindowArgs']]]]:
+        """
+        Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @maintenance_windows.setter
+    def maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGatewayMaintenanceWindowArgs']]]]):
+        pulumi.set(self, "maintenance_windows", value)
 
     @property
     @pulumi.getter
@@ -451,29 +486,64 @@ class NodeGatewayArgs:
 
 
 @pulumi.input_type
+class NodeGatewayMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 cron_schedule: pulumi.Input[str],
+                 require_idleness: pulumi.Input[bool]):
+        pulumi.set(__self__, "cron_schedule", cron_schedule)
+        pulumi.set(__self__, "require_idleness", require_idleness)
+
+    @property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cron_schedule")
+
+    @cron_schedule.setter
+    def cron_schedule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron_schedule", value)
+
+    @property
+    @pulumi.getter(name="requireIdleness")
+    def require_idleness(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "require_idleness")
+
+    @require_idleness.setter
+    def require_idleness(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "require_idleness", value)
+
+
+@pulumi.input_type
 class NodeRelayArgs:
     def __init__(__self__, *,
+                 connects_to: Optional[pulumi.Input[str]] = None,
                  device: Optional[pulumi.Input[str]] = None,
                  gateway_filter: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['NodeRelayMaintenanceWindowArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] device: Device is a read only device name uploaded by the gateway process when  it comes online.
-        :param pulumi.Input[str] gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways.
+        :param pulumi.Input[str] connects_to: ConnectsTo can be used to restrict the peering between relays and gateways.
+        :param pulumi.Input[str] device: Device is a read only device name uploaded by the gateway process when it comes online.
+        :param pulumi.Input[str] gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         :param pulumi.Input[str] location: Location is a read only network location uploaded by the gateway process when it comes online.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeRelayMaintenanceWindowArgs']]] maintenance_windows: Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
         :param pulumi.Input[str] name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[str] version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         """
+        if connects_to is not None:
+            pulumi.set(__self__, "connects_to", connects_to)
         if device is not None:
             pulumi.set(__self__, "device", device)
         if gateway_filter is not None:
             pulumi.set(__self__, "gateway_filter", gateway_filter)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_windows is not None:
+            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if tags is not None:
@@ -484,10 +554,22 @@ class NodeRelayArgs:
             pulumi.set(__self__, "version", version)
 
     @property
+    @pulumi.getter(name="connectsTo")
+    def connects_to(self) -> Optional[pulumi.Input[str]]:
+        """
+        ConnectsTo can be used to restrict the peering between relays and gateways.
+        """
+        return pulumi.get(self, "connects_to")
+
+    @connects_to.setter
+    def connects_to(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connects_to", value)
+
+    @property
     @pulumi.getter
     def device(self) -> Optional[pulumi.Input[str]]:
         """
-        Device is a read only device name uploaded by the gateway process when  it comes online.
+        Device is a read only device name uploaded by the gateway process when it comes online.
         """
         return pulumi.get(self, "device")
 
@@ -499,7 +581,7 @@ class NodeRelayArgs:
     @pulumi.getter(name="gatewayFilter")
     def gateway_filter(self) -> Optional[pulumi.Input[str]]:
         """
-        GatewayFilter can be used to restrict the peering between relays and gateways.
+        GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         """
         return pulumi.get(self, "gateway_filter")
 
@@ -518,6 +600,18 @@ class NodeRelayArgs:
     @location.setter
     def location(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeRelayMaintenanceWindowArgs']]]]:
+        """
+        Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @maintenance_windows.setter
+    def maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeRelayMaintenanceWindowArgs']]]]):
+        pulumi.set(self, "maintenance_windows", value)
 
     @property
     @pulumi.getter
@@ -563,6 +657,33 @@ class NodeRelayArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class NodeRelayMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 cron_schedule: pulumi.Input[str],
+                 require_idleness: pulumi.Input[bool]):
+        pulumi.set(__self__, "cron_schedule", cron_schedule)
+        pulumi.set(__self__, "require_idleness", require_idleness)
+
+    @property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cron_schedule")
+
+    @cron_schedule.setter
+    def cron_schedule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron_schedule", value)
+
+    @property
+    @pulumi.getter(name="requireIdleness")
+    def require_idleness(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "require_idleness")
+
+    @require_idleness.setter
+    def require_idleness(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "require_idleness", value)
 
 
 @pulumi.input_type
@@ -584,10 +705,18 @@ class ResourceAksArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
+        :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -623,6 +752,9 @@ class ResourceAksArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -644,6 +776,9 @@ class ResourceAksArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -654,7 +789,7 @@ class ResourceAksArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -665,6 +800,9 @@ class ResourceAksArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -674,6 +812,9 @@ class ResourceAksArgs:
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
@@ -683,6 +824,9 @@ class ResourceAksArgs:
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
@@ -716,6 +860,9 @@ class ResourceAksArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -725,6 +872,9 @@ class ResourceAksArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -734,6 +884,9 @@ class ResourceAksArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -793,13 +946,18 @@ class ResourceAksBasicAuthArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -826,6 +984,9 @@ class ResourceAksBasicAuthArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -847,6 +1008,9 @@ class ResourceAksBasicAuthArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -857,7 +1021,7 @@ class ResourceAksBasicAuthArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -892,6 +1056,9 @@ class ResourceAksBasicAuthArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -901,6 +1068,9 @@ class ResourceAksBasicAuthArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -946,6 +1116,9 @@ class ResourceAksBasicAuthArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -970,14 +1143,20 @@ class ResourceAksServiceAccountArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[str] token: * kubernetes_user_impersonation:
+        :param pulumi.Input[str] token: The API token to authenticate with.
+               * kubernetes_user_impersonation:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -1006,6 +1185,9 @@ class ResourceAksServiceAccountArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -1027,6 +1209,9 @@ class ResourceAksServiceAccountArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1037,7 +1222,7 @@ class ResourceAksServiceAccountArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1072,6 +1257,9 @@ class ResourceAksServiceAccountArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -1081,6 +1269,9 @@ class ResourceAksServiceAccountArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -1090,6 +1281,9 @@ class ResourceAksServiceAccountArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -1136,6 +1330,7 @@ class ResourceAksServiceAccountArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
+        The API token to authenticate with.
         * kubernetes_user_impersonation:
         """
         return pulumi.get(self, "token")
@@ -1160,14 +1355,18 @@ class ResourceAksServiceAccountUserImpersonationArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[str] token: * kubernetes_user_impersonation:
+        :param pulumi.Input[str] token: The API token to authenticate with.
+               * kubernetes_user_impersonation:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -1192,6 +1391,9 @@ class ResourceAksServiceAccountUserImpersonationArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -1213,6 +1415,9 @@ class ResourceAksServiceAccountUserImpersonationArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1223,7 +1428,7 @@ class ResourceAksServiceAccountUserImpersonationArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1258,6 +1463,9 @@ class ResourceAksServiceAccountUserImpersonationArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -1304,6 +1512,7 @@ class ResourceAksServiceAccountUserImpersonationArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
+        The API token to authenticate with.
         * kubernetes_user_impersonation:
         """
         return pulumi.get(self, "token")
@@ -1330,10 +1539,16 @@ class ResourceAksUserImpersonationArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
+        :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -1365,6 +1580,9 @@ class ResourceAksUserImpersonationArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -1386,6 +1604,9 @@ class ResourceAksUserImpersonationArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1396,7 +1617,7 @@ class ResourceAksUserImpersonationArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1407,6 +1628,9 @@ class ResourceAksUserImpersonationArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -1416,6 +1640,9 @@ class ResourceAksUserImpersonationArgs:
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
@@ -1425,6 +1652,9 @@ class ResourceAksUserImpersonationArgs:
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
@@ -1458,6 +1688,9 @@ class ResourceAksUserImpersonationArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -1523,10 +1756,21 @@ class ResourceAmazonEksArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] cluster_name: The name of the cluster to connect to.
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -1567,6 +1811,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Input[str]:
+        """
+        The name of the cluster to connect to.
+        """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
@@ -1576,6 +1823,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -1597,6 +1847,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1606,6 +1859,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Key ID to use to authenticate.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -1616,7 +1872,7 @@ class ResourceAmazonEksArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1627,6 +1883,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -1660,6 +1919,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -1669,6 +1931,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -1678,6 +1943,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -1687,6 +1955,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1696,6 +1967,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -1705,6 +1979,9 @@ class ResourceAmazonEksArgs:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key to use to authenticate.
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -1768,10 +2045,19 @@ class ResourceAmazonEksInstanceProfileArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] cluster_name: The name of the cluster to connect to.
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -1808,6 +2094,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Input[str]:
+        """
+        The name of the cluster to connect to.
+        """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
@@ -1817,6 +2106,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -1838,6 +2130,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1848,7 +2143,7 @@ class ResourceAmazonEksInstanceProfileArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -1859,6 +2154,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -1892,6 +2190,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -1901,6 +2202,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -1910,6 +2214,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -1919,6 +2226,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -1928,6 +2238,9 @@ class ResourceAmazonEksInstanceProfileArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -1991,10 +2304,19 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] cluster_name: The name of the cluster to connect to.
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -2031,6 +2353,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Input[str]:
+        """
+        The name of the cluster to connect to.
+        """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
@@ -2040,6 +2365,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -2061,6 +2389,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -2071,7 +2402,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2082,6 +2413,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -2115,6 +2449,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -2124,6 +2461,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -2133,6 +2473,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -2142,6 +2485,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -2151,6 +2497,9 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -2214,10 +2563,19 @@ class ResourceAmazonEksUserImpersonationArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] cluster_name: The name of the cluster to connect to.
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -2254,6 +2612,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Input[str]:
+        """
+        The name of the cluster to connect to.
+        """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
@@ -2263,6 +2624,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -2284,6 +2648,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -2293,6 +2660,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Key ID to use to authenticate.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -2303,7 +2673,7 @@ class ResourceAmazonEksUserImpersonationArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2314,6 +2684,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -2347,6 +2720,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -2356,6 +2732,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -2365,6 +2744,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -2374,6 +2756,9 @@ class ResourceAmazonEksUserImpersonationArgs:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key to use to authenticate.
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -2435,8 +2820,15 @@ class ResourceAmazonEsArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -2481,6 +2873,9 @@ class ResourceAmazonEsArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -2490,6 +2885,9 @@ class ResourceAmazonEsArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Key ID to use to authenticate.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -2500,7 +2898,7 @@ class ResourceAmazonEsArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2523,6 +2921,9 @@ class ResourceAmazonEsArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -2532,6 +2933,9 @@ class ResourceAmazonEsArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -2541,6 +2945,9 @@ class ResourceAmazonEsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -2550,6 +2957,9 @@ class ResourceAmazonEsArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -2559,6 +2969,9 @@ class ResourceAmazonEsArgs:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key to use to authenticate.
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -2618,12 +3031,18 @@ class ResourceAmazonmqAmqp091Args:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -2651,6 +3070,9 @@ class ResourceAmazonmqAmqp091Args:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -2673,7 +3095,7 @@ class ResourceAmazonmqAmqp091Args:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2696,6 +3118,9 @@ class ResourceAmazonmqAmqp091Args:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -2705,6 +3130,9 @@ class ResourceAmazonmqAmqp091Args:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -2714,6 +3142,9 @@ class ResourceAmazonmqAmqp091Args:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -2759,6 +3190,9 @@ class ResourceAmazonmqAmqp091Args:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -2768,6 +3202,9 @@ class ResourceAmazonmqAmqp091Args:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -2792,9 +3229,16 @@ class ResourceAthenaArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] athena_output: The AWS S3 output location.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -2827,6 +3271,9 @@ class ResourceAthenaArgs:
     @property
     @pulumi.getter(name="athenaOutput")
     def athena_output(self) -> pulumi.Input[str]:
+        """
+        The AWS S3 output location.
+        """
         return pulumi.get(self, "athena_output")
 
     @athena_output.setter
@@ -2848,6 +3295,9 @@ class ResourceAthenaArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Key ID to use to authenticate.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -2858,7 +3308,7 @@ class ResourceAthenaArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -2881,6 +3331,9 @@ class ResourceAthenaArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -2890,6 +3343,9 @@ class ResourceAthenaArgs:
     @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -2899,6 +3355,9 @@ class ResourceAthenaArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -2908,6 +3367,9 @@ class ResourceAthenaArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -2917,6 +3379,9 @@ class ResourceAthenaArgs:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key to use to authenticate.
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -2978,12 +3443,20 @@ class ResourceAuroraMysqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -3014,6 +3487,9 @@ class ResourceAuroraMysqlArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -3023,6 +3499,9 @@ class ResourceAuroraMysqlArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -3045,7 +3524,7 @@ class ResourceAuroraMysqlArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3068,6 +3547,9 @@ class ResourceAuroraMysqlArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -3077,6 +3559,9 @@ class ResourceAuroraMysqlArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -3086,6 +3571,9 @@ class ResourceAuroraMysqlArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -3095,6 +3583,9 @@ class ResourceAuroraMysqlArgs:
     @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        """
         return pulumi.get(self, "require_native_auth")
 
     @require_native_auth.setter
@@ -3140,6 +3631,9 @@ class ResourceAuroraMysqlArgs:
     @property
     @pulumi.getter(name="useAzureSingleServerUsernames")
     def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
         return pulumi.get(self, "use_azure_single_server_usernames")
 
     @use_azure_single_server_usernames.setter
@@ -3149,6 +3643,9 @@ class ResourceAuroraMysqlArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -3173,12 +3670,19 @@ class ResourceAuroraPostgresArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -3207,6 +3711,9 @@ class ResourceAuroraPostgresArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -3216,6 +3723,9 @@ class ResourceAuroraPostgresArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -3238,7 +3748,7 @@ class ResourceAuroraPostgresArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3261,6 +3771,9 @@ class ResourceAuroraPostgresArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -3270,6 +3783,9 @@ class ResourceAuroraPostgresArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -3279,6 +3795,9 @@ class ResourceAuroraPostgresArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -3288,6 +3807,9 @@ class ResourceAuroraPostgresArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -3333,6 +3855,9 @@ class ResourceAuroraPostgresArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -3356,9 +3881,15 @@ class ResourceAwsArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] healthcheck_region: The AWS region healthcheck requests should attempt to connect to.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -3389,6 +3920,9 @@ class ResourceAwsArgs:
     @property
     @pulumi.getter(name="healthcheckRegion")
     def healthcheck_region(self) -> pulumi.Input[str]:
+        """
+        The AWS region healthcheck requests should attempt to connect to.
+        """
         return pulumi.get(self, "healthcheck_region")
 
     @healthcheck_region.setter
@@ -3410,6 +3944,9 @@ class ResourceAwsArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Key ID to use to authenticate.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -3420,7 +3957,7 @@ class ResourceAwsArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3443,6 +3980,9 @@ class ResourceAwsArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -3452,6 +3992,9 @@ class ResourceAwsArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -3461,6 +4004,9 @@ class ResourceAwsArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -3470,6 +4016,9 @@ class ResourceAwsArgs:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key to use to authenticate.
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -3532,10 +4081,18 @@ class ResourceAwsConsoleArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[str] region: The AWS region to connect to.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[int] session_expiry: The length of time in seconds AWS console sessions will live before needing to reauthenticate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -3579,6 +4136,9 @@ class ResourceAwsConsoleArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -3601,7 +4161,7 @@ class ResourceAwsConsoleArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3624,6 +4184,9 @@ class ResourceAwsConsoleArgs:
     @property
     @pulumi.getter(name="enableEnvVariables")
     def enable_env_variables(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+        """
         return pulumi.get(self, "enable_env_variables")
 
     @enable_env_variables.setter
@@ -3633,6 +4196,9 @@ class ResourceAwsConsoleArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -3642,6 +4208,9 @@ class ResourceAwsConsoleArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -3651,6 +4220,9 @@ class ResourceAwsConsoleArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -3660,6 +4232,9 @@ class ResourceAwsConsoleArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -3669,6 +4244,9 @@ class ResourceAwsConsoleArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -3690,6 +4268,9 @@ class ResourceAwsConsoleArgs:
     @property
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> Optional[pulumi.Input[int]]:
+        """
+        The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        """
         return pulumi.get(self, "session_expiry")
 
     @session_expiry.setter
@@ -3729,10 +4310,19 @@ class ResourceAwsConsoleStaticKeyPairArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[str] region: The AWS region to connect to.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[int] session_expiry: The length of time in seconds AWS console sessions will live before needing to reauthenticate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -3778,6 +4368,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -3799,6 +4392,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Key ID to use to authenticate.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -3809,7 +4405,7 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -3832,6 +4428,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -3841,6 +4440,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -3850,6 +4452,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -3859,6 +4464,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -3868,6 +4476,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -3877,6 +4488,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key to use to authenticate.
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -3898,6 +4512,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @property
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> Optional[pulumi.Input[int]]:
+        """
+        The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        """
         return pulumi.get(self, "session_expiry")
 
     @session_expiry.setter
@@ -3932,12 +4549,16 @@ class ResourceAzureArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] app_id: The application ID to authenticate with.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[str] tenant_id: * sql_server_kerberos_ad:
+        :param pulumi.Input[str] tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
+               * sql_server_kerberos_ad:
         """
         pulumi.set(__self__, "name", name)
         if app_id is not None:
@@ -3974,6 +4595,9 @@ class ResourceAzureArgs:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application ID to authenticate with.
+        """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
@@ -3984,7 +4608,7 @@ class ResourceAzureArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4007,6 +4631,9 @@ class ResourceAzureArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -4016,6 +4643,9 @@ class ResourceAzureArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -4062,6 +4692,7 @@ class ResourceAzureArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
+        The Azure AD directory (tenant) ID with which to authenticate.
         * sql_server_kerberos_ad:
         """
         return pulumi.get(self, "tenant_id")
@@ -4086,12 +4717,16 @@ class ResourceAzureCertificateArgs:
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] app_id: The application ID to authenticate with.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[str] tenant_id: * sql_server_kerberos_ad:
+        :param pulumi.Input[str] tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
+               * sql_server_kerberos_ad:
         """
         pulumi.set(__self__, "name", name)
         if app_id is not None:
@@ -4128,6 +4763,9 @@ class ResourceAzureCertificateArgs:
     @property
     @pulumi.getter(name="appId")
     def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application ID to authenticate with.
+        """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
@@ -4138,7 +4776,7 @@ class ResourceAzureCertificateArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4149,6 +4787,9 @@ class ResourceAzureCertificateArgs:
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
@@ -4170,6 +4811,9 @@ class ResourceAzureCertificateArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -4216,6 +4860,7 @@ class ResourceAzureCertificateArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
+        The Azure AD directory (tenant) ID with which to authenticate.
         * sql_server_kerberos_ad:
         """
         return pulumi.get(self, "tenant_id")
@@ -4243,12 +4888,20 @@ class ResourceAzureMysqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -4279,6 +4932,9 @@ class ResourceAzureMysqlArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -4288,6 +4944,9 @@ class ResourceAzureMysqlArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -4310,7 +4969,7 @@ class ResourceAzureMysqlArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4333,6 +4992,9 @@ class ResourceAzureMysqlArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -4342,6 +5004,9 @@ class ResourceAzureMysqlArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -4351,6 +5016,9 @@ class ResourceAzureMysqlArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -4360,6 +5028,9 @@ class ResourceAzureMysqlArgs:
     @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        """
         return pulumi.get(self, "require_native_auth")
 
     @require_native_auth.setter
@@ -4405,6 +5076,9 @@ class ResourceAzureMysqlArgs:
     @property
     @pulumi.getter(name="useAzureSingleServerUsernames")
     def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
         return pulumi.get(self, "use_azure_single_server_usernames")
 
     @use_azure_single_server_usernames.setter
@@ -4414,6 +5088,9 @@ class ResourceAzureMysqlArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -4438,12 +5115,19 @@ class ResourceAzurePostgresArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -4472,6 +5156,9 @@ class ResourceAzurePostgresArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -4481,6 +5168,9 @@ class ResourceAzurePostgresArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -4503,7 +5193,7 @@ class ResourceAzurePostgresArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4526,6 +5216,9 @@ class ResourceAzurePostgresArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -4535,6 +5228,9 @@ class ResourceAzurePostgresArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -4544,6 +5240,9 @@ class ResourceAzurePostgresArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -4553,6 +5252,9 @@ class ResourceAzurePostgresArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -4598,6 +5300,237 @@ class ResourceAzurePostgresArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+@pulumi.input_type
+class ResourceAzurePostgresManagedIdentityArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 hostname: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 bind_interface: Optional[pulumi.Input[str]] = None,
+                 egress_filter: Optional[pulumi.Input[str]] = None,
+                 override_database: Optional[pulumi.Input[bool]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 port_override: Optional[pulumi.Input[int]] = None,
+                 secret_store_id: Optional[pulumi.Input[str]] = None,
+                 subdomain: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if override_database is not None:
+            pulumi.set(__self__, "override_database", override_database)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if use_azure_single_server_usernames is not None:
+            pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @bind_interface.setter
+    def bind_interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @egress_filter.setter
+    def egress_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "egress_filter", value)
+
+    @property
+    @pulumi.getter(name="overrideDatabase")
+    def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
+        return pulumi.get(self, "override_database")
+
+    @override_database.setter
+    def override_database(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "override_database", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @port_override.setter
+    def port_override(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @secret_store_id.setter
+    def secret_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_store_id", value)
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[pulumi.Input[str]]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @subdomain.setter
+    def subdomain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subdomain", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="useAzureSingleServerUsernames")
+    def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
+        return pulumi.get(self, "use_azure_single_server_usernames")
+
+    @use_azure_single_server_usernames.setter
+    def use_azure_single_server_usernames(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_azure_single_server_usernames", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -4620,12 +5553,17 @@ class ResourceBigQueryArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] project: The project to connect to.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] private_key: The private key used to authenticate with the server.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "name", name)
@@ -4650,6 +5588,9 @@ class ResourceBigQueryArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -4671,6 +5612,9 @@ class ResourceBigQueryArgs:
     @property
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
+        """
+        The project to connect to.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -4681,7 +5625,7 @@ class ResourceBigQueryArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4704,6 +5648,9 @@ class ResourceBigQueryArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -4713,6 +5660,9 @@ class ResourceBigQueryArgs:
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key used to authenticate with the server.
+        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -4758,6 +5708,9 @@ class ResourceBigQueryArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -4781,12 +5734,18 @@ class ResourceCassandraArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -4814,6 +5773,9 @@ class ResourceCassandraArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -4836,7 +5798,7 @@ class ResourceCassandraArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -4859,6 +5821,9 @@ class ResourceCassandraArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -4868,6 +5833,9 @@ class ResourceCassandraArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -4877,6 +5845,9 @@ class ResourceCassandraArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -4922,6 +5893,9 @@ class ResourceCassandraArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -4931,6 +5905,9 @@ class ResourceCassandraArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -4955,12 +5932,19 @@ class ResourceCitusArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -4989,6 +5973,9 @@ class ResourceCitusArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -4998,6 +5985,9 @@ class ResourceCitusArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -5020,7 +6010,7 @@ class ResourceCitusArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5043,6 +6033,9 @@ class ResourceCitusArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -5052,6 +6045,9 @@ class ResourceCitusArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -5061,6 +6057,9 @@ class ResourceCitusArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -5070,6 +6069,9 @@ class ResourceCitusArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -5115,6 +6117,9 @@ class ResourceCitusArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -5140,12 +6145,20 @@ class ResourceClustrixArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -5176,6 +6189,9 @@ class ResourceClustrixArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -5185,6 +6201,9 @@ class ResourceClustrixArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -5207,7 +6226,7 @@ class ResourceClustrixArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5230,6 +6249,9 @@ class ResourceClustrixArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -5239,6 +6261,9 @@ class ResourceClustrixArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -5248,6 +6273,9 @@ class ResourceClustrixArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -5257,6 +6285,9 @@ class ResourceClustrixArgs:
     @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        """
         return pulumi.get(self, "require_native_auth")
 
     @require_native_auth.setter
@@ -5302,6 +6333,9 @@ class ResourceClustrixArgs:
     @property
     @pulumi.getter(name="useAzureSingleServerUsernames")
     def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
         return pulumi.get(self, "use_azure_single_server_usernames")
 
     @use_azure_single_server_usernames.setter
@@ -5311,6 +6345,9 @@ class ResourceClustrixArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -5335,12 +6372,19 @@ class ResourceCockroachArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -5369,6 +6413,9 @@ class ResourceCockroachArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -5378,6 +6425,9 @@ class ResourceCockroachArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -5400,7 +6450,7 @@ class ResourceCockroachArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5423,6 +6473,9 @@ class ResourceCockroachArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -5432,6 +6485,9 @@ class ResourceCockroachArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -5441,6 +6497,9 @@ class ResourceCockroachArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -5450,6 +6509,9 @@ class ResourceCockroachArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -5495,6 +6557,9 @@ class ResourceCockroachArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -5518,12 +6583,18 @@ class ResourceDb2IArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -5550,6 +6621,9 @@ class ResourceDb2IArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -5571,6 +6645,9 @@ class ResourceDb2IArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -5581,7 +6658,7 @@ class ResourceDb2IArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5604,6 +6681,9 @@ class ResourceDb2IArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -5613,6 +6693,9 @@ class ResourceDb2IArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -5658,6 +6741,9 @@ class ResourceDb2IArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -5667,6 +6753,9 @@ class ResourceDb2IArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -5690,12 +6779,18 @@ class ResourceDb2LuwArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -5722,6 +6817,9 @@ class ResourceDb2LuwArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -5731,6 +6829,9 @@ class ResourceDb2LuwArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -5753,7 +6854,7 @@ class ResourceDb2LuwArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5776,6 +6877,9 @@ class ResourceDb2LuwArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -5785,6 +6889,9 @@ class ResourceDb2LuwArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -5794,6 +6901,9 @@ class ResourceDb2LuwArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -5839,6 +6949,9 @@ class ResourceDb2LuwArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -5862,12 +6975,18 @@ class ResourceDocumentDbHostArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auth_database: The authentication database to use.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "auth_database", auth_database)
         pulumi.set(__self__, "hostname", hostname)
@@ -5894,6 +7013,9 @@ class ResourceDocumentDbHostArgs:
     @property
     @pulumi.getter(name="authDatabase")
     def auth_database(self) -> pulumi.Input[str]:
+        """
+        The authentication database to use.
+        """
         return pulumi.get(self, "auth_database")
 
     @auth_database.setter
@@ -5903,6 +7025,9 @@ class ResourceDocumentDbHostArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -5925,7 +7050,7 @@ class ResourceDocumentDbHostArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -5948,6 +7073,9 @@ class ResourceDocumentDbHostArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -5957,6 +7085,9 @@ class ResourceDocumentDbHostArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -5966,6 +7097,9 @@ class ResourceDocumentDbHostArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -6011,6 +7145,9 @@ class ResourceDocumentDbHostArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -6035,12 +7172,19 @@ class ResourceDocumentDbReplicaSetArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auth_database: The authentication database to use.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] replica_set: The name of the mongo replicaset.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[bool] connect_to_replica: Set to connect to a replica instead of the primary node.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "auth_database", auth_database)
         pulumi.set(__self__, "hostname", hostname)
@@ -6068,6 +7212,9 @@ class ResourceDocumentDbReplicaSetArgs:
     @property
     @pulumi.getter(name="authDatabase")
     def auth_database(self) -> pulumi.Input[str]:
+        """
+        The authentication database to use.
+        """
         return pulumi.get(self, "auth_database")
 
     @auth_database.setter
@@ -6077,6 +7224,9 @@ class ResourceDocumentDbReplicaSetArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -6098,6 +7248,9 @@ class ResourceDocumentDbReplicaSetArgs:
     @property
     @pulumi.getter(name="replicaSet")
     def replica_set(self) -> pulumi.Input[str]:
+        """
+        The name of the mongo replicaset.
+        """
         return pulumi.get(self, "replica_set")
 
     @replica_set.setter
@@ -6108,7 +7261,7 @@ class ResourceDocumentDbReplicaSetArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6119,6 +7272,9 @@ class ResourceDocumentDbReplicaSetArgs:
     @property
     @pulumi.getter(name="connectToReplica")
     def connect_to_replica(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to connect to a replica instead of the primary node.
+        """
         return pulumi.get(self, "connect_to_replica")
 
     @connect_to_replica.setter
@@ -6140,6 +7296,9 @@ class ResourceDocumentDbReplicaSetArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -6149,6 +7308,9 @@ class ResourceDocumentDbReplicaSetArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -6194,6 +7356,9 @@ class ResourceDocumentDbReplicaSetArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -6216,12 +7381,17 @@ class ResourceDruidArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -6247,6 +7417,9 @@ class ResourceDruidArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -6269,7 +7442,7 @@ class ResourceDruidArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6292,6 +7465,9 @@ class ResourceDruidArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -6301,6 +7477,9 @@ class ResourceDruidArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -6310,6 +7489,9 @@ class ResourceDruidArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -6355,6 +7537,9 @@ class ResourceDruidArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -6379,9 +7564,16 @@ class ResourceDynamoDbArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -6413,6 +7605,9 @@ class ResourceDynamoDbArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -6434,6 +7629,9 @@ class ResourceDynamoDbArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -6443,6 +7641,9 @@ class ResourceDynamoDbArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Key ID to use to authenticate.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -6453,7 +7654,7 @@ class ResourceDynamoDbArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6476,6 +7677,9 @@ class ResourceDynamoDbArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -6485,6 +7689,9 @@ class ResourceDynamoDbArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -6494,6 +7701,9 @@ class ResourceDynamoDbArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -6503,6 +7713,9 @@ class ResourceDynamoDbArgs:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key to use to authenticate.
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -6562,12 +7775,18 @@ class ResourceElasticArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -6595,6 +7814,9 @@ class ResourceElasticArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -6617,7 +7839,7 @@ class ResourceElasticArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6640,6 +7862,9 @@ class ResourceElasticArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -6649,6 +7874,9 @@ class ResourceElasticArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -6658,6 +7886,9 @@ class ResourceElasticArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -6703,6 +7934,9 @@ class ResourceElasticArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -6712,6 +7946,9 @@ class ResourceElasticArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -6735,12 +7972,18 @@ class ResourceElasticacheRedisArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -6768,6 +8011,9 @@ class ResourceElasticacheRedisArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -6790,7 +8036,7 @@ class ResourceElasticacheRedisArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6813,6 +8059,9 @@ class ResourceElasticacheRedisArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -6822,6 +8071,9 @@ class ResourceElasticacheRedisArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -6831,6 +8083,9 @@ class ResourceElasticacheRedisArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -6876,6 +8131,9 @@ class ResourceElasticacheRedisArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -6885,6 +8143,9 @@ class ResourceElasticacheRedisArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -6906,8 +8167,11 @@ class ResourceGcpArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] scopes: Space separated scopes that this login should assume into when authenticating.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] keyfile: The service account keyfile to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -6944,6 +8208,9 @@ class ResourceGcpArgs:
     @property
     @pulumi.getter
     def scopes(self) -> pulumi.Input[str]:
+        """
+        Space separated scopes that this login should assume into when authenticating.
+        """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -6954,7 +8221,7 @@ class ResourceGcpArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -6977,6 +8244,9 @@ class ResourceGcpArgs:
     @property
     @pulumi.getter
     def keyfile(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account keyfile to authenticate with.
+        """
         return pulumi.get(self, "keyfile")
 
     @keyfile.setter
@@ -6986,6 +8256,9 @@ class ResourceGcpArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -7045,11 +8318,16 @@ class ResourceGoogleGkeArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[str] service_account_key: The service account key to authenticate with.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -7079,6 +8357,9 @@ class ResourceGoogleGkeArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -7101,7 +8382,7 @@ class ResourceGoogleGkeArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7112,6 +8393,9 @@ class ResourceGoogleGkeArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -7145,6 +8429,9 @@ class ResourceGoogleGkeArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -7154,6 +8441,9 @@ class ResourceGoogleGkeArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -7175,6 +8465,9 @@ class ResourceGoogleGkeArgs:
     @property
     @pulumi.getter(name="serviceAccountKey")
     def service_account_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account key to authenticate with.
+        """
         return pulumi.get(self, "service_account_key")
 
     @service_account_key.setter
@@ -7220,11 +8513,14 @@ class ResourceGoogleGkeUserImpersonationArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[str] service_account_key: The service account key to authenticate with.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -7250,6 +8546,9 @@ class ResourceGoogleGkeUserImpersonationArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -7272,7 +8571,7 @@ class ResourceGoogleGkeUserImpersonationArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7283,6 +8582,9 @@ class ResourceGoogleGkeUserImpersonationArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -7328,6 +8630,9 @@ class ResourceGoogleGkeUserImpersonationArgs:
     @property
     @pulumi.getter(name="serviceAccountKey")
     def service_account_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account key to authenticate with.
+        """
         return pulumi.get(self, "service_account_key")
 
     @service_account_key.setter
@@ -7376,12 +8681,19 @@ class ResourceGreenplumArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -7410,6 +8722,9 @@ class ResourceGreenplumArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -7419,6 +8734,9 @@ class ResourceGreenplumArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -7441,7 +8759,7 @@ class ResourceGreenplumArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7464,6 +8782,9 @@ class ResourceGreenplumArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -7473,6 +8794,9 @@ class ResourceGreenplumArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -7482,6 +8806,9 @@ class ResourceGreenplumArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -7491,6 +8818,9 @@ class ResourceGreenplumArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -7536,6 +8866,9 @@ class ResourceGreenplumArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -7559,11 +8892,17 @@ class ResourceHttpAuthArgs:
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] healthcheck_path: This path will be used to check the health of your site.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param pulumi.Input[str] url: * kubernetes:
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] url: The base address of your website without the path.
+               * kubernetes:
+        :param pulumi.Input[str] auth_header: The content to set as the authorization header.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] default_path: Automatically redirect to this path upon connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] headers_blacklist: Header names (e.g. Authorization), to omit from logs.
+        :param pulumi.Input[str] host_override: The host header will be overwritten with this field if provided.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -7591,6 +8930,9 @@ class ResourceHttpAuthArgs:
     @property
     @pulumi.getter(name="healthcheckPath")
     def healthcheck_path(self) -> pulumi.Input[str]:
+        """
+        This path will be used to check the health of your site.
+        """
         return pulumi.get(self, "healthcheck_path")
 
     @healthcheck_path.setter
@@ -7625,6 +8967,7 @@ class ResourceHttpAuthArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
+        The base address of your website without the path.
         * kubernetes:
         """
         return pulumi.get(self, "url")
@@ -7636,6 +8979,9 @@ class ResourceHttpAuthArgs:
     @property
     @pulumi.getter(name="authHeader")
     def auth_header(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content to set as the authorization header.
+        """
         return pulumi.get(self, "auth_header")
 
     @auth_header.setter
@@ -7646,7 +8992,7 @@ class ResourceHttpAuthArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7657,6 +9003,9 @@ class ResourceHttpAuthArgs:
     @property
     @pulumi.getter(name="defaultPath")
     def default_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatically redirect to this path upon connecting.
+        """
         return pulumi.get(self, "default_path")
 
     @default_path.setter
@@ -7678,6 +9027,9 @@ class ResourceHttpAuthArgs:
     @property
     @pulumi.getter(name="headersBlacklist")
     def headers_blacklist(self) -> Optional[pulumi.Input[str]]:
+        """
+        Header names (e.g. Authorization), to omit from logs.
+        """
         return pulumi.get(self, "headers_blacklist")
 
     @headers_blacklist.setter
@@ -7687,6 +9039,9 @@ class ResourceHttpAuthArgs:
     @property
     @pulumi.getter(name="hostOverride")
     def host_override(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host header will be overwritten with this field if provided.
+        """
         return pulumi.get(self, "host_override")
 
     @host_override.setter
@@ -7735,13 +9090,20 @@ class ResourceHttpBasicAuthArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] healthcheck_path: This path will be used to check the health of your site.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param pulumi.Input[str] url: * kubernetes:
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] url: The base address of your website without the path.
+               * kubernetes:
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] default_path: Automatically redirect to this path upon connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] headers_blacklist: Header names (e.g. Authorization), to omit from logs.
+        :param pulumi.Input[str] host_override: The host header will be overwritten with this field if provided.
+        :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "healthcheck_path", healthcheck_path)
         pulumi.set(__self__, "name", name)
@@ -7769,6 +9131,9 @@ class ResourceHttpBasicAuthArgs:
     @property
     @pulumi.getter(name="healthcheckPath")
     def healthcheck_path(self) -> pulumi.Input[str]:
+        """
+        This path will be used to check the health of your site.
+        """
         return pulumi.get(self, "healthcheck_path")
 
     @healthcheck_path.setter
@@ -7803,6 +9168,7 @@ class ResourceHttpBasicAuthArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
+        The base address of your website without the path.
         * kubernetes:
         """
         return pulumi.get(self, "url")
@@ -7815,7 +9181,7 @@ class ResourceHttpBasicAuthArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -7826,6 +9192,9 @@ class ResourceHttpBasicAuthArgs:
     @property
     @pulumi.getter(name="defaultPath")
     def default_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatically redirect to this path upon connecting.
+        """
         return pulumi.get(self, "default_path")
 
     @default_path.setter
@@ -7847,6 +9216,9 @@ class ResourceHttpBasicAuthArgs:
     @property
     @pulumi.getter(name="headersBlacklist")
     def headers_blacklist(self) -> Optional[pulumi.Input[str]]:
+        """
+        Header names (e.g. Authorization), to omit from logs.
+        """
         return pulumi.get(self, "headers_blacklist")
 
     @headers_blacklist.setter
@@ -7856,6 +9228,9 @@ class ResourceHttpBasicAuthArgs:
     @property
     @pulumi.getter(name="hostOverride")
     def host_override(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host header will be overwritten with this field if provided.
+        """
         return pulumi.get(self, "host_override")
 
     @host_override.setter
@@ -7865,6 +9240,9 @@ class ResourceHttpBasicAuthArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -7898,6 +9276,9 @@ class ResourceHttpBasicAuthArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -7920,11 +9301,16 @@ class ResourceHttpNoAuthArgs:
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] healthcheck_path: This path will be used to check the health of your site.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param pulumi.Input[str] url: * kubernetes:
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] url: The base address of your website without the path.
+               * kubernetes:
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] default_path: Automatically redirect to this path upon connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] headers_blacklist: Header names (e.g. Authorization), to omit from logs.
+        :param pulumi.Input[str] host_override: The host header will be overwritten with this field if provided.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -7950,6 +9336,9 @@ class ResourceHttpNoAuthArgs:
     @property
     @pulumi.getter(name="healthcheckPath")
     def healthcheck_path(self) -> pulumi.Input[str]:
+        """
+        This path will be used to check the health of your site.
+        """
         return pulumi.get(self, "healthcheck_path")
 
     @healthcheck_path.setter
@@ -7984,6 +9373,7 @@ class ResourceHttpNoAuthArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[str]:
         """
+        The base address of your website without the path.
         * kubernetes:
         """
         return pulumi.get(self, "url")
@@ -7996,7 +9386,7 @@ class ResourceHttpNoAuthArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8007,6 +9397,9 @@ class ResourceHttpNoAuthArgs:
     @property
     @pulumi.getter(name="defaultPath")
     def default_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Automatically redirect to this path upon connecting.
+        """
         return pulumi.get(self, "default_path")
 
     @default_path.setter
@@ -8028,6 +9421,9 @@ class ResourceHttpNoAuthArgs:
     @property
     @pulumi.getter(name="headersBlacklist")
     def headers_blacklist(self) -> Optional[pulumi.Input[str]]:
+        """
+        Header names (e.g. Authorization), to omit from logs.
+        """
         return pulumi.get(self, "headers_blacklist")
 
     @headers_blacklist.setter
@@ -8037,6 +9433,9 @@ class ResourceHttpNoAuthArgs:
     @property
     @pulumi.getter(name="hostOverride")
     def host_override(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host header will be overwritten with this field if provided.
+        """
         return pulumi.get(self, "host_override")
 
     @host_override.setter
@@ -8087,10 +9486,18 @@ class ResourceKubernetesArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
+        :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -8126,6 +9533,9 @@ class ResourceKubernetesArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -8147,6 +9557,9 @@ class ResourceKubernetesArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -8157,7 +9570,7 @@ class ResourceKubernetesArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8168,6 +9581,9 @@ class ResourceKubernetesArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -8177,6 +9593,9 @@ class ResourceKubernetesArgs:
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
@@ -8186,6 +9605,9 @@ class ResourceKubernetesArgs:
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
@@ -8219,6 +9641,9 @@ class ResourceKubernetesArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -8228,6 +9653,9 @@ class ResourceKubernetesArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -8237,6 +9665,9 @@ class ResourceKubernetesArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -8296,13 +9727,18 @@ class ResourceKubernetesBasicAuthArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -8329,6 +9765,9 @@ class ResourceKubernetesBasicAuthArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -8350,6 +9789,9 @@ class ResourceKubernetesBasicAuthArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -8360,7 +9802,7 @@ class ResourceKubernetesBasicAuthArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8395,6 +9837,9 @@ class ResourceKubernetesBasicAuthArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -8404,6 +9849,9 @@ class ResourceKubernetesBasicAuthArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -8449,6 +9897,9 @@ class ResourceKubernetesBasicAuthArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -8473,14 +9924,20 @@ class ResourceKubernetesServiceAccountArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[str] token: * kubernetes_user_impersonation:
+        :param pulumi.Input[str] token: The API token to authenticate with.
+               * kubernetes_user_impersonation:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -8509,6 +9966,9 @@ class ResourceKubernetesServiceAccountArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -8530,6 +9990,9 @@ class ResourceKubernetesServiceAccountArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -8540,7 +10003,7 @@ class ResourceKubernetesServiceAccountArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8575,6 +10038,9 @@ class ResourceKubernetesServiceAccountArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -8584,6 +10050,9 @@ class ResourceKubernetesServiceAccountArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -8593,6 +10062,9 @@ class ResourceKubernetesServiceAccountArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -8639,6 +10111,7 @@ class ResourceKubernetesServiceAccountArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
+        The API token to authenticate with.
         * kubernetes_user_impersonation:
         """
         return pulumi.get(self, "token")
@@ -8663,14 +10136,18 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[str] token: * kubernetes_user_impersonation:
+        :param pulumi.Input[str] token: The API token to authenticate with.
+               * kubernetes_user_impersonation:
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -8695,6 +10172,9 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -8716,6 +10196,9 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -8726,7 +10209,7 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8761,6 +10244,9 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -8807,6 +10293,7 @@ class ResourceKubernetesServiceAccountUserImpersonationArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
+        The API token to authenticate with.
         * kubernetes_user_impersonation:
         """
         return pulumi.get(self, "token")
@@ -8833,10 +10320,16 @@ class ResourceKubernetesUserImpersonationArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
+        :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -8868,6 +10361,9 @@ class ResourceKubernetesUserImpersonationArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -8889,6 +10385,9 @@ class ResourceKubernetesUserImpersonationArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -8899,7 +10398,7 @@ class ResourceKubernetesUserImpersonationArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -8910,6 +10409,9 @@ class ResourceKubernetesUserImpersonationArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -8919,6 +10421,9 @@ class ResourceKubernetesUserImpersonationArgs:
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
@@ -8928,6 +10433,9 @@ class ResourceKubernetesUserImpersonationArgs:
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
@@ -8961,6 +10469,9 @@ class ResourceKubernetesUserImpersonationArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -9022,12 +10533,20 @@ class ResourceMariaArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -9058,6 +10577,9 @@ class ResourceMariaArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -9067,6 +10589,9 @@ class ResourceMariaArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -9089,7 +10614,7 @@ class ResourceMariaArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9112,6 +10637,9 @@ class ResourceMariaArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -9121,6 +10649,9 @@ class ResourceMariaArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -9130,6 +10661,9 @@ class ResourceMariaArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -9139,6 +10673,9 @@ class ResourceMariaArgs:
     @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        """
         return pulumi.get(self, "require_native_auth")
 
     @require_native_auth.setter
@@ -9184,6 +10721,9 @@ class ResourceMariaArgs:
     @property
     @pulumi.getter(name="useAzureSingleServerUsernames")
     def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
         return pulumi.get(self, "use_azure_single_server_usernames")
 
     @use_azure_single_server_usernames.setter
@@ -9193,6 +10733,9 @@ class ResourceMariaArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -9213,9 +10756,12 @@ class ResourceMemcachedArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -9240,6 +10786,9 @@ class ResourceMemcachedArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -9262,7 +10811,7 @@ class ResourceMemcachedArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9285,6 +10834,9 @@ class ResourceMemcachedArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -9294,6 +10846,9 @@ class ResourceMemcachedArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -9355,12 +10910,20 @@ class ResourceMemsqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -9391,6 +10954,9 @@ class ResourceMemsqlArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -9400,6 +10966,9 @@ class ResourceMemsqlArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -9422,7 +10991,7 @@ class ResourceMemsqlArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9445,6 +11014,9 @@ class ResourceMemsqlArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -9454,6 +11026,9 @@ class ResourceMemsqlArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -9463,6 +11038,9 @@ class ResourceMemsqlArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -9472,6 +11050,9 @@ class ResourceMemsqlArgs:
     @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        """
         return pulumi.get(self, "require_native_auth")
 
     @require_native_auth.setter
@@ -9517,6 +11098,9 @@ class ResourceMemsqlArgs:
     @property
     @pulumi.getter(name="useAzureSingleServerUsernames")
     def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
         return pulumi.get(self, "use_azure_single_server_usernames")
 
     @use_azure_single_server_usernames.setter
@@ -9526,6 +11110,9 @@ class ResourceMemsqlArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -9550,12 +11137,19 @@ class ResourceMongoHostArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auth_database: The authentication database to use.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "auth_database", auth_database)
         pulumi.set(__self__, "hostname", hostname)
@@ -9584,6 +11178,9 @@ class ResourceMongoHostArgs:
     @property
     @pulumi.getter(name="authDatabase")
     def auth_database(self) -> pulumi.Input[str]:
+        """
+        The authentication database to use.
+        """
         return pulumi.get(self, "auth_database")
 
     @auth_database.setter
@@ -9593,6 +11190,9 @@ class ResourceMongoHostArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -9615,7 +11215,7 @@ class ResourceMongoHostArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9638,6 +11238,9 @@ class ResourceMongoHostArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -9647,6 +11250,9 @@ class ResourceMongoHostArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -9656,6 +11262,9 @@ class ResourceMongoHostArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -9701,6 +11310,9 @@ class ResourceMongoHostArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -9710,6 +11322,9 @@ class ResourceMongoHostArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -9735,12 +11350,20 @@ class ResourceMongoLegacyHostArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auth_database: The authentication database to use.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] replica_set: The name of the mongo replicaset.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "auth_database", auth_database)
         pulumi.set(__self__, "hostname", hostname)
@@ -9771,6 +11394,9 @@ class ResourceMongoLegacyHostArgs:
     @property
     @pulumi.getter(name="authDatabase")
     def auth_database(self) -> pulumi.Input[str]:
+        """
+        The authentication database to use.
+        """
         return pulumi.get(self, "auth_database")
 
     @auth_database.setter
@@ -9780,6 +11406,9 @@ class ResourceMongoLegacyHostArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -9802,7 +11431,7 @@ class ResourceMongoLegacyHostArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -9825,6 +11454,9 @@ class ResourceMongoLegacyHostArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -9834,6 +11466,9 @@ class ResourceMongoLegacyHostArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -9843,6 +11478,9 @@ class ResourceMongoLegacyHostArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -9852,6 +11490,9 @@ class ResourceMongoLegacyHostArgs:
     @property
     @pulumi.getter(name="replicaSet")
     def replica_set(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the mongo replicaset.
+        """
         return pulumi.get(self, "replica_set")
 
     @replica_set.setter
@@ -9897,6 +11538,9 @@ class ResourceMongoLegacyHostArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -9906,6 +11550,9 @@ class ResourceMongoLegacyHostArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -9932,12 +11579,21 @@ class ResourceMongoLegacyReplicasetArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auth_database: The authentication database to use.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] replica_set: The name of the mongo replicaset.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[bool] connect_to_replica: Set to connect to a replica instead of the primary node.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "auth_database", auth_database)
         pulumi.set(__self__, "hostname", hostname)
@@ -9969,6 +11625,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter(name="authDatabase")
     def auth_database(self) -> pulumi.Input[str]:
+        """
+        The authentication database to use.
+        """
         return pulumi.get(self, "auth_database")
 
     @auth_database.setter
@@ -9978,6 +11637,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -9999,6 +11661,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter(name="replicaSet")
     def replica_set(self) -> pulumi.Input[str]:
+        """
+        The name of the mongo replicaset.
+        """
         return pulumi.get(self, "replica_set")
 
     @replica_set.setter
@@ -10009,7 +11674,7 @@ class ResourceMongoLegacyReplicasetArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10020,6 +11685,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter(name="connectToReplica")
     def connect_to_replica(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to connect to a replica instead of the primary node.
+        """
         return pulumi.get(self, "connect_to_replica")
 
     @connect_to_replica.setter
@@ -10041,6 +11709,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -10050,6 +11721,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -10059,6 +11733,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -10104,6 +11781,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -10113,6 +11793,9 @@ class ResourceMongoLegacyReplicasetArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -10139,12 +11822,21 @@ class ResourceMongoReplicaSetArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auth_database: The authentication database to use.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] replica_set: The name of the mongo replicaset.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[bool] connect_to_replica: Set to connect to a replica instead of the primary node.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "auth_database", auth_database)
         pulumi.set(__self__, "hostname", hostname)
@@ -10176,6 +11868,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter(name="authDatabase")
     def auth_database(self) -> pulumi.Input[str]:
+        """
+        The authentication database to use.
+        """
         return pulumi.get(self, "auth_database")
 
     @auth_database.setter
@@ -10185,6 +11880,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -10206,6 +11904,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter(name="replicaSet")
     def replica_set(self) -> pulumi.Input[str]:
+        """
+        The name of the mongo replicaset.
+        """
         return pulumi.get(self, "replica_set")
 
     @replica_set.setter
@@ -10216,7 +11917,7 @@ class ResourceMongoReplicaSetArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10227,6 +11928,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter(name="connectToReplica")
     def connect_to_replica(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to connect to a replica instead of the primary node.
+        """
         return pulumi.get(self, "connect_to_replica")
 
     @connect_to_replica.setter
@@ -10248,6 +11952,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -10257,6 +11964,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -10266,6 +11976,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -10311,6 +12024,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -10320,6 +12036,9 @@ class ResourceMongoReplicaSetArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -10343,12 +12062,18 @@ class ResourceMongoShardedClusterArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] auth_database: The authentication database to use.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "auth_database", auth_database)
         pulumi.set(__self__, "hostname", hostname)
@@ -10375,6 +12100,9 @@ class ResourceMongoShardedClusterArgs:
     @property
     @pulumi.getter(name="authDatabase")
     def auth_database(self) -> pulumi.Input[str]:
+        """
+        The authentication database to use.
+        """
         return pulumi.get(self, "auth_database")
 
     @auth_database.setter
@@ -10384,6 +12112,9 @@ class ResourceMongoShardedClusterArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -10406,7 +12137,7 @@ class ResourceMongoShardedClusterArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10429,6 +12160,9 @@ class ResourceMongoShardedClusterArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -10438,6 +12172,9 @@ class ResourceMongoShardedClusterArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -10483,6 +12220,9 @@ class ResourceMongoShardedClusterArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -10492,6 +12232,9 @@ class ResourceMongoShardedClusterArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -10521,12 +12264,24 @@ class ResourceMtlsMysqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
+        :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[str] server_name: Server name for TLS verification (unverified by StrongDM if empty)
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -10565,6 +12320,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -10574,6 +12332,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -10596,7 +12357,7 @@ class ResourceMtlsMysqlArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10607,6 +12368,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -10616,6 +12380,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
@@ -10625,6 +12392,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
@@ -10646,6 +12416,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -10655,6 +12428,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -10664,6 +12440,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -10673,6 +12452,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        """
         return pulumi.get(self, "require_native_auth")
 
     @require_native_auth.setter
@@ -10694,6 +12476,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter(name="serverName")
     def server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server name for TLS verification (unverified by StrongDM if empty)
+        """
         return pulumi.get(self, "server_name")
 
     @server_name.setter
@@ -10727,6 +12512,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter(name="useAzureSingleServerUsernames")
     def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
         return pulumi.get(self, "use_azure_single_server_usernames")
 
     @use_azure_single_server_usernames.setter
@@ -10736,6 +12524,9 @@ class ResourceMtlsMysqlArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -10764,12 +12555,23 @@ class ResourceMtlsPostgresArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
+        :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[str] server_name: Server name for TLS verification (unverified by StrongDM if empty)
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -10806,6 +12608,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -10815,6 +12620,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -10837,7 +12645,7 @@ class ResourceMtlsPostgresArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -10848,6 +12656,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CA to authenticate TLS connections with.
+        """
         return pulumi.get(self, "certificate_authority")
 
     @certificate_authority.setter
@@ -10857,6 +12668,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_certificate")
 
     @client_certificate.setter
@@ -10866,6 +12680,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key to authenticate TLS connections with.
+        """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
@@ -10887,6 +12704,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -10896,6 +12716,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -10905,6 +12728,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -10914,6 +12740,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -10935,6 +12764,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter(name="serverName")
     def server_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server name for TLS verification (unverified by StrongDM if empty)
+        """
         return pulumi.get(self, "server_name")
 
     @server_name.setter
@@ -10968,6 +12800,9 @@ class ResourceMtlsPostgresArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -10993,12 +12828,20 @@ class ResourceMysqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -11029,6 +12872,9 @@ class ResourceMysqlArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -11038,6 +12884,9 @@ class ResourceMysqlArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -11060,7 +12909,7 @@ class ResourceMysqlArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11083,6 +12932,9 @@ class ResourceMysqlArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -11092,6 +12944,9 @@ class ResourceMysqlArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -11101,6 +12956,9 @@ class ResourceMysqlArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -11110,6 +12968,9 @@ class ResourceMysqlArgs:
     @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        """
         return pulumi.get(self, "require_native_auth")
 
     @require_native_auth.setter
@@ -11155,6 +13016,9 @@ class ResourceMysqlArgs:
     @property
     @pulumi.getter(name="useAzureSingleServerUsernames")
     def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
         return pulumi.get(self, "use_azure_single_server_usernames")
 
     @use_azure_single_server_usernames.setter
@@ -11164,6 +13028,9 @@ class ResourceMysqlArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -11184,9 +13051,12 @@ class ResourceNeptuneArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -11211,6 +13081,9 @@ class ResourceNeptuneArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -11233,7 +13106,7 @@ class ResourceNeptuneArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11256,6 +13129,9 @@ class ResourceNeptuneArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -11265,6 +13141,9 @@ class ResourceNeptuneArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -11326,9 +13205,17 @@ class ResourceNeptuneIamArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] role_arn: The role to assume after logging in.
+        :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -11362,6 +13249,9 @@ class ResourceNeptuneIamArgs:
     @property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -11383,6 +13273,9 @@ class ResourceNeptuneIamArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to connect to.
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -11392,6 +13285,9 @@ class ResourceNeptuneIamArgs:
     @property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Access Key ID to use to authenticate.
+        """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
@@ -11402,7 +13298,7 @@ class ResourceNeptuneIamArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11425,6 +13321,9 @@ class ResourceNeptuneIamArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -11434,6 +13333,9 @@ class ResourceNeptuneIamArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -11443,6 +13345,9 @@ class ResourceNeptuneIamArgs:
     @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role to assume after logging in.
+        """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
@@ -11452,6 +13357,9 @@ class ResourceNeptuneIamArgs:
     @property
     @pulumi.getter(name="roleExternalId")
     def role_external_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
         return pulumi.get(self, "role_external_id")
 
     @role_external_id.setter
@@ -11461,6 +13369,9 @@ class ResourceNeptuneIamArgs:
     @property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Access Key to use to authenticate.
+        """
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
@@ -11521,12 +13432,19 @@ class ResourceOracleArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -11554,6 +13472,9 @@ class ResourceOracleArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -11563,6 +13484,9 @@ class ResourceOracleArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -11584,6 +13508,9 @@ class ResourceOracleArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -11594,7 +13521,7 @@ class ResourceOracleArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11617,6 +13544,9 @@ class ResourceOracleArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -11626,6 +13556,9 @@ class ResourceOracleArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -11671,6 +13604,9 @@ class ResourceOracleArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -11680,6 +13616,9 @@ class ResourceOracleArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -11704,12 +13643,19 @@ class ResourcePostgresArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -11738,6 +13684,9 @@ class ResourcePostgresArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -11747,6 +13696,9 @@ class ResourcePostgresArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -11769,7 +13721,7 @@ class ResourcePostgresArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11792,6 +13744,9 @@ class ResourcePostgresArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -11801,6 +13756,9 @@ class ResourcePostgresArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -11810,6 +13768,9 @@ class ResourcePostgresArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -11819,6 +13780,9 @@ class ResourcePostgresArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -11864,6 +13828,9 @@ class ResourcePostgresArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -11888,12 +13855,19 @@ class ResourcePrestoArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -11922,6 +13896,9 @@ class ResourcePrestoArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -11931,6 +13908,9 @@ class ResourcePrestoArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -11953,7 +13933,7 @@ class ResourcePrestoArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -11976,6 +13956,9 @@ class ResourcePrestoArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -11985,6 +13968,9 @@ class ResourcePrestoArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -11994,6 +13980,9 @@ class ResourcePrestoArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -12039,6 +14028,9 @@ class ResourcePrestoArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -12048,6 +14040,9 @@ class ResourcePrestoArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -12071,12 +14066,18 @@ class ResourceRabbitmqAmqp091Args:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -12104,6 +14105,9 @@ class ResourceRabbitmqAmqp091Args:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -12126,7 +14130,7 @@ class ResourceRabbitmqAmqp091Args:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12149,6 +14153,9 @@ class ResourceRabbitmqAmqp091Args:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -12158,6 +14165,9 @@ class ResourceRabbitmqAmqp091Args:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -12167,6 +14177,9 @@ class ResourceRabbitmqAmqp091Args:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -12212,6 +14225,9 @@ class ResourceRabbitmqAmqp091Args:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -12221,6 +14237,9 @@ class ResourceRabbitmqAmqp091Args:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -12241,9 +14260,12 @@ class ResourceRawTcpArgs:
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -12268,6 +14290,9 @@ class ResourceRawTcpArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -12290,7 +14315,7 @@ class ResourceRawTcpArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12313,6 +14338,9 @@ class ResourceRawTcpArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -12322,6 +14350,9 @@ class ResourceRawTcpArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -12381,12 +14412,18 @@ class ResourceRdpArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[bool] downgrade_nla_connections: When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -12414,6 +14451,9 @@ class ResourceRdpArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -12436,7 +14476,7 @@ class ResourceRdpArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12447,6 +14487,9 @@ class ResourceRdpArgs:
     @property
     @pulumi.getter(name="downgradeNlaConnections")
     def downgrade_nla_connections(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
+        """
         return pulumi.get(self, "downgrade_nla_connections")
 
     @downgrade_nla_connections.setter
@@ -12468,6 +14511,9 @@ class ResourceRdpArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -12477,6 +14523,9 @@ class ResourceRdpArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -12486,6 +14535,9 @@ class ResourceRdpArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -12531,6 +14583,9 @@ class ResourceRdpArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -12554,12 +14609,18 @@ class ResourceRedisArgs:
                  tls_required: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] tls_required: If set, TLS must be used to connect to this resource.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -12587,6 +14648,9 @@ class ResourceRedisArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -12609,7 +14673,7 @@ class ResourceRedisArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12632,6 +14696,9 @@ class ResourceRedisArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -12641,6 +14708,9 @@ class ResourceRedisArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -12650,6 +14720,9 @@ class ResourceRedisArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -12695,6 +14768,9 @@ class ResourceRedisArgs:
     @property
     @pulumi.getter(name="tlsRequired")
     def tls_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
         return pulumi.get(self, "tls_required")
 
     @tls_required.setter
@@ -12704,6 +14780,9 @@ class ResourceRedisArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -12728,12 +14807,19 @@ class ResourceRedshiftArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -12762,6 +14848,9 @@ class ResourceRedshiftArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -12771,6 +14860,9 @@ class ResourceRedshiftArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -12793,7 +14885,7 @@ class ResourceRedshiftArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -12816,6 +14908,9 @@ class ResourceRedshiftArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -12825,6 +14920,9 @@ class ResourceRedshiftArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -12834,6 +14932,9 @@ class ResourceRedshiftArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -12843,6 +14944,9 @@ class ResourceRedshiftArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -12888,6 +14992,9 @@ class ResourceRedshiftArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -12913,12 +15020,20 @@ class ResourceSingleStoreArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[bool] require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -12949,6 +15064,9 @@ class ResourceSingleStoreArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -12958,6 +15076,9 @@ class ResourceSingleStoreArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -12980,7 +15101,7 @@ class ResourceSingleStoreArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13003,6 +15124,9 @@ class ResourceSingleStoreArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -13012,6 +15136,9 @@ class ResourceSingleStoreArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -13021,6 +15148,9 @@ class ResourceSingleStoreArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -13030,6 +15160,9 @@ class ResourceSingleStoreArgs:
     @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+        """
         return pulumi.get(self, "require_native_auth")
 
     @require_native_auth.setter
@@ -13075,6 +15208,9 @@ class ResourceSingleStoreArgs:
     @property
     @pulumi.getter(name="useAzureSingleServerUsernames")
     def use_azure_single_server_usernames(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, appends the hostname to the username when hitting a database.azure.com address
+        """
         return pulumi.get(self, "use_azure_single_server_usernames")
 
     @use_azure_single_server_usernames.setter
@@ -13084,6 +15220,9 @@ class ResourceSingleStoreArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -13107,12 +15246,18 @@ class ResourceSnowflakeArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] schema: The Schema to use to direct initial requests.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -13139,6 +15284,9 @@ class ResourceSnowflakeArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -13148,6 +15296,9 @@ class ResourceSnowflakeArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -13170,7 +15321,7 @@ class ResourceSnowflakeArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13193,6 +15344,9 @@ class ResourceSnowflakeArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -13202,6 +15356,9 @@ class ResourceSnowflakeArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -13211,6 +15368,9 @@ class ResourceSnowflakeArgs:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Schema to use to direct initial requests.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -13256,6 +15416,9 @@ class ResourceSnowflakeArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -13276,10 +15439,13 @@ class ResourceSnowsightArgs:
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] healthcheck_username: The StrongDM user email to use for healthchecks.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] saml_metadata: The Metadata for your snowflake IDP integration
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -13302,6 +15468,9 @@ class ResourceSnowsightArgs:
     @property
     @pulumi.getter(name="healthcheckUsername")
     def healthcheck_username(self) -> pulumi.Input[str]:
+        """
+        The StrongDM user email to use for healthchecks.
+        """
         return pulumi.get(self, "healthcheck_username")
 
     @healthcheck_username.setter
@@ -13336,7 +15505,7 @@ class ResourceSnowsightArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13359,6 +15528,9 @@ class ResourceSnowsightArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -13368,6 +15540,9 @@ class ResourceSnowsightArgs:
     @property
     @pulumi.getter(name="samlMetadata")
     def saml_metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Metadata for your snowflake IDP integration
+        """
         return pulumi.get(self, "saml_metadata")
 
     @saml_metadata.setter
@@ -13417,12 +15592,20 @@ class ResourceSqlServerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] schema: The Schema to use to direct initial requests.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -13453,6 +15636,9 @@ class ResourceSqlServerArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -13462,6 +15648,9 @@ class ResourceSqlServerArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -13484,7 +15673,7 @@ class ResourceSqlServerArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13507,6 +15696,9 @@ class ResourceSqlServerArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -13516,6 +15708,9 @@ class ResourceSqlServerArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -13525,6 +15720,9 @@ class ResourceSqlServerArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -13534,6 +15732,9 @@ class ResourceSqlServerArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -13543,6 +15744,9 @@ class ResourceSqlServerArgs:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Schema to use to direct initial requests.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -13588,6 +15792,9 @@ class ResourceSqlServerArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -13614,13 +15821,22 @@ class ResourceSqlServerAzureAdArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] client_id: The Azure AD application (client) ID with which to authenticate.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] schema: The Schema to use to direct initial requests.
+        :param pulumi.Input[str] secret: The Azure AD client secret (application password) with which to authenticate.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[str] tenant_id: * sql_server_kerberos_ad:
+        :param pulumi.Input[str] tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
+               * sql_server_kerberos_ad:
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -13653,6 +15869,9 @@ class ResourceSqlServerAzureAdArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -13662,6 +15881,9 @@ class ResourceSqlServerAzureAdArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -13684,7 +15906,7 @@ class ResourceSqlServerAzureAdArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13695,6 +15917,9 @@ class ResourceSqlServerAzureAdArgs:
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure AD application (client) ID with which to authenticate.
+        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -13716,6 +15941,9 @@ class ResourceSqlServerAzureAdArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -13725,6 +15953,9 @@ class ResourceSqlServerAzureAdArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -13734,6 +15965,9 @@ class ResourceSqlServerAzureAdArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -13743,6 +15977,9 @@ class ResourceSqlServerAzureAdArgs:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Schema to use to direct initial requests.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -13752,6 +15989,9 @@ class ResourceSqlServerAzureAdArgs:
     @property
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure AD client secret (application password) with which to authenticate.
+        """
         return pulumi.get(self, "secret")
 
     @secret.setter
@@ -13798,6 +16038,7 @@ class ResourceSqlServerAzureAdArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
+        The Azure AD directory (tenant) ID with which to authenticate.
         * sql_server_kerberos_ad:
         """
         return pulumi.get(self, "tenant_id")
@@ -13828,12 +16069,23 @@ class ResourceSqlServerKerberosAdArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] keytab: The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
+        :param pulumi.Input[str] krb_config: The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
+        :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] realm: The Active Directory domain (realm) to which the configured username belongs.
+        :param pulumi.Input[str] schema: The Schema to use to direct initial requests.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param pulumi.Input[str] server_spn: The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -13870,6 +16122,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -13879,6 +16134,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -13901,7 +16159,7 @@ class ResourceSqlServerKerberosAdArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -13924,6 +16182,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter
     def keytab(self) -> Optional[pulumi.Input[str]]:
+        """
+        The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
+        """
         return pulumi.get(self, "keytab")
 
     @keytab.setter
@@ -13933,6 +16194,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter(name="krbConfig")
     def krb_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
+        """
         return pulumi.get(self, "krb_config")
 
     @krb_config.setter
@@ -13942,6 +16206,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter(name="overrideDatabase")
     def override_database(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
         return pulumi.get(self, "override_database")
 
     @override_database.setter
@@ -13951,6 +16218,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -13960,6 +16230,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -13969,6 +16242,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter
     def realm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Active Directory domain (realm) to which the configured username belongs.
+        """
         return pulumi.get(self, "realm")
 
     @realm.setter
@@ -13978,6 +16254,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Schema to use to direct initial requests.
+        """
         return pulumi.get(self, "schema")
 
     @schema.setter
@@ -13999,6 +16278,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter(name="serverSpn")
     def server_spn(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
+        """
         return pulumi.get(self, "server_spn")
 
     @server_spn.setter
@@ -14032,6 +16314,9 @@ class ResourceSqlServerKerberosAdArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -14057,12 +16342,20 @@ class ResourceSshArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[bool] allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] key_type: The key type to use e.g. rsa-2048 or ed25519
+        :param pulumi.Input[bool] port_forwarding: Whether port forwarding is allowed through this server.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] public_key: The public key to append to a server's authorized keys. This will be generated after resource creation.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -14093,6 +16386,9 @@ class ResourceSshArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -14114,6 +16410,9 @@ class ResourceSshArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -14123,6 +16422,9 @@ class ResourceSshArgs:
     @property
     @pulumi.getter(name="allowDeprecatedKeyExchanges")
     def allow_deprecated_key_exchanges(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        """
         return pulumi.get(self, "allow_deprecated_key_exchanges")
 
     @allow_deprecated_key_exchanges.setter
@@ -14133,7 +16435,7 @@ class ResourceSshArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14156,6 +16458,9 @@ class ResourceSshArgs:
     @property
     @pulumi.getter(name="keyType")
     def key_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key type to use e.g. rsa-2048 or ed25519
+        """
         return pulumi.get(self, "key_type")
 
     @key_type.setter
@@ -14165,6 +16470,9 @@ class ResourceSshArgs:
     @property
     @pulumi.getter(name="portForwarding")
     def port_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether port forwarding is allowed through this server.
+        """
         return pulumi.get(self, "port_forwarding")
 
     @port_forwarding.setter
@@ -14174,6 +16482,9 @@ class ResourceSshArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -14183,6 +16494,9 @@ class ResourceSshArgs:
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public key to append to a server's authorized keys. This will be generated after resource creation.
+        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -14228,6 +16542,9 @@ class ResourceSshArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -14254,12 +16571,21 @@ class ResourceSshCertArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[bool] allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] key_type: The key type to use e.g. rsa-2048 or ed25519
+        :param pulumi.Input[bool] port_forwarding: Whether port forwarding is allowed through this server.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
+        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -14292,6 +16618,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -14313,6 +16642,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -14322,6 +16654,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter(name="allowDeprecatedKeyExchanges")
     def allow_deprecated_key_exchanges(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        """
         return pulumi.get(self, "allow_deprecated_key_exchanges")
 
     @allow_deprecated_key_exchanges.setter
@@ -14332,7 +16667,7 @@ class ResourceSshCertArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14355,6 +16690,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter(name="keyType")
     def key_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key type to use e.g. rsa-2048 or ed25519
+        """
         return pulumi.get(self, "key_type")
 
     @key_type.setter
@@ -14364,6 +16702,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter(name="portForwarding")
     def port_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether port forwarding is allowed through this server.
+        """
         return pulumi.get(self, "port_forwarding")
 
     @port_forwarding.setter
@@ -14373,6 +16714,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -14382,6 +16726,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the remote identity group to use for remote identity connections.
+        """
         return pulumi.get(self, "remote_identity_group_id")
 
     @remote_identity_group_id.setter
@@ -14391,6 +16738,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter(name="remoteIdentityHealthcheckUsername")
     def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        """
         return pulumi.get(self, "remote_identity_healthcheck_username")
 
     @remote_identity_healthcheck_username.setter
@@ -14436,6 +16786,9 @@ class ResourceSshCertArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -14460,12 +16813,19 @@ class ResourceSshCustomerKeyArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[bool] allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[bool] port_forwarding: Whether port forwarding is allowed through this server.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] private_key: The private key used to authenticate with the server.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -14494,6 +16854,9 @@ class ResourceSshCustomerKeyArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -14515,6 +16878,9 @@ class ResourceSshCustomerKeyArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -14524,6 +16890,9 @@ class ResourceSshCustomerKeyArgs:
     @property
     @pulumi.getter(name="allowDeprecatedKeyExchanges")
     def allow_deprecated_key_exchanges(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        """
         return pulumi.get(self, "allow_deprecated_key_exchanges")
 
     @allow_deprecated_key_exchanges.setter
@@ -14534,7 +16903,7 @@ class ResourceSshCustomerKeyArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14557,6 +16926,9 @@ class ResourceSshCustomerKeyArgs:
     @property
     @pulumi.getter(name="portForwarding")
     def port_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether port forwarding is allowed through this server.
+        """
         return pulumi.get(self, "port_forwarding")
 
     @port_forwarding.setter
@@ -14566,6 +16938,9 @@ class ResourceSshCustomerKeyArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -14575,6 +16950,9 @@ class ResourceSshCustomerKeyArgs:
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key used to authenticate with the server.
+        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -14620,6 +16998,9 @@ class ResourceSshCustomerKeyArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -14642,12 +17023,17 @@ class ResourceSybaseArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -14673,6 +17059,9 @@ class ResourceSybaseArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -14695,7 +17084,7 @@ class ResourceSybaseArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14718,6 +17107,9 @@ class ResourceSybaseArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -14727,6 +17119,9 @@ class ResourceSybaseArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -14736,6 +17131,9 @@ class ResourceSybaseArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -14781,6 +17179,9 @@ class ResourceSybaseArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -14803,12 +17204,17 @@ class ResourceSybaseIqArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -14834,6 +17240,9 @@ class ResourceSybaseIqArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -14856,7 +17265,7 @@ class ResourceSybaseIqArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -14879,6 +17288,9 @@ class ResourceSybaseIqArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -14888,6 +17300,9 @@ class ResourceSybaseIqArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -14897,6 +17312,9 @@ class ResourceSybaseIqArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -14942,6 +17360,9 @@ class ResourceSybaseIqArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -14964,12 +17385,17 @@ class ResourceTeradataArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
@@ -14995,6 +17421,9 @@ class ResourceTeradataArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -15017,7 +17446,7 @@ class ResourceTeradataArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -15040,6 +17469,9 @@ class ResourceTeradataArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -15049,6 +17481,9 @@ class ResourceTeradataArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -15058,6 +17493,9 @@ class ResourceTeradataArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -15103,6 +17541,9 @@ class ResourceTeradataArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -15126,12 +17567,18 @@ class ResourceTrinoArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
-        :param pulumi.Input[str] bind_interface: Bind interface
+        :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] password: The password to authenticate with.
+        :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        :param pulumi.Input[str] username: The username to authenticate with.
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
@@ -15158,6 +17605,9 @@ class ResourceTrinoArgs:
     @property
     @pulumi.getter
     def database(self) -> pulumi.Input[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -15167,6 +17617,9 @@ class ResourceTrinoArgs:
     @property
     @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
@@ -15189,7 +17642,7 @@ class ResourceTrinoArgs:
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
-        Bind interface
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
 
@@ -15212,6 +17665,9 @@ class ResourceTrinoArgs:
     @property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password to authenticate with.
+        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -15221,6 +17677,9 @@ class ResourceTrinoArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -15230,6 +17689,9 @@ class ResourceTrinoArgs:
     @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
+        """
+        The local port used by clients to connect to this resource.
+        """
         return pulumi.get(self, "port_override")
 
     @port_override.setter
@@ -15275,6 +17737,9 @@ class ResourceTrinoArgs:
     @property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -15290,6 +17755,7 @@ class SecretStoreAwsArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] region: The AWS region to target e.g. us-east-1
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -15312,6 +17778,9 @@ class SecretStoreAwsArgs:
     @property
     @pulumi.getter
     def region(self) -> pulumi.Input[str]:
+        """
+        The AWS region to target e.g. us-east-1
+        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -15339,7 +17808,8 @@ class SecretStoreAzureStoreArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
-        :param pulumi.Input[str] vault_uri: * cyberark_conjur:
+        :param pulumi.Input[str] vault_uri: The URI of the key vault to target e.g. https://myvault.vault.azure.net
+               * cyberark_conjur:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -15363,6 +17833,7 @@ class SecretStoreAzureStoreArgs:
     @pulumi.getter(name="vaultUri")
     def vault_uri(self) -> pulumi.Input[str]:
         """
+        The URI of the key vault to target e.g. https://myvault.vault.azure.net
         * cyberark_conjur:
         """
         return pulumi.get(self, "vault_uri")
@@ -15391,6 +17862,7 @@ class SecretStoreCyberarkConjurArgs:
                  name: pulumi.Input[str],
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] app_url: The URL of the Cyberark instance
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -15402,6 +17874,9 @@ class SecretStoreCyberarkConjurArgs:
     @property
     @pulumi.getter(name="appUrl")
     def app_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the Cyberark instance
+        """
         return pulumi.get(self, "app_url")
 
     @app_url.setter
@@ -15440,6 +17915,7 @@ class SecretStoreCyberarkPamArgs:
                  name: pulumi.Input[str],
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] app_url: The URL of the Cyberark instance
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -15451,6 +17927,9 @@ class SecretStoreCyberarkPamArgs:
     @property
     @pulumi.getter(name="appUrl")
     def app_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the Cyberark instance
+        """
         return pulumi.get(self, "app_url")
 
     @app_url.setter
@@ -15489,6 +17968,7 @@ class SecretStoreCyberarkPamExperimentalArgs:
                  name: pulumi.Input[str],
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] app_url: The URL of the Cyberark instance
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
@@ -15500,6 +17980,9 @@ class SecretStoreCyberarkPamExperimentalArgs:
     @property
     @pulumi.getter(name="appUrl")
     def app_url(self) -> pulumi.Input[str]:
+        """
+        The URL of the Cyberark instance
+        """
         return pulumi.get(self, "app_url")
 
     @app_url.setter
@@ -15540,8 +18023,10 @@ class SecretStoreDelineaStoreArgs:
                  tenant_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] server_url: The URL of the Delinea instance
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
-        :param pulumi.Input[str] tenant_name: * gcp_store:
+        :param pulumi.Input[str] tenant_name: The tenant name to target
+               * gcp_store:
         """
         pulumi.set(__self__, "name", name)
         if server_url is not None:
@@ -15566,6 +18051,9 @@ class SecretStoreDelineaStoreArgs:
     @property
     @pulumi.getter(name="serverUrl")
     def server_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the Delinea instance
+        """
         return pulumi.get(self, "server_url")
 
     @server_url.setter
@@ -15588,6 +18076,7 @@ class SecretStoreDelineaStoreArgs:
     @pulumi.getter(name="tenantName")
     def tenant_name(self) -> Optional[pulumi.Input[str]]:
         """
+        The tenant name to target
         * gcp_store:
         """
         return pulumi.get(self, "tenant_name")
@@ -15605,6 +18094,7 @@ class SecretStoreGcpStoreArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] project_id: The GCP project ID to target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -15627,6 +18117,9 @@ class SecretStoreGcpStoreArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        The GCP project ID to target.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -15655,6 +18148,8 @@ class SecretStoreVaultApproleArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] server_address: The URL of the Vault to target
+        :param pulumi.Input[str] namespace: The namespace to make requests within
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -15679,6 +18174,9 @@ class SecretStoreVaultApproleArgs:
     @property
     @pulumi.getter(name="serverAddress")
     def server_address(self) -> pulumi.Input[str]:
+        """
+        The URL of the Vault to target
+        """
         return pulumi.get(self, "server_address")
 
     @server_address.setter
@@ -15688,6 +18186,9 @@ class SecretStoreVaultApproleArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to make requests within
+        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -15718,7 +18219,12 @@ class SecretStoreVaultTlsArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[str] client_cert_path: A path to a client certificate file accessible by a Node
+        :param pulumi.Input[str] client_key_path: A path to a client key file accessible by a Node
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] server_address: The URL of the Vault to target
+        :param pulumi.Input[str] ca_cert_path: A path to a CA file accessible by a Node
+        :param pulumi.Input[str] namespace: The namespace to make requests within
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "client_cert_path", client_cert_path)
@@ -15735,6 +18241,9 @@ class SecretStoreVaultTlsArgs:
     @property
     @pulumi.getter(name="clientCertPath")
     def client_cert_path(self) -> pulumi.Input[str]:
+        """
+        A path to a client certificate file accessible by a Node
+        """
         return pulumi.get(self, "client_cert_path")
 
     @client_cert_path.setter
@@ -15744,6 +18253,9 @@ class SecretStoreVaultTlsArgs:
     @property
     @pulumi.getter(name="clientKeyPath")
     def client_key_path(self) -> pulumi.Input[str]:
+        """
+        A path to a client key file accessible by a Node
+        """
         return pulumi.get(self, "client_key_path")
 
     @client_key_path.setter
@@ -15765,6 +18277,9 @@ class SecretStoreVaultTlsArgs:
     @property
     @pulumi.getter(name="serverAddress")
     def server_address(self) -> pulumi.Input[str]:
+        """
+        The URL of the Vault to target
+        """
         return pulumi.get(self, "server_address")
 
     @server_address.setter
@@ -15774,6 +18289,9 @@ class SecretStoreVaultTlsArgs:
     @property
     @pulumi.getter(name="caCertPath")
     def ca_cert_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A path to a CA file accessible by a Node
+        """
         return pulumi.get(self, "ca_cert_path")
 
     @ca_cert_path.setter
@@ -15783,6 +18301,9 @@ class SecretStoreVaultTlsArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to make requests within
+        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -15811,6 +18332,8 @@ class SecretStoreVaultTokenArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] server_address: The URL of the Vault to target
+        :param pulumi.Input[str] namespace: The namespace to make requests within
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -15835,6 +18358,9 @@ class SecretStoreVaultTokenArgs:
     @property
     @pulumi.getter(name="serverAddress")
     def server_address(self) -> pulumi.Input[str]:
+        """
+        The URL of the Vault to target
+        """
         return pulumi.get(self, "server_address")
 
     @server_address.setter
@@ -15844,6 +18370,9 @@ class SecretStoreVaultTokenArgs:
     @property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to make requests within
+        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter

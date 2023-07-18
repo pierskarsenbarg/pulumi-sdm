@@ -15,11 +15,20 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class ResourceKubernetes
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
+        /// <summary>
+        /// The CA to authenticate TLS connections with.
+        /// </summary>
         public readonly string? CertificateAuthority;
+        /// <summary>
+        /// The certificate to authenticate TLS connections with.
+        /// </summary>
         public readonly string? ClientCertificate;
+        /// <summary>
+        /// The key to authenticate TLS connections with.
+        /// </summary>
         public readonly string? ClientKey;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
@@ -29,14 +38,29 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         /// </summary>
         public readonly string? HealthcheckNamespace;
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly string Hostname;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
+        /// <summary>
+        /// The ID of the remote identity group to use for remote identity connections.
+        /// </summary>
         public readonly string? RemoteIdentityGroupId;
+        /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        /// </summary>
         public readonly string? RemoteIdentityHealthcheckUsername;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.

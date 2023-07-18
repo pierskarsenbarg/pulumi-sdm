@@ -62,11 +62,15 @@ export interface NodeGateway {
      */
     bindAddress?: pulumi.Input<string>;
     /**
-     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     * ConnectsTo can be used to restrict the peering between relays and gateways.
+     */
+    connectsTo?: pulumi.Input<string>;
+    /**
+     * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device?: pulumi.Input<string>;
     /**
-     * GatewayFilter can be used to restrict the peering between relays and gateways.
+     * GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
      */
     gatewayFilter?: pulumi.Input<string>;
     /**
@@ -78,6 +82,10 @@ export interface NodeGateway {
      */
     location?: pulumi.Input<string>;
     /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.NodeGatewayMaintenanceWindow>[]>;
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name?: pulumi.Input<string>;
@@ -92,13 +100,22 @@ export interface NodeGateway {
     version?: pulumi.Input<string>;
 }
 
+export interface NodeGatewayMaintenanceWindow {
+    cronSchedule: pulumi.Input<string>;
+    requireIdleness: pulumi.Input<boolean>;
+}
+
 export interface NodeRelay {
     /**
-     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     * ConnectsTo can be used to restrict the peering between relays and gateways.
+     */
+    connectsTo?: pulumi.Input<string>;
+    /**
+     * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device?: pulumi.Input<string>;
     /**
-     * GatewayFilter can be used to restrict the peering between relays and gateways.
+     * GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
      */
     gatewayFilter?: pulumi.Input<string>;
     /**
@@ -106,6 +123,10 @@ export interface NodeRelay {
      */
     location?: pulumi.Input<string>;
     /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.NodeRelayMaintenanceWindow>[]>;
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name?: pulumi.Input<string>;
@@ -120,13 +141,27 @@ export interface NodeRelay {
     version?: pulumi.Input<string>;
 }
 
+export interface NodeRelayMaintenanceWindow {
+    cronSchedule: pulumi.Input<string>;
+    requireIdleness: pulumi.Input<boolean>;
+}
+
 export interface ResourceAks {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: pulumi.Input<string>;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -136,14 +171,29 @@ export interface ResourceAks {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -161,7 +211,7 @@ export interface ResourceAks {
 
 export interface ResourceAksBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -172,13 +222,25 @@ export interface ResourceAksBasicAuth {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -192,12 +254,15 @@ export interface ResourceAksBasicAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceAksServiceAccount {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -208,14 +273,29 @@ export interface ResourceAksServiceAccount {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -230,6 +310,7 @@ export interface ResourceAksServiceAccount {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: pulumi.Input<string>;
@@ -237,7 +318,7 @@ export interface ResourceAksServiceAccount {
 
 export interface ResourceAksServiceAccountUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -248,12 +329,21 @@ export interface ResourceAksServiceAccountUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -268,6 +358,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: pulumi.Input<string>;
@@ -275,11 +366,20 @@ export interface ResourceAksServiceAccountUserImpersonation {
 
 export interface ResourceAksUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: pulumi.Input<string>;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -289,12 +389,21 @@ export interface ResourceAksUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -311,17 +420,29 @@ export interface ResourceAksUserImpersonation {
 }
 
 export interface ResourceAmazonEks {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -331,12 +452,33 @@ export interface ResourceAmazonEks {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -354,15 +496,24 @@ export interface ResourceAmazonEks {
 
 export interface ResourceAmazonEksInstanceProfile {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -372,11 +523,29 @@ export interface ResourceAmazonEksInstanceProfile {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -394,15 +563,24 @@ export interface ResourceAmazonEksInstanceProfile {
 
 export interface ResourceAmazonEksInstanceProfileUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -412,11 +590,29 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -433,17 +629,29 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
 }
 
 export interface ResourceAmazonEksUserImpersonation {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -453,10 +661,25 @@ export interface ResourceAmazonEksUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -473,24 +696,45 @@ export interface ResourceAmazonEksUserImpersonation {
 }
 
 export interface ResourceAmazonEs {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -508,20 +752,32 @@ export interface ResourceAmazonEs {
 
 export interface ResourceAmazonmqAmqp091 {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -535,15 +791,27 @@ export interface ResourceAmazonmqAmqp091 {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceAthena {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: pulumi.Input<string>;
+    /**
+     * The AWS S3 output location.
+     */
     athenaOutput: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -554,10 +822,25 @@ export interface ResourceAthena {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region?: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -575,22 +858,40 @@ export interface ResourceAthena {
 
 export interface ResourceAuroraMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: pulumi.Input<boolean>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -604,28 +905,52 @@ export interface ResourceAuroraMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceAuroraPostgres {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -639,27 +964,48 @@ export interface ResourceAuroraPostgres {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceAws {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The AWS region healthcheck requests should attempt to connect to.
+     */
     healthcheckRegion: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -677,28 +1023,52 @@ export interface ResourceAws {
 
 export interface ResourceAwsConsole {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+     */
     enableEnvVariables?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     */
     sessionExpiry?: pulumi.Input<number>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -711,9 +1081,12 @@ export interface ResourceAwsConsole {
 }
 
 export interface ResourceAwsConsoleStaticKeyPair {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -724,17 +1097,41 @@ export interface ResourceAwsConsoleStaticKeyPair {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     */
     sessionExpiry?: pulumi.Input<number>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -747,9 +1144,12 @@ export interface ResourceAwsConsoleStaticKeyPair {
 }
 
 export interface ResourceAzure {
+    /**
+     * The application ID to authenticate with.
+     */
     appId?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -760,7 +1160,13 @@ export interface ResourceAzure {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -775,17 +1181,24 @@ export interface ResourceAzure {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: pulumi.Input<string>;
 }
 
 export interface ResourceAzureCertificate {
+    /**
+     * The application ID to authenticate with.
+     */
     appId?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -795,6 +1208,9 @@ export interface ResourceAzureCertificate {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -809,6 +1225,7 @@ export interface ResourceAzureCertificate {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: pulumi.Input<string>;
@@ -816,22 +1233,40 @@ export interface ResourceAzureCertificate {
 
 export interface ResourceAzureMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: pulumi.Input<boolean>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -845,28 +1280,52 @@ export interface ResourceAzureMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceAzurePostgres {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -880,25 +1339,99 @@ export interface ResourceAzurePostgres {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ResourceAzurePostgresManagedIdentity {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
+    useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceBigQuery {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The private key used to authenticate with the server.
+     */
     privateKey?: pulumi.Input<string>;
+    /**
+     * The project to connect to.
+     */
     project: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -912,25 +1445,40 @@ export interface ResourceBigQuery {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceCassandra {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -944,28 +1492,52 @@ export interface ResourceCassandra {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceCitus {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -979,27 +1551,48 @@ export interface ResourceCitus {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceClustrix {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: pulumi.Input<boolean>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1013,28 +1606,52 @@ export interface ResourceClustrix {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceCockroach {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1048,25 +1665,40 @@ export interface ResourceCockroach {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceDb2I {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1080,27 +1712,48 @@ export interface ResourceDb2I {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceDb2Luw {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1114,26 +1767,44 @@ export interface ResourceDb2Luw {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceDocumentDbHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1147,27 +1818,48 @@ export interface ResourceDocumentDbHost {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceDocumentDbReplicaSet {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: pulumi.Input<boolean>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1181,25 +1873,40 @@ export interface ResourceDocumentDbReplicaSet {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceDruid {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1213,28 +1920,52 @@ export interface ResourceDruid {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceDynamoDb {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1252,20 +1983,32 @@ export interface ResourceDynamoDb {
 
 export interface ResourceElastic {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1279,26 +2022,44 @@ export interface ResourceElastic {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceElasticacheRedis {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1312,25 +2073,40 @@ export interface ResourceElasticacheRedis {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceGcp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The service account keyfile to authenticate with.
+     */
     keyfile?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Space separated scopes that this login should assume into when authenticating.
+     */
     scopes: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1348,14 +2124,20 @@ export interface ResourceGcp {
 
 export interface ResourceGoogleGke {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -1365,12 +2147,21 @@ export interface ResourceGoogleGke {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * The service account key to authenticate with.
+     */
     serviceAccountKey?: pulumi.Input<string>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1384,14 +2175,20 @@ export interface ResourceGoogleGke {
 
 export interface ResourceGoogleGkeUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -1405,6 +2202,9 @@ export interface ResourceGoogleGkeUserImpersonation {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * The service account key to authenticate with.
+     */
     serviceAccountKey?: pulumi.Input<string>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1418,22 +2218,40 @@ export interface ResourceGoogleGkeUserImpersonation {
 
 export interface ResourceGreenplum {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1447,22 +2265,40 @@ export interface ResourceGreenplum {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceHttpAuth {
+    /**
+     * The content to set as the authorization header.
+     */
     authHeader?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: pulumi.Input<string>;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath: pulumi.Input<string>;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
@@ -1481,6 +2317,7 @@ export interface ResourceHttpAuth {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url: pulumi.Input<string>;
@@ -1488,21 +2325,36 @@ export interface ResourceHttpAuth {
 
 export interface ResourceHttpBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: pulumi.Input<string>;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath: pulumi.Input<string>;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1517,24 +2369,40 @@ export interface ResourceHttpBasicAuth {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url: pulumi.Input<string>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceHttpNoAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: pulumi.Input<string>;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath: pulumi.Input<string>;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
@@ -1553,6 +2421,7 @@ export interface ResourceHttpNoAuth {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url: pulumi.Input<string>;
@@ -1560,11 +2429,20 @@ export interface ResourceHttpNoAuth {
 
 export interface ResourceKubernetes {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: pulumi.Input<string>;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -1574,14 +2452,29 @@ export interface ResourceKubernetes {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1599,7 +2492,7 @@ export interface ResourceKubernetes {
 
 export interface ResourceKubernetesBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1610,13 +2503,25 @@ export interface ResourceKubernetesBasicAuth {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1630,12 +2535,15 @@ export interface ResourceKubernetesBasicAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceKubernetesServiceAccount {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1646,14 +2554,29 @@ export interface ResourceKubernetesServiceAccount {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1668,6 +2591,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: pulumi.Input<string>;
@@ -1675,7 +2599,7 @@ export interface ResourceKubernetesServiceAccount {
 
 export interface ResourceKubernetesServiceAccountUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
@@ -1686,12 +2610,21 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1706,6 +2639,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: pulumi.Input<string>;
@@ -1713,11 +2647,20 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
 
 export interface ResourceKubernetesUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: pulumi.Input<string>;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -1727,12 +2670,21 @@ export interface ResourceKubernetesUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1750,22 +2702,40 @@ export interface ResourceKubernetesUserImpersonation {
 
 export interface ResourceMaria {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: pulumi.Input<boolean>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1779,25 +2749,40 @@ export interface ResourceMaria {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMemcached {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1815,22 +2800,40 @@ export interface ResourceMemcached {
 
 export interface ResourceMemsql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: pulumi.Input<boolean>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1844,27 +2847,48 @@ export interface ResourceMemsql {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMongoHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1878,28 +2902,52 @@ export interface ResourceMongoHost {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMongoLegacyHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1913,29 +2961,56 @@ export interface ResourceMongoLegacyHost {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMongoLegacyReplicaset {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: pulumi.Input<boolean>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1949,29 +3024,56 @@ export interface ResourceMongoLegacyReplicaset {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMongoReplicaSet {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: pulumi.Input<boolean>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1985,26 +3087,44 @@ export interface ResourceMongoReplicaSet {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMongoShardedCluster {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2018,36 +3138,72 @@ export interface ResourceMongoShardedCluster {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMtlsMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: pulumi.Input<string>;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: pulumi.Input<boolean>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Server name for TLS verification (unverified by StrongDM if empty)
+     */
     serverName?: pulumi.Input<string>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2057,36 +3213,72 @@ export interface ResourceMtlsMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMtlsPostgres {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: pulumi.Input<string>;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: pulumi.Input<string>;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * Server name for TLS verification (unverified by StrongDM if empty)
+     */
     serverName?: pulumi.Input<string>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2096,27 +3288,48 @@ export interface ResourceMtlsPostgres {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: pulumi.Input<boolean>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2130,25 +3343,40 @@ export interface ResourceMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceNeptune {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2165,25 +3393,49 @@ export interface ResourceNeptune {
 }
 
 export interface ResourceNeptuneIam {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: pulumi.Input<string>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The AWS region to connect to.
+     */
     region: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: pulumi.Input<string>;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2201,21 +3453,36 @@ export interface ResourceNeptuneIam {
 
 export interface ResourceOracle {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2229,28 +3496,52 @@ export interface ResourceOracle {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourcePostgres {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2264,26 +3555,44 @@ export interface ResourcePostgres {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourcePresto {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2297,26 +3606,44 @@ export interface ResourcePresto {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceRabbitmqAmqp091 {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2330,25 +3657,40 @@ export interface ResourceRabbitmqAmqp091 {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceRawTcp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2366,21 +3708,36 @@ export interface ResourceRawTcp {
 
 export interface ResourceRdp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
+     */
     downgradeNlaConnections?: pulumi.Input<boolean>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2394,25 +3751,40 @@ export interface ResourceRdp {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceRedis {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2426,28 +3798,52 @@ export interface ResourceRedis {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceRedshift {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2461,27 +3857,48 @@ export interface ResourceRedshift {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSingleStore {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: pulumi.Input<boolean>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2495,27 +3912,48 @@ export interface ResourceSingleStore {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSnowflake {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2529,24 +3967,36 @@ export interface ResourceSnowflake {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSnowsight {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The StrongDM user email to use for healthchecks.
+     */
     healthcheckUsername: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The Metadata for your snowflake IDP integration
+     */
     samlMetadata?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2564,23 +4014,44 @@ export interface ResourceSnowsight {
 
 export interface ResourceSqlServer {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2594,29 +4065,56 @@ export interface ResourceSqlServer {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSqlServerAzureAd {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The Azure AD application (client) ID with which to authenticate.
+     */
     clientId?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: pulumi.Input<string>;
+    /**
+     * The Azure AD client secret (application password) with which to authenticate.
+     */
     secret?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2631,6 +4129,7 @@ export interface ResourceSqlServerAzureAd {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: pulumi.Input<string>;
@@ -2638,30 +4137,60 @@ export interface ResourceSqlServerAzureAd {
 
 export interface ResourceSqlServerKerberosAd {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
+    /**
+     * The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
+     */
     keytab?: pulumi.Input<string>;
+    /**
+     * The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
+     */
     krbConfig?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: pulumi.Input<boolean>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The Active Directory domain (realm) to which the configured username belongs.
+     */
     realm?: pulumi.Input<string>;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
+    /**
+     * The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
+     */
     serverSpn?: pulumi.Input<string>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2671,28 +4200,52 @@ export interface ResourceSqlServerKerberosAd {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSsh {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: pulumi.Input<boolean>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
+    /**
+     * The key type to use e.g. rsa-2048 or ed25519
+     */
     keyType?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: pulumi.Input<boolean>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The public key to append to a server's authorized keys. This will be generated after resource creation.
+     */
     publicKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2706,29 +4259,56 @@ export interface ResourceSsh {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSshCert {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: pulumi.Input<boolean>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
+    /**
+     * The key type to use e.g. rsa-2048 or ed25519
+     */
     keyType?: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: pulumi.Input<boolean>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2742,27 +4322,48 @@ export interface ResourceSshCert {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSshCustomerKey {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: pulumi.Input<boolean>;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: pulumi.Input<number>;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: pulumi.Input<boolean>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
+    /**
+     * The private key used to authenticate with the server.
+     */
     privateKey?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2776,25 +4377,40 @@ export interface ResourceSshCustomerKey {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSybase {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2808,25 +4424,40 @@ export interface ResourceSybase {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceSybaseIq {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2840,25 +4471,40 @@ export interface ResourceSybaseIq {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceTeradata {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2872,26 +4518,44 @@ export interface ResourceTeradata {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
 export interface ResourceTrino {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: pulumi.Input<string>;
     /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
     password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2905,6 +4569,9 @@ export interface ResourceTrino {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }
 
@@ -2913,6 +4580,9 @@ export interface SecretStoreAws {
      * Unique human-readable name of the SecretStore.
      */
     name: pulumi.Input<string>;
+    /**
+     * The AWS region to target e.g. us-east-1
+     */
     region: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -2930,12 +4600,16 @@ export interface SecretStoreAzureStore {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The URI of the key vault to target e.g. https://myvault.vault.azure.net
      * * cyberark_conjur:
      */
     vaultUri: pulumi.Input<string>;
 }
 
 export interface SecretStoreCyberarkConjur {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl: pulumi.Input<string>;
     /**
      * Unique human-readable name of the SecretStore.
@@ -2948,6 +4622,9 @@ export interface SecretStoreCyberarkConjur {
 }
 
 export interface SecretStoreCyberarkPam {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl: pulumi.Input<string>;
     /**
      * Unique human-readable name of the SecretStore.
@@ -2960,6 +4637,9 @@ export interface SecretStoreCyberarkPam {
 }
 
 export interface SecretStoreCyberarkPamExperimental {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl: pulumi.Input<string>;
     /**
      * Unique human-readable name of the SecretStore.
@@ -2976,12 +4656,16 @@ export interface SecretStoreDelineaStore {
      * Unique human-readable name of the SecretStore.
      */
     name: pulumi.Input<string>;
+    /**
+     * The URL of the Delinea instance
+     */
     serverUrl?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * The tenant name to target
      * * gcp_store:
      */
     tenantName?: pulumi.Input<string>;
@@ -2992,6 +4676,9 @@ export interface SecretStoreGcpStore {
      * Unique human-readable name of the SecretStore.
      */
     name: pulumi.Input<string>;
+    /**
+     * The GCP project ID to target.
+     */
     projectId: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -3004,7 +4691,13 @@ export interface SecretStoreVaultApprole {
      * Unique human-readable name of the SecretStore.
      */
     name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -3013,14 +4706,29 @@ export interface SecretStoreVaultApprole {
 }
 
 export interface SecretStoreVaultTls {
+    /**
+     * A path to a CA file accessible by a Node
+     */
     caCertPath?: pulumi.Input<string>;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
     clientCertPath: pulumi.Input<string>;
+    /**
+     * A path to a client key file accessible by a Node
+     */
     clientKeyPath: pulumi.Input<string>;
     /**
      * Unique human-readable name of the SecretStore.
      */
     name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
@@ -3033,7 +4741,13 @@ export interface SecretStoreVaultToken {
      * Unique human-readable name of the SecretStore.
      */
     name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
