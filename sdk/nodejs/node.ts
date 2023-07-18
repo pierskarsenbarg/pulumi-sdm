@@ -7,6 +7,35 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+ *  There are two types of nodes:
+ *  1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+ *  2. **Gateways:** a relay that also listens for connections from strongDM clients
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * const gateway = new sdm.Node("gateway", {gateway: {
+ *     bindAddress: "0.0.0.0:21222",
+ *     listenAddress: "165.23.40.1:21222",
+ *     name: "test-gateway",
+ *     tags: {
+ *         env: "dev",
+ *         region: "us-west",
+ *     },
+ * }});
+ * const relay = new sdm.Node("relay", {relay: {
+ *     name: "test-relay",
+ *     tags: {
+ *         env: "dev",
+ *         region: "us-west",
+ *     },
+ * }});
+ * ```
+ * This resource can be imported using the import command.
+ *
  * ## Import
  *
  * Node can be imported using the id, e.g.,

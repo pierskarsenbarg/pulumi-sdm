@@ -106,6 +106,34 @@ class Account(pulumi.CustomResource):
                  user: Optional[pulumi.Input[pulumi.InputType['AccountUserArgs']]] = None,
                  __props__=None):
         """
+        Accounts are users that have access to strongDM. There are two types of accounts:
+         1. **Users:** humans who are authenticated through username and password or SSO.
+         2. **Service Accounts:** machines that are authenticated using a service token.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        test_user = sdm.Account("test-user", user=sdm.AccountUserArgs(
+            email="albob@strongdm.com",
+            first_name="al",
+            last_name="bob",
+            tags={
+                "env": "dev",
+                "region": "us-west",
+            },
+        ))
+        test_service = sdm.Account("test-service", service=sdm.AccountServiceArgs(
+            name="test-service",
+            tags={
+                "env": "dev",
+                "region": "us-west",
+            },
+        ))
+        ```
+        This resource can be imported using the import command.
+
         ## Import
 
         Account can be imported using the id, e.g.,
@@ -127,6 +155,34 @@ class Account(pulumi.CustomResource):
                  args: Optional[AccountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Accounts are users that have access to strongDM. There are two types of accounts:
+         1. **Users:** humans who are authenticated through username and password or SSO.
+         2. **Service Accounts:** machines that are authenticated using a service token.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        test_user = sdm.Account("test-user", user=sdm.AccountUserArgs(
+            email="albob@strongdm.com",
+            first_name="al",
+            last_name="bob",
+            tags={
+                "env": "dev",
+                "region": "us-west",
+            },
+        ))
+        test_service = sdm.Account("test-service", service=sdm.AccountServiceArgs(
+            name="test-service",
+            tags={
+                "env": "dev",
+                "region": "us-west",
+            },
+        ))
+        ```
+        This resource can be imported using the import command.
+
         ## Import
 
         Account can be imported using the id, e.g.,

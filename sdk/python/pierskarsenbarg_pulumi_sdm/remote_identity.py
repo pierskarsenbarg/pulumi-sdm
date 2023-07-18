@@ -130,6 +130,9 @@ class RemoteIdentity(pulumi.CustomResource):
                  username: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        RemoteIdentities define the username to be used for a specific account
+         when connecting to a remote resource using that group.
+
         ## Import
 
         RemoteIdentity can be imported using the id, e.g.,
@@ -151,6 +154,9 @@ class RemoteIdentity(pulumi.CustomResource):
                  args: RemoteIdentityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        RemoteIdentities define the username to be used for a specific account
+         when connecting to a remote resource using that group.
+
         ## Import
 
         RemoteIdentity can be imported using the id, e.g.,

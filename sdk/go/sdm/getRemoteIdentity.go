@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,7 +42,7 @@ import (
 //
 // ```
 func LookupRemoteIdentity(ctx *pulumi.Context, args *LookupRemoteIdentityArgs, opts ...pulumi.InvokeOption) (*LookupRemoteIdentityResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemoteIdentityResult
 	err := ctx.Invoke("sdm:index/getRemoteIdentity:getRemoteIdentity", args, &rv, opts...)
 	if err != nil {

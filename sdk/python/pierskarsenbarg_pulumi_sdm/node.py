@@ -102,6 +102,35 @@ class Node(pulumi.CustomResource):
                  relay: Optional[pulumi.Input[pulumi.InputType['NodeRelayArgs']]] = None,
                  __props__=None):
         """
+        Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+         There are two types of nodes:
+         1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+         2. **Gateways:** a relay that also listens for connections from strongDM clients
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        gateway = sdm.Node("gateway", gateway=sdm.NodeGatewayArgs(
+            bind_address="0.0.0.0:21222",
+            listen_address="165.23.40.1:21222",
+            name="test-gateway",
+            tags={
+                "env": "dev",
+                "region": "us-west",
+            },
+        ))
+        relay = sdm.Node("relay", relay=sdm.NodeRelayArgs(
+            name="test-relay",
+            tags={
+                "env": "dev",
+                "region": "us-west",
+            },
+        ))
+        ```
+        This resource can be imported using the import command.
+
         ## Import
 
         Node can be imported using the id, e.g.,
@@ -122,6 +151,35 @@ class Node(pulumi.CustomResource):
                  args: Optional[NodeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+         There are two types of nodes:
+         1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+         2. **Gateways:** a relay that also listens for connections from strongDM clients
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        gateway = sdm.Node("gateway", gateway=sdm.NodeGatewayArgs(
+            bind_address="0.0.0.0:21222",
+            listen_address="165.23.40.1:21222",
+            name="test-gateway",
+            tags={
+                "env": "dev",
+                "region": "us-west",
+            },
+        ))
+        relay = sdm.Node("relay", relay=sdm.NodeRelayArgs(
+            name="test-relay",
+            tags={
+                "env": "dev",
+                "region": "us-west",
+            },
+        ))
+        ```
+        This resource can be imported using the import command.
+
         ## Import
 
         Node can be imported using the id, e.g.,

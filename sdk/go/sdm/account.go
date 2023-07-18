@@ -7,9 +7,61 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accounts are users that have access to strongDM. There are two types of accounts:
+//  1. **Users:** humans who are authenticated through username and password or SSO.
+//  2. **Service Accounts:** machines that are authenticated using a service token.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.NewAccount(ctx, "test-user", &sdm.AccountArgs{
+//				User: &sdm.AccountUserArgs{
+//					Email:     pulumi.String("albob@strongdm.com"),
+//					FirstName: pulumi.String("al"),
+//					LastName:  pulumi.String("bob"),
+//					Tags: pulumi.StringMap{
+//						"env":    pulumi.String("dev"),
+//						"region": pulumi.String("us-west"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.NewAccount(ctx, "test-service", &sdm.AccountArgs{
+//				Service: &sdm.AccountServiceArgs{
+//					Name: pulumi.String("test-service"),
+//					Tags: pulumi.StringMap{
+//						"env":    pulumi.String("dev"),
+//						"region": pulumi.String("us-west"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// This resource can be imported using the import command.
+//
 // ## Import
 //
 // Account can be imported using the id, e.g.,
@@ -36,7 +88,7 @@ func NewAccount(ctx *pulumi.Context,
 		args = &AccountArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Account
 	err := ctx.RegisterResource("sdm:index/account:Account", name, args, &resource, opts...)
 	if err != nil {

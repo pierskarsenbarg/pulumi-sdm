@@ -7,9 +7,63 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+//
+//	There are two types of nodes:
+//	1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+//	2. **Gateways:** a relay that also listens for connections from strongDM clients
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.NewNode(ctx, "gateway", &sdm.NodeArgs{
+//				Gateway: &sdm.NodeGatewayArgs{
+//					BindAddress:   pulumi.String("0.0.0.0:21222"),
+//					ListenAddress: pulumi.String("165.23.40.1:21222"),
+//					Name:          pulumi.String("test-gateway"),
+//					Tags: pulumi.StringMap{
+//						"env":    pulumi.String("dev"),
+//						"region": pulumi.String("us-west"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.NewNode(ctx, "relay", &sdm.NodeArgs{
+//				Relay: &sdm.NodeRelayArgs{
+//					Name: pulumi.String("test-relay"),
+//					Tags: pulumi.StringMap{
+//						"env":    pulumi.String("dev"),
+//						"region": pulumi.String("us-west"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// This resource can be imported using the import command.
+//
 // ## Import
 //
 // Node can be imported using the id, e.g.,
@@ -35,7 +89,7 @@ func NewNode(ctx *pulumi.Context,
 		args = &NodeArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Node
 	err := ctx.RegisterResource("sdm:index/node:Node", name, args, &resource, opts...)
 	if err != nil {

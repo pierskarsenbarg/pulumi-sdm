@@ -11,6 +11,62 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm
 {
     /// <summary>
+    /// A Role has a list of access rules which determine which Resources the members
+    ///  of the Role have access to. An Account can be a member of multiple Roles via
+    ///  AccountAttachments.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Sdm = PiersKarsenbarg.Sdm;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var engineers = new Sdm.Role("engineers", new()
+    ///     {
+    ///         Tags = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var example_role = new Sdm.Role("example-role", new()
+    ///     {
+    ///         AccessRules = JsonSerializer.Serialize(new[]
+    ///         {
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["env"] = "staging",
+    ///                 },
+    ///             },
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["type"] = "postgres",
+    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["region"] = "us-west",
+    ///                     ["env"] = "dev",
+    ///                 },
+    ///             },
+    ///             new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["ids"] = new[]
+    ///                 {
+    ///                     "rs-093e6f3061eb4dad",
+    ///                 },
+    ///             },
+    ///         }),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// This resource can be imported using the import command.
+    /// 
     /// ## Import
     /// 
     /// Role can be imported using the id, e.g.,

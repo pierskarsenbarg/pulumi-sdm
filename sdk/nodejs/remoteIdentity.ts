@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * RemoteIdentities define the username to be used for a specific account
+ *  when connecting to a remote resource using that group.
+ *
  * ## Import
  *
  * RemoteIdentity can be imported using the id, e.g.,

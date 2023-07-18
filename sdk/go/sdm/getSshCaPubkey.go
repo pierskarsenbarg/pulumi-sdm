@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,7 +36,7 @@ import (
 //
 // ```
 func GetSshCaPubkey(ctx *pulumi.Context, args *GetSshCaPubkeyArgs, opts ...pulumi.InvokeOption) (*GetSshCaPubkeyResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSshCaPubkeyResult
 	err := ctx.Invoke("sdm:index/getSshCaPubkey:getSshCaPubkey", args, &rv, opts...)
 	if err != nil {

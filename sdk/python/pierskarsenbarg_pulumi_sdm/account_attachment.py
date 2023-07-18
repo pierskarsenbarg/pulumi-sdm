@@ -98,6 +98,19 @@ class AccountAttachment(pulumi.CustomResource):
                  role_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        AccountAttachments assign an account to a role.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        test_account_attachment = sdm.AccountAttachment("testAccountAttachment",
+            account_id="a-00000054",
+            role_id="r-12355562")
+        ```
+        This resource can be imported using the import command.
+
         ## Import
 
         AccountAttachment can be imported using the id, e.g.,
@@ -118,6 +131,19 @@ class AccountAttachment(pulumi.CustomResource):
                  args: AccountAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        AccountAttachments assign an account to a role.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        test_account_attachment = sdm.AccountAttachment("testAccountAttachment",
+            account_id="a-00000054",
+            role_id="r-12355562")
+        ```
+        This resource can be imported using the import command.
+
         ## Import
 
         AccountAttachment can be imported using the id, e.g.,

@@ -8,9 +8,14 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// RemoteIdentities define the username to be used for a specific account
+//
+//	when connecting to a remote resource using that group.
+//
 // ## Import
 //
 // RemoteIdentity can be imported using the id, e.g.,
@@ -47,7 +52,7 @@ func NewRemoteIdentity(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RemoteIdentity
 	err := ctx.RegisterResource("sdm:index/remoteIdentity:RemoteIdentity", name, args, &resource, opts...)
 	if err != nil {

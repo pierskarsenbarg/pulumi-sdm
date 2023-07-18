@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,7 +15,7 @@ import (
 //
 //	Coming soon support for HashiCorp Vault and AWS Secret Store.
 func LookupSecretStore(ctx *pulumi.Context, args *LookupSecretStoreArgs, opts ...pulumi.InvokeOption) (*LookupSecretStoreResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretStoreResult
 	err := ctx.Invoke("sdm:index/getSecretStore:getSecretStore", args, &rv, opts...)
 	if err != nil {

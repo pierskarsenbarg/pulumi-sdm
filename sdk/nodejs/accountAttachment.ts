@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * AccountAttachments assign an account to a role.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * const testAccountAttachment = new sdm.AccountAttachment("testAccountAttachment", {
+ *     accountId: "a-00000054",
+ *     roleId: "r-12355562",
+ * });
+ * ```
+ * This resource can be imported using the import command.
+ *
  * ## Import
  *
  * AccountAttachment can be imported using the id, e.g.,
