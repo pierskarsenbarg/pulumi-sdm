@@ -14,18 +14,33 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class ResourceHttpAuth
     {
+        /// <summary>
+        /// The content to set as the authorization header.
+        /// </summary>
         public readonly string? AuthHeader;
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
+        /// <summary>
+        /// Automatically redirect to this path upon connecting.
+        /// </summary>
         public readonly string? DefaultPath;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// Header names (e.g. Authorization), to omit from logs.
+        /// </summary>
         public readonly string? HeadersBlacklist;
+        /// <summary>
+        /// This path will be used to check the health of your site.
+        /// </summary>
         public readonly string HealthcheckPath;
+        /// <summary>
+        /// The host header will be overwritten with this field if provided.
+        /// </summary>
         public readonly string? HostOverride;
         /// <summary>
         /// Unique human-readable name of the Resource.
@@ -44,6 +59,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
+        /// The base address of your website without the path.
         /// * kubernetes:
         /// </summary>
         public readonly string Url;

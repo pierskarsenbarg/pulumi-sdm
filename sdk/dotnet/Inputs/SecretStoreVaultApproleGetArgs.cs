@@ -19,9 +19,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace to make requests within
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// The URL of the Vault to target
+        /// </summary>
         [Input("serverAddress", required: true)]
         public Input<string> ServerAddress { get; set; } = null!;
 

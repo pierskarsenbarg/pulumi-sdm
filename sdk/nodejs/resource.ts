@@ -71,6 +71,11 @@ export class Resource extends pulumi.CustomResource {
     public readonly azureCertificate!: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
     public readonly azureMysql!: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
     public readonly azurePostgres!: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
+    /**
+     * AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+     * version bump.
+     */
+    public readonly azurePostgresManagedIdentity!: pulumi.Output<outputs.ResourceAzurePostgresManagedIdentity | undefined>;
     public readonly bigQuery!: pulumi.Output<outputs.ResourceBigQuery | undefined>;
     public readonly cassandra!: pulumi.Output<outputs.ResourceCassandra | undefined>;
     public readonly citus!: pulumi.Output<outputs.ResourceCitus | undefined>;
@@ -183,6 +188,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["azureCertificate"] = state ? state.azureCertificate : undefined;
             resourceInputs["azureMysql"] = state ? state.azureMysql : undefined;
             resourceInputs["azurePostgres"] = state ? state.azurePostgres : undefined;
+            resourceInputs["azurePostgresManagedIdentity"] = state ? state.azurePostgresManagedIdentity : undefined;
             resourceInputs["bigQuery"] = state ? state.bigQuery : undefined;
             resourceInputs["cassandra"] = state ? state.cassandra : undefined;
             resourceInputs["citus"] = state ? state.citus : undefined;
@@ -265,6 +271,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["azureCertificate"] = args ? args.azureCertificate : undefined;
             resourceInputs["azureMysql"] = args ? args.azureMysql : undefined;
             resourceInputs["azurePostgres"] = args ? args.azurePostgres : undefined;
+            resourceInputs["azurePostgresManagedIdentity"] = args ? args.azurePostgresManagedIdentity : undefined;
             resourceInputs["bigQuery"] = args ? args.bigQuery : undefined;
             resourceInputs["cassandra"] = args ? args.cassandra : undefined;
             resourceInputs["citus"] = args ? args.citus : undefined;
@@ -362,6 +369,11 @@ export interface ResourceState {
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
+    /**
+     * AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+     * version bump.
+     */
+    azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
     cassandra?: pulumi.Input<inputs.ResourceCassandra>;
     citus?: pulumi.Input<inputs.ResourceCitus>;
@@ -473,6 +485,11 @@ export interface ResourceArgs {
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
+    /**
+     * AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+     * version bump.
+     */
+    azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
     cassandra?: pulumi.Input<inputs.ResourceCassandra>;
     citus?: pulumi.Input<inputs.ResourceCitus>;

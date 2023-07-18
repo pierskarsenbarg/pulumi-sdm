@@ -14,14 +14,29 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class SecretStoreVaultTls
     {
+        /// <summary>
+        /// A path to a CA file accessible by a Node
+        /// </summary>
         public readonly string? CaCertPath;
+        /// <summary>
+        /// A path to a client certificate file accessible by a Node
+        /// </summary>
         public readonly string ClientCertPath;
+        /// <summary>
+        /// A path to a client key file accessible by a Node
+        /// </summary>
         public readonly string ClientKeyPath;
         /// <summary>
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The namespace to make requests within
+        /// </summary>
         public readonly string? Namespace;
+        /// <summary>
+        /// The URL of the Vault to target
+        /// </summary>
         public readonly string ServerAddress;
         /// <summary>
         /// Tags is a map of key, value pairs.

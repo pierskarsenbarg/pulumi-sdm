@@ -37,6 +37,7 @@ class ResourceArgs:
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
                  azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
+                 azure_postgres_managed_identity: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']] = None,
                  big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
                  cassandra: Optional[pulumi.Input['ResourceCassandraArgs']] = None,
                  citus: Optional[pulumi.Input['ResourceCitusArgs']] = None,
@@ -101,6 +102,8 @@ class ResourceArgs:
         :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input['ResourceAzurePostgresManagedIdentityArgs'] azure_postgres_managed_identity: AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+               version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -150,6 +153,8 @@ class ResourceArgs:
             pulumi.set(__self__, "azure_mysql", azure_mysql)
         if azure_postgres is not None:
             pulumi.set(__self__, "azure_postgres", azure_postgres)
+        if azure_postgres_managed_identity is not None:
+            pulumi.set(__self__, "azure_postgres_managed_identity", azure_postgres_managed_identity)
         if big_query is not None:
             pulumi.set(__self__, "big_query", big_query)
         if cassandra is not None:
@@ -464,6 +469,19 @@ class ResourceArgs:
     @azure_postgres.setter
     def azure_postgres(self, value: Optional[pulumi.Input['ResourceAzurePostgresArgs']]):
         pulumi.set(self, "azure_postgres", value)
+
+    @property
+    @pulumi.getter(name="azurePostgresManagedIdentity")
+    def azure_postgres_managed_identity(self) -> Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]:
+        """
+        AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+        version bump.
+        """
+        return pulumi.get(self, "azure_postgres_managed_identity")
+
+    @azure_postgres_managed_identity.setter
+    def azure_postgres_managed_identity(self, value: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]):
+        pulumi.set(self, "azure_postgres_managed_identity", value)
 
     @property
     @pulumi.getter(name="bigQuery")
@@ -1039,6 +1057,7 @@ class _ResourceState:
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
                  azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
                  azure_postgres: Optional[pulumi.Input['ResourceAzurePostgresArgs']] = None,
+                 azure_postgres_managed_identity: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']] = None,
                  big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
                  cassandra: Optional[pulumi.Input['ResourceCassandraArgs']] = None,
                  citus: Optional[pulumi.Input['ResourceCitusArgs']] = None,
@@ -1103,6 +1122,8 @@ class _ResourceState:
         :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input['ResourceAzurePostgresManagedIdentityArgs'] azure_postgres_managed_identity: AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+               version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1152,6 +1173,8 @@ class _ResourceState:
             pulumi.set(__self__, "azure_mysql", azure_mysql)
         if azure_postgres is not None:
             pulumi.set(__self__, "azure_postgres", azure_postgres)
+        if azure_postgres_managed_identity is not None:
+            pulumi.set(__self__, "azure_postgres_managed_identity", azure_postgres_managed_identity)
         if big_query is not None:
             pulumi.set(__self__, "big_query", big_query)
         if cassandra is not None:
@@ -1466,6 +1489,19 @@ class _ResourceState:
     @azure_postgres.setter
     def azure_postgres(self, value: Optional[pulumi.Input['ResourceAzurePostgresArgs']]):
         pulumi.set(self, "azure_postgres", value)
+
+    @property
+    @pulumi.getter(name="azurePostgresManagedIdentity")
+    def azure_postgres_managed_identity(self) -> Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]:
+        """
+        AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+        version bump.
+        """
+        return pulumi.get(self, "azure_postgres_managed_identity")
+
+    @azure_postgres_managed_identity.setter
+    def azure_postgres_managed_identity(self, value: Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]):
+        pulumi.set(self, "azure_postgres_managed_identity", value)
 
     @property
     @pulumi.getter(name="bigQuery")
@@ -2043,6 +2079,7 @@ class Resource(pulumi.CustomResource):
                  azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
                  azure_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']]] = None,
                  azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
+                 azure_postgres_managed_identity: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresManagedIdentityArgs']]] = None,
                  big_query: Optional[pulumi.Input[pulumi.InputType['ResourceBigQueryArgs']]] = None,
                  cassandra: Optional[pulumi.Input[pulumi.InputType['ResourceCassandraArgs']]] = None,
                  citus: Optional[pulumi.Input[pulumi.InputType['ResourceCitusArgs']]] = None,
@@ -2117,6 +2154,8 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input[pulumi.InputType['ResourceAzurePostgresManagedIdentityArgs']] azure_postgres_managed_identity: AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+               version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2175,6 +2214,7 @@ class Resource(pulumi.CustomResource):
                  azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
                  azure_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']]] = None,
                  azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
+                 azure_postgres_managed_identity: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresManagedIdentityArgs']]] = None,
                  big_query: Optional[pulumi.Input[pulumi.InputType['ResourceBigQueryArgs']]] = None,
                  cassandra: Optional[pulumi.Input[pulumi.InputType['ResourceCassandraArgs']]] = None,
                  citus: Optional[pulumi.Input[pulumi.InputType['ResourceCitusArgs']]] = None,
@@ -2264,6 +2304,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["azure_certificate"] = azure_certificate
             __props__.__dict__["azure_mysql"] = azure_mysql
             __props__.__dict__["azure_postgres"] = azure_postgres
+            __props__.__dict__["azure_postgres_managed_identity"] = azure_postgres_managed_identity
             __props__.__dict__["big_query"] = big_query
             __props__.__dict__["cassandra"] = cassandra
             __props__.__dict__["citus"] = citus
@@ -2354,6 +2395,7 @@ class Resource(pulumi.CustomResource):
             azure_certificate: Optional[pulumi.Input[pulumi.InputType['ResourceAzureCertificateArgs']]] = None,
             azure_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAzureMysqlArgs']]] = None,
             azure_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresArgs']]] = None,
+            azure_postgres_managed_identity: Optional[pulumi.Input[pulumi.InputType['ResourceAzurePostgresManagedIdentityArgs']]] = None,
             big_query: Optional[pulumi.Input[pulumi.InputType['ResourceBigQueryArgs']]] = None,
             cassandra: Optional[pulumi.Input[pulumi.InputType['ResourceCassandraArgs']]] = None,
             citus: Optional[pulumi.Input[pulumi.InputType['ResourceCitusArgs']]] = None,
@@ -2423,6 +2465,8 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
                bump.
+        :param pulumi.Input[pulumi.InputType['ResourceAzurePostgresManagedIdentityArgs']] azure_postgres_managed_identity: AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+               version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2455,6 +2499,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["azure_certificate"] = azure_certificate
         __props__.__dict__["azure_mysql"] = azure_mysql
         __props__.__dict__["azure_postgres"] = azure_postgres
+        __props__.__dict__["azure_postgres_managed_identity"] = azure_postgres_managed_identity
         __props__.__dict__["big_query"] = big_query
         __props__.__dict__["cassandra"] = cassandra
         __props__.__dict__["citus"] = citus
@@ -2627,6 +2672,15 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="azurePostgres")
     def azure_postgres(self) -> pulumi.Output[Optional['outputs.ResourceAzurePostgres']]:
         return pulumi.get(self, "azure_postgres")
+
+    @property
+    @pulumi.getter(name="azurePostgresManagedIdentity")
+    def azure_postgres_managed_identity(self) -> pulumi.Output[Optional['outputs.ResourceAzurePostgresManagedIdentity']]:
+        """
+        AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
+        version bump.
+        """
+        return pulumi.get(self, "azure_postgres_managed_identity")
 
     @property
     @pulumi.getter(name="bigQuery")

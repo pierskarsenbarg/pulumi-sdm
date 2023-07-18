@@ -18,7 +18,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The namespace to make requests within
+        /// </summary>
         public readonly string? Namespace;
+        /// <summary>
+        /// The URL of the Vault to target
+        /// </summary>
         public readonly string ServerAddress;
         /// <summary>
         /// Tags is a map of key, value pairs.

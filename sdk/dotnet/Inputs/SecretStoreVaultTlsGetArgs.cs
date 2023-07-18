@@ -13,12 +13,21 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
     public sealed class SecretStoreVaultTlsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A path to a CA file accessible by a Node
+        /// </summary>
         [Input("caCertPath")]
         public Input<string>? CaCertPath { get; set; }
 
+        /// <summary>
+        /// A path to a client certificate file accessible by a Node
+        /// </summary>
         [Input("clientCertPath", required: true)]
         public Input<string> ClientCertPath { get; set; } = null!;
 
+        /// <summary>
+        /// A path to a client key file accessible by a Node
+        /// </summary>
         [Input("clientKeyPath", required: true)]
         public Input<string> ClientKeyPath { get; set; } = null!;
 
@@ -28,9 +37,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The namespace to make requests within
+        /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }
 
+        /// <summary>
+        /// The URL of the Vault to target
+        /// </summary>
         [Input("serverAddress", required: true)]
         public Input<string> ServerAddress { get; set; } = null!;
 

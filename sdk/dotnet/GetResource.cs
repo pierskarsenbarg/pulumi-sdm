@@ -84,6 +84,9 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class GetResourceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("hostname")]
         public string? Hostname { get; set; }
 
@@ -99,6 +102,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("port")]
         public int? Port { get; set; }
 
@@ -120,6 +126,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("type")]
         public string? Type { get; set; }
 
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         [Input("username")]
         public string? Username { get; set; }
 
@@ -131,6 +140,9 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class GetResourceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
@@ -146,6 +158,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
@@ -167,6 +182,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
@@ -180,6 +198,9 @@ namespace PiersKarsenbarg.Sdm
     [OutputType]
     public sealed class GetResourceResult
     {
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly string? Hostname;
         /// <summary>
         /// Unique identifier of the Resource.
@@ -193,6 +214,9 @@ namespace PiersKarsenbarg.Sdm
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly int? Port;
         /// <summary>
         /// A single element list containing a map, where each key lists one of the following objects:
@@ -204,6 +228,9 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         public readonly string? Type;
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

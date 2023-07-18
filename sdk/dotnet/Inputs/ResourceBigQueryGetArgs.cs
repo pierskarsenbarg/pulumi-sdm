@@ -14,7 +14,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceBigQueryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
@@ -25,6 +25,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
 
+        /// <summary>
+        /// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
 
@@ -34,11 +37,18 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
         [Input("privateKey")]
         private Input<string>? _privateKey;
+
+        /// <summary>
+        /// The private key used to authenticate with the server.
+        /// </summary>
         public Input<string>? PrivateKey
         {
             get => _privateKey;
@@ -49,6 +59,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             }
         }
 
+        /// <summary>
+        /// The project to connect to.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -76,6 +89,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

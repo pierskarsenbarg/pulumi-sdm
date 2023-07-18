@@ -14,7 +14,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceSnowsightArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
@@ -25,6 +25,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
 
+        /// <summary>
+        /// The StrongDM user email to use for healthchecks.
+        /// </summary>
         [Input("healthcheckUsername", required: true)]
         public Input<string> HealthcheckUsername { get; set; } = null!;
 
@@ -34,9 +37,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
+        /// <summary>
+        /// The Metadata for your snowflake IDP integration
+        /// </summary>
         [Input("samlMetadata")]
         public Input<string>? SamlMetadata { get; set; }
 

@@ -145,11 +145,15 @@ export interface GetNodeNodeGateway {
      */
     bindAddress?: string;
     /**
-     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     * ConnectsTo can be used to restrict the peering between relays and gateways.
+     */
+    connectsTo?: string;
+    /**
+     * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device: string;
     /**
-     * GatewayFilter can be used to restrict the peering between relays and gateways.
+     * GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
      */
     gatewayFilter?: string;
     /**
@@ -165,6 +169,10 @@ export interface GetNodeNodeGateway {
      */
     location: string;
     /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: outputs.GetNodeNodeGatewayMaintenanceWindow[];
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name?: string;
@@ -178,13 +186,22 @@ export interface GetNodeNodeGateway {
     version: string;
 }
 
+export interface GetNodeNodeGatewayMaintenanceWindow {
+    cronSchedule: string;
+    requireIdleness: boolean;
+}
+
 export interface GetNodeNodeRelay {
     /**
-     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     * ConnectsTo can be used to restrict the peering between relays and gateways.
+     */
+    connectsTo?: string;
+    /**
+     * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device: string;
     /**
-     * GatewayFilter can be used to restrict the peering between relays and gateways.
+     * GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
      */
     gatewayFilter?: string;
     /**
@@ -195,6 +212,10 @@ export interface GetNodeNodeRelay {
      * Location is a read only network location uploaded by the gateway process when it comes online.
      */
     location: string;
+    /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: outputs.GetNodeNodeRelayMaintenanceWindow[];
     /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
@@ -207,6 +228,11 @@ export interface GetNodeNodeRelay {
      * Version is a read only sdm binary version uploaded by the gateway process when it comes online.
      */
     version: string;
+}
+
+export interface GetNodeNodeRelayMaintenanceWindow {
+    cronSchedule: string;
+    requireIdleness: boolean;
 }
 
 export interface GetRemoteIdentityGroupRemoteIdentityGroup {
@@ -260,6 +286,7 @@ export interface GetResourceResource {
     azureCertificates: outputs.GetResourceResourceAzureCertificate[];
     azureMysqls: outputs.GetResourceResourceAzureMysql[];
     azurePostgres: outputs.GetResourceResourceAzurePostgre[];
+    azurePostgresManagedIdentities: outputs.GetResourceResourceAzurePostgresManagedIdentity[];
     azures: outputs.GetResourceResourceAzure[];
     bigQueries: outputs.GetResourceResourceBigQuery[];
     cassandras: outputs.GetResourceResourceCassandra[];
@@ -324,11 +351,20 @@ export interface GetResourceResource {
 
 export interface GetResourceResourceAk {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -338,6 +374,9 @@ export interface GetResourceResourceAk {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -347,9 +386,21 @@ export interface GetResourceResourceAk {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -367,7 +418,7 @@ export interface GetResourceResourceAk {
 
 export interface GetResourceResourceAksBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -378,6 +429,9 @@ export interface GetResourceResourceAksBasicAuth {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -387,8 +441,17 @@ export interface GetResourceResourceAksBasicAuth {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -402,12 +465,15 @@ export interface GetResourceResourceAksBasicAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceAksServiceAccount {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -418,6 +484,9 @@ export interface GetResourceResourceAksServiceAccount {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -427,9 +496,21 @@ export interface GetResourceResourceAksServiceAccount {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -444,6 +525,7 @@ export interface GetResourceResourceAksServiceAccount {
      */
     tags?: {[key: string]: string};
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: string;
@@ -451,7 +533,7 @@ export interface GetResourceResourceAksServiceAccount {
 
 export interface GetResourceResourceAksServiceAccountUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -462,6 +544,9 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -471,7 +556,13 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -486,6 +577,7 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
      */
     tags?: {[key: string]: string};
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: string;
@@ -493,11 +585,20 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
 
 export interface GetResourceResourceAksUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -507,6 +608,9 @@ export interface GetResourceResourceAksUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -516,7 +620,13 @@ export interface GetResourceResourceAksUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -533,15 +643,21 @@ export interface GetResourceResourceAksUserImpersonation {
 }
 
 export interface GetResourceResourceAmazonE {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * Unique identifier of the Resource.
@@ -551,10 +667,25 @@ export interface GetResourceResourceAmazonE {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -571,17 +702,29 @@ export interface GetResourceResourceAmazonE {
 }
 
 export interface GetResourceResourceAmazonEk {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -595,12 +738,33 @@ export interface GetResourceResourceAmazonEk {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -618,15 +782,24 @@ export interface GetResourceResourceAmazonEk {
 
 export interface GetResourceResourceAmazonEksInstanceProfile {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -640,11 +813,29 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -662,15 +853,24 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
 
 export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -684,11 +884,29 @@ export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -705,17 +923,29 @@ export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
 }
 
 export interface GetResourceResourceAmazonEksUserImpersonation {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -729,10 +959,25 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -750,13 +995,16 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
 
 export interface GetResourceResourceAmazonmqAmqp091 {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -766,8 +1014,17 @@ export interface GetResourceResourceAmazonmqAmqp091 {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -781,14 +1038,23 @@ export interface GetResourceResourceAmazonmqAmqp091 {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceAthena {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -803,11 +1069,29 @@ export interface GetResourceResourceAthena {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The AWS S3 output location.
+     */
     output?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -825,14 +1109,20 @@ export interface GetResourceResourceAthena {
 
 export interface GetResourceResourceAuroraMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -842,9 +1132,21 @@ export interface GetResourceResourceAuroraMysql {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -858,20 +1160,32 @@ export interface GetResourceResourceAuroraMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceAuroraPostgre {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -881,9 +1195,21 @@ export interface GetResourceResourceAuroraPostgre {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -897,19 +1223,28 @@ export interface GetResourceResourceAuroraPostgre {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceAw {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The AWS region healthcheck requests should attempt to connect to.
+     */
     healthcheckRegion?: string;
     /**
      * Unique identifier of the Resource.
@@ -919,9 +1254,21 @@ export interface GetResourceResourceAw {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -939,13 +1286,16 @@ export interface GetResourceResourceAw {
 
 export interface GetResourceResourceAwsConsole {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+     */
     enableEnvVariables?: boolean;
     /**
      * Unique identifier of the Resource.
@@ -955,16 +1305,37 @@ export interface GetResourceResourceAwsConsole {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     */
     sessionExpiry?: number;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -977,9 +1348,12 @@ export interface GetResourceResourceAwsConsole {
 }
 
 export interface GetResourceResourceAwsConsoleStaticKeyPair {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -994,17 +1368,41 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     */
     sessionExpiry?: number;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1017,9 +1415,12 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
 }
 
 export interface GetResourceResourceAzure {
+    /**
+     * The application ID to authenticate with.
+     */
     appId?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -1034,7 +1435,13 @@ export interface GetResourceResourceAzure {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1049,17 +1456,24 @@ export interface GetResourceResourceAzure {
      */
     tags?: {[key: string]: string};
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: string;
 }
 
 export interface GetResourceResourceAzureCertificate {
+    /**
+     * The application ID to authenticate with.
+     */
     appId?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -1073,6 +1487,9 @@ export interface GetResourceResourceAzureCertificate {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1087,6 +1504,7 @@ export interface GetResourceResourceAzureCertificate {
      */
     tags?: {[key: string]: string};
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: string;
@@ -1094,14 +1512,20 @@ export interface GetResourceResourceAzureCertificate {
 
 export interface GetResourceResourceAzureMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1111,9 +1535,21 @@ export interface GetResourceResourceAzureMysql {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1127,20 +1563,32 @@ export interface GetResourceResourceAzureMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceAzurePostgre {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1150,9 +1598,21 @@ export interface GetResourceResourceAzurePostgre {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1166,18 +1626,87 @@ export interface GetResourceResourceAzurePostgre {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceAzurePostgresManagedIdentity {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
+    useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceBigQuery {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * Unique identifier of the Resource.
@@ -1187,8 +1716,17 @@ export interface GetResourceResourceBigQuery {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The private key used to authenticate with the server.
+     */
     privateKey?: string;
+    /**
+     * The project to connect to.
+     */
     project?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1202,18 +1740,24 @@ export interface GetResourceResourceBigQuery {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceCassandra {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1223,8 +1767,17 @@ export interface GetResourceResourceCassandra {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1238,20 +1791,32 @@ export interface GetResourceResourceCassandra {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceCitus {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1261,9 +1826,21 @@ export interface GetResourceResourceCitus {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1277,19 +1854,28 @@ export interface GetResourceResourceCitus {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceClustrix {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1299,9 +1885,21 @@ export interface GetResourceResourceClustrix {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1315,20 +1913,32 @@ export interface GetResourceResourceClustrix {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceCockroach {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1338,9 +1948,21 @@ export interface GetResourceResourceCockroach {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1354,18 +1976,24 @@ export interface GetResourceResourceCockroach {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceDb2I {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1375,8 +2003,17 @@ export interface GetResourceResourceDb2I {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1390,20 +2027,32 @@ export interface GetResourceResourceDb2I {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceDb2Luw {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1413,8 +2062,17 @@ export interface GetResourceResourceDb2Luw {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1428,19 +2086,28 @@ export interface GetResourceResourceDb2Luw {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceDocumentDbHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1450,8 +2117,17 @@ export interface GetResourceResourceDocumentDbHost {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1465,20 +2141,32 @@ export interface GetResourceResourceDocumentDbHost {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceDocumentDbReplicaSet {
+    /**
+     * The authentication database to use.
+     */
     authDatabase?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1488,8 +2176,17 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1503,18 +2200,24 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceDruid {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1524,8 +2227,17 @@ export interface GetResourceResourceDruid {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1539,19 +2251,28 @@ export interface GetResourceResourceDruid {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceDynamoDb {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * Unique identifier of the Resource.
@@ -1561,10 +2282,25 @@ export interface GetResourceResourceDynamoDb {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1582,13 +2318,16 @@ export interface GetResourceResourceDynamoDb {
 
 export interface GetResourceResourceElastic {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1598,8 +2337,17 @@ export interface GetResourceResourceElastic {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1613,19 +2361,28 @@ export interface GetResourceResourceElastic {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceElasticacheRedi {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1635,8 +2392,17 @@ export interface GetResourceResourceElasticacheRedi {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1650,13 +2416,19 @@ export interface GetResourceResourceElasticacheRedi {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceGcp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -1667,12 +2439,21 @@ export interface GetResourceResourceGcp {
      * Unique identifier of the Resource.
      */
     id?: string;
+    /**
+     * The service account keyfile to authenticate with.
+     */
     keyfile?: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Space separated scopes that this login should assume into when authenticating.
+     */
     scopes?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1690,14 +2471,20 @@ export interface GetResourceResourceGcp {
 
 export interface GetResourceResourceGoogleGke {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -1711,12 +2498,21 @@ export interface GetResourceResourceGoogleGke {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The service account key to authenticate with.
+     */
     serviceAccountKey?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1730,14 +2526,20 @@ export interface GetResourceResourceGoogleGke {
 
 export interface GetResourceResourceGoogleGkeUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -1755,6 +2557,9 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The service account key to authenticate with.
+     */
     serviceAccountKey?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1768,14 +2573,20 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
 
 export interface GetResourceResourceGreenplum {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1785,9 +2596,21 @@ export interface GetResourceResourceGreenplum {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1801,22 +2624,40 @@ export interface GetResourceResourceGreenplum {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceHttpAuth {
+    /**
+     * The content to set as the authorization header.
+     */
     authHeader?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: string;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath?: string;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: string;
     /**
      * Unique identifier of the Resource.
@@ -1839,6 +2680,7 @@ export interface GetResourceResourceHttpAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url?: string;
@@ -1846,16 +2688,28 @@ export interface GetResourceResourceHttpAuth {
 
 export interface GetResourceResourceHttpBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: string;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath?: string;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: string;
     /**
      * Unique identifier of the Resource.
@@ -1865,6 +2719,9 @@ export interface GetResourceResourceHttpBasicAuth {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1879,24 +2736,40 @@ export interface GetResourceResourceHttpBasicAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url?: string;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceHttpNoAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: string;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath?: string;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: string;
     /**
      * Unique identifier of the Resource.
@@ -1919,6 +2792,7 @@ export interface GetResourceResourceHttpNoAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url?: string;
@@ -1926,11 +2800,20 @@ export interface GetResourceResourceHttpNoAuth {
 
 export interface GetResourceResourceKubernete {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -1940,6 +2823,9 @@ export interface GetResourceResourceKubernete {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1949,9 +2835,21 @@ export interface GetResourceResourceKubernete {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -1969,7 +2867,7 @@ export interface GetResourceResourceKubernete {
 
 export interface GetResourceResourceKubernetesBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -1980,6 +2878,9 @@ export interface GetResourceResourceKubernetesBasicAuth {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -1989,8 +2890,17 @@ export interface GetResourceResourceKubernetesBasicAuth {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2004,12 +2914,15 @@ export interface GetResourceResourceKubernetesBasicAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceKubernetesServiceAccount {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -2020,6 +2933,9 @@ export interface GetResourceResourceKubernetesServiceAccount {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2029,9 +2945,21 @@ export interface GetResourceResourceKubernetesServiceAccount {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2046,6 +2974,7 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     tags?: {[key: string]: string};
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: string;
@@ -2053,7 +2982,7 @@ export interface GetResourceResourceKubernetesServiceAccount {
 
 export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
@@ -2064,6 +2993,9 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2073,7 +3005,13 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2088,6 +3026,7 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
      */
     tags?: {[key: string]: string};
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: string;
@@ -2095,11 +3034,20 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
 
 export interface GetResourceResourceKubernetesUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -2109,6 +3057,9 @@ export interface GetResourceResourceKubernetesUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2118,7 +3069,13 @@ export interface GetResourceResourceKubernetesUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2136,14 +3093,20 @@ export interface GetResourceResourceKubernetesUserImpersonation {
 
 export interface GetResourceResourceMaria {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2153,9 +3116,21 @@ export interface GetResourceResourceMaria {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2169,19 +3144,28 @@ export interface GetResourceResourceMaria {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMemcached {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2191,7 +3175,13 @@ export interface GetResourceResourceMemcached {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2209,14 +3199,20 @@ export interface GetResourceResourceMemcached {
 
 export interface GetResourceResourceMemsql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2226,9 +3222,21 @@ export interface GetResourceResourceMemsql {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2242,20 +3250,32 @@ export interface GetResourceResourceMemsql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMongoHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2265,8 +3285,17 @@ export interface GetResourceResourceMongoHost {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2280,20 +3309,32 @@ export interface GetResourceResourceMongoHost {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMongoLegacyHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2303,9 +3344,21 @@ export interface GetResourceResourceMongoLegacyHost {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2319,21 +3372,36 @@ export interface GetResourceResourceMongoLegacyHost {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMongoLegacyReplicaset {
+    /**
+     * The authentication database to use.
+     */
     authDatabase?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2343,9 +3411,21 @@ export interface GetResourceResourceMongoLegacyReplicaset {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2359,21 +3439,36 @@ export interface GetResourceResourceMongoLegacyReplicaset {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMongoReplicaSet {
+    /**
+     * The authentication database to use.
+     */
     authDatabase?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2383,9 +3478,21 @@ export interface GetResourceResourceMongoReplicaSet {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2399,20 +3506,32 @@ export interface GetResourceResourceMongoReplicaSet {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMongoShardedCluster {
+    /**
+     * The authentication database to use.
+     */
     authDatabase?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2422,7 +3541,13 @@ export interface GetResourceResourceMongoShardedCluster {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2436,23 +3561,44 @@ export interface GetResourceResourceMongoShardedCluster {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMtlsMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2462,14 +3608,29 @@ export interface GetResourceResourceMtlsMysql {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Server name for TLS verification (unverified by StrongDM if empty)
+     */
     serverName?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2479,23 +3640,44 @@ export interface GetResourceResourceMtlsMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMtlsPostgre {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2505,14 +3687,29 @@ export interface GetResourceResourceMtlsPostgre {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Server name for TLS verification (unverified by StrongDM if empty)
+     */
     serverName?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2522,19 +3719,28 @@ export interface GetResourceResourceMtlsPostgre {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2544,9 +3750,21 @@ export interface GetResourceResourceMysql {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2560,19 +3778,28 @@ export interface GetResourceResourceMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceNeptune {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * Unique identifier of the Resource.
@@ -2582,7 +3809,13 @@ export interface GetResourceResourceNeptune {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2599,15 +3832,21 @@ export interface GetResourceResourceNeptune {
 }
 
 export interface GetResourceResourceNeptuneIam {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * Unique identifier of the Resource.
@@ -2617,11 +3856,29 @@ export interface GetResourceResourceNeptuneIam {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2639,14 +3896,20 @@ export interface GetResourceResourceNeptuneIam {
 
 export interface GetResourceResourceOracle {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2656,8 +3919,17 @@ export interface GetResourceResourceOracle {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2671,20 +3943,32 @@ export interface GetResourceResourceOracle {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourcePostgre {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2694,9 +3978,21 @@ export interface GetResourceResourcePostgre {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2710,19 +4006,28 @@ export interface GetResourceResourcePostgre {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourcePresto {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2732,8 +4037,17 @@ export interface GetResourceResourcePresto {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2747,19 +4061,28 @@ export interface GetResourceResourcePresto {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceRabbitmqAmqp091 {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2769,8 +4092,17 @@ export interface GetResourceResourceRabbitmqAmqp091 {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2784,19 +4116,28 @@ export interface GetResourceResourceRabbitmqAmqp091 {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceRawTcp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2806,7 +4147,13 @@ export interface GetResourceResourceRawTcp {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2824,14 +4171,20 @@ export interface GetResourceResourceRawTcp {
 
 export interface GetResourceResourceRdp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
+     */
     downgradeNlaConnections?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2841,8 +4194,17 @@ export interface GetResourceResourceRdp {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2856,18 +4218,24 @@ export interface GetResourceResourceRdp {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceRedi {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2877,8 +4245,17 @@ export interface GetResourceResourceRedi {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2892,20 +4269,32 @@ export interface GetResourceResourceRedi {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceRedshift {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2915,9 +4304,21 @@ export interface GetResourceResourceRedshift {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2931,19 +4332,28 @@ export interface GetResourceResourceRedshift {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSingleStore {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2953,9 +4363,21 @@ export interface GetResourceResourceSingleStore {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -2969,20 +4391,32 @@ export interface GetResourceResourceSingleStore {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSnowflake {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -2992,8 +4426,17 @@ export interface GetResourceResourceSnowflake {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3007,18 +4450,24 @@ export interface GetResourceResourceSnowflake {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSnowsight {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The StrongDM user email to use for healthchecks.
+     */
     healthcheckUsername?: string;
     /**
      * Unique identifier of the Resource.
@@ -3028,7 +4477,13 @@ export interface GetResourceResourceSnowsight {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The Metadata for your snowflake IDP integration
+     */
     samlMetadata?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3046,14 +4501,20 @@ export interface GetResourceResourceSnowsight {
 
 export interface GetResourceResourceSqlServer {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -3063,10 +4524,25 @@ export interface GetResourceResourceSqlServer {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3080,20 +4556,32 @@ export interface GetResourceResourceSqlServer {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSqlServerAzureAd {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The Azure AD application (client) ID with which to authenticate.
+     */
     clientId?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -3103,10 +4591,25 @@ export interface GetResourceResourceSqlServerAzureAd {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: string;
+    /**
+     * The Azure AD client secret (application password) with which to authenticate.
+     */
     secret?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3121,6 +4624,7 @@ export interface GetResourceResourceSqlServerAzureAd {
      */
     tags?: {[key: string]: string};
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: string;
@@ -3128,34 +4632,64 @@ export interface GetResourceResourceSqlServerAzureAd {
 
 export interface GetResourceResourceSqlServerKerberosAd {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
      */
     id?: string;
+    /**
+     * The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
+     */
     keytab?: string;
+    /**
+     * The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
+     */
     krbConfig?: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The Active Directory domain (realm) to which the configured username belongs.
+     */
     realm?: string;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
+     */
     serverSpn?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3165,32 +4699,56 @@ export interface GetResourceResourceSqlServerKerberosAd {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSsh {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
      */
     id?: string;
+    /**
+     * The key type to use e.g. rsa-2048 or ed25519
+     */
     keyType?: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: boolean;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The public key to append to a server's authorized keys. This will be generated after resource creation.
+     */
     publicKey: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3204,33 +4762,60 @@ export interface GetResourceResourceSsh {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSshCert {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
      */
     id?: string;
+    /**
+     * The key type to use e.g. rsa-2048 or ed25519
+     */
     keyType?: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: boolean;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3244,19 +4829,28 @@ export interface GetResourceResourceSshCert {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSshCustomerKey {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -3266,9 +4860,21 @@ export interface GetResourceResourceSshCustomerKey {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: boolean;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
+    /**
+     * The private key used to authenticate with the server.
+     */
     privateKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3282,18 +4888,24 @@ export interface GetResourceResourceSshCustomerKey {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSybase {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -3303,8 +4915,17 @@ export interface GetResourceResourceSybase {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3318,18 +4939,24 @@ export interface GetResourceResourceSybase {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceSybaseIq {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -3339,8 +4966,17 @@ export interface GetResourceResourceSybaseIq {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3354,18 +4990,24 @@ export interface GetResourceResourceSybaseIq {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceTeradata {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -3375,8 +5017,17 @@ export interface GetResourceResourceTeradata {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3390,19 +5041,28 @@ export interface GetResourceResourceTeradata {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface GetResourceResourceTrino {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -3412,8 +5072,17 @@ export interface GetResourceResourceTrino {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3427,6 +5096,9 @@ export interface GetResourceResourceTrino {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
@@ -3475,6 +5147,9 @@ export interface GetSecretStoreSecretStoreAw {
      * Unique human-readable name of the SecretStore.
      */
     name?: string;
+    /**
+     * The AWS region to target e.g. us-east-1
+     */
     region?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -3496,12 +5171,16 @@ export interface GetSecretStoreSecretStoreAzureStore {
      */
     tags?: {[key: string]: string};
     /**
+     * The URI of the key vault to target e.g. https://myvault.vault.azure.net
      * * cyberark_conjur:
      */
     vaultUri?: string;
 }
 
 export interface GetSecretStoreSecretStoreCyberarkConjur {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl?: string;
     /**
      * Unique identifier of the SecretStore.
@@ -3518,6 +5197,9 @@ export interface GetSecretStoreSecretStoreCyberarkConjur {
 }
 
 export interface GetSecretStoreSecretStoreCyberarkPam {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl?: string;
     /**
      * Unique identifier of the SecretStore.
@@ -3534,6 +5216,9 @@ export interface GetSecretStoreSecretStoreCyberarkPam {
 }
 
 export interface GetSecretStoreSecretStoreCyberarkPamExperimental {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl?: string;
     /**
      * Unique identifier of the SecretStore.
@@ -3558,12 +5243,16 @@ export interface GetSecretStoreSecretStoreDelineaStore {
      * Unique human-readable name of the SecretStore.
      */
     name?: string;
+    /**
+     * The URL of the Delinea instance
+     */
     serverUrl?: string;
     /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
     /**
+     * The tenant name to target
      * * gcp_store:
      */
     tenantName?: string;
@@ -3578,6 +5267,9 @@ export interface GetSecretStoreSecretStoreGcpStore {
      * Unique human-readable name of the SecretStore.
      */
     name?: string;
+    /**
+     * The GCP project ID to target.
+     */
     projectId?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -3594,7 +5286,13 @@ export interface GetSecretStoreSecretStoreVaultApprole {
      * Unique human-readable name of the SecretStore.
      */
     name?: string;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -3603,8 +5301,17 @@ export interface GetSecretStoreSecretStoreVaultApprole {
 }
 
 export interface GetSecretStoreSecretStoreVaultTl {
+    /**
+     * A path to a CA file accessible by a Node
+     */
     caCertPath?: string;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
     clientCertPath?: string;
+    /**
+     * A path to a client key file accessible by a Node
+     */
     clientKeyPath?: string;
     /**
      * Unique identifier of the SecretStore.
@@ -3614,7 +5321,13 @@ export interface GetSecretStoreSecretStoreVaultTl {
      * Unique human-readable name of the SecretStore.
      */
     name?: string;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -3631,7 +5344,13 @@ export interface GetSecretStoreSecretStoreVaultToken {
      * Unique human-readable name of the SecretStore.
      */
     name?: string;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress?: string;
     /**
      * Tags is a map of key, value pairs.
@@ -3645,11 +5364,15 @@ export interface NodeGateway {
      */
     bindAddress: string;
     /**
-     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     * ConnectsTo can be used to restrict the peering between relays and gateways.
+     */
+    connectsTo?: string;
+    /**
+     * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device: string;
     /**
-     * GatewayFilter can be used to restrict the peering between relays and gateways.
+     * GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
      */
     gatewayFilter?: string;
     /**
@@ -3661,6 +5384,10 @@ export interface NodeGateway {
      */
     location: string;
     /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: outputs.NodeGatewayMaintenanceWindow[];
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name: string;
@@ -3675,13 +5402,22 @@ export interface NodeGateway {
     version: string;
 }
 
+export interface NodeGatewayMaintenanceWindow {
+    cronSchedule: string;
+    requireIdleness: boolean;
+}
+
 export interface NodeRelay {
     /**
-     * Device is a read only device name uploaded by the gateway process when  it comes online.
+     * ConnectsTo can be used to restrict the peering between relays and gateways.
+     */
+    connectsTo?: string;
+    /**
+     * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device: string;
     /**
-     * GatewayFilter can be used to restrict the peering between relays and gateways.
+     * GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
      */
     gatewayFilter?: string;
     /**
@@ -3689,6 +5425,10 @@ export interface NodeRelay {
      */
     location: string;
     /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: outputs.NodeRelayMaintenanceWindow[];
+    /**
      * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
      */
     name: string;
@@ -3703,13 +5443,27 @@ export interface NodeRelay {
     version: string;
 }
 
+export interface NodeRelayMaintenanceWindow {
+    cronSchedule: string;
+    requireIdleness: boolean;
+}
+
 export interface ResourceAks {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -3719,14 +5473,29 @@ export interface ResourceAks {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3744,7 +5513,7 @@ export interface ResourceAks {
 
 export interface ResourceAksBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -3755,13 +5524,25 @@ export interface ResourceAksBasicAuth {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3775,12 +5556,15 @@ export interface ResourceAksBasicAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceAksServiceAccount {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -3791,14 +5575,29 @@ export interface ResourceAksServiceAccount {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3813,6 +5612,7 @@ export interface ResourceAksServiceAccount {
      */
     tags?: {[key: string]: string};
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: string;
@@ -3820,7 +5620,7 @@ export interface ResourceAksServiceAccount {
 
 export interface ResourceAksServiceAccountUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -3831,12 +5631,21 @@ export interface ResourceAksServiceAccountUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3851,6 +5660,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
      */
     tags?: {[key: string]: string};
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: string;
@@ -3858,11 +5668,20 @@ export interface ResourceAksServiceAccountUserImpersonation {
 
 export interface ResourceAksUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -3872,12 +5691,21 @@ export interface ResourceAksUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3894,17 +5722,29 @@ export interface ResourceAksUserImpersonation {
 }
 
 export interface ResourceAmazonEks {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -3914,12 +5754,33 @@ export interface ResourceAmazonEks {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3937,15 +5798,24 @@ export interface ResourceAmazonEks {
 
 export interface ResourceAmazonEksInstanceProfile {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -3955,11 +5825,29 @@ export interface ResourceAmazonEksInstanceProfile {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -3977,15 +5865,24 @@ export interface ResourceAmazonEksInstanceProfile {
 
 export interface ResourceAmazonEksInstanceProfileUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -3995,11 +5892,29 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4016,17 +5931,29 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
 }
 
 export interface ResourceAmazonEksUserImpersonation {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The name of the cluster to connect to.
+     */
     clusterName: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -4036,10 +5963,25 @@ export interface ResourceAmazonEksUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4056,24 +5998,45 @@ export interface ResourceAmazonEksUserImpersonation {
 }
 
 export interface ResourceAmazonEs {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint?: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4091,20 +6054,32 @@ export interface ResourceAmazonEs {
 
 export interface ResourceAmazonmqAmqp091 {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4118,15 +6093,27 @@ export interface ResourceAmazonmqAmqp091 {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceAthena {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
+    /**
+     * The AWS S3 output location.
+     */
     athenaOutput: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -4137,10 +6124,25 @@ export interface ResourceAthena {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4158,22 +6160,40 @@ export interface ResourceAthena {
 
 export interface ResourceAuroraMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4187,28 +6207,52 @@ export interface ResourceAuroraMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceAuroraPostgres {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4222,27 +6266,48 @@ export interface ResourceAuroraPostgres {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceAws {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The AWS region healthcheck requests should attempt to connect to.
+     */
     healthcheckRegion: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4260,28 +6325,52 @@ export interface ResourceAws {
 
 export interface ResourceAwsConsole {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+     */
     enableEnvVariables?: boolean;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     */
     sessionExpiry?: number;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4294,9 +6383,12 @@ export interface ResourceAwsConsole {
 }
 
 export interface ResourceAwsConsoleStaticKeyPair {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -4307,17 +6399,41 @@ export interface ResourceAwsConsoleStaticKeyPair {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     */
     sessionExpiry?: number;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4330,9 +6446,12 @@ export interface ResourceAwsConsoleStaticKeyPair {
 }
 
 export interface ResourceAzure {
+    /**
+     * The application ID to authenticate with.
+     */
     appId?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -4343,7 +6462,13 @@ export interface ResourceAzure {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4358,17 +6483,24 @@ export interface ResourceAzure {
      */
     tags?: {[key: string]: string};
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: string;
 }
 
 export interface ResourceAzureCertificate {
+    /**
+     * The application ID to authenticate with.
+     */
     appId?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -4378,6 +6510,9 @@ export interface ResourceAzureCertificate {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4392,6 +6527,7 @@ export interface ResourceAzureCertificate {
      */
     tags?: {[key: string]: string};
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: string;
@@ -4399,22 +6535,40 @@ export interface ResourceAzureCertificate {
 
 export interface ResourceAzureMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4428,28 +6582,52 @@ export interface ResourceAzureMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceAzurePostgres {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4463,25 +6641,99 @@ export interface ResourceAzurePostgres {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceAzurePostgresManagedIdentity {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
+    useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceBigQuery {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The private key used to authenticate with the server.
+     */
     privateKey?: string;
+    /**
+     * The project to connect to.
+     */
     project: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4495,25 +6747,40 @@ export interface ResourceBigQuery {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceCassandra {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4527,28 +6794,52 @@ export interface ResourceCassandra {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceCitus {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4562,27 +6853,48 @@ export interface ResourceCitus {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceClustrix {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4596,28 +6908,52 @@ export interface ResourceClustrix {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceCockroach {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4631,25 +6967,40 @@ export interface ResourceCockroach {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceDb2I {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4663,27 +7014,48 @@ export interface ResourceDb2I {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceDb2Luw {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4697,26 +7069,44 @@ export interface ResourceDb2Luw {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceDocumentDbHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4730,27 +7120,48 @@ export interface ResourceDocumentDbHost {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceDocumentDbReplicaSet {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4764,25 +7175,40 @@ export interface ResourceDocumentDbReplicaSet {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceDruid {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4796,28 +7222,52 @@ export interface ResourceDruid {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceDynamoDb {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4835,20 +7285,32 @@ export interface ResourceDynamoDb {
 
 export interface ResourceElastic {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4862,26 +7324,44 @@ export interface ResourceElastic {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceElasticacheRedis {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4895,25 +7375,40 @@ export interface ResourceElasticacheRedis {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceGcp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The service account keyfile to authenticate with.
+     */
     keyfile?: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Space separated scopes that this login should assume into when authenticating.
+     */
     scopes: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -4931,14 +7426,20 @@ export interface ResourceGcp {
 
 export interface ResourceGoogleGke {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -4948,12 +7449,21 @@ export interface ResourceGoogleGke {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The service account key to authenticate with.
+     */
     serviceAccountKey?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -4967,14 +7477,20 @@ export interface ResourceGoogleGke {
 
 export interface ResourceGoogleGkeUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -4988,6 +7504,9 @@ export interface ResourceGoogleGkeUserImpersonation {
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The service account key to authenticate with.
+     */
     serviceAccountKey?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5001,22 +7520,40 @@ export interface ResourceGoogleGkeUserImpersonation {
 
 export interface ResourceGreenplum {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5030,22 +7567,40 @@ export interface ResourceGreenplum {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceHttpAuth {
+    /**
+     * The content to set as the authorization header.
+     */
     authHeader?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: string;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath: string;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: string;
     /**
      * Unique human-readable name of the Resource.
@@ -5064,6 +7619,7 @@ export interface ResourceHttpAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url: string;
@@ -5071,21 +7627,36 @@ export interface ResourceHttpAuth {
 
 export interface ResourceHttpBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: string;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath: string;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5100,24 +7671,40 @@ export interface ResourceHttpBasicAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url: string;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceHttpNoAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * Automatically redirect to this path upon connecting.
+     */
     defaultPath?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * Header names (e.g. Authorization), to omit from logs.
+     */
     headersBlacklist?: string;
+    /**
+     * This path will be used to check the health of your site.
+     */
     healthcheckPath: string;
+    /**
+     * The host header will be overwritten with this field if provided.
+     */
     hostOverride?: string;
     /**
      * Unique human-readable name of the Resource.
@@ -5136,6 +7723,7 @@ export interface ResourceHttpNoAuth {
      */
     tags?: {[key: string]: string};
     /**
+     * The base address of your website without the path.
      * * kubernetes:
      */
     url: string;
@@ -5143,11 +7731,20 @@ export interface ResourceHttpNoAuth {
 
 export interface ResourceKubernetes {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -5157,14 +7754,29 @@ export interface ResourceKubernetes {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5182,7 +7794,7 @@ export interface ResourceKubernetes {
 
 export interface ResourceKubernetesBasicAuth {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -5193,13 +7805,25 @@ export interface ResourceKubernetesBasicAuth {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5213,12 +7837,15 @@ export interface ResourceKubernetesBasicAuth {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceKubernetesServiceAccount {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -5229,14 +7856,29 @@ export interface ResourceKubernetesServiceAccount {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5251,6 +7893,7 @@ export interface ResourceKubernetesServiceAccount {
      */
     tags?: {[key: string]: string};
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: string;
@@ -5258,7 +7901,7 @@ export interface ResourceKubernetesServiceAccount {
 
 export interface ResourceKubernetesServiceAccountUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
@@ -5269,12 +7912,21 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5289,6 +7941,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      */
     tags?: {[key: string]: string};
     /**
+     * The API token to authenticate with.
      * * kubernetes_user_impersonation:
      */
     token?: string;
@@ -5296,11 +7949,20 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
 
 export interface ResourceKubernetesUserImpersonation {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
@@ -5310,12 +7972,21 @@ export interface ResourceKubernetesUserImpersonation {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5333,22 +8004,40 @@ export interface ResourceKubernetesUserImpersonation {
 
 export interface ResourceMaria {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5362,25 +8051,40 @@ export interface ResourceMaria {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMemcached {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5398,22 +8102,40 @@ export interface ResourceMemcached {
 
 export interface ResourceMemsql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5427,27 +8149,48 @@ export interface ResourceMemsql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMongoHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5461,28 +8204,52 @@ export interface ResourceMongoHost {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMongoLegacyHost {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5496,29 +8263,56 @@ export interface ResourceMongoLegacyHost {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMongoLegacyReplicaset {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5532,29 +8326,56 @@ export interface ResourceMongoLegacyReplicaset {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMongoReplicaSet {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * Set to connect to a replica instead of the primary node.
+     */
     connectToReplica?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The name of the mongo replicaset.
+     */
     replicaSet: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5568,26 +8389,44 @@ export interface ResourceMongoReplicaSet {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMongoShardedCluster {
+    /**
+     * The authentication database to use.
+     */
     authDatabase: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5601,36 +8440,72 @@ export interface ResourceMongoShardedCluster {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMtlsMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Server name for TLS verification (unverified by StrongDM if empty)
+     */
     serverName?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5640,36 +8515,72 @@ export interface ResourceMtlsMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMtlsPostgres {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
     certificateAuthority?: string;
+    /**
+     * The certificate to authenticate TLS connections with.
+     */
     clientCertificate?: string;
+    /**
+     * The key to authenticate TLS connections with.
+     */
     clientKey?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * Server name for TLS verification (unverified by StrongDM if empty)
+     */
     serverName?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5679,27 +8590,48 @@ export interface ResourceMtlsPostgres {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceMysql {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5713,25 +8645,40 @@ export interface ResourceMysql {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceNeptune {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5748,25 +8695,49 @@ export interface ResourceNeptune {
 }
 
 export interface ResourceNeptuneIam {
+    /**
+     * The Access Key ID to use to authenticate.
+     */
     accessKey?: string;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
     endpoint: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
     region: string;
+    /**
+     * The role to assume after logging in.
+     */
     roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
     roleExternalId?: string;
+    /**
+     * The Secret Access Key to use to authenticate.
+     */
     secretAccessKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5784,21 +8755,36 @@ export interface ResourceNeptuneIam {
 
 export interface ResourceOracle {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5812,28 +8798,52 @@ export interface ResourceOracle {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourcePostgres {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5847,26 +8857,44 @@ export interface ResourcePostgres {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourcePresto {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5880,26 +8908,44 @@ export interface ResourcePresto {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceRabbitmqAmqp091 {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5913,25 +8959,40 @@ export interface ResourceRabbitmqAmqp091 {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceRawTcp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5949,21 +9010,36 @@ export interface ResourceRawTcp {
 
 export interface ResourceRdp {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
+     */
     downgradeNlaConnections?: boolean;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -5977,25 +9053,40 @@ export interface ResourceRdp {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceRedis {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6009,28 +9100,52 @@ export interface ResourceRedis {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
     tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceRedshift {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6044,27 +9159,48 @@ export interface ResourceRedshift {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSingleStore {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
     requireNativeAuth?: boolean;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6078,27 +9214,48 @@ export interface ResourceSingleStore {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * If true, appends the hostname to the username when hitting a database.azure.com address
+     */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSnowflake {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6112,24 +9269,36 @@ export interface ResourceSnowflake {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSnowsight {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The StrongDM user email to use for healthchecks.
+     */
     healthcheckUsername: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The Metadata for your snowflake IDP integration
+     */
     samlMetadata?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6147,23 +9316,44 @@ export interface ResourceSnowsight {
 
 export interface ResourceSqlServer {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6177,29 +9367,56 @@ export interface ResourceSqlServer {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSqlServerAzureAd {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The Azure AD application (client) ID with which to authenticate.
+     */
     clientId?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: string;
+    /**
+     * The Azure AD client secret (application password) with which to authenticate.
+     */
     secret?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6214,6 +9431,7 @@ export interface ResourceSqlServerAzureAd {
      */
     tags?: {[key: string]: string};
     /**
+     * The Azure AD directory (tenant) ID with which to authenticate.
      * * sql_server_kerberos_ad:
      */
     tenantId?: string;
@@ -6221,30 +9439,60 @@ export interface ResourceSqlServerAzureAd {
 
 export interface ResourceSqlServerKerberosAd {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
+    /**
+     * The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
+     */
     keytab?: string;
+    /**
+     * The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
+     */
     krbConfig?: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
     overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The Active Directory domain (realm) to which the configured username belongs.
+     */
     realm?: string;
+    /**
+     * The Schema to use to direct initial requests.
+     */
     schema?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
+    /**
+     * The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
+     */
     serverSpn?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6254,28 +9502,52 @@ export interface ResourceSqlServerKerberosAd {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSsh {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
+    /**
+     * The key type to use e.g. rsa-2048 or ed25519
+     */
     keyType: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: boolean;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The public key to append to a server's authorized keys. This will be generated after resource creation.
+     */
     publicKey: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6289,29 +9561,56 @@ export interface ResourceSsh {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSshCert {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
+    /**
+     * The key type to use e.g. rsa-2048 or ed25519
+     */
     keyType: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: boolean;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
     remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
     remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6325,27 +9624,48 @@ export interface ResourceSshCert {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSshCustomerKey {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
     allowDeprecatedKeyExchanges?: boolean;
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port: number;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
     portForwarding?: boolean;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
+    /**
+     * The private key used to authenticate with the server.
+     */
     privateKey?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6359,25 +9679,40 @@ export interface ResourceSshCustomerKey {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSybase {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6391,25 +9726,40 @@ export interface ResourceSybase {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceSybaseIq {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6423,25 +9773,40 @@ export interface ResourceSybaseIq {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceTeradata {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6455,26 +9820,44 @@ export interface ResourceTeradata {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
 export interface ResourceTrino {
     /**
-     * Bind interface
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
     database: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname: string;
     /**
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The password to authenticate with.
+     */
     password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
     portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
@@ -6488,6 +9871,9 @@ export interface ResourceTrino {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
@@ -6496,6 +9882,9 @@ export interface SecretStoreAws {
      * Unique human-readable name of the SecretStore.
      */
     name: string;
+    /**
+     * The AWS region to target e.g. us-east-1
+     */
     region: string;
     /**
      * Tags is a map of key, value pairs.
@@ -6513,12 +9902,16 @@ export interface SecretStoreAzureStore {
      */
     tags?: {[key: string]: string};
     /**
+     * The URI of the key vault to target e.g. https://myvault.vault.azure.net
      * * cyberark_conjur:
      */
     vaultUri: string;
 }
 
 export interface SecretStoreCyberarkConjur {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl: string;
     /**
      * Unique human-readable name of the SecretStore.
@@ -6531,6 +9924,9 @@ export interface SecretStoreCyberarkConjur {
 }
 
 export interface SecretStoreCyberarkPam {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl: string;
     /**
      * Unique human-readable name of the SecretStore.
@@ -6543,6 +9939,9 @@ export interface SecretStoreCyberarkPam {
 }
 
 export interface SecretStoreCyberarkPamExperimental {
+    /**
+     * The URL of the Cyberark instance
+     */
     appUrl: string;
     /**
      * Unique human-readable name of the SecretStore.
@@ -6559,12 +9958,16 @@ export interface SecretStoreDelineaStore {
      * Unique human-readable name of the SecretStore.
      */
     name: string;
+    /**
+     * The URL of the Delinea instance
+     */
     serverUrl?: string;
     /**
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
     /**
+     * The tenant name to target
      * * gcp_store:
      */
     tenantName?: string;
@@ -6575,6 +9978,9 @@ export interface SecretStoreGcpStore {
      * Unique human-readable name of the SecretStore.
      */
     name: string;
+    /**
+     * The GCP project ID to target.
+     */
     projectId: string;
     /**
      * Tags is a map of key, value pairs.
@@ -6587,7 +9993,13 @@ export interface SecretStoreVaultApprole {
      * Unique human-readable name of the SecretStore.
      */
     name: string;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress: string;
     /**
      * Tags is a map of key, value pairs.
@@ -6596,14 +10008,29 @@ export interface SecretStoreVaultApprole {
 }
 
 export interface SecretStoreVaultTls {
+    /**
+     * A path to a CA file accessible by a Node
+     */
     caCertPath?: string;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
     clientCertPath: string;
+    /**
+     * A path to a client key file accessible by a Node
+     */
     clientKeyPath: string;
     /**
      * Unique human-readable name of the SecretStore.
      */
     name: string;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress: string;
     /**
      * Tags is a map of key, value pairs.
@@ -6616,7 +10043,13 @@ export interface SecretStoreVaultToken {
      * Unique human-readable name of the SecretStore.
      */
     name: string;
+    /**
+     * The namespace to make requests within
+     */
     namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
     serverAddress: string;
     /**
      * Tags is a map of key, value pairs.

@@ -14,17 +14,29 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class ResourceAmazonEks
     {
+        /// <summary>
+        /// The Access Key ID to use to authenticate.
+        /// </summary>
         public readonly string? AccessKey;
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
+        /// <summary>
+        /// The CA to authenticate TLS connections with.
+        /// </summary>
         public readonly string? CertificateAuthority;
+        /// <summary>
+        /// The name of the cluster to connect to.
+        /// </summary>
         public readonly string ClusterName;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        /// </summary>
         public readonly string Endpoint;
         /// <summary>
         /// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -34,12 +46,33 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
+        /// <summary>
+        /// The AWS region to connect to.
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The ID of the remote identity group to use for remote identity connections.
+        /// </summary>
         public readonly string? RemoteIdentityGroupId;
+        /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+        /// </summary>
         public readonly string? RemoteIdentityHealthcheckUsername;
+        /// <summary>
+        /// The role to assume after logging in.
+        /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        /// </summary>
         public readonly string? RoleExternalId;
+        /// <summary>
+        /// The Secret Access Key to use to authenticate.
+        /// </summary>
         public readonly string? SecretAccessKey;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.

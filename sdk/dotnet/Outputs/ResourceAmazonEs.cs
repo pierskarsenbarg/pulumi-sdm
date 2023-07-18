@@ -14,24 +14,45 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class ResourceAmazonEs
     {
+        /// <summary>
+        /// The Access Key ID to use to authenticate.
+        /// </summary>
         public readonly string? AccessKey;
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        /// </summary>
         public readonly string? Endpoint;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
+        /// <summary>
+        /// The AWS region to connect to.
+        /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// The role to assume after logging in.
+        /// </summary>
         public readonly string? RoleArn;
+        /// <summary>
+        /// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        /// </summary>
         public readonly string? RoleExternalId;
+        /// <summary>
+        /// The Secret Access Key to use to authenticate.
+        /// </summary>
         public readonly string? SecretAccessKey;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.

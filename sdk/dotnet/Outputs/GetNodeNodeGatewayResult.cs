@@ -19,11 +19,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? BindAddress;
         /// <summary>
-        /// Device is a read only device name uploaded by the gateway process when  it comes online.
+        /// ConnectsTo can be used to restrict the peering between relays and gateways.
+        /// </summary>
+        public readonly string? ConnectsTo;
+        /// <summary>
+        /// Device is a read only device name uploaded by the gateway process when it comes online.
         /// </summary>
         public readonly string Device;
         /// <summary>
-        /// GatewayFilter can be used to restrict the peering between relays and gateways.
+        /// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         /// </summary>
         public readonly string? GatewayFilter;
         /// <summary>
@@ -38,6 +42,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Location is a read only network location uploaded by the gateway process when it comes online.
         /// </summary>
         public readonly string Location;
+        /// <summary>
+        /// Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNodeNodeGatewayMaintenanceWindowResult> MaintenanceWindows;
         /// <summary>
         /// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
         /// </summary>
@@ -55,6 +63,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private GetNodeNodeGatewayResult(
             string? bindAddress,
 
+            string? connectsTo,
+
             string device,
 
             string? gatewayFilter,
@@ -65,6 +75,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string location,
 
+            ImmutableArray<Outputs.GetNodeNodeGatewayMaintenanceWindowResult> maintenanceWindows,
+
             string? name,
 
             ImmutableDictionary<string, string>? tags,
@@ -72,11 +84,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
             string version)
         {
             BindAddress = bindAddress;
+            ConnectsTo = connectsTo;
             Device = device;
             GatewayFilter = gatewayFilter;
             Id = id;
             ListenAddress = listenAddress;
             Location = location;
+            MaintenanceWindows = maintenanceWindows;
             Name = name;
             Tags = tags;
             Version = version;

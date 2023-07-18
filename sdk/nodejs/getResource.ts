@@ -44,6 +44,9 @@ export function getResource(args?: GetResourceArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getResource.
  */
 export interface GetResourceArgs {
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -53,6 +56,9 @@ export interface GetResourceArgs {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: number;
     /**
      * Tags is a map of key, value pairs.
@@ -62,6 +68,9 @@ export interface GetResourceArgs {
      * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
      */
     type?: string;
+    /**
+     * The username to authenticate with.
+     */
     username?: string;
 }
 
@@ -69,6 +78,9 @@ export interface GetResourceArgs {
  * A collection of values returned by getResource.
  */
 export interface GetResourceResult {
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     readonly hostname?: string;
     /**
      * Unique identifier of the Resource.
@@ -82,6 +94,9 @@ export interface GetResourceResult {
      * Unique human-readable name of the Resource.
      */
     readonly name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     readonly port?: number;
     /**
      * A single element list containing a map, where each key lists one of the following objects:
@@ -93,6 +108,9 @@ export interface GetResourceResult {
      */
     readonly tags?: {[key: string]: any};
     readonly type?: string;
+    /**
+     * The username to authenticate with.
+     */
     readonly username?: string;
 }
 /**
@@ -122,6 +140,9 @@ export function getResourceOutput(args?: GetResourceOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getResource.
  */
 export interface GetResourceOutputArgs {
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
     hostname?: pulumi.Input<string>;
     /**
      * Unique identifier of the Resource.
@@ -131,6 +152,9 @@ export interface GetResourceOutputArgs {
      * Unique human-readable name of the Resource.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
     port?: pulumi.Input<number>;
     /**
      * Tags is a map of key, value pairs.
@@ -140,5 +164,8 @@ export interface GetResourceOutputArgs {
      * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
      */
     type?: pulumi.Input<string>;
+    /**
+     * The username to authenticate with.
+     */
     username?: pulumi.Input<string>;
 }

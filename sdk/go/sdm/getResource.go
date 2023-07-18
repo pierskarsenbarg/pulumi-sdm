@@ -56,21 +56,25 @@ func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulum
 
 // A collection of arguments for invoking getResource.
 type LookupResourceArgs struct {
+	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
-	Port *int    `pulumi:"port"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
-	Type     *string `pulumi:"type"`
+	Type *string `pulumi:"type"`
+	// The username to authenticate with.
 	Username *string `pulumi:"username"`
 }
 
 // A collection of values returned by getResource.
 type LookupResourceResult struct {
+	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
@@ -78,14 +82,16 @@ type LookupResourceResult struct {
 	Ids []string `pulumi:"ids"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
-	Port *int    `pulumi:"port"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
 	// A single element list containing a map, where each key lists one of the following objects:
 	// * aks:
 	Resources []GetResourceResource `pulumi:"resources"`
 	// Tags is a map of key, value pairs.
-	Tags     map[string]interface{} `pulumi:"tags"`
-	Type     *string                `pulumi:"type"`
-	Username *string                `pulumi:"username"`
+	Tags map[string]interface{} `pulumi:"tags"`
+	Type *string                `pulumi:"type"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
 }
 
 func LookupResourceOutput(ctx *pulumi.Context, args LookupResourceOutputArgs, opts ...pulumi.InvokeOption) LookupResourceResultOutput {
@@ -103,16 +109,19 @@ func LookupResourceOutput(ctx *pulumi.Context, args LookupResourceOutputArgs, op
 
 // A collection of arguments for invoking getResource.
 type LookupResourceOutputArgs struct {
+	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	Port pulumi.IntPtrInput    `pulumi:"port"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
-	Type     pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The username to authenticate with.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -135,6 +144,7 @@ func (o LookupResourceResultOutput) ToLookupResourceResultOutputWithContext(ctx 
 	return o
 }
 
+// The host to dial to initiate a connection from the egress node to this resource.
 func (o LookupResourceResultOutput) Hostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
@@ -154,6 +164,7 @@ func (o LookupResourceResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The port to dial to initiate a connection from the egress node to this resource.
 func (o LookupResourceResultOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupResourceResult) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -173,6 +184,7 @@ func (o LookupResourceResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// The username to authenticate with.
 func (o LookupResourceResultOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourceResult) *string { return v.Username }).(pulumi.StringPtrOutput)
 }

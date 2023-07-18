@@ -14,7 +14,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceKubernetesServiceAccountUserImpersonationGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
@@ -31,6 +31,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("healthcheckNamespace")]
         public Input<string>? HealthcheckNamespace { get; set; }
 
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
@@ -40,9 +43,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
@@ -74,6 +83,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         private Input<string>? _token;
 
         /// <summary>
+        /// The API token to authenticate with.
         /// * kubernetes_user_impersonation:
         /// </summary>
         public Input<string>? Token

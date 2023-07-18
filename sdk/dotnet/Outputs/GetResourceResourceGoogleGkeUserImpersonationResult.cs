@@ -15,14 +15,20 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetResourceResourceGoogleGkeUserImpersonationResult
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
+        /// <summary>
+        /// The CA to authenticate TLS connections with.
+        /// </summary>
         public readonly string? CertificateAuthority;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        /// </summary>
         public readonly string? Endpoint;
         /// <summary>
         /// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -40,6 +46,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
+        /// <summary>
+        /// The service account key to authenticate with.
+        /// </summary>
         public readonly string? ServiceAccountKey;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)

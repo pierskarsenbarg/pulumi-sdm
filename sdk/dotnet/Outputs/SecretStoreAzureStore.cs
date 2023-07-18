@@ -23,6 +23,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
+        /// The URI of the key vault to target e.g. https://myvault.vault.azure.net
         /// * cyberark_conjur:
         /// </summary>
         public readonly string VaultUri;

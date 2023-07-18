@@ -15,13 +15,16 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetResourceResourceRawTcpResult
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly string? Hostname;
         /// <summary>
         /// Unique identifier of the Resource.
@@ -31,7 +34,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         public readonly int? Port;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.

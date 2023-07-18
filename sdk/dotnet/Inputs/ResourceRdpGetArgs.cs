@@ -14,11 +14,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceRdpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
 
+        /// <summary>
+        /// When set, network level authentication will not be used. May resolve unexpected authentication errors to older servers. When set, healthchecks cannot detect if a provided username / password pair is correct.
+        /// </summary>
         [Input("downgradeNlaConnections")]
         public Input<bool>? DowngradeNlaConnections { get; set; }
 
@@ -28,6 +31,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
 
+        /// <summary>
+        /// The host to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
@@ -39,6 +45,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password to authenticate with.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -49,9 +59,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
             }
         }
 
+        /// <summary>
+        /// The port to dial to initiate a connection from the egress node to this resource.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
 
@@ -79,6 +95,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

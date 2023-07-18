@@ -32,6 +32,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
+        /// The URI of the key vault to target e.g. https://myvault.vault.azure.net
         /// * cyberark_conjur:
         /// </summary>
         [Input("vaultUri", required: true)]

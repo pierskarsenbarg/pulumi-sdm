@@ -14,11 +14,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceHttpBasicAuthArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]
         public Input<string>? BindInterface { get; set; }
 
+        /// <summary>
+        /// Automatically redirect to this path upon connecting.
+        /// </summary>
         [Input("defaultPath")]
         public Input<string>? DefaultPath { get; set; }
 
@@ -28,12 +31,21 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("egressFilter")]
         public Input<string>? EgressFilter { get; set; }
 
+        /// <summary>
+        /// Header names (e.g. Authorization), to omit from logs.
+        /// </summary>
         [Input("headersBlacklist")]
         public Input<string>? HeadersBlacklist { get; set; }
 
+        /// <summary>
+        /// This path will be used to check the health of your site.
+        /// </summary>
         [Input("healthcheckPath", required: true)]
         public Input<string> HealthcheckPath { get; set; } = null!;
 
+        /// <summary>
+        /// The host header will be overwritten with this field if provided.
+        /// </summary>
         [Input("hostOverride")]
         public Input<string>? HostOverride { get; set; }
 
@@ -45,6 +57,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// The password to authenticate with.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -80,11 +96,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
+        /// The base address of your website without the path.
         /// * kubernetes:
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;
 
+        /// <summary>
+        /// The username to authenticate with.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

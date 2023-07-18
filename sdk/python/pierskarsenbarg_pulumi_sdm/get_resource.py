@@ -54,6 +54,9 @@ class GetResourceResult:
     @property
     @pulumi.getter
     def hostname(self) -> Optional[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "hostname")
 
     @property
@@ -83,6 +86,9 @@ class GetResourceResult:
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
         return pulumi.get(self, "port")
 
     @property
@@ -110,6 +116,9 @@ class GetResourceResult:
     @property
     @pulumi.getter
     def username(self) -> Optional[str]:
+        """
+        The username to authenticate with.
+        """
         return pulumi.get(self, "username")
 
 
@@ -156,10 +165,13 @@ def get_resource(hostname: Optional[str] = None,
     ```
 
 
+    :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
     :param str id: Unique identifier of the Resource.
     :param str name: Unique human-readable name of the Resource.
+    :param int port: The port to dial to initiate a connection from the egress node to this resource.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+    :param str username: The username to authenticate with.
     """
     __args__ = dict()
     __args__['hostname'] = hostname
@@ -211,9 +223,12 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
+    :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
     :param str id: Unique identifier of the Resource.
     :param str name: Unique human-readable name of the Resource.
+    :param int port: The port to dial to initiate a connection from the egress node to this resource.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+    :param str username: The username to authenticate with.
     """
     ...

@@ -19,6 +19,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The URL of the Delinea instance
+        /// </summary>
         [Input("serverUrl")]
         public Input<string>? ServerUrl { get; set; }
 
@@ -35,6 +38,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
+        /// The tenant name to target
         /// * gcp_store:
         /// </summary>
         [Input("tenantName")]

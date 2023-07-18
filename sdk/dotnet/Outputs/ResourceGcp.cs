@@ -15,19 +15,28 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class ResourceGcp
     {
         /// <summary>
-        /// Bind interface
+        /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
+        /// <summary>
+        /// The service account keyfile to authenticate with.
+        /// </summary>
         public readonly string? Keyfile;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
         public readonly int? PortOverride;
+        /// <summary>
+        /// Space separated scopes that this login should assume into when authenticating.
+        /// </summary>
         public readonly string Scopes;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
