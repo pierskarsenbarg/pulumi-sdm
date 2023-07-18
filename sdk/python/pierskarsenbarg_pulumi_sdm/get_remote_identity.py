@@ -138,12 +138,12 @@ def get_remote_identity(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getRemoteIdentity:getRemoteIdentity', __args__, opts=opts, typ=GetRemoteIdentityResult).value
 
     return AwaitableGetRemoteIdentityResult(
-        account_id=__ret__.account_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        remote_identities=__ret__.remote_identities,
-        remote_identity_group_id=__ret__.remote_identity_group_id,
-        username=__ret__.username)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        remote_identities=pulumi.get(__ret__, 'remote_identities'),
+        remote_identity_group_id=pulumi.get(__ret__, 'remote_identity_group_id'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_remote_identity)

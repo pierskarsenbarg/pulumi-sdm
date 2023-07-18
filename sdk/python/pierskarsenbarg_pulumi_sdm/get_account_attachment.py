@@ -121,11 +121,11 @@ def get_account_attachment(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getAccountAttachment:getAccountAttachment', __args__, opts=opts, typ=GetAccountAttachmentResult).value
 
     return AwaitableGetAccountAttachmentResult(
-        account_attachments=__ret__.account_attachments,
-        account_id=__ret__.account_id,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        role_id=__ret__.role_id)
+        account_attachments=pulumi.get(__ret__, 'account_attachments'),
+        account_id=pulumi.get(__ret__, 'account_id'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        role_id=pulumi.get(__ret__, 'role_id'))
 
 
 @_utilities.lift_output_func(get_account_attachment)

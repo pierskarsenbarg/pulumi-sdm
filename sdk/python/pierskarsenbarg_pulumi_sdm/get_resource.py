@@ -185,15 +185,15 @@ def get_resource(hostname: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getResource:getResource', __args__, opts=opts, typ=GetResourceResult).value
 
     return AwaitableGetResourceResult(
-        hostname=__ret__.hostname,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name=__ret__.name,
-        port=__ret__.port,
-        resources=__ret__.resources,
-        tags=__ret__.tags,
-        type=__ret__.type,
-        username=__ret__.username)
+        hostname=pulumi.get(__ret__, 'hostname'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name=pulumi.get(__ret__, 'name'),
+        port=pulumi.get(__ret__, 'port'),
+        resources=pulumi.get(__ret__, 'resources'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'),
+        username=pulumi.get(__ret__, 'username'))
 
 
 @_utilities.lift_output_func(get_resource)

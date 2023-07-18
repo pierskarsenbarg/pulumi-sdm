@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * A SecretStore is a server where resource secrets (passwords, keys) are stored.
+ *  Coming soon support for HashiCorp Vault and AWS Secret Store.
+ * This resource can be imported using the import command.
+ *
  * ## Import
  *
  * SecretStore can be imported using the id, e.g.,

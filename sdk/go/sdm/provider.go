@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,7 +33,7 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:sdm", name, args, &resource, opts...)
 	if err != nil {

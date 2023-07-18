@@ -11,6 +11,51 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm
 {
     /// <summary>
+    /// Accounts are users that have access to strongDM. There are two types of accounts:
+    ///  1. **Users:** humans who are authenticated through username and password or SSO.
+    ///  2. **Service Accounts:** machines that are authenticated using a service token.
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Sdm = PiersKarsenbarg.Sdm;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var test_user = new Sdm.Account("test-user", new()
+    ///     {
+    ///         User = new Sdm.Inputs.AccountUserArgs
+    ///         {
+    ///             Email = "albob@strongdm.com",
+    ///             FirstName = "al",
+    ///             LastName = "bob",
+    ///             Tags = 
+    ///             {
+    ///                 { "env", "dev" },
+    ///                 { "region", "us-west" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var test_service = new Sdm.Account("test-service", new()
+    ///     {
+    ///         Service = new Sdm.Inputs.AccountServiceArgs
+    ///         {
+    ///             Name = "test-service",
+    ///             Tags = 
+    ///             {
+    ///                 { "env", "dev" },
+    ///                 { "region", "us-west" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// This resource can be imported using the import command.
+    /// 
     /// ## Import
     /// 
     /// Account can be imported using the id, e.g.,

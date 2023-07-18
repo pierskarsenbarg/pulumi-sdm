@@ -81,8 +81,8 @@ def get_ssh_ca_pubkey(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getSshCaPubkey:getSshCaPubkey', __args__, opts=opts, typ=GetSshCaPubkeyResult).value
 
     return AwaitableGetSshCaPubkeyResult(
-        id=__ret__.id,
-        public_key=__ret__.public_key)
+        id=pulumi.get(__ret__, 'id'),
+        public_key=pulumi.get(__ret__, 'public_key'))
 
 
 @_utilities.lift_output_func(get_ssh_ca_pubkey)

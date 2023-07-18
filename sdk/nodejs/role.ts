@@ -5,6 +5,38 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * A Role has a list of access rules which determine which Resources the members
+ *  of the Role have access to. An Account can be a member of multiple Roles via
+ *  AccountAttachments.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * const engineers = new sdm.Role("engineers", {tags: {
+ *     foo: "bar",
+ * }});
+ * const example_role = new sdm.Role("example-role", {accessRules: JSON.stringify([
+ *     {
+ *         tags: {
+ *             env: "staging",
+ *         },
+ *     },
+ *     {
+ *         type: "postgres",
+ *         tags: {
+ *             region: "us-west",
+ *             env: "dev",
+ *         },
+ *     },
+ *     {
+ *         ids: ["rs-093e6f3061eb4dad"],
+ *     },
+ * ])});
+ * ```
+ * This resource can be imported using the import command.
+ *
  * ## Import
  *
  * Role can be imported using the id, e.g.,

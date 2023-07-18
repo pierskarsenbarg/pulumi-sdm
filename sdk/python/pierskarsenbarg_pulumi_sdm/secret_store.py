@@ -298,6 +298,10 @@ class SecretStore(pulumi.CustomResource):
                  vault_token: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenArgs']]] = None,
                  __props__=None):
         """
+        A SecretStore is a server where resource secrets (passwords, keys) are stored.
+         Coming soon support for HashiCorp Vault and AWS Secret Store.
+        This resource can be imported using the import command.
+
         ## Import
 
         SecretStore can be imported using the id, e.g.,
@@ -318,6 +322,10 @@ class SecretStore(pulumi.CustomResource):
                  args: Optional[SecretStoreArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A SecretStore is a server where resource secrets (passwords, keys) are stored.
+         Coming soon support for HashiCorp Vault and AWS Secret Store.
+        This resource can be imported using the import command.
+
         ## Import
 
         SecretStore can be imported using the id, e.g.,

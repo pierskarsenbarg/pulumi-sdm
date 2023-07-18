@@ -7,9 +7,75 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Role has a list of access rules which determine which Resources the members
+//
+//	of the Role have access to. An Account can be a member of multiple Roles via
+//	AccountAttachments.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.NewRole(ctx, "engineers", &sdm.RoleArgs{
+//				Tags: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal([]interface{}{
+//				map[string]interface{}{
+//					"tags": map[string]interface{}{
+//						"env": "staging",
+//					},
+//				},
+//				map[string]interface{}{
+//					"type": "postgres",
+//					"tags": map[string]interface{}{
+//						"region": "us-west",
+//						"env":    "dev",
+//					},
+//				},
+//				map[string]interface{}{
+//					"ids": []string{
+//						"rs-093e6f3061eb4dad",
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = sdm.NewRole(ctx, "example-role", &sdm.RoleArgs{
+//				AccessRules: pulumi.String(json0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// This resource can be imported using the import command.
+//
 // ## Import
 //
 // Role can be imported using the id, e.g.,
@@ -39,7 +105,7 @@ func NewRole(ctx *pulumi.Context,
 		args = &RoleArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Role
 	err := ctx.RegisterResource("sdm:index/role:Role", name, args, &resource, opts...)
 	if err != nil {

@@ -171,14 +171,14 @@ def get_node(bind_address: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getNode:getNode', __args__, opts=opts, typ=GetNodeResult).value
 
     return AwaitableGetNodeResult(
-        bind_address=__ret__.bind_address,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        listen_address=__ret__.listen_address,
-        name=__ret__.name,
-        nodes=__ret__.nodes,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        bind_address=pulumi.get(__ret__, 'bind_address'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        listen_address=pulumi.get(__ret__, 'listen_address'),
+        name=pulumi.get(__ret__, 'name'),
+        nodes=pulumi.get(__ret__, 'nodes'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_node)

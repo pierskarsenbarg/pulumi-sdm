@@ -127,12 +127,12 @@ def get_role(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult).value
 
     return AwaitableGetRoleResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        managed_by=__ret__.managed_by,
-        name=__ret__.name,
-        roles=__ret__.roles,
-        tags=__ret__.tags)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        managed_by=pulumi.get(__ret__, 'managed_by'),
+        name=pulumi.get(__ret__, 'name'),
+        roles=pulumi.get(__ret__, 'roles'),
+        tags=pulumi.get(__ret__, 'tags'))
 
 
 @_utilities.lift_output_func(get_role)

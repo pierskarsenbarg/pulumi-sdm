@@ -8,9 +8,39 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// AccountAttachments assign an account to a role.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdm.NewAccountAttachment(ctx, "testAccountAttachment", &sdm.AccountAttachmentArgs{
+//				AccountId: pulumi.String("a-00000054"),
+//				RoleId:    pulumi.String("r-12355562"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// This resource can be imported using the import command.
+//
 // ## Import
 //
 // AccountAttachment can be imported using the id, e.g.,
@@ -42,7 +72,7 @@ func NewAccountAttachment(ctx *pulumi.Context,
 	if args.RoleId == nil {
 		return nil, errors.New("invalid value for required argument 'RoleId'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountAttachment
 	err := ctx.RegisterResource("sdm:index/accountAttachment:AccountAttachment", name, args, &resource, opts...)
 	if err != nil {

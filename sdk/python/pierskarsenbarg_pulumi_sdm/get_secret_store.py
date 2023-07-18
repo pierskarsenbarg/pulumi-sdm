@@ -127,12 +127,12 @@ def get_secret_store(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getSecretStore:getSecretStore', __args__, opts=opts, typ=GetSecretStoreResult).value
 
     return AwaitableGetSecretStoreResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name=__ret__.name,
-        secret_stores=__ret__.secret_stores,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name=pulumi.get(__ret__, 'name'),
+        secret_stores=pulumi.get(__ret__, 'secret_stores'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_secret_store)

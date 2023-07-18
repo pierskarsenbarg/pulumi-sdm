@@ -106,10 +106,10 @@ def get_remote_identity_group(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup', __args__, opts=opts, typ=GetRemoteIdentityGroupResult).value
 
     return AwaitableGetRemoteIdentityGroupResult(
-        id=__ret__.id,
-        ids=__ret__.ids,
-        name=__ret__.name,
-        remote_identity_groups=__ret__.remote_identity_groups)
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        name=pulumi.get(__ret__, 'name'),
+        remote_identity_groups=pulumi.get(__ret__, 'remote_identity_groups'))
 
 
 @_utilities.lift_output_func(get_remote_identity_group)

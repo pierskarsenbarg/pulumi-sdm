@@ -11,6 +11,52 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm
 {
     /// <summary>
+    /// Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+    ///  There are two types of nodes:
+    ///  1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+    ///  2. **Gateways:** a relay that also listens for connections from strongDM clients
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Sdm = PiersKarsenbarg.Sdm;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var gateway = new Sdm.Node("gateway", new()
+    ///     {
+    ///         Gateway = new Sdm.Inputs.NodeGatewayArgs
+    ///         {
+    ///             BindAddress = "0.0.0.0:21222",
+    ///             ListenAddress = "165.23.40.1:21222",
+    ///             Name = "test-gateway",
+    ///             Tags = 
+    ///             {
+    ///                 { "env", "dev" },
+    ///                 { "region", "us-west" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var relay = new Sdm.Node("relay", new()
+    ///     {
+    ///         Relay = new Sdm.Inputs.NodeRelayArgs
+    ///         {
+    ///             Name = "test-relay",
+    ///             Tags = 
+    ///             {
+    ///                 { "env", "dev" },
+    ///                 { "region", "us-west" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// This resource can be imported using the import command.
+    /// 
     /// ## Import
     /// 
     /// Node can be imported using the id, e.g.,

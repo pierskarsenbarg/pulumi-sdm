@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // A GUID identifying the API key used to authenticate with the StrongDM API.
 func GetApiAccessKey(ctx *pulumi.Context) string {

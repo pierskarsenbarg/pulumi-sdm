@@ -149,6 +149,39 @@ class Role(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        A Role has a list of access rules which determine which Resources the members
+         of the Role have access to. An Account can be a member of multiple Roles via
+         AccountAttachments.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        engineers = sdm.Role("engineers", tags={
+            "foo": "bar",
+        })
+        example_role = sdm.Role("example-role", access_rules=json.dumps([
+            {
+                "tags": {
+                    "env": "staging",
+                },
+            },
+            {
+                "type": "postgres",
+                "tags": {
+                    "region": "us-west",
+                    "env": "dev",
+                },
+            },
+            {
+                "ids": ["rs-093e6f3061eb4dad"],
+            },
+        ]))
+        ```
+        This resource can be imported using the import command.
+
         ## Import
 
         Role can be imported using the id, e.g.,
@@ -170,6 +203,39 @@ class Role(pulumi.CustomResource):
                  args: Optional[RoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Role has a list of access rules which determine which Resources the members
+         of the Role have access to. An Account can be a member of multiple Roles via
+         AccountAttachments.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import json
+        import pierskarsenbarg_pulumi_sdm as sdm
+
+        engineers = sdm.Role("engineers", tags={
+            "foo": "bar",
+        })
+        example_role = sdm.Role("example-role", access_rules=json.dumps([
+            {
+                "tags": {
+                    "env": "staging",
+                },
+            },
+            {
+                "type": "postgres",
+                "tags": {
+                    "region": "us-west",
+                    "env": "dev",
+                },
+            },
+            {
+                "ids": ["rs-093e6f3061eb4dad"],
+            },
+        ]))
+        ```
+        This resource can be imported using the import command.
+
         ## Import
 
         Role can be imported using the id, e.g.,

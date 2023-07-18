@@ -7,9 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A SecretStore is a server where resource secrets (passwords, keys) are stored.
+//
+//	Coming soon support for HashiCorp Vault and AWS Secret Store.
+//
+// This resource can be imported using the import command.
+//
 // ## Import
 //
 // SecretStore can be imported using the id, e.g.,
@@ -43,7 +50,7 @@ func NewSecretStore(ctx *pulumi.Context,
 		args = &SecretStoreArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretStore
 	err := ctx.RegisterResource("sdm:index/secretStore:SecretStore", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,7 +38,7 @@ import (
 //
 // ```
 func LookupAccountAttachment(ctx *pulumi.Context, args *LookupAccountAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupAccountAttachmentResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountAttachmentResult
 	err := ctx.Invoke("sdm:index/getAccountAttachment:getAccountAttachment", args, &rv, opts...)
 	if err != nil {

@@ -216,17 +216,17 @@ def get_account(email: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        accounts=__ret__.accounts,
-        email=__ret__.email,
-        external_id=__ret__.external_id,
-        first_name=__ret__.first_name,
-        id=__ret__.id,
-        ids=__ret__.ids,
-        last_name=__ret__.last_name,
-        name=__ret__.name,
-        suspended=__ret__.suspended,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        accounts=pulumi.get(__ret__, 'accounts'),
+        email=pulumi.get(__ret__, 'email'),
+        external_id=pulumi.get(__ret__, 'external_id'),
+        first_name=pulumi.get(__ret__, 'first_name'),
+        id=pulumi.get(__ret__, 'id'),
+        ids=pulumi.get(__ret__, 'ids'),
+        last_name=pulumi.get(__ret__, 'last_name'),
+        name=pulumi.get(__ret__, 'name'),
+        suspended=pulumi.get(__ret__, 'suspended'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_account)

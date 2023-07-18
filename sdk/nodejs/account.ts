@@ -7,6 +7,34 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Accounts are users that have access to strongDM. There are two types of accounts:
+ *  1. **Users:** humans who are authenticated through username and password or SSO.
+ *  2. **Service Accounts:** machines that are authenticated using a service token.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as sdm from "@pierskarsenbarg/sdm";
+ *
+ * const test_user = new sdm.Account("test-user", {user: {
+ *     email: "albob@strongdm.com",
+ *     firstName: "al",
+ *     lastName: "bob",
+ *     tags: {
+ *         env: "dev",
+ *         region: "us-west",
+ *     },
+ * }});
+ * const test_service = new sdm.Account("test-service", {service: {
+ *     name: "test-service",
+ *     tags: {
+ *         env: "dev",
+ *         region: "us-west",
+ *     },
+ * }});
+ * ```
+ * This resource can be imported using the import command.
+ *
  * ## Import
  *
  * Account can be imported using the id, e.g.,
