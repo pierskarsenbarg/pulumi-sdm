@@ -11,6 +11,8 @@ updates:
     commit-message:
       prefix: "provider"
       include: "scope"
+    ignore:
+      - dependency-name: "github.com/pulumi/pulumi/sdk/*"
   - package-ecosystem: "gomod"
     directory: "/sdk"
     schedule:
