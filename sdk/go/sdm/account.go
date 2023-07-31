@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pierskarsenbarg/pulumi-sdm/sdk/v2/go/sdm/internal"
+	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ import (
 //
 // import (
 //
-//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/v2/go/sdm"
+//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
