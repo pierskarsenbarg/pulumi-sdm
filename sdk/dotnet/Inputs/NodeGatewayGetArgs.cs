@@ -20,12 +20,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? BindAddress { get; set; }
 
         /// <summary>
-        /// ConnectsTo can be used to restrict the peering between relays and gateways.
-        /// </summary>
-        [Input("connectsTo")]
-        public Input<string>? ConnectsTo { get; set; }
-
-        /// <summary>
         /// Device is a read only device name uploaded by the gateway process when it comes online.
         /// </summary>
         [Input("device")]

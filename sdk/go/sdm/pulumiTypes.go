@@ -476,8 +476,6 @@ func (o AccountUserPtrOutput) Tags() pulumi.StringMapOutput {
 type NodeGateway struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress *string `pulumi:"bindAddress"`
-	// ConnectsTo can be used to restrict the peering between relays and gateways.
-	ConnectsTo *string `pulumi:"connectsTo"`
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device *string `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
@@ -511,8 +509,6 @@ type NodeGatewayInput interface {
 type NodeGatewayArgs struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress pulumi.StringPtrInput `pulumi:"bindAddress"`
-	// ConnectsTo can be used to restrict the peering between relays and gateways.
-	ConnectsTo pulumi.StringPtrInput `pulumi:"connectsTo"`
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device pulumi.StringPtrInput `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
@@ -614,11 +610,6 @@ func (o NodeGatewayOutput) BindAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeGateway) *string { return v.BindAddress }).(pulumi.StringPtrOutput)
 }
 
-// ConnectsTo can be used to restrict the peering between relays and gateways.
-func (o NodeGatewayOutput) ConnectsTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeGateway) *string { return v.ConnectsTo }).(pulumi.StringPtrOutput)
-}
-
 // Device is a read only device name uploaded by the gateway process when it comes online.
 func (o NodeGatewayOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeGateway) *string { return v.Device }).(pulumi.StringPtrOutput)
@@ -694,16 +685,6 @@ func (o NodeGatewayPtrOutput) BindAddress() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.BindAddress
-	}).(pulumi.StringPtrOutput)
-}
-
-// ConnectsTo can be used to restrict the peering between relays and gateways.
-func (o NodeGatewayPtrOutput) ConnectsTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeGateway) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectsTo
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -897,8 +878,6 @@ func (o NodeGatewayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) NodeGa
 }
 
 type NodeRelay struct {
-	// ConnectsTo can be used to restrict the peering between relays and gateways.
-	ConnectsTo *string `pulumi:"connectsTo"`
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device *string `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
@@ -928,8 +907,6 @@ type NodeRelayInput interface {
 }
 
 type NodeRelayArgs struct {
-	// ConnectsTo can be used to restrict the peering between relays and gateways.
-	ConnectsTo pulumi.StringPtrInput `pulumi:"connectsTo"`
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device pulumi.StringPtrInput `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
@@ -1024,11 +1001,6 @@ func (o NodeRelayOutput) ToNodeRelayPtrOutputWithContext(ctx context.Context) No
 	}).(NodeRelayPtrOutput)
 }
 
-// ConnectsTo can be used to restrict the peering between relays and gateways.
-func (o NodeRelayOutput) ConnectsTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeRelay) *string { return v.ConnectsTo }).(pulumi.StringPtrOutput)
-}
-
 // Device is a read only device name uploaded by the gateway process when it comes online.
 func (o NodeRelayOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeRelay) *string { return v.Device }).(pulumi.StringPtrOutput)
@@ -1090,16 +1062,6 @@ func (o NodeRelayPtrOutput) Elem() NodeRelayOutput {
 		var ret NodeRelay
 		return ret
 	}).(NodeRelayOutput)
-}
-
-// ConnectsTo can be used to restrict the peering between relays and gateways.
-func (o NodeRelayPtrOutput) ConnectsTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NodeRelay) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectsTo
-	}).(pulumi.StringPtrOutput)
 }
 
 // Device is a read only device name uploaded by the gateway process when it comes online.
@@ -33219,8 +33181,6 @@ func (o GetNodeNodeArrayOutput) Index(i pulumi.IntInput) GetNodeNodeOutput {
 type GetNodeNodeGateway struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress *string `pulumi:"bindAddress"`
-	// ConnectsTo can be used to restrict the peering between relays and gateways.
-	ConnectsTo *string `pulumi:"connectsTo"`
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device string `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
@@ -33255,8 +33215,6 @@ type GetNodeNodeGatewayInput interface {
 type GetNodeNodeGatewayArgs struct {
 	// The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 	BindAddress pulumi.StringPtrInput `pulumi:"bindAddress"`
-	// ConnectsTo can be used to restrict the peering between relays and gateways.
-	ConnectsTo pulumi.StringPtrInput `pulumi:"connectsTo"`
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device pulumi.StringInput `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
@@ -33331,11 +33289,6 @@ func (o GetNodeNodeGatewayOutput) ToGetNodeNodeGatewayOutputWithContext(ctx cont
 // The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
 func (o GetNodeNodeGatewayOutput) BindAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodeNodeGateway) *string { return v.BindAddress }).(pulumi.StringPtrOutput)
-}
-
-// ConnectsTo can be used to restrict the peering between relays and gateways.
-func (o GetNodeNodeGatewayOutput) ConnectsTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetNodeNodeGateway) *string { return v.ConnectsTo }).(pulumi.StringPtrOutput)
 }
 
 // Device is a read only device name uploaded by the gateway process when it comes online.
@@ -33504,8 +33457,6 @@ func (o GetNodeNodeGatewayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetNodeNodeRelay struct {
-	// ConnectsTo can be used to restrict the peering between relays and gateways.
-	ConnectsTo *string `pulumi:"connectsTo"`
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device string `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
@@ -33536,8 +33487,6 @@ type GetNodeNodeRelayInput interface {
 }
 
 type GetNodeNodeRelayArgs struct {
-	// ConnectsTo can be used to restrict the peering between relays and gateways.
-	ConnectsTo pulumi.StringPtrInput `pulumi:"connectsTo"`
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device pulumi.StringInput `pulumi:"device"`
 	// GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
@@ -33605,11 +33554,6 @@ func (o GetNodeNodeRelayOutput) ToGetNodeNodeRelayOutput() GetNodeNodeRelayOutpu
 
 func (o GetNodeNodeRelayOutput) ToGetNodeNodeRelayOutputWithContext(ctx context.Context) GetNodeNodeRelayOutput {
 	return o
-}
-
-// ConnectsTo can be used to restrict the peering between relays and gateways.
-func (o GetNodeNodeRelayOutput) ConnectsTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetNodeNodeRelay) *string { return v.ConnectsTo }).(pulumi.StringPtrOutput)
 }
 
 // Device is a read only device name uploaded by the gateway process when it comes online.
@@ -33770,6 +33714,457 @@ func (o GetNodeNodeRelayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeNodeRelayMaintenanceWindow {
 		return vs[0].([]GetNodeNodeRelayMaintenanceWindow)[vs[1].(int)]
 	}).(GetNodeNodeRelayMaintenanceWindowOutput)
+}
+
+type GetPeeringGroupNodePeeringGroupNode struct {
+	// Peering Group ID to which the node will be attached to.
+	GroupId *string `pulumi:"groupId"`
+	// Unique identifier of the Attachment.
+	Id *string `pulumi:"id"`
+	// Node ID to be attached.
+	NodeId *string `pulumi:"nodeId"`
+}
+
+// GetPeeringGroupNodePeeringGroupNodeInput is an input type that accepts GetPeeringGroupNodePeeringGroupNodeArgs and GetPeeringGroupNodePeeringGroupNodeOutput values.
+// You can construct a concrete instance of `GetPeeringGroupNodePeeringGroupNodeInput` via:
+//
+//	GetPeeringGroupNodePeeringGroupNodeArgs{...}
+type GetPeeringGroupNodePeeringGroupNodeInput interface {
+	pulumi.Input
+
+	ToGetPeeringGroupNodePeeringGroupNodeOutput() GetPeeringGroupNodePeeringGroupNodeOutput
+	ToGetPeeringGroupNodePeeringGroupNodeOutputWithContext(context.Context) GetPeeringGroupNodePeeringGroupNodeOutput
+}
+
+type GetPeeringGroupNodePeeringGroupNodeArgs struct {
+	// Peering Group ID to which the node will be attached to.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Unique identifier of the Attachment.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Node ID to be attached.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+}
+
+func (GetPeeringGroupNodePeeringGroupNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringGroupNodePeeringGroupNode)(nil)).Elem()
+}
+
+func (i GetPeeringGroupNodePeeringGroupNodeArgs) ToGetPeeringGroupNodePeeringGroupNodeOutput() GetPeeringGroupNodePeeringGroupNodeOutput {
+	return i.ToGetPeeringGroupNodePeeringGroupNodeOutputWithContext(context.Background())
+}
+
+func (i GetPeeringGroupNodePeeringGroupNodeArgs) ToGetPeeringGroupNodePeeringGroupNodeOutputWithContext(ctx context.Context) GetPeeringGroupNodePeeringGroupNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupNodePeeringGroupNodeOutput)
+}
+
+// GetPeeringGroupNodePeeringGroupNodeArrayInput is an input type that accepts GetPeeringGroupNodePeeringGroupNodeArray and GetPeeringGroupNodePeeringGroupNodeArrayOutput values.
+// You can construct a concrete instance of `GetPeeringGroupNodePeeringGroupNodeArrayInput` via:
+//
+//	GetPeeringGroupNodePeeringGroupNodeArray{ GetPeeringGroupNodePeeringGroupNodeArgs{...} }
+type GetPeeringGroupNodePeeringGroupNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetPeeringGroupNodePeeringGroupNodeArrayOutput() GetPeeringGroupNodePeeringGroupNodeArrayOutput
+	ToGetPeeringGroupNodePeeringGroupNodeArrayOutputWithContext(context.Context) GetPeeringGroupNodePeeringGroupNodeArrayOutput
+}
+
+type GetPeeringGroupNodePeeringGroupNodeArray []GetPeeringGroupNodePeeringGroupNodeInput
+
+func (GetPeeringGroupNodePeeringGroupNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringGroupNodePeeringGroupNode)(nil)).Elem()
+}
+
+func (i GetPeeringGroupNodePeeringGroupNodeArray) ToGetPeeringGroupNodePeeringGroupNodeArrayOutput() GetPeeringGroupNodePeeringGroupNodeArrayOutput {
+	return i.ToGetPeeringGroupNodePeeringGroupNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetPeeringGroupNodePeeringGroupNodeArray) ToGetPeeringGroupNodePeeringGroupNodeArrayOutputWithContext(ctx context.Context) GetPeeringGroupNodePeeringGroupNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupNodePeeringGroupNodeArrayOutput)
+}
+
+type GetPeeringGroupNodePeeringGroupNodeOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringGroupNodePeeringGroupNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringGroupNodePeeringGroupNode)(nil)).Elem()
+}
+
+func (o GetPeeringGroupNodePeeringGroupNodeOutput) ToGetPeeringGroupNodePeeringGroupNodeOutput() GetPeeringGroupNodePeeringGroupNodeOutput {
+	return o
+}
+
+func (o GetPeeringGroupNodePeeringGroupNodeOutput) ToGetPeeringGroupNodePeeringGroupNodeOutputWithContext(ctx context.Context) GetPeeringGroupNodePeeringGroupNodeOutput {
+	return o
+}
+
+// Peering Group ID to which the node will be attached to.
+func (o GetPeeringGroupNodePeeringGroupNodeOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupNodePeeringGroupNode) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Attachment.
+func (o GetPeeringGroupNodePeeringGroupNodeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupNodePeeringGroupNode) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Node ID to be attached.
+func (o GetPeeringGroupNodePeeringGroupNodeOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupNodePeeringGroupNode) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+type GetPeeringGroupNodePeeringGroupNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringGroupNodePeeringGroupNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringGroupNodePeeringGroupNode)(nil)).Elem()
+}
+
+func (o GetPeeringGroupNodePeeringGroupNodeArrayOutput) ToGetPeeringGroupNodePeeringGroupNodeArrayOutput() GetPeeringGroupNodePeeringGroupNodeArrayOutput {
+	return o
+}
+
+func (o GetPeeringGroupNodePeeringGroupNodeArrayOutput) ToGetPeeringGroupNodePeeringGroupNodeArrayOutputWithContext(ctx context.Context) GetPeeringGroupNodePeeringGroupNodeArrayOutput {
+	return o
+}
+
+func (o GetPeeringGroupNodePeeringGroupNodeArrayOutput) Index(i pulumi.IntInput) GetPeeringGroupNodePeeringGroupNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPeeringGroupNodePeeringGroupNode {
+		return vs[0].([]GetPeeringGroupNodePeeringGroupNode)[vs[1].(int)]
+	}).(GetPeeringGroupNodePeeringGroupNodeOutput)
+}
+
+type GetPeeringGroupPeerPeeringGroupPeer struct {
+	// Group ID from which the link will originate.
+	GroupId *string `pulumi:"groupId"`
+	// Unique identifier of the Attachment.
+	Id *string `pulumi:"id"`
+	// Peering Group ID to which Group ID will link.
+	PeersWithGroupId *string `pulumi:"peersWithGroupId"`
+}
+
+// GetPeeringGroupPeerPeeringGroupPeerInput is an input type that accepts GetPeeringGroupPeerPeeringGroupPeerArgs and GetPeeringGroupPeerPeeringGroupPeerOutput values.
+// You can construct a concrete instance of `GetPeeringGroupPeerPeeringGroupPeerInput` via:
+//
+//	GetPeeringGroupPeerPeeringGroupPeerArgs{...}
+type GetPeeringGroupPeerPeeringGroupPeerInput interface {
+	pulumi.Input
+
+	ToGetPeeringGroupPeerPeeringGroupPeerOutput() GetPeeringGroupPeerPeeringGroupPeerOutput
+	ToGetPeeringGroupPeerPeeringGroupPeerOutputWithContext(context.Context) GetPeeringGroupPeerPeeringGroupPeerOutput
+}
+
+type GetPeeringGroupPeerPeeringGroupPeerArgs struct {
+	// Group ID from which the link will originate.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Unique identifier of the Attachment.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Peering Group ID to which Group ID will link.
+	PeersWithGroupId pulumi.StringPtrInput `pulumi:"peersWithGroupId"`
+}
+
+func (GetPeeringGroupPeerPeeringGroupPeerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringGroupPeerPeeringGroupPeer)(nil)).Elem()
+}
+
+func (i GetPeeringGroupPeerPeeringGroupPeerArgs) ToGetPeeringGroupPeerPeeringGroupPeerOutput() GetPeeringGroupPeerPeeringGroupPeerOutput {
+	return i.ToGetPeeringGroupPeerPeeringGroupPeerOutputWithContext(context.Background())
+}
+
+func (i GetPeeringGroupPeerPeeringGroupPeerArgs) ToGetPeeringGroupPeerPeeringGroupPeerOutputWithContext(ctx context.Context) GetPeeringGroupPeerPeeringGroupPeerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupPeerPeeringGroupPeerOutput)
+}
+
+// GetPeeringGroupPeerPeeringGroupPeerArrayInput is an input type that accepts GetPeeringGroupPeerPeeringGroupPeerArray and GetPeeringGroupPeerPeeringGroupPeerArrayOutput values.
+// You can construct a concrete instance of `GetPeeringGroupPeerPeeringGroupPeerArrayInput` via:
+//
+//	GetPeeringGroupPeerPeeringGroupPeerArray{ GetPeeringGroupPeerPeeringGroupPeerArgs{...} }
+type GetPeeringGroupPeerPeeringGroupPeerArrayInput interface {
+	pulumi.Input
+
+	ToGetPeeringGroupPeerPeeringGroupPeerArrayOutput() GetPeeringGroupPeerPeeringGroupPeerArrayOutput
+	ToGetPeeringGroupPeerPeeringGroupPeerArrayOutputWithContext(context.Context) GetPeeringGroupPeerPeeringGroupPeerArrayOutput
+}
+
+type GetPeeringGroupPeerPeeringGroupPeerArray []GetPeeringGroupPeerPeeringGroupPeerInput
+
+func (GetPeeringGroupPeerPeeringGroupPeerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringGroupPeerPeeringGroupPeer)(nil)).Elem()
+}
+
+func (i GetPeeringGroupPeerPeeringGroupPeerArray) ToGetPeeringGroupPeerPeeringGroupPeerArrayOutput() GetPeeringGroupPeerPeeringGroupPeerArrayOutput {
+	return i.ToGetPeeringGroupPeerPeeringGroupPeerArrayOutputWithContext(context.Background())
+}
+
+func (i GetPeeringGroupPeerPeeringGroupPeerArray) ToGetPeeringGroupPeerPeeringGroupPeerArrayOutputWithContext(ctx context.Context) GetPeeringGroupPeerPeeringGroupPeerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupPeerPeeringGroupPeerArrayOutput)
+}
+
+type GetPeeringGroupPeerPeeringGroupPeerOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringGroupPeerPeeringGroupPeerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringGroupPeerPeeringGroupPeer)(nil)).Elem()
+}
+
+func (o GetPeeringGroupPeerPeeringGroupPeerOutput) ToGetPeeringGroupPeerPeeringGroupPeerOutput() GetPeeringGroupPeerPeeringGroupPeerOutput {
+	return o
+}
+
+func (o GetPeeringGroupPeerPeeringGroupPeerOutput) ToGetPeeringGroupPeerPeeringGroupPeerOutputWithContext(ctx context.Context) GetPeeringGroupPeerPeeringGroupPeerOutput {
+	return o
+}
+
+// Group ID from which the link will originate.
+func (o GetPeeringGroupPeerPeeringGroupPeerOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupPeerPeeringGroupPeer) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Attachment.
+func (o GetPeeringGroupPeerPeeringGroupPeerOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupPeerPeeringGroupPeer) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Peering Group ID to which Group ID will link.
+func (o GetPeeringGroupPeerPeeringGroupPeerOutput) PeersWithGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupPeerPeeringGroupPeer) *string { return v.PeersWithGroupId }).(pulumi.StringPtrOutput)
+}
+
+type GetPeeringGroupPeerPeeringGroupPeerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringGroupPeerPeeringGroupPeerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringGroupPeerPeeringGroupPeer)(nil)).Elem()
+}
+
+func (o GetPeeringGroupPeerPeeringGroupPeerArrayOutput) ToGetPeeringGroupPeerPeeringGroupPeerArrayOutput() GetPeeringGroupPeerPeeringGroupPeerArrayOutput {
+	return o
+}
+
+func (o GetPeeringGroupPeerPeeringGroupPeerArrayOutput) ToGetPeeringGroupPeerPeeringGroupPeerArrayOutputWithContext(ctx context.Context) GetPeeringGroupPeerPeeringGroupPeerArrayOutput {
+	return o
+}
+
+func (o GetPeeringGroupPeerPeeringGroupPeerArrayOutput) Index(i pulumi.IntInput) GetPeeringGroupPeerPeeringGroupPeerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPeeringGroupPeerPeeringGroupPeer {
+		return vs[0].([]GetPeeringGroupPeerPeeringGroupPeer)[vs[1].(int)]
+	}).(GetPeeringGroupPeerPeeringGroupPeerOutput)
+}
+
+type GetPeeringGroupPeeringGroup struct {
+	// Unique identifier of the PeeringGroup.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the PeeringGroup.
+	Name *string `pulumi:"name"`
+}
+
+// GetPeeringGroupPeeringGroupInput is an input type that accepts GetPeeringGroupPeeringGroupArgs and GetPeeringGroupPeeringGroupOutput values.
+// You can construct a concrete instance of `GetPeeringGroupPeeringGroupInput` via:
+//
+//	GetPeeringGroupPeeringGroupArgs{...}
+type GetPeeringGroupPeeringGroupInput interface {
+	pulumi.Input
+
+	ToGetPeeringGroupPeeringGroupOutput() GetPeeringGroupPeeringGroupOutput
+	ToGetPeeringGroupPeeringGroupOutputWithContext(context.Context) GetPeeringGroupPeeringGroupOutput
+}
+
+type GetPeeringGroupPeeringGroupArgs struct {
+	// Unique identifier of the PeeringGroup.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the PeeringGroup.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetPeeringGroupPeeringGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringGroupPeeringGroup)(nil)).Elem()
+}
+
+func (i GetPeeringGroupPeeringGroupArgs) ToGetPeeringGroupPeeringGroupOutput() GetPeeringGroupPeeringGroupOutput {
+	return i.ToGetPeeringGroupPeeringGroupOutputWithContext(context.Background())
+}
+
+func (i GetPeeringGroupPeeringGroupArgs) ToGetPeeringGroupPeeringGroupOutputWithContext(ctx context.Context) GetPeeringGroupPeeringGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupPeeringGroupOutput)
+}
+
+// GetPeeringGroupPeeringGroupArrayInput is an input type that accepts GetPeeringGroupPeeringGroupArray and GetPeeringGroupPeeringGroupArrayOutput values.
+// You can construct a concrete instance of `GetPeeringGroupPeeringGroupArrayInput` via:
+//
+//	GetPeeringGroupPeeringGroupArray{ GetPeeringGroupPeeringGroupArgs{...} }
+type GetPeeringGroupPeeringGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetPeeringGroupPeeringGroupArrayOutput() GetPeeringGroupPeeringGroupArrayOutput
+	ToGetPeeringGroupPeeringGroupArrayOutputWithContext(context.Context) GetPeeringGroupPeeringGroupArrayOutput
+}
+
+type GetPeeringGroupPeeringGroupArray []GetPeeringGroupPeeringGroupInput
+
+func (GetPeeringGroupPeeringGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringGroupPeeringGroup)(nil)).Elem()
+}
+
+func (i GetPeeringGroupPeeringGroupArray) ToGetPeeringGroupPeeringGroupArrayOutput() GetPeeringGroupPeeringGroupArrayOutput {
+	return i.ToGetPeeringGroupPeeringGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetPeeringGroupPeeringGroupArray) ToGetPeeringGroupPeeringGroupArrayOutputWithContext(ctx context.Context) GetPeeringGroupPeeringGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupPeeringGroupArrayOutput)
+}
+
+type GetPeeringGroupPeeringGroupOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringGroupPeeringGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringGroupPeeringGroup)(nil)).Elem()
+}
+
+func (o GetPeeringGroupPeeringGroupOutput) ToGetPeeringGroupPeeringGroupOutput() GetPeeringGroupPeeringGroupOutput {
+	return o
+}
+
+func (o GetPeeringGroupPeeringGroupOutput) ToGetPeeringGroupPeeringGroupOutputWithContext(ctx context.Context) GetPeeringGroupPeeringGroupOutput {
+	return o
+}
+
+// Unique identifier of the PeeringGroup.
+func (o GetPeeringGroupPeeringGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupPeeringGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the PeeringGroup.
+func (o GetPeeringGroupPeeringGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupPeeringGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetPeeringGroupPeeringGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringGroupPeeringGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringGroupPeeringGroup)(nil)).Elem()
+}
+
+func (o GetPeeringGroupPeeringGroupArrayOutput) ToGetPeeringGroupPeeringGroupArrayOutput() GetPeeringGroupPeeringGroupArrayOutput {
+	return o
+}
+
+func (o GetPeeringGroupPeeringGroupArrayOutput) ToGetPeeringGroupPeeringGroupArrayOutputWithContext(ctx context.Context) GetPeeringGroupPeeringGroupArrayOutput {
+	return o
+}
+
+func (o GetPeeringGroupPeeringGroupArrayOutput) Index(i pulumi.IntInput) GetPeeringGroupPeeringGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPeeringGroupPeeringGroup {
+		return vs[0].([]GetPeeringGroupPeeringGroup)[vs[1].(int)]
+	}).(GetPeeringGroupPeeringGroupOutput)
+}
+
+type GetPeeringGroupResourcePeeringGroupResource struct {
+	// Peering Group ID to which the resource will be attached to.
+	GroupId *string `pulumi:"groupId"`
+	// Unique identifier of the Attachment.
+	Id *string `pulumi:"id"`
+	// Resource ID to be attached.
+	ResourceId *string `pulumi:"resourceId"`
+}
+
+// GetPeeringGroupResourcePeeringGroupResourceInput is an input type that accepts GetPeeringGroupResourcePeeringGroupResourceArgs and GetPeeringGroupResourcePeeringGroupResourceOutput values.
+// You can construct a concrete instance of `GetPeeringGroupResourcePeeringGroupResourceInput` via:
+//
+//	GetPeeringGroupResourcePeeringGroupResourceArgs{...}
+type GetPeeringGroupResourcePeeringGroupResourceInput interface {
+	pulumi.Input
+
+	ToGetPeeringGroupResourcePeeringGroupResourceOutput() GetPeeringGroupResourcePeeringGroupResourceOutput
+	ToGetPeeringGroupResourcePeeringGroupResourceOutputWithContext(context.Context) GetPeeringGroupResourcePeeringGroupResourceOutput
+}
+
+type GetPeeringGroupResourcePeeringGroupResourceArgs struct {
+	// Peering Group ID to which the resource will be attached to.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Unique identifier of the Attachment.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Resource ID to be attached.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+}
+
+func (GetPeeringGroupResourcePeeringGroupResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringGroupResourcePeeringGroupResource)(nil)).Elem()
+}
+
+func (i GetPeeringGroupResourcePeeringGroupResourceArgs) ToGetPeeringGroupResourcePeeringGroupResourceOutput() GetPeeringGroupResourcePeeringGroupResourceOutput {
+	return i.ToGetPeeringGroupResourcePeeringGroupResourceOutputWithContext(context.Background())
+}
+
+func (i GetPeeringGroupResourcePeeringGroupResourceArgs) ToGetPeeringGroupResourcePeeringGroupResourceOutputWithContext(ctx context.Context) GetPeeringGroupResourcePeeringGroupResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupResourcePeeringGroupResourceOutput)
+}
+
+// GetPeeringGroupResourcePeeringGroupResourceArrayInput is an input type that accepts GetPeeringGroupResourcePeeringGroupResourceArray and GetPeeringGroupResourcePeeringGroupResourceArrayOutput values.
+// You can construct a concrete instance of `GetPeeringGroupResourcePeeringGroupResourceArrayInput` via:
+//
+//	GetPeeringGroupResourcePeeringGroupResourceArray{ GetPeeringGroupResourcePeeringGroupResourceArgs{...} }
+type GetPeeringGroupResourcePeeringGroupResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetPeeringGroupResourcePeeringGroupResourceArrayOutput() GetPeeringGroupResourcePeeringGroupResourceArrayOutput
+	ToGetPeeringGroupResourcePeeringGroupResourceArrayOutputWithContext(context.Context) GetPeeringGroupResourcePeeringGroupResourceArrayOutput
+}
+
+type GetPeeringGroupResourcePeeringGroupResourceArray []GetPeeringGroupResourcePeeringGroupResourceInput
+
+func (GetPeeringGroupResourcePeeringGroupResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringGroupResourcePeeringGroupResource)(nil)).Elem()
+}
+
+func (i GetPeeringGroupResourcePeeringGroupResourceArray) ToGetPeeringGroupResourcePeeringGroupResourceArrayOutput() GetPeeringGroupResourcePeeringGroupResourceArrayOutput {
+	return i.ToGetPeeringGroupResourcePeeringGroupResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetPeeringGroupResourcePeeringGroupResourceArray) ToGetPeeringGroupResourcePeeringGroupResourceArrayOutputWithContext(ctx context.Context) GetPeeringGroupResourcePeeringGroupResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupResourcePeeringGroupResourceArrayOutput)
+}
+
+type GetPeeringGroupResourcePeeringGroupResourceOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringGroupResourcePeeringGroupResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPeeringGroupResourcePeeringGroupResource)(nil)).Elem()
+}
+
+func (o GetPeeringGroupResourcePeeringGroupResourceOutput) ToGetPeeringGroupResourcePeeringGroupResourceOutput() GetPeeringGroupResourcePeeringGroupResourceOutput {
+	return o
+}
+
+func (o GetPeeringGroupResourcePeeringGroupResourceOutput) ToGetPeeringGroupResourcePeeringGroupResourceOutputWithContext(ctx context.Context) GetPeeringGroupResourcePeeringGroupResourceOutput {
+	return o
+}
+
+// Peering Group ID to which the resource will be attached to.
+func (o GetPeeringGroupResourcePeeringGroupResourceOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupResourcePeeringGroupResource) *string { return v.GroupId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Attachment.
+func (o GetPeeringGroupResourcePeeringGroupResourceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupResourcePeeringGroupResource) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID to be attached.
+func (o GetPeeringGroupResourcePeeringGroupResourceOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPeeringGroupResourcePeeringGroupResource) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+type GetPeeringGroupResourcePeeringGroupResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPeeringGroupResourcePeeringGroupResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPeeringGroupResourcePeeringGroupResource)(nil)).Elem()
+}
+
+func (o GetPeeringGroupResourcePeeringGroupResourceArrayOutput) ToGetPeeringGroupResourcePeeringGroupResourceArrayOutput() GetPeeringGroupResourcePeeringGroupResourceArrayOutput {
+	return o
+}
+
+func (o GetPeeringGroupResourcePeeringGroupResourceArrayOutput) ToGetPeeringGroupResourcePeeringGroupResourceArrayOutputWithContext(ctx context.Context) GetPeeringGroupResourcePeeringGroupResourceArrayOutput {
+	return o
+}
+
+func (o GetPeeringGroupResourcePeeringGroupResourceArrayOutput) Index(i pulumi.IntInput) GetPeeringGroupResourcePeeringGroupResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPeeringGroupResourcePeeringGroupResource {
+		return vs[0].([]GetPeeringGroupResourcePeeringGroupResource)[vs[1].(int)]
+	}).(GetPeeringGroupResourcePeeringGroupResourceOutput)
 }
 
 type GetRemoteIdentityGroupRemoteIdentityGroup struct {
@@ -53700,6 +54095,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeRelayArrayInput)(nil)).Elem(), GetNodeNodeRelayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeRelayMaintenanceWindowInput)(nil)).Elem(), GetNodeNodeRelayMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeRelayMaintenanceWindowArrayInput)(nil)).Elem(), GetNodeNodeRelayMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupNodePeeringGroupNodeInput)(nil)).Elem(), GetPeeringGroupNodePeeringGroupNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupNodePeeringGroupNodeArrayInput)(nil)).Elem(), GetPeeringGroupNodePeeringGroupNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupPeerPeeringGroupPeerInput)(nil)).Elem(), GetPeeringGroupPeerPeeringGroupPeerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupPeerPeeringGroupPeerArrayInput)(nil)).Elem(), GetPeeringGroupPeerPeeringGroupPeerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupPeeringGroupInput)(nil)).Elem(), GetPeeringGroupPeeringGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupPeeringGroupArrayInput)(nil)).Elem(), GetPeeringGroupPeeringGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupResourcePeeringGroupResourceInput)(nil)).Elem(), GetPeeringGroupResourcePeeringGroupResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupResourcePeeringGroupResourceArrayInput)(nil)).Elem(), GetPeeringGroupResourcePeeringGroupResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityGroupRemoteIdentityGroupInput)(nil)).Elem(), GetRemoteIdentityGroupRemoteIdentityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityGroupRemoteIdentityGroupArrayInput)(nil)).Elem(), GetRemoteIdentityGroupRemoteIdentityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityRemoteIdentityInput)(nil)).Elem(), GetRemoteIdentityRemoteIdentityArgs{})
@@ -54104,6 +54507,14 @@ func init() {
 	pulumi.RegisterOutputType(GetNodeNodeRelayArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeRelayMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeRelayMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetPeeringGroupNodePeeringGroupNodeOutput{})
+	pulumi.RegisterOutputType(GetPeeringGroupNodePeeringGroupNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetPeeringGroupPeerPeeringGroupPeerOutput{})
+	pulumi.RegisterOutputType(GetPeeringGroupPeerPeeringGroupPeerArrayOutput{})
+	pulumi.RegisterOutputType(GetPeeringGroupPeeringGroupOutput{})
+	pulumi.RegisterOutputType(GetPeeringGroupPeeringGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetPeeringGroupResourcePeeringGroupResourceOutput{})
+	pulumi.RegisterOutputType(GetPeeringGroupResourcePeeringGroupResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityGroupRemoteIdentityGroupOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityRemoteIdentityOutput{})

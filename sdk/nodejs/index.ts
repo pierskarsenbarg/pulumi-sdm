@@ -30,6 +30,26 @@ export const getNode: typeof import("./getNode").getNode = null as any;
 export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
 utilities.lazyLoad(exports, ["getNode","getNodeOutput"], () => require("./getNode"));
 
+export { GetPeeringGroupArgs, GetPeeringGroupResult, GetPeeringGroupOutputArgs } from "./getPeeringGroup";
+export const getPeeringGroup: typeof import("./getPeeringGroup").getPeeringGroup = null as any;
+export const getPeeringGroupOutput: typeof import("./getPeeringGroup").getPeeringGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getPeeringGroup","getPeeringGroupOutput"], () => require("./getPeeringGroup"));
+
+export { GetPeeringGroupNodeArgs, GetPeeringGroupNodeResult, GetPeeringGroupNodeOutputArgs } from "./getPeeringGroupNode";
+export const getPeeringGroupNode: typeof import("./getPeeringGroupNode").getPeeringGroupNode = null as any;
+export const getPeeringGroupNodeOutput: typeof import("./getPeeringGroupNode").getPeeringGroupNodeOutput = null as any;
+utilities.lazyLoad(exports, ["getPeeringGroupNode","getPeeringGroupNodeOutput"], () => require("./getPeeringGroupNode"));
+
+export { GetPeeringGroupPeerArgs, GetPeeringGroupPeerResult, GetPeeringGroupPeerOutputArgs } from "./getPeeringGroupPeer";
+export const getPeeringGroupPeer: typeof import("./getPeeringGroupPeer").getPeeringGroupPeer = null as any;
+export const getPeeringGroupPeerOutput: typeof import("./getPeeringGroupPeer").getPeeringGroupPeerOutput = null as any;
+utilities.lazyLoad(exports, ["getPeeringGroupPeer","getPeeringGroupPeerOutput"], () => require("./getPeeringGroupPeer"));
+
+export { GetPeeringGroupResourceArgs, GetPeeringGroupResourceResult, GetPeeringGroupResourceOutputArgs } from "./getPeeringGroupResource";
+export const getPeeringGroupResource: typeof import("./getPeeringGroupResource").getPeeringGroupResource = null as any;
+export const getPeeringGroupResourceOutput: typeof import("./getPeeringGroupResource").getPeeringGroupResourceOutput = null as any;
+utilities.lazyLoad(exports, ["getPeeringGroupResource","getPeeringGroupResourceOutput"], () => require("./getPeeringGroupResource"));
+
 export { GetRemoteIdentityArgs, GetRemoteIdentityResult, GetRemoteIdentityOutputArgs } from "./getRemoteIdentity";
 export const getRemoteIdentity: typeof import("./getRemoteIdentity").getRemoteIdentity = null as any;
 export const getRemoteIdentityOutput: typeof import("./getRemoteIdentity").getRemoteIdentityOutput = null as any;
@@ -64,6 +84,26 @@ export { NodeArgs, NodeState } from "./node";
 export type Node = import("./node").Node;
 export const Node: typeof import("./node").Node = null as any;
 utilities.lazyLoad(exports, ["Node"], () => require("./node"));
+
+export { PeeringGroupArgs, PeeringGroupState } from "./peeringGroup";
+export type PeeringGroup = import("./peeringGroup").PeeringGroup;
+export const PeeringGroup: typeof import("./peeringGroup").PeeringGroup = null as any;
+utilities.lazyLoad(exports, ["PeeringGroup"], () => require("./peeringGroup"));
+
+export { PeeringGroupNodeArgs, PeeringGroupNodeState } from "./peeringGroupNode";
+export type PeeringGroupNode = import("./peeringGroupNode").PeeringGroupNode;
+export const PeeringGroupNode: typeof import("./peeringGroupNode").PeeringGroupNode = null as any;
+utilities.lazyLoad(exports, ["PeeringGroupNode"], () => require("./peeringGroupNode"));
+
+export { PeeringGroupPeerArgs, PeeringGroupPeerState } from "./peeringGroupPeer";
+export type PeeringGroupPeer = import("./peeringGroupPeer").PeeringGroupPeer;
+export const PeeringGroupPeer: typeof import("./peeringGroupPeer").PeeringGroupPeer = null as any;
+utilities.lazyLoad(exports, ["PeeringGroupPeer"], () => require("./peeringGroupPeer"));
+
+export { PeeringGroupResourceArgs, PeeringGroupResourceState } from "./peeringGroupResource";
+export type PeeringGroupResource = import("./peeringGroupResource").PeeringGroupResource;
+export const PeeringGroupResource: typeof import("./peeringGroupResource").PeeringGroupResource = null as any;
+utilities.lazyLoad(exports, ["PeeringGroupResource"], () => require("./peeringGroupResource"));
 
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
@@ -110,6 +150,14 @@ const _module = {
                 return new AccountAttachment(name, <any>undefined, { urn })
             case "sdm:index/node:Node":
                 return new Node(name, <any>undefined, { urn })
+            case "sdm:index/peeringGroup:PeeringGroup":
+                return new PeeringGroup(name, <any>undefined, { urn })
+            case "sdm:index/peeringGroupNode:PeeringGroupNode":
+                return new PeeringGroupNode(name, <any>undefined, { urn })
+            case "sdm:index/peeringGroupPeer:PeeringGroupPeer":
+                return new PeeringGroupPeer(name, <any>undefined, { urn })
+            case "sdm:index/peeringGroupResource:PeeringGroupResource":
+                return new PeeringGroupResource(name, <any>undefined, { urn })
             case "sdm:index/remoteIdentity:RemoteIdentity":
                 return new RemoteIdentity(name, <any>undefined, { urn })
             case "sdm:index/resource:Resource":
@@ -126,6 +174,10 @@ const _module = {
 pulumi.runtime.registerResourceModule("sdm", "index/account", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/accountAttachment", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/node", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/peeringGroup", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupNode", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupPeer", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupResource", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/remoteIdentity", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/resource", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/role", _module)

@@ -176,10 +176,6 @@
                     "description": "The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to \"0.0.0.0:listen_address_port\".\n",
                     "willReplaceOnChanges": true
                 },
-                "connectsTo": {
-                    "type": "string",
-                    "description": "ConnectsTo can be used to restrict the peering between relays and gateways.\n"
-                },
                 "device": {
                     "type": "string",
                     "description": "Device is a read only device name uploaded by the gateway process when it comes online.\n"
@@ -259,10 +255,6 @@
         },
         "sdm:index/NodeRelay:NodeRelay": {
             "properties": {
-                "connectsTo": {
-                    "type": "string",
-                    "description": "ConnectsTo can be used to restrict the peering between relays and gateways.\n"
-                },
                 "device": {
                     "type": "string",
                     "description": "Device is a read only device name uploaded by the gateway process when it comes online.\n"
@@ -7091,10 +7083,6 @@
                     "type": "string",
                     "description": "The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to \"0.0.0.0:listen_address_port\".\n"
                 },
-                "connectsTo": {
-                    "type": "string",
-                    "description": "ConnectsTo can be used to restrict the peering between relays and gateways.\n"
-                },
                 "device": {
                     "type": "string",
                     "description": "Device is a read only device name uploaded by the gateway process when it comes online.\n"
@@ -7172,10 +7160,6 @@
         },
         "sdm:index/getNodeNodeRelay:getNodeNodeRelay": {
             "properties": {
-                "connectsTo": {
-                    "type": "string",
-                    "description": "ConnectsTo can be used to restrict the peering between relays and gateways.\n"
-                },
                 "device": {
                     "type": "string",
                     "description": "Device is a read only device name uploaded by the gateway process when it comes online.\n"
@@ -7246,6 +7230,70 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "sdm:index/getPeeringGroupNodePeeringGroupNode:getPeeringGroupNodePeeringGroupNode": {
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which the node will be attached to.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Attachment.\n"
+                },
+                "nodeId": {
+                    "type": "string",
+                    "description": "Node ID to be attached.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getPeeringGroupPeerPeeringGroupPeer:getPeeringGroupPeerPeeringGroupPeer": {
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Group ID from which the link will originate.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Attachment.\n"
+                },
+                "peersWithGroupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which Group ID will link.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getPeeringGroupPeeringGroup:getPeeringGroupPeeringGroup": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the PeeringGroup.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the PeeringGroup.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getPeeringGroupResourcePeeringGroupResource:getPeeringGroupResourcePeeringGroupResource": {
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which the resource will be attached to.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Attachment.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource ID to be attached.\n"
+                }
+            },
+            "type": "object"
         },
         "sdm:index/getRemoteIdentityGroupRemoteIdentityGroup:getRemoteIdentityGroupRemoteIdentityGroup": {
             "properties": {
@@ -13658,6 +13706,171 @@
                 "type": "object"
             }
         },
+        "sdm:index/peeringGroup:PeeringGroup": {
+            "description": "PeeringGroups are the building blocks used for explicit network topology making.\n They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.\nThis resource can be imported using the import command.\n\n\n## Import\n\nPeeringGroup can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678\n```\n\n ",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the PeeringGroup.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the PeeringGroup.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PeeringGroup resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the PeeringGroup.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/peeringGroupNode:PeeringGroupNode": {
+            "description": "PeeringGroupNode represents the attachment between a PeeringGroup and a Node.\nThis resource can be imported using the import command.\n\n\n## Import\n\nPeeringGroupNode can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupNode:PeeringGroupNode example gn-12345678\n```\n\n ",
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which the node will be attached to.\n"
+                },
+                "nodeId": {
+                    "type": "string",
+                    "description": "Node ID to be attached.\n"
+                }
+            },
+            "required": [
+                "groupId",
+                "nodeId"
+            ],
+            "inputProperties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which the node will be attached to.\n",
+                    "willReplaceOnChanges": true
+                },
+                "nodeId": {
+                    "type": "string",
+                    "description": "Node ID to be attached.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PeeringGroupNode resources.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which the node will be attached to.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "nodeId": {
+                        "type": "string",
+                        "description": "Node ID to be attached.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/peeringGroupPeer:PeeringGroupPeer": {
+            "description": "PeeringGroupPeer represents the link between two PeeringGroups\nThis resource can be imported using the import command.\n\n\n## Import\n\nPeeringGroupPeer can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupPeer:PeeringGroupPeer example gp-12345678\n```\n\n ",
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Group ID from which the link will originate.\n"
+                },
+                "peersWithGroupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which Group ID will link.\n"
+                }
+            },
+            "required": [
+                "groupId",
+                "peersWithGroupId"
+            ],
+            "inputProperties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Group ID from which the link will originate.\n",
+                    "willReplaceOnChanges": true
+                },
+                "peersWithGroupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which Group ID will link.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PeeringGroupPeer resources.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Group ID from which the link will originate.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "peersWithGroupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which Group ID will link.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/peeringGroupResource:PeeringGroupResource": {
+            "description": "PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.\nThis resource can be imported using the import command.\n\n\n## Import\n\nPeeringGroupResource can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678\n```\n\n ",
+            "properties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which the resource will be attached to.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource ID to be attached.\n"
+                }
+            },
+            "required": [
+                "groupId",
+                "resourceId"
+            ],
+            "inputProperties": {
+                "groupId": {
+                    "type": "string",
+                    "description": "Peering Group ID to which the resource will be attached to.\n",
+                    "willReplaceOnChanges": true
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource ID to be attached.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PeeringGroupResource resources.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which the resource will be attached to.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource ID to be attached.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sdm:index/remoteIdentity:RemoteIdentity": {
             "description": "RemoteIdentities define the username to be used for a specific account\n when connecting to a remote resource using that group.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.RemoteIdentity;\nimport com.pulumi.sdm.RemoteIdentityArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new RemoteIdentity(\"user\", RemoteIdentityArgs.builder()        \n            .id(\"i-0900909\")\n            .username(\"user\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: sdm:RemoteIdentity\n    properties:\n      id: i-0900909\n      username: user\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRemoteIdentity can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678\n```\n\n ",
             "properties": {
@@ -14915,6 +15128,226 @@
                 "required": [
                     "ids",
                     "nodes"
+                ]
+            }
+        },
+        "sdm:index/getPeeringGroup:getPeeringGroup": {
+            "description": "PeeringGroups are the building blocks used for explicit network topology making.\n They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPeeringGroup.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the PeeringGroup.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the PeeringGroup.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPeeringGroup.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the PeeringGroup.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the PeeringGroup.\n"
+                    },
+                    "peeringGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getPeeringGroupPeeringGroup:getPeeringGroupPeeringGroup"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "peeringGroups"
+                ]
+            }
+        },
+        "sdm:index/getPeeringGroupNode:getPeeringGroupNode": {
+            "description": "PeeringGroupNode represents the attachment between a PeeringGroup and a Node.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPeeringGroupNode.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which the node will be attached to.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Attachment.\n"
+                    },
+                    "nodeId": {
+                        "type": "string",
+                        "description": "Node ID to be attached.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPeeringGroupNode.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which the node will be attached to.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Attachment.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "nodeId": {
+                        "type": "string",
+                        "description": "Node ID to be attached.\n"
+                    },
+                    "peeringGroupNodes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getPeeringGroupNodePeeringGroupNode:getPeeringGroupNodePeeringGroupNode"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "peeringGroupNodes"
+                ]
+            }
+        },
+        "sdm:index/getPeeringGroupPeer:getPeeringGroupPeer": {
+            "description": "PeeringGroupPeer represents the link between two PeeringGroups\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPeeringGroupPeer.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Group ID from which the link will originate.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Attachment.\n"
+                    },
+                    "peersWithGroupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which Group ID will link.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPeeringGroupPeer.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Group ID from which the link will originate.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Attachment.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "peeringGroupPeers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getPeeringGroupPeerPeeringGroupPeer:getPeeringGroupPeerPeeringGroupPeer"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "peersWithGroupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which Group ID will link.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "peeringGroupPeers"
+                ]
+            }
+        },
+        "sdm:index/getPeeringGroupResource:getPeeringGroupResource": {
+            "description": "PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPeeringGroupResource.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which the resource will be attached to.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Attachment.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource ID to be attached.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPeeringGroupResource.\n",
+                "properties": {
+                    "groupId": {
+                        "type": "string",
+                        "description": "Peering Group ID to which the resource will be attached to.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Attachment.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "peeringGroupResources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getPeeringGroupResourcePeeringGroupResource:getPeeringGroupResourcePeeringGroupResource"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource ID to be attached.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "peeringGroupResources"
                 ]
             }
         },

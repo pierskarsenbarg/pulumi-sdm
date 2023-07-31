@@ -145,10 +145,6 @@ export interface GetNodeNodeGateway {
      */
     bindAddress?: string;
     /**
-     * ConnectsTo can be used to restrict the peering between relays and gateways.
-     */
-    connectsTo?: string;
-    /**
      * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device: string;
@@ -193,10 +189,6 @@ export interface GetNodeNodeGatewayMaintenanceWindow {
 
 export interface GetNodeNodeRelay {
     /**
-     * ConnectsTo can be used to restrict the peering between relays and gateways.
-     */
-    connectsTo?: string;
-    /**
      * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device: string;
@@ -233,6 +225,62 @@ export interface GetNodeNodeRelay {
 export interface GetNodeNodeRelayMaintenanceWindow {
     cronSchedule: string;
     requireIdleness: boolean;
+}
+
+export interface GetPeeringGroupNodePeeringGroupNode {
+    /**
+     * Peering Group ID to which the node will be attached to.
+     */
+    groupId?: string;
+    /**
+     * Unique identifier of the Attachment.
+     */
+    id?: string;
+    /**
+     * Node ID to be attached.
+     */
+    nodeId?: string;
+}
+
+export interface GetPeeringGroupPeerPeeringGroupPeer {
+    /**
+     * Group ID from which the link will originate.
+     */
+    groupId?: string;
+    /**
+     * Unique identifier of the Attachment.
+     */
+    id?: string;
+    /**
+     * Peering Group ID to which Group ID will link.
+     */
+    peersWithGroupId?: string;
+}
+
+export interface GetPeeringGroupPeeringGroup {
+    /**
+     * Unique identifier of the PeeringGroup.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the PeeringGroup.
+     */
+    name?: string;
+}
+
+export interface GetPeeringGroupResourcePeeringGroupResource {
+    /**
+     * Peering Group ID to which the resource will be attached to.
+     */
+    groupId?: string;
+    /**
+     * Unique identifier of the Attachment.
+     */
+    id?: string;
+    /**
+     * Resource ID to be attached.
+     */
+    resourceId?: string;
 }
 
 export interface GetRemoteIdentityGroupRemoteIdentityGroup {
@@ -5364,10 +5412,6 @@ export interface NodeGateway {
      */
     bindAddress: string;
     /**
-     * ConnectsTo can be used to restrict the peering between relays and gateways.
-     */
-    connectsTo?: string;
-    /**
      * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device: string;
@@ -5408,10 +5452,6 @@ export interface NodeGatewayMaintenanceWindow {
 }
 
 export interface NodeRelay {
-    /**
-     * ConnectsTo can be used to restrict the peering between relays and gateways.
-     */
-    connectsTo?: string;
     /**
      * Device is a read only device name uploaded by the gateway process when it comes online.
      */

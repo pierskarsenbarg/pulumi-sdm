@@ -117,6 +117,10 @@ __all__ = [
     'GetNodeNodeGatewayMaintenanceWindowResult',
     'GetNodeNodeRelayResult',
     'GetNodeNodeRelayMaintenanceWindowResult',
+    'GetPeeringGroupNodePeeringGroupNodeResult',
+    'GetPeeringGroupPeerPeeringGroupPeerResult',
+    'GetPeeringGroupPeeringGroupResult',
+    'GetPeeringGroupResourcePeeringGroupResourceResult',
     'GetRemoteIdentityGroupRemoteIdentityGroupResult',
     'GetRemoteIdentityRemoteIdentityResult',
     'GetResourceResourceResult',
@@ -399,8 +403,6 @@ class NodeGateway(dict):
             suggest = "listen_address"
         elif key == "bindAddress":
             suggest = "bind_address"
-        elif key == "connectsTo":
-            suggest = "connects_to"
         elif key == "gatewayFilter":
             suggest = "gateway_filter"
         elif key == "maintenanceWindows":
@@ -420,7 +422,6 @@ class NodeGateway(dict):
     def __init__(__self__, *,
                  listen_address: str,
                  bind_address: Optional[str] = None,
-                 connects_to: Optional[str] = None,
                  device: Optional[str] = None,
                  gateway_filter: Optional[str] = None,
                  location: Optional[str] = None,
@@ -432,7 +433,6 @@ class NodeGateway(dict):
         """
         :param str listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
         :param str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
-        :param str connects_to: ConnectsTo can be used to restrict the peering between relays and gateways.
         :param str device: Device is a read only device name uploaded by the gateway process when it comes online.
         :param str gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         :param str location: Location is a read only network location uploaded by the gateway process when it comes online.
@@ -444,8 +444,6 @@ class NodeGateway(dict):
         pulumi.set(__self__, "listen_address", listen_address)
         if bind_address is not None:
             pulumi.set(__self__, "bind_address", bind_address)
-        if connects_to is not None:
-            pulumi.set(__self__, "connects_to", connects_to)
         if device is not None:
             pulumi.set(__self__, "device", device)
         if gateway_filter is not None:
@@ -478,14 +476,6 @@ class NodeGateway(dict):
         The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
         """
         return pulumi.get(self, "bind_address")
-
-    @property
-    @pulumi.getter(name="connectsTo")
-    def connects_to(self) -> Optional[str]:
-        """
-        ConnectsTo can be used to restrict the peering between relays and gateways.
-        """
-        return pulumi.get(self, "connects_to")
 
     @property
     @pulumi.getter
@@ -592,9 +582,7 @@ class NodeRelay(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "connectsTo":
-            suggest = "connects_to"
-        elif key == "gatewayFilter":
+        if key == "gatewayFilter":
             suggest = "gateway_filter"
         elif key == "maintenanceWindows":
             suggest = "maintenance_windows"
@@ -611,7 +599,6 @@ class NodeRelay(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 connects_to: Optional[str] = None,
                  device: Optional[str] = None,
                  gateway_filter: Optional[str] = None,
                  location: Optional[str] = None,
@@ -621,7 +608,6 @@ class NodeRelay(dict):
                  token: Optional[str] = None,
                  version: Optional[str] = None):
         """
-        :param str connects_to: ConnectsTo can be used to restrict the peering between relays and gateways.
         :param str device: Device is a read only device name uploaded by the gateway process when it comes online.
         :param str gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         :param str location: Location is a read only network location uploaded by the gateway process when it comes online.
@@ -630,8 +616,6 @@ class NodeRelay(dict):
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         """
-        if connects_to is not None:
-            pulumi.set(__self__, "connects_to", connects_to)
         if device is not None:
             pulumi.set(__self__, "device", device)
         if gateway_filter is not None:
@@ -648,14 +632,6 @@ class NodeRelay(dict):
             pulumi.set(__self__, "token", token)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter(name="connectsTo")
-    def connects_to(self) -> Optional[str]:
-        """
-        ConnectsTo can be used to restrict the peering between relays and gateways.
-        """
-        return pulumi.get(self, "connects_to")
 
     @property
     @pulumi.getter
@@ -16821,7 +16797,6 @@ class GetNodeNodeGatewayResult(dict):
                  location: str,
                  version: str,
                  bind_address: Optional[str] = None,
-                 connects_to: Optional[str] = None,
                  gateway_filter: Optional[str] = None,
                  id: Optional[str] = None,
                  listen_address: Optional[str] = None,
@@ -16833,7 +16808,6 @@ class GetNodeNodeGatewayResult(dict):
         :param str location: Location is a read only network location uploaded by the gateway process when it comes online.
         :param str version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         :param str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
-        :param str connects_to: ConnectsTo can be used to restrict the peering between relays and gateways.
         :param str gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         :param str id: Unique identifier of the Relay.
         :param str listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
@@ -16846,8 +16820,6 @@ class GetNodeNodeGatewayResult(dict):
         pulumi.set(__self__, "version", version)
         if bind_address is not None:
             pulumi.set(__self__, "bind_address", bind_address)
-        if connects_to is not None:
-            pulumi.set(__self__, "connects_to", connects_to)
         if gateway_filter is not None:
             pulumi.set(__self__, "gateway_filter", gateway_filter)
         if id is not None:
@@ -16892,14 +16864,6 @@ class GetNodeNodeGatewayResult(dict):
         The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
         """
         return pulumi.get(self, "bind_address")
-
-    @property
-    @pulumi.getter(name="connectsTo")
-    def connects_to(self) -> Optional[str]:
-        """
-        ConnectsTo can be used to restrict the peering between relays and gateways.
-        """
-        return pulumi.get(self, "connects_to")
 
     @property
     @pulumi.getter(name="gatewayFilter")
@@ -16975,7 +16939,6 @@ class GetNodeNodeRelayResult(dict):
                  device: str,
                  location: str,
                  version: str,
-                 connects_to: Optional[str] = None,
                  gateway_filter: Optional[str] = None,
                  id: Optional[str] = None,
                  maintenance_windows: Optional[Sequence['outputs.GetNodeNodeRelayMaintenanceWindowResult']] = None,
@@ -16985,7 +16948,6 @@ class GetNodeNodeRelayResult(dict):
         :param str device: Device is a read only device name uploaded by the gateway process when it comes online.
         :param str location: Location is a read only network location uploaded by the gateway process when it comes online.
         :param str version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
-        :param str connects_to: ConnectsTo can be used to restrict the peering between relays and gateways.
         :param str gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         :param str id: Unique identifier of the Relay.
         :param Sequence['GetNodeNodeRelayMaintenanceWindowArgs'] maintenance_windows: Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
@@ -16995,8 +16957,6 @@ class GetNodeNodeRelayResult(dict):
         pulumi.set(__self__, "device", device)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "version", version)
-        if connects_to is not None:
-            pulumi.set(__self__, "connects_to", connects_to)
         if gateway_filter is not None:
             pulumi.set(__self__, "gateway_filter", gateway_filter)
         if id is not None:
@@ -17031,14 +16991,6 @@ class GetNodeNodeRelayResult(dict):
         Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         """
         return pulumi.get(self, "version")
-
-    @property
-    @pulumi.getter(name="connectsTo")
-    def connects_to(self) -> Optional[str]:
-        """
-        ConnectsTo can be used to restrict the peering between relays and gateways.
-        """
-        return pulumi.get(self, "connects_to")
 
     @property
     @pulumi.getter(name="gatewayFilter")
@@ -17098,6 +17050,166 @@ class GetNodeNodeRelayMaintenanceWindowResult(dict):
     @pulumi.getter(name="requireIdleness")
     def require_idleness(self) -> bool:
         return pulumi.get(self, "require_idleness")
+
+
+@pulumi.output_type
+class GetPeeringGroupNodePeeringGroupNodeResult(dict):
+    def __init__(__self__, *,
+                 group_id: Optional[str] = None,
+                 id: Optional[str] = None,
+                 node_id: Optional[str] = None):
+        """
+        :param str group_id: Peering Group ID to which the node will be attached to.
+        :param str id: Unique identifier of the Attachment.
+        :param str node_id: Node ID to be attached.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        Peering Group ID to which the node will be attached to.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Attachment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[str]:
+        """
+        Node ID to be attached.
+        """
+        return pulumi.get(self, "node_id")
+
+
+@pulumi.output_type
+class GetPeeringGroupPeerPeeringGroupPeerResult(dict):
+    def __init__(__self__, *,
+                 group_id: Optional[str] = None,
+                 id: Optional[str] = None,
+                 peers_with_group_id: Optional[str] = None):
+        """
+        :param str group_id: Group ID from which the link will originate.
+        :param str id: Unique identifier of the Attachment.
+        :param str peers_with_group_id: Peering Group ID to which Group ID will link.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if peers_with_group_id is not None:
+            pulumi.set(__self__, "peers_with_group_id", peers_with_group_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        Group ID from which the link will originate.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Attachment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="peersWithGroupId")
+    def peers_with_group_id(self) -> Optional[str]:
+        """
+        Peering Group ID to which Group ID will link.
+        """
+        return pulumi.get(self, "peers_with_group_id")
+
+
+@pulumi.output_type
+class GetPeeringGroupPeeringGroupResult(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str id: Unique identifier of the PeeringGroup.
+        :param str name: Unique human-readable name of the PeeringGroup.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the PeeringGroup.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the PeeringGroup.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetPeeringGroupResourcePeeringGroupResourceResult(dict):
+    def __init__(__self__, *,
+                 group_id: Optional[str] = None,
+                 id: Optional[str] = None,
+                 resource_id: Optional[str] = None):
+        """
+        :param str group_id: Peering Group ID to which the resource will be attached to.
+        :param str id: Unique identifier of the Attachment.
+        :param str resource_id: Resource ID to be attached.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        Peering Group ID to which the resource will be attached to.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Attachment.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[str]:
+        """
+        Resource ID to be attached.
+        """
+        return pulumi.get(self, "resource_id")
 
 
 @pulumi.output_type

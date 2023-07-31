@@ -312,7 +312,6 @@ class NodeGatewayArgs:
     def __init__(__self__, *,
                  listen_address: pulumi.Input[str],
                  bind_address: Optional[pulumi.Input[str]] = None,
-                 connects_to: Optional[pulumi.Input[str]] = None,
                  device: Optional[pulumi.Input[str]] = None,
                  gateway_filter: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -324,7 +323,6 @@ class NodeGatewayArgs:
         """
         :param pulumi.Input[str] listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
         :param pulumi.Input[str] bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
-        :param pulumi.Input[str] connects_to: ConnectsTo can be used to restrict the peering between relays and gateways.
         :param pulumi.Input[str] device: Device is a read only device name uploaded by the gateway process when it comes online.
         :param pulumi.Input[str] gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         :param pulumi.Input[str] location: Location is a read only network location uploaded by the gateway process when it comes online.
@@ -336,8 +334,6 @@ class NodeGatewayArgs:
         pulumi.set(__self__, "listen_address", listen_address)
         if bind_address is not None:
             pulumi.set(__self__, "bind_address", bind_address)
-        if connects_to is not None:
-            pulumi.set(__self__, "connects_to", connects_to)
         if device is not None:
             pulumi.set(__self__, "device", device)
         if gateway_filter is not None:
@@ -378,18 +374,6 @@ class NodeGatewayArgs:
     @bind_address.setter
     def bind_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_address", value)
-
-    @property
-    @pulumi.getter(name="connectsTo")
-    def connects_to(self) -> Optional[pulumi.Input[str]]:
-        """
-        ConnectsTo can be used to restrict the peering between relays and gateways.
-        """
-        return pulumi.get(self, "connects_to")
-
-    @connects_to.setter
-    def connects_to(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "connects_to", value)
 
     @property
     @pulumi.getter
@@ -515,7 +499,6 @@ class NodeGatewayMaintenanceWindowArgs:
 @pulumi.input_type
 class NodeRelayArgs:
     def __init__(__self__, *,
-                 connects_to: Optional[pulumi.Input[str]] = None,
                  device: Optional[pulumi.Input[str]] = None,
                  gateway_filter: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -525,7 +508,6 @@ class NodeRelayArgs:
                  token: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] connects_to: ConnectsTo can be used to restrict the peering between relays and gateways.
         :param pulumi.Input[str] device: Device is a read only device name uploaded by the gateway process when it comes online.
         :param pulumi.Input[str] gateway_filter: GatewayFilter can be used to restrict the peering between relays and gateways. Deprecated.
         :param pulumi.Input[str] location: Location is a read only network location uploaded by the gateway process when it comes online.
@@ -534,8 +516,6 @@ class NodeRelayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[str] version: Version is a read only sdm binary version uploaded by the gateway process when it comes online.
         """
-        if connects_to is not None:
-            pulumi.set(__self__, "connects_to", connects_to)
         if device is not None:
             pulumi.set(__self__, "device", device)
         if gateway_filter is not None:
@@ -552,18 +532,6 @@ class NodeRelayArgs:
             pulumi.set(__self__, "token", token)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter(name="connectsTo")
-    def connects_to(self) -> Optional[pulumi.Input[str]]:
-        """
-        ConnectsTo can be used to restrict the peering between relays and gateways.
-        """
-        return pulumi.get(self, "connects_to")
-
-    @connects_to.setter
-    def connects_to(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "connects_to", value)
 
     @property
     @pulumi.getter

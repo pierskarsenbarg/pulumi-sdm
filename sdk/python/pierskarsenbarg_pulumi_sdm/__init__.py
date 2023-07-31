@@ -10,6 +10,10 @@ from .account_attachment import *
 from .get_account import *
 from .get_account_attachment import *
 from .get_node import *
+from .get_peering_group import *
+from .get_peering_group_node import *
+from .get_peering_group_peer import *
+from .get_peering_group_resource import *
 from .get_remote_identity import *
 from .get_remote_identity_group import *
 from .get_resource import *
@@ -17,6 +21,10 @@ from .get_role import *
 from .get_secret_store import *
 from .get_ssh_ca_pubkey import *
 from .node import *
+from .peering_group import *
+from .peering_group_node import *
+from .peering_group_peer import *
+from .peering_group_resource import *
 from .provider import *
 from .remote_identity import *
 from .resource import *
@@ -57,6 +65,38 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/node:Node": "Node"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/peeringGroup",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/peeringGroup:PeeringGroup": "PeeringGroup"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/peeringGroupNode",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/peeringGroupNode:PeeringGroupNode": "PeeringGroupNode"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/peeringGroupPeer",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/peeringGroupPeer:PeeringGroupPeer": "PeeringGroupPeer"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/peeringGroupResource",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/peeringGroupResource:PeeringGroupResource": "PeeringGroupResource"
   }
  },
  {
