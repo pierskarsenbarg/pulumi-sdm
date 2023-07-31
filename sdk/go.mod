@@ -1,4 +1,4 @@
-module github.com/pierskarsenbarg/pulumi-sdm/sdk
+module github.com/pierskarsenbarg/pulumi-sdm/sdk/v2
 
 go 1.19
 
