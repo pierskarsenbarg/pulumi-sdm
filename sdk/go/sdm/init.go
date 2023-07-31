@@ -27,6 +27,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountAttachment{}
 	case "sdm:index/node:Node":
 		r = &Node{}
+	case "sdm:index/peeringGroup:PeeringGroup":
+		r = &PeeringGroup{}
+	case "sdm:index/peeringGroupNode:PeeringGroupNode":
+		r = &PeeringGroupNode{}
+	case "sdm:index/peeringGroupPeer:PeeringGroupPeer":
+		r = &PeeringGroupPeer{}
+	case "sdm:index/peeringGroupResource:PeeringGroupResource":
+		r = &PeeringGroupResource{}
 	case "sdm:index/remoteIdentity:RemoteIdentity":
 		r = &RemoteIdentity{}
 	case "sdm:index/resource:Resource":
@@ -79,6 +87,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sdm",
 		"index/node",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/peeringGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/peeringGroupNode",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/peeringGroupPeer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/peeringGroupResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

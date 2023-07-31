@@ -62,10 +62,6 @@ export interface NodeGateway {
      */
     bindAddress?: pulumi.Input<string>;
     /**
-     * ConnectsTo can be used to restrict the peering between relays and gateways.
-     */
-    connectsTo?: pulumi.Input<string>;
-    /**
      * Device is a read only device name uploaded by the gateway process when it comes online.
      */
     device?: pulumi.Input<string>;
@@ -106,10 +102,6 @@ export interface NodeGatewayMaintenanceWindow {
 }
 
 export interface NodeRelay {
-    /**
-     * ConnectsTo can be used to restrict the peering between relays and gateways.
-     */
-    connectsTo?: pulumi.Input<string>;
     /**
      * Device is a read only device name uploaded by the gateway process when it comes online.
      */

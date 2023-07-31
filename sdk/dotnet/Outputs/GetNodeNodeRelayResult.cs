@@ -15,10 +15,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetNodeNodeRelayResult
     {
         /// <summary>
-        /// ConnectsTo can be used to restrict the peering between relays and gateways.
-        /// </summary>
-        public readonly string? ConnectsTo;
-        /// <summary>
         /// Device is a read only device name uploaded by the gateway process when it comes online.
         /// </summary>
         public readonly string Device;
@@ -53,8 +49,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private GetNodeNodeRelayResult(
-            string? connectsTo,
-
             string device,
 
             string? gatewayFilter,
@@ -71,7 +65,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string version)
         {
-            ConnectsTo = connectsTo;
             Device = device;
             GatewayFilter = gatewayFilter;
             Id = id;
