@@ -39,6 +39,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
+        public readonly int? PortOverride;
+        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
@@ -69,6 +73,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string name,
 
+            int? portOverride,
+
             string? secretStoreId,
 
             string? serviceAccountKey,
@@ -83,6 +89,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Endpoint = endpoint;
             HealthcheckNamespace = healthcheckNamespace;
             Name = name;
+            PortOverride = portOverride;
             SecretStoreId = secretStoreId;
             ServiceAccountKey = serviceAccountKey;
             Subdomain = subdomain;

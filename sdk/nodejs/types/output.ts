@@ -2547,6 +2547,10 @@ export interface GetResourceResourceGoogleGke {
      */
     name?: string;
     /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
      * The ID of the remote identity group to use for remote identity connections.
      */
     remoteIdentityGroupId?: string;
@@ -2601,6 +2605,10 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -7490,6 +7498,10 @@ export interface ResourceGoogleGke {
      */
     name: string;
     /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
      * The ID of the remote identity group to use for remote identity connections.
      */
     remoteIdentityGroupId?: string;
@@ -7540,6 +7552,10 @@ export interface ResourceGoogleGkeUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */

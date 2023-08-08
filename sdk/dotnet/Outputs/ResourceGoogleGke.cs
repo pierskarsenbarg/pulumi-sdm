@@ -39,6 +39,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
+        public readonly int? PortOverride;
+        /// <summary>
         /// The ID of the remote identity group to use for remote identity connections.
         /// </summary>
         public readonly string? RemoteIdentityGroupId;
@@ -77,6 +81,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string name,
 
+            int? portOverride,
+
             string? remoteIdentityGroupId,
 
             string? remoteIdentityHealthcheckUsername,
@@ -95,6 +101,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Endpoint = endpoint;
             HealthcheckNamespace = healthcheckNamespace;
             Name = name;
+            PortOverride = portOverride;
             RemoteIdentityGroupId = remoteIdentityGroupId;
             RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
             SecretStoreId = secretStoreId;

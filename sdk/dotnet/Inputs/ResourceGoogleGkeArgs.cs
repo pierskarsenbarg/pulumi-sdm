@@ -60,6 +60,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// The local port used by clients to connect to this resource.
+        /// </summary>
+        [Input("portOverride")]
+        public Input<int>? PortOverride { get; set; }
+
+        /// <summary>
         /// The ID of the remote identity group to use for remote identity connections.
         /// </summary>
         [Input("remoteIdentityGroupId")]

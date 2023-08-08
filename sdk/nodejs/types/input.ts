@@ -2140,6 +2140,10 @@ export interface ResourceGoogleGke {
      */
     name: pulumi.Input<string>;
     /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
      * The ID of the remote identity group to use for remote identity connections.
      */
     remoteIdentityGroupId?: pulumi.Input<string>;
@@ -2190,6 +2194,10 @@ export interface ResourceGoogleGkeUserImpersonation {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */

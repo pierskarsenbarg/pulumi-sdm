@@ -14376,6 +14376,8 @@ type ResourceGoogleGke struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// The ID of the remote identity group to use for remote identity connections.
 	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
 	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
@@ -14414,6 +14416,8 @@ type ResourceGoogleGkeArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The ID of the remote identity group to use for remote identity connections.
 	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
@@ -14535,6 +14539,11 @@ func (o ResourceGoogleGkeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o ResourceGoogleGkeOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGke) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // The ID of the remote identity group to use for remote identity connections.
 func (o ResourceGoogleGkeOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
@@ -14649,6 +14658,16 @@ func (o ResourceGoogleGkePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o ResourceGoogleGkePtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGke) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
 // The ID of the remote identity group to use for remote identity connections.
 func (o ResourceGoogleGkePtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGoogleGke) *string {
@@ -14722,6 +14741,8 @@ type ResourceGoogleGkeUserImpersonation struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -14756,6 +14777,8 @@ type ResourceGoogleGkeUserImpersonationArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -14873,6 +14896,11 @@ func (o ResourceGoogleGkeUserImpersonationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o ResourceGoogleGkeUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGoogleGkeUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -14975,6 +15003,16 @@ func (o ResourceGoogleGkeUserImpersonationPtrOutput) Name() pulumi.StringPtrOutp
 		}
 		return &v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceGoogleGkeUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGkeUserImpersonation) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -42716,6 +42754,8 @@ type GetResourceResourceGoogleGke struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// The ID of the remote identity group to use for remote identity connections.
 	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
 	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
@@ -42756,6 +42796,8 @@ type GetResourceResourceGoogleGkeArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The ID of the remote identity group to use for remote identity connections.
 	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
 	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
@@ -42856,6 +42898,11 @@ func (o GetResourceResourceGoogleGkeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceGoogleGkeOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGke) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
 // The ID of the remote identity group to use for remote identity connections.
 func (o GetResourceResourceGoogleGkeOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
@@ -42921,6 +42968,8 @@ type GetResourceResourceGoogleGkeUserImpersonation struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -42957,6 +43006,8 @@ type GetResourceResourceGoogleGkeUserImpersonationArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -43051,6 +43102,11 @@ func (o GetResourceResourceGoogleGkeUserImpersonationOutput) Id() pulumi.StringP
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceGoogleGkeUserImpersonationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGkeUserImpersonation) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceGoogleGkeUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGkeUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
