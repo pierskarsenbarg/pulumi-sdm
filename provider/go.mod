@@ -5,7 +5,7 @@ go 1.19
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230710100801-03a71d0fca3d
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.56.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.56.2
 	github.com/pulumi/pulumi/sdk/v3 v3.76.1
 	github.com/strongdm/terraform-provider-sdm v1.0.40-0.20230731163905-10947ae628c6
 )
