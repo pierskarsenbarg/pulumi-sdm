@@ -7532,6 +7532,8 @@ class ResourceGoogleGke(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "remoteIdentityGroupId":
             suggest = "remote_identity_group_id"
         elif key == "remoteIdentityHealthcheckUsername":
@@ -7559,6 +7561,7 @@ class ResourceGoogleGke(dict):
                  certificate_authority: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -7572,6 +7575,7 @@ class ResourceGoogleGke(dict):
         :param str certificate_authority: The CA to authenticate TLS connections with.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param int port_override: The local port used by clients to connect to this resource.
         :param str remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
         :param str remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -7589,6 +7593,8 @@ class ResourceGoogleGke(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -7649,6 +7655,14 @@ class ResourceGoogleGke(dict):
         The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="remoteIdentityGroupId")
@@ -7712,6 +7726,8 @@ class ResourceGoogleGkeUserImpersonation(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "serviceAccountKey":
@@ -7735,6 +7751,7 @@ class ResourceGoogleGkeUserImpersonation(dict):
                  certificate_authority: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  service_account_key: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -7746,6 +7763,7 @@ class ResourceGoogleGkeUserImpersonation(dict):
         :param str certificate_authority: The CA to authenticate TLS connections with.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param int port_override: The local port used by clients to connect to this resource.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str service_account_key: The service account key to authenticate with.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -7761,6 +7779,8 @@ class ResourceGoogleGkeUserImpersonation(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if service_account_key is not None:
@@ -7817,6 +7837,14 @@ class ResourceGoogleGkeUserImpersonation(dict):
         The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -24164,6 +24192,7 @@ class GetResourceResourceGoogleGkeResult(dict):
                  healthcheck_namespace: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  remote_identity_group_id: Optional[str] = None,
                  remote_identity_healthcheck_username: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -24178,6 +24207,7 @@ class GetResourceResourceGoogleGkeResult(dict):
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
+        :param int port_override: The local port used by clients to connect to this resource.
         :param str remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
         :param str remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -24199,6 +24229,8 @@ class GetResourceResourceGoogleGkeResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if remote_identity_group_id is not None:
             pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
         if remote_identity_healthcheck_username is not None:
@@ -24269,6 +24301,14 @@ class GetResourceResourceGoogleGkeResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
     @pulumi.getter(name="remoteIdentityGroupId")
     def remote_identity_group_id(self) -> Optional[str]:
         """
@@ -24327,6 +24367,7 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
                  healthcheck_namespace: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 port_override: Optional[int] = None,
                  secret_store_id: Optional[str] = None,
                  service_account_key: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -24339,6 +24380,7 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
+        :param int port_override: The local port used by clients to connect to this resource.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str service_account_key: The service account key to authenticate with.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -24358,6 +24400,8 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if service_account_key is not None:
@@ -24422,6 +24466,14 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
         Unique human-readable name of the Resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")
