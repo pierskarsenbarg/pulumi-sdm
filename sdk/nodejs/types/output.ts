@@ -4557,6 +4557,10 @@ export interface GetResourceResourceSnowsight {
 
 export interface GetResourceResourceSqlServer {
     /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
@@ -4619,6 +4623,10 @@ export interface GetResourceResourceSqlServer {
 }
 
 export interface GetResourceResourceSqlServerAzureAd {
+    /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -4687,6 +4695,10 @@ export interface GetResourceResourceSqlServerAzureAd {
 }
 
 export interface GetResourceResourceSqlServerKerberosAd {
+    /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -5520,7 +5532,7 @@ export interface ResourceAks {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -5571,7 +5583,7 @@ export interface ResourceAksBasicAuth {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -5622,7 +5634,7 @@ export interface ResourceAksServiceAccount {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -5678,7 +5690,7 @@ export interface ResourceAksServiceAccountUserImpersonation {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -5738,7 +5750,7 @@ export interface ResourceAksUserImpersonation {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -5797,7 +5809,7 @@ export interface ResourceAmazonEks {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -5868,7 +5880,7 @@ export interface ResourceAmazonEksInstanceProfile {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -5935,7 +5947,7 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -6006,7 +6018,7 @@ export interface ResourceAmazonEksUserImpersonation {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -6214,7 +6226,7 @@ export interface ResourceAuroraMysql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -6589,7 +6601,7 @@ export interface ResourceAzureMysql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -6915,7 +6927,7 @@ export interface ResourceClustrix {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -7492,7 +7504,7 @@ export interface ResourceGoogleGke {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -7547,7 +7559,7 @@ export interface ResourceGoogleGkeUserImpersonation {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -7809,7 +7821,7 @@ export interface ResourceKubernetes {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -7860,7 +7872,7 @@ export interface ResourceKubernetesBasicAuth {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -7911,7 +7923,7 @@ export interface ResourceKubernetesServiceAccount {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -7967,7 +7979,7 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -8027,7 +8039,7 @@ export interface ResourceKubernetesUserImpersonation {
     /**
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
-    healthcheckNamespace?: string;
+    healthcheckNamespace: string;
     /**
      * The host to dial to initiate a connection from the egress node to this resource.
      */
@@ -8066,7 +8078,7 @@ export interface ResourceMaria {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -8164,7 +8176,7 @@ export interface ResourceMemsql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -8526,7 +8538,7 @@ export interface ResourceMtlsMysql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -8660,7 +8672,7 @@ export interface ResourceMysql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -9229,7 +9241,7 @@ export interface ResourceSingleStore {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -9372,13 +9384,17 @@ export interface ResourceSnowsight {
 
 export interface ResourceSqlServer {
     /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -9431,6 +9447,10 @@ export interface ResourceSqlServer {
 
 export interface ResourceSqlServerAzureAd {
     /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
@@ -9441,7 +9461,7 @@ export interface ResourceSqlServerAzureAd {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -9495,13 +9515,17 @@ export interface ResourceSqlServerAzureAd {
 
 export interface ResourceSqlServerKerberosAd {
     /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: string;
+    database?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */

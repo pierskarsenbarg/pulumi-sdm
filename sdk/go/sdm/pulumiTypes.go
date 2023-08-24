@@ -5865,7 +5865,7 @@ type ResourceAuroraMysql struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -5907,7 +5907,7 @@ type ResourceAuroraMysqlArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -6017,8 +6017,8 @@ func (o ResourceAuroraMysqlOutput) BindInterface() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceAuroraMysqlOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceAuroraMysql) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceAuroraMysqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysql) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -6121,7 +6121,7 @@ func (o ResourceAuroraMysqlPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8371,7 +8371,7 @@ type ResourceAzureMysql struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -8413,7 +8413,7 @@ type ResourceAzureMysqlArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -8523,8 +8523,8 @@ func (o ResourceAzureMysqlOutput) BindInterface() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceAzureMysqlOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceAzureMysql) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceAzureMysqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -8627,7 +8627,7 @@ func (o ResourceAzureMysqlPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10542,7 +10542,7 @@ type ResourceClustrix struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -10584,7 +10584,7 @@ type ResourceClustrixArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -10694,8 +10694,8 @@ func (o ResourceClustrixOutput) BindInterface() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceClustrixOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceClustrix) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceClustrixOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClustrix) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -10798,7 +10798,7 @@ func (o ResourceClustrixPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18288,7 +18288,7 @@ type ResourceMaria struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -18330,7 +18330,7 @@ type ResourceMariaArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -18440,8 +18440,8 @@ func (o ResourceMariaOutput) BindInterface() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceMariaOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceMaria) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceMariaOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMaria) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -18544,7 +18544,7 @@ func (o ResourceMariaPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18961,7 +18961,7 @@ type ResourceMemsql struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -19003,7 +19003,7 @@ type ResourceMemsqlArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -19113,8 +19113,8 @@ func (o ResourceMemsqlOutput) BindInterface() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceMemsqlOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceMemsql) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceMemsqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMemsql) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -19217,7 +19217,7 @@ func (o ResourceMemsqlPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21252,7 +21252,7 @@ type ResourceMtlsMysql struct {
 	// The key to authenticate TLS connections with.
 	ClientKey *string `pulumi:"clientKey"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -21302,7 +21302,7 @@ type ResourceMtlsMysqlArgs struct {
 	// The key to authenticate TLS connections with.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -21429,8 +21429,8 @@ func (o ResourceMtlsMysqlOutput) ClientKey() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceMtlsMysqlOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceMtlsMysql) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceMtlsMysqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -21568,7 +21568,7 @@ func (o ResourceMtlsMysqlPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -22147,7 +22147,7 @@ type ResourceMysql struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -22189,7 +22189,7 @@ type ResourceMysqlArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -22299,8 +22299,8 @@ func (o ResourceMysqlOutput) BindInterface() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceMysqlOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceMysql) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceMysqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMysql) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -22403,7 +22403,7 @@ func (o ResourceMysqlPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25991,7 +25991,7 @@ type ResourceSingleStore struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -26033,7 +26033,7 @@ type ResourceSingleStoreArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -26143,8 +26143,8 @@ func (o ResourceSingleStoreOutput) BindInterface() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceSingleStoreOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceSingleStore) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceSingleStoreOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSingleStore) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -26247,7 +26247,7 @@ func (o ResourceSingleStorePtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27007,10 +27007,12 @@ func (o ResourceSnowsightPtrOutput) Tags() pulumi.StringMapOutput {
 }
 
 type ResourceSqlServer struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption *bool `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -27049,10 +27051,12 @@ type ResourceSqlServerInput interface {
 }
 
 type ResourceSqlServerArgs struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption pulumi.BoolPtrInput `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -27156,14 +27160,19 @@ func (o ResourceSqlServerOutput) ToResourceSqlServerPtrOutputWithContext(ctx con
 	}).(ResourceSqlServerPtrOutput)
 }
 
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o ResourceSqlServerOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServer) *bool { return v.AllowDeprecatedEncryption }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceSqlServerOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSqlServer) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceSqlServerOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceSqlServer) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceSqlServerOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServer) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -27250,6 +27259,16 @@ func (o ResourceSqlServerPtrOutput) Elem() ResourceSqlServerOutput {
 	}).(ResourceSqlServerOutput)
 }
 
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o ResourceSqlServerPtrOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowDeprecatedEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceSqlServerPtrOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSqlServer) *string {
@@ -27266,7 +27285,7 @@ func (o ResourceSqlServerPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27391,12 +27410,14 @@ func (o ResourceSqlServerPtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type ResourceSqlServerAzureAd struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption *bool `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The Azure AD application (client) ID with which to authenticate.
 	ClientId *string `pulumi:"clientId"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -27436,12 +27457,14 @@ type ResourceSqlServerAzureAdInput interface {
 }
 
 type ResourceSqlServerAzureAdArgs struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption pulumi.BoolPtrInput `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The Azure AD application (client) ID with which to authenticate.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -27546,6 +27569,11 @@ func (o ResourceSqlServerAzureAdOutput) ToResourceSqlServerAzureAdPtrOutputWithC
 	}).(ResourceSqlServerAzureAdPtrOutput)
 }
 
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o ResourceSqlServerAzureAdOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *bool { return v.AllowDeprecatedEncryption }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceSqlServerAzureAdOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -27557,8 +27585,8 @@ func (o ResourceSqlServerAzureAdOutput) ClientId() pulumi.StringPtrOutput {
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceSqlServerAzureAdOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceSqlServerAzureAd) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceSqlServerAzureAdOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -27646,6 +27674,16 @@ func (o ResourceSqlServerAzureAdPtrOutput) Elem() ResourceSqlServerAzureAdOutput
 	}).(ResourceSqlServerAzureAdOutput)
 }
 
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o ResourceSqlServerAzureAdPtrOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowDeprecatedEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceSqlServerAzureAdPtrOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
@@ -27672,7 +27710,7 @@ func (o ResourceSqlServerAzureAdPtrOutput) Database() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -27798,10 +27836,12 @@ func (o ResourceSqlServerAzureAdPtrOutput) TenantId() pulumi.StringPtrOutput {
 }
 
 type ResourceSqlServerKerberosAd struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption *bool `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database string `pulumi:"database"`
+	Database *string `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -27846,10 +27886,12 @@ type ResourceSqlServerKerberosAdInput interface {
 }
 
 type ResourceSqlServerKerberosAdArgs struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption pulumi.BoolPtrInput `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database pulumi.StringPtrInput `pulumi:"database"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
@@ -27959,14 +28001,19 @@ func (o ResourceSqlServerKerberosAdOutput) ToResourceSqlServerKerberosAdPtrOutpu
 	}).(ResourceSqlServerKerberosAdPtrOutput)
 }
 
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o ResourceSqlServerKerberosAdOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *bool { return v.AllowDeprecatedEncryption }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceSqlServerKerberosAdOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
 }
 
 // The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-func (o ResourceSqlServerKerberosAdOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v ResourceSqlServerKerberosAd) string { return v.Database }).(pulumi.StringOutput)
+func (o ResourceSqlServerKerberosAdOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.Database }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -28068,6 +28115,16 @@ func (o ResourceSqlServerKerberosAdPtrOutput) Elem() ResourceSqlServerKerberosAd
 	}).(ResourceSqlServerKerberosAdOutput)
 }
 
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o ResourceSqlServerKerberosAdPtrOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowDeprecatedEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceSqlServerKerberosAdPtrOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
@@ -28084,7 +28141,7 @@ func (o ResourceSqlServerKerberosAdPtrOutput) Database() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.Database
+		return v.Database
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -50177,6 +50234,8 @@ func (o GetResourceResourceSnowsightArrayOutput) Index(i pulumi.IntInput) GetRes
 }
 
 type GetResourceResourceSqlServer struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption *bool `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
@@ -50221,6 +50280,8 @@ type GetResourceResourceSqlServerInput interface {
 }
 
 type GetResourceResourceSqlServerArgs struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption pulumi.BoolPtrInput `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
@@ -50302,6 +50363,11 @@ func (o GetResourceResourceSqlServerOutput) ToGetResourceResourceSqlServerOutput
 
 func (o GetResourceResourceSqlServerOutput) ToGetResourceResourceSqlServerOutputWithContext(ctx context.Context) GetResourceResourceSqlServerOutput {
 	return o
+}
+
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o GetResourceResourceSqlServerOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServer) *bool { return v.AllowDeprecatedEncryption }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -50400,6 +50466,8 @@ func (o GetResourceResourceSqlServerArrayOutput) Index(i pulumi.IntInput) GetRes
 }
 
 type GetResourceResourceSqlServerAzureAd struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption *bool `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The Azure AD application (client) ID with which to authenticate.
@@ -50447,6 +50515,8 @@ type GetResourceResourceSqlServerAzureAdInput interface {
 }
 
 type GetResourceResourceSqlServerAzureAdArgs struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption pulumi.BoolPtrInput `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The Azure AD application (client) ID with which to authenticate.
@@ -50531,6 +50601,11 @@ func (o GetResourceResourceSqlServerAzureAdOutput) ToGetResourceResourceSqlServe
 
 func (o GetResourceResourceSqlServerAzureAdOutput) ToGetResourceResourceSqlServerAzureAdOutputWithContext(ctx context.Context) GetResourceResourceSqlServerAzureAdOutput {
 	return o
+}
+
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o GetResourceResourceSqlServerAzureAdOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *bool { return v.AllowDeprecatedEncryption }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -50635,6 +50710,8 @@ func (o GetResourceResourceSqlServerAzureAdArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetResourceResourceSqlServerKerberosAd struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption *bool `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
@@ -50685,6 +50762,8 @@ type GetResourceResourceSqlServerKerberosAdInput interface {
 }
 
 type GetResourceResourceSqlServerKerberosAdArgs struct {
+	// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+	AllowDeprecatedEncryption pulumi.BoolPtrInput `pulumi:"allowDeprecatedEncryption"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
@@ -50772,6 +50851,11 @@ func (o GetResourceResourceSqlServerKerberosAdOutput) ToGetResourceResourceSqlSe
 
 func (o GetResourceResourceSqlServerKerberosAdOutput) ToGetResourceResourceSqlServerKerberosAdOutputWithContext(ctx context.Context) GetResourceResourceSqlServerKerberosAdOutput {
 	return o
+}
+
+// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+func (o GetResourceResourceSqlServerKerberosAdOutput) AllowDeprecatedEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *bool { return v.AllowDeprecatedEncryption }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.

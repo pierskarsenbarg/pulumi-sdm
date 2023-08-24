@@ -15,13 +15,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class ResourceSqlServerKerberosAd
     {
         /// <summary>
+        /// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        /// </summary>
+        public readonly bool? AllowDeprecatedEncryption;
+        /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
         /// <summary>
         /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         /// </summary>
-        public readonly string Database;
+        public readonly string? Database;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
@@ -85,9 +89,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private ResourceSqlServerKerberosAd(
+            bool? allowDeprecatedEncryption,
+
             string? bindInterface,
 
-            string database,
+            string? database,
 
             string? egressFilter,
 
@@ -119,6 +125,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? username)
         {
+            AllowDeprecatedEncryption = allowDeprecatedEncryption;
             BindInterface = bindInterface;
             Database = database;
             EgressFilter = egressFilter;

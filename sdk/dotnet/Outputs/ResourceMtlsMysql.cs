@@ -33,7 +33,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         /// </summary>
-        public readonly string Database;
+        public readonly string? Database;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
@@ -97,7 +97,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? clientKey,
 
-            string database,
+            string? database,
 
             string? egressFilter,
 

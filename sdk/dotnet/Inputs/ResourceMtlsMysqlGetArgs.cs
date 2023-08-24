@@ -70,8 +70,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// <summary>
         /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         /// </summary>
-        [Input("database", required: true)]
-        public Input<string> Database { get; set; } = null!;
+        [Input("database")]
+        public Input<string>? Database { get; set; }
 
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.

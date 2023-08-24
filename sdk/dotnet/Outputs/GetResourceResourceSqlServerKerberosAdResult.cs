@@ -15,6 +15,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetResourceResourceSqlServerKerberosAdResult
     {
         /// <summary>
+        /// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        /// </summary>
+        public readonly bool? AllowDeprecatedEncryption;
+        /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
@@ -89,6 +93,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private GetResourceResourceSqlServerKerberosAdResult(
+            bool? allowDeprecatedEncryption,
+
             string? bindInterface,
 
             string? database,
@@ -125,6 +131,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? username)
         {
+            AllowDeprecatedEncryption = allowDeprecatedEncryption;
             BindInterface = bindInterface;
             Database = database;
             EgressFilter = egressFilter;

@@ -856,7 +856,7 @@ export interface ResourceAuroraMysql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -1231,7 +1231,7 @@ export interface ResourceAzureMysql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -1557,7 +1557,7 @@ export interface ResourceClustrix {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -2708,7 +2708,7 @@ export interface ResourceMaria {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -2806,7 +2806,7 @@ export interface ResourceMemsql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -3168,7 +3168,7 @@ export interface ResourceMtlsMysql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -3302,7 +3302,7 @@ export interface ResourceMysql {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -3871,7 +3871,7 @@ export interface ResourceSingleStore {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -4014,13 +4014,17 @@ export interface ResourceSnowsight {
 
 export interface ResourceSqlServer {
     /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: pulumi.Input<boolean>;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -4073,6 +4077,10 @@ export interface ResourceSqlServer {
 
 export interface ResourceSqlServerAzureAd {
     /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: pulumi.Input<boolean>;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
@@ -4083,7 +4091,7 @@ export interface ResourceSqlServerAzureAd {
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -4137,13 +4145,17 @@ export interface ResourceSqlServerAzureAd {
 
 export interface ResourceSqlServerKerberosAd {
     /**
+     * Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+     */
+    allowDeprecatedEncryption?: pulumi.Input<boolean>;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
     /**
      * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
      */
-    database: pulumi.Input<string>;
+    database?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
