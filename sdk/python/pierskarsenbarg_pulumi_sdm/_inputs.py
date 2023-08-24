@@ -3396,10 +3396,10 @@ class ResourceAthenaArgs:
 @pulumi.input_type
 class ResourceAuroraMysqlArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -3411,10 +3411,10 @@ class ResourceAuroraMysqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -3426,11 +3426,12 @@ class ResourceAuroraMysqlArgs:
         :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -3451,18 +3452,6 @@ class ResourceAuroraMysqlArgs:
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -3499,6 +3488,18 @@ class ResourceAuroraMysqlArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -4841,10 +4842,10 @@ class ResourceAzureCertificateArgs:
 @pulumi.input_type
 class ResourceAzureMysqlArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -4856,10 +4857,10 @@ class ResourceAzureMysqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -4871,11 +4872,12 @@ class ResourceAzureMysqlArgs:
         :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -4896,18 +4898,6 @@ class ResourceAzureMysqlArgs:
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -4944,6 +4934,18 @@ class ResourceAzureMysqlArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -6098,10 +6100,10 @@ class ResourceCitusArgs:
 @pulumi.input_type
 class ResourceClustrixArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -6113,10 +6115,10 @@ class ResourceClustrixArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -6128,11 +6130,12 @@ class ResourceClustrixArgs:
         :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -6153,18 +6156,6 @@ class ResourceClustrixArgs:
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -6201,6 +6192,18 @@ class ResourceClustrixArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -10518,10 +10521,10 @@ class ResourceKubernetesUserImpersonationArgs:
 @pulumi.input_type
 class ResourceMariaArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -10533,10 +10536,10 @@ class ResourceMariaArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -10548,11 +10551,12 @@ class ResourceMariaArgs:
         :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -10573,18 +10577,6 @@ class ResourceMariaArgs:
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -10621,6 +10613,18 @@ class ResourceMariaArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -10895,10 +10899,10 @@ class ResourceMemcachedArgs:
 @pulumi.input_type
 class ResourceMemsqlArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -10910,10 +10914,10 @@ class ResourceMemsqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -10925,11 +10929,12 @@ class ResourceMemsqlArgs:
         :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -10950,18 +10955,6 @@ class ResourceMemsqlArgs:
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -10998,6 +10991,18 @@ class ResourceMemsqlArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -12245,13 +12250,13 @@ class ResourceMongoShardedClusterArgs:
 @pulumi.input_type
 class ResourceMtlsMysqlArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -12264,13 +12269,13 @@ class ResourceMtlsMysqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
         :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -12283,7 +12288,6 @@ class ResourceMtlsMysqlArgs:
         :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
@@ -12294,6 +12298,8 @@ class ResourceMtlsMysqlArgs:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -12316,18 +12322,6 @@ class ResourceMtlsMysqlArgs:
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -12400,6 +12394,18 @@ class ResourceMtlsMysqlArgs:
     @client_key.setter
     def client_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -12813,10 +12819,10 @@ class ResourceMtlsPostgresArgs:
 @pulumi.input_type
 class ResourceMysqlArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -12828,10 +12834,10 @@ class ResourceMysqlArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -12843,11 +12849,12 @@ class ResourceMysqlArgs:
         :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -12868,18 +12875,6 @@ class ResourceMysqlArgs:
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -12916,6 +12911,18 @@ class ResourceMysqlArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -15005,10 +15012,10 @@ class ResourceRedshiftArgs:
 @pulumi.input_type
 class ResourceSingleStoreArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -15020,10 +15027,10 @@ class ResourceSingleStoreArgs:
                  use_azure_single_server_usernames: Optional[pulumi.Input[bool]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] password: The password to authenticate with.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -15035,11 +15042,12 @@ class ResourceSingleStoreArgs:
         :param pulumi.Input[bool] use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -15060,18 +15068,6 @@ class ResourceSingleStoreArgs:
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -15108,6 +15104,18 @@ class ResourceSingleStoreArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -15577,10 +15585,11 @@ class ResourceSnowsightArgs:
 @pulumi.input_type
 class ResourceSqlServerArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
+                 allow_deprecated_encryption: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  override_database: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -15592,10 +15601,11 @@ class ResourceSqlServerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[bool] allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param pulumi.Input[str] password: The password to authenticate with.
@@ -15607,11 +15617,14 @@ class ResourceSqlServerArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if override_database is not None:
@@ -15632,18 +15645,6 @@ class ResourceSqlServerArgs:
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -15670,6 +15671,18 @@ class ResourceSqlServerArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
+
+    @allow_deprecated_encryption.setter
+    def allow_deprecated_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_deprecated_encryption", value)
+
+    @property
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
@@ -15680,6 +15693,18 @@ class ResourceSqlServerArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -15805,11 +15830,12 @@ class ResourceSqlServerArgs:
 @pulumi.input_type
 class ResourceSqlServerAzureAdArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
+                 allow_deprecated_encryption: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  override_database: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
@@ -15821,11 +15847,12 @@ class ResourceSqlServerAzureAdArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[bool] allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] client_id: The Azure AD application (client) ID with which to authenticate.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[bool] override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
@@ -15838,13 +15865,16 @@ class ResourceSqlServerAzureAdArgs:
         :param pulumi.Input[str] tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
                * sql_server_kerberos_ad:
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if override_database is not None:
@@ -15865,18 +15895,6 @@ class ResourceSqlServerAzureAdArgs:
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
-
-    @property
-    @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter
@@ -15903,6 +15921,18 @@ class ResourceSqlServerAzureAdArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
+
+    @allow_deprecated_encryption.setter
+    def allow_deprecated_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_deprecated_encryption", value)
+
+    @property
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
@@ -15925,6 +15955,18 @@ class ResourceSqlServerAzureAdArgs:
     @client_id.setter
     def client_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -16051,10 +16093,11 @@ class ResourceSqlServerAzureAdArgs:
 @pulumi.input_type
 class ResourceSqlServerKerberosAdArgs:
     def __init__(__self__, *,
-                 database: pulumi.Input[str],
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
+                 allow_deprecated_encryption: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 database: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  keytab: Optional[pulumi.Input[str]] = None,
                  krb_config: Optional[pulumi.Input[str]] = None,
@@ -16069,10 +16112,11 @@ class ResourceSqlServerKerberosAdArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[bool] allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[str] database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] keytab: The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
         :param pulumi.Input[str] krb_config: The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
@@ -16087,11 +16131,14 @@ class ResourceSqlServerKerberosAdArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         :param pulumi.Input[str] username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if keytab is not None:
@@ -16121,18 +16168,6 @@ class ResourceSqlServerKerberosAdArgs:
 
     @property
     @pulumi.getter
-    def database(self) -> pulumi.Input[str]:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: pulumi.Input[str]):
-        pulumi.set(self, "database", value)
-
-    @property
-    @pulumi.getter
     def hostname(self) -> pulumi.Input[str]:
         """
         The host to dial to initiate a connection from the egress node to this resource.
@@ -16156,6 +16191,18 @@ class ResourceSqlServerKerberosAdArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
+
+    @allow_deprecated_encryption.setter
+    def allow_deprecated_encryption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_deprecated_encryption", value)
+
+    @property
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[pulumi.Input[str]]:
         """
@@ -16166,6 +16213,18 @@ class ResourceSqlServerKerberosAdArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
 
     @property
     @pulumi.getter(name="egressFilter")

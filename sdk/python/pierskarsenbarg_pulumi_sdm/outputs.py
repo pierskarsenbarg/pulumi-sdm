@@ -3216,10 +3216,10 @@ class ResourceAuroraMysql(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
@@ -3231,10 +3231,10 @@ class ResourceAuroraMysql(dict):
                  use_azure_single_server_usernames: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -3246,11 +3246,12 @@ class ResourceAuroraMysql(dict):
         :param bool use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -3271,14 +3272,6 @@ class ResourceAuroraMysql(dict):
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -3303,6 +3296,14 @@ class ResourceAuroraMysql(dict):
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -4522,10 +4523,10 @@ class ResourceAzureMysql(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
@@ -4537,10 +4538,10 @@ class ResourceAzureMysql(dict):
                  use_azure_single_server_usernames: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -4552,11 +4553,12 @@ class ResourceAzureMysql(dict):
         :param bool use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -4577,14 +4579,6 @@ class ResourceAzureMysql(dict):
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -4609,6 +4603,14 @@ class ResourceAzureMysql(dict):
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -5625,10 +5627,10 @@ class ResourceClustrix(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
@@ -5640,10 +5642,10 @@ class ResourceClustrix(dict):
                  use_azure_single_server_usernames: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -5655,11 +5657,12 @@ class ResourceClustrix(dict):
         :param bool use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -5680,14 +5683,6 @@ class ResourceClustrix(dict):
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -5712,6 +5707,14 @@ class ResourceClustrix(dict):
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -9567,10 +9570,10 @@ class ResourceMaria(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
@@ -9582,10 +9585,10 @@ class ResourceMaria(dict):
                  use_azure_single_server_usernames: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -9597,11 +9600,12 @@ class ResourceMaria(dict):
         :param bool use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -9622,14 +9626,6 @@ class ResourceMaria(dict):
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -9654,6 +9650,14 @@ class ResourceMaria(dict):
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -9902,10 +9906,10 @@ class ResourceMemsql(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
@@ -9917,10 +9921,10 @@ class ResourceMemsql(dict):
                  use_azure_single_server_usernames: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -9932,11 +9936,12 @@ class ResourceMemsql(dict):
         :param bool use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -9957,14 +9962,6 @@ class ResourceMemsql(dict):
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -9989,6 +9986,14 @@ class ResourceMemsql(dict):
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -11100,13 +11105,13 @@ class ResourceMtlsMysql(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
                  bind_interface: Optional[str] = None,
                  certificate_authority: Optional[str] = None,
                  client_certificate: Optional[str] = None,
                  client_key: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
@@ -11119,13 +11124,13 @@ class ResourceMtlsMysql(dict):
                  use_azure_single_server_usernames: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str certificate_authority: The CA to authenticate TLS connections with.
         :param str client_certificate: The certificate to authenticate TLS connections with.
         :param str client_key: The key to authenticate TLS connections with.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -11138,7 +11143,6 @@ class ResourceMtlsMysql(dict):
         :param bool use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
@@ -11149,6 +11153,8 @@ class ResourceMtlsMysql(dict):
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -11171,14 +11177,6 @@ class ResourceMtlsMysql(dict):
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -11227,6 +11225,14 @@ class ResourceMtlsMysql(dict):
         The key to authenticate TLS connections with.
         """
         return pulumi.get(self, "client_key")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -11588,10 +11594,10 @@ class ResourceMysql(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
@@ -11603,10 +11609,10 @@ class ResourceMysql(dict):
                  use_azure_single_server_usernames: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -11618,11 +11624,12 @@ class ResourceMysql(dict):
         :param bool use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -11643,14 +11650,6 @@ class ResourceMysql(dict):
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -11675,6 +11674,14 @@ class ResourceMysql(dict):
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -13523,10 +13530,10 @@ class ResourceSingleStore(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
@@ -13538,10 +13545,10 @@ class ResourceSingleStore(dict):
                  use_azure_single_server_usernames: Optional[bool] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -13553,11 +13560,12 @@ class ResourceSingleStore(dict):
         :param bool use_azure_single_server_usernames: If true, appends the hostname to the username when hitting a database.azure.com address
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if password is not None:
@@ -13578,14 +13586,6 @@ class ResourceSingleStore(dict):
             pulumi.set(__self__, "use_azure_single_server_usernames", use_azure_single_server_usernames)
         if username is not None:
             pulumi.set(__self__, "username", username)
-
-    @property
-    @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter
@@ -13610,6 +13610,14 @@ class ResourceSingleStore(dict):
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -14007,7 +14015,9 @@ class ResourceSqlServer(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bindInterface":
+        if key == "allowDeprecatedEncryption":
+            suggest = "allow_deprecated_encryption"
+        elif key == "bindInterface":
             suggest = "bind_interface"
         elif key == "egressFilter":
             suggest = "egress_filter"
@@ -14030,10 +14040,11 @@ class ResourceSqlServer(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
+                 allow_deprecated_encryption: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  override_database: Optional[bool] = None,
                  password: Optional[str] = None,
@@ -14045,10 +14056,11 @@ class ResourceSqlServer(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
+        :param bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param str password: The password to authenticate with.
@@ -14060,11 +14072,14 @@ class ResourceSqlServer(dict):
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if override_database is not None:
@@ -14088,14 +14103,6 @@ class ResourceSqlServer(dict):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @property
-    @pulumi.getter
     def hostname(self) -> str:
         """
         The host to dial to initiate a connection from the egress node to this resource.
@@ -14111,12 +14118,28 @@ class ResourceSqlServer(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[bool]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
+
+    @property
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[str]:
         """
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -14204,7 +14227,9 @@ class ResourceSqlServerAzureAd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bindInterface":
+        if key == "allowDeprecatedEncryption":
+            suggest = "allow_deprecated_encryption"
+        elif key == "bindInterface":
             suggest = "bind_interface"
         elif key == "clientId":
             suggest = "client_id"
@@ -14231,11 +14256,12 @@ class ResourceSqlServerAzureAd(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
+                 allow_deprecated_encryption: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
                  client_id: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
@@ -14247,11 +14273,12 @@ class ResourceSqlServerAzureAd(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  tenant_id: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
+        :param bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str client_id: The Azure AD application (client) ID with which to authenticate.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
@@ -14264,13 +14291,16 @@ class ResourceSqlServerAzureAd(dict):
         :param str tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
                * sql_server_kerberos_ad:
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if override_database is not None:
@@ -14294,14 +14324,6 @@ class ResourceSqlServerAzureAd(dict):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @property
-    @pulumi.getter
     def hostname(self) -> str:
         """
         The host to dial to initiate a connection from the egress node to this resource.
@@ -14315,6 +14337,14 @@ class ResourceSqlServerAzureAd(dict):
         Unique human-readable name of the Resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[bool]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -14331,6 +14361,14 @@ class ResourceSqlServerAzureAd(dict):
         The Azure AD application (client) ID with which to authenticate.
         """
         return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -14419,7 +14457,9 @@ class ResourceSqlServerKerberosAd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "bindInterface":
+        if key == "allowDeprecatedEncryption":
+            suggest = "allow_deprecated_encryption"
+        elif key == "bindInterface":
             suggest = "bind_interface"
         elif key == "egressFilter":
             suggest = "egress_filter"
@@ -14446,10 +14486,11 @@ class ResourceSqlServerKerberosAd(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database: str,
                  hostname: str,
                  name: str,
+                 allow_deprecated_encryption: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  keytab: Optional[str] = None,
                  krb_config: Optional[str] = None,
@@ -14464,10 +14505,11 @@ class ResourceSqlServerKerberosAd(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
         """
-        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
+        :param bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str keytab: The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
         :param str krb_config: The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
@@ -14482,11 +14524,14 @@ class ResourceSqlServerKerberosAd(dict):
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str username: The username to authenticate with.
         """
-        pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if keytab is not None:
@@ -14516,14 +14561,6 @@ class ResourceSqlServerKerberosAd(dict):
 
     @property
     @pulumi.getter
-    def database(self) -> str:
-        """
-        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
-        """
-        return pulumi.get(self, "database")
-
-    @property
-    @pulumi.getter
     def hostname(self) -> str:
         """
         The host to dial to initiate a connection from the egress node to this resource.
@@ -14539,12 +14576,28 @@ class ResourceSqlServerKerberosAd(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[bool]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
+
+    @property
     @pulumi.getter(name="bindInterface")
     def bind_interface(self) -> Optional[str]:
         """
         The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         """
         return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -30224,6 +30277,7 @@ class GetResourceResourceSnowsightResult(dict):
 @pulumi.output_type
 class GetResourceResourceSqlServerResult(dict):
     def __init__(__self__, *,
+                 allow_deprecated_encryption: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -30240,6 +30294,7 @@ class GetResourceResourceSqlServerResult(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
         """
+        :param bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -30256,6 +30311,8 @@ class GetResourceResourceSqlServerResult(dict):
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str username: The username to authenticate with.
         """
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -30286,6 +30343,14 @@ class GetResourceResourceSqlServerResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[bool]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -30411,6 +30476,7 @@ class GetResourceResourceSqlServerResult(dict):
 @pulumi.output_type
 class GetResourceResourceSqlServerAzureAdResult(dict):
     def __init__(__self__, *,
+                 allow_deprecated_encryption: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
                  client_id: Optional[str] = None,
                  database: Optional[str] = None,
@@ -30428,6 +30494,7 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  tenant_id: Optional[str] = None):
         """
+        :param bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str client_id: The Azure AD application (client) ID with which to authenticate.
         :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
@@ -30446,6 +30513,8 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
         :param str tenant_id: The Azure AD directory (tenant) ID with which to authenticate.
                * sql_server_kerberos_ad:
         """
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if client_id is not None:
@@ -30478,6 +30547,14 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
             pulumi.set(__self__, "tags", tags)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[bool]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -30612,6 +30689,7 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
 @pulumi.output_type
 class GetResourceResourceSqlServerKerberosAdResult(dict):
     def __init__(__self__, *,
+                 allow_deprecated_encryption: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
                  egress_filter: Optional[str] = None,
@@ -30631,6 +30709,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
         """
+        :param bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
@@ -30650,6 +30729,8 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str username: The username to authenticate with.
         """
+        if allow_deprecated_encryption is not None:
+            pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if database is not None:
@@ -30686,6 +30767,14 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
             pulumi.set(__self__, "tags", tags)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="allowDeprecatedEncryption")
+    def allow_deprecated_encryption(self) -> Optional[bool]:
+        """
+        Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
+        """
+        return pulumi.get(self, "allow_deprecated_encryption")
 
     @property
     @pulumi.getter(name="bindInterface")
