@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Account can be imported using the id, e.g.,
+ * A Account can be imported using the id, e.g.,
  *
  * ```sh
  *  $ pulumi import sdm:index/account:Account example a-12345678

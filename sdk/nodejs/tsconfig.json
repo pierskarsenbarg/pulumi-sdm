@@ -30,6 +30,9 @@
         "getRole.ts",
         "getSecretStore.ts",
         "getSshCaPubkey.ts",
+        "getWorkflow.ts",
+        "getWorkflowApprover.ts",
+        "getWorkflowRole.ts",
         "index.ts",
         "node.ts",
         "peeringGroup.ts",
@@ -44,6 +47,9 @@
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "workflow.ts",
+        "workflowApprover.ts",
+        "workflowRole.ts"
     ]
 }

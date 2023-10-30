@@ -80,6 +80,21 @@ export const getSshCaPubkey: typeof import("./getSshCaPubkey").getSshCaPubkey = 
 export const getSshCaPubkeyOutput: typeof import("./getSshCaPubkey").getSshCaPubkeyOutput = null as any;
 utilities.lazyLoad(exports, ["getSshCaPubkey","getSshCaPubkeyOutput"], () => require("./getSshCaPubkey"));
 
+export { GetWorkflowArgs, GetWorkflowResult, GetWorkflowOutputArgs } from "./getWorkflow";
+export const getWorkflow: typeof import("./getWorkflow").getWorkflow = null as any;
+export const getWorkflowOutput: typeof import("./getWorkflow").getWorkflowOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkflow","getWorkflowOutput"], () => require("./getWorkflow"));
+
+export { GetWorkflowApproverArgs, GetWorkflowApproverResult, GetWorkflowApproverOutputArgs } from "./getWorkflowApprover";
+export const getWorkflowApprover: typeof import("./getWorkflowApprover").getWorkflowApprover = null as any;
+export const getWorkflowApproverOutput: typeof import("./getWorkflowApprover").getWorkflowApproverOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkflowApprover","getWorkflowApproverOutput"], () => require("./getWorkflowApprover"));
+
+export { GetWorkflowRoleArgs, GetWorkflowRoleResult, GetWorkflowRoleOutputArgs } from "./getWorkflowRole";
+export const getWorkflowRole: typeof import("./getWorkflowRole").getWorkflowRole = null as any;
+export const getWorkflowRoleOutput: typeof import("./getWorkflowRole").getWorkflowRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkflowRole","getWorkflowRoleOutput"], () => require("./getWorkflowRole"));
+
 export { NodeArgs, NodeState } from "./node";
 export type Node = import("./node").Node;
 export const Node: typeof import("./node").Node = null as any;
@@ -130,6 +145,21 @@ export type SecretStore = import("./secretStore").SecretStore;
 export const SecretStore: typeof import("./secretStore").SecretStore = null as any;
 utilities.lazyLoad(exports, ["SecretStore"], () => require("./secretStore"));
 
+export { WorkflowArgs, WorkflowState } from "./workflow";
+export type Workflow = import("./workflow").Workflow;
+export const Workflow: typeof import("./workflow").Workflow = null as any;
+utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
+
+export { WorkflowApproverArgs, WorkflowApproverState } from "./workflowApprover";
+export type WorkflowApprover = import("./workflowApprover").WorkflowApprover;
+export const WorkflowApprover: typeof import("./workflowApprover").WorkflowApprover = null as any;
+utilities.lazyLoad(exports, ["WorkflowApprover"], () => require("./workflowApprover"));
+
+export { WorkflowRoleArgs, WorkflowRoleState } from "./workflowRole";
+export type WorkflowRole = import("./workflowRole").WorkflowRole;
+export const WorkflowRole: typeof import("./workflowRole").WorkflowRole = null as any;
+utilities.lazyLoad(exports, ["WorkflowRole"], () => require("./workflowRole"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -166,6 +196,12 @@ const _module = {
                 return new Role(name, <any>undefined, { urn })
             case "sdm:index/secretStore:SecretStore":
                 return new SecretStore(name, <any>undefined, { urn })
+            case "sdm:index/workflow:Workflow":
+                return new Workflow(name, <any>undefined, { urn })
+            case "sdm:index/workflowApprover:WorkflowApprover":
+                return new WorkflowApprover(name, <any>undefined, { urn })
+            case "sdm:index/workflowRole:WorkflowRole":
+                return new WorkflowRole(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -182,6 +218,9 @@ pulumi.runtime.registerResourceModule("sdm", "index/remoteIdentity", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/resource", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/role", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/secretStore", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/workflow", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/workflowApprover", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/workflowRole", _module)
 pulumi.runtime.registerResourcePackage("sdm", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
