@@ -105,7 +105,7 @@ class PeeringGroupResource(pulumi.CustomResource):
 
         ## Import
 
-        PeeringGroupResource can be imported using the id, e.g.,
+        A PeeringGroupResource can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678
@@ -128,7 +128,7 @@ class PeeringGroupResource(pulumi.CustomResource):
 
         ## Import
 
-        PeeringGroupResource can be imported using the id, e.g.,
+        A PeeringGroupResource can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678

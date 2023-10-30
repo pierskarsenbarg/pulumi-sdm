@@ -20,6 +20,9 @@ from .get_resource import *
 from .get_role import *
 from .get_secret_store import *
 from .get_ssh_ca_pubkey import *
+from .get_workflow import *
+from .get_workflow_approver import *
+from .get_workflow_role import *
 from .node import *
 from .peering_group import *
 from .peering_group_node import *
@@ -30,6 +33,9 @@ from .remote_identity import *
 from .resource import *
 from .role import *
 from .secret_store import *
+from .workflow import *
+from .workflow_approver import *
+from .workflow_role import *
 from ._inputs import *
 from . import outputs
 
@@ -129,6 +135,30 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/secretStore:SecretStore": "SecretStore"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/workflow",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/workflow:Workflow": "Workflow"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/workflowApprover",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/workflowApprover:WorkflowApprover": "WorkflowApprover"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/workflowRole",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/workflowRole:WorkflowRole": "WorkflowRole"
   }
  }
 ]

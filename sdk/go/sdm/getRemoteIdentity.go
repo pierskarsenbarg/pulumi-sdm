@@ -9,6 +9,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // RemoteIdentities define the username to be used for a specific account
@@ -121,6 +122,12 @@ func (o LookupRemoteIdentityResultOutput) ToLookupRemoteIdentityResultOutput() L
 
 func (o LookupRemoteIdentityResultOutput) ToLookupRemoteIdentityResultOutputWithContext(ctx context.Context) LookupRemoteIdentityResultOutput {
 	return o
+}
+
+func (o LookupRemoteIdentityResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRemoteIdentityResult] {
+	return pulumix.Output[LookupRemoteIdentityResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account for this remote identity.

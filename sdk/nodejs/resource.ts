@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * ## Import
  *
- * Resource can be imported using the id, e.g.,
+ * A Resource can be imported using the id, e.g.,
  *
  * ```sh
  *  $ pulumi import sdm:index/resource:Resource example rs-12345678
@@ -57,24 +57,17 @@ export class Resource extends pulumi.CustomResource {
     public readonly athena!: pulumi.Output<outputs.ResourceAthena | undefined>;
     public readonly auroraMysql!: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
     public readonly auroraPostgres!: pulumi.Output<outputs.ResourceAuroraPostgres | undefined>;
+    /**
+     * AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly auroraPostgresIam!: pulumi.Output<outputs.ResourceAuroraPostgresIam | undefined>;
     public readonly aws!: pulumi.Output<outputs.ResourceAws | undefined>;
-    /**
-     * AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly awsConsole!: pulumi.Output<outputs.ResourceAwsConsole | undefined>;
-    /**
-     * AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
-     */
     public readonly awsConsoleStaticKeyPair!: pulumi.Output<outputs.ResourceAwsConsoleStaticKeyPair | undefined>;
     public readonly azure!: pulumi.Output<outputs.ResourceAzure | undefined>;
     public readonly azureCertificate!: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
     public readonly azureMysql!: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
     public readonly azurePostgres!: pulumi.Output<outputs.ResourceAzurePostgres | undefined>;
-    /**
-     * AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-     * version bump.
-     */
     public readonly azurePostgresManagedIdentity!: pulumi.Output<outputs.ResourceAzurePostgresManagedIdentity | undefined>;
     public readonly bigQuery!: pulumi.Output<outputs.ResourceBigQuery | undefined>;
     public readonly cassandra!: pulumi.Output<outputs.ResourceCassandra | undefined>;
@@ -132,13 +125,14 @@ export class Resource extends pulumi.CustomResource {
     public readonly rabbitmqAmqp091!: pulumi.Output<outputs.ResourceRabbitmqAmqp091 | undefined>;
     public readonly rawTcp!: pulumi.Output<outputs.ResourceRawTcp | undefined>;
     public readonly rdp!: pulumi.Output<outputs.ResourceRdp | undefined>;
+    /**
+     * RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly rdsPostgresIam!: pulumi.Output<outputs.ResourceRdsPostgresIam | undefined>;
     public readonly redis!: pulumi.Output<outputs.ResourceRedis | undefined>;
     public readonly redshift!: pulumi.Output<outputs.ResourceRedshift | undefined>;
     public readonly singleStore!: pulumi.Output<outputs.ResourceSingleStore | undefined>;
     public readonly snowflake!: pulumi.Output<outputs.ResourceSnowflake | undefined>;
-    /**
-     * Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly snowsight!: pulumi.Output<outputs.ResourceSnowsight | undefined>;
     public readonly sqlServer!: pulumi.Output<outputs.ResourceSqlServer | undefined>;
     public readonly sqlServerAzureAd!: pulumi.Output<outputs.ResourceSqlServerAzureAd | undefined>;
@@ -181,6 +175,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["athena"] = state ? state.athena : undefined;
             resourceInputs["auroraMysql"] = state ? state.auroraMysql : undefined;
             resourceInputs["auroraPostgres"] = state ? state.auroraPostgres : undefined;
+            resourceInputs["auroraPostgresIam"] = state ? state.auroraPostgresIam : undefined;
             resourceInputs["aws"] = state ? state.aws : undefined;
             resourceInputs["awsConsole"] = state ? state.awsConsole : undefined;
             resourceInputs["awsConsoleStaticKeyPair"] = state ? state.awsConsoleStaticKeyPair : undefined;
@@ -233,6 +228,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["rabbitmqAmqp091"] = state ? state.rabbitmqAmqp091 : undefined;
             resourceInputs["rawTcp"] = state ? state.rawTcp : undefined;
             resourceInputs["rdp"] = state ? state.rdp : undefined;
+            resourceInputs["rdsPostgresIam"] = state ? state.rdsPostgresIam : undefined;
             resourceInputs["redis"] = state ? state.redis : undefined;
             resourceInputs["redshift"] = state ? state.redshift : undefined;
             resourceInputs["singleStore"] = state ? state.singleStore : undefined;
@@ -264,6 +260,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["athena"] = args ? args.athena : undefined;
             resourceInputs["auroraMysql"] = args ? args.auroraMysql : undefined;
             resourceInputs["auroraPostgres"] = args ? args.auroraPostgres : undefined;
+            resourceInputs["auroraPostgresIam"] = args ? args.auroraPostgresIam : undefined;
             resourceInputs["aws"] = args ? args.aws : undefined;
             resourceInputs["awsConsole"] = args ? args.awsConsole : undefined;
             resourceInputs["awsConsoleStaticKeyPair"] = args ? args.awsConsoleStaticKeyPair : undefined;
@@ -316,6 +313,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["rabbitmqAmqp091"] = args ? args.rabbitmqAmqp091 : undefined;
             resourceInputs["rawTcp"] = args ? args.rawTcp : undefined;
             resourceInputs["rdp"] = args ? args.rdp : undefined;
+            resourceInputs["rdsPostgresIam"] = args ? args.rdsPostgresIam : undefined;
             resourceInputs["redis"] = args ? args.redis : undefined;
             resourceInputs["redshift"] = args ? args.redshift : undefined;
             resourceInputs["singleStore"] = args ? args.singleStore : undefined;
@@ -355,24 +353,17 @@ export interface ResourceState {
     athena?: pulumi.Input<inputs.ResourceAthena>;
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
+    /**
+     * AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
     aws?: pulumi.Input<inputs.ResourceAws>;
-    /**
-     * AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
-    /**
-     * AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
-     */
     awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
-    /**
-     * AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-     * version bump.
-     */
     azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
     cassandra?: pulumi.Input<inputs.ResourceCassandra>;
@@ -430,13 +421,14 @@ export interface ResourceState {
     rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
     rawTcp?: pulumi.Input<inputs.ResourceRawTcp>;
     rdp?: pulumi.Input<inputs.ResourceRdp>;
+    /**
+     * RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
     singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
     snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
-    /**
-     * Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
     sqlServer?: pulumi.Input<inputs.ResourceSqlServer>;
     sqlServerAzureAd?: pulumi.Input<inputs.ResourceSqlServerAzureAd>;
@@ -471,24 +463,17 @@ export interface ResourceArgs {
     athena?: pulumi.Input<inputs.ResourceAthena>;
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
+    /**
+     * AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
     aws?: pulumi.Input<inputs.ResourceAws>;
-    /**
-     * AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
-    /**
-     * AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-     * bump.
-     */
     awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
     azurePostgres?: pulumi.Input<inputs.ResourceAzurePostgres>;
-    /**
-     * AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-     * version bump.
-     */
     azurePostgresManagedIdentity?: pulumi.Input<inputs.ResourceAzurePostgresManagedIdentity>;
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
     cassandra?: pulumi.Input<inputs.ResourceCassandra>;
@@ -546,13 +531,14 @@ export interface ResourceArgs {
     rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
     rawTcp?: pulumi.Input<inputs.ResourceRawTcp>;
     rdp?: pulumi.Input<inputs.ResourceRdp>;
+    /**
+     * RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
     singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
     snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
-    /**
-     * Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
     sqlServer?: pulumi.Input<inputs.ResourceSqlServer>;
     sqlServerAzureAd?: pulumi.Input<inputs.ResourceSqlServerAzureAd>;

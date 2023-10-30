@@ -184,7 +184,7 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        Role can be imported using the id, e.g.,
+        A Role can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/role:Role example r-12345678
@@ -238,7 +238,7 @@ class Role(pulumi.CustomResource):
 
         ## Import
 
-        Role can be imported using the id, e.g.,
+        A Role can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/role:Role example r-12345678

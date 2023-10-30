@@ -9,6 +9,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 var _ = internal.GetEnvOrDefault
@@ -56,6 +57,12 @@ func (i AccountServiceArgs) ToAccountServiceOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccountServiceOutput)
 }
 
+func (i AccountServiceArgs) ToOutput(ctx context.Context) pulumix.Output[AccountService] {
+	return pulumix.Output[AccountService]{
+		OutputState: i.ToAccountServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AccountServiceArgs) ToAccountServicePtrOutput() AccountServicePtrOutput {
 	return i.ToAccountServicePtrOutputWithContext(context.Background())
 }
@@ -97,6 +104,12 @@ func (i *accountServicePtrType) ToAccountServicePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AccountServicePtrOutput)
 }
 
+func (i *accountServicePtrType) ToOutput(ctx context.Context) pulumix.Output[*AccountService] {
+	return pulumix.Output[*AccountService]{
+		OutputState: i.ToAccountServicePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountServiceOutput struct{ *pulumi.OutputState }
 
 func (AccountServiceOutput) ElementType() reflect.Type {
@@ -119,6 +132,12 @@ func (o AccountServiceOutput) ToAccountServicePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountService) *AccountService {
 		return &v
 	}).(AccountServicePtrOutput)
+}
+
+func (o AccountServiceOutput) ToOutput(ctx context.Context) pulumix.Output[AccountService] {
+	return pulumix.Output[AccountService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique human-readable name of the Service.
@@ -152,6 +171,12 @@ func (o AccountServicePtrOutput) ToAccountServicePtrOutput() AccountServicePtrOu
 
 func (o AccountServicePtrOutput) ToAccountServicePtrOutputWithContext(ctx context.Context) AccountServicePtrOutput {
 	return o
+}
+
+func (o AccountServicePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountService] {
+	return pulumix.Output[*AccountService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountServicePtrOutput) Elem() AccountServiceOutput {
@@ -264,6 +289,12 @@ func (i AccountUserArgs) ToAccountUserOutputWithContext(ctx context.Context) Acc
 	return pulumi.ToOutputWithContext(ctx, i).(AccountUserOutput)
 }
 
+func (i AccountUserArgs) ToOutput(ctx context.Context) pulumix.Output[AccountUser] {
+	return pulumix.Output[AccountUser]{
+		OutputState: i.ToAccountUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i AccountUserArgs) ToAccountUserPtrOutput() AccountUserPtrOutput {
 	return i.ToAccountUserPtrOutputWithContext(context.Background())
 }
@@ -305,6 +336,12 @@ func (i *accountUserPtrType) ToAccountUserPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccountUserPtrOutput)
 }
 
+func (i *accountUserPtrType) ToOutput(ctx context.Context) pulumix.Output[*AccountUser] {
+	return pulumix.Output[*AccountUser]{
+		OutputState: i.ToAccountUserPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccountUserOutput struct{ *pulumi.OutputState }
 
 func (AccountUserOutput) ElementType() reflect.Type {
@@ -327,6 +364,12 @@ func (o AccountUserOutput) ToAccountUserPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccountUser) *AccountUser {
 		return &v
 	}).(AccountUserPtrOutput)
+}
+
+func (o AccountUserOutput) ToOutput(ctx context.Context) pulumix.Output[AccountUser] {
+	return pulumix.Output[AccountUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The User's email address. Must be unique.
@@ -381,6 +424,12 @@ func (o AccountUserPtrOutput) ToAccountUserPtrOutput() AccountUserPtrOutput {
 
 func (o AccountUserPtrOutput) ToAccountUserPtrOutputWithContext(ctx context.Context) AccountUserPtrOutput {
 	return o
+}
+
+func (o AccountUserPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountUser] {
+	return pulumix.Output[*AccountUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccountUserPtrOutput) Elem() AccountUserOutput {
@@ -540,6 +589,12 @@ func (i NodeGatewayArgs) ToNodeGatewayOutputWithContext(ctx context.Context) Nod
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGatewayOutput)
 }
 
+func (i NodeGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[NodeGateway] {
+	return pulumix.Output[NodeGateway]{
+		OutputState: i.ToNodeGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NodeGatewayArgs) ToNodeGatewayPtrOutput() NodeGatewayPtrOutput {
 	return i.ToNodeGatewayPtrOutputWithContext(context.Background())
 }
@@ -581,6 +636,12 @@ func (i *nodeGatewayPtrType) ToNodeGatewayPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGatewayPtrOutput)
 }
 
+func (i *nodeGatewayPtrType) ToOutput(ctx context.Context) pulumix.Output[*NodeGateway] {
+	return pulumix.Output[*NodeGateway]{
+		OutputState: i.ToNodeGatewayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodeGatewayOutput struct{ *pulumi.OutputState }
 
 func (NodeGatewayOutput) ElementType() reflect.Type {
@@ -603,6 +664,12 @@ func (o NodeGatewayOutput) ToNodeGatewayPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeGateway) *NodeGateway {
 		return &v
 	}).(NodeGatewayPtrOutput)
+}
+
+func (o NodeGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[NodeGateway] {
+	return pulumix.Output[NodeGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -666,6 +733,12 @@ func (o NodeGatewayPtrOutput) ToNodeGatewayPtrOutput() NodeGatewayPtrOutput {
 
 func (o NodeGatewayPtrOutput) ToNodeGatewayPtrOutputWithContext(ctx context.Context) NodeGatewayPtrOutput {
 	return o
+}
+
+func (o NodeGatewayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeGateway] {
+	return pulumix.Output[*NodeGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeGatewayPtrOutput) Elem() NodeGatewayOutput {
@@ -810,6 +883,12 @@ func (i NodeGatewayMaintenanceWindowArgs) ToNodeGatewayMaintenanceWindowOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGatewayMaintenanceWindowOutput)
 }
 
+func (i NodeGatewayMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[NodeGatewayMaintenanceWindow] {
+	return pulumix.Output[NodeGatewayMaintenanceWindow]{
+		OutputState: i.ToNodeGatewayMaintenanceWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NodeGatewayMaintenanceWindowArrayInput is an input type that accepts NodeGatewayMaintenanceWindowArray and NodeGatewayMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `NodeGatewayMaintenanceWindowArrayInput` via:
 //
@@ -835,6 +914,12 @@ func (i NodeGatewayMaintenanceWindowArray) ToNodeGatewayMaintenanceWindowArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGatewayMaintenanceWindowArrayOutput)
 }
 
+func (i NodeGatewayMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]NodeGatewayMaintenanceWindow] {
+	return pulumix.Output[[]NodeGatewayMaintenanceWindow]{
+		OutputState: i.ToNodeGatewayMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodeGatewayMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (NodeGatewayMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -847,6 +932,12 @@ func (o NodeGatewayMaintenanceWindowOutput) ToNodeGatewayMaintenanceWindowOutput
 
 func (o NodeGatewayMaintenanceWindowOutput) ToNodeGatewayMaintenanceWindowOutputWithContext(ctx context.Context) NodeGatewayMaintenanceWindowOutput {
 	return o
+}
+
+func (o NodeGatewayMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[NodeGatewayMaintenanceWindow] {
+	return pulumix.Output[NodeGatewayMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeGatewayMaintenanceWindowOutput) CronSchedule() pulumi.StringOutput {
@@ -869,6 +960,12 @@ func (o NodeGatewayMaintenanceWindowArrayOutput) ToNodeGatewayMaintenanceWindowA
 
 func (o NodeGatewayMaintenanceWindowArrayOutput) ToNodeGatewayMaintenanceWindowArrayOutputWithContext(ctx context.Context) NodeGatewayMaintenanceWindowArrayOutput {
 	return o
+}
+
+func (o NodeGatewayMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeGatewayMaintenanceWindow] {
+	return pulumix.Output[[]NodeGatewayMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeGatewayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) NodeGatewayMaintenanceWindowOutput {
@@ -936,6 +1033,12 @@ func (i NodeRelayArgs) ToNodeRelayOutputWithContext(ctx context.Context) NodeRel
 	return pulumi.ToOutputWithContext(ctx, i).(NodeRelayOutput)
 }
 
+func (i NodeRelayArgs) ToOutput(ctx context.Context) pulumix.Output[NodeRelay] {
+	return pulumix.Output[NodeRelay]{
+		OutputState: i.ToNodeRelayOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i NodeRelayArgs) ToNodeRelayPtrOutput() NodeRelayPtrOutput {
 	return i.ToNodeRelayPtrOutputWithContext(context.Background())
 }
@@ -977,6 +1080,12 @@ func (i *nodeRelayPtrType) ToNodeRelayPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(NodeRelayPtrOutput)
 }
 
+func (i *nodeRelayPtrType) ToOutput(ctx context.Context) pulumix.Output[*NodeRelay] {
+	return pulumix.Output[*NodeRelay]{
+		OutputState: i.ToNodeRelayPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodeRelayOutput struct{ *pulumi.OutputState }
 
 func (NodeRelayOutput) ElementType() reflect.Type {
@@ -999,6 +1108,12 @@ func (o NodeRelayOutput) ToNodeRelayPtrOutputWithContext(ctx context.Context) No
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeRelay) *NodeRelay {
 		return &v
 	}).(NodeRelayPtrOutput)
+}
+
+func (o NodeRelayOutput) ToOutput(ctx context.Context) pulumix.Output[NodeRelay] {
+	return pulumix.Output[NodeRelay]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device is a read only device name uploaded by the gateway process when it comes online.
@@ -1052,6 +1167,12 @@ func (o NodeRelayPtrOutput) ToNodeRelayPtrOutput() NodeRelayPtrOutput {
 
 func (o NodeRelayPtrOutput) ToNodeRelayPtrOutputWithContext(ctx context.Context) NodeRelayPtrOutput {
 	return o
+}
+
+func (o NodeRelayPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*NodeRelay] {
+	return pulumix.Output[*NodeRelay]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeRelayPtrOutput) Elem() NodeRelayOutput {
@@ -1176,6 +1297,12 @@ func (i NodeRelayMaintenanceWindowArgs) ToNodeRelayMaintenanceWindowOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(NodeRelayMaintenanceWindowOutput)
 }
 
+func (i NodeRelayMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[NodeRelayMaintenanceWindow] {
+	return pulumix.Output[NodeRelayMaintenanceWindow]{
+		OutputState: i.ToNodeRelayMaintenanceWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NodeRelayMaintenanceWindowArrayInput is an input type that accepts NodeRelayMaintenanceWindowArray and NodeRelayMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `NodeRelayMaintenanceWindowArrayInput` via:
 //
@@ -1201,6 +1328,12 @@ func (i NodeRelayMaintenanceWindowArray) ToNodeRelayMaintenanceWindowArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(NodeRelayMaintenanceWindowArrayOutput)
 }
 
+func (i NodeRelayMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]NodeRelayMaintenanceWindow] {
+	return pulumix.Output[[]NodeRelayMaintenanceWindow]{
+		OutputState: i.ToNodeRelayMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NodeRelayMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (NodeRelayMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -1213,6 +1346,12 @@ func (o NodeRelayMaintenanceWindowOutput) ToNodeRelayMaintenanceWindowOutput() N
 
 func (o NodeRelayMaintenanceWindowOutput) ToNodeRelayMaintenanceWindowOutputWithContext(ctx context.Context) NodeRelayMaintenanceWindowOutput {
 	return o
+}
+
+func (o NodeRelayMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[NodeRelayMaintenanceWindow] {
+	return pulumix.Output[NodeRelayMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeRelayMaintenanceWindowOutput) CronSchedule() pulumi.StringOutput {
@@ -1235,6 +1374,12 @@ func (o NodeRelayMaintenanceWindowArrayOutput) ToNodeRelayMaintenanceWindowArray
 
 func (o NodeRelayMaintenanceWindowArrayOutput) ToNodeRelayMaintenanceWindowArrayOutputWithContext(ctx context.Context) NodeRelayMaintenanceWindowArrayOutput {
 	return o
+}
+
+func (o NodeRelayMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]NodeRelayMaintenanceWindow] {
+	return pulumix.Output[[]NodeRelayMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NodeRelayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) NodeRelayMaintenanceWindowOutput {
@@ -1332,6 +1477,12 @@ func (i ResourceAksArgs) ToResourceAksOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksOutput)
 }
 
+func (i ResourceAksArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAks] {
+	return pulumix.Output[ResourceAks]{
+		OutputState: i.ToResourceAksOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAksArgs) ToResourceAksPtrOutput() ResourceAksPtrOutput {
 	return i.ToResourceAksPtrOutputWithContext(context.Background())
 }
@@ -1373,6 +1524,12 @@ func (i *resourceAksPtrType) ToResourceAksPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksPtrOutput)
 }
 
+func (i *resourceAksPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAks] {
+	return pulumix.Output[*ResourceAks]{
+		OutputState: i.ToResourceAksPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAksOutput struct{ *pulumi.OutputState }
 
 func (ResourceAksOutput) ElementType() reflect.Type {
@@ -1395,6 +1552,12 @@ func (o ResourceAksOutput) ToResourceAksPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAks) *ResourceAks {
 		return &v
 	}).(ResourceAksPtrOutput)
+}
+
+func (o ResourceAksOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAks] {
+	return pulumix.Output[ResourceAks]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -1484,6 +1647,12 @@ func (o ResourceAksPtrOutput) ToResourceAksPtrOutput() ResourceAksPtrOutput {
 
 func (o ResourceAksPtrOutput) ToResourceAksPtrOutputWithContext(ctx context.Context) ResourceAksPtrOutput {
 	return o
+}
+
+func (o ResourceAksPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAks] {
+	return pulumix.Output[*ResourceAks]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAksPtrOutput) Elem() ResourceAksOutput {
@@ -1723,6 +1892,12 @@ func (i ResourceAksBasicAuthArgs) ToResourceAksBasicAuthOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksBasicAuthOutput)
 }
 
+func (i ResourceAksBasicAuthArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAksBasicAuth] {
+	return pulumix.Output[ResourceAksBasicAuth]{
+		OutputState: i.ToResourceAksBasicAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAksBasicAuthArgs) ToResourceAksBasicAuthPtrOutput() ResourceAksBasicAuthPtrOutput {
 	return i.ToResourceAksBasicAuthPtrOutputWithContext(context.Background())
 }
@@ -1764,6 +1939,12 @@ func (i *resourceAksBasicAuthPtrType) ToResourceAksBasicAuthPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksBasicAuthPtrOutput)
 }
 
+func (i *resourceAksBasicAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAksBasicAuth] {
+	return pulumix.Output[*ResourceAksBasicAuth]{
+		OutputState: i.ToResourceAksBasicAuthPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAksBasicAuthOutput struct{ *pulumi.OutputState }
 
 func (ResourceAksBasicAuthOutput) ElementType() reflect.Type {
@@ -1786,6 +1967,12 @@ func (o ResourceAksBasicAuthOutput) ToResourceAksBasicAuthPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAksBasicAuth) *ResourceAksBasicAuth {
 		return &v
 	}).(ResourceAksBasicAuthPtrOutput)
+}
+
+func (o ResourceAksBasicAuthOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAksBasicAuth] {
+	return pulumix.Output[ResourceAksBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -1860,6 +2047,12 @@ func (o ResourceAksBasicAuthPtrOutput) ToResourceAksBasicAuthPtrOutput() Resourc
 
 func (o ResourceAksBasicAuthPtrOutput) ToResourceAksBasicAuthPtrOutputWithContext(ctx context.Context) ResourceAksBasicAuthPtrOutput {
 	return o
+}
+
+func (o ResourceAksBasicAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAksBasicAuth] {
+	return pulumix.Output[*ResourceAksBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAksBasicAuthPtrOutput) Elem() ResourceAksBasicAuthOutput {
@@ -2075,6 +2268,12 @@ func (i ResourceAksServiceAccountArgs) ToResourceAksServiceAccountOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksServiceAccountOutput)
 }
 
+func (i ResourceAksServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAksServiceAccount] {
+	return pulumix.Output[ResourceAksServiceAccount]{
+		OutputState: i.ToResourceAksServiceAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAksServiceAccountArgs) ToResourceAksServiceAccountPtrOutput() ResourceAksServiceAccountPtrOutput {
 	return i.ToResourceAksServiceAccountPtrOutputWithContext(context.Background())
 }
@@ -2116,6 +2315,12 @@ func (i *resourceAksServiceAccountPtrType) ToResourceAksServiceAccountPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksServiceAccountPtrOutput)
 }
 
+func (i *resourceAksServiceAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAksServiceAccount] {
+	return pulumix.Output[*ResourceAksServiceAccount]{
+		OutputState: i.ToResourceAksServiceAccountPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAksServiceAccountOutput struct{ *pulumi.OutputState }
 
 func (ResourceAksServiceAccountOutput) ElementType() reflect.Type {
@@ -2138,6 +2343,12 @@ func (o ResourceAksServiceAccountOutput) ToResourceAksServiceAccountPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAksServiceAccount) *ResourceAksServiceAccount {
 		return &v
 	}).(ResourceAksServiceAccountPtrOutput)
+}
+
+func (o ResourceAksServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAksServiceAccount] {
+	return pulumix.Output[ResourceAksServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -2218,6 +2429,12 @@ func (o ResourceAksServiceAccountPtrOutput) ToResourceAksServiceAccountPtrOutput
 
 func (o ResourceAksServiceAccountPtrOutput) ToResourceAksServiceAccountPtrOutputWithContext(ctx context.Context) ResourceAksServiceAccountPtrOutput {
 	return o
+}
+
+func (o ResourceAksServiceAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAksServiceAccount] {
+	return pulumix.Output[*ResourceAksServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAksServiceAccountPtrOutput) Elem() ResourceAksServiceAccountOutput {
@@ -2436,6 +2653,12 @@ func (i ResourceAksServiceAccountUserImpersonationArgs) ToResourceAksServiceAcco
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksServiceAccountUserImpersonationOutput)
 }
 
+func (i ResourceAksServiceAccountUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAksServiceAccountUserImpersonation] {
+	return pulumix.Output[ResourceAksServiceAccountUserImpersonation]{
+		OutputState: i.ToResourceAksServiceAccountUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAksServiceAccountUserImpersonationArgs) ToResourceAksServiceAccountUserImpersonationPtrOutput() ResourceAksServiceAccountUserImpersonationPtrOutput {
 	return i.ToResourceAksServiceAccountUserImpersonationPtrOutputWithContext(context.Background())
 }
@@ -2477,6 +2700,12 @@ func (i *resourceAksServiceAccountUserImpersonationPtrType) ToResourceAksService
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksServiceAccountUserImpersonationPtrOutput)
 }
 
+func (i *resourceAksServiceAccountUserImpersonationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAksServiceAccountUserImpersonation] {
+	return pulumix.Output[*ResourceAksServiceAccountUserImpersonation]{
+		OutputState: i.ToResourceAksServiceAccountUserImpersonationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAksServiceAccountUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (ResourceAksServiceAccountUserImpersonationOutput) ElementType() reflect.Type {
@@ -2499,6 +2728,12 @@ func (o ResourceAksServiceAccountUserImpersonationOutput) ToResourceAksServiceAc
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAksServiceAccountUserImpersonation) *ResourceAksServiceAccountUserImpersonation {
 		return &v
 	}).(ResourceAksServiceAccountUserImpersonationPtrOutput)
+}
+
+func (o ResourceAksServiceAccountUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAksServiceAccountUserImpersonation] {
+	return pulumix.Output[ResourceAksServiceAccountUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -2569,6 +2804,12 @@ func (o ResourceAksServiceAccountUserImpersonationPtrOutput) ToResourceAksServic
 
 func (o ResourceAksServiceAccountUserImpersonationPtrOutput) ToResourceAksServiceAccountUserImpersonationPtrOutputWithContext(ctx context.Context) ResourceAksServiceAccountUserImpersonationPtrOutput {
 	return o
+}
+
+func (o ResourceAksServiceAccountUserImpersonationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAksServiceAccountUserImpersonation] {
+	return pulumix.Output[*ResourceAksServiceAccountUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAksServiceAccountUserImpersonationPtrOutput) Elem() ResourceAksServiceAccountUserImpersonationOutput {
@@ -2773,6 +3014,12 @@ func (i ResourceAksUserImpersonationArgs) ToResourceAksUserImpersonationOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksUserImpersonationOutput)
 }
 
+func (i ResourceAksUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAksUserImpersonation] {
+	return pulumix.Output[ResourceAksUserImpersonation]{
+		OutputState: i.ToResourceAksUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAksUserImpersonationArgs) ToResourceAksUserImpersonationPtrOutput() ResourceAksUserImpersonationPtrOutput {
 	return i.ToResourceAksUserImpersonationPtrOutputWithContext(context.Background())
 }
@@ -2814,6 +3061,12 @@ func (i *resourceAksUserImpersonationPtrType) ToResourceAksUserImpersonationPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAksUserImpersonationPtrOutput)
 }
 
+func (i *resourceAksUserImpersonationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAksUserImpersonation] {
+	return pulumix.Output[*ResourceAksUserImpersonation]{
+		OutputState: i.ToResourceAksUserImpersonationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAksUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (ResourceAksUserImpersonationOutput) ElementType() reflect.Type {
@@ -2836,6 +3089,12 @@ func (o ResourceAksUserImpersonationOutput) ToResourceAksUserImpersonationPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAksUserImpersonation) *ResourceAksUserImpersonation {
 		return &v
 	}).(ResourceAksUserImpersonationPtrOutput)
+}
+
+func (o ResourceAksUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAksUserImpersonation] {
+	return pulumix.Output[ResourceAksUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -2915,6 +3174,12 @@ func (o ResourceAksUserImpersonationPtrOutput) ToResourceAksUserImpersonationPtr
 
 func (o ResourceAksUserImpersonationPtrOutput) ToResourceAksUserImpersonationPtrOutputWithContext(ctx context.Context) ResourceAksUserImpersonationPtrOutput {
 	return o
+}
+
+func (o ResourceAksUserImpersonationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAksUserImpersonation] {
+	return pulumix.Output[*ResourceAksUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAksUserImpersonationPtrOutput) Elem() ResourceAksUserImpersonationOutput {
@@ -3158,6 +3423,12 @@ func (i ResourceAmazonEksArgs) ToResourceAmazonEksOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksOutput)
 }
 
+func (i ResourceAmazonEksArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEks] {
+	return pulumix.Output[ResourceAmazonEks]{
+		OutputState: i.ToResourceAmazonEksOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAmazonEksArgs) ToResourceAmazonEksPtrOutput() ResourceAmazonEksPtrOutput {
 	return i.ToResourceAmazonEksPtrOutputWithContext(context.Background())
 }
@@ -3199,6 +3470,12 @@ func (i *resourceAmazonEksPtrType) ToResourceAmazonEksPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksPtrOutput)
 }
 
+func (i *resourceAmazonEksPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEks] {
+	return pulumix.Output[*ResourceAmazonEks]{
+		OutputState: i.ToResourceAmazonEksPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAmazonEksOutput struct{ *pulumi.OutputState }
 
 func (ResourceAmazonEksOutput) ElementType() reflect.Type {
@@ -3221,6 +3498,12 @@ func (o ResourceAmazonEksOutput) ToResourceAmazonEksPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonEks) *ResourceAmazonEks {
 		return &v
 	}).(ResourceAmazonEksPtrOutput)
+}
+
+func (o ResourceAmazonEksOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEks] {
+	return pulumix.Output[ResourceAmazonEks]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -3325,6 +3608,12 @@ func (o ResourceAmazonEksPtrOutput) ToResourceAmazonEksPtrOutput() ResourceAmazo
 
 func (o ResourceAmazonEksPtrOutput) ToResourceAmazonEksPtrOutputWithContext(ctx context.Context) ResourceAmazonEksPtrOutput {
 	return o
+}
+
+func (o ResourceAmazonEksPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEks] {
+	return pulumix.Output[*ResourceAmazonEks]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAmazonEksPtrOutput) Elem() ResourceAmazonEksOutput {
@@ -3610,6 +3899,12 @@ func (i ResourceAmazonEksInstanceProfileArgs) ToResourceAmazonEksInstanceProfile
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksInstanceProfileOutput)
 }
 
+func (i ResourceAmazonEksInstanceProfileArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEksInstanceProfile] {
+	return pulumix.Output[ResourceAmazonEksInstanceProfile]{
+		OutputState: i.ToResourceAmazonEksInstanceProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAmazonEksInstanceProfileArgs) ToResourceAmazonEksInstanceProfilePtrOutput() ResourceAmazonEksInstanceProfilePtrOutput {
 	return i.ToResourceAmazonEksInstanceProfilePtrOutputWithContext(context.Background())
 }
@@ -3651,6 +3946,12 @@ func (i *resourceAmazonEksInstanceProfilePtrType) ToResourceAmazonEksInstancePro
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksInstanceProfilePtrOutput)
 }
 
+func (i *resourceAmazonEksInstanceProfilePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEksInstanceProfile] {
+	return pulumix.Output[*ResourceAmazonEksInstanceProfile]{
+		OutputState: i.ToResourceAmazonEksInstanceProfilePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAmazonEksInstanceProfileOutput struct{ *pulumi.OutputState }
 
 func (ResourceAmazonEksInstanceProfileOutput) ElementType() reflect.Type {
@@ -3673,6 +3974,12 @@ func (o ResourceAmazonEksInstanceProfileOutput) ToResourceAmazonEksInstanceProfi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonEksInstanceProfile) *ResourceAmazonEksInstanceProfile {
 		return &v
 	}).(ResourceAmazonEksInstanceProfilePtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEksInstanceProfile] {
+	return pulumix.Output[ResourceAmazonEksInstanceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -3767,6 +4074,12 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) ToResourceAmazonEksInstancePr
 
 func (o ResourceAmazonEksInstanceProfilePtrOutput) ToResourceAmazonEksInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAmazonEksInstanceProfilePtrOutput {
 	return o
+}
+
+func (o ResourceAmazonEksInstanceProfilePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEksInstanceProfile] {
+	return pulumix.Output[*ResourceAmazonEksInstanceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAmazonEksInstanceProfilePtrOutput) Elem() ResourceAmazonEksInstanceProfileOutput {
@@ -4032,6 +4345,12 @@ func (i ResourceAmazonEksInstanceProfileUserImpersonationArgs) ToResourceAmazonE
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksInstanceProfileUserImpersonationOutput)
 }
 
+func (i ResourceAmazonEksInstanceProfileUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEksInstanceProfileUserImpersonation] {
+	return pulumix.Output[ResourceAmazonEksInstanceProfileUserImpersonation]{
+		OutputState: i.ToResourceAmazonEksInstanceProfileUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAmazonEksInstanceProfileUserImpersonationArgs) ToResourceAmazonEksInstanceProfileUserImpersonationPtrOutput() ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput {
 	return i.ToResourceAmazonEksInstanceProfileUserImpersonationPtrOutputWithContext(context.Background())
 }
@@ -4073,6 +4392,12 @@ func (i *resourceAmazonEksInstanceProfileUserImpersonationPtrType) ToResourceAma
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput)
 }
 
+func (i *resourceAmazonEksInstanceProfileUserImpersonationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEksInstanceProfileUserImpersonation] {
+	return pulumix.Output[*ResourceAmazonEksInstanceProfileUserImpersonation]{
+		OutputState: i.ToResourceAmazonEksInstanceProfileUserImpersonationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAmazonEksInstanceProfileUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (ResourceAmazonEksInstanceProfileUserImpersonationOutput) ElementType() reflect.Type {
@@ -4095,6 +4420,12 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) ToResourceAmazo
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonEksInstanceProfileUserImpersonation) *ResourceAmazonEksInstanceProfileUserImpersonation {
 		return &v
 	}).(ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput)
+}
+
+func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEksInstanceProfileUserImpersonation] {
+	return pulumix.Output[ResourceAmazonEksInstanceProfileUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -4191,6 +4522,12 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) ToResourceAm
 
 func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) ToResourceAmazonEksInstanceProfileUserImpersonationPtrOutputWithContext(ctx context.Context) ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput {
 	return o
+}
+
+func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEksInstanceProfileUserImpersonation] {
+	return pulumix.Output[*ResourceAmazonEksInstanceProfileUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) Elem() ResourceAmazonEksInstanceProfileUserImpersonationOutput {
@@ -4456,6 +4793,12 @@ func (i ResourceAmazonEksUserImpersonationArgs) ToResourceAmazonEksUserImpersona
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksUserImpersonationOutput)
 }
 
+func (i ResourceAmazonEksUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEksUserImpersonation] {
+	return pulumix.Output[ResourceAmazonEksUserImpersonation]{
+		OutputState: i.ToResourceAmazonEksUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAmazonEksUserImpersonationArgs) ToResourceAmazonEksUserImpersonationPtrOutput() ResourceAmazonEksUserImpersonationPtrOutput {
 	return i.ToResourceAmazonEksUserImpersonationPtrOutputWithContext(context.Background())
 }
@@ -4497,6 +4840,12 @@ func (i *resourceAmazonEksUserImpersonationPtrType) ToResourceAmazonEksUserImper
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEksUserImpersonationPtrOutput)
 }
 
+func (i *resourceAmazonEksUserImpersonationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEksUserImpersonation] {
+	return pulumix.Output[*ResourceAmazonEksUserImpersonation]{
+		OutputState: i.ToResourceAmazonEksUserImpersonationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAmazonEksUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (ResourceAmazonEksUserImpersonationOutput) ElementType() reflect.Type {
@@ -4519,6 +4868,12 @@ func (o ResourceAmazonEksUserImpersonationOutput) ToResourceAmazonEksUserImperso
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonEksUserImpersonation) *ResourceAmazonEksUserImpersonation {
 		return &v
 	}).(ResourceAmazonEksUserImpersonationPtrOutput)
+}
+
+func (o ResourceAmazonEksUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEksUserImpersonation] {
+	return pulumix.Output[ResourceAmazonEksUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -4613,6 +4968,12 @@ func (o ResourceAmazonEksUserImpersonationPtrOutput) ToResourceAmazonEksUserImpe
 
 func (o ResourceAmazonEksUserImpersonationPtrOutput) ToResourceAmazonEksUserImpersonationPtrOutputWithContext(ctx context.Context) ResourceAmazonEksUserImpersonationPtrOutput {
 	return o
+}
+
+func (o ResourceAmazonEksUserImpersonationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEksUserImpersonation] {
+	return pulumix.Output[*ResourceAmazonEksUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAmazonEksUserImpersonationPtrOutput) Elem() ResourceAmazonEksUserImpersonationOutput {
@@ -4866,6 +5227,12 @@ func (i ResourceAmazonEsArgs) ToResourceAmazonEsOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEsOutput)
 }
 
+func (i ResourceAmazonEsArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEs] {
+	return pulumix.Output[ResourceAmazonEs]{
+		OutputState: i.ToResourceAmazonEsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAmazonEsArgs) ToResourceAmazonEsPtrOutput() ResourceAmazonEsPtrOutput {
 	return i.ToResourceAmazonEsPtrOutputWithContext(context.Background())
 }
@@ -4907,6 +5274,12 @@ func (i *resourceAmazonEsPtrType) ToResourceAmazonEsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEsPtrOutput)
 }
 
+func (i *resourceAmazonEsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEs] {
+	return pulumix.Output[*ResourceAmazonEs]{
+		OutputState: i.ToResourceAmazonEsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAmazonEsOutput struct{ *pulumi.OutputState }
 
 func (ResourceAmazonEsOutput) ElementType() reflect.Type {
@@ -4929,6 +5302,12 @@ func (o ResourceAmazonEsOutput) ToResourceAmazonEsPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonEs) *ResourceAmazonEs {
 		return &v
 	}).(ResourceAmazonEsPtrOutput)
+}
+
+func (o ResourceAmazonEsOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonEs] {
+	return pulumix.Output[ResourceAmazonEs]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -5008,6 +5387,12 @@ func (o ResourceAmazonEsPtrOutput) ToResourceAmazonEsPtrOutput() ResourceAmazonE
 
 func (o ResourceAmazonEsPtrOutput) ToResourceAmazonEsPtrOutputWithContext(ctx context.Context) ResourceAmazonEsPtrOutput {
 	return o
+}
+
+func (o ResourceAmazonEsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonEs] {
+	return pulumix.Output[*ResourceAmazonEs]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAmazonEsPtrOutput) Elem() ResourceAmazonEsOutput {
@@ -5227,6 +5612,12 @@ func (i ResourceAmazonmqAmqp091Args) ToResourceAmazonmqAmqp091OutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonmqAmqp091Output)
 }
 
+func (i ResourceAmazonmqAmqp091Args) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonmqAmqp091] {
+	return pulumix.Output[ResourceAmazonmqAmqp091]{
+		OutputState: i.ToResourceAmazonmqAmqp091OutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAmazonmqAmqp091Args) ToResourceAmazonmqAmqp091PtrOutput() ResourceAmazonmqAmqp091PtrOutput {
 	return i.ToResourceAmazonmqAmqp091PtrOutputWithContext(context.Background())
 }
@@ -5268,6 +5659,12 @@ func (i *resourceAmazonmqAmqp091PtrType) ToResourceAmazonmqAmqp091PtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonmqAmqp091PtrOutput)
 }
 
+func (i *resourceAmazonmqAmqp091PtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonmqAmqp091] {
+	return pulumix.Output[*ResourceAmazonmqAmqp091]{
+		OutputState: i.ToResourceAmazonmqAmqp091PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAmazonmqAmqp091Output struct{ *pulumi.OutputState }
 
 func (ResourceAmazonmqAmqp091Output) ElementType() reflect.Type {
@@ -5290,6 +5687,12 @@ func (o ResourceAmazonmqAmqp091Output) ToResourceAmazonmqAmqp091PtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonmqAmqp091) *ResourceAmazonmqAmqp091 {
 		return &v
 	}).(ResourceAmazonmqAmqp091PtrOutput)
+}
+
+func (o ResourceAmazonmqAmqp091Output) ToOutput(ctx context.Context) pulumix.Output[ResourceAmazonmqAmqp091] {
+	return pulumix.Output[ResourceAmazonmqAmqp091]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -5364,6 +5767,12 @@ func (o ResourceAmazonmqAmqp091PtrOutput) ToResourceAmazonmqAmqp091PtrOutput() R
 
 func (o ResourceAmazonmqAmqp091PtrOutput) ToResourceAmazonmqAmqp091PtrOutputWithContext(ctx context.Context) ResourceAmazonmqAmqp091PtrOutput {
 	return o
+}
+
+func (o ResourceAmazonmqAmqp091PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAmazonmqAmqp091] {
+	return pulumix.Output[*ResourceAmazonmqAmqp091]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAmazonmqAmqp091PtrOutput) Elem() ResourceAmazonmqAmqp091Output {
@@ -5577,6 +5986,12 @@ func (i ResourceAthenaArgs) ToResourceAthenaOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAthenaOutput)
 }
 
+func (i ResourceAthenaArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAthena] {
+	return pulumix.Output[ResourceAthena]{
+		OutputState: i.ToResourceAthenaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAthenaArgs) ToResourceAthenaPtrOutput() ResourceAthenaPtrOutput {
 	return i.ToResourceAthenaPtrOutputWithContext(context.Background())
 }
@@ -5618,6 +6033,12 @@ func (i *resourceAthenaPtrType) ToResourceAthenaPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAthenaPtrOutput)
 }
 
+func (i *resourceAthenaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAthena] {
+	return pulumix.Output[*ResourceAthena]{
+		OutputState: i.ToResourceAthenaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAthenaOutput struct{ *pulumi.OutputState }
 
 func (ResourceAthenaOutput) ElementType() reflect.Type {
@@ -5640,6 +6061,12 @@ func (o ResourceAthenaOutput) ToResourceAthenaPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAthena) *ResourceAthena {
 		return &v
 	}).(ResourceAthenaPtrOutput)
+}
+
+func (o ResourceAthenaOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAthena] {
+	return pulumix.Output[ResourceAthena]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -5719,6 +6146,12 @@ func (o ResourceAthenaPtrOutput) ToResourceAthenaPtrOutput() ResourceAthenaPtrOu
 
 func (o ResourceAthenaPtrOutput) ToResourceAthenaPtrOutputWithContext(ctx context.Context) ResourceAthenaPtrOutput {
 	return o
+}
+
+func (o ResourceAthenaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAthena] {
+	return pulumix.Output[*ResourceAthena]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAthenaPtrOutput) Elem() ResourceAthenaOutput {
@@ -5946,6 +6379,12 @@ func (i ResourceAuroraMysqlArgs) ToResourceAuroraMysqlOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraMysqlOutput)
 }
 
+func (i ResourceAuroraMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAuroraMysql] {
+	return pulumix.Output[ResourceAuroraMysql]{
+		OutputState: i.ToResourceAuroraMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAuroraMysqlArgs) ToResourceAuroraMysqlPtrOutput() ResourceAuroraMysqlPtrOutput {
 	return i.ToResourceAuroraMysqlPtrOutputWithContext(context.Background())
 }
@@ -5987,6 +6426,12 @@ func (i *resourceAuroraMysqlPtrType) ToResourceAuroraMysqlPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraMysqlPtrOutput)
 }
 
+func (i *resourceAuroraMysqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAuroraMysql] {
+	return pulumix.Output[*ResourceAuroraMysql]{
+		OutputState: i.ToResourceAuroraMysqlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAuroraMysqlOutput struct{ *pulumi.OutputState }
 
 func (ResourceAuroraMysqlOutput) ElementType() reflect.Type {
@@ -6009,6 +6454,12 @@ func (o ResourceAuroraMysqlOutput) ToResourceAuroraMysqlPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAuroraMysql) *ResourceAuroraMysql {
 		return &v
 	}).(ResourceAuroraMysqlPtrOutput)
+}
+
+func (o ResourceAuroraMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAuroraMysql] {
+	return pulumix.Output[ResourceAuroraMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -6093,6 +6544,12 @@ func (o ResourceAuroraMysqlPtrOutput) ToResourceAuroraMysqlPtrOutput() ResourceA
 
 func (o ResourceAuroraMysqlPtrOutput) ToResourceAuroraMysqlPtrOutputWithContext(ctx context.Context) ResourceAuroraMysqlPtrOutput {
 	return o
+}
+
+func (o ResourceAuroraMysqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAuroraMysql] {
+	return pulumix.Output[*ResourceAuroraMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAuroraMysqlPtrOutput) Elem() ResourceAuroraMysqlOutput {
@@ -6326,6 +6783,12 @@ func (i ResourceAuroraPostgresArgs) ToResourceAuroraPostgresOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraPostgresOutput)
 }
 
+func (i ResourceAuroraPostgresArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAuroraPostgres] {
+	return pulumix.Output[ResourceAuroraPostgres]{
+		OutputState: i.ToResourceAuroraPostgresOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAuroraPostgresArgs) ToResourceAuroraPostgresPtrOutput() ResourceAuroraPostgresPtrOutput {
 	return i.ToResourceAuroraPostgresPtrOutputWithContext(context.Background())
 }
@@ -6367,6 +6830,12 @@ func (i *resourceAuroraPostgresPtrType) ToResourceAuroraPostgresPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraPostgresPtrOutput)
 }
 
+func (i *resourceAuroraPostgresPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAuroraPostgres] {
+	return pulumix.Output[*ResourceAuroraPostgres]{
+		OutputState: i.ToResourceAuroraPostgresPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAuroraPostgresOutput struct{ *pulumi.OutputState }
 
 func (ResourceAuroraPostgresOutput) ElementType() reflect.Type {
@@ -6389,6 +6858,12 @@ func (o ResourceAuroraPostgresOutput) ToResourceAuroraPostgresPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAuroraPostgres) *ResourceAuroraPostgres {
 		return &v
 	}).(ResourceAuroraPostgresPtrOutput)
+}
+
+func (o ResourceAuroraPostgresOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAuroraPostgres] {
+	return pulumix.Output[ResourceAuroraPostgres]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -6468,6 +6943,12 @@ func (o ResourceAuroraPostgresPtrOutput) ToResourceAuroraPostgresPtrOutput() Res
 
 func (o ResourceAuroraPostgresPtrOutput) ToResourceAuroraPostgresPtrOutputWithContext(ctx context.Context) ResourceAuroraPostgresPtrOutput {
 	return o
+}
+
+func (o ResourceAuroraPostgresPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAuroraPostgres] {
+	return pulumix.Output[*ResourceAuroraPostgres]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAuroraPostgresPtrOutput) Elem() ResourceAuroraPostgresOutput {
@@ -6610,6 +7091,414 @@ func (o ResourceAuroraPostgresPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceAuroraPostgresIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase *bool `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceAuroraPostgresIamInput is an input type that accepts ResourceAuroraPostgresIamArgs and ResourceAuroraPostgresIamOutput values.
+// You can construct a concrete instance of `ResourceAuroraPostgresIamInput` via:
+//
+//	ResourceAuroraPostgresIamArgs{...}
+type ResourceAuroraPostgresIamInput interface {
+	pulumi.Input
+
+	ToResourceAuroraPostgresIamOutput() ResourceAuroraPostgresIamOutput
+	ToResourceAuroraPostgresIamOutputWithContext(context.Context) ResourceAuroraPostgresIamOutput
+}
+
+type ResourceAuroraPostgresIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase pulumi.BoolPtrInput `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceAuroraPostgresIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAuroraPostgresIam)(nil)).Elem()
+}
+
+func (i ResourceAuroraPostgresIamArgs) ToResourceAuroraPostgresIamOutput() ResourceAuroraPostgresIamOutput {
+	return i.ToResourceAuroraPostgresIamOutputWithContext(context.Background())
+}
+
+func (i ResourceAuroraPostgresIamArgs) ToResourceAuroraPostgresIamOutputWithContext(ctx context.Context) ResourceAuroraPostgresIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraPostgresIamOutput)
+}
+
+func (i ResourceAuroraPostgresIamArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAuroraPostgresIam] {
+	return pulumix.Output[ResourceAuroraPostgresIam]{
+		OutputState: i.ToResourceAuroraPostgresIamOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ResourceAuroraPostgresIamArgs) ToResourceAuroraPostgresIamPtrOutput() ResourceAuroraPostgresIamPtrOutput {
+	return i.ToResourceAuroraPostgresIamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAuroraPostgresIamArgs) ToResourceAuroraPostgresIamPtrOutputWithContext(ctx context.Context) ResourceAuroraPostgresIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraPostgresIamOutput).ToResourceAuroraPostgresIamPtrOutputWithContext(ctx)
+}
+
+// ResourceAuroraPostgresIamPtrInput is an input type that accepts ResourceAuroraPostgresIamArgs, ResourceAuroraPostgresIamPtr and ResourceAuroraPostgresIamPtrOutput values.
+// You can construct a concrete instance of `ResourceAuroraPostgresIamPtrInput` via:
+//
+//	        ResourceAuroraPostgresIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAuroraPostgresIamPtrInput interface {
+	pulumi.Input
+
+	ToResourceAuroraPostgresIamPtrOutput() ResourceAuroraPostgresIamPtrOutput
+	ToResourceAuroraPostgresIamPtrOutputWithContext(context.Context) ResourceAuroraPostgresIamPtrOutput
+}
+
+type resourceAuroraPostgresIamPtrType ResourceAuroraPostgresIamArgs
+
+func ResourceAuroraPostgresIamPtr(v *ResourceAuroraPostgresIamArgs) ResourceAuroraPostgresIamPtrInput {
+	return (*resourceAuroraPostgresIamPtrType)(v)
+}
+
+func (*resourceAuroraPostgresIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAuroraPostgresIam)(nil)).Elem()
+}
+
+func (i *resourceAuroraPostgresIamPtrType) ToResourceAuroraPostgresIamPtrOutput() ResourceAuroraPostgresIamPtrOutput {
+	return i.ToResourceAuroraPostgresIamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAuroraPostgresIamPtrType) ToResourceAuroraPostgresIamPtrOutputWithContext(ctx context.Context) ResourceAuroraPostgresIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraPostgresIamPtrOutput)
+}
+
+func (i *resourceAuroraPostgresIamPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAuroraPostgresIam] {
+	return pulumix.Output[*ResourceAuroraPostgresIam]{
+		OutputState: i.ToResourceAuroraPostgresIamPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ResourceAuroraPostgresIamOutput struct{ *pulumi.OutputState }
+
+func (ResourceAuroraPostgresIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAuroraPostgresIam)(nil)).Elem()
+}
+
+func (o ResourceAuroraPostgresIamOutput) ToResourceAuroraPostgresIamOutput() ResourceAuroraPostgresIamOutput {
+	return o
+}
+
+func (o ResourceAuroraPostgresIamOutput) ToResourceAuroraPostgresIamOutputWithContext(ctx context.Context) ResourceAuroraPostgresIamOutput {
+	return o
+}
+
+func (o ResourceAuroraPostgresIamOutput) ToResourceAuroraPostgresIamPtrOutput() ResourceAuroraPostgresIamPtrOutput {
+	return o.ToResourceAuroraPostgresIamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAuroraPostgresIamOutput) ToResourceAuroraPostgresIamPtrOutputWithContext(ctx context.Context) ResourceAuroraPostgresIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAuroraPostgresIam) *ResourceAuroraPostgresIam {
+		return &v
+	}).(ResourceAuroraPostgresIamPtrOutput)
+}
+
+func (o ResourceAuroraPostgresIamOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAuroraPostgresIam] {
+	return pulumix.Output[ResourceAuroraPostgresIam]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAuroraPostgresIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceAuroraPostgresIamOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAuroraPostgresIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAuroraPostgresIamOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAuroraPostgresIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o ResourceAuroraPostgresIamOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAuroraPostgresIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAuroraPostgresIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAuroraPostgresIamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceAuroraPostgresIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAuroraPostgresIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAuroraPostgresIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAuroraPostgresIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAuroraPostgresIamOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceAuroraPostgresIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAuroraPostgresIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAuroraPostgresIam)(nil)).Elem()
+}
+
+func (o ResourceAuroraPostgresIamPtrOutput) ToResourceAuroraPostgresIamPtrOutput() ResourceAuroraPostgresIamPtrOutput {
+	return o
+}
+
+func (o ResourceAuroraPostgresIamPtrOutput) ToResourceAuroraPostgresIamPtrOutputWithContext(ctx context.Context) ResourceAuroraPostgresIamPtrOutput {
+	return o
+}
+
+func (o ResourceAuroraPostgresIamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAuroraPostgresIam] {
+	return pulumix.Output[*ResourceAuroraPostgresIam]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceAuroraPostgresIamPtrOutput) Elem() ResourceAuroraPostgresIamOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) ResourceAuroraPostgresIam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAuroraPostgresIam
+		return ret
+	}).(ResourceAuroraPostgresIamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAuroraPostgresIamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceAuroraPostgresIamPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAuroraPostgresIamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAuroraPostgresIamPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAuroraPostgresIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o ResourceAuroraPostgresIamPtrOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideDatabase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAuroraPostgresIamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAuroraPostgresIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAuroraPostgresIamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceAuroraPostgresIamPtrOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleAssumptionArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAuroraPostgresIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAuroraPostgresIamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAuroraPostgresIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAuroraPostgresIamPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceAws struct {
 	// The Access Key ID to use to authenticate.
 	AccessKey *string `pulumi:"accessKey"`
@@ -6687,6 +7576,12 @@ func (i ResourceAwsArgs) ToResourceAwsOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsOutput)
 }
 
+func (i ResourceAwsArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAws] {
+	return pulumix.Output[ResourceAws]{
+		OutputState: i.ToResourceAwsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAwsArgs) ToResourceAwsPtrOutput() ResourceAwsPtrOutput {
 	return i.ToResourceAwsPtrOutputWithContext(context.Background())
 }
@@ -6728,6 +7623,12 @@ func (i *resourceAwsPtrType) ToResourceAwsPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsPtrOutput)
 }
 
+func (i *resourceAwsPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAws] {
+	return pulumix.Output[*ResourceAws]{
+		OutputState: i.ToResourceAwsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAwsOutput struct{ *pulumi.OutputState }
 
 func (ResourceAwsOutput) ElementType() reflect.Type {
@@ -6750,6 +7651,12 @@ func (o ResourceAwsOutput) ToResourceAwsPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAws) *ResourceAws {
 		return &v
 	}).(ResourceAwsPtrOutput)
+}
+
+func (o ResourceAwsOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAws] {
+	return pulumix.Output[ResourceAws]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -6824,6 +7731,12 @@ func (o ResourceAwsPtrOutput) ToResourceAwsPtrOutput() ResourceAwsPtrOutput {
 
 func (o ResourceAwsPtrOutput) ToResourceAwsPtrOutputWithContext(ctx context.Context) ResourceAwsPtrOutput {
 	return o
+}
+
+func (o ResourceAwsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAws] {
+	return pulumix.Output[*ResourceAws]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAwsPtrOutput) Elem() ResourceAwsOutput {
@@ -7041,6 +7954,12 @@ func (i ResourceAwsConsoleArgs) ToResourceAwsConsoleOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsoleOutput)
 }
 
+func (i ResourceAwsConsoleArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAwsConsole] {
+	return pulumix.Output[ResourceAwsConsole]{
+		OutputState: i.ToResourceAwsConsoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAwsConsoleArgs) ToResourceAwsConsolePtrOutput() ResourceAwsConsolePtrOutput {
 	return i.ToResourceAwsConsolePtrOutputWithContext(context.Background())
 }
@@ -7082,6 +8001,12 @@ func (i *resourceAwsConsolePtrType) ToResourceAwsConsolePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsolePtrOutput)
 }
 
+func (i *resourceAwsConsolePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAwsConsole] {
+	return pulumix.Output[*ResourceAwsConsole]{
+		OutputState: i.ToResourceAwsConsolePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAwsConsoleOutput struct{ *pulumi.OutputState }
 
 func (ResourceAwsConsoleOutput) ElementType() reflect.Type {
@@ -7104,6 +8029,12 @@ func (o ResourceAwsConsoleOutput) ToResourceAwsConsolePtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAwsConsole) *ResourceAwsConsole {
 		return &v
 	}).(ResourceAwsConsolePtrOutput)
+}
+
+func (o ResourceAwsConsoleOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAwsConsole] {
+	return pulumix.Output[ResourceAwsConsole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -7188,6 +8119,12 @@ func (o ResourceAwsConsolePtrOutput) ToResourceAwsConsolePtrOutput() ResourceAws
 
 func (o ResourceAwsConsolePtrOutput) ToResourceAwsConsolePtrOutputWithContext(ctx context.Context) ResourceAwsConsolePtrOutput {
 	return o
+}
+
+func (o ResourceAwsConsolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAwsConsole] {
+	return pulumix.Output[*ResourceAwsConsole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAwsConsolePtrOutput) Elem() ResourceAwsConsoleOutput {
@@ -7429,6 +8366,12 @@ func (i ResourceAwsConsoleStaticKeyPairArgs) ToResourceAwsConsoleStaticKeyPairOu
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsoleStaticKeyPairOutput)
 }
 
+func (i ResourceAwsConsoleStaticKeyPairArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAwsConsoleStaticKeyPair] {
+	return pulumix.Output[ResourceAwsConsoleStaticKeyPair]{
+		OutputState: i.ToResourceAwsConsoleStaticKeyPairOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAwsConsoleStaticKeyPairArgs) ToResourceAwsConsoleStaticKeyPairPtrOutput() ResourceAwsConsoleStaticKeyPairPtrOutput {
 	return i.ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(context.Background())
 }
@@ -7470,6 +8413,12 @@ func (i *resourceAwsConsoleStaticKeyPairPtrType) ToResourceAwsConsoleStaticKeyPa
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsConsoleStaticKeyPairPtrOutput)
 }
 
+func (i *resourceAwsConsoleStaticKeyPairPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAwsConsoleStaticKeyPair] {
+	return pulumix.Output[*ResourceAwsConsoleStaticKeyPair]{
+		OutputState: i.ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAwsConsoleStaticKeyPairOutput struct{ *pulumi.OutputState }
 
 func (ResourceAwsConsoleStaticKeyPairOutput) ElementType() reflect.Type {
@@ -7492,6 +8441,12 @@ func (o ResourceAwsConsoleStaticKeyPairOutput) ToResourceAwsConsoleStaticKeyPair
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAwsConsoleStaticKeyPair) *ResourceAwsConsoleStaticKeyPair {
 		return &v
 	}).(ResourceAwsConsoleStaticKeyPairPtrOutput)
+}
+
+func (o ResourceAwsConsoleStaticKeyPairOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAwsConsoleStaticKeyPair] {
+	return pulumix.Output[ResourceAwsConsoleStaticKeyPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -7581,6 +8536,12 @@ func (o ResourceAwsConsoleStaticKeyPairPtrOutput) ToResourceAwsConsoleStaticKeyP
 
 func (o ResourceAwsConsoleStaticKeyPairPtrOutput) ToResourceAwsConsoleStaticKeyPairPtrOutputWithContext(ctx context.Context) ResourceAwsConsoleStaticKeyPairPtrOutput {
 	return o
+}
+
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAwsConsoleStaticKeyPair] {
+	return pulumix.Output[*ResourceAwsConsoleStaticKeyPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Elem() ResourceAwsConsoleStaticKeyPairOutput {
@@ -7814,6 +8775,12 @@ func (i ResourceAzureArgs) ToResourceAzureOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureOutput)
 }
 
+func (i ResourceAzureArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAzure] {
+	return pulumix.Output[ResourceAzure]{
+		OutputState: i.ToResourceAzureOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAzureArgs) ToResourceAzurePtrOutput() ResourceAzurePtrOutput {
 	return i.ToResourceAzurePtrOutputWithContext(context.Background())
 }
@@ -7855,6 +8822,12 @@ func (i *resourceAzurePtrType) ToResourceAzurePtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzurePtrOutput)
 }
 
+func (i *resourceAzurePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzure] {
+	return pulumix.Output[*ResourceAzure]{
+		OutputState: i.ToResourceAzurePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAzureOutput struct{ *pulumi.OutputState }
 
 func (ResourceAzureOutput) ElementType() reflect.Type {
@@ -7877,6 +8850,12 @@ func (o ResourceAzureOutput) ToResourceAzurePtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAzure) *ResourceAzure {
 		return &v
 	}).(ResourceAzurePtrOutput)
+}
+
+func (o ResourceAzureOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAzure] {
+	return pulumix.Output[ResourceAzure]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The application ID to authenticate with.
@@ -7942,6 +8921,12 @@ func (o ResourceAzurePtrOutput) ToResourceAzurePtrOutput() ResourceAzurePtrOutpu
 
 func (o ResourceAzurePtrOutput) ToResourceAzurePtrOutputWithContext(ctx context.Context) ResourceAzurePtrOutput {
 	return o
+}
+
+func (o ResourceAzurePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzure] {
+	return pulumix.Output[*ResourceAzure]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAzurePtrOutput) Elem() ResourceAzureOutput {
@@ -8126,6 +9111,12 @@ func (i ResourceAzureCertificateArgs) ToResourceAzureCertificateOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureCertificateOutput)
 }
 
+func (i ResourceAzureCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAzureCertificate] {
+	return pulumix.Output[ResourceAzureCertificate]{
+		OutputState: i.ToResourceAzureCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAzureCertificateArgs) ToResourceAzureCertificatePtrOutput() ResourceAzureCertificatePtrOutput {
 	return i.ToResourceAzureCertificatePtrOutputWithContext(context.Background())
 }
@@ -8167,6 +9158,12 @@ func (i *resourceAzureCertificatePtrType) ToResourceAzureCertificatePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureCertificatePtrOutput)
 }
 
+func (i *resourceAzureCertificatePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzureCertificate] {
+	return pulumix.Output[*ResourceAzureCertificate]{
+		OutputState: i.ToResourceAzureCertificatePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAzureCertificateOutput struct{ *pulumi.OutputState }
 
 func (ResourceAzureCertificateOutput) ElementType() reflect.Type {
@@ -8189,6 +9186,12 @@ func (o ResourceAzureCertificateOutput) ToResourceAzureCertificatePtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAzureCertificate) *ResourceAzureCertificate {
 		return &v
 	}).(ResourceAzureCertificatePtrOutput)
+}
+
+func (o ResourceAzureCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAzureCertificate] {
+	return pulumix.Output[ResourceAzureCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The application ID to authenticate with.
@@ -8254,6 +9257,12 @@ func (o ResourceAzureCertificatePtrOutput) ToResourceAzureCertificatePtrOutput()
 
 func (o ResourceAzureCertificatePtrOutput) ToResourceAzureCertificatePtrOutputWithContext(ctx context.Context) ResourceAzureCertificatePtrOutput {
 	return o
+}
+
+func (o ResourceAzureCertificatePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzureCertificate] {
+	return pulumix.Output[*ResourceAzureCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAzureCertificatePtrOutput) Elem() ResourceAzureCertificateOutput {
@@ -8452,6 +9461,12 @@ func (i ResourceAzureMysqlArgs) ToResourceAzureMysqlOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureMysqlOutput)
 }
 
+func (i ResourceAzureMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAzureMysql] {
+	return pulumix.Output[ResourceAzureMysql]{
+		OutputState: i.ToResourceAzureMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAzureMysqlArgs) ToResourceAzureMysqlPtrOutput() ResourceAzureMysqlPtrOutput {
 	return i.ToResourceAzureMysqlPtrOutputWithContext(context.Background())
 }
@@ -8493,6 +9508,12 @@ func (i *resourceAzureMysqlPtrType) ToResourceAzureMysqlPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzureMysqlPtrOutput)
 }
 
+func (i *resourceAzureMysqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzureMysql] {
+	return pulumix.Output[*ResourceAzureMysql]{
+		OutputState: i.ToResourceAzureMysqlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAzureMysqlOutput struct{ *pulumi.OutputState }
 
 func (ResourceAzureMysqlOutput) ElementType() reflect.Type {
@@ -8515,6 +9536,12 @@ func (o ResourceAzureMysqlOutput) ToResourceAzureMysqlPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAzureMysql) *ResourceAzureMysql {
 		return &v
 	}).(ResourceAzureMysqlPtrOutput)
+}
+
+func (o ResourceAzureMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAzureMysql] {
+	return pulumix.Output[ResourceAzureMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -8599,6 +9626,12 @@ func (o ResourceAzureMysqlPtrOutput) ToResourceAzureMysqlPtrOutput() ResourceAzu
 
 func (o ResourceAzureMysqlPtrOutput) ToResourceAzureMysqlPtrOutputWithContext(ctx context.Context) ResourceAzureMysqlPtrOutput {
 	return o
+}
+
+func (o ResourceAzureMysqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzureMysql] {
+	return pulumix.Output[*ResourceAzureMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAzureMysqlPtrOutput) Elem() ResourceAzureMysqlOutput {
@@ -8832,6 +9865,12 @@ func (i ResourceAzurePostgresArgs) ToResourceAzurePostgresOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzurePostgresOutput)
 }
 
+func (i ResourceAzurePostgresArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAzurePostgres] {
+	return pulumix.Output[ResourceAzurePostgres]{
+		OutputState: i.ToResourceAzurePostgresOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAzurePostgresArgs) ToResourceAzurePostgresPtrOutput() ResourceAzurePostgresPtrOutput {
 	return i.ToResourceAzurePostgresPtrOutputWithContext(context.Background())
 }
@@ -8873,6 +9912,12 @@ func (i *resourceAzurePostgresPtrType) ToResourceAzurePostgresPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzurePostgresPtrOutput)
 }
 
+func (i *resourceAzurePostgresPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzurePostgres] {
+	return pulumix.Output[*ResourceAzurePostgres]{
+		OutputState: i.ToResourceAzurePostgresPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAzurePostgresOutput struct{ *pulumi.OutputState }
 
 func (ResourceAzurePostgresOutput) ElementType() reflect.Type {
@@ -8895,6 +9940,12 @@ func (o ResourceAzurePostgresOutput) ToResourceAzurePostgresPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAzurePostgres) *ResourceAzurePostgres {
 		return &v
 	}).(ResourceAzurePostgresPtrOutput)
+}
+
+func (o ResourceAzurePostgresOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAzurePostgres] {
+	return pulumix.Output[ResourceAzurePostgres]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -8974,6 +10025,12 @@ func (o ResourceAzurePostgresPtrOutput) ToResourceAzurePostgresPtrOutput() Resou
 
 func (o ResourceAzurePostgresPtrOutput) ToResourceAzurePostgresPtrOutputWithContext(ctx context.Context) ResourceAzurePostgresPtrOutput {
 	return o
+}
+
+func (o ResourceAzurePostgresPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzurePostgres] {
+	return pulumix.Output[*ResourceAzurePostgres]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAzurePostgresPtrOutput) Elem() ResourceAzurePostgresOutput {
@@ -9201,6 +10258,12 @@ func (i ResourceAzurePostgresManagedIdentityArgs) ToResourceAzurePostgresManaged
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzurePostgresManagedIdentityOutput)
 }
 
+func (i ResourceAzurePostgresManagedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceAzurePostgresManagedIdentity] {
+	return pulumix.Output[ResourceAzurePostgresManagedIdentity]{
+		OutputState: i.ToResourceAzurePostgresManagedIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceAzurePostgresManagedIdentityArgs) ToResourceAzurePostgresManagedIdentityPtrOutput() ResourceAzurePostgresManagedIdentityPtrOutput {
 	return i.ToResourceAzurePostgresManagedIdentityPtrOutputWithContext(context.Background())
 }
@@ -9242,6 +10305,12 @@ func (i *resourceAzurePostgresManagedIdentityPtrType) ToResourceAzurePostgresMan
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceAzurePostgresManagedIdentityPtrOutput)
 }
 
+func (i *resourceAzurePostgresManagedIdentityPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzurePostgresManagedIdentity] {
+	return pulumix.Output[*ResourceAzurePostgresManagedIdentity]{
+		OutputState: i.ToResourceAzurePostgresManagedIdentityPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceAzurePostgresManagedIdentityOutput struct{ *pulumi.OutputState }
 
 func (ResourceAzurePostgresManagedIdentityOutput) ElementType() reflect.Type {
@@ -9264,6 +10333,12 @@ func (o ResourceAzurePostgresManagedIdentityOutput) ToResourceAzurePostgresManag
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAzurePostgresManagedIdentity) *ResourceAzurePostgresManagedIdentity {
 		return &v
 	}).(ResourceAzurePostgresManagedIdentityPtrOutput)
+}
+
+func (o ResourceAzurePostgresManagedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceAzurePostgresManagedIdentity] {
+	return pulumix.Output[ResourceAzurePostgresManagedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -9348,6 +10423,12 @@ func (o ResourceAzurePostgresManagedIdentityPtrOutput) ToResourceAzurePostgresMa
 
 func (o ResourceAzurePostgresManagedIdentityPtrOutput) ToResourceAzurePostgresManagedIdentityPtrOutputWithContext(ctx context.Context) ResourceAzurePostgresManagedIdentityPtrOutput {
 	return o
+}
+
+func (o ResourceAzurePostgresManagedIdentityPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceAzurePostgresManagedIdentity] {
+	return pulumix.Output[*ResourceAzurePostgresManagedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceAzurePostgresManagedIdentityPtrOutput) Elem() ResourceAzurePostgresManagedIdentityOutput {
@@ -9573,6 +10654,12 @@ func (i ResourceBigQueryArgs) ToResourceBigQueryOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceBigQueryOutput)
 }
 
+func (i ResourceBigQueryArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceBigQuery] {
+	return pulumix.Output[ResourceBigQuery]{
+		OutputState: i.ToResourceBigQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceBigQueryArgs) ToResourceBigQueryPtrOutput() ResourceBigQueryPtrOutput {
 	return i.ToResourceBigQueryPtrOutputWithContext(context.Background())
 }
@@ -9614,6 +10701,12 @@ func (i *resourceBigQueryPtrType) ToResourceBigQueryPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceBigQueryPtrOutput)
 }
 
+func (i *resourceBigQueryPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceBigQuery] {
+	return pulumix.Output[*ResourceBigQuery]{
+		OutputState: i.ToResourceBigQueryPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceBigQueryOutput struct{ *pulumi.OutputState }
 
 func (ResourceBigQueryOutput) ElementType() reflect.Type {
@@ -9636,6 +10729,12 @@ func (o ResourceBigQueryOutput) ToResourceBigQueryPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceBigQuery) *ResourceBigQuery {
 		return &v
 	}).(ResourceBigQueryPtrOutput)
+}
+
+func (o ResourceBigQueryOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceBigQuery] {
+	return pulumix.Output[ResourceBigQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -9705,6 +10804,12 @@ func (o ResourceBigQueryPtrOutput) ToResourceBigQueryPtrOutput() ResourceBigQuer
 
 func (o ResourceBigQueryPtrOutput) ToResourceBigQueryPtrOutputWithContext(ctx context.Context) ResourceBigQueryPtrOutput {
 	return o
+}
+
+func (o ResourceBigQueryPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceBigQuery] {
+	return pulumix.Output[*ResourceBigQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceBigQueryPtrOutput) Elem() ResourceBigQueryOutput {
@@ -9904,6 +11009,12 @@ func (i ResourceCassandraArgs) ToResourceCassandraOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceCassandraOutput)
 }
 
+func (i ResourceCassandraArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceCassandra] {
+	return pulumix.Output[ResourceCassandra]{
+		OutputState: i.ToResourceCassandraOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceCassandraArgs) ToResourceCassandraPtrOutput() ResourceCassandraPtrOutput {
 	return i.ToResourceCassandraPtrOutputWithContext(context.Background())
 }
@@ -9945,6 +11056,12 @@ func (i *resourceCassandraPtrType) ToResourceCassandraPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceCassandraPtrOutput)
 }
 
+func (i *resourceCassandraPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceCassandra] {
+	return pulumix.Output[*ResourceCassandra]{
+		OutputState: i.ToResourceCassandraPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceCassandraOutput struct{ *pulumi.OutputState }
 
 func (ResourceCassandraOutput) ElementType() reflect.Type {
@@ -9967,6 +11084,12 @@ func (o ResourceCassandraOutput) ToResourceCassandraPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceCassandra) *ResourceCassandra {
 		return &v
 	}).(ResourceCassandraPtrOutput)
+}
+
+func (o ResourceCassandraOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceCassandra] {
+	return pulumix.Output[ResourceCassandra]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -10041,6 +11164,12 @@ func (o ResourceCassandraPtrOutput) ToResourceCassandraPtrOutput() ResourceCassa
 
 func (o ResourceCassandraPtrOutput) ToResourceCassandraPtrOutputWithContext(ctx context.Context) ResourceCassandraPtrOutput {
 	return o
+}
+
+func (o ResourceCassandraPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceCassandra] {
+	return pulumix.Output[*ResourceCassandra]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceCassandraPtrOutput) Elem() ResourceCassandraOutput {
@@ -10254,6 +11383,12 @@ func (i ResourceCitusArgs) ToResourceCitusOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceCitusOutput)
 }
 
+func (i ResourceCitusArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceCitus] {
+	return pulumix.Output[ResourceCitus]{
+		OutputState: i.ToResourceCitusOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceCitusArgs) ToResourceCitusPtrOutput() ResourceCitusPtrOutput {
 	return i.ToResourceCitusPtrOutputWithContext(context.Background())
 }
@@ -10295,6 +11430,12 @@ func (i *resourceCitusPtrType) ToResourceCitusPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceCitusPtrOutput)
 }
 
+func (i *resourceCitusPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceCitus] {
+	return pulumix.Output[*ResourceCitus]{
+		OutputState: i.ToResourceCitusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceCitusOutput struct{ *pulumi.OutputState }
 
 func (ResourceCitusOutput) ElementType() reflect.Type {
@@ -10317,6 +11458,12 @@ func (o ResourceCitusOutput) ToResourceCitusPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceCitus) *ResourceCitus {
 		return &v
 	}).(ResourceCitusPtrOutput)
+}
+
+func (o ResourceCitusOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceCitus] {
+	return pulumix.Output[ResourceCitus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -10396,6 +11543,12 @@ func (o ResourceCitusPtrOutput) ToResourceCitusPtrOutput() ResourceCitusPtrOutpu
 
 func (o ResourceCitusPtrOutput) ToResourceCitusPtrOutputWithContext(ctx context.Context) ResourceCitusPtrOutput {
 	return o
+}
+
+func (o ResourceCitusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceCitus] {
+	return pulumix.Output[*ResourceCitus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceCitusPtrOutput) Elem() ResourceCitusOutput {
@@ -10623,6 +11776,12 @@ func (i ResourceClustrixArgs) ToResourceClustrixOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceClustrixOutput)
 }
 
+func (i ResourceClustrixArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceClustrix] {
+	return pulumix.Output[ResourceClustrix]{
+		OutputState: i.ToResourceClustrixOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceClustrixArgs) ToResourceClustrixPtrOutput() ResourceClustrixPtrOutput {
 	return i.ToResourceClustrixPtrOutputWithContext(context.Background())
 }
@@ -10664,6 +11823,12 @@ func (i *resourceClustrixPtrType) ToResourceClustrixPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceClustrixPtrOutput)
 }
 
+func (i *resourceClustrixPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceClustrix] {
+	return pulumix.Output[*ResourceClustrix]{
+		OutputState: i.ToResourceClustrixPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceClustrixOutput struct{ *pulumi.OutputState }
 
 func (ResourceClustrixOutput) ElementType() reflect.Type {
@@ -10686,6 +11851,12 @@ func (o ResourceClustrixOutput) ToResourceClustrixPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceClustrix) *ResourceClustrix {
 		return &v
 	}).(ResourceClustrixPtrOutput)
+}
+
+func (o ResourceClustrixOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceClustrix] {
+	return pulumix.Output[ResourceClustrix]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -10770,6 +11941,12 @@ func (o ResourceClustrixPtrOutput) ToResourceClustrixPtrOutput() ResourceClustri
 
 func (o ResourceClustrixPtrOutput) ToResourceClustrixPtrOutputWithContext(ctx context.Context) ResourceClustrixPtrOutput {
 	return o
+}
+
+func (o ResourceClustrixPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceClustrix] {
+	return pulumix.Output[*ResourceClustrix]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceClustrixPtrOutput) Elem() ResourceClustrixOutput {
@@ -11003,6 +12180,12 @@ func (i ResourceCockroachArgs) ToResourceCockroachOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceCockroachOutput)
 }
 
+func (i ResourceCockroachArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceCockroach] {
+	return pulumix.Output[ResourceCockroach]{
+		OutputState: i.ToResourceCockroachOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceCockroachArgs) ToResourceCockroachPtrOutput() ResourceCockroachPtrOutput {
 	return i.ToResourceCockroachPtrOutputWithContext(context.Background())
 }
@@ -11044,6 +12227,12 @@ func (i *resourceCockroachPtrType) ToResourceCockroachPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceCockroachPtrOutput)
 }
 
+func (i *resourceCockroachPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceCockroach] {
+	return pulumix.Output[*ResourceCockroach]{
+		OutputState: i.ToResourceCockroachPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceCockroachOutput struct{ *pulumi.OutputState }
 
 func (ResourceCockroachOutput) ElementType() reflect.Type {
@@ -11066,6 +12255,12 @@ func (o ResourceCockroachOutput) ToResourceCockroachPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceCockroach) *ResourceCockroach {
 		return &v
 	}).(ResourceCockroachPtrOutput)
+}
+
+func (o ResourceCockroachOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceCockroach] {
+	return pulumix.Output[ResourceCockroach]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -11145,6 +12340,12 @@ func (o ResourceCockroachPtrOutput) ToResourceCockroachPtrOutput() ResourceCockr
 
 func (o ResourceCockroachPtrOutput) ToResourceCockroachPtrOutputWithContext(ctx context.Context) ResourceCockroachPtrOutput {
 	return o
+}
+
+func (o ResourceCockroachPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceCockroach] {
+	return pulumix.Output[*ResourceCockroach]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceCockroachPtrOutput) Elem() ResourceCockroachOutput {
@@ -11364,6 +12565,12 @@ func (i ResourceDb2IArgs) ToResourceDb2IOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDb2IOutput)
 }
 
+func (i ResourceDb2IArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceDb2I] {
+	return pulumix.Output[ResourceDb2I]{
+		OutputState: i.ToResourceDb2IOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceDb2IArgs) ToResourceDb2IPtrOutput() ResourceDb2IPtrOutput {
 	return i.ToResourceDb2IPtrOutputWithContext(context.Background())
 }
@@ -11405,6 +12612,12 @@ func (i *resourceDb2IPtrType) ToResourceDb2IPtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDb2IPtrOutput)
 }
 
+func (i *resourceDb2IPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceDb2I] {
+	return pulumix.Output[*ResourceDb2I]{
+		OutputState: i.ToResourceDb2IPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceDb2IOutput struct{ *pulumi.OutputState }
 
 func (ResourceDb2IOutput) ElementType() reflect.Type {
@@ -11427,6 +12640,12 @@ func (o ResourceDb2IOutput) ToResourceDb2IPtrOutputWithContext(ctx context.Conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDb2I) *ResourceDb2I {
 		return &v
 	}).(ResourceDb2IPtrOutput)
+}
+
+func (o ResourceDb2IOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceDb2I] {
+	return pulumix.Output[ResourceDb2I]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -11501,6 +12720,12 @@ func (o ResourceDb2IPtrOutput) ToResourceDb2IPtrOutput() ResourceDb2IPtrOutput {
 
 func (o ResourceDb2IPtrOutput) ToResourceDb2IPtrOutputWithContext(ctx context.Context) ResourceDb2IPtrOutput {
 	return o
+}
+
+func (o ResourceDb2IPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceDb2I] {
+	return pulumix.Output[*ResourceDb2I]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceDb2IPtrOutput) Elem() ResourceDb2IOutput {
@@ -11710,6 +12935,12 @@ func (i ResourceDb2LuwArgs) ToResourceDb2LuwOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDb2LuwOutput)
 }
 
+func (i ResourceDb2LuwArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceDb2Luw] {
+	return pulumix.Output[ResourceDb2Luw]{
+		OutputState: i.ToResourceDb2LuwOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceDb2LuwArgs) ToResourceDb2LuwPtrOutput() ResourceDb2LuwPtrOutput {
 	return i.ToResourceDb2LuwPtrOutputWithContext(context.Background())
 }
@@ -11751,6 +12982,12 @@ func (i *resourceDb2LuwPtrType) ToResourceDb2LuwPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDb2LuwPtrOutput)
 }
 
+func (i *resourceDb2LuwPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceDb2Luw] {
+	return pulumix.Output[*ResourceDb2Luw]{
+		OutputState: i.ToResourceDb2LuwPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceDb2LuwOutput struct{ *pulumi.OutputState }
 
 func (ResourceDb2LuwOutput) ElementType() reflect.Type {
@@ -11773,6 +13010,12 @@ func (o ResourceDb2LuwOutput) ToResourceDb2LuwPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDb2Luw) *ResourceDb2Luw {
 		return &v
 	}).(ResourceDb2LuwPtrOutput)
+}
+
+func (o ResourceDb2LuwOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceDb2Luw] {
+	return pulumix.Output[ResourceDb2Luw]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -11847,6 +13090,12 @@ func (o ResourceDb2LuwPtrOutput) ToResourceDb2LuwPtrOutput() ResourceDb2LuwPtrOu
 
 func (o ResourceDb2LuwPtrOutput) ToResourceDb2LuwPtrOutputWithContext(ctx context.Context) ResourceDb2LuwPtrOutput {
 	return o
+}
+
+func (o ResourceDb2LuwPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceDb2Luw] {
+	return pulumix.Output[*ResourceDb2Luw]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceDb2LuwPtrOutput) Elem() ResourceDb2LuwOutput {
@@ -12056,6 +13305,12 @@ func (i ResourceDocumentDbHostArgs) ToResourceDocumentDbHostOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbHostOutput)
 }
 
+func (i ResourceDocumentDbHostArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceDocumentDbHost] {
+	return pulumix.Output[ResourceDocumentDbHost]{
+		OutputState: i.ToResourceDocumentDbHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceDocumentDbHostArgs) ToResourceDocumentDbHostPtrOutput() ResourceDocumentDbHostPtrOutput {
 	return i.ToResourceDocumentDbHostPtrOutputWithContext(context.Background())
 }
@@ -12097,6 +13352,12 @@ func (i *resourceDocumentDbHostPtrType) ToResourceDocumentDbHostPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbHostPtrOutput)
 }
 
+func (i *resourceDocumentDbHostPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceDocumentDbHost] {
+	return pulumix.Output[*ResourceDocumentDbHost]{
+		OutputState: i.ToResourceDocumentDbHostPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceDocumentDbHostOutput struct{ *pulumi.OutputState }
 
 func (ResourceDocumentDbHostOutput) ElementType() reflect.Type {
@@ -12119,6 +13380,12 @@ func (o ResourceDocumentDbHostOutput) ToResourceDocumentDbHostPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDocumentDbHost) *ResourceDocumentDbHost {
 		return &v
 	}).(ResourceDocumentDbHostPtrOutput)
+}
+
+func (o ResourceDocumentDbHostOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceDocumentDbHost] {
+	return pulumix.Output[ResourceDocumentDbHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -12193,6 +13460,12 @@ func (o ResourceDocumentDbHostPtrOutput) ToResourceDocumentDbHostPtrOutput() Res
 
 func (o ResourceDocumentDbHostPtrOutput) ToResourceDocumentDbHostPtrOutputWithContext(ctx context.Context) ResourceDocumentDbHostPtrOutput {
 	return o
+}
+
+func (o ResourceDocumentDbHostPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceDocumentDbHost] {
+	return pulumix.Output[*ResourceDocumentDbHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceDocumentDbHostPtrOutput) Elem() ResourceDocumentDbHostOutput {
@@ -12406,6 +13679,12 @@ func (i ResourceDocumentDbReplicaSetArgs) ToResourceDocumentDbReplicaSetOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbReplicaSetOutput)
 }
 
+func (i ResourceDocumentDbReplicaSetArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceDocumentDbReplicaSet] {
+	return pulumix.Output[ResourceDocumentDbReplicaSet]{
+		OutputState: i.ToResourceDocumentDbReplicaSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceDocumentDbReplicaSetArgs) ToResourceDocumentDbReplicaSetPtrOutput() ResourceDocumentDbReplicaSetPtrOutput {
 	return i.ToResourceDocumentDbReplicaSetPtrOutputWithContext(context.Background())
 }
@@ -12447,6 +13726,12 @@ func (i *resourceDocumentDbReplicaSetPtrType) ToResourceDocumentDbReplicaSetPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbReplicaSetPtrOutput)
 }
 
+func (i *resourceDocumentDbReplicaSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceDocumentDbReplicaSet] {
+	return pulumix.Output[*ResourceDocumentDbReplicaSet]{
+		OutputState: i.ToResourceDocumentDbReplicaSetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceDocumentDbReplicaSetOutput struct{ *pulumi.OutputState }
 
 func (ResourceDocumentDbReplicaSetOutput) ElementType() reflect.Type {
@@ -12469,6 +13754,12 @@ func (o ResourceDocumentDbReplicaSetOutput) ToResourceDocumentDbReplicaSetPtrOut
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDocumentDbReplicaSet) *ResourceDocumentDbReplicaSet {
 		return &v
 	}).(ResourceDocumentDbReplicaSetPtrOutput)
+}
+
+func (o ResourceDocumentDbReplicaSetOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceDocumentDbReplicaSet] {
+	return pulumix.Output[ResourceDocumentDbReplicaSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -12548,6 +13839,12 @@ func (o ResourceDocumentDbReplicaSetPtrOutput) ToResourceDocumentDbReplicaSetPtr
 
 func (o ResourceDocumentDbReplicaSetPtrOutput) ToResourceDocumentDbReplicaSetPtrOutputWithContext(ctx context.Context) ResourceDocumentDbReplicaSetPtrOutput {
 	return o
+}
+
+func (o ResourceDocumentDbReplicaSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceDocumentDbReplicaSet] {
+	return pulumix.Output[*ResourceDocumentDbReplicaSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceDocumentDbReplicaSetPtrOutput) Elem() ResourceDocumentDbReplicaSetOutput {
@@ -12763,6 +14060,12 @@ func (i ResourceDruidArgs) ToResourceDruidOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDruidOutput)
 }
 
+func (i ResourceDruidArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceDruid] {
+	return pulumix.Output[ResourceDruid]{
+		OutputState: i.ToResourceDruidOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceDruidArgs) ToResourceDruidPtrOutput() ResourceDruidPtrOutput {
 	return i.ToResourceDruidPtrOutputWithContext(context.Background())
 }
@@ -12804,6 +14107,12 @@ func (i *resourceDruidPtrType) ToResourceDruidPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDruidPtrOutput)
 }
 
+func (i *resourceDruidPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceDruid] {
+	return pulumix.Output[*ResourceDruid]{
+		OutputState: i.ToResourceDruidPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceDruidOutput struct{ *pulumi.OutputState }
 
 func (ResourceDruidOutput) ElementType() reflect.Type {
@@ -12826,6 +14135,12 @@ func (o ResourceDruidOutput) ToResourceDruidPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDruid) *ResourceDruid {
 		return &v
 	}).(ResourceDruidPtrOutput)
+}
+
+func (o ResourceDruidOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceDruid] {
+	return pulumix.Output[ResourceDruid]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -12895,6 +14210,12 @@ func (o ResourceDruidPtrOutput) ToResourceDruidPtrOutput() ResourceDruidPtrOutpu
 
 func (o ResourceDruidPtrOutput) ToResourceDruidPtrOutputWithContext(ctx context.Context) ResourceDruidPtrOutput {
 	return o
+}
+
+func (o ResourceDruidPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceDruid] {
+	return pulumix.Output[*ResourceDruid]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceDruidPtrOutput) Elem() ResourceDruidOutput {
@@ -13098,6 +14419,12 @@ func (i ResourceDynamoDbArgs) ToResourceDynamoDbOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDynamoDbOutput)
 }
 
+func (i ResourceDynamoDbArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceDynamoDb] {
+	return pulumix.Output[ResourceDynamoDb]{
+		OutputState: i.ToResourceDynamoDbOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceDynamoDbArgs) ToResourceDynamoDbPtrOutput() ResourceDynamoDbPtrOutput {
 	return i.ToResourceDynamoDbPtrOutputWithContext(context.Background())
 }
@@ -13139,6 +14466,12 @@ func (i *resourceDynamoDbPtrType) ToResourceDynamoDbPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceDynamoDbPtrOutput)
 }
 
+func (i *resourceDynamoDbPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceDynamoDb] {
+	return pulumix.Output[*ResourceDynamoDb]{
+		OutputState: i.ToResourceDynamoDbPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceDynamoDbOutput struct{ *pulumi.OutputState }
 
 func (ResourceDynamoDbOutput) ElementType() reflect.Type {
@@ -13161,6 +14494,12 @@ func (o ResourceDynamoDbOutput) ToResourceDynamoDbPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDynamoDb) *ResourceDynamoDb {
 		return &v
 	}).(ResourceDynamoDbPtrOutput)
+}
+
+func (o ResourceDynamoDbOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceDynamoDb] {
+	return pulumix.Output[ResourceDynamoDb]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -13240,6 +14579,12 @@ func (o ResourceDynamoDbPtrOutput) ToResourceDynamoDbPtrOutput() ResourceDynamoD
 
 func (o ResourceDynamoDbPtrOutput) ToResourceDynamoDbPtrOutputWithContext(ctx context.Context) ResourceDynamoDbPtrOutput {
 	return o
+}
+
+func (o ResourceDynamoDbPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceDynamoDb] {
+	return pulumix.Output[*ResourceDynamoDb]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceDynamoDbPtrOutput) Elem() ResourceDynamoDbOutput {
@@ -13459,6 +14804,12 @@ func (i ResourceElasticArgs) ToResourceElasticOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceElasticOutput)
 }
 
+func (i ResourceElasticArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceElastic] {
+	return pulumix.Output[ResourceElastic]{
+		OutputState: i.ToResourceElasticOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceElasticArgs) ToResourceElasticPtrOutput() ResourceElasticPtrOutput {
 	return i.ToResourceElasticPtrOutputWithContext(context.Background())
 }
@@ -13500,6 +14851,12 @@ func (i *resourceElasticPtrType) ToResourceElasticPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceElasticPtrOutput)
 }
 
+func (i *resourceElasticPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceElastic] {
+	return pulumix.Output[*ResourceElastic]{
+		OutputState: i.ToResourceElasticPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceElasticOutput struct{ *pulumi.OutputState }
 
 func (ResourceElasticOutput) ElementType() reflect.Type {
@@ -13522,6 +14879,12 @@ func (o ResourceElasticOutput) ToResourceElasticPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceElastic) *ResourceElastic {
 		return &v
 	}).(ResourceElasticPtrOutput)
+}
+
+func (o ResourceElasticOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceElastic] {
+	return pulumix.Output[ResourceElastic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -13596,6 +14959,12 @@ func (o ResourceElasticPtrOutput) ToResourceElasticPtrOutput() ResourceElasticPt
 
 func (o ResourceElasticPtrOutput) ToResourceElasticPtrOutputWithContext(ctx context.Context) ResourceElasticPtrOutput {
 	return o
+}
+
+func (o ResourceElasticPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceElastic] {
+	return pulumix.Output[*ResourceElastic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceElasticPtrOutput) Elem() ResourceElasticOutput {
@@ -13805,6 +15174,12 @@ func (i ResourceElasticacheRedisArgs) ToResourceElasticacheRedisOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceElasticacheRedisOutput)
 }
 
+func (i ResourceElasticacheRedisArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceElasticacheRedis] {
+	return pulumix.Output[ResourceElasticacheRedis]{
+		OutputState: i.ToResourceElasticacheRedisOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceElasticacheRedisArgs) ToResourceElasticacheRedisPtrOutput() ResourceElasticacheRedisPtrOutput {
 	return i.ToResourceElasticacheRedisPtrOutputWithContext(context.Background())
 }
@@ -13846,6 +15221,12 @@ func (i *resourceElasticacheRedisPtrType) ToResourceElasticacheRedisPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceElasticacheRedisPtrOutput)
 }
 
+func (i *resourceElasticacheRedisPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceElasticacheRedis] {
+	return pulumix.Output[*ResourceElasticacheRedis]{
+		OutputState: i.ToResourceElasticacheRedisPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceElasticacheRedisOutput struct{ *pulumi.OutputState }
 
 func (ResourceElasticacheRedisOutput) ElementType() reflect.Type {
@@ -13868,6 +15249,12 @@ func (o ResourceElasticacheRedisOutput) ToResourceElasticacheRedisPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceElasticacheRedis) *ResourceElasticacheRedis {
 		return &v
 	}).(ResourceElasticacheRedisPtrOutput)
+}
+
+func (o ResourceElasticacheRedisOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceElasticacheRedis] {
+	return pulumix.Output[ResourceElasticacheRedis]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -13942,6 +15329,12 @@ func (o ResourceElasticacheRedisPtrOutput) ToResourceElasticacheRedisPtrOutput()
 
 func (o ResourceElasticacheRedisPtrOutput) ToResourceElasticacheRedisPtrOutputWithContext(ctx context.Context) ResourceElasticacheRedisPtrOutput {
 	return o
+}
+
+func (o ResourceElasticacheRedisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceElasticacheRedis] {
+	return pulumix.Output[*ResourceElasticacheRedis]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceElasticacheRedisPtrOutput) Elem() ResourceElasticacheRedisOutput {
@@ -14139,6 +15532,12 @@ func (i ResourceGcpArgs) ToResourceGcpOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGcpOutput)
 }
 
+func (i ResourceGcpArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGcp] {
+	return pulumix.Output[ResourceGcp]{
+		OutputState: i.ToResourceGcpOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceGcpArgs) ToResourceGcpPtrOutput() ResourceGcpPtrOutput {
 	return i.ToResourceGcpPtrOutputWithContext(context.Background())
 }
@@ -14180,6 +15579,12 @@ func (i *resourceGcpPtrType) ToResourceGcpPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGcpPtrOutput)
 }
 
+func (i *resourceGcpPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceGcp] {
+	return pulumix.Output[*ResourceGcp]{
+		OutputState: i.ToResourceGcpPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceGcpOutput struct{ *pulumi.OutputState }
 
 func (ResourceGcpOutput) ElementType() reflect.Type {
@@ -14202,6 +15607,12 @@ func (o ResourceGcpOutput) ToResourceGcpPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGcp) *ResourceGcp {
 		return &v
 	}).(ResourceGcpPtrOutput)
+}
+
+func (o ResourceGcpOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGcp] {
+	return pulumix.Output[ResourceGcp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -14261,6 +15672,12 @@ func (o ResourceGcpPtrOutput) ToResourceGcpPtrOutput() ResourceGcpPtrOutput {
 
 func (o ResourceGcpPtrOutput) ToResourceGcpPtrOutputWithContext(ctx context.Context) ResourceGcpPtrOutput {
 	return o
+}
+
+func (o ResourceGcpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGcp] {
+	return pulumix.Output[*ResourceGcp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceGcpPtrOutput) Elem() ResourceGcpOutput {
@@ -14444,6 +15861,12 @@ func (i ResourceGoogleGkeArgs) ToResourceGoogleGkeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGoogleGkeOutput)
 }
 
+func (i ResourceGoogleGkeArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGoogleGke] {
+	return pulumix.Output[ResourceGoogleGke]{
+		OutputState: i.ToResourceGoogleGkeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceGoogleGkeArgs) ToResourceGoogleGkePtrOutput() ResourceGoogleGkePtrOutput {
 	return i.ToResourceGoogleGkePtrOutputWithContext(context.Background())
 }
@@ -14485,6 +15908,12 @@ func (i *resourceGoogleGkePtrType) ToResourceGoogleGkePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGoogleGkePtrOutput)
 }
 
+func (i *resourceGoogleGkePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceGoogleGke] {
+	return pulumix.Output[*ResourceGoogleGke]{
+		OutputState: i.ToResourceGoogleGkePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceGoogleGkeOutput struct{ *pulumi.OutputState }
 
 func (ResourceGoogleGkeOutput) ElementType() reflect.Type {
@@ -14507,6 +15936,12 @@ func (o ResourceGoogleGkeOutput) ToResourceGoogleGkePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGoogleGke) *ResourceGoogleGke {
 		return &v
 	}).(ResourceGoogleGkePtrOutput)
+}
+
+func (o ResourceGoogleGkeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGoogleGke] {
+	return pulumix.Output[ResourceGoogleGke]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -14586,6 +16021,12 @@ func (o ResourceGoogleGkePtrOutput) ToResourceGoogleGkePtrOutput() ResourceGoogl
 
 func (o ResourceGoogleGkePtrOutput) ToResourceGoogleGkePtrOutputWithContext(ctx context.Context) ResourceGoogleGkePtrOutput {
 	return o
+}
+
+func (o ResourceGoogleGkePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGoogleGke] {
+	return pulumix.Output[*ResourceGoogleGke]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceGoogleGkePtrOutput) Elem() ResourceGoogleGkeOutput {
@@ -14801,6 +16242,12 @@ func (i ResourceGoogleGkeUserImpersonationArgs) ToResourceGoogleGkeUserImpersona
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGoogleGkeUserImpersonationOutput)
 }
 
+func (i ResourceGoogleGkeUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGoogleGkeUserImpersonation] {
+	return pulumix.Output[ResourceGoogleGkeUserImpersonation]{
+		OutputState: i.ToResourceGoogleGkeUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceGoogleGkeUserImpersonationArgs) ToResourceGoogleGkeUserImpersonationPtrOutput() ResourceGoogleGkeUserImpersonationPtrOutput {
 	return i.ToResourceGoogleGkeUserImpersonationPtrOutputWithContext(context.Background())
 }
@@ -14842,6 +16289,12 @@ func (i *resourceGoogleGkeUserImpersonationPtrType) ToResourceGoogleGkeUserImper
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGoogleGkeUserImpersonationPtrOutput)
 }
 
+func (i *resourceGoogleGkeUserImpersonationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceGoogleGkeUserImpersonation] {
+	return pulumix.Output[*ResourceGoogleGkeUserImpersonation]{
+		OutputState: i.ToResourceGoogleGkeUserImpersonationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceGoogleGkeUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (ResourceGoogleGkeUserImpersonationOutput) ElementType() reflect.Type {
@@ -14864,6 +16317,12 @@ func (o ResourceGoogleGkeUserImpersonationOutput) ToResourceGoogleGkeUserImperso
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGoogleGkeUserImpersonation) *ResourceGoogleGkeUserImpersonation {
 		return &v
 	}).(ResourceGoogleGkeUserImpersonationPtrOutput)
+}
+
+func (o ResourceGoogleGkeUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGoogleGkeUserImpersonation] {
+	return pulumix.Output[ResourceGoogleGkeUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -14933,6 +16392,12 @@ func (o ResourceGoogleGkeUserImpersonationPtrOutput) ToResourceGoogleGkeUserImpe
 
 func (o ResourceGoogleGkeUserImpersonationPtrOutput) ToResourceGoogleGkeUserImpersonationPtrOutputWithContext(ctx context.Context) ResourceGoogleGkeUserImpersonationPtrOutput {
 	return o
+}
+
+func (o ResourceGoogleGkeUserImpersonationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGoogleGkeUserImpersonation] {
+	return pulumix.Output[*ResourceGoogleGkeUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceGoogleGkeUserImpersonationPtrOutput) Elem() ResourceGoogleGkeUserImpersonationOutput {
@@ -15136,6 +16601,12 @@ func (i ResourceGreenplumArgs) ToResourceGreenplumOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGreenplumOutput)
 }
 
+func (i ResourceGreenplumArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceGreenplum] {
+	return pulumix.Output[ResourceGreenplum]{
+		OutputState: i.ToResourceGreenplumOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceGreenplumArgs) ToResourceGreenplumPtrOutput() ResourceGreenplumPtrOutput {
 	return i.ToResourceGreenplumPtrOutputWithContext(context.Background())
 }
@@ -15177,6 +16648,12 @@ func (i *resourceGreenplumPtrType) ToResourceGreenplumPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceGreenplumPtrOutput)
 }
 
+func (i *resourceGreenplumPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceGreenplum] {
+	return pulumix.Output[*ResourceGreenplum]{
+		OutputState: i.ToResourceGreenplumPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceGreenplumOutput struct{ *pulumi.OutputState }
 
 func (ResourceGreenplumOutput) ElementType() reflect.Type {
@@ -15199,6 +16676,12 @@ func (o ResourceGreenplumOutput) ToResourceGreenplumPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGreenplum) *ResourceGreenplum {
 		return &v
 	}).(ResourceGreenplumPtrOutput)
+}
+
+func (o ResourceGreenplumOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceGreenplum] {
+	return pulumix.Output[ResourceGreenplum]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -15278,6 +16761,12 @@ func (o ResourceGreenplumPtrOutput) ToResourceGreenplumPtrOutput() ResourceGreen
 
 func (o ResourceGreenplumPtrOutput) ToResourceGreenplumPtrOutputWithContext(ctx context.Context) ResourceGreenplumPtrOutput {
 	return o
+}
+
+func (o ResourceGreenplumPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceGreenplum] {
+	return pulumix.Output[*ResourceGreenplum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceGreenplumPtrOutput) Elem() ResourceGreenplumOutput {
@@ -15499,6 +16988,12 @@ func (i ResourceHttpAuthArgs) ToResourceHttpAuthOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceHttpAuthOutput)
 }
 
+func (i ResourceHttpAuthArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceHttpAuth] {
+	return pulumix.Output[ResourceHttpAuth]{
+		OutputState: i.ToResourceHttpAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceHttpAuthArgs) ToResourceHttpAuthPtrOutput() ResourceHttpAuthPtrOutput {
 	return i.ToResourceHttpAuthPtrOutputWithContext(context.Background())
 }
@@ -15540,6 +17035,12 @@ func (i *resourceHttpAuthPtrType) ToResourceHttpAuthPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceHttpAuthPtrOutput)
 }
 
+func (i *resourceHttpAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceHttpAuth] {
+	return pulumix.Output[*ResourceHttpAuth]{
+		OutputState: i.ToResourceHttpAuthPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceHttpAuthOutput struct{ *pulumi.OutputState }
 
 func (ResourceHttpAuthOutput) ElementType() reflect.Type {
@@ -15562,6 +17063,12 @@ func (o ResourceHttpAuthOutput) ToResourceHttpAuthPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceHttpAuth) *ResourceHttpAuth {
 		return &v
 	}).(ResourceHttpAuthPtrOutput)
+}
+
+func (o ResourceHttpAuthOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceHttpAuth] {
+	return pulumix.Output[ResourceHttpAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The content to set as the authorization header.
@@ -15637,6 +17144,12 @@ func (o ResourceHttpAuthPtrOutput) ToResourceHttpAuthPtrOutput() ResourceHttpAut
 
 func (o ResourceHttpAuthPtrOutput) ToResourceHttpAuthPtrOutputWithContext(ctx context.Context) ResourceHttpAuthPtrOutput {
 	return o
+}
+
+func (o ResourceHttpAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceHttpAuth] {
+	return pulumix.Output[*ResourceHttpAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceHttpAuthPtrOutput) Elem() ResourceHttpAuthOutput {
@@ -15853,6 +17366,12 @@ func (i ResourceHttpBasicAuthArgs) ToResourceHttpBasicAuthOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceHttpBasicAuthOutput)
 }
 
+func (i ResourceHttpBasicAuthArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceHttpBasicAuth] {
+	return pulumix.Output[ResourceHttpBasicAuth]{
+		OutputState: i.ToResourceHttpBasicAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceHttpBasicAuthArgs) ToResourceHttpBasicAuthPtrOutput() ResourceHttpBasicAuthPtrOutput {
 	return i.ToResourceHttpBasicAuthPtrOutputWithContext(context.Background())
 }
@@ -15894,6 +17413,12 @@ func (i *resourceHttpBasicAuthPtrType) ToResourceHttpBasicAuthPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceHttpBasicAuthPtrOutput)
 }
 
+func (i *resourceHttpBasicAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceHttpBasicAuth] {
+	return pulumix.Output[*ResourceHttpBasicAuth]{
+		OutputState: i.ToResourceHttpBasicAuthPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceHttpBasicAuthOutput struct{ *pulumi.OutputState }
 
 func (ResourceHttpBasicAuthOutput) ElementType() reflect.Type {
@@ -15916,6 +17441,12 @@ func (o ResourceHttpBasicAuthOutput) ToResourceHttpBasicAuthPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceHttpBasicAuth) *ResourceHttpBasicAuth {
 		return &v
 	}).(ResourceHttpBasicAuthPtrOutput)
+}
+
+func (o ResourceHttpBasicAuthOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceHttpBasicAuth] {
+	return pulumix.Output[ResourceHttpBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -15996,6 +17527,12 @@ func (o ResourceHttpBasicAuthPtrOutput) ToResourceHttpBasicAuthPtrOutput() Resou
 
 func (o ResourceHttpBasicAuthPtrOutput) ToResourceHttpBasicAuthPtrOutputWithContext(ctx context.Context) ResourceHttpBasicAuthPtrOutput {
 	return o
+}
+
+func (o ResourceHttpBasicAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceHttpBasicAuth] {
+	return pulumix.Output[*ResourceHttpBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceHttpBasicAuthPtrOutput) Elem() ResourceHttpBasicAuthOutput {
@@ -16214,6 +17751,12 @@ func (i ResourceHttpNoAuthArgs) ToResourceHttpNoAuthOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceHttpNoAuthOutput)
 }
 
+func (i ResourceHttpNoAuthArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceHttpNoAuth] {
+	return pulumix.Output[ResourceHttpNoAuth]{
+		OutputState: i.ToResourceHttpNoAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceHttpNoAuthArgs) ToResourceHttpNoAuthPtrOutput() ResourceHttpNoAuthPtrOutput {
 	return i.ToResourceHttpNoAuthPtrOutputWithContext(context.Background())
 }
@@ -16255,6 +17798,12 @@ func (i *resourceHttpNoAuthPtrType) ToResourceHttpNoAuthPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceHttpNoAuthPtrOutput)
 }
 
+func (i *resourceHttpNoAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceHttpNoAuth] {
+	return pulumix.Output[*ResourceHttpNoAuth]{
+		OutputState: i.ToResourceHttpNoAuthPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceHttpNoAuthOutput struct{ *pulumi.OutputState }
 
 func (ResourceHttpNoAuthOutput) ElementType() reflect.Type {
@@ -16277,6 +17826,12 @@ func (o ResourceHttpNoAuthOutput) ToResourceHttpNoAuthPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceHttpNoAuth) *ResourceHttpNoAuth {
 		return &v
 	}).(ResourceHttpNoAuthPtrOutput)
+}
+
+func (o ResourceHttpNoAuthOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceHttpNoAuth] {
+	return pulumix.Output[ResourceHttpNoAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -16347,6 +17902,12 @@ func (o ResourceHttpNoAuthPtrOutput) ToResourceHttpNoAuthPtrOutput() ResourceHtt
 
 func (o ResourceHttpNoAuthPtrOutput) ToResourceHttpNoAuthPtrOutputWithContext(ctx context.Context) ResourceHttpNoAuthPtrOutput {
 	return o
+}
+
+func (o ResourceHttpNoAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceHttpNoAuth] {
+	return pulumix.Output[*ResourceHttpNoAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceHttpNoAuthPtrOutput) Elem() ResourceHttpNoAuthOutput {
@@ -16559,6 +18120,12 @@ func (i ResourceKubernetesArgs) ToResourceKubernetesOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesOutput)
 }
 
+func (i ResourceKubernetesArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetes] {
+	return pulumix.Output[ResourceKubernetes]{
+		OutputState: i.ToResourceKubernetesOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceKubernetesArgs) ToResourceKubernetesPtrOutput() ResourceKubernetesPtrOutput {
 	return i.ToResourceKubernetesPtrOutputWithContext(context.Background())
 }
@@ -16600,6 +18167,12 @@ func (i *resourceKubernetesPtrType) ToResourceKubernetesPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesPtrOutput)
 }
 
+func (i *resourceKubernetesPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetes] {
+	return pulumix.Output[*ResourceKubernetes]{
+		OutputState: i.ToResourceKubernetesPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceKubernetesOutput struct{ *pulumi.OutputState }
 
 func (ResourceKubernetesOutput) ElementType() reflect.Type {
@@ -16622,6 +18195,12 @@ func (o ResourceKubernetesOutput) ToResourceKubernetesPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceKubernetes) *ResourceKubernetes {
 		return &v
 	}).(ResourceKubernetesPtrOutput)
+}
+
+func (o ResourceKubernetesOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetes] {
+	return pulumix.Output[ResourceKubernetes]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -16711,6 +18290,12 @@ func (o ResourceKubernetesPtrOutput) ToResourceKubernetesPtrOutput() ResourceKub
 
 func (o ResourceKubernetesPtrOutput) ToResourceKubernetesPtrOutputWithContext(ctx context.Context) ResourceKubernetesPtrOutput {
 	return o
+}
+
+func (o ResourceKubernetesPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetes] {
+	return pulumix.Output[*ResourceKubernetes]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceKubernetesPtrOutput) Elem() ResourceKubernetesOutput {
@@ -16950,6 +18535,12 @@ func (i ResourceKubernetesBasicAuthArgs) ToResourceKubernetesBasicAuthOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesBasicAuthOutput)
 }
 
+func (i ResourceKubernetesBasicAuthArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetesBasicAuth] {
+	return pulumix.Output[ResourceKubernetesBasicAuth]{
+		OutputState: i.ToResourceKubernetesBasicAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceKubernetesBasicAuthArgs) ToResourceKubernetesBasicAuthPtrOutput() ResourceKubernetesBasicAuthPtrOutput {
 	return i.ToResourceKubernetesBasicAuthPtrOutputWithContext(context.Background())
 }
@@ -16991,6 +18582,12 @@ func (i *resourceKubernetesBasicAuthPtrType) ToResourceKubernetesBasicAuthPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesBasicAuthPtrOutput)
 }
 
+func (i *resourceKubernetesBasicAuthPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetesBasicAuth] {
+	return pulumix.Output[*ResourceKubernetesBasicAuth]{
+		OutputState: i.ToResourceKubernetesBasicAuthPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceKubernetesBasicAuthOutput struct{ *pulumi.OutputState }
 
 func (ResourceKubernetesBasicAuthOutput) ElementType() reflect.Type {
@@ -17013,6 +18610,12 @@ func (o ResourceKubernetesBasicAuthOutput) ToResourceKubernetesBasicAuthPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceKubernetesBasicAuth) *ResourceKubernetesBasicAuth {
 		return &v
 	}).(ResourceKubernetesBasicAuthPtrOutput)
+}
+
+func (o ResourceKubernetesBasicAuthOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetesBasicAuth] {
+	return pulumix.Output[ResourceKubernetesBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -17087,6 +18690,12 @@ func (o ResourceKubernetesBasicAuthPtrOutput) ToResourceKubernetesBasicAuthPtrOu
 
 func (o ResourceKubernetesBasicAuthPtrOutput) ToResourceKubernetesBasicAuthPtrOutputWithContext(ctx context.Context) ResourceKubernetesBasicAuthPtrOutput {
 	return o
+}
+
+func (o ResourceKubernetesBasicAuthPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetesBasicAuth] {
+	return pulumix.Output[*ResourceKubernetesBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceKubernetesBasicAuthPtrOutput) Elem() ResourceKubernetesBasicAuthOutput {
@@ -17302,6 +18911,12 @@ func (i ResourceKubernetesServiceAccountArgs) ToResourceKubernetesServiceAccount
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesServiceAccountOutput)
 }
 
+func (i ResourceKubernetesServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetesServiceAccount] {
+	return pulumix.Output[ResourceKubernetesServiceAccount]{
+		OutputState: i.ToResourceKubernetesServiceAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceKubernetesServiceAccountArgs) ToResourceKubernetesServiceAccountPtrOutput() ResourceKubernetesServiceAccountPtrOutput {
 	return i.ToResourceKubernetesServiceAccountPtrOutputWithContext(context.Background())
 }
@@ -17343,6 +18958,12 @@ func (i *resourceKubernetesServiceAccountPtrType) ToResourceKubernetesServiceAcc
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesServiceAccountPtrOutput)
 }
 
+func (i *resourceKubernetesServiceAccountPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetesServiceAccount] {
+	return pulumix.Output[*ResourceKubernetesServiceAccount]{
+		OutputState: i.ToResourceKubernetesServiceAccountPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceKubernetesServiceAccountOutput struct{ *pulumi.OutputState }
 
 func (ResourceKubernetesServiceAccountOutput) ElementType() reflect.Type {
@@ -17365,6 +18986,12 @@ func (o ResourceKubernetesServiceAccountOutput) ToResourceKubernetesServiceAccou
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceKubernetesServiceAccount) *ResourceKubernetesServiceAccount {
 		return &v
 	}).(ResourceKubernetesServiceAccountPtrOutput)
+}
+
+func (o ResourceKubernetesServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetesServiceAccount] {
+	return pulumix.Output[ResourceKubernetesServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -17445,6 +19072,12 @@ func (o ResourceKubernetesServiceAccountPtrOutput) ToResourceKubernetesServiceAc
 
 func (o ResourceKubernetesServiceAccountPtrOutput) ToResourceKubernetesServiceAccountPtrOutputWithContext(ctx context.Context) ResourceKubernetesServiceAccountPtrOutput {
 	return o
+}
+
+func (o ResourceKubernetesServiceAccountPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetesServiceAccount] {
+	return pulumix.Output[*ResourceKubernetesServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceKubernetesServiceAccountPtrOutput) Elem() ResourceKubernetesServiceAccountOutput {
@@ -17663,6 +19296,12 @@ func (i ResourceKubernetesServiceAccountUserImpersonationArgs) ToResourceKuberne
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesServiceAccountUserImpersonationOutput)
 }
 
+func (i ResourceKubernetesServiceAccountUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetesServiceAccountUserImpersonation] {
+	return pulumix.Output[ResourceKubernetesServiceAccountUserImpersonation]{
+		OutputState: i.ToResourceKubernetesServiceAccountUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceKubernetesServiceAccountUserImpersonationArgs) ToResourceKubernetesServiceAccountUserImpersonationPtrOutput() ResourceKubernetesServiceAccountUserImpersonationPtrOutput {
 	return i.ToResourceKubernetesServiceAccountUserImpersonationPtrOutputWithContext(context.Background())
 }
@@ -17704,6 +19343,12 @@ func (i *resourceKubernetesServiceAccountUserImpersonationPtrType) ToResourceKub
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesServiceAccountUserImpersonationPtrOutput)
 }
 
+func (i *resourceKubernetesServiceAccountUserImpersonationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetesServiceAccountUserImpersonation] {
+	return pulumix.Output[*ResourceKubernetesServiceAccountUserImpersonation]{
+		OutputState: i.ToResourceKubernetesServiceAccountUserImpersonationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceKubernetesServiceAccountUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (ResourceKubernetesServiceAccountUserImpersonationOutput) ElementType() reflect.Type {
@@ -17726,6 +19371,12 @@ func (o ResourceKubernetesServiceAccountUserImpersonationOutput) ToResourceKuber
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceKubernetesServiceAccountUserImpersonation) *ResourceKubernetesServiceAccountUserImpersonation {
 		return &v
 	}).(ResourceKubernetesServiceAccountUserImpersonationPtrOutput)
+}
+
+func (o ResourceKubernetesServiceAccountUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetesServiceAccountUserImpersonation] {
+	return pulumix.Output[ResourceKubernetesServiceAccountUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -17796,6 +19447,12 @@ func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) ToResourceKu
 
 func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) ToResourceKubernetesServiceAccountUserImpersonationPtrOutputWithContext(ctx context.Context) ResourceKubernetesServiceAccountUserImpersonationPtrOutput {
 	return o
+}
+
+func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetesServiceAccountUserImpersonation] {
+	return pulumix.Output[*ResourceKubernetesServiceAccountUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) Elem() ResourceKubernetesServiceAccountUserImpersonationOutput {
@@ -18000,6 +19657,12 @@ func (i ResourceKubernetesUserImpersonationArgs) ToResourceKubernetesUserImperso
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesUserImpersonationOutput)
 }
 
+func (i ResourceKubernetesUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetesUserImpersonation] {
+	return pulumix.Output[ResourceKubernetesUserImpersonation]{
+		OutputState: i.ToResourceKubernetesUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceKubernetesUserImpersonationArgs) ToResourceKubernetesUserImpersonationPtrOutput() ResourceKubernetesUserImpersonationPtrOutput {
 	return i.ToResourceKubernetesUserImpersonationPtrOutputWithContext(context.Background())
 }
@@ -18041,6 +19704,12 @@ func (i *resourceKubernetesUserImpersonationPtrType) ToResourceKubernetesUserImp
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesUserImpersonationPtrOutput)
 }
 
+func (i *resourceKubernetesUserImpersonationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetesUserImpersonation] {
+	return pulumix.Output[*ResourceKubernetesUserImpersonation]{
+		OutputState: i.ToResourceKubernetesUserImpersonationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceKubernetesUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (ResourceKubernetesUserImpersonationOutput) ElementType() reflect.Type {
@@ -18063,6 +19732,12 @@ func (o ResourceKubernetesUserImpersonationOutput) ToResourceKubernetesUserImper
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceKubernetesUserImpersonation) *ResourceKubernetesUserImpersonation {
 		return &v
 	}).(ResourceKubernetesUserImpersonationPtrOutput)
+}
+
+func (o ResourceKubernetesUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceKubernetesUserImpersonation] {
+	return pulumix.Output[ResourceKubernetesUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -18142,6 +19817,12 @@ func (o ResourceKubernetesUserImpersonationPtrOutput) ToResourceKubernetesUserIm
 
 func (o ResourceKubernetesUserImpersonationPtrOutput) ToResourceKubernetesUserImpersonationPtrOutputWithContext(ctx context.Context) ResourceKubernetesUserImpersonationPtrOutput {
 	return o
+}
+
+func (o ResourceKubernetesUserImpersonationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceKubernetesUserImpersonation] {
+	return pulumix.Output[*ResourceKubernetesUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceKubernetesUserImpersonationPtrOutput) Elem() ResourceKubernetesUserImpersonationOutput {
@@ -18369,6 +20050,12 @@ func (i ResourceMariaArgs) ToResourceMariaOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMariaOutput)
 }
 
+func (i ResourceMariaArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMaria] {
+	return pulumix.Output[ResourceMaria]{
+		OutputState: i.ToResourceMariaOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMariaArgs) ToResourceMariaPtrOutput() ResourceMariaPtrOutput {
 	return i.ToResourceMariaPtrOutputWithContext(context.Background())
 }
@@ -18410,6 +20097,12 @@ func (i *resourceMariaPtrType) ToResourceMariaPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMariaPtrOutput)
 }
 
+func (i *resourceMariaPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMaria] {
+	return pulumix.Output[*ResourceMaria]{
+		OutputState: i.ToResourceMariaPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMariaOutput struct{ *pulumi.OutputState }
 
 func (ResourceMariaOutput) ElementType() reflect.Type {
@@ -18432,6 +20125,12 @@ func (o ResourceMariaOutput) ToResourceMariaPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMaria) *ResourceMaria {
 		return &v
 	}).(ResourceMariaPtrOutput)
+}
+
+func (o ResourceMariaOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMaria] {
+	return pulumix.Output[ResourceMaria]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -18516,6 +20215,12 @@ func (o ResourceMariaPtrOutput) ToResourceMariaPtrOutput() ResourceMariaPtrOutpu
 
 func (o ResourceMariaPtrOutput) ToResourceMariaPtrOutputWithContext(ctx context.Context) ResourceMariaPtrOutput {
 	return o
+}
+
+func (o ResourceMariaPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMaria] {
+	return pulumix.Output[*ResourceMaria]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMariaPtrOutput) Elem() ResourceMariaOutput {
@@ -18733,6 +20438,12 @@ func (i ResourceMemcachedArgs) ToResourceMemcachedOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMemcachedOutput)
 }
 
+func (i ResourceMemcachedArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMemcached] {
+	return pulumix.Output[ResourceMemcached]{
+		OutputState: i.ToResourceMemcachedOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMemcachedArgs) ToResourceMemcachedPtrOutput() ResourceMemcachedPtrOutput {
 	return i.ToResourceMemcachedPtrOutputWithContext(context.Background())
 }
@@ -18774,6 +20485,12 @@ func (i *resourceMemcachedPtrType) ToResourceMemcachedPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMemcachedPtrOutput)
 }
 
+func (i *resourceMemcachedPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMemcached] {
+	return pulumix.Output[*ResourceMemcached]{
+		OutputState: i.ToResourceMemcachedPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMemcachedOutput struct{ *pulumi.OutputState }
 
 func (ResourceMemcachedOutput) ElementType() reflect.Type {
@@ -18796,6 +20513,12 @@ func (o ResourceMemcachedOutput) ToResourceMemcachedPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMemcached) *ResourceMemcached {
 		return &v
 	}).(ResourceMemcachedPtrOutput)
+}
+
+func (o ResourceMemcachedOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMemcached] {
+	return pulumix.Output[ResourceMemcached]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -18855,6 +20578,12 @@ func (o ResourceMemcachedPtrOutput) ToResourceMemcachedPtrOutput() ResourceMemca
 
 func (o ResourceMemcachedPtrOutput) ToResourceMemcachedPtrOutputWithContext(ctx context.Context) ResourceMemcachedPtrOutput {
 	return o
+}
+
+func (o ResourceMemcachedPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMemcached] {
+	return pulumix.Output[*ResourceMemcached]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMemcachedPtrOutput) Elem() ResourceMemcachedOutput {
@@ -19042,6 +20771,12 @@ func (i ResourceMemsqlArgs) ToResourceMemsqlOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMemsqlOutput)
 }
 
+func (i ResourceMemsqlArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMemsql] {
+	return pulumix.Output[ResourceMemsql]{
+		OutputState: i.ToResourceMemsqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMemsqlArgs) ToResourceMemsqlPtrOutput() ResourceMemsqlPtrOutput {
 	return i.ToResourceMemsqlPtrOutputWithContext(context.Background())
 }
@@ -19083,6 +20818,12 @@ func (i *resourceMemsqlPtrType) ToResourceMemsqlPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMemsqlPtrOutput)
 }
 
+func (i *resourceMemsqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMemsql] {
+	return pulumix.Output[*ResourceMemsql]{
+		OutputState: i.ToResourceMemsqlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMemsqlOutput struct{ *pulumi.OutputState }
 
 func (ResourceMemsqlOutput) ElementType() reflect.Type {
@@ -19105,6 +20846,12 @@ func (o ResourceMemsqlOutput) ToResourceMemsqlPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMemsql) *ResourceMemsql {
 		return &v
 	}).(ResourceMemsqlPtrOutput)
+}
+
+func (o ResourceMemsqlOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMemsql] {
+	return pulumix.Output[ResourceMemsql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -19189,6 +20936,12 @@ func (o ResourceMemsqlPtrOutput) ToResourceMemsqlPtrOutput() ResourceMemsqlPtrOu
 
 func (o ResourceMemsqlPtrOutput) ToResourceMemsqlPtrOutputWithContext(ctx context.Context) ResourceMemsqlPtrOutput {
 	return o
+}
+
+func (o ResourceMemsqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMemsql] {
+	return pulumix.Output[*ResourceMemsql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMemsqlPtrOutput) Elem() ResourceMemsqlOutput {
@@ -19422,6 +21175,12 @@ func (i ResourceMongoHostArgs) ToResourceMongoHostOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoHostOutput)
 }
 
+func (i ResourceMongoHostArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoHost] {
+	return pulumix.Output[ResourceMongoHost]{
+		OutputState: i.ToResourceMongoHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMongoHostArgs) ToResourceMongoHostPtrOutput() ResourceMongoHostPtrOutput {
 	return i.ToResourceMongoHostPtrOutputWithContext(context.Background())
 }
@@ -19463,6 +21222,12 @@ func (i *resourceMongoHostPtrType) ToResourceMongoHostPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoHostPtrOutput)
 }
 
+func (i *resourceMongoHostPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoHost] {
+	return pulumix.Output[*ResourceMongoHost]{
+		OutputState: i.ToResourceMongoHostPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMongoHostOutput struct{ *pulumi.OutputState }
 
 func (ResourceMongoHostOutput) ElementType() reflect.Type {
@@ -19485,6 +21250,12 @@ func (o ResourceMongoHostOutput) ToResourceMongoHostPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMongoHost) *ResourceMongoHost {
 		return &v
 	}).(ResourceMongoHostPtrOutput)
+}
+
+func (o ResourceMongoHostOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoHost] {
+	return pulumix.Output[ResourceMongoHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -19564,6 +21335,12 @@ func (o ResourceMongoHostPtrOutput) ToResourceMongoHostPtrOutput() ResourceMongo
 
 func (o ResourceMongoHostPtrOutput) ToResourceMongoHostPtrOutputWithContext(ctx context.Context) ResourceMongoHostPtrOutput {
 	return o
+}
+
+func (o ResourceMongoHostPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoHost] {
+	return pulumix.Output[*ResourceMongoHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMongoHostPtrOutput) Elem() ResourceMongoHostOutput {
@@ -19791,6 +21568,12 @@ func (i ResourceMongoLegacyHostArgs) ToResourceMongoLegacyHostOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoLegacyHostOutput)
 }
 
+func (i ResourceMongoLegacyHostArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoLegacyHost] {
+	return pulumix.Output[ResourceMongoLegacyHost]{
+		OutputState: i.ToResourceMongoLegacyHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMongoLegacyHostArgs) ToResourceMongoLegacyHostPtrOutput() ResourceMongoLegacyHostPtrOutput {
 	return i.ToResourceMongoLegacyHostPtrOutputWithContext(context.Background())
 }
@@ -19832,6 +21615,12 @@ func (i *resourceMongoLegacyHostPtrType) ToResourceMongoLegacyHostPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoLegacyHostPtrOutput)
 }
 
+func (i *resourceMongoLegacyHostPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoLegacyHost] {
+	return pulumix.Output[*ResourceMongoLegacyHost]{
+		OutputState: i.ToResourceMongoLegacyHostPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMongoLegacyHostOutput struct{ *pulumi.OutputState }
 
 func (ResourceMongoLegacyHostOutput) ElementType() reflect.Type {
@@ -19854,6 +21643,12 @@ func (o ResourceMongoLegacyHostOutput) ToResourceMongoLegacyHostPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMongoLegacyHost) *ResourceMongoLegacyHost {
 		return &v
 	}).(ResourceMongoLegacyHostPtrOutput)
+}
+
+func (o ResourceMongoLegacyHostOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoLegacyHost] {
+	return pulumix.Output[ResourceMongoLegacyHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -19938,6 +21733,12 @@ func (o ResourceMongoLegacyHostPtrOutput) ToResourceMongoLegacyHostPtrOutput() R
 
 func (o ResourceMongoLegacyHostPtrOutput) ToResourceMongoLegacyHostPtrOutputWithContext(ctx context.Context) ResourceMongoLegacyHostPtrOutput {
 	return o
+}
+
+func (o ResourceMongoLegacyHostPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoLegacyHost] {
+	return pulumix.Output[*ResourceMongoLegacyHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMongoLegacyHostPtrOutput) Elem() ResourceMongoLegacyHostOutput {
@@ -20179,6 +21980,12 @@ func (i ResourceMongoLegacyReplicasetArgs) ToResourceMongoLegacyReplicasetOutput
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoLegacyReplicasetOutput)
 }
 
+func (i ResourceMongoLegacyReplicasetArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoLegacyReplicaset] {
+	return pulumix.Output[ResourceMongoLegacyReplicaset]{
+		OutputState: i.ToResourceMongoLegacyReplicasetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMongoLegacyReplicasetArgs) ToResourceMongoLegacyReplicasetPtrOutput() ResourceMongoLegacyReplicasetPtrOutput {
 	return i.ToResourceMongoLegacyReplicasetPtrOutputWithContext(context.Background())
 }
@@ -20220,6 +22027,12 @@ func (i *resourceMongoLegacyReplicasetPtrType) ToResourceMongoLegacyReplicasetPt
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoLegacyReplicasetPtrOutput)
 }
 
+func (i *resourceMongoLegacyReplicasetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoLegacyReplicaset] {
+	return pulumix.Output[*ResourceMongoLegacyReplicaset]{
+		OutputState: i.ToResourceMongoLegacyReplicasetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMongoLegacyReplicasetOutput struct{ *pulumi.OutputState }
 
 func (ResourceMongoLegacyReplicasetOutput) ElementType() reflect.Type {
@@ -20242,6 +22055,12 @@ func (o ResourceMongoLegacyReplicasetOutput) ToResourceMongoLegacyReplicasetPtrO
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMongoLegacyReplicaset) *ResourceMongoLegacyReplicaset {
 		return &v
 	}).(ResourceMongoLegacyReplicasetPtrOutput)
+}
+
+func (o ResourceMongoLegacyReplicasetOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoLegacyReplicaset] {
+	return pulumix.Output[ResourceMongoLegacyReplicaset]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -20331,6 +22150,12 @@ func (o ResourceMongoLegacyReplicasetPtrOutput) ToResourceMongoLegacyReplicasetP
 
 func (o ResourceMongoLegacyReplicasetPtrOutput) ToResourceMongoLegacyReplicasetPtrOutputWithContext(ctx context.Context) ResourceMongoLegacyReplicasetPtrOutput {
 	return o
+}
+
+func (o ResourceMongoLegacyReplicasetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoLegacyReplicaset] {
+	return pulumix.Output[*ResourceMongoLegacyReplicaset]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMongoLegacyReplicasetPtrOutput) Elem() ResourceMongoLegacyReplicasetOutput {
@@ -20582,6 +22407,12 @@ func (i ResourceMongoReplicaSetArgs) ToResourceMongoReplicaSetOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoReplicaSetOutput)
 }
 
+func (i ResourceMongoReplicaSetArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoReplicaSet] {
+	return pulumix.Output[ResourceMongoReplicaSet]{
+		OutputState: i.ToResourceMongoReplicaSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMongoReplicaSetArgs) ToResourceMongoReplicaSetPtrOutput() ResourceMongoReplicaSetPtrOutput {
 	return i.ToResourceMongoReplicaSetPtrOutputWithContext(context.Background())
 }
@@ -20623,6 +22454,12 @@ func (i *resourceMongoReplicaSetPtrType) ToResourceMongoReplicaSetPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoReplicaSetPtrOutput)
 }
 
+func (i *resourceMongoReplicaSetPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoReplicaSet] {
+	return pulumix.Output[*ResourceMongoReplicaSet]{
+		OutputState: i.ToResourceMongoReplicaSetPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMongoReplicaSetOutput struct{ *pulumi.OutputState }
 
 func (ResourceMongoReplicaSetOutput) ElementType() reflect.Type {
@@ -20645,6 +22482,12 @@ func (o ResourceMongoReplicaSetOutput) ToResourceMongoReplicaSetPtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMongoReplicaSet) *ResourceMongoReplicaSet {
 		return &v
 	}).(ResourceMongoReplicaSetPtrOutput)
+}
+
+func (o ResourceMongoReplicaSetOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoReplicaSet] {
+	return pulumix.Output[ResourceMongoReplicaSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -20734,6 +22577,12 @@ func (o ResourceMongoReplicaSetPtrOutput) ToResourceMongoReplicaSetPtrOutput() R
 
 func (o ResourceMongoReplicaSetPtrOutput) ToResourceMongoReplicaSetPtrOutputWithContext(ctx context.Context) ResourceMongoReplicaSetPtrOutput {
 	return o
+}
+
+func (o ResourceMongoReplicaSetPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoReplicaSet] {
+	return pulumix.Output[*ResourceMongoReplicaSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMongoReplicaSetPtrOutput) Elem() ResourceMongoReplicaSetOutput {
@@ -20973,6 +22822,12 @@ func (i ResourceMongoShardedClusterArgs) ToResourceMongoShardedClusterOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoShardedClusterOutput)
 }
 
+func (i ResourceMongoShardedClusterArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoShardedCluster] {
+	return pulumix.Output[ResourceMongoShardedCluster]{
+		OutputState: i.ToResourceMongoShardedClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMongoShardedClusterArgs) ToResourceMongoShardedClusterPtrOutput() ResourceMongoShardedClusterPtrOutput {
 	return i.ToResourceMongoShardedClusterPtrOutputWithContext(context.Background())
 }
@@ -21014,6 +22869,12 @@ func (i *resourceMongoShardedClusterPtrType) ToResourceMongoShardedClusterPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMongoShardedClusterPtrOutput)
 }
 
+func (i *resourceMongoShardedClusterPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoShardedCluster] {
+	return pulumix.Output[*ResourceMongoShardedCluster]{
+		OutputState: i.ToResourceMongoShardedClusterPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMongoShardedClusterOutput struct{ *pulumi.OutputState }
 
 func (ResourceMongoShardedClusterOutput) ElementType() reflect.Type {
@@ -21036,6 +22897,12 @@ func (o ResourceMongoShardedClusterOutput) ToResourceMongoShardedClusterPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMongoShardedCluster) *ResourceMongoShardedCluster {
 		return &v
 	}).(ResourceMongoShardedClusterPtrOutput)
+}
+
+func (o ResourceMongoShardedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMongoShardedCluster] {
+	return pulumix.Output[ResourceMongoShardedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -21110,6 +22977,12 @@ func (o ResourceMongoShardedClusterPtrOutput) ToResourceMongoShardedClusterPtrOu
 
 func (o ResourceMongoShardedClusterPtrOutput) ToResourceMongoShardedClusterPtrOutputWithContext(ctx context.Context) ResourceMongoShardedClusterPtrOutput {
 	return o
+}
+
+func (o ResourceMongoShardedClusterPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMongoShardedCluster] {
+	return pulumix.Output[*ResourceMongoShardedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMongoShardedClusterPtrOutput) Elem() ResourceMongoShardedClusterOutput {
@@ -21343,6 +23216,12 @@ func (i ResourceMtlsMysqlArgs) ToResourceMtlsMysqlOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMtlsMysqlOutput)
 }
 
+func (i ResourceMtlsMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMtlsMysql] {
+	return pulumix.Output[ResourceMtlsMysql]{
+		OutputState: i.ToResourceMtlsMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMtlsMysqlArgs) ToResourceMtlsMysqlPtrOutput() ResourceMtlsMysqlPtrOutput {
 	return i.ToResourceMtlsMysqlPtrOutputWithContext(context.Background())
 }
@@ -21384,6 +23263,12 @@ func (i *resourceMtlsMysqlPtrType) ToResourceMtlsMysqlPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMtlsMysqlPtrOutput)
 }
 
+func (i *resourceMtlsMysqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMtlsMysql] {
+	return pulumix.Output[*ResourceMtlsMysql]{
+		OutputState: i.ToResourceMtlsMysqlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMtlsMysqlOutput struct{ *pulumi.OutputState }
 
 func (ResourceMtlsMysqlOutput) ElementType() reflect.Type {
@@ -21406,6 +23291,12 @@ func (o ResourceMtlsMysqlOutput) ToResourceMtlsMysqlPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMtlsMysql) *ResourceMtlsMysql {
 		return &v
 	}).(ResourceMtlsMysqlPtrOutput)
+}
+
+func (o ResourceMtlsMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMtlsMysql] {
+	return pulumix.Output[ResourceMtlsMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -21510,6 +23401,12 @@ func (o ResourceMtlsMysqlPtrOutput) ToResourceMtlsMysqlPtrOutput() ResourceMtlsM
 
 func (o ResourceMtlsMysqlPtrOutput) ToResourceMtlsMysqlPtrOutputWithContext(ctx context.Context) ResourceMtlsMysqlPtrOutput {
 	return o
+}
+
+func (o ResourceMtlsMysqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMtlsMysql] {
+	return pulumix.Output[*ResourceMtlsMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMtlsMysqlPtrOutput) Elem() ResourceMtlsMysqlOutput {
@@ -21799,6 +23696,12 @@ func (i ResourceMtlsPostgresArgs) ToResourceMtlsPostgresOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMtlsPostgresOutput)
 }
 
+func (i ResourceMtlsPostgresArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMtlsPostgres] {
+	return pulumix.Output[ResourceMtlsPostgres]{
+		OutputState: i.ToResourceMtlsPostgresOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMtlsPostgresArgs) ToResourceMtlsPostgresPtrOutput() ResourceMtlsPostgresPtrOutput {
 	return i.ToResourceMtlsPostgresPtrOutputWithContext(context.Background())
 }
@@ -21840,6 +23743,12 @@ func (i *resourceMtlsPostgresPtrType) ToResourceMtlsPostgresPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMtlsPostgresPtrOutput)
 }
 
+func (i *resourceMtlsPostgresPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMtlsPostgres] {
+	return pulumix.Output[*ResourceMtlsPostgres]{
+		OutputState: i.ToResourceMtlsPostgresPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMtlsPostgresOutput struct{ *pulumi.OutputState }
 
 func (ResourceMtlsPostgresOutput) ElementType() reflect.Type {
@@ -21862,6 +23771,12 @@ func (o ResourceMtlsPostgresOutput) ToResourceMtlsPostgresPtrOutputWithContext(c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMtlsPostgres) *ResourceMtlsPostgres {
 		return &v
 	}).(ResourceMtlsPostgresPtrOutput)
+}
+
+func (o ResourceMtlsPostgresOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMtlsPostgres] {
+	return pulumix.Output[ResourceMtlsPostgres]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -21961,6 +23876,12 @@ func (o ResourceMtlsPostgresPtrOutput) ToResourceMtlsPostgresPtrOutput() Resourc
 
 func (o ResourceMtlsPostgresPtrOutput) ToResourceMtlsPostgresPtrOutputWithContext(ctx context.Context) ResourceMtlsPostgresPtrOutput {
 	return o
+}
+
+func (o ResourceMtlsPostgresPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMtlsPostgres] {
+	return pulumix.Output[*ResourceMtlsPostgres]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMtlsPostgresPtrOutput) Elem() ResourceMtlsPostgresOutput {
@@ -22228,6 +24149,12 @@ func (i ResourceMysqlArgs) ToResourceMysqlOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMysqlOutput)
 }
 
+func (i ResourceMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceMysql] {
+	return pulumix.Output[ResourceMysql]{
+		OutputState: i.ToResourceMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceMysqlArgs) ToResourceMysqlPtrOutput() ResourceMysqlPtrOutput {
 	return i.ToResourceMysqlPtrOutputWithContext(context.Background())
 }
@@ -22269,6 +24196,12 @@ func (i *resourceMysqlPtrType) ToResourceMysqlPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMysqlPtrOutput)
 }
 
+func (i *resourceMysqlPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceMysql] {
+	return pulumix.Output[*ResourceMysql]{
+		OutputState: i.ToResourceMysqlPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceMysqlOutput struct{ *pulumi.OutputState }
 
 func (ResourceMysqlOutput) ElementType() reflect.Type {
@@ -22291,6 +24224,12 @@ func (o ResourceMysqlOutput) ToResourceMysqlPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceMysql) *ResourceMysql {
 		return &v
 	}).(ResourceMysqlPtrOutput)
+}
+
+func (o ResourceMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceMysql] {
+	return pulumix.Output[ResourceMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -22375,6 +24314,12 @@ func (o ResourceMysqlPtrOutput) ToResourceMysqlPtrOutput() ResourceMysqlPtrOutpu
 
 func (o ResourceMysqlPtrOutput) ToResourceMysqlPtrOutputWithContext(ctx context.Context) ResourceMysqlPtrOutput {
 	return o
+}
+
+func (o ResourceMysqlPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceMysql] {
+	return pulumix.Output[*ResourceMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMysqlPtrOutput) Elem() ResourceMysqlOutput {
@@ -22592,6 +24537,12 @@ func (i ResourceNeptuneArgs) ToResourceNeptuneOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceNeptuneOutput)
 }
 
+func (i ResourceNeptuneArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceNeptune] {
+	return pulumix.Output[ResourceNeptune]{
+		OutputState: i.ToResourceNeptuneOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceNeptuneArgs) ToResourceNeptunePtrOutput() ResourceNeptunePtrOutput {
 	return i.ToResourceNeptunePtrOutputWithContext(context.Background())
 }
@@ -22633,6 +24584,12 @@ func (i *resourceNeptunePtrType) ToResourceNeptunePtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceNeptunePtrOutput)
 }
 
+func (i *resourceNeptunePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceNeptune] {
+	return pulumix.Output[*ResourceNeptune]{
+		OutputState: i.ToResourceNeptunePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceNeptuneOutput struct{ *pulumi.OutputState }
 
 func (ResourceNeptuneOutput) ElementType() reflect.Type {
@@ -22655,6 +24612,12 @@ func (o ResourceNeptuneOutput) ToResourceNeptunePtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceNeptune) *ResourceNeptune {
 		return &v
 	}).(ResourceNeptunePtrOutput)
+}
+
+func (o ResourceNeptuneOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceNeptune] {
+	return pulumix.Output[ResourceNeptune]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -22714,6 +24677,12 @@ func (o ResourceNeptunePtrOutput) ToResourceNeptunePtrOutput() ResourceNeptunePt
 
 func (o ResourceNeptunePtrOutput) ToResourceNeptunePtrOutputWithContext(ctx context.Context) ResourceNeptunePtrOutput {
 	return o
+}
+
+func (o ResourceNeptunePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceNeptune] {
+	return pulumix.Output[*ResourceNeptune]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceNeptunePtrOutput) Elem() ResourceNeptuneOutput {
@@ -22901,6 +24870,12 @@ func (i ResourceNeptuneIamArgs) ToResourceNeptuneIamOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceNeptuneIamOutput)
 }
 
+func (i ResourceNeptuneIamArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceNeptuneIam] {
+	return pulumix.Output[ResourceNeptuneIam]{
+		OutputState: i.ToResourceNeptuneIamOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceNeptuneIamArgs) ToResourceNeptuneIamPtrOutput() ResourceNeptuneIamPtrOutput {
 	return i.ToResourceNeptuneIamPtrOutputWithContext(context.Background())
 }
@@ -22942,6 +24917,12 @@ func (i *resourceNeptuneIamPtrType) ToResourceNeptuneIamPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceNeptuneIamPtrOutput)
 }
 
+func (i *resourceNeptuneIamPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceNeptuneIam] {
+	return pulumix.Output[*ResourceNeptuneIam]{
+		OutputState: i.ToResourceNeptuneIamPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceNeptuneIamOutput struct{ *pulumi.OutputState }
 
 func (ResourceNeptuneIamOutput) ElementType() reflect.Type {
@@ -22964,6 +24945,12 @@ func (o ResourceNeptuneIamOutput) ToResourceNeptuneIamPtrOutputWithContext(ctx c
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceNeptuneIam) *ResourceNeptuneIam {
 		return &v
 	}).(ResourceNeptuneIamPtrOutput)
+}
+
+func (o ResourceNeptuneIamOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceNeptuneIam] {
+	return pulumix.Output[ResourceNeptuneIam]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -23048,6 +25035,12 @@ func (o ResourceNeptuneIamPtrOutput) ToResourceNeptuneIamPtrOutput() ResourceNep
 
 func (o ResourceNeptuneIamPtrOutput) ToResourceNeptuneIamPtrOutputWithContext(ctx context.Context) ResourceNeptuneIamPtrOutput {
 	return o
+}
+
+func (o ResourceNeptuneIamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceNeptuneIam] {
+	return pulumix.Output[*ResourceNeptuneIam]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceNeptuneIamPtrOutput) Elem() ResourceNeptuneIamOutput {
@@ -23281,6 +25274,12 @@ func (i ResourceOracleArgs) ToResourceOracleOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceOracleOutput)
 }
 
+func (i ResourceOracleArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceOracle] {
+	return pulumix.Output[ResourceOracle]{
+		OutputState: i.ToResourceOracleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceOracleArgs) ToResourceOraclePtrOutput() ResourceOraclePtrOutput {
 	return i.ToResourceOraclePtrOutputWithContext(context.Background())
 }
@@ -23322,6 +25321,12 @@ func (i *resourceOraclePtrType) ToResourceOraclePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceOraclePtrOutput)
 }
 
+func (i *resourceOraclePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceOracle] {
+	return pulumix.Output[*ResourceOracle]{
+		OutputState: i.ToResourceOraclePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceOracleOutput struct{ *pulumi.OutputState }
 
 func (ResourceOracleOutput) ElementType() reflect.Type {
@@ -23344,6 +25349,12 @@ func (o ResourceOracleOutput) ToResourceOraclePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceOracle) *ResourceOracle {
 		return &v
 	}).(ResourceOraclePtrOutput)
+}
+
+func (o ResourceOracleOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceOracle] {
+	return pulumix.Output[ResourceOracle]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -23423,6 +25434,12 @@ func (o ResourceOraclePtrOutput) ToResourceOraclePtrOutput() ResourceOraclePtrOu
 
 func (o ResourceOraclePtrOutput) ToResourceOraclePtrOutputWithContext(ctx context.Context) ResourceOraclePtrOutput {
 	return o
+}
+
+func (o ResourceOraclePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceOracle] {
+	return pulumix.Output[*ResourceOracle]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceOraclePtrOutput) Elem() ResourceOracleOutput {
@@ -23646,6 +25663,12 @@ func (i ResourcePostgresArgs) ToResourcePostgresOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePostgresOutput)
 }
 
+func (i ResourcePostgresArgs) ToOutput(ctx context.Context) pulumix.Output[ResourcePostgres] {
+	return pulumix.Output[ResourcePostgres]{
+		OutputState: i.ToResourcePostgresOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourcePostgresArgs) ToResourcePostgresPtrOutput() ResourcePostgresPtrOutput {
 	return i.ToResourcePostgresPtrOutputWithContext(context.Background())
 }
@@ -23687,6 +25710,12 @@ func (i *resourcePostgresPtrType) ToResourcePostgresPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePostgresPtrOutput)
 }
 
+func (i *resourcePostgresPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourcePostgres] {
+	return pulumix.Output[*ResourcePostgres]{
+		OutputState: i.ToResourcePostgresPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourcePostgresOutput struct{ *pulumi.OutputState }
 
 func (ResourcePostgresOutput) ElementType() reflect.Type {
@@ -23709,6 +25738,12 @@ func (o ResourcePostgresOutput) ToResourcePostgresPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePostgres) *ResourcePostgres {
 		return &v
 	}).(ResourcePostgresPtrOutput)
+}
+
+func (o ResourcePostgresOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePostgres] {
+	return pulumix.Output[ResourcePostgres]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -23788,6 +25823,12 @@ func (o ResourcePostgresPtrOutput) ToResourcePostgresPtrOutput() ResourcePostgre
 
 func (o ResourcePostgresPtrOutput) ToResourcePostgresPtrOutputWithContext(ctx context.Context) ResourcePostgresPtrOutput {
 	return o
+}
+
+func (o ResourcePostgresPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePostgres] {
+	return pulumix.Output[*ResourcePostgres]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePostgresPtrOutput) Elem() ResourcePostgresOutput {
@@ -24011,6 +26052,12 @@ func (i ResourcePrestoArgs) ToResourcePrestoOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePrestoOutput)
 }
 
+func (i ResourcePrestoArgs) ToOutput(ctx context.Context) pulumix.Output[ResourcePresto] {
+	return pulumix.Output[ResourcePresto]{
+		OutputState: i.ToResourcePrestoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourcePrestoArgs) ToResourcePrestoPtrOutput() ResourcePrestoPtrOutput {
 	return i.ToResourcePrestoPtrOutputWithContext(context.Background())
 }
@@ -24052,6 +26099,12 @@ func (i *resourcePrestoPtrType) ToResourcePrestoPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourcePrestoPtrOutput)
 }
 
+func (i *resourcePrestoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourcePresto] {
+	return pulumix.Output[*ResourcePresto]{
+		OutputState: i.ToResourcePrestoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourcePrestoOutput struct{ *pulumi.OutputState }
 
 func (ResourcePrestoOutput) ElementType() reflect.Type {
@@ -24074,6 +26127,12 @@ func (o ResourcePrestoOutput) ToResourcePrestoPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePresto) *ResourcePresto {
 		return &v
 	}).(ResourcePrestoPtrOutput)
+}
+
+func (o ResourcePrestoOutput) ToOutput(ctx context.Context) pulumix.Output[ResourcePresto] {
+	return pulumix.Output[ResourcePresto]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -24153,6 +26212,12 @@ func (o ResourcePrestoPtrOutput) ToResourcePrestoPtrOutput() ResourcePrestoPtrOu
 
 func (o ResourcePrestoPtrOutput) ToResourcePrestoPtrOutputWithContext(ctx context.Context) ResourcePrestoPtrOutput {
 	return o
+}
+
+func (o ResourcePrestoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourcePresto] {
+	return pulumix.Output[*ResourcePresto]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourcePrestoPtrOutput) Elem() ResourcePrestoOutput {
@@ -24372,6 +26437,12 @@ func (i ResourceRabbitmqAmqp091Args) ToResourceRabbitmqAmqp091OutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRabbitmqAmqp091Output)
 }
 
+func (i ResourceRabbitmqAmqp091Args) ToOutput(ctx context.Context) pulumix.Output[ResourceRabbitmqAmqp091] {
+	return pulumix.Output[ResourceRabbitmqAmqp091]{
+		OutputState: i.ToResourceRabbitmqAmqp091OutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceRabbitmqAmqp091Args) ToResourceRabbitmqAmqp091PtrOutput() ResourceRabbitmqAmqp091PtrOutput {
 	return i.ToResourceRabbitmqAmqp091PtrOutputWithContext(context.Background())
 }
@@ -24413,6 +26484,12 @@ func (i *resourceRabbitmqAmqp091PtrType) ToResourceRabbitmqAmqp091PtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRabbitmqAmqp091PtrOutput)
 }
 
+func (i *resourceRabbitmqAmqp091PtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceRabbitmqAmqp091] {
+	return pulumix.Output[*ResourceRabbitmqAmqp091]{
+		OutputState: i.ToResourceRabbitmqAmqp091PtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceRabbitmqAmqp091Output struct{ *pulumi.OutputState }
 
 func (ResourceRabbitmqAmqp091Output) ElementType() reflect.Type {
@@ -24435,6 +26512,12 @@ func (o ResourceRabbitmqAmqp091Output) ToResourceRabbitmqAmqp091PtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRabbitmqAmqp091) *ResourceRabbitmqAmqp091 {
 		return &v
 	}).(ResourceRabbitmqAmqp091PtrOutput)
+}
+
+func (o ResourceRabbitmqAmqp091Output) ToOutput(ctx context.Context) pulumix.Output[ResourceRabbitmqAmqp091] {
+	return pulumix.Output[ResourceRabbitmqAmqp091]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -24509,6 +26592,12 @@ func (o ResourceRabbitmqAmqp091PtrOutput) ToResourceRabbitmqAmqp091PtrOutput() R
 
 func (o ResourceRabbitmqAmqp091PtrOutput) ToResourceRabbitmqAmqp091PtrOutputWithContext(ctx context.Context) ResourceRabbitmqAmqp091PtrOutput {
 	return o
+}
+
+func (o ResourceRabbitmqAmqp091PtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRabbitmqAmqp091] {
+	return pulumix.Output[*ResourceRabbitmqAmqp091]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRabbitmqAmqp091PtrOutput) Elem() ResourceRabbitmqAmqp091Output {
@@ -24706,6 +26795,12 @@ func (i ResourceRawTcpArgs) ToResourceRawTcpOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRawTcpOutput)
 }
 
+func (i ResourceRawTcpArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceRawTcp] {
+	return pulumix.Output[ResourceRawTcp]{
+		OutputState: i.ToResourceRawTcpOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceRawTcpArgs) ToResourceRawTcpPtrOutput() ResourceRawTcpPtrOutput {
 	return i.ToResourceRawTcpPtrOutputWithContext(context.Background())
 }
@@ -24747,6 +26842,12 @@ func (i *resourceRawTcpPtrType) ToResourceRawTcpPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRawTcpPtrOutput)
 }
 
+func (i *resourceRawTcpPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceRawTcp] {
+	return pulumix.Output[*ResourceRawTcp]{
+		OutputState: i.ToResourceRawTcpPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceRawTcpOutput struct{ *pulumi.OutputState }
 
 func (ResourceRawTcpOutput) ElementType() reflect.Type {
@@ -24769,6 +26870,12 @@ func (o ResourceRawTcpOutput) ToResourceRawTcpPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRawTcp) *ResourceRawTcp {
 		return &v
 	}).(ResourceRawTcpPtrOutput)
+}
+
+func (o ResourceRawTcpOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRawTcp] {
+	return pulumix.Output[ResourceRawTcp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -24828,6 +26935,12 @@ func (o ResourceRawTcpPtrOutput) ToResourceRawTcpPtrOutput() ResourceRawTcpPtrOu
 
 func (o ResourceRawTcpPtrOutput) ToResourceRawTcpPtrOutputWithContext(ctx context.Context) ResourceRawTcpPtrOutput {
 	return o
+}
+
+func (o ResourceRawTcpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRawTcp] {
+	return pulumix.Output[*ResourceRawTcp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRawTcpPtrOutput) Elem() ResourceRawTcpOutput {
@@ -24939,6 +27052,8 @@ type ResourceRdp struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname string `pulumi:"hostname"`
+	// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+	LockRequired *bool `pulumi:"lockRequired"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The password to authenticate with.
@@ -24977,6 +27092,8 @@ type ResourceRdpArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+	LockRequired pulumi.BoolPtrInput `pulumi:"lockRequired"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The password to authenticate with.
@@ -25005,6 +27122,12 @@ func (i ResourceRdpArgs) ToResourceRdpOutput() ResourceRdpOutput {
 
 func (i ResourceRdpArgs) ToResourceRdpOutputWithContext(ctx context.Context) ResourceRdpOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRdpOutput)
+}
+
+func (i ResourceRdpArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceRdp] {
+	return pulumix.Output[ResourceRdp]{
+		OutputState: i.ToResourceRdpOutputWithContext(ctx).OutputState,
+	}
 }
 
 func (i ResourceRdpArgs) ToResourceRdpPtrOutput() ResourceRdpPtrOutput {
@@ -25048,6 +27171,12 @@ func (i *resourceRdpPtrType) ToResourceRdpPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRdpPtrOutput)
 }
 
+func (i *resourceRdpPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceRdp] {
+	return pulumix.Output[*ResourceRdp]{
+		OutputState: i.ToResourceRdpPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceRdpOutput struct{ *pulumi.OutputState }
 
 func (ResourceRdpOutput) ElementType() reflect.Type {
@@ -25072,6 +27201,12 @@ func (o ResourceRdpOutput) ToResourceRdpPtrOutputWithContext(ctx context.Context
 	}).(ResourceRdpPtrOutput)
 }
 
+func (o ResourceRdpOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRdp] {
+	return pulumix.Output[ResourceRdp]{
+		OutputState: o.OutputState,
+	}
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceRdpOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRdp) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -25090,6 +27225,11 @@ func (o ResourceRdpOutput) EgressFilter() pulumi.StringPtrOutput {
 // The host to dial to initiate a connection from the egress node to this resource.
 func (o ResourceRdpOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceRdp) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+func (o ResourceRdpOutput) LockRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceRdp) *bool { return v.LockRequired }).(pulumi.BoolPtrOutput)
 }
 
 // Unique human-readable name of the Resource.
@@ -25146,6 +27286,12 @@ func (o ResourceRdpPtrOutput) ToResourceRdpPtrOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ResourceRdpPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRdp] {
+	return pulumix.Output[*ResourceRdp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceRdpPtrOutput) Elem() ResourceRdpOutput {
 	return o.ApplyT(func(v *ResourceRdp) ResourceRdp {
 		if v != nil {
@@ -25194,6 +27340,16 @@ func (o ResourceRdpPtrOutput) Hostname() pulumi.StringPtrOutput {
 		}
 		return &v.Hostname
 	}).(pulumi.StringPtrOutput)
+}
+
+// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+func (o ResourceRdpPtrOutput) LockRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceRdp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LockRequired
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Unique human-readable name of the Resource.
@@ -25269,6 +27425,414 @@ func (o ResourceRdpPtrOutput) Tags() pulumi.StringMapOutput {
 // The username to authenticate with.
 func (o ResourceRdpPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRdp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceRdsPostgresIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase *bool `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceRdsPostgresIamInput is an input type that accepts ResourceRdsPostgresIamArgs and ResourceRdsPostgresIamOutput values.
+// You can construct a concrete instance of `ResourceRdsPostgresIamInput` via:
+//
+//	ResourceRdsPostgresIamArgs{...}
+type ResourceRdsPostgresIamInput interface {
+	pulumi.Input
+
+	ToResourceRdsPostgresIamOutput() ResourceRdsPostgresIamOutput
+	ToResourceRdsPostgresIamOutputWithContext(context.Context) ResourceRdsPostgresIamOutput
+}
+
+type ResourceRdsPostgresIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase pulumi.BoolPtrInput `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceRdsPostgresIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRdsPostgresIam)(nil)).Elem()
+}
+
+func (i ResourceRdsPostgresIamArgs) ToResourceRdsPostgresIamOutput() ResourceRdsPostgresIamOutput {
+	return i.ToResourceRdsPostgresIamOutputWithContext(context.Background())
+}
+
+func (i ResourceRdsPostgresIamArgs) ToResourceRdsPostgresIamOutputWithContext(ctx context.Context) ResourceRdsPostgresIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRdsPostgresIamOutput)
+}
+
+func (i ResourceRdsPostgresIamArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceRdsPostgresIam] {
+	return pulumix.Output[ResourceRdsPostgresIam]{
+		OutputState: i.ToResourceRdsPostgresIamOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ResourceRdsPostgresIamArgs) ToResourceRdsPostgresIamPtrOutput() ResourceRdsPostgresIamPtrOutput {
+	return i.ToResourceRdsPostgresIamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceRdsPostgresIamArgs) ToResourceRdsPostgresIamPtrOutputWithContext(ctx context.Context) ResourceRdsPostgresIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRdsPostgresIamOutput).ToResourceRdsPostgresIamPtrOutputWithContext(ctx)
+}
+
+// ResourceRdsPostgresIamPtrInput is an input type that accepts ResourceRdsPostgresIamArgs, ResourceRdsPostgresIamPtr and ResourceRdsPostgresIamPtrOutput values.
+// You can construct a concrete instance of `ResourceRdsPostgresIamPtrInput` via:
+//
+//	        ResourceRdsPostgresIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceRdsPostgresIamPtrInput interface {
+	pulumi.Input
+
+	ToResourceRdsPostgresIamPtrOutput() ResourceRdsPostgresIamPtrOutput
+	ToResourceRdsPostgresIamPtrOutputWithContext(context.Context) ResourceRdsPostgresIamPtrOutput
+}
+
+type resourceRdsPostgresIamPtrType ResourceRdsPostgresIamArgs
+
+func ResourceRdsPostgresIamPtr(v *ResourceRdsPostgresIamArgs) ResourceRdsPostgresIamPtrInput {
+	return (*resourceRdsPostgresIamPtrType)(v)
+}
+
+func (*resourceRdsPostgresIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRdsPostgresIam)(nil)).Elem()
+}
+
+func (i *resourceRdsPostgresIamPtrType) ToResourceRdsPostgresIamPtrOutput() ResourceRdsPostgresIamPtrOutput {
+	return i.ToResourceRdsPostgresIamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceRdsPostgresIamPtrType) ToResourceRdsPostgresIamPtrOutputWithContext(ctx context.Context) ResourceRdsPostgresIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRdsPostgresIamPtrOutput)
+}
+
+func (i *resourceRdsPostgresIamPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceRdsPostgresIam] {
+	return pulumix.Output[*ResourceRdsPostgresIam]{
+		OutputState: i.ToResourceRdsPostgresIamPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ResourceRdsPostgresIamOutput struct{ *pulumi.OutputState }
+
+func (ResourceRdsPostgresIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRdsPostgresIam)(nil)).Elem()
+}
+
+func (o ResourceRdsPostgresIamOutput) ToResourceRdsPostgresIamOutput() ResourceRdsPostgresIamOutput {
+	return o
+}
+
+func (o ResourceRdsPostgresIamOutput) ToResourceRdsPostgresIamOutputWithContext(ctx context.Context) ResourceRdsPostgresIamOutput {
+	return o
+}
+
+func (o ResourceRdsPostgresIamOutput) ToResourceRdsPostgresIamPtrOutput() ResourceRdsPostgresIamPtrOutput {
+	return o.ToResourceRdsPostgresIamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceRdsPostgresIamOutput) ToResourceRdsPostgresIamPtrOutputWithContext(ctx context.Context) ResourceRdsPostgresIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRdsPostgresIam) *ResourceRdsPostgresIam {
+		return &v
+	}).(ResourceRdsPostgresIamPtrOutput)
+}
+
+func (o ResourceRdsPostgresIamOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRdsPostgresIam] {
+	return pulumix.Output[ResourceRdsPostgresIam]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRdsPostgresIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceRdsPostgresIamOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRdsPostgresIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRdsPostgresIamOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRdsPostgresIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o ResourceRdsPostgresIamOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRdsPostgresIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRdsPostgresIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceRdsPostgresIamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceRdsPostgresIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRdsPostgresIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRdsPostgresIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRdsPostgresIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceRdsPostgresIamOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceRdsPostgresIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRdsPostgresIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRdsPostgresIam)(nil)).Elem()
+}
+
+func (o ResourceRdsPostgresIamPtrOutput) ToResourceRdsPostgresIamPtrOutput() ResourceRdsPostgresIamPtrOutput {
+	return o
+}
+
+func (o ResourceRdsPostgresIamPtrOutput) ToResourceRdsPostgresIamPtrOutputWithContext(ctx context.Context) ResourceRdsPostgresIamPtrOutput {
+	return o
+}
+
+func (o ResourceRdsPostgresIamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRdsPostgresIam] {
+	return pulumix.Output[*ResourceRdsPostgresIam]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ResourceRdsPostgresIamPtrOutput) Elem() ResourceRdsPostgresIamOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) ResourceRdsPostgresIam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRdsPostgresIam
+		return ret
+	}).(ResourceRdsPostgresIamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRdsPostgresIamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceRdsPostgresIamPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRdsPostgresIamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRdsPostgresIamPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRdsPostgresIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o ResourceRdsPostgresIamPtrOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideDatabase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRdsPostgresIamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRdsPostgresIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceRdsPostgresIamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceRdsPostgresIamPtrOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleAssumptionArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRdsPostgresIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRdsPostgresIamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRdsPostgresIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceRdsPostgresIamPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
 		if v == nil {
 			return nil
 		}
@@ -25353,6 +27917,12 @@ func (i ResourceRedisArgs) ToResourceRedisOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedisOutput)
 }
 
+func (i ResourceRedisArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceRedis] {
+	return pulumix.Output[ResourceRedis]{
+		OutputState: i.ToResourceRedisOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceRedisArgs) ToResourceRedisPtrOutput() ResourceRedisPtrOutput {
 	return i.ToResourceRedisPtrOutputWithContext(context.Background())
 }
@@ -25394,6 +27964,12 @@ func (i *resourceRedisPtrType) ToResourceRedisPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedisPtrOutput)
 }
 
+func (i *resourceRedisPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceRedis] {
+	return pulumix.Output[*ResourceRedis]{
+		OutputState: i.ToResourceRedisPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceRedisOutput struct{ *pulumi.OutputState }
 
 func (ResourceRedisOutput) ElementType() reflect.Type {
@@ -25416,6 +27992,12 @@ func (o ResourceRedisOutput) ToResourceRedisPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRedis) *ResourceRedis {
 		return &v
 	}).(ResourceRedisPtrOutput)
+}
+
+func (o ResourceRedisOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRedis] {
+	return pulumix.Output[ResourceRedis]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -25490,6 +28072,12 @@ func (o ResourceRedisPtrOutput) ToResourceRedisPtrOutput() ResourceRedisPtrOutpu
 
 func (o ResourceRedisPtrOutput) ToResourceRedisPtrOutputWithContext(ctx context.Context) ResourceRedisPtrOutput {
 	return o
+}
+
+func (o ResourceRedisPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRedis] {
+	return pulumix.Output[*ResourceRedis]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRedisPtrOutput) Elem() ResourceRedisOutput {
@@ -25703,6 +28291,12 @@ func (i ResourceRedshiftArgs) ToResourceRedshiftOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedshiftOutput)
 }
 
+func (i ResourceRedshiftArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceRedshift] {
+	return pulumix.Output[ResourceRedshift]{
+		OutputState: i.ToResourceRedshiftOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceRedshiftArgs) ToResourceRedshiftPtrOutput() ResourceRedshiftPtrOutput {
 	return i.ToResourceRedshiftPtrOutputWithContext(context.Background())
 }
@@ -25744,6 +28338,12 @@ func (i *resourceRedshiftPtrType) ToResourceRedshiftPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedshiftPtrOutput)
 }
 
+func (i *resourceRedshiftPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceRedshift] {
+	return pulumix.Output[*ResourceRedshift]{
+		OutputState: i.ToResourceRedshiftPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceRedshiftOutput struct{ *pulumi.OutputState }
 
 func (ResourceRedshiftOutput) ElementType() reflect.Type {
@@ -25766,6 +28366,12 @@ func (o ResourceRedshiftOutput) ToResourceRedshiftPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRedshift) *ResourceRedshift {
 		return &v
 	}).(ResourceRedshiftPtrOutput)
+}
+
+func (o ResourceRedshiftOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceRedshift] {
+	return pulumix.Output[ResourceRedshift]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -25845,6 +28451,12 @@ func (o ResourceRedshiftPtrOutput) ToResourceRedshiftPtrOutput() ResourceRedshif
 
 func (o ResourceRedshiftPtrOutput) ToResourceRedshiftPtrOutputWithContext(ctx context.Context) ResourceRedshiftPtrOutput {
 	return o
+}
+
+func (o ResourceRedshiftPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceRedshift] {
+	return pulumix.Output[*ResourceRedshift]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceRedshiftPtrOutput) Elem() ResourceRedshiftOutput {
@@ -26072,6 +28684,12 @@ func (i ResourceSingleStoreArgs) ToResourceSingleStoreOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSingleStoreOutput)
 }
 
+func (i ResourceSingleStoreArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSingleStore] {
+	return pulumix.Output[ResourceSingleStore]{
+		OutputState: i.ToResourceSingleStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSingleStoreArgs) ToResourceSingleStorePtrOutput() ResourceSingleStorePtrOutput {
 	return i.ToResourceSingleStorePtrOutputWithContext(context.Background())
 }
@@ -26113,6 +28731,12 @@ func (i *resourceSingleStorePtrType) ToResourceSingleStorePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSingleStorePtrOutput)
 }
 
+func (i *resourceSingleStorePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSingleStore] {
+	return pulumix.Output[*ResourceSingleStore]{
+		OutputState: i.ToResourceSingleStorePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSingleStoreOutput struct{ *pulumi.OutputState }
 
 func (ResourceSingleStoreOutput) ElementType() reflect.Type {
@@ -26135,6 +28759,12 @@ func (o ResourceSingleStoreOutput) ToResourceSingleStorePtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSingleStore) *ResourceSingleStore {
 		return &v
 	}).(ResourceSingleStorePtrOutput)
+}
+
+func (o ResourceSingleStoreOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSingleStore] {
+	return pulumix.Output[ResourceSingleStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -26219,6 +28849,12 @@ func (o ResourceSingleStorePtrOutput) ToResourceSingleStorePtrOutput() ResourceS
 
 func (o ResourceSingleStorePtrOutput) ToResourceSingleStorePtrOutputWithContext(ctx context.Context) ResourceSingleStorePtrOutput {
 	return o
+}
+
+func (o ResourceSingleStorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSingleStore] {
+	return pulumix.Output[*ResourceSingleStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSingleStorePtrOutput) Elem() ResourceSingleStoreOutput {
@@ -26448,6 +29084,12 @@ func (i ResourceSnowflakeArgs) ToResourceSnowflakeOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSnowflakeOutput)
 }
 
+func (i ResourceSnowflakeArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSnowflake] {
+	return pulumix.Output[ResourceSnowflake]{
+		OutputState: i.ToResourceSnowflakeOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSnowflakeArgs) ToResourceSnowflakePtrOutput() ResourceSnowflakePtrOutput {
 	return i.ToResourceSnowflakePtrOutputWithContext(context.Background())
 }
@@ -26489,6 +29131,12 @@ func (i *resourceSnowflakePtrType) ToResourceSnowflakePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSnowflakePtrOutput)
 }
 
+func (i *resourceSnowflakePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSnowflake] {
+	return pulumix.Output[*ResourceSnowflake]{
+		OutputState: i.ToResourceSnowflakePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSnowflakeOutput struct{ *pulumi.OutputState }
 
 func (ResourceSnowflakeOutput) ElementType() reflect.Type {
@@ -26511,6 +29159,12 @@ func (o ResourceSnowflakeOutput) ToResourceSnowflakePtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSnowflake) *ResourceSnowflake {
 		return &v
 	}).(ResourceSnowflakePtrOutput)
+}
+
+func (o ResourceSnowflakeOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSnowflake] {
+	return pulumix.Output[ResourceSnowflake]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -26585,6 +29239,12 @@ func (o ResourceSnowflakePtrOutput) ToResourceSnowflakePtrOutput() ResourceSnowf
 
 func (o ResourceSnowflakePtrOutput) ToResourceSnowflakePtrOutputWithContext(ctx context.Context) ResourceSnowflakePtrOutput {
 	return o
+}
+
+func (o ResourceSnowflakePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSnowflake] {
+	return pulumix.Output[*ResourceSnowflake]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSnowflakePtrOutput) Elem() ResourceSnowflakeOutput {
@@ -26782,6 +29442,12 @@ func (i ResourceSnowsightArgs) ToResourceSnowsightOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSnowsightOutput)
 }
 
+func (i ResourceSnowsightArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSnowsight] {
+	return pulumix.Output[ResourceSnowsight]{
+		OutputState: i.ToResourceSnowsightOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSnowsightArgs) ToResourceSnowsightPtrOutput() ResourceSnowsightPtrOutput {
 	return i.ToResourceSnowsightPtrOutputWithContext(context.Background())
 }
@@ -26823,6 +29489,12 @@ func (i *resourceSnowsightPtrType) ToResourceSnowsightPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSnowsightPtrOutput)
 }
 
+func (i *resourceSnowsightPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSnowsight] {
+	return pulumix.Output[*ResourceSnowsight]{
+		OutputState: i.ToResourceSnowsightPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSnowsightOutput struct{ *pulumi.OutputState }
 
 func (ResourceSnowsightOutput) ElementType() reflect.Type {
@@ -26845,6 +29517,12 @@ func (o ResourceSnowsightOutput) ToResourceSnowsightPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSnowsight) *ResourceSnowsight {
 		return &v
 	}).(ResourceSnowsightPtrOutput)
+}
+
+func (o ResourceSnowsightOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSnowsight] {
+	return pulumix.Output[ResourceSnowsight]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -26904,6 +29582,12 @@ func (o ResourceSnowsightPtrOutput) ToResourceSnowsightPtrOutput() ResourceSnows
 
 func (o ResourceSnowsightPtrOutput) ToResourceSnowsightPtrOutputWithContext(ctx context.Context) ResourceSnowsightPtrOutput {
 	return o
+}
+
+func (o ResourceSnowsightPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSnowsight] {
+	return pulumix.Output[*ResourceSnowsight]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSnowsightPtrOutput) Elem() ResourceSnowsightOutput {
@@ -27095,6 +29779,12 @@ func (i ResourceSqlServerArgs) ToResourceSqlServerOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerOutput)
 }
 
+func (i ResourceSqlServerArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSqlServer] {
+	return pulumix.Output[ResourceSqlServer]{
+		OutputState: i.ToResourceSqlServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSqlServerArgs) ToResourceSqlServerPtrOutput() ResourceSqlServerPtrOutput {
 	return i.ToResourceSqlServerPtrOutputWithContext(context.Background())
 }
@@ -27136,6 +29826,12 @@ func (i *resourceSqlServerPtrType) ToResourceSqlServerPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerPtrOutput)
 }
 
+func (i *resourceSqlServerPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSqlServer] {
+	return pulumix.Output[*ResourceSqlServer]{
+		OutputState: i.ToResourceSqlServerPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSqlServerOutput struct{ *pulumi.OutputState }
 
 func (ResourceSqlServerOutput) ElementType() reflect.Type {
@@ -27158,6 +29854,12 @@ func (o ResourceSqlServerOutput) ToResourceSqlServerPtrOutputWithContext(ctx con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSqlServer) *ResourceSqlServer {
 		return &v
 	}).(ResourceSqlServerPtrOutput)
+}
+
+func (o ResourceSqlServerOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSqlServer] {
+	return pulumix.Output[ResourceSqlServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
@@ -27247,6 +29949,12 @@ func (o ResourceSqlServerPtrOutput) ToResourceSqlServerPtrOutput() ResourceSqlSe
 
 func (o ResourceSqlServerPtrOutput) ToResourceSqlServerPtrOutputWithContext(ctx context.Context) ResourceSqlServerPtrOutput {
 	return o
+}
+
+func (o ResourceSqlServerPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSqlServer] {
+	return pulumix.Output[*ResourceSqlServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSqlServerPtrOutput) Elem() ResourceSqlServerOutput {
@@ -27504,6 +30212,12 @@ func (i ResourceSqlServerAzureAdArgs) ToResourceSqlServerAzureAdOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerAzureAdOutput)
 }
 
+func (i ResourceSqlServerAzureAdArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSqlServerAzureAd] {
+	return pulumix.Output[ResourceSqlServerAzureAd]{
+		OutputState: i.ToResourceSqlServerAzureAdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSqlServerAzureAdArgs) ToResourceSqlServerAzureAdPtrOutput() ResourceSqlServerAzureAdPtrOutput {
 	return i.ToResourceSqlServerAzureAdPtrOutputWithContext(context.Background())
 }
@@ -27545,6 +30259,12 @@ func (i *resourceSqlServerAzureAdPtrType) ToResourceSqlServerAzureAdPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerAzureAdPtrOutput)
 }
 
+func (i *resourceSqlServerAzureAdPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSqlServerAzureAd] {
+	return pulumix.Output[*ResourceSqlServerAzureAd]{
+		OutputState: i.ToResourceSqlServerAzureAdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSqlServerAzureAdOutput struct{ *pulumi.OutputState }
 
 func (ResourceSqlServerAzureAdOutput) ElementType() reflect.Type {
@@ -27567,6 +30287,12 @@ func (o ResourceSqlServerAzureAdOutput) ToResourceSqlServerAzureAdPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSqlServerAzureAd) *ResourceSqlServerAzureAd {
 		return &v
 	}).(ResourceSqlServerAzureAdPtrOutput)
+}
+
+func (o ResourceSqlServerAzureAdOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSqlServerAzureAd] {
+	return pulumix.Output[ResourceSqlServerAzureAd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
@@ -27662,6 +30388,12 @@ func (o ResourceSqlServerAzureAdPtrOutput) ToResourceSqlServerAzureAdPtrOutput()
 
 func (o ResourceSqlServerAzureAdPtrOutput) ToResourceSqlServerAzureAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerAzureAdPtrOutput {
 	return o
+}
+
+func (o ResourceSqlServerAzureAdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSqlServerAzureAd] {
+	return pulumix.Output[*ResourceSqlServerAzureAd]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSqlServerAzureAdPtrOutput) Elem() ResourceSqlServerAzureAdOutput {
@@ -27936,6 +30668,12 @@ func (i ResourceSqlServerKerberosAdArgs) ToResourceSqlServerKerberosAdOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerKerberosAdOutput)
 }
 
+func (i ResourceSqlServerKerberosAdArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSqlServerKerberosAd] {
+	return pulumix.Output[ResourceSqlServerKerberosAd]{
+		OutputState: i.ToResourceSqlServerKerberosAdOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSqlServerKerberosAdArgs) ToResourceSqlServerKerberosAdPtrOutput() ResourceSqlServerKerberosAdPtrOutput {
 	return i.ToResourceSqlServerKerberosAdPtrOutputWithContext(context.Background())
 }
@@ -27977,6 +30715,12 @@ func (i *resourceSqlServerKerberosAdPtrType) ToResourceSqlServerKerberosAdPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSqlServerKerberosAdPtrOutput)
 }
 
+func (i *resourceSqlServerKerberosAdPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSqlServerKerberosAd] {
+	return pulumix.Output[*ResourceSqlServerKerberosAd]{
+		OutputState: i.ToResourceSqlServerKerberosAdPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSqlServerKerberosAdOutput struct{ *pulumi.OutputState }
 
 func (ResourceSqlServerKerberosAdOutput) ElementType() reflect.Type {
@@ -27999,6 +30743,12 @@ func (o ResourceSqlServerKerberosAdOutput) ToResourceSqlServerKerberosAdPtrOutpu
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSqlServerKerberosAd) *ResourceSqlServerKerberosAd {
 		return &v
 	}).(ResourceSqlServerKerberosAdPtrOutput)
+}
+
+func (o ResourceSqlServerKerberosAdOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSqlServerKerberosAd] {
+	return pulumix.Output[ResourceSqlServerKerberosAd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
@@ -28103,6 +30853,12 @@ func (o ResourceSqlServerKerberosAdPtrOutput) ToResourceSqlServerKerberosAdPtrOu
 
 func (o ResourceSqlServerKerberosAdPtrOutput) ToResourceSqlServerKerberosAdPtrOutputWithContext(ctx context.Context) ResourceSqlServerKerberosAdPtrOutput {
 	return o
+}
+
+func (o ResourceSqlServerKerberosAdPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSqlServerKerberosAd] {
+	return pulumix.Output[*ResourceSqlServerKerberosAd]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSqlServerKerberosAdPtrOutput) Elem() ResourceSqlServerKerberosAdOutput {
@@ -28380,6 +31136,12 @@ func (i ResourceSshArgs) ToResourceSshOutputWithContext(ctx context.Context) Res
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshOutput)
 }
 
+func (i ResourceSshArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSsh] {
+	return pulumix.Output[ResourceSsh]{
+		OutputState: i.ToResourceSshOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSshArgs) ToResourceSshPtrOutput() ResourceSshPtrOutput {
 	return i.ToResourceSshPtrOutputWithContext(context.Background())
 }
@@ -28421,6 +31183,12 @@ func (i *resourceSshPtrType) ToResourceSshPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshPtrOutput)
 }
 
+func (i *resourceSshPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSsh] {
+	return pulumix.Output[*ResourceSsh]{
+		OutputState: i.ToResourceSshPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSshOutput struct{ *pulumi.OutputState }
 
 func (ResourceSshOutput) ElementType() reflect.Type {
@@ -28443,6 +31211,12 @@ func (o ResourceSshOutput) ToResourceSshPtrOutputWithContext(ctx context.Context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSsh) *ResourceSsh {
 		return &v
 	}).(ResourceSshPtrOutput)
+}
+
+func (o ResourceSshOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSsh] {
+	return pulumix.Output[ResourceSsh]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
@@ -28527,6 +31301,12 @@ func (o ResourceSshPtrOutput) ToResourceSshPtrOutput() ResourceSshPtrOutput {
 
 func (o ResourceSshPtrOutput) ToResourceSshPtrOutputWithContext(ctx context.Context) ResourceSshPtrOutput {
 	return o
+}
+
+func (o ResourceSshPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSsh] {
+	return pulumix.Output[*ResourceSsh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSshPtrOutput) Elem() ResourceSshOutput {
@@ -28768,6 +31548,12 @@ func (i ResourceSshCertArgs) ToResourceSshCertOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshCertOutput)
 }
 
+func (i ResourceSshCertArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSshCert] {
+	return pulumix.Output[ResourceSshCert]{
+		OutputState: i.ToResourceSshCertOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSshCertArgs) ToResourceSshCertPtrOutput() ResourceSshCertPtrOutput {
 	return i.ToResourceSshCertPtrOutputWithContext(context.Background())
 }
@@ -28809,6 +31595,12 @@ func (i *resourceSshCertPtrType) ToResourceSshCertPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshCertPtrOutput)
 }
 
+func (i *resourceSshCertPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSshCert] {
+	return pulumix.Output[*ResourceSshCert]{
+		OutputState: i.ToResourceSshCertPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSshCertOutput struct{ *pulumi.OutputState }
 
 func (ResourceSshCertOutput) ElementType() reflect.Type {
@@ -28831,6 +31623,12 @@ func (o ResourceSshCertOutput) ToResourceSshCertPtrOutputWithContext(ctx context
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSshCert) *ResourceSshCert {
 		return &v
 	}).(ResourceSshCertPtrOutput)
+}
+
+func (o ResourceSshCertOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSshCert] {
+	return pulumix.Output[ResourceSshCert]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
@@ -28920,6 +31718,12 @@ func (o ResourceSshCertPtrOutput) ToResourceSshCertPtrOutput() ResourceSshCertPt
 
 func (o ResourceSshCertPtrOutput) ToResourceSshCertPtrOutputWithContext(ctx context.Context) ResourceSshCertPtrOutput {
 	return o
+}
+
+func (o ResourceSshCertPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSshCert] {
+	return pulumix.Output[*ResourceSshCert]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSshCertPtrOutput) Elem() ResourceSshCertOutput {
@@ -29163,6 +31967,12 @@ func (i ResourceSshCustomerKeyArgs) ToResourceSshCustomerKeyOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshCustomerKeyOutput)
 }
 
+func (i ResourceSshCustomerKeyArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSshCustomerKey] {
+	return pulumix.Output[ResourceSshCustomerKey]{
+		OutputState: i.ToResourceSshCustomerKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSshCustomerKeyArgs) ToResourceSshCustomerKeyPtrOutput() ResourceSshCustomerKeyPtrOutput {
 	return i.ToResourceSshCustomerKeyPtrOutputWithContext(context.Background())
 }
@@ -29204,6 +32014,12 @@ func (i *resourceSshCustomerKeyPtrType) ToResourceSshCustomerKeyPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshCustomerKeyPtrOutput)
 }
 
+func (i *resourceSshCustomerKeyPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSshCustomerKey] {
+	return pulumix.Output[*ResourceSshCustomerKey]{
+		OutputState: i.ToResourceSshCustomerKeyPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSshCustomerKeyOutput struct{ *pulumi.OutputState }
 
 func (ResourceSshCustomerKeyOutput) ElementType() reflect.Type {
@@ -29226,6 +32042,12 @@ func (o ResourceSshCustomerKeyOutput) ToResourceSshCustomerKeyPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSshCustomerKey) *ResourceSshCustomerKey {
 		return &v
 	}).(ResourceSshCustomerKeyPtrOutput)
+}
+
+func (o ResourceSshCustomerKeyOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSshCustomerKey] {
+	return pulumix.Output[ResourceSshCustomerKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
@@ -29305,6 +32127,12 @@ func (o ResourceSshCustomerKeyPtrOutput) ToResourceSshCustomerKeyPtrOutput() Res
 
 func (o ResourceSshCustomerKeyPtrOutput) ToResourceSshCustomerKeyPtrOutputWithContext(ctx context.Context) ResourceSshCustomerKeyPtrOutput {
 	return o
+}
+
+func (o ResourceSshCustomerKeyPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSshCustomerKey] {
+	return pulumix.Output[*ResourceSshCustomerKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSshCustomerKeyPtrOutput) Elem() ResourceSshCustomerKeyOutput {
@@ -29520,6 +32348,12 @@ func (i ResourceSybaseArgs) ToResourceSybaseOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSybaseOutput)
 }
 
+func (i ResourceSybaseArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSybase] {
+	return pulumix.Output[ResourceSybase]{
+		OutputState: i.ToResourceSybaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSybaseArgs) ToResourceSybasePtrOutput() ResourceSybasePtrOutput {
 	return i.ToResourceSybasePtrOutputWithContext(context.Background())
 }
@@ -29561,6 +32395,12 @@ func (i *resourceSybasePtrType) ToResourceSybasePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSybasePtrOutput)
 }
 
+func (i *resourceSybasePtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSybase] {
+	return pulumix.Output[*ResourceSybase]{
+		OutputState: i.ToResourceSybasePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSybaseOutput struct{ *pulumi.OutputState }
 
 func (ResourceSybaseOutput) ElementType() reflect.Type {
@@ -29583,6 +32423,12 @@ func (o ResourceSybaseOutput) ToResourceSybasePtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSybase) *ResourceSybase {
 		return &v
 	}).(ResourceSybasePtrOutput)
+}
+
+func (o ResourceSybaseOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSybase] {
+	return pulumix.Output[ResourceSybase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -29652,6 +32498,12 @@ func (o ResourceSybasePtrOutput) ToResourceSybasePtrOutput() ResourceSybasePtrOu
 
 func (o ResourceSybasePtrOutput) ToResourceSybasePtrOutputWithContext(ctx context.Context) ResourceSybasePtrOutput {
 	return o
+}
+
+func (o ResourceSybasePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSybase] {
+	return pulumix.Output[*ResourceSybase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSybasePtrOutput) Elem() ResourceSybaseOutput {
@@ -29847,6 +32699,12 @@ func (i ResourceSybaseIqArgs) ToResourceSybaseIqOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSybaseIqOutput)
 }
 
+func (i ResourceSybaseIqArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceSybaseIq] {
+	return pulumix.Output[ResourceSybaseIq]{
+		OutputState: i.ToResourceSybaseIqOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceSybaseIqArgs) ToResourceSybaseIqPtrOutput() ResourceSybaseIqPtrOutput {
 	return i.ToResourceSybaseIqPtrOutputWithContext(context.Background())
 }
@@ -29888,6 +32746,12 @@ func (i *resourceSybaseIqPtrType) ToResourceSybaseIqPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceSybaseIqPtrOutput)
 }
 
+func (i *resourceSybaseIqPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceSybaseIq] {
+	return pulumix.Output[*ResourceSybaseIq]{
+		OutputState: i.ToResourceSybaseIqPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceSybaseIqOutput struct{ *pulumi.OutputState }
 
 func (ResourceSybaseIqOutput) ElementType() reflect.Type {
@@ -29910,6 +32774,12 @@ func (o ResourceSybaseIqOutput) ToResourceSybaseIqPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSybaseIq) *ResourceSybaseIq {
 		return &v
 	}).(ResourceSybaseIqPtrOutput)
+}
+
+func (o ResourceSybaseIqOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceSybaseIq] {
+	return pulumix.Output[ResourceSybaseIq]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -29979,6 +32849,12 @@ func (o ResourceSybaseIqPtrOutput) ToResourceSybaseIqPtrOutput() ResourceSybaseI
 
 func (o ResourceSybaseIqPtrOutput) ToResourceSybaseIqPtrOutputWithContext(ctx context.Context) ResourceSybaseIqPtrOutput {
 	return o
+}
+
+func (o ResourceSybaseIqPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceSybaseIq] {
+	return pulumix.Output[*ResourceSybaseIq]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceSybaseIqPtrOutput) Elem() ResourceSybaseIqOutput {
@@ -30174,6 +33050,12 @@ func (i ResourceTeradataArgs) ToResourceTeradataOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceTeradataOutput)
 }
 
+func (i ResourceTeradataArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceTeradata] {
+	return pulumix.Output[ResourceTeradata]{
+		OutputState: i.ToResourceTeradataOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceTeradataArgs) ToResourceTeradataPtrOutput() ResourceTeradataPtrOutput {
 	return i.ToResourceTeradataPtrOutputWithContext(context.Background())
 }
@@ -30215,6 +33097,12 @@ func (i *resourceTeradataPtrType) ToResourceTeradataPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceTeradataPtrOutput)
 }
 
+func (i *resourceTeradataPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceTeradata] {
+	return pulumix.Output[*ResourceTeradata]{
+		OutputState: i.ToResourceTeradataPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceTeradataOutput struct{ *pulumi.OutputState }
 
 func (ResourceTeradataOutput) ElementType() reflect.Type {
@@ -30237,6 +33125,12 @@ func (o ResourceTeradataOutput) ToResourceTeradataPtrOutputWithContext(ctx conte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceTeradata) *ResourceTeradata {
 		return &v
 	}).(ResourceTeradataPtrOutput)
+}
+
+func (o ResourceTeradataOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceTeradata] {
+	return pulumix.Output[ResourceTeradata]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -30306,6 +33200,12 @@ func (o ResourceTeradataPtrOutput) ToResourceTeradataPtrOutput() ResourceTeradat
 
 func (o ResourceTeradataPtrOutput) ToResourceTeradataPtrOutputWithContext(ctx context.Context) ResourceTeradataPtrOutput {
 	return o
+}
+
+func (o ResourceTeradataPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceTeradata] {
+	return pulumix.Output[*ResourceTeradata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceTeradataPtrOutput) Elem() ResourceTeradataOutput {
@@ -30505,6 +33405,12 @@ func (i ResourceTrinoArgs) ToResourceTrinoOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceTrinoOutput)
 }
 
+func (i ResourceTrinoArgs) ToOutput(ctx context.Context) pulumix.Output[ResourceTrino] {
+	return pulumix.Output[ResourceTrino]{
+		OutputState: i.ToResourceTrinoOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i ResourceTrinoArgs) ToResourceTrinoPtrOutput() ResourceTrinoPtrOutput {
 	return i.ToResourceTrinoPtrOutputWithContext(context.Background())
 }
@@ -30546,6 +33452,12 @@ func (i *resourceTrinoPtrType) ToResourceTrinoPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceTrinoPtrOutput)
 }
 
+func (i *resourceTrinoPtrType) ToOutput(ctx context.Context) pulumix.Output[*ResourceTrino] {
+	return pulumix.Output[*ResourceTrino]{
+		OutputState: i.ToResourceTrinoPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceTrinoOutput struct{ *pulumi.OutputState }
 
 func (ResourceTrinoOutput) ElementType() reflect.Type {
@@ -30568,6 +33480,12 @@ func (o ResourceTrinoOutput) ToResourceTrinoPtrOutputWithContext(ctx context.Con
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceTrino) *ResourceTrino {
 		return &v
 	}).(ResourceTrinoPtrOutput)
+}
+
+func (o ResourceTrinoOutput) ToOutput(ctx context.Context) pulumix.Output[ResourceTrino] {
+	return pulumix.Output[ResourceTrino]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -30642,6 +33560,12 @@ func (o ResourceTrinoPtrOutput) ToResourceTrinoPtrOutput() ResourceTrinoPtrOutpu
 
 func (o ResourceTrinoPtrOutput) ToResourceTrinoPtrOutputWithContext(ctx context.Context) ResourceTrinoPtrOutput {
 	return o
+}
+
+func (o ResourceTrinoPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ResourceTrino] {
+	return pulumix.Output[*ResourceTrino]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceTrinoPtrOutput) Elem() ResourceTrinoOutput {
@@ -30815,6 +33739,12 @@ func (i SecretStoreAwsArgs) ToSecretStoreAwsOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreAwsOutput)
 }
 
+func (i SecretStoreAwsArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreAws] {
+	return pulumix.Output[SecretStoreAws]{
+		OutputState: i.ToSecretStoreAwsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreAwsArgs) ToSecretStoreAwsPtrOutput() SecretStoreAwsPtrOutput {
 	return i.ToSecretStoreAwsPtrOutputWithContext(context.Background())
 }
@@ -30856,6 +33786,12 @@ func (i *secretStoreAwsPtrType) ToSecretStoreAwsPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreAwsPtrOutput)
 }
 
+func (i *secretStoreAwsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreAws] {
+	return pulumix.Output[*SecretStoreAws]{
+		OutputState: i.ToSecretStoreAwsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreAwsOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreAwsOutput) ElementType() reflect.Type {
@@ -30878,6 +33814,12 @@ func (o SecretStoreAwsOutput) ToSecretStoreAwsPtrOutputWithContext(ctx context.C
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreAws) *SecretStoreAws {
 		return &v
 	}).(SecretStoreAwsPtrOutput)
+}
+
+func (o SecretStoreAwsOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreAws] {
+	return pulumix.Output[SecretStoreAws]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique human-readable name of the SecretStore.
@@ -30907,6 +33849,12 @@ func (o SecretStoreAwsPtrOutput) ToSecretStoreAwsPtrOutput() SecretStoreAwsPtrOu
 
 func (o SecretStoreAwsPtrOutput) ToSecretStoreAwsPtrOutputWithContext(ctx context.Context) SecretStoreAwsPtrOutput {
 	return o
+}
+
+func (o SecretStoreAwsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreAws] {
+	return pulumix.Output[*SecretStoreAws]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreAwsPtrOutput) Elem() SecretStoreAwsOutput {
@@ -30992,6 +33940,12 @@ func (i SecretStoreAzureStoreArgs) ToSecretStoreAzureStoreOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreAzureStoreOutput)
 }
 
+func (i SecretStoreAzureStoreArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreAzureStore] {
+	return pulumix.Output[SecretStoreAzureStore]{
+		OutputState: i.ToSecretStoreAzureStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreAzureStoreArgs) ToSecretStoreAzureStorePtrOutput() SecretStoreAzureStorePtrOutput {
 	return i.ToSecretStoreAzureStorePtrOutputWithContext(context.Background())
 }
@@ -31033,6 +33987,12 @@ func (i *secretStoreAzureStorePtrType) ToSecretStoreAzureStorePtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreAzureStorePtrOutput)
 }
 
+func (i *secretStoreAzureStorePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreAzureStore] {
+	return pulumix.Output[*SecretStoreAzureStore]{
+		OutputState: i.ToSecretStoreAzureStorePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreAzureStoreOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreAzureStoreOutput) ElementType() reflect.Type {
@@ -31055,6 +34015,12 @@ func (o SecretStoreAzureStoreOutput) ToSecretStoreAzureStorePtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreAzureStore) *SecretStoreAzureStore {
 		return &v
 	}).(SecretStoreAzureStorePtrOutput)
+}
+
+func (o SecretStoreAzureStoreOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreAzureStore] {
+	return pulumix.Output[SecretStoreAzureStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique human-readable name of the SecretStore.
@@ -31085,6 +34051,12 @@ func (o SecretStoreAzureStorePtrOutput) ToSecretStoreAzureStorePtrOutput() Secre
 
 func (o SecretStoreAzureStorePtrOutput) ToSecretStoreAzureStorePtrOutputWithContext(ctx context.Context) SecretStoreAzureStorePtrOutput {
 	return o
+}
+
+func (o SecretStoreAzureStorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreAzureStore] {
+	return pulumix.Output[*SecretStoreAzureStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreAzureStorePtrOutput) Elem() SecretStoreAzureStoreOutput {
@@ -31169,6 +34141,12 @@ func (i SecretStoreCyberarkConjurArgs) ToSecretStoreCyberarkConjurOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkConjurOutput)
 }
 
+func (i SecretStoreCyberarkConjurArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreCyberarkConjur] {
+	return pulumix.Output[SecretStoreCyberarkConjur]{
+		OutputState: i.ToSecretStoreCyberarkConjurOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreCyberarkConjurArgs) ToSecretStoreCyberarkConjurPtrOutput() SecretStoreCyberarkConjurPtrOutput {
 	return i.ToSecretStoreCyberarkConjurPtrOutputWithContext(context.Background())
 }
@@ -31210,6 +34188,12 @@ func (i *secretStoreCyberarkConjurPtrType) ToSecretStoreCyberarkConjurPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkConjurPtrOutput)
 }
 
+func (i *secretStoreCyberarkConjurPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreCyberarkConjur] {
+	return pulumix.Output[*SecretStoreCyberarkConjur]{
+		OutputState: i.ToSecretStoreCyberarkConjurPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreCyberarkConjurOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreCyberarkConjurOutput) ElementType() reflect.Type {
@@ -31232,6 +34216,12 @@ func (o SecretStoreCyberarkConjurOutput) ToSecretStoreCyberarkConjurPtrOutputWit
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreCyberarkConjur) *SecretStoreCyberarkConjur {
 		return &v
 	}).(SecretStoreCyberarkConjurPtrOutput)
+}
+
+func (o SecretStoreCyberarkConjurOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreCyberarkConjur] {
+	return pulumix.Output[SecretStoreCyberarkConjur]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of the Cyberark instance
@@ -31261,6 +34251,12 @@ func (o SecretStoreCyberarkConjurPtrOutput) ToSecretStoreCyberarkConjurPtrOutput
 
 func (o SecretStoreCyberarkConjurPtrOutput) ToSecretStoreCyberarkConjurPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkConjurPtrOutput {
 	return o
+}
+
+func (o SecretStoreCyberarkConjurPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreCyberarkConjur] {
+	return pulumix.Output[*SecretStoreCyberarkConjur]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreCyberarkConjurPtrOutput) Elem() SecretStoreCyberarkConjurOutput {
@@ -31344,6 +34340,12 @@ func (i SecretStoreCyberarkPamArgs) ToSecretStoreCyberarkPamOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamOutput)
 }
 
+func (i SecretStoreCyberarkPamArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreCyberarkPam] {
+	return pulumix.Output[SecretStoreCyberarkPam]{
+		OutputState: i.ToSecretStoreCyberarkPamOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreCyberarkPamArgs) ToSecretStoreCyberarkPamPtrOutput() SecretStoreCyberarkPamPtrOutput {
 	return i.ToSecretStoreCyberarkPamPtrOutputWithContext(context.Background())
 }
@@ -31385,6 +34387,12 @@ func (i *secretStoreCyberarkPamPtrType) ToSecretStoreCyberarkPamPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamPtrOutput)
 }
 
+func (i *secretStoreCyberarkPamPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreCyberarkPam] {
+	return pulumix.Output[*SecretStoreCyberarkPam]{
+		OutputState: i.ToSecretStoreCyberarkPamPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreCyberarkPamOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreCyberarkPamOutput) ElementType() reflect.Type {
@@ -31407,6 +34415,12 @@ func (o SecretStoreCyberarkPamOutput) ToSecretStoreCyberarkPamPtrOutputWithConte
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreCyberarkPam) *SecretStoreCyberarkPam {
 		return &v
 	}).(SecretStoreCyberarkPamPtrOutput)
+}
+
+func (o SecretStoreCyberarkPamOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreCyberarkPam] {
+	return pulumix.Output[SecretStoreCyberarkPam]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of the Cyberark instance
@@ -31436,6 +34450,12 @@ func (o SecretStoreCyberarkPamPtrOutput) ToSecretStoreCyberarkPamPtrOutput() Sec
 
 func (o SecretStoreCyberarkPamPtrOutput) ToSecretStoreCyberarkPamPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamPtrOutput {
 	return o
+}
+
+func (o SecretStoreCyberarkPamPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreCyberarkPam] {
+	return pulumix.Output[*SecretStoreCyberarkPam]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreCyberarkPamPtrOutput) Elem() SecretStoreCyberarkPamOutput {
@@ -31519,6 +34539,12 @@ func (i SecretStoreCyberarkPamExperimentalArgs) ToSecretStoreCyberarkPamExperime
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamExperimentalOutput)
 }
 
+func (i SecretStoreCyberarkPamExperimentalArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreCyberarkPamExperimental] {
+	return pulumix.Output[SecretStoreCyberarkPamExperimental]{
+		OutputState: i.ToSecretStoreCyberarkPamExperimentalOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreCyberarkPamExperimentalArgs) ToSecretStoreCyberarkPamExperimentalPtrOutput() SecretStoreCyberarkPamExperimentalPtrOutput {
 	return i.ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(context.Background())
 }
@@ -31560,6 +34586,12 @@ func (i *secretStoreCyberarkPamExperimentalPtrType) ToSecretStoreCyberarkPamExpe
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreCyberarkPamExperimentalPtrOutput)
 }
 
+func (i *secretStoreCyberarkPamExperimentalPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreCyberarkPamExperimental] {
+	return pulumix.Output[*SecretStoreCyberarkPamExperimental]{
+		OutputState: i.ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreCyberarkPamExperimentalOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreCyberarkPamExperimentalOutput) ElementType() reflect.Type {
@@ -31582,6 +34614,12 @@ func (o SecretStoreCyberarkPamExperimentalOutput) ToSecretStoreCyberarkPamExperi
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreCyberarkPamExperimental) *SecretStoreCyberarkPamExperimental {
 		return &v
 	}).(SecretStoreCyberarkPamExperimentalPtrOutput)
+}
+
+func (o SecretStoreCyberarkPamExperimentalOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreCyberarkPamExperimental] {
+	return pulumix.Output[SecretStoreCyberarkPamExperimental]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of the Cyberark instance
@@ -31611,6 +34649,12 @@ func (o SecretStoreCyberarkPamExperimentalPtrOutput) ToSecretStoreCyberarkPamExp
 
 func (o SecretStoreCyberarkPamExperimentalPtrOutput) ToSecretStoreCyberarkPamExperimentalPtrOutputWithContext(ctx context.Context) SecretStoreCyberarkPamExperimentalPtrOutput {
 	return o
+}
+
+func (o SecretStoreCyberarkPamExperimentalPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreCyberarkPamExperimental] {
+	return pulumix.Output[*SecretStoreCyberarkPamExperimental]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreCyberarkPamExperimentalPtrOutput) Elem() SecretStoreCyberarkPamExperimentalOutput {
@@ -31700,6 +34744,12 @@ func (i SecretStoreDelineaStoreArgs) ToSecretStoreDelineaStoreOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreDelineaStoreOutput)
 }
 
+func (i SecretStoreDelineaStoreArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreDelineaStore] {
+	return pulumix.Output[SecretStoreDelineaStore]{
+		OutputState: i.ToSecretStoreDelineaStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreDelineaStoreArgs) ToSecretStoreDelineaStorePtrOutput() SecretStoreDelineaStorePtrOutput {
 	return i.ToSecretStoreDelineaStorePtrOutputWithContext(context.Background())
 }
@@ -31741,6 +34791,12 @@ func (i *secretStoreDelineaStorePtrType) ToSecretStoreDelineaStorePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreDelineaStorePtrOutput)
 }
 
+func (i *secretStoreDelineaStorePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreDelineaStore] {
+	return pulumix.Output[*SecretStoreDelineaStore]{
+		OutputState: i.ToSecretStoreDelineaStorePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreDelineaStoreOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreDelineaStoreOutput) ElementType() reflect.Type {
@@ -31763,6 +34819,12 @@ func (o SecretStoreDelineaStoreOutput) ToSecretStoreDelineaStorePtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreDelineaStore) *SecretStoreDelineaStore {
 		return &v
 	}).(SecretStoreDelineaStorePtrOutput)
+}
+
+func (o SecretStoreDelineaStoreOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreDelineaStore] {
+	return pulumix.Output[SecretStoreDelineaStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique human-readable name of the SecretStore.
@@ -31798,6 +34860,12 @@ func (o SecretStoreDelineaStorePtrOutput) ToSecretStoreDelineaStorePtrOutput() S
 
 func (o SecretStoreDelineaStorePtrOutput) ToSecretStoreDelineaStorePtrOutputWithContext(ctx context.Context) SecretStoreDelineaStorePtrOutput {
 	return o
+}
+
+func (o SecretStoreDelineaStorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreDelineaStore] {
+	return pulumix.Output[*SecretStoreDelineaStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreDelineaStorePtrOutput) Elem() SecretStoreDelineaStoreOutput {
@@ -31892,6 +34960,12 @@ func (i SecretStoreGcpStoreArgs) ToSecretStoreGcpStoreOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreGcpStoreOutput)
 }
 
+func (i SecretStoreGcpStoreArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreGcpStore] {
+	return pulumix.Output[SecretStoreGcpStore]{
+		OutputState: i.ToSecretStoreGcpStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreGcpStoreArgs) ToSecretStoreGcpStorePtrOutput() SecretStoreGcpStorePtrOutput {
 	return i.ToSecretStoreGcpStorePtrOutputWithContext(context.Background())
 }
@@ -31933,6 +35007,12 @@ func (i *secretStoreGcpStorePtrType) ToSecretStoreGcpStorePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreGcpStorePtrOutput)
 }
 
+func (i *secretStoreGcpStorePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreGcpStore] {
+	return pulumix.Output[*SecretStoreGcpStore]{
+		OutputState: i.ToSecretStoreGcpStorePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreGcpStoreOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreGcpStoreOutput) ElementType() reflect.Type {
@@ -31955,6 +35035,12 @@ func (o SecretStoreGcpStoreOutput) ToSecretStoreGcpStorePtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreGcpStore) *SecretStoreGcpStore {
 		return &v
 	}).(SecretStoreGcpStorePtrOutput)
+}
+
+func (o SecretStoreGcpStoreOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreGcpStore] {
+	return pulumix.Output[SecretStoreGcpStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique human-readable name of the SecretStore.
@@ -31984,6 +35070,12 @@ func (o SecretStoreGcpStorePtrOutput) ToSecretStoreGcpStorePtrOutput() SecretSto
 
 func (o SecretStoreGcpStorePtrOutput) ToSecretStoreGcpStorePtrOutputWithContext(ctx context.Context) SecretStoreGcpStorePtrOutput {
 	return o
+}
+
+func (o SecretStoreGcpStorePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreGcpStore] {
+	return pulumix.Output[*SecretStoreGcpStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreGcpStorePtrOutput) Elem() SecretStoreGcpStoreOutput {
@@ -32071,6 +35163,12 @@ func (i SecretStoreVaultApproleArgs) ToSecretStoreVaultApproleOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultApproleOutput)
 }
 
+func (i SecretStoreVaultApproleArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreVaultApprole] {
+	return pulumix.Output[SecretStoreVaultApprole]{
+		OutputState: i.ToSecretStoreVaultApproleOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreVaultApproleArgs) ToSecretStoreVaultApprolePtrOutput() SecretStoreVaultApprolePtrOutput {
 	return i.ToSecretStoreVaultApprolePtrOutputWithContext(context.Background())
 }
@@ -32112,6 +35210,12 @@ func (i *secretStoreVaultApprolePtrType) ToSecretStoreVaultApprolePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultApprolePtrOutput)
 }
 
+func (i *secretStoreVaultApprolePtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreVaultApprole] {
+	return pulumix.Output[*SecretStoreVaultApprole]{
+		OutputState: i.ToSecretStoreVaultApprolePtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreVaultApproleOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreVaultApproleOutput) ElementType() reflect.Type {
@@ -32134,6 +35238,12 @@ func (o SecretStoreVaultApproleOutput) ToSecretStoreVaultApprolePtrOutputWithCon
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultApprole) *SecretStoreVaultApprole {
 		return &v
 	}).(SecretStoreVaultApprolePtrOutput)
+}
+
+func (o SecretStoreVaultApproleOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreVaultApprole] {
+	return pulumix.Output[SecretStoreVaultApprole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique human-readable name of the SecretStore.
@@ -32168,6 +35278,12 @@ func (o SecretStoreVaultApprolePtrOutput) ToSecretStoreVaultApprolePtrOutput() S
 
 func (o SecretStoreVaultApprolePtrOutput) ToSecretStoreVaultApprolePtrOutputWithContext(ctx context.Context) SecretStoreVaultApprolePtrOutput {
 	return o
+}
+
+func (o SecretStoreVaultApprolePtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreVaultApprole] {
+	return pulumix.Output[*SecretStoreVaultApprole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreVaultApprolePtrOutput) Elem() SecretStoreVaultApproleOutput {
@@ -32277,6 +35393,12 @@ func (i SecretStoreVaultTlsArgs) ToSecretStoreVaultTlsOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTlsOutput)
 }
 
+func (i SecretStoreVaultTlsArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreVaultTls] {
+	return pulumix.Output[SecretStoreVaultTls]{
+		OutputState: i.ToSecretStoreVaultTlsOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreVaultTlsArgs) ToSecretStoreVaultTlsPtrOutput() SecretStoreVaultTlsPtrOutput {
 	return i.ToSecretStoreVaultTlsPtrOutputWithContext(context.Background())
 }
@@ -32318,6 +35440,12 @@ func (i *secretStoreVaultTlsPtrType) ToSecretStoreVaultTlsPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTlsPtrOutput)
 }
 
+func (i *secretStoreVaultTlsPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreVaultTls] {
+	return pulumix.Output[*SecretStoreVaultTls]{
+		OutputState: i.ToSecretStoreVaultTlsPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreVaultTlsOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreVaultTlsOutput) ElementType() reflect.Type {
@@ -32340,6 +35468,12 @@ func (o SecretStoreVaultTlsOutput) ToSecretStoreVaultTlsPtrOutputWithContext(ctx
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultTls) *SecretStoreVaultTls {
 		return &v
 	}).(SecretStoreVaultTlsPtrOutput)
+}
+
+func (o SecretStoreVaultTlsOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreVaultTls] {
+	return pulumix.Output[SecretStoreVaultTls]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A path to a CA file accessible by a Node
@@ -32389,6 +35523,12 @@ func (o SecretStoreVaultTlsPtrOutput) ToSecretStoreVaultTlsPtrOutput() SecretSto
 
 func (o SecretStoreVaultTlsPtrOutput) ToSecretStoreVaultTlsPtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsPtrOutput {
 	return o
+}
+
+func (o SecretStoreVaultTlsPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreVaultTls] {
+	return pulumix.Output[*SecretStoreVaultTls]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreVaultTlsPtrOutput) Elem() SecretStoreVaultTlsOutput {
@@ -32516,6 +35656,12 @@ func (i SecretStoreVaultTokenArgs) ToSecretStoreVaultTokenOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTokenOutput)
 }
 
+func (i SecretStoreVaultTokenArgs) ToOutput(ctx context.Context) pulumix.Output[SecretStoreVaultToken] {
+	return pulumix.Output[SecretStoreVaultToken]{
+		OutputState: i.ToSecretStoreVaultTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 func (i SecretStoreVaultTokenArgs) ToSecretStoreVaultTokenPtrOutput() SecretStoreVaultTokenPtrOutput {
 	return i.ToSecretStoreVaultTokenPtrOutputWithContext(context.Background())
 }
@@ -32557,6 +35703,12 @@ func (i *secretStoreVaultTokenPtrType) ToSecretStoreVaultTokenPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTokenPtrOutput)
 }
 
+func (i *secretStoreVaultTokenPtrType) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreVaultToken] {
+	return pulumix.Output[*SecretStoreVaultToken]{
+		OutputState: i.ToSecretStoreVaultTokenPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SecretStoreVaultTokenOutput struct{ *pulumi.OutputState }
 
 func (SecretStoreVaultTokenOutput) ElementType() reflect.Type {
@@ -32579,6 +35731,12 @@ func (o SecretStoreVaultTokenOutput) ToSecretStoreVaultTokenPtrOutputWithContext
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultToken) *SecretStoreVaultToken {
 		return &v
 	}).(SecretStoreVaultTokenPtrOutput)
+}
+
+func (o SecretStoreVaultTokenOutput) ToOutput(ctx context.Context) pulumix.Output[SecretStoreVaultToken] {
+	return pulumix.Output[SecretStoreVaultToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique human-readable name of the SecretStore.
@@ -32613,6 +35771,12 @@ func (o SecretStoreVaultTokenPtrOutput) ToSecretStoreVaultTokenPtrOutput() Secre
 
 func (o SecretStoreVaultTokenPtrOutput) ToSecretStoreVaultTokenPtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenPtrOutput {
 	return o
+}
+
+func (o SecretStoreVaultTokenPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*SecretStoreVaultToken] {
+	return pulumix.Output[*SecretStoreVaultToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SecretStoreVaultTokenPtrOutput) Elem() SecretStoreVaultTokenOutput {
@@ -32698,6 +35862,12 @@ func (i GetAccountAccountArgs) ToGetAccountAccountOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAccountOutput)
 }
 
+func (i GetAccountAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountAccount] {
+	return pulumix.Output[GetAccountAccount]{
+		OutputState: i.ToGetAccountAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccountAccountArrayInput is an input type that accepts GetAccountAccountArray and GetAccountAccountArrayOutput values.
 // You can construct a concrete instance of `GetAccountAccountArrayInput` via:
 //
@@ -32723,6 +35893,12 @@ func (i GetAccountAccountArray) ToGetAccountAccountArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAccountArrayOutput)
 }
 
+func (i GetAccountAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountAccount] {
+	return pulumix.Output[[]GetAccountAccount]{
+		OutputState: i.ToGetAccountAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccountAccountOutput struct{ *pulumi.OutputState }
 
 func (GetAccountAccountOutput) ElementType() reflect.Type {
@@ -32735,6 +35911,12 @@ func (o GetAccountAccountOutput) ToGetAccountAccountOutput() GetAccountAccountOu
 
 func (o GetAccountAccountOutput) ToGetAccountAccountOutputWithContext(ctx context.Context) GetAccountAccountOutput {
 	return o
+}
+
+func (o GetAccountAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountAccount] {
+	return pulumix.Output[GetAccountAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccountAccountOutput) Services() GetAccountAccountServiceArrayOutput {
@@ -32757,6 +35939,12 @@ func (o GetAccountAccountArrayOutput) ToGetAccountAccountArrayOutput() GetAccoun
 
 func (o GetAccountAccountArrayOutput) ToGetAccountAccountArrayOutputWithContext(ctx context.Context) GetAccountAccountArrayOutput {
 	return o
+}
+
+func (o GetAccountAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountAccount] {
+	return pulumix.Output[[]GetAccountAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccountAccountArrayOutput) Index(i pulumi.IntInput) GetAccountAccountOutput {
@@ -32810,6 +35998,12 @@ func (i GetAccountAccountServiceArgs) ToGetAccountAccountServiceOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAccountServiceOutput)
 }
 
+func (i GetAccountAccountServiceArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountAccountService] {
+	return pulumix.Output[GetAccountAccountService]{
+		OutputState: i.ToGetAccountAccountServiceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccountAccountServiceArrayInput is an input type that accepts GetAccountAccountServiceArray and GetAccountAccountServiceArrayOutput values.
 // You can construct a concrete instance of `GetAccountAccountServiceArrayInput` via:
 //
@@ -32835,6 +36029,12 @@ func (i GetAccountAccountServiceArray) ToGetAccountAccountServiceArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAccountServiceArrayOutput)
 }
 
+func (i GetAccountAccountServiceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountAccountService] {
+	return pulumix.Output[[]GetAccountAccountService]{
+		OutputState: i.ToGetAccountAccountServiceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccountAccountServiceOutput struct{ *pulumi.OutputState }
 
 func (GetAccountAccountServiceOutput) ElementType() reflect.Type {
@@ -32847,6 +36047,12 @@ func (o GetAccountAccountServiceOutput) ToGetAccountAccountServiceOutput() GetAc
 
 func (o GetAccountAccountServiceOutput) ToGetAccountAccountServiceOutputWithContext(ctx context.Context) GetAccountAccountServiceOutput {
 	return o
+}
+
+func (o GetAccountAccountServiceOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountAccountService] {
+	return pulumix.Output[GetAccountAccountService]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the User.
@@ -32881,6 +36087,12 @@ func (o GetAccountAccountServiceArrayOutput) ToGetAccountAccountServiceArrayOutp
 
 func (o GetAccountAccountServiceArrayOutput) ToGetAccountAccountServiceArrayOutputWithContext(ctx context.Context) GetAccountAccountServiceArrayOutput {
 	return o
+}
+
+func (o GetAccountAccountServiceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountAccountService] {
+	return pulumix.Output[[]GetAccountAccountService]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccountAccountServiceArrayOutput) Index(i pulumi.IntInput) GetAccountAccountServiceOutput {
@@ -32954,6 +36166,12 @@ func (i GetAccountAccountUserArgs) ToGetAccountAccountUserOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAccountUserOutput)
 }
 
+func (i GetAccountAccountUserArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountAccountUser] {
+	return pulumix.Output[GetAccountAccountUser]{
+		OutputState: i.ToGetAccountAccountUserOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccountAccountUserArrayInput is an input type that accepts GetAccountAccountUserArray and GetAccountAccountUserArrayOutput values.
 // You can construct a concrete instance of `GetAccountAccountUserArrayInput` via:
 //
@@ -32979,6 +36197,12 @@ func (i GetAccountAccountUserArray) ToGetAccountAccountUserArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAccountUserArrayOutput)
 }
 
+func (i GetAccountAccountUserArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountAccountUser] {
+	return pulumix.Output[[]GetAccountAccountUser]{
+		OutputState: i.ToGetAccountAccountUserArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccountAccountUserOutput struct{ *pulumi.OutputState }
 
 func (GetAccountAccountUserOutput) ElementType() reflect.Type {
@@ -32991,6 +36215,12 @@ func (o GetAccountAccountUserOutput) ToGetAccountAccountUserOutput() GetAccountA
 
 func (o GetAccountAccountUserOutput) ToGetAccountAccountUserOutputWithContext(ctx context.Context) GetAccountAccountUserOutput {
 	return o
+}
+
+func (o GetAccountAccountUserOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountAccountUser] {
+	return pulumix.Output[GetAccountAccountUser]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The User's email address. Must be unique.
@@ -33052,6 +36282,12 @@ func (o GetAccountAccountUserArrayOutput) ToGetAccountAccountUserArrayOutputWith
 	return o
 }
 
+func (o GetAccountAccountUserArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountAccountUser] {
+	return pulumix.Output[[]GetAccountAccountUser]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetAccountAccountUserArrayOutput) Index(i pulumi.IntInput) GetAccountAccountUserOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountAccountUser {
 		return vs[0].([]GetAccountAccountUser)[vs[1].(int)]
@@ -33099,6 +36335,12 @@ func (i GetAccountAttachmentAccountAttachmentArgs) ToGetAccountAttachmentAccount
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAttachmentAccountAttachmentOutput)
 }
 
+func (i GetAccountAttachmentAccountAttachmentArgs) ToOutput(ctx context.Context) pulumix.Output[GetAccountAttachmentAccountAttachment] {
+	return pulumix.Output[GetAccountAttachmentAccountAttachment]{
+		OutputState: i.ToGetAccountAttachmentAccountAttachmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetAccountAttachmentAccountAttachmentArrayInput is an input type that accepts GetAccountAttachmentAccountAttachmentArray and GetAccountAttachmentAccountAttachmentArrayOutput values.
 // You can construct a concrete instance of `GetAccountAttachmentAccountAttachmentArrayInput` via:
 //
@@ -33124,6 +36366,12 @@ func (i GetAccountAttachmentAccountAttachmentArray) ToGetAccountAttachmentAccoun
 	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAttachmentAccountAttachmentArrayOutput)
 }
 
+func (i GetAccountAttachmentAccountAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountAttachmentAccountAttachment] {
+	return pulumix.Output[[]GetAccountAttachmentAccountAttachment]{
+		OutputState: i.ToGetAccountAttachmentAccountAttachmentArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetAccountAttachmentAccountAttachmentOutput struct{ *pulumi.OutputState }
 
 func (GetAccountAttachmentAccountAttachmentOutput) ElementType() reflect.Type {
@@ -33136,6 +36384,12 @@ func (o GetAccountAttachmentAccountAttachmentOutput) ToGetAccountAttachmentAccou
 
 func (o GetAccountAttachmentAccountAttachmentOutput) ToGetAccountAttachmentAccountAttachmentOutputWithContext(ctx context.Context) GetAccountAttachmentAccountAttachmentOutput {
 	return o
+}
+
+func (o GetAccountAttachmentAccountAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountAttachmentAccountAttachment] {
+	return pulumix.Output[GetAccountAttachmentAccountAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The id of the account of this AccountAttachment.
@@ -33165,6 +36419,12 @@ func (o GetAccountAttachmentAccountAttachmentArrayOutput) ToGetAccountAttachment
 
 func (o GetAccountAttachmentAccountAttachmentArrayOutput) ToGetAccountAttachmentAccountAttachmentArrayOutputWithContext(ctx context.Context) GetAccountAttachmentAccountAttachmentArrayOutput {
 	return o
+}
+
+func (o GetAccountAttachmentAccountAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetAccountAttachmentAccountAttachment] {
+	return pulumix.Output[[]GetAccountAttachmentAccountAttachment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccountAttachmentAccountAttachmentArrayOutput) Index(i pulumi.IntInput) GetAccountAttachmentAccountAttachmentOutput {
@@ -33206,6 +36466,12 @@ func (i GetNodeNodeArgs) ToGetNodeNodeOutputWithContext(ctx context.Context) Get
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeOutput)
 }
 
+func (i GetNodeNodeArgs) ToOutput(ctx context.Context) pulumix.Output[GetNodeNode] {
+	return pulumix.Output[GetNodeNode]{
+		OutputState: i.ToGetNodeNodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNodeNodeArrayInput is an input type that accepts GetNodeNodeArray and GetNodeNodeArrayOutput values.
 // You can construct a concrete instance of `GetNodeNodeArrayInput` via:
 //
@@ -33231,6 +36497,12 @@ func (i GetNodeNodeArray) ToGetNodeNodeArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeArrayOutput)
 }
 
+func (i GetNodeNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNode] {
+	return pulumix.Output[[]GetNodeNode]{
+		OutputState: i.ToGetNodeNodeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNodeNodeOutput struct{ *pulumi.OutputState }
 
 func (GetNodeNodeOutput) ElementType() reflect.Type {
@@ -33243,6 +36515,12 @@ func (o GetNodeNodeOutput) ToGetNodeNodeOutput() GetNodeNodeOutput {
 
 func (o GetNodeNodeOutput) ToGetNodeNodeOutputWithContext(ctx context.Context) GetNodeNodeOutput {
 	return o
+}
+
+func (o GetNodeNodeOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodeNode] {
+	return pulumix.Output[GetNodeNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNodeNodeOutput) Gateways() GetNodeNodeGatewayArrayOutput {
@@ -33265,6 +36543,12 @@ func (o GetNodeNodeArrayOutput) ToGetNodeNodeArrayOutput() GetNodeNodeArrayOutpu
 
 func (o GetNodeNodeArrayOutput) ToGetNodeNodeArrayOutputWithContext(ctx context.Context) GetNodeNodeArrayOutput {
 	return o
+}
+
+func (o GetNodeNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNode] {
+	return pulumix.Output[[]GetNodeNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNodeNodeArrayOutput) Index(i pulumi.IntInput) GetNodeNodeOutput {
@@ -33342,6 +36626,12 @@ func (i GetNodeNodeGatewayArgs) ToGetNodeNodeGatewayOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeGatewayOutput)
 }
 
+func (i GetNodeNodeGatewayArgs) ToOutput(ctx context.Context) pulumix.Output[GetNodeNodeGateway] {
+	return pulumix.Output[GetNodeNodeGateway]{
+		OutputState: i.ToGetNodeNodeGatewayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNodeNodeGatewayArrayInput is an input type that accepts GetNodeNodeGatewayArray and GetNodeNodeGatewayArrayOutput values.
 // You can construct a concrete instance of `GetNodeNodeGatewayArrayInput` via:
 //
@@ -33367,6 +36657,12 @@ func (i GetNodeNodeGatewayArray) ToGetNodeNodeGatewayArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeGatewayArrayOutput)
 }
 
+func (i GetNodeNodeGatewayArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNodeGateway] {
+	return pulumix.Output[[]GetNodeNodeGateway]{
+		OutputState: i.ToGetNodeNodeGatewayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNodeNodeGatewayOutput struct{ *pulumi.OutputState }
 
 func (GetNodeNodeGatewayOutput) ElementType() reflect.Type {
@@ -33379,6 +36675,12 @@ func (o GetNodeNodeGatewayOutput) ToGetNodeNodeGatewayOutput() GetNodeNodeGatewa
 
 func (o GetNodeNodeGatewayOutput) ToGetNodeNodeGatewayOutputWithContext(ctx context.Context) GetNodeNodeGatewayOutput {
 	return o
+}
+
+func (o GetNodeNodeGatewayOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodeNodeGateway] {
+	return pulumix.Output[GetNodeNodeGateway]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -33445,6 +36747,12 @@ func (o GetNodeNodeGatewayArrayOutput) ToGetNodeNodeGatewayArrayOutputWithContex
 	return o
 }
 
+func (o GetNodeNodeGatewayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNodeGateway] {
+	return pulumix.Output[[]GetNodeNodeGateway]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetNodeNodeGatewayArrayOutput) Index(i pulumi.IntInput) GetNodeNodeGatewayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeNodeGateway {
 		return vs[0].([]GetNodeNodeGateway)[vs[1].(int)]
@@ -33484,6 +36792,12 @@ func (i GetNodeNodeGatewayMaintenanceWindowArgs) ToGetNodeNodeGatewayMaintenance
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeGatewayMaintenanceWindowOutput)
 }
 
+func (i GetNodeNodeGatewayMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[GetNodeNodeGatewayMaintenanceWindow] {
+	return pulumix.Output[GetNodeNodeGatewayMaintenanceWindow]{
+		OutputState: i.ToGetNodeNodeGatewayMaintenanceWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNodeNodeGatewayMaintenanceWindowArrayInput is an input type that accepts GetNodeNodeGatewayMaintenanceWindowArray and GetNodeNodeGatewayMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `GetNodeNodeGatewayMaintenanceWindowArrayInput` via:
 //
@@ -33509,6 +36823,12 @@ func (i GetNodeNodeGatewayMaintenanceWindowArray) ToGetNodeNodeGatewayMaintenanc
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeGatewayMaintenanceWindowArrayOutput)
 }
 
+func (i GetNodeNodeGatewayMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNodeGatewayMaintenanceWindow] {
+	return pulumix.Output[[]GetNodeNodeGatewayMaintenanceWindow]{
+		OutputState: i.ToGetNodeNodeGatewayMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNodeNodeGatewayMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (GetNodeNodeGatewayMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -33521,6 +36841,12 @@ func (o GetNodeNodeGatewayMaintenanceWindowOutput) ToGetNodeNodeGatewayMaintenan
 
 func (o GetNodeNodeGatewayMaintenanceWindowOutput) ToGetNodeNodeGatewayMaintenanceWindowOutputWithContext(ctx context.Context) GetNodeNodeGatewayMaintenanceWindowOutput {
 	return o
+}
+
+func (o GetNodeNodeGatewayMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodeNodeGatewayMaintenanceWindow] {
+	return pulumix.Output[GetNodeNodeGatewayMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNodeNodeGatewayMaintenanceWindowOutput) CronSchedule() pulumi.StringOutput {
@@ -33543,6 +36869,12 @@ func (o GetNodeNodeGatewayMaintenanceWindowArrayOutput) ToGetNodeNodeGatewayMain
 
 func (o GetNodeNodeGatewayMaintenanceWindowArrayOutput) ToGetNodeNodeGatewayMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetNodeNodeGatewayMaintenanceWindowArrayOutput {
 	return o
+}
+
+func (o GetNodeNodeGatewayMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNodeGatewayMaintenanceWindow] {
+	return pulumix.Output[[]GetNodeNodeGatewayMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNodeNodeGatewayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetNodeNodeGatewayMaintenanceWindowOutput {
@@ -33612,6 +36944,12 @@ func (i GetNodeNodeRelayArgs) ToGetNodeNodeRelayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeRelayOutput)
 }
 
+func (i GetNodeNodeRelayArgs) ToOutput(ctx context.Context) pulumix.Output[GetNodeNodeRelay] {
+	return pulumix.Output[GetNodeNodeRelay]{
+		OutputState: i.ToGetNodeNodeRelayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNodeNodeRelayArrayInput is an input type that accepts GetNodeNodeRelayArray and GetNodeNodeRelayArrayOutput values.
 // You can construct a concrete instance of `GetNodeNodeRelayArrayInput` via:
 //
@@ -33637,6 +36975,12 @@ func (i GetNodeNodeRelayArray) ToGetNodeNodeRelayArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeRelayArrayOutput)
 }
 
+func (i GetNodeNodeRelayArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNodeRelay] {
+	return pulumix.Output[[]GetNodeNodeRelay]{
+		OutputState: i.ToGetNodeNodeRelayArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNodeNodeRelayOutput struct{ *pulumi.OutputState }
 
 func (GetNodeNodeRelayOutput) ElementType() reflect.Type {
@@ -33649,6 +36993,12 @@ func (o GetNodeNodeRelayOutput) ToGetNodeNodeRelayOutput() GetNodeNodeRelayOutpu
 
 func (o GetNodeNodeRelayOutput) ToGetNodeNodeRelayOutputWithContext(ctx context.Context) GetNodeNodeRelayOutput {
 	return o
+}
+
+func (o GetNodeNodeRelayOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodeNodeRelay] {
+	return pulumix.Output[GetNodeNodeRelay]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Device is a read only device name uploaded by the gateway process when it comes online.
@@ -33705,6 +37055,12 @@ func (o GetNodeNodeRelayArrayOutput) ToGetNodeNodeRelayArrayOutputWithContext(ct
 	return o
 }
 
+func (o GetNodeNodeRelayArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNodeRelay] {
+	return pulumix.Output[[]GetNodeNodeRelay]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetNodeNodeRelayArrayOutput) Index(i pulumi.IntInput) GetNodeNodeRelayOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeNodeRelay {
 		return vs[0].([]GetNodeNodeRelay)[vs[1].(int)]
@@ -33744,6 +37100,12 @@ func (i GetNodeNodeRelayMaintenanceWindowArgs) ToGetNodeNodeRelayMaintenanceWind
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeRelayMaintenanceWindowOutput)
 }
 
+func (i GetNodeNodeRelayMaintenanceWindowArgs) ToOutput(ctx context.Context) pulumix.Output[GetNodeNodeRelayMaintenanceWindow] {
+	return pulumix.Output[GetNodeNodeRelayMaintenanceWindow]{
+		OutputState: i.ToGetNodeNodeRelayMaintenanceWindowOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetNodeNodeRelayMaintenanceWindowArrayInput is an input type that accepts GetNodeNodeRelayMaintenanceWindowArray and GetNodeNodeRelayMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `GetNodeNodeRelayMaintenanceWindowArrayInput` via:
 //
@@ -33769,6 +37131,12 @@ func (i GetNodeNodeRelayMaintenanceWindowArray) ToGetNodeNodeRelayMaintenanceWin
 	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeRelayMaintenanceWindowArrayOutput)
 }
 
+func (i GetNodeNodeRelayMaintenanceWindowArray) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNodeRelayMaintenanceWindow] {
+	return pulumix.Output[[]GetNodeNodeRelayMaintenanceWindow]{
+		OutputState: i.ToGetNodeNodeRelayMaintenanceWindowArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetNodeNodeRelayMaintenanceWindowOutput struct{ *pulumi.OutputState }
 
 func (GetNodeNodeRelayMaintenanceWindowOutput) ElementType() reflect.Type {
@@ -33781,6 +37149,12 @@ func (o GetNodeNodeRelayMaintenanceWindowOutput) ToGetNodeNodeRelayMaintenanceWi
 
 func (o GetNodeNodeRelayMaintenanceWindowOutput) ToGetNodeNodeRelayMaintenanceWindowOutputWithContext(ctx context.Context) GetNodeNodeRelayMaintenanceWindowOutput {
 	return o
+}
+
+func (o GetNodeNodeRelayMaintenanceWindowOutput) ToOutput(ctx context.Context) pulumix.Output[GetNodeNodeRelayMaintenanceWindow] {
+	return pulumix.Output[GetNodeNodeRelayMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNodeNodeRelayMaintenanceWindowOutput) CronSchedule() pulumi.StringOutput {
@@ -33803,6 +37177,12 @@ func (o GetNodeNodeRelayMaintenanceWindowArrayOutput) ToGetNodeNodeRelayMaintena
 
 func (o GetNodeNodeRelayMaintenanceWindowArrayOutput) ToGetNodeNodeRelayMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetNodeNodeRelayMaintenanceWindowArrayOutput {
 	return o
+}
+
+func (o GetNodeNodeRelayMaintenanceWindowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetNodeNodeRelayMaintenanceWindow] {
+	return pulumix.Output[[]GetNodeNodeRelayMaintenanceWindow]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetNodeNodeRelayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetNodeNodeRelayMaintenanceWindowOutput {
@@ -33852,6 +37232,12 @@ func (i GetPeeringGroupNodePeeringGroupNodeArgs) ToGetPeeringGroupNodePeeringGro
 	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupNodePeeringGroupNodeOutput)
 }
 
+func (i GetPeeringGroupNodePeeringGroupNodeArgs) ToOutput(ctx context.Context) pulumix.Output[GetPeeringGroupNodePeeringGroupNode] {
+	return pulumix.Output[GetPeeringGroupNodePeeringGroupNode]{
+		OutputState: i.ToGetPeeringGroupNodePeeringGroupNodeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPeeringGroupNodePeeringGroupNodeArrayInput is an input type that accepts GetPeeringGroupNodePeeringGroupNodeArray and GetPeeringGroupNodePeeringGroupNodeArrayOutput values.
 // You can construct a concrete instance of `GetPeeringGroupNodePeeringGroupNodeArrayInput` via:
 //
@@ -33877,6 +37263,12 @@ func (i GetPeeringGroupNodePeeringGroupNodeArray) ToGetPeeringGroupNodePeeringGr
 	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupNodePeeringGroupNodeArrayOutput)
 }
 
+func (i GetPeeringGroupNodePeeringGroupNodeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPeeringGroupNodePeeringGroupNode] {
+	return pulumix.Output[[]GetPeeringGroupNodePeeringGroupNode]{
+		OutputState: i.ToGetPeeringGroupNodePeeringGroupNodeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPeeringGroupNodePeeringGroupNodeOutput struct{ *pulumi.OutputState }
 
 func (GetPeeringGroupNodePeeringGroupNodeOutput) ElementType() reflect.Type {
@@ -33889,6 +37281,12 @@ func (o GetPeeringGroupNodePeeringGroupNodeOutput) ToGetPeeringGroupNodePeeringG
 
 func (o GetPeeringGroupNodePeeringGroupNodeOutput) ToGetPeeringGroupNodePeeringGroupNodeOutputWithContext(ctx context.Context) GetPeeringGroupNodePeeringGroupNodeOutput {
 	return o
+}
+
+func (o GetPeeringGroupNodePeeringGroupNodeOutput) ToOutput(ctx context.Context) pulumix.Output[GetPeeringGroupNodePeeringGroupNode] {
+	return pulumix.Output[GetPeeringGroupNodePeeringGroupNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Peering Group ID to which the node will be attached to.
@@ -33918,6 +37316,12 @@ func (o GetPeeringGroupNodePeeringGroupNodeArrayOutput) ToGetPeeringGroupNodePee
 
 func (o GetPeeringGroupNodePeeringGroupNodeArrayOutput) ToGetPeeringGroupNodePeeringGroupNodeArrayOutputWithContext(ctx context.Context) GetPeeringGroupNodePeeringGroupNodeArrayOutput {
 	return o
+}
+
+func (o GetPeeringGroupNodePeeringGroupNodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPeeringGroupNodePeeringGroupNode] {
+	return pulumix.Output[[]GetPeeringGroupNodePeeringGroupNode]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPeeringGroupNodePeeringGroupNodeArrayOutput) Index(i pulumi.IntInput) GetPeeringGroupNodePeeringGroupNodeOutput {
@@ -33967,6 +37371,12 @@ func (i GetPeeringGroupPeerPeeringGroupPeerArgs) ToGetPeeringGroupPeerPeeringGro
 	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupPeerPeeringGroupPeerOutput)
 }
 
+func (i GetPeeringGroupPeerPeeringGroupPeerArgs) ToOutput(ctx context.Context) pulumix.Output[GetPeeringGroupPeerPeeringGroupPeer] {
+	return pulumix.Output[GetPeeringGroupPeerPeeringGroupPeer]{
+		OutputState: i.ToGetPeeringGroupPeerPeeringGroupPeerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPeeringGroupPeerPeeringGroupPeerArrayInput is an input type that accepts GetPeeringGroupPeerPeeringGroupPeerArray and GetPeeringGroupPeerPeeringGroupPeerArrayOutput values.
 // You can construct a concrete instance of `GetPeeringGroupPeerPeeringGroupPeerArrayInput` via:
 //
@@ -33992,6 +37402,12 @@ func (i GetPeeringGroupPeerPeeringGroupPeerArray) ToGetPeeringGroupPeerPeeringGr
 	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupPeerPeeringGroupPeerArrayOutput)
 }
 
+func (i GetPeeringGroupPeerPeeringGroupPeerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPeeringGroupPeerPeeringGroupPeer] {
+	return pulumix.Output[[]GetPeeringGroupPeerPeeringGroupPeer]{
+		OutputState: i.ToGetPeeringGroupPeerPeeringGroupPeerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPeeringGroupPeerPeeringGroupPeerOutput struct{ *pulumi.OutputState }
 
 func (GetPeeringGroupPeerPeeringGroupPeerOutput) ElementType() reflect.Type {
@@ -34004,6 +37420,12 @@ func (o GetPeeringGroupPeerPeeringGroupPeerOutput) ToGetPeeringGroupPeerPeeringG
 
 func (o GetPeeringGroupPeerPeeringGroupPeerOutput) ToGetPeeringGroupPeerPeeringGroupPeerOutputWithContext(ctx context.Context) GetPeeringGroupPeerPeeringGroupPeerOutput {
 	return o
+}
+
+func (o GetPeeringGroupPeerPeeringGroupPeerOutput) ToOutput(ctx context.Context) pulumix.Output[GetPeeringGroupPeerPeeringGroupPeer] {
+	return pulumix.Output[GetPeeringGroupPeerPeeringGroupPeer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group ID from which the link will originate.
@@ -34033,6 +37455,12 @@ func (o GetPeeringGroupPeerPeeringGroupPeerArrayOutput) ToGetPeeringGroupPeerPee
 
 func (o GetPeeringGroupPeerPeeringGroupPeerArrayOutput) ToGetPeeringGroupPeerPeeringGroupPeerArrayOutputWithContext(ctx context.Context) GetPeeringGroupPeerPeeringGroupPeerArrayOutput {
 	return o
+}
+
+func (o GetPeeringGroupPeerPeeringGroupPeerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPeeringGroupPeerPeeringGroupPeer] {
+	return pulumix.Output[[]GetPeeringGroupPeerPeeringGroupPeer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPeeringGroupPeerPeeringGroupPeerArrayOutput) Index(i pulumi.IntInput) GetPeeringGroupPeerPeeringGroupPeerOutput {
@@ -34078,6 +37506,12 @@ func (i GetPeeringGroupPeeringGroupArgs) ToGetPeeringGroupPeeringGroupOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupPeeringGroupOutput)
 }
 
+func (i GetPeeringGroupPeeringGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetPeeringGroupPeeringGroup] {
+	return pulumix.Output[GetPeeringGroupPeeringGroup]{
+		OutputState: i.ToGetPeeringGroupPeeringGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPeeringGroupPeeringGroupArrayInput is an input type that accepts GetPeeringGroupPeeringGroupArray and GetPeeringGroupPeeringGroupArrayOutput values.
 // You can construct a concrete instance of `GetPeeringGroupPeeringGroupArrayInput` via:
 //
@@ -34103,6 +37537,12 @@ func (i GetPeeringGroupPeeringGroupArray) ToGetPeeringGroupPeeringGroupArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupPeeringGroupArrayOutput)
 }
 
+func (i GetPeeringGroupPeeringGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPeeringGroupPeeringGroup] {
+	return pulumix.Output[[]GetPeeringGroupPeeringGroup]{
+		OutputState: i.ToGetPeeringGroupPeeringGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPeeringGroupPeeringGroupOutput struct{ *pulumi.OutputState }
 
 func (GetPeeringGroupPeeringGroupOutput) ElementType() reflect.Type {
@@ -34115,6 +37555,12 @@ func (o GetPeeringGroupPeeringGroupOutput) ToGetPeeringGroupPeeringGroupOutput()
 
 func (o GetPeeringGroupPeeringGroupOutput) ToGetPeeringGroupPeeringGroupOutputWithContext(ctx context.Context) GetPeeringGroupPeeringGroupOutput {
 	return o
+}
+
+func (o GetPeeringGroupPeeringGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetPeeringGroupPeeringGroup] {
+	return pulumix.Output[GetPeeringGroupPeeringGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the PeeringGroup.
@@ -34139,6 +37585,12 @@ func (o GetPeeringGroupPeeringGroupArrayOutput) ToGetPeeringGroupPeeringGroupArr
 
 func (o GetPeeringGroupPeeringGroupArrayOutput) ToGetPeeringGroupPeeringGroupArrayOutputWithContext(ctx context.Context) GetPeeringGroupPeeringGroupArrayOutput {
 	return o
+}
+
+func (o GetPeeringGroupPeeringGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPeeringGroupPeeringGroup] {
+	return pulumix.Output[[]GetPeeringGroupPeeringGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPeeringGroupPeeringGroupArrayOutput) Index(i pulumi.IntInput) GetPeeringGroupPeeringGroupOutput {
@@ -34188,6 +37640,12 @@ func (i GetPeeringGroupResourcePeeringGroupResourceArgs) ToGetPeeringGroupResour
 	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupResourcePeeringGroupResourceOutput)
 }
 
+func (i GetPeeringGroupResourcePeeringGroupResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetPeeringGroupResourcePeeringGroupResource] {
+	return pulumix.Output[GetPeeringGroupResourcePeeringGroupResource]{
+		OutputState: i.ToGetPeeringGroupResourcePeeringGroupResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetPeeringGroupResourcePeeringGroupResourceArrayInput is an input type that accepts GetPeeringGroupResourcePeeringGroupResourceArray and GetPeeringGroupResourcePeeringGroupResourceArrayOutput values.
 // You can construct a concrete instance of `GetPeeringGroupResourcePeeringGroupResourceArrayInput` via:
 //
@@ -34213,6 +37671,12 @@ func (i GetPeeringGroupResourcePeeringGroupResourceArray) ToGetPeeringGroupResou
 	return pulumi.ToOutputWithContext(ctx, i).(GetPeeringGroupResourcePeeringGroupResourceArrayOutput)
 }
 
+func (i GetPeeringGroupResourcePeeringGroupResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetPeeringGroupResourcePeeringGroupResource] {
+	return pulumix.Output[[]GetPeeringGroupResourcePeeringGroupResource]{
+		OutputState: i.ToGetPeeringGroupResourcePeeringGroupResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetPeeringGroupResourcePeeringGroupResourceOutput struct{ *pulumi.OutputState }
 
 func (GetPeeringGroupResourcePeeringGroupResourceOutput) ElementType() reflect.Type {
@@ -34225,6 +37689,12 @@ func (o GetPeeringGroupResourcePeeringGroupResourceOutput) ToGetPeeringGroupReso
 
 func (o GetPeeringGroupResourcePeeringGroupResourceOutput) ToGetPeeringGroupResourcePeeringGroupResourceOutputWithContext(ctx context.Context) GetPeeringGroupResourcePeeringGroupResourceOutput {
 	return o
+}
+
+func (o GetPeeringGroupResourcePeeringGroupResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetPeeringGroupResourcePeeringGroupResource] {
+	return pulumix.Output[GetPeeringGroupResourcePeeringGroupResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Peering Group ID to which the resource will be attached to.
@@ -34254,6 +37724,12 @@ func (o GetPeeringGroupResourcePeeringGroupResourceArrayOutput) ToGetPeeringGrou
 
 func (o GetPeeringGroupResourcePeeringGroupResourceArrayOutput) ToGetPeeringGroupResourcePeeringGroupResourceArrayOutputWithContext(ctx context.Context) GetPeeringGroupResourcePeeringGroupResourceArrayOutput {
 	return o
+}
+
+func (o GetPeeringGroupResourcePeeringGroupResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetPeeringGroupResourcePeeringGroupResource] {
+	return pulumix.Output[[]GetPeeringGroupResourcePeeringGroupResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetPeeringGroupResourcePeeringGroupResourceArrayOutput) Index(i pulumi.IntInput) GetPeeringGroupResourcePeeringGroupResourceOutput {
@@ -34299,6 +37775,12 @@ func (i GetRemoteIdentityGroupRemoteIdentityGroupArgs) ToGetRemoteIdentityGroupR
 	return pulumi.ToOutputWithContext(ctx, i).(GetRemoteIdentityGroupRemoteIdentityGroupOutput)
 }
 
+func (i GetRemoteIdentityGroupRemoteIdentityGroupArgs) ToOutput(ctx context.Context) pulumix.Output[GetRemoteIdentityGroupRemoteIdentityGroup] {
+	return pulumix.Output[GetRemoteIdentityGroupRemoteIdentityGroup]{
+		OutputState: i.ToGetRemoteIdentityGroupRemoteIdentityGroupOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRemoteIdentityGroupRemoteIdentityGroupArrayInput is an input type that accepts GetRemoteIdentityGroupRemoteIdentityGroupArray and GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput values.
 // You can construct a concrete instance of `GetRemoteIdentityGroupRemoteIdentityGroupArrayInput` via:
 //
@@ -34324,6 +37806,12 @@ func (i GetRemoteIdentityGroupRemoteIdentityGroupArray) ToGetRemoteIdentityGroup
 	return pulumi.ToOutputWithContext(ctx, i).(GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput)
 }
 
+func (i GetRemoteIdentityGroupRemoteIdentityGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRemoteIdentityGroupRemoteIdentityGroup] {
+	return pulumix.Output[[]GetRemoteIdentityGroupRemoteIdentityGroup]{
+		OutputState: i.ToGetRemoteIdentityGroupRemoteIdentityGroupArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRemoteIdentityGroupRemoteIdentityGroupOutput struct{ *pulumi.OutputState }
 
 func (GetRemoteIdentityGroupRemoteIdentityGroupOutput) ElementType() reflect.Type {
@@ -34336,6 +37824,12 @@ func (o GetRemoteIdentityGroupRemoteIdentityGroupOutput) ToGetRemoteIdentityGrou
 
 func (o GetRemoteIdentityGroupRemoteIdentityGroupOutput) ToGetRemoteIdentityGroupRemoteIdentityGroupOutputWithContext(ctx context.Context) GetRemoteIdentityGroupRemoteIdentityGroupOutput {
 	return o
+}
+
+func (o GetRemoteIdentityGroupRemoteIdentityGroupOutput) ToOutput(ctx context.Context) pulumix.Output[GetRemoteIdentityGroupRemoteIdentityGroup] {
+	return pulumix.Output[GetRemoteIdentityGroupRemoteIdentityGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the RemoteIdentityGroup.
@@ -34360,6 +37854,12 @@ func (o GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput) ToGetRemoteIdentit
 
 func (o GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput) ToGetRemoteIdentityGroupRemoteIdentityGroupArrayOutputWithContext(ctx context.Context) GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput {
 	return o
+}
+
+func (o GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRemoteIdentityGroupRemoteIdentityGroup] {
+	return pulumix.Output[[]GetRemoteIdentityGroupRemoteIdentityGroup]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput) Index(i pulumi.IntInput) GetRemoteIdentityGroupRemoteIdentityGroupOutput {
@@ -34413,6 +37913,12 @@ func (i GetRemoteIdentityRemoteIdentityArgs) ToGetRemoteIdentityRemoteIdentityOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetRemoteIdentityRemoteIdentityOutput)
 }
 
+func (i GetRemoteIdentityRemoteIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[GetRemoteIdentityRemoteIdentity] {
+	return pulumix.Output[GetRemoteIdentityRemoteIdentity]{
+		OutputState: i.ToGetRemoteIdentityRemoteIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRemoteIdentityRemoteIdentityArrayInput is an input type that accepts GetRemoteIdentityRemoteIdentityArray and GetRemoteIdentityRemoteIdentityArrayOutput values.
 // You can construct a concrete instance of `GetRemoteIdentityRemoteIdentityArrayInput` via:
 //
@@ -34438,6 +37944,12 @@ func (i GetRemoteIdentityRemoteIdentityArray) ToGetRemoteIdentityRemoteIdentityA
 	return pulumi.ToOutputWithContext(ctx, i).(GetRemoteIdentityRemoteIdentityArrayOutput)
 }
 
+func (i GetRemoteIdentityRemoteIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRemoteIdentityRemoteIdentity] {
+	return pulumix.Output[[]GetRemoteIdentityRemoteIdentity]{
+		OutputState: i.ToGetRemoteIdentityRemoteIdentityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRemoteIdentityRemoteIdentityOutput struct{ *pulumi.OutputState }
 
 func (GetRemoteIdentityRemoteIdentityOutput) ElementType() reflect.Type {
@@ -34450,6 +37962,12 @@ func (o GetRemoteIdentityRemoteIdentityOutput) ToGetRemoteIdentityRemoteIdentity
 
 func (o GetRemoteIdentityRemoteIdentityOutput) ToGetRemoteIdentityRemoteIdentityOutputWithContext(ctx context.Context) GetRemoteIdentityRemoteIdentityOutput {
 	return o
+}
+
+func (o GetRemoteIdentityRemoteIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[GetRemoteIdentityRemoteIdentity] {
+	return pulumix.Output[GetRemoteIdentityRemoteIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account for this remote identity.
@@ -34486,6 +38004,12 @@ func (o GetRemoteIdentityRemoteIdentityArrayOutput) ToGetRemoteIdentityRemoteIde
 	return o
 }
 
+func (o GetRemoteIdentityRemoteIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRemoteIdentityRemoteIdentity] {
+	return pulumix.Output[[]GetRemoteIdentityRemoteIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetRemoteIdentityRemoteIdentityArrayOutput) Index(i pulumi.IntInput) GetRemoteIdentityRemoteIdentityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRemoteIdentityRemoteIdentity {
 		return vs[0].([]GetRemoteIdentityRemoteIdentity)[vs[1].(int)]
@@ -34507,6 +38031,7 @@ type GetResourceResource struct {
 	Athenas                                    []GetResourceResourceAthena                                    `pulumi:"athenas"`
 	AuroraMysqls                               []GetResourceResourceAuroraMysql                               `pulumi:"auroraMysqls"`
 	AuroraPostgres                             []GetResourceResourceAuroraPostgre                             `pulumi:"auroraPostgres"`
+	AuroraPostgresIams                         []GetResourceResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIams"`
 	Aws                                        []GetResourceResourceAw                                        `pulumi:"aws"`
 	AwsConsoleStaticKeyPairs                   []GetResourceResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPairs"`
 	AwsConsoles                                []GetResourceResourceAwsConsole                                `pulumi:"awsConsoles"`
@@ -34559,6 +38084,7 @@ type GetResourceResource struct {
 	RabbitmqAmqp091s                           []GetResourceResourceRabbitmqAmqp091                           `pulumi:"rabbitmqAmqp091s"`
 	RawTcps                                    []GetResourceResourceRawTcp                                    `pulumi:"rawTcps"`
 	Rdps                                       []GetResourceResourceRdp                                       `pulumi:"rdps"`
+	RdsPostgresIams                            []GetResourceResourceRdsPostgresIam                            `pulumi:"rdsPostgresIams"`
 	Redis                                      []GetResourceResourceRedi                                      `pulumi:"redis"`
 	Redshifts                                  []GetResourceResourceRedshift                                  `pulumi:"redshifts"`
 	SingleStores                               []GetResourceResourceSingleStore                               `pulumi:"singleStores"`
@@ -34602,6 +38128,7 @@ type GetResourceResourceArgs struct {
 	Athenas                                    GetResourceResourceAthenaArrayInput                                    `pulumi:"athenas"`
 	AuroraMysqls                               GetResourceResourceAuroraMysqlArrayInput                               `pulumi:"auroraMysqls"`
 	AuroraPostgres                             GetResourceResourceAuroraPostgreArrayInput                             `pulumi:"auroraPostgres"`
+	AuroraPostgresIams                         GetResourceResourceAuroraPostgresIamArrayInput                         `pulumi:"auroraPostgresIams"`
 	Aws                                        GetResourceResourceAwArrayInput                                        `pulumi:"aws"`
 	AwsConsoleStaticKeyPairs                   GetResourceResourceAwsConsoleStaticKeyPairArrayInput                   `pulumi:"awsConsoleStaticKeyPairs"`
 	AwsConsoles                                GetResourceResourceAwsConsoleArrayInput                                `pulumi:"awsConsoles"`
@@ -34654,6 +38181,7 @@ type GetResourceResourceArgs struct {
 	RabbitmqAmqp091s                           GetResourceResourceRabbitmqAmqp091ArrayInput                           `pulumi:"rabbitmqAmqp091s"`
 	RawTcps                                    GetResourceResourceRawTcpArrayInput                                    `pulumi:"rawTcps"`
 	Rdps                                       GetResourceResourceRdpArrayInput                                       `pulumi:"rdps"`
+	RdsPostgresIams                            GetResourceResourceRdsPostgresIamArrayInput                            `pulumi:"rdsPostgresIams"`
 	Redis                                      GetResourceResourceRediArrayInput                                      `pulumi:"redis"`
 	Redshifts                                  GetResourceResourceRedshiftArrayInput                                  `pulumi:"redshifts"`
 	SingleStores                               GetResourceResourceSingleStoreArrayInput                               `pulumi:"singleStores"`
@@ -34683,6 +38211,12 @@ func (i GetResourceResourceArgs) ToGetResourceResourceOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceOutput)
 }
 
+func (i GetResourceResourceArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResource] {
+	return pulumix.Output[GetResourceResource]{
+		OutputState: i.ToGetResourceResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceArrayInput is an input type that accepts GetResourceResourceArray and GetResourceResourceArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceArrayInput` via:
 //
@@ -34708,6 +38242,12 @@ func (i GetResourceResourceArray) ToGetResourceResourceArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceArrayOutput)
 }
 
+func (i GetResourceResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResource] {
+	return pulumix.Output[[]GetResourceResource]{
+		OutputState: i.ToGetResourceResourceArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceOutput) ElementType() reflect.Type {
@@ -34720,6 +38260,12 @@ func (o GetResourceResourceOutput) ToGetResourceResourceOutput() GetResourceReso
 
 func (o GetResourceResourceOutput) ToGetResourceResourceOutputWithContext(ctx context.Context) GetResourceResourceOutput {
 	return o
+}
+
+func (o GetResourceResourceOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResource] {
+	return pulumix.Output[GetResourceResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceOutput) Aks() GetResourceResourceAkArrayOutput {
@@ -34784,6 +38330,10 @@ func (o GetResourceResourceOutput) AuroraMysqls() GetResourceResourceAuroraMysql
 
 func (o GetResourceResourceOutput) AuroraPostgres() GetResourceResourceAuroraPostgreArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAuroraPostgre { return v.AuroraPostgres }).(GetResourceResourceAuroraPostgreArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AuroraPostgresIams() GetResourceResourceAuroraPostgresIamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAuroraPostgresIam { return v.AuroraPostgresIams }).(GetResourceResourceAuroraPostgresIamArrayOutput)
 }
 
 func (o GetResourceResourceOutput) Aws() GetResourceResourceAwArrayOutput {
@@ -35008,6 +38558,10 @@ func (o GetResourceResourceOutput) Rdps() GetResourceResourceRdpArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRdp { return v.Rdps }).(GetResourceResourceRdpArrayOutput)
 }
 
+func (o GetResourceResourceOutput) RdsPostgresIams() GetResourceResourceRdsPostgresIamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRdsPostgresIam { return v.RdsPostgresIams }).(GetResourceResourceRdsPostgresIamArrayOutput)
+}
+
 func (o GetResourceResourceOutput) Redis() GetResourceResourceRediArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRedi { return v.Redis }).(GetResourceResourceRediArrayOutput)
 }
@@ -35080,6 +38634,12 @@ func (o GetResourceResourceArrayOutput) ToGetResourceResourceArrayOutput() GetRe
 
 func (o GetResourceResourceArrayOutput) ToGetResourceResourceArrayOutputWithContext(ctx context.Context) GetResourceResourceArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResource] {
+	return pulumix.Output[[]GetResourceResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceArrayOutput) Index(i pulumi.IntInput) GetResourceResourceOutput {
@@ -35181,6 +38741,12 @@ func (i GetResourceResourceAkArgs) ToGetResourceResourceAkOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAkOutput)
 }
 
+func (i GetResourceResourceAkArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAk] {
+	return pulumix.Output[GetResourceResourceAk]{
+		OutputState: i.ToGetResourceResourceAkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAkArrayInput is an input type that accepts GetResourceResourceAkArray and GetResourceResourceAkArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAkArrayInput` via:
 //
@@ -35206,6 +38772,12 @@ func (i GetResourceResourceAkArray) ToGetResourceResourceAkArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAkArrayOutput)
 }
 
+func (i GetResourceResourceAkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAk] {
+	return pulumix.Output[[]GetResourceResourceAk]{
+		OutputState: i.ToGetResourceResourceAkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAkOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAkOutput) ElementType() reflect.Type {
@@ -35218,6 +38790,12 @@ func (o GetResourceResourceAkOutput) ToGetResourceResourceAkOutput() GetResource
 
 func (o GetResourceResourceAkOutput) ToGetResourceResourceAkOutputWithContext(ctx context.Context) GetResourceResourceAkOutput {
 	return o
+}
+
+func (o GetResourceResourceAkOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAk] {
+	return pulumix.Output[GetResourceResourceAk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -35314,6 +38892,12 @@ func (o GetResourceResourceAkArrayOutput) ToGetResourceResourceAkArrayOutputWith
 	return o
 }
 
+func (o GetResourceResourceAkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAk] {
+	return pulumix.Output[[]GetResourceResourceAk]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceAkArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAk {
 		return vs[0].([]GetResourceResourceAk)[vs[1].(int)]
@@ -35401,6 +38985,12 @@ func (i GetResourceResourceAksBasicAuthArgs) ToGetResourceResourceAksBasicAuthOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAksBasicAuthOutput)
 }
 
+func (i GetResourceResourceAksBasicAuthArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAksBasicAuth] {
+	return pulumix.Output[GetResourceResourceAksBasicAuth]{
+		OutputState: i.ToGetResourceResourceAksBasicAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAksBasicAuthArrayInput is an input type that accepts GetResourceResourceAksBasicAuthArray and GetResourceResourceAksBasicAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksBasicAuthArrayInput` via:
 //
@@ -35426,6 +39016,12 @@ func (i GetResourceResourceAksBasicAuthArray) ToGetResourceResourceAksBasicAuthA
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAksBasicAuthArrayOutput)
 }
 
+func (i GetResourceResourceAksBasicAuthArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAksBasicAuth] {
+	return pulumix.Output[[]GetResourceResourceAksBasicAuth]{
+		OutputState: i.ToGetResourceResourceAksBasicAuthArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAksBasicAuthOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAksBasicAuthOutput) ElementType() reflect.Type {
@@ -35438,6 +39034,12 @@ func (o GetResourceResourceAksBasicAuthOutput) ToGetResourceResourceAksBasicAuth
 
 func (o GetResourceResourceAksBasicAuthOutput) ToGetResourceResourceAksBasicAuthOutputWithContext(ctx context.Context) GetResourceResourceAksBasicAuthOutput {
 	return o
+}
+
+func (o GetResourceResourceAksBasicAuthOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAksBasicAuth] {
+	return pulumix.Output[GetResourceResourceAksBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -35517,6 +39119,12 @@ func (o GetResourceResourceAksBasicAuthArrayOutput) ToGetResourceResourceAksBasi
 
 func (o GetResourceResourceAksBasicAuthArrayOutput) ToGetResourceResourceAksBasicAuthArrayOutputWithContext(ctx context.Context) GetResourceResourceAksBasicAuthArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAksBasicAuthArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAksBasicAuth] {
+	return pulumix.Output[[]GetResourceResourceAksBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAksBasicAuthArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAksBasicAuthOutput {
@@ -35612,6 +39220,12 @@ func (i GetResourceResourceAksServiceAccountArgs) ToGetResourceResourceAksServic
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAksServiceAccountOutput)
 }
 
+func (i GetResourceResourceAksServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAksServiceAccount] {
+	return pulumix.Output[GetResourceResourceAksServiceAccount]{
+		OutputState: i.ToGetResourceResourceAksServiceAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAksServiceAccountArrayInput is an input type that accepts GetResourceResourceAksServiceAccountArray and GetResourceResourceAksServiceAccountArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksServiceAccountArrayInput` via:
 //
@@ -35637,6 +39251,12 @@ func (i GetResourceResourceAksServiceAccountArray) ToGetResourceResourceAksServi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAksServiceAccountArrayOutput)
 }
 
+func (i GetResourceResourceAksServiceAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAksServiceAccount] {
+	return pulumix.Output[[]GetResourceResourceAksServiceAccount]{
+		OutputState: i.ToGetResourceResourceAksServiceAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAksServiceAccountOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAksServiceAccountOutput) ElementType() reflect.Type {
@@ -35649,6 +39269,12 @@ func (o GetResourceResourceAksServiceAccountOutput) ToGetResourceResourceAksServ
 
 func (o GetResourceResourceAksServiceAccountOutput) ToGetResourceResourceAksServiceAccountOutputWithContext(ctx context.Context) GetResourceResourceAksServiceAccountOutput {
 	return o
+}
+
+func (o GetResourceResourceAksServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAksServiceAccount] {
+	return pulumix.Output[GetResourceResourceAksServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -35736,6 +39362,12 @@ func (o GetResourceResourceAksServiceAccountArrayOutput) ToGetResourceResourceAk
 	return o
 }
 
+func (o GetResourceResourceAksServiceAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAksServiceAccount] {
+	return pulumix.Output[[]GetResourceResourceAksServiceAccount]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceAksServiceAccountArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAksServiceAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAksServiceAccount {
 		return vs[0].([]GetResourceResourceAksServiceAccount)[vs[1].(int)]
@@ -35821,6 +39453,12 @@ func (i GetResourceResourceAksServiceAccountUserImpersonationArgs) ToGetResource
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAksServiceAccountUserImpersonationOutput)
 }
 
+func (i GetResourceResourceAksServiceAccountUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAksServiceAccountUserImpersonation] {
+	return pulumix.Output[GetResourceResourceAksServiceAccountUserImpersonation]{
+		OutputState: i.ToGetResourceResourceAksServiceAccountUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAksServiceAccountUserImpersonationArrayInput is an input type that accepts GetResourceResourceAksServiceAccountUserImpersonationArray and GetResourceResourceAksServiceAccountUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksServiceAccountUserImpersonationArrayInput` via:
 //
@@ -35846,6 +39484,12 @@ func (i GetResourceResourceAksServiceAccountUserImpersonationArray) ToGetResourc
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAksServiceAccountUserImpersonationArrayOutput)
 }
 
+func (i GetResourceResourceAksServiceAccountUserImpersonationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAksServiceAccountUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceAksServiceAccountUserImpersonation]{
+		OutputState: i.ToGetResourceResourceAksServiceAccountUserImpersonationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAksServiceAccountUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAksServiceAccountUserImpersonationOutput) ElementType() reflect.Type {
@@ -35858,6 +39502,12 @@ func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) ToGetResour
 
 func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) ToGetResourceResourceAksServiceAccountUserImpersonationOutputWithContext(ctx context.Context) GetResourceResourceAksServiceAccountUserImpersonationOutput {
 	return o
+}
+
+func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAksServiceAccountUserImpersonation] {
+	return pulumix.Output[GetResourceResourceAksServiceAccountUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -35933,6 +39583,12 @@ func (o GetResourceResourceAksServiceAccountUserImpersonationArrayOutput) ToGetR
 
 func (o GetResourceResourceAksServiceAccountUserImpersonationArrayOutput) ToGetResourceResourceAksServiceAccountUserImpersonationArrayOutputWithContext(ctx context.Context) GetResourceResourceAksServiceAccountUserImpersonationArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAksServiceAccountUserImpersonationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAksServiceAccountUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceAksServiceAccountUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAksServiceAccountUserImpersonationArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAksServiceAccountUserImpersonationOutput {
@@ -36026,6 +39682,12 @@ func (i GetResourceResourceAksUserImpersonationArgs) ToGetResourceResourceAksUse
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAksUserImpersonationOutput)
 }
 
+func (i GetResourceResourceAksUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAksUserImpersonation] {
+	return pulumix.Output[GetResourceResourceAksUserImpersonation]{
+		OutputState: i.ToGetResourceResourceAksUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAksUserImpersonationArrayInput is an input type that accepts GetResourceResourceAksUserImpersonationArray and GetResourceResourceAksUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAksUserImpersonationArrayInput` via:
 //
@@ -36051,6 +39713,12 @@ func (i GetResourceResourceAksUserImpersonationArray) ToGetResourceResourceAksUs
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAksUserImpersonationArrayOutput)
 }
 
+func (i GetResourceResourceAksUserImpersonationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAksUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceAksUserImpersonation]{
+		OutputState: i.ToGetResourceResourceAksUserImpersonationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAksUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAksUserImpersonationOutput) ElementType() reflect.Type {
@@ -36063,6 +39731,12 @@ func (o GetResourceResourceAksUserImpersonationOutput) ToGetResourceResourceAksU
 
 func (o GetResourceResourceAksUserImpersonationOutput) ToGetResourceResourceAksUserImpersonationOutputWithContext(ctx context.Context) GetResourceResourceAksUserImpersonationOutput {
 	return o
+}
+
+func (o GetResourceResourceAksUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAksUserImpersonation] {
+	return pulumix.Output[GetResourceResourceAksUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -36147,6 +39821,12 @@ func (o GetResourceResourceAksUserImpersonationArrayOutput) ToGetResourceResourc
 
 func (o GetResourceResourceAksUserImpersonationArrayOutput) ToGetResourceResourceAksUserImpersonationArrayOutputWithContext(ctx context.Context) GetResourceResourceAksUserImpersonationArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAksUserImpersonationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAksUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceAksUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAksUserImpersonationArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAksUserImpersonationOutput {
@@ -36240,6 +39920,12 @@ func (i GetResourceResourceAmazonEArgs) ToGetResourceResourceAmazonEOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEOutput)
 }
 
+func (i GetResourceResourceAmazonEArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonE] {
+	return pulumix.Output[GetResourceResourceAmazonE]{
+		OutputState: i.ToGetResourceResourceAmazonEOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAmazonEArrayInput is an input type that accepts GetResourceResourceAmazonEArray and GetResourceResourceAmazonEArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEArrayInput` via:
 //
@@ -36265,6 +39951,12 @@ func (i GetResourceResourceAmazonEArray) ToGetResourceResourceAmazonEArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEArrayOutput)
 }
 
+func (i GetResourceResourceAmazonEArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonE] {
+	return pulumix.Output[[]GetResourceResourceAmazonE]{
+		OutputState: i.ToGetResourceResourceAmazonEArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAmazonEOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAmazonEOutput) ElementType() reflect.Type {
@@ -36277,6 +39969,12 @@ func (o GetResourceResourceAmazonEOutput) ToGetResourceResourceAmazonEOutput() G
 
 func (o GetResourceResourceAmazonEOutput) ToGetResourceResourceAmazonEOutputWithContext(ctx context.Context) GetResourceResourceAmazonEOutput {
 	return o
+}
+
+func (o GetResourceResourceAmazonEOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonE] {
+	return pulumix.Output[GetResourceResourceAmazonE]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -36361,6 +40059,12 @@ func (o GetResourceResourceAmazonEArrayOutput) ToGetResourceResourceAmazonEArray
 
 func (o GetResourceResourceAmazonEArrayOutput) ToGetResourceResourceAmazonEArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonEArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAmazonEArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonE] {
+	return pulumix.Output[[]GetResourceResourceAmazonE]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAmazonEArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonEOutput {
@@ -36474,6 +40178,12 @@ func (i GetResourceResourceAmazonEkArgs) ToGetResourceResourceAmazonEkOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEkOutput)
 }
 
+func (i GetResourceResourceAmazonEkArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonEk] {
+	return pulumix.Output[GetResourceResourceAmazonEk]{
+		OutputState: i.ToGetResourceResourceAmazonEkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAmazonEkArrayInput is an input type that accepts GetResourceResourceAmazonEkArray and GetResourceResourceAmazonEkArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEkArrayInput` via:
 //
@@ -36499,6 +40209,12 @@ func (i GetResourceResourceAmazonEkArray) ToGetResourceResourceAmazonEkArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEkArrayOutput)
 }
 
+func (i GetResourceResourceAmazonEkArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonEk] {
+	return pulumix.Output[[]GetResourceResourceAmazonEk]{
+		OutputState: i.ToGetResourceResourceAmazonEkArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAmazonEkOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAmazonEkOutput) ElementType() reflect.Type {
@@ -36511,6 +40227,12 @@ func (o GetResourceResourceAmazonEkOutput) ToGetResourceResourceAmazonEkOutput()
 
 func (o GetResourceResourceAmazonEkOutput) ToGetResourceResourceAmazonEkOutputWithContext(ctx context.Context) GetResourceResourceAmazonEkOutput {
 	return o
+}
+
+func (o GetResourceResourceAmazonEkOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonEk] {
+	return pulumix.Output[GetResourceResourceAmazonEk]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -36622,6 +40344,12 @@ func (o GetResourceResourceAmazonEkArrayOutput) ToGetResourceResourceAmazonEkArr
 	return o
 }
 
+func (o GetResourceResourceAmazonEkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonEk] {
+	return pulumix.Output[[]GetResourceResourceAmazonEk]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceAmazonEkArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonEkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAmazonEk {
 		return vs[0].([]GetResourceResourceAmazonEk)[vs[1].(int)]
@@ -36725,6 +40453,12 @@ func (i GetResourceResourceAmazonEksInstanceProfileArgs) ToGetResourceResourceAm
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEksInstanceProfileOutput)
 }
 
+func (i GetResourceResourceAmazonEksInstanceProfileArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonEksInstanceProfile] {
+	return pulumix.Output[GetResourceResourceAmazonEksInstanceProfile]{
+		OutputState: i.ToGetResourceResourceAmazonEksInstanceProfileOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAmazonEksInstanceProfileArrayInput is an input type that accepts GetResourceResourceAmazonEksInstanceProfileArray and GetResourceResourceAmazonEksInstanceProfileArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEksInstanceProfileArrayInput` via:
 //
@@ -36750,6 +40484,12 @@ func (i GetResourceResourceAmazonEksInstanceProfileArray) ToGetResourceResourceA
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEksInstanceProfileArrayOutput)
 }
 
+func (i GetResourceResourceAmazonEksInstanceProfileArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonEksInstanceProfile] {
+	return pulumix.Output[[]GetResourceResourceAmazonEksInstanceProfile]{
+		OutputState: i.ToGetResourceResourceAmazonEksInstanceProfileArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAmazonEksInstanceProfileOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAmazonEksInstanceProfileOutput) ElementType() reflect.Type {
@@ -36762,6 +40502,12 @@ func (o GetResourceResourceAmazonEksInstanceProfileOutput) ToGetResourceResource
 
 func (o GetResourceResourceAmazonEksInstanceProfileOutput) ToGetResourceResourceAmazonEksInstanceProfileOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksInstanceProfileOutput {
 	return o
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonEksInstanceProfile] {
+	return pulumix.Output[GetResourceResourceAmazonEksInstanceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -36863,6 +40609,12 @@ func (o GetResourceResourceAmazonEksInstanceProfileArrayOutput) ToGetResourceRes
 
 func (o GetResourceResourceAmazonEksInstanceProfileArrayOutput) ToGetResourceResourceAmazonEksInstanceProfileArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksInstanceProfileArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonEksInstanceProfile] {
+	return pulumix.Output[[]GetResourceResourceAmazonEksInstanceProfile]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAmazonEksInstanceProfileArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonEksInstanceProfileOutput {
@@ -36968,6 +40720,12 @@ func (i GetResourceResourceAmazonEksInstanceProfileUserImpersonationArgs) ToGetR
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput)
 }
 
+func (i GetResourceResourceAmazonEksInstanceProfileUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonEksInstanceProfileUserImpersonation] {
+	return pulumix.Output[GetResourceResourceAmazonEksInstanceProfileUserImpersonation]{
+		OutputState: i.ToGetResourceResourceAmazonEksInstanceProfileUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayInput is an input type that accepts GetResourceResourceAmazonEksInstanceProfileUserImpersonationArray and GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayInput` via:
 //
@@ -36993,6 +40751,12 @@ func (i GetResourceResourceAmazonEksInstanceProfileUserImpersonationArray) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayOutput)
 }
 
+func (i GetResourceResourceAmazonEksInstanceProfileUserImpersonationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonEksInstanceProfileUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceAmazonEksInstanceProfileUserImpersonation]{
+		OutputState: i.ToGetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) ElementType() reflect.Type {
@@ -37005,6 +40769,12 @@ func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) ToGe
 
 func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) ToGetResourceResourceAmazonEksInstanceProfileUserImpersonationOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput {
 	return o
+}
+
+func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonEksInstanceProfileUserImpersonation] {
+	return pulumix.Output[GetResourceResourceAmazonEksInstanceProfileUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -37114,6 +40884,12 @@ func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayOutput)
 	return o
 }
 
+func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonEksInstanceProfileUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceAmazonEksInstanceProfileUserImpersonation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
 		return vs[0].([]GetResourceResourceAmazonEksInstanceProfileUserImpersonation)[vs[1].(int)]
@@ -37217,6 +40993,12 @@ func (i GetResourceResourceAmazonEksUserImpersonationArgs) ToGetResourceResource
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEksUserImpersonationOutput)
 }
 
+func (i GetResourceResourceAmazonEksUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonEksUserImpersonation] {
+	return pulumix.Output[GetResourceResourceAmazonEksUserImpersonation]{
+		OutputState: i.ToGetResourceResourceAmazonEksUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAmazonEksUserImpersonationArrayInput is an input type that accepts GetResourceResourceAmazonEksUserImpersonationArray and GetResourceResourceAmazonEksUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonEksUserImpersonationArrayInput` via:
 //
@@ -37242,6 +41024,12 @@ func (i GetResourceResourceAmazonEksUserImpersonationArray) ToGetResourceResourc
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEksUserImpersonationArrayOutput)
 }
 
+func (i GetResourceResourceAmazonEksUserImpersonationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonEksUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceAmazonEksUserImpersonation]{
+		OutputState: i.ToGetResourceResourceAmazonEksUserImpersonationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAmazonEksUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAmazonEksUserImpersonationOutput) ElementType() reflect.Type {
@@ -37254,6 +41042,12 @@ func (o GetResourceResourceAmazonEksUserImpersonationOutput) ToGetResourceResour
 
 func (o GetResourceResourceAmazonEksUserImpersonationOutput) ToGetResourceResourceAmazonEksUserImpersonationOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksUserImpersonationOutput {
 	return o
+}
+
+func (o GetResourceResourceAmazonEksUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonEksUserImpersonation] {
+	return pulumix.Output[GetResourceResourceAmazonEksUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -37355,6 +41149,12 @@ func (o GetResourceResourceAmazonEksUserImpersonationArrayOutput) ToGetResourceR
 	return o
 }
 
+func (o GetResourceResourceAmazonEksUserImpersonationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonEksUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceAmazonEksUserImpersonation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceAmazonEksUserImpersonationArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonEksUserImpersonationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAmazonEksUserImpersonation {
 		return vs[0].([]GetResourceResourceAmazonEksUserImpersonation)[vs[1].(int)]
@@ -37442,6 +41242,12 @@ func (i GetResourceResourceAmazonmqAmqp091Args) ToGetResourceResourceAmazonmqAmq
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonmqAmqp091Output)
 }
 
+func (i GetResourceResourceAmazonmqAmqp091Args) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonmqAmqp091] {
+	return pulumix.Output[GetResourceResourceAmazonmqAmqp091]{
+		OutputState: i.ToGetResourceResourceAmazonmqAmqp091OutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAmazonmqAmqp091ArrayInput is an input type that accepts GetResourceResourceAmazonmqAmqp091Array and GetResourceResourceAmazonmqAmqp091ArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAmazonmqAmqp091ArrayInput` via:
 //
@@ -37467,6 +41273,12 @@ func (i GetResourceResourceAmazonmqAmqp091Array) ToGetResourceResourceAmazonmqAm
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonmqAmqp091ArrayOutput)
 }
 
+func (i GetResourceResourceAmazonmqAmqp091Array) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonmqAmqp091] {
+	return pulumix.Output[[]GetResourceResourceAmazonmqAmqp091]{
+		OutputState: i.ToGetResourceResourceAmazonmqAmqp091ArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAmazonmqAmqp091Output struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAmazonmqAmqp091Output) ElementType() reflect.Type {
@@ -37479,6 +41291,12 @@ func (o GetResourceResourceAmazonmqAmqp091Output) ToGetResourceResourceAmazonmqA
 
 func (o GetResourceResourceAmazonmqAmqp091Output) ToGetResourceResourceAmazonmqAmqp091OutputWithContext(ctx context.Context) GetResourceResourceAmazonmqAmqp091Output {
 	return o
+}
+
+func (o GetResourceResourceAmazonmqAmqp091Output) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAmazonmqAmqp091] {
+	return pulumix.Output[GetResourceResourceAmazonmqAmqp091]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -37558,6 +41376,12 @@ func (o GetResourceResourceAmazonmqAmqp091ArrayOutput) ToGetResourceResourceAmaz
 
 func (o GetResourceResourceAmazonmqAmqp091ArrayOutput) ToGetResourceResourceAmazonmqAmqp091ArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonmqAmqp091ArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAmazonmqAmqp091ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAmazonmqAmqp091] {
+	return pulumix.Output[[]GetResourceResourceAmazonmqAmqp091]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAmazonmqAmqp091ArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonmqAmqp091Output {
@@ -37651,6 +41475,12 @@ func (i GetResourceResourceAthenaArgs) ToGetResourceResourceAthenaOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAthenaOutput)
 }
 
+func (i GetResourceResourceAthenaArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAthena] {
+	return pulumix.Output[GetResourceResourceAthena]{
+		OutputState: i.ToGetResourceResourceAthenaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAthenaArrayInput is an input type that accepts GetResourceResourceAthenaArray and GetResourceResourceAthenaArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAthenaArrayInput` via:
 //
@@ -37676,6 +41506,12 @@ func (i GetResourceResourceAthenaArray) ToGetResourceResourceAthenaArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAthenaArrayOutput)
 }
 
+func (i GetResourceResourceAthenaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAthena] {
+	return pulumix.Output[[]GetResourceResourceAthena]{
+		OutputState: i.ToGetResourceResourceAthenaArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAthenaOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAthenaOutput) ElementType() reflect.Type {
@@ -37688,6 +41524,12 @@ func (o GetResourceResourceAthenaOutput) ToGetResourceResourceAthenaOutput() Get
 
 func (o GetResourceResourceAthenaOutput) ToGetResourceResourceAthenaOutputWithContext(ctx context.Context) GetResourceResourceAthenaOutput {
 	return o
+}
+
+func (o GetResourceResourceAthenaOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAthena] {
+	return pulumix.Output[GetResourceResourceAthena]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -37772,6 +41614,12 @@ func (o GetResourceResourceAthenaArrayOutput) ToGetResourceResourceAthenaArrayOu
 
 func (o GetResourceResourceAthenaArrayOutput) ToGetResourceResourceAthenaArrayOutputWithContext(ctx context.Context) GetResourceResourceAthenaArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAthenaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAthena] {
+	return pulumix.Output[[]GetResourceResourceAthena]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAthenaArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAthenaOutput {
@@ -37869,6 +41717,12 @@ func (i GetResourceResourceAuroraMysqlArgs) ToGetResourceResourceAuroraMysqlOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAuroraMysqlOutput)
 }
 
+func (i GetResourceResourceAuroraMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAuroraMysql] {
+	return pulumix.Output[GetResourceResourceAuroraMysql]{
+		OutputState: i.ToGetResourceResourceAuroraMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAuroraMysqlArrayInput is an input type that accepts GetResourceResourceAuroraMysqlArray and GetResourceResourceAuroraMysqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAuroraMysqlArrayInput` via:
 //
@@ -37894,6 +41748,12 @@ func (i GetResourceResourceAuroraMysqlArray) ToGetResourceResourceAuroraMysqlArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAuroraMysqlArrayOutput)
 }
 
+func (i GetResourceResourceAuroraMysqlArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAuroraMysql] {
+	return pulumix.Output[[]GetResourceResourceAuroraMysql]{
+		OutputState: i.ToGetResourceResourceAuroraMysqlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAuroraMysqlOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAuroraMysqlOutput) ElementType() reflect.Type {
@@ -37906,6 +41766,12 @@ func (o GetResourceResourceAuroraMysqlOutput) ToGetResourceResourceAuroraMysqlOu
 
 func (o GetResourceResourceAuroraMysqlOutput) ToGetResourceResourceAuroraMysqlOutputWithContext(ctx context.Context) GetResourceResourceAuroraMysqlOutput {
 	return o
+}
+
+func (o GetResourceResourceAuroraMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAuroraMysql] {
+	return pulumix.Output[GetResourceResourceAuroraMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -37995,6 +41861,12 @@ func (o GetResourceResourceAuroraMysqlArrayOutput) ToGetResourceResourceAuroraMy
 
 func (o GetResourceResourceAuroraMysqlArrayOutput) ToGetResourceResourceAuroraMysqlArrayOutputWithContext(ctx context.Context) GetResourceResourceAuroraMysqlArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAuroraMysqlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAuroraMysql] {
+	return pulumix.Output[[]GetResourceResourceAuroraMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAuroraMysqlArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAuroraMysqlOutput {
@@ -38088,6 +41960,12 @@ func (i GetResourceResourceAuroraPostgreArgs) ToGetResourceResourceAuroraPostgre
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAuroraPostgreOutput)
 }
 
+func (i GetResourceResourceAuroraPostgreArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAuroraPostgre] {
+	return pulumix.Output[GetResourceResourceAuroraPostgre]{
+		OutputState: i.ToGetResourceResourceAuroraPostgreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAuroraPostgreArrayInput is an input type that accepts GetResourceResourceAuroraPostgreArray and GetResourceResourceAuroraPostgreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAuroraPostgreArrayInput` via:
 //
@@ -38113,6 +41991,12 @@ func (i GetResourceResourceAuroraPostgreArray) ToGetResourceResourceAuroraPostgr
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAuroraPostgreArrayOutput)
 }
 
+func (i GetResourceResourceAuroraPostgreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAuroraPostgre] {
+	return pulumix.Output[[]GetResourceResourceAuroraPostgre]{
+		OutputState: i.ToGetResourceResourceAuroraPostgreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAuroraPostgreOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAuroraPostgreOutput) ElementType() reflect.Type {
@@ -38125,6 +42009,12 @@ func (o GetResourceResourceAuroraPostgreOutput) ToGetResourceResourceAuroraPostg
 
 func (o GetResourceResourceAuroraPostgreOutput) ToGetResourceResourceAuroraPostgreOutputWithContext(ctx context.Context) GetResourceResourceAuroraPostgreOutput {
 	return o
+}
+
+func (o GetResourceResourceAuroraPostgreOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAuroraPostgre] {
+	return pulumix.Output[GetResourceResourceAuroraPostgre]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -38211,10 +42101,263 @@ func (o GetResourceResourceAuroraPostgreArrayOutput) ToGetResourceResourceAurora
 	return o
 }
 
+func (o GetResourceResourceAuroraPostgreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAuroraPostgre] {
+	return pulumix.Output[[]GetResourceResourceAuroraPostgre]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceAuroraPostgreArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAuroraPostgreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAuroraPostgre {
 		return vs[0].([]GetResourceResourceAuroraPostgre)[vs[1].(int)]
 	}).(GetResourceResourceAuroraPostgreOutput)
+}
+
+type GetResourceResourceAuroraPostgresIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase *bool `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceAuroraPostgresIamInput is an input type that accepts GetResourceResourceAuroraPostgresIamArgs and GetResourceResourceAuroraPostgresIamOutput values.
+// You can construct a concrete instance of `GetResourceResourceAuroraPostgresIamInput` via:
+//
+//	GetResourceResourceAuroraPostgresIamArgs{...}
+type GetResourceResourceAuroraPostgresIamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAuroraPostgresIamOutput() GetResourceResourceAuroraPostgresIamOutput
+	ToGetResourceResourceAuroraPostgresIamOutputWithContext(context.Context) GetResourceResourceAuroraPostgresIamOutput
+}
+
+type GetResourceResourceAuroraPostgresIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase pulumi.BoolPtrInput `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceAuroraPostgresIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAuroraPostgresIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceAuroraPostgresIamArgs) ToGetResourceResourceAuroraPostgresIamOutput() GetResourceResourceAuroraPostgresIamOutput {
+	return i.ToGetResourceResourceAuroraPostgresIamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAuroraPostgresIamArgs) ToGetResourceResourceAuroraPostgresIamOutputWithContext(ctx context.Context) GetResourceResourceAuroraPostgresIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAuroraPostgresIamOutput)
+}
+
+func (i GetResourceResourceAuroraPostgresIamArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAuroraPostgresIam] {
+	return pulumix.Output[GetResourceResourceAuroraPostgresIam]{
+		OutputState: i.ToGetResourceResourceAuroraPostgresIamOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetResourceResourceAuroraPostgresIamArrayInput is an input type that accepts GetResourceResourceAuroraPostgresIamArray and GetResourceResourceAuroraPostgresIamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAuroraPostgresIamArrayInput` via:
+//
+//	GetResourceResourceAuroraPostgresIamArray{ GetResourceResourceAuroraPostgresIamArgs{...} }
+type GetResourceResourceAuroraPostgresIamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAuroraPostgresIamArrayOutput() GetResourceResourceAuroraPostgresIamArrayOutput
+	ToGetResourceResourceAuroraPostgresIamArrayOutputWithContext(context.Context) GetResourceResourceAuroraPostgresIamArrayOutput
+}
+
+type GetResourceResourceAuroraPostgresIamArray []GetResourceResourceAuroraPostgresIamInput
+
+func (GetResourceResourceAuroraPostgresIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAuroraPostgresIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceAuroraPostgresIamArray) ToGetResourceResourceAuroraPostgresIamArrayOutput() GetResourceResourceAuroraPostgresIamArrayOutput {
+	return i.ToGetResourceResourceAuroraPostgresIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAuroraPostgresIamArray) ToGetResourceResourceAuroraPostgresIamArrayOutputWithContext(ctx context.Context) GetResourceResourceAuroraPostgresIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAuroraPostgresIamArrayOutput)
+}
+
+func (i GetResourceResourceAuroraPostgresIamArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAuroraPostgresIam] {
+	return pulumix.Output[[]GetResourceResourceAuroraPostgresIam]{
+		OutputState: i.ToGetResourceResourceAuroraPostgresIamArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetResourceResourceAuroraPostgresIamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAuroraPostgresIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAuroraPostgresIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceAuroraPostgresIamOutput) ToGetResourceResourceAuroraPostgresIamOutput() GetResourceResourceAuroraPostgresIamOutput {
+	return o
+}
+
+func (o GetResourceResourceAuroraPostgresIamOutput) ToGetResourceResourceAuroraPostgresIamOutputWithContext(ctx context.Context) GetResourceResourceAuroraPostgresIamOutput {
+	return o
+}
+
+func (o GetResourceResourceAuroraPostgresIamOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAuroraPostgresIam] {
+	return pulumix.Output[GetResourceResourceAuroraPostgresIam]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAuroraPostgresIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceAuroraPostgresIamOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAuroraPostgresIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAuroraPostgresIamOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAuroraPostgresIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAuroraPostgresIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o GetResourceResourceAuroraPostgresIamOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAuroraPostgresIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceAuroraPostgresIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceAuroraPostgresIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o GetResourceResourceAuroraPostgresIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAuroraPostgresIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAuroraPostgresIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAuroraPostgresIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceAuroraPostgresIamOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceAuroraPostgresIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAuroraPostgresIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAuroraPostgresIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceAuroraPostgresIamArrayOutput) ToGetResourceResourceAuroraPostgresIamArrayOutput() GetResourceResourceAuroraPostgresIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAuroraPostgresIamArrayOutput) ToGetResourceResourceAuroraPostgresIamArrayOutputWithContext(ctx context.Context) GetResourceResourceAuroraPostgresIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAuroraPostgresIamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAuroraPostgresIam] {
+	return pulumix.Output[[]GetResourceResourceAuroraPostgresIam]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetResourceResourceAuroraPostgresIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAuroraPostgresIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAuroraPostgresIam {
+		return vs[0].([]GetResourceResourceAuroraPostgresIam)[vs[1].(int)]
+	}).(GetResourceResourceAuroraPostgresIamOutput)
 }
 
 type GetResourceResourceAw struct {
@@ -38298,6 +42441,12 @@ func (i GetResourceResourceAwArgs) ToGetResourceResourceAwOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwOutput)
 }
 
+func (i GetResourceResourceAwArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAw] {
+	return pulumix.Output[GetResourceResourceAw]{
+		OutputState: i.ToGetResourceResourceAwOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAwArrayInput is an input type that accepts GetResourceResourceAwArray and GetResourceResourceAwArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAwArrayInput` via:
 //
@@ -38323,6 +42472,12 @@ func (i GetResourceResourceAwArray) ToGetResourceResourceAwArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwArrayOutput)
 }
 
+func (i GetResourceResourceAwArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAw] {
+	return pulumix.Output[[]GetResourceResourceAw]{
+		OutputState: i.ToGetResourceResourceAwArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAwOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAwOutput) ElementType() reflect.Type {
@@ -38335,6 +42490,12 @@ func (o GetResourceResourceAwOutput) ToGetResourceResourceAwOutput() GetResource
 
 func (o GetResourceResourceAwOutput) ToGetResourceResourceAwOutputWithContext(ctx context.Context) GetResourceResourceAwOutput {
 	return o
+}
+
+func (o GetResourceResourceAwOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAw] {
+	return pulumix.Output[GetResourceResourceAw]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -38414,6 +42575,12 @@ func (o GetResourceResourceAwArrayOutput) ToGetResourceResourceAwArrayOutput() G
 
 func (o GetResourceResourceAwArrayOutput) ToGetResourceResourceAwArrayOutputWithContext(ctx context.Context) GetResourceResourceAwArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAwArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAw] {
+	return pulumix.Output[[]GetResourceResourceAw]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAwArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAwOutput {
@@ -38511,6 +42678,12 @@ func (i GetResourceResourceAwsConsoleArgs) ToGetResourceResourceAwsConsoleOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsConsoleOutput)
 }
 
+func (i GetResourceResourceAwsConsoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAwsConsole] {
+	return pulumix.Output[GetResourceResourceAwsConsole]{
+		OutputState: i.ToGetResourceResourceAwsConsoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAwsConsoleArrayInput is an input type that accepts GetResourceResourceAwsConsoleArray and GetResourceResourceAwsConsoleArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAwsConsoleArrayInput` via:
 //
@@ -38536,6 +42709,12 @@ func (i GetResourceResourceAwsConsoleArray) ToGetResourceResourceAwsConsoleArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsConsoleArrayOutput)
 }
 
+func (i GetResourceResourceAwsConsoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAwsConsole] {
+	return pulumix.Output[[]GetResourceResourceAwsConsole]{
+		OutputState: i.ToGetResourceResourceAwsConsoleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAwsConsoleOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAwsConsoleOutput) ElementType() reflect.Type {
@@ -38548,6 +42727,12 @@ func (o GetResourceResourceAwsConsoleOutput) ToGetResourceResourceAwsConsoleOutp
 
 func (o GetResourceResourceAwsConsoleOutput) ToGetResourceResourceAwsConsoleOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleOutput {
 	return o
+}
+
+func (o GetResourceResourceAwsConsoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAwsConsole] {
+	return pulumix.Output[GetResourceResourceAwsConsole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -38637,6 +42822,12 @@ func (o GetResourceResourceAwsConsoleArrayOutput) ToGetResourceResourceAwsConsol
 
 func (o GetResourceResourceAwsConsoleArrayOutput) ToGetResourceResourceAwsConsoleArrayOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAwsConsoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAwsConsole] {
+	return pulumix.Output[[]GetResourceResourceAwsConsole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAwsConsoleArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAwsConsoleOutput {
@@ -38738,6 +42929,12 @@ func (i GetResourceResourceAwsConsoleStaticKeyPairArgs) ToGetResourceResourceAws
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsConsoleStaticKeyPairOutput)
 }
 
+func (i GetResourceResourceAwsConsoleStaticKeyPairArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAwsConsoleStaticKeyPair] {
+	return pulumix.Output[GetResourceResourceAwsConsoleStaticKeyPair]{
+		OutputState: i.ToGetResourceResourceAwsConsoleStaticKeyPairOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAwsConsoleStaticKeyPairArrayInput is an input type that accepts GetResourceResourceAwsConsoleStaticKeyPairArray and GetResourceResourceAwsConsoleStaticKeyPairArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAwsConsoleStaticKeyPairArrayInput` via:
 //
@@ -38763,6 +42960,12 @@ func (i GetResourceResourceAwsConsoleStaticKeyPairArray) ToGetResourceResourceAw
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsConsoleStaticKeyPairArrayOutput)
 }
 
+func (i GetResourceResourceAwsConsoleStaticKeyPairArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAwsConsoleStaticKeyPair] {
+	return pulumix.Output[[]GetResourceResourceAwsConsoleStaticKeyPair]{
+		OutputState: i.ToGetResourceResourceAwsConsoleStaticKeyPairArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAwsConsoleStaticKeyPairOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAwsConsoleStaticKeyPairOutput) ElementType() reflect.Type {
@@ -38775,6 +42978,12 @@ func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) ToGetResourceResourceA
 
 func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) ToGetResourceResourceAwsConsoleStaticKeyPairOutputWithContext(ctx context.Context) GetResourceResourceAwsConsoleStaticKeyPairOutput {
 	return o
+}
+
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAwsConsoleStaticKeyPair] {
+	return pulumix.Output[GetResourceResourceAwsConsoleStaticKeyPair]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -38871,6 +43080,12 @@ func (o GetResourceResourceAwsConsoleStaticKeyPairArrayOutput) ToGetResourceReso
 	return o
 }
 
+func (o GetResourceResourceAwsConsoleStaticKeyPairArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAwsConsoleStaticKeyPair] {
+	return pulumix.Output[[]GetResourceResourceAwsConsoleStaticKeyPair]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceAwsConsoleStaticKeyPairArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAwsConsoleStaticKeyPairOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAwsConsoleStaticKeyPair {
 		return vs[0].([]GetResourceResourceAwsConsoleStaticKeyPair)[vs[1].(int)]
@@ -38952,6 +43167,12 @@ func (i GetResourceResourceAzureArgs) ToGetResourceResourceAzureOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureOutput)
 }
 
+func (i GetResourceResourceAzureArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzure] {
+	return pulumix.Output[GetResourceResourceAzure]{
+		OutputState: i.ToGetResourceResourceAzureOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAzureArrayInput is an input type that accepts GetResourceResourceAzureArray and GetResourceResourceAzureArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzureArrayInput` via:
 //
@@ -38977,6 +43198,12 @@ func (i GetResourceResourceAzureArray) ToGetResourceResourceAzureArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureArrayOutput)
 }
 
+func (i GetResourceResourceAzureArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzure] {
+	return pulumix.Output[[]GetResourceResourceAzure]{
+		OutputState: i.ToGetResourceResourceAzureArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAzureOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAzureOutput) ElementType() reflect.Type {
@@ -38989,6 +43216,12 @@ func (o GetResourceResourceAzureOutput) ToGetResourceResourceAzureOutput() GetRe
 
 func (o GetResourceResourceAzureOutput) ToGetResourceResourceAzureOutputWithContext(ctx context.Context) GetResourceResourceAzureOutput {
 	return o
+}
+
+func (o GetResourceResourceAzureOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzure] {
+	return pulumix.Output[GetResourceResourceAzure]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The application ID to authenticate with.
@@ -39059,6 +43292,12 @@ func (o GetResourceResourceAzureArrayOutput) ToGetResourceResourceAzureArrayOutp
 
 func (o GetResourceResourceAzureArrayOutput) ToGetResourceResourceAzureArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAzureArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzure] {
+	return pulumix.Output[[]GetResourceResourceAzure]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAzureArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAzureOutput {
@@ -39142,6 +43381,12 @@ func (i GetResourceResourceAzureCertificateArgs) ToGetResourceResourceAzureCerti
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureCertificateOutput)
 }
 
+func (i GetResourceResourceAzureCertificateArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzureCertificate] {
+	return pulumix.Output[GetResourceResourceAzureCertificate]{
+		OutputState: i.ToGetResourceResourceAzureCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAzureCertificateArrayInput is an input type that accepts GetResourceResourceAzureCertificateArray and GetResourceResourceAzureCertificateArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzureCertificateArrayInput` via:
 //
@@ -39167,6 +43412,12 @@ func (i GetResourceResourceAzureCertificateArray) ToGetResourceResourceAzureCert
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureCertificateArrayOutput)
 }
 
+func (i GetResourceResourceAzureCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzureCertificate] {
+	return pulumix.Output[[]GetResourceResourceAzureCertificate]{
+		OutputState: i.ToGetResourceResourceAzureCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAzureCertificateOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAzureCertificateOutput) ElementType() reflect.Type {
@@ -39179,6 +43430,12 @@ func (o GetResourceResourceAzureCertificateOutput) ToGetResourceResourceAzureCer
 
 func (o GetResourceResourceAzureCertificateOutput) ToGetResourceResourceAzureCertificateOutputWithContext(ctx context.Context) GetResourceResourceAzureCertificateOutput {
 	return o
+}
+
+func (o GetResourceResourceAzureCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzureCertificate] {
+	return pulumix.Output[GetResourceResourceAzureCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The application ID to authenticate with.
@@ -39249,6 +43506,12 @@ func (o GetResourceResourceAzureCertificateArrayOutput) ToGetResourceResourceAzu
 
 func (o GetResourceResourceAzureCertificateArrayOutput) ToGetResourceResourceAzureCertificateArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureCertificateArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAzureCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzureCertificate] {
+	return pulumix.Output[[]GetResourceResourceAzureCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAzureCertificateArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAzureCertificateOutput {
@@ -39346,6 +43609,12 @@ func (i GetResourceResourceAzureMysqlArgs) ToGetResourceResourceAzureMysqlOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureMysqlOutput)
 }
 
+func (i GetResourceResourceAzureMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzureMysql] {
+	return pulumix.Output[GetResourceResourceAzureMysql]{
+		OutputState: i.ToGetResourceResourceAzureMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAzureMysqlArrayInput is an input type that accepts GetResourceResourceAzureMysqlArray and GetResourceResourceAzureMysqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzureMysqlArrayInput` via:
 //
@@ -39371,6 +43640,12 @@ func (i GetResourceResourceAzureMysqlArray) ToGetResourceResourceAzureMysqlArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzureMysqlArrayOutput)
 }
 
+func (i GetResourceResourceAzureMysqlArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzureMysql] {
+	return pulumix.Output[[]GetResourceResourceAzureMysql]{
+		OutputState: i.ToGetResourceResourceAzureMysqlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAzureMysqlOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAzureMysqlOutput) ElementType() reflect.Type {
@@ -39383,6 +43658,12 @@ func (o GetResourceResourceAzureMysqlOutput) ToGetResourceResourceAzureMysqlOutp
 
 func (o GetResourceResourceAzureMysqlOutput) ToGetResourceResourceAzureMysqlOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlOutput {
 	return o
+}
+
+func (o GetResourceResourceAzureMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzureMysql] {
+	return pulumix.Output[GetResourceResourceAzureMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -39472,6 +43753,12 @@ func (o GetResourceResourceAzureMysqlArrayOutput) ToGetResourceResourceAzureMysq
 
 func (o GetResourceResourceAzureMysqlArrayOutput) ToGetResourceResourceAzureMysqlArrayOutputWithContext(ctx context.Context) GetResourceResourceAzureMysqlArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAzureMysqlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzureMysql] {
+	return pulumix.Output[[]GetResourceResourceAzureMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAzureMysqlArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAzureMysqlOutput {
@@ -39565,6 +43852,12 @@ func (i GetResourceResourceAzurePostgreArgs) ToGetResourceResourceAzurePostgreOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzurePostgreOutput)
 }
 
+func (i GetResourceResourceAzurePostgreArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzurePostgre] {
+	return pulumix.Output[GetResourceResourceAzurePostgre]{
+		OutputState: i.ToGetResourceResourceAzurePostgreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAzurePostgreArrayInput is an input type that accepts GetResourceResourceAzurePostgreArray and GetResourceResourceAzurePostgreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzurePostgreArrayInput` via:
 //
@@ -39590,6 +43883,12 @@ func (i GetResourceResourceAzurePostgreArray) ToGetResourceResourceAzurePostgreA
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzurePostgreArrayOutput)
 }
 
+func (i GetResourceResourceAzurePostgreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzurePostgre] {
+	return pulumix.Output[[]GetResourceResourceAzurePostgre]{
+		OutputState: i.ToGetResourceResourceAzurePostgreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAzurePostgreOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAzurePostgreOutput) ElementType() reflect.Type {
@@ -39602,6 +43901,12 @@ func (o GetResourceResourceAzurePostgreOutput) ToGetResourceResourceAzurePostgre
 
 func (o GetResourceResourceAzurePostgreOutput) ToGetResourceResourceAzurePostgreOutputWithContext(ctx context.Context) GetResourceResourceAzurePostgreOutput {
 	return o
+}
+
+func (o GetResourceResourceAzurePostgreOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzurePostgre] {
+	return pulumix.Output[GetResourceResourceAzurePostgre]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -39686,6 +43991,12 @@ func (o GetResourceResourceAzurePostgreArrayOutput) ToGetResourceResourceAzurePo
 
 func (o GetResourceResourceAzurePostgreArrayOutput) ToGetResourceResourceAzurePostgreArrayOutputWithContext(ctx context.Context) GetResourceResourceAzurePostgreArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceAzurePostgreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzurePostgre] {
+	return pulumix.Output[[]GetResourceResourceAzurePostgre]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceAzurePostgreArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAzurePostgreOutput {
@@ -39783,6 +44094,12 @@ func (i GetResourceResourceAzurePostgresManagedIdentityArgs) ToGetResourceResour
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzurePostgresManagedIdentityOutput)
 }
 
+func (i GetResourceResourceAzurePostgresManagedIdentityArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzurePostgresManagedIdentity] {
+	return pulumix.Output[GetResourceResourceAzurePostgresManagedIdentity]{
+		OutputState: i.ToGetResourceResourceAzurePostgresManagedIdentityOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceAzurePostgresManagedIdentityArrayInput is an input type that accepts GetResourceResourceAzurePostgresManagedIdentityArray and GetResourceResourceAzurePostgresManagedIdentityArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceAzurePostgresManagedIdentityArrayInput` via:
 //
@@ -39808,6 +44125,12 @@ func (i GetResourceResourceAzurePostgresManagedIdentityArray) ToGetResourceResou
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAzurePostgresManagedIdentityArrayOutput)
 }
 
+func (i GetResourceResourceAzurePostgresManagedIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzurePostgresManagedIdentity] {
+	return pulumix.Output[[]GetResourceResourceAzurePostgresManagedIdentity]{
+		OutputState: i.ToGetResourceResourceAzurePostgresManagedIdentityArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceAzurePostgresManagedIdentityOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceAzurePostgresManagedIdentityOutput) ElementType() reflect.Type {
@@ -39820,6 +44143,12 @@ func (o GetResourceResourceAzurePostgresManagedIdentityOutput) ToGetResourceReso
 
 func (o GetResourceResourceAzurePostgresManagedIdentityOutput) ToGetResourceResourceAzurePostgresManagedIdentityOutputWithContext(ctx context.Context) GetResourceResourceAzurePostgresManagedIdentityOutput {
 	return o
+}
+
+func (o GetResourceResourceAzurePostgresManagedIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceAzurePostgresManagedIdentity] {
+	return pulumix.Output[GetResourceResourceAzurePostgresManagedIdentity]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -39911,6 +44240,12 @@ func (o GetResourceResourceAzurePostgresManagedIdentityArrayOutput) ToGetResourc
 	return o
 }
 
+func (o GetResourceResourceAzurePostgresManagedIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceAzurePostgresManagedIdentity] {
+	return pulumix.Output[[]GetResourceResourceAzurePostgresManagedIdentity]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceAzurePostgresManagedIdentityArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAzurePostgresManagedIdentityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAzurePostgresManagedIdentity {
 		return vs[0].([]GetResourceResourceAzurePostgresManagedIdentity)[vs[1].(int)]
@@ -39994,6 +44329,12 @@ func (i GetResourceResourceBigQueryArgs) ToGetResourceResourceBigQueryOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceBigQueryOutput)
 }
 
+func (i GetResourceResourceBigQueryArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceBigQuery] {
+	return pulumix.Output[GetResourceResourceBigQuery]{
+		OutputState: i.ToGetResourceResourceBigQueryOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceBigQueryArrayInput is an input type that accepts GetResourceResourceBigQueryArray and GetResourceResourceBigQueryArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceBigQueryArrayInput` via:
 //
@@ -40019,6 +44360,12 @@ func (i GetResourceResourceBigQueryArray) ToGetResourceResourceBigQueryArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceBigQueryArrayOutput)
 }
 
+func (i GetResourceResourceBigQueryArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceBigQuery] {
+	return pulumix.Output[[]GetResourceResourceBigQuery]{
+		OutputState: i.ToGetResourceResourceBigQueryArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceBigQueryOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceBigQueryOutput) ElementType() reflect.Type {
@@ -40031,6 +44378,12 @@ func (o GetResourceResourceBigQueryOutput) ToGetResourceResourceBigQueryOutput()
 
 func (o GetResourceResourceBigQueryOutput) ToGetResourceResourceBigQueryOutputWithContext(ctx context.Context) GetResourceResourceBigQueryOutput {
 	return o
+}
+
+func (o GetResourceResourceBigQueryOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceBigQuery] {
+	return pulumix.Output[GetResourceResourceBigQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -40105,6 +44458,12 @@ func (o GetResourceResourceBigQueryArrayOutput) ToGetResourceResourceBigQueryArr
 
 func (o GetResourceResourceBigQueryArrayOutput) ToGetResourceResourceBigQueryArrayOutputWithContext(ctx context.Context) GetResourceResourceBigQueryArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceBigQueryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceBigQuery] {
+	return pulumix.Output[[]GetResourceResourceBigQuery]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceBigQueryArrayOutput) Index(i pulumi.IntInput) GetResourceResourceBigQueryOutput {
@@ -40194,6 +44553,12 @@ func (i GetResourceResourceCassandraArgs) ToGetResourceResourceCassandraOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCassandraOutput)
 }
 
+func (i GetResourceResourceCassandraArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceCassandra] {
+	return pulumix.Output[GetResourceResourceCassandra]{
+		OutputState: i.ToGetResourceResourceCassandraOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceCassandraArrayInput is an input type that accepts GetResourceResourceCassandraArray and GetResourceResourceCassandraArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceCassandraArrayInput` via:
 //
@@ -40219,6 +44584,12 @@ func (i GetResourceResourceCassandraArray) ToGetResourceResourceCassandraArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCassandraArrayOutput)
 }
 
+func (i GetResourceResourceCassandraArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceCassandra] {
+	return pulumix.Output[[]GetResourceResourceCassandra]{
+		OutputState: i.ToGetResourceResourceCassandraArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceCassandraOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceCassandraOutput) ElementType() reflect.Type {
@@ -40231,6 +44602,12 @@ func (o GetResourceResourceCassandraOutput) ToGetResourceResourceCassandraOutput
 
 func (o GetResourceResourceCassandraOutput) ToGetResourceResourceCassandraOutputWithContext(ctx context.Context) GetResourceResourceCassandraOutput {
 	return o
+}
+
+func (o GetResourceResourceCassandraOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceCassandra] {
+	return pulumix.Output[GetResourceResourceCassandra]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -40310,6 +44687,12 @@ func (o GetResourceResourceCassandraArrayOutput) ToGetResourceResourceCassandraA
 
 func (o GetResourceResourceCassandraArrayOutput) ToGetResourceResourceCassandraArrayOutputWithContext(ctx context.Context) GetResourceResourceCassandraArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceCassandraArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceCassandra] {
+	return pulumix.Output[[]GetResourceResourceCassandra]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceCassandraArrayOutput) Index(i pulumi.IntInput) GetResourceResourceCassandraOutput {
@@ -40403,6 +44786,12 @@ func (i GetResourceResourceCitusArgs) ToGetResourceResourceCitusOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCitusOutput)
 }
 
+func (i GetResourceResourceCitusArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceCitus] {
+	return pulumix.Output[GetResourceResourceCitus]{
+		OutputState: i.ToGetResourceResourceCitusOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceCitusArrayInput is an input type that accepts GetResourceResourceCitusArray and GetResourceResourceCitusArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceCitusArrayInput` via:
 //
@@ -40428,6 +44817,12 @@ func (i GetResourceResourceCitusArray) ToGetResourceResourceCitusArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCitusArrayOutput)
 }
 
+func (i GetResourceResourceCitusArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceCitus] {
+	return pulumix.Output[[]GetResourceResourceCitus]{
+		OutputState: i.ToGetResourceResourceCitusArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceCitusOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceCitusOutput) ElementType() reflect.Type {
@@ -40440,6 +44835,12 @@ func (o GetResourceResourceCitusOutput) ToGetResourceResourceCitusOutput() GetRe
 
 func (o GetResourceResourceCitusOutput) ToGetResourceResourceCitusOutputWithContext(ctx context.Context) GetResourceResourceCitusOutput {
 	return o
+}
+
+func (o GetResourceResourceCitusOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceCitus] {
+	return pulumix.Output[GetResourceResourceCitus]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -40524,6 +44925,12 @@ func (o GetResourceResourceCitusArrayOutput) ToGetResourceResourceCitusArrayOutp
 
 func (o GetResourceResourceCitusArrayOutput) ToGetResourceResourceCitusArrayOutputWithContext(ctx context.Context) GetResourceResourceCitusArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceCitusArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceCitus] {
+	return pulumix.Output[[]GetResourceResourceCitus]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceCitusArrayOutput) Index(i pulumi.IntInput) GetResourceResourceCitusOutput {
@@ -40621,6 +45028,12 @@ func (i GetResourceResourceClustrixArgs) ToGetResourceResourceClustrixOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceClustrixOutput)
 }
 
+func (i GetResourceResourceClustrixArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceClustrix] {
+	return pulumix.Output[GetResourceResourceClustrix]{
+		OutputState: i.ToGetResourceResourceClustrixOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceClustrixArrayInput is an input type that accepts GetResourceResourceClustrixArray and GetResourceResourceClustrixArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceClustrixArrayInput` via:
 //
@@ -40646,6 +45059,12 @@ func (i GetResourceResourceClustrixArray) ToGetResourceResourceClustrixArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceClustrixArrayOutput)
 }
 
+func (i GetResourceResourceClustrixArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceClustrix] {
+	return pulumix.Output[[]GetResourceResourceClustrix]{
+		OutputState: i.ToGetResourceResourceClustrixArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceClustrixOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceClustrixOutput) ElementType() reflect.Type {
@@ -40658,6 +45077,12 @@ func (o GetResourceResourceClustrixOutput) ToGetResourceResourceClustrixOutput()
 
 func (o GetResourceResourceClustrixOutput) ToGetResourceResourceClustrixOutputWithContext(ctx context.Context) GetResourceResourceClustrixOutput {
 	return o
+}
+
+func (o GetResourceResourceClustrixOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceClustrix] {
+	return pulumix.Output[GetResourceResourceClustrix]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -40747,6 +45172,12 @@ func (o GetResourceResourceClustrixArrayOutput) ToGetResourceResourceClustrixArr
 
 func (o GetResourceResourceClustrixArrayOutput) ToGetResourceResourceClustrixArrayOutputWithContext(ctx context.Context) GetResourceResourceClustrixArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceClustrixArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceClustrix] {
+	return pulumix.Output[[]GetResourceResourceClustrix]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceClustrixArrayOutput) Index(i pulumi.IntInput) GetResourceResourceClustrixOutput {
@@ -40840,6 +45271,12 @@ func (i GetResourceResourceCockroachArgs) ToGetResourceResourceCockroachOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCockroachOutput)
 }
 
+func (i GetResourceResourceCockroachArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceCockroach] {
+	return pulumix.Output[GetResourceResourceCockroach]{
+		OutputState: i.ToGetResourceResourceCockroachOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceCockroachArrayInput is an input type that accepts GetResourceResourceCockroachArray and GetResourceResourceCockroachArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceCockroachArrayInput` via:
 //
@@ -40865,6 +45302,12 @@ func (i GetResourceResourceCockroachArray) ToGetResourceResourceCockroachArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCockroachArrayOutput)
 }
 
+func (i GetResourceResourceCockroachArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceCockroach] {
+	return pulumix.Output[[]GetResourceResourceCockroach]{
+		OutputState: i.ToGetResourceResourceCockroachArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceCockroachOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceCockroachOutput) ElementType() reflect.Type {
@@ -40877,6 +45320,12 @@ func (o GetResourceResourceCockroachOutput) ToGetResourceResourceCockroachOutput
 
 func (o GetResourceResourceCockroachOutput) ToGetResourceResourceCockroachOutputWithContext(ctx context.Context) GetResourceResourceCockroachOutput {
 	return o
+}
+
+func (o GetResourceResourceCockroachOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceCockroach] {
+	return pulumix.Output[GetResourceResourceCockroach]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -40961,6 +45410,12 @@ func (o GetResourceResourceCockroachArrayOutput) ToGetResourceResourceCockroachA
 
 func (o GetResourceResourceCockroachArrayOutput) ToGetResourceResourceCockroachArrayOutputWithContext(ctx context.Context) GetResourceResourceCockroachArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceCockroachArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceCockroach] {
+	return pulumix.Output[[]GetResourceResourceCockroach]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceCockroachArrayOutput) Index(i pulumi.IntInput) GetResourceResourceCockroachOutput {
@@ -41050,6 +45505,12 @@ func (i GetResourceResourceDb2IArgs) ToGetResourceResourceDb2IOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDb2IOutput)
 }
 
+func (i GetResourceResourceDb2IArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDb2I] {
+	return pulumix.Output[GetResourceResourceDb2I]{
+		OutputState: i.ToGetResourceResourceDb2IOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceDb2IArrayInput is an input type that accepts GetResourceResourceDb2IArray and GetResourceResourceDb2IArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDb2IArrayInput` via:
 //
@@ -41075,6 +45536,12 @@ func (i GetResourceResourceDb2IArray) ToGetResourceResourceDb2IArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDb2IArrayOutput)
 }
 
+func (i GetResourceResourceDb2IArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDb2I] {
+	return pulumix.Output[[]GetResourceResourceDb2I]{
+		OutputState: i.ToGetResourceResourceDb2IArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceDb2IOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceDb2IOutput) ElementType() reflect.Type {
@@ -41087,6 +45554,12 @@ func (o GetResourceResourceDb2IOutput) ToGetResourceResourceDb2IOutput() GetReso
 
 func (o GetResourceResourceDb2IOutput) ToGetResourceResourceDb2IOutputWithContext(ctx context.Context) GetResourceResourceDb2IOutput {
 	return o
+}
+
+func (o GetResourceResourceDb2IOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDb2I] {
+	return pulumix.Output[GetResourceResourceDb2I]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -41166,6 +45639,12 @@ func (o GetResourceResourceDb2IArrayOutput) ToGetResourceResourceDb2IArrayOutput
 
 func (o GetResourceResourceDb2IArrayOutput) ToGetResourceResourceDb2IArrayOutputWithContext(ctx context.Context) GetResourceResourceDb2IArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceDb2IArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDb2I] {
+	return pulumix.Output[[]GetResourceResourceDb2I]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceDb2IArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDb2IOutput {
@@ -41255,6 +45734,12 @@ func (i GetResourceResourceDb2LuwArgs) ToGetResourceResourceDb2LuwOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDb2LuwOutput)
 }
 
+func (i GetResourceResourceDb2LuwArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDb2Luw] {
+	return pulumix.Output[GetResourceResourceDb2Luw]{
+		OutputState: i.ToGetResourceResourceDb2LuwOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceDb2LuwArrayInput is an input type that accepts GetResourceResourceDb2LuwArray and GetResourceResourceDb2LuwArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDb2LuwArrayInput` via:
 //
@@ -41280,6 +45765,12 @@ func (i GetResourceResourceDb2LuwArray) ToGetResourceResourceDb2LuwArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDb2LuwArrayOutput)
 }
 
+func (i GetResourceResourceDb2LuwArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDb2Luw] {
+	return pulumix.Output[[]GetResourceResourceDb2Luw]{
+		OutputState: i.ToGetResourceResourceDb2LuwArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceDb2LuwOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceDb2LuwOutput) ElementType() reflect.Type {
@@ -41292,6 +45783,12 @@ func (o GetResourceResourceDb2LuwOutput) ToGetResourceResourceDb2LuwOutput() Get
 
 func (o GetResourceResourceDb2LuwOutput) ToGetResourceResourceDb2LuwOutputWithContext(ctx context.Context) GetResourceResourceDb2LuwOutput {
 	return o
+}
+
+func (o GetResourceResourceDb2LuwOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDb2Luw] {
+	return pulumix.Output[GetResourceResourceDb2Luw]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -41371,6 +45868,12 @@ func (o GetResourceResourceDb2LuwArrayOutput) ToGetResourceResourceDb2LuwArrayOu
 
 func (o GetResourceResourceDb2LuwArrayOutput) ToGetResourceResourceDb2LuwArrayOutputWithContext(ctx context.Context) GetResourceResourceDb2LuwArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceDb2LuwArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDb2Luw] {
+	return pulumix.Output[[]GetResourceResourceDb2Luw]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceDb2LuwArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDb2LuwOutput {
@@ -41460,6 +45963,12 @@ func (i GetResourceResourceDocumentDbHostArgs) ToGetResourceResourceDocumentDbHo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDocumentDbHostOutput)
 }
 
+func (i GetResourceResourceDocumentDbHostArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDocumentDbHost] {
+	return pulumix.Output[GetResourceResourceDocumentDbHost]{
+		OutputState: i.ToGetResourceResourceDocumentDbHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceDocumentDbHostArrayInput is an input type that accepts GetResourceResourceDocumentDbHostArray and GetResourceResourceDocumentDbHostArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDocumentDbHostArrayInput` via:
 //
@@ -41485,6 +45994,12 @@ func (i GetResourceResourceDocumentDbHostArray) ToGetResourceResourceDocumentDbH
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDocumentDbHostArrayOutput)
 }
 
+func (i GetResourceResourceDocumentDbHostArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDocumentDbHost] {
+	return pulumix.Output[[]GetResourceResourceDocumentDbHost]{
+		OutputState: i.ToGetResourceResourceDocumentDbHostArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceDocumentDbHostOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceDocumentDbHostOutput) ElementType() reflect.Type {
@@ -41497,6 +46012,12 @@ func (o GetResourceResourceDocumentDbHostOutput) ToGetResourceResourceDocumentDb
 
 func (o GetResourceResourceDocumentDbHostOutput) ToGetResourceResourceDocumentDbHostOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbHostOutput {
 	return o
+}
+
+func (o GetResourceResourceDocumentDbHostOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDocumentDbHost] {
+	return pulumix.Output[GetResourceResourceDocumentDbHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -41576,6 +46097,12 @@ func (o GetResourceResourceDocumentDbHostArrayOutput) ToGetResourceResourceDocum
 
 func (o GetResourceResourceDocumentDbHostArrayOutput) ToGetResourceResourceDocumentDbHostArrayOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbHostArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceDocumentDbHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDocumentDbHost] {
+	return pulumix.Output[[]GetResourceResourceDocumentDbHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceDocumentDbHostArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDocumentDbHostOutput {
@@ -41669,6 +46196,12 @@ func (i GetResourceResourceDocumentDbReplicaSetArgs) ToGetResourceResourceDocume
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDocumentDbReplicaSetOutput)
 }
 
+func (i GetResourceResourceDocumentDbReplicaSetArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDocumentDbReplicaSet] {
+	return pulumix.Output[GetResourceResourceDocumentDbReplicaSet]{
+		OutputState: i.ToGetResourceResourceDocumentDbReplicaSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceDocumentDbReplicaSetArrayInput is an input type that accepts GetResourceResourceDocumentDbReplicaSetArray and GetResourceResourceDocumentDbReplicaSetArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDocumentDbReplicaSetArrayInput` via:
 //
@@ -41694,6 +46227,12 @@ func (i GetResourceResourceDocumentDbReplicaSetArray) ToGetResourceResourceDocum
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDocumentDbReplicaSetArrayOutput)
 }
 
+func (i GetResourceResourceDocumentDbReplicaSetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDocumentDbReplicaSet] {
+	return pulumix.Output[[]GetResourceResourceDocumentDbReplicaSet]{
+		OutputState: i.ToGetResourceResourceDocumentDbReplicaSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceDocumentDbReplicaSetOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceDocumentDbReplicaSetOutput) ElementType() reflect.Type {
@@ -41706,6 +46245,12 @@ func (o GetResourceResourceDocumentDbReplicaSetOutput) ToGetResourceResourceDocu
 
 func (o GetResourceResourceDocumentDbReplicaSetOutput) ToGetResourceResourceDocumentDbReplicaSetOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbReplicaSetOutput {
 	return o
+}
+
+func (o GetResourceResourceDocumentDbReplicaSetOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDocumentDbReplicaSet] {
+	return pulumix.Output[GetResourceResourceDocumentDbReplicaSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -41792,6 +46337,12 @@ func (o GetResourceResourceDocumentDbReplicaSetArrayOutput) ToGetResourceResourc
 	return o
 }
 
+func (o GetResourceResourceDocumentDbReplicaSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDocumentDbReplicaSet] {
+	return pulumix.Output[[]GetResourceResourceDocumentDbReplicaSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceDocumentDbReplicaSetArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDocumentDbReplicaSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceDocumentDbReplicaSet {
 		return vs[0].([]GetResourceResourceDocumentDbReplicaSet)[vs[1].(int)]
@@ -41875,6 +46426,12 @@ func (i GetResourceResourceDruidArgs) ToGetResourceResourceDruidOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDruidOutput)
 }
 
+func (i GetResourceResourceDruidArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDruid] {
+	return pulumix.Output[GetResourceResourceDruid]{
+		OutputState: i.ToGetResourceResourceDruidOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceDruidArrayInput is an input type that accepts GetResourceResourceDruidArray and GetResourceResourceDruidArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDruidArrayInput` via:
 //
@@ -41900,6 +46457,12 @@ func (i GetResourceResourceDruidArray) ToGetResourceResourceDruidArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDruidArrayOutput)
 }
 
+func (i GetResourceResourceDruidArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDruid] {
+	return pulumix.Output[[]GetResourceResourceDruid]{
+		OutputState: i.ToGetResourceResourceDruidArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceDruidOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceDruidOutput) ElementType() reflect.Type {
@@ -41912,6 +46475,12 @@ func (o GetResourceResourceDruidOutput) ToGetResourceResourceDruidOutput() GetRe
 
 func (o GetResourceResourceDruidOutput) ToGetResourceResourceDruidOutputWithContext(ctx context.Context) GetResourceResourceDruidOutput {
 	return o
+}
+
+func (o GetResourceResourceDruidOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDruid] {
+	return pulumix.Output[GetResourceResourceDruid]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -41986,6 +46555,12 @@ func (o GetResourceResourceDruidArrayOutput) ToGetResourceResourceDruidArrayOutp
 
 func (o GetResourceResourceDruidArrayOutput) ToGetResourceResourceDruidArrayOutputWithContext(ctx context.Context) GetResourceResourceDruidArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceDruidArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDruid] {
+	return pulumix.Output[[]GetResourceResourceDruid]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceDruidArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDruidOutput {
@@ -42079,6 +46654,12 @@ func (i GetResourceResourceDynamoDbArgs) ToGetResourceResourceDynamoDbOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDynamoDbOutput)
 }
 
+func (i GetResourceResourceDynamoDbArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDynamoDb] {
+	return pulumix.Output[GetResourceResourceDynamoDb]{
+		OutputState: i.ToGetResourceResourceDynamoDbOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceDynamoDbArrayInput is an input type that accepts GetResourceResourceDynamoDbArray and GetResourceResourceDynamoDbArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceDynamoDbArrayInput` via:
 //
@@ -42104,6 +46685,12 @@ func (i GetResourceResourceDynamoDbArray) ToGetResourceResourceDynamoDbArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDynamoDbArrayOutput)
 }
 
+func (i GetResourceResourceDynamoDbArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDynamoDb] {
+	return pulumix.Output[[]GetResourceResourceDynamoDb]{
+		OutputState: i.ToGetResourceResourceDynamoDbArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceDynamoDbOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceDynamoDbOutput) ElementType() reflect.Type {
@@ -42116,6 +46703,12 @@ func (o GetResourceResourceDynamoDbOutput) ToGetResourceResourceDynamoDbOutput()
 
 func (o GetResourceResourceDynamoDbOutput) ToGetResourceResourceDynamoDbOutputWithContext(ctx context.Context) GetResourceResourceDynamoDbOutput {
 	return o
+}
+
+func (o GetResourceResourceDynamoDbOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceDynamoDb] {
+	return pulumix.Output[GetResourceResourceDynamoDb]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -42200,6 +46793,12 @@ func (o GetResourceResourceDynamoDbArrayOutput) ToGetResourceResourceDynamoDbArr
 
 func (o GetResourceResourceDynamoDbArrayOutput) ToGetResourceResourceDynamoDbArrayOutputWithContext(ctx context.Context) GetResourceResourceDynamoDbArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceDynamoDbArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceDynamoDb] {
+	return pulumix.Output[[]GetResourceResourceDynamoDb]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceDynamoDbArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDynamoDbOutput {
@@ -42289,6 +46888,12 @@ func (i GetResourceResourceElasticArgs) ToGetResourceResourceElasticOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceElasticOutput)
 }
 
+func (i GetResourceResourceElasticArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceElastic] {
+	return pulumix.Output[GetResourceResourceElastic]{
+		OutputState: i.ToGetResourceResourceElasticOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceElasticArrayInput is an input type that accepts GetResourceResourceElasticArray and GetResourceResourceElasticArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceElasticArrayInput` via:
 //
@@ -42314,6 +46919,12 @@ func (i GetResourceResourceElasticArray) ToGetResourceResourceElasticArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceElasticArrayOutput)
 }
 
+func (i GetResourceResourceElasticArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceElastic] {
+	return pulumix.Output[[]GetResourceResourceElastic]{
+		OutputState: i.ToGetResourceResourceElasticArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceElasticOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceElasticOutput) ElementType() reflect.Type {
@@ -42326,6 +46937,12 @@ func (o GetResourceResourceElasticOutput) ToGetResourceResourceElasticOutput() G
 
 func (o GetResourceResourceElasticOutput) ToGetResourceResourceElasticOutputWithContext(ctx context.Context) GetResourceResourceElasticOutput {
 	return o
+}
+
+func (o GetResourceResourceElasticOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceElastic] {
+	return pulumix.Output[GetResourceResourceElastic]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -42405,6 +47022,12 @@ func (o GetResourceResourceElasticArrayOutput) ToGetResourceResourceElasticArray
 
 func (o GetResourceResourceElasticArrayOutput) ToGetResourceResourceElasticArrayOutputWithContext(ctx context.Context) GetResourceResourceElasticArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceElasticArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceElastic] {
+	return pulumix.Output[[]GetResourceResourceElastic]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceElasticArrayOutput) Index(i pulumi.IntInput) GetResourceResourceElasticOutput {
@@ -42494,6 +47117,12 @@ func (i GetResourceResourceElasticacheRediArgs) ToGetResourceResourceElasticache
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceElasticacheRediOutput)
 }
 
+func (i GetResourceResourceElasticacheRediArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceElasticacheRedi] {
+	return pulumix.Output[GetResourceResourceElasticacheRedi]{
+		OutputState: i.ToGetResourceResourceElasticacheRediOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceElasticacheRediArrayInput is an input type that accepts GetResourceResourceElasticacheRediArray and GetResourceResourceElasticacheRediArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceElasticacheRediArrayInput` via:
 //
@@ -42519,6 +47148,12 @@ func (i GetResourceResourceElasticacheRediArray) ToGetResourceResourceElasticach
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceElasticacheRediArrayOutput)
 }
 
+func (i GetResourceResourceElasticacheRediArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceElasticacheRedi] {
+	return pulumix.Output[[]GetResourceResourceElasticacheRedi]{
+		OutputState: i.ToGetResourceResourceElasticacheRediArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceElasticacheRediOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceElasticacheRediOutput) ElementType() reflect.Type {
@@ -42531,6 +47166,12 @@ func (o GetResourceResourceElasticacheRediOutput) ToGetResourceResourceElasticac
 
 func (o GetResourceResourceElasticacheRediOutput) ToGetResourceResourceElasticacheRediOutputWithContext(ctx context.Context) GetResourceResourceElasticacheRediOutput {
 	return o
+}
+
+func (o GetResourceResourceElasticacheRediOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceElasticacheRedi] {
+	return pulumix.Output[GetResourceResourceElasticacheRedi]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -42612,6 +47253,12 @@ func (o GetResourceResourceElasticacheRediArrayOutput) ToGetResourceResourceElas
 	return o
 }
 
+func (o GetResourceResourceElasticacheRediArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceElasticacheRedi] {
+	return pulumix.Output[[]GetResourceResourceElasticacheRedi]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceElasticacheRediArrayOutput) Index(i pulumi.IntInput) GetResourceResourceElasticacheRediOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceElasticacheRedi {
 		return vs[0].([]GetResourceResourceElasticacheRedi)[vs[1].(int)]
@@ -42687,6 +47334,12 @@ func (i GetResourceResourceGcpArgs) ToGetResourceResourceGcpOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGcpOutput)
 }
 
+func (i GetResourceResourceGcpArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceGcp] {
+	return pulumix.Output[GetResourceResourceGcp]{
+		OutputState: i.ToGetResourceResourceGcpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceGcpArrayInput is an input type that accepts GetResourceResourceGcpArray and GetResourceResourceGcpArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceGcpArrayInput` via:
 //
@@ -42712,6 +47365,12 @@ func (i GetResourceResourceGcpArray) ToGetResourceResourceGcpArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGcpArrayOutput)
 }
 
+func (i GetResourceResourceGcpArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceGcp] {
+	return pulumix.Output[[]GetResourceResourceGcp]{
+		OutputState: i.ToGetResourceResourceGcpArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceGcpOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceGcpOutput) ElementType() reflect.Type {
@@ -42724,6 +47383,12 @@ func (o GetResourceResourceGcpOutput) ToGetResourceResourceGcpOutput() GetResour
 
 func (o GetResourceResourceGcpOutput) ToGetResourceResourceGcpOutputWithContext(ctx context.Context) GetResourceResourceGcpOutput {
 	return o
+}
+
+func (o GetResourceResourceGcpOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceGcp] {
+	return pulumix.Output[GetResourceResourceGcp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -42788,6 +47453,12 @@ func (o GetResourceResourceGcpArrayOutput) ToGetResourceResourceGcpArrayOutput()
 
 func (o GetResourceResourceGcpArrayOutput) ToGetResourceResourceGcpArrayOutputWithContext(ctx context.Context) GetResourceResourceGcpArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceGcpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceGcp] {
+	return pulumix.Output[[]GetResourceResourceGcp]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceGcpArrayOutput) Index(i pulumi.IntInput) GetResourceResourceGcpOutput {
@@ -42881,6 +47552,12 @@ func (i GetResourceResourceGoogleGkeArgs) ToGetResourceResourceGoogleGkeOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGoogleGkeOutput)
 }
 
+func (i GetResourceResourceGoogleGkeArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceGoogleGke] {
+	return pulumix.Output[GetResourceResourceGoogleGke]{
+		OutputState: i.ToGetResourceResourceGoogleGkeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceGoogleGkeArrayInput is an input type that accepts GetResourceResourceGoogleGkeArray and GetResourceResourceGoogleGkeArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceGoogleGkeArrayInput` via:
 //
@@ -42906,6 +47583,12 @@ func (i GetResourceResourceGoogleGkeArray) ToGetResourceResourceGoogleGkeArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGoogleGkeArrayOutput)
 }
 
+func (i GetResourceResourceGoogleGkeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceGoogleGke] {
+	return pulumix.Output[[]GetResourceResourceGoogleGke]{
+		OutputState: i.ToGetResourceResourceGoogleGkeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceGoogleGkeOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceGoogleGkeOutput) ElementType() reflect.Type {
@@ -42918,6 +47601,12 @@ func (o GetResourceResourceGoogleGkeOutput) ToGetResourceResourceGoogleGkeOutput
 
 func (o GetResourceResourceGoogleGkeOutput) ToGetResourceResourceGoogleGkeOutputWithContext(ctx context.Context) GetResourceResourceGoogleGkeOutput {
 	return o
+}
+
+func (o GetResourceResourceGoogleGkeOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceGoogleGke] {
+	return pulumix.Output[GetResourceResourceGoogleGke]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -43004,6 +47693,12 @@ func (o GetResourceResourceGoogleGkeArrayOutput) ToGetResourceResourceGoogleGkeA
 	return o
 }
 
+func (o GetResourceResourceGoogleGkeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceGoogleGke] {
+	return pulumix.Output[[]GetResourceResourceGoogleGke]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceGoogleGkeArrayOutput) Index(i pulumi.IntInput) GetResourceResourceGoogleGkeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceGoogleGke {
 		return vs[0].([]GetResourceResourceGoogleGke)[vs[1].(int)]
@@ -43087,6 +47782,12 @@ func (i GetResourceResourceGoogleGkeUserImpersonationArgs) ToGetResourceResource
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGoogleGkeUserImpersonationOutput)
 }
 
+func (i GetResourceResourceGoogleGkeUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceGoogleGkeUserImpersonation] {
+	return pulumix.Output[GetResourceResourceGoogleGkeUserImpersonation]{
+		OutputState: i.ToGetResourceResourceGoogleGkeUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceGoogleGkeUserImpersonationArrayInput is an input type that accepts GetResourceResourceGoogleGkeUserImpersonationArray and GetResourceResourceGoogleGkeUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceGoogleGkeUserImpersonationArrayInput` via:
 //
@@ -43112,6 +47813,12 @@ func (i GetResourceResourceGoogleGkeUserImpersonationArray) ToGetResourceResourc
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGoogleGkeUserImpersonationArrayOutput)
 }
 
+func (i GetResourceResourceGoogleGkeUserImpersonationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceGoogleGkeUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceGoogleGkeUserImpersonation]{
+		OutputState: i.ToGetResourceResourceGoogleGkeUserImpersonationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceGoogleGkeUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceGoogleGkeUserImpersonationOutput) ElementType() reflect.Type {
@@ -43124,6 +47831,12 @@ func (o GetResourceResourceGoogleGkeUserImpersonationOutput) ToGetResourceResour
 
 func (o GetResourceResourceGoogleGkeUserImpersonationOutput) ToGetResourceResourceGoogleGkeUserImpersonationOutputWithContext(ctx context.Context) GetResourceResourceGoogleGkeUserImpersonationOutput {
 	return o
+}
+
+func (o GetResourceResourceGoogleGkeUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceGoogleGkeUserImpersonation] {
+	return pulumix.Output[GetResourceResourceGoogleGkeUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -43198,6 +47911,12 @@ func (o GetResourceResourceGoogleGkeUserImpersonationArrayOutput) ToGetResourceR
 
 func (o GetResourceResourceGoogleGkeUserImpersonationArrayOutput) ToGetResourceResourceGoogleGkeUserImpersonationArrayOutputWithContext(ctx context.Context) GetResourceResourceGoogleGkeUserImpersonationArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceGoogleGkeUserImpersonationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceGoogleGkeUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceGoogleGkeUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceGoogleGkeUserImpersonationArrayOutput) Index(i pulumi.IntInput) GetResourceResourceGoogleGkeUserImpersonationOutput {
@@ -43291,6 +48010,12 @@ func (i GetResourceResourceGreenplumArgs) ToGetResourceResourceGreenplumOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGreenplumOutput)
 }
 
+func (i GetResourceResourceGreenplumArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceGreenplum] {
+	return pulumix.Output[GetResourceResourceGreenplum]{
+		OutputState: i.ToGetResourceResourceGreenplumOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceGreenplumArrayInput is an input type that accepts GetResourceResourceGreenplumArray and GetResourceResourceGreenplumArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceGreenplumArrayInput` via:
 //
@@ -43316,6 +48041,12 @@ func (i GetResourceResourceGreenplumArray) ToGetResourceResourceGreenplumArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGreenplumArrayOutput)
 }
 
+func (i GetResourceResourceGreenplumArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceGreenplum] {
+	return pulumix.Output[[]GetResourceResourceGreenplum]{
+		OutputState: i.ToGetResourceResourceGreenplumArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceGreenplumOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceGreenplumOutput) ElementType() reflect.Type {
@@ -43328,6 +48059,12 @@ func (o GetResourceResourceGreenplumOutput) ToGetResourceResourceGreenplumOutput
 
 func (o GetResourceResourceGreenplumOutput) ToGetResourceResourceGreenplumOutputWithContext(ctx context.Context) GetResourceResourceGreenplumOutput {
 	return o
+}
+
+func (o GetResourceResourceGreenplumOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceGreenplum] {
+	return pulumix.Output[GetResourceResourceGreenplum]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -43412,6 +48149,12 @@ func (o GetResourceResourceGreenplumArrayOutput) ToGetResourceResourceGreenplumA
 
 func (o GetResourceResourceGreenplumArrayOutput) ToGetResourceResourceGreenplumArrayOutputWithContext(ctx context.Context) GetResourceResourceGreenplumArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceGreenplumArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceGreenplum] {
+	return pulumix.Output[[]GetResourceResourceGreenplum]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceGreenplumArrayOutput) Index(i pulumi.IntInput) GetResourceResourceGreenplumOutput {
@@ -43503,6 +48246,12 @@ func (i GetResourceResourceHttpAuthArgs) ToGetResourceResourceHttpAuthOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceHttpAuthOutput)
 }
 
+func (i GetResourceResourceHttpAuthArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceHttpAuth] {
+	return pulumix.Output[GetResourceResourceHttpAuth]{
+		OutputState: i.ToGetResourceResourceHttpAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceHttpAuthArrayInput is an input type that accepts GetResourceResourceHttpAuthArray and GetResourceResourceHttpAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpAuthArrayInput` via:
 //
@@ -43528,6 +48277,12 @@ func (i GetResourceResourceHttpAuthArray) ToGetResourceResourceHttpAuthArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceHttpAuthArrayOutput)
 }
 
+func (i GetResourceResourceHttpAuthArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceHttpAuth] {
+	return pulumix.Output[[]GetResourceResourceHttpAuth]{
+		OutputState: i.ToGetResourceResourceHttpAuthArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceHttpAuthOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceHttpAuthOutput) ElementType() reflect.Type {
@@ -43540,6 +48295,12 @@ func (o GetResourceResourceHttpAuthOutput) ToGetResourceResourceHttpAuthOutput()
 
 func (o GetResourceResourceHttpAuthOutput) ToGetResourceResourceHttpAuthOutputWithContext(ctx context.Context) GetResourceResourceHttpAuthOutput {
 	return o
+}
+
+func (o GetResourceResourceHttpAuthOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceHttpAuth] {
+	return pulumix.Output[GetResourceResourceHttpAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The content to set as the authorization header.
@@ -43620,6 +48381,12 @@ func (o GetResourceResourceHttpAuthArrayOutput) ToGetResourceResourceHttpAuthArr
 
 func (o GetResourceResourceHttpAuthArrayOutput) ToGetResourceResourceHttpAuthArrayOutputWithContext(ctx context.Context) GetResourceResourceHttpAuthArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceHttpAuthArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceHttpAuth] {
+	return pulumix.Output[[]GetResourceResourceHttpAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceHttpAuthArrayOutput) Index(i pulumi.IntInput) GetResourceResourceHttpAuthOutput {
@@ -43715,6 +48482,12 @@ func (i GetResourceResourceHttpBasicAuthArgs) ToGetResourceResourceHttpBasicAuth
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceHttpBasicAuthOutput)
 }
 
+func (i GetResourceResourceHttpBasicAuthArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceHttpBasicAuth] {
+	return pulumix.Output[GetResourceResourceHttpBasicAuth]{
+		OutputState: i.ToGetResourceResourceHttpBasicAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceHttpBasicAuthArrayInput is an input type that accepts GetResourceResourceHttpBasicAuthArray and GetResourceResourceHttpBasicAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpBasicAuthArrayInput` via:
 //
@@ -43740,6 +48513,12 @@ func (i GetResourceResourceHttpBasicAuthArray) ToGetResourceResourceHttpBasicAut
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceHttpBasicAuthArrayOutput)
 }
 
+func (i GetResourceResourceHttpBasicAuthArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceHttpBasicAuth] {
+	return pulumix.Output[[]GetResourceResourceHttpBasicAuth]{
+		OutputState: i.ToGetResourceResourceHttpBasicAuthArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceHttpBasicAuthOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceHttpBasicAuthOutput) ElementType() reflect.Type {
@@ -43752,6 +48531,12 @@ func (o GetResourceResourceHttpBasicAuthOutput) ToGetResourceResourceHttpBasicAu
 
 func (o GetResourceResourceHttpBasicAuthOutput) ToGetResourceResourceHttpBasicAuthOutputWithContext(ctx context.Context) GetResourceResourceHttpBasicAuthOutput {
 	return o
+}
+
+func (o GetResourceResourceHttpBasicAuthOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceHttpBasicAuth] {
+	return pulumix.Output[GetResourceResourceHttpBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -43839,6 +48624,12 @@ func (o GetResourceResourceHttpBasicAuthArrayOutput) ToGetResourceResourceHttpBa
 	return o
 }
 
+func (o GetResourceResourceHttpBasicAuthArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceHttpBasicAuth] {
+	return pulumix.Output[[]GetResourceResourceHttpBasicAuth]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceHttpBasicAuthArrayOutput) Index(i pulumi.IntInput) GetResourceResourceHttpBasicAuthOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceHttpBasicAuth {
 		return vs[0].([]GetResourceResourceHttpBasicAuth)[vs[1].(int)]
@@ -43924,6 +48715,12 @@ func (i GetResourceResourceHttpNoAuthArgs) ToGetResourceResourceHttpNoAuthOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceHttpNoAuthOutput)
 }
 
+func (i GetResourceResourceHttpNoAuthArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceHttpNoAuth] {
+	return pulumix.Output[GetResourceResourceHttpNoAuth]{
+		OutputState: i.ToGetResourceResourceHttpNoAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceHttpNoAuthArrayInput is an input type that accepts GetResourceResourceHttpNoAuthArray and GetResourceResourceHttpNoAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceHttpNoAuthArrayInput` via:
 //
@@ -43949,6 +48746,12 @@ func (i GetResourceResourceHttpNoAuthArray) ToGetResourceResourceHttpNoAuthArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceHttpNoAuthArrayOutput)
 }
 
+func (i GetResourceResourceHttpNoAuthArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceHttpNoAuth] {
+	return pulumix.Output[[]GetResourceResourceHttpNoAuth]{
+		OutputState: i.ToGetResourceResourceHttpNoAuthArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceHttpNoAuthOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceHttpNoAuthOutput) ElementType() reflect.Type {
@@ -43961,6 +48764,12 @@ func (o GetResourceResourceHttpNoAuthOutput) ToGetResourceResourceHttpNoAuthOutp
 
 func (o GetResourceResourceHttpNoAuthOutput) ToGetResourceResourceHttpNoAuthOutputWithContext(ctx context.Context) GetResourceResourceHttpNoAuthOutput {
 	return o
+}
+
+func (o GetResourceResourceHttpNoAuthOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceHttpNoAuth] {
+	return pulumix.Output[GetResourceResourceHttpNoAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -44036,6 +48845,12 @@ func (o GetResourceResourceHttpNoAuthArrayOutput) ToGetResourceResourceHttpNoAut
 
 func (o GetResourceResourceHttpNoAuthArrayOutput) ToGetResourceResourceHttpNoAuthArrayOutputWithContext(ctx context.Context) GetResourceResourceHttpNoAuthArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceHttpNoAuthArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceHttpNoAuth] {
+	return pulumix.Output[[]GetResourceResourceHttpNoAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceHttpNoAuthArrayOutput) Index(i pulumi.IntInput) GetResourceResourceHttpNoAuthOutput {
@@ -44137,6 +48952,12 @@ func (i GetResourceResourceKuberneteArgs) ToGetResourceResourceKuberneteOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKuberneteOutput)
 }
 
+func (i GetResourceResourceKuberneteArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernete] {
+	return pulumix.Output[GetResourceResourceKubernete]{
+		OutputState: i.ToGetResourceResourceKuberneteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceKuberneteArrayInput is an input type that accepts GetResourceResourceKuberneteArray and GetResourceResourceKuberneteArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKuberneteArrayInput` via:
 //
@@ -44162,6 +48983,12 @@ func (i GetResourceResourceKuberneteArray) ToGetResourceResourceKuberneteArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKuberneteArrayOutput)
 }
 
+func (i GetResourceResourceKuberneteArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernete] {
+	return pulumix.Output[[]GetResourceResourceKubernete]{
+		OutputState: i.ToGetResourceResourceKuberneteArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceKuberneteOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceKuberneteOutput) ElementType() reflect.Type {
@@ -44174,6 +49001,12 @@ func (o GetResourceResourceKuberneteOutput) ToGetResourceResourceKuberneteOutput
 
 func (o GetResourceResourceKuberneteOutput) ToGetResourceResourceKuberneteOutputWithContext(ctx context.Context) GetResourceResourceKuberneteOutput {
 	return o
+}
+
+func (o GetResourceResourceKuberneteOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernete] {
+	return pulumix.Output[GetResourceResourceKubernete]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -44270,6 +49103,12 @@ func (o GetResourceResourceKuberneteArrayOutput) ToGetResourceResourceKuberneteA
 	return o
 }
 
+func (o GetResourceResourceKuberneteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernete] {
+	return pulumix.Output[[]GetResourceResourceKubernete]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceKuberneteArrayOutput) Index(i pulumi.IntInput) GetResourceResourceKuberneteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceKubernete {
 		return vs[0].([]GetResourceResourceKubernete)[vs[1].(int)]
@@ -44357,6 +49196,12 @@ func (i GetResourceResourceKubernetesBasicAuthArgs) ToGetResourceResourceKuberne
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesBasicAuthOutput)
 }
 
+func (i GetResourceResourceKubernetesBasicAuthArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernetesBasicAuth] {
+	return pulumix.Output[GetResourceResourceKubernetesBasicAuth]{
+		OutputState: i.ToGetResourceResourceKubernetesBasicAuthOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceKubernetesBasicAuthArrayInput is an input type that accepts GetResourceResourceKubernetesBasicAuthArray and GetResourceResourceKubernetesBasicAuthArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesBasicAuthArrayInput` via:
 //
@@ -44382,6 +49227,12 @@ func (i GetResourceResourceKubernetesBasicAuthArray) ToGetResourceResourceKubern
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesBasicAuthArrayOutput)
 }
 
+func (i GetResourceResourceKubernetesBasicAuthArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernetesBasicAuth] {
+	return pulumix.Output[[]GetResourceResourceKubernetesBasicAuth]{
+		OutputState: i.ToGetResourceResourceKubernetesBasicAuthArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceKubernetesBasicAuthOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceKubernetesBasicAuthOutput) ElementType() reflect.Type {
@@ -44394,6 +49245,12 @@ func (o GetResourceResourceKubernetesBasicAuthOutput) ToGetResourceResourceKuber
 
 func (o GetResourceResourceKubernetesBasicAuthOutput) ToGetResourceResourceKubernetesBasicAuthOutputWithContext(ctx context.Context) GetResourceResourceKubernetesBasicAuthOutput {
 	return o
+}
+
+func (o GetResourceResourceKubernetesBasicAuthOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernetesBasicAuth] {
+	return pulumix.Output[GetResourceResourceKubernetesBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -44473,6 +49330,12 @@ func (o GetResourceResourceKubernetesBasicAuthArrayOutput) ToGetResourceResource
 
 func (o GetResourceResourceKubernetesBasicAuthArrayOutput) ToGetResourceResourceKubernetesBasicAuthArrayOutputWithContext(ctx context.Context) GetResourceResourceKubernetesBasicAuthArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceKubernetesBasicAuthArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernetesBasicAuth] {
+	return pulumix.Output[[]GetResourceResourceKubernetesBasicAuth]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceKubernetesBasicAuthArrayOutput) Index(i pulumi.IntInput) GetResourceResourceKubernetesBasicAuthOutput {
@@ -44568,6 +49431,12 @@ func (i GetResourceResourceKubernetesServiceAccountArgs) ToGetResourceResourceKu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesServiceAccountOutput)
 }
 
+func (i GetResourceResourceKubernetesServiceAccountArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernetesServiceAccount] {
+	return pulumix.Output[GetResourceResourceKubernetesServiceAccount]{
+		OutputState: i.ToGetResourceResourceKubernetesServiceAccountOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceKubernetesServiceAccountArrayInput is an input type that accepts GetResourceResourceKubernetesServiceAccountArray and GetResourceResourceKubernetesServiceAccountArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesServiceAccountArrayInput` via:
 //
@@ -44593,6 +49462,12 @@ func (i GetResourceResourceKubernetesServiceAccountArray) ToGetResourceResourceK
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesServiceAccountArrayOutput)
 }
 
+func (i GetResourceResourceKubernetesServiceAccountArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernetesServiceAccount] {
+	return pulumix.Output[[]GetResourceResourceKubernetesServiceAccount]{
+		OutputState: i.ToGetResourceResourceKubernetesServiceAccountArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceKubernetesServiceAccountOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceKubernetesServiceAccountOutput) ElementType() reflect.Type {
@@ -44605,6 +49480,12 @@ func (o GetResourceResourceKubernetesServiceAccountOutput) ToGetResourceResource
 
 func (o GetResourceResourceKubernetesServiceAccountOutput) ToGetResourceResourceKubernetesServiceAccountOutputWithContext(ctx context.Context) GetResourceResourceKubernetesServiceAccountOutput {
 	return o
+}
+
+func (o GetResourceResourceKubernetesServiceAccountOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernetesServiceAccount] {
+	return pulumix.Output[GetResourceResourceKubernetesServiceAccount]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -44694,6 +49575,12 @@ func (o GetResourceResourceKubernetesServiceAccountArrayOutput) ToGetResourceRes
 	return o
 }
 
+func (o GetResourceResourceKubernetesServiceAccountArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernetesServiceAccount] {
+	return pulumix.Output[[]GetResourceResourceKubernetesServiceAccount]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceKubernetesServiceAccountArrayOutput) Index(i pulumi.IntInput) GetResourceResourceKubernetesServiceAccountOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceKubernetesServiceAccount {
 		return vs[0].([]GetResourceResourceKubernetesServiceAccount)[vs[1].(int)]
@@ -44779,6 +49666,12 @@ func (i GetResourceResourceKubernetesServiceAccountUserImpersonationArgs) ToGetR
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesServiceAccountUserImpersonationOutput)
 }
 
+func (i GetResourceResourceKubernetesServiceAccountUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernetesServiceAccountUserImpersonation] {
+	return pulumix.Output[GetResourceResourceKubernetesServiceAccountUserImpersonation]{
+		OutputState: i.ToGetResourceResourceKubernetesServiceAccountUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceKubernetesServiceAccountUserImpersonationArrayInput is an input type that accepts GetResourceResourceKubernetesServiceAccountUserImpersonationArray and GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesServiceAccountUserImpersonationArrayInput` via:
 //
@@ -44804,6 +49697,12 @@ func (i GetResourceResourceKubernetesServiceAccountUserImpersonationArray) ToGet
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput)
 }
 
+func (i GetResourceResourceKubernetesServiceAccountUserImpersonationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernetesServiceAccountUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceKubernetesServiceAccountUserImpersonation]{
+		OutputState: i.ToGetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceKubernetesServiceAccountUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) ElementType() reflect.Type {
@@ -44816,6 +49715,12 @@ func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) ToGe
 
 func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) ToGetResourceResourceKubernetesServiceAccountUserImpersonationOutputWithContext(ctx context.Context) GetResourceResourceKubernetesServiceAccountUserImpersonationOutput {
 	return o
+}
+
+func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernetesServiceAccountUserImpersonation] {
+	return pulumix.Output[GetResourceResourceKubernetesServiceAccountUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -44893,6 +49798,12 @@ func (o GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput)
 
 func (o GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput) ToGetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutputWithContext(ctx context.Context) GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernetesServiceAccountUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceKubernetesServiceAccountUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput) Index(i pulumi.IntInput) GetResourceResourceKubernetesServiceAccountUserImpersonationOutput {
@@ -44986,6 +49897,12 @@ func (i GetResourceResourceKubernetesUserImpersonationArgs) ToGetResourceResourc
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesUserImpersonationOutput)
 }
 
+func (i GetResourceResourceKubernetesUserImpersonationArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernetesUserImpersonation] {
+	return pulumix.Output[GetResourceResourceKubernetesUserImpersonation]{
+		OutputState: i.ToGetResourceResourceKubernetesUserImpersonationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceKubernetesUserImpersonationArrayInput is an input type that accepts GetResourceResourceKubernetesUserImpersonationArray and GetResourceResourceKubernetesUserImpersonationArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceKubernetesUserImpersonationArrayInput` via:
 //
@@ -45011,6 +49928,12 @@ func (i GetResourceResourceKubernetesUserImpersonationArray) ToGetResourceResour
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesUserImpersonationArrayOutput)
 }
 
+func (i GetResourceResourceKubernetesUserImpersonationArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernetesUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceKubernetesUserImpersonation]{
+		OutputState: i.ToGetResourceResourceKubernetesUserImpersonationArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceKubernetesUserImpersonationOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceKubernetesUserImpersonationOutput) ElementType() reflect.Type {
@@ -45023,6 +49946,12 @@ func (o GetResourceResourceKubernetesUserImpersonationOutput) ToGetResourceResou
 
 func (o GetResourceResourceKubernetesUserImpersonationOutput) ToGetResourceResourceKubernetesUserImpersonationOutputWithContext(ctx context.Context) GetResourceResourceKubernetesUserImpersonationOutput {
 	return o
+}
+
+func (o GetResourceResourceKubernetesUserImpersonationOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceKubernetesUserImpersonation] {
+	return pulumix.Output[GetResourceResourceKubernetesUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -45107,6 +50036,12 @@ func (o GetResourceResourceKubernetesUserImpersonationArrayOutput) ToGetResource
 
 func (o GetResourceResourceKubernetesUserImpersonationArrayOutput) ToGetResourceResourceKubernetesUserImpersonationArrayOutputWithContext(ctx context.Context) GetResourceResourceKubernetesUserImpersonationArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceKubernetesUserImpersonationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceKubernetesUserImpersonation] {
+	return pulumix.Output[[]GetResourceResourceKubernetesUserImpersonation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceKubernetesUserImpersonationArrayOutput) Index(i pulumi.IntInput) GetResourceResourceKubernetesUserImpersonationOutput {
@@ -45204,6 +50139,12 @@ func (i GetResourceResourceMariaArgs) ToGetResourceResourceMariaOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMariaOutput)
 }
 
+func (i GetResourceResourceMariaArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMaria] {
+	return pulumix.Output[GetResourceResourceMaria]{
+		OutputState: i.ToGetResourceResourceMariaOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMariaArrayInput is an input type that accepts GetResourceResourceMariaArray and GetResourceResourceMariaArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMariaArrayInput` via:
 //
@@ -45229,6 +50170,12 @@ func (i GetResourceResourceMariaArray) ToGetResourceResourceMariaArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMariaArrayOutput)
 }
 
+func (i GetResourceResourceMariaArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMaria] {
+	return pulumix.Output[[]GetResourceResourceMaria]{
+		OutputState: i.ToGetResourceResourceMariaArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMariaOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMariaOutput) ElementType() reflect.Type {
@@ -45241,6 +50188,12 @@ func (o GetResourceResourceMariaOutput) ToGetResourceResourceMariaOutput() GetRe
 
 func (o GetResourceResourceMariaOutput) ToGetResourceResourceMariaOutputWithContext(ctx context.Context) GetResourceResourceMariaOutput {
 	return o
+}
+
+func (o GetResourceResourceMariaOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMaria] {
+	return pulumix.Output[GetResourceResourceMaria]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -45332,6 +50285,12 @@ func (o GetResourceResourceMariaArrayOutput) ToGetResourceResourceMariaArrayOutp
 	return o
 }
 
+func (o GetResourceResourceMariaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMaria] {
+	return pulumix.Output[[]GetResourceResourceMaria]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceMariaArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMariaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceMaria {
 		return vs[0].([]GetResourceResourceMaria)[vs[1].(int)]
@@ -45407,6 +50366,12 @@ func (i GetResourceResourceMemcachedArgs) ToGetResourceResourceMemcachedOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMemcachedOutput)
 }
 
+func (i GetResourceResourceMemcachedArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMemcached] {
+	return pulumix.Output[GetResourceResourceMemcached]{
+		OutputState: i.ToGetResourceResourceMemcachedOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMemcachedArrayInput is an input type that accepts GetResourceResourceMemcachedArray and GetResourceResourceMemcachedArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMemcachedArrayInput` via:
 //
@@ -45432,6 +50397,12 @@ func (i GetResourceResourceMemcachedArray) ToGetResourceResourceMemcachedArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMemcachedArrayOutput)
 }
 
+func (i GetResourceResourceMemcachedArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMemcached] {
+	return pulumix.Output[[]GetResourceResourceMemcached]{
+		OutputState: i.ToGetResourceResourceMemcachedArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMemcachedOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMemcachedOutput) ElementType() reflect.Type {
@@ -45444,6 +50415,12 @@ func (o GetResourceResourceMemcachedOutput) ToGetResourceResourceMemcachedOutput
 
 func (o GetResourceResourceMemcachedOutput) ToGetResourceResourceMemcachedOutputWithContext(ctx context.Context) GetResourceResourceMemcachedOutput {
 	return o
+}
+
+func (o GetResourceResourceMemcachedOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMemcached] {
+	return pulumix.Output[GetResourceResourceMemcached]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -45508,6 +50485,12 @@ func (o GetResourceResourceMemcachedArrayOutput) ToGetResourceResourceMemcachedA
 
 func (o GetResourceResourceMemcachedArrayOutput) ToGetResourceResourceMemcachedArrayOutputWithContext(ctx context.Context) GetResourceResourceMemcachedArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceMemcachedArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMemcached] {
+	return pulumix.Output[[]GetResourceResourceMemcached]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceMemcachedArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMemcachedOutput {
@@ -45605,6 +50588,12 @@ func (i GetResourceResourceMemsqlArgs) ToGetResourceResourceMemsqlOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMemsqlOutput)
 }
 
+func (i GetResourceResourceMemsqlArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMemsql] {
+	return pulumix.Output[GetResourceResourceMemsql]{
+		OutputState: i.ToGetResourceResourceMemsqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMemsqlArrayInput is an input type that accepts GetResourceResourceMemsqlArray and GetResourceResourceMemsqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMemsqlArrayInput` via:
 //
@@ -45630,6 +50619,12 @@ func (i GetResourceResourceMemsqlArray) ToGetResourceResourceMemsqlArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMemsqlArrayOutput)
 }
 
+func (i GetResourceResourceMemsqlArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMemsql] {
+	return pulumix.Output[[]GetResourceResourceMemsql]{
+		OutputState: i.ToGetResourceResourceMemsqlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMemsqlOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMemsqlOutput) ElementType() reflect.Type {
@@ -45642,6 +50637,12 @@ func (o GetResourceResourceMemsqlOutput) ToGetResourceResourceMemsqlOutput() Get
 
 func (o GetResourceResourceMemsqlOutput) ToGetResourceResourceMemsqlOutputWithContext(ctx context.Context) GetResourceResourceMemsqlOutput {
 	return o
+}
+
+func (o GetResourceResourceMemsqlOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMemsql] {
+	return pulumix.Output[GetResourceResourceMemsql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -45731,6 +50732,12 @@ func (o GetResourceResourceMemsqlArrayOutput) ToGetResourceResourceMemsqlArrayOu
 
 func (o GetResourceResourceMemsqlArrayOutput) ToGetResourceResourceMemsqlArrayOutputWithContext(ctx context.Context) GetResourceResourceMemsqlArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceMemsqlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMemsql] {
+	return pulumix.Output[[]GetResourceResourceMemsql]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceMemsqlArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMemsqlOutput {
@@ -45824,6 +50831,12 @@ func (i GetResourceResourceMongoHostArgs) ToGetResourceResourceMongoHostOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoHostOutput)
 }
 
+func (i GetResourceResourceMongoHostArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoHost] {
+	return pulumix.Output[GetResourceResourceMongoHost]{
+		OutputState: i.ToGetResourceResourceMongoHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMongoHostArrayInput is an input type that accepts GetResourceResourceMongoHostArray and GetResourceResourceMongoHostArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoHostArrayInput` via:
 //
@@ -45849,6 +50862,12 @@ func (i GetResourceResourceMongoHostArray) ToGetResourceResourceMongoHostArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoHostArrayOutput)
 }
 
+func (i GetResourceResourceMongoHostArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoHost] {
+	return pulumix.Output[[]GetResourceResourceMongoHost]{
+		OutputState: i.ToGetResourceResourceMongoHostArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMongoHostOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMongoHostOutput) ElementType() reflect.Type {
@@ -45861,6 +50880,12 @@ func (o GetResourceResourceMongoHostOutput) ToGetResourceResourceMongoHostOutput
 
 func (o GetResourceResourceMongoHostOutput) ToGetResourceResourceMongoHostOutputWithContext(ctx context.Context) GetResourceResourceMongoHostOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoHostOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoHost] {
+	return pulumix.Output[GetResourceResourceMongoHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -45945,6 +50970,12 @@ func (o GetResourceResourceMongoHostArrayOutput) ToGetResourceResourceMongoHostA
 
 func (o GetResourceResourceMongoHostArrayOutput) ToGetResourceResourceMongoHostArrayOutputWithContext(ctx context.Context) GetResourceResourceMongoHostArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoHost] {
+	return pulumix.Output[[]GetResourceResourceMongoHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceMongoHostArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMongoHostOutput {
@@ -46042,6 +51073,12 @@ func (i GetResourceResourceMongoLegacyHostArgs) ToGetResourceResourceMongoLegacy
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoLegacyHostOutput)
 }
 
+func (i GetResourceResourceMongoLegacyHostArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoLegacyHost] {
+	return pulumix.Output[GetResourceResourceMongoLegacyHost]{
+		OutputState: i.ToGetResourceResourceMongoLegacyHostOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMongoLegacyHostArrayInput is an input type that accepts GetResourceResourceMongoLegacyHostArray and GetResourceResourceMongoLegacyHostArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoLegacyHostArrayInput` via:
 //
@@ -46067,6 +51104,12 @@ func (i GetResourceResourceMongoLegacyHostArray) ToGetResourceResourceMongoLegac
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoLegacyHostArrayOutput)
 }
 
+func (i GetResourceResourceMongoLegacyHostArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoLegacyHost] {
+	return pulumix.Output[[]GetResourceResourceMongoLegacyHost]{
+		OutputState: i.ToGetResourceResourceMongoLegacyHostArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMongoLegacyHostOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMongoLegacyHostOutput) ElementType() reflect.Type {
@@ -46079,6 +51122,12 @@ func (o GetResourceResourceMongoLegacyHostOutput) ToGetResourceResourceMongoLega
 
 func (o GetResourceResourceMongoLegacyHostOutput) ToGetResourceResourceMongoLegacyHostOutputWithContext(ctx context.Context) GetResourceResourceMongoLegacyHostOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoLegacyHostOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoLegacyHost] {
+	return pulumix.Output[GetResourceResourceMongoLegacyHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -46168,6 +51217,12 @@ func (o GetResourceResourceMongoLegacyHostArrayOutput) ToGetResourceResourceMong
 
 func (o GetResourceResourceMongoLegacyHostArrayOutput) ToGetResourceResourceMongoLegacyHostArrayOutputWithContext(ctx context.Context) GetResourceResourceMongoLegacyHostArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoLegacyHostArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoLegacyHost] {
+	return pulumix.Output[[]GetResourceResourceMongoLegacyHost]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceMongoLegacyHostArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMongoLegacyHostOutput {
@@ -46269,6 +51324,12 @@ func (i GetResourceResourceMongoLegacyReplicasetArgs) ToGetResourceResourceMongo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoLegacyReplicasetOutput)
 }
 
+func (i GetResourceResourceMongoLegacyReplicasetArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoLegacyReplicaset] {
+	return pulumix.Output[GetResourceResourceMongoLegacyReplicaset]{
+		OutputState: i.ToGetResourceResourceMongoLegacyReplicasetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMongoLegacyReplicasetArrayInput is an input type that accepts GetResourceResourceMongoLegacyReplicasetArray and GetResourceResourceMongoLegacyReplicasetArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoLegacyReplicasetArrayInput` via:
 //
@@ -46294,6 +51355,12 @@ func (i GetResourceResourceMongoLegacyReplicasetArray) ToGetResourceResourceMong
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoLegacyReplicasetArrayOutput)
 }
 
+func (i GetResourceResourceMongoLegacyReplicasetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoLegacyReplicaset] {
+	return pulumix.Output[[]GetResourceResourceMongoLegacyReplicaset]{
+		OutputState: i.ToGetResourceResourceMongoLegacyReplicasetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMongoLegacyReplicasetOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMongoLegacyReplicasetOutput) ElementType() reflect.Type {
@@ -46306,6 +51373,12 @@ func (o GetResourceResourceMongoLegacyReplicasetOutput) ToGetResourceResourceMon
 
 func (o GetResourceResourceMongoLegacyReplicasetOutput) ToGetResourceResourceMongoLegacyReplicasetOutputWithContext(ctx context.Context) GetResourceResourceMongoLegacyReplicasetOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoLegacyReplicasetOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoLegacyReplicaset] {
+	return pulumix.Output[GetResourceResourceMongoLegacyReplicaset]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -46400,6 +51473,12 @@ func (o GetResourceResourceMongoLegacyReplicasetArrayOutput) ToGetResourceResour
 
 func (o GetResourceResourceMongoLegacyReplicasetArrayOutput) ToGetResourceResourceMongoLegacyReplicasetArrayOutputWithContext(ctx context.Context) GetResourceResourceMongoLegacyReplicasetArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoLegacyReplicasetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoLegacyReplicaset] {
+	return pulumix.Output[[]GetResourceResourceMongoLegacyReplicaset]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceMongoLegacyReplicasetArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMongoLegacyReplicasetOutput {
@@ -46501,6 +51580,12 @@ func (i GetResourceResourceMongoReplicaSetArgs) ToGetResourceResourceMongoReplic
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoReplicaSetOutput)
 }
 
+func (i GetResourceResourceMongoReplicaSetArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoReplicaSet] {
+	return pulumix.Output[GetResourceResourceMongoReplicaSet]{
+		OutputState: i.ToGetResourceResourceMongoReplicaSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMongoReplicaSetArrayInput is an input type that accepts GetResourceResourceMongoReplicaSetArray and GetResourceResourceMongoReplicaSetArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoReplicaSetArrayInput` via:
 //
@@ -46526,6 +51611,12 @@ func (i GetResourceResourceMongoReplicaSetArray) ToGetResourceResourceMongoRepli
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoReplicaSetArrayOutput)
 }
 
+func (i GetResourceResourceMongoReplicaSetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoReplicaSet] {
+	return pulumix.Output[[]GetResourceResourceMongoReplicaSet]{
+		OutputState: i.ToGetResourceResourceMongoReplicaSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMongoReplicaSetOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMongoReplicaSetOutput) ElementType() reflect.Type {
@@ -46538,6 +51629,12 @@ func (o GetResourceResourceMongoReplicaSetOutput) ToGetResourceResourceMongoRepl
 
 func (o GetResourceResourceMongoReplicaSetOutput) ToGetResourceResourceMongoReplicaSetOutputWithContext(ctx context.Context) GetResourceResourceMongoReplicaSetOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoReplicaSetOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoReplicaSet] {
+	return pulumix.Output[GetResourceResourceMongoReplicaSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -46634,6 +51731,12 @@ func (o GetResourceResourceMongoReplicaSetArrayOutput) ToGetResourceResourceMong
 	return o
 }
 
+func (o GetResourceResourceMongoReplicaSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoReplicaSet] {
+	return pulumix.Output[[]GetResourceResourceMongoReplicaSet]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceMongoReplicaSetArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMongoReplicaSetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceMongoReplicaSet {
 		return vs[0].([]GetResourceResourceMongoReplicaSet)[vs[1].(int)]
@@ -46721,6 +51824,12 @@ func (i GetResourceResourceMongoShardedClusterArgs) ToGetResourceResourceMongoSh
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoShardedClusterOutput)
 }
 
+func (i GetResourceResourceMongoShardedClusterArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoShardedCluster] {
+	return pulumix.Output[GetResourceResourceMongoShardedCluster]{
+		OutputState: i.ToGetResourceResourceMongoShardedClusterOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMongoShardedClusterArrayInput is an input type that accepts GetResourceResourceMongoShardedClusterArray and GetResourceResourceMongoShardedClusterArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMongoShardedClusterArrayInput` via:
 //
@@ -46746,6 +51855,12 @@ func (i GetResourceResourceMongoShardedClusterArray) ToGetResourceResourceMongoS
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMongoShardedClusterArrayOutput)
 }
 
+func (i GetResourceResourceMongoShardedClusterArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoShardedCluster] {
+	return pulumix.Output[[]GetResourceResourceMongoShardedCluster]{
+		OutputState: i.ToGetResourceResourceMongoShardedClusterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMongoShardedClusterOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMongoShardedClusterOutput) ElementType() reflect.Type {
@@ -46758,6 +51873,12 @@ func (o GetResourceResourceMongoShardedClusterOutput) ToGetResourceResourceMongo
 
 func (o GetResourceResourceMongoShardedClusterOutput) ToGetResourceResourceMongoShardedClusterOutputWithContext(ctx context.Context) GetResourceResourceMongoShardedClusterOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoShardedClusterOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMongoShardedCluster] {
+	return pulumix.Output[GetResourceResourceMongoShardedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The authentication database to use.
@@ -46837,6 +51958,12 @@ func (o GetResourceResourceMongoShardedClusterArrayOutput) ToGetResourceResource
 
 func (o GetResourceResourceMongoShardedClusterArrayOutput) ToGetResourceResourceMongoShardedClusterArrayOutputWithContext(ctx context.Context) GetResourceResourceMongoShardedClusterArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceMongoShardedClusterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMongoShardedCluster] {
+	return pulumix.Output[[]GetResourceResourceMongoShardedCluster]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceMongoShardedClusterArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMongoShardedClusterOutput {
@@ -46950,6 +52077,12 @@ func (i GetResourceResourceMtlsMysqlArgs) ToGetResourceResourceMtlsMysqlOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMtlsMysqlOutput)
 }
 
+func (i GetResourceResourceMtlsMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMtlsMysql] {
+	return pulumix.Output[GetResourceResourceMtlsMysql]{
+		OutputState: i.ToGetResourceResourceMtlsMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMtlsMysqlArrayInput is an input type that accepts GetResourceResourceMtlsMysqlArray and GetResourceResourceMtlsMysqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMtlsMysqlArrayInput` via:
 //
@@ -46975,6 +52108,12 @@ func (i GetResourceResourceMtlsMysqlArray) ToGetResourceResourceMtlsMysqlArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMtlsMysqlArrayOutput)
 }
 
+func (i GetResourceResourceMtlsMysqlArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMtlsMysql] {
+	return pulumix.Output[[]GetResourceResourceMtlsMysql]{
+		OutputState: i.ToGetResourceResourceMtlsMysqlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMtlsMysqlOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMtlsMysqlOutput) ElementType() reflect.Type {
@@ -46987,6 +52126,12 @@ func (o GetResourceResourceMtlsMysqlOutput) ToGetResourceResourceMtlsMysqlOutput
 
 func (o GetResourceResourceMtlsMysqlOutput) ToGetResourceResourceMtlsMysqlOutputWithContext(ctx context.Context) GetResourceResourceMtlsMysqlOutput {
 	return o
+}
+
+func (o GetResourceResourceMtlsMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMtlsMysql] {
+	return pulumix.Output[GetResourceResourceMtlsMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -47098,6 +52243,12 @@ func (o GetResourceResourceMtlsMysqlArrayOutput) ToGetResourceResourceMtlsMysqlA
 	return o
 }
 
+func (o GetResourceResourceMtlsMysqlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMtlsMysql] {
+	return pulumix.Output[[]GetResourceResourceMtlsMysql]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceMtlsMysqlArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMtlsMysqlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceMtlsMysql {
 		return vs[0].([]GetResourceResourceMtlsMysql)[vs[1].(int)]
@@ -47205,6 +52356,12 @@ func (i GetResourceResourceMtlsPostgreArgs) ToGetResourceResourceMtlsPostgreOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMtlsPostgreOutput)
 }
 
+func (i GetResourceResourceMtlsPostgreArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMtlsPostgre] {
+	return pulumix.Output[GetResourceResourceMtlsPostgre]{
+		OutputState: i.ToGetResourceResourceMtlsPostgreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMtlsPostgreArrayInput is an input type that accepts GetResourceResourceMtlsPostgreArray and GetResourceResourceMtlsPostgreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMtlsPostgreArrayInput` via:
 //
@@ -47230,6 +52387,12 @@ func (i GetResourceResourceMtlsPostgreArray) ToGetResourceResourceMtlsPostgreArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMtlsPostgreArrayOutput)
 }
 
+func (i GetResourceResourceMtlsPostgreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMtlsPostgre] {
+	return pulumix.Output[[]GetResourceResourceMtlsPostgre]{
+		OutputState: i.ToGetResourceResourceMtlsPostgreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMtlsPostgreOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMtlsPostgreOutput) ElementType() reflect.Type {
@@ -47242,6 +52405,12 @@ func (o GetResourceResourceMtlsPostgreOutput) ToGetResourceResourceMtlsPostgreOu
 
 func (o GetResourceResourceMtlsPostgreOutput) ToGetResourceResourceMtlsPostgreOutputWithContext(ctx context.Context) GetResourceResourceMtlsPostgreOutput {
 	return o
+}
+
+func (o GetResourceResourceMtlsPostgreOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMtlsPostgre] {
+	return pulumix.Output[GetResourceResourceMtlsPostgre]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -47348,6 +52517,12 @@ func (o GetResourceResourceMtlsPostgreArrayOutput) ToGetResourceResourceMtlsPost
 	return o
 }
 
+func (o GetResourceResourceMtlsPostgreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMtlsPostgre] {
+	return pulumix.Output[[]GetResourceResourceMtlsPostgre]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceMtlsPostgreArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMtlsPostgreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceMtlsPostgre {
 		return vs[0].([]GetResourceResourceMtlsPostgre)[vs[1].(int)]
@@ -47443,6 +52618,12 @@ func (i GetResourceResourceMysqlArgs) ToGetResourceResourceMysqlOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMysqlOutput)
 }
 
+func (i GetResourceResourceMysqlArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMysql] {
+	return pulumix.Output[GetResourceResourceMysql]{
+		OutputState: i.ToGetResourceResourceMysqlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceMysqlArrayInput is an input type that accepts GetResourceResourceMysqlArray and GetResourceResourceMysqlArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceMysqlArrayInput` via:
 //
@@ -47468,6 +52649,12 @@ func (i GetResourceResourceMysqlArray) ToGetResourceResourceMysqlArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceMysqlArrayOutput)
 }
 
+func (i GetResourceResourceMysqlArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMysql] {
+	return pulumix.Output[[]GetResourceResourceMysql]{
+		OutputState: i.ToGetResourceResourceMysqlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceMysqlOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceMysqlOutput) ElementType() reflect.Type {
@@ -47480,6 +52667,12 @@ func (o GetResourceResourceMysqlOutput) ToGetResourceResourceMysqlOutput() GetRe
 
 func (o GetResourceResourceMysqlOutput) ToGetResourceResourceMysqlOutputWithContext(ctx context.Context) GetResourceResourceMysqlOutput {
 	return o
+}
+
+func (o GetResourceResourceMysqlOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceMysql] {
+	return pulumix.Output[GetResourceResourceMysql]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -47571,6 +52764,12 @@ func (o GetResourceResourceMysqlArrayOutput) ToGetResourceResourceMysqlArrayOutp
 	return o
 }
 
+func (o GetResourceResourceMysqlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceMysql] {
+	return pulumix.Output[[]GetResourceResourceMysql]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceMysqlArrayOutput) Index(i pulumi.IntInput) GetResourceResourceMysqlOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceMysql {
 		return vs[0].([]GetResourceResourceMysql)[vs[1].(int)]
@@ -47646,6 +52845,12 @@ func (i GetResourceResourceNeptuneArgs) ToGetResourceResourceNeptuneOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceNeptuneOutput)
 }
 
+func (i GetResourceResourceNeptuneArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceNeptune] {
+	return pulumix.Output[GetResourceResourceNeptune]{
+		OutputState: i.ToGetResourceResourceNeptuneOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceNeptuneArrayInput is an input type that accepts GetResourceResourceNeptuneArray and GetResourceResourceNeptuneArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceNeptuneArrayInput` via:
 //
@@ -47671,6 +52876,12 @@ func (i GetResourceResourceNeptuneArray) ToGetResourceResourceNeptuneArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceNeptuneArrayOutput)
 }
 
+func (i GetResourceResourceNeptuneArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceNeptune] {
+	return pulumix.Output[[]GetResourceResourceNeptune]{
+		OutputState: i.ToGetResourceResourceNeptuneArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceNeptuneOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceNeptuneOutput) ElementType() reflect.Type {
@@ -47683,6 +52894,12 @@ func (o GetResourceResourceNeptuneOutput) ToGetResourceResourceNeptuneOutput() G
 
 func (o GetResourceResourceNeptuneOutput) ToGetResourceResourceNeptuneOutputWithContext(ctx context.Context) GetResourceResourceNeptuneOutput {
 	return o
+}
+
+func (o GetResourceResourceNeptuneOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceNeptune] {
+	return pulumix.Output[GetResourceResourceNeptune]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -47747,6 +52964,12 @@ func (o GetResourceResourceNeptuneArrayOutput) ToGetResourceResourceNeptuneArray
 
 func (o GetResourceResourceNeptuneArrayOutput) ToGetResourceResourceNeptuneArrayOutputWithContext(ctx context.Context) GetResourceResourceNeptuneArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceNeptuneArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceNeptune] {
+	return pulumix.Output[[]GetResourceResourceNeptune]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceNeptuneArrayOutput) Index(i pulumi.IntInput) GetResourceResourceNeptuneOutput {
@@ -47844,6 +53067,12 @@ func (i GetResourceResourceNeptuneIamArgs) ToGetResourceResourceNeptuneIamOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceNeptuneIamOutput)
 }
 
+func (i GetResourceResourceNeptuneIamArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceNeptuneIam] {
+	return pulumix.Output[GetResourceResourceNeptuneIam]{
+		OutputState: i.ToGetResourceResourceNeptuneIamOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceNeptuneIamArrayInput is an input type that accepts GetResourceResourceNeptuneIamArray and GetResourceResourceNeptuneIamArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceNeptuneIamArrayInput` via:
 //
@@ -47869,6 +53098,12 @@ func (i GetResourceResourceNeptuneIamArray) ToGetResourceResourceNeptuneIamArray
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceNeptuneIamArrayOutput)
 }
 
+func (i GetResourceResourceNeptuneIamArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceNeptuneIam] {
+	return pulumix.Output[[]GetResourceResourceNeptuneIam]{
+		OutputState: i.ToGetResourceResourceNeptuneIamArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceNeptuneIamOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceNeptuneIamOutput) ElementType() reflect.Type {
@@ -47881,6 +53116,12 @@ func (o GetResourceResourceNeptuneIamOutput) ToGetResourceResourceNeptuneIamOutp
 
 func (o GetResourceResourceNeptuneIamOutput) ToGetResourceResourceNeptuneIamOutputWithContext(ctx context.Context) GetResourceResourceNeptuneIamOutput {
 	return o
+}
+
+func (o GetResourceResourceNeptuneIamOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceNeptuneIam] {
+	return pulumix.Output[GetResourceResourceNeptuneIam]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The Access Key ID to use to authenticate.
@@ -47970,6 +53211,12 @@ func (o GetResourceResourceNeptuneIamArrayOutput) ToGetResourceResourceNeptuneIa
 
 func (o GetResourceResourceNeptuneIamArrayOutput) ToGetResourceResourceNeptuneIamArrayOutputWithContext(ctx context.Context) GetResourceResourceNeptuneIamArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceNeptuneIamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceNeptuneIam] {
+	return pulumix.Output[[]GetResourceResourceNeptuneIam]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceNeptuneIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceNeptuneIamOutput {
@@ -48063,6 +53310,12 @@ func (i GetResourceResourceOracleArgs) ToGetResourceResourceOracleOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceOracleOutput)
 }
 
+func (i GetResourceResourceOracleArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceOracle] {
+	return pulumix.Output[GetResourceResourceOracle]{
+		OutputState: i.ToGetResourceResourceOracleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceOracleArrayInput is an input type that accepts GetResourceResourceOracleArray and GetResourceResourceOracleArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceOracleArrayInput` via:
 //
@@ -48088,6 +53341,12 @@ func (i GetResourceResourceOracleArray) ToGetResourceResourceOracleArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceOracleArrayOutput)
 }
 
+func (i GetResourceResourceOracleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceOracle] {
+	return pulumix.Output[[]GetResourceResourceOracle]{
+		OutputState: i.ToGetResourceResourceOracleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceOracleOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceOracleOutput) ElementType() reflect.Type {
@@ -48100,6 +53359,12 @@ func (o GetResourceResourceOracleOutput) ToGetResourceResourceOracleOutput() Get
 
 func (o GetResourceResourceOracleOutput) ToGetResourceResourceOracleOutputWithContext(ctx context.Context) GetResourceResourceOracleOutput {
 	return o
+}
+
+func (o GetResourceResourceOracleOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceOracle] {
+	return pulumix.Output[GetResourceResourceOracle]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -48184,6 +53449,12 @@ func (o GetResourceResourceOracleArrayOutput) ToGetResourceResourceOracleArrayOu
 
 func (o GetResourceResourceOracleArrayOutput) ToGetResourceResourceOracleArrayOutputWithContext(ctx context.Context) GetResourceResourceOracleArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceOracleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceOracle] {
+	return pulumix.Output[[]GetResourceResourceOracle]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceOracleArrayOutput) Index(i pulumi.IntInput) GetResourceResourceOracleOutput {
@@ -48277,6 +53548,12 @@ func (i GetResourceResourcePostgreArgs) ToGetResourceResourcePostgreOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourcePostgreOutput)
 }
 
+func (i GetResourceResourcePostgreArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourcePostgre] {
+	return pulumix.Output[GetResourceResourcePostgre]{
+		OutputState: i.ToGetResourceResourcePostgreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourcePostgreArrayInput is an input type that accepts GetResourceResourcePostgreArray and GetResourceResourcePostgreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourcePostgreArrayInput` via:
 //
@@ -48302,6 +53579,12 @@ func (i GetResourceResourcePostgreArray) ToGetResourceResourcePostgreArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourcePostgreArrayOutput)
 }
 
+func (i GetResourceResourcePostgreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourcePostgre] {
+	return pulumix.Output[[]GetResourceResourcePostgre]{
+		OutputState: i.ToGetResourceResourcePostgreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourcePostgreOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourcePostgreOutput) ElementType() reflect.Type {
@@ -48314,6 +53597,12 @@ func (o GetResourceResourcePostgreOutput) ToGetResourceResourcePostgreOutput() G
 
 func (o GetResourceResourcePostgreOutput) ToGetResourceResourcePostgreOutputWithContext(ctx context.Context) GetResourceResourcePostgreOutput {
 	return o
+}
+
+func (o GetResourceResourcePostgreOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourcePostgre] {
+	return pulumix.Output[GetResourceResourcePostgre]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -48398,6 +53687,12 @@ func (o GetResourceResourcePostgreArrayOutput) ToGetResourceResourcePostgreArray
 
 func (o GetResourceResourcePostgreArrayOutput) ToGetResourceResourcePostgreArrayOutputWithContext(ctx context.Context) GetResourceResourcePostgreArrayOutput {
 	return o
+}
+
+func (o GetResourceResourcePostgreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourcePostgre] {
+	return pulumix.Output[[]GetResourceResourcePostgre]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourcePostgreArrayOutput) Index(i pulumi.IntInput) GetResourceResourcePostgreOutput {
@@ -48491,6 +53786,12 @@ func (i GetResourceResourcePrestoArgs) ToGetResourceResourcePrestoOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourcePrestoOutput)
 }
 
+func (i GetResourceResourcePrestoArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourcePresto] {
+	return pulumix.Output[GetResourceResourcePresto]{
+		OutputState: i.ToGetResourceResourcePrestoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourcePrestoArrayInput is an input type that accepts GetResourceResourcePrestoArray and GetResourceResourcePrestoArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourcePrestoArrayInput` via:
 //
@@ -48516,6 +53817,12 @@ func (i GetResourceResourcePrestoArray) ToGetResourceResourcePrestoArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourcePrestoArrayOutput)
 }
 
+func (i GetResourceResourcePrestoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourcePresto] {
+	return pulumix.Output[[]GetResourceResourcePresto]{
+		OutputState: i.ToGetResourceResourcePrestoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourcePrestoOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourcePrestoOutput) ElementType() reflect.Type {
@@ -48528,6 +53835,12 @@ func (o GetResourceResourcePrestoOutput) ToGetResourceResourcePrestoOutput() Get
 
 func (o GetResourceResourcePrestoOutput) ToGetResourceResourcePrestoOutputWithContext(ctx context.Context) GetResourceResourcePrestoOutput {
 	return o
+}
+
+func (o GetResourceResourcePrestoOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourcePresto] {
+	return pulumix.Output[GetResourceResourcePresto]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -48612,6 +53925,12 @@ func (o GetResourceResourcePrestoArrayOutput) ToGetResourceResourcePrestoArrayOu
 
 func (o GetResourceResourcePrestoArrayOutput) ToGetResourceResourcePrestoArrayOutputWithContext(ctx context.Context) GetResourceResourcePrestoArrayOutput {
 	return o
+}
+
+func (o GetResourceResourcePrestoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourcePresto] {
+	return pulumix.Output[[]GetResourceResourcePresto]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourcePrestoArrayOutput) Index(i pulumi.IntInput) GetResourceResourcePrestoOutput {
@@ -48701,6 +54020,12 @@ func (i GetResourceResourceRabbitmqAmqp091Args) ToGetResourceResourceRabbitmqAmq
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRabbitmqAmqp091Output)
 }
 
+func (i GetResourceResourceRabbitmqAmqp091Args) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRabbitmqAmqp091] {
+	return pulumix.Output[GetResourceResourceRabbitmqAmqp091]{
+		OutputState: i.ToGetResourceResourceRabbitmqAmqp091OutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceRabbitmqAmqp091ArrayInput is an input type that accepts GetResourceResourceRabbitmqAmqp091Array and GetResourceResourceRabbitmqAmqp091ArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRabbitmqAmqp091ArrayInput` via:
 //
@@ -48726,6 +54051,12 @@ func (i GetResourceResourceRabbitmqAmqp091Array) ToGetResourceResourceRabbitmqAm
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRabbitmqAmqp091ArrayOutput)
 }
 
+func (i GetResourceResourceRabbitmqAmqp091Array) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRabbitmqAmqp091] {
+	return pulumix.Output[[]GetResourceResourceRabbitmqAmqp091]{
+		OutputState: i.ToGetResourceResourceRabbitmqAmqp091ArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceRabbitmqAmqp091Output struct{ *pulumi.OutputState }
 
 func (GetResourceResourceRabbitmqAmqp091Output) ElementType() reflect.Type {
@@ -48738,6 +54069,12 @@ func (o GetResourceResourceRabbitmqAmqp091Output) ToGetResourceResourceRabbitmqA
 
 func (o GetResourceResourceRabbitmqAmqp091Output) ToGetResourceResourceRabbitmqAmqp091OutputWithContext(ctx context.Context) GetResourceResourceRabbitmqAmqp091Output {
 	return o
+}
+
+func (o GetResourceResourceRabbitmqAmqp091Output) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRabbitmqAmqp091] {
+	return pulumix.Output[GetResourceResourceRabbitmqAmqp091]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -48819,6 +54156,12 @@ func (o GetResourceResourceRabbitmqAmqp091ArrayOutput) ToGetResourceResourceRabb
 	return o
 }
 
+func (o GetResourceResourceRabbitmqAmqp091ArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRabbitmqAmqp091] {
+	return pulumix.Output[[]GetResourceResourceRabbitmqAmqp091]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceRabbitmqAmqp091ArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRabbitmqAmqp091Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRabbitmqAmqp091 {
 		return vs[0].([]GetResourceResourceRabbitmqAmqp091)[vs[1].(int)]
@@ -48894,6 +54237,12 @@ func (i GetResourceResourceRawTcpArgs) ToGetResourceResourceRawTcpOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRawTcpOutput)
 }
 
+func (i GetResourceResourceRawTcpArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRawTcp] {
+	return pulumix.Output[GetResourceResourceRawTcp]{
+		OutputState: i.ToGetResourceResourceRawTcpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceRawTcpArrayInput is an input type that accepts GetResourceResourceRawTcpArray and GetResourceResourceRawTcpArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRawTcpArrayInput` via:
 //
@@ -48919,6 +54268,12 @@ func (i GetResourceResourceRawTcpArray) ToGetResourceResourceRawTcpArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRawTcpArrayOutput)
 }
 
+func (i GetResourceResourceRawTcpArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRawTcp] {
+	return pulumix.Output[[]GetResourceResourceRawTcp]{
+		OutputState: i.ToGetResourceResourceRawTcpArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceRawTcpOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceRawTcpOutput) ElementType() reflect.Type {
@@ -48931,6 +54286,12 @@ func (o GetResourceResourceRawTcpOutput) ToGetResourceResourceRawTcpOutput() Get
 
 func (o GetResourceResourceRawTcpOutput) ToGetResourceResourceRawTcpOutputWithContext(ctx context.Context) GetResourceResourceRawTcpOutput {
 	return o
+}
+
+func (o GetResourceResourceRawTcpOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRawTcp] {
+	return pulumix.Output[GetResourceResourceRawTcp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -48997,6 +54358,12 @@ func (o GetResourceResourceRawTcpArrayOutput) ToGetResourceResourceRawTcpArrayOu
 	return o
 }
 
+func (o GetResourceResourceRawTcpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRawTcp] {
+	return pulumix.Output[[]GetResourceResourceRawTcp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceRawTcpArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRawTcpOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRawTcp {
 		return vs[0].([]GetResourceResourceRawTcp)[vs[1].(int)]
@@ -49014,6 +54381,8 @@ type GetResourceResourceRdp struct {
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+	LockRequired *bool `pulumi:"lockRequired"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The password to authenticate with.
@@ -49054,6 +54423,8 @@ type GetResourceResourceRdpArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+	LockRequired pulumi.BoolPtrInput `pulumi:"lockRequired"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The password to authenticate with.
@@ -49084,6 +54455,12 @@ func (i GetResourceResourceRdpArgs) ToGetResourceResourceRdpOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRdpOutput)
 }
 
+func (i GetResourceResourceRdpArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRdp] {
+	return pulumix.Output[GetResourceResourceRdp]{
+		OutputState: i.ToGetResourceResourceRdpOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceRdpArrayInput is an input type that accepts GetResourceResourceRdpArray and GetResourceResourceRdpArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRdpArrayInput` via:
 //
@@ -49109,6 +54486,12 @@ func (i GetResourceResourceRdpArray) ToGetResourceResourceRdpArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRdpArrayOutput)
 }
 
+func (i GetResourceResourceRdpArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRdp] {
+	return pulumix.Output[[]GetResourceResourceRdp]{
+		OutputState: i.ToGetResourceResourceRdpArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceRdpOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceRdpOutput) ElementType() reflect.Type {
@@ -49121,6 +54504,12 @@ func (o GetResourceResourceRdpOutput) ToGetResourceResourceRdpOutput() GetResour
 
 func (o GetResourceResourceRdpOutput) ToGetResourceResourceRdpOutputWithContext(ctx context.Context) GetResourceResourceRdpOutput {
 	return o
+}
+
+func (o GetResourceResourceRdpOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRdp] {
+	return pulumix.Output[GetResourceResourceRdp]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -49146,6 +54535,11 @@ func (o GetResourceResourceRdpOutput) Hostname() pulumi.StringPtrOutput {
 // Unique identifier of the Resource.
 func (o GetResourceResourceRdpOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+func (o GetResourceResourceRdpOutput) LockRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdp) *bool { return v.LockRequired }).(pulumi.BoolPtrOutput)
 }
 
 // Unique human-readable name of the Resource.
@@ -49202,10 +54596,263 @@ func (o GetResourceResourceRdpArrayOutput) ToGetResourceResourceRdpArrayOutputWi
 	return o
 }
 
+func (o GetResourceResourceRdpArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRdp] {
+	return pulumix.Output[[]GetResourceResourceRdp]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceRdpArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRdpOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRdp {
 		return vs[0].([]GetResourceResourceRdp)[vs[1].(int)]
 	}).(GetResourceResourceRdpOutput)
+}
+
+type GetResourceResourceRdsPostgresIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase *bool `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceRdsPostgresIamInput is an input type that accepts GetResourceResourceRdsPostgresIamArgs and GetResourceResourceRdsPostgresIamOutput values.
+// You can construct a concrete instance of `GetResourceResourceRdsPostgresIamInput` via:
+//
+//	GetResourceResourceRdsPostgresIamArgs{...}
+type GetResourceResourceRdsPostgresIamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRdsPostgresIamOutput() GetResourceResourceRdsPostgresIamOutput
+	ToGetResourceResourceRdsPostgresIamOutputWithContext(context.Context) GetResourceResourceRdsPostgresIamOutput
+}
+
+type GetResourceResourceRdsPostgresIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase pulumi.BoolPtrInput `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceRdsPostgresIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRdsPostgresIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceRdsPostgresIamArgs) ToGetResourceResourceRdsPostgresIamOutput() GetResourceResourceRdsPostgresIamOutput {
+	return i.ToGetResourceResourceRdsPostgresIamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRdsPostgresIamArgs) ToGetResourceResourceRdsPostgresIamOutputWithContext(ctx context.Context) GetResourceResourceRdsPostgresIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRdsPostgresIamOutput)
+}
+
+func (i GetResourceResourceRdsPostgresIamArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRdsPostgresIam] {
+	return pulumix.Output[GetResourceResourceRdsPostgresIam]{
+		OutputState: i.ToGetResourceResourceRdsPostgresIamOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetResourceResourceRdsPostgresIamArrayInput is an input type that accepts GetResourceResourceRdsPostgresIamArray and GetResourceResourceRdsPostgresIamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceRdsPostgresIamArrayInput` via:
+//
+//	GetResourceResourceRdsPostgresIamArray{ GetResourceResourceRdsPostgresIamArgs{...} }
+type GetResourceResourceRdsPostgresIamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRdsPostgresIamArrayOutput() GetResourceResourceRdsPostgresIamArrayOutput
+	ToGetResourceResourceRdsPostgresIamArrayOutputWithContext(context.Context) GetResourceResourceRdsPostgresIamArrayOutput
+}
+
+type GetResourceResourceRdsPostgresIamArray []GetResourceResourceRdsPostgresIamInput
+
+func (GetResourceResourceRdsPostgresIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRdsPostgresIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceRdsPostgresIamArray) ToGetResourceResourceRdsPostgresIamArrayOutput() GetResourceResourceRdsPostgresIamArrayOutput {
+	return i.ToGetResourceResourceRdsPostgresIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRdsPostgresIamArray) ToGetResourceResourceRdsPostgresIamArrayOutputWithContext(ctx context.Context) GetResourceResourceRdsPostgresIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRdsPostgresIamArrayOutput)
+}
+
+func (i GetResourceResourceRdsPostgresIamArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRdsPostgresIam] {
+	return pulumix.Output[[]GetResourceResourceRdsPostgresIam]{
+		OutputState: i.ToGetResourceResourceRdsPostgresIamArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetResourceResourceRdsPostgresIamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRdsPostgresIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRdsPostgresIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceRdsPostgresIamOutput) ToGetResourceResourceRdsPostgresIamOutput() GetResourceResourceRdsPostgresIamOutput {
+	return o
+}
+
+func (o GetResourceResourceRdsPostgresIamOutput) ToGetResourceResourceRdsPostgresIamOutputWithContext(ctx context.Context) GetResourceResourceRdsPostgresIamOutput {
+	return o
+}
+
+func (o GetResourceResourceRdsPostgresIamOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRdsPostgresIam] {
+	return pulumix.Output[GetResourceResourceRdsPostgresIam]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceRdsPostgresIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceRdsPostgresIamOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceRdsPostgresIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRdsPostgresIamOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceRdsPostgresIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceRdsPostgresIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o GetResourceResourceRdsPostgresIamOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRdsPostgresIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceRdsPostgresIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceRdsPostgresIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o GetResourceResourceRdsPostgresIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceRdsPostgresIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceRdsPostgresIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceRdsPostgresIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceRdsPostgresIamOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceRdsPostgresIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRdsPostgresIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRdsPostgresIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceRdsPostgresIamArrayOutput) ToGetResourceResourceRdsPostgresIamArrayOutput() GetResourceResourceRdsPostgresIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRdsPostgresIamArrayOutput) ToGetResourceResourceRdsPostgresIamArrayOutputWithContext(ctx context.Context) GetResourceResourceRdsPostgresIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRdsPostgresIamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRdsPostgresIam] {
+	return pulumix.Output[[]GetResourceResourceRdsPostgresIam]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetResourceResourceRdsPostgresIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRdsPostgresIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRdsPostgresIam {
+		return vs[0].([]GetResourceResourceRdsPostgresIam)[vs[1].(int)]
+	}).(GetResourceResourceRdsPostgresIamOutput)
 }
 
 type GetResourceResourceRedi struct {
@@ -49289,6 +54936,12 @@ func (i GetResourceResourceRediArgs) ToGetResourceResourceRediOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRediOutput)
 }
 
+func (i GetResourceResourceRediArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRedi] {
+	return pulumix.Output[GetResourceResourceRedi]{
+		OutputState: i.ToGetResourceResourceRediOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceRediArrayInput is an input type that accepts GetResourceResourceRediArray and GetResourceResourceRediArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRediArrayInput` via:
 //
@@ -49314,6 +54967,12 @@ func (i GetResourceResourceRediArray) ToGetResourceResourceRediArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRediArrayOutput)
 }
 
+func (i GetResourceResourceRediArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRedi] {
+	return pulumix.Output[[]GetResourceResourceRedi]{
+		OutputState: i.ToGetResourceResourceRediArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceRediOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceRediOutput) ElementType() reflect.Type {
@@ -49326,6 +54985,12 @@ func (o GetResourceResourceRediOutput) ToGetResourceResourceRediOutput() GetReso
 
 func (o GetResourceResourceRediOutput) ToGetResourceResourceRediOutputWithContext(ctx context.Context) GetResourceResourceRediOutput {
 	return o
+}
+
+func (o GetResourceResourceRediOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRedi] {
+	return pulumix.Output[GetResourceResourceRedi]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -49405,6 +55070,12 @@ func (o GetResourceResourceRediArrayOutput) ToGetResourceResourceRediArrayOutput
 
 func (o GetResourceResourceRediArrayOutput) ToGetResourceResourceRediArrayOutputWithContext(ctx context.Context) GetResourceResourceRediArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceRediArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRedi] {
+	return pulumix.Output[[]GetResourceResourceRedi]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceRediArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRediOutput {
@@ -49498,6 +55169,12 @@ func (i GetResourceResourceRedshiftArgs) ToGetResourceResourceRedshiftOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRedshiftOutput)
 }
 
+func (i GetResourceResourceRedshiftArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRedshift] {
+	return pulumix.Output[GetResourceResourceRedshift]{
+		OutputState: i.ToGetResourceResourceRedshiftOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceRedshiftArrayInput is an input type that accepts GetResourceResourceRedshiftArray and GetResourceResourceRedshiftArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceRedshiftArrayInput` via:
 //
@@ -49523,6 +55200,12 @@ func (i GetResourceResourceRedshiftArray) ToGetResourceResourceRedshiftArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRedshiftArrayOutput)
 }
 
+func (i GetResourceResourceRedshiftArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRedshift] {
+	return pulumix.Output[[]GetResourceResourceRedshift]{
+		OutputState: i.ToGetResourceResourceRedshiftArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceRedshiftOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceRedshiftOutput) ElementType() reflect.Type {
@@ -49535,6 +55218,12 @@ func (o GetResourceResourceRedshiftOutput) ToGetResourceResourceRedshiftOutput()
 
 func (o GetResourceResourceRedshiftOutput) ToGetResourceResourceRedshiftOutputWithContext(ctx context.Context) GetResourceResourceRedshiftOutput {
 	return o
+}
+
+func (o GetResourceResourceRedshiftOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceRedshift] {
+	return pulumix.Output[GetResourceResourceRedshift]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -49619,6 +55308,12 @@ func (o GetResourceResourceRedshiftArrayOutput) ToGetResourceResourceRedshiftArr
 
 func (o GetResourceResourceRedshiftArrayOutput) ToGetResourceResourceRedshiftArrayOutputWithContext(ctx context.Context) GetResourceResourceRedshiftArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceRedshiftArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceRedshift] {
+	return pulumix.Output[[]GetResourceResourceRedshift]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceRedshiftArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRedshiftOutput {
@@ -49716,6 +55411,12 @@ func (i GetResourceResourceSingleStoreArgs) ToGetResourceResourceSingleStoreOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSingleStoreOutput)
 }
 
+func (i GetResourceResourceSingleStoreArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSingleStore] {
+	return pulumix.Output[GetResourceResourceSingleStore]{
+		OutputState: i.ToGetResourceResourceSingleStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSingleStoreArrayInput is an input type that accepts GetResourceResourceSingleStoreArray and GetResourceResourceSingleStoreArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSingleStoreArrayInput` via:
 //
@@ -49741,6 +55442,12 @@ func (i GetResourceResourceSingleStoreArray) ToGetResourceResourceSingleStoreArr
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSingleStoreArrayOutput)
 }
 
+func (i GetResourceResourceSingleStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSingleStore] {
+	return pulumix.Output[[]GetResourceResourceSingleStore]{
+		OutputState: i.ToGetResourceResourceSingleStoreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSingleStoreOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSingleStoreOutput) ElementType() reflect.Type {
@@ -49753,6 +55460,12 @@ func (o GetResourceResourceSingleStoreOutput) ToGetResourceResourceSingleStoreOu
 
 func (o GetResourceResourceSingleStoreOutput) ToGetResourceResourceSingleStoreOutputWithContext(ctx context.Context) GetResourceResourceSingleStoreOutput {
 	return o
+}
+
+func (o GetResourceResourceSingleStoreOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSingleStore] {
+	return pulumix.Output[GetResourceResourceSingleStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -49844,6 +55557,12 @@ func (o GetResourceResourceSingleStoreArrayOutput) ToGetResourceResourceSingleSt
 	return o
 }
 
+func (o GetResourceResourceSingleStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSingleStore] {
+	return pulumix.Output[[]GetResourceResourceSingleStore]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceSingleStoreArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSingleStoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSingleStore {
 		return vs[0].([]GetResourceResourceSingleStore)[vs[1].(int)]
@@ -49931,6 +55650,12 @@ func (i GetResourceResourceSnowflakeArgs) ToGetResourceResourceSnowflakeOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSnowflakeOutput)
 }
 
+func (i GetResourceResourceSnowflakeArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSnowflake] {
+	return pulumix.Output[GetResourceResourceSnowflake]{
+		OutputState: i.ToGetResourceResourceSnowflakeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSnowflakeArrayInput is an input type that accepts GetResourceResourceSnowflakeArray and GetResourceResourceSnowflakeArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSnowflakeArrayInput` via:
 //
@@ -49956,6 +55681,12 @@ func (i GetResourceResourceSnowflakeArray) ToGetResourceResourceSnowflakeArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSnowflakeArrayOutput)
 }
 
+func (i GetResourceResourceSnowflakeArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSnowflake] {
+	return pulumix.Output[[]GetResourceResourceSnowflake]{
+		OutputState: i.ToGetResourceResourceSnowflakeArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSnowflakeOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSnowflakeOutput) ElementType() reflect.Type {
@@ -49968,6 +55699,12 @@ func (o GetResourceResourceSnowflakeOutput) ToGetResourceResourceSnowflakeOutput
 
 func (o GetResourceResourceSnowflakeOutput) ToGetResourceResourceSnowflakeOutputWithContext(ctx context.Context) GetResourceResourceSnowflakeOutput {
 	return o
+}
+
+func (o GetResourceResourceSnowflakeOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSnowflake] {
+	return pulumix.Output[GetResourceResourceSnowflake]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -50049,6 +55786,12 @@ func (o GetResourceResourceSnowflakeArrayOutput) ToGetResourceResourceSnowflakeA
 	return o
 }
 
+func (o GetResourceResourceSnowflakeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSnowflake] {
+	return pulumix.Output[[]GetResourceResourceSnowflake]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceSnowflakeArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSnowflakeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSnowflake {
 		return vs[0].([]GetResourceResourceSnowflake)[vs[1].(int)]
@@ -50124,6 +55867,12 @@ func (i GetResourceResourceSnowsightArgs) ToGetResourceResourceSnowsightOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSnowsightOutput)
 }
 
+func (i GetResourceResourceSnowsightArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSnowsight] {
+	return pulumix.Output[GetResourceResourceSnowsight]{
+		OutputState: i.ToGetResourceResourceSnowsightOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSnowsightArrayInput is an input type that accepts GetResourceResourceSnowsightArray and GetResourceResourceSnowsightArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSnowsightArrayInput` via:
 //
@@ -50149,6 +55898,12 @@ func (i GetResourceResourceSnowsightArray) ToGetResourceResourceSnowsightArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSnowsightArrayOutput)
 }
 
+func (i GetResourceResourceSnowsightArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSnowsight] {
+	return pulumix.Output[[]GetResourceResourceSnowsight]{
+		OutputState: i.ToGetResourceResourceSnowsightArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSnowsightOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSnowsightOutput) ElementType() reflect.Type {
@@ -50161,6 +55916,12 @@ func (o GetResourceResourceSnowsightOutput) ToGetResourceResourceSnowsightOutput
 
 func (o GetResourceResourceSnowsightOutput) ToGetResourceResourceSnowsightOutputWithContext(ctx context.Context) GetResourceResourceSnowsightOutput {
 	return o
+}
+
+func (o GetResourceResourceSnowsightOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSnowsight] {
+	return pulumix.Output[GetResourceResourceSnowsight]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -50225,6 +55986,12 @@ func (o GetResourceResourceSnowsightArrayOutput) ToGetResourceResourceSnowsightA
 
 func (o GetResourceResourceSnowsightArrayOutput) ToGetResourceResourceSnowsightArrayOutputWithContext(ctx context.Context) GetResourceResourceSnowsightArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceSnowsightArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSnowsight] {
+	return pulumix.Output[[]GetResourceResourceSnowsight]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceSnowsightArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSnowsightOutput {
@@ -50326,6 +56093,12 @@ func (i GetResourceResourceSqlServerArgs) ToGetResourceResourceSqlServerOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerOutput)
 }
 
+func (i GetResourceResourceSqlServerArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSqlServer] {
+	return pulumix.Output[GetResourceResourceSqlServer]{
+		OutputState: i.ToGetResourceResourceSqlServerOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSqlServerArrayInput is an input type that accepts GetResourceResourceSqlServerArray and GetResourceResourceSqlServerArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSqlServerArrayInput` via:
 //
@@ -50351,6 +56124,12 @@ func (i GetResourceResourceSqlServerArray) ToGetResourceResourceSqlServerArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerArrayOutput)
 }
 
+func (i GetResourceResourceSqlServerArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSqlServer] {
+	return pulumix.Output[[]GetResourceResourceSqlServer]{
+		OutputState: i.ToGetResourceResourceSqlServerArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSqlServerOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSqlServerOutput) ElementType() reflect.Type {
@@ -50363,6 +56142,12 @@ func (o GetResourceResourceSqlServerOutput) ToGetResourceResourceSqlServerOutput
 
 func (o GetResourceResourceSqlServerOutput) ToGetResourceResourceSqlServerOutputWithContext(ctx context.Context) GetResourceResourceSqlServerOutput {
 	return o
+}
+
+func (o GetResourceResourceSqlServerOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSqlServer] {
+	return pulumix.Output[GetResourceResourceSqlServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
@@ -50457,6 +56242,12 @@ func (o GetResourceResourceSqlServerArrayOutput) ToGetResourceResourceSqlServerA
 
 func (o GetResourceResourceSqlServerArrayOutput) ToGetResourceResourceSqlServerArrayOutputWithContext(ctx context.Context) GetResourceResourceSqlServerArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceSqlServerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSqlServer] {
+	return pulumix.Output[[]GetResourceResourceSqlServer]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceSqlServerArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSqlServerOutput {
@@ -50564,6 +56355,12 @@ func (i GetResourceResourceSqlServerAzureAdArgs) ToGetResourceResourceSqlServerA
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerAzureAdOutput)
 }
 
+func (i GetResourceResourceSqlServerAzureAdArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSqlServerAzureAd] {
+	return pulumix.Output[GetResourceResourceSqlServerAzureAd]{
+		OutputState: i.ToGetResourceResourceSqlServerAzureAdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSqlServerAzureAdArrayInput is an input type that accepts GetResourceResourceSqlServerAzureAdArray and GetResourceResourceSqlServerAzureAdArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSqlServerAzureAdArrayInput` via:
 //
@@ -50589,6 +56386,12 @@ func (i GetResourceResourceSqlServerAzureAdArray) ToGetResourceResourceSqlServer
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerAzureAdArrayOutput)
 }
 
+func (i GetResourceResourceSqlServerAzureAdArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSqlServerAzureAd] {
+	return pulumix.Output[[]GetResourceResourceSqlServerAzureAd]{
+		OutputState: i.ToGetResourceResourceSqlServerAzureAdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSqlServerAzureAdOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSqlServerAzureAdOutput) ElementType() reflect.Type {
@@ -50601,6 +56404,12 @@ func (o GetResourceResourceSqlServerAzureAdOutput) ToGetResourceResourceSqlServe
 
 func (o GetResourceResourceSqlServerAzureAdOutput) ToGetResourceResourceSqlServerAzureAdOutputWithContext(ctx context.Context) GetResourceResourceSqlServerAzureAdOutput {
 	return o
+}
+
+func (o GetResourceResourceSqlServerAzureAdOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSqlServerAzureAd] {
+	return pulumix.Output[GetResourceResourceSqlServerAzureAd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
@@ -50701,6 +56510,12 @@ func (o GetResourceResourceSqlServerAzureAdArrayOutput) ToGetResourceResourceSql
 
 func (o GetResourceResourceSqlServerAzureAdArrayOutput) ToGetResourceResourceSqlServerAzureAdArrayOutputWithContext(ctx context.Context) GetResourceResourceSqlServerAzureAdArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceSqlServerAzureAdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSqlServerAzureAd] {
+	return pulumix.Output[[]GetResourceResourceSqlServerAzureAd]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceSqlServerAzureAdArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSqlServerAzureAdOutput {
@@ -50814,6 +56629,12 @@ func (i GetResourceResourceSqlServerKerberosAdArgs) ToGetResourceResourceSqlServ
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerKerberosAdOutput)
 }
 
+func (i GetResourceResourceSqlServerKerberosAdArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSqlServerKerberosAd] {
+	return pulumix.Output[GetResourceResourceSqlServerKerberosAd]{
+		OutputState: i.ToGetResourceResourceSqlServerKerberosAdOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSqlServerKerberosAdArrayInput is an input type that accepts GetResourceResourceSqlServerKerberosAdArray and GetResourceResourceSqlServerKerberosAdArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSqlServerKerberosAdArrayInput` via:
 //
@@ -50839,6 +56660,12 @@ func (i GetResourceResourceSqlServerKerberosAdArray) ToGetResourceResourceSqlSer
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSqlServerKerberosAdArrayOutput)
 }
 
+func (i GetResourceResourceSqlServerKerberosAdArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSqlServerKerberosAd] {
+	return pulumix.Output[[]GetResourceResourceSqlServerKerberosAd]{
+		OutputState: i.ToGetResourceResourceSqlServerKerberosAdArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSqlServerKerberosAdOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSqlServerKerberosAdOutput) ElementType() reflect.Type {
@@ -50851,6 +56678,12 @@ func (o GetResourceResourceSqlServerKerberosAdOutput) ToGetResourceResourceSqlSe
 
 func (o GetResourceResourceSqlServerKerberosAdOutput) ToGetResourceResourceSqlServerKerberosAdOutputWithContext(ctx context.Context) GetResourceResourceSqlServerKerberosAdOutput {
 	return o
+}
+
+func (o GetResourceResourceSqlServerKerberosAdOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSqlServerKerberosAd] {
+	return pulumix.Output[GetResourceResourceSqlServerKerberosAd]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
@@ -50962,6 +56795,12 @@ func (o GetResourceResourceSqlServerKerberosAdArrayOutput) ToGetResourceResource
 	return o
 }
 
+func (o GetResourceResourceSqlServerKerberosAdArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSqlServerKerberosAd] {
+	return pulumix.Output[[]GetResourceResourceSqlServerKerberosAd]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceSqlServerKerberosAdArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSqlServerKerberosAdOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSqlServerKerberosAd {
 		return vs[0].([]GetResourceResourceSqlServerKerberosAd)[vs[1].(int)]
@@ -51057,6 +56896,12 @@ func (i GetResourceResourceSshArgs) ToGetResourceResourceSshOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSshOutput)
 }
 
+func (i GetResourceResourceSshArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSsh] {
+	return pulumix.Output[GetResourceResourceSsh]{
+		OutputState: i.ToGetResourceResourceSshOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSshArrayInput is an input type that accepts GetResourceResourceSshArray and GetResourceResourceSshArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshArrayInput` via:
 //
@@ -51082,6 +56927,12 @@ func (i GetResourceResourceSshArray) ToGetResourceResourceSshArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSshArrayOutput)
 }
 
+func (i GetResourceResourceSshArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSsh] {
+	return pulumix.Output[[]GetResourceResourceSsh]{
+		OutputState: i.ToGetResourceResourceSshArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSshOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSshOutput) ElementType() reflect.Type {
@@ -51094,6 +56945,12 @@ func (o GetResourceResourceSshOutput) ToGetResourceResourceSshOutput() GetResour
 
 func (o GetResourceResourceSshOutput) ToGetResourceResourceSshOutputWithContext(ctx context.Context) GetResourceResourceSshOutput {
 	return o
+}
+
+func (o GetResourceResourceSshOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSsh] {
+	return pulumix.Output[GetResourceResourceSsh]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
@@ -51183,6 +57040,12 @@ func (o GetResourceResourceSshArrayOutput) ToGetResourceResourceSshArrayOutput()
 
 func (o GetResourceResourceSshArrayOutput) ToGetResourceResourceSshArrayOutputWithContext(ctx context.Context) GetResourceResourceSshArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceSshArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSsh] {
+	return pulumix.Output[[]GetResourceResourceSsh]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceSshArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSshOutput {
@@ -51284,6 +57147,12 @@ func (i GetResourceResourceSshCertArgs) ToGetResourceResourceSshCertOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSshCertOutput)
 }
 
+func (i GetResourceResourceSshCertArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSshCert] {
+	return pulumix.Output[GetResourceResourceSshCert]{
+		OutputState: i.ToGetResourceResourceSshCertOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSshCertArrayInput is an input type that accepts GetResourceResourceSshCertArray and GetResourceResourceSshCertArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshCertArrayInput` via:
 //
@@ -51309,6 +57178,12 @@ func (i GetResourceResourceSshCertArray) ToGetResourceResourceSshCertArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSshCertArrayOutput)
 }
 
+func (i GetResourceResourceSshCertArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSshCert] {
+	return pulumix.Output[[]GetResourceResourceSshCert]{
+		OutputState: i.ToGetResourceResourceSshCertArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSshCertOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSshCertOutput) ElementType() reflect.Type {
@@ -51321,6 +57196,12 @@ func (o GetResourceResourceSshCertOutput) ToGetResourceResourceSshCertOutput() G
 
 func (o GetResourceResourceSshCertOutput) ToGetResourceResourceSshCertOutputWithContext(ctx context.Context) GetResourceResourceSshCertOutput {
 	return o
+}
+
+func (o GetResourceResourceSshCertOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSshCert] {
+	return pulumix.Output[GetResourceResourceSshCert]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
@@ -51417,6 +57298,12 @@ func (o GetResourceResourceSshCertArrayOutput) ToGetResourceResourceSshCertArray
 	return o
 }
 
+func (o GetResourceResourceSshCertArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSshCert] {
+	return pulumix.Output[[]GetResourceResourceSshCert]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceSshCertArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSshCertOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSshCert {
 		return vs[0].([]GetResourceResourceSshCert)[vs[1].(int)]
@@ -51508,6 +57395,12 @@ func (i GetResourceResourceSshCustomerKeyArgs) ToGetResourceResourceSshCustomerK
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSshCustomerKeyOutput)
 }
 
+func (i GetResourceResourceSshCustomerKeyArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSshCustomerKey] {
+	return pulumix.Output[GetResourceResourceSshCustomerKey]{
+		OutputState: i.ToGetResourceResourceSshCustomerKeyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSshCustomerKeyArrayInput is an input type that accepts GetResourceResourceSshCustomerKeyArray and GetResourceResourceSshCustomerKeyArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSshCustomerKeyArrayInput` via:
 //
@@ -51533,6 +57426,12 @@ func (i GetResourceResourceSshCustomerKeyArray) ToGetResourceResourceSshCustomer
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSshCustomerKeyArrayOutput)
 }
 
+func (i GetResourceResourceSshCustomerKeyArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSshCustomerKey] {
+	return pulumix.Output[[]GetResourceResourceSshCustomerKey]{
+		OutputState: i.ToGetResourceResourceSshCustomerKeyArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSshCustomerKeyOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSshCustomerKeyOutput) ElementType() reflect.Type {
@@ -51545,6 +57444,12 @@ func (o GetResourceResourceSshCustomerKeyOutput) ToGetResourceResourceSshCustome
 
 func (o GetResourceResourceSshCustomerKeyOutput) ToGetResourceResourceSshCustomerKeyOutputWithContext(ctx context.Context) GetResourceResourceSshCustomerKeyOutput {
 	return o
+}
+
+func (o GetResourceResourceSshCustomerKeyOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSshCustomerKey] {
+	return pulumix.Output[GetResourceResourceSshCustomerKey]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
@@ -51631,6 +57536,12 @@ func (o GetResourceResourceSshCustomerKeyArrayOutput) ToGetResourceResourceSshCu
 	return o
 }
 
+func (o GetResourceResourceSshCustomerKeyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSshCustomerKey] {
+	return pulumix.Output[[]GetResourceResourceSshCustomerKey]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceSshCustomerKeyArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSshCustomerKeyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSshCustomerKey {
 		return vs[0].([]GetResourceResourceSshCustomerKey)[vs[1].(int)]
@@ -51714,6 +57625,12 @@ func (i GetResourceResourceSybaseArgs) ToGetResourceResourceSybaseOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSybaseOutput)
 }
 
+func (i GetResourceResourceSybaseArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSybase] {
+	return pulumix.Output[GetResourceResourceSybase]{
+		OutputState: i.ToGetResourceResourceSybaseOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSybaseArrayInput is an input type that accepts GetResourceResourceSybaseArray and GetResourceResourceSybaseArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSybaseArrayInput` via:
 //
@@ -51739,6 +57656,12 @@ func (i GetResourceResourceSybaseArray) ToGetResourceResourceSybaseArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSybaseArrayOutput)
 }
 
+func (i GetResourceResourceSybaseArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSybase] {
+	return pulumix.Output[[]GetResourceResourceSybase]{
+		OutputState: i.ToGetResourceResourceSybaseArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSybaseOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSybaseOutput) ElementType() reflect.Type {
@@ -51751,6 +57674,12 @@ func (o GetResourceResourceSybaseOutput) ToGetResourceResourceSybaseOutput() Get
 
 func (o GetResourceResourceSybaseOutput) ToGetResourceResourceSybaseOutputWithContext(ctx context.Context) GetResourceResourceSybaseOutput {
 	return o
+}
+
+func (o GetResourceResourceSybaseOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSybase] {
+	return pulumix.Output[GetResourceResourceSybase]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -51825,6 +57754,12 @@ func (o GetResourceResourceSybaseArrayOutput) ToGetResourceResourceSybaseArrayOu
 
 func (o GetResourceResourceSybaseArrayOutput) ToGetResourceResourceSybaseArrayOutputWithContext(ctx context.Context) GetResourceResourceSybaseArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceSybaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSybase] {
+	return pulumix.Output[[]GetResourceResourceSybase]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceSybaseArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSybaseOutput {
@@ -51910,6 +57845,12 @@ func (i GetResourceResourceSybaseIqArgs) ToGetResourceResourceSybaseIqOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSybaseIqOutput)
 }
 
+func (i GetResourceResourceSybaseIqArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSybaseIq] {
+	return pulumix.Output[GetResourceResourceSybaseIq]{
+		OutputState: i.ToGetResourceResourceSybaseIqOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceSybaseIqArrayInput is an input type that accepts GetResourceResourceSybaseIqArray and GetResourceResourceSybaseIqArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceSybaseIqArrayInput` via:
 //
@@ -51935,6 +57876,12 @@ func (i GetResourceResourceSybaseIqArray) ToGetResourceResourceSybaseIqArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSybaseIqArrayOutput)
 }
 
+func (i GetResourceResourceSybaseIqArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSybaseIq] {
+	return pulumix.Output[[]GetResourceResourceSybaseIq]{
+		OutputState: i.ToGetResourceResourceSybaseIqArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceSybaseIqOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceSybaseIqOutput) ElementType() reflect.Type {
@@ -51947,6 +57894,12 @@ func (o GetResourceResourceSybaseIqOutput) ToGetResourceResourceSybaseIqOutput()
 
 func (o GetResourceResourceSybaseIqOutput) ToGetResourceResourceSybaseIqOutputWithContext(ctx context.Context) GetResourceResourceSybaseIqOutput {
 	return o
+}
+
+func (o GetResourceResourceSybaseIqOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceSybaseIq] {
+	return pulumix.Output[GetResourceResourceSybaseIq]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -52021,6 +57974,12 @@ func (o GetResourceResourceSybaseIqArrayOutput) ToGetResourceResourceSybaseIqArr
 
 func (o GetResourceResourceSybaseIqArrayOutput) ToGetResourceResourceSybaseIqArrayOutputWithContext(ctx context.Context) GetResourceResourceSybaseIqArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceSybaseIqArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceSybaseIq] {
+	return pulumix.Output[[]GetResourceResourceSybaseIq]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceSybaseIqArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSybaseIqOutput {
@@ -52106,6 +58065,12 @@ func (i GetResourceResourceTeradataArgs) ToGetResourceResourceTeradataOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceTeradataOutput)
 }
 
+func (i GetResourceResourceTeradataArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceTeradata] {
+	return pulumix.Output[GetResourceResourceTeradata]{
+		OutputState: i.ToGetResourceResourceTeradataOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceTeradataArrayInput is an input type that accepts GetResourceResourceTeradataArray and GetResourceResourceTeradataArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceTeradataArrayInput` via:
 //
@@ -52131,6 +58096,12 @@ func (i GetResourceResourceTeradataArray) ToGetResourceResourceTeradataArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceTeradataArrayOutput)
 }
 
+func (i GetResourceResourceTeradataArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceTeradata] {
+	return pulumix.Output[[]GetResourceResourceTeradata]{
+		OutputState: i.ToGetResourceResourceTeradataArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceTeradataOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceTeradataOutput) ElementType() reflect.Type {
@@ -52143,6 +58114,12 @@ func (o GetResourceResourceTeradataOutput) ToGetResourceResourceTeradataOutput()
 
 func (o GetResourceResourceTeradataOutput) ToGetResourceResourceTeradataOutputWithContext(ctx context.Context) GetResourceResourceTeradataOutput {
 	return o
+}
+
+func (o GetResourceResourceTeradataOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceTeradata] {
+	return pulumix.Output[GetResourceResourceTeradata]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -52217,6 +58194,12 @@ func (o GetResourceResourceTeradataArrayOutput) ToGetResourceResourceTeradataArr
 
 func (o GetResourceResourceTeradataArrayOutput) ToGetResourceResourceTeradataArrayOutputWithContext(ctx context.Context) GetResourceResourceTeradataArrayOutput {
 	return o
+}
+
+func (o GetResourceResourceTeradataArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceTeradata] {
+	return pulumix.Output[[]GetResourceResourceTeradata]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetResourceResourceTeradataArrayOutput) Index(i pulumi.IntInput) GetResourceResourceTeradataOutput {
@@ -52306,6 +58289,12 @@ func (i GetResourceResourceTrinoArgs) ToGetResourceResourceTrinoOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceTrinoOutput)
 }
 
+func (i GetResourceResourceTrinoArgs) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceTrino] {
+	return pulumix.Output[GetResourceResourceTrino]{
+		OutputState: i.ToGetResourceResourceTrinoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetResourceResourceTrinoArrayInput is an input type that accepts GetResourceResourceTrinoArray and GetResourceResourceTrinoArrayOutput values.
 // You can construct a concrete instance of `GetResourceResourceTrinoArrayInput` via:
 //
@@ -52331,6 +58320,12 @@ func (i GetResourceResourceTrinoArray) ToGetResourceResourceTrinoArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceTrinoArrayOutput)
 }
 
+func (i GetResourceResourceTrinoArray) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceTrino] {
+	return pulumix.Output[[]GetResourceResourceTrino]{
+		OutputState: i.ToGetResourceResourceTrinoArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetResourceResourceTrinoOutput struct{ *pulumi.OutputState }
 
 func (GetResourceResourceTrinoOutput) ElementType() reflect.Type {
@@ -52343,6 +58338,12 @@ func (o GetResourceResourceTrinoOutput) ToGetResourceResourceTrinoOutput() GetRe
 
 func (o GetResourceResourceTrinoOutput) ToGetResourceResourceTrinoOutputWithContext(ctx context.Context) GetResourceResourceTrinoOutput {
 	return o
+}
+
+func (o GetResourceResourceTrinoOutput) ToOutput(ctx context.Context) pulumix.Output[GetResourceResourceTrino] {
+	return pulumix.Output[GetResourceResourceTrino]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -52424,6 +58425,12 @@ func (o GetResourceResourceTrinoArrayOutput) ToGetResourceResourceTrinoArrayOutp
 	return o
 }
 
+func (o GetResourceResourceTrinoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetResourceResourceTrino] {
+	return pulumix.Output[[]GetResourceResourceTrino]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetResourceResourceTrinoArrayOutput) Index(i pulumi.IntInput) GetResourceResourceTrinoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceTrino {
 		return vs[0].([]GetResourceResourceTrino)[vs[1].(int)]
@@ -52479,6 +58486,12 @@ func (i GetRoleRoleArgs) ToGetRoleRoleOutputWithContext(ctx context.Context) Get
 	return pulumi.ToOutputWithContext(ctx, i).(GetRoleRoleOutput)
 }
 
+func (i GetRoleRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetRoleRole] {
+	return pulumix.Output[GetRoleRole]{
+		OutputState: i.ToGetRoleRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetRoleRoleArrayInput is an input type that accepts GetRoleRoleArray and GetRoleRoleArrayOutput values.
 // You can construct a concrete instance of `GetRoleRoleArrayInput` via:
 //
@@ -52504,6 +58517,12 @@ func (i GetRoleRoleArray) ToGetRoleRoleArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetRoleRoleArrayOutput)
 }
 
+func (i GetRoleRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetRoleRole] {
+	return pulumix.Output[[]GetRoleRole]{
+		OutputState: i.ToGetRoleRoleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetRoleRoleOutput struct{ *pulumi.OutputState }
 
 func (GetRoleRoleOutput) ElementType() reflect.Type {
@@ -52516,6 +58535,12 @@ func (o GetRoleRoleOutput) ToGetRoleRoleOutput() GetRoleRoleOutput {
 
 func (o GetRoleRoleOutput) ToGetRoleRoleOutputWithContext(ctx context.Context) GetRoleRoleOutput {
 	return o
+}
+
+func (o GetRoleRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetRoleRole] {
+	return pulumix.Output[GetRoleRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // AccessRules is a list of access rules defining the resources this Role has access to.
@@ -52555,6 +58580,12 @@ func (o GetRoleRoleArrayOutput) ToGetRoleRoleArrayOutput() GetRoleRoleArrayOutpu
 
 func (o GetRoleRoleArrayOutput) ToGetRoleRoleArrayOutputWithContext(ctx context.Context) GetRoleRoleArrayOutput {
 	return o
+}
+
+func (o GetRoleRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetRoleRole] {
+	return pulumix.Output[[]GetRoleRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetRoleRoleArrayOutput) Index(i pulumi.IntInput) GetRoleRoleOutput {
@@ -52612,6 +58643,12 @@ func (i GetSecretStoreSecretStoreArgs) ToGetSecretStoreSecretStoreOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreOutput)
 }
 
+func (i GetSecretStoreSecretStoreArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStore] {
+	return pulumix.Output[GetSecretStoreSecretStore]{
+		OutputState: i.ToGetSecretStoreSecretStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreArray and GetSecretStoreSecretStoreArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreArrayInput` via:
 //
@@ -52637,6 +58674,12 @@ func (i GetSecretStoreSecretStoreArray) ToGetSecretStoreSecretStoreArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStore] {
+	return pulumix.Output[[]GetSecretStoreSecretStore]{
+		OutputState: i.ToGetSecretStoreSecretStoreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreOutput) ElementType() reflect.Type {
@@ -52649,6 +58692,12 @@ func (o GetSecretStoreSecretStoreOutput) ToGetSecretStoreSecretStoreOutput() Get
 
 func (o GetSecretStoreSecretStoreOutput) ToGetSecretStoreSecretStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStore] {
+	return pulumix.Output[GetSecretStoreSecretStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreOutput) Aws() GetSecretStoreSecretStoreAwArrayOutput {
@@ -52707,6 +58756,12 @@ func (o GetSecretStoreSecretStoreArrayOutput) ToGetSecretStoreSecretStoreArrayOu
 	return o
 }
 
+func (o GetSecretStoreSecretStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStore] {
+	return pulumix.Output[[]GetSecretStoreSecretStore]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetSecretStoreSecretStoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStore {
 		return vs[0].([]GetSecretStoreSecretStore)[vs[1].(int)]
@@ -52758,6 +58813,12 @@ func (i GetSecretStoreSecretStoreAwArgs) ToGetSecretStoreSecretStoreAwOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreAwOutput)
 }
 
+func (i GetSecretStoreSecretStoreAwArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreAw] {
+	return pulumix.Output[GetSecretStoreSecretStoreAw]{
+		OutputState: i.ToGetSecretStoreSecretStoreAwOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreAwArrayInput is an input type that accepts GetSecretStoreSecretStoreAwArray and GetSecretStoreSecretStoreAwArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreAwArrayInput` via:
 //
@@ -52783,6 +58844,12 @@ func (i GetSecretStoreSecretStoreAwArray) ToGetSecretStoreSecretStoreAwArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreAwArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreAwArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreAw] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreAw]{
+		OutputState: i.ToGetSecretStoreSecretStoreAwArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreAwOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreAwOutput) ElementType() reflect.Type {
@@ -52795,6 +58862,12 @@ func (o GetSecretStoreSecretStoreAwOutput) ToGetSecretStoreSecretStoreAwOutput()
 
 func (o GetSecretStoreSecretStoreAwOutput) ToGetSecretStoreSecretStoreAwOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreAwOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreAwOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreAw] {
+	return pulumix.Output[GetSecretStoreSecretStoreAw]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the SecretStore.
@@ -52829,6 +58902,12 @@ func (o GetSecretStoreSecretStoreAwArrayOutput) ToGetSecretStoreSecretStoreAwArr
 
 func (o GetSecretStoreSecretStoreAwArrayOutput) ToGetSecretStoreSecretStoreAwArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreAwArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreAwArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreAw] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreAw]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreAwArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreAwOutput {
@@ -52884,6 +58963,12 @@ func (i GetSecretStoreSecretStoreAzureStoreArgs) ToGetSecretStoreSecretStoreAzur
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreAzureStoreOutput)
 }
 
+func (i GetSecretStoreSecretStoreAzureStoreArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreAzureStore] {
+	return pulumix.Output[GetSecretStoreSecretStoreAzureStore]{
+		OutputState: i.ToGetSecretStoreSecretStoreAzureStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreAzureStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreAzureStoreArray and GetSecretStoreSecretStoreAzureStoreArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreAzureStoreArrayInput` via:
 //
@@ -52909,6 +58994,12 @@ func (i GetSecretStoreSecretStoreAzureStoreArray) ToGetSecretStoreSecretStoreAzu
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreAzureStoreArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreAzureStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreAzureStore] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreAzureStore]{
+		OutputState: i.ToGetSecretStoreSecretStoreAzureStoreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreAzureStoreOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreAzureStoreOutput) ElementType() reflect.Type {
@@ -52921,6 +59012,12 @@ func (o GetSecretStoreSecretStoreAzureStoreOutput) ToGetSecretStoreSecretStoreAz
 
 func (o GetSecretStoreSecretStoreAzureStoreOutput) ToGetSecretStoreSecretStoreAzureStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreAzureStoreOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreAzureStoreOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreAzureStore] {
+	return pulumix.Output[GetSecretStoreSecretStoreAzureStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the SecretStore.
@@ -52956,6 +59053,12 @@ func (o GetSecretStoreSecretStoreAzureStoreArrayOutput) ToGetSecretStoreSecretSt
 
 func (o GetSecretStoreSecretStoreAzureStoreArrayOutput) ToGetSecretStoreSecretStoreAzureStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreAzureStoreArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreAzureStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreAzureStore] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreAzureStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreAzureStoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreAzureStoreOutput {
@@ -53009,6 +59112,12 @@ func (i GetSecretStoreSecretStoreCyberarkConjurArgs) ToGetSecretStoreSecretStore
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkConjurOutput)
 }
 
+func (i GetSecretStoreSecretStoreCyberarkConjurArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreCyberarkConjur] {
+	return pulumix.Output[GetSecretStoreSecretStoreCyberarkConjur]{
+		OutputState: i.ToGetSecretStoreSecretStoreCyberarkConjurOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreCyberarkConjurArrayInput is an input type that accepts GetSecretStoreSecretStoreCyberarkConjurArray and GetSecretStoreSecretStoreCyberarkConjurArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkConjurArrayInput` via:
 //
@@ -53034,6 +59143,12 @@ func (i GetSecretStoreSecretStoreCyberarkConjurArray) ToGetSecretStoreSecretStor
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkConjurArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreCyberarkConjurArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreCyberarkConjur] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreCyberarkConjur]{
+		OutputState: i.ToGetSecretStoreSecretStoreCyberarkConjurArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreCyberarkConjurOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreCyberarkConjurOutput) ElementType() reflect.Type {
@@ -53046,6 +59161,12 @@ func (o GetSecretStoreSecretStoreCyberarkConjurOutput) ToGetSecretStoreSecretSto
 
 func (o GetSecretStoreSecretStoreCyberarkConjurOutput) ToGetSecretStoreSecretStoreCyberarkConjurOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkConjurOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkConjurOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreCyberarkConjur] {
+	return pulumix.Output[GetSecretStoreSecretStoreCyberarkConjur]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of the Cyberark instance
@@ -53080,6 +59201,12 @@ func (o GetSecretStoreSecretStoreCyberarkConjurArrayOutput) ToGetSecretStoreSecr
 
 func (o GetSecretStoreSecretStoreCyberarkConjurArrayOutput) ToGetSecretStoreSecretStoreCyberarkConjurArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkConjurArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkConjurArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreCyberarkConjur] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreCyberarkConjur]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreCyberarkConjurArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreCyberarkConjurOutput {
@@ -53133,6 +59260,12 @@ func (i GetSecretStoreSecretStoreCyberarkPamArgs) ToGetSecretStoreSecretStoreCyb
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkPamOutput)
 }
 
+func (i GetSecretStoreSecretStoreCyberarkPamArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreCyberarkPam] {
+	return pulumix.Output[GetSecretStoreSecretStoreCyberarkPam]{
+		OutputState: i.ToGetSecretStoreSecretStoreCyberarkPamOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreCyberarkPamArrayInput is an input type that accepts GetSecretStoreSecretStoreCyberarkPamArray and GetSecretStoreSecretStoreCyberarkPamArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkPamArrayInput` via:
 //
@@ -53158,6 +59291,12 @@ func (i GetSecretStoreSecretStoreCyberarkPamArray) ToGetSecretStoreSecretStoreCy
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkPamArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreCyberarkPamArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreCyberarkPam] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreCyberarkPam]{
+		OutputState: i.ToGetSecretStoreSecretStoreCyberarkPamArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreCyberarkPamOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreCyberarkPamOutput) ElementType() reflect.Type {
@@ -53170,6 +59309,12 @@ func (o GetSecretStoreSecretStoreCyberarkPamOutput) ToGetSecretStoreSecretStoreC
 
 func (o GetSecretStoreSecretStoreCyberarkPamOutput) ToGetSecretStoreSecretStoreCyberarkPamOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreCyberarkPam] {
+	return pulumix.Output[GetSecretStoreSecretStoreCyberarkPam]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of the Cyberark instance
@@ -53204,6 +59349,12 @@ func (o GetSecretStoreSecretStoreCyberarkPamArrayOutput) ToGetSecretStoreSecretS
 
 func (o GetSecretStoreSecretStoreCyberarkPamArrayOutput) ToGetSecretStoreSecretStoreCyberarkPamArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreCyberarkPam] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreCyberarkPam]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreCyberarkPamArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreCyberarkPamOutput {
@@ -53257,6 +59408,12 @@ func (i GetSecretStoreSecretStoreCyberarkPamExperimentalArgs) ToGetSecretStoreSe
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkPamExperimentalOutput)
 }
 
+func (i GetSecretStoreSecretStoreCyberarkPamExperimentalArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreCyberarkPamExperimental] {
+	return pulumix.Output[GetSecretStoreSecretStoreCyberarkPamExperimental]{
+		OutputState: i.ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput is an input type that accepts GetSecretStoreSecretStoreCyberarkPamExperimentalArray and GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput` via:
 //
@@ -53282,6 +59439,12 @@ func (i GetSecretStoreSecretStoreCyberarkPamExperimentalArray) ToGetSecretStoreS
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreCyberarkPamExperimentalArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreCyberarkPamExperimental] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreCyberarkPamExperimental]{
+		OutputState: i.ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreCyberarkPamExperimentalOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) ElementType() reflect.Type {
@@ -53294,6 +59457,12 @@ func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) ToGetSecretStore
 
 func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) ToGetSecretStoreSecretStoreCyberarkPamExperimentalOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamExperimentalOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreCyberarkPamExperimental] {
+	return pulumix.Output[GetSecretStoreSecretStoreCyberarkPamExperimental]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The URL of the Cyberark instance
@@ -53328,6 +59497,12 @@ func (o GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) ToGetSecret
 
 func (o GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) ToGetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreCyberarkPamExperimental] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreCyberarkPamExperimental]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreCyberarkPamExperimentalOutput {
@@ -53387,6 +59562,12 @@ func (i GetSecretStoreSecretStoreDelineaStoreArgs) ToGetSecretStoreSecretStoreDe
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreDelineaStoreOutput)
 }
 
+func (i GetSecretStoreSecretStoreDelineaStoreArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreDelineaStore] {
+	return pulumix.Output[GetSecretStoreSecretStoreDelineaStore]{
+		OutputState: i.ToGetSecretStoreSecretStoreDelineaStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreDelineaStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreDelineaStoreArray and GetSecretStoreSecretStoreDelineaStoreArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreDelineaStoreArrayInput` via:
 //
@@ -53412,6 +59593,12 @@ func (i GetSecretStoreSecretStoreDelineaStoreArray) ToGetSecretStoreSecretStoreD
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreDelineaStoreArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreDelineaStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreDelineaStore] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreDelineaStore]{
+		OutputState: i.ToGetSecretStoreSecretStoreDelineaStoreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreDelineaStoreOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreDelineaStoreOutput) ElementType() reflect.Type {
@@ -53424,6 +59611,12 @@ func (o GetSecretStoreSecretStoreDelineaStoreOutput) ToGetSecretStoreSecretStore
 
 func (o GetSecretStoreSecretStoreDelineaStoreOutput) ToGetSecretStoreSecretStoreDelineaStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaStoreOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreDelineaStoreOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreDelineaStore] {
+	return pulumix.Output[GetSecretStoreSecretStoreDelineaStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the SecretStore.
@@ -53464,6 +59657,12 @@ func (o GetSecretStoreSecretStoreDelineaStoreArrayOutput) ToGetSecretStoreSecret
 
 func (o GetSecretStoreSecretStoreDelineaStoreArrayOutput) ToGetSecretStoreSecretStoreDelineaStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreDelineaStoreArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreDelineaStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreDelineaStore] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreDelineaStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreDelineaStoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreDelineaStoreOutput {
@@ -53517,6 +59716,12 @@ func (i GetSecretStoreSecretStoreGcpStoreArgs) ToGetSecretStoreSecretStoreGcpSto
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreGcpStoreOutput)
 }
 
+func (i GetSecretStoreSecretStoreGcpStoreArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreGcpStore] {
+	return pulumix.Output[GetSecretStoreSecretStoreGcpStore]{
+		OutputState: i.ToGetSecretStoreSecretStoreGcpStoreOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreGcpStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreGcpStoreArray and GetSecretStoreSecretStoreGcpStoreArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreGcpStoreArrayInput` via:
 //
@@ -53542,6 +59747,12 @@ func (i GetSecretStoreSecretStoreGcpStoreArray) ToGetSecretStoreSecretStoreGcpSt
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreGcpStoreArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreGcpStoreArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreGcpStore] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreGcpStore]{
+		OutputState: i.ToGetSecretStoreSecretStoreGcpStoreArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreGcpStoreOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreGcpStoreOutput) ElementType() reflect.Type {
@@ -53554,6 +59765,12 @@ func (o GetSecretStoreSecretStoreGcpStoreOutput) ToGetSecretStoreSecretStoreGcpS
 
 func (o GetSecretStoreSecretStoreGcpStoreOutput) ToGetSecretStoreSecretStoreGcpStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreGcpStoreOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreGcpStoreOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreGcpStore] {
+	return pulumix.Output[GetSecretStoreSecretStoreGcpStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the SecretStore.
@@ -53588,6 +59805,12 @@ func (o GetSecretStoreSecretStoreGcpStoreArrayOutput) ToGetSecretStoreSecretStor
 
 func (o GetSecretStoreSecretStoreGcpStoreArrayOutput) ToGetSecretStoreSecretStoreGcpStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreGcpStoreArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreGcpStoreArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreGcpStore] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreGcpStore]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreGcpStoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreGcpStoreOutput {
@@ -53645,6 +59868,12 @@ func (i GetSecretStoreSecretStoreVaultApproleArgs) ToGetSecretStoreSecretStoreVa
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultApproleOutput)
 }
 
+func (i GetSecretStoreSecretStoreVaultApproleArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreVaultApprole] {
+	return pulumix.Output[GetSecretStoreSecretStoreVaultApprole]{
+		OutputState: i.ToGetSecretStoreSecretStoreVaultApproleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreVaultApproleArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultApproleArray and GetSecretStoreSecretStoreVaultApproleArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultApproleArrayInput` via:
 //
@@ -53670,6 +59899,12 @@ func (i GetSecretStoreSecretStoreVaultApproleArray) ToGetSecretStoreSecretStoreV
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultApproleArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreVaultApproleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreVaultApprole] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreVaultApprole]{
+		OutputState: i.ToGetSecretStoreSecretStoreVaultApproleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreVaultApproleOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreVaultApproleOutput) ElementType() reflect.Type {
@@ -53682,6 +59917,12 @@ func (o GetSecretStoreSecretStoreVaultApproleOutput) ToGetSecretStoreSecretStore
 
 func (o GetSecretStoreSecretStoreVaultApproleOutput) ToGetSecretStoreSecretStoreVaultApproleOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreVaultApprole] {
+	return pulumix.Output[GetSecretStoreSecretStoreVaultApprole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the SecretStore.
@@ -53721,6 +59962,12 @@ func (o GetSecretStoreSecretStoreVaultApproleArrayOutput) ToGetSecretStoreSecret
 
 func (o GetSecretStoreSecretStoreVaultApproleArrayOutput) ToGetSecretStoreSecretStoreVaultApproleArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreVaultApprole] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreVaultApprole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreVaultApproleArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultApproleOutput {
@@ -53790,6 +60037,12 @@ func (i GetSecretStoreSecretStoreVaultTlArgs) ToGetSecretStoreSecretStoreVaultTl
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTlOutput)
 }
 
+func (i GetSecretStoreSecretStoreVaultTlArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreVaultTl] {
+	return pulumix.Output[GetSecretStoreSecretStoreVaultTl]{
+		OutputState: i.ToGetSecretStoreSecretStoreVaultTlOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreVaultTlArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultTlArray and GetSecretStoreSecretStoreVaultTlArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTlArrayInput` via:
 //
@@ -53815,6 +60068,12 @@ func (i GetSecretStoreSecretStoreVaultTlArray) ToGetSecretStoreSecretStoreVaultT
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTlArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreVaultTlArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreVaultTl] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreVaultTl]{
+		OutputState: i.ToGetSecretStoreSecretStoreVaultTlArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreVaultTlOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreVaultTlOutput) ElementType() reflect.Type {
@@ -53827,6 +60086,12 @@ func (o GetSecretStoreSecretStoreVaultTlOutput) ToGetSecretStoreSecretStoreVault
 
 func (o GetSecretStoreSecretStoreVaultTlOutput) ToGetSecretStoreSecretStoreVaultTlOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTlOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreVaultTl] {
+	return pulumix.Output[GetSecretStoreSecretStoreVaultTl]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A path to a CA file accessible by a Node
@@ -53881,6 +60146,12 @@ func (o GetSecretStoreSecretStoreVaultTlArrayOutput) ToGetSecretStoreSecretStore
 
 func (o GetSecretStoreSecretStoreVaultTlArrayOutput) ToGetSecretStoreSecretStoreVaultTlArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlArrayOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTlArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreVaultTl] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreVaultTl]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetSecretStoreSecretStoreVaultTlArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultTlOutput {
@@ -53938,6 +60209,12 @@ func (i GetSecretStoreSecretStoreVaultTokenArgs) ToGetSecretStoreSecretStoreVaul
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTokenOutput)
 }
 
+func (i GetSecretStoreSecretStoreVaultTokenArgs) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreVaultToken] {
+	return pulumix.Output[GetSecretStoreSecretStoreVaultToken]{
+		OutputState: i.ToGetSecretStoreSecretStoreVaultTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetSecretStoreSecretStoreVaultTokenArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultTokenArray and GetSecretStoreSecretStoreVaultTokenArrayOutput values.
 // You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTokenArrayInput` via:
 //
@@ -53963,6 +60240,12 @@ func (i GetSecretStoreSecretStoreVaultTokenArray) ToGetSecretStoreSecretStoreVau
 	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTokenArrayOutput)
 }
 
+func (i GetSecretStoreSecretStoreVaultTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreVaultToken] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreVaultToken]{
+		OutputState: i.ToGetSecretStoreSecretStoreVaultTokenArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetSecretStoreSecretStoreVaultTokenOutput struct{ *pulumi.OutputState }
 
 func (GetSecretStoreSecretStoreVaultTokenOutput) ElementType() reflect.Type {
@@ -53975,6 +60258,12 @@ func (o GetSecretStoreSecretStoreVaultTokenOutput) ToGetSecretStoreSecretStoreVa
 
 func (o GetSecretStoreSecretStoreVaultTokenOutput) ToGetSecretStoreSecretStoreVaultTokenOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenOutput {
 	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenOutput) ToOutput(ctx context.Context) pulumix.Output[GetSecretStoreSecretStoreVaultToken] {
+	return pulumix.Output[GetSecretStoreSecretStoreVaultToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the SecretStore.
@@ -54016,10 +60305,469 @@ func (o GetSecretStoreSecretStoreVaultTokenArrayOutput) ToGetSecretStoreSecretSt
 	return o
 }
 
+func (o GetSecretStoreSecretStoreVaultTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetSecretStoreSecretStoreVaultToken] {
+	return pulumix.Output[[]GetSecretStoreSecretStoreVaultToken]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GetSecretStoreSecretStoreVaultTokenArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultToken {
 		return vs[0].([]GetSecretStoreSecretStoreVaultToken)[vs[1].(int)]
 	}).(GetSecretStoreSecretStoreVaultTokenOutput)
+}
+
+type GetWorkflowApproverWorkflowApprover struct {
+	// The approver id.
+	ApproverId *string `pulumi:"approverId"`
+	// Unique identifier of the WorkflowApprover.
+	Id *string `pulumi:"id"`
+	// The workflow id.
+	WorkflowId *string `pulumi:"workflowId"`
+}
+
+// GetWorkflowApproverWorkflowApproverInput is an input type that accepts GetWorkflowApproverWorkflowApproverArgs and GetWorkflowApproverWorkflowApproverOutput values.
+// You can construct a concrete instance of `GetWorkflowApproverWorkflowApproverInput` via:
+//
+//	GetWorkflowApproverWorkflowApproverArgs{...}
+type GetWorkflowApproverWorkflowApproverInput interface {
+	pulumi.Input
+
+	ToGetWorkflowApproverWorkflowApproverOutput() GetWorkflowApproverWorkflowApproverOutput
+	ToGetWorkflowApproverWorkflowApproverOutputWithContext(context.Context) GetWorkflowApproverWorkflowApproverOutput
+}
+
+type GetWorkflowApproverWorkflowApproverArgs struct {
+	// The approver id.
+	ApproverId pulumi.StringPtrInput `pulumi:"approverId"`
+	// Unique identifier of the WorkflowApprover.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The workflow id.
+	WorkflowId pulumi.StringPtrInput `pulumi:"workflowId"`
+}
+
+func (GetWorkflowApproverWorkflowApproverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowApproverWorkflowApprover)(nil)).Elem()
+}
+
+func (i GetWorkflowApproverWorkflowApproverArgs) ToGetWorkflowApproverWorkflowApproverOutput() GetWorkflowApproverWorkflowApproverOutput {
+	return i.ToGetWorkflowApproverWorkflowApproverOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowApproverWorkflowApproverArgs) ToGetWorkflowApproverWorkflowApproverOutputWithContext(ctx context.Context) GetWorkflowApproverWorkflowApproverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowApproverWorkflowApproverOutput)
+}
+
+func (i GetWorkflowApproverWorkflowApproverArgs) ToOutput(ctx context.Context) pulumix.Output[GetWorkflowApproverWorkflowApprover] {
+	return pulumix.Output[GetWorkflowApproverWorkflowApprover]{
+		OutputState: i.ToGetWorkflowApproverWorkflowApproverOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetWorkflowApproverWorkflowApproverArrayInput is an input type that accepts GetWorkflowApproverWorkflowApproverArray and GetWorkflowApproverWorkflowApproverArrayOutput values.
+// You can construct a concrete instance of `GetWorkflowApproverWorkflowApproverArrayInput` via:
+//
+//	GetWorkflowApproverWorkflowApproverArray{ GetWorkflowApproverWorkflowApproverArgs{...} }
+type GetWorkflowApproverWorkflowApproverArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkflowApproverWorkflowApproverArrayOutput() GetWorkflowApproverWorkflowApproverArrayOutput
+	ToGetWorkflowApproverWorkflowApproverArrayOutputWithContext(context.Context) GetWorkflowApproverWorkflowApproverArrayOutput
+}
+
+type GetWorkflowApproverWorkflowApproverArray []GetWorkflowApproverWorkflowApproverInput
+
+func (GetWorkflowApproverWorkflowApproverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkflowApproverWorkflowApprover)(nil)).Elem()
+}
+
+func (i GetWorkflowApproverWorkflowApproverArray) ToGetWorkflowApproverWorkflowApproverArrayOutput() GetWorkflowApproverWorkflowApproverArrayOutput {
+	return i.ToGetWorkflowApproverWorkflowApproverArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowApproverWorkflowApproverArray) ToGetWorkflowApproverWorkflowApproverArrayOutputWithContext(ctx context.Context) GetWorkflowApproverWorkflowApproverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowApproverWorkflowApproverArrayOutput)
+}
+
+func (i GetWorkflowApproverWorkflowApproverArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWorkflowApproverWorkflowApprover] {
+	return pulumix.Output[[]GetWorkflowApproverWorkflowApprover]{
+		OutputState: i.ToGetWorkflowApproverWorkflowApproverArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetWorkflowApproverWorkflowApproverOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowApproverWorkflowApproverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowApproverWorkflowApprover)(nil)).Elem()
+}
+
+func (o GetWorkflowApproverWorkflowApproverOutput) ToGetWorkflowApproverWorkflowApproverOutput() GetWorkflowApproverWorkflowApproverOutput {
+	return o
+}
+
+func (o GetWorkflowApproverWorkflowApproverOutput) ToGetWorkflowApproverWorkflowApproverOutputWithContext(ctx context.Context) GetWorkflowApproverWorkflowApproverOutput {
+	return o
+}
+
+func (o GetWorkflowApproverWorkflowApproverOutput) ToOutput(ctx context.Context) pulumix.Output[GetWorkflowApproverWorkflowApprover] {
+	return pulumix.Output[GetWorkflowApproverWorkflowApprover]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The approver id.
+func (o GetWorkflowApproverWorkflowApproverOutput) ApproverId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowApproverWorkflowApprover) *string { return v.ApproverId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the WorkflowApprover.
+func (o GetWorkflowApproverWorkflowApproverOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowApproverWorkflowApprover) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The workflow id.
+func (o GetWorkflowApproverWorkflowApproverOutput) WorkflowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowApproverWorkflowApprover) *string { return v.WorkflowId }).(pulumi.StringPtrOutput)
+}
+
+type GetWorkflowApproverWorkflowApproverArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowApproverWorkflowApproverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkflowApproverWorkflowApprover)(nil)).Elem()
+}
+
+func (o GetWorkflowApproverWorkflowApproverArrayOutput) ToGetWorkflowApproverWorkflowApproverArrayOutput() GetWorkflowApproverWorkflowApproverArrayOutput {
+	return o
+}
+
+func (o GetWorkflowApproverWorkflowApproverArrayOutput) ToGetWorkflowApproverWorkflowApproverArrayOutputWithContext(ctx context.Context) GetWorkflowApproverWorkflowApproverArrayOutput {
+	return o
+}
+
+func (o GetWorkflowApproverWorkflowApproverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWorkflowApproverWorkflowApprover] {
+	return pulumix.Output[[]GetWorkflowApproverWorkflowApprover]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetWorkflowApproverWorkflowApproverArrayOutput) Index(i pulumi.IntInput) GetWorkflowApproverWorkflowApproverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkflowApproverWorkflowApprover {
+		return vs[0].([]GetWorkflowApproverWorkflowApprover)[vs[1].(int)]
+	}).(GetWorkflowApproverWorkflowApproverOutput)
+}
+
+type GetWorkflowRoleWorkflowRole struct {
+	// Unique identifier of the WorkflowRole.
+	Id *string `pulumi:"id"`
+	// The role id.
+	RoleId *string `pulumi:"roleId"`
+	// The workflow id.
+	WorkflowId *string `pulumi:"workflowId"`
+}
+
+// GetWorkflowRoleWorkflowRoleInput is an input type that accepts GetWorkflowRoleWorkflowRoleArgs and GetWorkflowRoleWorkflowRoleOutput values.
+// You can construct a concrete instance of `GetWorkflowRoleWorkflowRoleInput` via:
+//
+//	GetWorkflowRoleWorkflowRoleArgs{...}
+type GetWorkflowRoleWorkflowRoleInput interface {
+	pulumi.Input
+
+	ToGetWorkflowRoleWorkflowRoleOutput() GetWorkflowRoleWorkflowRoleOutput
+	ToGetWorkflowRoleWorkflowRoleOutputWithContext(context.Context) GetWorkflowRoleWorkflowRoleOutput
+}
+
+type GetWorkflowRoleWorkflowRoleArgs struct {
+	// Unique identifier of the WorkflowRole.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The role id.
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
+	// The workflow id.
+	WorkflowId pulumi.StringPtrInput `pulumi:"workflowId"`
+}
+
+func (GetWorkflowRoleWorkflowRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowRoleWorkflowRole)(nil)).Elem()
+}
+
+func (i GetWorkflowRoleWorkflowRoleArgs) ToGetWorkflowRoleWorkflowRoleOutput() GetWorkflowRoleWorkflowRoleOutput {
+	return i.ToGetWorkflowRoleWorkflowRoleOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowRoleWorkflowRoleArgs) ToGetWorkflowRoleWorkflowRoleOutputWithContext(ctx context.Context) GetWorkflowRoleWorkflowRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowRoleWorkflowRoleOutput)
+}
+
+func (i GetWorkflowRoleWorkflowRoleArgs) ToOutput(ctx context.Context) pulumix.Output[GetWorkflowRoleWorkflowRole] {
+	return pulumix.Output[GetWorkflowRoleWorkflowRole]{
+		OutputState: i.ToGetWorkflowRoleWorkflowRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetWorkflowRoleWorkflowRoleArrayInput is an input type that accepts GetWorkflowRoleWorkflowRoleArray and GetWorkflowRoleWorkflowRoleArrayOutput values.
+// You can construct a concrete instance of `GetWorkflowRoleWorkflowRoleArrayInput` via:
+//
+//	GetWorkflowRoleWorkflowRoleArray{ GetWorkflowRoleWorkflowRoleArgs{...} }
+type GetWorkflowRoleWorkflowRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkflowRoleWorkflowRoleArrayOutput() GetWorkflowRoleWorkflowRoleArrayOutput
+	ToGetWorkflowRoleWorkflowRoleArrayOutputWithContext(context.Context) GetWorkflowRoleWorkflowRoleArrayOutput
+}
+
+type GetWorkflowRoleWorkflowRoleArray []GetWorkflowRoleWorkflowRoleInput
+
+func (GetWorkflowRoleWorkflowRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkflowRoleWorkflowRole)(nil)).Elem()
+}
+
+func (i GetWorkflowRoleWorkflowRoleArray) ToGetWorkflowRoleWorkflowRoleArrayOutput() GetWorkflowRoleWorkflowRoleArrayOutput {
+	return i.ToGetWorkflowRoleWorkflowRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowRoleWorkflowRoleArray) ToGetWorkflowRoleWorkflowRoleArrayOutputWithContext(ctx context.Context) GetWorkflowRoleWorkflowRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowRoleWorkflowRoleArrayOutput)
+}
+
+func (i GetWorkflowRoleWorkflowRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWorkflowRoleWorkflowRole] {
+	return pulumix.Output[[]GetWorkflowRoleWorkflowRole]{
+		OutputState: i.ToGetWorkflowRoleWorkflowRoleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetWorkflowRoleWorkflowRoleOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowRoleWorkflowRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowRoleWorkflowRole)(nil)).Elem()
+}
+
+func (o GetWorkflowRoleWorkflowRoleOutput) ToGetWorkflowRoleWorkflowRoleOutput() GetWorkflowRoleWorkflowRoleOutput {
+	return o
+}
+
+func (o GetWorkflowRoleWorkflowRoleOutput) ToGetWorkflowRoleWorkflowRoleOutputWithContext(ctx context.Context) GetWorkflowRoleWorkflowRoleOutput {
+	return o
+}
+
+func (o GetWorkflowRoleWorkflowRoleOutput) ToOutput(ctx context.Context) pulumix.Output[GetWorkflowRoleWorkflowRole] {
+	return pulumix.Output[GetWorkflowRoleWorkflowRole]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Unique identifier of the WorkflowRole.
+func (o GetWorkflowRoleWorkflowRoleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowRoleWorkflowRole) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The role id.
+func (o GetWorkflowRoleWorkflowRoleOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowRoleWorkflowRole) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
+// The workflow id.
+func (o GetWorkflowRoleWorkflowRoleOutput) WorkflowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowRoleWorkflowRole) *string { return v.WorkflowId }).(pulumi.StringPtrOutput)
+}
+
+type GetWorkflowRoleWorkflowRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowRoleWorkflowRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkflowRoleWorkflowRole)(nil)).Elem()
+}
+
+func (o GetWorkflowRoleWorkflowRoleArrayOutput) ToGetWorkflowRoleWorkflowRoleArrayOutput() GetWorkflowRoleWorkflowRoleArrayOutput {
+	return o
+}
+
+func (o GetWorkflowRoleWorkflowRoleArrayOutput) ToGetWorkflowRoleWorkflowRoleArrayOutputWithContext(ctx context.Context) GetWorkflowRoleWorkflowRoleArrayOutput {
+	return o
+}
+
+func (o GetWorkflowRoleWorkflowRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWorkflowRoleWorkflowRole] {
+	return pulumix.Output[[]GetWorkflowRoleWorkflowRole]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetWorkflowRoleWorkflowRoleArrayOutput) Index(i pulumi.IntInput) GetWorkflowRoleWorkflowRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkflowRoleWorkflowRole {
+		return vs[0].([]GetWorkflowRoleWorkflowRole)[vs[1].(int)]
+	}).(GetWorkflowRoleWorkflowRoleOutput)
+}
+
+type GetWorkflowWorkflow struct {
+	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
+	AccessRules *string `pulumi:"accessRules"`
+	// Optional auto grant setting to automatically approve requests or not, defaults to false.
+	AutoGrant *bool `pulumi:"autoGrant"`
+	// Optional description of the Workflow.
+	Description *string `pulumi:"description"`
+	// Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
+	Enabled *bool `pulumi:"enabled"`
+	// Unique identifier of the Workflow.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Workflow.
+	Name *string `pulumi:"name"`
+	// Optional weight for workflow to specify it's priority in matching a request.
+	Weight *int `pulumi:"weight"`
+}
+
+// GetWorkflowWorkflowInput is an input type that accepts GetWorkflowWorkflowArgs and GetWorkflowWorkflowOutput values.
+// You can construct a concrete instance of `GetWorkflowWorkflowInput` via:
+//
+//	GetWorkflowWorkflowArgs{...}
+type GetWorkflowWorkflowInput interface {
+	pulumi.Input
+
+	ToGetWorkflowWorkflowOutput() GetWorkflowWorkflowOutput
+	ToGetWorkflowWorkflowOutputWithContext(context.Context) GetWorkflowWorkflowOutput
+}
+
+type GetWorkflowWorkflowArgs struct {
+	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
+	AccessRules pulumi.StringPtrInput `pulumi:"accessRules"`
+	// Optional auto grant setting to automatically approve requests or not, defaults to false.
+	AutoGrant pulumi.BoolPtrInput `pulumi:"autoGrant"`
+	// Optional description of the Workflow.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Unique identifier of the Workflow.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Workflow.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional weight for workflow to specify it's priority in matching a request.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (GetWorkflowWorkflowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowWorkflow)(nil)).Elem()
+}
+
+func (i GetWorkflowWorkflowArgs) ToGetWorkflowWorkflowOutput() GetWorkflowWorkflowOutput {
+	return i.ToGetWorkflowWorkflowOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowWorkflowArgs) ToGetWorkflowWorkflowOutputWithContext(ctx context.Context) GetWorkflowWorkflowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowWorkflowOutput)
+}
+
+func (i GetWorkflowWorkflowArgs) ToOutput(ctx context.Context) pulumix.Output[GetWorkflowWorkflow] {
+	return pulumix.Output[GetWorkflowWorkflow]{
+		OutputState: i.ToGetWorkflowWorkflowOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetWorkflowWorkflowArrayInput is an input type that accepts GetWorkflowWorkflowArray and GetWorkflowWorkflowArrayOutput values.
+// You can construct a concrete instance of `GetWorkflowWorkflowArrayInput` via:
+//
+//	GetWorkflowWorkflowArray{ GetWorkflowWorkflowArgs{...} }
+type GetWorkflowWorkflowArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkflowWorkflowArrayOutput() GetWorkflowWorkflowArrayOutput
+	ToGetWorkflowWorkflowArrayOutputWithContext(context.Context) GetWorkflowWorkflowArrayOutput
+}
+
+type GetWorkflowWorkflowArray []GetWorkflowWorkflowInput
+
+func (GetWorkflowWorkflowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkflowWorkflow)(nil)).Elem()
+}
+
+func (i GetWorkflowWorkflowArray) ToGetWorkflowWorkflowArrayOutput() GetWorkflowWorkflowArrayOutput {
+	return i.ToGetWorkflowWorkflowArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkflowWorkflowArray) ToGetWorkflowWorkflowArrayOutputWithContext(ctx context.Context) GetWorkflowWorkflowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkflowWorkflowArrayOutput)
+}
+
+func (i GetWorkflowWorkflowArray) ToOutput(ctx context.Context) pulumix.Output[[]GetWorkflowWorkflow] {
+	return pulumix.Output[[]GetWorkflowWorkflow]{
+		OutputState: i.ToGetWorkflowWorkflowArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetWorkflowWorkflowOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowWorkflowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkflowWorkflow)(nil)).Elem()
+}
+
+func (o GetWorkflowWorkflowOutput) ToGetWorkflowWorkflowOutput() GetWorkflowWorkflowOutput {
+	return o
+}
+
+func (o GetWorkflowWorkflowOutput) ToGetWorkflowWorkflowOutputWithContext(ctx context.Context) GetWorkflowWorkflowOutput {
+	return o
+}
+
+func (o GetWorkflowWorkflowOutput) ToOutput(ctx context.Context) pulumix.Output[GetWorkflowWorkflow] {
+	return pulumix.Output[GetWorkflowWorkflow]{
+		OutputState: o.OutputState,
+	}
+}
+
+// AccessRules is a list of access rules defining the resources this Workflow provides access to.
+func (o GetWorkflowWorkflowOutput) AccessRules() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *string { return v.AccessRules }).(pulumi.StringPtrOutput)
+}
+
+// Optional auto grant setting to automatically approve requests or not, defaults to false.
+func (o GetWorkflowWorkflowOutput) AutoGrant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *bool { return v.AutoGrant }).(pulumi.BoolPtrOutput)
+}
+
+// Optional description of the Workflow.
+func (o GetWorkflowWorkflowOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
+func (o GetWorkflowWorkflowOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier of the Workflow.
+func (o GetWorkflowWorkflowOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Workflow.
+func (o GetWorkflowWorkflowOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional weight for workflow to specify it's priority in matching a request.
+func (o GetWorkflowWorkflowOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type GetWorkflowWorkflowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkflowWorkflowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkflowWorkflow)(nil)).Elem()
+}
+
+func (o GetWorkflowWorkflowArrayOutput) ToGetWorkflowWorkflowArrayOutput() GetWorkflowWorkflowArrayOutput {
+	return o
+}
+
+func (o GetWorkflowWorkflowArrayOutput) ToGetWorkflowWorkflowArrayOutputWithContext(ctx context.Context) GetWorkflowWorkflowArrayOutput {
+	return o
+}
+
+func (o GetWorkflowWorkflowArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetWorkflowWorkflow] {
+	return pulumix.Output[[]GetWorkflowWorkflow]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetWorkflowWorkflowArrayOutput) Index(i pulumi.IntInput) GetWorkflowWorkflowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkflowWorkflow {
+		return vs[0].([]GetWorkflowWorkflow)[vs[1].(int)]
+	}).(GetWorkflowWorkflowOutput)
 }
 
 func init() {
@@ -54063,6 +60811,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraMysqlPtrInput)(nil)).Elem(), ResourceAuroraMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraPostgresInput)(nil)).Elem(), ResourceAuroraPostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraPostgresPtrInput)(nil)).Elem(), ResourceAuroraPostgresArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraPostgresIamInput)(nil)).Elem(), ResourceAuroraPostgresIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraPostgresIamPtrInput)(nil)).Elem(), ResourceAuroraPostgresIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsInput)(nil)).Elem(), ResourceAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsPtrInput)(nil)).Elem(), ResourceAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsConsoleInput)(nil)).Elem(), ResourceAwsConsoleArgs{})
@@ -54167,6 +60917,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRawTcpPtrInput)(nil)).Elem(), ResourceRawTcpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdpInput)(nil)).Elem(), ResourceRdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdpPtrInput)(nil)).Elem(), ResourceRdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdsPostgresIamInput)(nil)).Elem(), ResourceRdsPostgresIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdsPostgresIamPtrInput)(nil)).Elem(), ResourceRdsPostgresIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedisInput)(nil)).Elem(), ResourceRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedisPtrInput)(nil)).Elem(), ResourceRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftInput)(nil)).Elem(), ResourceRedshiftArgs{})
@@ -54277,6 +61029,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraMysqlArrayInput)(nil)).Elem(), GetResourceResourceAuroraMysqlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraPostgreInput)(nil)).Elem(), GetResourceResourceAuroraPostgreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraPostgreArrayInput)(nil)).Elem(), GetResourceResourceAuroraPostgreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraPostgresIamInput)(nil)).Elem(), GetResourceResourceAuroraPostgresIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraPostgresIamArrayInput)(nil)).Elem(), GetResourceResourceAuroraPostgresIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwInput)(nil)).Elem(), GetResourceResourceAwArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwArrayInput)(nil)).Elem(), GetResourceResourceAwArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsConsoleInput)(nil)).Elem(), GetResourceResourceAwsConsoleArgs{})
@@ -54381,6 +61135,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRawTcpArrayInput)(nil)).Elem(), GetResourceResourceRawTcpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdpInput)(nil)).Elem(), GetResourceResourceRdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdpArrayInput)(nil)).Elem(), GetResourceResourceRdpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdsPostgresIamInput)(nil)).Elem(), GetResourceResourceRdsPostgresIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdsPostgresIamArrayInput)(nil)).Elem(), GetResourceResourceRdsPostgresIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRediInput)(nil)).Elem(), GetResourceResourceRediArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRediArrayInput)(nil)).Elem(), GetResourceResourceRediArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftInput)(nil)).Elem(), GetResourceResourceRedshiftArgs{})
@@ -54435,6 +61191,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowApproverWorkflowApproverInput)(nil)).Elem(), GetWorkflowApproverWorkflowApproverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowApproverWorkflowApproverArrayInput)(nil)).Elem(), GetWorkflowApproverWorkflowApproverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowRoleWorkflowRoleInput)(nil)).Elem(), GetWorkflowRoleWorkflowRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowRoleWorkflowRoleArrayInput)(nil)).Elem(), GetWorkflowRoleWorkflowRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowWorkflowInput)(nil)).Elem(), GetWorkflowWorkflowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowWorkflowArrayInput)(nil)).Elem(), GetWorkflowWorkflowArray{})
 	pulumi.RegisterOutputType(AccountServiceOutput{})
 	pulumi.RegisterOutputType(AccountServicePtrOutput{})
 	pulumi.RegisterOutputType(AccountUserOutput{})
@@ -54475,6 +61237,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAuroraMysqlPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraPostgresOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraPostgresPtrOutput{})
+	pulumi.RegisterOutputType(ResourceAuroraPostgresIamOutput{})
+	pulumi.RegisterOutputType(ResourceAuroraPostgresIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAwsOutput{})
 	pulumi.RegisterOutputType(ResourceAwsPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAwsConsoleOutput{})
@@ -54579,6 +61343,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRawTcpPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRdpOutput{})
 	pulumi.RegisterOutputType(ResourceRdpPtrOutput{})
+	pulumi.RegisterOutputType(ResourceRdsPostgresIamOutput{})
+	pulumi.RegisterOutputType(ResourceRdsPostgresIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRedisOutput{})
 	pulumi.RegisterOutputType(ResourceRedisPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRedshiftOutput{})
@@ -54689,6 +61455,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAuroraMysqlArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraPostgreOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraPostgreArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAuroraPostgresIamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAuroraPostgresIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAwOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAwArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAwsConsoleOutput{})
@@ -54793,6 +61561,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceRawTcpArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRdpOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRdpArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRdsPostgresIamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRdsPostgresIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRediOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRediArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRedshiftOutput{})
@@ -54847,4 +61617,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTokenOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkflowApproverWorkflowApproverOutput{})
+	pulumi.RegisterOutputType(GetWorkflowApproverWorkflowApproverArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkflowRoleWorkflowRoleOutput{})
+	pulumi.RegisterOutputType(GetWorkflowRoleWorkflowRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkflowWorkflowOutput{})
+	pulumi.RegisterOutputType(GetWorkflowWorkflowArrayOutput{})
 }

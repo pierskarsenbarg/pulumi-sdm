@@ -9,6 +9,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Nodes make up the strongDM network, and allow your users to connect securely to your resources.
@@ -138,6 +139,12 @@ func (o LookupNodeResultOutput) ToLookupNodeResultOutput() LookupNodeResultOutpu
 
 func (o LookupNodeResultOutput) ToLookupNodeResultOutputWithContext(ctx context.Context) LookupNodeResultOutput {
 	return o
+}
+
+func (o LookupNodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupNodeResult] {
+	return pulumix.Output[LookupNodeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".

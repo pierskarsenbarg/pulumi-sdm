@@ -113,7 +113,7 @@ class AccountAttachment(pulumi.CustomResource):
 
         ## Import
 
-        AccountAttachment can be imported using the id, e.g.,
+        A AccountAttachment can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
@@ -146,7 +146,7 @@ class AccountAttachment(pulumi.CustomResource):
 
         ## Import
 
-        AccountAttachment can be imported using the id, e.g.,
+        A AccountAttachment can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678

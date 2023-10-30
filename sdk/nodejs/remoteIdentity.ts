@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * RemoteIdentity can be imported using the id, e.g.,
+ * A RemoteIdentity can be imported using the id, e.g.,
  *
  * ```sh
  *  $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678

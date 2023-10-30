@@ -43,6 +43,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Role{}
 	case "sdm:index/secretStore:SecretStore":
 		r = &SecretStore{}
+	case "sdm:index/workflow:Workflow":
+		r = &Workflow{}
+	case "sdm:index/workflowApprover:WorkflowApprover":
+		r = &WorkflowApprover{}
+	case "sdm:index/workflowRole:WorkflowRole":
+		r = &WorkflowRole{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -127,6 +133,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sdm",
 		"index/secretStore",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/workflow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/workflowApprover",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/workflowRole",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

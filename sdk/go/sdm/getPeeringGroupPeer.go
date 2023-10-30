@@ -9,6 +9,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // PeeringGroupPeer represents the link between two PeeringGroups
@@ -86,6 +87,12 @@ func (o LookupPeeringGroupPeerResultOutput) ToLookupPeeringGroupPeerResultOutput
 
 func (o LookupPeeringGroupPeerResultOutput) ToLookupPeeringGroupPeerResultOutputWithContext(ctx context.Context) LookupPeeringGroupPeerResultOutput {
 	return o
+}
+
+func (o LookupPeeringGroupPeerResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeringGroupPeerResult] {
+	return pulumix.Output[LookupPeeringGroupPeerResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Group ID from which the link will originate.

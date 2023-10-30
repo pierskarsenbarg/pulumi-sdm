@@ -1492,6 +1492,90 @@
                 }
             }
         },
+        "sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean",
+                    "description": "If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceAws:ResourceAws": {
             "properties": {
                 "accessKey": {
@@ -5447,6 +5531,10 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -5497,6 +5585,90 @@
                         "hostname",
                         "name",
                         "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean",
+                    "description": "If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "region",
                         "subdomain"
                     ]
                 }
@@ -7428,6 +7600,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceAuroraPostgre:getResourceResourceAuroraPostgre"
                     }
                 },
+                "auroraPostgresIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAuroraPostgresIam:getResourceResourceAuroraPostgresIam"
+                    }
+                },
                 "aws": {
                     "type": "array",
                     "items": {
@@ -7740,6 +7918,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceRdp:getResourceResourceRdp"
                     }
                 },
+                "rdsPostgresIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceRdsPostgresIam:getResourceResourceRdsPostgresIam"
+                    }
+                },
                 "redis": {
                     "type": "array",
                     "items": {
@@ -7847,6 +8031,7 @@
                 "athenas",
                 "auroraMysqls",
                 "auroraPostgres",
+                "auroraPostgresIams",
                 "aws",
                 "awsConsoles",
                 "awsConsoleStaticKeyPairs",
@@ -7899,6 +8084,7 @@
                 "rabbitmqAmqp091s",
                 "rawTcps",
                 "rdps",
+                "rdsPostgresIams",
                 "redis",
                 "redshifts",
                 "singleStores",
@@ -8866,6 +9052,74 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAuroraPostgresIam:getResourceResourceAuroraPostgresIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean",
+                    "description": "If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -12165,6 +12419,10 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -12181,6 +12439,74 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceRdsPostgresIam:getResourceResourceRdsPostgresIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean",
+                    "description": "If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -13574,6 +13900,73 @@
                 }
             },
             "type": "object"
+        },
+        "sdm:index/getWorkflowApproverWorkflowApprover:getWorkflowApproverWorkflowApprover": {
+            "properties": {
+                "approverId": {
+                    "type": "string",
+                    "description": "The approver id.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the WorkflowApprover.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow id.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getWorkflowRoleWorkflowRole:getWorkflowRoleWorkflowRole": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the WorkflowRole.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The role id.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow id.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getWorkflowWorkflow:getWorkflowWorkflow": {
+            "properties": {
+                "accessRules": {
+                    "type": "string",
+                    "description": "AccessRules is a list of access rules defining the resources this Workflow provides access to.\n"
+                },
+                "autoGrant": {
+                    "type": "boolean",
+                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Optional description of the Workflow.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Workflow.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Workflow.\n"
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "Optional weight for workflow to specify it's priority in matching a request.\n"
+                }
+            },
+            "type": "object"
         }
     },
     "provider": {
@@ -13617,7 +14010,7 @@
     },
     "resources": {
         "sdm:index/account:Account": {
-            "description": "Accounts are users that have access to strongDM. There are two types of accounts:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst test_user = new sdm.Account(\"test-user\", {user: {\n    email: \"albob@strongdm.com\",\n    firstName: \"al\",\n    lastName: \"bob\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst test_service = new sdm.Account(\"test-service\", {service: {\n    name: \"test-service\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_user = sdm.Account(\"test-user\", user=sdm.AccountUserArgs(\n    email=\"albob@strongdm.com\",\n    first_name=\"al\",\n    last_name=\"bob\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\ntest_service = sdm.Account(\"test-service\", service=sdm.AccountServiceArgs(\n    name=\"test-service\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_user = new Sdm.Account(\"test-user\", new()\n    {\n        User = new Sdm.Inputs.AccountUserArgs\n        {\n            Email = \"albob@strongdm.com\",\n            FirstName = \"al\",\n            LastName = \"bob\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var test_service = new Sdm.Account(\"test-service\", new()\n    {\n        Service = new Sdm.Inputs.AccountServiceArgs\n        {\n            Name = \"test-service\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccount(ctx, \"test-user\", \u0026sdm.AccountArgs{\n\t\t\tUser: \u0026sdm.AccountUserArgs{\n\t\t\t\tEmail:     pulumi.String(\"albob@strongdm.com\"),\n\t\t\t\tFirstName: pulumi.String(\"al\"),\n\t\t\t\tLastName:  pulumi.String(\"bob\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccount(ctx, \"test-service\", \u0026sdm.AccountArgs{\n\t\t\tService: \u0026sdm.AccountServiceArgs{\n\t\t\t\tName: pulumi.String(\"test-service\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Account;\nimport com.pulumi.sdm.AccountArgs;\nimport com.pulumi.sdm.inputs.AccountUserArgs;\nimport com.pulumi.sdm.inputs.AccountServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_user = new Account(\"test-user\", AccountArgs.builder()        \n            .user(AccountUserArgs.builder()\n                .email(\"albob@strongdm.com\")\n                .firstName(\"al\")\n                .lastName(\"bob\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var test_service = new Account(\"test-service\", AccountArgs.builder()        \n            .service(AccountServiceArgs.builder()\n                .name(\"test-service\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-user:\n    type: sdm:Account\n    properties:\n      user:\n        email: albob@strongdm.com\n        firstName: al\n        lastName: bob\n        tags:\n          env: dev\n          region: us-west\n  test-service:\n    type: sdm:Account\n    properties:\n      service:\n        name: test-service\n        tags:\n          env: dev\n          region: us-west\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccount can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/account:Account example a-12345678\n```\n\n ",
+            "description": "Accounts are users that have access to strongDM. There are two types of accounts:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst test_user = new sdm.Account(\"test-user\", {user: {\n    email: \"albob@strongdm.com\",\n    firstName: \"al\",\n    lastName: \"bob\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst test_service = new sdm.Account(\"test-service\", {service: {\n    name: \"test-service\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_user = sdm.Account(\"test-user\", user=sdm.AccountUserArgs(\n    email=\"albob@strongdm.com\",\n    first_name=\"al\",\n    last_name=\"bob\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\ntest_service = sdm.Account(\"test-service\", service=sdm.AccountServiceArgs(\n    name=\"test-service\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_user = new Sdm.Account(\"test-user\", new()\n    {\n        User = new Sdm.Inputs.AccountUserArgs\n        {\n            Email = \"albob@strongdm.com\",\n            FirstName = \"al\",\n            LastName = \"bob\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var test_service = new Sdm.Account(\"test-service\", new()\n    {\n        Service = new Sdm.Inputs.AccountServiceArgs\n        {\n            Name = \"test-service\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccount(ctx, \"test-user\", \u0026sdm.AccountArgs{\n\t\t\tUser: \u0026sdm.AccountUserArgs{\n\t\t\t\tEmail:     pulumi.String(\"albob@strongdm.com\"),\n\t\t\t\tFirstName: pulumi.String(\"al\"),\n\t\t\t\tLastName:  pulumi.String(\"bob\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccount(ctx, \"test-service\", \u0026sdm.AccountArgs{\n\t\t\tService: \u0026sdm.AccountServiceArgs{\n\t\t\t\tName: pulumi.String(\"test-service\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Account;\nimport com.pulumi.sdm.AccountArgs;\nimport com.pulumi.sdm.inputs.AccountUserArgs;\nimport com.pulumi.sdm.inputs.AccountServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_user = new Account(\"test-user\", AccountArgs.builder()        \n            .user(AccountUserArgs.builder()\n                .email(\"albob@strongdm.com\")\n                .firstName(\"al\")\n                .lastName(\"bob\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var test_service = new Account(\"test-service\", AccountArgs.builder()        \n            .service(AccountServiceArgs.builder()\n                .name(\"test-service\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-user:\n    type: sdm:Account\n    properties:\n      user:\n        email: albob@strongdm.com\n        firstName: al\n        lastName: bob\n        tags:\n          env: dev\n          region: us-west\n  test-service:\n    type: sdm:Account\n    properties:\n      service:\n        name: test-service\n        tags:\n          env: dev\n          region: us-west\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Account can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/account:Account example a-12345678\n```\n ",
             "properties": {
                 "service": {
                     "$ref": "#/types/sdm:index/AccountService:AccountService",
@@ -13654,7 +14047,7 @@
             }
         },
         "sdm:index/accountAttachment:AccountAttachment": {
-            "description": "AccountAttachments assign an account to a role.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst testAccountAttachment = new sdm.AccountAttachment(\"testAccountAttachment\", {\n    accountId: \"a-00000054\",\n    roleId: \"r-12355562\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_account_attachment = sdm.AccountAttachment(\"testAccountAttachment\",\n    account_id=\"a-00000054\",\n    role_id=\"r-12355562\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testAccountAttachment = new Sdm.AccountAttachment(\"testAccountAttachment\", new()\n    {\n        AccountId = \"a-00000054\",\n        RoleId = \"r-12355562\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccountAttachment(ctx, \"testAccountAttachment\", \u0026sdm.AccountAttachmentArgs{\n\t\t\tAccountId: pulumi.String(\"a-00000054\"),\n\t\t\tRoleId:    pulumi.String(\"r-12355562\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.AccountAttachment;\nimport com.pulumi.sdm.AccountAttachmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testAccountAttachment = new AccountAttachment(\"testAccountAttachment\", AccountAttachmentArgs.builder()        \n            .accountId(\"a-00000054\")\n            .roleId(\"r-12355562\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testAccountAttachment:\n    type: sdm:AccountAttachment\n    properties:\n      accountId: a-00000054\n      roleId: r-12355562\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccountAttachment can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678\n```\n\n ",
+            "description": "AccountAttachments assign an account to a role.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst testAccountAttachment = new sdm.AccountAttachment(\"testAccountAttachment\", {\n    accountId: \"a-00000054\",\n    roleId: \"r-12355562\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_account_attachment = sdm.AccountAttachment(\"testAccountAttachment\",\n    account_id=\"a-00000054\",\n    role_id=\"r-12355562\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testAccountAttachment = new Sdm.AccountAttachment(\"testAccountAttachment\", new()\n    {\n        AccountId = \"a-00000054\",\n        RoleId = \"r-12355562\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccountAttachment(ctx, \"testAccountAttachment\", \u0026sdm.AccountAttachmentArgs{\n\t\t\tAccountId: pulumi.String(\"a-00000054\"),\n\t\t\tRoleId:    pulumi.String(\"r-12355562\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.AccountAttachment;\nimport com.pulumi.sdm.AccountAttachmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testAccountAttachment = new AccountAttachment(\"testAccountAttachment\", AccountAttachmentArgs.builder()        \n            .accountId(\"a-00000054\")\n            .roleId(\"r-12355562\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testAccountAttachment:\n    type: sdm:AccountAttachment\n    properties:\n      accountId: a-00000054\n      roleId: r-12355562\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA AccountAttachment can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678\n```\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -13703,7 +14096,7 @@
             }
         },
         "sdm:index/node:Node": {
-            "description": "Nodes make up the strongDM network, and allow your users to connect securely to your resources.\n There are two types of nodes:\n 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall\n 1. **Gateways:** a relay that also listens for connections from strongDM clients\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst gateway = new sdm.Node(\"gateway\", {gateway: {\n    bindAddress: \"0.0.0.0:21222\",\n    listenAddress: \"165.23.40.1:21222\",\n    name: \"test-gateway\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst relay = new sdm.Node(\"relay\", {relay: {\n    name: \"test-relay\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ngateway = sdm.Node(\"gateway\", gateway=sdm.NodeGatewayArgs(\n    bind_address=\"0.0.0.0:21222\",\n    listen_address=\"165.23.40.1:21222\",\n    name=\"test-gateway\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\nrelay = sdm.Node(\"relay\", relay=sdm.NodeRelayArgs(\n    name=\"test-relay\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gateway = new Sdm.Node(\"gateway\", new()\n    {\n        Gateway = new Sdm.Inputs.NodeGatewayArgs\n        {\n            BindAddress = \"0.0.0.0:21222\",\n            ListenAddress = \"165.23.40.1:21222\",\n            Name = \"test-gateway\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var relay = new Sdm.Node(\"relay\", new()\n    {\n        Relay = new Sdm.Inputs.NodeRelayArgs\n        {\n            Name = \"test-relay\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewNode(ctx, \"gateway\", \u0026sdm.NodeArgs{\n\t\t\tGateway: \u0026sdm.NodeGatewayArgs{\n\t\t\t\tBindAddress:   pulumi.String(\"0.0.0.0:21222\"),\n\t\t\t\tListenAddress: pulumi.String(\"165.23.40.1:21222\"),\n\t\t\t\tName:          pulumi.String(\"test-gateway\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewNode(ctx, \"relay\", \u0026sdm.NodeArgs{\n\t\t\tRelay: \u0026sdm.NodeRelayArgs{\n\t\t\t\tName: pulumi.String(\"test-relay\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Node;\nimport com.pulumi.sdm.NodeArgs;\nimport com.pulumi.sdm.inputs.NodeGatewayArgs;\nimport com.pulumi.sdm.inputs.NodeRelayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gateway = new Node(\"gateway\", NodeArgs.builder()        \n            .gateway(NodeGatewayArgs.builder()\n                .bindAddress(\"0.0.0.0:21222\")\n                .listenAddress(\"165.23.40.1:21222\")\n                .name(\"test-gateway\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var relay = new Node(\"relay\", NodeArgs.builder()        \n            .relay(NodeRelayArgs.builder()\n                .name(\"test-relay\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gateway:\n    type: sdm:Node\n    properties:\n      gateway:\n        bindAddress: 0.0.0.0:21222\n        listenAddress: 165.23.40.1:21222\n        name: test-gateway\n        tags:\n          env: dev\n          region: us-west\n  relay:\n    type: sdm:Node\n    properties:\n      relay:\n        name: test-relay\n        tags:\n          env: dev\n          region: us-west\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nNode can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/node:Node example n-12345678\n```\n\n ",
+            "description": "Nodes make up the strongDM network, and allow your users to connect securely to your resources.\n There are two types of nodes:\n 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall\n 1. **Gateways:** a relay that also listens for connections from strongDM clients\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst gateway = new sdm.Node(\"gateway\", {gateway: {\n    bindAddress: \"0.0.0.0:21222\",\n    listenAddress: \"165.23.40.1:21222\",\n    name: \"test-gateway\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst relay = new sdm.Node(\"relay\", {relay: {\n    name: \"test-relay\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ngateway = sdm.Node(\"gateway\", gateway=sdm.NodeGatewayArgs(\n    bind_address=\"0.0.0.0:21222\",\n    listen_address=\"165.23.40.1:21222\",\n    name=\"test-gateway\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\nrelay = sdm.Node(\"relay\", relay=sdm.NodeRelayArgs(\n    name=\"test-relay\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gateway = new Sdm.Node(\"gateway\", new()\n    {\n        Gateway = new Sdm.Inputs.NodeGatewayArgs\n        {\n            BindAddress = \"0.0.0.0:21222\",\n            ListenAddress = \"165.23.40.1:21222\",\n            Name = \"test-gateway\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var relay = new Sdm.Node(\"relay\", new()\n    {\n        Relay = new Sdm.Inputs.NodeRelayArgs\n        {\n            Name = \"test-relay\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewNode(ctx, \"gateway\", \u0026sdm.NodeArgs{\n\t\t\tGateway: \u0026sdm.NodeGatewayArgs{\n\t\t\t\tBindAddress:   pulumi.String(\"0.0.0.0:21222\"),\n\t\t\t\tListenAddress: pulumi.String(\"165.23.40.1:21222\"),\n\t\t\t\tName:          pulumi.String(\"test-gateway\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewNode(ctx, \"relay\", \u0026sdm.NodeArgs{\n\t\t\tRelay: \u0026sdm.NodeRelayArgs{\n\t\t\t\tName: pulumi.String(\"test-relay\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Node;\nimport com.pulumi.sdm.NodeArgs;\nimport com.pulumi.sdm.inputs.NodeGatewayArgs;\nimport com.pulumi.sdm.inputs.NodeRelayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gateway = new Node(\"gateway\", NodeArgs.builder()        \n            .gateway(NodeGatewayArgs.builder()\n                .bindAddress(\"0.0.0.0:21222\")\n                .listenAddress(\"165.23.40.1:21222\")\n                .name(\"test-gateway\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var relay = new Node(\"relay\", NodeArgs.builder()        \n            .relay(NodeRelayArgs.builder()\n                .name(\"test-relay\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gateway:\n    type: sdm:Node\n    properties:\n      gateway:\n        bindAddress: 0.0.0.0:21222\n        listenAddress: 165.23.40.1:21222\n        name: test-gateway\n        tags:\n          env: dev\n          region: us-west\n  relay:\n    type: sdm:Node\n    properties:\n      relay:\n        name: test-relay\n        tags:\n          env: dev\n          region: us-west\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Node can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/node:Node example n-12345678\n```\n ",
             "properties": {
                 "gateway": {
                     "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
@@ -13740,7 +14133,7 @@
             }
         },
         "sdm:index/peeringGroup:PeeringGroup": {
-            "description": "PeeringGroups are the building blocks used for explicit network topology making.\n They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.\nThis resource can be imported using the import command.\n\n\n## Import\n\nPeeringGroup can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678\n```\n\n ",
+            "description": "PeeringGroups are the building blocks used for explicit network topology making.\n They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.\nThis resource can be imported using the import command.\n\n\n## Import\n\nA PeeringGroup can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678\n```\n ",
             "properties": {
                 "name": {
                     "type": "string",
@@ -13770,7 +14163,7 @@
             }
         },
         "sdm:index/peeringGroupNode:PeeringGroupNode": {
-            "description": "PeeringGroupNode represents the attachment between a PeeringGroup and a Node.\nThis resource can be imported using the import command.\n\n\n## Import\n\nPeeringGroupNode can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupNode:PeeringGroupNode example gn-12345678\n```\n\n ",
+            "description": "PeeringGroupNode represents the attachment between a PeeringGroup and a Node.\nThis resource can be imported using the import command.\n\n\n## Import\n\nA PeeringGroupNode can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupNode:PeeringGroupNode example gn-12345678\n```\n ",
             "properties": {
                 "groupId": {
                     "type": "string",
@@ -13815,7 +14208,7 @@
             }
         },
         "sdm:index/peeringGroupPeer:PeeringGroupPeer": {
-            "description": "PeeringGroupPeer represents the link between two PeeringGroups\nThis resource can be imported using the import command.\n\n\n## Import\n\nPeeringGroupPeer can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupPeer:PeeringGroupPeer example gp-12345678\n```\n\n ",
+            "description": "PeeringGroupPeer represents the link between two PeeringGroups\nThis resource can be imported using the import command.\n\n\n## Import\n\nA PeeringGroupPeer can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupPeer:PeeringGroupPeer example gp-12345678\n```\n ",
             "properties": {
                 "groupId": {
                     "type": "string",
@@ -13860,7 +14253,7 @@
             }
         },
         "sdm:index/peeringGroupResource:PeeringGroupResource": {
-            "description": "PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.\nThis resource can be imported using the import command.\n\n\n## Import\n\nPeeringGroupResource can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678\n```\n\n ",
+            "description": "PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.\nThis resource can be imported using the import command.\n\n\n## Import\n\nA PeeringGroupResource can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678\n```\n ",
             "properties": {
                 "groupId": {
                     "type": "string",
@@ -13905,7 +14298,7 @@
             }
         },
         "sdm:index/remoteIdentity:RemoteIdentity": {
-            "description": "RemoteIdentities define the username to be used for a specific account\n when connecting to a remote resource using that group.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.RemoteIdentity;\nimport com.pulumi.sdm.RemoteIdentityArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new RemoteIdentity(\"user\", RemoteIdentityArgs.builder()        \n            .id(\"i-0900909\")\n            .username(\"user\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: sdm:RemoteIdentity\n    properties:\n      id: i-0900909\n      username: user\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRemoteIdentity can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678\n```\n\n ",
+            "description": "RemoteIdentities define the username to be used for a specific account\n when connecting to a remote resource using that group.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.RemoteIdentity;\nimport com.pulumi.sdm.RemoteIdentityArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new RemoteIdentity(\"user\", RemoteIdentityArgs.builder()        \n            .id(\"i-0900909\")\n            .username(\"user\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: sdm:RemoteIdentity\n    properties:\n      id: i-0900909\n      username: user\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA RemoteIdentity can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678\n```\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -13964,7 +14357,7 @@
             }
         },
         "sdm:index/resource:Resource": {
-            "description": "\n\n\n## Import\n\nResource can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/resource:Resource example rs-12345678\n```\n\n ",
+            "description": "\n\n\n## Import\n\nA Resource can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/resource:Resource example rs-12345678\n```\n ",
             "properties": {
                 "aks": {
                     "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
@@ -14008,16 +14401,18 @@
                 "auroraPostgres": {
                     "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                 },
+                "auroraPostgresIam": {
+                    "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam",
+                    "description": "AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "aws": {
                     "$ref": "#/types/sdm:index/ResourceAws:ResourceAws"
                 },
                 "awsConsole": {
-                    "$ref": "#/types/sdm:index/ResourceAwsConsole:ResourceAwsConsole",
-                    "description": "AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAwsConsole:ResourceAwsConsole"
                 },
                 "awsConsoleStaticKeyPair": {
-                    "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair",
-                    "description": "AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair"
                 },
                 "azure": {
                     "$ref": "#/types/sdm:index/ResourceAzure:ResourceAzure"
@@ -14032,8 +14427,7 @@
                     "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
                 },
                 "azurePostgresManagedIdentity": {
-                    "$ref": "#/types/sdm:index/ResourceAzurePostgresManagedIdentity:ResourceAzurePostgresManagedIdentity",
-                    "description": "AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAzurePostgresManagedIdentity:ResourceAzurePostgresManagedIdentity"
                 },
                 "bigQuery": {
                     "$ref": "#/types/sdm:index/ResourceBigQuery:ResourceBigQuery"
@@ -14171,6 +14565,10 @@
                 "rdp": {
                     "$ref": "#/types/sdm:index/ResourceRdp:ResourceRdp"
                 },
+                "rdsPostgresIam": {
+                    "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam",
+                    "description": "RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "redis": {
                     "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"
                 },
@@ -14184,8 +14582,7 @@
                     "$ref": "#/types/sdm:index/ResourceSnowflake:ResourceSnowflake"
                 },
                 "snowsight": {
-                    "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight",
-                    "description": "Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight"
                 },
                 "sqlServer": {
                     "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"
@@ -14262,16 +14659,18 @@
                 "auroraPostgres": {
                     "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                 },
+                "auroraPostgresIam": {
+                    "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam",
+                    "description": "AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "aws": {
                     "$ref": "#/types/sdm:index/ResourceAws:ResourceAws"
                 },
                 "awsConsole": {
-                    "$ref": "#/types/sdm:index/ResourceAwsConsole:ResourceAwsConsole",
-                    "description": "AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAwsConsole:ResourceAwsConsole"
                 },
                 "awsConsoleStaticKeyPair": {
-                    "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair",
-                    "description": "AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair"
                 },
                 "azure": {
                     "$ref": "#/types/sdm:index/ResourceAzure:ResourceAzure"
@@ -14286,8 +14685,7 @@
                     "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
                 },
                 "azurePostgresManagedIdentity": {
-                    "$ref": "#/types/sdm:index/ResourceAzurePostgresManagedIdentity:ResourceAzurePostgresManagedIdentity",
-                    "description": "AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAzurePostgresManagedIdentity:ResourceAzurePostgresManagedIdentity"
                 },
                 "bigQuery": {
                     "$ref": "#/types/sdm:index/ResourceBigQuery:ResourceBigQuery"
@@ -14425,6 +14823,10 @@
                 "rdp": {
                     "$ref": "#/types/sdm:index/ResourceRdp:ResourceRdp"
                 },
+                "rdsPostgresIam": {
+                    "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam",
+                    "description": "RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "redis": {
                     "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"
                 },
@@ -14438,8 +14840,7 @@
                     "$ref": "#/types/sdm:index/ResourceSnowflake:ResourceSnowflake"
                 },
                 "snowsight": {
-                    "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight",
-                    "description": "Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight"
                 },
                 "sqlServer": {
                     "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"
@@ -14518,16 +14919,18 @@
                     "auroraPostgres": {
                         "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                     },
+                    "auroraPostgresIam": {
+                        "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam",
+                        "description": "AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
                     "aws": {
                         "$ref": "#/types/sdm:index/ResourceAws:ResourceAws"
                     },
                     "awsConsole": {
-                        "$ref": "#/types/sdm:index/ResourceAwsConsole:ResourceAwsConsole",
-                        "description": "AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAwsConsole:ResourceAwsConsole"
                     },
                     "awsConsoleStaticKeyPair": {
-                        "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair",
-                        "description": "AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version\nbump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair"
                     },
                     "azure": {
                         "$ref": "#/types/sdm:index/ResourceAzure:ResourceAzure"
@@ -14542,8 +14945,7 @@
                         "$ref": "#/types/sdm:index/ResourceAzurePostgres:ResourceAzurePostgres"
                     },
                     "azurePostgresManagedIdentity": {
-                        "$ref": "#/types/sdm:index/ResourceAzurePostgresManagedIdentity:ResourceAzurePostgresManagedIdentity",
-                        "description": "AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major\nversion bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAzurePostgresManagedIdentity:ResourceAzurePostgresManagedIdentity"
                     },
                     "bigQuery": {
                         "$ref": "#/types/sdm:index/ResourceBigQuery:ResourceBigQuery"
@@ -14681,6 +15083,10 @@
                     "rdp": {
                         "$ref": "#/types/sdm:index/ResourceRdp:ResourceRdp"
                     },
+                    "rdsPostgresIam": {
+                        "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam",
+                        "description": "RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
                     "redis": {
                         "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"
                     },
@@ -14694,8 +15100,7 @@
                         "$ref": "#/types/sdm:index/ResourceSnowflake:ResourceSnowflake"
                     },
                     "snowsight": {
-                        "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight",
-                        "description": "Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceSnowsight:ResourceSnowsight"
                     },
                     "sqlServer": {
                         "$ref": "#/types/sdm:index/ResourceSqlServer:ResourceSqlServer"
@@ -14733,7 +15138,7 @@
             }
         },
         "sdm:index/role:Role": {
-            "description": "A Role has a list of access rules which determine which Resources the members\n of the Role have access to. An Account can be a member of multiple Roles via\n AccountAttachments.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst engineers = new sdm.Role(\"engineers\", {tags: {\n    foo: \"bar\",\n}});\nconst example_role = new sdm.Role(\"example-role\", {accessRules: JSON.stringify([\n    {\n        tags: {\n            env: \"staging\",\n        },\n    },\n    {\n        type: \"postgres\",\n        tags: {\n            region: \"us-west\",\n            env: \"dev\",\n        },\n    },\n    {\n        ids: [\"rs-093e6f3061eb4dad\"],\n    },\n])});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nengineers = sdm.Role(\"engineers\", tags={\n    \"foo\": \"bar\",\n})\nexample_role = sdm.Role(\"example-role\", access_rules=json.dumps([\n    {\n        \"tags\": {\n            \"env\": \"staging\",\n        },\n    },\n    {\n        \"type\": \"postgres\",\n        \"tags\": {\n            \"region\": \"us-west\",\n            \"env\": \"dev\",\n        },\n    },\n    {\n        \"ids\": [\"rs-093e6f3061eb4dad\"],\n    },\n]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var engineers = new Sdm.Role(\"engineers\", new()\n    {\n        Tags = \n        {\n            { \"foo\", \"bar\" },\n        },\n    });\n\n    var example_role = new Sdm.Role(\"example-role\", new()\n    {\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"env\"] = \"staging\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"postgres\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-west\",\n                    [\"env\"] = \"dev\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"ids\"] = new[]\n                {\n                    \"rs-093e6f3061eb4dad\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewRole(ctx, \"engineers\", \u0026sdm.RoleArgs{\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"env\": \"staging\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"postgres\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"ids\": []string{\n\t\t\t\t\t\"rs-093e6f3061eb4dad\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewRole(ctx, \"example-role\", \u0026sdm.RoleArgs{\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Role;\nimport com.pulumi.sdm.RoleArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var engineers = new Role(\"engineers\", RoleArgs.builder()        \n            .tags(Map.of(\"foo\", \"bar\"))\n            .build());\n\n        var example_role = new Role(\"example-role\", RoleArgs.builder()        \n            .accessRules(serializeJson(\n                jsonArray(\n                    jsonObject(\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"env\", \"staging\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"type\", \"postgres\"),\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"region\", \"us-west\"),\n                            jsonProperty(\"env\", \"dev\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"ids\", jsonArray(\"rs-093e6f3061eb4dad\"))\n                    )\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  engineers:\n    type: sdm:Role\n    properties:\n      tags:\n        foo: bar\n  example-role:\n    type: sdm:Role\n    properties:\n      accessRules:\n        fn::toJSON:\n          - tags:\n              env: staging\n          - type: postgres\n            tags:\n              region: us-west\n              env: dev\n          - ids:\n              - rs-093e6f3061eb4dad\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRole can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/role:Role example r-12345678\n```\n\n ",
+            "description": "A Role has a list of access rules which determine which Resources the members\n of the Role have access to. An Account can be a member of multiple Roles via\n AccountAttachments.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst engineers = new sdm.Role(\"engineers\", {tags: {\n    foo: \"bar\",\n}});\nconst example_role = new sdm.Role(\"example-role\", {accessRules: JSON.stringify([\n    {\n        tags: {\n            env: \"staging\",\n        },\n    },\n    {\n        type: \"postgres\",\n        tags: {\n            region: \"us-west\",\n            env: \"dev\",\n        },\n    },\n    {\n        ids: [\"rs-093e6f3061eb4dad\"],\n    },\n])});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nengineers = sdm.Role(\"engineers\", tags={\n    \"foo\": \"bar\",\n})\nexample_role = sdm.Role(\"example-role\", access_rules=json.dumps([\n    {\n        \"tags\": {\n            \"env\": \"staging\",\n        },\n    },\n    {\n        \"type\": \"postgres\",\n        \"tags\": {\n            \"region\": \"us-west\",\n            \"env\": \"dev\",\n        },\n    },\n    {\n        \"ids\": [\"rs-093e6f3061eb4dad\"],\n    },\n]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var engineers = new Sdm.Role(\"engineers\", new()\n    {\n        Tags = \n        {\n            { \"foo\", \"bar\" },\n        },\n    });\n\n    var example_role = new Sdm.Role(\"example-role\", new()\n    {\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"env\"] = \"staging\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"postgres\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-west\",\n                    [\"env\"] = \"dev\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"ids\"] = new[]\n                {\n                    \"rs-093e6f3061eb4dad\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewRole(ctx, \"engineers\", \u0026sdm.RoleArgs{\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"env\": \"staging\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"postgres\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"ids\": []string{\n\t\t\t\t\t\"rs-093e6f3061eb4dad\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewRole(ctx, \"example-role\", \u0026sdm.RoleArgs{\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Role;\nimport com.pulumi.sdm.RoleArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var engineers = new Role(\"engineers\", RoleArgs.builder()        \n            .tags(Map.of(\"foo\", \"bar\"))\n            .build());\n\n        var example_role = new Role(\"example-role\", RoleArgs.builder()        \n            .accessRules(serializeJson(\n                jsonArray(\n                    jsonObject(\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"env\", \"staging\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"type\", \"postgres\"),\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"region\", \"us-west\"),\n                            jsonProperty(\"env\", \"dev\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"ids\", jsonArray(\"rs-093e6f3061eb4dad\"))\n                    )\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  engineers:\n    type: sdm:Role\n    properties:\n      tags:\n        foo: bar\n  example-role:\n    type: sdm:Role\n    properties:\n      accessRules:\n        fn::toJSON:\n          - tags:\n              env: staging\n          - type: postgres\n            tags:\n              region: us-west\n              env: dev\n          - ids:\n              - rs-093e6f3061eb4dad\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Role can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/role:Role example r-12345678\n```\n ",
             "properties": {
                 "accessRules": {
                     "type": "string",
@@ -14804,7 +15209,7 @@
             }
         },
         "sdm:index/secretStore:SecretStore": {
-            "description": "A SecretStore is a server where resource secrets (passwords, keys) are stored.\n Coming soon support for HashiCorp Vault and AWS Secret Store.\nThis resource can be imported using the import command.\n\n\n## Import\n\nSecretStore can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/secretStore:SecretStore example se-12345678\n```\n\n ",
+            "description": "A SecretStore is a server where resource secrets (passwords, keys) are stored.\n Coming soon support for HashiCorp Vault and AWS Secret Store.\nThis resource can be imported using the import command.\n\n\n## Import\n\nA SecretStore can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/secretStore:SecretStore example se-12345678\n```\n ",
             "properties": {
                 "aws": {
                     "$ref": "#/types/sdm:index/SecretStoreAws:SecretStoreAws"
@@ -14904,6 +15309,193 @@
                     },
                     "vaultToken": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultToken:SecretStoreVaultToken"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/workflow:Workflow": {
+            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst autoGrantWorkflow = new sdm.Workflow(\"autoGrantWorkflow\", {\n    autoGrant: true,\n    enabled: true,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\nconst manualApprovalWorkflow = new sdm.Workflow(\"manualApprovalWorkflow\", {\n    autoGrant: false,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nauto_grant_workflow = sdm.Workflow(\"autoGrantWorkflow\",\n    auto_grant=True,\n    enabled=True,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\nmanual_approval_workflow = sdm.Workflow(\"manualApprovalWorkflow\",\n    auto_grant=False,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var autoGrantWorkflow = new Sdm.Workflow(\"autoGrantWorkflow\", new()\n    {\n        AutoGrant = true,\n        Enabled = true,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n    var manualApprovalWorkflow = new Sdm.Workflow(\"manualApprovalWorkflow\", new()\n    {\n        AutoGrant = false,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewWorkflow(ctx, \"autoGrantWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tAutoGrant:   pulumi.Bool(true),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = sdm.NewWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tAutoGrant:   pulumi.Bool(false),\n\t\t\tAccessRules: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Workflow;\nimport com.pulumi.sdm.WorkflowArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var autoGrantWorkflow = new Workflow(\"autoGrantWorkflow\", WorkflowArgs.builder()        \n            .autoGrant(true)\n            .enabled(true)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n        var manualApprovalWorkflow = new Workflow(\"manualApprovalWorkflow\", WorkflowArgs.builder()        \n            .autoGrant(false)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  autoGrantWorkflow:\n    type: sdm:Workflow\n    properties:\n      autoGrant: true\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n  manualApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      autoGrant: false\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA Workflow can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/workflow:Workflow example aw-12345678\n```\n ",
+            "properties": {
+                "accessRules": {
+                    "type": "string",
+                    "description": "AccessRules is a list of access rules defining the resources this Workflow provides access to.\n"
+                },
+                "autoGrant": {
+                    "type": "boolean",
+                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Optional description of the Workflow.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Workflow.\n"
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "Optional weight for workflow to specify it's priority in matching a request.\n"
+                }
+            },
+            "required": [
+                "accessRules",
+                "name"
+            ],
+            "inputProperties": {
+                "accessRules": {
+                    "type": "string",
+                    "description": "AccessRules is a list of access rules defining the resources this Workflow provides access to.\n"
+                },
+                "autoGrant": {
+                    "type": "boolean",
+                    "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Optional description of the Workflow.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Workflow.\n"
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "Optional weight for workflow to specify it's priority in matching a request.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Workflow resources.\n",
+                "properties": {
+                    "accessRules": {
+                        "type": "string",
+                        "description": "AccessRules is a list of access rules defining the resources this Workflow provides access to.\n"
+                    },
+                    "autoGrant": {
+                        "type": "boolean",
+                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description of the Workflow.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Workflow.\n"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "description": "Optional weight for workflow to specify it's priority in matching a request.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/workflowApprover:WorkflowApprover": {
+            "description": "WorkflowApprover is an account with the ability to approve requests bound to a workflow.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowApproverExample = new sdm.WorkflowApprover(\"workflowApproverExample\", {\n    approverId: \"a-234605\",\n    workflowId: \"aw-6799234\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_approver_example = sdm.WorkflowApprover(\"workflowApproverExample\",\n    approver_id=\"a-234605\",\n    workflow_id=\"aw-6799234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowApproverExample = new Sdm.WorkflowApprover(\"workflowApproverExample\", new()\n    {\n        ApproverId = \"a-234605\",\n        WorkflowId = \"aw-6799234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowApprover(ctx, \"workflowApproverExample\", \u0026sdm.WorkflowApproverArgs{\n\t\t\tApproverId: pulumi.String(\"a-234605\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-6799234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowApprover;\nimport com.pulumi.sdm.WorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowApproverExample = new WorkflowApprover(\"workflowApproverExample\", WorkflowApproverArgs.builder()        \n            .approverId(\"a-234605\")\n            .workflowId(\"aw-6799234\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowApproverExample:\n    type: sdm:WorkflowApprover\n    properties:\n      approverId: a-234605\n      workflowId: aw-6799234\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA WorkflowApprover can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678\n```\n ",
+            "properties": {
+                "approverId": {
+                    "type": "string",
+                    "description": "The approver id.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow id.\n"
+                }
+            },
+            "required": [
+                "approverId",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "approverId": {
+                    "type": "string",
+                    "description": "The approver id.\n",
+                    "willReplaceOnChanges": true
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow id.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "approverId",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowApprover resources.\n",
+                "properties": {
+                    "approverId": {
+                        "type": "string",
+                        "description": "The approver id.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The workflow id.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/workflowRole:WorkflowRole": {
+            "description": "WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of\n to request access to a resource via the workflow.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowRoleExample = new sdm.WorkflowRole(\"workflowRoleExample\", {\n    roleId: \"r-243561\",\n    workflowId: \"aw-343865\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_role_example = sdm.WorkflowRole(\"workflowRoleExample\",\n    role_id=\"r-243561\",\n    workflow_id=\"aw-343865\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowRoleExample = new Sdm.WorkflowRole(\"workflowRoleExample\", new()\n    {\n        RoleId = \"r-243561\",\n        WorkflowId = \"aw-343865\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowRole(ctx, \"workflowRoleExample\", \u0026sdm.WorkflowRoleArgs{\n\t\t\tRoleId:     pulumi.String(\"r-243561\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-343865\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowRole;\nimport com.pulumi.sdm.WorkflowRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowRoleExample = new WorkflowRole(\"workflowRoleExample\", WorkflowRoleArgs.builder()        \n            .roleId(\"r-243561\")\n            .workflowId(\"aw-343865\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowRoleExample:\n    type: sdm:WorkflowRole\n    properties:\n      roleId: r-243561\n      workflowId: aw-343865\n```\nThis resource can be imported using the import command.\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nA WorkflowRole can be imported using the id, e.g.,\n\n```sh\n $ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678\n```\n ",
+            "properties": {
+                "roleId": {
+                    "type": "string",
+                    "description": "The role id.\n"
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow id.\n"
+                }
+            },
+            "required": [
+                "roleId",
+                "workflowId"
+            ],
+            "inputProperties": {
+                "roleId": {
+                    "type": "string",
+                    "description": "The role id.\n",
+                    "willReplaceOnChanges": true
+                },
+                "workflowId": {
+                    "type": "string",
+                    "description": "The workflow id.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "roleId",
+                "workflowId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkflowRole resources.\n",
+                "properties": {
+                    "roleId": {
+                        "type": "string",
+                        "description": "The role id.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The workflow id.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -15759,6 +16351,201 @@
                     }
                 },
                 "type": "object"
+            }
+        },
+        "sdm:index/getWorkflow:getWorkflow": {
+            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst workflowQuery = sdm.getWorkflow({\n    autoGrant: true,\n    name: \"workflow example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nworkflow_query = sdm.get_workflow(auto_grant=True,\n    name=\"workflow example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowQuery = Sdm.GetWorkflow.Invoke(new()\n    {\n        AutoGrant = true,\n        Name = \"workflow example\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupWorkflow(ctx, \u0026sdm.LookupWorkflowArgs{\n\t\t\tAutoGrant: pulumi.BoolRef(true),\n\t\t\tName:      pulumi.StringRef(\"workflow example\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowQuery = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()\n            .autoGrant(true)\n            .name(\"workflow example\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowQuery:\n    fn::invoke:\n      Function: sdm:getWorkflow\n      Arguments:\n        autoGrant: true\n        name: workflow example\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getWorkflow.\n",
+                "properties": {
+                    "autoGrant": {
+                        "type": "boolean",
+                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description of the Workflow.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Workflow.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Workflow.\n"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "description": "Optional weight for workflow to specify it's priority in matching a request.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getWorkflow.\n",
+                "properties": {
+                    "autoGrant": {
+                        "type": "boolean",
+                        "description": "Optional auto grant setting to automatically approve requests or not, defaults to false.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description of the Workflow.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Workflow.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Workflow.\n"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "description": "Optional weight for workflow to specify it's priority in matching a request.\n"
+                    },
+                    "workflows": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getWorkflowWorkflow:getWorkflowWorkflow"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "workflows"
+                ]
+            }
+        },
+        "sdm:index/getWorkflowApprover:getWorkflowApprover": {
+            "description": "WorkflowApprover is an account with the ability to approve requests bound to a workflow.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst workflowApproverQuery = sdm.getWorkflowApprover({\n    approverId: \"a-2496542\",\n    workflowId: \"aw-541894\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nworkflow_approver_query = sdm.get_workflow_approver(approver_id=\"a-2496542\",\n    workflow_id=\"aw-541894\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowApproverQuery = Sdm.GetWorkflowApprover.Invoke(new()\n    {\n        ApproverId = \"a-2496542\",\n        WorkflowId = \"aw-541894\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupWorkflowApprover(ctx, \u0026sdm.LookupWorkflowApproverArgs{\n\t\t\tApproverId: pulumi.StringRef(\"a-2496542\"),\n\t\t\tWorkflowId: pulumi.StringRef(\"aw-541894\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowApproverQuery = SdmFunctions.getWorkflowApprover(GetWorkflowApproverArgs.builder()\n            .approverId(\"a-2496542\")\n            .workflowId(\"aw-541894\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowApproverQuery:\n    fn::invoke:\n      Function: sdm:getWorkflowApprover\n      Arguments:\n        approverId: a-2496542\n        workflowId: aw-541894\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getWorkflowApprover.\n",
+                "properties": {
+                    "approverId": {
+                        "type": "string",
+                        "description": "The approver id.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the WorkflowApprover.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The workflow id.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getWorkflowApprover.\n",
+                "properties": {
+                    "approverId": {
+                        "type": "string",
+                        "description": "The approver id.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the WorkflowApprover.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "workflowApprovers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getWorkflowApproverWorkflowApprover:getWorkflowApproverWorkflowApprover"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The workflow id.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "workflowApprovers"
+                ]
+            }
+        },
+        "sdm:index/getWorkflowRole:getWorkflowRole": {
+            "description": "WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of\n to request access to a resource via the workflow.\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst workflowRoleQuery = sdm.getWorkflowRole({\n    roleId: \"r-9862923\",\n    workflowId: \"aw-7935485\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nworkflow_role_query = sdm.get_workflow_role(role_id=\"r-9862923\",\n    workflow_id=\"aw-7935485\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()\n    {\n        RoleId = \"r-9862923\",\n        WorkflowId = \"aw-7935485\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupWorkflowRole(ctx, \u0026sdm.LookupWorkflowRoleArgs{\n\t\t\tRoleId:     pulumi.StringRef(\"r-9862923\"),\n\t\t\tWorkflowId: pulumi.StringRef(\"aw-7935485\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowRoleQuery = SdmFunctions.getWorkflowRole(GetWorkflowRoleArgs.builder()\n            .roleId(\"r-9862923\")\n            .workflowId(\"aw-7935485\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowRoleQuery:\n    fn::invoke:\n      Function: sdm:getWorkflowRole\n      Arguments:\n        roleId: r-9862923\n        workflowId: aw-7935485\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getWorkflowRole.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the WorkflowRole.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The role id.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The workflow id.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getWorkflowRole.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the WorkflowRole.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The role id.\n"
+                    },
+                    "workflowId": {
+                        "type": "string",
+                        "description": "The workflow id.\n"
+                    },
+                    "workflowRoles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getWorkflowRoleWorkflowRole:getWorkflowRoleWorkflowRole"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "workflowRoles"
+                ]
             }
         }
     }

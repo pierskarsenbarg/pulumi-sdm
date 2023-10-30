@@ -328,6 +328,7 @@ export interface GetResourceResource {
     athenas: outputs.GetResourceResourceAthena[];
     auroraMysqls: outputs.GetResourceResourceAuroraMysql[];
     auroraPostgres: outputs.GetResourceResourceAuroraPostgre[];
+    auroraPostgresIams: outputs.GetResourceResourceAuroraPostgresIam[];
     aws: outputs.GetResourceResourceAw[];
     awsConsoleStaticKeyPairs: outputs.GetResourceResourceAwsConsoleStaticKeyPair[];
     awsConsoles: outputs.GetResourceResourceAwsConsole[];
@@ -380,6 +381,7 @@ export interface GetResourceResource {
     rabbitmqAmqp091s: outputs.GetResourceResourceRabbitmqAmqp091[];
     rawTcps: outputs.GetResourceResourceRawTcp[];
     rdps: outputs.GetResourceResourceRdp[];
+    rdsPostgresIams: outputs.GetResourceResourceRdsPostgresIam[];
     redis: outputs.GetResourceResourceRedi[];
     redshifts: outputs.GetResourceResourceRedshift[];
     singleStores: outputs.GetResourceResourceSingleStore[];
@@ -1259,6 +1261,69 @@ export interface GetResourceResourceAuroraPostgre {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceAuroraPostgresIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4247,6 +4312,10 @@ export interface GetResourceResourceRdp {
      */
     id?: string;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -4262,6 +4331,69 @@ export interface GetResourceResourceRdp {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceRdsPostgresIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5426,6 +5558,67 @@ export interface GetSecretStoreSecretStoreVaultToken {
     tags?: {[key: string]: string};
 }
 
+export interface GetWorkflowApproverWorkflowApprover {
+    /**
+     * The approver id.
+     */
+    approverId?: string;
+    /**
+     * Unique identifier of the WorkflowApprover.
+     */
+    id?: string;
+    /**
+     * The workflow id.
+     */
+    workflowId?: string;
+}
+
+export interface GetWorkflowRoleWorkflowRole {
+    /**
+     * Unique identifier of the WorkflowRole.
+     */
+    id?: string;
+    /**
+     * The role id.
+     */
+    roleId?: string;
+    /**
+     * The workflow id.
+     */
+    workflowId?: string;
+}
+
+export interface GetWorkflowWorkflow {
+    /**
+     * AccessRules is a list of access rules defining the resources this Workflow provides access to.
+     */
+    accessRules?: string;
+    /**
+     * Optional auto grant setting to automatically approve requests or not, defaults to false.
+     */
+    autoGrant?: boolean;
+    /**
+     * Optional description of the Workflow.
+     */
+    description?: string;
+    /**
+     * Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
+     */
+    enabled?: boolean;
+    /**
+     * Unique identifier of the Workflow.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Workflow.
+     */
+    name?: string;
+    /**
+     * Optional weight for workflow to specify it's priority in matching a request.
+     */
+    weight?: number;
+}
+
 export interface NodeGateway {
     /**
      * The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -6314,6 +6507,65 @@ export interface ResourceAuroraPostgres {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceAuroraPostgresIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9094,6 +9346,10 @@ export interface ResourceRdp {
      */
     hostname: string;
     /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -9109,6 +9365,65 @@ export interface ResourceRdp {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceRdsPostgresIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */

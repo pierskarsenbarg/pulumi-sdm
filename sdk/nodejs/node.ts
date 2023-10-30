@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Node can be imported using the id, e.g.,
+ * A Node can be imported using the id, e.g.,
  *
  * ```sh
  *  $ pulumi import sdm:index/node:Node example n-12345678
