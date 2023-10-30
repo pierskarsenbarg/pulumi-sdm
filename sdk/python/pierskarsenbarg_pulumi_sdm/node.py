@@ -133,7 +133,7 @@ class Node(pulumi.CustomResource):
 
         ## Import
 
-        Node can be imported using the id, e.g.,
+        A Node can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/node:Node example n-12345678
@@ -182,7 +182,7 @@ class Node(pulumi.CustomResource):
 
         ## Import
 
-        Node can be imported using the id, e.g.,
+        A Node can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/node:Node example n-12345678

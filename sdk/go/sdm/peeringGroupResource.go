@@ -9,6 +9,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.
@@ -16,7 +17,7 @@ import (
 //
 // ## Import
 //
-// PeeringGroupResource can be imported using the id, e.g.,
+// A PeeringGroupResource can be imported using the id, e.g.,
 //
 // ```sh
 //
@@ -117,6 +118,12 @@ func (i *PeeringGroupResource) ToPeeringGroupResourceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringGroupResourceOutput)
 }
 
+func (i *PeeringGroupResource) ToOutput(ctx context.Context) pulumix.Output[*PeeringGroupResource] {
+	return pulumix.Output[*PeeringGroupResource]{
+		OutputState: i.ToPeeringGroupResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PeeringGroupResourceArrayInput is an input type that accepts PeeringGroupResourceArray and PeeringGroupResourceArrayOutput values.
 // You can construct a concrete instance of `PeeringGroupResourceArrayInput` via:
 //
@@ -140,6 +147,12 @@ func (i PeeringGroupResourceArray) ToPeeringGroupResourceArrayOutput() PeeringGr
 
 func (i PeeringGroupResourceArray) ToPeeringGroupResourceArrayOutputWithContext(ctx context.Context) PeeringGroupResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringGroupResourceArrayOutput)
+}
+
+func (i PeeringGroupResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*PeeringGroupResource] {
+	return pulumix.Output[[]*PeeringGroupResource]{
+		OutputState: i.ToPeeringGroupResourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PeeringGroupResourceMapInput is an input type that accepts PeeringGroupResourceMap and PeeringGroupResourceMapOutput values.
@@ -167,6 +180,12 @@ func (i PeeringGroupResourceMap) ToPeeringGroupResourceMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringGroupResourceMapOutput)
 }
 
+func (i PeeringGroupResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeeringGroupResource] {
+	return pulumix.Output[map[string]*PeeringGroupResource]{
+		OutputState: i.ToPeeringGroupResourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PeeringGroupResourceOutput struct{ *pulumi.OutputState }
 
 func (PeeringGroupResourceOutput) ElementType() reflect.Type {
@@ -179,6 +198,12 @@ func (o PeeringGroupResourceOutput) ToPeeringGroupResourceOutput() PeeringGroupR
 
 func (o PeeringGroupResourceOutput) ToPeeringGroupResourceOutputWithContext(ctx context.Context) PeeringGroupResourceOutput {
 	return o
+}
+
+func (o PeeringGroupResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringGroupResource] {
+	return pulumix.Output[*PeeringGroupResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Peering Group ID to which the resource will be attached to.
@@ -205,6 +230,12 @@ func (o PeeringGroupResourceArrayOutput) ToPeeringGroupResourceArrayOutputWithCo
 	return o
 }
 
+func (o PeeringGroupResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PeeringGroupResource] {
+	return pulumix.Output[[]*PeeringGroupResource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PeeringGroupResourceArrayOutput) Index(i pulumi.IntInput) PeeringGroupResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PeeringGroupResource {
 		return vs[0].([]*PeeringGroupResource)[vs[1].(int)]
@@ -223,6 +254,12 @@ func (o PeeringGroupResourceMapOutput) ToPeeringGroupResourceMapOutput() Peering
 
 func (o PeeringGroupResourceMapOutput) ToPeeringGroupResourceMapOutputWithContext(ctx context.Context) PeeringGroupResourceMapOutput {
 	return o
+}
+
+func (o PeeringGroupResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeeringGroupResource] {
+	return pulumix.Output[map[string]*PeeringGroupResource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PeeringGroupResourceMapOutput) MapIndex(k pulumi.StringInput) PeeringGroupResourceOutput {

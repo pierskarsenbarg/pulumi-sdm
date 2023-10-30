@@ -9,6 +9,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // PeeringGroups are the building blocks used for explicit network topology making.
@@ -82,6 +83,12 @@ func (o LookupPeeringGroupResultOutput) ToLookupPeeringGroupResultOutput() Looku
 
 func (o LookupPeeringGroupResultOutput) ToLookupPeeringGroupResultOutputWithContext(ctx context.Context) LookupPeeringGroupResultOutput {
 	return o
+}
+
+func (o LookupPeeringGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeringGroupResult] {
+	return pulumix.Output[LookupPeeringGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the PeeringGroup.

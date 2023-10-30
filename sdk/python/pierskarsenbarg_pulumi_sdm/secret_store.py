@@ -304,7 +304,7 @@ class SecretStore(pulumi.CustomResource):
 
         ## Import
 
-        SecretStore can be imported using the id, e.g.,
+        A SecretStore can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
@@ -328,7 +328,7 @@ class SecretStore(pulumi.CustomResource):
 
         ## Import
 
-        SecretStore can be imported using the id, e.g.,
+        A SecretStore can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/secretStore:SecretStore example se-12345678

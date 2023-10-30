@@ -9,6 +9,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A RemoteIdentityGroup defines a group of remote identities.
@@ -105,6 +106,12 @@ func (o GetRemoteIdentityGroupResultOutput) ToGetRemoteIdentityGroupResultOutput
 
 func (o GetRemoteIdentityGroupResultOutput) ToGetRemoteIdentityGroupResultOutputWithContext(ctx context.Context) GetRemoteIdentityGroupResultOutput {
 	return o
+}
+
+func (o GetRemoteIdentityGroupResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRemoteIdentityGroupResult] {
+	return pulumix.Output[GetRemoteIdentityGroupResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Unique identifier of the RemoteIdentityGroup.

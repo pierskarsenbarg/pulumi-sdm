@@ -9,11 +9,12 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
 //
-// Resource can be imported using the id, e.g.,
+// A Resource can be imported using the id, e.g.,
 //
 // ```sh
 //
@@ -37,18 +38,15 @@ type Resource struct {
 	Athena                                    ResourceAthenaPtrOutput                                    `pulumi:"athena"`
 	AuroraMysql                               ResourceAuroraMysqlPtrOutput                               `pulumi:"auroraMysql"`
 	AuroraPostgres                            ResourceAuroraPostgresPtrOutput                            `pulumi:"auroraPostgres"`
+	// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrOutput                         `pulumi:"auroraPostgresIam"`
 	Aws                                       ResourceAwsPtrOutput                                       `pulumi:"aws"`
-	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AwsConsole ResourceAwsConsolePtrOutput `pulumi:"awsConsole"`
-	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrOutput `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                   ResourceAzurePtrOutput                   `pulumi:"azure"`
-	AzureCertificate        ResourceAzureCertificatePtrOutput        `pulumi:"azureCertificate"`
-	AzureMysql              ResourceAzureMysqlPtrOutput              `pulumi:"azureMysql"`
-	AzurePostgres           ResourceAzurePostgresPtrOutput           `pulumi:"azurePostgres"`
-	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-	// version bump.
+	AwsConsole                                ResourceAwsConsolePtrOutput                                `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrOutput                   `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
+	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
+	AzureMysql                                ResourceAzureMysqlPtrOutput                                `pulumi:"azureMysql"`
+	AzurePostgres                             ResourceAzurePostgresPtrOutput                             `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrOutput              `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                                  ResourceBigQueryPtrOutput                                  `pulumi:"bigQuery"`
 	Cassandra                                 ResourceCassandraPtrOutput                                 `pulumi:"cassandra"`
@@ -98,11 +96,12 @@ type Resource struct {
 	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrOutput `pulumi:"rabbitmqAmqp091"`
 	RawTcp          ResourceRawTcpPtrOutput          `pulumi:"rawTcp"`
 	Rdp             ResourceRdpPtrOutput             `pulumi:"rdp"`
-	Redis           ResourceRedisPtrOutput           `pulumi:"redis"`
-	Redshift        ResourceRedshiftPtrOutput        `pulumi:"redshift"`
-	SingleStore     ResourceSingleStorePtrOutput     `pulumi:"singleStore"`
-	Snowflake       ResourceSnowflakePtrOutput       `pulumi:"snowflake"`
-	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RdsPostgresIam      ResourceRdsPostgresIamPtrOutput      `pulumi:"rdsPostgresIam"`
+	Redis               ResourceRedisPtrOutput               `pulumi:"redis"`
+	Redshift            ResourceRedshiftPtrOutput            `pulumi:"redshift"`
+	SingleStore         ResourceSingleStorePtrOutput         `pulumi:"singleStore"`
+	Snowflake           ResourceSnowflakePtrOutput           `pulumi:"snowflake"`
 	Snowsight           ResourceSnowsightPtrOutput           `pulumi:"snowsight"`
 	SqlServer           ResourceSqlServerPtrOutput           `pulumi:"sqlServer"`
 	SqlServerAzureAd    ResourceSqlServerAzureAdPtrOutput    `pulumi:"sqlServerAzureAd"`
@@ -161,18 +160,15 @@ type resourceState struct {
 	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
 	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
 	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
+	// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AuroraPostgresIam                         *ResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIam"`
 	Aws                                       *ResourceAws                                       `pulumi:"aws"`
-	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
-	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
-	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                   *ResourceAzure                   `pulumi:"azure"`
-	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
-	AzureMysql              *ResourceAzureMysql              `pulumi:"azureMysql"`
-	AzurePostgres           *ResourceAzurePostgres           `pulumi:"azurePostgres"`
-	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-	// version bump.
+	AwsConsole                                *ResourceAwsConsole                                `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
+	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
+	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
+	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity              *ResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
 	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
@@ -222,11 +218,12 @@ type resourceState struct {
 	RabbitmqAmqp091 *ResourceRabbitmqAmqp091 `pulumi:"rabbitmqAmqp091"`
 	RawTcp          *ResourceRawTcp          `pulumi:"rawTcp"`
 	Rdp             *ResourceRdp             `pulumi:"rdp"`
-	Redis           *ResourceRedis           `pulumi:"redis"`
-	Redshift        *ResourceRedshift        `pulumi:"redshift"`
-	SingleStore     *ResourceSingleStore     `pulumi:"singleStore"`
-	Snowflake       *ResourceSnowflake       `pulumi:"snowflake"`
-	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RdsPostgresIam      *ResourceRdsPostgresIam      `pulumi:"rdsPostgresIam"`
+	Redis               *ResourceRedis               `pulumi:"redis"`
+	Redshift            *ResourceRedshift            `pulumi:"redshift"`
+	SingleStore         *ResourceSingleStore         `pulumi:"singleStore"`
+	Snowflake           *ResourceSnowflake           `pulumi:"snowflake"`
 	Snowsight           *ResourceSnowsight           `pulumi:"snowsight"`
 	SqlServer           *ResourceSqlServer           `pulumi:"sqlServer"`
 	SqlServerAzureAd    *ResourceSqlServerAzureAd    `pulumi:"sqlServerAzureAd"`
@@ -256,18 +253,15 @@ type ResourceState struct {
 	Athena                                    ResourceAthenaPtrInput
 	AuroraMysql                               ResourceAuroraMysqlPtrInput
 	AuroraPostgres                            ResourceAuroraPostgresPtrInput
+	// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrInput
 	Aws                                       ResourceAwsPtrInput
-	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AwsConsole ResourceAwsConsolePtrInput
-	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
-	Azure                   ResourceAzurePtrInput
-	AzureCertificate        ResourceAzureCertificatePtrInput
-	AzureMysql              ResourceAzureMysqlPtrInput
-	AzurePostgres           ResourceAzurePostgresPtrInput
-	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-	// version bump.
+	AwsConsole                                ResourceAwsConsolePtrInput
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
+	Azure                                     ResourceAzurePtrInput
+	AzureCertificate                          ResourceAzureCertificatePtrInput
+	AzureMysql                                ResourceAzureMysqlPtrInput
+	AzurePostgres                             ResourceAzurePostgresPtrInput
 	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrInput
 	BigQuery                                  ResourceBigQueryPtrInput
 	Cassandra                                 ResourceCassandraPtrInput
@@ -317,11 +311,12 @@ type ResourceState struct {
 	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrInput
 	RawTcp          ResourceRawTcpPtrInput
 	Rdp             ResourceRdpPtrInput
-	Redis           ResourceRedisPtrInput
-	Redshift        ResourceRedshiftPtrInput
-	SingleStore     ResourceSingleStorePtrInput
-	Snowflake       ResourceSnowflakePtrInput
-	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RdsPostgresIam      ResourceRdsPostgresIamPtrInput
+	Redis               ResourceRedisPtrInput
+	Redshift            ResourceRedshiftPtrInput
+	SingleStore         ResourceSingleStorePtrInput
+	Snowflake           ResourceSnowflakePtrInput
 	Snowsight           ResourceSnowsightPtrInput
 	SqlServer           ResourceSqlServerPtrInput
 	SqlServerAzureAd    ResourceSqlServerAzureAdPtrInput
@@ -355,18 +350,15 @@ type resourceArgs struct {
 	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
 	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
 	AuroraPostgres                            *ResourceAuroraPostgres                            `pulumi:"auroraPostgres"`
+	// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AuroraPostgresIam                         *ResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIam"`
 	Aws                                       *ResourceAws                                       `pulumi:"aws"`
-	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AwsConsole *ResourceAwsConsole `pulumi:"awsConsole"`
-	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
-	AwsConsoleStaticKeyPair *ResourceAwsConsoleStaticKeyPair `pulumi:"awsConsoleStaticKeyPair"`
-	Azure                   *ResourceAzure                   `pulumi:"azure"`
-	AzureCertificate        *ResourceAzureCertificate        `pulumi:"azureCertificate"`
-	AzureMysql              *ResourceAzureMysql              `pulumi:"azureMysql"`
-	AzurePostgres           *ResourceAzurePostgres           `pulumi:"azurePostgres"`
-	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-	// version bump.
+	AwsConsole                                *ResourceAwsConsole                                `pulumi:"awsConsole"`
+	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
+	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
+	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
+	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
+	AzurePostgres                             *ResourceAzurePostgres                             `pulumi:"azurePostgres"`
 	AzurePostgresManagedIdentity              *ResourceAzurePostgresManagedIdentity              `pulumi:"azurePostgresManagedIdentity"`
 	BigQuery                                  *ResourceBigQuery                                  `pulumi:"bigQuery"`
 	Cassandra                                 *ResourceCassandra                                 `pulumi:"cassandra"`
@@ -416,11 +408,12 @@ type resourceArgs struct {
 	RabbitmqAmqp091 *ResourceRabbitmqAmqp091 `pulumi:"rabbitmqAmqp091"`
 	RawTcp          *ResourceRawTcp          `pulumi:"rawTcp"`
 	Rdp             *ResourceRdp             `pulumi:"rdp"`
-	Redis           *ResourceRedis           `pulumi:"redis"`
-	Redshift        *ResourceRedshift        `pulumi:"redshift"`
-	SingleStore     *ResourceSingleStore     `pulumi:"singleStore"`
-	Snowflake       *ResourceSnowflake       `pulumi:"snowflake"`
-	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RdsPostgresIam      *ResourceRdsPostgresIam      `pulumi:"rdsPostgresIam"`
+	Redis               *ResourceRedis               `pulumi:"redis"`
+	Redshift            *ResourceRedshift            `pulumi:"redshift"`
+	SingleStore         *ResourceSingleStore         `pulumi:"singleStore"`
+	Snowflake           *ResourceSnowflake           `pulumi:"snowflake"`
 	Snowsight           *ResourceSnowsight           `pulumi:"snowsight"`
 	SqlServer           *ResourceSqlServer           `pulumi:"sqlServer"`
 	SqlServerAzureAd    *ResourceSqlServerAzureAd    `pulumi:"sqlServerAzureAd"`
@@ -451,18 +444,15 @@ type ResourceArgs struct {
 	Athena                                    ResourceAthenaPtrInput
 	AuroraMysql                               ResourceAuroraMysqlPtrInput
 	AuroraPostgres                            ResourceAuroraPostgresPtrInput
+	// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AuroraPostgresIam                         ResourceAuroraPostgresIamPtrInput
 	Aws                                       ResourceAwsPtrInput
-	// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	AwsConsole ResourceAwsConsolePtrInput
-	// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-	// bump.
-	AwsConsoleStaticKeyPair ResourceAwsConsoleStaticKeyPairPtrInput
-	Azure                   ResourceAzurePtrInput
-	AzureCertificate        ResourceAzureCertificatePtrInput
-	AzureMysql              ResourceAzureMysqlPtrInput
-	AzurePostgres           ResourceAzurePostgresPtrInput
-	// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-	// version bump.
+	AwsConsole                                ResourceAwsConsolePtrInput
+	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
+	Azure                                     ResourceAzurePtrInput
+	AzureCertificate                          ResourceAzureCertificatePtrInput
+	AzureMysql                                ResourceAzureMysqlPtrInput
+	AzurePostgres                             ResourceAzurePostgresPtrInput
 	AzurePostgresManagedIdentity              ResourceAzurePostgresManagedIdentityPtrInput
 	BigQuery                                  ResourceBigQueryPtrInput
 	Cassandra                                 ResourceCassandraPtrInput
@@ -512,11 +502,12 @@ type ResourceArgs struct {
 	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrInput
 	RawTcp          ResourceRawTcpPtrInput
 	Rdp             ResourceRdpPtrInput
-	Redis           ResourceRedisPtrInput
-	Redshift        ResourceRedshiftPtrInput
-	SingleStore     ResourceSingleStorePtrInput
-	Snowflake       ResourceSnowflakePtrInput
-	// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RdsPostgresIam      ResourceRdsPostgresIamPtrInput
+	Redis               ResourceRedisPtrInput
+	Redshift            ResourceRedshiftPtrInput
+	SingleStore         ResourceSingleStorePtrInput
+	Snowflake           ResourceSnowflakePtrInput
 	Snowsight           ResourceSnowsightPtrInput
 	SqlServer           ResourceSqlServerPtrInput
 	SqlServerAzureAd    ResourceSqlServerAzureAdPtrInput
@@ -554,6 +545,12 @@ func (i *Resource) ToResourceOutputWithContext(ctx context.Context) ResourceOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceOutput)
 }
 
+func (i *Resource) ToOutput(ctx context.Context) pulumix.Output[*Resource] {
+	return pulumix.Output[*Resource]{
+		OutputState: i.ToResourceOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ResourceArrayInput is an input type that accepts ResourceArray and ResourceArrayOutput values.
 // You can construct a concrete instance of `ResourceArrayInput` via:
 //
@@ -577,6 +574,12 @@ func (i ResourceArray) ToResourceArrayOutput() ResourceArrayOutput {
 
 func (i ResourceArray) ToResourceArrayOutputWithContext(ctx context.Context) ResourceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceArrayOutput)
+}
+
+func (i ResourceArray) ToOutput(ctx context.Context) pulumix.Output[[]*Resource] {
+	return pulumix.Output[[]*Resource]{
+		OutputState: i.ToResourceArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ResourceMapInput is an input type that accepts ResourceMap and ResourceMapOutput values.
@@ -604,6 +607,12 @@ func (i ResourceMap) ToResourceMapOutputWithContext(ctx context.Context) Resourc
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceMapOutput)
 }
 
+func (i ResourceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Resource] {
+	return pulumix.Output[map[string]*Resource]{
+		OutputState: i.ToResourceMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ResourceOutput struct{ *pulumi.OutputState }
 
 func (ResourceOutput) ElementType() reflect.Type {
@@ -616,6 +625,12 @@ func (o ResourceOutput) ToResourceOutput() ResourceOutput {
 
 func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) ResourceOutput {
 	return o
+}
+
+func (o ResourceOutput) ToOutput(ctx context.Context) pulumix.Output[*Resource] {
+	return pulumix.Output[*Resource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceOutput) Aks() ResourceAksPtrOutput {
@@ -678,17 +693,19 @@ func (o ResourceOutput) AuroraPostgres() ResourceAuroraPostgresPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAuroraPostgresPtrOutput { return v.AuroraPostgres }).(ResourceAuroraPostgresPtrOutput)
 }
 
+// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) AuroraPostgresIam() ResourceAuroraPostgresIamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAuroraPostgresIamPtrOutput { return v.AuroraPostgresIam }).(ResourceAuroraPostgresIamPtrOutput)
+}
+
 func (o ResourceOutput) Aws() ResourceAwsPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAwsPtrOutput { return v.Aws }).(ResourceAwsPtrOutput)
 }
 
-// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) AwsConsole() ResourceAwsConsolePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAwsConsolePtrOutput { return v.AwsConsole }).(ResourceAwsConsolePtrOutput)
 }
 
-// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-// bump.
 func (o ResourceOutput) AwsConsoleStaticKeyPair() ResourceAwsConsoleStaticKeyPairPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAwsConsoleStaticKeyPairPtrOutput { return v.AwsConsoleStaticKeyPair }).(ResourceAwsConsoleStaticKeyPairPtrOutput)
 }
@@ -709,8 +726,6 @@ func (o ResourceOutput) AzurePostgres() ResourceAzurePostgresPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzurePostgresPtrOutput { return v.AzurePostgres }).(ResourceAzurePostgresPtrOutput)
 }
 
-// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-// version bump.
 func (o ResourceOutput) AzurePostgresManagedIdentity() ResourceAzurePostgresManagedIdentityPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzurePostgresManagedIdentityPtrOutput { return v.AzurePostgresManagedIdentity }).(ResourceAzurePostgresManagedIdentityPtrOutput)
 }
@@ -897,6 +912,11 @@ func (o ResourceOutput) Rdp() ResourceRdpPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRdpPtrOutput { return v.Rdp }).(ResourceRdpPtrOutput)
 }
 
+// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) RdsPostgresIam() ResourceRdsPostgresIamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceRdsPostgresIamPtrOutput { return v.RdsPostgresIam }).(ResourceRdsPostgresIamPtrOutput)
+}
+
 func (o ResourceOutput) Redis() ResourceRedisPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRedisPtrOutput { return v.Redis }).(ResourceRedisPtrOutput)
 }
@@ -913,7 +933,6 @@ func (o ResourceOutput) Snowflake() ResourceSnowflakePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceSnowflakePtrOutput { return v.Snowflake }).(ResourceSnowflakePtrOutput)
 }
 
-// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) Snowsight() ResourceSnowsightPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceSnowsightPtrOutput { return v.Snowsight }).(ResourceSnowsightPtrOutput)
 }
@@ -973,6 +992,12 @@ func (o ResourceArrayOutput) ToResourceArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ResourceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Resource] {
+	return pulumix.Output[[]*Resource]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ResourceArrayOutput) Index(i pulumi.IntInput) ResourceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Resource {
 		return vs[0].([]*Resource)[vs[1].(int)]
@@ -991,6 +1016,12 @@ func (o ResourceMapOutput) ToResourceMapOutput() ResourceMapOutput {
 
 func (o ResourceMapOutput) ToResourceMapOutputWithContext(ctx context.Context) ResourceMapOutput {
 	return o
+}
+
+func (o ResourceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Resource] {
+	return pulumix.Output[map[string]*Resource]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ResourceMapOutput) MapIndex(k pulumi.StringInput) ResourceOutput {

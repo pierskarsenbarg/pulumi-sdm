@@ -105,7 +105,7 @@ class PeeringGroupNode(pulumi.CustomResource):
 
         ## Import
 
-        PeeringGroupNode can be imported using the id, e.g.,
+        A PeeringGroupNode can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/peeringGroupNode:PeeringGroupNode example gn-12345678
@@ -128,7 +128,7 @@ class PeeringGroupNode(pulumi.CustomResource):
 
         ## Import
 
-        PeeringGroupNode can be imported using the id, e.g.,
+        A PeeringGroupNode can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/peeringGroupNode:PeeringGroupNode example gn-12345678

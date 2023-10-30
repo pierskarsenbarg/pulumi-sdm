@@ -28,6 +28,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAthenaResult> Athenas;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraMysqlResult> AuroraMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraPostgreResult> AuroraPostgres;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAuroraPostgresIamResult> AuroraPostgresIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwResult> Aws;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleStaticKeyPairResult> AwsConsoleStaticKeyPairs;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> AwsConsoles;
@@ -80,6 +81,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceRabbitmqAmqp091Result> RabbitmqAmqp091s;
         public readonly ImmutableArray<Outputs.GetResourceResourceRawTcpResult> RawTcps;
         public readonly ImmutableArray<Outputs.GetResourceResourceRdpResult> Rdps;
+        public readonly ImmutableArray<Outputs.GetResourceResourceRdsPostgresIamResult> RdsPostgresIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceRediResult> Redis;
         public readonly ImmutableArray<Outputs.GetResourceResourceRedshiftResult> Redshifts;
         public readonly ImmutableArray<Outputs.GetResourceResourceSingleStoreResult> SingleStores;
@@ -125,6 +127,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAuroraMysqlResult> auroraMysqls,
 
             ImmutableArray<Outputs.GetResourceResourceAuroraPostgreResult> auroraPostgres,
+
+            ImmutableArray<Outputs.GetResourceResourceAuroraPostgresIamResult> auroraPostgresIams,
 
             ImmutableArray<Outputs.GetResourceResourceAwResult> aws,
 
@@ -230,6 +234,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceRdpResult> rdps,
 
+            ImmutableArray<Outputs.GetResourceResourceRdsPostgresIamResult> rdsPostgresIams,
+
             ImmutableArray<Outputs.GetResourceResourceRediResult> redis,
 
             ImmutableArray<Outputs.GetResourceResourceRedshiftResult> redshifts,
@@ -274,6 +280,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Athenas = athenas;
             AuroraMysqls = auroraMysqls;
             AuroraPostgres = auroraPostgres;
+            AuroraPostgresIams = auroraPostgresIams;
             Aws = aws;
             AwsConsoleStaticKeyPairs = awsConsoleStaticKeyPairs;
             AwsConsoles = awsConsoles;
@@ -326,6 +333,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             RabbitmqAmqp091s = rabbitmqAmqp091s;
             RawTcps = rawTcps;
             Rdps = rdps;
+            RdsPostgresIams = rdsPostgresIams;
             Redis = redis;
             Redshifts = redshifts;
             SingleStores = singleStores;

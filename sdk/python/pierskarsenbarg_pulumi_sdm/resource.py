@@ -30,6 +30,7 @@ class ResourceArgs:
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
                  aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
                  aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
+                 aurora_postgres_iam: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']] = None,
                  aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
                  aws_console: Optional[pulumi.Input['ResourceAwsConsoleArgs']] = None,
                  aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
@@ -82,6 +83,7 @@ class ResourceArgs:
                  rabbitmq_amqp091: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']] = None,
                  raw_tcp: Optional[pulumi.Input['ResourceRawTcpArgs']] = None,
                  rdp: Optional[pulumi.Input['ResourceRdpArgs']] = None,
+                 rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
                  redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
                  single_store: Optional[pulumi.Input['ResourceSingleStoreArgs']] = None,
@@ -99,16 +101,12 @@ class ResourceArgs:
                  trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
-        :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-               bump.
-        :param pulumi.Input['ResourceAzurePostgresManagedIdentityArgs'] azure_postgres_managed_identity: AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-               version bump.
+        :param pulumi.Input['ResourceAuroraPostgresIamArgs'] aurora_postgres_iam: AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceSnowsightArgs'] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceRdsPostgresIamArgs'] rds_postgres_iam: RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -139,6 +137,8 @@ class ResourceArgs:
             pulumi.set(__self__, "aurora_mysql", aurora_mysql)
         if aurora_postgres is not None:
             pulumi.set(__self__, "aurora_postgres", aurora_postgres)
+        if aurora_postgres_iam is not None:
+            pulumi.set(__self__, "aurora_postgres_iam", aurora_postgres_iam)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
         if aws_console is not None:
@@ -243,6 +243,8 @@ class ResourceArgs:
             pulumi.set(__self__, "raw_tcp", raw_tcp)
         if rdp is not None:
             pulumi.set(__self__, "rdp", rdp)
+        if rds_postgres_iam is not None:
+            pulumi.set(__self__, "rds_postgres_iam", rds_postgres_iam)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
         if redshift is not None:
@@ -401,6 +403,18 @@ class ResourceArgs:
         pulumi.set(self, "aurora_postgres", value)
 
     @property
+    @pulumi.getter(name="auroraPostgresIam")
+    def aurora_postgres_iam(self) -> Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]:
+        """
+        AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aurora_postgres_iam")
+
+    @aurora_postgres_iam.setter
+    def aurora_postgres_iam(self, value: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]):
+        pulumi.set(self, "aurora_postgres_iam", value)
+
+    @property
     @pulumi.getter
     def aws(self) -> Optional[pulumi.Input['ResourceAwsArgs']]:
         return pulumi.get(self, "aws")
@@ -412,9 +426,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="awsConsole")
     def aws_console(self) -> Optional[pulumi.Input['ResourceAwsConsoleArgs']]:
-        """
-        AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aws_console")
 
     @aws_console.setter
@@ -424,10 +435,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="awsConsoleStaticKeyPair")
     def aws_console_static_key_pair(self) -> Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]:
-        """
-        AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-        bump.
-        """
         return pulumi.get(self, "aws_console_static_key_pair")
 
     @aws_console_static_key_pair.setter
@@ -473,10 +480,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="azurePostgresManagedIdentity")
     def azure_postgres_managed_identity(self) -> Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]:
-        """
-        AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-        version bump.
-        """
         return pulumi.get(self, "azure_postgres_managed_identity")
 
     @azure_postgres_managed_identity.setter
@@ -892,6 +895,18 @@ class ResourceArgs:
         pulumi.set(self, "rdp", value)
 
     @property
+    @pulumi.getter(name="rdsPostgresIam")
+    def rds_postgres_iam(self) -> Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]:
+        """
+        RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "rds_postgres_iam")
+
+    @rds_postgres_iam.setter
+    def rds_postgres_iam(self, value: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]):
+        pulumi.set(self, "rds_postgres_iam", value)
+
+    @property
     @pulumi.getter
     def redis(self) -> Optional[pulumi.Input['ResourceRedisArgs']]:
         return pulumi.get(self, "redis")
@@ -930,9 +945,6 @@ class ResourceArgs:
     @property
     @pulumi.getter
     def snowsight(self) -> Optional[pulumi.Input['ResourceSnowsightArgs']]:
-        """
-        Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "snowsight")
 
     @snowsight.setter
@@ -1050,6 +1062,7 @@ class _ResourceState:
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
                  aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
                  aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
+                 aurora_postgres_iam: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']] = None,
                  aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
                  aws_console: Optional[pulumi.Input['ResourceAwsConsoleArgs']] = None,
                  aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
@@ -1102,6 +1115,7 @@ class _ResourceState:
                  rabbitmq_amqp091: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']] = None,
                  raw_tcp: Optional[pulumi.Input['ResourceRawTcpArgs']] = None,
                  rdp: Optional[pulumi.Input['ResourceRdpArgs']] = None,
+                 rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
                  redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
                  single_store: Optional[pulumi.Input['ResourceSingleStoreArgs']] = None,
@@ -1119,16 +1133,12 @@ class _ResourceState:
                  trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
-        :param pulumi.Input['ResourceAwsConsoleArgs'] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs'] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-               bump.
-        :param pulumi.Input['ResourceAzurePostgresManagedIdentityArgs'] azure_postgres_managed_identity: AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-               version bump.
+        :param pulumi.Input['ResourceAuroraPostgresIamArgs'] aurora_postgres_iam: AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceSnowsightArgs'] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceRdsPostgresIamArgs'] rds_postgres_iam: RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -1159,6 +1169,8 @@ class _ResourceState:
             pulumi.set(__self__, "aurora_mysql", aurora_mysql)
         if aurora_postgres is not None:
             pulumi.set(__self__, "aurora_postgres", aurora_postgres)
+        if aurora_postgres_iam is not None:
+            pulumi.set(__self__, "aurora_postgres_iam", aurora_postgres_iam)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
         if aws_console is not None:
@@ -1263,6 +1275,8 @@ class _ResourceState:
             pulumi.set(__self__, "raw_tcp", raw_tcp)
         if rdp is not None:
             pulumi.set(__self__, "rdp", rdp)
+        if rds_postgres_iam is not None:
+            pulumi.set(__self__, "rds_postgres_iam", rds_postgres_iam)
         if redis is not None:
             pulumi.set(__self__, "redis", redis)
         if redshift is not None:
@@ -1421,6 +1435,18 @@ class _ResourceState:
         pulumi.set(self, "aurora_postgres", value)
 
     @property
+    @pulumi.getter(name="auroraPostgresIam")
+    def aurora_postgres_iam(self) -> Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]:
+        """
+        AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aurora_postgres_iam")
+
+    @aurora_postgres_iam.setter
+    def aurora_postgres_iam(self, value: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]):
+        pulumi.set(self, "aurora_postgres_iam", value)
+
+    @property
     @pulumi.getter
     def aws(self) -> Optional[pulumi.Input['ResourceAwsArgs']]:
         return pulumi.get(self, "aws")
@@ -1432,9 +1458,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="awsConsole")
     def aws_console(self) -> Optional[pulumi.Input['ResourceAwsConsoleArgs']]:
-        """
-        AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aws_console")
 
     @aws_console.setter
@@ -1444,10 +1467,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="awsConsoleStaticKeyPair")
     def aws_console_static_key_pair(self) -> Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']]:
-        """
-        AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-        bump.
-        """
         return pulumi.get(self, "aws_console_static_key_pair")
 
     @aws_console_static_key_pair.setter
@@ -1493,10 +1512,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="azurePostgresManagedIdentity")
     def azure_postgres_managed_identity(self) -> Optional[pulumi.Input['ResourceAzurePostgresManagedIdentityArgs']]:
-        """
-        AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-        version bump.
-        """
         return pulumi.get(self, "azure_postgres_managed_identity")
 
     @azure_postgres_managed_identity.setter
@@ -1912,6 +1927,18 @@ class _ResourceState:
         pulumi.set(self, "rdp", value)
 
     @property
+    @pulumi.getter(name="rdsPostgresIam")
+    def rds_postgres_iam(self) -> Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]:
+        """
+        RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "rds_postgres_iam")
+
+    @rds_postgres_iam.setter
+    def rds_postgres_iam(self, value: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]):
+        pulumi.set(self, "rds_postgres_iam", value)
+
+    @property
     @pulumi.getter
     def redis(self) -> Optional[pulumi.Input['ResourceRedisArgs']]:
         return pulumi.get(self, "redis")
@@ -1950,9 +1977,6 @@ class _ResourceState:
     @property
     @pulumi.getter
     def snowsight(self) -> Optional[pulumi.Input['ResourceSnowsightArgs']]:
-        """
-        Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "snowsight")
 
     @snowsight.setter
@@ -2072,6 +2096,7 @@ class Resource(pulumi.CustomResource):
                  athena: Optional[pulumi.Input[pulumi.InputType['ResourceAthenaArgs']]] = None,
                  aurora_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraMysqlArgs']]] = None,
                  aurora_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresArgs']]] = None,
+                 aurora_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresIamArgs']]] = None,
                  aws: Optional[pulumi.Input[pulumi.InputType['ResourceAwsArgs']]] = None,
                  aws_console: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']]] = None,
                  aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
@@ -2124,6 +2149,7 @@ class Resource(pulumi.CustomResource):
                  rabbitmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceRabbitmqAmqp091Args']]] = None,
                  raw_tcp: Optional[pulumi.Input[pulumi.InputType['ResourceRawTcpArgs']]] = None,
                  rdp: Optional[pulumi.Input[pulumi.InputType['ResourceRdpArgs']]] = None,
+                 rds_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']]] = None,
                  redis: Optional[pulumi.Input[pulumi.InputType['ResourceRedisArgs']]] = None,
                  redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
                  single_store: Optional[pulumi.Input[pulumi.InputType['ResourceSingleStoreArgs']]] = None,
@@ -2143,7 +2169,7 @@ class Resource(pulumi.CustomResource):
         """
         ## Import
 
-        Resource can be imported using the id, e.g.,
+        A Resource can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/resource:Resource example rs-12345678
@@ -2151,16 +2177,12 @@ class Resource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-               bump.
-        :param pulumi.Input[pulumi.InputType['ResourceAzurePostgresManagedIdentityArgs']] azure_postgres_managed_identity: AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-               version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceAuroraPostgresIamArgs']] aurora_postgres_iam: AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']] rds_postgres_iam: RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
@@ -2172,7 +2194,7 @@ class Resource(pulumi.CustomResource):
         """
         ## Import
 
-        Resource can be imported using the id, e.g.,
+        A Resource can be imported using the id, e.g.,
 
         ```sh
          $ pulumi import sdm:index/resource:Resource example rs-12345678
@@ -2207,6 +2229,7 @@ class Resource(pulumi.CustomResource):
                  athena: Optional[pulumi.Input[pulumi.InputType['ResourceAthenaArgs']]] = None,
                  aurora_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraMysqlArgs']]] = None,
                  aurora_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresArgs']]] = None,
+                 aurora_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresIamArgs']]] = None,
                  aws: Optional[pulumi.Input[pulumi.InputType['ResourceAwsArgs']]] = None,
                  aws_console: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']]] = None,
                  aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
@@ -2259,6 +2282,7 @@ class Resource(pulumi.CustomResource):
                  rabbitmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceRabbitmqAmqp091Args']]] = None,
                  raw_tcp: Optional[pulumi.Input[pulumi.InputType['ResourceRawTcpArgs']]] = None,
                  rdp: Optional[pulumi.Input[pulumi.InputType['ResourceRdpArgs']]] = None,
+                 rds_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']]] = None,
                  redis: Optional[pulumi.Input[pulumi.InputType['ResourceRedisArgs']]] = None,
                  redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
                  single_store: Optional[pulumi.Input[pulumi.InputType['ResourceSingleStoreArgs']]] = None,
@@ -2297,6 +2321,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["athena"] = athena
             __props__.__dict__["aurora_mysql"] = aurora_mysql
             __props__.__dict__["aurora_postgres"] = aurora_postgres
+            __props__.__dict__["aurora_postgres_iam"] = aurora_postgres_iam
             __props__.__dict__["aws"] = aws
             __props__.__dict__["aws_console"] = aws_console
             __props__.__dict__["aws_console_static_key_pair"] = aws_console_static_key_pair
@@ -2349,6 +2374,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["rabbitmq_amqp091"] = rabbitmq_amqp091
             __props__.__dict__["raw_tcp"] = raw_tcp
             __props__.__dict__["rdp"] = rdp
+            __props__.__dict__["rds_postgres_iam"] = rds_postgres_iam
             __props__.__dict__["redis"] = redis
             __props__.__dict__["redshift"] = redshift
             __props__.__dict__["single_store"] = single_store
@@ -2388,6 +2414,7 @@ class Resource(pulumi.CustomResource):
             athena: Optional[pulumi.Input[pulumi.InputType['ResourceAthenaArgs']]] = None,
             aurora_mysql: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraMysqlArgs']]] = None,
             aurora_postgres: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresArgs']]] = None,
+            aurora_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceAuroraPostgresIamArgs']]] = None,
             aws: Optional[pulumi.Input[pulumi.InputType['ResourceAwsArgs']]] = None,
             aws_console: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']]] = None,
             aws_console_static_key_pair: Optional[pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']]] = None,
@@ -2440,6 +2467,7 @@ class Resource(pulumi.CustomResource):
             rabbitmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceRabbitmqAmqp091Args']]] = None,
             raw_tcp: Optional[pulumi.Input[pulumi.InputType['ResourceRawTcpArgs']]] = None,
             rdp: Optional[pulumi.Input[pulumi.InputType['ResourceRdpArgs']]] = None,
+            rds_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']]] = None,
             redis: Optional[pulumi.Input[pulumi.InputType['ResourceRedisArgs']]] = None,
             redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
             single_store: Optional[pulumi.Input[pulumi.InputType['ResourceSingleStoreArgs']]] = None,
@@ -2462,16 +2490,12 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleArgs']] aws_console: AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceAwsConsoleStaticKeyPairArgs']] aws_console_static_key_pair: AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-               bump.
-        :param pulumi.Input[pulumi.InputType['ResourceAzurePostgresManagedIdentityArgs']] azure_postgres_managed_identity: AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-               version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceAuroraPostgresIamArgs']] aurora_postgres_iam: AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceSnowsightArgs']] snowsight: Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']] rds_postgres_iam: RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2492,6 +2516,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["athena"] = athena
         __props__.__dict__["aurora_mysql"] = aurora_mysql
         __props__.__dict__["aurora_postgres"] = aurora_postgres
+        __props__.__dict__["aurora_postgres_iam"] = aurora_postgres_iam
         __props__.__dict__["aws"] = aws
         __props__.__dict__["aws_console"] = aws_console
         __props__.__dict__["aws_console_static_key_pair"] = aws_console_static_key_pair
@@ -2544,6 +2569,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["rabbitmq_amqp091"] = rabbitmq_amqp091
         __props__.__dict__["raw_tcp"] = raw_tcp
         __props__.__dict__["rdp"] = rdp
+        __props__.__dict__["rds_postgres_iam"] = rds_postgres_iam
         __props__.__dict__["redis"] = redis
         __props__.__dict__["redshift"] = redshift
         __props__.__dict__["single_store"] = single_store
@@ -2632,6 +2658,14 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "aurora_postgres")
 
     @property
+    @pulumi.getter(name="auroraPostgresIam")
+    def aurora_postgres_iam(self) -> pulumi.Output[Optional['outputs.ResourceAuroraPostgresIam']]:
+        """
+        AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aurora_postgres_iam")
+
+    @property
     @pulumi.getter
     def aws(self) -> pulumi.Output[Optional['outputs.ResourceAws']]:
         return pulumi.get(self, "aws")
@@ -2639,18 +2673,11 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="awsConsole")
     def aws_console(self) -> pulumi.Output[Optional['outputs.ResourceAwsConsole']]:
-        """
-        AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aws_console")
 
     @property
     @pulumi.getter(name="awsConsoleStaticKeyPair")
     def aws_console_static_key_pair(self) -> pulumi.Output[Optional['outputs.ResourceAwsConsoleStaticKeyPair']]:
-        """
-        AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-        bump.
-        """
         return pulumi.get(self, "aws_console_static_key_pair")
 
     @property
@@ -2676,10 +2703,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="azurePostgresManagedIdentity")
     def azure_postgres_managed_identity(self) -> pulumi.Output[Optional['outputs.ResourceAzurePostgresManagedIdentity']]:
-        """
-        AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-        version bump.
-        """
         return pulumi.get(self, "azure_postgres_managed_identity")
 
     @property
@@ -2915,6 +2938,14 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "rdp")
 
     @property
+    @pulumi.getter(name="rdsPostgresIam")
+    def rds_postgres_iam(self) -> pulumi.Output[Optional['outputs.ResourceRdsPostgresIam']]:
+        """
+        RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "rds_postgres_iam")
+
+    @property
     @pulumi.getter
     def redis(self) -> pulumi.Output[Optional['outputs.ResourceRedis']]:
         return pulumi.get(self, "redis")
@@ -2937,9 +2968,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter
     def snowsight(self) -> pulumi.Output[Optional['outputs.ResourceSnowsight']]:
-        """
-        Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "snowsight")
 
     @property

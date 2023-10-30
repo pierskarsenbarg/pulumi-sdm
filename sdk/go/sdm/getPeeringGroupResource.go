@@ -9,6 +9,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.
@@ -86,6 +87,12 @@ func (o LookupPeeringGroupResourceResultOutput) ToLookupPeeringGroupResourceResu
 
 func (o LookupPeeringGroupResourceResultOutput) ToLookupPeeringGroupResourceResultOutputWithContext(ctx context.Context) LookupPeeringGroupResourceResultOutput {
 	return o
+}
+
+func (o LookupPeeringGroupResourceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeringGroupResourceResult] {
+	return pulumix.Output[LookupPeeringGroupResourceResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Peering Group ID to which the resource will be attached to.

@@ -136,8 +136,11 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"sdm_role":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
-			"sdm_secret_store": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretStore")},
+			"sdm_role":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
+			"sdm_secret_store":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretStore")},
+			"sdm_workflow":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Workflow")},
+			"sdm_workflow_approver": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkflowApprover")},
+			"sdm_workflow_role":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkflowRole")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
@@ -156,6 +159,9 @@ func Provider() tfbridge.ProviderInfo {
 			"sdm_role":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRole")},
 			"sdm_secret_store":           {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSecretStore")},
 			"sdm_ssh_ca_pubkey":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSshCaPubkey")},
+			"sdm_workflow":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWorkflow")},
+			"sdm_workflow_approver":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWorkflowApprover")},
+			"sdm_workflow_role":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWorkflowRole")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

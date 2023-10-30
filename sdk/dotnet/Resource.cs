@@ -13,7 +13,7 @@ namespace PiersKarsenbarg.Sdm
     /// <summary>
     /// ## Import
     /// 
-    /// Resource can be imported using the id, e.g.,
+    /// A Resource can be imported using the id, e.g.,
     /// 
     /// ```sh
     ///  $ pulumi import sdm:index/resource:Resource example rs-12345678
@@ -64,19 +64,18 @@ namespace PiersKarsenbarg.Sdm
         [Output("auroraPostgres")]
         public Output<Outputs.ResourceAuroraPostgres?> AuroraPostgres { get; private set; } = null!;
 
+        /// <summary>
+        /// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("auroraPostgresIam")]
+        public Output<Outputs.ResourceAuroraPostgresIam?> AuroraPostgresIam { get; private set; } = null!;
+
         [Output("aws")]
         public Output<Outputs.ResourceAws?> Aws { get; private set; } = null!;
 
-        /// <summary>
-        /// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("awsConsole")]
         public Output<Outputs.ResourceAwsConsole?> AwsConsole { get; private set; } = null!;
 
-        /// <summary>
-        /// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
-        /// </summary>
         [Output("awsConsoleStaticKeyPair")]
         public Output<Outputs.ResourceAwsConsoleStaticKeyPair?> AwsConsoleStaticKeyPair { get; private set; } = null!;
 
@@ -92,10 +91,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("azurePostgres")]
         public Output<Outputs.ResourceAzurePostgres?> AzurePostgres { get; private set; } = null!;
 
-        /// <summary>
-        /// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-        /// version bump.
-        /// </summary>
         [Output("azurePostgresManagedIdentity")]
         public Output<Outputs.ResourceAzurePostgresManagedIdentity?> AzurePostgresManagedIdentity { get; private set; } = null!;
 
@@ -243,6 +238,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("rdp")]
         public Output<Outputs.ResourceRdp?> Rdp { get; private set; } = null!;
 
+        /// <summary>
+        /// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("rdsPostgresIam")]
+        public Output<Outputs.ResourceRdsPostgresIam?> RdsPostgresIam { get; private set; } = null!;
+
         [Output("redis")]
         public Output<Outputs.ResourceRedis?> Redis { get; private set; } = null!;
 
@@ -255,9 +256,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("snowflake")]
         public Output<Outputs.ResourceSnowflake?> Snowflake { get; private set; } = null!;
 
-        /// <summary>
-        /// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("snowsight")]
         public Output<Outputs.ResourceSnowsight?> Snowsight { get; private set; } = null!;
 
@@ -383,19 +381,18 @@ namespace PiersKarsenbarg.Sdm
         [Input("auroraPostgres")]
         public Input<Inputs.ResourceAuroraPostgresArgs>? AuroraPostgres { get; set; }
 
+        /// <summary>
+        /// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("auroraPostgresIam")]
+        public Input<Inputs.ResourceAuroraPostgresIamArgs>? AuroraPostgresIam { get; set; }
+
         [Input("aws")]
         public Input<Inputs.ResourceAwsArgs>? Aws { get; set; }
 
-        /// <summary>
-        /// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("awsConsole")]
         public Input<Inputs.ResourceAwsConsoleArgs>? AwsConsole { get; set; }
 
-        /// <summary>
-        /// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
-        /// </summary>
         [Input("awsConsoleStaticKeyPair")]
         public Input<Inputs.ResourceAwsConsoleStaticKeyPairArgs>? AwsConsoleStaticKeyPair { get; set; }
 
@@ -411,10 +408,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("azurePostgres")]
         public Input<Inputs.ResourceAzurePostgresArgs>? AzurePostgres { get; set; }
 
-        /// <summary>
-        /// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-        /// version bump.
-        /// </summary>
         [Input("azurePostgresManagedIdentity")]
         public Input<Inputs.ResourceAzurePostgresManagedIdentityArgs>? AzurePostgresManagedIdentity { get; set; }
 
@@ -562,6 +555,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("rdp")]
         public Input<Inputs.ResourceRdpArgs>? Rdp { get; set; }
 
+        /// <summary>
+        /// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("rdsPostgresIam")]
+        public Input<Inputs.ResourceRdsPostgresIamArgs>? RdsPostgresIam { get; set; }
+
         [Input("redis")]
         public Input<Inputs.ResourceRedisArgs>? Redis { get; set; }
 
@@ -574,9 +573,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("snowflake")]
         public Input<Inputs.ResourceSnowflakeArgs>? Snowflake { get; set; }
 
-        /// <summary>
-        /// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("snowsight")]
         public Input<Inputs.ResourceSnowsightArgs>? Snowsight { get; set; }
 
@@ -663,19 +659,18 @@ namespace PiersKarsenbarg.Sdm
         [Input("auroraPostgres")]
         public Input<Inputs.ResourceAuroraPostgresGetArgs>? AuroraPostgres { get; set; }
 
+        /// <summary>
+        /// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("auroraPostgresIam")]
+        public Input<Inputs.ResourceAuroraPostgresIamGetArgs>? AuroraPostgresIam { get; set; }
+
         [Input("aws")]
         public Input<Inputs.ResourceAwsGetArgs>? Aws { get; set; }
 
-        /// <summary>
-        /// AWSConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("awsConsole")]
         public Input<Inputs.ResourceAwsConsoleGetArgs>? AwsConsole { get; set; }
 
-        /// <summary>
-        /// AWSConsoleStaticKeyPair is currently unstable, and its API may change, or it may be removed, without a major version
-        /// bump.
-        /// </summary>
         [Input("awsConsoleStaticKeyPair")]
         public Input<Inputs.ResourceAwsConsoleStaticKeyPairGetArgs>? AwsConsoleStaticKeyPair { get; set; }
 
@@ -691,10 +686,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("azurePostgres")]
         public Input<Inputs.ResourceAzurePostgresGetArgs>? AzurePostgres { get; set; }
 
-        /// <summary>
-        /// AzurePostgresManagedIdentity is currently unstable, and its API may change, or it may be removed, without a major
-        /// version bump.
-        /// </summary>
         [Input("azurePostgresManagedIdentity")]
         public Input<Inputs.ResourceAzurePostgresManagedIdentityGetArgs>? AzurePostgresManagedIdentity { get; set; }
 
@@ -842,6 +833,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("rdp")]
         public Input<Inputs.ResourceRdpGetArgs>? Rdp { get; set; }
 
+        /// <summary>
+        /// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("rdsPostgresIam")]
+        public Input<Inputs.ResourceRdsPostgresIamGetArgs>? RdsPostgresIam { get; set; }
+
         [Input("redis")]
         public Input<Inputs.ResourceRedisGetArgs>? Redis { get; set; }
 
@@ -854,9 +851,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("snowflake")]
         public Input<Inputs.ResourceSnowflakeGetArgs>? Snowflake { get; set; }
 
-        /// <summary>
-        /// Snowsight is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("snowsight")]
         public Input<Inputs.ResourceSnowsightGetArgs>? Snowsight { get; set; }
 
