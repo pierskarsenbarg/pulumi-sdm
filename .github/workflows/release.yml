@@ -82,7 +82,7 @@ jobs:
         dotnetversion:
         - 6.0.302
         goversion:
-        - 1.19.x
+        - 1.20.x
         language:
         - nodejs
         - python
@@ -153,7 +153,7 @@ jobs:
         dotnetversion:
         - 6.0.302
         goversion:
-        - 1.19.x
+        - 1.20.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -190,7 +190,7 @@ jobs:
         dotnetversion:
         - 6.0.302
         goversion:
-        - 1.19.x
+        - 1.20.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -284,7 +284,7 @@ jobs:
         dotnetversion:
         - 6.0.302
         goversion:
-        - 1.19.x
+        - 1.20.x
         nodeversion:
         - 14.x
         pythonversion:
