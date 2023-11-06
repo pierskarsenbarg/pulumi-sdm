@@ -107,7 +107,7 @@ namespace PiersKarsenbarg.Sdm
         /// Optional weight for workflow to specify it's priority in matching a request.
         /// </summary>
         [Output("weight")]
-        public Output<int?> Weight { get; private set; } = null!;
+        public Output<int> Weight { get; private set; } = null!;
 
 
         /// <summary>
