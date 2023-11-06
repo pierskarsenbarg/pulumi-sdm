@@ -15344,7 +15344,8 @@
             },
             "required": [
                 "accessRules",
-                "name"
+                "name",
+                "weight"
             ],
             "inputProperties": {
                 "accessRules": {

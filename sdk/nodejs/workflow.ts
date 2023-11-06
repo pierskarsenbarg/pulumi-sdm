@@ -95,7 +95,7 @@ export class Workflow extends pulumi.CustomResource {
     /**
      * Optional weight for workflow to specify it's priority in matching a request.
      */
-    public readonly weight!: pulumi.Output<number | undefined>;
+    public readonly weight!: pulumi.Output<number>;
 
     /**
      * Create a Workflow resource with the given unique name, arguments, and options.

@@ -444,7 +444,7 @@ class Workflow(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def weight(self) -> pulumi.Output[Optional[int]]:
+    def weight(self) -> pulumi.Output[int]:
         """
         Optional weight for workflow to specify it's priority in matching a request.
         """

@@ -102,7 +102,7 @@ type Workflow struct {
 	// Unique human-readable name of the Workflow.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional weight for workflow to specify it's priority in matching a request.
-	Weight pulumi.IntPtrOutput `pulumi:"weight"`
+	Weight pulumi.IntOutput `pulumi:"weight"`
 }
 
 // NewWorkflow registers a new resource with the given unique name, arguments, and options.
@@ -336,8 +336,8 @@ func (o WorkflowOutput) Name() pulumi.StringOutput {
 }
 
 // Optional weight for workflow to specify it's priority in matching a request.
-func (o WorkflowOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Workflow) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
+func (o WorkflowOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.IntOutput { return v.Weight }).(pulumi.IntOutput)
 }
 
 type WorkflowArrayOutput struct{ *pulumi.OutputState }
