@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AccountAttachments assign an account to a role.
@@ -112,12 +111,6 @@ func (o LookupAccountAttachmentResultOutput) ToLookupAccountAttachmentResultOutp
 
 func (o LookupAccountAttachmentResultOutput) ToLookupAccountAttachmentResultOutputWithContext(ctx context.Context) LookupAccountAttachmentResultOutput {
 	return o
-}
-
-func (o LookupAccountAttachmentResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountAttachmentResult] {
-	return pulumix.Output[LookupAccountAttachmentResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list where each element has the following attributes:

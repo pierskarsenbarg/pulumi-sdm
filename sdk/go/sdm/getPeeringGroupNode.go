@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // PeeringGroupNode represents the attachment between a PeeringGroup and a Node.
@@ -87,12 +86,6 @@ func (o LookupPeeringGroupNodeResultOutput) ToLookupPeeringGroupNodeResultOutput
 
 func (o LookupPeeringGroupNodeResultOutput) ToLookupPeeringGroupNodeResultOutputWithContext(ctx context.Context) LookupPeeringGroupNodeResultOutput {
 	return o
-}
-
-func (o LookupPeeringGroupNodeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupPeeringGroupNodeResult] {
-	return pulumix.Output[LookupPeeringGroupNodeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Peering Group ID to which the node will be attached to.

@@ -64,9 +64,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("auroraPostgres")]
         public Output<Outputs.ResourceAuroraPostgres?> AuroraPostgres { get; private set; } = null!;
 
-        /// <summary>
-        /// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("auroraPostgresIam")]
         public Output<Outputs.ResourceAuroraPostgresIam?> AuroraPostgresIam { get; private set; } = null!;
 
@@ -238,9 +235,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("rdp")]
         public Output<Outputs.ResourceRdp?> Rdp { get; private set; } = null!;
 
-        /// <summary>
-        /// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("rdsPostgresIam")]
         public Output<Outputs.ResourceRdsPostgresIam?> RdsPostgresIam { get; private set; } = null!;
 
@@ -381,9 +375,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("auroraPostgres")]
         public Input<Inputs.ResourceAuroraPostgresArgs>? AuroraPostgres { get; set; }
 
-        /// <summary>
-        /// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("auroraPostgresIam")]
         public Input<Inputs.ResourceAuroraPostgresIamArgs>? AuroraPostgresIam { get; set; }
 
@@ -555,9 +546,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("rdp")]
         public Input<Inputs.ResourceRdpArgs>? Rdp { get; set; }
 
-        /// <summary>
-        /// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("rdsPostgresIam")]
         public Input<Inputs.ResourceRdsPostgresIamArgs>? RdsPostgresIam { get; set; }
 
@@ -659,9 +647,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("auroraPostgres")]
         public Input<Inputs.ResourceAuroraPostgresGetArgs>? AuroraPostgres { get; set; }
 
-        /// <summary>
-        /// AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("auroraPostgresIam")]
         public Input<Inputs.ResourceAuroraPostgresIamGetArgs>? AuroraPostgresIam { get; set; }
 
@@ -833,9 +818,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("rdp")]
         public Input<Inputs.ResourceRdpGetArgs>? Rdp { get; set; }
 
-        /// <summary>
-        /// RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("rdsPostgresIam")]
         public Input<Inputs.ResourceRdsPostgresIamGetArgs>? RdsPostgresIam { get; set; }
 

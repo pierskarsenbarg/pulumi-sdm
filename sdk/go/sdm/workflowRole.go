@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
@@ -154,12 +153,6 @@ func (i *WorkflowRole) ToWorkflowRoleOutputWithContext(ctx context.Context) Work
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowRoleOutput)
 }
 
-func (i *WorkflowRole) ToOutput(ctx context.Context) pulumix.Output[*WorkflowRole] {
-	return pulumix.Output[*WorkflowRole]{
-		OutputState: i.ToWorkflowRoleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowRoleArrayInput is an input type that accepts WorkflowRoleArray and WorkflowRoleArrayOutput values.
 // You can construct a concrete instance of `WorkflowRoleArrayInput` via:
 //
@@ -183,12 +176,6 @@ func (i WorkflowRoleArray) ToWorkflowRoleArrayOutput() WorkflowRoleArrayOutput {
 
 func (i WorkflowRoleArray) ToWorkflowRoleArrayOutputWithContext(ctx context.Context) WorkflowRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowRoleArrayOutput)
-}
-
-func (i WorkflowRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkflowRole] {
-	return pulumix.Output[[]*WorkflowRole]{
-		OutputState: i.ToWorkflowRoleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkflowRoleMapInput is an input type that accepts WorkflowRoleMap and WorkflowRoleMapOutput values.
@@ -216,12 +203,6 @@ func (i WorkflowRoleMap) ToWorkflowRoleMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowRoleMapOutput)
 }
 
-func (i WorkflowRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkflowRole] {
-	return pulumix.Output[map[string]*WorkflowRole]{
-		OutputState: i.ToWorkflowRoleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowRoleOutput struct{ *pulumi.OutputState }
 
 func (WorkflowRoleOutput) ElementType() reflect.Type {
@@ -234,12 +215,6 @@ func (o WorkflowRoleOutput) ToWorkflowRoleOutput() WorkflowRoleOutput {
 
 func (o WorkflowRoleOutput) ToWorkflowRoleOutputWithContext(ctx context.Context) WorkflowRoleOutput {
 	return o
-}
-
-func (o WorkflowRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowRole] {
-	return pulumix.Output[*WorkflowRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The role id.
@@ -266,12 +241,6 @@ func (o WorkflowRoleArrayOutput) ToWorkflowRoleArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o WorkflowRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkflowRole] {
-	return pulumix.Output[[]*WorkflowRole]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkflowRoleArrayOutput) Index(i pulumi.IntInput) WorkflowRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkflowRole {
 		return vs[0].([]*WorkflowRole)[vs[1].(int)]
@@ -290,12 +259,6 @@ func (o WorkflowRoleMapOutput) ToWorkflowRoleMapOutput() WorkflowRoleMapOutput {
 
 func (o WorkflowRoleMapOutput) ToWorkflowRoleMapOutputWithContext(ctx context.Context) WorkflowRoleMapOutput {
 	return o
-}
-
-func (o WorkflowRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkflowRole] {
-	return pulumix.Output[map[string]*WorkflowRole]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowRoleMapOutput) MapIndex(k pulumi.StringInput) WorkflowRoleOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // RemoteIdentities define the username to be used for a specific account
@@ -139,12 +138,6 @@ func (i *RemoteIdentity) ToRemoteIdentityOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteIdentityOutput)
 }
 
-func (i *RemoteIdentity) ToOutput(ctx context.Context) pulumix.Output[*RemoteIdentity] {
-	return pulumix.Output[*RemoteIdentity]{
-		OutputState: i.ToRemoteIdentityOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RemoteIdentityArrayInput is an input type that accepts RemoteIdentityArray and RemoteIdentityArrayOutput values.
 // You can construct a concrete instance of `RemoteIdentityArrayInput` via:
 //
@@ -168,12 +161,6 @@ func (i RemoteIdentityArray) ToRemoteIdentityArrayOutput() RemoteIdentityArrayOu
 
 func (i RemoteIdentityArray) ToRemoteIdentityArrayOutputWithContext(ctx context.Context) RemoteIdentityArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteIdentityArrayOutput)
-}
-
-func (i RemoteIdentityArray) ToOutput(ctx context.Context) pulumix.Output[[]*RemoteIdentity] {
-	return pulumix.Output[[]*RemoteIdentity]{
-		OutputState: i.ToRemoteIdentityArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RemoteIdentityMapInput is an input type that accepts RemoteIdentityMap and RemoteIdentityMapOutput values.
@@ -201,12 +188,6 @@ func (i RemoteIdentityMap) ToRemoteIdentityMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(RemoteIdentityMapOutput)
 }
 
-func (i RemoteIdentityMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RemoteIdentity] {
-	return pulumix.Output[map[string]*RemoteIdentity]{
-		OutputState: i.ToRemoteIdentityMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RemoteIdentityOutput struct{ *pulumi.OutputState }
 
 func (RemoteIdentityOutput) ElementType() reflect.Type {
@@ -219,12 +200,6 @@ func (o RemoteIdentityOutput) ToRemoteIdentityOutput() RemoteIdentityOutput {
 
 func (o RemoteIdentityOutput) ToRemoteIdentityOutputWithContext(ctx context.Context) RemoteIdentityOutput {
 	return o
-}
-
-func (o RemoteIdentityOutput) ToOutput(ctx context.Context) pulumix.Output[*RemoteIdentity] {
-	return pulumix.Output[*RemoteIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account for this remote identity.
@@ -256,12 +231,6 @@ func (o RemoteIdentityArrayOutput) ToRemoteIdentityArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o RemoteIdentityArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RemoteIdentity] {
-	return pulumix.Output[[]*RemoteIdentity]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RemoteIdentityArrayOutput) Index(i pulumi.IntInput) RemoteIdentityOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RemoteIdentity {
 		return vs[0].([]*RemoteIdentity)[vs[1].(int)]
@@ -280,12 +249,6 @@ func (o RemoteIdentityMapOutput) ToRemoteIdentityMapOutput() RemoteIdentityMapOu
 
 func (o RemoteIdentityMapOutput) ToRemoteIdentityMapOutputWithContext(ctx context.Context) RemoteIdentityMapOutput {
 	return o
-}
-
-func (o RemoteIdentityMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RemoteIdentity] {
-	return pulumix.Output[map[string]*RemoteIdentity]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RemoteIdentityMapOutput) MapIndex(k pulumi.StringInput) RemoteIdentityOutput {

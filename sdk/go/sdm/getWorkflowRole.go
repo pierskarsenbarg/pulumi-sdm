@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
@@ -116,12 +115,6 @@ func (o LookupWorkflowRoleResultOutput) ToLookupWorkflowRoleResultOutput() Looku
 
 func (o LookupWorkflowRoleResultOutput) ToLookupWorkflowRoleResultOutputWithContext(ctx context.Context) LookupWorkflowRoleResultOutput {
 	return o
-}
-
-func (o LookupWorkflowRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkflowRoleResult] {
-	return pulumix.Output[LookupWorkflowRoleResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique identifier of the WorkflowRole.

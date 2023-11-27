@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // WorkflowApprover is an account with the ability to approve requests bound to a workflow.
@@ -113,12 +112,6 @@ func (o LookupWorkflowApproverResultOutput) ToLookupWorkflowApproverResultOutput
 
 func (o LookupWorkflowApproverResultOutput) ToLookupWorkflowApproverResultOutputWithContext(ctx context.Context) LookupWorkflowApproverResultOutput {
 	return o
-}
-
-func (o LookupWorkflowApproverResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkflowApproverResult] {
-	return pulumix.Output[LookupWorkflowApproverResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The approver id.

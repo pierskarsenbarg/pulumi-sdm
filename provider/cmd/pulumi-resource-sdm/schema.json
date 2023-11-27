@@ -14402,8 +14402,7 @@
                     "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                 },
                 "auroraPostgresIam": {
-                    "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam",
-                    "description": "AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam"
                 },
                 "aws": {
                     "$ref": "#/types/sdm:index/ResourceAws:ResourceAws"
@@ -14566,8 +14565,7 @@
                     "$ref": "#/types/sdm:index/ResourceRdp:ResourceRdp"
                 },
                 "rdsPostgresIam": {
-                    "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam",
-                    "description": "RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam"
                 },
                 "redis": {
                     "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"
@@ -14660,8 +14658,7 @@
                     "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                 },
                 "auroraPostgresIam": {
-                    "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam",
-                    "description": "AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam"
                 },
                 "aws": {
                     "$ref": "#/types/sdm:index/ResourceAws:ResourceAws"
@@ -14824,8 +14821,7 @@
                     "$ref": "#/types/sdm:index/ResourceRdp:ResourceRdp"
                 },
                 "rdsPostgresIam": {
-                    "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam",
-                    "description": "RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam"
                 },
                 "redis": {
                     "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"
@@ -14920,8 +14916,7 @@
                         "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                     },
                     "auroraPostgresIam": {
-                        "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam",
-                        "description": "AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAuroraPostgresIam:ResourceAuroraPostgresIam"
                     },
                     "aws": {
                         "$ref": "#/types/sdm:index/ResourceAws:ResourceAws"
@@ -15084,8 +15079,7 @@
                         "$ref": "#/types/sdm:index/ResourceRdp:ResourceRdp"
                     },
                     "rdsPostgresIam": {
-                        "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam",
-                        "description": "RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceRdsPostgresIam:ResourceRdsPostgresIam"
                     },
                     "redis": {
                         "$ref": "#/types/sdm:index/ResourceRedis:ResourceRedis"

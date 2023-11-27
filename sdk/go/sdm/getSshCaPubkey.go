@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The SSH CA Pubkey is a public key used for setting up SSH resources.
@@ -100,12 +99,6 @@ func (o GetSshCaPubkeyResultOutput) ToGetSshCaPubkeyResultOutput() GetSshCaPubke
 
 func (o GetSshCaPubkeyResultOutput) ToGetSshCaPubkeyResultOutputWithContext(ctx context.Context) GetSshCaPubkeyResultOutput {
 	return o
-}
-
-func (o GetSshCaPubkeyResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetSshCaPubkeyResult] {
-	return pulumix.Output[GetSshCaPubkeyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // a generated id representing this request.

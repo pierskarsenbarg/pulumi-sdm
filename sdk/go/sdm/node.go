@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Nodes make up the strongDM network, and allow your users to connect securely to your resources.
@@ -168,12 +167,6 @@ func (i *Node) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeOutput)
 }
 
-func (i *Node) ToOutput(ctx context.Context) pulumix.Output[*Node] {
-	return pulumix.Output[*Node]{
-		OutputState: i.ToNodeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NodeArrayInput is an input type that accepts NodeArray and NodeArrayOutput values.
 // You can construct a concrete instance of `NodeArrayInput` via:
 //
@@ -197,12 +190,6 @@ func (i NodeArray) ToNodeArrayOutput() NodeArrayOutput {
 
 func (i NodeArray) ToNodeArrayOutputWithContext(ctx context.Context) NodeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeArrayOutput)
-}
-
-func (i NodeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Node] {
-	return pulumix.Output[[]*Node]{
-		OutputState: i.ToNodeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NodeMapInput is an input type that accepts NodeMap and NodeMapOutput values.
@@ -230,12 +217,6 @@ func (i NodeMap) ToNodeMapOutputWithContext(ctx context.Context) NodeMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NodeMapOutput)
 }
 
-func (i NodeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Node] {
-	return pulumix.Output[map[string]*Node]{
-		OutputState: i.ToNodeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NodeOutput struct{ *pulumi.OutputState }
 
 func (NodeOutput) ElementType() reflect.Type {
@@ -248,12 +229,6 @@ func (o NodeOutput) ToNodeOutput() NodeOutput {
 
 func (o NodeOutput) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 	return o
-}
-
-func (o NodeOutput) ToOutput(ctx context.Context) pulumix.Output[*Node] {
-	return pulumix.Output[*Node]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Gateway represents a StrongDM CLI installation running in gateway mode.
@@ -280,12 +255,6 @@ func (o NodeArrayOutput) ToNodeArrayOutputWithContext(ctx context.Context) NodeA
 	return o
 }
 
-func (o NodeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Node] {
-	return pulumix.Output[[]*Node]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NodeArrayOutput) Index(i pulumi.IntInput) NodeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Node {
 		return vs[0].([]*Node)[vs[1].(int)]
@@ -304,12 +273,6 @@ func (o NodeMapOutput) ToNodeMapOutput() NodeMapOutput {
 
 func (o NodeMapOutput) ToNodeMapOutputWithContext(ctx context.Context) NodeMapOutput {
 	return o
-}
-
-func (o NodeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Node] {
-	return pulumix.Output[map[string]*Node]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NodeMapOutput) MapIndex(k pulumi.StringInput) NodeOutput {

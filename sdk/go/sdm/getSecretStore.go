@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A SecretStore is a server where resource secrets (passwords, keys) are stored.
@@ -95,12 +94,6 @@ func (o LookupSecretStoreResultOutput) ToLookupSecretStoreResultOutput() LookupS
 
 func (o LookupSecretStoreResultOutput) ToLookupSecretStoreResultOutputWithContext(ctx context.Context) LookupSecretStoreResultOutput {
 	return o
-}
-
-func (o LookupSecretStoreResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupSecretStoreResult] {
-	return pulumix.Output[LookupSecretStoreResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique identifier of the SecretStore.

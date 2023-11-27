@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // PeeringGroups are the building blocks used for explicit network topology making.
@@ -111,12 +110,6 @@ func (i *PeeringGroup) ToPeeringGroupOutputWithContext(ctx context.Context) Peer
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringGroupOutput)
 }
 
-func (i *PeeringGroup) ToOutput(ctx context.Context) pulumix.Output[*PeeringGroup] {
-	return pulumix.Output[*PeeringGroup]{
-		OutputState: i.ToPeeringGroupOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PeeringGroupArrayInput is an input type that accepts PeeringGroupArray and PeeringGroupArrayOutput values.
 // You can construct a concrete instance of `PeeringGroupArrayInput` via:
 //
@@ -140,12 +133,6 @@ func (i PeeringGroupArray) ToPeeringGroupArrayOutput() PeeringGroupArrayOutput {
 
 func (i PeeringGroupArray) ToPeeringGroupArrayOutputWithContext(ctx context.Context) PeeringGroupArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringGroupArrayOutput)
-}
-
-func (i PeeringGroupArray) ToOutput(ctx context.Context) pulumix.Output[[]*PeeringGroup] {
-	return pulumix.Output[[]*PeeringGroup]{
-		OutputState: i.ToPeeringGroupArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PeeringGroupMapInput is an input type that accepts PeeringGroupMap and PeeringGroupMapOutput values.
@@ -173,12 +160,6 @@ func (i PeeringGroupMap) ToPeeringGroupMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PeeringGroupMapOutput)
 }
 
-func (i PeeringGroupMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeeringGroup] {
-	return pulumix.Output[map[string]*PeeringGroup]{
-		OutputState: i.ToPeeringGroupMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PeeringGroupOutput struct{ *pulumi.OutputState }
 
 func (PeeringGroupOutput) ElementType() reflect.Type {
@@ -191,12 +172,6 @@ func (o PeeringGroupOutput) ToPeeringGroupOutput() PeeringGroupOutput {
 
 func (o PeeringGroupOutput) ToPeeringGroupOutputWithContext(ctx context.Context) PeeringGroupOutput {
 	return o
-}
-
-func (o PeeringGroupOutput) ToOutput(ctx context.Context) pulumix.Output[*PeeringGroup] {
-	return pulumix.Output[*PeeringGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Unique human-readable name of the PeeringGroup.
@@ -218,12 +193,6 @@ func (o PeeringGroupArrayOutput) ToPeeringGroupArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o PeeringGroupArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PeeringGroup] {
-	return pulumix.Output[[]*PeeringGroup]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PeeringGroupArrayOutput) Index(i pulumi.IntInput) PeeringGroupOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PeeringGroup {
 		return vs[0].([]*PeeringGroup)[vs[1].(int)]
@@ -242,12 +211,6 @@ func (o PeeringGroupMapOutput) ToPeeringGroupMapOutput() PeeringGroupMapOutput {
 
 func (o PeeringGroupMapOutput) ToPeeringGroupMapOutputWithContext(ctx context.Context) PeeringGroupMapOutput {
 	return o
-}
-
-func (o PeeringGroupMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PeeringGroup] {
-	return pulumix.Output[map[string]*PeeringGroup]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PeeringGroupMapOutput) MapIndex(k pulumi.StringInput) PeeringGroupOutput {
