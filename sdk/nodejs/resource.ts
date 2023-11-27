@@ -57,9 +57,6 @@ export class Resource extends pulumi.CustomResource {
     public readonly athena!: pulumi.Output<outputs.ResourceAthena | undefined>;
     public readonly auroraMysql!: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
     public readonly auroraPostgres!: pulumi.Output<outputs.ResourceAuroraPostgres | undefined>;
-    /**
-     * AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly auroraPostgresIam!: pulumi.Output<outputs.ResourceAuroraPostgresIam | undefined>;
     public readonly aws!: pulumi.Output<outputs.ResourceAws | undefined>;
     public readonly awsConsole!: pulumi.Output<outputs.ResourceAwsConsole | undefined>;
@@ -125,9 +122,6 @@ export class Resource extends pulumi.CustomResource {
     public readonly rabbitmqAmqp091!: pulumi.Output<outputs.ResourceRabbitmqAmqp091 | undefined>;
     public readonly rawTcp!: pulumi.Output<outputs.ResourceRawTcp | undefined>;
     public readonly rdp!: pulumi.Output<outputs.ResourceRdp | undefined>;
-    /**
-     * RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly rdsPostgresIam!: pulumi.Output<outputs.ResourceRdsPostgresIam | undefined>;
     public readonly redis!: pulumi.Output<outputs.ResourceRedis | undefined>;
     public readonly redshift!: pulumi.Output<outputs.ResourceRedshift | undefined>;
@@ -353,9 +347,6 @@ export interface ResourceState {
     athena?: pulumi.Input<inputs.ResourceAthena>;
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
-    /**
-     * AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
     aws?: pulumi.Input<inputs.ResourceAws>;
     awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
@@ -421,9 +412,6 @@ export interface ResourceState {
     rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
     rawTcp?: pulumi.Input<inputs.ResourceRawTcp>;
     rdp?: pulumi.Input<inputs.ResourceRdp>;
-    /**
-     * RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
@@ -463,9 +451,6 @@ export interface ResourceArgs {
     athena?: pulumi.Input<inputs.ResourceAthena>;
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
-    /**
-     * AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
     aws?: pulumi.Input<inputs.ResourceAws>;
     awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
@@ -531,9 +516,6 @@ export interface ResourceArgs {
     rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
     rawTcp?: pulumi.Input<inputs.ResourceRawTcp>;
     rdp?: pulumi.Input<inputs.ResourceRdp>;
-    /**
-     * RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;

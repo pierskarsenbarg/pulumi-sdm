@@ -101,12 +101,10 @@ class ResourceArgs:
                  trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
-        :param pulumi.Input['ResourceAuroraPostgresIamArgs'] aurora_postgres_iam: AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceRdsPostgresIamArgs'] rds_postgres_iam: RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -405,9 +403,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="auroraPostgresIam")
     def aurora_postgres_iam(self) -> Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]:
-        """
-        AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aurora_postgres_iam")
 
     @aurora_postgres_iam.setter
@@ -897,9 +892,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="rdsPostgresIam")
     def rds_postgres_iam(self) -> Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]:
-        """
-        RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "rds_postgres_iam")
 
     @rds_postgres_iam.setter
@@ -1133,12 +1125,10 @@ class _ResourceState:
                  trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
-        :param pulumi.Input['ResourceAuroraPostgresIamArgs'] aurora_postgres_iam: AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceRdsPostgresIamArgs'] rds_postgres_iam: RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -1437,9 +1427,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="auroraPostgresIam")
     def aurora_postgres_iam(self) -> Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']]:
-        """
-        AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aurora_postgres_iam")
 
     @aurora_postgres_iam.setter
@@ -1929,9 +1916,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="rdsPostgresIam")
     def rds_postgres_iam(self) -> Optional[pulumi.Input['ResourceRdsPostgresIamArgs']]:
-        """
-        RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "rds_postgres_iam")
 
     @rds_postgres_iam.setter
@@ -2177,12 +2161,10 @@ class Resource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourceAuroraPostgresIamArgs']] aurora_postgres_iam: AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']] rds_postgres_iam: RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
@@ -2490,12 +2472,10 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourceAuroraPostgresIamArgs']] aurora_postgres_iam: AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']] rds_postgres_iam: RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2660,9 +2640,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="auroraPostgresIam")
     def aurora_postgres_iam(self) -> pulumi.Output[Optional['outputs.ResourceAuroraPostgresIam']]:
-        """
-        AuroraPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aurora_postgres_iam")
 
     @property
@@ -2940,9 +2917,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="rdsPostgresIam")
     def rds_postgres_iam(self) -> pulumi.Output[Optional['outputs.ResourceRdsPostgresIam']]:
-        """
-        RDSPostgresIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "rds_postgres_iam")
 
     @property

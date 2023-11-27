@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Workflows are the collection of rules that define the resources to which access can be requested,
@@ -135,12 +134,6 @@ func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutput() LookupWorkflo
 
 func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx context.Context) LookupWorkflowResultOutput {
 	return o
-}
-
-func (o LookupWorkflowResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupWorkflowResult] {
-	return pulumix.Output[LookupWorkflowResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Optional auto grant setting to automatically approve requests or not, defaults to false.

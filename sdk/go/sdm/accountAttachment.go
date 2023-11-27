@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // AccountAttachments assign an account to a role.
@@ -151,12 +150,6 @@ func (i *AccountAttachment) ToAccountAttachmentOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAttachmentOutput)
 }
 
-func (i *AccountAttachment) ToOutput(ctx context.Context) pulumix.Output[*AccountAttachment] {
-	return pulumix.Output[*AccountAttachment]{
-		OutputState: i.ToAccountAttachmentOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccountAttachmentArrayInput is an input type that accepts AccountAttachmentArray and AccountAttachmentArrayOutput values.
 // You can construct a concrete instance of `AccountAttachmentArrayInput` via:
 //
@@ -180,12 +173,6 @@ func (i AccountAttachmentArray) ToAccountAttachmentArrayOutput() AccountAttachme
 
 func (i AccountAttachmentArray) ToAccountAttachmentArrayOutputWithContext(ctx context.Context) AccountAttachmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAttachmentArrayOutput)
-}
-
-func (i AccountAttachmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountAttachment] {
-	return pulumix.Output[[]*AccountAttachment]{
-		OutputState: i.ToAccountAttachmentArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccountAttachmentMapInput is an input type that accepts AccountAttachmentMap and AccountAttachmentMapOutput values.
@@ -213,12 +200,6 @@ func (i AccountAttachmentMap) ToAccountAttachmentMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccountAttachmentMapOutput)
 }
 
-func (i AccountAttachmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountAttachment] {
-	return pulumix.Output[map[string]*AccountAttachment]{
-		OutputState: i.ToAccountAttachmentMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountAttachmentOutput struct{ *pulumi.OutputState }
 
 func (AccountAttachmentOutput) ElementType() reflect.Type {
@@ -231,12 +212,6 @@ func (o AccountAttachmentOutput) ToAccountAttachmentOutput() AccountAttachmentOu
 
 func (o AccountAttachmentOutput) ToAccountAttachmentOutputWithContext(ctx context.Context) AccountAttachmentOutput {
 	return o
-}
-
-func (o AccountAttachmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountAttachment] {
-	return pulumix.Output[*AccountAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The id of the account of this AccountAttachment.
@@ -263,12 +238,6 @@ func (o AccountAttachmentArrayOutput) ToAccountAttachmentArrayOutputWithContext(
 	return o
 }
 
-func (o AccountAttachmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountAttachment] {
-	return pulumix.Output[[]*AccountAttachment]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccountAttachmentArrayOutput) Index(i pulumi.IntInput) AccountAttachmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountAttachment {
 		return vs[0].([]*AccountAttachment)[vs[1].(int)]
@@ -287,12 +256,6 @@ func (o AccountAttachmentMapOutput) ToAccountAttachmentMapOutput() AccountAttach
 
 func (o AccountAttachmentMapOutput) ToAccountAttachmentMapOutputWithContext(ctx context.Context) AccountAttachmentMapOutput {
 	return o
-}
-
-func (o AccountAttachmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountAttachment] {
-	return pulumix.Output[map[string]*AccountAttachment]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccountAttachmentMapOutput) MapIndex(k pulumi.StringInput) AccountAttachmentOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // WorkflowApprover is an account with the ability to approve requests bound to a workflow.
@@ -151,12 +150,6 @@ func (i *WorkflowApprover) ToWorkflowApproverOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowApproverOutput)
 }
 
-func (i *WorkflowApprover) ToOutput(ctx context.Context) pulumix.Output[*WorkflowApprover] {
-	return pulumix.Output[*WorkflowApprover]{
-		OutputState: i.ToWorkflowApproverOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkflowApproverArrayInput is an input type that accepts WorkflowApproverArray and WorkflowApproverArrayOutput values.
 // You can construct a concrete instance of `WorkflowApproverArrayInput` via:
 //
@@ -180,12 +173,6 @@ func (i WorkflowApproverArray) ToWorkflowApproverArrayOutput() WorkflowApproverA
 
 func (i WorkflowApproverArray) ToWorkflowApproverArrayOutputWithContext(ctx context.Context) WorkflowApproverArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowApproverArrayOutput)
-}
-
-func (i WorkflowApproverArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkflowApprover] {
-	return pulumix.Output[[]*WorkflowApprover]{
-		OutputState: i.ToWorkflowApproverArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkflowApproverMapInput is an input type that accepts WorkflowApproverMap and WorkflowApproverMapOutput values.
@@ -213,12 +200,6 @@ func (i WorkflowApproverMap) ToWorkflowApproverMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WorkflowApproverMapOutput)
 }
 
-func (i WorkflowApproverMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkflowApprover] {
-	return pulumix.Output[map[string]*WorkflowApprover]{
-		OutputState: i.ToWorkflowApproverMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkflowApproverOutput struct{ *pulumi.OutputState }
 
 func (WorkflowApproverOutput) ElementType() reflect.Type {
@@ -231,12 +212,6 @@ func (o WorkflowApproverOutput) ToWorkflowApproverOutput() WorkflowApproverOutpu
 
 func (o WorkflowApproverOutput) ToWorkflowApproverOutputWithContext(ctx context.Context) WorkflowApproverOutput {
 	return o
-}
-
-func (o WorkflowApproverOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkflowApprover] {
-	return pulumix.Output[*WorkflowApprover]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The approver id.
@@ -263,12 +238,6 @@ func (o WorkflowApproverArrayOutput) ToWorkflowApproverArrayOutputWithContext(ct
 	return o
 }
 
-func (o WorkflowApproverArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkflowApprover] {
-	return pulumix.Output[[]*WorkflowApprover]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkflowApproverArrayOutput) Index(i pulumi.IntInput) WorkflowApproverOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkflowApprover {
 		return vs[0].([]*WorkflowApprover)[vs[1].(int)]
@@ -287,12 +256,6 @@ func (o WorkflowApproverMapOutput) ToWorkflowApproverMapOutput() WorkflowApprove
 
 func (o WorkflowApproverMapOutput) ToWorkflowApproverMapOutputWithContext(ctx context.Context) WorkflowApproverMapOutput {
 	return o
-}
-
-func (o WorkflowApproverMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkflowApprover] {
-	return pulumix.Output[map[string]*WorkflowApprover]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkflowApproverMapOutput) MapIndex(k pulumi.StringInput) WorkflowApproverOutput {

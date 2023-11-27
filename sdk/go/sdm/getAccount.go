@@ -9,7 +9,6 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Accounts are users that have access to strongDM. There are two types of accounts:
@@ -156,12 +155,6 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountRe
 
 func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
 	return o
-}
-
-func (o LookupAccountResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccountResult] {
-	return pulumix.Output[LookupAccountResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A single element list containing a map, where each key lists one of the following objects:
