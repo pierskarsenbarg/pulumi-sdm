@@ -1,6 +1,8 @@
 module github.com/pierskarsenbarg/pulumi-sdm/sdk
 
-go 1.22
+go 1.21
+
+toolchain go1.21.1
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
