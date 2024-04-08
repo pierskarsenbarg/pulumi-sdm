@@ -2,8 +2,6 @@ module github.com/pierskarsenbarg/pulumi-sdm/provider
 
 go 1.21
 
-toolchain go1.22.1
-
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
 
 require (
