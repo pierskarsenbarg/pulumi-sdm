@@ -83,6 +83,7 @@ class ResourceArgs:
                  rabbitmq_amqp091: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']] = None,
                  raw_tcp: Optional[pulumi.Input['ResourceRawTcpArgs']] = None,
                  rdp: Optional[pulumi.Input['ResourceRdpArgs']] = None,
+                 rdp_cert: Optional[pulumi.Input['ResourceRdpCertArgs']] = None,
                  rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
                  redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
@@ -241,6 +242,8 @@ class ResourceArgs:
             pulumi.set(__self__, "raw_tcp", raw_tcp)
         if rdp is not None:
             pulumi.set(__self__, "rdp", rdp)
+        if rdp_cert is not None:
+            pulumi.set(__self__, "rdp_cert", rdp_cert)
         if rds_postgres_iam is not None:
             pulumi.set(__self__, "rds_postgres_iam", rds_postgres_iam)
         if redis is not None:
@@ -888,6 +891,15 @@ class ResourceArgs:
     @rdp.setter
     def rdp(self, value: Optional[pulumi.Input['ResourceRdpArgs']]):
         pulumi.set(self, "rdp", value)
+
+    @property
+    @pulumi.getter(name="rdpCert")
+    def rdp_cert(self) -> Optional[pulumi.Input['ResourceRdpCertArgs']]:
+        return pulumi.get(self, "rdp_cert")
+
+    @rdp_cert.setter
+    def rdp_cert(self, value: Optional[pulumi.Input['ResourceRdpCertArgs']]):
+        pulumi.set(self, "rdp_cert", value)
 
     @property
     @pulumi.getter(name="rdsPostgresIam")
@@ -1107,6 +1119,7 @@ class _ResourceState:
                  rabbitmq_amqp091: Optional[pulumi.Input['ResourceRabbitmqAmqp091Args']] = None,
                  raw_tcp: Optional[pulumi.Input['ResourceRawTcpArgs']] = None,
                  rdp: Optional[pulumi.Input['ResourceRdpArgs']] = None,
+                 rdp_cert: Optional[pulumi.Input['ResourceRdpCertArgs']] = None,
                  rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
                  redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
@@ -1265,6 +1278,8 @@ class _ResourceState:
             pulumi.set(__self__, "raw_tcp", raw_tcp)
         if rdp is not None:
             pulumi.set(__self__, "rdp", rdp)
+        if rdp_cert is not None:
+            pulumi.set(__self__, "rdp_cert", rdp_cert)
         if rds_postgres_iam is not None:
             pulumi.set(__self__, "rds_postgres_iam", rds_postgres_iam)
         if redis is not None:
@@ -1912,6 +1927,15 @@ class _ResourceState:
     @rdp.setter
     def rdp(self, value: Optional[pulumi.Input['ResourceRdpArgs']]):
         pulumi.set(self, "rdp", value)
+
+    @property
+    @pulumi.getter(name="rdpCert")
+    def rdp_cert(self) -> Optional[pulumi.Input['ResourceRdpCertArgs']]:
+        return pulumi.get(self, "rdp_cert")
+
+    @rdp_cert.setter
+    def rdp_cert(self, value: Optional[pulumi.Input['ResourceRdpCertArgs']]):
+        pulumi.set(self, "rdp_cert", value)
 
     @property
     @pulumi.getter(name="rdsPostgresIam")
@@ -2133,6 +2157,7 @@ class Resource(pulumi.CustomResource):
                  rabbitmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceRabbitmqAmqp091Args']]] = None,
                  raw_tcp: Optional[pulumi.Input[pulumi.InputType['ResourceRawTcpArgs']]] = None,
                  rdp: Optional[pulumi.Input[pulumi.InputType['ResourceRdpArgs']]] = None,
+                 rdp_cert: Optional[pulumi.Input[pulumi.InputType['ResourceRdpCertArgs']]] = None,
                  rds_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']]] = None,
                  redis: Optional[pulumi.Input[pulumi.InputType['ResourceRedisArgs']]] = None,
                  redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
@@ -2156,7 +2181,7 @@ class Resource(pulumi.CustomResource):
         A Resource can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/resource:Resource example rs-12345678
+        $ pulumi import sdm:index/resource:Resource example rs-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -2179,7 +2204,7 @@ class Resource(pulumi.CustomResource):
         A Resource can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/resource:Resource example rs-12345678
+        $ pulumi import sdm:index/resource:Resource example rs-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -2264,6 +2289,7 @@ class Resource(pulumi.CustomResource):
                  rabbitmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceRabbitmqAmqp091Args']]] = None,
                  raw_tcp: Optional[pulumi.Input[pulumi.InputType['ResourceRawTcpArgs']]] = None,
                  rdp: Optional[pulumi.Input[pulumi.InputType['ResourceRdpArgs']]] = None,
+                 rdp_cert: Optional[pulumi.Input[pulumi.InputType['ResourceRdpCertArgs']]] = None,
                  rds_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']]] = None,
                  redis: Optional[pulumi.Input[pulumi.InputType['ResourceRedisArgs']]] = None,
                  redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
@@ -2356,6 +2382,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["rabbitmq_amqp091"] = rabbitmq_amqp091
             __props__.__dict__["raw_tcp"] = raw_tcp
             __props__.__dict__["rdp"] = rdp
+            __props__.__dict__["rdp_cert"] = rdp_cert
             __props__.__dict__["rds_postgres_iam"] = rds_postgres_iam
             __props__.__dict__["redis"] = redis
             __props__.__dict__["redshift"] = redshift
@@ -2449,6 +2476,7 @@ class Resource(pulumi.CustomResource):
             rabbitmq_amqp091: Optional[pulumi.Input[pulumi.InputType['ResourceRabbitmqAmqp091Args']]] = None,
             raw_tcp: Optional[pulumi.Input[pulumi.InputType['ResourceRawTcpArgs']]] = None,
             rdp: Optional[pulumi.Input[pulumi.InputType['ResourceRdpArgs']]] = None,
+            rdp_cert: Optional[pulumi.Input[pulumi.InputType['ResourceRdpCertArgs']]] = None,
             rds_postgres_iam: Optional[pulumi.Input[pulumi.InputType['ResourceRdsPostgresIamArgs']]] = None,
             redis: Optional[pulumi.Input[pulumi.InputType['ResourceRedisArgs']]] = None,
             redshift: Optional[pulumi.Input[pulumi.InputType['ResourceRedshiftArgs']]] = None,
@@ -2549,6 +2577,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["rabbitmq_amqp091"] = rabbitmq_amqp091
         __props__.__dict__["raw_tcp"] = raw_tcp
         __props__.__dict__["rdp"] = rdp
+        __props__.__dict__["rdp_cert"] = rdp_cert
         __props__.__dict__["rds_postgres_iam"] = rds_postgres_iam
         __props__.__dict__["redis"] = redis
         __props__.__dict__["redshift"] = redshift
@@ -2913,6 +2942,11 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter
     def rdp(self) -> pulumi.Output[Optional['outputs.ResourceRdp']]:
         return pulumi.get(self, "rdp")
+
+    @property
+    @pulumi.getter(name="rdpCert")
+    def rdp_cert(self) -> pulumi.Output[Optional['outputs.ResourceRdpCert']]:
+        return pulumi.get(self, "rdp_cert")
 
     @property
     @pulumi.getter(name="rdsPostgresIam")

@@ -13,13 +13,12 @@ namespace PiersKarsenbarg.Sdm
     /// <summary>
     /// RemoteIdentities define the username to be used for a specific account
     ///  when connecting to a remote resource using that group.
-    /// 
     /// ## Import
     /// 
     /// A RemoteIdentity can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678
+    /// $ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/remoteIdentity:RemoteIdentity")]

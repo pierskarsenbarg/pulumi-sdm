@@ -76,7 +76,7 @@ class PeeringGroup(pulumi.CustomResource):
         A PeeringGroup can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678
+        $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -99,7 +99,7 @@ class PeeringGroup(pulumi.CustomResource):
         A PeeringGroup can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678
+        $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678
         ```
 
         :param str resource_name: The name of the resource.

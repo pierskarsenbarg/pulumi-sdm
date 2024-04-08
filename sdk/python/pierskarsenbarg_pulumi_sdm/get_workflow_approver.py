@@ -22,16 +22,19 @@ class GetWorkflowApproverResult:
     """
     A collection of values returned by getWorkflowApprover.
     """
-    def __init__(__self__, approver_id=None, id=None, ids=None, workflow_approvers=None, workflow_id=None):
-        if approver_id and not isinstance(approver_id, str):
-            raise TypeError("Expected argument 'approver_id' to be a str")
-        pulumi.set(__self__, "approver_id", approver_id)
+    def __init__(__self__, account_id=None, id=None, ids=None, role_id=None, workflow_approvers=None, workflow_id=None):
+        if account_id and not isinstance(account_id, str):
+            raise TypeError("Expected argument 'account_id' to be a str")
+        pulumi.set(__self__, "account_id", account_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if role_id and not isinstance(role_id, str):
+            raise TypeError("Expected argument 'role_id' to be a str")
+        pulumi.set(__self__, "role_id", role_id)
         if workflow_approvers and not isinstance(workflow_approvers, list):
             raise TypeError("Expected argument 'workflow_approvers' to be a list")
         pulumi.set(__self__, "workflow_approvers", workflow_approvers)
@@ -40,12 +43,12 @@ class GetWorkflowApproverResult:
         pulumi.set(__self__, "workflow_id", workflow_id)
 
     @property
-    @pulumi.getter(name="approverId")
-    def approver_id(self) -> Optional[str]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[str]:
         """
-        The approver id.
+        The approver account id.
         """
-        return pulumi.get(self, "approver_id")
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
@@ -62,6 +65,14 @@ class GetWorkflowApproverResult:
         a list of strings of ids of data sources that match the given arguments.
         """
         return pulumi.get(self, "ids")
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[str]:
+        """
+        The approver role id
+        """
+        return pulumi.get(self, "role_id")
 
     @property
     @pulumi.getter(name="workflowApprovers")
@@ -86,69 +97,84 @@ class AwaitableGetWorkflowApproverResult(GetWorkflowApproverResult):
         if False:
             yield self
         return GetWorkflowApproverResult(
-            approver_id=self.approver_id,
+            account_id=self.account_id,
             id=self.id,
             ids=self.ids,
+            role_id=self.role_id,
             workflow_approvers=self.workflow_approvers,
             workflow_id=self.workflow_id)
 
 
-def get_workflow_approver(approver_id: Optional[str] = None,
+def get_workflow_approver(account_id: Optional[str] = None,
                           id: Optional[str] = None,
+                          role_id: Optional[str] = None,
                           workflow_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkflowApproverResult:
     """
-    WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+    WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
-    workflow_approver_query = sdm.get_workflow_approver(approver_id="a-2496542",
+    workflow_approver_account_query = sdm.get_workflow_approver(account_id="a-2496542",
         workflow_id="aw-541894")
+    workflow_approver_role_query = sdm.get_workflow_approver(role_id="r-417345",
+        workflow_id="aw-679923")
     ```
+    <!--End PulumiCodeChooser -->
 
 
-    :param str approver_id: The approver id.
+    :param str account_id: The approver account id.
     :param str id: Unique identifier of the WorkflowApprover.
+    :param str role_id: The approver role id
     :param str workflow_id: The workflow id.
     """
     __args__ = dict()
-    __args__['approverId'] = approver_id
+    __args__['accountId'] = account_id
     __args__['id'] = id
+    __args__['roleId'] = role_id
     __args__['workflowId'] = workflow_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('sdm:index/getWorkflowApprover:getWorkflowApprover', __args__, opts=opts, typ=GetWorkflowApproverResult).value
 
     return AwaitableGetWorkflowApproverResult(
-        approver_id=pulumi.get(__ret__, 'approver_id'),
+        account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
+        role_id=pulumi.get(__ret__, 'role_id'),
         workflow_approvers=pulumi.get(__ret__, 'workflow_approvers'),
         workflow_id=pulumi.get(__ret__, 'workflow_id'))
 
 
 @_utilities.lift_output_func(get_workflow_approver)
-def get_workflow_approver_output(approver_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_workflow_approver_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 role_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  workflow_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowApproverResult]:
     """
-    WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+    WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
-    workflow_approver_query = sdm.get_workflow_approver(approver_id="a-2496542",
+    workflow_approver_account_query = sdm.get_workflow_approver(account_id="a-2496542",
         workflow_id="aw-541894")
+    workflow_approver_role_query = sdm.get_workflow_approver(role_id="r-417345",
+        workflow_id="aw-679923")
     ```
+    <!--End PulumiCodeChooser -->
 
 
-    :param str approver_id: The approver id.
+    :param str account_id: The approver account id.
     :param str id: Unique identifier of the WorkflowApprover.
+    :param str role_id: The approver role id
     :param str workflow_id: The workflow id.
     """
     ...

@@ -14,6 +14,7 @@ import (
 // The SSH CA Pubkey is a public key used for setting up SSH resources.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -35,6 +36,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetSshCaPubkey(ctx *pulumi.Context, args *GetSshCaPubkeyArgs, opts ...pulumi.InvokeOption) (*GetSshCaPubkeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSshCaPubkeyResult

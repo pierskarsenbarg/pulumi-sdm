@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupNode(ctx *pulumi.Context, args *LookupNodeArgs, opts ...pulumi.InvokeOption) (*LookupNodeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeResult
@@ -68,7 +70,7 @@ type LookupNodeArgs struct {
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type *string `pulumi:"type"`
 }
 
@@ -117,7 +119,7 @@ type LookupNodeOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 

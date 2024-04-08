@@ -15,6 +15,7 @@ import (
 // AccountAttachments assign an account to a role.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // This resource can be imported using the import command.
 //
 // ## Import
@@ -46,9 +48,7 @@ import (
 // A AccountAttachment can be imported using the id, e.g.,
 //
 // ```sh
-//
-//	$ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
-//
+// $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
 // ```
 type AccountAttachment struct {
 	pulumi.CustomResourceState

@@ -15,6 +15,21 @@ export type AccountAttachment = import("./accountAttachment").AccountAttachment;
 export const AccountAttachment: typeof import("./accountAttachment").AccountAttachment = null as any;
 utilities.lazyLoad(exports, ["AccountAttachment"], () => require("./accountAttachment"));
 
+export { ApprovalWorkflowArgs, ApprovalWorkflowState } from "./approvalWorkflow";
+export type ApprovalWorkflow = import("./approvalWorkflow").ApprovalWorkflow;
+export const ApprovalWorkflow: typeof import("./approvalWorkflow").ApprovalWorkflow = null as any;
+utilities.lazyLoad(exports, ["ApprovalWorkflow"], () => require("./approvalWorkflow"));
+
+export { ApprovalWorkflowApprovalArgs, ApprovalWorkflowApprovalState } from "./approvalWorkflowApproval";
+export type ApprovalWorkflowApproval = import("./approvalWorkflowApproval").ApprovalWorkflowApproval;
+export const ApprovalWorkflowApproval: typeof import("./approvalWorkflowApproval").ApprovalWorkflowApproval = null as any;
+utilities.lazyLoad(exports, ["ApprovalWorkflowApproval"], () => require("./approvalWorkflowApproval"));
+
+export { ApprovalWorkflowStepArgs, ApprovalWorkflowStepState } from "./approvalWorkflowStep";
+export type ApprovalWorkflowStep = import("./approvalWorkflowStep").ApprovalWorkflowStep;
+export const ApprovalWorkflowStep: typeof import("./approvalWorkflowStep").ApprovalWorkflowStep = null as any;
+utilities.lazyLoad(exports, ["ApprovalWorkflowStep"], () => require("./approvalWorkflowStep"));
+
 export { GetAccountArgs, GetAccountResult, GetAccountOutputArgs } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
@@ -24,6 +39,21 @@ export { GetAccountAttachmentArgs, GetAccountAttachmentResult, GetAccountAttachm
 export const getAccountAttachment: typeof import("./getAccountAttachment").getAccountAttachment = null as any;
 export const getAccountAttachmentOutput: typeof import("./getAccountAttachment").getAccountAttachmentOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountAttachment","getAccountAttachmentOutput"], () => require("./getAccountAttachment"));
+
+export { GetApprovalWorkflowArgs, GetApprovalWorkflowResult, GetApprovalWorkflowOutputArgs } from "./getApprovalWorkflow";
+export const getApprovalWorkflow: typeof import("./getApprovalWorkflow").getApprovalWorkflow = null as any;
+export const getApprovalWorkflowOutput: typeof import("./getApprovalWorkflow").getApprovalWorkflowOutput = null as any;
+utilities.lazyLoad(exports, ["getApprovalWorkflow","getApprovalWorkflowOutput"], () => require("./getApprovalWorkflow"));
+
+export { GetApprovalWorkflowApproverArgs, GetApprovalWorkflowApproverResult, GetApprovalWorkflowApproverOutputArgs } from "./getApprovalWorkflowApprover";
+export const getApprovalWorkflowApprover: typeof import("./getApprovalWorkflowApprover").getApprovalWorkflowApprover = null as any;
+export const getApprovalWorkflowApproverOutput: typeof import("./getApprovalWorkflowApprover").getApprovalWorkflowApproverOutput = null as any;
+utilities.lazyLoad(exports, ["getApprovalWorkflowApprover","getApprovalWorkflowApproverOutput"], () => require("./getApprovalWorkflowApprover"));
+
+export { GetApprovalWorkflowStepArgs, GetApprovalWorkflowStepResult, GetApprovalWorkflowStepOutputArgs } from "./getApprovalWorkflowStep";
+export const getApprovalWorkflowStep: typeof import("./getApprovalWorkflowStep").getApprovalWorkflowStep = null as any;
+export const getApprovalWorkflowStepOutput: typeof import("./getApprovalWorkflowStep").getApprovalWorkflowStepOutput = null as any;
+utilities.lazyLoad(exports, ["getApprovalWorkflowStep","getApprovalWorkflowStepOutput"], () => require("./getApprovalWorkflowStep"));
 
 export { GetNodeArgs, GetNodeResult, GetNodeOutputArgs } from "./getNode";
 export const getNode: typeof import("./getNode").getNode = null as any;
@@ -178,6 +208,12 @@ const _module = {
                 return new Account(name, <any>undefined, { urn })
             case "sdm:index/accountAttachment:AccountAttachment":
                 return new AccountAttachment(name, <any>undefined, { urn })
+            case "sdm:index/approvalWorkflow:ApprovalWorkflow":
+                return new ApprovalWorkflow(name, <any>undefined, { urn })
+            case "sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval":
+                return new ApprovalWorkflowApproval(name, <any>undefined, { urn })
+            case "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep":
+                return new ApprovalWorkflowStep(name, <any>undefined, { urn })
             case "sdm:index/node:Node":
                 return new Node(name, <any>undefined, { urn })
             case "sdm:index/peeringGroup:PeeringGroup":
@@ -209,6 +245,9 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("sdm", "index/account", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/accountAttachment", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflow", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowApproval", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowStep", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/node", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroup", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupNode", _module)

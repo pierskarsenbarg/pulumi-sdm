@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // This resource can be imported using the import command.
 //
 // ## Import
@@ -49,9 +51,7 @@ import (
 // A WorkflowRole can be imported using the id, e.g.,
 //
 // ```sh
-//
-//	$ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678
-//
+// $ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678
 // ```
 type WorkflowRole struct {
 	pulumi.CustomResourceState

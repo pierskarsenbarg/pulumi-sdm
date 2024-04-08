@@ -19,7 +19,7 @@ namespace PiersKarsenbarg.Sdm
     /// A PeeringGroupResource can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678
+    /// $ pulumi import sdm:index/peeringGroupResource:PeeringGroupResource example gr-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/peeringGroupResource:PeeringGroupResource")]

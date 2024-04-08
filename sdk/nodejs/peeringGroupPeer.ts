@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * A PeeringGroupPeer can be imported using the id, e.g.,
  *
  * ```sh
- *  $ pulumi import sdm:index/peeringGroupPeer:PeeringGroupPeer example gp-12345678
+ * $ pulumi import sdm:index/peeringGroupPeer:PeeringGroupPeer example gp-12345678
  * ```
  */
 export class PeeringGroupPeer extends pulumi.CustomResource {

@@ -8,12 +8,14 @@ import * as utilities from "./utilities";
  * The SSH CA Pubkey is a public key used for setting up SSH resources.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
  * const sshPubkeyQuery = sdm.getSshCaPubkey({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSshCaPubkey(args?: GetSshCaPubkeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshCaPubkeyResult> {
     args = args || {};
@@ -56,12 +58,14 @@ export interface GetSshCaPubkeyResult {
  * The SSH CA Pubkey is a public key used for setting up SSH resources.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
  * const sshPubkeyQuery = sdm.getSshCaPubkey({});
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getSshCaPubkeyOutput(args?: GetSshCaPubkeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshCaPubkeyResult> {
     return pulumi.output(args).apply((a: any) => getSshCaPubkey(a, opts))

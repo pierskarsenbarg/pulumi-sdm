@@ -14,6 +14,7 @@ import (
 // A RemoteIdentityGroup defines a group of remote identities.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,6 +38,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetRemoteIdentityGroup(ctx *pulumi.Context, args *GetRemoteIdentityGroupArgs, opts ...pulumi.InvokeOption) (*GetRemoteIdentityGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRemoteIdentityGroupResult

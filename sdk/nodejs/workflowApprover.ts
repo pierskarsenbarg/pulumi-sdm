@@ -5,18 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+ * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const workflowApproverExample = new sdm.WorkflowApprover("workflowApproverExample", {
- *     approverId: "a-234605",
+ * const workflowApproverAccountExample = new sdm.WorkflowApprover("workflowApproverAccountExample", {
+ *     accountId: "a-234605",
  *     workflowId: "aw-6799234",
  * });
+ * const workflowApproverRoleExample = new sdm.WorkflowApprover("workflowApproverRoleExample", {
+ *     roleId: "r-542982",
+ *     workflowId: "aw-1935694",
+ * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -24,7 +30,7 @@ import * as utilities from "./utilities";
  * A WorkflowApprover can be imported using the id, e.g.,
  *
  * ```sh
- *  $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
+ * $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
  * ```
  */
 export class WorkflowApprover extends pulumi.CustomResource {
@@ -56,9 +62,13 @@ export class WorkflowApprover extends pulumi.CustomResource {
     }
 
     /**
-     * The approver id.
+     * The approver account id.
      */
-    public readonly approverId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * The approver role id
+     */
+    public readonly roleId!: pulumi.Output<string | undefined>;
     /**
      * The workflow id.
      */
@@ -77,17 +87,16 @@ export class WorkflowApprover extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowApproverState | undefined;
-            resourceInputs["approverId"] = state ? state.approverId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["roleId"] = state ? state.roleId : undefined;
             resourceInputs["workflowId"] = state ? state.workflowId : undefined;
         } else {
             const args = argsOrState as WorkflowApproverArgs | undefined;
-            if ((!args || args.approverId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'approverId'");
-            }
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
-            resourceInputs["approverId"] = args ? args.approverId : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["roleId"] = args ? args.roleId : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -100,9 +109,13 @@ export class WorkflowApprover extends pulumi.CustomResource {
  */
 export interface WorkflowApproverState {
     /**
-     * The approver id.
+     * The approver account id.
      */
-    approverId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * The approver role id
+     */
+    roleId?: pulumi.Input<string>;
     /**
      * The workflow id.
      */
@@ -114,9 +127,13 @@ export interface WorkflowApproverState {
  */
 export interface WorkflowApproverArgs {
     /**
-     * The approver id.
+     * The approver account id.
      */
-    approverId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    /**
+     * The approver role id
+     */
+    roleId?: pulumi.Input<string>;
     /**
      * The workflow id.
      */

@@ -15,13 +15,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetWorkflowApproverWorkflowApproverResult
     {
         /// <summary>
-        /// The approver id.
+        /// The approver account id.
         /// </summary>
-        public readonly string? ApproverId;
+        public readonly string? AccountId;
         /// <summary>
         /// Unique identifier of the WorkflowApprover.
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The approver role id
+        /// </summary>
+        public readonly string? RoleId;
         /// <summary>
         /// The workflow id.
         /// </summary>
@@ -29,14 +33,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private GetWorkflowApproverWorkflowApproverResult(
-            string? approverId,
+            string? accountId,
 
             string? id,
 
+            string? roleId,
+
             string? workflowId)
         {
-            ApproverId = approverId;
+            AccountId = accountId;
             Id = id;
+            RoleId = roleId;
             WorkflowId = workflowId;
         }
     }

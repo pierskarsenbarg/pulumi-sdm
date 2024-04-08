@@ -16,10 +16,9 @@ namespace PiersKarsenbarg.Sdm
         /// Workflows are the collection of rules that define the resources to which access can be requested,
         ///  the users that can request that access, and the mechanism for approving those requests which can either
         ///  but automatic approval or a set of users authorized to approve the requests.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWorkflowResult> InvokeAsync(GetWorkflowArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowResult>("sdm:index/getWorkflow:getWorkflow", args ?? new GetWorkflowArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace PiersKarsenbarg.Sdm
         /// Workflows are the collection of rules that define the resources to which access can be requested,
         ///  the users that can request that access, and the mechanism for approving those requests which can either
         ///  but automatic approval or a set of users authorized to approve the requests.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,8 +63,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWorkflowResult> Invoke(GetWorkflowInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowResult>("sdm:index/getWorkflow:getWorkflow", args ?? new GetWorkflowInvokeArgs(), options.WithDefaults());
@@ -76,6 +72,12 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class GetWorkflowArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Optional approval flow ID identifies an approval flow that linked to the workflow
+        /// </summary>
+        [Input("approvalFlowId")]
+        public string? ApprovalFlowId { get; set; }
+
         /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
@@ -120,6 +122,12 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class GetWorkflowInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Optional approval flow ID identifies an approval flow that linked to the workflow
+        /// </summary>
+        [Input("approvalFlowId")]
+        public Input<string>? ApprovalFlowId { get; set; }
+
         /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
@@ -167,6 +175,10 @@ namespace PiersKarsenbarg.Sdm
     public sealed class GetWorkflowResult
     {
         /// <summary>
+        /// Optional approval flow ID identifies an approval flow that linked to the workflow
+        /// </summary>
+        public readonly string? ApprovalFlowId;
+        /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
         public readonly bool? AutoGrant;
@@ -201,6 +213,8 @@ namespace PiersKarsenbarg.Sdm
 
         [OutputConstructor]
         private GetWorkflowResult(
+            string? approvalFlowId,
+
             bool? autoGrant,
 
             string? description,
@@ -217,6 +231,7 @@ namespace PiersKarsenbarg.Sdm
 
             ImmutableArray<Outputs.GetWorkflowWorkflowResult> workflows)
         {
+            ApprovalFlowId = approvalFlowId;
             AutoGrant = autoGrant;
             Description = description;
             Enabled = enabled;

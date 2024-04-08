@@ -71,7 +71,7 @@ class GetSecretStoreResult:
     def secret_stores(self) -> Sequence['outputs.GetSecretStoreSecretStoreResult']:
         """
         A single element list containing a map, where each key lists one of the following objects:
-        * aws:
+        * active_directory_store:
         """
         return pulumi.get(self, "secret_stores")
 
@@ -116,7 +116,7 @@ def get_secret_store(id: Optional[str] = None,
     :param str id: Unique identifier of the SecretStore.
     :param str name: Unique human-readable name of the SecretStore.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
-    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -149,6 +149,6 @@ def get_secret_store_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: Unique identifier of the SecretStore.
     :param str name: Unique human-readable name of the SecretStore.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
-    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     ...

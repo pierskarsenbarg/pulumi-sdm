@@ -11,7 +11,7 @@ export interface AccountService {
      */
     name: string;
     /**
-     * The User's suspended state.
+     * The Service's suspended state.
      */
     suspended?: boolean;
     /**
@@ -43,13 +43,13 @@ export interface AccountUser {
      */
     managedBy: string;
     /**
-     * PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+     * PermissionLevel is the user's permission level e.g. admin, DBA, user.
      */
     permissionLevel: string;
     /**
-     * The User's suspended state.
+     * The Service's suspended state.
      */
-    suspended?: boolean;
+    suspended: boolean;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -57,7 +57,13 @@ export interface AccountUser {
 }
 
 export interface GetAccountAccount {
+    /**
+     * A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
+     */
     services: outputs.GetAccountAccountService[];
+    /**
+     * A User can connect to resources they are granted directly, or granted via roles.
+     */
     users: outputs.GetAccountAccountUser[];
 }
 
@@ -71,7 +77,7 @@ export interface GetAccountAccountService {
      */
     name?: string;
     /**
-     * The User's suspended state.
+     * The Service's suspended state.
      */
     suspended?: boolean;
     /**
@@ -106,13 +112,13 @@ export interface GetAccountAccountUser {
      */
     managedBy: string;
     /**
-     * PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+     * PermissionLevel is the user's permission level e.g. admin, DBA, user.
      */
-    permissionLevel: string;
+    permissionLevel?: string;
     /**
-     * The User's suspended state.
+     * The Service's suspended state.
      */
-    suspended?: boolean;
+    suspended: boolean;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -134,8 +140,67 @@ export interface GetAccountAttachmentAccountAttachment {
     roleId?: string;
 }
 
+export interface GetApprovalWorkflowApprovalWorkflow {
+    /**
+     * Approval mode of the ApprovalWorkflow
+     */
+    approvalMode?: string;
+    /**
+     * Optional description of the ApprovalWorkflow.
+     */
+    description?: string;
+    /**
+     * Unique identifier of the ApprovalWorkflow.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the ApprovalWorkflow.
+     */
+    name?: string;
+}
+
+export interface GetApprovalWorkflowApproverApprovalWorkflowApprover {
+    /**
+     * The approver account id.
+     */
+    accountId?: string;
+    /**
+     * The approval flow id specified the approval workflow that this approver belongs to
+     */
+    approvalFlowId?: string;
+    /**
+     * The approval step id specified the approval flow step that this approver belongs to
+     */
+    approvalStepId?: string;
+    /**
+     * Unique identifier of the ApprovalWorkflowApprover.
+     */
+    id?: string;
+    /**
+     * The approver role id
+     */
+    roleId?: string;
+}
+
+export interface GetApprovalWorkflowStepApprovalWorkflowStep {
+    /**
+     * The approval flow id specified the approval workfflow that this step belongs to
+     */
+    approvalFlowId?: string;
+    /**
+     * Unique identifier of the ApprovalWorkflowStep.
+     */
+    id?: string;
+}
+
 export interface GetNodeNode {
+    /**
+     * Gateway represents a StrongDM CLI installation running in gateway mode.
+     */
     gateways: outputs.GetNodeNodeGateway[];
+    /**
+     * Relay represents a StrongDM CLI installation running in relay mode.
+     */
     relays: outputs.GetNodeNodeRelay[];
 }
 
@@ -380,6 +445,7 @@ export interface GetResourceResource {
     prestos: outputs.GetResourceResourcePresto[];
     rabbitmqAmqp091s: outputs.GetResourceResourceRabbitmqAmqp091[];
     rawTcps: outputs.GetResourceResourceRawTcp[];
+    rdpCerts: outputs.GetResourceResourceRdpCert[];
     rdps: outputs.GetResourceResourceRdp[];
     rdsPostgresIams: outputs.GetResourceResourceRdsPostgresIam[];
     redis: outputs.GetResourceResourceRedi[];
@@ -4349,6 +4415,61 @@ export interface GetResourceResourceRdp {
     username?: string;
 }
 
+export interface GetResourceResourceRdpCert {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
+    remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
+    remoteIdentityHealthcheckUsername?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface GetResourceResourceRdsPostgresIam {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -5326,16 +5447,44 @@ export interface GetRoleRole {
 }
 
 export interface GetSecretStoreSecretStore {
+    activeDirectoryStores: outputs.GetSecretStoreSecretStoreActiveDirectoryStore[];
     aws: outputs.GetSecretStoreSecretStoreAw[];
+    awsCertX509s: outputs.GetSecretStoreSecretStoreAwsCertX509[];
     azureStores: outputs.GetSecretStoreSecretStoreAzureStore[];
     cyberarkConjurs: outputs.GetSecretStoreSecretStoreCyberarkConjur[];
     cyberarkPamExperimentals: outputs.GetSecretStoreSecretStoreCyberarkPamExperimental[];
     cyberarkPams: outputs.GetSecretStoreSecretStoreCyberarkPam[];
     delineaStores: outputs.GetSecretStoreSecretStoreDelineaStore[];
+    gcpCertX509Stores: outputs.GetSecretStoreSecretStoreGcpCertX509Store[];
     gcpStores: outputs.GetSecretStoreSecretStoreGcpStore[];
+    vaultApproleCertSshes: outputs.GetSecretStoreSecretStoreVaultApproleCertSsh[];
+    vaultApproleCertX509s: outputs.GetSecretStoreSecretStoreVaultApproleCertX509[];
     vaultApproles: outputs.GetSecretStoreSecretStoreVaultApprole[];
     vaultTls: outputs.GetSecretStoreSecretStoreVaultTl[];
+    vaultTlsCertSshes: outputs.GetSecretStoreSecretStoreVaultTlsCertSsh[];
+    vaultTlsCertX509s: outputs.GetSecretStoreSecretStoreVaultTlsCertX509[];
+    vaultTokenCertSshes: outputs.GetSecretStoreSecretStoreVaultTokenCertSsh[];
+    vaultTokenCertX509s: outputs.GetSecretStoreSecretStoreVaultTokenCertX509[];
     vaultTokens: outputs.GetSecretStoreSecretStoreVaultToken[];
+}
+
+export interface GetSecretStoreSecretStoreActiveDirectoryStore {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
 }
 
 export interface GetSecretStoreSecretStoreAw {
@@ -5351,6 +5500,41 @@ export interface GetSecretStoreSecretStoreAw {
      * The AWS region to target e.g. us-east-1
      */
     region?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreAwsCertX509 {
+    /**
+     * The ARN of the CA in AWS Private CA
+     */
+    caArn?: string;
+    /**
+     * The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+     */
+    certificateTemplateArn?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The AWS region to target e.g. us-east-1
+     */
+    region?: string;
+    /**
+     * The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+     */
+    signingAlgo?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -5458,6 +5642,41 @@ export interface GetSecretStoreSecretStoreDelineaStore {
     tenantName?: string;
 }
 
+export interface GetSecretStoreSecretStoreGcpCertX509Store {
+    /**
+     * The ID of the target CA
+     */
+    caId?: string;
+    /**
+     * The ID of the target CA pool
+     */
+    caPoolId?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * The Region for the CA in GCP format e.g. us-west1
+     */
+    location?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The GCP project ID to target.
+     */
+    projectId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetSecretStoreSecretStoreGcpStore {
     /**
      * Unique identifier of the SecretStore.
@@ -5500,6 +5719,76 @@ export interface GetSecretStoreSecretStoreVaultApprole {
     tags?: {[key: string]: string};
 }
 
+export interface GetSecretStoreSecretStoreVaultApproleCertSsh {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreVaultApproleCertX509 {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetSecretStoreSecretStoreVaultTl {
     /**
      * A path to a CA file accessible by a Node
@@ -5535,6 +5824,100 @@ export interface GetSecretStoreSecretStoreVaultTl {
     tags?: {[key: string]: string};
 }
 
+export interface GetSecretStoreSecretStoreVaultTlsCertSsh {
+    /**
+     * A path to a CA file accessible by a Node
+     */
+    caCertPath?: string;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
+    clientCertPath?: string;
+    /**
+     * A path to a client key file accessible by a Node
+     */
+    clientKeyPath?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreVaultTlsCertX509 {
+    /**
+     * A path to a CA file accessible by a Node
+     */
+    caCertPath?: string;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
+    clientCertPath?: string;
+    /**
+     * A path to a client key file accessible by a Node
+     */
+    clientKeyPath?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetSecretStoreSecretStoreVaultToken {
     /**
      * Unique identifier of the SecretStore.
@@ -5558,15 +5941,89 @@ export interface GetSecretStoreSecretStoreVaultToken {
     tags?: {[key: string]: string};
 }
 
+export interface GetSecretStoreSecretStoreVaultTokenCertSsh {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreVaultTokenCertX509 {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes?: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetWorkflowApproverWorkflowApprover {
     /**
-     * The approver id.
+     * The approver account id.
      */
-    approverId?: string;
+    accountId?: string;
     /**
      * Unique identifier of the WorkflowApprover.
      */
     id?: string;
+    /**
+     * The approver role id
+     */
+    roleId?: string;
     /**
      * The workflow id.
      */
@@ -5593,6 +6050,10 @@ export interface GetWorkflowWorkflow {
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */
     accessRules?: string;
+    /**
+     * Optional approval flow ID identifies an approval flow that linked to the workflow
+     */
+    approvalFlowId?: string;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      */
@@ -9383,6 +9844,57 @@ export interface ResourceRdp {
     username?: string;
 }
 
+export interface ResourceRdpCert {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
+    remoteIdentityGroupId?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
+    remoteIdentityHealthcheckUsername?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface ResourceRdsPostgresIam {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -10272,6 +10784,21 @@ export interface ResourceTrino {
     username?: string;
 }
 
+export interface SecretStoreActiveDirectoryStore {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface SecretStoreAws {
     /**
      * Unique human-readable name of the SecretStore.
@@ -10281,6 +10808,37 @@ export interface SecretStoreAws {
      * The AWS region to target e.g. us-east-1
      */
     region: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreAwsCertX509 {
+    /**
+     * The ARN of the CA in AWS Private CA
+     */
+    caArn: string;
+    /**
+     * The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+     */
+    certificateTemplateArn: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The AWS region to target e.g. us-east-1
+     */
+    region: string;
+    /**
+     * The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+     */
+    signingAlgo: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -10368,6 +10926,37 @@ export interface SecretStoreDelineaStore {
     tenantName?: string;
 }
 
+export interface SecretStoreGcpCertX509Store {
+    /**
+     * The ID of the target CA
+     */
+    caId?: string;
+    /**
+     * The ID of the target CA pool
+     */
+    caPoolId: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * The Region for the CA in GCP format e.g. us-west1
+     */
+    location: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The GCP project ID to target.
+     */
+    projectId: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface SecretStoreGcpStore {
     /**
      * Unique human-readable name of the SecretStore.
@@ -10396,6 +10985,68 @@ export interface SecretStoreVaultApprole {
      * The URL of the Vault to target
      */
     serverAddress: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultApproleCertSsh {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultApproleCertX509 {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -10433,6 +11084,92 @@ export interface SecretStoreVaultTls {
     tags?: {[key: string]: string};
 }
 
+export interface SecretStoreVaultTlsCertSsh {
+    /**
+     * A path to a CA file accessible by a Node
+     */
+    caCertPath?: string;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
+    clientCertPath: string;
+    /**
+     * A path to a client key file accessible by a Node
+     */
+    clientKeyPath: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultTlsCertX509 {
+    /**
+     * A path to a CA file accessible by a Node
+     */
+    caCertPath?: string;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
+    clientCertPath: string;
+    /**
+     * A path to a client key file accessible by a Node
+     */
+    clientKeyPath: string;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface SecretStoreVaultToken {
     /**
      * Unique human-readable name of the SecretStore.
@@ -10446,6 +11183,68 @@ export interface SecretStoreVaultToken {
      * The URL of the Vault to target
      */
     serverAddress: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultTokenCertSsh {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultTokenCertX509 {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: number;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: string;
     /**
      * Tags is a map of key, value pairs.
      */

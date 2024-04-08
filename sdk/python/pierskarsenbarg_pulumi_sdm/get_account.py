@@ -22,7 +22,7 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, accounts=None, email=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, name=None, suspended=None, tags=None, type=None):
+    def __init__(__self__, accounts=None, email=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, name=None, permission_level=None, suspended=None, tags=None, type=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
@@ -47,6 +47,9 @@ class GetAccountResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if permission_level and not isinstance(permission_level, str):
+            raise TypeError("Expected argument 'permission_level' to be a str")
+        pulumi.set(__self__, "permission_level", permission_level)
         if suspended and not isinstance(suspended, bool):
             raise TypeError("Expected argument 'suspended' to be a bool")
         pulumi.set(__self__, "suspended", suspended)
@@ -123,10 +126,18 @@ class GetAccountResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="permissionLevel")
+    def permission_level(self) -> Optional[str]:
+        """
+        PermissionLevel is the user's permission level e.g. admin, DBA, user.
+        """
+        return pulumi.get(self, "permission_level")
+
+    @property
     @pulumi.getter
     def suspended(self) -> Optional[bool]:
         """
-        The User's suspended state.
+        Suspended is a read only field for the User's suspended state.
         """
         return pulumi.get(self, "suspended")
 
@@ -158,6 +169,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             ids=self.ids,
             last_name=self.last_name,
             name=self.name,
+            permission_level=self.permission_level,
             suspended=self.suspended,
             tags=self.tags,
             type=self.type)
@@ -169,6 +181,7 @@ def get_account(email: Optional[str] = None,
                 id: Optional[str] = None,
                 last_name: Optional[str] = None,
                 name: Optional[str] = None,
+                permission_level: Optional[str] = None,
                 suspended: Optional[bool] = None,
                 tags: Optional[Mapping[str, Any]] = None,
                 type: Optional[str] = None,
@@ -179,6 +192,7 @@ def get_account(email: Optional[str] = None,
      2. **Service Accounts:** machines that are authenticated using a service token.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -190,6 +204,7 @@ def get_account(email: Optional[str] = None,
         },
         type="user")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str email: The User's email address. Must be unique.
@@ -198,9 +213,10 @@ def get_account(email: Optional[str] = None,
     :param str id: Unique identifier of the User.
     :param str last_name: The User's last name.
     :param str name: Unique human-readable name of the Service.
-    :param bool suspended: The User's suspended state.
+    :param str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
+    :param bool suspended: The Service's suspended state.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
-    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     __args__ = dict()
     __args__['email'] = email
@@ -209,6 +225,7 @@ def get_account(email: Optional[str] = None,
     __args__['id'] = id
     __args__['lastName'] = last_name
     __args__['name'] = name
+    __args__['permissionLevel'] = permission_level
     __args__['suspended'] = suspended
     __args__['tags'] = tags
     __args__['type'] = type
@@ -224,6 +241,7 @@ def get_account(email: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         last_name=pulumi.get(__ret__, 'last_name'),
         name=pulumi.get(__ret__, 'name'),
+        permission_level=pulumi.get(__ret__, 'permission_level'),
         suspended=pulumi.get(__ret__, 'suspended'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
@@ -236,6 +254,7 @@ def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        last_name: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
+                       permission_level: Optional[pulumi.Input[Optional[str]]] = None,
                        suspended: Optional[pulumi.Input[Optional[bool]]] = None,
                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -246,6 +265,7 @@ def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
      2. **Service Accounts:** machines that are authenticated using a service token.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -257,6 +277,7 @@ def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
         },
         type="user")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str email: The User's email address. Must be unique.
@@ -265,8 +286,9 @@ def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: Unique identifier of the User.
     :param str last_name: The User's last name.
     :param str name: Unique human-readable name of the Service.
-    :param bool suspended: The User's suspended state.
+    :param str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
+    :param bool suspended: The Service's suspended state.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
-    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     ...

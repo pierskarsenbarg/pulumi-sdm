@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *  2. **Service Accounts:** machines that are authenticated using a service token.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -25,6 +26,7 @@ import * as utilities from "./utilities";
  *     type: "user",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     args = args || {};
@@ -37,6 +39,7 @@ export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): 
         "id": args.id,
         "lastName": args.lastName,
         "name": args.name,
+        "permissionLevel": args.permissionLevel,
         "suspended": args.suspended,
         "tags": args.tags,
         "type": args.type,
@@ -72,7 +75,11 @@ export interface GetAccountArgs {
      */
     name?: string;
     /**
-     * The User's suspended state.
+     * PermissionLevel is the user's permission level e.g. admin, DBA, user.
+     */
+    permissionLevel?: string;
+    /**
+     * The Service's suspended state.
      */
     suspended?: boolean;
     /**
@@ -80,7 +87,7 @@ export interface GetAccountArgs {
      */
     tags?: {[key: string]: any};
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
      */
     type?: string;
 }
@@ -123,7 +130,11 @@ export interface GetAccountResult {
      */
     readonly name?: string;
     /**
-     * The User's suspended state.
+     * PermissionLevel is the user's permission level e.g. admin, DBA, user.
+     */
+    readonly permissionLevel?: string;
+    /**
+     * Suspended is a read only field for the User's suspended state.
      */
     readonly suspended?: boolean;
     /**
@@ -138,6 +149,7 @@ export interface GetAccountResult {
  *  2. **Service Accounts:** machines that are authenticated using a service token.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -151,6 +163,7 @@ export interface GetAccountResult {
  *     type: "user",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     return pulumi.output(args).apply((a: any) => getAccount(a, opts))
@@ -185,7 +198,11 @@ export interface GetAccountOutputArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The User's suspended state.
+     * PermissionLevel is the user's permission level e.g. admin, DBA, user.
+     */
+    permissionLevel?: pulumi.Input<string>;
+    /**
+     * The Service's suspended state.
      */
     suspended?: pulumi.Input<boolean>;
     /**
@@ -193,7 +210,7 @@ export interface GetAccountOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
      */
     type?: pulumi.Input<string>;
 }

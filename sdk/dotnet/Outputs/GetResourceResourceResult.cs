@@ -80,6 +80,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourcePrestoResult> Prestos;
         public readonly ImmutableArray<Outputs.GetResourceResourceRabbitmqAmqp091Result> RabbitmqAmqp091s;
         public readonly ImmutableArray<Outputs.GetResourceResourceRawTcpResult> RawTcps;
+        public readonly ImmutableArray<Outputs.GetResourceResourceRdpCertResult> RdpCerts;
         public readonly ImmutableArray<Outputs.GetResourceResourceRdpResult> Rdps;
         public readonly ImmutableArray<Outputs.GetResourceResourceRdsPostgresIamResult> RdsPostgresIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceRediResult> Redis;
@@ -232,6 +233,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceRawTcpResult> rawTcps,
 
+            ImmutableArray<Outputs.GetResourceResourceRdpCertResult> rdpCerts,
+
             ImmutableArray<Outputs.GetResourceResourceRdpResult> rdps,
 
             ImmutableArray<Outputs.GetResourceResourceRdsPostgresIamResult> rdsPostgresIams,
@@ -332,6 +335,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Prestos = prestos;
             RabbitmqAmqp091s = rabbitmqAmqp091s;
             RawTcps = rawTcps;
+            RdpCerts = rdpCerts;
             Rdps = rdps;
             RdsPostgresIams = rdsPostgresIams;
             Redis = redis;

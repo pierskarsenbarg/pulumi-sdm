@@ -16,10 +16,9 @@ namespace PiersKarsenbarg.Sdm
         /// Accounts are users that have access to strongDM. There are two types of accounts:
         ///  1. **Users:** humans who are authenticated through username and password or SSO.
         ///  2. **Service Accounts:** machines that are authenticated using a service token.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
@@ -51,10 +49,9 @@ namespace PiersKarsenbarg.Sdm
         /// Accounts are users that have access to strongDM. There are two types of accounts:
         ///  1. **Users:** humans who are authenticated through username and password or SSO.
         ///  2. **Service Accounts:** machines that are authenticated using a service token.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,8 +73,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
@@ -123,7 +119,13 @@ namespace PiersKarsenbarg.Sdm
         public string? Name { get; set; }
 
         /// <summary>
-        /// The User's suspended state.
+        /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+        /// </summary>
+        [Input("permissionLevel")]
+        public string? PermissionLevel { get; set; }
+
+        /// <summary>
+        /// The Service's suspended state.
         /// </summary>
         [Input("suspended")]
         public bool? Suspended { get; set; }
@@ -141,7 +143,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -191,7 +193,13 @@ namespace PiersKarsenbarg.Sdm
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The User's suspended state.
+        /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+        /// </summary>
+        [Input("permissionLevel")]
+        public Input<string>? PermissionLevel { get; set; }
+
+        /// <summary>
+        /// The Service's suspended state.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
@@ -209,7 +217,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -258,7 +266,11 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The User's suspended state.
+        /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+        /// </summary>
+        public readonly string? PermissionLevel;
+        /// <summary>
+        /// Suspended is a read only field for the User's suspended state.
         /// </summary>
         public readonly bool? Suspended;
         /// <summary>
@@ -285,6 +297,8 @@ namespace PiersKarsenbarg.Sdm
 
             string? name,
 
+            string? permissionLevel,
+
             bool? suspended,
 
             ImmutableDictionary<string, object>? tags,
@@ -299,6 +313,7 @@ namespace PiersKarsenbarg.Sdm
             Ids = ids;
             LastName = lastName;
             Name = name;
+            PermissionLevel = permissionLevel;
             Suspended = suspended;
             Tags = tags;
             Type = type;

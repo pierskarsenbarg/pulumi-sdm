@@ -39,13 +39,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string ManagedBy;
         /// <summary>
-        /// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+        /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
         /// </summary>
-        public readonly string PermissionLevel;
+        public readonly string? PermissionLevel;
         /// <summary>
-        /// The User's suspended state.
+        /// The Service's suspended state.
         /// </summary>
-        public readonly bool? Suspended;
+        public readonly bool Suspended;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
@@ -65,9 +65,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string managedBy,
 
-            string permissionLevel,
+            string? permissionLevel,
 
-            bool? suspended,
+            bool suspended,
 
             ImmutableDictionary<string, string>? tags)
         {

@@ -16,6 +16,7 @@ namespace PiersKarsenbarg.Sdm
     ///  AccountAttachments.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,6 +66,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import
@@ -72,7 +74,7 @@ namespace PiersKarsenbarg.Sdm
     /// A Role can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/role:Role example r-12345678
+    /// $ pulumi import sdm:index/role:Role example r-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/role:Role")]

@@ -22,25 +22,32 @@ import (
 // A SecretStore can be imported using the id, e.g.,
 //
 // ```sh
-//
-//	$ pulumi import sdm:index/secretStore:SecretStore example se-12345678
-//
+// $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
 // ```
 type SecretStore struct {
 	pulumi.CustomResourceState
 
-	Aws            SecretStoreAwsPtrOutput            `pulumi:"aws"`
-	AzureStore     SecretStoreAzureStorePtrOutput     `pulumi:"azureStore"`
-	CyberarkConjur SecretStoreCyberarkConjurPtrOutput `pulumi:"cyberarkConjur"`
-	CyberarkPam    SecretStoreCyberarkPamPtrOutput    `pulumi:"cyberarkPam"`
+	ActiveDirectoryStore SecretStoreActiveDirectoryStorePtrOutput `pulumi:"activeDirectoryStore"`
+	Aws                  SecretStoreAwsPtrOutput                  `pulumi:"aws"`
+	AwsCertX509          SecretStoreAwsCertX509PtrOutput          `pulumi:"awsCertX509"`
+	AzureStore           SecretStoreAzureStorePtrOutput           `pulumi:"azureStore"`
+	CyberarkConjur       SecretStoreCyberarkConjurPtrOutput       `pulumi:"cyberarkConjur"`
+	CyberarkPam          SecretStoreCyberarkPamPtrOutput          `pulumi:"cyberarkPam"`
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
 	// version bump.
 	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrOutput `pulumi:"cyberarkPamExperimental"`
 	DelineaStore            SecretStoreDelineaStorePtrOutput            `pulumi:"delineaStore"`
+	GcpCertX509Store        SecretStoreGcpCertX509StorePtrOutput        `pulumi:"gcpCertX509Store"`
 	GcpStore                SecretStoreGcpStorePtrOutput                `pulumi:"gcpStore"`
 	VaultApprole            SecretStoreVaultApprolePtrOutput            `pulumi:"vaultApprole"`
+	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrOutput     `pulumi:"vaultApproleCertSsh"`
+	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrOutput    `pulumi:"vaultApproleCertX509"`
 	VaultTls                SecretStoreVaultTlsPtrOutput                `pulumi:"vaultTls"`
+	VaultTlsCertSsh         SecretStoreVaultTlsCertSshPtrOutput         `pulumi:"vaultTlsCertSsh"`
+	VaultTlsCertX509        SecretStoreVaultTlsCertX509PtrOutput        `pulumi:"vaultTlsCertX509"`
 	VaultToken              SecretStoreVaultTokenPtrOutput              `pulumi:"vaultToken"`
+	VaultTokenCertSsh       SecretStoreVaultTokenCertSshPtrOutput       `pulumi:"vaultTokenCertSsh"`
+	VaultTokenCertX509      SecretStoreVaultTokenCertX509PtrOutput      `pulumi:"vaultTokenCertX509"`
 }
 
 // NewSecretStore registers a new resource with the given unique name, arguments, and options.
@@ -73,33 +80,51 @@ func GetSecretStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecretStore resources.
 type secretStoreState struct {
-	Aws            *SecretStoreAws            `pulumi:"aws"`
-	AzureStore     *SecretStoreAzureStore     `pulumi:"azureStore"`
-	CyberarkConjur *SecretStoreCyberarkConjur `pulumi:"cyberarkConjur"`
-	CyberarkPam    *SecretStoreCyberarkPam    `pulumi:"cyberarkPam"`
+	ActiveDirectoryStore *SecretStoreActiveDirectoryStore `pulumi:"activeDirectoryStore"`
+	Aws                  *SecretStoreAws                  `pulumi:"aws"`
+	AwsCertX509          *SecretStoreAwsCertX509          `pulumi:"awsCertX509"`
+	AzureStore           *SecretStoreAzureStore           `pulumi:"azureStore"`
+	CyberarkConjur       *SecretStoreCyberarkConjur       `pulumi:"cyberarkConjur"`
+	CyberarkPam          *SecretStoreCyberarkPam          `pulumi:"cyberarkPam"`
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
 	// version bump.
 	CyberarkPamExperimental *SecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimental"`
 	DelineaStore            *SecretStoreDelineaStore            `pulumi:"delineaStore"`
+	GcpCertX509Store        *SecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Store"`
 	GcpStore                *SecretStoreGcpStore                `pulumi:"gcpStore"`
 	VaultApprole            *SecretStoreVaultApprole            `pulumi:"vaultApprole"`
+	VaultApproleCertSsh     *SecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSsh"`
+	VaultApproleCertX509    *SecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509"`
 	VaultTls                *SecretStoreVaultTls                `pulumi:"vaultTls"`
+	VaultTlsCertSsh         *SecretStoreVaultTlsCertSsh         `pulumi:"vaultTlsCertSsh"`
+	VaultTlsCertX509        *SecretStoreVaultTlsCertX509        `pulumi:"vaultTlsCertX509"`
 	VaultToken              *SecretStoreVaultToken              `pulumi:"vaultToken"`
+	VaultTokenCertSsh       *SecretStoreVaultTokenCertSsh       `pulumi:"vaultTokenCertSsh"`
+	VaultTokenCertX509      *SecretStoreVaultTokenCertX509      `pulumi:"vaultTokenCertX509"`
 }
 
 type SecretStoreState struct {
-	Aws            SecretStoreAwsPtrInput
-	AzureStore     SecretStoreAzureStorePtrInput
-	CyberarkConjur SecretStoreCyberarkConjurPtrInput
-	CyberarkPam    SecretStoreCyberarkPamPtrInput
+	ActiveDirectoryStore SecretStoreActiveDirectoryStorePtrInput
+	Aws                  SecretStoreAwsPtrInput
+	AwsCertX509          SecretStoreAwsCertX509PtrInput
+	AzureStore           SecretStoreAzureStorePtrInput
+	CyberarkConjur       SecretStoreCyberarkConjurPtrInput
+	CyberarkPam          SecretStoreCyberarkPamPtrInput
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
 	// version bump.
 	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrInput
 	DelineaStore            SecretStoreDelineaStorePtrInput
+	GcpCertX509Store        SecretStoreGcpCertX509StorePtrInput
 	GcpStore                SecretStoreGcpStorePtrInput
 	VaultApprole            SecretStoreVaultApprolePtrInput
+	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrInput
+	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrInput
 	VaultTls                SecretStoreVaultTlsPtrInput
+	VaultTlsCertSsh         SecretStoreVaultTlsCertSshPtrInput
+	VaultTlsCertX509        SecretStoreVaultTlsCertX509PtrInput
 	VaultToken              SecretStoreVaultTokenPtrInput
+	VaultTokenCertSsh       SecretStoreVaultTokenCertSshPtrInput
+	VaultTokenCertX509      SecretStoreVaultTokenCertX509PtrInput
 }
 
 func (SecretStoreState) ElementType() reflect.Type {
@@ -107,34 +132,52 @@ func (SecretStoreState) ElementType() reflect.Type {
 }
 
 type secretStoreArgs struct {
-	Aws            *SecretStoreAws            `pulumi:"aws"`
-	AzureStore     *SecretStoreAzureStore     `pulumi:"azureStore"`
-	CyberarkConjur *SecretStoreCyberarkConjur `pulumi:"cyberarkConjur"`
-	CyberarkPam    *SecretStoreCyberarkPam    `pulumi:"cyberarkPam"`
+	ActiveDirectoryStore *SecretStoreActiveDirectoryStore `pulumi:"activeDirectoryStore"`
+	Aws                  *SecretStoreAws                  `pulumi:"aws"`
+	AwsCertX509          *SecretStoreAwsCertX509          `pulumi:"awsCertX509"`
+	AzureStore           *SecretStoreAzureStore           `pulumi:"azureStore"`
+	CyberarkConjur       *SecretStoreCyberarkConjur       `pulumi:"cyberarkConjur"`
+	CyberarkPam          *SecretStoreCyberarkPam          `pulumi:"cyberarkPam"`
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
 	// version bump.
 	CyberarkPamExperimental *SecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimental"`
 	DelineaStore            *SecretStoreDelineaStore            `pulumi:"delineaStore"`
+	GcpCertX509Store        *SecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Store"`
 	GcpStore                *SecretStoreGcpStore                `pulumi:"gcpStore"`
 	VaultApprole            *SecretStoreVaultApprole            `pulumi:"vaultApprole"`
+	VaultApproleCertSsh     *SecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSsh"`
+	VaultApproleCertX509    *SecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509"`
 	VaultTls                *SecretStoreVaultTls                `pulumi:"vaultTls"`
+	VaultTlsCertSsh         *SecretStoreVaultTlsCertSsh         `pulumi:"vaultTlsCertSsh"`
+	VaultTlsCertX509        *SecretStoreVaultTlsCertX509        `pulumi:"vaultTlsCertX509"`
 	VaultToken              *SecretStoreVaultToken              `pulumi:"vaultToken"`
+	VaultTokenCertSsh       *SecretStoreVaultTokenCertSsh       `pulumi:"vaultTokenCertSsh"`
+	VaultTokenCertX509      *SecretStoreVaultTokenCertX509      `pulumi:"vaultTokenCertX509"`
 }
 
 // The set of arguments for constructing a SecretStore resource.
 type SecretStoreArgs struct {
-	Aws            SecretStoreAwsPtrInput
-	AzureStore     SecretStoreAzureStorePtrInput
-	CyberarkConjur SecretStoreCyberarkConjurPtrInput
-	CyberarkPam    SecretStoreCyberarkPamPtrInput
+	ActiveDirectoryStore SecretStoreActiveDirectoryStorePtrInput
+	Aws                  SecretStoreAwsPtrInput
+	AwsCertX509          SecretStoreAwsCertX509PtrInput
+	AzureStore           SecretStoreAzureStorePtrInput
+	CyberarkConjur       SecretStoreCyberarkConjurPtrInput
+	CyberarkPam          SecretStoreCyberarkPamPtrInput
 	// CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
 	// version bump.
 	CyberarkPamExperimental SecretStoreCyberarkPamExperimentalPtrInput
 	DelineaStore            SecretStoreDelineaStorePtrInput
+	GcpCertX509Store        SecretStoreGcpCertX509StorePtrInput
 	GcpStore                SecretStoreGcpStorePtrInput
 	VaultApprole            SecretStoreVaultApprolePtrInput
+	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrInput
+	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrInput
 	VaultTls                SecretStoreVaultTlsPtrInput
+	VaultTlsCertSsh         SecretStoreVaultTlsCertSshPtrInput
+	VaultTlsCertX509        SecretStoreVaultTlsCertX509PtrInput
 	VaultToken              SecretStoreVaultTokenPtrInput
+	VaultTokenCertSsh       SecretStoreVaultTokenCertSshPtrInput
+	VaultTokenCertX509      SecretStoreVaultTokenCertX509PtrInput
 }
 
 func (SecretStoreArgs) ElementType() reflect.Type {
@@ -224,8 +267,16 @@ func (o SecretStoreOutput) ToSecretStoreOutputWithContext(ctx context.Context) S
 	return o
 }
 
+func (o SecretStoreOutput) ActiveDirectoryStore() SecretStoreActiveDirectoryStorePtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreActiveDirectoryStorePtrOutput { return v.ActiveDirectoryStore }).(SecretStoreActiveDirectoryStorePtrOutput)
+}
+
 func (o SecretStoreOutput) Aws() SecretStoreAwsPtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreAwsPtrOutput { return v.Aws }).(SecretStoreAwsPtrOutput)
+}
+
+func (o SecretStoreOutput) AwsCertX509() SecretStoreAwsCertX509PtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreAwsCertX509PtrOutput { return v.AwsCertX509 }).(SecretStoreAwsCertX509PtrOutput)
 }
 
 func (o SecretStoreOutput) AzureStore() SecretStoreAzureStorePtrOutput {
@@ -250,6 +301,10 @@ func (o SecretStoreOutput) DelineaStore() SecretStoreDelineaStorePtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreDelineaStorePtrOutput { return v.DelineaStore }).(SecretStoreDelineaStorePtrOutput)
 }
 
+func (o SecretStoreOutput) GcpCertX509Store() SecretStoreGcpCertX509StorePtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreGcpCertX509StorePtrOutput { return v.GcpCertX509Store }).(SecretStoreGcpCertX509StorePtrOutput)
+}
+
 func (o SecretStoreOutput) GcpStore() SecretStoreGcpStorePtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreGcpStorePtrOutput { return v.GcpStore }).(SecretStoreGcpStorePtrOutput)
 }
@@ -258,12 +313,36 @@ func (o SecretStoreOutput) VaultApprole() SecretStoreVaultApprolePtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreVaultApprolePtrOutput { return v.VaultApprole }).(SecretStoreVaultApprolePtrOutput)
 }
 
+func (o SecretStoreOutput) VaultApproleCertSsh() SecretStoreVaultApproleCertSshPtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultApproleCertSshPtrOutput { return v.VaultApproleCertSsh }).(SecretStoreVaultApproleCertSshPtrOutput)
+}
+
+func (o SecretStoreOutput) VaultApproleCertX509() SecretStoreVaultApproleCertX509PtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultApproleCertX509PtrOutput { return v.VaultApproleCertX509 }).(SecretStoreVaultApproleCertX509PtrOutput)
+}
+
 func (o SecretStoreOutput) VaultTls() SecretStoreVaultTlsPtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreVaultTlsPtrOutput { return v.VaultTls }).(SecretStoreVaultTlsPtrOutput)
 }
 
+func (o SecretStoreOutput) VaultTlsCertSsh() SecretStoreVaultTlsCertSshPtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultTlsCertSshPtrOutput { return v.VaultTlsCertSsh }).(SecretStoreVaultTlsCertSshPtrOutput)
+}
+
+func (o SecretStoreOutput) VaultTlsCertX509() SecretStoreVaultTlsCertX509PtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultTlsCertX509PtrOutput { return v.VaultTlsCertX509 }).(SecretStoreVaultTlsCertX509PtrOutput)
+}
+
 func (o SecretStoreOutput) VaultToken() SecretStoreVaultTokenPtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreVaultTokenPtrOutput { return v.VaultToken }).(SecretStoreVaultTokenPtrOutput)
+}
+
+func (o SecretStoreOutput) VaultTokenCertSsh() SecretStoreVaultTokenCertSshPtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultTokenCertSshPtrOutput { return v.VaultTokenCertSsh }).(SecretStoreVaultTokenCertSshPtrOutput)
+}
+
+func (o SecretStoreOutput) VaultTokenCertX509() SecretStoreVaultTokenCertX509PtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreVaultTokenCertX509PtrOutput { return v.VaultTokenCertX509 }).(SecretStoreVaultTokenCertX509PtrOutput)
 }
 
 type SecretStoreArrayOutput struct{ *pulumi.OutputState }

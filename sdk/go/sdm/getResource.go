@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupResource(ctx *pulumi.Context, args *LookupResourceArgs, opts ...pulumi.InvokeOption) (*LookupResourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceResult
@@ -67,7 +69,7 @@ type LookupResourceArgs struct {
 	Port *int `pulumi:"port"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type *string `pulumi:"type"`
 	// The username to authenticate with.
 	Username *string `pulumi:"username"`
@@ -120,7 +122,7 @@ type LookupResourceOutputArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The username to authenticate with.
 	Username pulumi.StringPtrInput `pulumi:"username"`

@@ -16,7 +16,7 @@ var _ = internal.GetEnvOrDefault
 type AccountService struct {
 	// Unique human-readable name of the Service.
 	Name string `pulumi:"name"`
-	// The User's suspended state.
+	// The Service's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags  map[string]string `pulumi:"tags"`
@@ -37,7 +37,7 @@ type AccountServiceInput interface {
 type AccountServiceArgs struct {
 	// Unique human-readable name of the Service.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The User's suspended state.
+	// The Service's suspended state.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags  pulumi.StringMapInput `pulumi:"tags"`
@@ -126,7 +126,7 @@ func (o AccountServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AccountService) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The User's suspended state.
+// The Service's suspended state.
 func (o AccountServiceOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccountService) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
 }
@@ -174,7 +174,7 @@ func (o AccountServicePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The User's suspended state.
+// The Service's suspended state.
 func (o AccountServicePtrOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccountService) *bool {
 		if v == nil {
@@ -214,9 +214,9 @@ type AccountUser struct {
 	LastName string `pulumi:"lastName"`
 	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
 	ManagedBy *string `pulumi:"managedBy"`
-	// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel *string `pulumi:"permissionLevel"`
-	// The User's suspended state.
+	// The Service's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
@@ -244,9 +244,9 @@ type AccountUserArgs struct {
 	LastName pulumi.StringInput `pulumi:"lastName"`
 	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
 	ManagedBy pulumi.StringPtrInput `pulumi:"managedBy"`
-	// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel pulumi.StringPtrInput `pulumi:"permissionLevel"`
-	// The User's suspended state.
+	// The Service's suspended state.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -354,12 +354,12 @@ func (o AccountUserOutput) ManagedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountUser) *string { return v.ManagedBy }).(pulumi.StringPtrOutput)
 }
 
-// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 func (o AccountUserOutput) PermissionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccountUser) *string { return v.PermissionLevel }).(pulumi.StringPtrOutput)
 }
 
-// The User's suspended state.
+// The Service's suspended state.
 func (o AccountUserOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccountUser) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
 }
@@ -443,7 +443,7 @@ func (o AccountUserPtrOutput) ManagedBy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 func (o AccountUserPtrOutput) PermissionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccountUser) *string {
 		if v == nil {
@@ -453,7 +453,7 @@ func (o AccountUserPtrOutput) PermissionLevel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The User's suspended state.
+// The Service's suspended state.
 func (o AccountUserPtrOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccountUser) *bool {
 		if v == nil {
@@ -25679,6 +25679,352 @@ func (o ResourceRdpPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceRdpCert struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// The ID of the remote identity group to use for remote identity connections.
+	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
+	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceRdpCertInput is an input type that accepts ResourceRdpCertArgs and ResourceRdpCertOutput values.
+// You can construct a concrete instance of `ResourceRdpCertInput` via:
+//
+//	ResourceRdpCertArgs{...}
+type ResourceRdpCertInput interface {
+	pulumi.Input
+
+	ToResourceRdpCertOutput() ResourceRdpCertOutput
+	ToResourceRdpCertOutputWithContext(context.Context) ResourceRdpCertOutput
+}
+
+type ResourceRdpCertArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// The ID of the remote identity group to use for remote identity connections.
+	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceRdpCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRdpCert)(nil)).Elem()
+}
+
+func (i ResourceRdpCertArgs) ToResourceRdpCertOutput() ResourceRdpCertOutput {
+	return i.ToResourceRdpCertOutputWithContext(context.Background())
+}
+
+func (i ResourceRdpCertArgs) ToResourceRdpCertOutputWithContext(ctx context.Context) ResourceRdpCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRdpCertOutput)
+}
+
+func (i ResourceRdpCertArgs) ToResourceRdpCertPtrOutput() ResourceRdpCertPtrOutput {
+	return i.ToResourceRdpCertPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceRdpCertArgs) ToResourceRdpCertPtrOutputWithContext(ctx context.Context) ResourceRdpCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRdpCertOutput).ToResourceRdpCertPtrOutputWithContext(ctx)
+}
+
+// ResourceRdpCertPtrInput is an input type that accepts ResourceRdpCertArgs, ResourceRdpCertPtr and ResourceRdpCertPtrOutput values.
+// You can construct a concrete instance of `ResourceRdpCertPtrInput` via:
+//
+//	        ResourceRdpCertArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceRdpCertPtrInput interface {
+	pulumi.Input
+
+	ToResourceRdpCertPtrOutput() ResourceRdpCertPtrOutput
+	ToResourceRdpCertPtrOutputWithContext(context.Context) ResourceRdpCertPtrOutput
+}
+
+type resourceRdpCertPtrType ResourceRdpCertArgs
+
+func ResourceRdpCertPtr(v *ResourceRdpCertArgs) ResourceRdpCertPtrInput {
+	return (*resourceRdpCertPtrType)(v)
+}
+
+func (*resourceRdpCertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRdpCert)(nil)).Elem()
+}
+
+func (i *resourceRdpCertPtrType) ToResourceRdpCertPtrOutput() ResourceRdpCertPtrOutput {
+	return i.ToResourceRdpCertPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceRdpCertPtrType) ToResourceRdpCertPtrOutputWithContext(ctx context.Context) ResourceRdpCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRdpCertPtrOutput)
+}
+
+type ResourceRdpCertOutput struct{ *pulumi.OutputState }
+
+func (ResourceRdpCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRdpCert)(nil)).Elem()
+}
+
+func (o ResourceRdpCertOutput) ToResourceRdpCertOutput() ResourceRdpCertOutput {
+	return o
+}
+
+func (o ResourceRdpCertOutput) ToResourceRdpCertOutputWithContext(ctx context.Context) ResourceRdpCertOutput {
+	return o
+}
+
+func (o ResourceRdpCertOutput) ToResourceRdpCertPtrOutput() ResourceRdpCertPtrOutput {
+	return o.ToResourceRdpCertPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceRdpCertOutput) ToResourceRdpCertPtrOutputWithContext(ctx context.Context) ResourceRdpCertPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRdpCert) *ResourceRdpCert {
+		return &v
+	}).(ResourceRdpCertPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRdpCertOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRdpCertOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRdpCertOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRdpCert) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRdpCertOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRdpCert) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRdpCertOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRdpCertOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the remote identity group to use for remote identity connections.
+func (o ResourceRdpCertOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+func (o ResourceRdpCertOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRdpCertOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRdpCertOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRdpCertOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceRdpCert) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceRdpCertOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceRdpCertPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRdpCertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRdpCert)(nil)).Elem()
+}
+
+func (o ResourceRdpCertPtrOutput) ToResourceRdpCertPtrOutput() ResourceRdpCertPtrOutput {
+	return o
+}
+
+func (o ResourceRdpCertPtrOutput) ToResourceRdpCertPtrOutputWithContext(ctx context.Context) ResourceRdpCertPtrOutput {
+	return o
+}
+
+func (o ResourceRdpCertPtrOutput) Elem() ResourceRdpCertOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) ResourceRdpCert {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRdpCert
+		return ret
+	}).(ResourceRdpCertOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRdpCertPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRdpCertPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRdpCertPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRdpCertPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRdpCertPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRdpCertPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the remote identity group to use for remote identity connections.
+func (o ResourceRdpCertPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIdentityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+func (o ResourceRdpCertPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteIdentityHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRdpCertPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRdpCertPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRdpCertPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceRdpCertPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceRdsPostgresIam struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -31561,6 +31907,181 @@ func (o ResourceTrinoPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecretStoreActiveDirectoryStore struct {
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreActiveDirectoryStoreInput is an input type that accepts SecretStoreActiveDirectoryStoreArgs and SecretStoreActiveDirectoryStoreOutput values.
+// You can construct a concrete instance of `SecretStoreActiveDirectoryStoreInput` via:
+//
+//	SecretStoreActiveDirectoryStoreArgs{...}
+type SecretStoreActiveDirectoryStoreInput interface {
+	pulumi.Input
+
+	ToSecretStoreActiveDirectoryStoreOutput() SecretStoreActiveDirectoryStoreOutput
+	ToSecretStoreActiveDirectoryStoreOutputWithContext(context.Context) SecretStoreActiveDirectoryStoreOutput
+}
+
+type SecretStoreActiveDirectoryStoreArgs struct {
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreActiveDirectoryStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreActiveDirectoryStore)(nil)).Elem()
+}
+
+func (i SecretStoreActiveDirectoryStoreArgs) ToSecretStoreActiveDirectoryStoreOutput() SecretStoreActiveDirectoryStoreOutput {
+	return i.ToSecretStoreActiveDirectoryStoreOutputWithContext(context.Background())
+}
+
+func (i SecretStoreActiveDirectoryStoreArgs) ToSecretStoreActiveDirectoryStoreOutputWithContext(ctx context.Context) SecretStoreActiveDirectoryStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreActiveDirectoryStoreOutput)
+}
+
+func (i SecretStoreActiveDirectoryStoreArgs) ToSecretStoreActiveDirectoryStorePtrOutput() SecretStoreActiveDirectoryStorePtrOutput {
+	return i.ToSecretStoreActiveDirectoryStorePtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreActiveDirectoryStoreArgs) ToSecretStoreActiveDirectoryStorePtrOutputWithContext(ctx context.Context) SecretStoreActiveDirectoryStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreActiveDirectoryStoreOutput).ToSecretStoreActiveDirectoryStorePtrOutputWithContext(ctx)
+}
+
+// SecretStoreActiveDirectoryStorePtrInput is an input type that accepts SecretStoreActiveDirectoryStoreArgs, SecretStoreActiveDirectoryStorePtr and SecretStoreActiveDirectoryStorePtrOutput values.
+// You can construct a concrete instance of `SecretStoreActiveDirectoryStorePtrInput` via:
+//
+//	        SecretStoreActiveDirectoryStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreActiveDirectoryStorePtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreActiveDirectoryStorePtrOutput() SecretStoreActiveDirectoryStorePtrOutput
+	ToSecretStoreActiveDirectoryStorePtrOutputWithContext(context.Context) SecretStoreActiveDirectoryStorePtrOutput
+}
+
+type secretStoreActiveDirectoryStorePtrType SecretStoreActiveDirectoryStoreArgs
+
+func SecretStoreActiveDirectoryStorePtr(v *SecretStoreActiveDirectoryStoreArgs) SecretStoreActiveDirectoryStorePtrInput {
+	return (*secretStoreActiveDirectoryStorePtrType)(v)
+}
+
+func (*secretStoreActiveDirectoryStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreActiveDirectoryStore)(nil)).Elem()
+}
+
+func (i *secretStoreActiveDirectoryStorePtrType) ToSecretStoreActiveDirectoryStorePtrOutput() SecretStoreActiveDirectoryStorePtrOutput {
+	return i.ToSecretStoreActiveDirectoryStorePtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreActiveDirectoryStorePtrType) ToSecretStoreActiveDirectoryStorePtrOutputWithContext(ctx context.Context) SecretStoreActiveDirectoryStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreActiveDirectoryStorePtrOutput)
+}
+
+type SecretStoreActiveDirectoryStoreOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreActiveDirectoryStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreActiveDirectoryStore)(nil)).Elem()
+}
+
+func (o SecretStoreActiveDirectoryStoreOutput) ToSecretStoreActiveDirectoryStoreOutput() SecretStoreActiveDirectoryStoreOutput {
+	return o
+}
+
+func (o SecretStoreActiveDirectoryStoreOutput) ToSecretStoreActiveDirectoryStoreOutputWithContext(ctx context.Context) SecretStoreActiveDirectoryStoreOutput {
+	return o
+}
+
+func (o SecretStoreActiveDirectoryStoreOutput) ToSecretStoreActiveDirectoryStorePtrOutput() SecretStoreActiveDirectoryStorePtrOutput {
+	return o.ToSecretStoreActiveDirectoryStorePtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreActiveDirectoryStoreOutput) ToSecretStoreActiveDirectoryStorePtrOutputWithContext(ctx context.Context) SecretStoreActiveDirectoryStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreActiveDirectoryStore) *SecretStoreActiveDirectoryStore {
+		return &v
+	}).(SecretStoreActiveDirectoryStorePtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreActiveDirectoryStoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreActiveDirectoryStore) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreActiveDirectoryStoreOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreActiveDirectoryStore) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreActiveDirectoryStoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreActiveDirectoryStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreActiveDirectoryStorePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreActiveDirectoryStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreActiveDirectoryStore)(nil)).Elem()
+}
+
+func (o SecretStoreActiveDirectoryStorePtrOutput) ToSecretStoreActiveDirectoryStorePtrOutput() SecretStoreActiveDirectoryStorePtrOutput {
+	return o
+}
+
+func (o SecretStoreActiveDirectoryStorePtrOutput) ToSecretStoreActiveDirectoryStorePtrOutputWithContext(ctx context.Context) SecretStoreActiveDirectoryStorePtrOutput {
+	return o
+}
+
+func (o SecretStoreActiveDirectoryStorePtrOutput) Elem() SecretStoreActiveDirectoryStoreOutput {
+	return o.ApplyT(func(v *SecretStoreActiveDirectoryStore) SecretStoreActiveDirectoryStore {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreActiveDirectoryStore
+		return ret
+	}).(SecretStoreActiveDirectoryStoreOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreActiveDirectoryStorePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreActiveDirectoryStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreActiveDirectoryStorePtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreActiveDirectoryStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreActiveDirectoryStorePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreActiveDirectoryStore) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type SecretStoreAws struct {
 	// Unique human-readable name of the SecretStore.
 	Name string `pulumi:"name"`
@@ -31729,6 +32250,257 @@ func (o SecretStoreAwsPtrOutput) Region() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o SecretStoreAwsPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SecretStoreAws) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type SecretStoreAwsCertX509 struct {
+	// The ARN of the CA in AWS Private CA
+	CaArn string `pulumi:"caArn"`
+	// The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+	CertificateTemplateArn string `pulumi:"certificateTemplateArn"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The AWS region to target e.g. us-east-1
+	Region string `pulumi:"region"`
+	// The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+	SigningAlgo string `pulumi:"signingAlgo"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreAwsCertX509Input is an input type that accepts SecretStoreAwsCertX509Args and SecretStoreAwsCertX509Output values.
+// You can construct a concrete instance of `SecretStoreAwsCertX509Input` via:
+//
+//	SecretStoreAwsCertX509Args{...}
+type SecretStoreAwsCertX509Input interface {
+	pulumi.Input
+
+	ToSecretStoreAwsCertX509Output() SecretStoreAwsCertX509Output
+	ToSecretStoreAwsCertX509OutputWithContext(context.Context) SecretStoreAwsCertX509Output
+}
+
+type SecretStoreAwsCertX509Args struct {
+	// The ARN of the CA in AWS Private CA
+	CaArn pulumi.StringInput `pulumi:"caArn"`
+	// The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+	CertificateTemplateArn pulumi.StringInput `pulumi:"certificateTemplateArn"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The AWS region to target e.g. us-east-1
+	Region pulumi.StringInput `pulumi:"region"`
+	// The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+	SigningAlgo pulumi.StringInput `pulumi:"signingAlgo"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreAwsCertX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreAwsCertX509)(nil)).Elem()
+}
+
+func (i SecretStoreAwsCertX509Args) ToSecretStoreAwsCertX509Output() SecretStoreAwsCertX509Output {
+	return i.ToSecretStoreAwsCertX509OutputWithContext(context.Background())
+}
+
+func (i SecretStoreAwsCertX509Args) ToSecretStoreAwsCertX509OutputWithContext(ctx context.Context) SecretStoreAwsCertX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreAwsCertX509Output)
+}
+
+func (i SecretStoreAwsCertX509Args) ToSecretStoreAwsCertX509PtrOutput() SecretStoreAwsCertX509PtrOutput {
+	return i.ToSecretStoreAwsCertX509PtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreAwsCertX509Args) ToSecretStoreAwsCertX509PtrOutputWithContext(ctx context.Context) SecretStoreAwsCertX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreAwsCertX509Output).ToSecretStoreAwsCertX509PtrOutputWithContext(ctx)
+}
+
+// SecretStoreAwsCertX509PtrInput is an input type that accepts SecretStoreAwsCertX509Args, SecretStoreAwsCertX509Ptr and SecretStoreAwsCertX509PtrOutput values.
+// You can construct a concrete instance of `SecretStoreAwsCertX509PtrInput` via:
+//
+//	        SecretStoreAwsCertX509Args{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreAwsCertX509PtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreAwsCertX509PtrOutput() SecretStoreAwsCertX509PtrOutput
+	ToSecretStoreAwsCertX509PtrOutputWithContext(context.Context) SecretStoreAwsCertX509PtrOutput
+}
+
+type secretStoreAwsCertX509PtrType SecretStoreAwsCertX509Args
+
+func SecretStoreAwsCertX509Ptr(v *SecretStoreAwsCertX509Args) SecretStoreAwsCertX509PtrInput {
+	return (*secretStoreAwsCertX509PtrType)(v)
+}
+
+func (*secretStoreAwsCertX509PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreAwsCertX509)(nil)).Elem()
+}
+
+func (i *secretStoreAwsCertX509PtrType) ToSecretStoreAwsCertX509PtrOutput() SecretStoreAwsCertX509PtrOutput {
+	return i.ToSecretStoreAwsCertX509PtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreAwsCertX509PtrType) ToSecretStoreAwsCertX509PtrOutputWithContext(ctx context.Context) SecretStoreAwsCertX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreAwsCertX509PtrOutput)
+}
+
+type SecretStoreAwsCertX509Output struct{ *pulumi.OutputState }
+
+func (SecretStoreAwsCertX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreAwsCertX509)(nil)).Elem()
+}
+
+func (o SecretStoreAwsCertX509Output) ToSecretStoreAwsCertX509Output() SecretStoreAwsCertX509Output {
+	return o
+}
+
+func (o SecretStoreAwsCertX509Output) ToSecretStoreAwsCertX509OutputWithContext(ctx context.Context) SecretStoreAwsCertX509Output {
+	return o
+}
+
+func (o SecretStoreAwsCertX509Output) ToSecretStoreAwsCertX509PtrOutput() SecretStoreAwsCertX509PtrOutput {
+	return o.ToSecretStoreAwsCertX509PtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreAwsCertX509Output) ToSecretStoreAwsCertX509PtrOutputWithContext(ctx context.Context) SecretStoreAwsCertX509PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreAwsCertX509) *SecretStoreAwsCertX509 {
+		return &v
+	}).(SecretStoreAwsCertX509PtrOutput)
+}
+
+// The ARN of the CA in AWS Private CA
+func (o SecretStoreAwsCertX509Output) CaArn() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreAwsCertX509) string { return v.CaArn }).(pulumi.StringOutput)
+}
+
+// The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+func (o SecretStoreAwsCertX509Output) CertificateTemplateArn() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreAwsCertX509) string { return v.CertificateTemplateArn }).(pulumi.StringOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreAwsCertX509Output) IssuedCertTtlMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretStoreAwsCertX509) int { return v.IssuedCertTtlMinutes }).(pulumi.IntOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreAwsCertX509Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreAwsCertX509) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The AWS region to target e.g. us-east-1
+func (o SecretStoreAwsCertX509Output) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreAwsCertX509) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+func (o SecretStoreAwsCertX509Output) SigningAlgo() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreAwsCertX509) string { return v.SigningAlgo }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreAwsCertX509Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreAwsCertX509) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreAwsCertX509PtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreAwsCertX509PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreAwsCertX509)(nil)).Elem()
+}
+
+func (o SecretStoreAwsCertX509PtrOutput) ToSecretStoreAwsCertX509PtrOutput() SecretStoreAwsCertX509PtrOutput {
+	return o
+}
+
+func (o SecretStoreAwsCertX509PtrOutput) ToSecretStoreAwsCertX509PtrOutputWithContext(ctx context.Context) SecretStoreAwsCertX509PtrOutput {
+	return o
+}
+
+func (o SecretStoreAwsCertX509PtrOutput) Elem() SecretStoreAwsCertX509Output {
+	return o.ApplyT(func(v *SecretStoreAwsCertX509) SecretStoreAwsCertX509 {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreAwsCertX509
+		return ret
+	}).(SecretStoreAwsCertX509Output)
+}
+
+// The ARN of the CA in AWS Private CA
+func (o SecretStoreAwsCertX509PtrOutput) CaArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreAwsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+func (o SecretStoreAwsCertX509PtrOutput) CertificateTemplateArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreAwsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateTemplateArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreAwsCertX509PtrOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretStoreAwsCertX509) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuedCertTtlMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreAwsCertX509PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreAwsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to target e.g. us-east-1
+func (o SecretStoreAwsCertX509PtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreAwsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+func (o SecretStoreAwsCertX509PtrOutput) SigningAlgo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreAwsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SigningAlgo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreAwsCertX509PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreAwsCertX509) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -32638,6 +33410,257 @@ func (o SecretStoreDelineaStorePtrOutput) TenantName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecretStoreGcpCertX509Store struct {
+	// The ID of the target CA
+	CaId *string `pulumi:"caId"`
+	// The ID of the target CA pool
+	CaPoolId string `pulumi:"caPoolId"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes int `pulumi:"issuedCertTtlMinutes"`
+	// The Region for the CA in GCP format e.g. us-west1
+	Location string `pulumi:"location"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The GCP project ID to target.
+	ProjectId string `pulumi:"projectId"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreGcpCertX509StoreInput is an input type that accepts SecretStoreGcpCertX509StoreArgs and SecretStoreGcpCertX509StoreOutput values.
+// You can construct a concrete instance of `SecretStoreGcpCertX509StoreInput` via:
+//
+//	SecretStoreGcpCertX509StoreArgs{...}
+type SecretStoreGcpCertX509StoreInput interface {
+	pulumi.Input
+
+	ToSecretStoreGcpCertX509StoreOutput() SecretStoreGcpCertX509StoreOutput
+	ToSecretStoreGcpCertX509StoreOutputWithContext(context.Context) SecretStoreGcpCertX509StoreOutput
+}
+
+type SecretStoreGcpCertX509StoreArgs struct {
+	// The ID of the target CA
+	CaId pulumi.StringPtrInput `pulumi:"caId"`
+	// The ID of the target CA pool
+	CaPoolId pulumi.StringInput `pulumi:"caPoolId"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntInput `pulumi:"issuedCertTtlMinutes"`
+	// The Region for the CA in GCP format e.g. us-west1
+	Location pulumi.StringInput `pulumi:"location"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The GCP project ID to target.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreGcpCertX509StoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreGcpCertX509Store)(nil)).Elem()
+}
+
+func (i SecretStoreGcpCertX509StoreArgs) ToSecretStoreGcpCertX509StoreOutput() SecretStoreGcpCertX509StoreOutput {
+	return i.ToSecretStoreGcpCertX509StoreOutputWithContext(context.Background())
+}
+
+func (i SecretStoreGcpCertX509StoreArgs) ToSecretStoreGcpCertX509StoreOutputWithContext(ctx context.Context) SecretStoreGcpCertX509StoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreGcpCertX509StoreOutput)
+}
+
+func (i SecretStoreGcpCertX509StoreArgs) ToSecretStoreGcpCertX509StorePtrOutput() SecretStoreGcpCertX509StorePtrOutput {
+	return i.ToSecretStoreGcpCertX509StorePtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreGcpCertX509StoreArgs) ToSecretStoreGcpCertX509StorePtrOutputWithContext(ctx context.Context) SecretStoreGcpCertX509StorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreGcpCertX509StoreOutput).ToSecretStoreGcpCertX509StorePtrOutputWithContext(ctx)
+}
+
+// SecretStoreGcpCertX509StorePtrInput is an input type that accepts SecretStoreGcpCertX509StoreArgs, SecretStoreGcpCertX509StorePtr and SecretStoreGcpCertX509StorePtrOutput values.
+// You can construct a concrete instance of `SecretStoreGcpCertX509StorePtrInput` via:
+//
+//	        SecretStoreGcpCertX509StoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreGcpCertX509StorePtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreGcpCertX509StorePtrOutput() SecretStoreGcpCertX509StorePtrOutput
+	ToSecretStoreGcpCertX509StorePtrOutputWithContext(context.Context) SecretStoreGcpCertX509StorePtrOutput
+}
+
+type secretStoreGcpCertX509StorePtrType SecretStoreGcpCertX509StoreArgs
+
+func SecretStoreGcpCertX509StorePtr(v *SecretStoreGcpCertX509StoreArgs) SecretStoreGcpCertX509StorePtrInput {
+	return (*secretStoreGcpCertX509StorePtrType)(v)
+}
+
+func (*secretStoreGcpCertX509StorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreGcpCertX509Store)(nil)).Elem()
+}
+
+func (i *secretStoreGcpCertX509StorePtrType) ToSecretStoreGcpCertX509StorePtrOutput() SecretStoreGcpCertX509StorePtrOutput {
+	return i.ToSecretStoreGcpCertX509StorePtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreGcpCertX509StorePtrType) ToSecretStoreGcpCertX509StorePtrOutputWithContext(ctx context.Context) SecretStoreGcpCertX509StorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreGcpCertX509StorePtrOutput)
+}
+
+type SecretStoreGcpCertX509StoreOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreGcpCertX509StoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreGcpCertX509Store)(nil)).Elem()
+}
+
+func (o SecretStoreGcpCertX509StoreOutput) ToSecretStoreGcpCertX509StoreOutput() SecretStoreGcpCertX509StoreOutput {
+	return o
+}
+
+func (o SecretStoreGcpCertX509StoreOutput) ToSecretStoreGcpCertX509StoreOutputWithContext(ctx context.Context) SecretStoreGcpCertX509StoreOutput {
+	return o
+}
+
+func (o SecretStoreGcpCertX509StoreOutput) ToSecretStoreGcpCertX509StorePtrOutput() SecretStoreGcpCertX509StorePtrOutput {
+	return o.ToSecretStoreGcpCertX509StorePtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreGcpCertX509StoreOutput) ToSecretStoreGcpCertX509StorePtrOutputWithContext(ctx context.Context) SecretStoreGcpCertX509StorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreGcpCertX509Store) *SecretStoreGcpCertX509Store {
+		return &v
+	}).(SecretStoreGcpCertX509StorePtrOutput)
+}
+
+// The ID of the target CA
+func (o SecretStoreGcpCertX509StoreOutput) CaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreGcpCertX509Store) *string { return v.CaId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the target CA pool
+func (o SecretStoreGcpCertX509StoreOutput) CaPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreGcpCertX509Store) string { return v.CaPoolId }).(pulumi.StringOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreGcpCertX509StoreOutput) IssuedCertTtlMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretStoreGcpCertX509Store) int { return v.IssuedCertTtlMinutes }).(pulumi.IntOutput)
+}
+
+// The Region for the CA in GCP format e.g. us-west1
+func (o SecretStoreGcpCertX509StoreOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreGcpCertX509Store) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreGcpCertX509StoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreGcpCertX509Store) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The GCP project ID to target.
+func (o SecretStoreGcpCertX509StoreOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreGcpCertX509Store) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreGcpCertX509StoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreGcpCertX509Store) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreGcpCertX509StorePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreGcpCertX509StorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreGcpCertX509Store)(nil)).Elem()
+}
+
+func (o SecretStoreGcpCertX509StorePtrOutput) ToSecretStoreGcpCertX509StorePtrOutput() SecretStoreGcpCertX509StorePtrOutput {
+	return o
+}
+
+func (o SecretStoreGcpCertX509StorePtrOutput) ToSecretStoreGcpCertX509StorePtrOutputWithContext(ctx context.Context) SecretStoreGcpCertX509StorePtrOutput {
+	return o
+}
+
+func (o SecretStoreGcpCertX509StorePtrOutput) Elem() SecretStoreGcpCertX509StoreOutput {
+	return o.ApplyT(func(v *SecretStoreGcpCertX509Store) SecretStoreGcpCertX509Store {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreGcpCertX509Store
+		return ret
+	}).(SecretStoreGcpCertX509StoreOutput)
+}
+
+// The ID of the target CA
+func (o SecretStoreGcpCertX509StorePtrOutput) CaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreGcpCertX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the target CA pool
+func (o SecretStoreGcpCertX509StorePtrOutput) CaPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreGcpCertX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaPoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreGcpCertX509StorePtrOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretStoreGcpCertX509Store) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuedCertTtlMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The Region for the CA in GCP format e.g. us-west1
+func (o SecretStoreGcpCertX509StorePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreGcpCertX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreGcpCertX509StorePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreGcpCertX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP project ID to target.
+func (o SecretStoreGcpCertX509StorePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreGcpCertX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreGcpCertX509StorePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreGcpCertX509Store) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type SecretStoreGcpStore struct {
 	// Unique human-readable name of the SecretStore.
 	Name string `pulumi:"name"`
@@ -33007,6 +34030,508 @@ func (o SecretStoreVaultApprolePtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type SecretStoreVaultApproleCertSsh struct {
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole string `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint string `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreVaultApproleCertSshInput is an input type that accepts SecretStoreVaultApproleCertSshArgs and SecretStoreVaultApproleCertSshOutput values.
+// You can construct a concrete instance of `SecretStoreVaultApproleCertSshInput` via:
+//
+//	SecretStoreVaultApproleCertSshArgs{...}
+type SecretStoreVaultApproleCertSshInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultApproleCertSshOutput() SecretStoreVaultApproleCertSshOutput
+	ToSecretStoreVaultApproleCertSshOutputWithContext(context.Context) SecretStoreVaultApproleCertSshOutput
+}
+
+type SecretStoreVaultApproleCertSshArgs struct {
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringInput `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint pulumi.StringInput `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreVaultApproleCertSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultApproleCertSsh)(nil)).Elem()
+}
+
+func (i SecretStoreVaultApproleCertSshArgs) ToSecretStoreVaultApproleCertSshOutput() SecretStoreVaultApproleCertSshOutput {
+	return i.ToSecretStoreVaultApproleCertSshOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultApproleCertSshArgs) ToSecretStoreVaultApproleCertSshOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultApproleCertSshOutput)
+}
+
+func (i SecretStoreVaultApproleCertSshArgs) ToSecretStoreVaultApproleCertSshPtrOutput() SecretStoreVaultApproleCertSshPtrOutput {
+	return i.ToSecretStoreVaultApproleCertSshPtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultApproleCertSshArgs) ToSecretStoreVaultApproleCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultApproleCertSshOutput).ToSecretStoreVaultApproleCertSshPtrOutputWithContext(ctx)
+}
+
+// SecretStoreVaultApproleCertSshPtrInput is an input type that accepts SecretStoreVaultApproleCertSshArgs, SecretStoreVaultApproleCertSshPtr and SecretStoreVaultApproleCertSshPtrOutput values.
+// You can construct a concrete instance of `SecretStoreVaultApproleCertSshPtrInput` via:
+//
+//	        SecretStoreVaultApproleCertSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreVaultApproleCertSshPtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultApproleCertSshPtrOutput() SecretStoreVaultApproleCertSshPtrOutput
+	ToSecretStoreVaultApproleCertSshPtrOutputWithContext(context.Context) SecretStoreVaultApproleCertSshPtrOutput
+}
+
+type secretStoreVaultApproleCertSshPtrType SecretStoreVaultApproleCertSshArgs
+
+func SecretStoreVaultApproleCertSshPtr(v *SecretStoreVaultApproleCertSshArgs) SecretStoreVaultApproleCertSshPtrInput {
+	return (*secretStoreVaultApproleCertSshPtrType)(v)
+}
+
+func (*secretStoreVaultApproleCertSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultApproleCertSsh)(nil)).Elem()
+}
+
+func (i *secretStoreVaultApproleCertSshPtrType) ToSecretStoreVaultApproleCertSshPtrOutput() SecretStoreVaultApproleCertSshPtrOutput {
+	return i.ToSecretStoreVaultApproleCertSshPtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreVaultApproleCertSshPtrType) ToSecretStoreVaultApproleCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultApproleCertSshPtrOutput)
+}
+
+type SecretStoreVaultApproleCertSshOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultApproleCertSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultApproleCertSsh)(nil)).Elem()
+}
+
+func (o SecretStoreVaultApproleCertSshOutput) ToSecretStoreVaultApproleCertSshOutput() SecretStoreVaultApproleCertSshOutput {
+	return o
+}
+
+func (o SecretStoreVaultApproleCertSshOutput) ToSecretStoreVaultApproleCertSshOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertSshOutput {
+	return o
+}
+
+func (o SecretStoreVaultApproleCertSshOutput) ToSecretStoreVaultApproleCertSshPtrOutput() SecretStoreVaultApproleCertSshPtrOutput {
+	return o.ToSecretStoreVaultApproleCertSshPtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreVaultApproleCertSshOutput) ToSecretStoreVaultApproleCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultApproleCertSsh) *SecretStoreVaultApproleCertSsh {
+		return &v
+	}).(SecretStoreVaultApproleCertSshPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultApproleCertSshOutput) IssuedCertTtlMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertSsh) int { return v.IssuedCertTtlMinutes }).(pulumi.IntOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultApproleCertSshOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertSsh) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultApproleCertSshOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertSsh) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultApproleCertSshOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertSsh) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultApproleCertSshOutput) SigningRole() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertSsh) string { return v.SigningRole }).(pulumi.StringOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o SecretStoreVaultApproleCertSshOutput) SshMountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertSsh) string { return v.SshMountPoint }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultApproleCertSshOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertSsh) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultApproleCertSshPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultApproleCertSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultApproleCertSsh)(nil)).Elem()
+}
+
+func (o SecretStoreVaultApproleCertSshPtrOutput) ToSecretStoreVaultApproleCertSshPtrOutput() SecretStoreVaultApproleCertSshPtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultApproleCertSshPtrOutput) ToSecretStoreVaultApproleCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertSshPtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultApproleCertSshPtrOutput) Elem() SecretStoreVaultApproleCertSshOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertSsh) SecretStoreVaultApproleCertSsh {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreVaultApproleCertSsh
+		return ret
+	}).(SecretStoreVaultApproleCertSshOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultApproleCertSshPtrOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertSsh) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuedCertTtlMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultApproleCertSshPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultApproleCertSshPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultApproleCertSshPtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultApproleCertSshPtrOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SigningRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o SecretStoreVaultApproleCertSshPtrOutput) SshMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshMountPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultApproleCertSshPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertSsh) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultApproleCertX509 struct {
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint string `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole string `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreVaultApproleCertX509Input is an input type that accepts SecretStoreVaultApproleCertX509Args and SecretStoreVaultApproleCertX509Output values.
+// You can construct a concrete instance of `SecretStoreVaultApproleCertX509Input` via:
+//
+//	SecretStoreVaultApproleCertX509Args{...}
+type SecretStoreVaultApproleCertX509Input interface {
+	pulumi.Input
+
+	ToSecretStoreVaultApproleCertX509Output() SecretStoreVaultApproleCertX509Output
+	ToSecretStoreVaultApproleCertX509OutputWithContext(context.Context) SecretStoreVaultApproleCertX509Output
+}
+
+type SecretStoreVaultApproleCertX509Args struct {
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint pulumi.StringInput `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringInput `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreVaultApproleCertX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultApproleCertX509)(nil)).Elem()
+}
+
+func (i SecretStoreVaultApproleCertX509Args) ToSecretStoreVaultApproleCertX509Output() SecretStoreVaultApproleCertX509Output {
+	return i.ToSecretStoreVaultApproleCertX509OutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultApproleCertX509Args) ToSecretStoreVaultApproleCertX509OutputWithContext(ctx context.Context) SecretStoreVaultApproleCertX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultApproleCertX509Output)
+}
+
+func (i SecretStoreVaultApproleCertX509Args) ToSecretStoreVaultApproleCertX509PtrOutput() SecretStoreVaultApproleCertX509PtrOutput {
+	return i.ToSecretStoreVaultApproleCertX509PtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultApproleCertX509Args) ToSecretStoreVaultApproleCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultApproleCertX509Output).ToSecretStoreVaultApproleCertX509PtrOutputWithContext(ctx)
+}
+
+// SecretStoreVaultApproleCertX509PtrInput is an input type that accepts SecretStoreVaultApproleCertX509Args, SecretStoreVaultApproleCertX509Ptr and SecretStoreVaultApproleCertX509PtrOutput values.
+// You can construct a concrete instance of `SecretStoreVaultApproleCertX509PtrInput` via:
+//
+//	        SecretStoreVaultApproleCertX509Args{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreVaultApproleCertX509PtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultApproleCertX509PtrOutput() SecretStoreVaultApproleCertX509PtrOutput
+	ToSecretStoreVaultApproleCertX509PtrOutputWithContext(context.Context) SecretStoreVaultApproleCertX509PtrOutput
+}
+
+type secretStoreVaultApproleCertX509PtrType SecretStoreVaultApproleCertX509Args
+
+func SecretStoreVaultApproleCertX509Ptr(v *SecretStoreVaultApproleCertX509Args) SecretStoreVaultApproleCertX509PtrInput {
+	return (*secretStoreVaultApproleCertX509PtrType)(v)
+}
+
+func (*secretStoreVaultApproleCertX509PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultApproleCertX509)(nil)).Elem()
+}
+
+func (i *secretStoreVaultApproleCertX509PtrType) ToSecretStoreVaultApproleCertX509PtrOutput() SecretStoreVaultApproleCertX509PtrOutput {
+	return i.ToSecretStoreVaultApproleCertX509PtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreVaultApproleCertX509PtrType) ToSecretStoreVaultApproleCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultApproleCertX509PtrOutput)
+}
+
+type SecretStoreVaultApproleCertX509Output struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultApproleCertX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultApproleCertX509)(nil)).Elem()
+}
+
+func (o SecretStoreVaultApproleCertX509Output) ToSecretStoreVaultApproleCertX509Output() SecretStoreVaultApproleCertX509Output {
+	return o
+}
+
+func (o SecretStoreVaultApproleCertX509Output) ToSecretStoreVaultApproleCertX509OutputWithContext(ctx context.Context) SecretStoreVaultApproleCertX509Output {
+	return o
+}
+
+func (o SecretStoreVaultApproleCertX509Output) ToSecretStoreVaultApproleCertX509PtrOutput() SecretStoreVaultApproleCertX509PtrOutput {
+	return o.ToSecretStoreVaultApproleCertX509PtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreVaultApproleCertX509Output) ToSecretStoreVaultApproleCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertX509PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultApproleCertX509) *SecretStoreVaultApproleCertX509 {
+		return &v
+	}).(SecretStoreVaultApproleCertX509PtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultApproleCertX509Output) IssuedCertTtlMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertX509) int { return v.IssuedCertTtlMinutes }).(pulumi.IntOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultApproleCertX509Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertX509) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultApproleCertX509Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertX509) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o SecretStoreVaultApproleCertX509Output) PkiMountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertX509) string { return v.PkiMountPoint }).(pulumi.StringOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultApproleCertX509Output) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertX509) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultApproleCertX509Output) SigningRole() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertX509) string { return v.SigningRole }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultApproleCertX509Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreVaultApproleCertX509) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultApproleCertX509PtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultApproleCertX509PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultApproleCertX509)(nil)).Elem()
+}
+
+func (o SecretStoreVaultApproleCertX509PtrOutput) ToSecretStoreVaultApproleCertX509PtrOutput() SecretStoreVaultApproleCertX509PtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultApproleCertX509PtrOutput) ToSecretStoreVaultApproleCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultApproleCertX509PtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultApproleCertX509PtrOutput) Elem() SecretStoreVaultApproleCertX509Output {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) SecretStoreVaultApproleCertX509 {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreVaultApproleCertX509
+		return ret
+	}).(SecretStoreVaultApproleCertX509Output)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultApproleCertX509PtrOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuedCertTtlMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultApproleCertX509PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultApproleCertX509PtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o SecretStoreVaultApproleCertX509PtrOutput) PkiMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PkiMountPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultApproleCertX509PtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultApproleCertX509PtrOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SigningRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultApproleCertX509PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type SecretStoreVaultTls struct {
 	// A path to a CA file accessible by a Node
 	CaCertPath *string `pulumi:"caCertPath"`
@@ -33258,6 +34783,622 @@ func (o SecretStoreVaultTlsPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type SecretStoreVaultTlsCertSsh struct {
+	// A path to a CA file accessible by a Node
+	CaCertPath *string `pulumi:"caCertPath"`
+	// A path to a client certificate file accessible by a Node
+	ClientCertPath string `pulumi:"clientCertPath"`
+	// A path to a client key file accessible by a Node
+	ClientKeyPath string `pulumi:"clientKeyPath"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole string `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint string `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreVaultTlsCertSshInput is an input type that accepts SecretStoreVaultTlsCertSshArgs and SecretStoreVaultTlsCertSshOutput values.
+// You can construct a concrete instance of `SecretStoreVaultTlsCertSshInput` via:
+//
+//	SecretStoreVaultTlsCertSshArgs{...}
+type SecretStoreVaultTlsCertSshInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultTlsCertSshOutput() SecretStoreVaultTlsCertSshOutput
+	ToSecretStoreVaultTlsCertSshOutputWithContext(context.Context) SecretStoreVaultTlsCertSshOutput
+}
+
+type SecretStoreVaultTlsCertSshArgs struct {
+	// A path to a CA file accessible by a Node
+	CaCertPath pulumi.StringPtrInput `pulumi:"caCertPath"`
+	// A path to a client certificate file accessible by a Node
+	ClientCertPath pulumi.StringInput `pulumi:"clientCertPath"`
+	// A path to a client key file accessible by a Node
+	ClientKeyPath pulumi.StringInput `pulumi:"clientKeyPath"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringInput `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint pulumi.StringInput `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreVaultTlsCertSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultTlsCertSsh)(nil)).Elem()
+}
+
+func (i SecretStoreVaultTlsCertSshArgs) ToSecretStoreVaultTlsCertSshOutput() SecretStoreVaultTlsCertSshOutput {
+	return i.ToSecretStoreVaultTlsCertSshOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultTlsCertSshArgs) ToSecretStoreVaultTlsCertSshOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTlsCertSshOutput)
+}
+
+func (i SecretStoreVaultTlsCertSshArgs) ToSecretStoreVaultTlsCertSshPtrOutput() SecretStoreVaultTlsCertSshPtrOutput {
+	return i.ToSecretStoreVaultTlsCertSshPtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultTlsCertSshArgs) ToSecretStoreVaultTlsCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTlsCertSshOutput).ToSecretStoreVaultTlsCertSshPtrOutputWithContext(ctx)
+}
+
+// SecretStoreVaultTlsCertSshPtrInput is an input type that accepts SecretStoreVaultTlsCertSshArgs, SecretStoreVaultTlsCertSshPtr and SecretStoreVaultTlsCertSshPtrOutput values.
+// You can construct a concrete instance of `SecretStoreVaultTlsCertSshPtrInput` via:
+//
+//	        SecretStoreVaultTlsCertSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreVaultTlsCertSshPtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultTlsCertSshPtrOutput() SecretStoreVaultTlsCertSshPtrOutput
+	ToSecretStoreVaultTlsCertSshPtrOutputWithContext(context.Context) SecretStoreVaultTlsCertSshPtrOutput
+}
+
+type secretStoreVaultTlsCertSshPtrType SecretStoreVaultTlsCertSshArgs
+
+func SecretStoreVaultTlsCertSshPtr(v *SecretStoreVaultTlsCertSshArgs) SecretStoreVaultTlsCertSshPtrInput {
+	return (*secretStoreVaultTlsCertSshPtrType)(v)
+}
+
+func (*secretStoreVaultTlsCertSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultTlsCertSsh)(nil)).Elem()
+}
+
+func (i *secretStoreVaultTlsCertSshPtrType) ToSecretStoreVaultTlsCertSshPtrOutput() SecretStoreVaultTlsCertSshPtrOutput {
+	return i.ToSecretStoreVaultTlsCertSshPtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreVaultTlsCertSshPtrType) ToSecretStoreVaultTlsCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTlsCertSshPtrOutput)
+}
+
+type SecretStoreVaultTlsCertSshOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultTlsCertSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultTlsCertSsh)(nil)).Elem()
+}
+
+func (o SecretStoreVaultTlsCertSshOutput) ToSecretStoreVaultTlsCertSshOutput() SecretStoreVaultTlsCertSshOutput {
+	return o
+}
+
+func (o SecretStoreVaultTlsCertSshOutput) ToSecretStoreVaultTlsCertSshOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertSshOutput {
+	return o
+}
+
+func (o SecretStoreVaultTlsCertSshOutput) ToSecretStoreVaultTlsCertSshPtrOutput() SecretStoreVaultTlsCertSshPtrOutput {
+	return o.ToSecretStoreVaultTlsCertSshPtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreVaultTlsCertSshOutput) ToSecretStoreVaultTlsCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultTlsCertSsh) *SecretStoreVaultTlsCertSsh {
+		return &v
+	}).(SecretStoreVaultTlsCertSshPtrOutput)
+}
+
+// A path to a CA file accessible by a Node
+func (o SecretStoreVaultTlsCertSshOutput) CaCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) *string { return v.CaCertPath }).(pulumi.StringPtrOutput)
+}
+
+// A path to a client certificate file accessible by a Node
+func (o SecretStoreVaultTlsCertSshOutput) ClientCertPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) string { return v.ClientCertPath }).(pulumi.StringOutput)
+}
+
+// A path to a client key file accessible by a Node
+func (o SecretStoreVaultTlsCertSshOutput) ClientKeyPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) string { return v.ClientKeyPath }).(pulumi.StringOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultTlsCertSshOutput) IssuedCertTtlMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) int { return v.IssuedCertTtlMinutes }).(pulumi.IntOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultTlsCertSshOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultTlsCertSshOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultTlsCertSshOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultTlsCertSshOutput) SigningRole() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) string { return v.SigningRole }).(pulumi.StringOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o SecretStoreVaultTlsCertSshOutput) SshMountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) string { return v.SshMountPoint }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultTlsCertSshOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertSsh) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultTlsCertSshPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultTlsCertSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultTlsCertSsh)(nil)).Elem()
+}
+
+func (o SecretStoreVaultTlsCertSshPtrOutput) ToSecretStoreVaultTlsCertSshPtrOutput() SecretStoreVaultTlsCertSshPtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultTlsCertSshPtrOutput) ToSecretStoreVaultTlsCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertSshPtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultTlsCertSshPtrOutput) Elem() SecretStoreVaultTlsCertSshOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) SecretStoreVaultTlsCertSsh {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreVaultTlsCertSsh
+		return ret
+	}).(SecretStoreVaultTlsCertSshOutput)
+}
+
+// A path to a CA file accessible by a Node
+func (o SecretStoreVaultTlsCertSshPtrOutput) CaCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A path to a client certificate file accessible by a Node
+func (o SecretStoreVaultTlsCertSshPtrOutput) ClientCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCertPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A path to a client key file accessible by a Node
+func (o SecretStoreVaultTlsCertSshPtrOutput) ClientKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultTlsCertSshPtrOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuedCertTtlMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultTlsCertSshPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultTlsCertSshPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultTlsCertSshPtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultTlsCertSshPtrOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SigningRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o SecretStoreVaultTlsCertSshPtrOutput) SshMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshMountPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultTlsCertSshPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertSsh) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultTlsCertX509 struct {
+	// A path to a CA file accessible by a Node
+	CaCertPath *string `pulumi:"caCertPath"`
+	// A path to a client certificate file accessible by a Node
+	ClientCertPath string `pulumi:"clientCertPath"`
+	// A path to a client key file accessible by a Node
+	ClientKeyPath string `pulumi:"clientKeyPath"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint string `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole string `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreVaultTlsCertX509Input is an input type that accepts SecretStoreVaultTlsCertX509Args and SecretStoreVaultTlsCertX509Output values.
+// You can construct a concrete instance of `SecretStoreVaultTlsCertX509Input` via:
+//
+//	SecretStoreVaultTlsCertX509Args{...}
+type SecretStoreVaultTlsCertX509Input interface {
+	pulumi.Input
+
+	ToSecretStoreVaultTlsCertX509Output() SecretStoreVaultTlsCertX509Output
+	ToSecretStoreVaultTlsCertX509OutputWithContext(context.Context) SecretStoreVaultTlsCertX509Output
+}
+
+type SecretStoreVaultTlsCertX509Args struct {
+	// A path to a CA file accessible by a Node
+	CaCertPath pulumi.StringPtrInput `pulumi:"caCertPath"`
+	// A path to a client certificate file accessible by a Node
+	ClientCertPath pulumi.StringInput `pulumi:"clientCertPath"`
+	// A path to a client key file accessible by a Node
+	ClientKeyPath pulumi.StringInput `pulumi:"clientKeyPath"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint pulumi.StringInput `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringInput `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreVaultTlsCertX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultTlsCertX509)(nil)).Elem()
+}
+
+func (i SecretStoreVaultTlsCertX509Args) ToSecretStoreVaultTlsCertX509Output() SecretStoreVaultTlsCertX509Output {
+	return i.ToSecretStoreVaultTlsCertX509OutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultTlsCertX509Args) ToSecretStoreVaultTlsCertX509OutputWithContext(ctx context.Context) SecretStoreVaultTlsCertX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTlsCertX509Output)
+}
+
+func (i SecretStoreVaultTlsCertX509Args) ToSecretStoreVaultTlsCertX509PtrOutput() SecretStoreVaultTlsCertX509PtrOutput {
+	return i.ToSecretStoreVaultTlsCertX509PtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultTlsCertX509Args) ToSecretStoreVaultTlsCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTlsCertX509Output).ToSecretStoreVaultTlsCertX509PtrOutputWithContext(ctx)
+}
+
+// SecretStoreVaultTlsCertX509PtrInput is an input type that accepts SecretStoreVaultTlsCertX509Args, SecretStoreVaultTlsCertX509Ptr and SecretStoreVaultTlsCertX509PtrOutput values.
+// You can construct a concrete instance of `SecretStoreVaultTlsCertX509PtrInput` via:
+//
+//	        SecretStoreVaultTlsCertX509Args{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreVaultTlsCertX509PtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultTlsCertX509PtrOutput() SecretStoreVaultTlsCertX509PtrOutput
+	ToSecretStoreVaultTlsCertX509PtrOutputWithContext(context.Context) SecretStoreVaultTlsCertX509PtrOutput
+}
+
+type secretStoreVaultTlsCertX509PtrType SecretStoreVaultTlsCertX509Args
+
+func SecretStoreVaultTlsCertX509Ptr(v *SecretStoreVaultTlsCertX509Args) SecretStoreVaultTlsCertX509PtrInput {
+	return (*secretStoreVaultTlsCertX509PtrType)(v)
+}
+
+func (*secretStoreVaultTlsCertX509PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultTlsCertX509)(nil)).Elem()
+}
+
+func (i *secretStoreVaultTlsCertX509PtrType) ToSecretStoreVaultTlsCertX509PtrOutput() SecretStoreVaultTlsCertX509PtrOutput {
+	return i.ToSecretStoreVaultTlsCertX509PtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreVaultTlsCertX509PtrType) ToSecretStoreVaultTlsCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTlsCertX509PtrOutput)
+}
+
+type SecretStoreVaultTlsCertX509Output struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultTlsCertX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultTlsCertX509)(nil)).Elem()
+}
+
+func (o SecretStoreVaultTlsCertX509Output) ToSecretStoreVaultTlsCertX509Output() SecretStoreVaultTlsCertX509Output {
+	return o
+}
+
+func (o SecretStoreVaultTlsCertX509Output) ToSecretStoreVaultTlsCertX509OutputWithContext(ctx context.Context) SecretStoreVaultTlsCertX509Output {
+	return o
+}
+
+func (o SecretStoreVaultTlsCertX509Output) ToSecretStoreVaultTlsCertX509PtrOutput() SecretStoreVaultTlsCertX509PtrOutput {
+	return o.ToSecretStoreVaultTlsCertX509PtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreVaultTlsCertX509Output) ToSecretStoreVaultTlsCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertX509PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultTlsCertX509) *SecretStoreVaultTlsCertX509 {
+		return &v
+	}).(SecretStoreVaultTlsCertX509PtrOutput)
+}
+
+// A path to a CA file accessible by a Node
+func (o SecretStoreVaultTlsCertX509Output) CaCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) *string { return v.CaCertPath }).(pulumi.StringPtrOutput)
+}
+
+// A path to a client certificate file accessible by a Node
+func (o SecretStoreVaultTlsCertX509Output) ClientCertPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) string { return v.ClientCertPath }).(pulumi.StringOutput)
+}
+
+// A path to a client key file accessible by a Node
+func (o SecretStoreVaultTlsCertX509Output) ClientKeyPath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) string { return v.ClientKeyPath }).(pulumi.StringOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultTlsCertX509Output) IssuedCertTtlMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) int { return v.IssuedCertTtlMinutes }).(pulumi.IntOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultTlsCertX509Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultTlsCertX509Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o SecretStoreVaultTlsCertX509Output) PkiMountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) string { return v.PkiMountPoint }).(pulumi.StringOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultTlsCertX509Output) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultTlsCertX509Output) SigningRole() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) string { return v.SigningRole }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultTlsCertX509Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreVaultTlsCertX509) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultTlsCertX509PtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultTlsCertX509PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultTlsCertX509)(nil)).Elem()
+}
+
+func (o SecretStoreVaultTlsCertX509PtrOutput) ToSecretStoreVaultTlsCertX509PtrOutput() SecretStoreVaultTlsCertX509PtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultTlsCertX509PtrOutput) ToSecretStoreVaultTlsCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultTlsCertX509PtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultTlsCertX509PtrOutput) Elem() SecretStoreVaultTlsCertX509Output {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) SecretStoreVaultTlsCertX509 {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreVaultTlsCertX509
+		return ret
+	}).(SecretStoreVaultTlsCertX509Output)
+}
+
+// A path to a CA file accessible by a Node
+func (o SecretStoreVaultTlsCertX509PtrOutput) CaCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A path to a client certificate file accessible by a Node
+func (o SecretStoreVaultTlsCertX509PtrOutput) ClientCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientCertPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// A path to a client key file accessible by a Node
+func (o SecretStoreVaultTlsCertX509PtrOutput) ClientKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientKeyPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultTlsCertX509PtrOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuedCertTtlMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultTlsCertX509PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultTlsCertX509PtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o SecretStoreVaultTlsCertX509PtrOutput) PkiMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PkiMountPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultTlsCertX509PtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultTlsCertX509PtrOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SigningRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultTlsCertX509PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTlsCertX509) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type SecretStoreVaultToken struct {
 	// Unique human-readable name of the SecretStore.
 	Name string `pulumi:"name"`
@@ -33452,9 +35593,513 @@ func (o SecretStoreVaultTokenPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type SecretStoreVaultTokenCertSsh struct {
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole string `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint string `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreVaultTokenCertSshInput is an input type that accepts SecretStoreVaultTokenCertSshArgs and SecretStoreVaultTokenCertSshOutput values.
+// You can construct a concrete instance of `SecretStoreVaultTokenCertSshInput` via:
+//
+//	SecretStoreVaultTokenCertSshArgs{...}
+type SecretStoreVaultTokenCertSshInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultTokenCertSshOutput() SecretStoreVaultTokenCertSshOutput
+	ToSecretStoreVaultTokenCertSshOutputWithContext(context.Context) SecretStoreVaultTokenCertSshOutput
+}
+
+type SecretStoreVaultTokenCertSshArgs struct {
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringInput `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint pulumi.StringInput `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreVaultTokenCertSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultTokenCertSsh)(nil)).Elem()
+}
+
+func (i SecretStoreVaultTokenCertSshArgs) ToSecretStoreVaultTokenCertSshOutput() SecretStoreVaultTokenCertSshOutput {
+	return i.ToSecretStoreVaultTokenCertSshOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultTokenCertSshArgs) ToSecretStoreVaultTokenCertSshOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTokenCertSshOutput)
+}
+
+func (i SecretStoreVaultTokenCertSshArgs) ToSecretStoreVaultTokenCertSshPtrOutput() SecretStoreVaultTokenCertSshPtrOutput {
+	return i.ToSecretStoreVaultTokenCertSshPtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultTokenCertSshArgs) ToSecretStoreVaultTokenCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTokenCertSshOutput).ToSecretStoreVaultTokenCertSshPtrOutputWithContext(ctx)
+}
+
+// SecretStoreVaultTokenCertSshPtrInput is an input type that accepts SecretStoreVaultTokenCertSshArgs, SecretStoreVaultTokenCertSshPtr and SecretStoreVaultTokenCertSshPtrOutput values.
+// You can construct a concrete instance of `SecretStoreVaultTokenCertSshPtrInput` via:
+//
+//	        SecretStoreVaultTokenCertSshArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreVaultTokenCertSshPtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultTokenCertSshPtrOutput() SecretStoreVaultTokenCertSshPtrOutput
+	ToSecretStoreVaultTokenCertSshPtrOutputWithContext(context.Context) SecretStoreVaultTokenCertSshPtrOutput
+}
+
+type secretStoreVaultTokenCertSshPtrType SecretStoreVaultTokenCertSshArgs
+
+func SecretStoreVaultTokenCertSshPtr(v *SecretStoreVaultTokenCertSshArgs) SecretStoreVaultTokenCertSshPtrInput {
+	return (*secretStoreVaultTokenCertSshPtrType)(v)
+}
+
+func (*secretStoreVaultTokenCertSshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultTokenCertSsh)(nil)).Elem()
+}
+
+func (i *secretStoreVaultTokenCertSshPtrType) ToSecretStoreVaultTokenCertSshPtrOutput() SecretStoreVaultTokenCertSshPtrOutput {
+	return i.ToSecretStoreVaultTokenCertSshPtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreVaultTokenCertSshPtrType) ToSecretStoreVaultTokenCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertSshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTokenCertSshPtrOutput)
+}
+
+type SecretStoreVaultTokenCertSshOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultTokenCertSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultTokenCertSsh)(nil)).Elem()
+}
+
+func (o SecretStoreVaultTokenCertSshOutput) ToSecretStoreVaultTokenCertSshOutput() SecretStoreVaultTokenCertSshOutput {
+	return o
+}
+
+func (o SecretStoreVaultTokenCertSshOutput) ToSecretStoreVaultTokenCertSshOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertSshOutput {
+	return o
+}
+
+func (o SecretStoreVaultTokenCertSshOutput) ToSecretStoreVaultTokenCertSshPtrOutput() SecretStoreVaultTokenCertSshPtrOutput {
+	return o.ToSecretStoreVaultTokenCertSshPtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreVaultTokenCertSshOutput) ToSecretStoreVaultTokenCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertSshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultTokenCertSsh) *SecretStoreVaultTokenCertSsh {
+		return &v
+	}).(SecretStoreVaultTokenCertSshPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultTokenCertSshOutput) IssuedCertTtlMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertSsh) int { return v.IssuedCertTtlMinutes }).(pulumi.IntOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultTokenCertSshOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertSsh) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultTokenCertSshOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertSsh) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultTokenCertSshOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertSsh) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultTokenCertSshOutput) SigningRole() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertSsh) string { return v.SigningRole }).(pulumi.StringOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o SecretStoreVaultTokenCertSshOutput) SshMountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertSsh) string { return v.SshMountPoint }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultTokenCertSshOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertSsh) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultTokenCertSshPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultTokenCertSshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultTokenCertSsh)(nil)).Elem()
+}
+
+func (o SecretStoreVaultTokenCertSshPtrOutput) ToSecretStoreVaultTokenCertSshPtrOutput() SecretStoreVaultTokenCertSshPtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultTokenCertSshPtrOutput) ToSecretStoreVaultTokenCertSshPtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertSshPtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultTokenCertSshPtrOutput) Elem() SecretStoreVaultTokenCertSshOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertSsh) SecretStoreVaultTokenCertSsh {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreVaultTokenCertSsh
+		return ret
+	}).(SecretStoreVaultTokenCertSshOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultTokenCertSshPtrOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertSsh) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuedCertTtlMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultTokenCertSshPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultTokenCertSshPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultTokenCertSshPtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultTokenCertSshPtrOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SigningRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o SecretStoreVaultTokenCertSshPtrOutput) SshMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SshMountPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultTokenCertSshPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertSsh) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultTokenCertX509 struct {
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint string `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole string `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreVaultTokenCertX509Input is an input type that accepts SecretStoreVaultTokenCertX509Args and SecretStoreVaultTokenCertX509Output values.
+// You can construct a concrete instance of `SecretStoreVaultTokenCertX509Input` via:
+//
+//	SecretStoreVaultTokenCertX509Args{...}
+type SecretStoreVaultTokenCertX509Input interface {
+	pulumi.Input
+
+	ToSecretStoreVaultTokenCertX509Output() SecretStoreVaultTokenCertX509Output
+	ToSecretStoreVaultTokenCertX509OutputWithContext(context.Context) SecretStoreVaultTokenCertX509Output
+}
+
+type SecretStoreVaultTokenCertX509Args struct {
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint pulumi.StringInput `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringInput `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreVaultTokenCertX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultTokenCertX509)(nil)).Elem()
+}
+
+func (i SecretStoreVaultTokenCertX509Args) ToSecretStoreVaultTokenCertX509Output() SecretStoreVaultTokenCertX509Output {
+	return i.ToSecretStoreVaultTokenCertX509OutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultTokenCertX509Args) ToSecretStoreVaultTokenCertX509OutputWithContext(ctx context.Context) SecretStoreVaultTokenCertX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTokenCertX509Output)
+}
+
+func (i SecretStoreVaultTokenCertX509Args) ToSecretStoreVaultTokenCertX509PtrOutput() SecretStoreVaultTokenCertX509PtrOutput {
+	return i.ToSecretStoreVaultTokenCertX509PtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultTokenCertX509Args) ToSecretStoreVaultTokenCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTokenCertX509Output).ToSecretStoreVaultTokenCertX509PtrOutputWithContext(ctx)
+}
+
+// SecretStoreVaultTokenCertX509PtrInput is an input type that accepts SecretStoreVaultTokenCertX509Args, SecretStoreVaultTokenCertX509Ptr and SecretStoreVaultTokenCertX509PtrOutput values.
+// You can construct a concrete instance of `SecretStoreVaultTokenCertX509PtrInput` via:
+//
+//	        SecretStoreVaultTokenCertX509Args{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreVaultTokenCertX509PtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultTokenCertX509PtrOutput() SecretStoreVaultTokenCertX509PtrOutput
+	ToSecretStoreVaultTokenCertX509PtrOutputWithContext(context.Context) SecretStoreVaultTokenCertX509PtrOutput
+}
+
+type secretStoreVaultTokenCertX509PtrType SecretStoreVaultTokenCertX509Args
+
+func SecretStoreVaultTokenCertX509Ptr(v *SecretStoreVaultTokenCertX509Args) SecretStoreVaultTokenCertX509PtrInput {
+	return (*secretStoreVaultTokenCertX509PtrType)(v)
+}
+
+func (*secretStoreVaultTokenCertX509PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultTokenCertX509)(nil)).Elem()
+}
+
+func (i *secretStoreVaultTokenCertX509PtrType) ToSecretStoreVaultTokenCertX509PtrOutput() SecretStoreVaultTokenCertX509PtrOutput {
+	return i.ToSecretStoreVaultTokenCertX509PtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreVaultTokenCertX509PtrType) ToSecretStoreVaultTokenCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultTokenCertX509PtrOutput)
+}
+
+type SecretStoreVaultTokenCertX509Output struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultTokenCertX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultTokenCertX509)(nil)).Elem()
+}
+
+func (o SecretStoreVaultTokenCertX509Output) ToSecretStoreVaultTokenCertX509Output() SecretStoreVaultTokenCertX509Output {
+	return o
+}
+
+func (o SecretStoreVaultTokenCertX509Output) ToSecretStoreVaultTokenCertX509OutputWithContext(ctx context.Context) SecretStoreVaultTokenCertX509Output {
+	return o
+}
+
+func (o SecretStoreVaultTokenCertX509Output) ToSecretStoreVaultTokenCertX509PtrOutput() SecretStoreVaultTokenCertX509PtrOutput {
+	return o.ToSecretStoreVaultTokenCertX509PtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreVaultTokenCertX509Output) ToSecretStoreVaultTokenCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertX509PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultTokenCertX509) *SecretStoreVaultTokenCertX509 {
+		return &v
+	}).(SecretStoreVaultTokenCertX509PtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultTokenCertX509Output) IssuedCertTtlMinutes() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertX509) int { return v.IssuedCertTtlMinutes }).(pulumi.IntOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultTokenCertX509Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertX509) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultTokenCertX509Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertX509) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o SecretStoreVaultTokenCertX509Output) PkiMountPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertX509) string { return v.PkiMountPoint }).(pulumi.StringOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultTokenCertX509Output) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertX509) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultTokenCertX509Output) SigningRole() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertX509) string { return v.SigningRole }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultTokenCertX509Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreVaultTokenCertX509) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultTokenCertX509PtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultTokenCertX509PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultTokenCertX509)(nil)).Elem()
+}
+
+func (o SecretStoreVaultTokenCertX509PtrOutput) ToSecretStoreVaultTokenCertX509PtrOutput() SecretStoreVaultTokenCertX509PtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultTokenCertX509PtrOutput) ToSecretStoreVaultTokenCertX509PtrOutputWithContext(ctx context.Context) SecretStoreVaultTokenCertX509PtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultTokenCertX509PtrOutput) Elem() SecretStoreVaultTokenCertX509Output {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertX509) SecretStoreVaultTokenCertX509 {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreVaultTokenCertX509
+		return ret
+	}).(SecretStoreVaultTokenCertX509Output)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o SecretStoreVaultTokenCertX509PtrOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertX509) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuedCertTtlMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultTokenCertX509PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultTokenCertX509PtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o SecretStoreVaultTokenCertX509PtrOutput) PkiMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PkiMountPoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultTokenCertX509PtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o SecretStoreVaultTokenCertX509PtrOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertX509) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SigningRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultTokenCertX509PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreVaultTokenCertX509) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type GetAccountAccount struct {
+	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Services []GetAccountAccountService `pulumi:"services"`
-	Users    []GetAccountAccountUser    `pulumi:"users"`
+	// A User can connect to resources they are granted directly, or granted via roles.
+	Users []GetAccountAccountUser `pulumi:"users"`
 }
 
 // GetAccountAccountInput is an input type that accepts GetAccountAccountArgs and GetAccountAccountOutput values.
@@ -33469,8 +36114,10 @@ type GetAccountAccountInput interface {
 }
 
 type GetAccountAccountArgs struct {
+	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Services GetAccountAccountServiceArrayInput `pulumi:"services"`
-	Users    GetAccountAccountUserArrayInput    `pulumi:"users"`
+	// A User can connect to resources they are granted directly, or granted via roles.
+	Users GetAccountAccountUserArrayInput `pulumi:"users"`
 }
 
 func (GetAccountAccountArgs) ElementType() reflect.Type {
@@ -33524,10 +36171,12 @@ func (o GetAccountAccountOutput) ToGetAccountAccountOutputWithContext(ctx contex
 	return o
 }
 
+// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 func (o GetAccountAccountOutput) Services() GetAccountAccountServiceArrayOutput {
 	return o.ApplyT(func(v GetAccountAccount) []GetAccountAccountService { return v.Services }).(GetAccountAccountServiceArrayOutput)
 }
 
+// A User can connect to resources they are granted directly, or granted via roles.
 func (o GetAccountAccountOutput) Users() GetAccountAccountUserArrayOutput {
 	return o.ApplyT(func(v GetAccountAccount) []GetAccountAccountUser { return v.Users }).(GetAccountAccountUserArrayOutput)
 }
@@ -33557,7 +36206,7 @@ type GetAccountAccountService struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Service.
 	Name *string `pulumi:"name"`
-	// The User's suspended state.
+	// The Service's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
@@ -33579,7 +36228,7 @@ type GetAccountAccountServiceArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Service.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The User's suspended state.
+	// The Service's suspended state.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -33646,7 +36295,7 @@ func (o GetAccountAccountServiceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountService) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The User's suspended state.
+// The Service's suspended state.
 func (o GetAccountAccountServiceOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountService) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
 }
@@ -33689,10 +36338,10 @@ type GetAccountAccountUser struct {
 	LastName *string `pulumi:"lastName"`
 	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
 	ManagedBy string `pulumi:"managedBy"`
-	// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
-	PermissionLevel string `pulumi:"permissionLevel"`
-	// The User's suspended state.
-	Suspended *bool `pulumi:"suspended"`
+	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+	PermissionLevel *string `pulumi:"permissionLevel"`
+	// The Service's suspended state.
+	Suspended bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -33721,10 +36370,10 @@ type GetAccountAccountUserArgs struct {
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
 	// Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
 	ManagedBy pulumi.StringInput `pulumi:"managedBy"`
-	// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
-	PermissionLevel pulumi.StringInput `pulumi:"permissionLevel"`
-	// The User's suspended state.
-	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
+	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+	PermissionLevel pulumi.StringPtrInput `pulumi:"permissionLevel"`
+	// The Service's suspended state.
+	Suspended pulumi.BoolInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
@@ -33810,14 +36459,14 @@ func (o GetAccountAccountUserOutput) ManagedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountAccountUser) string { return v.ManagedBy }).(pulumi.StringOutput)
 }
 
-// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
-func (o GetAccountAccountUserOutput) PermissionLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountAccountUser) string { return v.PermissionLevel }).(pulumi.StringOutput)
+// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+func (o GetAccountAccountUserOutput) PermissionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountUser) *string { return v.PermissionLevel }).(pulumi.StringPtrOutput)
 }
 
-// The User's suspended state.
-func (o GetAccountAccountUserOutput) Suspended() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetAccountAccountUser) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
+// The Service's suspended state.
+func (o GetAccountAccountUserOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAccountAccountUser) bool { return v.Suspended }).(pulumi.BoolOutput)
 }
 
 // Tags is a map of key, value pairs.
@@ -33960,9 +36609,374 @@ func (o GetAccountAttachmentAccountAttachmentArrayOutput) Index(i pulumi.IntInpu
 	}).(GetAccountAttachmentAccountAttachmentOutput)
 }
 
+type GetApprovalWorkflowApprovalWorkflow struct {
+	// Approval mode of the ApprovalWorkflow
+	ApprovalMode *string `pulumi:"approvalMode"`
+	// Optional description of the ApprovalWorkflow.
+	Description *string `pulumi:"description"`
+	// Unique identifier of the ApprovalWorkflow.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the ApprovalWorkflow.
+	Name *string `pulumi:"name"`
+}
+
+// GetApprovalWorkflowApprovalWorkflowInput is an input type that accepts GetApprovalWorkflowApprovalWorkflowArgs and GetApprovalWorkflowApprovalWorkflowOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalWorkflowInput` via:
+//
+//	GetApprovalWorkflowApprovalWorkflowArgs{...}
+type GetApprovalWorkflowApprovalWorkflowInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApprovalWorkflowOutput() GetApprovalWorkflowApprovalWorkflowOutput
+	ToGetApprovalWorkflowApprovalWorkflowOutputWithContext(context.Context) GetApprovalWorkflowApprovalWorkflowOutput
+}
+
+type GetApprovalWorkflowApprovalWorkflowArgs struct {
+	// Approval mode of the ApprovalWorkflow
+	ApprovalMode pulumi.StringPtrInput `pulumi:"approvalMode"`
+	// Optional description of the ApprovalWorkflow.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Unique identifier of the ApprovalWorkflow.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the ApprovalWorkflow.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetApprovalWorkflowApprovalWorkflowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflow)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApprovalWorkflowArgs) ToGetApprovalWorkflowApprovalWorkflowOutput() GetApprovalWorkflowApprovalWorkflowOutput {
+	return i.ToGetApprovalWorkflowApprovalWorkflowOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApprovalWorkflowArgs) ToGetApprovalWorkflowApprovalWorkflowOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalWorkflowOutput)
+}
+
+// GetApprovalWorkflowApprovalWorkflowArrayInput is an input type that accepts GetApprovalWorkflowApprovalWorkflowArray and GetApprovalWorkflowApprovalWorkflowArrayOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApprovalWorkflowArrayInput` via:
+//
+//	GetApprovalWorkflowApprovalWorkflowArray{ GetApprovalWorkflowApprovalWorkflowArgs{...} }
+type GetApprovalWorkflowApprovalWorkflowArrayInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApprovalWorkflowArrayOutput() GetApprovalWorkflowApprovalWorkflowArrayOutput
+	ToGetApprovalWorkflowApprovalWorkflowArrayOutputWithContext(context.Context) GetApprovalWorkflowApprovalWorkflowArrayOutput
+}
+
+type GetApprovalWorkflowApprovalWorkflowArray []GetApprovalWorkflowApprovalWorkflowInput
+
+func (GetApprovalWorkflowApprovalWorkflowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalWorkflow)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApprovalWorkflowArray) ToGetApprovalWorkflowApprovalWorkflowArrayOutput() GetApprovalWorkflowApprovalWorkflowArrayOutput {
+	return i.ToGetApprovalWorkflowApprovalWorkflowArrayOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApprovalWorkflowArray) ToGetApprovalWorkflowApprovalWorkflowArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApprovalWorkflowArrayOutput)
+}
+
+type GetApprovalWorkflowApprovalWorkflowOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalWorkflowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflow)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowOutput) ToGetApprovalWorkflowApprovalWorkflowOutput() GetApprovalWorkflowApprovalWorkflowOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowOutput) ToGetApprovalWorkflowApprovalWorkflowOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowOutput {
+	return o
+}
+
+// Approval mode of the ApprovalWorkflow
+func (o GetApprovalWorkflowApprovalWorkflowOutput) ApprovalMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflow) *string { return v.ApprovalMode }).(pulumi.StringPtrOutput)
+}
+
+// Optional description of the ApprovalWorkflow.
+func (o GetApprovalWorkflowApprovalWorkflowOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflow) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the ApprovalWorkflow.
+func (o GetApprovalWorkflowApprovalWorkflowOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflow) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the ApprovalWorkflow.
+func (o GetApprovalWorkflowApprovalWorkflowOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApprovalWorkflow) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetApprovalWorkflowApprovalWorkflowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApprovalWorkflowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApprovalWorkflow)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowArrayOutput) ToGetApprovalWorkflowApprovalWorkflowArrayOutput() GetApprovalWorkflowApprovalWorkflowArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowArrayOutput) ToGetApprovalWorkflowApprovalWorkflowArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApprovalWorkflowArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApprovalWorkflowArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowApprovalWorkflowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowApprovalWorkflow {
+		return vs[0].([]GetApprovalWorkflowApprovalWorkflow)[vs[1].(int)]
+	}).(GetApprovalWorkflowApprovalWorkflowOutput)
+}
+
+type GetApprovalWorkflowApproverApprovalWorkflowApprover struct {
+	// The approver account id.
+	AccountId *string `pulumi:"accountId"`
+	// The approval flow id specified the approval workflow that this approver belongs to
+	ApprovalFlowId *string `pulumi:"approvalFlowId"`
+	// The approval step id specified the approval flow step that this approver belongs to
+	ApprovalStepId *string `pulumi:"approvalStepId"`
+	// Unique identifier of the ApprovalWorkflowApprover.
+	Id *string `pulumi:"id"`
+	// The approver role id
+	RoleId *string `pulumi:"roleId"`
+}
+
+// GetApprovalWorkflowApproverApprovalWorkflowApproverInput is an input type that accepts GetApprovalWorkflowApproverApprovalWorkflowApproverArgs and GetApprovalWorkflowApproverApprovalWorkflowApproverOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApproverApprovalWorkflowApproverInput` via:
+//
+//	GetApprovalWorkflowApproverApprovalWorkflowApproverArgs{...}
+type GetApprovalWorkflowApproverApprovalWorkflowApproverInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverOutput
+	ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutputWithContext(context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverOutput
+}
+
+type GetApprovalWorkflowApproverApprovalWorkflowApproverArgs struct {
+	// The approver account id.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// The approval flow id specified the approval workflow that this approver belongs to
+	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
+	// The approval step id specified the approval flow step that this approver belongs to
+	ApprovalStepId pulumi.StringPtrInput `pulumi:"approvalStepId"`
+	// Unique identifier of the ApprovalWorkflowApprover.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The approver role id
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
+}
+
+func (GetApprovalWorkflowApproverApprovalWorkflowApproverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApprover)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApproverApprovalWorkflowApproverArgs) ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
+	return i.ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApproverApprovalWorkflowApproverArgs) ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApproverApprovalWorkflowApproverOutput)
+}
+
+// GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput is an input type that accepts GetApprovalWorkflowApproverApprovalWorkflowApproverArray and GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput` via:
+//
+//	GetApprovalWorkflowApproverApprovalWorkflowApproverArray{ GetApprovalWorkflowApproverApprovalWorkflowApproverArgs{...} }
+type GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput
+	ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutputWithContext(context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput
+}
+
+type GetApprovalWorkflowApproverApprovalWorkflowApproverArray []GetApprovalWorkflowApproverApprovalWorkflowApproverInput
+
+func (GetApprovalWorkflowApproverApprovalWorkflowApproverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApproverApprovalWorkflowApprover)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowApproverApprovalWorkflowApproverArray) ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
+	return i.ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowApproverApprovalWorkflowApproverArray) ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput)
+}
+
+type GetApprovalWorkflowApproverApprovalWorkflowApproverOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApprover)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ToGetApprovalWorkflowApproverApprovalWorkflowApproverOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
+	return o
+}
+
+// The approver account id.
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The approval flow id specified the approval workflow that this approver belongs to
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ApprovalFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
+}
+
+// The approval step id specified the approval flow step that this approver belongs to
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) ApprovalStepId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.ApprovalStepId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the ApprovalWorkflowApprover.
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The approver role id
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowApproverApprovalWorkflowApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+}
+
+type GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowApproverApprovalWorkflowApprover)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput) ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput() GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput) ToGetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowApproverApprovalWorkflowApproverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowApproverApprovalWorkflowApprover {
+		return vs[0].([]GetApprovalWorkflowApproverApprovalWorkflowApprover)[vs[1].(int)]
+	}).(GetApprovalWorkflowApproverApprovalWorkflowApproverOutput)
+}
+
+type GetApprovalWorkflowStepApprovalWorkflowStep struct {
+	// The approval flow id specified the approval workfflow that this step belongs to
+	ApprovalFlowId *string `pulumi:"approvalFlowId"`
+	// Unique identifier of the ApprovalWorkflowStep.
+	Id *string `pulumi:"id"`
+}
+
+// GetApprovalWorkflowStepApprovalWorkflowStepInput is an input type that accepts GetApprovalWorkflowStepApprovalWorkflowStepArgs and GetApprovalWorkflowStepApprovalWorkflowStepOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowStepApprovalWorkflowStepInput` via:
+//
+//	GetApprovalWorkflowStepApprovalWorkflowStepArgs{...}
+type GetApprovalWorkflowStepApprovalWorkflowStepInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowStepApprovalWorkflowStepOutput() GetApprovalWorkflowStepApprovalWorkflowStepOutput
+	ToGetApprovalWorkflowStepApprovalWorkflowStepOutputWithContext(context.Context) GetApprovalWorkflowStepApprovalWorkflowStepOutput
+}
+
+type GetApprovalWorkflowStepApprovalWorkflowStepArgs struct {
+	// The approval flow id specified the approval workfflow that this step belongs to
+	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
+	// Unique identifier of the ApprovalWorkflowStep.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (GetApprovalWorkflowStepApprovalWorkflowStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStep)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowStepApprovalWorkflowStepArgs) ToGetApprovalWorkflowStepApprovalWorkflowStepOutput() GetApprovalWorkflowStepApprovalWorkflowStepOutput {
+	return i.ToGetApprovalWorkflowStepApprovalWorkflowStepOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowStepApprovalWorkflowStepArgs) ToGetApprovalWorkflowStepApprovalWorkflowStepOutputWithContext(ctx context.Context) GetApprovalWorkflowStepApprovalWorkflowStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowStepApprovalWorkflowStepOutput)
+}
+
+// GetApprovalWorkflowStepApprovalWorkflowStepArrayInput is an input type that accepts GetApprovalWorkflowStepApprovalWorkflowStepArray and GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput values.
+// You can construct a concrete instance of `GetApprovalWorkflowStepApprovalWorkflowStepArrayInput` via:
+//
+//	GetApprovalWorkflowStepApprovalWorkflowStepArray{ GetApprovalWorkflowStepApprovalWorkflowStepArgs{...} }
+type GetApprovalWorkflowStepApprovalWorkflowStepArrayInput interface {
+	pulumi.Input
+
+	ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutput() GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput
+	ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutputWithContext(context.Context) GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput
+}
+
+type GetApprovalWorkflowStepApprovalWorkflowStepArray []GetApprovalWorkflowStepApprovalWorkflowStepInput
+
+func (GetApprovalWorkflowStepApprovalWorkflowStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowStepApprovalWorkflowStep)(nil)).Elem()
+}
+
+func (i GetApprovalWorkflowStepApprovalWorkflowStepArray) ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutput() GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput {
+	return i.ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutputWithContext(context.Background())
+}
+
+func (i GetApprovalWorkflowStepApprovalWorkflowStepArray) ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput)
+}
+
+type GetApprovalWorkflowStepApprovalWorkflowStepOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowStepApprovalWorkflowStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStep)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowStepApprovalWorkflowStepOutput) ToGetApprovalWorkflowStepApprovalWorkflowStepOutput() GetApprovalWorkflowStepApprovalWorkflowStepOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowStepApprovalWorkflowStepOutput) ToGetApprovalWorkflowStepApprovalWorkflowStepOutputWithContext(ctx context.Context) GetApprovalWorkflowStepApprovalWorkflowStepOutput {
+	return o
+}
+
+// The approval flow id specified the approval workfflow that this step belongs to
+func (o GetApprovalWorkflowStepApprovalWorkflowStepOutput) ApprovalFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowStepApprovalWorkflowStep) *string { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the ApprovalWorkflowStep.
+func (o GetApprovalWorkflowStepApprovalWorkflowStepOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApprovalWorkflowStepApprovalWorkflowStep) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApprovalWorkflowStepApprovalWorkflowStep)(nil)).Elem()
+}
+
+func (o GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutput() GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) ToGetApprovalWorkflowStepApprovalWorkflowStepArrayOutputWithContext(ctx context.Context) GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput {
+	return o
+}
+
+func (o GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) Index(i pulumi.IntInput) GetApprovalWorkflowStepApprovalWorkflowStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApprovalWorkflowStepApprovalWorkflowStep {
+		return vs[0].([]GetApprovalWorkflowStepApprovalWorkflowStep)[vs[1].(int)]
+	}).(GetApprovalWorkflowStepApprovalWorkflowStepOutput)
+}
+
 type GetNodeNode struct {
+	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateways []GetNodeNodeGateway `pulumi:"gateways"`
-	Relays   []GetNodeNodeRelay   `pulumi:"relays"`
+	// Relay represents a StrongDM CLI installation running in relay mode.
+	Relays []GetNodeNodeRelay `pulumi:"relays"`
 }
 
 // GetNodeNodeInput is an input type that accepts GetNodeNodeArgs and GetNodeNodeOutput values.
@@ -33977,8 +36991,10 @@ type GetNodeNodeInput interface {
 }
 
 type GetNodeNodeArgs struct {
+	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateways GetNodeNodeGatewayArrayInput `pulumi:"gateways"`
-	Relays   GetNodeNodeRelayArrayInput   `pulumi:"relays"`
+	// Relay represents a StrongDM CLI installation running in relay mode.
+	Relays GetNodeNodeRelayArrayInput `pulumi:"relays"`
 }
 
 func (GetNodeNodeArgs) ElementType() reflect.Type {
@@ -34032,10 +37048,12 @@ func (o GetNodeNodeOutput) ToGetNodeNodeOutputWithContext(ctx context.Context) G
 	return o
 }
 
+// Gateway represents a StrongDM CLI installation running in gateway mode.
 func (o GetNodeNodeOutput) Gateways() GetNodeNodeGatewayArrayOutput {
 	return o.ApplyT(func(v GetNodeNode) []GetNodeNodeGateway { return v.Gateways }).(GetNodeNodeGatewayArrayOutput)
 }
 
+// Relay represents a StrongDM CLI installation running in relay mode.
 func (o GetNodeNodeOutput) Relays() GetNodeNodeRelayArrayOutput {
 	return o.ApplyT(func(v GetNodeNode) []GetNodeNodeRelay { return v.Relays }).(GetNodeNodeRelayArrayOutput)
 }
@@ -35346,6 +38364,7 @@ type GetResourceResource struct {
 	Prestos                                    []GetResourceResourcePresto                                    `pulumi:"prestos"`
 	RabbitmqAmqp091s                           []GetResourceResourceRabbitmqAmqp091                           `pulumi:"rabbitmqAmqp091s"`
 	RawTcps                                    []GetResourceResourceRawTcp                                    `pulumi:"rawTcps"`
+	RdpCerts                                   []GetResourceResourceRdpCert                                   `pulumi:"rdpCerts"`
 	Rdps                                       []GetResourceResourceRdp                                       `pulumi:"rdps"`
 	RdsPostgresIams                            []GetResourceResourceRdsPostgresIam                            `pulumi:"rdsPostgresIams"`
 	Redis                                      []GetResourceResourceRedi                                      `pulumi:"redis"`
@@ -35443,6 +38462,7 @@ type GetResourceResourceArgs struct {
 	Prestos                                    GetResourceResourcePrestoArrayInput                                    `pulumi:"prestos"`
 	RabbitmqAmqp091s                           GetResourceResourceRabbitmqAmqp091ArrayInput                           `pulumi:"rabbitmqAmqp091s"`
 	RawTcps                                    GetResourceResourceRawTcpArrayInput                                    `pulumi:"rawTcps"`
+	RdpCerts                                   GetResourceResourceRdpCertArrayInput                                   `pulumi:"rdpCerts"`
 	Rdps                                       GetResourceResourceRdpArrayInput                                       `pulumi:"rdps"`
 	RdsPostgresIams                            GetResourceResourceRdsPostgresIamArrayInput                            `pulumi:"rdsPostgresIams"`
 	Redis                                      GetResourceResourceRediArrayInput                                      `pulumi:"redis"`
@@ -35797,6 +38817,10 @@ func (o GetResourceResourceOutput) RabbitmqAmqp091s() GetResourceResourceRabbitm
 
 func (o GetResourceResourceOutput) RawTcps() GetResourceResourceRawTcpArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRawTcp { return v.RawTcps }).(GetResourceResourceRawTcpArrayOutput)
+}
+
+func (o GetResourceResourceOutput) RdpCerts() GetResourceResourceRdpCertArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRdpCert { return v.RdpCerts }).(GetResourceResourceRdpCertArrayOutput)
 }
 
 func (o GetResourceResourceOutput) Rdps() GetResourceResourceRdpArrayOutput {
@@ -50239,6 +53263,211 @@ func (o GetResourceResourceRdpArrayOutput) Index(i pulumi.IntInput) GetResourceR
 	}).(GetResourceResourceRdpOutput)
 }
 
+type GetResourceResourceRdpCert struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// The ID of the remote identity group to use for remote identity connections.
+	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
+	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceRdpCertInput is an input type that accepts GetResourceResourceRdpCertArgs and GetResourceResourceRdpCertOutput values.
+// You can construct a concrete instance of `GetResourceResourceRdpCertInput` via:
+//
+//	GetResourceResourceRdpCertArgs{...}
+type GetResourceResourceRdpCertInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRdpCertOutput() GetResourceResourceRdpCertOutput
+	ToGetResourceResourceRdpCertOutputWithContext(context.Context) GetResourceResourceRdpCertOutput
+}
+
+type GetResourceResourceRdpCertArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// The ID of the remote identity group to use for remote identity connections.
+	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
+	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceRdpCertArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRdpCert)(nil)).Elem()
+}
+
+func (i GetResourceResourceRdpCertArgs) ToGetResourceResourceRdpCertOutput() GetResourceResourceRdpCertOutput {
+	return i.ToGetResourceResourceRdpCertOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRdpCertArgs) ToGetResourceResourceRdpCertOutputWithContext(ctx context.Context) GetResourceResourceRdpCertOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRdpCertOutput)
+}
+
+// GetResourceResourceRdpCertArrayInput is an input type that accepts GetResourceResourceRdpCertArray and GetResourceResourceRdpCertArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceRdpCertArrayInput` via:
+//
+//	GetResourceResourceRdpCertArray{ GetResourceResourceRdpCertArgs{...} }
+type GetResourceResourceRdpCertArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRdpCertArrayOutput() GetResourceResourceRdpCertArrayOutput
+	ToGetResourceResourceRdpCertArrayOutputWithContext(context.Context) GetResourceResourceRdpCertArrayOutput
+}
+
+type GetResourceResourceRdpCertArray []GetResourceResourceRdpCertInput
+
+func (GetResourceResourceRdpCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRdpCert)(nil)).Elem()
+}
+
+func (i GetResourceResourceRdpCertArray) ToGetResourceResourceRdpCertArrayOutput() GetResourceResourceRdpCertArrayOutput {
+	return i.ToGetResourceResourceRdpCertArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRdpCertArray) ToGetResourceResourceRdpCertArrayOutputWithContext(ctx context.Context) GetResourceResourceRdpCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRdpCertArrayOutput)
+}
+
+type GetResourceResourceRdpCertOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRdpCertOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRdpCert)(nil)).Elem()
+}
+
+func (o GetResourceResourceRdpCertOutput) ToGetResourceResourceRdpCertOutput() GetResourceResourceRdpCertOutput {
+	return o
+}
+
+func (o GetResourceResourceRdpCertOutput) ToGetResourceResourceRdpCertOutputWithContext(ctx context.Context) GetResourceResourceRdpCertOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceRdpCertOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceRdpCertOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRdpCertOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceRdpCertOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceRdpCertOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRdpCertOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceRdpCertOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the remote identity group to use for remote identity connections.
+func (o GetResourceResourceRdpCertOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+func (o GetResourceResourceRdpCertOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceRdpCertOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceRdpCertOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceRdpCertOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceRdpCertOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceRdpCertArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRdpCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRdpCert)(nil)).Elem()
+}
+
+func (o GetResourceResourceRdpCertArrayOutput) ToGetResourceResourceRdpCertArrayOutput() GetResourceResourceRdpCertArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRdpCertArrayOutput) ToGetResourceResourceRdpCertArrayOutputWithContext(ctx context.Context) GetResourceResourceRdpCertArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRdpCertArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRdpCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRdpCert {
+		return vs[0].([]GetResourceResourceRdpCert)[vs[1].(int)]
+	}).(GetResourceResourceRdpCertOutput)
+}
+
 type GetResourceResourceRdsPostgresIam struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -53818,15 +57047,24 @@ func (o GetRoleRoleArrayOutput) Index(i pulumi.IntInput) GetRoleRoleOutput {
 }
 
 type GetSecretStoreSecretStore struct {
+	ActiveDirectoryStores    []GetSecretStoreSecretStoreActiveDirectoryStore    `pulumi:"activeDirectoryStores"`
 	Aws                      []GetSecretStoreSecretStoreAw                      `pulumi:"aws"`
+	AwsCertX509s             []GetSecretStoreSecretStoreAwsCertX509             `pulumi:"awsCertX509s"`
 	AzureStores              []GetSecretStoreSecretStoreAzureStore              `pulumi:"azureStores"`
 	CyberarkConjurs          []GetSecretStoreSecretStoreCyberarkConjur          `pulumi:"cyberarkConjurs"`
 	CyberarkPamExperimentals []GetSecretStoreSecretStoreCyberarkPamExperimental `pulumi:"cyberarkPamExperimentals"`
 	CyberarkPams             []GetSecretStoreSecretStoreCyberarkPam             `pulumi:"cyberarkPams"`
 	DelineaStores            []GetSecretStoreSecretStoreDelineaStore            `pulumi:"delineaStores"`
+	GcpCertX509Stores        []GetSecretStoreSecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Stores"`
 	GcpStores                []GetSecretStoreSecretStoreGcpStore                `pulumi:"gcpStores"`
+	VaultApproleCertSshes    []GetSecretStoreSecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSshes"`
+	VaultApproleCertX509s    []GetSecretStoreSecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509s"`
 	VaultApproles            []GetSecretStoreSecretStoreVaultApprole            `pulumi:"vaultApproles"`
 	VaultTls                 []GetSecretStoreSecretStoreVaultTl                 `pulumi:"vaultTls"`
+	VaultTlsCertSshes        []GetSecretStoreSecretStoreVaultTlsCertSsh         `pulumi:"vaultTlsCertSshes"`
+	VaultTlsCertX509s        []GetSecretStoreSecretStoreVaultTlsCertX509        `pulumi:"vaultTlsCertX509s"`
+	VaultTokenCertSshes      []GetSecretStoreSecretStoreVaultTokenCertSsh       `pulumi:"vaultTokenCertSshes"`
+	VaultTokenCertX509s      []GetSecretStoreSecretStoreVaultTokenCertX509      `pulumi:"vaultTokenCertX509s"`
 	VaultTokens              []GetSecretStoreSecretStoreVaultToken              `pulumi:"vaultTokens"`
 }
 
@@ -53842,15 +57080,24 @@ type GetSecretStoreSecretStoreInput interface {
 }
 
 type GetSecretStoreSecretStoreArgs struct {
+	ActiveDirectoryStores    GetSecretStoreSecretStoreActiveDirectoryStoreArrayInput    `pulumi:"activeDirectoryStores"`
 	Aws                      GetSecretStoreSecretStoreAwArrayInput                      `pulumi:"aws"`
+	AwsCertX509s             GetSecretStoreSecretStoreAwsCertX509ArrayInput             `pulumi:"awsCertX509s"`
 	AzureStores              GetSecretStoreSecretStoreAzureStoreArrayInput              `pulumi:"azureStores"`
 	CyberarkConjurs          GetSecretStoreSecretStoreCyberarkConjurArrayInput          `pulumi:"cyberarkConjurs"`
 	CyberarkPamExperimentals GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput `pulumi:"cyberarkPamExperimentals"`
 	CyberarkPams             GetSecretStoreSecretStoreCyberarkPamArrayInput             `pulumi:"cyberarkPams"`
 	DelineaStores            GetSecretStoreSecretStoreDelineaStoreArrayInput            `pulumi:"delineaStores"`
+	GcpCertX509Stores        GetSecretStoreSecretStoreGcpCertX509StoreArrayInput        `pulumi:"gcpCertX509Stores"`
 	GcpStores                GetSecretStoreSecretStoreGcpStoreArrayInput                `pulumi:"gcpStores"`
+	VaultApproleCertSshes    GetSecretStoreSecretStoreVaultApproleCertSshArrayInput     `pulumi:"vaultApproleCertSshes"`
+	VaultApproleCertX509s    GetSecretStoreSecretStoreVaultApproleCertX509ArrayInput    `pulumi:"vaultApproleCertX509s"`
 	VaultApproles            GetSecretStoreSecretStoreVaultApproleArrayInput            `pulumi:"vaultApproles"`
 	VaultTls                 GetSecretStoreSecretStoreVaultTlArrayInput                 `pulumi:"vaultTls"`
+	VaultTlsCertSshes        GetSecretStoreSecretStoreVaultTlsCertSshArrayInput         `pulumi:"vaultTlsCertSshes"`
+	VaultTlsCertX509s        GetSecretStoreSecretStoreVaultTlsCertX509ArrayInput        `pulumi:"vaultTlsCertX509s"`
+	VaultTokenCertSshes      GetSecretStoreSecretStoreVaultTokenCertSshArrayInput       `pulumi:"vaultTokenCertSshes"`
+	VaultTokenCertX509s      GetSecretStoreSecretStoreVaultTokenCertX509ArrayInput      `pulumi:"vaultTokenCertX509s"`
 	VaultTokens              GetSecretStoreSecretStoreVaultTokenArrayInput              `pulumi:"vaultTokens"`
 }
 
@@ -53905,8 +57152,18 @@ func (o GetSecretStoreSecretStoreOutput) ToGetSecretStoreSecretStoreOutputWithCo
 	return o
 }
 
+func (o GetSecretStoreSecretStoreOutput) ActiveDirectoryStores() GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreActiveDirectoryStore {
+		return v.ActiveDirectoryStores
+	}).(GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput)
+}
+
 func (o GetSecretStoreSecretStoreOutput) Aws() GetSecretStoreSecretStoreAwArrayOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreAw { return v.Aws }).(GetSecretStoreSecretStoreAwArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) AwsCertX509s() GetSecretStoreSecretStoreAwsCertX509ArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreAwsCertX509 { return v.AwsCertX509s }).(GetSecretStoreSecretStoreAwsCertX509ArrayOutput)
 }
 
 func (o GetSecretStoreSecretStoreOutput) AzureStores() GetSecretStoreSecretStoreAzureStoreArrayOutput {
@@ -53931,8 +57188,26 @@ func (o GetSecretStoreSecretStoreOutput) DelineaStores() GetSecretStoreSecretSto
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreDelineaStore { return v.DelineaStores }).(GetSecretStoreSecretStoreDelineaStoreArrayOutput)
 }
 
+func (o GetSecretStoreSecretStoreOutput) GcpCertX509Stores() GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreGcpCertX509Store {
+		return v.GcpCertX509Stores
+	}).(GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput)
+}
+
 func (o GetSecretStoreSecretStoreOutput) GcpStores() GetSecretStoreSecretStoreGcpStoreArrayOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreGcpStore { return v.GcpStores }).(GetSecretStoreSecretStoreGcpStoreArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) VaultApproleCertSshes() GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultApproleCertSsh {
+		return v.VaultApproleCertSshes
+	}).(GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) VaultApproleCertX509s() GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultApproleCertX509 {
+		return v.VaultApproleCertX509s
+	}).(GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput)
 }
 
 func (o GetSecretStoreSecretStoreOutput) VaultApproles() GetSecretStoreSecretStoreVaultApproleArrayOutput {
@@ -53941,6 +57216,30 @@ func (o GetSecretStoreSecretStoreOutput) VaultApproles() GetSecretStoreSecretSto
 
 func (o GetSecretStoreSecretStoreOutput) VaultTls() GetSecretStoreSecretStoreVaultTlArrayOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultTl { return v.VaultTls }).(GetSecretStoreSecretStoreVaultTlArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) VaultTlsCertSshes() GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultTlsCertSsh {
+		return v.VaultTlsCertSshes
+	}).(GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) VaultTlsCertX509s() GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultTlsCertX509 {
+		return v.VaultTlsCertX509s
+	}).(GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) VaultTokenCertSshes() GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultTokenCertSsh {
+		return v.VaultTokenCertSshes
+	}).(GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) VaultTokenCertX509s() GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultTokenCertX509 {
+		return v.VaultTokenCertX509s
+	}).(GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput)
 }
 
 func (o GetSecretStoreSecretStoreOutput) VaultTokens() GetSecretStoreSecretStoreVaultTokenArrayOutput {
@@ -53965,6 +57264,130 @@ func (o GetSecretStoreSecretStoreArrayOutput) Index(i pulumi.IntInput) GetSecret
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStore {
 		return vs[0].([]GetSecretStoreSecretStore)[vs[1].(int)]
 	}).(GetSecretStoreSecretStoreOutput)
+}
+
+type GetSecretStoreSecretStoreActiveDirectoryStore struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreActiveDirectoryStoreInput is an input type that accepts GetSecretStoreSecretStoreActiveDirectoryStoreArgs and GetSecretStoreSecretStoreActiveDirectoryStoreOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreActiveDirectoryStoreInput` via:
+//
+//	GetSecretStoreSecretStoreActiveDirectoryStoreArgs{...}
+type GetSecretStoreSecretStoreActiveDirectoryStoreInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreActiveDirectoryStoreOutput() GetSecretStoreSecretStoreActiveDirectoryStoreOutput
+	ToGetSecretStoreSecretStoreActiveDirectoryStoreOutputWithContext(context.Context) GetSecretStoreSecretStoreActiveDirectoryStoreOutput
+}
+
+type GetSecretStoreSecretStoreActiveDirectoryStoreArgs struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreActiveDirectoryStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreActiveDirectoryStore)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreActiveDirectoryStoreArgs) ToGetSecretStoreSecretStoreActiveDirectoryStoreOutput() GetSecretStoreSecretStoreActiveDirectoryStoreOutput {
+	return i.ToGetSecretStoreSecretStoreActiveDirectoryStoreOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreActiveDirectoryStoreArgs) ToGetSecretStoreSecretStoreActiveDirectoryStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreActiveDirectoryStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreActiveDirectoryStoreOutput)
+}
+
+// GetSecretStoreSecretStoreActiveDirectoryStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreActiveDirectoryStoreArray and GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreActiveDirectoryStoreArrayInput` via:
+//
+//	GetSecretStoreSecretStoreActiveDirectoryStoreArray{ GetSecretStoreSecretStoreActiveDirectoryStoreArgs{...} }
+type GetSecretStoreSecretStoreActiveDirectoryStoreArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput() GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput
+	ToGetSecretStoreSecretStoreActiveDirectoryStoreArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput
+}
+
+type GetSecretStoreSecretStoreActiveDirectoryStoreArray []GetSecretStoreSecretStoreActiveDirectoryStoreInput
+
+func (GetSecretStoreSecretStoreActiveDirectoryStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreActiveDirectoryStore)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreActiveDirectoryStoreArray) ToGetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput() GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput {
+	return i.ToGetSecretStoreSecretStoreActiveDirectoryStoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreActiveDirectoryStoreArray) ToGetSecretStoreSecretStoreActiveDirectoryStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput)
+}
+
+type GetSecretStoreSecretStoreActiveDirectoryStoreOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreActiveDirectoryStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreActiveDirectoryStore)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreOutput) ToGetSecretStoreSecretStoreActiveDirectoryStoreOutput() GetSecretStoreSecretStoreActiveDirectoryStoreOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreOutput) ToGetSecretStoreSecretStoreActiveDirectoryStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreActiveDirectoryStoreOutput {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreActiveDirectoryStore) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreActiveDirectoryStore) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreActiveDirectoryStore) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreActiveDirectoryStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreActiveDirectoryStore)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput) ToGetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput() GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput) ToGetSecretStoreSecretStoreActiveDirectoryStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreActiveDirectoryStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreActiveDirectoryStore {
+		return vs[0].([]GetSecretStoreSecretStoreActiveDirectoryStore)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreActiveDirectoryStoreOutput)
 }
 
 type GetSecretStoreSecretStoreAw struct {
@@ -54089,6 +57512,166 @@ func (o GetSecretStoreSecretStoreAwArrayOutput) Index(i pulumi.IntInput) GetSecr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreAw {
 		return vs[0].([]GetSecretStoreSecretStoreAw)[vs[1].(int)]
 	}).(GetSecretStoreSecretStoreAwOutput)
+}
+
+type GetSecretStoreSecretStoreAwsCertX509 struct {
+	// The ARN of the CA in AWS Private CA
+	CaArn *string `pulumi:"caArn"`
+	// The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+	CertificateTemplateArn *string `pulumi:"certificateTemplateArn"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes *int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The AWS region to target e.g. us-east-1
+	Region *string `pulumi:"region"`
+	// The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+	SigningAlgo *string `pulumi:"signingAlgo"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreAwsCertX509Input is an input type that accepts GetSecretStoreSecretStoreAwsCertX509Args and GetSecretStoreSecretStoreAwsCertX509Output values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreAwsCertX509Input` via:
+//
+//	GetSecretStoreSecretStoreAwsCertX509Args{...}
+type GetSecretStoreSecretStoreAwsCertX509Input interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreAwsCertX509Output() GetSecretStoreSecretStoreAwsCertX509Output
+	ToGetSecretStoreSecretStoreAwsCertX509OutputWithContext(context.Context) GetSecretStoreSecretStoreAwsCertX509Output
+}
+
+type GetSecretStoreSecretStoreAwsCertX509Args struct {
+	// The ARN of the CA in AWS Private CA
+	CaArn pulumi.StringPtrInput `pulumi:"caArn"`
+	// The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+	CertificateTemplateArn pulumi.StringPtrInput `pulumi:"certificateTemplateArn"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntPtrInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The AWS region to target e.g. us-east-1
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+	SigningAlgo pulumi.StringPtrInput `pulumi:"signingAlgo"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreAwsCertX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreAwsCertX509)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreAwsCertX509Args) ToGetSecretStoreSecretStoreAwsCertX509Output() GetSecretStoreSecretStoreAwsCertX509Output {
+	return i.ToGetSecretStoreSecretStoreAwsCertX509OutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreAwsCertX509Args) ToGetSecretStoreSecretStoreAwsCertX509OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreAwsCertX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreAwsCertX509Output)
+}
+
+// GetSecretStoreSecretStoreAwsCertX509ArrayInput is an input type that accepts GetSecretStoreSecretStoreAwsCertX509Array and GetSecretStoreSecretStoreAwsCertX509ArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreAwsCertX509ArrayInput` via:
+//
+//	GetSecretStoreSecretStoreAwsCertX509Array{ GetSecretStoreSecretStoreAwsCertX509Args{...} }
+type GetSecretStoreSecretStoreAwsCertX509ArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreAwsCertX509ArrayOutput() GetSecretStoreSecretStoreAwsCertX509ArrayOutput
+	ToGetSecretStoreSecretStoreAwsCertX509ArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreAwsCertX509ArrayOutput
+}
+
+type GetSecretStoreSecretStoreAwsCertX509Array []GetSecretStoreSecretStoreAwsCertX509Input
+
+func (GetSecretStoreSecretStoreAwsCertX509Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreAwsCertX509)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreAwsCertX509Array) ToGetSecretStoreSecretStoreAwsCertX509ArrayOutput() GetSecretStoreSecretStoreAwsCertX509ArrayOutput {
+	return i.ToGetSecretStoreSecretStoreAwsCertX509ArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreAwsCertX509Array) ToGetSecretStoreSecretStoreAwsCertX509ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreAwsCertX509ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreAwsCertX509ArrayOutput)
+}
+
+type GetSecretStoreSecretStoreAwsCertX509Output struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreAwsCertX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreAwsCertX509)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreAwsCertX509Output) ToGetSecretStoreSecretStoreAwsCertX509Output() GetSecretStoreSecretStoreAwsCertX509Output {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreAwsCertX509Output) ToGetSecretStoreSecretStoreAwsCertX509OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreAwsCertX509Output {
+	return o
+}
+
+// The ARN of the CA in AWS Private CA
+func (o GetSecretStoreSecretStoreAwsCertX509Output) CaArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreAwsCertX509) *string { return v.CaArn }).(pulumi.StringPtrOutput)
+}
+
+// The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+func (o GetSecretStoreSecretStoreAwsCertX509Output) CertificateTemplateArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreAwsCertX509) *string { return v.CertificateTemplateArn }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreAwsCertX509Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreAwsCertX509) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o GetSecretStoreSecretStoreAwsCertX509Output) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreAwsCertX509) *int { return v.IssuedCertTtlMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreAwsCertX509Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreAwsCertX509) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to target e.g. us-east-1
+func (o GetSecretStoreSecretStoreAwsCertX509Output) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreAwsCertX509) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+func (o GetSecretStoreSecretStoreAwsCertX509Output) SigningAlgo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreAwsCertX509) *string { return v.SigningAlgo }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreAwsCertX509Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreAwsCertX509) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreAwsCertX509ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreAwsCertX509ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreAwsCertX509)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreAwsCertX509ArrayOutput) ToGetSecretStoreSecretStoreAwsCertX509ArrayOutput() GetSecretStoreSecretStoreAwsCertX509ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreAwsCertX509ArrayOutput) ToGetSecretStoreSecretStoreAwsCertX509ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreAwsCertX509ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreAwsCertX509ArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreAwsCertX509Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreAwsCertX509 {
+		return vs[0].([]GetSecretStoreSecretStoreAwsCertX509)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreAwsCertX509Output)
 }
 
 type GetSecretStoreSecretStoreAzureStore struct {
@@ -54726,6 +58309,166 @@ func (o GetSecretStoreSecretStoreDelineaStoreArrayOutput) Index(i pulumi.IntInpu
 	}).(GetSecretStoreSecretStoreDelineaStoreOutput)
 }
 
+type GetSecretStoreSecretStoreGcpCertX509Store struct {
+	// The ID of the target CA
+	CaId *string `pulumi:"caId"`
+	// The ID of the target CA pool
+	CaPoolId *string `pulumi:"caPoolId"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes *int `pulumi:"issuedCertTtlMinutes"`
+	// The Region for the CA in GCP format e.g. us-west1
+	Location *string `pulumi:"location"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The GCP project ID to target.
+	ProjectId *string `pulumi:"projectId"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreGcpCertX509StoreInput is an input type that accepts GetSecretStoreSecretStoreGcpCertX509StoreArgs and GetSecretStoreSecretStoreGcpCertX509StoreOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreGcpCertX509StoreInput` via:
+//
+//	GetSecretStoreSecretStoreGcpCertX509StoreArgs{...}
+type GetSecretStoreSecretStoreGcpCertX509StoreInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreGcpCertX509StoreOutput() GetSecretStoreSecretStoreGcpCertX509StoreOutput
+	ToGetSecretStoreSecretStoreGcpCertX509StoreOutputWithContext(context.Context) GetSecretStoreSecretStoreGcpCertX509StoreOutput
+}
+
+type GetSecretStoreSecretStoreGcpCertX509StoreArgs struct {
+	// The ID of the target CA
+	CaId pulumi.StringPtrInput `pulumi:"caId"`
+	// The ID of the target CA pool
+	CaPoolId pulumi.StringPtrInput `pulumi:"caPoolId"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntPtrInput `pulumi:"issuedCertTtlMinutes"`
+	// The Region for the CA in GCP format e.g. us-west1
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The GCP project ID to target.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreGcpCertX509StoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreGcpCertX509Store)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreGcpCertX509StoreArgs) ToGetSecretStoreSecretStoreGcpCertX509StoreOutput() GetSecretStoreSecretStoreGcpCertX509StoreOutput {
+	return i.ToGetSecretStoreSecretStoreGcpCertX509StoreOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreGcpCertX509StoreArgs) ToGetSecretStoreSecretStoreGcpCertX509StoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreGcpCertX509StoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreGcpCertX509StoreOutput)
+}
+
+// GetSecretStoreSecretStoreGcpCertX509StoreArrayInput is an input type that accepts GetSecretStoreSecretStoreGcpCertX509StoreArray and GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreGcpCertX509StoreArrayInput` via:
+//
+//	GetSecretStoreSecretStoreGcpCertX509StoreArray{ GetSecretStoreSecretStoreGcpCertX509StoreArgs{...} }
+type GetSecretStoreSecretStoreGcpCertX509StoreArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreGcpCertX509StoreArrayOutput() GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput
+	ToGetSecretStoreSecretStoreGcpCertX509StoreArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput
+}
+
+type GetSecretStoreSecretStoreGcpCertX509StoreArray []GetSecretStoreSecretStoreGcpCertX509StoreInput
+
+func (GetSecretStoreSecretStoreGcpCertX509StoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreGcpCertX509Store)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreGcpCertX509StoreArray) ToGetSecretStoreSecretStoreGcpCertX509StoreArrayOutput() GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput {
+	return i.ToGetSecretStoreSecretStoreGcpCertX509StoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreGcpCertX509StoreArray) ToGetSecretStoreSecretStoreGcpCertX509StoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput)
+}
+
+type GetSecretStoreSecretStoreGcpCertX509StoreOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreGcpCertX509StoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreGcpCertX509Store)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) ToGetSecretStoreSecretStoreGcpCertX509StoreOutput() GetSecretStoreSecretStoreGcpCertX509StoreOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) ToGetSecretStoreSecretStoreGcpCertX509StoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreGcpCertX509StoreOutput {
+	return o
+}
+
+// The ID of the target CA
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) CaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreGcpCertX509Store) *string { return v.CaId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the target CA pool
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) CaPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreGcpCertX509Store) *string { return v.CaPoolId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreGcpCertX509Store) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreGcpCertX509Store) *int { return v.IssuedCertTtlMinutes }).(pulumi.IntPtrOutput)
+}
+
+// The Region for the CA in GCP format e.g. us-west1
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreGcpCertX509Store) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreGcpCertX509Store) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The GCP project ID to target.
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreGcpCertX509Store) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreGcpCertX509StoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreGcpCertX509Store) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreGcpCertX509Store)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput) ToGetSecretStoreSecretStoreGcpCertX509StoreArrayOutput() GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput) ToGetSecretStoreSecretStoreGcpCertX509StoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreGcpCertX509StoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreGcpCertX509Store {
+		return vs[0].([]GetSecretStoreSecretStoreGcpCertX509Store)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreGcpCertX509StoreOutput)
+}
+
 type GetSecretStoreSecretStoreGcpStore struct {
 	// Unique identifier of the SecretStore.
 	Id *string `pulumi:"id"`
@@ -54983,6 +58726,326 @@ func (o GetSecretStoreSecretStoreVaultApproleArrayOutput) Index(i pulumi.IntInpu
 	}).(GetSecretStoreSecretStoreVaultApproleOutput)
 }
 
+type GetSecretStoreSecretStoreVaultApproleCertSsh struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes *int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole *string `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint *string `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreVaultApproleCertSshInput is an input type that accepts GetSecretStoreSecretStoreVaultApproleCertSshArgs and GetSecretStoreSecretStoreVaultApproleCertSshOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultApproleCertSshInput` via:
+//
+//	GetSecretStoreSecretStoreVaultApproleCertSshArgs{...}
+type GetSecretStoreSecretStoreVaultApproleCertSshInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultApproleCertSshOutput() GetSecretStoreSecretStoreVaultApproleCertSshOutput
+	ToGetSecretStoreSecretStoreVaultApproleCertSshOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultApproleCertSshOutput
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertSshArgs struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntPtrInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringPtrInput `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint pulumi.StringPtrInput `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreVaultApproleCertSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertSsh)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultApproleCertSshArgs) ToGetSecretStoreSecretStoreVaultApproleCertSshOutput() GetSecretStoreSecretStoreVaultApproleCertSshOutput {
+	return i.ToGetSecretStoreSecretStoreVaultApproleCertSshOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultApproleCertSshArgs) ToGetSecretStoreSecretStoreVaultApproleCertSshOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleCertSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultApproleCertSshOutput)
+}
+
+// GetSecretStoreSecretStoreVaultApproleCertSshArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultApproleCertSshArray and GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultApproleCertSshArrayInput` via:
+//
+//	GetSecretStoreSecretStoreVaultApproleCertSshArray{ GetSecretStoreSecretStoreVaultApproleCertSshArgs{...} }
+type GetSecretStoreSecretStoreVaultApproleCertSshArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultApproleCertSshArrayOutput() GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput
+	ToGetSecretStoreSecretStoreVaultApproleCertSshArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertSshArray []GetSecretStoreSecretStoreVaultApproleCertSshInput
+
+func (GetSecretStoreSecretStoreVaultApproleCertSshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultApproleCertSsh)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultApproleCertSshArray) ToGetSecretStoreSecretStoreVaultApproleCertSshArrayOutput() GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput {
+	return i.ToGetSecretStoreSecretStoreVaultApproleCertSshArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultApproleCertSshArray) ToGetSecretStoreSecretStoreVaultApproleCertSshArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput)
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertSshOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultApproleCertSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertSsh)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) ToGetSecretStoreSecretStoreVaultApproleCertSshOutput() GetSecretStoreSecretStoreVaultApproleCertSshOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) ToGetSecretStoreSecretStoreVaultApproleCertSshOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleCertSshOutput {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertSsh) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertSsh) *int { return v.IssuedCertTtlMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertSsh) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertSsh) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertSsh) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertSsh) *string { return v.SigningRole }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) SshMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertSsh) *string { return v.SshMountPoint }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreVaultApproleCertSshOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertSsh) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultApproleCertSsh)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput) ToGetSecretStoreSecretStoreVaultApproleCertSshArrayOutput() GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput) ToGetSecretStoreSecretStoreVaultApproleCertSshArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultApproleCertSshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultApproleCertSsh {
+		return vs[0].([]GetSecretStoreSecretStoreVaultApproleCertSsh)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreVaultApproleCertSshOutput)
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertX509 struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes *int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint *string `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole *string `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreVaultApproleCertX509Input is an input type that accepts GetSecretStoreSecretStoreVaultApproleCertX509Args and GetSecretStoreSecretStoreVaultApproleCertX509Output values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultApproleCertX509Input` via:
+//
+//	GetSecretStoreSecretStoreVaultApproleCertX509Args{...}
+type GetSecretStoreSecretStoreVaultApproleCertX509Input interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultApproleCertX509Output() GetSecretStoreSecretStoreVaultApproleCertX509Output
+	ToGetSecretStoreSecretStoreVaultApproleCertX509OutputWithContext(context.Context) GetSecretStoreSecretStoreVaultApproleCertX509Output
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertX509Args struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntPtrInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint pulumi.StringPtrInput `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringPtrInput `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreVaultApproleCertX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertX509)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultApproleCertX509Args) ToGetSecretStoreSecretStoreVaultApproleCertX509Output() GetSecretStoreSecretStoreVaultApproleCertX509Output {
+	return i.ToGetSecretStoreSecretStoreVaultApproleCertX509OutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultApproleCertX509Args) ToGetSecretStoreSecretStoreVaultApproleCertX509OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleCertX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultApproleCertX509Output)
+}
+
+// GetSecretStoreSecretStoreVaultApproleCertX509ArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultApproleCertX509Array and GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultApproleCertX509ArrayInput` via:
+//
+//	GetSecretStoreSecretStoreVaultApproleCertX509Array{ GetSecretStoreSecretStoreVaultApproleCertX509Args{...} }
+type GetSecretStoreSecretStoreVaultApproleCertX509ArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput() GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput
+	ToGetSecretStoreSecretStoreVaultApproleCertX509ArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertX509Array []GetSecretStoreSecretStoreVaultApproleCertX509Input
+
+func (GetSecretStoreSecretStoreVaultApproleCertX509Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultApproleCertX509)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultApproleCertX509Array) ToGetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput() GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput {
+	return i.ToGetSecretStoreSecretStoreVaultApproleCertX509ArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultApproleCertX509Array) ToGetSecretStoreSecretStoreVaultApproleCertX509ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput)
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertX509Output struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultApproleCertX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertX509)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) ToGetSecretStoreSecretStoreVaultApproleCertX509Output() GetSecretStoreSecretStoreVaultApproleCertX509Output {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) ToGetSecretStoreSecretStoreVaultApproleCertX509OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleCertX509Output {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertX509) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertX509) *int { return v.IssuedCertTtlMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertX509) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertX509) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) PkiMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertX509) *string { return v.PkiMountPoint }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertX509) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertX509) *string { return v.SigningRole }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreVaultApproleCertX509Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultApproleCertX509) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultApproleCertX509)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput) ToGetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput() GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput) ToGetSecretStoreSecretStoreVaultApproleCertX509ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultApproleCertX509Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultApproleCertX509 {
+		return vs[0].([]GetSecretStoreSecretStoreVaultApproleCertX509)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreVaultApproleCertX509Output)
+}
+
 type GetSecretStoreSecretStoreVaultTl struct {
 	// A path to a CA file accessible by a Node
 	CaCertPath *string `pulumi:"caCertPath"`
@@ -55143,6 +59206,380 @@ func (o GetSecretStoreSecretStoreVaultTlArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetSecretStoreSecretStoreVaultTlOutput)
 }
 
+type GetSecretStoreSecretStoreVaultTlsCertSsh struct {
+	// A path to a CA file accessible by a Node
+	CaCertPath *string `pulumi:"caCertPath"`
+	// A path to a client certificate file accessible by a Node
+	ClientCertPath *string `pulumi:"clientCertPath"`
+	// A path to a client key file accessible by a Node
+	ClientKeyPath *string `pulumi:"clientKeyPath"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes *int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole *string `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint *string `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreVaultTlsCertSshInput is an input type that accepts GetSecretStoreSecretStoreVaultTlsCertSshArgs and GetSecretStoreSecretStoreVaultTlsCertSshOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTlsCertSshInput` via:
+//
+//	GetSecretStoreSecretStoreVaultTlsCertSshArgs{...}
+type GetSecretStoreSecretStoreVaultTlsCertSshInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultTlsCertSshOutput() GetSecretStoreSecretStoreVaultTlsCertSshOutput
+	ToGetSecretStoreSecretStoreVaultTlsCertSshOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultTlsCertSshOutput
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertSshArgs struct {
+	// A path to a CA file accessible by a Node
+	CaCertPath pulumi.StringPtrInput `pulumi:"caCertPath"`
+	// A path to a client certificate file accessible by a Node
+	ClientCertPath pulumi.StringPtrInput `pulumi:"clientCertPath"`
+	// A path to a client key file accessible by a Node
+	ClientKeyPath pulumi.StringPtrInput `pulumi:"clientKeyPath"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntPtrInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringPtrInput `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint pulumi.StringPtrInput `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreVaultTlsCertSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertSsh)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultTlsCertSshArgs) ToGetSecretStoreSecretStoreVaultTlsCertSshOutput() GetSecretStoreSecretStoreVaultTlsCertSshOutput {
+	return i.ToGetSecretStoreSecretStoreVaultTlsCertSshOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultTlsCertSshArgs) ToGetSecretStoreSecretStoreVaultTlsCertSshOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlsCertSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTlsCertSshOutput)
+}
+
+// GetSecretStoreSecretStoreVaultTlsCertSshArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultTlsCertSshArray and GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTlsCertSshArrayInput` via:
+//
+//	GetSecretStoreSecretStoreVaultTlsCertSshArray{ GetSecretStoreSecretStoreVaultTlsCertSshArgs{...} }
+type GetSecretStoreSecretStoreVaultTlsCertSshArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultTlsCertSshArrayOutput() GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput
+	ToGetSecretStoreSecretStoreVaultTlsCertSshArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertSshArray []GetSecretStoreSecretStoreVaultTlsCertSshInput
+
+func (GetSecretStoreSecretStoreVaultTlsCertSshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultTlsCertSsh)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultTlsCertSshArray) ToGetSecretStoreSecretStoreVaultTlsCertSshArrayOutput() GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput {
+	return i.ToGetSecretStoreSecretStoreVaultTlsCertSshArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultTlsCertSshArray) ToGetSecretStoreSecretStoreVaultTlsCertSshArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertSshOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultTlsCertSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertSsh)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) ToGetSecretStoreSecretStoreVaultTlsCertSshOutput() GetSecretStoreSecretStoreVaultTlsCertSshOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) ToGetSecretStoreSecretStoreVaultTlsCertSshOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlsCertSshOutput {
+	return o
+}
+
+// A path to a CA file accessible by a Node
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) CaCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.CaCertPath }).(pulumi.StringPtrOutput)
+}
+
+// A path to a client certificate file accessible by a Node
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) ClientCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.ClientCertPath }).(pulumi.StringPtrOutput)
+}
+
+// A path to a client key file accessible by a Node
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) ClientKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.ClientKeyPath }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *int { return v.IssuedCertTtlMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.SigningRole }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) SshMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) *string { return v.SshMountPoint }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreVaultTlsCertSshOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertSsh) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultTlsCertSsh)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput) ToGetSecretStoreSecretStoreVaultTlsCertSshArrayOutput() GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput) ToGetSecretStoreSecretStoreVaultTlsCertSshArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultTlsCertSshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultTlsCertSsh {
+		return vs[0].([]GetSecretStoreSecretStoreVaultTlsCertSsh)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreVaultTlsCertSshOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertX509 struct {
+	// A path to a CA file accessible by a Node
+	CaCertPath *string `pulumi:"caCertPath"`
+	// A path to a client certificate file accessible by a Node
+	ClientCertPath *string `pulumi:"clientCertPath"`
+	// A path to a client key file accessible by a Node
+	ClientKeyPath *string `pulumi:"clientKeyPath"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes *int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint *string `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole *string `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreVaultTlsCertX509Input is an input type that accepts GetSecretStoreSecretStoreVaultTlsCertX509Args and GetSecretStoreSecretStoreVaultTlsCertX509Output values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTlsCertX509Input` via:
+//
+//	GetSecretStoreSecretStoreVaultTlsCertX509Args{...}
+type GetSecretStoreSecretStoreVaultTlsCertX509Input interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultTlsCertX509Output() GetSecretStoreSecretStoreVaultTlsCertX509Output
+	ToGetSecretStoreSecretStoreVaultTlsCertX509OutputWithContext(context.Context) GetSecretStoreSecretStoreVaultTlsCertX509Output
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertX509Args struct {
+	// A path to a CA file accessible by a Node
+	CaCertPath pulumi.StringPtrInput `pulumi:"caCertPath"`
+	// A path to a client certificate file accessible by a Node
+	ClientCertPath pulumi.StringPtrInput `pulumi:"clientCertPath"`
+	// A path to a client key file accessible by a Node
+	ClientKeyPath pulumi.StringPtrInput `pulumi:"clientKeyPath"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntPtrInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint pulumi.StringPtrInput `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringPtrInput `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreVaultTlsCertX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertX509)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultTlsCertX509Args) ToGetSecretStoreSecretStoreVaultTlsCertX509Output() GetSecretStoreSecretStoreVaultTlsCertX509Output {
+	return i.ToGetSecretStoreSecretStoreVaultTlsCertX509OutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultTlsCertX509Args) ToGetSecretStoreSecretStoreVaultTlsCertX509OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlsCertX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTlsCertX509Output)
+}
+
+// GetSecretStoreSecretStoreVaultTlsCertX509ArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultTlsCertX509Array and GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTlsCertX509ArrayInput` via:
+//
+//	GetSecretStoreSecretStoreVaultTlsCertX509Array{ GetSecretStoreSecretStoreVaultTlsCertX509Args{...} }
+type GetSecretStoreSecretStoreVaultTlsCertX509ArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput() GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput
+	ToGetSecretStoreSecretStoreVaultTlsCertX509ArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertX509Array []GetSecretStoreSecretStoreVaultTlsCertX509Input
+
+func (GetSecretStoreSecretStoreVaultTlsCertX509Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultTlsCertX509)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultTlsCertX509Array) ToGetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput() GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput {
+	return i.ToGetSecretStoreSecretStoreVaultTlsCertX509ArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultTlsCertX509Array) ToGetSecretStoreSecretStoreVaultTlsCertX509ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertX509Output struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultTlsCertX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertX509)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) ToGetSecretStoreSecretStoreVaultTlsCertX509Output() GetSecretStoreSecretStoreVaultTlsCertX509Output {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) ToGetSecretStoreSecretStoreVaultTlsCertX509OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlsCertX509Output {
+	return o
+}
+
+// A path to a CA file accessible by a Node
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) CaCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.CaCertPath }).(pulumi.StringPtrOutput)
+}
+
+// A path to a client certificate file accessible by a Node
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) ClientCertPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.ClientCertPath }).(pulumi.StringPtrOutput)
+}
+
+// A path to a client key file accessible by a Node
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) ClientKeyPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.ClientKeyPath }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *int { return v.IssuedCertTtlMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) PkiMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.PkiMountPoint }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) *string { return v.SigningRole }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreVaultTlsCertX509Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTlsCertX509) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultTlsCertX509)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput) ToGetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput() GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput) ToGetSecretStoreSecretStoreVaultTlsCertX509ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultTlsCertX509Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultTlsCertX509 {
+		return vs[0].([]GetSecretStoreSecretStoreVaultTlsCertX509)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreVaultTlsCertX509Output)
+}
+
 type GetSecretStoreSecretStoreVaultToken struct {
 	// Unique identifier of the SecretStore.
 	Id *string `pulumi:"id"`
@@ -55276,11 +59713,333 @@ func (o GetSecretStoreSecretStoreVaultTokenArrayOutput) Index(i pulumi.IntInput)
 	}).(GetSecretStoreSecretStoreVaultTokenOutput)
 }
 
+type GetSecretStoreSecretStoreVaultTokenCertSsh struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes *int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole *string `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint *string `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreVaultTokenCertSshInput is an input type that accepts GetSecretStoreSecretStoreVaultTokenCertSshArgs and GetSecretStoreSecretStoreVaultTokenCertSshOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTokenCertSshInput` via:
+//
+//	GetSecretStoreSecretStoreVaultTokenCertSshArgs{...}
+type GetSecretStoreSecretStoreVaultTokenCertSshInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultTokenCertSshOutput() GetSecretStoreSecretStoreVaultTokenCertSshOutput
+	ToGetSecretStoreSecretStoreVaultTokenCertSshOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultTokenCertSshOutput
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertSshArgs struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntPtrInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringPtrInput `pulumi:"signingRole"`
+	// The mount point of the SSH engine configured with the desired CA
+	SshMountPoint pulumi.StringPtrInput `pulumi:"sshMountPoint"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreVaultTokenCertSshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenCertSsh)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultTokenCertSshArgs) ToGetSecretStoreSecretStoreVaultTokenCertSshOutput() GetSecretStoreSecretStoreVaultTokenCertSshOutput {
+	return i.ToGetSecretStoreSecretStoreVaultTokenCertSshOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultTokenCertSshArgs) ToGetSecretStoreSecretStoreVaultTokenCertSshOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenCertSshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTokenCertSshOutput)
+}
+
+// GetSecretStoreSecretStoreVaultTokenCertSshArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultTokenCertSshArray and GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTokenCertSshArrayInput` via:
+//
+//	GetSecretStoreSecretStoreVaultTokenCertSshArray{ GetSecretStoreSecretStoreVaultTokenCertSshArgs{...} }
+type GetSecretStoreSecretStoreVaultTokenCertSshArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultTokenCertSshArrayOutput() GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput
+	ToGetSecretStoreSecretStoreVaultTokenCertSshArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertSshArray []GetSecretStoreSecretStoreVaultTokenCertSshInput
+
+func (GetSecretStoreSecretStoreVaultTokenCertSshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultTokenCertSsh)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultTokenCertSshArray) ToGetSecretStoreSecretStoreVaultTokenCertSshArrayOutput() GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput {
+	return i.ToGetSecretStoreSecretStoreVaultTokenCertSshArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultTokenCertSshArray) ToGetSecretStoreSecretStoreVaultTokenCertSshArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertSshOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultTokenCertSshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenCertSsh)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) ToGetSecretStoreSecretStoreVaultTokenCertSshOutput() GetSecretStoreSecretStoreVaultTokenCertSshOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) ToGetSecretStoreSecretStoreVaultTokenCertSshOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenCertSshOutput {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertSsh) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertSsh) *int { return v.IssuedCertTtlMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertSsh) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertSsh) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertSsh) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertSsh) *string { return v.SigningRole }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the SSH engine configured with the desired CA
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) SshMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertSsh) *string { return v.SshMountPoint }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreVaultTokenCertSshOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertSsh) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultTokenCertSsh)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput) ToGetSecretStoreSecretStoreVaultTokenCertSshArrayOutput() GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput) ToGetSecretStoreSecretStoreVaultTokenCertSshArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultTokenCertSshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultTokenCertSsh {
+		return vs[0].([]GetSecretStoreSecretStoreVaultTokenCertSsh)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreVaultTokenCertSshOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertX509 struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes *int `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint *string `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole *string `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreVaultTokenCertX509Input is an input type that accepts GetSecretStoreSecretStoreVaultTokenCertX509Args and GetSecretStoreSecretStoreVaultTokenCertX509Output values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTokenCertX509Input` via:
+//
+//	GetSecretStoreSecretStoreVaultTokenCertX509Args{...}
+type GetSecretStoreSecretStoreVaultTokenCertX509Input interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultTokenCertX509Output() GetSecretStoreSecretStoreVaultTokenCertX509Output
+	ToGetSecretStoreSecretStoreVaultTokenCertX509OutputWithContext(context.Context) GetSecretStoreSecretStoreVaultTokenCertX509Output
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertX509Args struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The lifetime of certificates issued by this CA represented in minutes.
+	IssuedCertTtlMinutes pulumi.IntPtrInput `pulumi:"issuedCertTtlMinutes"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The mount point of the PKI engine configured with the desired CA
+	PkiMountPoint pulumi.StringPtrInput `pulumi:"pkiMountPoint"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// The signing role to be used for signing certificates
+	SigningRole pulumi.StringPtrInput `pulumi:"signingRole"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreVaultTokenCertX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenCertX509)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultTokenCertX509Args) ToGetSecretStoreSecretStoreVaultTokenCertX509Output() GetSecretStoreSecretStoreVaultTokenCertX509Output {
+	return i.ToGetSecretStoreSecretStoreVaultTokenCertX509OutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultTokenCertX509Args) ToGetSecretStoreSecretStoreVaultTokenCertX509OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenCertX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTokenCertX509Output)
+}
+
+// GetSecretStoreSecretStoreVaultTokenCertX509ArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultTokenCertX509Array and GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultTokenCertX509ArrayInput` via:
+//
+//	GetSecretStoreSecretStoreVaultTokenCertX509Array{ GetSecretStoreSecretStoreVaultTokenCertX509Args{...} }
+type GetSecretStoreSecretStoreVaultTokenCertX509ArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput() GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput
+	ToGetSecretStoreSecretStoreVaultTokenCertX509ArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertX509Array []GetSecretStoreSecretStoreVaultTokenCertX509Input
+
+func (GetSecretStoreSecretStoreVaultTokenCertX509Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultTokenCertX509)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultTokenCertX509Array) ToGetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput() GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput {
+	return i.ToGetSecretStoreSecretStoreVaultTokenCertX509ArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultTokenCertX509Array) ToGetSecretStoreSecretStoreVaultTokenCertX509ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertX509Output struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultTokenCertX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenCertX509)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) ToGetSecretStoreSecretStoreVaultTokenCertX509Output() GetSecretStoreSecretStoreVaultTokenCertX509Output {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) ToGetSecretStoreSecretStoreVaultTokenCertX509OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenCertX509Output {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertX509) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The lifetime of certificates issued by this CA represented in minutes.
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) IssuedCertTtlMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertX509) *int { return v.IssuedCertTtlMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertX509) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertX509) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The mount point of the PKI engine configured with the desired CA
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) PkiMountPoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertX509) *string { return v.PkiMountPoint }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertX509) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// The signing role to be used for signing certificates
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) SigningRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertX509) *string { return v.SigningRole }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreVaultTokenCertX509Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultTokenCertX509) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultTokenCertX509)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput) ToGetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput() GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput) ToGetSecretStoreSecretStoreVaultTokenCertX509ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultTokenCertX509Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultTokenCertX509 {
+		return vs[0].([]GetSecretStoreSecretStoreVaultTokenCertX509)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreVaultTokenCertX509Output)
+}
+
 type GetWorkflowApproverWorkflowApprover struct {
-	// The approver id.
-	ApproverId *string `pulumi:"approverId"`
+	// The approver account id.
+	AccountId *string `pulumi:"accountId"`
 	// Unique identifier of the WorkflowApprover.
 	Id *string `pulumi:"id"`
+	// The approver role id
+	RoleId *string `pulumi:"roleId"`
 	// The workflow id.
 	WorkflowId *string `pulumi:"workflowId"`
 }
@@ -55297,10 +60056,12 @@ type GetWorkflowApproverWorkflowApproverInput interface {
 }
 
 type GetWorkflowApproverWorkflowApproverArgs struct {
-	// The approver id.
-	ApproverId pulumi.StringPtrInput `pulumi:"approverId"`
+	// The approver account id.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Unique identifier of the WorkflowApprover.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The approver role id
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 	// The workflow id.
 	WorkflowId pulumi.StringPtrInput `pulumi:"workflowId"`
 }
@@ -55356,14 +60117,19 @@ func (o GetWorkflowApproverWorkflowApproverOutput) ToGetWorkflowApproverWorkflow
 	return o
 }
 
-// The approver id.
-func (o GetWorkflowApproverWorkflowApproverOutput) ApproverId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetWorkflowApproverWorkflowApprover) *string { return v.ApproverId }).(pulumi.StringPtrOutput)
+// The approver account id.
+func (o GetWorkflowApproverWorkflowApproverOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowApproverWorkflowApprover) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the WorkflowApprover.
 func (o GetWorkflowApproverWorkflowApproverOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWorkflowApproverWorkflowApprover) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The approver role id
+func (o GetWorkflowApproverWorkflowApproverOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowApproverWorkflowApprover) *string { return v.RoleId }).(pulumi.StringPtrOutput)
 }
 
 // The workflow id.
@@ -55509,6 +60275,8 @@ func (o GetWorkflowRoleWorkflowRoleArrayOutput) Index(i pulumi.IntInput) GetWork
 type GetWorkflowWorkflow struct {
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules *string `pulumi:"accessRules"`
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant *bool `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
@@ -55537,6 +60305,8 @@ type GetWorkflowWorkflowInput interface {
 type GetWorkflowWorkflowArgs struct {
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules pulumi.StringPtrInput `pulumi:"accessRules"`
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant pulumi.BoolPtrInput `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
@@ -55605,6 +60375,11 @@ func (o GetWorkflowWorkflowOutput) ToGetWorkflowWorkflowOutputWithContext(ctx co
 // AccessRules is a list of access rules defining the resources this Workflow provides access to.
 func (o GetWorkflowWorkflowOutput) AccessRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWorkflowWorkflow) *string { return v.AccessRules }).(pulumi.StringPtrOutput)
+}
+
+// Optional approval flow ID identifies an approval flow that linked to the workflow
+func (o GetWorkflowWorkflowOutput) ApprovalFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *string { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
 }
 
 // Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -55804,6 +60579,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRawTcpPtrInput)(nil)).Elem(), ResourceRawTcpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdpInput)(nil)).Elem(), ResourceRdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdpPtrInput)(nil)).Elem(), ResourceRdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdpCertInput)(nil)).Elem(), ResourceRdpCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdpCertPtrInput)(nil)).Elem(), ResourceRdpCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdsPostgresIamInput)(nil)).Elem(), ResourceRdsPostgresIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRdsPostgresIamPtrInput)(nil)).Elem(), ResourceRdsPostgresIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedisInput)(nil)).Elem(), ResourceRedisArgs{})
@@ -55836,8 +60613,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceTeradataPtrInput)(nil)).Elem(), ResourceTeradataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceTrinoInput)(nil)).Elem(), ResourceTrinoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceTrinoPtrInput)(nil)).Elem(), ResourceTrinoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreActiveDirectoryStoreInput)(nil)).Elem(), SecretStoreActiveDirectoryStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreActiveDirectoryStorePtrInput)(nil)).Elem(), SecretStoreActiveDirectoryStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAwsInput)(nil)).Elem(), SecretStoreAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAwsPtrInput)(nil)).Elem(), SecretStoreAwsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAwsCertX509Input)(nil)).Elem(), SecretStoreAwsCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAwsCertX509PtrInput)(nil)).Elem(), SecretStoreAwsCertX509Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAzureStoreInput)(nil)).Elem(), SecretStoreAzureStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreAzureStorePtrInput)(nil)).Elem(), SecretStoreAzureStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkConjurInput)(nil)).Elem(), SecretStoreCyberarkConjurArgs{})
@@ -55848,14 +60629,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreCyberarkPamExperimentalPtrInput)(nil)).Elem(), SecretStoreCyberarkPamExperimentalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaStoreInput)(nil)).Elem(), SecretStoreDelineaStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreDelineaStorePtrInput)(nil)).Elem(), SecretStoreDelineaStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpCertX509StoreInput)(nil)).Elem(), SecretStoreGcpCertX509StoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpCertX509StorePtrInput)(nil)).Elem(), SecretStoreGcpCertX509StoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpStoreInput)(nil)).Elem(), SecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpStorePtrInput)(nil)).Elem(), SecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleInput)(nil)).Elem(), SecretStoreVaultApproleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApprolePtrInput)(nil)).Elem(), SecretStoreVaultApproleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleCertSshInput)(nil)).Elem(), SecretStoreVaultApproleCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleCertSshPtrInput)(nil)).Elem(), SecretStoreVaultApproleCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleCertX509Input)(nil)).Elem(), SecretStoreVaultApproleCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleCertX509PtrInput)(nil)).Elem(), SecretStoreVaultApproleCertX509Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsInput)(nil)).Elem(), SecretStoreVaultTlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsPtrInput)(nil)).Elem(), SecretStoreVaultTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsCertSshInput)(nil)).Elem(), SecretStoreVaultTlsCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsCertSshPtrInput)(nil)).Elem(), SecretStoreVaultTlsCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsCertX509Input)(nil)).Elem(), SecretStoreVaultTlsCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsCertX509PtrInput)(nil)).Elem(), SecretStoreVaultTlsCertX509Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTokenInput)(nil)).Elem(), SecretStoreVaultTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTokenPtrInput)(nil)).Elem(), SecretStoreVaultTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTokenCertSshInput)(nil)).Elem(), SecretStoreVaultTokenCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTokenCertSshPtrInput)(nil)).Elem(), SecretStoreVaultTokenCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTokenCertX509Input)(nil)).Elem(), SecretStoreVaultTokenCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTokenCertX509PtrInput)(nil)).Elem(), SecretStoreVaultTokenCertX509Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountInput)(nil)).Elem(), GetAccountAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountArrayInput)(nil)).Elem(), GetAccountAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountServiceInput)(nil)).Elem(), GetAccountAccountServiceArgs{})
@@ -55864,6 +60659,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountUserArrayInput)(nil)).Elem(), GetAccountAccountUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAttachmentAccountAttachmentInput)(nil)).Elem(), GetAccountAttachmentAccountAttachmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAttachmentAccountAttachmentArrayInput)(nil)).Elem(), GetAccountAttachmentAccountAttachmentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowInput)(nil)).Elem(), GetApprovalWorkflowApprovalWorkflowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApprovalWorkflowArrayInput)(nil)).Elem(), GetApprovalWorkflowApprovalWorkflowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApproverInput)(nil)).Elem(), GetApprovalWorkflowApproverApprovalWorkflowApproverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput)(nil)).Elem(), GetApprovalWorkflowApproverApprovalWorkflowApproverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStepInput)(nil)).Elem(), GetApprovalWorkflowStepApprovalWorkflowStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStepArrayInput)(nil)).Elem(), GetApprovalWorkflowStepApprovalWorkflowStepArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeInput)(nil)).Elem(), GetNodeNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeArrayInput)(nil)).Elem(), GetNodeNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeGatewayInput)(nil)).Elem(), GetNodeNodeGatewayArgs{})
@@ -56022,6 +60823,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRawTcpArrayInput)(nil)).Elem(), GetResourceResourceRawTcpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdpInput)(nil)).Elem(), GetResourceResourceRdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdpArrayInput)(nil)).Elem(), GetResourceResourceRdpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdpCertInput)(nil)).Elem(), GetResourceResourceRdpCertArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdpCertArrayInput)(nil)).Elem(), GetResourceResourceRdpCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdsPostgresIamInput)(nil)).Elem(), GetResourceResourceRdsPostgresIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRdsPostgresIamArrayInput)(nil)).Elem(), GetResourceResourceRdsPostgresIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRediInput)(nil)).Elem(), GetResourceResourceRediArgs{})
@@ -56058,8 +60861,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoleRoleArrayInput)(nil)).Elem(), GetRoleRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreActiveDirectoryStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreActiveDirectoryStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreActiveDirectoryStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreActiveDirectoryStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAwInput)(nil)).Elem(), GetSecretStoreSecretStoreAwArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAwArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreAwArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAwsCertX509Input)(nil)).Elem(), GetSecretStoreSecretStoreAwsCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAwsCertX509ArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreAwsCertX509Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAzureStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreAzureStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreAzureStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreAzureStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkConjurInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkConjurArgs{})
@@ -56070,14 +60877,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreCyberarkPamExperimentalArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreCyberarkPamExperimentalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreDelineaStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreDelineaStoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpCertX509StoreInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpCertX509StoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpCertX509StoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpCertX509StoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertSshInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertSshArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleCertSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertX509Input)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertX509ArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleCertX509Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertSshInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlsCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertSshArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlsCertSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertX509Input)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlsCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertX509ArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlsCertX509Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTokenArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenCertSshInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTokenCertSshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenCertSshArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTokenCertSshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenCertX509Input)(nil)).Elem(), GetSecretStoreSecretStoreVaultTokenCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTokenCertX509ArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTokenCertX509Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowApproverWorkflowApproverInput)(nil)).Elem(), GetWorkflowApproverWorkflowApproverArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowApproverWorkflowApproverArrayInput)(nil)).Elem(), GetWorkflowApproverWorkflowApproverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkflowRoleWorkflowRoleInput)(nil)).Elem(), GetWorkflowRoleWorkflowRoleArgs{})
@@ -56230,6 +61051,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRawTcpPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRdpOutput{})
 	pulumi.RegisterOutputType(ResourceRdpPtrOutput{})
+	pulumi.RegisterOutputType(ResourceRdpCertOutput{})
+	pulumi.RegisterOutputType(ResourceRdpCertPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRdsPostgresIamOutput{})
 	pulumi.RegisterOutputType(ResourceRdsPostgresIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRedisOutput{})
@@ -56262,8 +61085,12 @@ func init() {
 	pulumi.RegisterOutputType(ResourceTeradataPtrOutput{})
 	pulumi.RegisterOutputType(ResourceTrinoOutput{})
 	pulumi.RegisterOutputType(ResourceTrinoPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreActiveDirectoryStoreOutput{})
+	pulumi.RegisterOutputType(SecretStoreActiveDirectoryStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreAwsOutput{})
 	pulumi.RegisterOutputType(SecretStoreAwsPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreAwsCertX509Output{})
+	pulumi.RegisterOutputType(SecretStoreAwsCertX509PtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreAzureStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreAzureStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreCyberarkConjurOutput{})
@@ -56274,14 +61101,28 @@ func init() {
 	pulumi.RegisterOutputType(SecretStoreCyberarkPamExperimentalPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreDelineaStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreDelineaStorePtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreGcpCertX509StoreOutput{})
+	pulumi.RegisterOutputType(SecretStoreGcpCertX509StorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultApproleOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultApprolePtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultApproleCertSshOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultApproleCertSshPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultApproleCertX509Output{})
+	pulumi.RegisterOutputType(SecretStoreVaultApproleCertX509PtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultTlsOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultTlsPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultTlsCertSshOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultTlsCertSshPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultTlsCertX509Output{})
+	pulumi.RegisterOutputType(SecretStoreVaultTlsCertX509PtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultTokenOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultTokenPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultTokenCertSshOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultTokenCertSshPtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultTokenCertX509Output{})
+	pulumi.RegisterOutputType(SecretStoreVaultTokenCertX509PtrOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountServiceOutput{})
@@ -56290,6 +61131,12 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountAccountUserArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAttachmentAccountAttachmentOutput{})
 	pulumi.RegisterOutputType(GetAccountAttachmentAccountAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalWorkflowOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApprovalWorkflowArrayOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApproverApprovalWorkflowApproverOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowStepApprovalWorkflowStepOutput{})
+	pulumi.RegisterOutputType(GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeGatewayOutput{})
@@ -56448,6 +61295,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceRawTcpArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRdpOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRdpArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRdpCertOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRdpCertArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRdsPostgresIamOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRdsPostgresIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRediOutput{})
@@ -56484,8 +61333,12 @@ func init() {
 	pulumi.RegisterOutputType(GetRoleRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreActiveDirectoryStoreOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreActiveDirectoryStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAwOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAwArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAwsCertX509Output{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAwsCertX509ArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAzureStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreAzureStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkConjurOutput{})
@@ -56496,14 +61349,28 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreCyberarkPamExperimentalArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreDelineaStoreArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpCertX509StoreOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleCertSshOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleCertX509Output{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlsCertSshOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlsCertSshArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlsCertX509Output{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlsCertX509ArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTokenOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTokenCertSshOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTokenCertSshArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTokenCertX509Output{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTokenCertX509ArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkflowApproverWorkflowApproverOutput{})
 	pulumi.RegisterOutputType(GetWorkflowApproverWorkflowApproverArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkflowRoleWorkflowRoleOutput{})

@@ -7,26 +7,33 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+ * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const workflowApproverQuery = sdm.getWorkflowApprover({
- *     approverId: "a-2496542",
+ * const workflowApproverAccountQuery = sdm.getWorkflowApprover({
+ *     accountId: "a-2496542",
  *     workflowId: "aw-541894",
  * });
+ * const workflowApproverRoleQuery = sdm.getWorkflowApprover({
+ *     roleId: "r-417345",
+ *     workflowId: "aw-679923",
+ * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWorkflowApprover(args?: GetWorkflowApproverArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowApproverResult> {
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getWorkflowApprover:getWorkflowApprover", {
-        "approverId": args.approverId,
+        "accountId": args.accountId,
         "id": args.id,
+        "roleId": args.roleId,
         "workflowId": args.workflowId,
     }, opts);
 }
@@ -36,13 +43,17 @@ export function getWorkflowApprover(args?: GetWorkflowApproverArgs, opts?: pulum
  */
 export interface GetWorkflowApproverArgs {
     /**
-     * The approver id.
+     * The approver account id.
      */
-    approverId?: string;
+    accountId?: string;
     /**
      * Unique identifier of the WorkflowApprover.
      */
     id?: string;
+    /**
+     * The approver role id
+     */
+    roleId?: string;
     /**
      * The workflow id.
      */
@@ -54,9 +65,9 @@ export interface GetWorkflowApproverArgs {
  */
 export interface GetWorkflowApproverResult {
     /**
-     * The approver id.
+     * The approver account id.
      */
-    readonly approverId?: string;
+    readonly accountId?: string;
     /**
      * Unique identifier of the WorkflowApprover.
      */
@@ -65,6 +76,10 @@ export interface GetWorkflowApproverResult {
      * a list of strings of ids of data sources that match the given arguments.
      */
     readonly ids: string[];
+    /**
+     * The approver role id
+     */
+    readonly roleId?: string;
     /**
      * A list where each element has the following attributes:
      */
@@ -75,18 +90,24 @@ export interface GetWorkflowApproverResult {
     readonly workflowId?: string;
 }
 /**
- * WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+ * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const workflowApproverQuery = sdm.getWorkflowApprover({
- *     approverId: "a-2496542",
+ * const workflowApproverAccountQuery = sdm.getWorkflowApprover({
+ *     accountId: "a-2496542",
  *     workflowId: "aw-541894",
  * });
+ * const workflowApproverRoleQuery = sdm.getWorkflowApprover({
+ *     roleId: "r-417345",
+ *     workflowId: "aw-679923",
+ * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWorkflowApproverOutput(args?: GetWorkflowApproverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowApproverResult> {
     return pulumi.output(args).apply((a: any) => getWorkflowApprover(a, opts))
@@ -97,13 +118,17 @@ export function getWorkflowApproverOutput(args?: GetWorkflowApproverOutputArgs, 
  */
 export interface GetWorkflowApproverOutputArgs {
     /**
-     * The approver id.
+     * The approver account id.
      */
-    approverId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Unique identifier of the WorkflowApprover.
      */
     id?: pulumi.Input<string>;
+    /**
+     * The approver role id
+     */
+    roleId?: pulumi.Input<string>;
     /**
      * The workflow id.
      */

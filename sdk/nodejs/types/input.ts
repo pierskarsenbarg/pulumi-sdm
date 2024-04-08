@@ -11,7 +11,7 @@ export interface AccountService {
      */
     name: pulumi.Input<string>;
     /**
-     * The User's suspended state.
+     * The Service's suspended state.
      */
     suspended?: pulumi.Input<boolean>;
     /**
@@ -43,11 +43,11 @@ export interface AccountUser {
      */
     managedBy?: pulumi.Input<string>;
     /**
-     * PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+     * PermissionLevel is the user's permission level e.g. admin, DBA, user.
      */
     permissionLevel?: pulumi.Input<string>;
     /**
-     * The User's suspended state.
+     * The Service's suspended state.
      */
     suspended?: pulumi.Input<boolean>;
     /**
@@ -3820,6 +3820,57 @@ export interface ResourceRdp {
     username?: pulumi.Input<string>;
 }
 
+export interface ResourceRdpCert {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * The ID of the remote identity group to use for remote identity connections.
+     */
+    remoteIdentityGroupId?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
+     */
+    remoteIdentityHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
 export interface ResourceRdsPostgresIam {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -4709,6 +4760,21 @@ export interface ResourceTrino {
     username?: pulumi.Input<string>;
 }
 
+export interface SecretStoreActiveDirectoryStore {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface SecretStoreAws {
     /**
      * Unique human-readable name of the SecretStore.
@@ -4718,6 +4784,37 @@ export interface SecretStoreAws {
      * The AWS region to target e.g. us-east-1
      */
     region: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreAwsCertX509 {
+    /**
+     * The ARN of the CA in AWS Private CA
+     */
+    caArn: pulumi.Input<string>;
+    /**
+     * The ARN of the AWS certificate template for requested certificates. Must allow SAN, key usage, and ext key usage passthrough from CSR
+     */
+    certificateTemplateArn: pulumi.Input<string>;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The AWS region to target e.g. us-east-1
+     */
+    region: pulumi.Input<string>;
+    /**
+     * The specified signing algorithm family (RSA or ECDSA) must match the algorithm family of the CA's secret key. e.g. SHA256WITHRSA
+     */
+    signingAlgo: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4805,6 +4902,37 @@ export interface SecretStoreDelineaStore {
     tenantName?: pulumi.Input<string>;
 }
 
+export interface SecretStoreGcpCertX509Store {
+    /**
+     * The ID of the target CA
+     */
+    caId?: pulumi.Input<string>;
+    /**
+     * The ID of the target CA pool
+     */
+    caPoolId: pulumi.Input<string>;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * The Region for the CA in GCP format e.g. us-west1
+     */
+    location: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The GCP project ID to target.
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface SecretStoreGcpStore {
     /**
      * Unique human-readable name of the SecretStore.
@@ -4833,6 +4961,68 @@ export interface SecretStoreVaultApprole {
      * The URL of the Vault to target
      */
     serverAddress: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreVaultApproleCertSsh {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreVaultApproleCertX509 {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -4870,6 +5060,92 @@ export interface SecretStoreVaultTls {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface SecretStoreVaultTlsCertSsh {
+    /**
+     * A path to a CA file accessible by a Node
+     */
+    caCertPath?: pulumi.Input<string>;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
+    clientCertPath: pulumi.Input<string>;
+    /**
+     * A path to a client key file accessible by a Node
+     */
+    clientKeyPath: pulumi.Input<string>;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreVaultTlsCertX509 {
+    /**
+     * A path to a CA file accessible by a Node
+     */
+    caCertPath?: pulumi.Input<string>;
+    /**
+     * A path to a client certificate file accessible by a Node
+     */
+    clientCertPath: pulumi.Input<string>;
+    /**
+     * A path to a client key file accessible by a Node
+     */
+    clientKeyPath: pulumi.Input<string>;
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface SecretStoreVaultToken {
     /**
      * Unique human-readable name of the SecretStore.
@@ -4883,6 +5159,68 @@ export interface SecretStoreVaultToken {
      * The URL of the Vault to target
      */
     serverAddress: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreVaultTokenCertSsh {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
+    /**
+     * The mount point of the SSH engine configured with the desired CA
+     */
+    sshMountPoint: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface SecretStoreVaultTokenCertX509 {
+    /**
+     * The lifetime of certificates issued by this CA represented in minutes.
+     */
+    issuedCertTtlMinutes: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: pulumi.Input<string>;
+    /**
+     * The mount point of the PKI engine configured with the desired CA
+     */
+    pkiMountPoint: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * The signing role to be used for signing certificates
+     */
+    signingRole: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */

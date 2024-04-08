@@ -16,7 +16,7 @@ namespace PiersKarsenbarg.Sdm
     /// A Resource can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/resource:Resource example rs-12345678
+    /// $ pulumi import sdm:index/resource:Resource example rs-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/resource:Resource")]
@@ -234,6 +234,9 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("rdp")]
         public Output<Outputs.ResourceRdp?> Rdp { get; private set; } = null!;
+
+        [Output("rdpCert")]
+        public Output<Outputs.ResourceRdpCert?> RdpCert { get; private set; } = null!;
 
         [Output("rdsPostgresIam")]
         public Output<Outputs.ResourceRdsPostgresIam?> RdsPostgresIam { get; private set; } = null!;
@@ -546,6 +549,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("rdp")]
         public Input<Inputs.ResourceRdpArgs>? Rdp { get; set; }
 
+        [Input("rdpCert")]
+        public Input<Inputs.ResourceRdpCertArgs>? RdpCert { get; set; }
+
         [Input("rdsPostgresIam")]
         public Input<Inputs.ResourceRdsPostgresIamArgs>? RdsPostgresIam { get; set; }
 
@@ -817,6 +823,9 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("rdp")]
         public Input<Inputs.ResourceRdpGetArgs>? Rdp { get; set; }
+
+        [Input("rdpCert")]
+        public Input<Inputs.ResourceRdpCertGetArgs>? RdpCert { get; set; }
 
         [Input("rdsPostgresIam")]
         public Input<Inputs.ResourceRdsPostgresIamGetArgs>? RdsPostgresIam { get; set; }

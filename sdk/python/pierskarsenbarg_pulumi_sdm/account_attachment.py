@@ -101,6 +101,7 @@ class AccountAttachment(pulumi.CustomResource):
         AccountAttachments assign an account to a role.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -109,6 +110,7 @@ class AccountAttachment(pulumi.CustomResource):
             account_id="a-00000054",
             role_id="r-12355562")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -116,7 +118,7 @@ class AccountAttachment(pulumi.CustomResource):
         A AccountAttachment can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
+        $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -134,6 +136,7 @@ class AccountAttachment(pulumi.CustomResource):
         AccountAttachments assign an account to a role.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -142,6 +145,7 @@ class AccountAttachment(pulumi.CustomResource):
             account_id="a-00000054",
             role_id="r-12355562")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -149,7 +153,7 @@ class AccountAttachment(pulumi.CustomResource):
         A AccountAttachment can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
+        $ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678
         ```
 
         :param str resource_name: The name of the resource.

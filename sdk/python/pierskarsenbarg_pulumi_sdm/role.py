@@ -154,6 +154,7 @@ class Role(pulumi.CustomResource):
          AccountAttachments.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -180,6 +181,7 @@ class Role(pulumi.CustomResource):
             },
         ]))
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -187,7 +189,7 @@ class Role(pulumi.CustomResource):
         A Role can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/role:Role example r-12345678
+        $ pulumi import sdm:index/role:Role example r-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -208,6 +210,7 @@ class Role(pulumi.CustomResource):
          AccountAttachments.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -234,6 +237,7 @@ class Role(pulumi.CustomResource):
             },
         ]))
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -241,7 +245,7 @@ class Role(pulumi.CustomResource):
         A Role can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/role:Role example r-12345678
+        $ pulumi import sdm:index/role:Role example r-12345678
         ```
 
         :param str resource_name: The name of the resource.

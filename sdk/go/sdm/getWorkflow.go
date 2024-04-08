@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,6 +43,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowResult
@@ -54,6 +56,8 @@ func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulum
 
 // A collection of arguments for invoking getWorkflow.
 type LookupWorkflowArgs struct {
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant *bool `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
@@ -70,6 +74,8 @@ type LookupWorkflowArgs struct {
 
 // A collection of values returned by getWorkflow.
 type LookupWorkflowResult struct {
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant *bool `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
@@ -103,6 +109,8 @@ func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, op
 
 // A collection of arguments for invoking getWorkflow.
 type LookupWorkflowOutputArgs struct {
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant pulumi.BoolPtrInput `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
@@ -134,6 +142,11 @@ func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutput() LookupWorkflo
 
 func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx context.Context) LookupWorkflowResultOutput {
 	return o
+}
+
+// Optional approval flow ID identifies an approval flow that linked to the workflow
+func (o LookupWorkflowResultOutput) ApprovalFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
 }
 
 // Optional auto grant setting to automatically approve requests or not, defaults to false.

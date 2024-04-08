@@ -15,10 +15,9 @@ namespace PiersKarsenbarg.Sdm
         /// <summary>
         /// A Resource is a database, server, cluster, website, or cloud that strongDM
         ///  delegates access to.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,8 +39,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetResourceResult> InvokeAsync(GetResourceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceArgs(), options.WithDefaults());
@@ -49,10 +47,9 @@ namespace PiersKarsenbarg.Sdm
         /// <summary>
         /// A Resource is a database, server, cluster, website, or cloud that strongDM
         ///  delegates access to.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,8 +71,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetResourceResult> Invoke(GetResourceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceInvokeArgs(), options.WithDefaults());
@@ -121,7 +117,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -177,7 +173,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

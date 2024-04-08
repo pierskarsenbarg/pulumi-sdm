@@ -14,7 +14,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class GetAccountAccountResult
     {
+        /// <summary>
+        /// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountAccountServiceResult> Services;
+        /// <summary>
+        /// A User can connect to resources they are granted directly, or granted via roles.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountAccountUserResult> Users;
 
         [OutputConstructor]

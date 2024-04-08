@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * AccountAttachments assign an account to a role.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     accountId: "a-00000054",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountAttachment(args?: GetAccountAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAttachmentResult> {
     args = args || {};
@@ -77,6 +79,7 @@ export interface GetAccountAttachmentResult {
  * AccountAttachments assign an account to a role.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -85,6 +88,7 @@ export interface GetAccountAttachmentResult {
  *     accountId: "a-00000054",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAccountAttachmentOutput(args?: GetAccountAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAttachmentResult> {
     return pulumi.output(args).apply((a: any) => getAccountAttachment(a, opts))

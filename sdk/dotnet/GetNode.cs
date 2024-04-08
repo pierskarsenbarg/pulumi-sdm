@@ -17,10 +17,9 @@ namespace PiersKarsenbarg.Sdm
         ///  There are two types of nodes:
         ///  1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
         ///  1. **Gateways:** a relay that also listens for connections from strongDM clients
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,8 +40,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNodeResult> InvokeAsync(GetNodeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeArgs(), options.WithDefaults());
@@ -52,10 +50,9 @@ namespace PiersKarsenbarg.Sdm
         ///  There are two types of nodes:
         ///  1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
         ///  1. **Gateways:** a relay that also listens for connections from strongDM clients
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,8 +73,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
@@ -123,7 +119,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -173,7 +169,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

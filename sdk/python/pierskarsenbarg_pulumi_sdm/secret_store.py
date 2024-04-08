@@ -16,23 +16,36 @@ __all__ = ['SecretStoreArgs', 'SecretStore']
 @pulumi.input_type
 class SecretStoreArgs:
     def __init__(__self__, *,
+                 active_directory_store: Optional[pulumi.Input['SecretStoreActiveDirectoryStoreArgs']] = None,
                  aws: Optional[pulumi.Input['SecretStoreAwsArgs']] = None,
+                 aws_cert_x509: Optional[pulumi.Input['SecretStoreAwsCertX509Args']] = None,
                  azure_store: Optional[pulumi.Input['SecretStoreAzureStoreArgs']] = None,
                  cyberark_conjur: Optional[pulumi.Input['SecretStoreCyberarkConjurArgs']] = None,
                  cyberark_pam: Optional[pulumi.Input['SecretStoreCyberarkPamArgs']] = None,
                  cyberark_pam_experimental: Optional[pulumi.Input['SecretStoreCyberarkPamExperimentalArgs']] = None,
                  delinea_store: Optional[pulumi.Input['SecretStoreDelineaStoreArgs']] = None,
+                 gcp_cert_x509_store: Optional[pulumi.Input['SecretStoreGcpCertX509StoreArgs']] = None,
                  gcp_store: Optional[pulumi.Input['SecretStoreGcpStoreArgs']] = None,
                  vault_approle: Optional[pulumi.Input['SecretStoreVaultApproleArgs']] = None,
+                 vault_approle_cert_ssh: Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']] = None,
+                 vault_approle_cert_x509: Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']] = None,
                  vault_tls: Optional[pulumi.Input['SecretStoreVaultTlsArgs']] = None,
-                 vault_token: Optional[pulumi.Input['SecretStoreVaultTokenArgs']] = None):
+                 vault_tls_cert_ssh: Optional[pulumi.Input['SecretStoreVaultTlsCertSshArgs']] = None,
+                 vault_tls_cert_x509: Optional[pulumi.Input['SecretStoreVaultTlsCertX509Args']] = None,
+                 vault_token: Optional[pulumi.Input['SecretStoreVaultTokenArgs']] = None,
+                 vault_token_cert_ssh: Optional[pulumi.Input['SecretStoreVaultTokenCertSshArgs']] = None,
+                 vault_token_cert_x509: Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']] = None):
         """
         The set of arguments for constructing a SecretStore resource.
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
                version bump.
         """
+        if active_directory_store is not None:
+            pulumi.set(__self__, "active_directory_store", active_directory_store)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if aws_cert_x509 is not None:
+            pulumi.set(__self__, "aws_cert_x509", aws_cert_x509)
         if azure_store is not None:
             pulumi.set(__self__, "azure_store", azure_store)
         if cyberark_conjur is not None:
@@ -43,14 +56,37 @@ class SecretStoreArgs:
             pulumi.set(__self__, "cyberark_pam_experimental", cyberark_pam_experimental)
         if delinea_store is not None:
             pulumi.set(__self__, "delinea_store", delinea_store)
+        if gcp_cert_x509_store is not None:
+            pulumi.set(__self__, "gcp_cert_x509_store", gcp_cert_x509_store)
         if gcp_store is not None:
             pulumi.set(__self__, "gcp_store", gcp_store)
         if vault_approle is not None:
             pulumi.set(__self__, "vault_approle", vault_approle)
+        if vault_approle_cert_ssh is not None:
+            pulumi.set(__self__, "vault_approle_cert_ssh", vault_approle_cert_ssh)
+        if vault_approle_cert_x509 is not None:
+            pulumi.set(__self__, "vault_approle_cert_x509", vault_approle_cert_x509)
         if vault_tls is not None:
             pulumi.set(__self__, "vault_tls", vault_tls)
+        if vault_tls_cert_ssh is not None:
+            pulumi.set(__self__, "vault_tls_cert_ssh", vault_tls_cert_ssh)
+        if vault_tls_cert_x509 is not None:
+            pulumi.set(__self__, "vault_tls_cert_x509", vault_tls_cert_x509)
         if vault_token is not None:
             pulumi.set(__self__, "vault_token", vault_token)
+        if vault_token_cert_ssh is not None:
+            pulumi.set(__self__, "vault_token_cert_ssh", vault_token_cert_ssh)
+        if vault_token_cert_x509 is not None:
+            pulumi.set(__self__, "vault_token_cert_x509", vault_token_cert_x509)
+
+    @property
+    @pulumi.getter(name="activeDirectoryStore")
+    def active_directory_store(self) -> Optional[pulumi.Input['SecretStoreActiveDirectoryStoreArgs']]:
+        return pulumi.get(self, "active_directory_store")
+
+    @active_directory_store.setter
+    def active_directory_store(self, value: Optional[pulumi.Input['SecretStoreActiveDirectoryStoreArgs']]):
+        pulumi.set(self, "active_directory_store", value)
 
     @property
     @pulumi.getter
@@ -60,6 +96,15 @@ class SecretStoreArgs:
     @aws.setter
     def aws(self, value: Optional[pulumi.Input['SecretStoreAwsArgs']]):
         pulumi.set(self, "aws", value)
+
+    @property
+    @pulumi.getter(name="awsCertX509")
+    def aws_cert_x509(self) -> Optional[pulumi.Input['SecretStoreAwsCertX509Args']]:
+        return pulumi.get(self, "aws_cert_x509")
+
+    @aws_cert_x509.setter
+    def aws_cert_x509(self, value: Optional[pulumi.Input['SecretStoreAwsCertX509Args']]):
+        pulumi.set(self, "aws_cert_x509", value)
 
     @property
     @pulumi.getter(name="azureStore")
@@ -111,6 +156,15 @@ class SecretStoreArgs:
         pulumi.set(self, "delinea_store", value)
 
     @property
+    @pulumi.getter(name="gcpCertX509Store")
+    def gcp_cert_x509_store(self) -> Optional[pulumi.Input['SecretStoreGcpCertX509StoreArgs']]:
+        return pulumi.get(self, "gcp_cert_x509_store")
+
+    @gcp_cert_x509_store.setter
+    def gcp_cert_x509_store(self, value: Optional[pulumi.Input['SecretStoreGcpCertX509StoreArgs']]):
+        pulumi.set(self, "gcp_cert_x509_store", value)
+
+    @property
     @pulumi.getter(name="gcpStore")
     def gcp_store(self) -> Optional[pulumi.Input['SecretStoreGcpStoreArgs']]:
         return pulumi.get(self, "gcp_store")
@@ -129,6 +183,24 @@ class SecretStoreArgs:
         pulumi.set(self, "vault_approle", value)
 
     @property
+    @pulumi.getter(name="vaultApproleCertSsh")
+    def vault_approle_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']]:
+        return pulumi.get(self, "vault_approle_cert_ssh")
+
+    @vault_approle_cert_ssh.setter
+    def vault_approle_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']]):
+        pulumi.set(self, "vault_approle_cert_ssh", value)
+
+    @property
+    @pulumi.getter(name="vaultApproleCertX509")
+    def vault_approle_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']]:
+        return pulumi.get(self, "vault_approle_cert_x509")
+
+    @vault_approle_cert_x509.setter
+    def vault_approle_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']]):
+        pulumi.set(self, "vault_approle_cert_x509", value)
+
+    @property
     @pulumi.getter(name="vaultTls")
     def vault_tls(self) -> Optional[pulumi.Input['SecretStoreVaultTlsArgs']]:
         return pulumi.get(self, "vault_tls")
@@ -138,6 +210,24 @@ class SecretStoreArgs:
         pulumi.set(self, "vault_tls", value)
 
     @property
+    @pulumi.getter(name="vaultTlsCertSsh")
+    def vault_tls_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultTlsCertSshArgs']]:
+        return pulumi.get(self, "vault_tls_cert_ssh")
+
+    @vault_tls_cert_ssh.setter
+    def vault_tls_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultTlsCertSshArgs']]):
+        pulumi.set(self, "vault_tls_cert_ssh", value)
+
+    @property
+    @pulumi.getter(name="vaultTlsCertX509")
+    def vault_tls_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultTlsCertX509Args']]:
+        return pulumi.get(self, "vault_tls_cert_x509")
+
+    @vault_tls_cert_x509.setter
+    def vault_tls_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultTlsCertX509Args']]):
+        pulumi.set(self, "vault_tls_cert_x509", value)
+
+    @property
     @pulumi.getter(name="vaultToken")
     def vault_token(self) -> Optional[pulumi.Input['SecretStoreVaultTokenArgs']]:
         return pulumi.get(self, "vault_token")
@@ -145,28 +235,59 @@ class SecretStoreArgs:
     @vault_token.setter
     def vault_token(self, value: Optional[pulumi.Input['SecretStoreVaultTokenArgs']]):
         pulumi.set(self, "vault_token", value)
+
+    @property
+    @pulumi.getter(name="vaultTokenCertSsh")
+    def vault_token_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultTokenCertSshArgs']]:
+        return pulumi.get(self, "vault_token_cert_ssh")
+
+    @vault_token_cert_ssh.setter
+    def vault_token_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultTokenCertSshArgs']]):
+        pulumi.set(self, "vault_token_cert_ssh", value)
+
+    @property
+    @pulumi.getter(name="vaultTokenCertX509")
+    def vault_token_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']]:
+        return pulumi.get(self, "vault_token_cert_x509")
+
+    @vault_token_cert_x509.setter
+    def vault_token_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']]):
+        pulumi.set(self, "vault_token_cert_x509", value)
 
 
 @pulumi.input_type
 class _SecretStoreState:
     def __init__(__self__, *,
+                 active_directory_store: Optional[pulumi.Input['SecretStoreActiveDirectoryStoreArgs']] = None,
                  aws: Optional[pulumi.Input['SecretStoreAwsArgs']] = None,
+                 aws_cert_x509: Optional[pulumi.Input['SecretStoreAwsCertX509Args']] = None,
                  azure_store: Optional[pulumi.Input['SecretStoreAzureStoreArgs']] = None,
                  cyberark_conjur: Optional[pulumi.Input['SecretStoreCyberarkConjurArgs']] = None,
                  cyberark_pam: Optional[pulumi.Input['SecretStoreCyberarkPamArgs']] = None,
                  cyberark_pam_experimental: Optional[pulumi.Input['SecretStoreCyberarkPamExperimentalArgs']] = None,
                  delinea_store: Optional[pulumi.Input['SecretStoreDelineaStoreArgs']] = None,
+                 gcp_cert_x509_store: Optional[pulumi.Input['SecretStoreGcpCertX509StoreArgs']] = None,
                  gcp_store: Optional[pulumi.Input['SecretStoreGcpStoreArgs']] = None,
                  vault_approle: Optional[pulumi.Input['SecretStoreVaultApproleArgs']] = None,
+                 vault_approle_cert_ssh: Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']] = None,
+                 vault_approle_cert_x509: Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']] = None,
                  vault_tls: Optional[pulumi.Input['SecretStoreVaultTlsArgs']] = None,
-                 vault_token: Optional[pulumi.Input['SecretStoreVaultTokenArgs']] = None):
+                 vault_tls_cert_ssh: Optional[pulumi.Input['SecretStoreVaultTlsCertSshArgs']] = None,
+                 vault_tls_cert_x509: Optional[pulumi.Input['SecretStoreVaultTlsCertX509Args']] = None,
+                 vault_token: Optional[pulumi.Input['SecretStoreVaultTokenArgs']] = None,
+                 vault_token_cert_ssh: Optional[pulumi.Input['SecretStoreVaultTokenCertSshArgs']] = None,
+                 vault_token_cert_x509: Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']] = None):
         """
         Input properties used for looking up and filtering SecretStore resources.
         :param pulumi.Input['SecretStoreCyberarkPamExperimentalArgs'] cyberark_pam_experimental: CyberarkPAMExperimentalStore is currently unstable, and its API may change, or it may be removed, without a major
                version bump.
         """
+        if active_directory_store is not None:
+            pulumi.set(__self__, "active_directory_store", active_directory_store)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if aws_cert_x509 is not None:
+            pulumi.set(__self__, "aws_cert_x509", aws_cert_x509)
         if azure_store is not None:
             pulumi.set(__self__, "azure_store", azure_store)
         if cyberark_conjur is not None:
@@ -177,14 +298,37 @@ class _SecretStoreState:
             pulumi.set(__self__, "cyberark_pam_experimental", cyberark_pam_experimental)
         if delinea_store is not None:
             pulumi.set(__self__, "delinea_store", delinea_store)
+        if gcp_cert_x509_store is not None:
+            pulumi.set(__self__, "gcp_cert_x509_store", gcp_cert_x509_store)
         if gcp_store is not None:
             pulumi.set(__self__, "gcp_store", gcp_store)
         if vault_approle is not None:
             pulumi.set(__self__, "vault_approle", vault_approle)
+        if vault_approle_cert_ssh is not None:
+            pulumi.set(__self__, "vault_approle_cert_ssh", vault_approle_cert_ssh)
+        if vault_approle_cert_x509 is not None:
+            pulumi.set(__self__, "vault_approle_cert_x509", vault_approle_cert_x509)
         if vault_tls is not None:
             pulumi.set(__self__, "vault_tls", vault_tls)
+        if vault_tls_cert_ssh is not None:
+            pulumi.set(__self__, "vault_tls_cert_ssh", vault_tls_cert_ssh)
+        if vault_tls_cert_x509 is not None:
+            pulumi.set(__self__, "vault_tls_cert_x509", vault_tls_cert_x509)
         if vault_token is not None:
             pulumi.set(__self__, "vault_token", vault_token)
+        if vault_token_cert_ssh is not None:
+            pulumi.set(__self__, "vault_token_cert_ssh", vault_token_cert_ssh)
+        if vault_token_cert_x509 is not None:
+            pulumi.set(__self__, "vault_token_cert_x509", vault_token_cert_x509)
+
+    @property
+    @pulumi.getter(name="activeDirectoryStore")
+    def active_directory_store(self) -> Optional[pulumi.Input['SecretStoreActiveDirectoryStoreArgs']]:
+        return pulumi.get(self, "active_directory_store")
+
+    @active_directory_store.setter
+    def active_directory_store(self, value: Optional[pulumi.Input['SecretStoreActiveDirectoryStoreArgs']]):
+        pulumi.set(self, "active_directory_store", value)
 
     @property
     @pulumi.getter
@@ -194,6 +338,15 @@ class _SecretStoreState:
     @aws.setter
     def aws(self, value: Optional[pulumi.Input['SecretStoreAwsArgs']]):
         pulumi.set(self, "aws", value)
+
+    @property
+    @pulumi.getter(name="awsCertX509")
+    def aws_cert_x509(self) -> Optional[pulumi.Input['SecretStoreAwsCertX509Args']]:
+        return pulumi.get(self, "aws_cert_x509")
+
+    @aws_cert_x509.setter
+    def aws_cert_x509(self, value: Optional[pulumi.Input['SecretStoreAwsCertX509Args']]):
+        pulumi.set(self, "aws_cert_x509", value)
 
     @property
     @pulumi.getter(name="azureStore")
@@ -245,6 +398,15 @@ class _SecretStoreState:
         pulumi.set(self, "delinea_store", value)
 
     @property
+    @pulumi.getter(name="gcpCertX509Store")
+    def gcp_cert_x509_store(self) -> Optional[pulumi.Input['SecretStoreGcpCertX509StoreArgs']]:
+        return pulumi.get(self, "gcp_cert_x509_store")
+
+    @gcp_cert_x509_store.setter
+    def gcp_cert_x509_store(self, value: Optional[pulumi.Input['SecretStoreGcpCertX509StoreArgs']]):
+        pulumi.set(self, "gcp_cert_x509_store", value)
+
+    @property
     @pulumi.getter(name="gcpStore")
     def gcp_store(self) -> Optional[pulumi.Input['SecretStoreGcpStoreArgs']]:
         return pulumi.get(self, "gcp_store")
@@ -263,6 +425,24 @@ class _SecretStoreState:
         pulumi.set(self, "vault_approle", value)
 
     @property
+    @pulumi.getter(name="vaultApproleCertSsh")
+    def vault_approle_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']]:
+        return pulumi.get(self, "vault_approle_cert_ssh")
+
+    @vault_approle_cert_ssh.setter
+    def vault_approle_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']]):
+        pulumi.set(self, "vault_approle_cert_ssh", value)
+
+    @property
+    @pulumi.getter(name="vaultApproleCertX509")
+    def vault_approle_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']]:
+        return pulumi.get(self, "vault_approle_cert_x509")
+
+    @vault_approle_cert_x509.setter
+    def vault_approle_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']]):
+        pulumi.set(self, "vault_approle_cert_x509", value)
+
+    @property
     @pulumi.getter(name="vaultTls")
     def vault_tls(self) -> Optional[pulumi.Input['SecretStoreVaultTlsArgs']]:
         return pulumi.get(self, "vault_tls")
@@ -272,6 +452,24 @@ class _SecretStoreState:
         pulumi.set(self, "vault_tls", value)
 
     @property
+    @pulumi.getter(name="vaultTlsCertSsh")
+    def vault_tls_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultTlsCertSshArgs']]:
+        return pulumi.get(self, "vault_tls_cert_ssh")
+
+    @vault_tls_cert_ssh.setter
+    def vault_tls_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultTlsCertSshArgs']]):
+        pulumi.set(self, "vault_tls_cert_ssh", value)
+
+    @property
+    @pulumi.getter(name="vaultTlsCertX509")
+    def vault_tls_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultTlsCertX509Args']]:
+        return pulumi.get(self, "vault_tls_cert_x509")
+
+    @vault_tls_cert_x509.setter
+    def vault_tls_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultTlsCertX509Args']]):
+        pulumi.set(self, "vault_tls_cert_x509", value)
+
+    @property
     @pulumi.getter(name="vaultToken")
     def vault_token(self) -> Optional[pulumi.Input['SecretStoreVaultTokenArgs']]:
         return pulumi.get(self, "vault_token")
@@ -279,6 +477,24 @@ class _SecretStoreState:
     @vault_token.setter
     def vault_token(self, value: Optional[pulumi.Input['SecretStoreVaultTokenArgs']]):
         pulumi.set(self, "vault_token", value)
+
+    @property
+    @pulumi.getter(name="vaultTokenCertSsh")
+    def vault_token_cert_ssh(self) -> Optional[pulumi.Input['SecretStoreVaultTokenCertSshArgs']]:
+        return pulumi.get(self, "vault_token_cert_ssh")
+
+    @vault_token_cert_ssh.setter
+    def vault_token_cert_ssh(self, value: Optional[pulumi.Input['SecretStoreVaultTokenCertSshArgs']]):
+        pulumi.set(self, "vault_token_cert_ssh", value)
+
+    @property
+    @pulumi.getter(name="vaultTokenCertX509")
+    def vault_token_cert_x509(self) -> Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']]:
+        return pulumi.get(self, "vault_token_cert_x509")
+
+    @vault_token_cert_x509.setter
+    def vault_token_cert_x509(self, value: Optional[pulumi.Input['SecretStoreVaultTokenCertX509Args']]):
+        pulumi.set(self, "vault_token_cert_x509", value)
 
 
 class SecretStore(pulumi.CustomResource):
@@ -286,16 +502,25 @@ class SecretStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_directory_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreActiveDirectoryStoreArgs']]] = None,
                  aws: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsArgs']]] = None,
+                 aws_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsCertX509Args']]] = None,
                  azure_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreAzureStoreArgs']]] = None,
                  cyberark_conjur: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkConjurArgs']]] = None,
                  cyberark_pam: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamArgs']]] = None,
                  cyberark_pam_experimental: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamExperimentalArgs']]] = None,
                  delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
+                 gcp_cert_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpCertX509StoreArgs']]] = None,
                  gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
                  vault_approle: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleArgs']]] = None,
+                 vault_approle_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertSshArgs']]] = None,
+                 vault_approle_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertX509Args']]] = None,
                  vault_tls: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsArgs']]] = None,
+                 vault_tls_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsCertSshArgs']]] = None,
+                 vault_tls_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsCertX509Args']]] = None,
                  vault_token: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenArgs']]] = None,
+                 vault_token_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenCertSshArgs']]] = None,
+                 vault_token_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenCertX509Args']]] = None,
                  __props__=None):
         """
         A SecretStore is a server where resource secrets (passwords, keys) are stored.
@@ -307,7 +532,7 @@ class SecretStore(pulumi.CustomResource):
         A SecretStore can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
+        $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -331,7 +556,7 @@ class SecretStore(pulumi.CustomResource):
         A SecretStore can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
+        $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -349,16 +574,25 @@ class SecretStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 active_directory_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreActiveDirectoryStoreArgs']]] = None,
                  aws: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsArgs']]] = None,
+                 aws_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsCertX509Args']]] = None,
                  azure_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreAzureStoreArgs']]] = None,
                  cyberark_conjur: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkConjurArgs']]] = None,
                  cyberark_pam: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamArgs']]] = None,
                  cyberark_pam_experimental: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamExperimentalArgs']]] = None,
                  delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
+                 gcp_cert_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpCertX509StoreArgs']]] = None,
                  gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
                  vault_approle: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleArgs']]] = None,
+                 vault_approle_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertSshArgs']]] = None,
+                 vault_approle_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertX509Args']]] = None,
                  vault_tls: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsArgs']]] = None,
+                 vault_tls_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsCertSshArgs']]] = None,
+                 vault_tls_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsCertX509Args']]] = None,
                  vault_token: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenArgs']]] = None,
+                 vault_token_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenCertSshArgs']]] = None,
+                 vault_token_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenCertX509Args']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -368,16 +602,25 @@ class SecretStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretStoreArgs.__new__(SecretStoreArgs)
 
+            __props__.__dict__["active_directory_store"] = active_directory_store
             __props__.__dict__["aws"] = aws
+            __props__.__dict__["aws_cert_x509"] = aws_cert_x509
             __props__.__dict__["azure_store"] = azure_store
             __props__.__dict__["cyberark_conjur"] = cyberark_conjur
             __props__.__dict__["cyberark_pam"] = cyberark_pam
             __props__.__dict__["cyberark_pam_experimental"] = cyberark_pam_experimental
             __props__.__dict__["delinea_store"] = delinea_store
+            __props__.__dict__["gcp_cert_x509_store"] = gcp_cert_x509_store
             __props__.__dict__["gcp_store"] = gcp_store
             __props__.__dict__["vault_approle"] = vault_approle
+            __props__.__dict__["vault_approle_cert_ssh"] = vault_approle_cert_ssh
+            __props__.__dict__["vault_approle_cert_x509"] = vault_approle_cert_x509
             __props__.__dict__["vault_tls"] = vault_tls
+            __props__.__dict__["vault_tls_cert_ssh"] = vault_tls_cert_ssh
+            __props__.__dict__["vault_tls_cert_x509"] = vault_tls_cert_x509
             __props__.__dict__["vault_token"] = vault_token
+            __props__.__dict__["vault_token_cert_ssh"] = vault_token_cert_ssh
+            __props__.__dict__["vault_token_cert_x509"] = vault_token_cert_x509
         super(SecretStore, __self__).__init__(
             'sdm:index/secretStore:SecretStore',
             resource_name,
@@ -388,16 +631,25 @@ class SecretStore(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            active_directory_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreActiveDirectoryStoreArgs']]] = None,
             aws: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsArgs']]] = None,
+            aws_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreAwsCertX509Args']]] = None,
             azure_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreAzureStoreArgs']]] = None,
             cyberark_conjur: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkConjurArgs']]] = None,
             cyberark_pam: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamArgs']]] = None,
             cyberark_pam_experimental: Optional[pulumi.Input[pulumi.InputType['SecretStoreCyberarkPamExperimentalArgs']]] = None,
             delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
+            gcp_cert_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpCertX509StoreArgs']]] = None,
             gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
             vault_approle: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleArgs']]] = None,
+            vault_approle_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertSshArgs']]] = None,
+            vault_approle_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertX509Args']]] = None,
             vault_tls: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsArgs']]] = None,
-            vault_token: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenArgs']]] = None) -> 'SecretStore':
+            vault_tls_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsCertSshArgs']]] = None,
+            vault_tls_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTlsCertX509Args']]] = None,
+            vault_token: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenArgs']]] = None,
+            vault_token_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenCertSshArgs']]] = None,
+            vault_token_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultTokenCertX509Args']]] = None) -> 'SecretStore':
         """
         Get an existing SecretStore resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -412,22 +664,41 @@ class SecretStore(pulumi.CustomResource):
 
         __props__ = _SecretStoreState.__new__(_SecretStoreState)
 
+        __props__.__dict__["active_directory_store"] = active_directory_store
         __props__.__dict__["aws"] = aws
+        __props__.__dict__["aws_cert_x509"] = aws_cert_x509
         __props__.__dict__["azure_store"] = azure_store
         __props__.__dict__["cyberark_conjur"] = cyberark_conjur
         __props__.__dict__["cyberark_pam"] = cyberark_pam
         __props__.__dict__["cyberark_pam_experimental"] = cyberark_pam_experimental
         __props__.__dict__["delinea_store"] = delinea_store
+        __props__.__dict__["gcp_cert_x509_store"] = gcp_cert_x509_store
         __props__.__dict__["gcp_store"] = gcp_store
         __props__.__dict__["vault_approle"] = vault_approle
+        __props__.__dict__["vault_approle_cert_ssh"] = vault_approle_cert_ssh
+        __props__.__dict__["vault_approle_cert_x509"] = vault_approle_cert_x509
         __props__.__dict__["vault_tls"] = vault_tls
+        __props__.__dict__["vault_tls_cert_ssh"] = vault_tls_cert_ssh
+        __props__.__dict__["vault_tls_cert_x509"] = vault_tls_cert_x509
         __props__.__dict__["vault_token"] = vault_token
+        __props__.__dict__["vault_token_cert_ssh"] = vault_token_cert_ssh
+        __props__.__dict__["vault_token_cert_x509"] = vault_token_cert_x509
         return SecretStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="activeDirectoryStore")
+    def active_directory_store(self) -> pulumi.Output[Optional['outputs.SecretStoreActiveDirectoryStore']]:
+        return pulumi.get(self, "active_directory_store")
 
     @property
     @pulumi.getter
     def aws(self) -> pulumi.Output[Optional['outputs.SecretStoreAws']]:
         return pulumi.get(self, "aws")
+
+    @property
+    @pulumi.getter(name="awsCertX509")
+    def aws_cert_x509(self) -> pulumi.Output[Optional['outputs.SecretStoreAwsCertX509']]:
+        return pulumi.get(self, "aws_cert_x509")
 
     @property
     @pulumi.getter(name="azureStore")
@@ -459,6 +730,11 @@ class SecretStore(pulumi.CustomResource):
         return pulumi.get(self, "delinea_store")
 
     @property
+    @pulumi.getter(name="gcpCertX509Store")
+    def gcp_cert_x509_store(self) -> pulumi.Output[Optional['outputs.SecretStoreGcpCertX509Store']]:
+        return pulumi.get(self, "gcp_cert_x509_store")
+
+    @property
     @pulumi.getter(name="gcpStore")
     def gcp_store(self) -> pulumi.Output[Optional['outputs.SecretStoreGcpStore']]:
         return pulumi.get(self, "gcp_store")
@@ -469,12 +745,42 @@ class SecretStore(pulumi.CustomResource):
         return pulumi.get(self, "vault_approle")
 
     @property
+    @pulumi.getter(name="vaultApproleCertSsh")
+    def vault_approle_cert_ssh(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultApproleCertSsh']]:
+        return pulumi.get(self, "vault_approle_cert_ssh")
+
+    @property
+    @pulumi.getter(name="vaultApproleCertX509")
+    def vault_approle_cert_x509(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultApproleCertX509']]:
+        return pulumi.get(self, "vault_approle_cert_x509")
+
+    @property
     @pulumi.getter(name="vaultTls")
     def vault_tls(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultTls']]:
         return pulumi.get(self, "vault_tls")
 
     @property
+    @pulumi.getter(name="vaultTlsCertSsh")
+    def vault_tls_cert_ssh(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultTlsCertSsh']]:
+        return pulumi.get(self, "vault_tls_cert_ssh")
+
+    @property
+    @pulumi.getter(name="vaultTlsCertX509")
+    def vault_tls_cert_x509(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultTlsCertX509']]:
+        return pulumi.get(self, "vault_tls_cert_x509")
+
+    @property
     @pulumi.getter(name="vaultToken")
     def vault_token(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultToken']]:
         return pulumi.get(self, "vault_token")
+
+    @property
+    @pulumi.getter(name="vaultTokenCertSsh")
+    def vault_token_cert_ssh(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultTokenCertSsh']]:
+        return pulumi.get(self, "vault_token_cert_ssh")
+
+    @property
+    @pulumi.getter(name="vaultTokenCertX509")
+    def vault_token_cert_x509(self) -> pulumi.Output[Optional['outputs.SecretStoreVaultTokenCertX509']]:
+        return pulumi.get(self, "vault_token_cert_x509")
 

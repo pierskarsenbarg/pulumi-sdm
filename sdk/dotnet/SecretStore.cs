@@ -20,14 +20,20 @@ namespace PiersKarsenbarg.Sdm
     /// A SecretStore can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
+    /// $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/secretStore:SecretStore")]
     public partial class SecretStore : global::Pulumi.CustomResource
     {
+        [Output("activeDirectoryStore")]
+        public Output<Outputs.SecretStoreActiveDirectoryStore?> ActiveDirectoryStore { get; private set; } = null!;
+
         [Output("aws")]
         public Output<Outputs.SecretStoreAws?> Aws { get; private set; } = null!;
+
+        [Output("awsCertX509")]
+        public Output<Outputs.SecretStoreAwsCertX509?> AwsCertX509 { get; private set; } = null!;
 
         [Output("azureStore")]
         public Output<Outputs.SecretStoreAzureStore?> AzureStore { get; private set; } = null!;
@@ -48,17 +54,38 @@ namespace PiersKarsenbarg.Sdm
         [Output("delineaStore")]
         public Output<Outputs.SecretStoreDelineaStore?> DelineaStore { get; private set; } = null!;
 
+        [Output("gcpCertX509Store")]
+        public Output<Outputs.SecretStoreGcpCertX509Store?> GcpCertX509Store { get; private set; } = null!;
+
         [Output("gcpStore")]
         public Output<Outputs.SecretStoreGcpStore?> GcpStore { get; private set; } = null!;
 
         [Output("vaultApprole")]
         public Output<Outputs.SecretStoreVaultApprole?> VaultApprole { get; private set; } = null!;
 
+        [Output("vaultApproleCertSsh")]
+        public Output<Outputs.SecretStoreVaultApproleCertSsh?> VaultApproleCertSsh { get; private set; } = null!;
+
+        [Output("vaultApproleCertX509")]
+        public Output<Outputs.SecretStoreVaultApproleCertX509?> VaultApproleCertX509 { get; private set; } = null!;
+
         [Output("vaultTls")]
         public Output<Outputs.SecretStoreVaultTls?> VaultTls { get; private set; } = null!;
 
+        [Output("vaultTlsCertSsh")]
+        public Output<Outputs.SecretStoreVaultTlsCertSsh?> VaultTlsCertSsh { get; private set; } = null!;
+
+        [Output("vaultTlsCertX509")]
+        public Output<Outputs.SecretStoreVaultTlsCertX509?> VaultTlsCertX509 { get; private set; } = null!;
+
         [Output("vaultToken")]
         public Output<Outputs.SecretStoreVaultToken?> VaultToken { get; private set; } = null!;
+
+        [Output("vaultTokenCertSsh")]
+        public Output<Outputs.SecretStoreVaultTokenCertSsh?> VaultTokenCertSsh { get; private set; } = null!;
+
+        [Output("vaultTokenCertX509")]
+        public Output<Outputs.SecretStoreVaultTokenCertX509?> VaultTokenCertX509 { get; private set; } = null!;
 
 
         /// <summary>
@@ -107,8 +134,14 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class SecretStoreArgs : global::Pulumi.ResourceArgs
     {
+        [Input("activeDirectoryStore")]
+        public Input<Inputs.SecretStoreActiveDirectoryStoreArgs>? ActiveDirectoryStore { get; set; }
+
         [Input("aws")]
         public Input<Inputs.SecretStoreAwsArgs>? Aws { get; set; }
+
+        [Input("awsCertX509")]
+        public Input<Inputs.SecretStoreAwsCertX509Args>? AwsCertX509 { get; set; }
 
         [Input("azureStore")]
         public Input<Inputs.SecretStoreAzureStoreArgs>? AzureStore { get; set; }
@@ -129,17 +162,38 @@ namespace PiersKarsenbarg.Sdm
         [Input("delineaStore")]
         public Input<Inputs.SecretStoreDelineaStoreArgs>? DelineaStore { get; set; }
 
+        [Input("gcpCertX509Store")]
+        public Input<Inputs.SecretStoreGcpCertX509StoreArgs>? GcpCertX509Store { get; set; }
+
         [Input("gcpStore")]
         public Input<Inputs.SecretStoreGcpStoreArgs>? GcpStore { get; set; }
 
         [Input("vaultApprole")]
         public Input<Inputs.SecretStoreVaultApproleArgs>? VaultApprole { get; set; }
 
+        [Input("vaultApproleCertSsh")]
+        public Input<Inputs.SecretStoreVaultApproleCertSshArgs>? VaultApproleCertSsh { get; set; }
+
+        [Input("vaultApproleCertX509")]
+        public Input<Inputs.SecretStoreVaultApproleCertX509Args>? VaultApproleCertX509 { get; set; }
+
         [Input("vaultTls")]
         public Input<Inputs.SecretStoreVaultTlsArgs>? VaultTls { get; set; }
 
+        [Input("vaultTlsCertSsh")]
+        public Input<Inputs.SecretStoreVaultTlsCertSshArgs>? VaultTlsCertSsh { get; set; }
+
+        [Input("vaultTlsCertX509")]
+        public Input<Inputs.SecretStoreVaultTlsCertX509Args>? VaultTlsCertX509 { get; set; }
+
         [Input("vaultToken")]
         public Input<Inputs.SecretStoreVaultTokenArgs>? VaultToken { get; set; }
+
+        [Input("vaultTokenCertSsh")]
+        public Input<Inputs.SecretStoreVaultTokenCertSshArgs>? VaultTokenCertSsh { get; set; }
+
+        [Input("vaultTokenCertX509")]
+        public Input<Inputs.SecretStoreVaultTokenCertX509Args>? VaultTokenCertX509 { get; set; }
 
         public SecretStoreArgs()
         {
@@ -149,8 +203,14 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class SecretStoreState : global::Pulumi.ResourceArgs
     {
+        [Input("activeDirectoryStore")]
+        public Input<Inputs.SecretStoreActiveDirectoryStoreGetArgs>? ActiveDirectoryStore { get; set; }
+
         [Input("aws")]
         public Input<Inputs.SecretStoreAwsGetArgs>? Aws { get; set; }
+
+        [Input("awsCertX509")]
+        public Input<Inputs.SecretStoreAwsCertX509GetArgs>? AwsCertX509 { get; set; }
 
         [Input("azureStore")]
         public Input<Inputs.SecretStoreAzureStoreGetArgs>? AzureStore { get; set; }
@@ -171,17 +231,38 @@ namespace PiersKarsenbarg.Sdm
         [Input("delineaStore")]
         public Input<Inputs.SecretStoreDelineaStoreGetArgs>? DelineaStore { get; set; }
 
+        [Input("gcpCertX509Store")]
+        public Input<Inputs.SecretStoreGcpCertX509StoreGetArgs>? GcpCertX509Store { get; set; }
+
         [Input("gcpStore")]
         public Input<Inputs.SecretStoreGcpStoreGetArgs>? GcpStore { get; set; }
 
         [Input("vaultApprole")]
         public Input<Inputs.SecretStoreVaultApproleGetArgs>? VaultApprole { get; set; }
 
+        [Input("vaultApproleCertSsh")]
+        public Input<Inputs.SecretStoreVaultApproleCertSshGetArgs>? VaultApproleCertSsh { get; set; }
+
+        [Input("vaultApproleCertX509")]
+        public Input<Inputs.SecretStoreVaultApproleCertX509GetArgs>? VaultApproleCertX509 { get; set; }
+
         [Input("vaultTls")]
         public Input<Inputs.SecretStoreVaultTlsGetArgs>? VaultTls { get; set; }
 
+        [Input("vaultTlsCertSsh")]
+        public Input<Inputs.SecretStoreVaultTlsCertSshGetArgs>? VaultTlsCertSsh { get; set; }
+
+        [Input("vaultTlsCertX509")]
+        public Input<Inputs.SecretStoreVaultTlsCertX509GetArgs>? VaultTlsCertX509 { get; set; }
+
         [Input("vaultToken")]
         public Input<Inputs.SecretStoreVaultTokenGetArgs>? VaultToken { get; set; }
+
+        [Input("vaultTokenCertSsh")]
+        public Input<Inputs.SecretStoreVaultTokenCertSshGetArgs>? VaultTokenCertSsh { get; set; }
+
+        [Input("vaultTokenCertX509")]
+        public Input<Inputs.SecretStoreVaultTokenCertX509GetArgs>? VaultTokenCertX509 { get; set; }
 
         public SecretStoreState()
         {

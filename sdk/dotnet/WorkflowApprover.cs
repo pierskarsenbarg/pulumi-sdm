@@ -11,9 +11,10 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm
 {
     /// <summary>
-    /// WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+    /// WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,14 +23,21 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var workflowApproverExample = new Sdm.WorkflowApprover("workflowApproverExample", new()
+    ///     var workflowApproverAccountExample = new Sdm.WorkflowApprover("workflowApproverAccountExample", new()
     ///     {
-    ///         ApproverId = "a-234605",
+    ///         AccountId = "a-234605",
     ///         WorkflowId = "aw-6799234",
+    ///     });
+    /// 
+    ///     var workflowApproverRoleExample = new Sdm.WorkflowApprover("workflowApproverRoleExample", new()
+    ///     {
+    ///         RoleId = "r-542982",
+    ///         WorkflowId = "aw-1935694",
     ///     });
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import
@@ -37,17 +45,23 @@ namespace PiersKarsenbarg.Sdm
     /// A WorkflowApprover can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
+    /// $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/workflowApprover:WorkflowApprover")]
     public partial class WorkflowApprover : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The approver id.
+        /// The approver account id.
         /// </summary>
-        [Output("approverId")]
-        public Output<string> ApproverId { get; private set; } = null!;
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// The approver role id
+        /// </summary>
+        [Output("roleId")]
+        public Output<string?> RoleId { get; private set; } = null!;
 
         /// <summary>
         /// The workflow id.
@@ -103,10 +117,16 @@ namespace PiersKarsenbarg.Sdm
     public sealed class WorkflowApproverArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The approver id.
+        /// The approver account id.
         /// </summary>
-        [Input("approverId", required: true)]
-        public Input<string> ApproverId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// The approver role id
+        /// </summary>
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
 
         /// <summary>
         /// The workflow id.
@@ -123,10 +143,16 @@ namespace PiersKarsenbarg.Sdm
     public sealed class WorkflowApproverState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The approver id.
+        /// The approver account id.
         /// </summary>
-        [Input("approverId")]
-        public Input<string>? ApproverId { get; set; }
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// The approver role id
+        /// </summary>
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
 
         /// <summary>
         /// The workflow id.

@@ -19,6 +19,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? AccessRules;
         /// <summary>
+        /// Optional approval flow ID identifies an approval flow that linked to the workflow
+        /// </summary>
+        public readonly string? ApprovalFlowId;
+        /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
         public readonly bool? AutoGrant;
@@ -47,6 +51,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private GetWorkflowWorkflowResult(
             string? accessRules,
 
+            string? approvalFlowId,
+
             bool? autoGrant,
 
             string? description,
@@ -60,6 +66,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             int? weight)
         {
             AccessRules = accessRules;
+            ApprovalFlowId = approvalFlowId;
             AutoGrant = autoGrant;
             Description = description;
             Enabled = enabled;

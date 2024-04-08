@@ -12,9 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+// WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -27,9 +28,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.NewWorkflowApprover(ctx, "workflowApproverExample", &sdm.WorkflowApproverArgs{
-//				ApproverId: pulumi.String("a-234605"),
+//			_, err := sdm.NewWorkflowApprover(ctx, "workflowApproverAccountExample", &sdm.WorkflowApproverArgs{
+//				AccountId:  pulumi.String("a-234605"),
 //				WorkflowId: pulumi.String("aw-6799234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.NewWorkflowApprover(ctx, "workflowApproverRoleExample", &sdm.WorkflowApproverArgs{
+//				RoleId:     pulumi.String("r-542982"),
+//				WorkflowId: pulumi.String("aw-1935694"),
 //			})
 //			if err != nil {
 //				return err
@@ -39,6 +47,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // This resource can be imported using the import command.
 //
 // ## Import
@@ -46,15 +55,15 @@ import (
 // A WorkflowApprover can be imported using the id, e.g.,
 //
 // ```sh
-//
-//	$ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
-//
+// $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
 // ```
 type WorkflowApprover struct {
 	pulumi.CustomResourceState
 
-	// The approver id.
-	ApproverId pulumi.StringOutput `pulumi:"approverId"`
+	// The approver account id.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// The approver role id
+	RoleId pulumi.StringPtrOutput `pulumi:"roleId"`
 	// The workflow id.
 	WorkflowId pulumi.StringOutput `pulumi:"workflowId"`
 }
@@ -66,9 +75,6 @@ func NewWorkflowApprover(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApproverId == nil {
-		return nil, errors.New("invalid value for required argument 'ApproverId'")
-	}
 	if args.WorkflowId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkflowId'")
 	}
@@ -95,15 +101,19 @@ func GetWorkflowApprover(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkflowApprover resources.
 type workflowApproverState struct {
-	// The approver id.
-	ApproverId *string `pulumi:"approverId"`
+	// The approver account id.
+	AccountId *string `pulumi:"accountId"`
+	// The approver role id
+	RoleId *string `pulumi:"roleId"`
 	// The workflow id.
 	WorkflowId *string `pulumi:"workflowId"`
 }
 
 type WorkflowApproverState struct {
-	// The approver id.
-	ApproverId pulumi.StringPtrInput
+	// The approver account id.
+	AccountId pulumi.StringPtrInput
+	// The approver role id
+	RoleId pulumi.StringPtrInput
 	// The workflow id.
 	WorkflowId pulumi.StringPtrInput
 }
@@ -113,16 +123,20 @@ func (WorkflowApproverState) ElementType() reflect.Type {
 }
 
 type workflowApproverArgs struct {
-	// The approver id.
-	ApproverId string `pulumi:"approverId"`
+	// The approver account id.
+	AccountId *string `pulumi:"accountId"`
+	// The approver role id
+	RoleId *string `pulumi:"roleId"`
 	// The workflow id.
 	WorkflowId string `pulumi:"workflowId"`
 }
 
 // The set of arguments for constructing a WorkflowApprover resource.
 type WorkflowApproverArgs struct {
-	// The approver id.
-	ApproverId pulumi.StringInput
+	// The approver account id.
+	AccountId pulumi.StringPtrInput
+	// The approver role id
+	RoleId pulumi.StringPtrInput
 	// The workflow id.
 	WorkflowId pulumi.StringInput
 }
@@ -214,9 +228,14 @@ func (o WorkflowApproverOutput) ToWorkflowApproverOutputWithContext(ctx context.
 	return o
 }
 
-// The approver id.
-func (o WorkflowApproverOutput) ApproverId() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkflowApprover) pulumi.StringOutput { return v.ApproverId }).(pulumi.StringOutput)
+// The approver account id.
+func (o WorkflowApproverOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowApprover) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The approver role id
+func (o WorkflowApproverOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkflowApprover) pulumi.StringPtrOutput { return v.RoleId }).(pulumi.StringPtrOutput)
 }
 
 // The workflow id.

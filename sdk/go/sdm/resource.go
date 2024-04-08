@@ -16,9 +16,7 @@ import (
 // A Resource can be imported using the id, e.g.,
 //
 // ```sh
-//
-//	$ pulumi import sdm:index/resource:Resource example rs-12345678
-//
+// $ pulumi import sdm:index/resource:Resource example rs-12345678
 // ```
 type Resource struct {
 	pulumi.CustomResourceState
@@ -94,6 +92,7 @@ type Resource struct {
 	RabbitmqAmqp091     ResourceRabbitmqAmqp091PtrOutput     `pulumi:"rabbitmqAmqp091"`
 	RawTcp              ResourceRawTcpPtrOutput              `pulumi:"rawTcp"`
 	Rdp                 ResourceRdpPtrOutput                 `pulumi:"rdp"`
+	RdpCert             ResourceRdpCertPtrOutput             `pulumi:"rdpCert"`
 	RdsPostgresIam      ResourceRdsPostgresIamPtrOutput      `pulumi:"rdsPostgresIam"`
 	Redis               ResourceRedisPtrOutput               `pulumi:"redis"`
 	Redshift            ResourceRedshiftPtrOutput            `pulumi:"redshift"`
@@ -214,6 +213,7 @@ type resourceState struct {
 	RabbitmqAmqp091     *ResourceRabbitmqAmqp091     `pulumi:"rabbitmqAmqp091"`
 	RawTcp              *ResourceRawTcp              `pulumi:"rawTcp"`
 	Rdp                 *ResourceRdp                 `pulumi:"rdp"`
+	RdpCert             *ResourceRdpCert             `pulumi:"rdpCert"`
 	RdsPostgresIam      *ResourceRdsPostgresIam      `pulumi:"rdsPostgresIam"`
 	Redis               *ResourceRedis               `pulumi:"redis"`
 	Redshift            *ResourceRedshift            `pulumi:"redshift"`
@@ -305,6 +305,7 @@ type ResourceState struct {
 	RabbitmqAmqp091     ResourceRabbitmqAmqp091PtrInput
 	RawTcp              ResourceRawTcpPtrInput
 	Rdp                 ResourceRdpPtrInput
+	RdpCert             ResourceRdpCertPtrInput
 	RdsPostgresIam      ResourceRdsPostgresIamPtrInput
 	Redis               ResourceRedisPtrInput
 	Redshift            ResourceRedshiftPtrInput
@@ -400,6 +401,7 @@ type resourceArgs struct {
 	RabbitmqAmqp091     *ResourceRabbitmqAmqp091     `pulumi:"rabbitmqAmqp091"`
 	RawTcp              *ResourceRawTcp              `pulumi:"rawTcp"`
 	Rdp                 *ResourceRdp                 `pulumi:"rdp"`
+	RdpCert             *ResourceRdpCert             `pulumi:"rdpCert"`
 	RdsPostgresIam      *ResourceRdsPostgresIam      `pulumi:"rdsPostgresIam"`
 	Redis               *ResourceRedis               `pulumi:"redis"`
 	Redshift            *ResourceRedshift            `pulumi:"redshift"`
@@ -492,6 +494,7 @@ type ResourceArgs struct {
 	RabbitmqAmqp091     ResourceRabbitmqAmqp091PtrInput
 	RawTcp              ResourceRawTcpPtrInput
 	Rdp                 ResourceRdpPtrInput
+	RdpCert             ResourceRdpCertPtrInput
 	RdsPostgresIam      ResourceRdsPostgresIamPtrInput
 	Redis               ResourceRedisPtrInput
 	Redshift            ResourceRedshiftPtrInput
@@ -874,6 +877,10 @@ func (o ResourceOutput) RawTcp() ResourceRawTcpPtrOutput {
 
 func (o ResourceOutput) Rdp() ResourceRdpPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRdpPtrOutput { return v.Rdp }).(ResourceRdpPtrOutput)
+}
+
+func (o ResourceOutput) RdpCert() ResourceRdpCertPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceRdpCertPtrOutput { return v.RdpCert }).(ResourceRdpCertPtrOutput)
 }
 
 func (o ResourceOutput) RdsPostgresIam() ResourceRdsPostgresIamPtrOutput {

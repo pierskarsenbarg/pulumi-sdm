@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *  but automatic approval or a set of users authorized to approve the requests.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -21,12 +22,14 @@ import * as utilities from "./utilities";
  *     name: "workflow example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     args = args || {};
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getWorkflow:getWorkflow", {
+        "approvalFlowId": args.approvalFlowId,
         "autoGrant": args.autoGrant,
         "description": args.description,
         "enabled": args.enabled,
@@ -40,6 +43,10 @@ export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowArgs {
+    /**
+     * Optional approval flow ID identifies an approval flow that linked to the workflow
+     */
+    approvalFlowId?: string;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      */
@@ -70,6 +77,10 @@ export interface GetWorkflowArgs {
  * A collection of values returned by getWorkflow.
  */
 export interface GetWorkflowResult {
+    /**
+     * Optional approval flow ID identifies an approval flow that linked to the workflow
+     */
+    readonly approvalFlowId?: string;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      */
@@ -109,6 +120,7 @@ export interface GetWorkflowResult {
  *  but automatic approval or a set of users authorized to approve the requests.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -118,6 +130,7 @@ export interface GetWorkflowResult {
  *     name: "workflow example",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowResult> {
     return pulumi.output(args).apply((a: any) => getWorkflow(a, opts))
@@ -127,6 +140,10 @@ export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowOutputArgs {
+    /**
+     * Optional approval flow ID identifies an approval flow that linked to the workflow
+     */
+    approvalFlowId?: pulumi.Input<string>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      */

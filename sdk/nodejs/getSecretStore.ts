@@ -39,7 +39,7 @@ export interface GetSecretStoreArgs {
      */
     tags?: {[key: string]: any};
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
      */
     type?: string;
 }
@@ -62,7 +62,7 @@ export interface GetSecretStoreResult {
     readonly name?: string;
     /**
      * A single element list containing a map, where each key lists one of the following objects:
-     * * aws:
+     * * active_directory_store:
      */
     readonly secretStores: outputs.GetSecretStoreSecretStore[];
     /**
@@ -96,7 +96,7 @@ export interface GetSecretStoreOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
      */
     type?: pulumi.Input<string>;
 }

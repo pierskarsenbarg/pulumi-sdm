@@ -14,10 +14,9 @@ namespace PiersKarsenbarg.Sdm
     {
         /// <summary>
         /// AccountAttachments assign an account to a role.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,18 +32,16 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountAttachmentResult> InvokeAsync(GetAccountAttachmentArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountAttachmentResult>("sdm:index/getAccountAttachment:getAccountAttachment", args ?? new GetAccountAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
         /// AccountAttachments assign an account to a role.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,8 +57,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountAttachmentResult> Invoke(GetAccountAttachmentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAttachmentResult>("sdm:index/getAccountAttachment:getAccountAttachment", args ?? new GetAccountAttachmentInvokeArgs(), options.WithDefaults());

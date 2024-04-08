@@ -55,7 +55,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -93,7 +93,7 @@ namespace PiersKarsenbarg.Sdm
         }
 
         /// <summary>
-        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+        /// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -122,7 +122,7 @@ namespace PiersKarsenbarg.Sdm
         public readonly string? Name;
         /// <summary>
         /// A single element list containing a map, where each key lists one of the following objects:
-        /// * aws:
+        /// * active_directory_store:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreResult> SecretStores;
         /// <summary>

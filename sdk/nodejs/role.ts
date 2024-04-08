@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  *  AccountAttachments.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -35,6 +36,7 @@ import * as utilities from "./utilities";
  *     },
  * ])});
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -42,7 +44,7 @@ import * as utilities from "./utilities";
  * A Role can be imported using the id, e.g.,
  *
  * ```sh
- *  $ pulumi import sdm:index/role:Role example r-12345678
+ * $ pulumi import sdm:index/role:Role example r-12345678
  * ```
  */
 export class Role extends pulumi.CustomResource {
