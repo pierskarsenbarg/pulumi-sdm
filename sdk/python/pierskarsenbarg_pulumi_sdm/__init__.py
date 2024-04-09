@@ -8,7 +8,7 @@ import typing
 from .account import *
 from .account_attachment import *
 from .approval_workflow import *
-from .approval_workflow_approval import *
+from .approval_workflow_approver import *
 from .approval_workflow_step import *
 from .get_account import *
 from .get_account_attachment import *
@@ -81,10 +81,10 @@ _utilities.register(
  },
  {
   "pkg": "sdm",
-  "mod": "index/approvalWorkflowApproval",
+  "mod": "index/approvalWorkflowApprover",
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
-   "sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval": "ApprovalWorkflowApproval"
+   "sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover": "ApprovalWorkflowApprover"
   }
  },
  {

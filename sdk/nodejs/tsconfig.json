@@ -16,7 +16,7 @@
         "account.ts",
         "accountAttachment.ts",
         "approvalWorkflow.ts",
-        "approvalWorkflowApproval.ts",
+        "approvalWorkflowApprover.ts",
         "approvalWorkflowStep.ts",
         "config/index.ts",
         "config/vars.ts",

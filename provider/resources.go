@@ -20,6 +20,7 @@ import (
 
 	"github.com/pierskarsenbarg/pulumi-sdm/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -114,17 +115,6 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-			"sdm_account":                    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Account")},
-			"sdm_account_attachment":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccountAttachment")},
-			"sdm_approval_workflow":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApprovalWorkflow")},
-			"sdm_approval_workflow_approver": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApprovalWorkflowApproval")},
-			"sdm_approval_workflow_step":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApprovalWorkflowStep")},
-			"sdm_node":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Node")},
-			"sdm_peering_group":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PeeringGroup")},
-			"sdm_peering_group_node":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PeeringGroupNode")},
-			"sdm_peering_group_peer":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PeeringGroupPeer")},
-			"sdm_peering_group_resource":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PeeringGroupResource")},
-			"sdm_remote_identity":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RemoteIdentity")},
 			"sdm_resource": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -139,35 +129,11 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"sdm_role":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
-			"sdm_secret_store":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SecretStore")},
-			"sdm_workflow":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Workflow")},
-			"sdm_workflow_approver": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkflowApprover")},
-			"sdm_workflow_role":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkflowRole")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
-			"sdm_account":                    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAccount")},
-			"sdm_account_attachment":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAccountAttachment")},
-			"sdm_approval_workflow":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getApprovalWorkflow")},
-			"sdm_approval_workflow_approver": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getApprovalWorkflowApprover")},
-			"sdm_approval_workflow_step":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getApprovalWorkflowStep")},
-			"sdm_node":                       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNode")},
-			"sdm_peering_group":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPeeringGroup")},
-			"sdm_peering_group_node":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPeeringGroupNode")},
-			"sdm_peering_group_peer":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPeeringGroupPeer")},
-			"sdm_peering_group_resource":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPeeringGroupResource")},
-			"sdm_remote_identity":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRemoteIdentity")},
-			"sdm_remote_identity_group":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRemoteIdentityGroup")},
-			"sdm_resource":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getResource")},
-			"sdm_role":                       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRole")},
-			"sdm_secret_store":               {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSecretStore")},
-			"sdm_ssh_ca_pubkey":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getSshCaPubkey")},
-			"sdm_workflow":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWorkflow")},
-			"sdm_workflow_approver":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWorkflowApprover")},
-			"sdm_workflow_role":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWorkflowRole")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -207,6 +173,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 	}
+
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("sdm_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+
+	prov.SetAutonaming(255, "-")
 
 	prov.SetAutonaming(255, "-")
 
