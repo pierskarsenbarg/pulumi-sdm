@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.GetApprovalWorkflowApprover(ctx, &sdm.GetApprovalWorkflowApproverArgs{
+//			_, err := sdm.LookupApprovalWorkflowApprover(ctx, &sdm.LookupApprovalWorkflowApproverArgs{
 //				AccountId:      pulumi.StringRef("a-234605"),
 //				ApprovalFlowId: pulumi.StringRef("af-6799234"),
 //				ApprovalStepId: pulumi.StringRef("afs-2956266"),
@@ -35,7 +35,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sdm.GetApprovalWorkflowApprover(ctx, &sdm.GetApprovalWorkflowApproverArgs{
+//			_, err = sdm.LookupApprovalWorkflowApprover(ctx, &sdm.LookupApprovalWorkflowApproverArgs{
 //				ApprovalFlowId: pulumi.StringRef("af-1935694"),
 //				ApprovalStepId: pulumi.StringRef("afs-9245942"),
 //				RoleId:         pulumi.StringRef("r-542982"),
@@ -49,9 +49,9 @@ import (
 //
 // ```
 // <!--End PulumiCodeChooser -->
-func GetApprovalWorkflowApprover(ctx *pulumi.Context, args *GetApprovalWorkflowApproverArgs, opts ...pulumi.InvokeOption) (*GetApprovalWorkflowApproverResult, error) {
+func LookupApprovalWorkflowApprover(ctx *pulumi.Context, args *LookupApprovalWorkflowApproverArgs, opts ...pulumi.InvokeOption) (*LookupApprovalWorkflowApproverResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetApprovalWorkflowApproverResult
+	var rv LookupApprovalWorkflowApproverResult
 	err := ctx.Invoke("sdm:index/getApprovalWorkflowApprover:getApprovalWorkflowApprover", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -60,7 +60,7 @@ func GetApprovalWorkflowApprover(ctx *pulumi.Context, args *GetApprovalWorkflowA
 }
 
 // A collection of arguments for invoking getApprovalWorkflowApprover.
-type GetApprovalWorkflowApproverArgs struct {
+type LookupApprovalWorkflowApproverArgs struct {
 	// The approver account id.
 	AccountId *string `pulumi:"accountId"`
 	// The approval flow id specified the approval workflow that this approver belongs to
@@ -74,7 +74,7 @@ type GetApprovalWorkflowApproverArgs struct {
 }
 
 // A collection of values returned by getApprovalWorkflowApprover.
-type GetApprovalWorkflowApproverResult struct {
+type LookupApprovalWorkflowApproverResult struct {
 	// The approver account id.
 	AccountId *string `pulumi:"accountId"`
 	// The approval flow id specified the approval workflow that this approver belongs to
@@ -91,21 +91,21 @@ type GetApprovalWorkflowApproverResult struct {
 	RoleId *string `pulumi:"roleId"`
 }
 
-func GetApprovalWorkflowApproverOutput(ctx *pulumi.Context, args GetApprovalWorkflowApproverOutputArgs, opts ...pulumi.InvokeOption) GetApprovalWorkflowApproverResultOutput {
+func LookupApprovalWorkflowApproverOutput(ctx *pulumi.Context, args LookupApprovalWorkflowApproverOutputArgs, opts ...pulumi.InvokeOption) LookupApprovalWorkflowApproverResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetApprovalWorkflowApproverResult, error) {
-			args := v.(GetApprovalWorkflowApproverArgs)
-			r, err := GetApprovalWorkflowApprover(ctx, &args, opts...)
-			var s GetApprovalWorkflowApproverResult
+		ApplyT(func(v interface{}) (LookupApprovalWorkflowApproverResult, error) {
+			args := v.(LookupApprovalWorkflowApproverArgs)
+			r, err := LookupApprovalWorkflowApprover(ctx, &args, opts...)
+			var s LookupApprovalWorkflowApproverResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetApprovalWorkflowApproverResultOutput)
+		}).(LookupApprovalWorkflowApproverResultOutput)
 }
 
 // A collection of arguments for invoking getApprovalWorkflowApprover.
-type GetApprovalWorkflowApproverOutputArgs struct {
+type LookupApprovalWorkflowApproverOutputArgs struct {
 	// The approver account id.
 	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The approval flow id specified the approval workflow that this approver belongs to
@@ -118,62 +118,62 @@ type GetApprovalWorkflowApproverOutputArgs struct {
 	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 }
 
-func (GetApprovalWorkflowApproverOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApprovalWorkflowApproverArgs)(nil)).Elem()
+func (LookupApprovalWorkflowApproverOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApprovalWorkflowApproverArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getApprovalWorkflowApprover.
-type GetApprovalWorkflowApproverResultOutput struct{ *pulumi.OutputState }
+type LookupApprovalWorkflowApproverResultOutput struct{ *pulumi.OutputState }
 
-func (GetApprovalWorkflowApproverResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApprovalWorkflowApproverResult)(nil)).Elem()
+func (LookupApprovalWorkflowApproverResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupApprovalWorkflowApproverResult)(nil)).Elem()
 }
 
-func (o GetApprovalWorkflowApproverResultOutput) ToGetApprovalWorkflowApproverResultOutput() GetApprovalWorkflowApproverResultOutput {
+func (o LookupApprovalWorkflowApproverResultOutput) ToLookupApprovalWorkflowApproverResultOutput() LookupApprovalWorkflowApproverResultOutput {
 	return o
 }
 
-func (o GetApprovalWorkflowApproverResultOutput) ToGetApprovalWorkflowApproverResultOutputWithContext(ctx context.Context) GetApprovalWorkflowApproverResultOutput {
+func (o LookupApprovalWorkflowApproverResultOutput) ToLookupApprovalWorkflowApproverResultOutputWithContext(ctx context.Context) LookupApprovalWorkflowApproverResultOutput {
 	return o
 }
 
 // The approver account id.
-func (o GetApprovalWorkflowApproverResultOutput) AccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+func (o LookupApprovalWorkflowApproverResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApprovalWorkflowApproverResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The approval flow id specified the approval workflow that this approver belongs to
-func (o GetApprovalWorkflowApproverResultOutput) ApprovalFlowId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverResult) *string { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
+func (o LookupApprovalWorkflowApproverResultOutput) ApprovalFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApprovalWorkflowApproverResult) *string { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
 }
 
 // The approval step id specified the approval flow step that this approver belongs to
-func (o GetApprovalWorkflowApproverResultOutput) ApprovalStepId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverResult) *string { return v.ApprovalStepId }).(pulumi.StringPtrOutput)
+func (o LookupApprovalWorkflowApproverResultOutput) ApprovalStepId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApprovalWorkflowApproverResult) *string { return v.ApprovalStepId }).(pulumi.StringPtrOutput)
 }
 
 // A list where each element has the following attributes:
-func (o GetApprovalWorkflowApproverResultOutput) ApprovalWorkflowApprovers() GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverResult) []GetApprovalWorkflowApproverApprovalWorkflowApprover {
+func (o LookupApprovalWorkflowApproverResultOutput) ApprovalWorkflowApprovers() GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput {
+	return o.ApplyT(func(v LookupApprovalWorkflowApproverResult) []GetApprovalWorkflowApproverApprovalWorkflowApprover {
 		return v.ApprovalWorkflowApprovers
 	}).(GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput)
 }
 
 // Unique identifier of the ApprovalWorkflowApprover.
-func (o GetApprovalWorkflowApproverResultOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o LookupApprovalWorkflowApproverResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApprovalWorkflowApproverResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // a list of strings of ids of data sources that match the given arguments.
-func (o GetApprovalWorkflowApproverResultOutput) Ids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+func (o LookupApprovalWorkflowApproverResultOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupApprovalWorkflowApproverResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
 // The approver role id
-func (o GetApprovalWorkflowApproverResultOutput) RoleId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApprovalWorkflowApproverResult) *string { return v.RoleId }).(pulumi.StringPtrOutput)
+func (o LookupApprovalWorkflowApproverResultOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupApprovalWorkflowApproverResult) *string { return v.RoleId }).(pulumi.StringPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetApprovalWorkflowApproverResultOutput{})
+	pulumi.RegisterOutputType(LookupApprovalWorkflowApproverResultOutput{})
 }

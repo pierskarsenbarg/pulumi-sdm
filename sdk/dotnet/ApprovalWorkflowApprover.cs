@@ -23,14 +23,14 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var approvalWorkflowApproverAccountExample = new Sdm.ApprovalWorkflowApproval("approvalWorkflowApproverAccountExample", new()
+    ///     var approvalWorkflowApproverAccountExample = new Sdm.ApprovalWorkflowApprover("approvalWorkflowApproverAccountExample", new()
     ///     {
     ///         AccountId = "a-234605",
     ///         ApprovalFlowId = "af-6799234",
     ///         ApprovalStepId = "afs-2956266",
     ///     });
     /// 
-    ///     var approvalWorkflowApproverRoleExample = new Sdm.ApprovalWorkflowApproval("approvalWorkflowApproverRoleExample", new()
+    ///     var approvalWorkflowApproverRoleExample = new Sdm.ApprovalWorkflowApprover("approvalWorkflowApproverRoleExample", new()
     ///     {
     ///         ApprovalFlowId = "af-1935694",
     ///         ApprovalStepId = "afs-9245942",
@@ -47,11 +47,11 @@ namespace PiersKarsenbarg.Sdm
     /// A ApprovalWorkflowApprover can be imported using the id, e.g.,
     /// 
     /// ```sh
-    /// $ pulumi import sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval example afa-12345678
+    /// $ pulumi import sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover example afa-12345678
     /// ```
     /// </summary>
-    [SdmResourceType("sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval")]
-    public partial class ApprovalWorkflowApproval : global::Pulumi.CustomResource
+    [SdmResourceType("sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover")]
+    public partial class ApprovalWorkflowApprover : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The approver account id.
@@ -79,19 +79,19 @@ namespace PiersKarsenbarg.Sdm
 
 
         /// <summary>
-        /// Create a ApprovalWorkflowApproval resource with the given unique name, arguments, and options.
+        /// Create a ApprovalWorkflowApprover resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ApprovalWorkflowApproval(string name, ApprovalWorkflowApprovalArgs args, CustomResourceOptions? options = null)
-            : base("sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval", name, args ?? new ApprovalWorkflowApprovalArgs(), MakeResourceOptions(options, ""))
+        public ApprovalWorkflowApprover(string name, ApprovalWorkflowApproverArgs args, CustomResourceOptions? options = null)
+            : base("sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover", name, args ?? new ApprovalWorkflowApproverArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private ApprovalWorkflowApproval(string name, Input<string> id, ApprovalWorkflowApprovalState? state = null, CustomResourceOptions? options = null)
-            : base("sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval", name, state, MakeResourceOptions(options, id))
+        private ApprovalWorkflowApprover(string name, Input<string> id, ApprovalWorkflowApproverState? state = null, CustomResourceOptions? options = null)
+            : base("sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -108,7 +108,7 @@ namespace PiersKarsenbarg.Sdm
             return merged;
         }
         /// <summary>
-        /// Get an existing ApprovalWorkflowApproval resource's state with the given name, ID, and optional extra
+        /// Get an existing ApprovalWorkflowApprover resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -116,13 +116,13 @@ namespace PiersKarsenbarg.Sdm
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ApprovalWorkflowApproval Get(string name, Input<string> id, ApprovalWorkflowApprovalState? state = null, CustomResourceOptions? options = null)
+        public static ApprovalWorkflowApprover Get(string name, Input<string> id, ApprovalWorkflowApproverState? state = null, CustomResourceOptions? options = null)
         {
-            return new ApprovalWorkflowApproval(name, id, state, options);
+            return new ApprovalWorkflowApprover(name, id, state, options);
         }
     }
 
-    public sealed class ApprovalWorkflowApprovalArgs : global::Pulumi.ResourceArgs
+    public sealed class ApprovalWorkflowApproverArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The approver account id.
@@ -148,13 +148,13 @@ namespace PiersKarsenbarg.Sdm
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
 
-        public ApprovalWorkflowApprovalArgs()
+        public ApprovalWorkflowApproverArgs()
         {
         }
-        public static new ApprovalWorkflowApprovalArgs Empty => new ApprovalWorkflowApprovalArgs();
+        public static new ApprovalWorkflowApproverArgs Empty => new ApprovalWorkflowApproverArgs();
     }
 
-    public sealed class ApprovalWorkflowApprovalState : global::Pulumi.ResourceArgs
+    public sealed class ApprovalWorkflowApproverState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The approver account id.
@@ -180,9 +180,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
 
-        public ApprovalWorkflowApprovalState()
+        public ApprovalWorkflowApproverState()
         {
         }
-        public static new ApprovalWorkflowApprovalState Empty => new ApprovalWorkflowApprovalState();
+        public static new ApprovalWorkflowApproverState Empty => new ApprovalWorkflowApproverState();
     }
 }

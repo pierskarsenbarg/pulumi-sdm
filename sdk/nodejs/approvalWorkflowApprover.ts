@@ -13,12 +13,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
- * const approvalWorkflowApproverAccountExample = new sdm.ApprovalWorkflowApproval("approvalWorkflowApproverAccountExample", {
+ * const approvalWorkflowApproverAccountExample = new sdm.ApprovalWorkflowApprover("approvalWorkflowApproverAccountExample", {
  *     accountId: "a-234605",
  *     approvalFlowId: "af-6799234",
  *     approvalStepId: "afs-2956266",
  * });
- * const approvalWorkflowApproverRoleExample = new sdm.ApprovalWorkflowApproval("approvalWorkflowApproverRoleExample", {
+ * const approvalWorkflowApproverRoleExample = new sdm.ApprovalWorkflowApprover("approvalWorkflowApproverRoleExample", {
  *     approvalFlowId: "af-1935694",
  *     approvalStepId: "afs-9245942",
  *     roleId: "r-542982",
@@ -32,12 +32,12 @@ import * as utilities from "./utilities";
  * A ApprovalWorkflowApprover can be imported using the id, e.g.,
  *
  * ```sh
- * $ pulumi import sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval example afa-12345678
+ * $ pulumi import sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover example afa-12345678
  * ```
  */
-export class ApprovalWorkflowApproval extends pulumi.CustomResource {
+export class ApprovalWorkflowApprover extends pulumi.CustomResource {
     /**
-     * Get an existing ApprovalWorkflowApproval resource's state with the given name, ID, and optional extra
+     * Get an existing ApprovalWorkflowApprover resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -45,22 +45,22 @@ export class ApprovalWorkflowApproval extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApprovalWorkflowApprovalState, opts?: pulumi.CustomResourceOptions): ApprovalWorkflowApproval {
-        return new ApprovalWorkflowApproval(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApprovalWorkflowApproverState, opts?: pulumi.CustomResourceOptions): ApprovalWorkflowApprover {
+        return new ApprovalWorkflowApprover(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval';
+    public static readonly __pulumiType = 'sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover';
 
     /**
-     * Returns true if the given object is an instance of ApprovalWorkflowApproval.  This is designed to work even
+     * Returns true if the given object is an instance of ApprovalWorkflowApprover.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ApprovalWorkflowApproval {
+    public static isInstance(obj: any): obj is ApprovalWorkflowApprover {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ApprovalWorkflowApproval.__pulumiType;
+        return obj['__pulumiType'] === ApprovalWorkflowApprover.__pulumiType;
     }
 
     /**
@@ -81,24 +81,24 @@ export class ApprovalWorkflowApproval extends pulumi.CustomResource {
     public readonly roleId!: pulumi.Output<string | undefined>;
 
     /**
-     * Create a ApprovalWorkflowApproval resource with the given unique name, arguments, and options.
+     * Create a ApprovalWorkflowApprover resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ApprovalWorkflowApprovalArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ApprovalWorkflowApprovalArgs | ApprovalWorkflowApprovalState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ApprovalWorkflowApproverArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ApprovalWorkflowApproverArgs | ApprovalWorkflowApproverState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ApprovalWorkflowApprovalState | undefined;
+            const state = argsOrState as ApprovalWorkflowApproverState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["approvalFlowId"] = state ? state.approvalFlowId : undefined;
             resourceInputs["approvalStepId"] = state ? state.approvalStepId : undefined;
             resourceInputs["roleId"] = state ? state.roleId : undefined;
         } else {
-            const args = argsOrState as ApprovalWorkflowApprovalArgs | undefined;
+            const args = argsOrState as ApprovalWorkflowApproverArgs | undefined;
             if ((!args || args.approvalFlowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'approvalFlowId'");
             }
@@ -111,14 +111,14 @@ export class ApprovalWorkflowApproval extends pulumi.CustomResource {
             resourceInputs["roleId"] = args ? args.roleId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ApprovalWorkflowApproval.__pulumiType, name, resourceInputs, opts);
+        super(ApprovalWorkflowApprover.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ApprovalWorkflowApproval resources.
+ * Input properties used for looking up and filtering ApprovalWorkflowApprover resources.
  */
-export interface ApprovalWorkflowApprovalState {
+export interface ApprovalWorkflowApproverState {
     /**
      * The approver account id.
      */
@@ -138,9 +138,9 @@ export interface ApprovalWorkflowApprovalState {
 }
 
 /**
- * The set of arguments for constructing a ApprovalWorkflowApproval resource.
+ * The set of arguments for constructing a ApprovalWorkflowApprover resource.
  */
-export interface ApprovalWorkflowApprovalArgs {
+export interface ApprovalWorkflowApproverArgs {
     /**
      * The approver account id.
      */

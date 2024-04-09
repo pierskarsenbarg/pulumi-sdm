@@ -20,10 +20,10 @@ export type ApprovalWorkflow = import("./approvalWorkflow").ApprovalWorkflow;
 export const ApprovalWorkflow: typeof import("./approvalWorkflow").ApprovalWorkflow = null as any;
 utilities.lazyLoad(exports, ["ApprovalWorkflow"], () => require("./approvalWorkflow"));
 
-export { ApprovalWorkflowApprovalArgs, ApprovalWorkflowApprovalState } from "./approvalWorkflowApproval";
-export type ApprovalWorkflowApproval = import("./approvalWorkflowApproval").ApprovalWorkflowApproval;
-export const ApprovalWorkflowApproval: typeof import("./approvalWorkflowApproval").ApprovalWorkflowApproval = null as any;
-utilities.lazyLoad(exports, ["ApprovalWorkflowApproval"], () => require("./approvalWorkflowApproval"));
+export { ApprovalWorkflowApproverArgs, ApprovalWorkflowApproverState } from "./approvalWorkflowApprover";
+export type ApprovalWorkflowApprover = import("./approvalWorkflowApprover").ApprovalWorkflowApprover;
+export const ApprovalWorkflowApprover: typeof import("./approvalWorkflowApprover").ApprovalWorkflowApprover = null as any;
+utilities.lazyLoad(exports, ["ApprovalWorkflowApprover"], () => require("./approvalWorkflowApprover"));
 
 export { ApprovalWorkflowStepArgs, ApprovalWorkflowStepState } from "./approvalWorkflowStep";
 export type ApprovalWorkflowStep = import("./approvalWorkflowStep").ApprovalWorkflowStep;
@@ -210,8 +210,8 @@ const _module = {
                 return new AccountAttachment(name, <any>undefined, { urn })
             case "sdm:index/approvalWorkflow:ApprovalWorkflow":
                 return new ApprovalWorkflow(name, <any>undefined, { urn })
-            case "sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval":
-                return new ApprovalWorkflowApproval(name, <any>undefined, { urn })
+            case "sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover":
+                return new ApprovalWorkflowApprover(name, <any>undefined, { urn })
             case "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep":
                 return new ApprovalWorkflowStep(name, <any>undefined, { urn })
             case "sdm:index/node:Node":
@@ -246,7 +246,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("sdm", "index/account", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/accountAttachment", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflow", _module)
-pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowApproval", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowApprover", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowStep", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/node", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroup", _module)
