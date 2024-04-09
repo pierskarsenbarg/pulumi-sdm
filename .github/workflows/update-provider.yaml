@@ -1,19 +1,19 @@
 env:
     GH_TOKEN: ${{ secrets.GH_TOKEN }}
-  jobs:
+jobs:
     upgrade_provider:
-      name: upgrade-provider
-      runs-on: ubuntu-latest
-      steps:
-      - name: Call upgrade provider action
-        uses: pulumi/pulumi-upgrade-provider-action@f399a75a5350242c291cc720eece1c72cb6ea712 # v0.0.12
-        with:
-          kind: bridge
-          username: pierskarsenbarg
-  name: Upgrade provider
+        name: upgrade-provider
+        runs-on: ubuntu-latest
+        steps:
+            - name: Call upgrade provider action
+              uses: pulumi/pulumi-upgrade-provider-action@f399a75a5350242c291cc720eece1c72cb6ea712 # v0.0.12
+              with:
+                  kind: bridge
+                  username: pierskarsenbarg
+name: Upgrade provider
   
-  permissions:
+permissions:
     contents: write
   
-  on:
+on:
     workflow_dispatch: {}
