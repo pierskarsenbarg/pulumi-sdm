@@ -7,8 +7,14 @@ import typing
 # Export this package's modules as members:
 from .account import *
 from .account_attachment import *
+from .approval_workflow import *
+from .approval_workflow_approval import *
+from .approval_workflow_step import *
 from .get_account import *
 from .get_account_attachment import *
+from .get_approval_workflow import *
+from .get_approval_workflow_approver import *
+from .get_approval_workflow_step import *
 from .get_node import *
 from .get_peering_group import *
 from .get_peering_group_node import *
@@ -63,6 +69,30 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/accountAttachment:AccountAttachment": "AccountAttachment"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/approvalWorkflow",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/approvalWorkflow:ApprovalWorkflow": "ApprovalWorkflow"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/approvalWorkflowApproval",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval": "ApprovalWorkflowApproval"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/approvalWorkflowStep",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep": "ApprovalWorkflowStep"
   }
  },
  {

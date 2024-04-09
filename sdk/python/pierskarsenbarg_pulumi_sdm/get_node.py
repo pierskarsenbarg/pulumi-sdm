@@ -141,6 +141,7 @@ def get_node(bind_address: Optional[str] = None,
      2. **Gateways:** a relay that also listens for connections from strongDM clients
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -151,6 +152,7 @@ def get_node(bind_address: Optional[str] = None,
         },
         type="gateway")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -158,7 +160,7 @@ def get_node(bind_address: Optional[str] = None,
     :param str listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
     :param str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
-    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     __args__ = dict()
     __args__['bindAddress'] = bind_address
@@ -196,6 +198,7 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
      2. **Gateways:** a relay that also listens for connections from strongDM clients
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -206,6 +209,7 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
         },
         type="gateway")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -213,6 +217,6 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
     :param str listen_address: The public hostname/port tuple at which the gateway will be accessible to clients.
     :param str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
-    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+    :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     ...

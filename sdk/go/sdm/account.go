@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,6 +61,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // This resource can be imported using the import command.
 //
 // ## Import
@@ -67,9 +69,7 @@ import (
 // A Account can be imported using the id, e.g.,
 //
 // ```sh
-//
-//	$ pulumi import sdm:index/account:Account example a-12345678
-//
+// $ pulumi import sdm:index/account:Account example a-12345678
 // ```
 type Account struct {
 	pulumi.CustomResourceState

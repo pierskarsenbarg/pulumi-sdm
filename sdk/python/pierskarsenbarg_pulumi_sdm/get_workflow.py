@@ -22,7 +22,10 @@ class GetWorkflowResult:
     """
     A collection of values returned by getWorkflow.
     """
-    def __init__(__self__, auto_grant=None, description=None, enabled=None, id=None, ids=None, name=None, weight=None, workflows=None):
+    def __init__(__self__, approval_flow_id=None, auto_grant=None, description=None, enabled=None, id=None, ids=None, name=None, weight=None, workflows=None):
+        if approval_flow_id and not isinstance(approval_flow_id, str):
+            raise TypeError("Expected argument 'approval_flow_id' to be a str")
+        pulumi.set(__self__, "approval_flow_id", approval_flow_id)
         if auto_grant and not isinstance(auto_grant, bool):
             raise TypeError("Expected argument 'auto_grant' to be a bool")
         pulumi.set(__self__, "auto_grant", auto_grant)
@@ -47,6 +50,14 @@ class GetWorkflowResult:
         if workflows and not isinstance(workflows, list):
             raise TypeError("Expected argument 'workflows' to be a list")
         pulumi.set(__self__, "workflows", workflows)
+
+    @property
+    @pulumi.getter(name="approvalFlowId")
+    def approval_flow_id(self) -> Optional[str]:
+        """
+        Optional approval flow ID identifies an approval flow that linked to the workflow
+        """
+        return pulumi.get(self, "approval_flow_id")
 
     @property
     @pulumi.getter(name="autoGrant")
@@ -119,6 +130,7 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
         if False:
             yield self
         return GetWorkflowResult(
+            approval_flow_id=self.approval_flow_id,
             auto_grant=self.auto_grant,
             description=self.description,
             enabled=self.enabled,
@@ -129,7 +141,8 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
             workflows=self.workflows)
 
 
-def get_workflow(auto_grant: Optional[bool] = None,
+def get_workflow(approval_flow_id: Optional[str] = None,
+                 auto_grant: Optional[bool] = None,
                  description: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  id: Optional[str] = None,
@@ -142,6 +155,7 @@ def get_workflow(auto_grant: Optional[bool] = None,
      but automatic approval or a set of users authorized to approve the requests.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -149,8 +163,10 @@ def get_workflow(auto_grant: Optional[bool] = None,
     workflow_query = sdm.get_workflow(auto_grant=True,
         name="workflow example")
     ```
+    <!--End PulumiCodeChooser -->
 
 
+    :param str approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
     :param bool auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
     :param str description: Optional description of the Workflow.
     :param bool enabled: Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
@@ -159,6 +175,7 @@ def get_workflow(auto_grant: Optional[bool] = None,
     :param int weight: Optional weight for workflow to specify it's priority in matching a request.
     """
     __args__ = dict()
+    __args__['approvalFlowId'] = approval_flow_id
     __args__['autoGrant'] = auto_grant
     __args__['description'] = description
     __args__['enabled'] = enabled
@@ -169,6 +186,7 @@ def get_workflow(auto_grant: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getWorkflow:getWorkflow', __args__, opts=opts, typ=GetWorkflowResult).value
 
     return AwaitableGetWorkflowResult(
+        approval_flow_id=pulumi.get(__ret__, 'approval_flow_id'),
         auto_grant=pulumi.get(__ret__, 'auto_grant'),
         description=pulumi.get(__ret__, 'description'),
         enabled=pulumi.get(__ret__, 'enabled'),
@@ -180,7 +198,8 @@ def get_workflow(auto_grant: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_workflow)
-def get_workflow_output(auto_grant: Optional[pulumi.Input[Optional[bool]]] = None,
+def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] = None,
+                        auto_grant: Optional[pulumi.Input[Optional[bool]]] = None,
                         description: Optional[pulumi.Input[Optional[str]]] = None,
                         enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                         id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -193,6 +212,7 @@ def get_workflow_output(auto_grant: Optional[pulumi.Input[Optional[bool]]] = Non
      but automatic approval or a set of users authorized to approve the requests.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -200,8 +220,10 @@ def get_workflow_output(auto_grant: Optional[pulumi.Input[Optional[bool]]] = Non
     workflow_query = sdm.get_workflow(auto_grant=True,
         name="workflow example")
     ```
+    <!--End PulumiCodeChooser -->
 
 
+    :param str approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
     :param bool auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
     :param str description: Optional description of the Workflow.
     :param bool enabled: Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.

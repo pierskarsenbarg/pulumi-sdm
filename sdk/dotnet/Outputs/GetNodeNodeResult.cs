@@ -14,7 +14,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
     [OutputType]
     public sealed class GetNodeNodeResult
     {
+        /// <summary>
+        /// Gateway represents a StrongDM CLI installation running in gateway mode.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNodeNodeGatewayResult> Gateways;
+        /// <summary>
+        /// Relay represents a StrongDM CLI installation running in relay mode.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNodeNodeRelayResult> Relays;
 
         [OutputConstructor]

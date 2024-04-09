@@ -15,6 +15,7 @@ namespace PiersKarsenbarg.Sdm
     ///  to request access to a resource via the workflow.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,6 +32,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import
@@ -38,7 +40,7 @@ namespace PiersKarsenbarg.Sdm
     /// A WorkflowRole can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678
+    /// $ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/workflowRole:WorkflowRole")]

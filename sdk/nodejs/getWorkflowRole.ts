@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *  to request access to a resource via the workflow.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     workflowId: "aw-7935485",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWorkflowRole(args?: GetWorkflowRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowRoleResult> {
     args = args || {};
@@ -80,6 +82,7 @@ export interface GetWorkflowRoleResult {
  *  to request access to a resource via the workflow.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -89,6 +92,7 @@ export interface GetWorkflowRoleResult {
  *     workflowId: "aw-7935485",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getWorkflowRoleOutput(args?: GetWorkflowRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowRoleResult> {
     return pulumi.output(args).apply((a: any) => getWorkflowRole(a, opts))

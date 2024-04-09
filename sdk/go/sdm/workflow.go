@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -76,6 +77,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 // This resource can be imported using the import command.
 //
 // ## Import
@@ -83,15 +85,15 @@ import (
 // A Workflow can be imported using the id, e.g.,
 //
 // ```sh
-//
-//	$ pulumi import sdm:index/workflow:Workflow example aw-12345678
-//
+// $ pulumi import sdm:index/workflow:Workflow example aw-12345678
 // ```
 type Workflow struct {
 	pulumi.CustomResourceState
 
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules pulumi.StringOutput `pulumi:"accessRules"`
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId pulumi.StringPtrOutput `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant pulumi.BoolPtrOutput `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
@@ -136,6 +138,8 @@ func GetWorkflow(ctx *pulumi.Context,
 type workflowState struct {
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules *string `pulumi:"accessRules"`
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant *bool `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
@@ -151,6 +155,8 @@ type workflowState struct {
 type WorkflowState struct {
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules pulumi.StringPtrInput
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId pulumi.StringPtrInput
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant pulumi.BoolPtrInput
 	// Optional description of the Workflow.
@@ -170,6 +176,8 @@ func (WorkflowState) ElementType() reflect.Type {
 type workflowArgs struct {
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules *string `pulumi:"accessRules"`
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant *bool `pulumi:"autoGrant"`
 	// Optional description of the Workflow.
@@ -186,6 +194,8 @@ type workflowArgs struct {
 type WorkflowArgs struct {
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules pulumi.StringPtrInput
+	// Optional approval flow ID identifies an approval flow that linked to the workflow
+	ApprovalFlowId pulumi.StringPtrInput
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
 	AutoGrant pulumi.BoolPtrInput
 	// Optional description of the Workflow.
@@ -288,6 +298,11 @@ func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) Workflo
 // AccessRules is a list of access rules defining the resources this Workflow provides access to.
 func (o WorkflowOutput) AccessRules() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.AccessRules }).(pulumi.StringOutput)
+}
+
+// Optional approval flow ID identifies an approval flow that linked to the workflow
+func (o WorkflowOutput) ApprovalFlowId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.ApprovalFlowId }).(pulumi.StringPtrOutput)
 }
 
 // Optional auto grant setting to automatically approve requests or not, defaults to false.

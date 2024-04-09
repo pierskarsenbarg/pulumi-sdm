@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * A Resource can be imported using the id, e.g.,
  *
  * ```sh
- *  $ pulumi import sdm:index/resource:Resource example rs-12345678
+ * $ pulumi import sdm:index/resource:Resource example rs-12345678
  * ```
  */
 export class Resource extends pulumi.CustomResource {
@@ -122,6 +122,7 @@ export class Resource extends pulumi.CustomResource {
     public readonly rabbitmqAmqp091!: pulumi.Output<outputs.ResourceRabbitmqAmqp091 | undefined>;
     public readonly rawTcp!: pulumi.Output<outputs.ResourceRawTcp | undefined>;
     public readonly rdp!: pulumi.Output<outputs.ResourceRdp | undefined>;
+    public readonly rdpCert!: pulumi.Output<outputs.ResourceRdpCert | undefined>;
     public readonly rdsPostgresIam!: pulumi.Output<outputs.ResourceRdsPostgresIam | undefined>;
     public readonly redis!: pulumi.Output<outputs.ResourceRedis | undefined>;
     public readonly redshift!: pulumi.Output<outputs.ResourceRedshift | undefined>;
@@ -222,6 +223,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["rabbitmqAmqp091"] = state ? state.rabbitmqAmqp091 : undefined;
             resourceInputs["rawTcp"] = state ? state.rawTcp : undefined;
             resourceInputs["rdp"] = state ? state.rdp : undefined;
+            resourceInputs["rdpCert"] = state ? state.rdpCert : undefined;
             resourceInputs["rdsPostgresIam"] = state ? state.rdsPostgresIam : undefined;
             resourceInputs["redis"] = state ? state.redis : undefined;
             resourceInputs["redshift"] = state ? state.redshift : undefined;
@@ -307,6 +309,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["rabbitmqAmqp091"] = args ? args.rabbitmqAmqp091 : undefined;
             resourceInputs["rawTcp"] = args ? args.rawTcp : undefined;
             resourceInputs["rdp"] = args ? args.rdp : undefined;
+            resourceInputs["rdpCert"] = args ? args.rdpCert : undefined;
             resourceInputs["rdsPostgresIam"] = args ? args.rdsPostgresIam : undefined;
             resourceInputs["redis"] = args ? args.redis : undefined;
             resourceInputs["redshift"] = args ? args.redshift : undefined;
@@ -412,6 +415,7 @@ export interface ResourceState {
     rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
     rawTcp?: pulumi.Input<inputs.ResourceRawTcp>;
     rdp?: pulumi.Input<inputs.ResourceRdp>;
+    rdpCert?: pulumi.Input<inputs.ResourceRdpCert>;
     rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
@@ -516,6 +520,7 @@ export interface ResourceArgs {
     rabbitmqAmqp091?: pulumi.Input<inputs.ResourceRabbitmqAmqp091>;
     rawTcp?: pulumi.Input<inputs.ResourceRawTcp>;
     rdp?: pulumi.Input<inputs.ResourceRdp>;
+    rdpCert?: pulumi.Input<inputs.ResourceRdpCert>;
     rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;

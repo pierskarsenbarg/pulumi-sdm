@@ -101,12 +101,14 @@ def get_account_attachment(account_id: Optional[str] = None,
     AccountAttachments assign an account to a role.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     account_attachment_query = sdm.get_account_attachment(account_id="a-00000054")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The id of the account of this AccountAttachment.
@@ -137,12 +139,14 @@ def get_account_attachment_output(account_id: Optional[pulumi.Input[Optional[str
     AccountAttachments assign an account to a role.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     account_attachment_query = sdm.get_account_attachment(account_id="a-00000054")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The id of the account of this AccountAttachment.

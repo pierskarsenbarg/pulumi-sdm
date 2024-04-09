@@ -20,7 +20,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The User's suspended state.
+        /// The Service's suspended state.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }

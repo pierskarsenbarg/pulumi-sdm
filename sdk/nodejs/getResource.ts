@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *  delegates access to.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -24,6 +25,7 @@ import * as utilities from "./utilities";
  *     type: "mysql",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getResource(args?: GetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceResult> {
     args = args || {};
@@ -65,7 +67,7 @@ export interface GetResourceArgs {
      */
     tags?: {[key: string]: any};
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
      */
     type?: string;
     /**
@@ -118,6 +120,7 @@ export interface GetResourceResult {
  *  delegates access to.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -131,6 +134,7 @@ export interface GetResourceResult {
  *     type: "mysql",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getResourceOutput(args?: GetResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceResult> {
     return pulumi.output(args).apply((a: any) => getResource(a, opts))
@@ -161,7 +165,7 @@ export interface GetResourceOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+     * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
      */
     type?: pulumi.Input<string>;
     /**

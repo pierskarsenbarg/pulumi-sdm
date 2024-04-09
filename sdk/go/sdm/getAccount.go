@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult
@@ -69,11 +71,13 @@ type LookupAccountArgs struct {
 	LastName *string `pulumi:"lastName"`
 	// Unique human-readable name of the Service.
 	Name *string `pulumi:"name"`
-	// The User's suspended state.
+	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+	PermissionLevel *string `pulumi:"permissionLevel"`
+	// The Service's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type *string `pulumi:"type"`
 }
 
@@ -96,7 +100,9 @@ type LookupAccountResult struct {
 	LastName *string `pulumi:"lastName"`
 	// Unique human-readable name of the Service.
 	Name *string `pulumi:"name"`
-	// The User's suspended state.
+	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+	PermissionLevel *string `pulumi:"permissionLevel"`
+	// Suspended is a read only field for the User's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -130,11 +136,13 @@ type LookupAccountOutputArgs struct {
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
 	// Unique human-readable name of the Service.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The User's suspended state.
+	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+	PermissionLevel pulumi.StringPtrInput `pulumi:"permissionLevel"`
+	// The Service's suspended state.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -198,7 +206,12 @@ func (o LookupAccountResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The User's suspended state.
+// PermissionLevel is the user's permission level e.g. admin, DBA, user.
+func (o LookupAccountResultOutput) PermissionLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.PermissionLevel }).(pulumi.StringPtrOutput)
+}
+
+// Suspended is a read only field for the User's suspended state.
 func (o LookupAccountResultOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
 }

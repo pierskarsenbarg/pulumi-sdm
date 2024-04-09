@@ -22,9 +22,7 @@ import (
 // A PeeringGroup can be imported using the id, e.g.,
 //
 // ```sh
-//
-//	$ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678
-//
+// $ pulumi import sdm:index/peeringGroup:PeeringGroup example g-12345678
 // ```
 type PeeringGroup struct {
 	pulumi.CustomResourceState

@@ -16,6 +16,7 @@ namespace PiersKarsenbarg.Sdm
     ///  but automatic approval or a set of users authorized to approve the requests.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,6 +61,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import
@@ -67,7 +69,7 @@ namespace PiersKarsenbarg.Sdm
     /// A Workflow can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/workflow:Workflow example aw-12345678
+    /// $ pulumi import sdm:index/workflow:Workflow example aw-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/workflow:Workflow")]
@@ -78,6 +80,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Output("accessRules")]
         public Output<string> AccessRules { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional approval flow ID identifies an approval flow that linked to the workflow
+        /// </summary>
+        [Output("approvalFlowId")]
+        public Output<string?> ApprovalFlowId { get; private set; } = null!;
 
         /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -163,6 +171,12 @@ namespace PiersKarsenbarg.Sdm
         public Input<string>? AccessRules { get; set; }
 
         /// <summary>
+        /// Optional approval flow ID identifies an approval flow that linked to the workflow
+        /// </summary>
+        [Input("approvalFlowId")]
+        public Input<string>? ApprovalFlowId { get; set; }
+
+        /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.
         /// </summary>
         [Input("autoGrant")]
@@ -205,6 +219,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("accessRules")]
         public Input<string>? AccessRules { get; set; }
+
+        /// <summary>
+        /// Optional approval flow ID identifies an approval flow that linked to the workflow
+        /// </summary>
+        [Input("approvalFlowId")]
+        public Input<string>? ApprovalFlowId { get; set; }
 
         /// <summary>
         /// Optional auto grant setting to automatically approve requests or not, defaults to false.

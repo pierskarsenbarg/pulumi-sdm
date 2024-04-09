@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  *  but automatic approval or a set of users authorized to approve the requests.
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -34,6 +35,7 @@ import * as utilities from "./utilities";
  *     }]),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import
@@ -41,7 +43,7 @@ import * as utilities from "./utilities";
  * A Workflow can be imported using the id, e.g.,
  *
  * ```sh
- *  $ pulumi import sdm:index/workflow:Workflow example aw-12345678
+ * $ pulumi import sdm:index/workflow:Workflow example aw-12345678
  * ```
  */
 export class Workflow extends pulumi.CustomResource {
@@ -77,6 +79,10 @@ export class Workflow extends pulumi.CustomResource {
      */
     public readonly accessRules!: pulumi.Output<string>;
     /**
+     * Optional approval flow ID identifies an approval flow that linked to the workflow
+     */
+    public readonly approvalFlowId!: pulumi.Output<string | undefined>;
+    /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      */
     public readonly autoGrant!: pulumi.Output<boolean | undefined>;
@@ -111,6 +117,7 @@ export class Workflow extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WorkflowState | undefined;
             resourceInputs["accessRules"] = state ? state.accessRules : undefined;
+            resourceInputs["approvalFlowId"] = state ? state.approvalFlowId : undefined;
             resourceInputs["autoGrant"] = state ? state.autoGrant : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
@@ -119,6 +126,7 @@ export class Workflow extends pulumi.CustomResource {
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
             resourceInputs["accessRules"] = args ? args.accessRules : undefined;
+            resourceInputs["approvalFlowId"] = args ? args.approvalFlowId : undefined;
             resourceInputs["autoGrant"] = args ? args.autoGrant : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
@@ -138,6 +146,10 @@ export interface WorkflowState {
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */
     accessRules?: pulumi.Input<string>;
+    /**
+     * Optional approval flow ID identifies an approval flow that linked to the workflow
+     */
+    approvalFlowId?: pulumi.Input<string>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      */
@@ -168,6 +180,10 @@ export interface WorkflowArgs {
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */
     accessRules?: pulumi.Input<string>;
+    /**
+     * Optional approval flow ID identifies an approval flow that linked to the workflow
+     */
+    approvalFlowId?: pulumi.Input<string>;
     /**
      * Optional auto grant setting to automatically approve requests or not, defaults to false.
      */

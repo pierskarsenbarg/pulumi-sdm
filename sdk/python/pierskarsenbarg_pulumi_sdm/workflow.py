@@ -15,6 +15,7 @@ __all__ = ['WorkflowArgs', 'Workflow']
 class WorkflowArgs:
     def __init__(__self__, *,
                  access_rules: Optional[pulumi.Input[str]] = None,
+                 approval_flow_id: Optional[pulumi.Input[str]] = None,
                  auto_grant: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -23,6 +24,7 @@ class WorkflowArgs:
         """
         The set of arguments for constructing a Workflow resource.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
+        :param pulumi.Input[str] approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
         :param pulumi.Input[bool] auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
         :param pulumi.Input[str] description: Optional description of the Workflow.
         :param pulumi.Input[bool] enabled: Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
@@ -31,6 +33,8 @@ class WorkflowArgs:
         """
         if access_rules is not None:
             pulumi.set(__self__, "access_rules", access_rules)
+        if approval_flow_id is not None:
+            pulumi.set(__self__, "approval_flow_id", approval_flow_id)
         if auto_grant is not None:
             pulumi.set(__self__, "auto_grant", auto_grant)
         if description is not None:
@@ -53,6 +57,18 @@ class WorkflowArgs:
     @access_rules.setter
     def access_rules(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_rules", value)
+
+    @property
+    @pulumi.getter(name="approvalFlowId")
+    def approval_flow_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional approval flow ID identifies an approval flow that linked to the workflow
+        """
+        return pulumi.get(self, "approval_flow_id")
+
+    @approval_flow_id.setter
+    def approval_flow_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "approval_flow_id", value)
 
     @property
     @pulumi.getter(name="autoGrant")
@@ -119,6 +135,7 @@ class WorkflowArgs:
 class _WorkflowState:
     def __init__(__self__, *,
                  access_rules: Optional[pulumi.Input[str]] = None,
+                 approval_flow_id: Optional[pulumi.Input[str]] = None,
                  auto_grant: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -127,6 +144,7 @@ class _WorkflowState:
         """
         Input properties used for looking up and filtering Workflow resources.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
+        :param pulumi.Input[str] approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
         :param pulumi.Input[bool] auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
         :param pulumi.Input[str] description: Optional description of the Workflow.
         :param pulumi.Input[bool] enabled: Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
@@ -135,6 +153,8 @@ class _WorkflowState:
         """
         if access_rules is not None:
             pulumi.set(__self__, "access_rules", access_rules)
+        if approval_flow_id is not None:
+            pulumi.set(__self__, "approval_flow_id", approval_flow_id)
         if auto_grant is not None:
             pulumi.set(__self__, "auto_grant", auto_grant)
         if description is not None:
@@ -157,6 +177,18 @@ class _WorkflowState:
     @access_rules.setter
     def access_rules(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_rules", value)
+
+    @property
+    @pulumi.getter(name="approvalFlowId")
+    def approval_flow_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional approval flow ID identifies an approval flow that linked to the workflow
+        """
+        return pulumi.get(self, "approval_flow_id")
+
+    @approval_flow_id.setter
+    def approval_flow_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "approval_flow_id", value)
 
     @property
     @pulumi.getter(name="autoGrant")
@@ -225,6 +257,7 @@ class Workflow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_rules: Optional[pulumi.Input[str]] = None,
+                 approval_flow_id: Optional[pulumi.Input[str]] = None,
                  auto_grant: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -237,6 +270,7 @@ class Workflow(pulumi.CustomResource):
          but automatic approval or a set of users authorized to approve the requests.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -260,6 +294,7 @@ class Workflow(pulumi.CustomResource):
                 },
             }]))
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -267,12 +302,13 @@ class Workflow(pulumi.CustomResource):
         A Workflow can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/workflow:Workflow example aw-12345678
+        $ pulumi import sdm:index/workflow:Workflow example aw-12345678
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
+        :param pulumi.Input[str] approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
         :param pulumi.Input[bool] auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
         :param pulumi.Input[str] description: Optional description of the Workflow.
         :param pulumi.Input[bool] enabled: Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
@@ -291,6 +327,7 @@ class Workflow(pulumi.CustomResource):
          but automatic approval or a set of users authorized to approve the requests.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -314,6 +351,7 @@ class Workflow(pulumi.CustomResource):
                 },
             }]))
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -321,7 +359,7 @@ class Workflow(pulumi.CustomResource):
         A Workflow can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/workflow:Workflow example aw-12345678
+        $ pulumi import sdm:index/workflow:Workflow example aw-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -340,6 +378,7 @@ class Workflow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_rules: Optional[pulumi.Input[str]] = None,
+                 approval_flow_id: Optional[pulumi.Input[str]] = None,
                  auto_grant: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -355,6 +394,7 @@ class Workflow(pulumi.CustomResource):
             __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
             __props__.__dict__["access_rules"] = access_rules
+            __props__.__dict__["approval_flow_id"] = approval_flow_id
             __props__.__dict__["auto_grant"] = auto_grant
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled"] = enabled
@@ -371,6 +411,7 @@ class Workflow(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_rules: Optional[pulumi.Input[str]] = None,
+            approval_flow_id: Optional[pulumi.Input[str]] = None,
             auto_grant: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
@@ -384,6 +425,7 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
+        :param pulumi.Input[str] approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
         :param pulumi.Input[bool] auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
         :param pulumi.Input[str] description: Optional description of the Workflow.
         :param pulumi.Input[bool] enabled: Optional enabled state for workflow. This setting may be overridden by the system if the workflow doesn't meet the requirements to be enabled or if other conditions prevent enabling the workflow. The requirements to enable a workflow are that the workflow must be either set up for with auto grant enabled or have one or more WorkflowApprovers created for the workflow.
@@ -395,6 +437,7 @@ class Workflow(pulumi.CustomResource):
         __props__ = _WorkflowState.__new__(_WorkflowState)
 
         __props__.__dict__["access_rules"] = access_rules
+        __props__.__dict__["approval_flow_id"] = approval_flow_id
         __props__.__dict__["auto_grant"] = auto_grant
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
@@ -409,6 +452,14 @@ class Workflow(pulumi.CustomResource):
         AccessRules is a list of access rules defining the resources this Workflow provides access to.
         """
         return pulumi.get(self, "access_rules")
+
+    @property
+    @pulumi.getter(name="approvalFlowId")
+    def approval_flow_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional approval flow ID identifies an approval flow that linked to the workflow
+        """
+        return pulumi.get(self, "approval_flow_id")
 
     @property
     @pulumi.getter(name="autoGrant")

@@ -35,11 +35,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? ManagedBy;
         /// <summary>
-        /// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+        /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
         /// </summary>
         public readonly string? PermissionLevel;
         /// <summary>
-        /// The User's suspended state.
+        /// The Service's suspended state.
         /// </summary>
         public readonly bool? Suspended;
         /// <summary>

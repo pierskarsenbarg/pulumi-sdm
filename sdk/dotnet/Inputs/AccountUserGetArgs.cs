@@ -44,13 +44,13 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? ManagedBy { get; set; }
 
         /// <summary>
-        /// PermissionLevel is a read only field for the user's permission level e.g. admin, DBA, user.
+        /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
         /// </summary>
         [Input("permissionLevel")]
         public Input<string>? PermissionLevel { get; set; }
 
         /// <summary>
-        /// The User's suspended state.
+        /// The Service's suspended state.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }

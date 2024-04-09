@@ -23,7 +23,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The User's suspended state.
+        /// The Service's suspended state.
         /// </summary>
         public readonly bool? Suspended;
         /// <summary>

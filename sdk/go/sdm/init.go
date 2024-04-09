@@ -25,6 +25,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Account{}
 	case "sdm:index/accountAttachment:AccountAttachment":
 		r = &AccountAttachment{}
+	case "sdm:index/approvalWorkflow:ApprovalWorkflow":
+		r = &ApprovalWorkflow{}
+	case "sdm:index/approvalWorkflowApproval:ApprovalWorkflowApproval":
+		r = &ApprovalWorkflowApproval{}
+	case "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep":
+		r = &ApprovalWorkflowStep{}
 	case "sdm:index/node:Node":
 		r = &Node{}
 	case "sdm:index/peeringGroup:PeeringGroup":
@@ -88,6 +94,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sdm",
 		"index/accountAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/approvalWorkflow",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/approvalWorkflowApproval",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/approvalWorkflowStep",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

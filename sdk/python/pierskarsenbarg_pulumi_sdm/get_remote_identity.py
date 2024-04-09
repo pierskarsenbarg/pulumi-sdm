@@ -115,6 +115,7 @@ def get_remote_identity(account_id: Optional[str] = None,
      when connecting to a remote resource using that group.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -122,6 +123,7 @@ def get_remote_identity(account_id: Optional[str] = None,
     user = sdm.get_remote_identity(id="i-0900909",
         username="user")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account for this remote identity.
@@ -157,6 +159,7 @@ def get_remote_identity_output(account_id: Optional[pulumi.Input[Optional[str]]]
      when connecting to a remote resource using that group.
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -164,6 +167,7 @@ def get_remote_identity_output(account_id: Optional[pulumi.Input[Optional[str]]]
     user = sdm.get_remote_identity(id="i-0900909",
         username="user")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account for this remote identity.

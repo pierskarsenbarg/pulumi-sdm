@@ -11,9 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+// WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -27,8 +28,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdm.LookupWorkflowApprover(ctx, &sdm.LookupWorkflowApproverArgs{
-//				ApproverId: pulumi.StringRef("a-2496542"),
+//				AccountId:  pulumi.StringRef("a-2496542"),
 //				WorkflowId: pulumi.StringRef("aw-541894"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.LookupWorkflowApprover(ctx, &sdm.LookupWorkflowApproverArgs{
+//				RoleId:     pulumi.StringRef("r-417345"),
+//				WorkflowId: pulumi.StringRef("aw-679923"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -38,6 +46,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupWorkflowApprover(ctx *pulumi.Context, args *LookupWorkflowApproverArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowApproverResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowApproverResult
@@ -50,22 +59,26 @@ func LookupWorkflowApprover(ctx *pulumi.Context, args *LookupWorkflowApproverArg
 
 // A collection of arguments for invoking getWorkflowApprover.
 type LookupWorkflowApproverArgs struct {
-	// The approver id.
-	ApproverId *string `pulumi:"approverId"`
+	// The approver account id.
+	AccountId *string `pulumi:"accountId"`
 	// Unique identifier of the WorkflowApprover.
 	Id *string `pulumi:"id"`
+	// The approver role id
+	RoleId *string `pulumi:"roleId"`
 	// The workflow id.
 	WorkflowId *string `pulumi:"workflowId"`
 }
 
 // A collection of values returned by getWorkflowApprover.
 type LookupWorkflowApproverResult struct {
-	// The approver id.
-	ApproverId *string `pulumi:"approverId"`
+	// The approver account id.
+	AccountId *string `pulumi:"accountId"`
 	// Unique identifier of the WorkflowApprover.
 	Id *string `pulumi:"id"`
 	// a list of strings of ids of data sources that match the given arguments.
 	Ids []string `pulumi:"ids"`
+	// The approver role id
+	RoleId *string `pulumi:"roleId"`
 	// A list where each element has the following attributes:
 	WorkflowApprovers []GetWorkflowApproverWorkflowApprover `pulumi:"workflowApprovers"`
 	// The workflow id.
@@ -87,10 +100,12 @@ func LookupWorkflowApproverOutput(ctx *pulumi.Context, args LookupWorkflowApprov
 
 // A collection of arguments for invoking getWorkflowApprover.
 type LookupWorkflowApproverOutputArgs struct {
-	// The approver id.
-	ApproverId pulumi.StringPtrInput `pulumi:"approverId"`
+	// The approver account id.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// Unique identifier of the WorkflowApprover.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The approver role id
+	RoleId pulumi.StringPtrInput `pulumi:"roleId"`
 	// The workflow id.
 	WorkflowId pulumi.StringPtrInput `pulumi:"workflowId"`
 }
@@ -114,9 +129,9 @@ func (o LookupWorkflowApproverResultOutput) ToLookupWorkflowApproverResultOutput
 	return o
 }
 
-// The approver id.
-func (o LookupWorkflowApproverResultOutput) ApproverId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupWorkflowApproverResult) *string { return v.ApproverId }).(pulumi.StringPtrOutput)
+// The approver account id.
+func (o LookupWorkflowApproverResultOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowApproverResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // Unique identifier of the WorkflowApprover.
@@ -127,6 +142,11 @@ func (o LookupWorkflowApproverResultOutput) Id() pulumi.StringPtrOutput {
 // a list of strings of ids of data sources that match the given arguments.
 func (o LookupWorkflowApproverResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupWorkflowApproverResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
+}
+
+// The approver role id
+func (o LookupWorkflowApproverResultOutput) RoleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowApproverResult) *string { return v.RoleId }).(pulumi.StringPtrOutput)
 }
 
 // A list where each element has the following attributes:

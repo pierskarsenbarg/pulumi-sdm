@@ -15,10 +15,9 @@ namespace PiersKarsenbarg.Sdm
         /// <summary>
         /// RemoteIdentities define the username to be used for a specific account
         ///  when connecting to a remote resource using that group.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRemoteIdentityResult> InvokeAsync(GetRemoteIdentityArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace PiersKarsenbarg.Sdm
         /// <summary>
         /// RemoteIdentities define the username to be used for a specific account
         ///  when connecting to a remote resource using that group.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,8 +61,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRemoteIdentityResult> Invoke(GetRemoteIdentityInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityInvokeArgs(), options.WithDefaults());

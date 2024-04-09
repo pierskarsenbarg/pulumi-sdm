@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * A SecretStore can be imported using the id, e.g.,
  *
  * ```sh
- *  $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
+ * $ pulumi import sdm:index/secretStore:SecretStore example se-12345678
  * ```
  */
 export class SecretStore extends pulumi.CustomResource {
@@ -47,7 +47,9 @@ export class SecretStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === SecretStore.__pulumiType;
     }
 
+    public readonly activeDirectoryStore!: pulumi.Output<outputs.SecretStoreActiveDirectoryStore | undefined>;
     public readonly aws!: pulumi.Output<outputs.SecretStoreAws | undefined>;
+    public readonly awsCertX509!: pulumi.Output<outputs.SecretStoreAwsCertX509 | undefined>;
     public readonly azureStore!: pulumi.Output<outputs.SecretStoreAzureStore | undefined>;
     public readonly cyberarkConjur!: pulumi.Output<outputs.SecretStoreCyberarkConjur | undefined>;
     public readonly cyberarkPam!: pulumi.Output<outputs.SecretStoreCyberarkPam | undefined>;
@@ -57,10 +59,17 @@ export class SecretStore extends pulumi.CustomResource {
      */
     public readonly cyberarkPamExperimental!: pulumi.Output<outputs.SecretStoreCyberarkPamExperimental | undefined>;
     public readonly delineaStore!: pulumi.Output<outputs.SecretStoreDelineaStore | undefined>;
+    public readonly gcpCertX509Store!: pulumi.Output<outputs.SecretStoreGcpCertX509Store | undefined>;
     public readonly gcpStore!: pulumi.Output<outputs.SecretStoreGcpStore | undefined>;
     public readonly vaultApprole!: pulumi.Output<outputs.SecretStoreVaultApprole | undefined>;
+    public readonly vaultApproleCertSsh!: pulumi.Output<outputs.SecretStoreVaultApproleCertSsh | undefined>;
+    public readonly vaultApproleCertX509!: pulumi.Output<outputs.SecretStoreVaultApproleCertX509 | undefined>;
     public readonly vaultTls!: pulumi.Output<outputs.SecretStoreVaultTls | undefined>;
+    public readonly vaultTlsCertSsh!: pulumi.Output<outputs.SecretStoreVaultTlsCertSsh | undefined>;
+    public readonly vaultTlsCertX509!: pulumi.Output<outputs.SecretStoreVaultTlsCertX509 | undefined>;
     public readonly vaultToken!: pulumi.Output<outputs.SecretStoreVaultToken | undefined>;
+    public readonly vaultTokenCertSsh!: pulumi.Output<outputs.SecretStoreVaultTokenCertSsh | undefined>;
+    public readonly vaultTokenCertX509!: pulumi.Output<outputs.SecretStoreVaultTokenCertX509 | undefined>;
 
     /**
      * Create a SecretStore resource with the given unique name, arguments, and options.
@@ -75,28 +84,46 @@ export class SecretStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretStoreState | undefined;
+            resourceInputs["activeDirectoryStore"] = state ? state.activeDirectoryStore : undefined;
             resourceInputs["aws"] = state ? state.aws : undefined;
+            resourceInputs["awsCertX509"] = state ? state.awsCertX509 : undefined;
             resourceInputs["azureStore"] = state ? state.azureStore : undefined;
             resourceInputs["cyberarkConjur"] = state ? state.cyberarkConjur : undefined;
             resourceInputs["cyberarkPam"] = state ? state.cyberarkPam : undefined;
             resourceInputs["cyberarkPamExperimental"] = state ? state.cyberarkPamExperimental : undefined;
             resourceInputs["delineaStore"] = state ? state.delineaStore : undefined;
+            resourceInputs["gcpCertX509Store"] = state ? state.gcpCertX509Store : undefined;
             resourceInputs["gcpStore"] = state ? state.gcpStore : undefined;
             resourceInputs["vaultApprole"] = state ? state.vaultApprole : undefined;
+            resourceInputs["vaultApproleCertSsh"] = state ? state.vaultApproleCertSsh : undefined;
+            resourceInputs["vaultApproleCertX509"] = state ? state.vaultApproleCertX509 : undefined;
             resourceInputs["vaultTls"] = state ? state.vaultTls : undefined;
+            resourceInputs["vaultTlsCertSsh"] = state ? state.vaultTlsCertSsh : undefined;
+            resourceInputs["vaultTlsCertX509"] = state ? state.vaultTlsCertX509 : undefined;
             resourceInputs["vaultToken"] = state ? state.vaultToken : undefined;
+            resourceInputs["vaultTokenCertSsh"] = state ? state.vaultTokenCertSsh : undefined;
+            resourceInputs["vaultTokenCertX509"] = state ? state.vaultTokenCertX509 : undefined;
         } else {
             const args = argsOrState as SecretStoreArgs | undefined;
+            resourceInputs["activeDirectoryStore"] = args ? args.activeDirectoryStore : undefined;
             resourceInputs["aws"] = args ? args.aws : undefined;
+            resourceInputs["awsCertX509"] = args ? args.awsCertX509 : undefined;
             resourceInputs["azureStore"] = args ? args.azureStore : undefined;
             resourceInputs["cyberarkConjur"] = args ? args.cyberarkConjur : undefined;
             resourceInputs["cyberarkPam"] = args ? args.cyberarkPam : undefined;
             resourceInputs["cyberarkPamExperimental"] = args ? args.cyberarkPamExperimental : undefined;
             resourceInputs["delineaStore"] = args ? args.delineaStore : undefined;
+            resourceInputs["gcpCertX509Store"] = args ? args.gcpCertX509Store : undefined;
             resourceInputs["gcpStore"] = args ? args.gcpStore : undefined;
             resourceInputs["vaultApprole"] = args ? args.vaultApprole : undefined;
+            resourceInputs["vaultApproleCertSsh"] = args ? args.vaultApproleCertSsh : undefined;
+            resourceInputs["vaultApproleCertX509"] = args ? args.vaultApproleCertX509 : undefined;
             resourceInputs["vaultTls"] = args ? args.vaultTls : undefined;
+            resourceInputs["vaultTlsCertSsh"] = args ? args.vaultTlsCertSsh : undefined;
+            resourceInputs["vaultTlsCertX509"] = args ? args.vaultTlsCertX509 : undefined;
             resourceInputs["vaultToken"] = args ? args.vaultToken : undefined;
+            resourceInputs["vaultTokenCertSsh"] = args ? args.vaultTokenCertSsh : undefined;
+            resourceInputs["vaultTokenCertX509"] = args ? args.vaultTokenCertX509 : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecretStore.__pulumiType, name, resourceInputs, opts);
@@ -107,7 +134,9 @@ export class SecretStore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SecretStore resources.
  */
 export interface SecretStoreState {
+    activeDirectoryStore?: pulumi.Input<inputs.SecretStoreActiveDirectoryStore>;
     aws?: pulumi.Input<inputs.SecretStoreAws>;
+    awsCertX509?: pulumi.Input<inputs.SecretStoreAwsCertX509>;
     azureStore?: pulumi.Input<inputs.SecretStoreAzureStore>;
     cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur>;
     cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam>;
@@ -117,17 +146,26 @@ export interface SecretStoreState {
      */
     cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental>;
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
+    gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
     vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
+    vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh>;
+    vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509>;
     vaultTls?: pulumi.Input<inputs.SecretStoreVaultTls>;
+    vaultTlsCertSsh?: pulumi.Input<inputs.SecretStoreVaultTlsCertSsh>;
+    vaultTlsCertX509?: pulumi.Input<inputs.SecretStoreVaultTlsCertX509>;
     vaultToken?: pulumi.Input<inputs.SecretStoreVaultToken>;
+    vaultTokenCertSsh?: pulumi.Input<inputs.SecretStoreVaultTokenCertSsh>;
+    vaultTokenCertX509?: pulumi.Input<inputs.SecretStoreVaultTokenCertX509>;
 }
 
 /**
  * The set of arguments for constructing a SecretStore resource.
  */
 export interface SecretStoreArgs {
+    activeDirectoryStore?: pulumi.Input<inputs.SecretStoreActiveDirectoryStore>;
     aws?: pulumi.Input<inputs.SecretStoreAws>;
+    awsCertX509?: pulumi.Input<inputs.SecretStoreAwsCertX509>;
     azureStore?: pulumi.Input<inputs.SecretStoreAzureStore>;
     cyberarkConjur?: pulumi.Input<inputs.SecretStoreCyberarkConjur>;
     cyberarkPam?: pulumi.Input<inputs.SecretStoreCyberarkPam>;
@@ -137,8 +175,15 @@ export interface SecretStoreArgs {
      */
     cyberarkPamExperimental?: pulumi.Input<inputs.SecretStoreCyberarkPamExperimental>;
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
+    gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
     vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
+    vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh>;
+    vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509>;
     vaultTls?: pulumi.Input<inputs.SecretStoreVaultTls>;
+    vaultTlsCertSsh?: pulumi.Input<inputs.SecretStoreVaultTlsCertSsh>;
+    vaultTlsCertX509?: pulumi.Input<inputs.SecretStoreVaultTlsCertX509>;
     vaultToken?: pulumi.Input<inputs.SecretStoreVaultToken>;
+    vaultTokenCertSsh?: pulumi.Input<inputs.SecretStoreVaultTokenCertSsh>;
+    vaultTokenCertX509?: pulumi.Input<inputs.SecretStoreVaultTokenCertX509>;
 }

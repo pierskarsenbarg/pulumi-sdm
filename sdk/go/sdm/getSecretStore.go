@@ -32,7 +32,7 @@ type LookupSecretStoreArgs struct {
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type *string `pulumi:"type"`
 }
 
@@ -45,7 +45,7 @@ type LookupSecretStoreResult struct {
 	// Unique human-readable name of the SecretStore.
 	Name *string `pulumi:"name"`
 	// A single element list containing a map, where each key lists one of the following objects:
-	// * aws:
+	// * active_directory_store:
 	SecretStores []GetSecretStoreSecretStore `pulumi:"secretStores"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -73,7 +73,7 @@ type LookupSecretStoreOutputArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters for more information.
+	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -112,7 +112,7 @@ func (o LookupSecretStoreResultOutput) Name() pulumi.StringPtrOutput {
 }
 
 // A single element list containing a map, where each key lists one of the following objects:
-// * aws:
+// * active_directory_store:
 func (o LookupSecretStoreResultOutput) SecretStores() GetSecretStoreSecretStoreArrayOutput {
 	return o.ApplyT(func(v LookupSecretStoreResult) []GetSecretStoreSecretStore { return v.SecretStores }).(GetSecretStoreSecretStoreArrayOutput)
 }

@@ -16,6 +16,7 @@ namespace PiersKarsenbarg.Sdm
     ///  2. **Service Accounts:** machines that are authenticated using a service token.
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -54,6 +55,7 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import
@@ -61,7 +63,7 @@ namespace PiersKarsenbarg.Sdm
     /// A Account can be imported using the id, e.g.,
     /// 
     /// ```sh
-    ///  $ pulumi import sdm:index/account:Account example a-12345678
+    /// $ pulumi import sdm:index/account:Account example a-12345678
     /// ```
     /// </summary>
     [SdmResourceType("sdm:index/account:Account")]

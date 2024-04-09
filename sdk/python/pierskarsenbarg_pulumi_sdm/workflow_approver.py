@@ -14,27 +14,20 @@ __all__ = ['WorkflowApproverArgs', 'WorkflowApprover']
 @pulumi.input_type
 class WorkflowApproverArgs:
     def __init__(__self__, *,
-                 approver_id: pulumi.Input[str],
-                 workflow_id: pulumi.Input[str]):
+                 workflow_id: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkflowApprover resource.
-        :param pulumi.Input[str] approver_id: The approver id.
         :param pulumi.Input[str] workflow_id: The workflow id.
+        :param pulumi.Input[str] account_id: The approver account id.
+        :param pulumi.Input[str] role_id: The approver role id
         """
-        pulumi.set(__self__, "approver_id", approver_id)
         pulumi.set(__self__, "workflow_id", workflow_id)
-
-    @property
-    @pulumi.getter(name="approverId")
-    def approver_id(self) -> pulumi.Input[str]:
-        """
-        The approver id.
-        """
-        return pulumi.get(self, "approver_id")
-
-    @approver_id.setter
-    def approver_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "approver_id", value)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
 
     @property
     @pulumi.getter(name="workflowId")
@@ -48,33 +41,73 @@ class WorkflowApproverArgs:
     def workflow_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "workflow_id", value)
 
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The approver account id.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The approver role id
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_id", value)
+
 
 @pulumi.input_type
 class _WorkflowApproverState:
     def __init__(__self__, *,
-                 approver_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkflowApprover resources.
-        :param pulumi.Input[str] approver_id: The approver id.
+        :param pulumi.Input[str] account_id: The approver account id.
+        :param pulumi.Input[str] role_id: The approver role id
         :param pulumi.Input[str] workflow_id: The workflow id.
         """
-        if approver_id is not None:
-            pulumi.set(__self__, "approver_id", approver_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
         if workflow_id is not None:
             pulumi.set(__self__, "workflow_id", workflow_id)
 
     @property
-    @pulumi.getter(name="approverId")
-    def approver_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The approver id.
+        The approver account id.
         """
-        return pulumi.get(self, "approver_id")
+        return pulumi.get(self, "account_id")
 
-    @approver_id.setter
-    def approver_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "approver_id", value)
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The approver role id
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_id", value)
 
     @property
     @pulumi.getter(name="workflowId")
@@ -94,21 +127,27 @@ class WorkflowApprover(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approver_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+        WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        workflow_approver_example = sdm.WorkflowApprover("workflowApproverExample",
-            approver_id="a-234605",
+        workflow_approver_account_example = sdm.WorkflowApprover("workflowApproverAccountExample",
+            account_id="a-234605",
             workflow_id="aw-6799234")
+        workflow_approver_role_example = sdm.WorkflowApprover("workflowApproverRoleExample",
+            role_id="r-542982",
+            workflow_id="aw-1935694")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -116,12 +155,13 @@ class WorkflowApprover(pulumi.CustomResource):
         A WorkflowApprover can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
+        $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] approver_id: The approver id.
+        :param pulumi.Input[str] account_id: The approver account id.
+        :param pulumi.Input[str] role_id: The approver role id
         :param pulumi.Input[str] workflow_id: The workflow id.
         """
         ...
@@ -131,17 +171,22 @@ class WorkflowApprover(pulumi.CustomResource):
                  args: WorkflowApproverArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        WorkflowApprover is an account with the ability to approve requests bound to a workflow.
+        WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        workflow_approver_example = sdm.WorkflowApprover("workflowApproverExample",
-            approver_id="a-234605",
+        workflow_approver_account_example = sdm.WorkflowApprover("workflowApproverAccountExample",
+            account_id="a-234605",
             workflow_id="aw-6799234")
+        workflow_approver_role_example = sdm.WorkflowApprover("workflowApproverRoleExample",
+            role_id="r-542982",
+            workflow_id="aw-1935694")
         ```
+        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -149,7 +194,7 @@ class WorkflowApprover(pulumi.CustomResource):
         A WorkflowApprover can be imported using the id, e.g.,
 
         ```sh
-         $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
+        $ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678
         ```
 
         :param str resource_name: The name of the resource.
@@ -167,7 +212,8 @@ class WorkflowApprover(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approver_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -178,9 +224,8 @@ class WorkflowApprover(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkflowApproverArgs.__new__(WorkflowApproverArgs)
 
-            if approver_id is None and not opts.urn:
-                raise TypeError("Missing required property 'approver_id'")
-            __props__.__dict__["approver_id"] = approver_id
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["role_id"] = role_id
             if workflow_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workflow_id'")
             __props__.__dict__["workflow_id"] = workflow_id
@@ -194,7 +239,8 @@ class WorkflowApprover(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approver_id: Optional[pulumi.Input[str]] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
+            role_id: Optional[pulumi.Input[str]] = None,
             workflow_id: Optional[pulumi.Input[str]] = None) -> 'WorkflowApprover':
         """
         Get an existing WorkflowApprover resource's state with the given name, id, and optional extra
@@ -203,24 +249,34 @@ class WorkflowApprover(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] approver_id: The approver id.
+        :param pulumi.Input[str] account_id: The approver account id.
+        :param pulumi.Input[str] role_id: The approver role id
         :param pulumi.Input[str] workflow_id: The workflow id.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WorkflowApproverState.__new__(_WorkflowApproverState)
 
-        __props__.__dict__["approver_id"] = approver_id
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["role_id"] = role_id
         __props__.__dict__["workflow_id"] = workflow_id
         return WorkflowApprover(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="approverId")
-    def approver_id(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The approver id.
+        The approver account id.
         """
-        return pulumi.get(self, "approver_id")
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The approver role id
+        """
+        return pulumi.get(self, "role_id")
 
     @property
     @pulumi.getter(name="workflowId")

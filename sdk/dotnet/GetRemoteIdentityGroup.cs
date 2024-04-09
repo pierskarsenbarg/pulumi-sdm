@@ -14,10 +14,9 @@ namespace PiersKarsenbarg.Sdm
     {
         /// <summary>
         /// A RemoteIdentityGroup defines a group of remote identities.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,18 +32,16 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRemoteIdentityGroupResult> InvokeAsync(GetRemoteIdentityGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRemoteIdentityGroupResult>("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args ?? new GetRemoteIdentityGroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// A RemoteIdentityGroup defines a group of remote identities.
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,8 +57,7 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRemoteIdentityGroupResult> Invoke(GetRemoteIdentityGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityGroupResult>("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args ?? new GetRemoteIdentityGroupInvokeArgs(), options.WithDefaults());

@@ -14,6 +14,7 @@ import (
 // AccountAttachments assign an account to a role.
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,6 +38,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupAccountAttachment(ctx *pulumi.Context, args *LookupAccountAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupAccountAttachmentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountAttachmentResult
