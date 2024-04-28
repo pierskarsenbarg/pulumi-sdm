@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *  when connecting to a remote resource using that group.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     username: "user",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRemoteIdentity(args?: GetRemoteIdentityArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteIdentityResult> {
     args = args || {};
@@ -91,7 +89,6 @@ export interface GetRemoteIdentityResult {
  *  when connecting to a remote resource using that group.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -101,7 +98,6 @@ export interface GetRemoteIdentityResult {
  *     username: "user",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRemoteIdentityOutput(args?: GetRemoteIdentityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteIdentityResult> {
     return pulumi.output(args).apply((a: any) => getRemoteIdentity(a, opts))

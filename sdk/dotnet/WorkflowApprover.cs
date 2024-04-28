@@ -14,7 +14,6 @@ namespace PiersKarsenbarg.Sdm
     /// WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,7 +36,6 @@ namespace PiersKarsenbarg.Sdm
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// This resource can be imported using the import command.
     /// 
     /// ## Import

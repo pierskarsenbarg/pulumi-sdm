@@ -63,14 +63,12 @@ def get_ssh_ca_pubkey(id: Optional[str] = None,
     The SSH CA Pubkey is a public key used for setting up SSH resources.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     ssh_pubkey_query = sdm.get_ssh_ca_pubkey()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: a generated id representing this request.
@@ -95,14 +93,12 @@ def get_ssh_ca_pubkey_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     The SSH CA Pubkey is a public key used for setting up SSH resources.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     ssh_pubkey_query = sdm.get_ssh_ca_pubkey()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: a generated id representing this request.

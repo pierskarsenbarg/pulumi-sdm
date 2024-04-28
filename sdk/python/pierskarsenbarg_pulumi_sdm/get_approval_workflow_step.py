@@ -88,14 +88,12 @@ def get_approval_workflow_step(approval_flow_id: Optional[str] = None,
     ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     approval_workflow_step_query = sdm.get_approval_workflow_step(approval_flow_id="af-7935485")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str approval_flow_id: The approval flow id specified the approval workfflow that this step belongs to
@@ -122,14 +120,12 @@ def get_approval_workflow_step_output(approval_flow_id: Optional[pulumi.Input[Op
     ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     approval_workflow_step_query = sdm.get_approval_workflow_step(approval_flow_id="af-7935485")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str approval_flow_id: The approval flow id specified the approval workfflow that this step belongs to

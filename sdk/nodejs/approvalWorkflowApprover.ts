@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  *     roleId: "r-542982",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import

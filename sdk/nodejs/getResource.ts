@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *  delegates access to.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     type: "mysql",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResource(args?: GetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceResult> {
     args = args || {};
@@ -120,7 +118,6 @@ export interface GetResourceResult {
  *  delegates access to.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -134,7 +131,6 @@ export interface GetResourceResult {
  *     type: "mysql",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResourceOutput(args?: GetResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceResult> {
     return pulumi.output(args).apply((a: any) => getResource(a, opts))

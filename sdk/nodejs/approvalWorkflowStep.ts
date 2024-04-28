@@ -8,14 +8,12 @@ import * as utilities from "./utilities";
  * ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
  *
  * const approvalWorkflowStepExample = new sdm.ApprovalWorkflowStep("approvalWorkflowStepExample", {approvalFlowId: "af-343865"});
  * ```
- * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import

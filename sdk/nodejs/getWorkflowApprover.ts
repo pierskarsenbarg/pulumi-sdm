@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  *     workflowId: "aw-679923",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getWorkflowApprover(args?: GetWorkflowApproverArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowApproverResult> {
     args = args || {};
@@ -93,7 +91,6 @@ export interface GetWorkflowApproverResult {
  * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -107,7 +104,6 @@ export interface GetWorkflowApproverResult {
  *     workflowId: "aw-679923",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getWorkflowApproverOutput(args?: GetWorkflowApproverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowApproverResult> {
     return pulumi.output(args).apply((a: any) => getWorkflowApprover(a, opts))

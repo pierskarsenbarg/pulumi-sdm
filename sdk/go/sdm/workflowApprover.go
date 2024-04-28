@@ -15,7 +15,6 @@ import (
 // WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // This resource can be imported using the import command.
 //
 // ## Import

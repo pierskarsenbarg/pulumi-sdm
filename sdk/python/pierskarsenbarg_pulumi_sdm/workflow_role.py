@@ -102,7 +102,6 @@ class WorkflowRole(pulumi.CustomResource):
          to request access to a resource via the workflow.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -111,7 +110,6 @@ class WorkflowRole(pulumi.CustomResource):
             role_id="r-243561",
             workflow_id="aw-343865")
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -138,7 +136,6 @@ class WorkflowRole(pulumi.CustomResource):
          to request access to a resource via the workflow.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -147,7 +144,6 @@ class WorkflowRole(pulumi.CustomResource):
             role_id="r-243561",
             workflow_id="aw-343865")
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

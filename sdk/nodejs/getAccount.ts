@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *  2. **Service Accounts:** machines that are authenticated using a service token.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  *     type: "user",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     args = args || {};
@@ -149,7 +147,6 @@ export interface GetAccountResult {
  *  2. **Service Accounts:** machines that are authenticated using a service token.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -163,7 +160,6 @@ export interface GetAccountResult {
  *     type: "user",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     return pulumi.output(args).apply((a: any) => getAccount(a, opts))

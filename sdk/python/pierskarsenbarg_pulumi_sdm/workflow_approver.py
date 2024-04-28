@@ -135,7 +135,6 @@ class WorkflowApprover(pulumi.CustomResource):
         WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -147,7 +146,6 @@ class WorkflowApprover(pulumi.CustomResource):
             role_id="r-542982",
             workflow_id="aw-1935694")
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -174,7 +172,6 @@ class WorkflowApprover(pulumi.CustomResource):
         WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -186,7 +183,6 @@ class WorkflowApprover(pulumi.CustomResource):
             role_id="r-542982",
             workflow_id="aw-1935694")
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

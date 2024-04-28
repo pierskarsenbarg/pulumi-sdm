@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *  but automatic approval or a set of users authorized to approve the requests.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     name: "workflow example",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     args = args || {};
@@ -120,7 +118,6 @@ export interface GetWorkflowResult {
  *  but automatic approval or a set of users authorized to approve the requests.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -130,7 +127,6 @@ export interface GetWorkflowResult {
  *     name: "workflow example",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowResult> {
     return pulumi.output(args).apply((a: any) => getWorkflow(a, opts))

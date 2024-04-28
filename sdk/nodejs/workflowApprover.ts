@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
  * WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     workflowId: "aw-1935694",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *  approvers and be approved or denied.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -17,7 +16,6 @@ import * as utilities from "./utilities";
  * const manualApprovalWorkflow = new sdm.ApprovalWorkflow("manualApprovalWorkflow", {approvalMode: "manual"});
  * const autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow("autoGrantApprovalWorkflow", {approvalMode: "automatic"});
  * ```
- * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import

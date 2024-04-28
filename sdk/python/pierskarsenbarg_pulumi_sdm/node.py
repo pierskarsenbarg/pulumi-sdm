@@ -108,7 +108,6 @@ class Node(pulumi.CustomResource):
          2. **Gateways:** a relay that also listens for connections from strongDM clients
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -130,7 +129,6 @@ class Node(pulumi.CustomResource):
             },
         ))
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -159,7 +157,6 @@ class Node(pulumi.CustomResource):
          2. **Gateways:** a relay that also listens for connections from strongDM clients
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -181,7 +178,6 @@ class Node(pulumi.CustomResource):
             },
         ))
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
