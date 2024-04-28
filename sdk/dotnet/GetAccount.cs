@@ -18,7 +18,6 @@ namespace PiersKarsenbarg.Sdm
         ///  2. **Service Accounts:** machines that are authenticated using a service token.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountResult> InvokeAsync(GetAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace PiersKarsenbarg.Sdm
         ///  2. **Service Accounts:** machines that are authenticated using a service token.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,7 +70,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());

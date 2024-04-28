@@ -114,7 +114,6 @@ def get_workflow_approver(account_id: Optional[str] = None,
     WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -124,7 +123,6 @@ def get_workflow_approver(account_id: Optional[str] = None,
     workflow_approver_role_query = sdm.get_workflow_approver(role_id="r-417345",
         workflow_id="aw-679923")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The approver account id.
@@ -159,7 +157,6 @@ def get_workflow_approver_output(account_id: Optional[pulumi.Input[Optional[str]
     WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -169,7 +166,6 @@ def get_workflow_approver_output(account_id: Optional[pulumi.Input[Optional[str]
     workflow_approver_role_query = sdm.get_workflow_approver(role_id="r-417345",
         workflow_id="aw-679923")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The approver account id.

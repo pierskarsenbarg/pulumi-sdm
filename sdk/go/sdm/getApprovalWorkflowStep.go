@@ -14,7 +14,6 @@ import (
 // ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,7 +37,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupApprovalWorkflowStep(ctx *pulumi.Context, args *LookupApprovalWorkflowStepArgs, opts ...pulumi.InvokeOption) (*LookupApprovalWorkflowStepResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApprovalWorkflowStepResult

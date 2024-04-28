@@ -17,7 +17,6 @@ namespace PiersKarsenbarg.Sdm
         ///  approvers and be approved or denied.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetApprovalWorkflowResult> InvokeAsync(GetApprovalWorkflowArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApprovalWorkflowResult>("sdm:index/getApprovalWorkflow:getApprovalWorkflow", args ?? new GetApprovalWorkflowArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace PiersKarsenbarg.Sdm
         ///  approvers and be approved or denied.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,7 +70,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApprovalWorkflowResult> Invoke(GetApprovalWorkflowInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowResult>("sdm:index/getApprovalWorkflow:getApprovalWorkflow", args ?? new GetApprovalWorkflowInvokeArgs(), options.WithDefaults());

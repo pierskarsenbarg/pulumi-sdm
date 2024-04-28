@@ -141,7 +141,6 @@ def get_node(bind_address: Optional[str] = None,
      2. **Gateways:** a relay that also listens for connections from strongDM clients
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -152,7 +151,6 @@ def get_node(bind_address: Optional[str] = None,
         },
         type="gateway")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".
@@ -198,7 +196,6 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
      2. **Gateways:** a relay that also listens for connections from strongDM clients
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -209,7 +206,6 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
         },
         type="gateway")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str bind_address: The hostname/port tuple which the gateway daemon will bind to. If not provided on create, set to "0.0.0.0:listen_address_port".

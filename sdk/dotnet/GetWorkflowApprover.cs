@@ -16,7 +16,6 @@ namespace PiersKarsenbarg.Sdm
         /// WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWorkflowApproverResult> InvokeAsync(GetWorkflowApproverArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowApproverResult>("sdm:index/getWorkflowApprover:getWorkflowApprover", args ?? new GetWorkflowApproverArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace PiersKarsenbarg.Sdm
         /// WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,7 +68,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWorkflowApproverResult> Invoke(GetWorkflowApproverInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowApproverResult>("sdm:index/getWorkflowApprover:getWorkflowApprover", args ?? new GetWorkflowApproverInvokeArgs(), options.WithDefaults());

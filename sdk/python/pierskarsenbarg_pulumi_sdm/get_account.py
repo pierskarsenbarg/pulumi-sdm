@@ -192,7 +192,6 @@ def get_account(email: Optional[str] = None,
      2. **Service Accounts:** machines that are authenticated using a service token.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -204,7 +203,6 @@ def get_account(email: Optional[str] = None,
         },
         type="user")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str email: The User's email address. Must be unique.
@@ -265,7 +263,6 @@ def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
      2. **Service Accounts:** machines that are authenticated using a service token.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -277,7 +274,6 @@ def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
         },
         type="user")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str email: The User's email address. Must be unique.

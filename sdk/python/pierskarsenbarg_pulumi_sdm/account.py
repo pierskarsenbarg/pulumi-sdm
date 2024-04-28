@@ -111,7 +111,6 @@ class Account(pulumi.CustomResource):
          2. **Service Accounts:** machines that are authenticated using a service token.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -133,7 +132,6 @@ class Account(pulumi.CustomResource):
             },
         ))
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -162,7 +160,6 @@ class Account(pulumi.CustomResource):
          2. **Service Accounts:** machines that are authenticated using a service token.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -184,7 +181,6 @@ class Account(pulumi.CustomResource):
             },
         ))
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

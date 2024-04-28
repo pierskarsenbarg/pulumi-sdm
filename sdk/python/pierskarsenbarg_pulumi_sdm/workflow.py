@@ -270,7 +270,6 @@ class Workflow(pulumi.CustomResource):
          but automatic approval or a set of users authorized to approve the requests.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -294,7 +293,6 @@ class Workflow(pulumi.CustomResource):
                 },
             }]))
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -327,7 +325,6 @@ class Workflow(pulumi.CustomResource):
          but automatic approval or a set of users authorized to approve the requests.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -351,7 +348,6 @@ class Workflow(pulumi.CustomResource):
                 },
             }]))
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

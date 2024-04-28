@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupApprovalWorkflow(ctx *pulumi.Context, args *LookupApprovalWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupApprovalWorkflowResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApprovalWorkflowResult

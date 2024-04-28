@@ -14,7 +14,6 @@ import (
 // WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupWorkflowApprover(ctx *pulumi.Context, args *LookupWorkflowApproverArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowApproverResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowApproverResult

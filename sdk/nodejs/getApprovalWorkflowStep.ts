@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     approvalFlowId: "af-7935485",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApprovalWorkflowStep(args?: GetApprovalWorkflowStepArgs, opts?: pulumi.InvokeOptions): Promise<GetApprovalWorkflowStepResult> {
     args = args || {};
@@ -70,7 +68,6 @@ export interface GetApprovalWorkflowStepResult {
  * ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -79,7 +76,6 @@ export interface GetApprovalWorkflowStepResult {
  *     approvalFlowId: "af-7935485",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApprovalWorkflowStepOutput(args?: GetApprovalWorkflowStepOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApprovalWorkflowStepResult> {
     return pulumi.output(args).apply((a: any) => getApprovalWorkflowStep(a, opts))

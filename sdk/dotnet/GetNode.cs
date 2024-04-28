@@ -19,7 +19,6 @@ namespace PiersKarsenbarg.Sdm
         ///  1. **Gateways:** a relay that also listens for connections from strongDM clients
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNodeResult> InvokeAsync(GetNodeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace PiersKarsenbarg.Sdm
         ///  1. **Gateways:** a relay that also listens for connections from strongDM clients
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,7 +70,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());

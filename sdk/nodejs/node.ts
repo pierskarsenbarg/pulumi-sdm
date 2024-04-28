@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *  2. **Gateways:** a relay that also listens for connections from strongDM clients
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pierskarsenbarg/sdm";
@@ -35,7 +34,6 @@ import * as utilities from "./utilities";
  *     },
  * }});
  * ```
- * <!--End PulumiCodeChooser -->
  * This resource can be imported using the import command.
  *
  * ## Import

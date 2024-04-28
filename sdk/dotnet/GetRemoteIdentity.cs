@@ -17,7 +17,6 @@ namespace PiersKarsenbarg.Sdm
         ///  when connecting to a remote resource using that group.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRemoteIdentityResult> InvokeAsync(GetRemoteIdentityArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace PiersKarsenbarg.Sdm
         ///  when connecting to a remote resource using that group.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,7 +58,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRemoteIdentityResult> Invoke(GetRemoteIdentityInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityInvokeArgs(), options.WithDefaults());

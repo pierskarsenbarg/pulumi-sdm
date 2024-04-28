@@ -127,7 +127,6 @@ def get_approval_workflow_approver(account_id: Optional[str] = None,
     ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -139,7 +138,6 @@ def get_approval_workflow_approver(account_id: Optional[str] = None,
         approval_step_id="afs-9245942",
         role_id="r-542982")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The approver account id.
@@ -178,7 +176,6 @@ def get_approval_workflow_approver_output(account_id: Optional[pulumi.Input[Opti
     ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -190,7 +187,6 @@ def get_approval_workflow_approver_output(account_id: Optional[pulumi.Input[Opti
         approval_step_id="afs-9245942",
         role_id="r-542982")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The approver account id.

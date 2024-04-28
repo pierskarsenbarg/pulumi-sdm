@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *  2. **Gateways:** a relay that also listens for connections from strongDM clients
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -26,7 +25,6 @@ import * as utilities from "./utilities";
  *     type: "gateway",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNode(args?: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeResult> {
     args = args || {};
@@ -114,7 +112,6 @@ export interface GetNodeResult {
  *  2. **Gateways:** a relay that also listens for connections from strongDM clients
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -127,7 +124,6 @@ export interface GetNodeResult {
  *     type: "gateway",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeOutput(args?: GetNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeResult> {
     return pulumi.output(args).apply((a: any) => getNode(a, opts))

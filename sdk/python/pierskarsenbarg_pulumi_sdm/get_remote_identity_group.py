@@ -88,14 +88,12 @@ def get_remote_identity_group(id: Optional[str] = None,
     A RemoteIdentityGroup defines a group of remote identities.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     default = sdm.get_remote_identity_group(name="default")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: Unique identifier of the RemoteIdentityGroup.
@@ -122,14 +120,12 @@ def get_remote_identity_group_output(id: Optional[pulumi.Input[Optional[str]]] =
     A RemoteIdentityGroup defines a group of remote identities.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
 
     default = sdm.get_remote_identity_group(name="default")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: Unique identifier of the RemoteIdentityGroup.

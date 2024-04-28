@@ -152,7 +152,6 @@ def get_resource(hostname: Optional[str] = None,
      delegates access to.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -164,7 +163,6 @@ def get_resource(hostname: Optional[str] = None,
         },
         type="mysql")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
@@ -212,7 +210,6 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
      delegates access to.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -224,7 +221,6 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
         },
         type="mysql")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str hostname: The host to dial to initiate a connection from the egress node to this resource.

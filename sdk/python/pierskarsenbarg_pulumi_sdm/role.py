@@ -154,7 +154,6 @@ class Role(pulumi.CustomResource):
          AccountAttachments.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -181,7 +180,6 @@ class Role(pulumi.CustomResource):
             },
         ]))
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -210,7 +208,6 @@ class Role(pulumi.CustomResource):
          AccountAttachments.
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -237,7 +234,6 @@ class Role(pulumi.CustomResource):
             },
         ]))
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

@@ -102,7 +102,6 @@ def get_workflow_role(id: Optional[str] = None,
      to request access to a resource via the workflow.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -110,7 +109,6 @@ def get_workflow_role(id: Optional[str] = None,
     workflow_role_query = sdm.get_workflow_role(role_id="r-9862923",
         workflow_id="aw-7935485")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: Unique identifier of the WorkflowRole.
@@ -142,7 +140,6 @@ def get_workflow_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
      to request access to a resource via the workflow.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -150,7 +147,6 @@ def get_workflow_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     workflow_role_query = sdm.get_workflow_role(role_id="r-9862923",
         workflow_id="aw-7935485")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: Unique identifier of the WorkflowRole.

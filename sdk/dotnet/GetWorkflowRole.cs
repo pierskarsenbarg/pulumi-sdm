@@ -17,7 +17,6 @@ namespace PiersKarsenbarg.Sdm
         ///  to request access to a resource via the workflow.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWorkflowRoleResult> InvokeAsync(GetWorkflowRoleArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowRoleResult>("sdm:index/getWorkflowRole:getWorkflowRole", args ?? new GetWorkflowRoleArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace PiersKarsenbarg.Sdm
         ///  to request access to a resource via the workflow.
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,7 +58,6 @@ namespace PiersKarsenbarg.Sdm
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWorkflowRoleResult> Invoke(GetWorkflowRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowRoleResult>("sdm:index/getWorkflowRole:getWorkflowRole", args ?? new GetWorkflowRoleInvokeArgs(), options.WithDefaults());

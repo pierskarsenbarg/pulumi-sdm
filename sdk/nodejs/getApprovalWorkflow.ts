@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *  approvers and be approved or denied.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     name: "approval workflow auto",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApprovalWorkflow(args?: GetApprovalWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetApprovalWorkflowResult> {
     args = args || {};
@@ -95,7 +93,6 @@ export interface GetApprovalWorkflowResult {
  *  approvers and be approved or denied.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -109,7 +106,6 @@ export interface GetApprovalWorkflowResult {
  *     name: "approval workflow auto",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApprovalWorkflowOutput(args?: GetApprovalWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApprovalWorkflowResult> {
     return pulumi.output(args).apply((a: any) => getApprovalWorkflow(a, opts))

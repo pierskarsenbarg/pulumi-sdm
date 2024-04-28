@@ -155,7 +155,6 @@ def get_workflow(approval_flow_id: Optional[str] = None,
      but automatic approval or a set of users authorized to approve the requests.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -163,7 +162,6 @@ def get_workflow(approval_flow_id: Optional[str] = None,
     workflow_query = sdm.get_workflow(auto_grant=True,
         name="workflow example")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
@@ -212,7 +210,6 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
      but automatic approval or a set of users authorized to approve the requests.
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_sdm as sdm
@@ -220,7 +217,6 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
     workflow_query = sdm.get_workflow(auto_grant=True,
         name="workflow example")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow

@@ -167,7 +167,6 @@ class ApprovalWorkflowApprover(pulumi.CustomResource):
         ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -181,7 +180,6 @@ class ApprovalWorkflowApprover(pulumi.CustomResource):
             approval_step_id="afs-9245942",
             role_id="r-542982")
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import
@@ -209,7 +207,6 @@ class ApprovalWorkflowApprover(pulumi.CustomResource):
         ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
@@ -223,7 +220,6 @@ class ApprovalWorkflowApprover(pulumi.CustomResource):
             approval_step_id="afs-9245942",
             role_id="r-542982")
         ```
-        <!--End PulumiCodeChooser -->
         This resource can be imported using the import command.
 
         ## Import

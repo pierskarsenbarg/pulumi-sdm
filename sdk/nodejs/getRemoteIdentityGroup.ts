@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  * A RemoteIdentityGroup defines a group of remote identities.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     name: "default",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRemoteIdentityGroup(args?: GetRemoteIdentityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteIdentityGroupResult> {
     args = args || {};
@@ -70,7 +68,6 @@ export interface GetRemoteIdentityGroupResult {
  * A RemoteIdentityGroup defines a group of remote identities.
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
@@ -79,7 +76,6 @@ export interface GetRemoteIdentityGroupResult {
  *     name: "default",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRemoteIdentityGroupOutput(args?: GetRemoteIdentityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteIdentityGroupResult> {
     return pulumi.output(args).apply((a: any) => getRemoteIdentityGroup(a, opts))
