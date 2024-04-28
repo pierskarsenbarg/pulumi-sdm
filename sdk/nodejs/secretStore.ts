@@ -61,6 +61,7 @@ export class SecretStore extends pulumi.CustomResource {
     public readonly delineaStore!: pulumi.Output<outputs.SecretStoreDelineaStore | undefined>;
     public readonly gcpCertX509Store!: pulumi.Output<outputs.SecretStoreGcpCertX509Store | undefined>;
     public readonly gcpStore!: pulumi.Output<outputs.SecretStoreGcpStore | undefined>;
+    public readonly keyfactorX509Store!: pulumi.Output<outputs.SecretStoreKeyfactorX509Store | undefined>;
     public readonly vaultApprole!: pulumi.Output<outputs.SecretStoreVaultApprole | undefined>;
     public readonly vaultApproleCertSsh!: pulumi.Output<outputs.SecretStoreVaultApproleCertSsh | undefined>;
     public readonly vaultApproleCertX509!: pulumi.Output<outputs.SecretStoreVaultApproleCertX509 | undefined>;
@@ -94,6 +95,7 @@ export class SecretStore extends pulumi.CustomResource {
             resourceInputs["delineaStore"] = state ? state.delineaStore : undefined;
             resourceInputs["gcpCertX509Store"] = state ? state.gcpCertX509Store : undefined;
             resourceInputs["gcpStore"] = state ? state.gcpStore : undefined;
+            resourceInputs["keyfactorX509Store"] = state ? state.keyfactorX509Store : undefined;
             resourceInputs["vaultApprole"] = state ? state.vaultApprole : undefined;
             resourceInputs["vaultApproleCertSsh"] = state ? state.vaultApproleCertSsh : undefined;
             resourceInputs["vaultApproleCertX509"] = state ? state.vaultApproleCertX509 : undefined;
@@ -115,6 +117,7 @@ export class SecretStore extends pulumi.CustomResource {
             resourceInputs["delineaStore"] = args ? args.delineaStore : undefined;
             resourceInputs["gcpCertX509Store"] = args ? args.gcpCertX509Store : undefined;
             resourceInputs["gcpStore"] = args ? args.gcpStore : undefined;
+            resourceInputs["keyfactorX509Store"] = args ? args.keyfactorX509Store : undefined;
             resourceInputs["vaultApprole"] = args ? args.vaultApprole : undefined;
             resourceInputs["vaultApproleCertSsh"] = args ? args.vaultApproleCertSsh : undefined;
             resourceInputs["vaultApproleCertX509"] = args ? args.vaultApproleCertX509 : undefined;
@@ -148,6 +151,7 @@ export interface SecretStoreState {
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
     gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
+    keyfactorX509Store?: pulumi.Input<inputs.SecretStoreKeyfactorX509Store>;
     vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
     vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh>;
     vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509>;
@@ -177,6 +181,7 @@ export interface SecretStoreArgs {
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
     gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
+    keyfactorX509Store?: pulumi.Input<inputs.SecretStoreKeyfactorX509Store>;
     vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
     vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh>;
     vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509>;

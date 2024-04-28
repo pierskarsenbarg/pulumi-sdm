@@ -39,6 +39,7 @@ type SecretStore struct {
 	DelineaStore            SecretStoreDelineaStorePtrOutput            `pulumi:"delineaStore"`
 	GcpCertX509Store        SecretStoreGcpCertX509StorePtrOutput        `pulumi:"gcpCertX509Store"`
 	GcpStore                SecretStoreGcpStorePtrOutput                `pulumi:"gcpStore"`
+	KeyfactorX509Store      SecretStoreKeyfactorX509StorePtrOutput      `pulumi:"keyfactorX509Store"`
 	VaultApprole            SecretStoreVaultApprolePtrOutput            `pulumi:"vaultApprole"`
 	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrOutput     `pulumi:"vaultApproleCertSsh"`
 	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrOutput    `pulumi:"vaultApproleCertX509"`
@@ -92,6 +93,7 @@ type secretStoreState struct {
 	DelineaStore            *SecretStoreDelineaStore            `pulumi:"delineaStore"`
 	GcpCertX509Store        *SecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Store"`
 	GcpStore                *SecretStoreGcpStore                `pulumi:"gcpStore"`
+	KeyfactorX509Store      *SecretStoreKeyfactorX509Store      `pulumi:"keyfactorX509Store"`
 	VaultApprole            *SecretStoreVaultApprole            `pulumi:"vaultApprole"`
 	VaultApproleCertSsh     *SecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSsh"`
 	VaultApproleCertX509    *SecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509"`
@@ -116,6 +118,7 @@ type SecretStoreState struct {
 	DelineaStore            SecretStoreDelineaStorePtrInput
 	GcpCertX509Store        SecretStoreGcpCertX509StorePtrInput
 	GcpStore                SecretStoreGcpStorePtrInput
+	KeyfactorX509Store      SecretStoreKeyfactorX509StorePtrInput
 	VaultApprole            SecretStoreVaultApprolePtrInput
 	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrInput
 	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrInput
@@ -144,6 +147,7 @@ type secretStoreArgs struct {
 	DelineaStore            *SecretStoreDelineaStore            `pulumi:"delineaStore"`
 	GcpCertX509Store        *SecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Store"`
 	GcpStore                *SecretStoreGcpStore                `pulumi:"gcpStore"`
+	KeyfactorX509Store      *SecretStoreKeyfactorX509Store      `pulumi:"keyfactorX509Store"`
 	VaultApprole            *SecretStoreVaultApprole            `pulumi:"vaultApprole"`
 	VaultApproleCertSsh     *SecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSsh"`
 	VaultApproleCertX509    *SecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509"`
@@ -169,6 +173,7 @@ type SecretStoreArgs struct {
 	DelineaStore            SecretStoreDelineaStorePtrInput
 	GcpCertX509Store        SecretStoreGcpCertX509StorePtrInput
 	GcpStore                SecretStoreGcpStorePtrInput
+	KeyfactorX509Store      SecretStoreKeyfactorX509StorePtrInput
 	VaultApprole            SecretStoreVaultApprolePtrInput
 	VaultApproleCertSsh     SecretStoreVaultApproleCertSshPtrInput
 	VaultApproleCertX509    SecretStoreVaultApproleCertX509PtrInput
@@ -307,6 +312,10 @@ func (o SecretStoreOutput) GcpCertX509Store() SecretStoreGcpCertX509StorePtrOutp
 
 func (o SecretStoreOutput) GcpStore() SecretStoreGcpStorePtrOutput {
 	return o.ApplyT(func(v *SecretStore) SecretStoreGcpStorePtrOutput { return v.GcpStore }).(SecretStoreGcpStorePtrOutput)
+}
+
+func (o SecretStoreOutput) KeyfactorX509Store() SecretStoreKeyfactorX509StorePtrOutput {
+	return o.ApplyT(func(v *SecretStore) SecretStoreKeyfactorX509StorePtrOutput { return v.KeyfactorX509Store }).(SecretStoreKeyfactorX509StorePtrOutput)
 }
 
 func (o SecretStoreOutput) VaultApprole() SecretStoreVaultApprolePtrOutput {

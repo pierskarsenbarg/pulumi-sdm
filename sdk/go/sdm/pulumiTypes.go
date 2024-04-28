@@ -33836,6 +33836,352 @@ func (o SecretStoreGcpStorePtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type SecretStoreKeyfactorX509Store struct {
+	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+	CaFilePath *string `pulumi:"caFilePath"`
+	// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+	CertificateFilePath string `pulumi:"certificateFilePath"`
+	// Name of EJBCA certificate authority that will enroll CSR.
+	DefaultCertificateAuthorityName string `pulumi:"defaultCertificateAuthorityName"`
+	// Certificate profile name that EJBCA will enroll the CSR with.
+	DefaultCertificateProfileName string `pulumi:"defaultCertificateProfileName"`
+	// End entity profile that EJBCA will enroll the CSR with.
+	DefaultEndEntityProfileName string `pulumi:"defaultEndEntityProfileName"`
+	// code used by EJBCA during enrollment. May be left blank if no code is required.
+	EnrollmentCodeEnvVar *string `pulumi:"enrollmentCodeEnvVar"`
+	// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+	EnrollmentUsernameEnvVar *string `pulumi:"enrollmentUsernameEnvVar"`
+	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+	KeyFilePath *string `pulumi:"keyFilePath"`
+	// optional environment variable housing the password that is used to decrypt the key file.
+	KeyPasswordEnvVar *string `pulumi:"keyPasswordEnvVar"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreKeyfactorX509StoreInput is an input type that accepts SecretStoreKeyfactorX509StoreArgs and SecretStoreKeyfactorX509StoreOutput values.
+// You can construct a concrete instance of `SecretStoreKeyfactorX509StoreInput` via:
+//
+//	SecretStoreKeyfactorX509StoreArgs{...}
+type SecretStoreKeyfactorX509StoreInput interface {
+	pulumi.Input
+
+	ToSecretStoreKeyfactorX509StoreOutput() SecretStoreKeyfactorX509StoreOutput
+	ToSecretStoreKeyfactorX509StoreOutputWithContext(context.Context) SecretStoreKeyfactorX509StoreOutput
+}
+
+type SecretStoreKeyfactorX509StoreArgs struct {
+	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+	CaFilePath pulumi.StringPtrInput `pulumi:"caFilePath"`
+	// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+	CertificateFilePath pulumi.StringInput `pulumi:"certificateFilePath"`
+	// Name of EJBCA certificate authority that will enroll CSR.
+	DefaultCertificateAuthorityName pulumi.StringInput `pulumi:"defaultCertificateAuthorityName"`
+	// Certificate profile name that EJBCA will enroll the CSR with.
+	DefaultCertificateProfileName pulumi.StringInput `pulumi:"defaultCertificateProfileName"`
+	// End entity profile that EJBCA will enroll the CSR with.
+	DefaultEndEntityProfileName pulumi.StringInput `pulumi:"defaultEndEntityProfileName"`
+	// code used by EJBCA during enrollment. May be left blank if no code is required.
+	EnrollmentCodeEnvVar pulumi.StringPtrInput `pulumi:"enrollmentCodeEnvVar"`
+	// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+	EnrollmentUsernameEnvVar pulumi.StringPtrInput `pulumi:"enrollmentUsernameEnvVar"`
+	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+	KeyFilePath pulumi.StringPtrInput `pulumi:"keyFilePath"`
+	// optional environment variable housing the password that is used to decrypt the key file.
+	KeyPasswordEnvVar pulumi.StringPtrInput `pulumi:"keyPasswordEnvVar"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreKeyfactorX509StoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreKeyfactorX509Store)(nil)).Elem()
+}
+
+func (i SecretStoreKeyfactorX509StoreArgs) ToSecretStoreKeyfactorX509StoreOutput() SecretStoreKeyfactorX509StoreOutput {
+	return i.ToSecretStoreKeyfactorX509StoreOutputWithContext(context.Background())
+}
+
+func (i SecretStoreKeyfactorX509StoreArgs) ToSecretStoreKeyfactorX509StoreOutputWithContext(ctx context.Context) SecretStoreKeyfactorX509StoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreKeyfactorX509StoreOutput)
+}
+
+func (i SecretStoreKeyfactorX509StoreArgs) ToSecretStoreKeyfactorX509StorePtrOutput() SecretStoreKeyfactorX509StorePtrOutput {
+	return i.ToSecretStoreKeyfactorX509StorePtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreKeyfactorX509StoreArgs) ToSecretStoreKeyfactorX509StorePtrOutputWithContext(ctx context.Context) SecretStoreKeyfactorX509StorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreKeyfactorX509StoreOutput).ToSecretStoreKeyfactorX509StorePtrOutputWithContext(ctx)
+}
+
+// SecretStoreKeyfactorX509StorePtrInput is an input type that accepts SecretStoreKeyfactorX509StoreArgs, SecretStoreKeyfactorX509StorePtr and SecretStoreKeyfactorX509StorePtrOutput values.
+// You can construct a concrete instance of `SecretStoreKeyfactorX509StorePtrInput` via:
+//
+//	        SecretStoreKeyfactorX509StoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreKeyfactorX509StorePtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreKeyfactorX509StorePtrOutput() SecretStoreKeyfactorX509StorePtrOutput
+	ToSecretStoreKeyfactorX509StorePtrOutputWithContext(context.Context) SecretStoreKeyfactorX509StorePtrOutput
+}
+
+type secretStoreKeyfactorX509StorePtrType SecretStoreKeyfactorX509StoreArgs
+
+func SecretStoreKeyfactorX509StorePtr(v *SecretStoreKeyfactorX509StoreArgs) SecretStoreKeyfactorX509StorePtrInput {
+	return (*secretStoreKeyfactorX509StorePtrType)(v)
+}
+
+func (*secretStoreKeyfactorX509StorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreKeyfactorX509Store)(nil)).Elem()
+}
+
+func (i *secretStoreKeyfactorX509StorePtrType) ToSecretStoreKeyfactorX509StorePtrOutput() SecretStoreKeyfactorX509StorePtrOutput {
+	return i.ToSecretStoreKeyfactorX509StorePtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreKeyfactorX509StorePtrType) ToSecretStoreKeyfactorX509StorePtrOutputWithContext(ctx context.Context) SecretStoreKeyfactorX509StorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreKeyfactorX509StorePtrOutput)
+}
+
+type SecretStoreKeyfactorX509StoreOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreKeyfactorX509StoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreKeyfactorX509Store)(nil)).Elem()
+}
+
+func (o SecretStoreKeyfactorX509StoreOutput) ToSecretStoreKeyfactorX509StoreOutput() SecretStoreKeyfactorX509StoreOutput {
+	return o
+}
+
+func (o SecretStoreKeyfactorX509StoreOutput) ToSecretStoreKeyfactorX509StoreOutputWithContext(ctx context.Context) SecretStoreKeyfactorX509StoreOutput {
+	return o
+}
+
+func (o SecretStoreKeyfactorX509StoreOutput) ToSecretStoreKeyfactorX509StorePtrOutput() SecretStoreKeyfactorX509StorePtrOutput {
+	return o.ToSecretStoreKeyfactorX509StorePtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreKeyfactorX509StoreOutput) ToSecretStoreKeyfactorX509StorePtrOutputWithContext(ctx context.Context) SecretStoreKeyfactorX509StorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreKeyfactorX509Store) *SecretStoreKeyfactorX509Store {
+		return &v
+	}).(SecretStoreKeyfactorX509StorePtrOutput)
+}
+
+// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+func (o SecretStoreKeyfactorX509StoreOutput) CaFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) *string { return v.CaFilePath }).(pulumi.StringPtrOutput)
+}
+
+// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+func (o SecretStoreKeyfactorX509StoreOutput) CertificateFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) string { return v.CertificateFilePath }).(pulumi.StringOutput)
+}
+
+// Name of EJBCA certificate authority that will enroll CSR.
+func (o SecretStoreKeyfactorX509StoreOutput) DefaultCertificateAuthorityName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) string { return v.DefaultCertificateAuthorityName }).(pulumi.StringOutput)
+}
+
+// Certificate profile name that EJBCA will enroll the CSR with.
+func (o SecretStoreKeyfactorX509StoreOutput) DefaultCertificateProfileName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) string { return v.DefaultCertificateProfileName }).(pulumi.StringOutput)
+}
+
+// End entity profile that EJBCA will enroll the CSR with.
+func (o SecretStoreKeyfactorX509StoreOutput) DefaultEndEntityProfileName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) string { return v.DefaultEndEntityProfileName }).(pulumi.StringOutput)
+}
+
+// code used by EJBCA during enrollment. May be left blank if no code is required.
+func (o SecretStoreKeyfactorX509StoreOutput) EnrollmentCodeEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) *string { return v.EnrollmentCodeEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+func (o SecretStoreKeyfactorX509StoreOutput) EnrollmentUsernameEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) *string { return v.EnrollmentUsernameEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+func (o SecretStoreKeyfactorX509StoreOutput) KeyFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) *string { return v.KeyFilePath }).(pulumi.StringPtrOutput)
+}
+
+// optional environment variable housing the password that is used to decrypt the key file.
+func (o SecretStoreKeyfactorX509StoreOutput) KeyPasswordEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) *string { return v.KeyPasswordEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreKeyfactorX509StoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreKeyfactorX509StoreOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreKeyfactorX509StoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreKeyfactorX509StorePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreKeyfactorX509StorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreKeyfactorX509Store)(nil)).Elem()
+}
+
+func (o SecretStoreKeyfactorX509StorePtrOutput) ToSecretStoreKeyfactorX509StorePtrOutput() SecretStoreKeyfactorX509StorePtrOutput {
+	return o
+}
+
+func (o SecretStoreKeyfactorX509StorePtrOutput) ToSecretStoreKeyfactorX509StorePtrOutputWithContext(ctx context.Context) SecretStoreKeyfactorX509StorePtrOutput {
+	return o
+}
+
+func (o SecretStoreKeyfactorX509StorePtrOutput) Elem() SecretStoreKeyfactorX509StoreOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) SecretStoreKeyfactorX509Store {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreKeyfactorX509Store
+		return ret
+	}).(SecretStoreKeyfactorX509StoreOutput)
+}
+
+// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+func (o SecretStoreKeyfactorX509StorePtrOutput) CaFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+func (o SecretStoreKeyfactorX509StorePtrOutput) CertificateFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of EJBCA certificate authority that will enroll CSR.
+func (o SecretStoreKeyfactorX509StorePtrOutput) DefaultCertificateAuthorityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultCertificateAuthorityName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate profile name that EJBCA will enroll the CSR with.
+func (o SecretStoreKeyfactorX509StorePtrOutput) DefaultCertificateProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultCertificateProfileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// End entity profile that EJBCA will enroll the CSR with.
+func (o SecretStoreKeyfactorX509StorePtrOutput) DefaultEndEntityProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultEndEntityProfileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// code used by EJBCA during enrollment. May be left blank if no code is required.
+func (o SecretStoreKeyfactorX509StorePtrOutput) EnrollmentCodeEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnrollmentCodeEnvVar
+	}).(pulumi.StringPtrOutput)
+}
+
+// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+func (o SecretStoreKeyfactorX509StorePtrOutput) EnrollmentUsernameEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnrollmentUsernameEnvVar
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+func (o SecretStoreKeyfactorX509StorePtrOutput) KeyFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// optional environment variable housing the password that is used to decrypt the key file.
+func (o SecretStoreKeyfactorX509StorePtrOutput) KeyPasswordEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyPasswordEnvVar
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreKeyfactorX509StorePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreKeyfactorX509StorePtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreKeyfactorX509StorePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type SecretStoreVaultApprole struct {
 	// Unique human-readable name of the SecretStore.
 	Name string `pulumi:"name"`
@@ -36098,6 +36444,8 @@ func (o SecretStoreVaultTokenCertX509PtrOutput) Tags() pulumi.StringMapOutput {
 type GetAccountAccount struct {
 	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Services []GetAccountAccountService `pulumi:"services"`
+	// A Token is an account providing tokenized access for automation or integration use. Tokens include admin tokens, API keys, and SCIM tokens.
+	Tokens []GetAccountAccountToken `pulumi:"tokens"`
 	// A User can connect to resources they are granted directly, or granted via roles.
 	Users []GetAccountAccountUser `pulumi:"users"`
 }
@@ -36116,6 +36464,8 @@ type GetAccountAccountInput interface {
 type GetAccountAccountArgs struct {
 	// A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
 	Services GetAccountAccountServiceArrayInput `pulumi:"services"`
+	// A Token is an account providing tokenized access for automation or integration use. Tokens include admin tokens, API keys, and SCIM tokens.
+	Tokens GetAccountAccountTokenArrayInput `pulumi:"tokens"`
 	// A User can connect to resources they are granted directly, or granted via roles.
 	Users GetAccountAccountUserArrayInput `pulumi:"users"`
 }
@@ -36176,6 +36526,11 @@ func (o GetAccountAccountOutput) Services() GetAccountAccountServiceArrayOutput 
 	return o.ApplyT(func(v GetAccountAccount) []GetAccountAccountService { return v.Services }).(GetAccountAccountServiceArrayOutput)
 }
 
+// A Token is an account providing tokenized access for automation or integration use. Tokens include admin tokens, API keys, and SCIM tokens.
+func (o GetAccountAccountOutput) Tokens() GetAccountAccountTokenArrayOutput {
+	return o.ApplyT(func(v GetAccountAccount) []GetAccountAccountToken { return v.Tokens }).(GetAccountAccountTokenArrayOutput)
+}
+
 // A User can connect to resources they are granted directly, or granted via roles.
 func (o GetAccountAccountOutput) Users() GetAccountAccountUserArrayOutput {
 	return o.ApplyT(func(v GetAccountAccount) []GetAccountAccountUser { return v.Users }).(GetAccountAccountUserArrayOutput)
@@ -36204,9 +36559,9 @@ func (o GetAccountAccountArrayOutput) Index(i pulumi.IntInput) GetAccountAccount
 type GetAccountAccountService struct {
 	// Unique identifier of the User.
 	Id *string `pulumi:"id"`
-	// Unique human-readable name of the Service.
+	// Unique human-readable name of the Token.
 	Name *string `pulumi:"name"`
-	// The Service's suspended state.
+	// Reserved for future use.  Always false for tokens.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
@@ -36226,9 +36581,9 @@ type GetAccountAccountServiceInput interface {
 type GetAccountAccountServiceArgs struct {
 	// Unique identifier of the User.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Unique human-readable name of the Service.
+	// Unique human-readable name of the Token.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Service's suspended state.
+	// Reserved for future use.  Always false for tokens.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -36290,12 +36645,12 @@ func (o GetAccountAccountServiceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountService) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Unique human-readable name of the Service.
+// Unique human-readable name of the Token.
 func (o GetAccountAccountServiceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountService) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The Service's suspended state.
+// Reserved for future use.  Always false for tokens.
 func (o GetAccountAccountServiceOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountService) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
 }
@@ -36325,6 +36680,175 @@ func (o GetAccountAccountServiceArrayOutput) Index(i pulumi.IntInput) GetAccount
 	}).(GetAccountAccountServiceOutput)
 }
 
+type GetAccountAccountToken struct {
+	// Corresponds to the type of token, e.g. api or admin-token.
+	AccountType *string `pulumi:"accountType"`
+	// The timestamp when the Token will expire.
+	Deadline *string `pulumi:"deadline"`
+	// Duration from token creation to expiration.
+	Duration *string `pulumi:"duration"`
+	// Unique identifier of the User.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Token.
+	Name *string `pulumi:"name"`
+	// Permissions assigned to the token, e.g. role:create.
+	Permissions []string `pulumi:"permissions"`
+	// The timestamp when the Token was last rekeyed.
+	Rekeyed *string `pulumi:"rekeyed"`
+	// Reserved for future use.  Always false for tokens.
+	Suspended *bool `pulumi:"suspended"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetAccountAccountTokenInput is an input type that accepts GetAccountAccountTokenArgs and GetAccountAccountTokenOutput values.
+// You can construct a concrete instance of `GetAccountAccountTokenInput` via:
+//
+//	GetAccountAccountTokenArgs{...}
+type GetAccountAccountTokenInput interface {
+	pulumi.Input
+
+	ToGetAccountAccountTokenOutput() GetAccountAccountTokenOutput
+	ToGetAccountAccountTokenOutputWithContext(context.Context) GetAccountAccountTokenOutput
+}
+
+type GetAccountAccountTokenArgs struct {
+	// Corresponds to the type of token, e.g. api or admin-token.
+	AccountType pulumi.StringPtrInput `pulumi:"accountType"`
+	// The timestamp when the Token will expire.
+	Deadline pulumi.StringPtrInput `pulumi:"deadline"`
+	// Duration from token creation to expiration.
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// Unique identifier of the User.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Token.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Permissions assigned to the token, e.g. role:create.
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+	// The timestamp when the Token was last rekeyed.
+	Rekeyed pulumi.StringPtrInput `pulumi:"rekeyed"`
+	// Reserved for future use.  Always false for tokens.
+	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetAccountAccountTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAccountToken)(nil)).Elem()
+}
+
+func (i GetAccountAccountTokenArgs) ToGetAccountAccountTokenOutput() GetAccountAccountTokenOutput {
+	return i.ToGetAccountAccountTokenOutputWithContext(context.Background())
+}
+
+func (i GetAccountAccountTokenArgs) ToGetAccountAccountTokenOutputWithContext(ctx context.Context) GetAccountAccountTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAccountTokenOutput)
+}
+
+// GetAccountAccountTokenArrayInput is an input type that accepts GetAccountAccountTokenArray and GetAccountAccountTokenArrayOutput values.
+// You can construct a concrete instance of `GetAccountAccountTokenArrayInput` via:
+//
+//	GetAccountAccountTokenArray{ GetAccountAccountTokenArgs{...} }
+type GetAccountAccountTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountAccountTokenArrayOutput() GetAccountAccountTokenArrayOutput
+	ToGetAccountAccountTokenArrayOutputWithContext(context.Context) GetAccountAccountTokenArrayOutput
+}
+
+type GetAccountAccountTokenArray []GetAccountAccountTokenInput
+
+func (GetAccountAccountTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAccountToken)(nil)).Elem()
+}
+
+func (i GetAccountAccountTokenArray) ToGetAccountAccountTokenArrayOutput() GetAccountAccountTokenArrayOutput {
+	return i.ToGetAccountAccountTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountAccountTokenArray) ToGetAccountAccountTokenArrayOutputWithContext(ctx context.Context) GetAccountAccountTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountAccountTokenArrayOutput)
+}
+
+type GetAccountAccountTokenOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAccountTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountAccountToken)(nil)).Elem()
+}
+
+func (o GetAccountAccountTokenOutput) ToGetAccountAccountTokenOutput() GetAccountAccountTokenOutput {
+	return o
+}
+
+func (o GetAccountAccountTokenOutput) ToGetAccountAccountTokenOutputWithContext(ctx context.Context) GetAccountAccountTokenOutput {
+	return o
+}
+
+// Corresponds to the type of token, e.g. api or admin-token.
+func (o GetAccountAccountTokenOutput) AccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) *string { return v.AccountType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the Token will expire.
+func (o GetAccountAccountTokenOutput) Deadline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) *string { return v.Deadline }).(pulumi.StringPtrOutput)
+}
+
+// Duration from token creation to expiration.
+func (o GetAccountAccountTokenOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the User.
+func (o GetAccountAccountTokenOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Token.
+func (o GetAccountAccountTokenOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Permissions assigned to the token, e.g. role:create.
+func (o GetAccountAccountTokenOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
+// The timestamp when the Token was last rekeyed.
+func (o GetAccountAccountTokenOutput) Rekeyed() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) *string { return v.Rekeyed }).(pulumi.StringPtrOutput)
+}
+
+// Reserved for future use.  Always false for tokens.
+func (o GetAccountAccountTokenOutput) Suspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) *bool { return v.Suspended }).(pulumi.BoolPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetAccountAccountTokenOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetAccountAccountToken) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetAccountAccountTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountAccountTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountAccountToken)(nil)).Elem()
+}
+
+func (o GetAccountAccountTokenArrayOutput) ToGetAccountAccountTokenArrayOutput() GetAccountAccountTokenArrayOutput {
+	return o
+}
+
+func (o GetAccountAccountTokenArrayOutput) ToGetAccountAccountTokenArrayOutputWithContext(ctx context.Context) GetAccountAccountTokenArrayOutput {
+	return o
+}
+
+func (o GetAccountAccountTokenArrayOutput) Index(i pulumi.IntInput) GetAccountAccountTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountAccountToken {
+		return vs[0].([]GetAccountAccountToken)[vs[1].(int)]
+	}).(GetAccountAccountTokenOutput)
+}
+
 type GetAccountAccountUser struct {
 	// The User's email address. Must be unique.
 	Email *string `pulumi:"email"`
@@ -36340,7 +36864,7 @@ type GetAccountAccountUser struct {
 	ManagedBy string `pulumi:"managedBy"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel *string `pulumi:"permissionLevel"`
-	// The Service's suspended state.
+	// Reserved for future use.  Always false for tokens.
 	Suspended bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]string `pulumi:"tags"`
@@ -36372,7 +36896,7 @@ type GetAccountAccountUserArgs struct {
 	ManagedBy pulumi.StringInput `pulumi:"managedBy"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel pulumi.StringPtrInput `pulumi:"permissionLevel"`
-	// The Service's suspended state.
+	// Reserved for future use.  Always false for tokens.
 	Suspended pulumi.BoolInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
@@ -36464,7 +36988,7 @@ func (o GetAccountAccountUserOutput) PermissionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAccountAccountUser) *string { return v.PermissionLevel }).(pulumi.StringPtrOutput)
 }
 
-// The Service's suspended state.
+// Reserved for future use.  Always false for tokens.
 func (o GetAccountAccountUserOutput) Suspended() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetAccountAccountUser) bool { return v.Suspended }).(pulumi.BoolOutput)
 }
@@ -57057,6 +57581,7 @@ type GetSecretStoreSecretStore struct {
 	DelineaStores            []GetSecretStoreSecretStoreDelineaStore            `pulumi:"delineaStores"`
 	GcpCertX509Stores        []GetSecretStoreSecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Stores"`
 	GcpStores                []GetSecretStoreSecretStoreGcpStore                `pulumi:"gcpStores"`
+	KeyfactorX509Stores      []GetSecretStoreSecretStoreKeyfactorX509Store      `pulumi:"keyfactorX509Stores"`
 	VaultApproleCertSshes    []GetSecretStoreSecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSshes"`
 	VaultApproleCertX509s    []GetSecretStoreSecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509s"`
 	VaultApproles            []GetSecretStoreSecretStoreVaultApprole            `pulumi:"vaultApproles"`
@@ -57090,6 +57615,7 @@ type GetSecretStoreSecretStoreArgs struct {
 	DelineaStores            GetSecretStoreSecretStoreDelineaStoreArrayInput            `pulumi:"delineaStores"`
 	GcpCertX509Stores        GetSecretStoreSecretStoreGcpCertX509StoreArrayInput        `pulumi:"gcpCertX509Stores"`
 	GcpStores                GetSecretStoreSecretStoreGcpStoreArrayInput                `pulumi:"gcpStores"`
+	KeyfactorX509Stores      GetSecretStoreSecretStoreKeyfactorX509StoreArrayInput      `pulumi:"keyfactorX509Stores"`
 	VaultApproleCertSshes    GetSecretStoreSecretStoreVaultApproleCertSshArrayInput     `pulumi:"vaultApproleCertSshes"`
 	VaultApproleCertX509s    GetSecretStoreSecretStoreVaultApproleCertX509ArrayInput    `pulumi:"vaultApproleCertX509s"`
 	VaultApproles            GetSecretStoreSecretStoreVaultApproleArrayInput            `pulumi:"vaultApproles"`
@@ -57196,6 +57722,12 @@ func (o GetSecretStoreSecretStoreOutput) GcpCertX509Stores() GetSecretStoreSecre
 
 func (o GetSecretStoreSecretStoreOutput) GcpStores() GetSecretStoreSecretStoreGcpStoreArrayOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreGcpStore { return v.GcpStores }).(GetSecretStoreSecretStoreGcpStoreArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) KeyfactorX509Stores() GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreKeyfactorX509Store {
+		return v.KeyfactorX509Stores
+	}).(GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput)
 }
 
 func (o GetSecretStoreSecretStoreOutput) VaultApproleCertSshes() GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput {
@@ -58591,6 +59123,211 @@ func (o GetSecretStoreSecretStoreGcpStoreArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreGcpStore {
 		return vs[0].([]GetSecretStoreSecretStoreGcpStore)[vs[1].(int)]
 	}).(GetSecretStoreSecretStoreGcpStoreOutput)
+}
+
+type GetSecretStoreSecretStoreKeyfactorX509Store struct {
+	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+	CaFilePath *string `pulumi:"caFilePath"`
+	// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+	CertificateFilePath *string `pulumi:"certificateFilePath"`
+	// Name of EJBCA certificate authority that will enroll CSR.
+	DefaultCertificateAuthorityName *string `pulumi:"defaultCertificateAuthorityName"`
+	// Certificate profile name that EJBCA will enroll the CSR with.
+	DefaultCertificateProfileName *string `pulumi:"defaultCertificateProfileName"`
+	// End entity profile that EJBCA will enroll the CSR with.
+	DefaultEndEntityProfileName *string `pulumi:"defaultEndEntityProfileName"`
+	// code used by EJBCA during enrollment. May be left blank if no code is required.
+	EnrollmentCodeEnvVar *string `pulumi:"enrollmentCodeEnvVar"`
+	// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+	EnrollmentUsernameEnvVar *string `pulumi:"enrollmentUsernameEnvVar"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+	KeyFilePath *string `pulumi:"keyFilePath"`
+	// optional environment variable housing the password that is used to decrypt the key file.
+	KeyPasswordEnvVar *string `pulumi:"keyPasswordEnvVar"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreKeyfactorX509StoreInput is an input type that accepts GetSecretStoreSecretStoreKeyfactorX509StoreArgs and GetSecretStoreSecretStoreKeyfactorX509StoreOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreKeyfactorX509StoreInput` via:
+//
+//	GetSecretStoreSecretStoreKeyfactorX509StoreArgs{...}
+type GetSecretStoreSecretStoreKeyfactorX509StoreInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreKeyfactorX509StoreOutput() GetSecretStoreSecretStoreKeyfactorX509StoreOutput
+	ToGetSecretStoreSecretStoreKeyfactorX509StoreOutputWithContext(context.Context) GetSecretStoreSecretStoreKeyfactorX509StoreOutput
+}
+
+type GetSecretStoreSecretStoreKeyfactorX509StoreArgs struct {
+	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+	CaFilePath pulumi.StringPtrInput `pulumi:"caFilePath"`
+	// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+	CertificateFilePath pulumi.StringPtrInput `pulumi:"certificateFilePath"`
+	// Name of EJBCA certificate authority that will enroll CSR.
+	DefaultCertificateAuthorityName pulumi.StringPtrInput `pulumi:"defaultCertificateAuthorityName"`
+	// Certificate profile name that EJBCA will enroll the CSR with.
+	DefaultCertificateProfileName pulumi.StringPtrInput `pulumi:"defaultCertificateProfileName"`
+	// End entity profile that EJBCA will enroll the CSR with.
+	DefaultEndEntityProfileName pulumi.StringPtrInput `pulumi:"defaultEndEntityProfileName"`
+	// code used by EJBCA during enrollment. May be left blank if no code is required.
+	EnrollmentCodeEnvVar pulumi.StringPtrInput `pulumi:"enrollmentCodeEnvVar"`
+	// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+	EnrollmentUsernameEnvVar pulumi.StringPtrInput `pulumi:"enrollmentUsernameEnvVar"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+	KeyFilePath pulumi.StringPtrInput `pulumi:"keyFilePath"`
+	// optional environment variable housing the password that is used to decrypt the key file.
+	KeyPasswordEnvVar pulumi.StringPtrInput `pulumi:"keyPasswordEnvVar"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreKeyfactorX509StoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorX509Store)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreKeyfactorX509StoreArgs) ToGetSecretStoreSecretStoreKeyfactorX509StoreOutput() GetSecretStoreSecretStoreKeyfactorX509StoreOutput {
+	return i.ToGetSecretStoreSecretStoreKeyfactorX509StoreOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreKeyfactorX509StoreArgs) ToGetSecretStoreSecretStoreKeyfactorX509StoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreKeyfactorX509StoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreKeyfactorX509StoreOutput)
+}
+
+// GetSecretStoreSecretStoreKeyfactorX509StoreArrayInput is an input type that accepts GetSecretStoreSecretStoreKeyfactorX509StoreArray and GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreKeyfactorX509StoreArrayInput` via:
+//
+//	GetSecretStoreSecretStoreKeyfactorX509StoreArray{ GetSecretStoreSecretStoreKeyfactorX509StoreArgs{...} }
+type GetSecretStoreSecretStoreKeyfactorX509StoreArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput() GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput
+	ToGetSecretStoreSecretStoreKeyfactorX509StoreArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput
+}
+
+type GetSecretStoreSecretStoreKeyfactorX509StoreArray []GetSecretStoreSecretStoreKeyfactorX509StoreInput
+
+func (GetSecretStoreSecretStoreKeyfactorX509StoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreKeyfactorX509Store)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreKeyfactorX509StoreArray) ToGetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput() GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput {
+	return i.ToGetSecretStoreSecretStoreKeyfactorX509StoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreKeyfactorX509StoreArray) ToGetSecretStoreSecretStoreKeyfactorX509StoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput)
+}
+
+type GetSecretStoreSecretStoreKeyfactorX509StoreOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreKeyfactorX509StoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorX509Store)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) ToGetSecretStoreSecretStoreKeyfactorX509StoreOutput() GetSecretStoreSecretStoreKeyfactorX509StoreOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) ToGetSecretStoreSecretStoreKeyfactorX509StoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreKeyfactorX509StoreOutput {
+	return o
+}
+
+// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) CaFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.CaFilePath }).(pulumi.StringPtrOutput)
+}
+
+// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) CertificateFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.CertificateFilePath }).(pulumi.StringPtrOutput)
+}
+
+// Name of EJBCA certificate authority that will enroll CSR.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) DefaultCertificateAuthorityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.DefaultCertificateAuthorityName }).(pulumi.StringPtrOutput)
+}
+
+// Certificate profile name that EJBCA will enroll the CSR with.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) DefaultCertificateProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.DefaultCertificateProfileName }).(pulumi.StringPtrOutput)
+}
+
+// End entity profile that EJBCA will enroll the CSR with.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) DefaultEndEntityProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.DefaultEndEntityProfileName }).(pulumi.StringPtrOutput)
+}
+
+// code used by EJBCA during enrollment. May be left blank if no code is required.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) EnrollmentCodeEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.EnrollmentCodeEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) EnrollmentUsernameEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.EnrollmentUsernameEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) KeyFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.KeyFilePath }).(pulumi.StringPtrOutput)
+}
+
+// optional environment variable housing the password that is used to decrypt the key file.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) KeyPasswordEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.KeyPasswordEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreKeyfactorX509Store)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput) ToGetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput() GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput) ToGetSecretStoreSecretStoreKeyfactorX509StoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreKeyfactorX509StoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreKeyfactorX509Store {
+		return vs[0].([]GetSecretStoreSecretStoreKeyfactorX509Store)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreKeyfactorX509StoreOutput)
 }
 
 type GetSecretStoreSecretStoreVaultApprole struct {
@@ -60633,6 +61370,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpCertX509StorePtrInput)(nil)).Elem(), SecretStoreGcpCertX509StoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpStoreInput)(nil)).Elem(), SecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpStorePtrInput)(nil)).Elem(), SecretStoreGcpStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreKeyfactorX509StoreInput)(nil)).Elem(), SecretStoreKeyfactorX509StoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreKeyfactorX509StorePtrInput)(nil)).Elem(), SecretStoreKeyfactorX509StoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleInput)(nil)).Elem(), SecretStoreVaultApproleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApprolePtrInput)(nil)).Elem(), SecretStoreVaultApproleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleCertSshInput)(nil)).Elem(), SecretStoreVaultApproleCertSshArgs{})
@@ -60655,6 +61394,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountArrayInput)(nil)).Elem(), GetAccountAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountServiceInput)(nil)).Elem(), GetAccountAccountServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountServiceArrayInput)(nil)).Elem(), GetAccountAccountServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountTokenInput)(nil)).Elem(), GetAccountAccountTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountTokenArrayInput)(nil)).Elem(), GetAccountAccountTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountUserInput)(nil)).Elem(), GetAccountAccountUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountUserArrayInput)(nil)).Elem(), GetAccountAccountUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAttachmentAccountAttachmentInput)(nil)).Elem(), GetAccountAttachmentAccountAttachmentArgs{})
@@ -60881,6 +61622,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpCertX509StoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpCertX509StoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpStoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorX509StoreInput)(nil)).Elem(), GetSecretStoreSecretStoreKeyfactorX509StoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorX509StoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreKeyfactorX509StoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertSshInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleCertSshArgs{})
@@ -61105,6 +61848,8 @@ func init() {
 	pulumi.RegisterOutputType(SecretStoreGcpCertX509StorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpStorePtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreKeyfactorX509StoreOutput{})
+	pulumi.RegisterOutputType(SecretStoreKeyfactorX509StorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultApproleOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultApprolePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultApproleCertSshOutput{})
@@ -61127,6 +61872,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountServiceOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountServiceArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountAccountTokenOutput{})
+	pulumi.RegisterOutputType(GetAccountAccountTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountUserOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountUserArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAttachmentAccountAttachmentOutput{})
@@ -61353,6 +62100,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpStoreArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreKeyfactorX509StoreOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleCertSshOutput{})

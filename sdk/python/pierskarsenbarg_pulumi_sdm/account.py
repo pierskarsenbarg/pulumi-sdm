@@ -106,9 +106,10 @@ class Account(pulumi.CustomResource):
                  user: Optional[pulumi.Input[pulumi.InputType['AccountUserArgs']]] = None,
                  __props__=None):
         """
-        Accounts are users that have access to strongDM. There are two types of accounts:
+        Accounts are users that have access to strongDM. The types of accounts are:
          1. **Users:** humans who are authenticated through username and password or SSO.
          2. **Service Accounts:** machines that are authenticated using a service token.
+         3. **Tokens** are access keys with permissions that can be used for authentication.
         ## Example Usage
 
         ```python
@@ -155,9 +156,10 @@ class Account(pulumi.CustomResource):
                  args: Optional[AccountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Accounts are users that have access to strongDM. There are two types of accounts:
+        Accounts are users that have access to strongDM. The types of accounts are:
          1. **Users:** humans who are authenticated through username and password or SSO.
          2. **Service Accounts:** machines that are authenticated using a service token.
+         3. **Tokens** are access keys with permissions that can be used for authentication.
         ## Example Usage
 
         ```python

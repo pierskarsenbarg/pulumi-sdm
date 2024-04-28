@@ -7,9 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Accounts are users that have access to strongDM. There are two types of accounts:
+ * Accounts are users that have access to strongDM. The types of accounts are:
  *  1. **Users:** humans who are authenticated through username and password or SSO.
  *  2. **Service Accounts:** machines that are authenticated using a service token.
+ *  3. **Tokens** are access keys with permissions that can be used for authentication.
  * ## Example Usage
  *
  * ```typescript

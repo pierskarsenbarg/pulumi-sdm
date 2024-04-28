@@ -26,6 +26,7 @@ class SecretStoreArgs:
                  delinea_store: Optional[pulumi.Input['SecretStoreDelineaStoreArgs']] = None,
                  gcp_cert_x509_store: Optional[pulumi.Input['SecretStoreGcpCertX509StoreArgs']] = None,
                  gcp_store: Optional[pulumi.Input['SecretStoreGcpStoreArgs']] = None,
+                 keyfactor_x509_store: Optional[pulumi.Input['SecretStoreKeyfactorX509StoreArgs']] = None,
                  vault_approle: Optional[pulumi.Input['SecretStoreVaultApproleArgs']] = None,
                  vault_approle_cert_ssh: Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']] = None,
                  vault_approle_cert_x509: Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']] = None,
@@ -60,6 +61,8 @@ class SecretStoreArgs:
             pulumi.set(__self__, "gcp_cert_x509_store", gcp_cert_x509_store)
         if gcp_store is not None:
             pulumi.set(__self__, "gcp_store", gcp_store)
+        if keyfactor_x509_store is not None:
+            pulumi.set(__self__, "keyfactor_x509_store", keyfactor_x509_store)
         if vault_approle is not None:
             pulumi.set(__self__, "vault_approle", vault_approle)
         if vault_approle_cert_ssh is not None:
@@ -172,6 +175,15 @@ class SecretStoreArgs:
     @gcp_store.setter
     def gcp_store(self, value: Optional[pulumi.Input['SecretStoreGcpStoreArgs']]):
         pulumi.set(self, "gcp_store", value)
+
+    @property
+    @pulumi.getter(name="keyfactorX509Store")
+    def keyfactor_x509_store(self) -> Optional[pulumi.Input['SecretStoreKeyfactorX509StoreArgs']]:
+        return pulumi.get(self, "keyfactor_x509_store")
+
+    @keyfactor_x509_store.setter
+    def keyfactor_x509_store(self, value: Optional[pulumi.Input['SecretStoreKeyfactorX509StoreArgs']]):
+        pulumi.set(self, "keyfactor_x509_store", value)
 
     @property
     @pulumi.getter(name="vaultApprole")
@@ -268,6 +280,7 @@ class _SecretStoreState:
                  delinea_store: Optional[pulumi.Input['SecretStoreDelineaStoreArgs']] = None,
                  gcp_cert_x509_store: Optional[pulumi.Input['SecretStoreGcpCertX509StoreArgs']] = None,
                  gcp_store: Optional[pulumi.Input['SecretStoreGcpStoreArgs']] = None,
+                 keyfactor_x509_store: Optional[pulumi.Input['SecretStoreKeyfactorX509StoreArgs']] = None,
                  vault_approle: Optional[pulumi.Input['SecretStoreVaultApproleArgs']] = None,
                  vault_approle_cert_ssh: Optional[pulumi.Input['SecretStoreVaultApproleCertSshArgs']] = None,
                  vault_approle_cert_x509: Optional[pulumi.Input['SecretStoreVaultApproleCertX509Args']] = None,
@@ -302,6 +315,8 @@ class _SecretStoreState:
             pulumi.set(__self__, "gcp_cert_x509_store", gcp_cert_x509_store)
         if gcp_store is not None:
             pulumi.set(__self__, "gcp_store", gcp_store)
+        if keyfactor_x509_store is not None:
+            pulumi.set(__self__, "keyfactor_x509_store", keyfactor_x509_store)
         if vault_approle is not None:
             pulumi.set(__self__, "vault_approle", vault_approle)
         if vault_approle_cert_ssh is not None:
@@ -414,6 +429,15 @@ class _SecretStoreState:
     @gcp_store.setter
     def gcp_store(self, value: Optional[pulumi.Input['SecretStoreGcpStoreArgs']]):
         pulumi.set(self, "gcp_store", value)
+
+    @property
+    @pulumi.getter(name="keyfactorX509Store")
+    def keyfactor_x509_store(self) -> Optional[pulumi.Input['SecretStoreKeyfactorX509StoreArgs']]:
+        return pulumi.get(self, "keyfactor_x509_store")
+
+    @keyfactor_x509_store.setter
+    def keyfactor_x509_store(self, value: Optional[pulumi.Input['SecretStoreKeyfactorX509StoreArgs']]):
+        pulumi.set(self, "keyfactor_x509_store", value)
 
     @property
     @pulumi.getter(name="vaultApprole")
@@ -512,6 +536,7 @@ class SecretStore(pulumi.CustomResource):
                  delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
                  gcp_cert_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpCertX509StoreArgs']]] = None,
                  gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
+                 keyfactor_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreKeyfactorX509StoreArgs']]] = None,
                  vault_approle: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleArgs']]] = None,
                  vault_approle_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertSshArgs']]] = None,
                  vault_approle_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertX509Args']]] = None,
@@ -584,6 +609,7 @@ class SecretStore(pulumi.CustomResource):
                  delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
                  gcp_cert_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpCertX509StoreArgs']]] = None,
                  gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
+                 keyfactor_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreKeyfactorX509StoreArgs']]] = None,
                  vault_approle: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleArgs']]] = None,
                  vault_approle_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertSshArgs']]] = None,
                  vault_approle_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertX509Args']]] = None,
@@ -612,6 +638,7 @@ class SecretStore(pulumi.CustomResource):
             __props__.__dict__["delinea_store"] = delinea_store
             __props__.__dict__["gcp_cert_x509_store"] = gcp_cert_x509_store
             __props__.__dict__["gcp_store"] = gcp_store
+            __props__.__dict__["keyfactor_x509_store"] = keyfactor_x509_store
             __props__.__dict__["vault_approle"] = vault_approle
             __props__.__dict__["vault_approle_cert_ssh"] = vault_approle_cert_ssh
             __props__.__dict__["vault_approle_cert_x509"] = vault_approle_cert_x509
@@ -641,6 +668,7 @@ class SecretStore(pulumi.CustomResource):
             delinea_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreDelineaStoreArgs']]] = None,
             gcp_cert_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpCertX509StoreArgs']]] = None,
             gcp_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreGcpStoreArgs']]] = None,
+            keyfactor_x509_store: Optional[pulumi.Input[pulumi.InputType['SecretStoreKeyfactorX509StoreArgs']]] = None,
             vault_approle: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleArgs']]] = None,
             vault_approle_cert_ssh: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertSshArgs']]] = None,
             vault_approle_cert_x509: Optional[pulumi.Input[pulumi.InputType['SecretStoreVaultApproleCertX509Args']]] = None,
@@ -674,6 +702,7 @@ class SecretStore(pulumi.CustomResource):
         __props__.__dict__["delinea_store"] = delinea_store
         __props__.__dict__["gcp_cert_x509_store"] = gcp_cert_x509_store
         __props__.__dict__["gcp_store"] = gcp_store
+        __props__.__dict__["keyfactor_x509_store"] = keyfactor_x509_store
         __props__.__dict__["vault_approle"] = vault_approle
         __props__.__dict__["vault_approle_cert_ssh"] = vault_approle_cert_ssh
         __props__.__dict__["vault_approle_cert_x509"] = vault_approle_cert_x509
@@ -738,6 +767,11 @@ class SecretStore(pulumi.CustomResource):
     @pulumi.getter(name="gcpStore")
     def gcp_store(self) -> pulumi.Output[Optional['outputs.SecretStoreGcpStore']]:
         return pulumi.get(self, "gcp_store")
+
+    @property
+    @pulumi.getter(name="keyfactorX509Store")
+    def keyfactor_x509_store(self) -> pulumi.Output[Optional['outputs.SecretStoreKeyfactorX509Store']]:
+        return pulumi.get(self, "keyfactor_x509_store")
 
     @property
     @pulumi.getter(name="vaultApprole")

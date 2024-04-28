@@ -110,6 +110,7 @@ __all__ = [
     'SecretStoreDelineaStoreArgs',
     'SecretStoreGcpCertX509StoreArgs',
     'SecretStoreGcpStoreArgs',
+    'SecretStoreKeyfactorX509StoreArgs',
     'SecretStoreVaultApproleArgs',
     'SecretStoreVaultApproleCertSshArgs',
     'SecretStoreVaultApproleCertX509Args',
@@ -19143,6 +19144,199 @@ class SecretStoreGcpStoreArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class SecretStoreKeyfactorX509StoreArgs:
+    def __init__(__self__, *,
+                 certificate_file_path: pulumi.Input[str],
+                 default_certificate_authority_name: pulumi.Input[str],
+                 default_certificate_profile_name: pulumi.Input[str],
+                 default_end_entity_profile_name: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 server_address: pulumi.Input[str],
+                 ca_file_path: Optional[pulumi.Input[str]] = None,
+                 enrollment_code_env_var: Optional[pulumi.Input[str]] = None,
+                 enrollment_username_env_var: Optional[pulumi.Input[str]] = None,
+                 key_file_path: Optional[pulumi.Input[str]] = None,
+                 key_password_env_var: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] certificate_file_path: Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+        :param pulumi.Input[str] default_certificate_authority_name: Name of EJBCA certificate authority that will enroll CSR.
+        :param pulumi.Input[str] default_certificate_profile_name: Certificate profile name that EJBCA will enroll the CSR with.
+        :param pulumi.Input[str] default_end_entity_profile_name: End entity profile that EJBCA will enroll the CSR with.
+        :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] server_address: The URL of the Vault to target
+        :param pulumi.Input[str] ca_file_path: Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+        :param pulumi.Input[str] enrollment_code_env_var: code used by EJBCA during enrollment. May be left blank if no code is required.
+        :param pulumi.Input[str] enrollment_username_env_var: username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+        :param pulumi.Input[str] key_file_path: Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+        :param pulumi.Input[str] key_password_env_var: optional environment variable housing the password that is used to decrypt the key file.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "certificate_file_path", certificate_file_path)
+        pulumi.set(__self__, "default_certificate_authority_name", default_certificate_authority_name)
+        pulumi.set(__self__, "default_certificate_profile_name", default_certificate_profile_name)
+        pulumi.set(__self__, "default_end_entity_profile_name", default_end_entity_profile_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "server_address", server_address)
+        if ca_file_path is not None:
+            pulumi.set(__self__, "ca_file_path", ca_file_path)
+        if enrollment_code_env_var is not None:
+            pulumi.set(__self__, "enrollment_code_env_var", enrollment_code_env_var)
+        if enrollment_username_env_var is not None:
+            pulumi.set(__self__, "enrollment_username_env_var", enrollment_username_env_var)
+        if key_file_path is not None:
+            pulumi.set(__self__, "key_file_path", key_file_path)
+        if key_password_env_var is not None:
+            pulumi.set(__self__, "key_password_env_var", key_password_env_var)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="certificateFilePath")
+    def certificate_file_path(self) -> pulumi.Input[str]:
+        """
+        Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+        """
+        return pulumi.get(self, "certificate_file_path")
+
+    @certificate_file_path.setter
+    def certificate_file_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_file_path", value)
+
+    @property
+    @pulumi.getter(name="defaultCertificateAuthorityName")
+    def default_certificate_authority_name(self) -> pulumi.Input[str]:
+        """
+        Name of EJBCA certificate authority that will enroll CSR.
+        """
+        return pulumi.get(self, "default_certificate_authority_name")
+
+    @default_certificate_authority_name.setter
+    def default_certificate_authority_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_certificate_authority_name", value)
+
+    @property
+    @pulumi.getter(name="defaultCertificateProfileName")
+    def default_certificate_profile_name(self) -> pulumi.Input[str]:
+        """
+        Certificate profile name that EJBCA will enroll the CSR with.
+        """
+        return pulumi.get(self, "default_certificate_profile_name")
+
+    @default_certificate_profile_name.setter
+    def default_certificate_profile_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_certificate_profile_name", value)
+
+    @property
+    @pulumi.getter(name="defaultEndEntityProfileName")
+    def default_end_entity_profile_name(self) -> pulumi.Input[str]:
+        """
+        End entity profile that EJBCA will enroll the CSR with.
+        """
+        return pulumi.get(self, "default_end_entity_profile_name")
+
+    @default_end_entity_profile_name.setter
+    def default_end_entity_profile_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_end_entity_profile_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_address", value)
+
+    @property
+    @pulumi.getter(name="caFilePath")
+    def ca_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+        """
+        return pulumi.get(self, "ca_file_path")
+
+    @ca_file_path.setter
+    def ca_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_file_path", value)
+
+    @property
+    @pulumi.getter(name="enrollmentCodeEnvVar")
+    def enrollment_code_env_var(self) -> Optional[pulumi.Input[str]]:
+        """
+        code used by EJBCA during enrollment. May be left blank if no code is required.
+        """
+        return pulumi.get(self, "enrollment_code_env_var")
+
+    @enrollment_code_env_var.setter
+    def enrollment_code_env_var(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enrollment_code_env_var", value)
+
+    @property
+    @pulumi.getter(name="enrollmentUsernameEnvVar")
+    def enrollment_username_env_var(self) -> Optional[pulumi.Input[str]]:
+        """
+        username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+        """
+        return pulumi.get(self, "enrollment_username_env_var")
+
+    @enrollment_username_env_var.setter
+    def enrollment_username_env_var(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enrollment_username_env_var", value)
+
+    @property
+    @pulumi.getter(name="keyFilePath")
+    def key_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+        """
+        return pulumi.get(self, "key_file_path")
+
+    @key_file_path.setter
+    def key_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_file_path", value)
+
+    @property
+    @pulumi.getter(name="keyPasswordEnvVar")
+    def key_password_env_var(self) -> Optional[pulumi.Input[str]]:
+        """
+        optional environment variable housing the password that is used to decrypt the key file.
+        """
+        return pulumi.get(self, "key_password_env_var")
+
+    @key_password_env_var.setter
+    def key_password_env_var(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_password_env_var", value)
 
     @property
     @pulumi.getter

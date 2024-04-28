@@ -60,6 +60,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("gcpStore")]
         public Output<Outputs.SecretStoreGcpStore?> GcpStore { get; private set; } = null!;
 
+        [Output("keyfactorX509Store")]
+        public Output<Outputs.SecretStoreKeyfactorX509Store?> KeyfactorX509Store { get; private set; } = null!;
+
         [Output("vaultApprole")]
         public Output<Outputs.SecretStoreVaultApprole?> VaultApprole { get; private set; } = null!;
 
@@ -168,6 +171,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("gcpStore")]
         public Input<Inputs.SecretStoreGcpStoreArgs>? GcpStore { get; set; }
 
+        [Input("keyfactorX509Store")]
+        public Input<Inputs.SecretStoreKeyfactorX509StoreArgs>? KeyfactorX509Store { get; set; }
+
         [Input("vaultApprole")]
         public Input<Inputs.SecretStoreVaultApproleArgs>? VaultApprole { get; set; }
 
@@ -236,6 +242,9 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("gcpStore")]
         public Input<Inputs.SecretStoreGcpStoreGetArgs>? GcpStore { get; set; }
+
+        [Input("keyfactorX509Store")]
+        public Input<Inputs.SecretStoreKeyfactorX509StoreGetArgs>? KeyfactorX509Store { get; set; }
 
         [Input("vaultApprole")]
         public Input<Inputs.SecretStoreVaultApproleGetArgs>? VaultApprole { get; set; }

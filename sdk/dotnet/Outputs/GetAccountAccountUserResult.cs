@@ -43,7 +43,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? PermissionLevel;
         /// <summary>
-        /// The Service's suspended state.
+        /// Reserved for future use.  Always false for tokens.
         /// </summary>
         public readonly bool Suspended;
         /// <summary>
