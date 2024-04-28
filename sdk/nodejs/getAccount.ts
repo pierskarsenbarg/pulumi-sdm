@@ -7,9 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Accounts are users that have access to strongDM. There are two types of accounts:
+ * Accounts are users that have access to strongDM. The types of accounts are:
  *  1. **Users:** humans who are authenticated through username and password or SSO.
  *  2. **Service Accounts:** machines that are authenticated using a service token.
+ *  3. **Tokens** are access keys with permissions that can be used for authentication.
  * ## Example Usage
  *
  * ```typescript
@@ -24,6 +25,14 @@ import * as utilities from "./utilities";
  *     },
  *     type: "user",
  * });
+ * const api-key-queries = sdm.getAccount({
+ *     name: "*-dev",
+ *     type: "api",
+ * });
+ * const admin-token-queries = sdm.getAccount({
+ *     name: "*-prod",
+ *     type: "admin-token",
+ * });
  * ```
  */
 export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
@@ -31,6 +40,7 @@ export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): 
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getAccount:getAccount", {
+        "accountType": args.accountType,
         "email": args.email,
         "externalId": args.externalId,
         "firstName": args.firstName,
@@ -38,6 +48,7 @@ export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): 
         "lastName": args.lastName,
         "name": args.name,
         "permissionLevel": args.permissionLevel,
+        "permissions": args.permissions,
         "suspended": args.suspended,
         "tags": args.tags,
         "type": args.type,
@@ -48,6 +59,10 @@ export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getAccount.
  */
 export interface GetAccountArgs {
+    /**
+     * Corresponds to the type of token, e.g. api or admin-token.
+     */
+    accountType?: string;
     /**
      * The User's email address. Must be unique.
      */
@@ -69,7 +84,7 @@ export interface GetAccountArgs {
      */
     lastName?: string;
     /**
-     * Unique human-readable name of the Service.
+     * Unique human-readable name of the Token.
      */
     name?: string;
     /**
@@ -77,7 +92,11 @@ export interface GetAccountArgs {
      */
     permissionLevel?: string;
     /**
-     * The Service's suspended state.
+     * Permissions assigned to the token, e.g. role:create.
+     */
+    permissions?: string;
+    /**
+     * Reserved for future use.  Always false for tokens.
      */
     suspended?: boolean;
     /**
@@ -94,6 +113,10 @@ export interface GetAccountArgs {
  * A collection of values returned by getAccount.
  */
 export interface GetAccountResult {
+    /**
+     * Corresponds to the type of token, e.g. api or admin-token.
+     */
+    readonly accountType?: string;
     /**
      * A single element list containing a map, where each key lists one of the following objects:
      * * service:
@@ -124,13 +147,17 @@ export interface GetAccountResult {
      */
     readonly lastName?: string;
     /**
-     * Unique human-readable name of the Service.
+     * Unique human-readable name of the Token.
      */
     readonly name?: string;
     /**
      * PermissionLevel is the user's permission level e.g. admin, DBA, user.
      */
     readonly permissionLevel?: string;
+    /**
+     * Permissions assigned to the token, e.g. role:create.
+     */
+    readonly permissions?: string;
     /**
      * Suspended is a read only field for the User's suspended state.
      */
@@ -142,9 +169,10 @@ export interface GetAccountResult {
     readonly type?: string;
 }
 /**
- * Accounts are users that have access to strongDM. There are two types of accounts:
+ * Accounts are users that have access to strongDM. The types of accounts are:
  *  1. **Users:** humans who are authenticated through username and password or SSO.
  *  2. **Service Accounts:** machines that are authenticated using a service token.
+ *  3. **Tokens** are access keys with permissions that can be used for authentication.
  * ## Example Usage
  *
  * ```typescript
@@ -159,6 +187,14 @@ export interface GetAccountResult {
  *     },
  *     type: "user",
  * });
+ * const api-key-queries = sdm.getAccount({
+ *     name: "*-dev",
+ *     type: "api",
+ * });
+ * const admin-token-queries = sdm.getAccount({
+ *     name: "*-prod",
+ *     type: "admin-token",
+ * });
  * ```
  */
 export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
@@ -169,6 +205,10 @@ export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getAccount.
  */
 export interface GetAccountOutputArgs {
+    /**
+     * Corresponds to the type of token, e.g. api or admin-token.
+     */
+    accountType?: pulumi.Input<string>;
     /**
      * The User's email address. Must be unique.
      */
@@ -190,7 +230,7 @@ export interface GetAccountOutputArgs {
      */
     lastName?: pulumi.Input<string>;
     /**
-     * Unique human-readable name of the Service.
+     * Unique human-readable name of the Token.
      */
     name?: pulumi.Input<string>;
     /**
@@ -198,7 +238,11 @@ export interface GetAccountOutputArgs {
      */
     permissionLevel?: pulumi.Input<string>;
     /**
-     * The Service's suspended state.
+     * Permissions assigned to the token, e.g. role:create.
+     */
+    permissions?: pulumi.Input<string>;
+    /**
+     * Reserved for future use.  Always false for tokens.
      */
     suspended?: pulumi.Input<boolean>;
     /**

@@ -13,9 +13,10 @@ namespace PiersKarsenbarg.Sdm
     public static class GetAccount
     {
         /// <summary>
-        /// Accounts are users that have access to strongDM. There are two types of accounts:
+        /// Accounts are users that have access to strongDM. The types of accounts are:
         ///  1. **Users:** humans who are authenticated through username and password or SSO.
         ///  2. **Service Accounts:** machines that are authenticated using a service token.
+        ///  3. **Tokens** are access keys with permissions that can be used for authentication.
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -37,6 +38,18 @@ namespace PiersKarsenbarg.Sdm
         ///         Type = "user",
         ///     });
         /// 
+        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
+        ///     {
+        ///         Name = "*-dev",
+        ///         Type = "api",
+        ///     });
+        /// 
+        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
+        ///     {
+        ///         Name = "*-prod",
+        ///         Type = "admin-token",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
@@ -44,9 +57,10 @@ namespace PiersKarsenbarg.Sdm
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Accounts are users that have access to strongDM. There are two types of accounts:
+        /// Accounts are users that have access to strongDM. The types of accounts are:
         ///  1. **Users:** humans who are authenticated through username and password or SSO.
         ///  2. **Service Accounts:** machines that are authenticated using a service token.
+        ///  3. **Tokens** are access keys with permissions that can be used for authentication.
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -66,6 +80,18 @@ namespace PiersKarsenbarg.Sdm
         ///             { "region", "us-west" },
         ///         },
         ///         Type = "user",
+        ///     });
+        /// 
+        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
+        ///     {
+        ///         Name = "*-dev",
+        ///         Type = "api",
+        ///     });
+        /// 
+        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
+        ///     {
+        ///         Name = "*-prod",
+        ///         Type = "admin-token",
         ///     });
         /// 
         /// });
@@ -78,6 +104,12 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class GetAccountArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Corresponds to the type of token, e.g. api or admin-token.
+        /// </summary>
+        [Input("accountType")]
+        public string? AccountType { get; set; }
+
         /// <summary>
         /// The User's email address. Must be unique.
         /// </summary>
@@ -109,7 +141,7 @@ namespace PiersKarsenbarg.Sdm
         public string? LastName { get; set; }
 
         /// <summary>
-        /// Unique human-readable name of the Service.
+        /// Unique human-readable name of the Token.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -121,7 +153,13 @@ namespace PiersKarsenbarg.Sdm
         public string? PermissionLevel { get; set; }
 
         /// <summary>
-        /// The Service's suspended state.
+        /// Permissions assigned to the token, e.g. role:create.
+        /// </summary>
+        [Input("permissions")]
+        public string? Permissions { get; set; }
+
+        /// <summary>
+        /// Reserved for future use.  Always false for tokens.
         /// </summary>
         [Input("suspended")]
         public bool? Suspended { get; set; }
@@ -153,6 +191,12 @@ namespace PiersKarsenbarg.Sdm
     public sealed class GetAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Corresponds to the type of token, e.g. api or admin-token.
+        /// </summary>
+        [Input("accountType")]
+        public Input<string>? AccountType { get; set; }
+
+        /// <summary>
         /// The User's email address. Must be unique.
         /// </summary>
         [Input("email")]
@@ -183,7 +227,7 @@ namespace PiersKarsenbarg.Sdm
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// Unique human-readable name of the Service.
+        /// Unique human-readable name of the Token.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -195,7 +239,13 @@ namespace PiersKarsenbarg.Sdm
         public Input<string>? PermissionLevel { get; set; }
 
         /// <summary>
-        /// The Service's suspended state.
+        /// Permissions assigned to the token, e.g. role:create.
+        /// </summary>
+        [Input("permissions")]
+        public Input<string>? Permissions { get; set; }
+
+        /// <summary>
+        /// Reserved for future use.  Always false for tokens.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
@@ -229,6 +279,10 @@ namespace PiersKarsenbarg.Sdm
     public sealed class GetAccountResult
     {
         /// <summary>
+        /// Corresponds to the type of token, e.g. api or admin-token.
+        /// </summary>
+        public readonly string? AccountType;
+        /// <summary>
         /// A single element list containing a map, where each key lists one of the following objects:
         /// * service:
         /// </summary>
@@ -258,13 +312,17 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public readonly string? LastName;
         /// <summary>
-        /// Unique human-readable name of the Service.
+        /// Unique human-readable name of the Token.
         /// </summary>
         public readonly string? Name;
         /// <summary>
         /// PermissionLevel is the user's permission level e.g. admin, DBA, user.
         /// </summary>
         public readonly string? PermissionLevel;
+        /// <summary>
+        /// Permissions assigned to the token, e.g. role:create.
+        /// </summary>
+        public readonly string? Permissions;
         /// <summary>
         /// Suspended is a read only field for the User's suspended state.
         /// </summary>
@@ -277,6 +335,8 @@ namespace PiersKarsenbarg.Sdm
 
         [OutputConstructor]
         private GetAccountResult(
+            string? accountType,
+
             ImmutableArray<Outputs.GetAccountAccountResult> accounts,
 
             string? email,
@@ -295,12 +355,15 @@ namespace PiersKarsenbarg.Sdm
 
             string? permissionLevel,
 
+            string? permissions,
+
             bool? suspended,
 
             ImmutableDictionary<string, object>? tags,
 
             string? type)
         {
+            AccountType = accountType;
             Accounts = accounts;
             Email = email;
             ExternalId = externalId;
@@ -310,6 +373,7 @@ namespace PiersKarsenbarg.Sdm
             LastName = lastName;
             Name = name;
             PermissionLevel = permissionLevel;
+            Permissions = permissions;
             Suspended = suspended;
             Tags = tags;
             Type = type;

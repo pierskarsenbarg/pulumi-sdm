@@ -111,6 +111,7 @@ __all__ = [
     'SecretStoreDelineaStore',
     'SecretStoreGcpCertX509Store',
     'SecretStoreGcpStore',
+    'SecretStoreKeyfactorX509Store',
     'SecretStoreVaultApprole',
     'SecretStoreVaultApproleCertSsh',
     'SecretStoreVaultApproleCertX509',
@@ -122,6 +123,7 @@ __all__ = [
     'SecretStoreVaultTokenCertX509',
     'GetAccountAccountResult',
     'GetAccountAccountServiceResult',
+    'GetAccountAccountTokenResult',
     'GetAccountAccountUserResult',
     'GetAccountAttachmentAccountAttachmentResult',
     'GetApprovalWorkflowApprovalWorkflowResult',
@@ -235,6 +237,7 @@ __all__ = [
     'GetSecretStoreSecretStoreDelineaStoreResult',
     'GetSecretStoreSecretStoreGcpCertX509StoreResult',
     'GetSecretStoreSecretStoreGcpStoreResult',
+    'GetSecretStoreSecretStoreKeyfactorX509StoreResult',
     'GetSecretStoreSecretStoreVaultApproleResult',
     'GetSecretStoreSecretStoreVaultApproleCertSshResult',
     'GetSecretStoreSecretStoreVaultApproleCertX509Result',
@@ -17264,6 +17267,186 @@ class SecretStoreGcpStore(dict):
 
 
 @pulumi.output_type
+class SecretStoreKeyfactorX509Store(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateFilePath":
+            suggest = "certificate_file_path"
+        elif key == "defaultCertificateAuthorityName":
+            suggest = "default_certificate_authority_name"
+        elif key == "defaultCertificateProfileName":
+            suggest = "default_certificate_profile_name"
+        elif key == "defaultEndEntityProfileName":
+            suggest = "default_end_entity_profile_name"
+        elif key == "serverAddress":
+            suggest = "server_address"
+        elif key == "caFilePath":
+            suggest = "ca_file_path"
+        elif key == "enrollmentCodeEnvVar":
+            suggest = "enrollment_code_env_var"
+        elif key == "enrollmentUsernameEnvVar":
+            suggest = "enrollment_username_env_var"
+        elif key == "keyFilePath":
+            suggest = "key_file_path"
+        elif key == "keyPasswordEnvVar":
+            suggest = "key_password_env_var"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretStoreKeyfactorX509Store. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretStoreKeyfactorX509Store.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretStoreKeyfactorX509Store.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_file_path: str,
+                 default_certificate_authority_name: str,
+                 default_certificate_profile_name: str,
+                 default_end_entity_profile_name: str,
+                 name: str,
+                 server_address: str,
+                 ca_file_path: Optional[str] = None,
+                 enrollment_code_env_var: Optional[str] = None,
+                 enrollment_username_env_var: Optional[str] = None,
+                 key_file_path: Optional[str] = None,
+                 key_password_env_var: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str certificate_file_path: Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+        :param str default_certificate_authority_name: Name of EJBCA certificate authority that will enroll CSR.
+        :param str default_certificate_profile_name: Certificate profile name that EJBCA will enroll the CSR with.
+        :param str default_end_entity_profile_name: End entity profile that EJBCA will enroll the CSR with.
+        :param str name: Unique human-readable name of the SecretStore.
+        :param str server_address: The URL of the Vault to target
+        :param str ca_file_path: Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+        :param str enrollment_code_env_var: code used by EJBCA during enrollment. May be left blank if no code is required.
+        :param str enrollment_username_env_var: username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+        :param str key_file_path: Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+        :param str key_password_env_var: optional environment variable housing the password that is used to decrypt the key file.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "certificate_file_path", certificate_file_path)
+        pulumi.set(__self__, "default_certificate_authority_name", default_certificate_authority_name)
+        pulumi.set(__self__, "default_certificate_profile_name", default_certificate_profile_name)
+        pulumi.set(__self__, "default_end_entity_profile_name", default_end_entity_profile_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "server_address", server_address)
+        if ca_file_path is not None:
+            pulumi.set(__self__, "ca_file_path", ca_file_path)
+        if enrollment_code_env_var is not None:
+            pulumi.set(__self__, "enrollment_code_env_var", enrollment_code_env_var)
+        if enrollment_username_env_var is not None:
+            pulumi.set(__self__, "enrollment_username_env_var", enrollment_username_env_var)
+        if key_file_path is not None:
+            pulumi.set(__self__, "key_file_path", key_file_path)
+        if key_password_env_var is not None:
+            pulumi.set(__self__, "key_password_env_var", key_password_env_var)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="certificateFilePath")
+    def certificate_file_path(self) -> str:
+        """
+        Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+        """
+        return pulumi.get(self, "certificate_file_path")
+
+    @property
+    @pulumi.getter(name="defaultCertificateAuthorityName")
+    def default_certificate_authority_name(self) -> str:
+        """
+        Name of EJBCA certificate authority that will enroll CSR.
+        """
+        return pulumi.get(self, "default_certificate_authority_name")
+
+    @property
+    @pulumi.getter(name="defaultCertificateProfileName")
+    def default_certificate_profile_name(self) -> str:
+        """
+        Certificate profile name that EJBCA will enroll the CSR with.
+        """
+        return pulumi.get(self, "default_certificate_profile_name")
+
+    @property
+    @pulumi.getter(name="defaultEndEntityProfileName")
+    def default_end_entity_profile_name(self) -> str:
+        """
+        End entity profile that EJBCA will enroll the CSR with.
+        """
+        return pulumi.get(self, "default_end_entity_profile_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> str:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @property
+    @pulumi.getter(name="caFilePath")
+    def ca_file_path(self) -> Optional[str]:
+        """
+        Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+        """
+        return pulumi.get(self, "ca_file_path")
+
+    @property
+    @pulumi.getter(name="enrollmentCodeEnvVar")
+    def enrollment_code_env_var(self) -> Optional[str]:
+        """
+        code used by EJBCA during enrollment. May be left blank if no code is required.
+        """
+        return pulumi.get(self, "enrollment_code_env_var")
+
+    @property
+    @pulumi.getter(name="enrollmentUsernameEnvVar")
+    def enrollment_username_env_var(self) -> Optional[str]:
+        """
+        username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+        """
+        return pulumi.get(self, "enrollment_username_env_var")
+
+    @property
+    @pulumi.getter(name="keyFilePath")
+    def key_file_path(self) -> Optional[str]:
+        """
+        Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+        """
+        return pulumi.get(self, "key_file_path")
+
+    @property
+    @pulumi.getter(name="keyPasswordEnvVar")
+    def key_password_env_var(self) -> Optional[str]:
+        """
+        optional environment variable housing the password that is used to decrypt the key file.
+        """
+        return pulumi.get(self, "key_password_env_var")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class SecretStoreVaultApprole(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18251,12 +18434,15 @@ class SecretStoreVaultTokenCertX509(dict):
 class GetAccountAccountResult(dict):
     def __init__(__self__, *,
                  services: Sequence['outputs.GetAccountAccountServiceResult'],
+                 tokens: Sequence['outputs.GetAccountAccountTokenResult'],
                  users: Sequence['outputs.GetAccountAccountUserResult']):
         """
         :param Sequence['GetAccountAccountServiceArgs'] services: A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
+        :param Sequence['GetAccountAccountTokenArgs'] tokens: A Token is an account providing tokenized access for automation or integration use. Tokens include admin tokens, API keys, and SCIM tokens.
         :param Sequence['GetAccountAccountUserArgs'] users: A User can connect to resources they are granted directly, or granted via roles.
         """
         pulumi.set(__self__, "services", services)
+        pulumi.set(__self__, "tokens", tokens)
         pulumi.set(__self__, "users", users)
 
     @property
@@ -18266,6 +18452,14 @@ class GetAccountAccountResult(dict):
         A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.
         """
         return pulumi.get(self, "services")
+
+    @property
+    @pulumi.getter
+    def tokens(self) -> Sequence['outputs.GetAccountAccountTokenResult']:
+        """
+        A Token is an account providing tokenized access for automation or integration use. Tokens include admin tokens, API keys, and SCIM tokens.
+        """
+        return pulumi.get(self, "tokens")
 
     @property
     @pulumi.getter
@@ -18285,8 +18479,8 @@ class GetAccountAccountServiceResult(dict):
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str id: Unique identifier of the User.
-        :param str name: Unique human-readable name of the Service.
-        :param bool suspended: The Service's suspended state.
+        :param str name: Unique human-readable name of the Token.
+        :param bool suspended: Reserved for future use.  Always false for tokens.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         if id is not None:
@@ -18310,7 +18504,7 @@ class GetAccountAccountServiceResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Unique human-readable name of the Service.
+        Unique human-readable name of the Token.
         """
         return pulumi.get(self, "name")
 
@@ -18318,7 +18512,122 @@ class GetAccountAccountServiceResult(dict):
     @pulumi.getter
     def suspended(self) -> Optional[bool]:
         """
-        The Service's suspended state.
+        Reserved for future use.  Always false for tokens.
+        """
+        return pulumi.get(self, "suspended")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetAccountAccountTokenResult(dict):
+    def __init__(__self__, *,
+                 account_type: Optional[str] = None,
+                 deadline: Optional[str] = None,
+                 duration: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 permissions: Optional[Sequence[str]] = None,
+                 rekeyed: Optional[str] = None,
+                 suspended: Optional[bool] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str account_type: Corresponds to the type of token, e.g. api or admin-token.
+        :param str deadline: The timestamp when the Token will expire.
+        :param str duration: Duration from token creation to expiration.
+        :param str id: Unique identifier of the User.
+        :param str name: Unique human-readable name of the Token.
+        :param Sequence[str] permissions: Permissions assigned to the token, e.g. role:create.
+        :param str rekeyed: The timestamp when the Token was last rekeyed.
+        :param bool suspended: Reserved for future use.  Always false for tokens.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if account_type is not None:
+            pulumi.set(__self__, "account_type", account_type)
+        if deadline is not None:
+            pulumi.set(__self__, "deadline", deadline)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if permissions is not None:
+            pulumi.set(__self__, "permissions", permissions)
+        if rekeyed is not None:
+            pulumi.set(__self__, "rekeyed", rekeyed)
+        if suspended is not None:
+            pulumi.set(__self__, "suspended", suspended)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[str]:
+        """
+        Corresponds to the type of token, e.g. api or admin-token.
+        """
+        return pulumi.get(self, "account_type")
+
+    @property
+    @pulumi.getter
+    def deadline(self) -> Optional[str]:
+        """
+        The timestamp when the Token will expire.
+        """
+        return pulumi.get(self, "deadline")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[str]:
+        """
+        Duration from token creation to expiration.
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the User.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Token.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[Sequence[str]]:
+        """
+        Permissions assigned to the token, e.g. role:create.
+        """
+        return pulumi.get(self, "permissions")
+
+    @property
+    @pulumi.getter
+    def rekeyed(self) -> Optional[str]:
+        """
+        The timestamp when the Token was last rekeyed.
+        """
+        return pulumi.get(self, "rekeyed")
+
+    @property
+    @pulumi.getter
+    def suspended(self) -> Optional[bool]:
+        """
+        Reserved for future use.  Always false for tokens.
         """
         return pulumi.get(self, "suspended")
 
@@ -18345,7 +18654,7 @@ class GetAccountAccountUserResult(dict):
                  tags: Optional[Mapping[str, str]] = None):
         """
         :param str managed_by: Managed By is a read only field for what service manages this user, e.g. StrongDM, Okta, Azure.
-        :param bool suspended: The Service's suspended state.
+        :param bool suspended: Reserved for future use.  Always false for tokens.
         :param str email: The User's email address. Must be unique.
         :param str external_id: External ID is an alternative unique ID this user is represented by within an external service.
         :param str first_name: The User's first name.
@@ -18383,7 +18692,7 @@ class GetAccountAccountUserResult(dict):
     @pulumi.getter
     def suspended(self) -> bool:
         """
-        The Service's suspended state.
+        Reserved for future use.  Always false for tokens.
         """
         return pulumi.get(self, "suspended")
 
@@ -34544,6 +34853,7 @@ class GetSecretStoreSecretStoreResult(dict):
                  delinea_stores: Sequence['outputs.GetSecretStoreSecretStoreDelineaStoreResult'],
                  gcp_cert_x509_stores: Sequence['outputs.GetSecretStoreSecretStoreGcpCertX509StoreResult'],
                  gcp_stores: Sequence['outputs.GetSecretStoreSecretStoreGcpStoreResult'],
+                 keyfactor_x509_stores: Sequence['outputs.GetSecretStoreSecretStoreKeyfactorX509StoreResult'],
                  vault_approle_cert_sshes: Sequence['outputs.GetSecretStoreSecretStoreVaultApproleCertSshResult'],
                  vault_approle_cert_x509s: Sequence['outputs.GetSecretStoreSecretStoreVaultApproleCertX509Result'],
                  vault_approles: Sequence['outputs.GetSecretStoreSecretStoreVaultApproleResult'],
@@ -34563,6 +34873,7 @@ class GetSecretStoreSecretStoreResult(dict):
         pulumi.set(__self__, "delinea_stores", delinea_stores)
         pulumi.set(__self__, "gcp_cert_x509_stores", gcp_cert_x509_stores)
         pulumi.set(__self__, "gcp_stores", gcp_stores)
+        pulumi.set(__self__, "keyfactor_x509_stores", keyfactor_x509_stores)
         pulumi.set(__self__, "vault_approle_cert_sshes", vault_approle_cert_sshes)
         pulumi.set(__self__, "vault_approle_cert_x509s", vault_approle_cert_x509s)
         pulumi.set(__self__, "vault_approles", vault_approles)
@@ -34622,6 +34933,11 @@ class GetSecretStoreSecretStoreResult(dict):
     @pulumi.getter(name="gcpStores")
     def gcp_stores(self) -> Sequence['outputs.GetSecretStoreSecretStoreGcpStoreResult']:
         return pulumi.get(self, "gcp_stores")
+
+    @property
+    @pulumi.getter(name="keyfactorX509Stores")
+    def keyfactor_x509_stores(self) -> Sequence['outputs.GetSecretStoreSecretStoreKeyfactorX509StoreResult']:
+        return pulumi.get(self, "keyfactor_x509_stores")
 
     @property
     @pulumi.getter(name="vaultApproleCertSshes")
@@ -35321,6 +35637,169 @@ class GetSecretStoreSecretStoreGcpStoreResult(dict):
         The GCP project ID to target.
         """
         return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetSecretStoreSecretStoreKeyfactorX509StoreResult(dict):
+    def __init__(__self__, *,
+                 ca_file_path: Optional[str] = None,
+                 certificate_file_path: Optional[str] = None,
+                 default_certificate_authority_name: Optional[str] = None,
+                 default_certificate_profile_name: Optional[str] = None,
+                 default_end_entity_profile_name: Optional[str] = None,
+                 enrollment_code_env_var: Optional[str] = None,
+                 enrollment_username_env_var: Optional[str] = None,
+                 id: Optional[str] = None,
+                 key_file_path: Optional[str] = None,
+                 key_password_env_var: Optional[str] = None,
+                 name: Optional[str] = None,
+                 server_address: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str ca_file_path: Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+        :param str certificate_file_path: Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+        :param str default_certificate_authority_name: Name of EJBCA certificate authority that will enroll CSR.
+        :param str default_certificate_profile_name: Certificate profile name that EJBCA will enroll the CSR with.
+        :param str default_end_entity_profile_name: End entity profile that EJBCA will enroll the CSR with.
+        :param str enrollment_code_env_var: code used by EJBCA during enrollment. May be left blank if no code is required.
+        :param str enrollment_username_env_var: username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+        :param str id: Unique identifier of the SecretStore.
+        :param str key_file_path: Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+        :param str key_password_env_var: optional environment variable housing the password that is used to decrypt the key file.
+        :param str name: Unique human-readable name of the SecretStore.
+        :param str server_address: The URL of the Vault to target
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if ca_file_path is not None:
+            pulumi.set(__self__, "ca_file_path", ca_file_path)
+        if certificate_file_path is not None:
+            pulumi.set(__self__, "certificate_file_path", certificate_file_path)
+        if default_certificate_authority_name is not None:
+            pulumi.set(__self__, "default_certificate_authority_name", default_certificate_authority_name)
+        if default_certificate_profile_name is not None:
+            pulumi.set(__self__, "default_certificate_profile_name", default_certificate_profile_name)
+        if default_end_entity_profile_name is not None:
+            pulumi.set(__self__, "default_end_entity_profile_name", default_end_entity_profile_name)
+        if enrollment_code_env_var is not None:
+            pulumi.set(__self__, "enrollment_code_env_var", enrollment_code_env_var)
+        if enrollment_username_env_var is not None:
+            pulumi.set(__self__, "enrollment_username_env_var", enrollment_username_env_var)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if key_file_path is not None:
+            pulumi.set(__self__, "key_file_path", key_file_path)
+        if key_password_env_var is not None:
+            pulumi.set(__self__, "key_password_env_var", key_password_env_var)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if server_address is not None:
+            pulumi.set(__self__, "server_address", server_address)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="caFilePath")
+    def ca_file_path(self) -> Optional[str]:
+        """
+        Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+        """
+        return pulumi.get(self, "ca_file_path")
+
+    @property
+    @pulumi.getter(name="certificateFilePath")
+    def certificate_file_path(self) -> Optional[str]:
+        """
+        Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+        """
+        return pulumi.get(self, "certificate_file_path")
+
+    @property
+    @pulumi.getter(name="defaultCertificateAuthorityName")
+    def default_certificate_authority_name(self) -> Optional[str]:
+        """
+        Name of EJBCA certificate authority that will enroll CSR.
+        """
+        return pulumi.get(self, "default_certificate_authority_name")
+
+    @property
+    @pulumi.getter(name="defaultCertificateProfileName")
+    def default_certificate_profile_name(self) -> Optional[str]:
+        """
+        Certificate profile name that EJBCA will enroll the CSR with.
+        """
+        return pulumi.get(self, "default_certificate_profile_name")
+
+    @property
+    @pulumi.getter(name="defaultEndEntityProfileName")
+    def default_end_entity_profile_name(self) -> Optional[str]:
+        """
+        End entity profile that EJBCA will enroll the CSR with.
+        """
+        return pulumi.get(self, "default_end_entity_profile_name")
+
+    @property
+    @pulumi.getter(name="enrollmentCodeEnvVar")
+    def enrollment_code_env_var(self) -> Optional[str]:
+        """
+        code used by EJBCA during enrollment. May be left blank if no code is required.
+        """
+        return pulumi.get(self, "enrollment_code_env_var")
+
+    @property
+    @pulumi.getter(name="enrollmentUsernameEnvVar")
+    def enrollment_username_env_var(self) -> Optional[str]:
+        """
+        username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+        """
+        return pulumi.get(self, "enrollment_username_env_var")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the SecretStore.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="keyFilePath")
+    def key_file_path(self) -> Optional[str]:
+        """
+        Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+        """
+        return pulumi.get(self, "key_file_path")
+
+    @property
+    @pulumi.getter(name="keyPasswordEnvVar")
+    def key_password_env_var(self) -> Optional[str]:
+        """
+        optional environment variable housing the password that is used to decrypt the key file.
+        """
+        return pulumi.get(self, "key_password_env_var")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> Optional[str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
 
     @property
     @pulumi.getter

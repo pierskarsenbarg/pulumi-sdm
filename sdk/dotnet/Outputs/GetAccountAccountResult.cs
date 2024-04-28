@@ -19,6 +19,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountAccountServiceResult> Services;
         /// <summary>
+        /// A Token is an account providing tokenized access for automation or integration use. Tokens include admin tokens, API keys, and SCIM tokens.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetAccountAccountTokenResult> Tokens;
+        /// <summary>
         /// A User can connect to resources they are granted directly, or granted via roles.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountAccountUserResult> Users;
@@ -27,9 +31,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private GetAccountAccountResult(
             ImmutableArray<Outputs.GetAccountAccountServiceResult> services,
 
+            ImmutableArray<Outputs.GetAccountAccountTokenResult> tokens,
+
             ImmutableArray<Outputs.GetAccountAccountUserResult> users)
         {
             Services = services;
+            Tokens = tokens;
             Users = users;
         }
     }

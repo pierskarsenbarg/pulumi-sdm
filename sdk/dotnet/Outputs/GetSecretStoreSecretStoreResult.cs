@@ -24,6 +24,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreDelineaStoreResult> DelineaStores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpCertX509StoreResult> GcpCertX509Stores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpStoreResult> GcpStores;
+        public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreKeyfactorX509StoreResult> KeyfactorX509Stores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleCertSshResult> VaultApproleCertSshes;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleCertX509Result> VaultApproleCertX509s;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleResult> VaultApproles;
@@ -56,6 +57,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpStoreResult> gcpStores,
 
+            ImmutableArray<Outputs.GetSecretStoreSecretStoreKeyfactorX509StoreResult> keyfactorX509Stores,
+
             ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleCertSshResult> vaultApproleCertSshes,
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleCertX509Result> vaultApproleCertX509s,
@@ -84,6 +87,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             DelineaStores = delineaStores;
             GcpCertX509Stores = gcpCertX509Stores;
             GcpStores = gcpStores;
+            KeyfactorX509Stores = keyfactorX509Stores;
             VaultApproleCertSshes = vaultApproleCertSshes;
             VaultApproleCertX509s = vaultApproleCertX509s;
             VaultApproles = vaultApproles;

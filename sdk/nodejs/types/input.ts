@@ -4948,6 +4948,57 @@ export interface SecretStoreGcpStore {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface SecretStoreKeyfactorX509Store {
+    /**
+     * Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+     */
+    caFilePath?: pulumi.Input<string>;
+    /**
+     * Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+     */
+    certificateFilePath: pulumi.Input<string>;
+    /**
+     * Name of EJBCA certificate authority that will enroll CSR.
+     */
+    defaultCertificateAuthorityName: pulumi.Input<string>;
+    /**
+     * Certificate profile name that EJBCA will enroll the CSR with.
+     */
+    defaultCertificateProfileName: pulumi.Input<string>;
+    /**
+     * End entity profile that EJBCA will enroll the CSR with.
+     */
+    defaultEndEntityProfileName: pulumi.Input<string>;
+    /**
+     * code used by EJBCA during enrollment. May be left blank if no code is required.
+     */
+    enrollmentCodeEnvVar?: pulumi.Input<string>;
+    /**
+     * username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+     */
+    enrollmentUsernameEnvVar?: pulumi.Input<string>;
+    /**
+     * Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+     */
+    keyFilePath?: pulumi.Input<string>;
+    /**
+     * optional environment variable housing the password that is used to decrypt the key file.
+     */
+    keyPasswordEnvVar?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface SecretStoreVaultApprole {
     /**
      * Unique human-readable name of the SecretStore.

@@ -12,8 +12,20 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetAccountAccountServiceResult
+    public sealed class GetAccountAccountTokenResult
     {
+        /// <summary>
+        /// Corresponds to the type of token, e.g. api or admin-token.
+        /// </summary>
+        public readonly string? AccountType;
+        /// <summary>
+        /// The timestamp when the Token will expire.
+        /// </summary>
+        public readonly string? Deadline;
+        /// <summary>
+        /// Duration from token creation to expiration.
+        /// </summary>
+        public readonly string? Duration;
         /// <summary>
         /// Unique identifier of the User.
         /// </summary>
@@ -22,6 +34,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// Unique human-readable name of the Token.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Permissions assigned to the token, e.g. role:create.
+        /// </summary>
+        public readonly ImmutableArray<string> Permissions;
+        /// <summary>
+        /// The timestamp when the Token was last rekeyed.
+        /// </summary>
+        public readonly string? Rekeyed;
         /// <summary>
         /// Reserved for future use.  Always false for tokens.
         /// </summary>
@@ -32,17 +52,32 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
-        private GetAccountAccountServiceResult(
+        private GetAccountAccountTokenResult(
+            string? accountType,
+
+            string? deadline,
+
+            string? duration,
+
             string? id,
 
             string? name,
+
+            ImmutableArray<string> permissions,
+
+            string? rekeyed,
 
             bool? suspended,
 
             ImmutableDictionary<string, string>? tags)
         {
+            AccountType = accountType;
+            Deadline = deadline;
+            Duration = duration;
             Id = id;
             Name = name;
+            Permissions = permissions;
+            Rekeyed = rekeyed;
             Suspended = suspended;
             Tags = tags;
         }

@@ -7202,6 +7202,70 @@
                 "projectId"
             ]
         },
+        "sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store": {
+            "properties": {
+                "caFilePath": {
+                    "type": "string",
+                    "description": "Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.\n"
+                },
+                "certificateFilePath": {
+                    "type": "string",
+                    "description": "Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.\n"
+                },
+                "defaultCertificateAuthorityName": {
+                    "type": "string",
+                    "description": "Name of EJBCA certificate authority that will enroll CSR.\n"
+                },
+                "defaultCertificateProfileName": {
+                    "type": "string",
+                    "description": "Certificate profile name that EJBCA will enroll the CSR with.\n"
+                },
+                "defaultEndEntityProfileName": {
+                    "type": "string",
+                    "description": "End entity profile that EJBCA will enroll the CSR with.\n"
+                },
+                "enrollmentCodeEnvVar": {
+                    "type": "string",
+                    "description": "code used by EJBCA during enrollment. May be left blank if no code is required.\n"
+                },
+                "enrollmentUsernameEnvVar": {
+                    "type": "string",
+                    "description": "username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.\n"
+                },
+                "keyFilePath": {
+                    "type": "string",
+                    "description": "Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.\n"
+                },
+                "keyPasswordEnvVar": {
+                    "type": "string",
+                    "description": "optional environment variable housing the password that is used to decrypt the key file.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateFilePath",
+                "defaultCertificateAuthorityName",
+                "defaultCertificateProfileName",
+                "defaultEndEntityProfileName",
+                "name",
+                "serverAddress"
+            ]
+        },
         "sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole": {
             "properties": {
                 "name": {
@@ -7595,6 +7659,13 @@
                     },
                     "description": "A Service is a service account that can connect to resources they are granted directly, or granted via roles. Services are typically automated jobs.\n"
                 },
+                "tokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getAccountAccountToken:getAccountAccountToken"
+                    },
+                    "description": "A Token is an account providing tokenized access for automation or integration use. Tokens include admin tokens, API keys, and SCIM tokens.\n"
+                },
                 "users": {
                     "type": "array",
                     "items": {
@@ -7606,6 +7677,7 @@
             "type": "object",
             "required": [
                 "services",
+                "tokens",
                 "users"
             ],
             "language": {
@@ -7622,11 +7694,58 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Unique human-readable name of the Service.\n"
+                    "description": "Unique human-readable name of the Token.\n"
                 },
                 "suspended": {
                     "type": "boolean",
-                    "description": "The Service's suspended state.\n"
+                    "description": "Reserved for future use.  Always false for tokens.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getAccountAccountToken:getAccountAccountToken": {
+            "properties": {
+                "accountType": {
+                    "type": "string",
+                    "description": "Corresponds to the type of token, e.g. api or admin-token.\n"
+                },
+                "deadline": {
+                    "type": "string",
+                    "description": "The timestamp when the Token will expire.\n"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "Duration from token creation to expiration.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the User.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Token.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permissions assigned to the token, e.g. role:create.\n"
+                },
+                "rekeyed": {
+                    "type": "string",
+                    "description": "The timestamp when the Token was last rekeyed.\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "Reserved for future use.  Always false for tokens.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -7670,7 +7789,7 @@
                 },
                 "suspended": {
                     "type": "boolean",
-                    "description": "The Service's suspended state.\n"
+                    "description": "Reserved for future use.  Always false for tokens.\n"
                 },
                 "tags": {
                     "type": "object",
@@ -14213,6 +14332,12 @@
                         "$ref": "#/types/sdm:index/getSecretStoreSecretStoreGcpStore:getSecretStoreSecretStoreGcpStore"
                     }
                 },
+                "keyfactorX509Stores": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreKeyfactorX509Store:getSecretStoreSecretStoreKeyfactorX509Store"
+                    }
+                },
                 "vaultApproleCertSshes": {
                     "type": "array",
                     "items": {
@@ -14280,6 +14405,7 @@
                 "delineaStores",
                 "gcpCertX509Stores",
                 "gcpStores",
+                "keyfactorX509Stores",
                 "vaultApproles",
                 "vaultApproleCertSshes",
                 "vaultApproleCertX509s",
@@ -14561,6 +14687,66 @@
                 "projectId": {
                     "type": "string",
                     "description": "The GCP project ID to target.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getSecretStoreSecretStoreKeyfactorX509Store:getSecretStoreSecretStoreKeyfactorX509Store": {
+            "properties": {
+                "caFilePath": {
+                    "type": "string",
+                    "description": "Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.\n"
+                },
+                "certificateFilePath": {
+                    "type": "string",
+                    "description": "Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.\n"
+                },
+                "defaultCertificateAuthorityName": {
+                    "type": "string",
+                    "description": "Name of EJBCA certificate authority that will enroll CSR.\n"
+                },
+                "defaultCertificateProfileName": {
+                    "type": "string",
+                    "description": "Certificate profile name that EJBCA will enroll the CSR with.\n"
+                },
+                "defaultEndEntityProfileName": {
+                    "type": "string",
+                    "description": "End entity profile that EJBCA will enroll the CSR with.\n"
+                },
+                "enrollmentCodeEnvVar": {
+                    "type": "string",
+                    "description": "code used by EJBCA during enrollment. May be left blank if no code is required.\n"
+                },
+                "enrollmentUsernameEnvVar": {
+                    "type": "string",
+                    "description": "username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "keyFilePath": {
+                    "type": "string",
+                    "description": "Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.\n"
+                },
+                "keyPasswordEnvVar": {
+                    "type": "string",
+                    "description": "optional environment variable housing the password that is used to decrypt the key file.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15049,7 +15235,7 @@
     },
     "resources": {
         "sdm:index/account:Account": {
-            "description": "Accounts are users that have access to strongDM. There are two types of accounts:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst test_user = new sdm.Account(\"test-user\", {user: {\n    email: \"albob@strongdm.com\",\n    firstName: \"al\",\n    lastName: \"bob\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst test_service = new sdm.Account(\"test-service\", {service: {\n    name: \"test-service\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_user = sdm.Account(\"test-user\", user=sdm.AccountUserArgs(\n    email=\"albob@strongdm.com\",\n    first_name=\"al\",\n    last_name=\"bob\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\ntest_service = sdm.Account(\"test-service\", service=sdm.AccountServiceArgs(\n    name=\"test-service\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_user = new Sdm.Account(\"test-user\", new()\n    {\n        User = new Sdm.Inputs.AccountUserArgs\n        {\n            Email = \"albob@strongdm.com\",\n            FirstName = \"al\",\n            LastName = \"bob\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var test_service = new Sdm.Account(\"test-service\", new()\n    {\n        Service = new Sdm.Inputs.AccountServiceArgs\n        {\n            Name = \"test-service\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccount(ctx, \"test-user\", \u0026sdm.AccountArgs{\n\t\t\tUser: \u0026sdm.AccountUserArgs{\n\t\t\t\tEmail:     pulumi.String(\"albob@strongdm.com\"),\n\t\t\t\tFirstName: pulumi.String(\"al\"),\n\t\t\t\tLastName:  pulumi.String(\"bob\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccount(ctx, \"test-service\", \u0026sdm.AccountArgs{\n\t\t\tService: \u0026sdm.AccountServiceArgs{\n\t\t\t\tName: pulumi.String(\"test-service\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Account;\nimport com.pulumi.sdm.AccountArgs;\nimport com.pulumi.sdm.inputs.AccountUserArgs;\nimport com.pulumi.sdm.inputs.AccountServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_user = new Account(\"test-user\", AccountArgs.builder()        \n            .user(AccountUserArgs.builder()\n                .email(\"albob@strongdm.com\")\n                .firstName(\"al\")\n                .lastName(\"bob\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var test_service = new Account(\"test-service\", AccountArgs.builder()        \n            .service(AccountServiceArgs.builder()\n                .name(\"test-service\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-user:\n    type: sdm:Account\n    properties:\n      user:\n        email: albob@strongdm.com\n        firstName: al\n        lastName: bob\n        tags:\n          env: dev\n          region: us-west\n  test-service:\n    type: sdm:Account\n    properties:\n      service:\n        name: test-service\n        tags:\n          env: dev\n          region: us-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Account can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/account:Account example a-12345678\n```\n",
+            "description": "Accounts are users that have access to strongDM. The types of accounts are:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n 3. **Tokens** are access keys with permissions that can be used for authentication.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst test_user = new sdm.Account(\"test-user\", {user: {\n    email: \"albob@strongdm.com\",\n    firstName: \"al\",\n    lastName: \"bob\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst test_service = new sdm.Account(\"test-service\", {service: {\n    name: \"test-service\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_user = sdm.Account(\"test-user\", user=sdm.AccountUserArgs(\n    email=\"albob@strongdm.com\",\n    first_name=\"al\",\n    last_name=\"bob\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\ntest_service = sdm.Account(\"test-service\", service=sdm.AccountServiceArgs(\n    name=\"test-service\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_user = new Sdm.Account(\"test-user\", new()\n    {\n        User = new Sdm.Inputs.AccountUserArgs\n        {\n            Email = \"albob@strongdm.com\",\n            FirstName = \"al\",\n            LastName = \"bob\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var test_service = new Sdm.Account(\"test-service\", new()\n    {\n        Service = new Sdm.Inputs.AccountServiceArgs\n        {\n            Name = \"test-service\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccount(ctx, \"test-user\", \u0026sdm.AccountArgs{\n\t\t\tUser: \u0026sdm.AccountUserArgs{\n\t\t\t\tEmail:     pulumi.String(\"albob@strongdm.com\"),\n\t\t\t\tFirstName: pulumi.String(\"al\"),\n\t\t\t\tLastName:  pulumi.String(\"bob\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccount(ctx, \"test-service\", \u0026sdm.AccountArgs{\n\t\t\tService: \u0026sdm.AccountServiceArgs{\n\t\t\t\tName: pulumi.String(\"test-service\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Account;\nimport com.pulumi.sdm.AccountArgs;\nimport com.pulumi.sdm.inputs.AccountUserArgs;\nimport com.pulumi.sdm.inputs.AccountServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_user = new Account(\"test-user\", AccountArgs.builder()        \n            .user(AccountUserArgs.builder()\n                .email(\"albob@strongdm.com\")\n                .firstName(\"al\")\n                .lastName(\"bob\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var test_service = new Account(\"test-service\", AccountArgs.builder()        \n            .service(AccountServiceArgs.builder()\n                .name(\"test-service\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-user:\n    type: sdm:Account\n    properties:\n      user:\n        email: albob@strongdm.com\n        firstName: al\n        lastName: bob\n        tags:\n          env: dev\n          region: us-west\n  test-service:\n    type: sdm:Account\n    properties:\n      service:\n        name: test-service\n        tags:\n          env: dev\n          region: us-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Account can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/account:Account example a-12345678\n```\n",
             "properties": {
                 "service": {
                     "$ref": "#/types/sdm:index/AccountService:AccountService",
@@ -16450,6 +16636,9 @@
                 "gcpStore": {
                     "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
                 },
+                "keyfactorX509Store": {
+                    "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
+                },
                 "vaultApprole": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
                 },
@@ -16509,6 +16698,9 @@
                 },
                 "gcpStore": {
                     "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
+                },
+                "keyfactorX509Store": {
+                    "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                 },
                 "vaultApprole": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
@@ -16571,6 +16763,9 @@
                     },
                     "gcpStore": {
                         "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
+                    },
+                    "keyfactorX509Store": {
+                        "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                     },
                     "vaultApprole": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultApprole:SecretStoreVaultApprole"
@@ -16818,10 +17013,14 @@
     },
     "functions": {
         "sdm:index/getAccount:getAccount": {
-            "description": "Accounts are users that have access to strongDM. There are two types of accounts:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst user-queries = sdm.getAccount({\n    email: \"*@strongdm.com\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n    type: \"user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nuser_queries = sdm.get_account(email=\"*@strongdm.com\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n    type=\"user\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user_queries = Sdm.GetAccount.Invoke(new()\n    {\n        Email = \"*@strongdm.com\",\n        Tags = \n        {\n            { \"env\", \"dev\" },\n            { \"region\", \"us-west\" },\n        },\n        Type = \"user\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupAccount(ctx, \u0026sdm.LookupAccountArgs{\n\t\t\tEmail: pulumi.StringRef(\"*@strongdm.com\"),\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t\"region\": \"us-west\",\n\t\t\t},\n\t\t\tType: pulumi.StringRef(\"user\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var user-queries = SdmFunctions.getAccount(GetAccountArgs.builder()\n            .email(\"*@strongdm.com\")\n            .tags(Map.ofEntries(\n                Map.entry(\"env\", \"dev\"),\n                Map.entry(\"region\", \"us-west\")\n            ))\n            .type(\"user\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  user-queries:\n    fn::invoke:\n      Function: sdm:getAccount\n      Arguments:\n        email: '*@strongdm.com'\n        tags:\n          env: dev\n          region: us-west\n        type: user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Accounts are users that have access to strongDM. The types of accounts are:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n 3. **Tokens** are access keys with permissions that can be used for authentication.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst user-queries = sdm.getAccount({\n    email: \"*@strongdm.com\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n    type: \"user\",\n});\nconst api-key-queries = sdm.getAccount({\n    name: \"*-dev\",\n    type: \"api\",\n});\nconst admin-token-queries = sdm.getAccount({\n    name: \"*-prod\",\n    type: \"admin-token\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nuser_queries = sdm.get_account(email=\"*@strongdm.com\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n    type=\"user\")\napi_key_queries = sdm.get_account(name=\"*-dev\",\n    type=\"api\")\nadmin_token_queries = sdm.get_account(name=\"*-prod\",\n    type=\"admin-token\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user_queries = Sdm.GetAccount.Invoke(new()\n    {\n        Email = \"*@strongdm.com\",\n        Tags = \n        {\n            { \"env\", \"dev\" },\n            { \"region\", \"us-west\" },\n        },\n        Type = \"user\",\n    });\n\n    var api_key_queries = Sdm.GetAccount.Invoke(new()\n    {\n        Name = \"*-dev\",\n        Type = \"api\",\n    });\n\n    var admin_token_queries = Sdm.GetAccount.Invoke(new()\n    {\n        Name = \"*-prod\",\n        Type = \"admin-token\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupAccount(ctx, \u0026sdm.LookupAccountArgs{\n\t\t\tEmail: pulumi.StringRef(\"*@strongdm.com\"),\n\t\t\tTags: map[string]interface{}{\n\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t\"region\": \"us-west\",\n\t\t\t},\n\t\t\tType: pulumi.StringRef(\"user\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupAccount(ctx, \u0026sdm.LookupAccountArgs{\n\t\t\tName: pulumi.StringRef(\"*-dev\"),\n\t\t\tType: pulumi.StringRef(\"api\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.LookupAccount(ctx, \u0026sdm.LookupAccountArgs{\n\t\t\tName: pulumi.StringRef(\"*-prod\"),\n\t\t\tType: pulumi.StringRef(\"admin-token\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetAccountArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var user-queries = SdmFunctions.getAccount(GetAccountArgs.builder()\n            .email(\"*@strongdm.com\")\n            .tags(Map.ofEntries(\n                Map.entry(\"env\", \"dev\"),\n                Map.entry(\"region\", \"us-west\")\n            ))\n            .type(\"user\")\n            .build());\n\n        final var api-key-queries = SdmFunctions.getAccount(GetAccountArgs.builder()\n            .name(\"*-dev\")\n            .type(\"api\")\n            .build());\n\n        final var admin-token-queries = SdmFunctions.getAccount(GetAccountArgs.builder()\n            .name(\"*-prod\")\n            .type(\"admin-token\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  user-queries:\n    fn::invoke:\n      Function: sdm:getAccount\n      Arguments:\n        email: '*@strongdm.com'\n        tags:\n          env: dev\n          region: us-west\n        type: user\n  api-key-queries:\n    fn::invoke:\n      Function: sdm:getAccount\n      Arguments:\n        name: '*-dev'\n        type: api\n  admin-token-queries:\n    fn::invoke:\n      Function: sdm:getAccount\n      Arguments:\n        name: '*-prod'\n        type: admin-token\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAccount.\n",
                 "properties": {
+                    "accountType": {
+                        "type": "string",
+                        "description": "Corresponds to the type of token, e.g. api or admin-token.\n"
+                    },
                     "email": {
                         "type": "string",
                         "description": "The User's email address. Must be unique.\n"
@@ -16844,15 +17043,19 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Unique human-readable name of the Service.\n"
+                        "description": "Unique human-readable name of the Token.\n"
                     },
                     "permissionLevel": {
                         "type": "string",
                         "description": "PermissionLevel is the user's permission level e.g. admin, DBA, user.\n"
                     },
+                    "permissions": {
+                        "type": "string",
+                        "description": "Permissions assigned to the token, e.g. role:create.\n"
+                    },
                     "suspended": {
                         "type": "boolean",
-                        "description": "The Service's suspended state.\n"
+                        "description": "Reserved for future use.  Always false for tokens.\n"
                     },
                     "tags": {
                         "type": "object",
@@ -16871,6 +17074,10 @@
             "outputs": {
                 "description": "A collection of values returned by getAccount.\n",
                 "properties": {
+                    "accountType": {
+                        "type": "string",
+                        "description": "Corresponds to the type of token, e.g. api or admin-token.\n"
+                    },
                     "accounts": {
                         "type": "array",
                         "items": {
@@ -16907,11 +17114,15 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Unique human-readable name of the Service.\n"
+                        "description": "Unique human-readable name of the Token.\n"
                     },
                     "permissionLevel": {
                         "type": "string",
                         "description": "PermissionLevel is the user's permission level e.g. admin, DBA, user.\n"
+                    },
+                    "permissions": {
+                        "type": "string",
+                        "description": "Permissions assigned to the token, e.g. role:create.\n"
                     },
                     "suspended": {
                         "type": "boolean",

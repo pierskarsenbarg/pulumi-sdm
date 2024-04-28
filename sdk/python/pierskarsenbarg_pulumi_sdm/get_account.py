@@ -22,7 +22,10 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, accounts=None, email=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, name=None, permission_level=None, suspended=None, tags=None, type=None):
+    def __init__(__self__, account_type=None, accounts=None, email=None, external_id=None, first_name=None, id=None, ids=None, last_name=None, name=None, permission_level=None, permissions=None, suspended=None, tags=None, type=None):
+        if account_type and not isinstance(account_type, str):
+            raise TypeError("Expected argument 'account_type' to be a str")
+        pulumi.set(__self__, "account_type", account_type)
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
@@ -50,6 +53,9 @@ class GetAccountResult:
         if permission_level and not isinstance(permission_level, str):
             raise TypeError("Expected argument 'permission_level' to be a str")
         pulumi.set(__self__, "permission_level", permission_level)
+        if permissions and not isinstance(permissions, str):
+            raise TypeError("Expected argument 'permissions' to be a str")
+        pulumi.set(__self__, "permissions", permissions)
         if suspended and not isinstance(suspended, bool):
             raise TypeError("Expected argument 'suspended' to be a bool")
         pulumi.set(__self__, "suspended", suspended)
@@ -59,6 +65,14 @@ class GetAccountResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="accountType")
+    def account_type(self) -> Optional[str]:
+        """
+        Corresponds to the type of token, e.g. api or admin-token.
+        """
+        return pulumi.get(self, "account_type")
 
     @property
     @pulumi.getter
@@ -121,7 +135,7 @@ class GetAccountResult:
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Unique human-readable name of the Service.
+        Unique human-readable name of the Token.
         """
         return pulumi.get(self, "name")
 
@@ -132,6 +146,14 @@ class GetAccountResult:
         PermissionLevel is the user's permission level e.g. admin, DBA, user.
         """
         return pulumi.get(self, "permission_level")
+
+    @property
+    @pulumi.getter
+    def permissions(self) -> Optional[str]:
+        """
+        Permissions assigned to the token, e.g. role:create.
+        """
+        return pulumi.get(self, "permissions")
 
     @property
     @pulumi.getter
@@ -161,6 +183,7 @@ class AwaitableGetAccountResult(GetAccountResult):
         if False:
             yield self
         return GetAccountResult(
+            account_type=self.account_type,
             accounts=self.accounts,
             email=self.email,
             external_id=self.external_id,
@@ -170,26 +193,30 @@ class AwaitableGetAccountResult(GetAccountResult):
             last_name=self.last_name,
             name=self.name,
             permission_level=self.permission_level,
+            permissions=self.permissions,
             suspended=self.suspended,
             tags=self.tags,
             type=self.type)
 
 
-def get_account(email: Optional[str] = None,
+def get_account(account_type: Optional[str] = None,
+                email: Optional[str] = None,
                 external_id: Optional[str] = None,
                 first_name: Optional[str] = None,
                 id: Optional[str] = None,
                 last_name: Optional[str] = None,
                 name: Optional[str] = None,
                 permission_level: Optional[str] = None,
+                permissions: Optional[str] = None,
                 suspended: Optional[bool] = None,
                 tags: Optional[Mapping[str, Any]] = None,
                 type: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
-    Accounts are users that have access to strongDM. There are two types of accounts:
+    Accounts are users that have access to strongDM. The types of accounts are:
      1. **Users:** humans who are authenticated through username and password or SSO.
      2. **Service Accounts:** machines that are authenticated using a service token.
+     3. **Tokens** are access keys with permissions that can be used for authentication.
     ## Example Usage
 
     ```python
@@ -202,21 +229,28 @@ def get_account(email: Optional[str] = None,
             "region": "us-west",
         },
         type="user")
+    api_key_queries = sdm.get_account(name="*-dev",
+        type="api")
+    admin_token_queries = sdm.get_account(name="*-prod",
+        type="admin-token")
     ```
 
 
+    :param str account_type: Corresponds to the type of token, e.g. api or admin-token.
     :param str email: The User's email address. Must be unique.
     :param str external_id: External ID is an alternative unique ID this user is represented by within an external service.
     :param str first_name: The User's first name.
     :param str id: Unique identifier of the User.
     :param str last_name: The User's last name.
-    :param str name: Unique human-readable name of the Service.
+    :param str name: Unique human-readable name of the Token.
     :param str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
-    :param bool suspended: The Service's suspended state.
+    :param str permissions: Permissions assigned to the token, e.g. role:create.
+    :param bool suspended: Reserved for future use.  Always false for tokens.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     __args__ = dict()
+    __args__['accountType'] = account_type
     __args__['email'] = email
     __args__['externalId'] = external_id
     __args__['firstName'] = first_name
@@ -224,6 +258,7 @@ def get_account(email: Optional[str] = None,
     __args__['lastName'] = last_name
     __args__['name'] = name
     __args__['permissionLevel'] = permission_level
+    __args__['permissions'] = permissions
     __args__['suspended'] = suspended
     __args__['tags'] = tags
     __args__['type'] = type
@@ -231,6 +266,7 @@ def get_account(email: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
+        account_type=pulumi.get(__ret__, 'account_type'),
         accounts=pulumi.get(__ret__, 'accounts'),
         email=pulumi.get(__ret__, 'email'),
         external_id=pulumi.get(__ret__, 'external_id'),
@@ -240,27 +276,31 @@ def get_account(email: Optional[str] = None,
         last_name=pulumi.get(__ret__, 'last_name'),
         name=pulumi.get(__ret__, 'name'),
         permission_level=pulumi.get(__ret__, 'permission_level'),
+        permissions=pulumi.get(__ret__, 'permissions'),
         suspended=pulumi.get(__ret__, 'suspended'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_account)
-def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
+def get_account_output(account_type: Optional[pulumi.Input[Optional[str]]] = None,
+                       email: Optional[pulumi.Input[Optional[str]]] = None,
                        external_id: Optional[pulumi.Input[Optional[str]]] = None,
                        first_name: Optional[pulumi.Input[Optional[str]]] = None,
                        id: Optional[pulumi.Input[Optional[str]]] = None,
                        last_name: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        permission_level: Optional[pulumi.Input[Optional[str]]] = None,
+                       permissions: Optional[pulumi.Input[Optional[str]]] = None,
                        suspended: Optional[pulumi.Input[Optional[bool]]] = None,
                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
-    Accounts are users that have access to strongDM. There are two types of accounts:
+    Accounts are users that have access to strongDM. The types of accounts are:
      1. **Users:** humans who are authenticated through username and password or SSO.
      2. **Service Accounts:** machines that are authenticated using a service token.
+     3. **Tokens** are access keys with permissions that can be used for authentication.
     ## Example Usage
 
     ```python
@@ -273,17 +313,23 @@ def get_account_output(email: Optional[pulumi.Input[Optional[str]]] = None,
             "region": "us-west",
         },
         type="user")
+    api_key_queries = sdm.get_account(name="*-dev",
+        type="api")
+    admin_token_queries = sdm.get_account(name="*-prod",
+        type="admin-token")
     ```
 
 
+    :param str account_type: Corresponds to the type of token, e.g. api or admin-token.
     :param str email: The User's email address. Must be unique.
     :param str external_id: External ID is an alternative unique ID this user is represented by within an external service.
     :param str first_name: The User's first name.
     :param str id: Unique identifier of the User.
     :param str last_name: The User's last name.
-    :param str name: Unique human-readable name of the Service.
+    :param str name: Unique human-readable name of the Token.
     :param str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
-    :param bool suspended: The Service's suspended state.
+    :param str permissions: Permissions assigned to the token, e.g. role:create.
+    :param bool suspended: Reserved for future use.  Always false for tokens.
     :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """

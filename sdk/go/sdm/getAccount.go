@@ -11,9 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Accounts are users that have access to strongDM. There are two types of accounts:
+// Accounts are users that have access to strongDM. The types of accounts are:
 //  1. **Users:** humans who are authenticated through username and password or SSO.
 //  2. **Service Accounts:** machines that are authenticated using a service token.
+//  3. **Tokens** are access keys with permissions that can be used for authentication.
 //
 // ## Example Usage
 //
@@ -40,6 +41,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = sdm.LookupAccount(ctx, &sdm.LookupAccountArgs{
+//				Name: pulumi.StringRef("*-dev"),
+//				Type: pulumi.StringRef("api"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = sdm.LookupAccount(ctx, &sdm.LookupAccountArgs{
+//				Name: pulumi.StringRef("*-prod"),
+//				Type: pulumi.StringRef("admin-token"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -57,6 +72,8 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountArgs struct {
+	// Corresponds to the type of token, e.g. api or admin-token.
+	AccountType *string `pulumi:"accountType"`
 	// The User's email address. Must be unique.
 	Email *string `pulumi:"email"`
 	// External ID is an alternative unique ID this user is represented by within an external service.
@@ -67,11 +84,13 @@ type LookupAccountArgs struct {
 	Id *string `pulumi:"id"`
 	// The User's last name.
 	LastName *string `pulumi:"lastName"`
-	// Unique human-readable name of the Service.
+	// Unique human-readable name of the Token.
 	Name *string `pulumi:"name"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel *string `pulumi:"permissionLevel"`
-	// The Service's suspended state.
+	// Permissions assigned to the token, e.g. role:create.
+	Permissions *string `pulumi:"permissions"`
+	// Reserved for future use.  Always false for tokens.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -81,6 +100,8 @@ type LookupAccountArgs struct {
 
 // A collection of values returned by getAccount.
 type LookupAccountResult struct {
+	// Corresponds to the type of token, e.g. api or admin-token.
+	AccountType *string `pulumi:"accountType"`
 	// A single element list containing a map, where each key lists one of the following objects:
 	// * service:
 	Accounts []GetAccountAccount `pulumi:"accounts"`
@@ -96,10 +117,12 @@ type LookupAccountResult struct {
 	Ids []string `pulumi:"ids"`
 	// The User's last name.
 	LastName *string `pulumi:"lastName"`
-	// Unique human-readable name of the Service.
+	// Unique human-readable name of the Token.
 	Name *string `pulumi:"name"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel *string `pulumi:"permissionLevel"`
+	// Permissions assigned to the token, e.g. role:create.
+	Permissions *string `pulumi:"permissions"`
 	// Suspended is a read only field for the User's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
@@ -122,6 +145,8 @@ func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountOutputArgs struct {
+	// Corresponds to the type of token, e.g. api or admin-token.
+	AccountType pulumi.StringPtrInput `pulumi:"accountType"`
 	// The User's email address. Must be unique.
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// External ID is an alternative unique ID this user is represented by within an external service.
@@ -132,11 +157,13 @@ type LookupAccountOutputArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The User's last name.
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
-	// Unique human-readable name of the Service.
+	// Unique human-readable name of the Token.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// PermissionLevel is the user's permission level e.g. admin, DBA, user.
 	PermissionLevel pulumi.StringPtrInput `pulumi:"permissionLevel"`
-	// The Service's suspended state.
+	// Permissions assigned to the token, e.g. role:create.
+	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
+	// Reserved for future use.  Always false for tokens.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -161,6 +188,11 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountRe
 
 func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
 	return o
+}
+
+// Corresponds to the type of token, e.g. api or admin-token.
+func (o LookupAccountResultOutput) AccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.AccountType }).(pulumi.StringPtrOutput)
 }
 
 // A single element list containing a map, where each key lists one of the following objects:
@@ -199,7 +231,7 @@ func (o LookupAccountResultOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
-// Unique human-readable name of the Service.
+// Unique human-readable name of the Token.
 func (o LookupAccountResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -207,6 +239,11 @@ func (o LookupAccountResultOutput) Name() pulumi.StringPtrOutput {
 // PermissionLevel is the user's permission level e.g. admin, DBA, user.
 func (o LookupAccountResultOutput) PermissionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAccountResult) *string { return v.PermissionLevel }).(pulumi.StringPtrOutput)
+}
+
+// Permissions assigned to the token, e.g. role:create.
+func (o LookupAccountResultOutput) Permissions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.Permissions }).(pulumi.StringPtrOutput)
 }
 
 // Suspended is a read only field for the User's suspended state.

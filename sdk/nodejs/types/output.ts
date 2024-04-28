@@ -62,6 +62,10 @@ export interface GetAccountAccount {
      */
     services: outputs.GetAccountAccountService[];
     /**
+     * A Token is an account providing tokenized access for automation or integration use. Tokens include admin tokens, API keys, and SCIM tokens.
+     */
+    tokens: outputs.GetAccountAccountToken[];
+    /**
      * A User can connect to resources they are granted directly, or granted via roles.
      */
     users: outputs.GetAccountAccountUser[];
@@ -73,11 +77,50 @@ export interface GetAccountAccountService {
      */
     id?: string;
     /**
-     * Unique human-readable name of the Service.
+     * Unique human-readable name of the Token.
      */
     name?: string;
     /**
-     * The Service's suspended state.
+     * Reserved for future use.  Always false for tokens.
+     */
+    suspended?: boolean;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetAccountAccountToken {
+    /**
+     * Corresponds to the type of token, e.g. api or admin-token.
+     */
+    accountType?: string;
+    /**
+     * The timestamp when the Token will expire.
+     */
+    deadline?: string;
+    /**
+     * Duration from token creation to expiration.
+     */
+    duration?: string;
+    /**
+     * Unique identifier of the User.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Token.
+     */
+    name?: string;
+    /**
+     * Permissions assigned to the token, e.g. role:create.
+     */
+    permissions?: string[];
+    /**
+     * The timestamp when the Token was last rekeyed.
+     */
+    rekeyed?: string;
+    /**
+     * Reserved for future use.  Always false for tokens.
      */
     suspended?: boolean;
     /**
@@ -116,7 +159,7 @@ export interface GetAccountAccountUser {
      */
     permissionLevel?: string;
     /**
-     * The Service's suspended state.
+     * Reserved for future use.  Always false for tokens.
      */
     suspended: boolean;
     /**
@@ -5457,6 +5500,7 @@ export interface GetSecretStoreSecretStore {
     delineaStores: outputs.GetSecretStoreSecretStoreDelineaStore[];
     gcpCertX509Stores: outputs.GetSecretStoreSecretStoreGcpCertX509Store[];
     gcpStores: outputs.GetSecretStoreSecretStoreGcpStore[];
+    keyfactorX509Stores: outputs.GetSecretStoreSecretStoreKeyfactorX509Store[];
     vaultApproleCertSshes: outputs.GetSecretStoreSecretStoreVaultApproleCertSsh[];
     vaultApproleCertX509s: outputs.GetSecretStoreSecretStoreVaultApproleCertX509[];
     vaultApproles: outputs.GetSecretStoreSecretStoreVaultApprole[];
@@ -5690,6 +5734,61 @@ export interface GetSecretStoreSecretStoreGcpStore {
      * The GCP project ID to target.
      */
     projectId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreKeyfactorX509Store {
+    /**
+     * Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+     */
+    caFilePath?: string;
+    /**
+     * Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+     */
+    certificateFilePath?: string;
+    /**
+     * Name of EJBCA certificate authority that will enroll CSR.
+     */
+    defaultCertificateAuthorityName?: string;
+    /**
+     * Certificate profile name that EJBCA will enroll the CSR with.
+     */
+    defaultCertificateProfileName?: string;
+    /**
+     * End entity profile that EJBCA will enroll the CSR with.
+     */
+    defaultEndEntityProfileName?: string;
+    /**
+     * code used by EJBCA during enrollment. May be left blank if no code is required.
+     */
+    enrollmentCodeEnvVar?: string;
+    /**
+     * username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+     */
+    enrollmentUsernameEnvVar?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+     */
+    keyFilePath?: string;
+    /**
+     * optional environment variable housing the password that is used to decrypt the key file.
+     */
+    keyPasswordEnvVar?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -10966,6 +11065,57 @@ export interface SecretStoreGcpStore {
      * The GCP project ID to target.
      */
     projectId: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreKeyfactorX509Store {
+    /**
+     * Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+     */
+    caFilePath?: string;
+    /**
+     * Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+     */
+    certificateFilePath: string;
+    /**
+     * Name of EJBCA certificate authority that will enroll CSR.
+     */
+    defaultCertificateAuthorityName: string;
+    /**
+     * Certificate profile name that EJBCA will enroll the CSR with.
+     */
+    defaultCertificateProfileName: string;
+    /**
+     * End entity profile that EJBCA will enroll the CSR with.
+     */
+    defaultEndEntityProfileName: string;
+    /**
+     * code used by EJBCA during enrollment. May be left blank if no code is required.
+     */
+    enrollmentCodeEnvVar?: string;
+    /**
+     * username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+     */
+    enrollmentUsernameEnvVar?: string;
+    /**
+     * Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+     */
+    keyFilePath?: string;
+    /**
+     * optional environment variable housing the password that is used to decrypt the key file.
+     */
+    keyPasswordEnvVar?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
     /**
      * Tags is a map of key, value pairs.
      */
