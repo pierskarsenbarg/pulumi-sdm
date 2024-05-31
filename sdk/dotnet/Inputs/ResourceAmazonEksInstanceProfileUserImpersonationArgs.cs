@@ -78,18 +78,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the remote identity group to use for remote identity connections.
-        /// </summary>
-        [Input("remoteIdentityGroupId")]
-        public Input<string>? RemoteIdentityGroupId { get; set; }
-
-        /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        /// </summary>
-        [Input("remoteIdentityHealthcheckUsername")]
-        public Input<string>? RemoteIdentityHealthcheckUsername { get; set; }
-
-        /// <summary>
         /// The role to assume after logging in.
         /// </summary>
         [Input("roleArn")]

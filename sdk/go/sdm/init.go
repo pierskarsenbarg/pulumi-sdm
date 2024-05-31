@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApprovalWorkflowApprover{}
 	case "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep":
 		r = &ApprovalWorkflowStep{}
+	case "sdm:index/identityAlias:IdentityAlias":
+		r = &IdentityAlias{}
+	case "sdm:index/identitySet:IdentitySet":
+		r = &IdentitySet{}
 	case "sdm:index/node:Node":
 		r = &Node{}
 	case "sdm:index/peeringGroup:PeeringGroup":
@@ -109,6 +113,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sdm",
 		"index/approvalWorkflowStep",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/identityAlias",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/identitySet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

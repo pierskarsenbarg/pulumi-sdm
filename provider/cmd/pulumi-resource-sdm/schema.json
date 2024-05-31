@@ -353,6 +353,14 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -364,14 +372,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -504,6 +504,14 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -515,14 +523,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -751,6 +751,14 @@
                     "type": "string",
                     "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -762,14 +770,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -850,6 +850,14 @@
                     "type": "string",
                     "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -861,14 +869,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -955,14 +955,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -1664,6 +1656,14 @@
                     "type": "boolean",
                     "description": "If true, prefer environment variables to authenticate connection even if EC2 roles are configured.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -1675,14 +1675,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -1745,6 +1737,14 @@
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -1756,14 +1756,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -3253,6 +3245,14 @@
                     "type": "string",
                     "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -3260,14 +3260,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -3716,6 +3708,14 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -3727,14 +3727,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -3867,6 +3859,14 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -3878,14 +3878,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -5605,6 +5597,14 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -5616,14 +5616,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -6490,6 +6482,14 @@
                     "type": "string",
                     "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "keyType": {
                     "type": "string",
                     "description": "The key type to use e.g. rsa-2048 or ed25519\n"
@@ -6509,14 +6509,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -7202,7 +7194,7 @@
                 "projectId"
             ]
         },
-        "sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store": {
+        "sdm:index/SecretStoreKeyfactorSshStore:SecretStoreKeyfactorSshStore": {
             "properties": {
                 "caFilePath": {
                     "type": "string",
@@ -7236,9 +7228,65 @@
                     "type": "string",
                     "description": "Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.\n"
                 },
-                "keyPasswordEnvVar": {
+                "name": {
                     "type": "string",
-                    "description": "optional environment variable housing the password that is used to decrypt the key file.\n"
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateFilePath",
+                "defaultCertificateAuthorityName",
+                "defaultCertificateProfileName",
+                "defaultEndEntityProfileName",
+                "name",
+                "serverAddress"
+            ]
+        },
+        "sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store": {
+            "properties": {
+                "caFilePath": {
+                    "type": "string",
+                    "description": "Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.\n"
+                },
+                "certificateFilePath": {
+                    "type": "string",
+                    "description": "Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.\n"
+                },
+                "defaultCertificateAuthorityName": {
+                    "type": "string",
+                    "description": "Name of EJBCA certificate authority that will enroll CSR.\n"
+                },
+                "defaultCertificateProfileName": {
+                    "type": "string",
+                    "description": "Certificate profile name that EJBCA will enroll the CSR with.\n"
+                },
+                "defaultEndEntityProfileName": {
+                    "type": "string",
+                    "description": "End entity profile that EJBCA will enroll the CSR with.\n"
+                },
+                "enrollmentCodeEnvVar": {
+                    "type": "string",
+                    "description": "code used by EJBCA during enrollment. May be left blank if no code is required.\n"
+                },
+                "enrollmentUsernameEnvVar": {
+                    "type": "string",
+                    "description": "username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.\n"
+                },
+                "keyFilePath": {
+                    "type": "string",
+                    "description": "Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.\n"
                 },
                 "name": {
                     "type": "string",
@@ -7378,6 +7426,62 @@
                 "pkiMountPoint",
                 "serverAddress",
                 "signingRole"
+            ]
+        },
+        "sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "serverAddress"
+            ]
+        },
+        "sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "serverAddress"
             ]
         },
         "sdm:index/SecretStoreVaultTls:SecretStoreVaultTls": {
@@ -7882,6 +7986,40 @@
                 "id": {
                     "type": "string",
                     "description": "Unique identifier of the ApprovalWorkflowStep.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getIdentityAliasIdentityAlias:getIdentityAliasIdentityAlias": {
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account for this identity alias.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the IdentityAlias.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The identity set.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to be used as the identity alias for this account.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getIdentitySetIdentitySet:getIdentitySetIdentitySet": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the IdentitySet.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the IdentitySet.\n"
                 }
             },
             "type": "object"
@@ -8803,6 +8941,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -8814,14 +8960,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -8924,6 +9062,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -8935,14 +9081,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -9191,6 +9329,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -9202,14 +9348,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -9273,6 +9411,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -9284,14 +9430,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -9361,14 +9499,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -9881,6 +10011,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -9892,14 +10030,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -9949,6 +10079,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -9960,14 +10098,6 @@
                 "region": {
                     "type": "string",
                     "description": "The AWS region to connect to.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "roleArn": {
                     "type": "string",
@@ -11198,6 +11328,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -11205,14 +11343,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -11579,6 +11709,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -11590,14 +11728,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -11700,6 +11830,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -11711,14 +11849,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -13139,6 +13269,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -13150,14 +13288,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -13887,6 +14017,14 @@
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "keyType": {
                     "type": "string",
                     "description": "The key type to use e.g. rsa-2048 or ed25519\n"
@@ -13906,14 +14044,6 @@
                 "portOverride": {
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
-                },
-                "remoteIdentityGroupId": {
-                    "type": "string",
-                    "description": "The ID of the remote identity group to use for remote identity connections.\n"
-                },
-                "remoteIdentityHealthcheckUsername": {
-                    "type": "string",
-                    "description": "The username to use for healthchecks, when clients otherwise connect with their own remote identity username.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -14332,6 +14462,12 @@
                         "$ref": "#/types/sdm:index/getSecretStoreSecretStoreGcpStore:getSecretStoreSecretStoreGcpStore"
                     }
                 },
+                "keyfactorSshStores": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreKeyfactorSshStore:getSecretStoreSecretStoreKeyfactorSshStore"
+                    }
+                },
                 "keyfactorX509Stores": {
                     "type": "array",
                     "items": {
@@ -14354,6 +14490,18 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultApprole:getSecretStoreSecretStoreVaultApprole"
+                    }
+                },
+                "vaultAwsEc2s": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultAwsEc2:getSecretStoreSecretStoreVaultAwsEc2"
+                    }
+                },
+                "vaultAwsIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getSecretStoreSecretStoreVaultAwsIam:getSecretStoreSecretStoreVaultAwsIam"
                     }
                 },
                 "vaultTls": {
@@ -14405,10 +14553,13 @@
                 "delineaStores",
                 "gcpCertX509Stores",
                 "gcpStores",
+                "keyfactorSshStores",
                 "keyfactorX509Stores",
                 "vaultApproles",
                 "vaultApproleCertSshes",
                 "vaultApproleCertX509s",
+                "vaultAwsEc2s",
+                "vaultAwsIams",
                 "vaultTls",
                 "vaultTlsCertSshes",
                 "vaultTlsCertX509s",
@@ -14698,7 +14849,7 @@
             },
             "type": "object"
         },
-        "sdm:index/getSecretStoreSecretStoreKeyfactorX509Store:getSecretStoreSecretStoreKeyfactorX509Store": {
+        "sdm:index/getSecretStoreSecretStoreKeyfactorSshStore:getSecretStoreSecretStoreKeyfactorSshStore": {
             "properties": {
                 "caFilePath": {
                     "type": "string",
@@ -14736,9 +14887,61 @@
                     "type": "string",
                     "description": "Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.\n"
                 },
-                "keyPasswordEnvVar": {
+                "name": {
                     "type": "string",
-                    "description": "optional environment variable housing the password that is used to decrypt the key file.\n"
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getSecretStoreSecretStoreKeyfactorX509Store:getSecretStoreSecretStoreKeyfactorX509Store": {
+            "properties": {
+                "caFilePath": {
+                    "type": "string",
+                    "description": "Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.\n"
+                },
+                "certificateFilePath": {
+                    "type": "string",
+                    "description": "Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.\n"
+                },
+                "defaultCertificateAuthorityName": {
+                    "type": "string",
+                    "description": "Name of EJBCA certificate authority that will enroll CSR.\n"
+                },
+                "defaultCertificateProfileName": {
+                    "type": "string",
+                    "description": "Certificate profile name that EJBCA will enroll the CSR with.\n"
+                },
+                "defaultEndEntityProfileName": {
+                    "type": "string",
+                    "description": "End entity profile that EJBCA will enroll the CSR with.\n"
+                },
+                "enrollmentCodeEnvVar": {
+                    "type": "string",
+                    "description": "code used by EJBCA during enrollment. May be left blank if no code is required.\n"
+                },
+                "enrollmentUsernameEnvVar": {
+                    "type": "string",
+                    "description": "username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "keyFilePath": {
+                    "type": "string",
+                    "description": "Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.\n"
                 },
                 "name": {
                     "type": "string",
@@ -14855,6 +15058,62 @@
                 "signingRole": {
                     "type": "string",
                     "description": "The signing role to be used for signing certificates\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getSecretStoreSecretStoreVaultAwsEc2:getSecretStoreSecretStoreVaultAwsEc2": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getSecretStoreSecretStoreVaultAwsIam:getSecretStoreSecretStoreVaultAwsIam": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the SecretStore.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the SecretStore.\n"
+                },
+                "namespace": {
+                    "type": "string",
+                    "description": "The namespace to make requests within\n"
+                },
+                "serverAddress": {
+                    "type": "string",
+                    "description": "The URL of the Vault to target\n"
                 },
                 "tags": {
                     "type": "object",
@@ -15235,7 +15494,7 @@
     },
     "resources": {
         "sdm:index/account:Account": {
-            "description": "Accounts are users that have access to strongDM. The types of accounts are:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n 3. **Tokens** are access keys with permissions that can be used for authentication.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst test_user = new sdm.Account(\"test-user\", {user: {\n    email: \"albob@strongdm.com\",\n    firstName: \"al\",\n    lastName: \"bob\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst test_service = new sdm.Account(\"test-service\", {service: {\n    name: \"test-service\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_user = sdm.Account(\"test-user\", user=sdm.AccountUserArgs(\n    email=\"albob@strongdm.com\",\n    first_name=\"al\",\n    last_name=\"bob\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\ntest_service = sdm.Account(\"test-service\", service=sdm.AccountServiceArgs(\n    name=\"test-service\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_user = new Sdm.Account(\"test-user\", new()\n    {\n        User = new Sdm.Inputs.AccountUserArgs\n        {\n            Email = \"albob@strongdm.com\",\n            FirstName = \"al\",\n            LastName = \"bob\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var test_service = new Sdm.Account(\"test-service\", new()\n    {\n        Service = new Sdm.Inputs.AccountServiceArgs\n        {\n            Name = \"test-service\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccount(ctx, \"test-user\", \u0026sdm.AccountArgs{\n\t\t\tUser: \u0026sdm.AccountUserArgs{\n\t\t\t\tEmail:     pulumi.String(\"albob@strongdm.com\"),\n\t\t\t\tFirstName: pulumi.String(\"al\"),\n\t\t\t\tLastName:  pulumi.String(\"bob\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccount(ctx, \"test-service\", \u0026sdm.AccountArgs{\n\t\t\tService: \u0026sdm.AccountServiceArgs{\n\t\t\t\tName: pulumi.String(\"test-service\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Account;\nimport com.pulumi.sdm.AccountArgs;\nimport com.pulumi.sdm.inputs.AccountUserArgs;\nimport com.pulumi.sdm.inputs.AccountServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_user = new Account(\"test-user\", AccountArgs.builder()        \n            .user(AccountUserArgs.builder()\n                .email(\"albob@strongdm.com\")\n                .firstName(\"al\")\n                .lastName(\"bob\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var test_service = new Account(\"test-service\", AccountArgs.builder()        \n            .service(AccountServiceArgs.builder()\n                .name(\"test-service\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-user:\n    type: sdm:Account\n    properties:\n      user:\n        email: albob@strongdm.com\n        firstName: al\n        lastName: bob\n        tags:\n          env: dev\n          region: us-west\n  test-service:\n    type: sdm:Account\n    properties:\n      service:\n        name: test-service\n        tags:\n          env: dev\n          region: us-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Account can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/account:Account example a-12345678\n```\n",
+            "description": "Accounts are users that have access to strongDM. The types of accounts are:\n 1. **Users:** humans who are authenticated through username and password or SSO.\n 2. **Service Accounts:** machines that are authenticated using a service token.\n 3. **Tokens** are access keys with permissions that can be used for authentication.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst test_user = new sdm.Account(\"test-user\", {user: {\n    email: \"albob@strongdm.com\",\n    firstName: \"al\",\n    lastName: \"bob\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst test_service = new sdm.Account(\"test-service\", {service: {\n    name: \"test-service\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_user = sdm.Account(\"test-user\", user=sdm.AccountUserArgs(\n    email=\"albob@strongdm.com\",\n    first_name=\"al\",\n    last_name=\"bob\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\ntest_service = sdm.Account(\"test-service\", service=sdm.AccountServiceArgs(\n    name=\"test-service\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var test_user = new Sdm.Account(\"test-user\", new()\n    {\n        User = new Sdm.Inputs.AccountUserArgs\n        {\n            Email = \"albob@strongdm.com\",\n            FirstName = \"al\",\n            LastName = \"bob\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var test_service = new Sdm.Account(\"test-service\", new()\n    {\n        Service = new Sdm.Inputs.AccountServiceArgs\n        {\n            Name = \"test-service\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccount(ctx, \"test-user\", \u0026sdm.AccountArgs{\n\t\t\tUser: \u0026sdm.AccountUserArgs{\n\t\t\t\tEmail:     pulumi.String(\"albob@strongdm.com\"),\n\t\t\t\tFirstName: pulumi.String(\"al\"),\n\t\t\t\tLastName:  pulumi.String(\"bob\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewAccount(ctx, \"test-service\", \u0026sdm.AccountArgs{\n\t\t\tService: \u0026sdm.AccountServiceArgs{\n\t\t\t\tName: pulumi.String(\"test-service\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Account;\nimport com.pulumi.sdm.AccountArgs;\nimport com.pulumi.sdm.inputs.AccountUserArgs;\nimport com.pulumi.sdm.inputs.AccountServiceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var test_user = new Account(\"test-user\", AccountArgs.builder()\n            .user(AccountUserArgs.builder()\n                .email(\"albob@strongdm.com\")\n                .firstName(\"al\")\n                .lastName(\"bob\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var test_service = new Account(\"test-service\", AccountArgs.builder()\n            .service(AccountServiceArgs.builder()\n                .name(\"test-service\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  test-user:\n    type: sdm:Account\n    properties:\n      user:\n        email: albob@strongdm.com\n        firstName: al\n        lastName: bob\n        tags:\n          env: dev\n          region: us-west\n  test-service:\n    type: sdm:Account\n    properties:\n      service:\n        name: test-service\n        tags:\n          env: dev\n          region: us-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Account can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/account:Account example a-12345678\n```\n",
             "properties": {
                 "service": {
                     "$ref": "#/types/sdm:index/AccountService:AccountService",
@@ -15272,7 +15531,7 @@
             }
         },
         "sdm:index/accountAttachment:AccountAttachment": {
-            "description": "AccountAttachments assign an account to a role.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst testAccountAttachment = new sdm.AccountAttachment(\"testAccountAttachment\", {\n    accountId: \"a-00000054\",\n    roleId: \"r-12355562\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_account_attachment = sdm.AccountAttachment(\"testAccountAttachment\",\n    account_id=\"a-00000054\",\n    role_id=\"r-12355562\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testAccountAttachment = new Sdm.AccountAttachment(\"testAccountAttachment\", new()\n    {\n        AccountId = \"a-00000054\",\n        RoleId = \"r-12355562\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccountAttachment(ctx, \"testAccountAttachment\", \u0026sdm.AccountAttachmentArgs{\n\t\t\tAccountId: pulumi.String(\"a-00000054\"),\n\t\t\tRoleId:    pulumi.String(\"r-12355562\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.AccountAttachment;\nimport com.pulumi.sdm.AccountAttachmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testAccountAttachment = new AccountAttachment(\"testAccountAttachment\", AccountAttachmentArgs.builder()        \n            .accountId(\"a-00000054\")\n            .roleId(\"r-12355562\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testAccountAttachment:\n    type: sdm:AccountAttachment\n    properties:\n      accountId: a-00000054\n      roleId: r-12355562\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA AccountAttachment can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678\n```\n",
+            "description": "AccountAttachments assign an account to a role.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst testAccountAttachment = new sdm.AccountAttachment(\"testAccountAttachment\", {\n    accountId: \"a-00000054\",\n    roleId: \"r-12355562\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_account_attachment = sdm.AccountAttachment(\"testAccountAttachment\",\n    account_id=\"a-00000054\",\n    role_id=\"r-12355562\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testAccountAttachment = new Sdm.AccountAttachment(\"testAccountAttachment\", new()\n    {\n        AccountId = \"a-00000054\",\n        RoleId = \"r-12355562\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewAccountAttachment(ctx, \"testAccountAttachment\", \u0026sdm.AccountAttachmentArgs{\n\t\t\tAccountId: pulumi.String(\"a-00000054\"),\n\t\t\tRoleId:    pulumi.String(\"r-12355562\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.AccountAttachment;\nimport com.pulumi.sdm.AccountAttachmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testAccountAttachment = new AccountAttachment(\"testAccountAttachment\", AccountAttachmentArgs.builder()\n            .accountId(\"a-00000054\")\n            .roleId(\"r-12355562\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testAccountAttachment:\n    type: sdm:AccountAttachment\n    properties:\n      accountId: a-00000054\n      roleId: r-12355562\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA AccountAttachment can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/accountAttachment:AccountAttachment example aa-12345678\n```\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -15321,7 +15580,7 @@
             }
         },
         "sdm:index/approvalWorkflow:ApprovalWorkflow": {
-            "description": "ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized\n approvers and be approved or denied.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst manualApprovalWorkflow = new sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", {approvalMode: \"manual\"});\nconst autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", {approvalMode: \"automatic\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nmanual_approval_workflow = sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", approval_mode=\"manual\")\nauto_grant_approval_workflow = sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", approval_mode=\"automatic\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var manualApprovalWorkflow = new Sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"manual\",\n    });\n\n    var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"automatic\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"manual\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflow(ctx, \"autoGrantApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"automatic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflow;\nimport com.pulumi.sdm.ApprovalWorkflowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var manualApprovalWorkflow = new ApprovalWorkflow(\"manualApprovalWorkflow\", ApprovalWorkflowArgs.builder()        \n            .approvalMode(\"manual\")\n            .build());\n\n        var autoGrantApprovalWorkflow = new ApprovalWorkflow(\"autoGrantApprovalWorkflow\", ApprovalWorkflowArgs.builder()        \n            .approvalMode(\"automatic\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  manualApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: manual\n  autoGrantApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: automatic\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflow:ApprovalWorkflow example af-12345678\n```\n",
+            "description": "ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized\n approvers and be approved or denied.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst manualApprovalWorkflow = new sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", {approvalMode: \"manual\"});\nconst autoGrantApprovalWorkflow = new sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", {approvalMode: \"automatic\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nmanual_approval_workflow = sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", approval_mode=\"manual\")\nauto_grant_approval_workflow = sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", approval_mode=\"automatic\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var manualApprovalWorkflow = new Sdm.ApprovalWorkflow(\"manualApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"manual\",\n    });\n\n    var autoGrantApprovalWorkflow = new Sdm.ApprovalWorkflow(\"autoGrantApprovalWorkflow\", new()\n    {\n        ApprovalMode = \"automatic\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"manual\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflow(ctx, \"autoGrantApprovalWorkflow\", \u0026sdm.ApprovalWorkflowArgs{\n\t\t\tApprovalMode: pulumi.String(\"automatic\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflow;\nimport com.pulumi.sdm.ApprovalWorkflowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var manualApprovalWorkflow = new ApprovalWorkflow(\"manualApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"manual\")\n            .build());\n\n        var autoGrantApprovalWorkflow = new ApprovalWorkflow(\"autoGrantApprovalWorkflow\", ApprovalWorkflowArgs.builder()\n            .approvalMode(\"automatic\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  manualApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: manual\n  autoGrantApprovalWorkflow:\n    type: sdm:ApprovalWorkflow\n    properties:\n      approvalMode: automatic\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflow:ApprovalWorkflow example af-12345678\n```\n",
             "properties": {
                 "approvalMode": {
                     "type": "string",
@@ -15377,7 +15636,7 @@
             }
         },
         "sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover": {
-            "description": "ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst approvalWorkflowApproverAccountExample = new sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", {\n    accountId: \"a-234605\",\n    approvalFlowId: \"af-6799234\",\n    approvalStepId: \"afs-2956266\",\n});\nconst approvalWorkflowApproverRoleExample = new sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", {\n    approvalFlowId: \"af-1935694\",\n    approvalStepId: \"afs-9245942\",\n    roleId: \"r-542982\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\napproval_workflow_approver_account_example = sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\",\n    account_id=\"a-234605\",\n    approval_flow_id=\"af-6799234\",\n    approval_step_id=\"afs-2956266\")\napproval_workflow_approver_role_example = sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\",\n    approval_flow_id=\"af-1935694\",\n    approval_step_id=\"afs-9245942\",\n    role_id=\"r-542982\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approvalWorkflowApproverAccountExample = new Sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", new()\n    {\n        AccountId = \"a-234605\",\n        ApprovalFlowId = \"af-6799234\",\n        ApprovalStepId = \"afs-2956266\",\n    });\n\n    var approvalWorkflowApproverRoleExample = new Sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", new()\n    {\n        ApprovalFlowId = \"af-1935694\",\n        ApprovalStepId = \"afs-9245942\",\n        RoleId = \"r-542982\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflowApprover(ctx, \"approvalWorkflowApproverAccountExample\", \u0026sdm.ApprovalWorkflowApproverArgs{\n\t\t\tAccountId:      pulumi.String(\"a-234605\"),\n\t\t\tApprovalFlowId: pulumi.String(\"af-6799234\"),\n\t\t\tApprovalStepId: pulumi.String(\"afs-2956266\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflowApprover(ctx, \"approvalWorkflowApproverRoleExample\", \u0026sdm.ApprovalWorkflowApproverArgs{\n\t\t\tApprovalFlowId: pulumi.String(\"af-1935694\"),\n\t\t\tApprovalStepId: pulumi.String(\"afs-9245942\"),\n\t\t\tRoleId:         pulumi.String(\"r-542982\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflowApprover;\nimport com.pulumi.sdm.ApprovalWorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var approvalWorkflowApproverAccountExample = new ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", ApprovalWorkflowApproverArgs.builder()        \n            .accountId(\"a-234605\")\n            .approvalFlowId(\"af-6799234\")\n            .approvalStepId(\"afs-2956266\")\n            .build());\n\n        var approvalWorkflowApproverRoleExample = new ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", ApprovalWorkflowApproverArgs.builder()        \n            .approvalFlowId(\"af-1935694\")\n            .approvalStepId(\"afs-9245942\")\n            .roleId(\"r-542982\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  approvalWorkflowApproverAccountExample:\n    type: sdm:ApprovalWorkflowApprover\n    properties:\n      accountId: a-234605\n      approvalFlowId: af-6799234\n      approvalStepId: afs-2956266\n  approvalWorkflowApproverRoleExample:\n    type: sdm:ApprovalWorkflowApprover\n    properties:\n      approvalFlowId: af-1935694\n      approvalStepId: afs-9245942\n      roleId: r-542982\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflowApprover can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover example afa-12345678\n```\n",
+            "description": "ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst approvalWorkflowApproverAccountExample = new sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", {\n    accountId: \"a-234605\",\n    approvalFlowId: \"af-6799234\",\n    approvalStepId: \"afs-2956266\",\n});\nconst approvalWorkflowApproverRoleExample = new sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", {\n    approvalFlowId: \"af-1935694\",\n    approvalStepId: \"afs-9245942\",\n    roleId: \"r-542982\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\napproval_workflow_approver_account_example = sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\",\n    account_id=\"a-234605\",\n    approval_flow_id=\"af-6799234\",\n    approval_step_id=\"afs-2956266\")\napproval_workflow_approver_role_example = sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\",\n    approval_flow_id=\"af-1935694\",\n    approval_step_id=\"afs-9245942\",\n    role_id=\"r-542982\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approvalWorkflowApproverAccountExample = new Sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", new()\n    {\n        AccountId = \"a-234605\",\n        ApprovalFlowId = \"af-6799234\",\n        ApprovalStepId = \"afs-2956266\",\n    });\n\n    var approvalWorkflowApproverRoleExample = new Sdm.ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", new()\n    {\n        ApprovalFlowId = \"af-1935694\",\n        ApprovalStepId = \"afs-9245942\",\n        RoleId = \"r-542982\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflowApprover(ctx, \"approvalWorkflowApproverAccountExample\", \u0026sdm.ApprovalWorkflowApproverArgs{\n\t\t\tAccountId:      pulumi.String(\"a-234605\"),\n\t\t\tApprovalFlowId: pulumi.String(\"af-6799234\"),\n\t\t\tApprovalStepId: pulumi.String(\"afs-2956266\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewApprovalWorkflowApprover(ctx, \"approvalWorkflowApproverRoleExample\", \u0026sdm.ApprovalWorkflowApproverArgs{\n\t\t\tApprovalFlowId: pulumi.String(\"af-1935694\"),\n\t\t\tApprovalStepId: pulumi.String(\"afs-9245942\"),\n\t\t\tRoleId:         pulumi.String(\"r-542982\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflowApprover;\nimport com.pulumi.sdm.ApprovalWorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var approvalWorkflowApproverAccountExample = new ApprovalWorkflowApprover(\"approvalWorkflowApproverAccountExample\", ApprovalWorkflowApproverArgs.builder()\n            .accountId(\"a-234605\")\n            .approvalFlowId(\"af-6799234\")\n            .approvalStepId(\"afs-2956266\")\n            .build());\n\n        var approvalWorkflowApproverRoleExample = new ApprovalWorkflowApprover(\"approvalWorkflowApproverRoleExample\", ApprovalWorkflowApproverArgs.builder()\n            .approvalFlowId(\"af-1935694\")\n            .approvalStepId(\"afs-9245942\")\n            .roleId(\"r-542982\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  approvalWorkflowApproverAccountExample:\n    type: sdm:ApprovalWorkflowApprover\n    properties:\n      accountId: a-234605\n      approvalFlowId: af-6799234\n      approvalStepId: afs-2956266\n  approvalWorkflowApproverRoleExample:\n    type: sdm:ApprovalWorkflowApprover\n    properties:\n      approvalFlowId: af-1935694\n      approvalStepId: afs-9245942\n      roleId: r-542982\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflowApprover can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflowApprover:ApprovalWorkflowApprover example afa-12345678\n```\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -15454,7 +15713,7 @@
             }
         },
         "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep": {
-            "description": "ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst approvalWorkflowStepExample = new sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", {approvalFlowId: \"af-343865\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\napproval_workflow_step_example = sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", approval_flow_id=\"af-343865\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approvalWorkflowStepExample = new Sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", new()\n    {\n        ApprovalFlowId = \"af-343865\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflowStep(ctx, \"approvalWorkflowStepExample\", \u0026sdm.ApprovalWorkflowStepArgs{\n\t\t\tApprovalFlowId: pulumi.String(\"af-343865\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflowStep;\nimport com.pulumi.sdm.ApprovalWorkflowStepArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var approvalWorkflowStepExample = new ApprovalWorkflowStep(\"approvalWorkflowStepExample\", ApprovalWorkflowStepArgs.builder()        \n            .approvalFlowId(\"af-343865\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  approvalWorkflowStepExample:\n    type: sdm:ApprovalWorkflowStep\n    properties:\n      approvalFlowId: af-343865\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflowStep can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflowStep:ApprovalWorkflowStep example afs-12345678\n```\n",
+            "description": "ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst approvalWorkflowStepExample = new sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", {approvalFlowId: \"af-343865\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\napproval_workflow_step_example = sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", approval_flow_id=\"af-343865\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approvalWorkflowStepExample = new Sdm.ApprovalWorkflowStep(\"approvalWorkflowStepExample\", new()\n    {\n        ApprovalFlowId = \"af-343865\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewApprovalWorkflowStep(ctx, \"approvalWorkflowStepExample\", \u0026sdm.ApprovalWorkflowStepArgs{\n\t\t\tApprovalFlowId: pulumi.String(\"af-343865\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ApprovalWorkflowStep;\nimport com.pulumi.sdm.ApprovalWorkflowStepArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var approvalWorkflowStepExample = new ApprovalWorkflowStep(\"approvalWorkflowStepExample\", ApprovalWorkflowStepArgs.builder()\n            .approvalFlowId(\"af-343865\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  approvalWorkflowStepExample:\n    type: sdm:ApprovalWorkflowStep\n    properties:\n      approvalFlowId: af-343865\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ApprovalWorkflowStep can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/approvalWorkflowStep:ApprovalWorkflowStep example afs-12345678\n```\n",
             "properties": {
                 "approvalFlowId": {
                     "type": "string",
@@ -15486,8 +15745,95 @@
                 "type": "object"
             }
         },
+        "sdm:index/identityAlias:IdentityAlias": {
+            "description": "IdentityAliases define the username to be used for a specific account\n when connecting to a remote resource using that identity set.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  user:\n    type: sdm:IdentityAlias\n    properties:\n      id: i-0900909\n      username: user\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA IdentityAlias can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/identityAlias:IdentityAlias example i-12345678\n```\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account for this identity alias.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The identity set.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to be used as the identity alias for this account.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "identitySetId",
+                "username"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account for this identity alias.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The identity set.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to be used as the identity alias for this account.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "identitySetId",
+                "username"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IdentityAlias resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account for this identity alias.\n"
+                    },
+                    "identitySetId": {
+                        "type": "string",
+                        "description": "The identity set.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username to be used as the identity alias for this account.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "sdm:index/identitySet:IdentitySet": {
+            "description": "A IdentitySet defines a group of identity aliases.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst _default = new sdm.IdentitySet(\"default\", {});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ndefault = sdm.IdentitySet(\"default\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @default = new Sdm.IdentitySet(\"default\");\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewIdentitySet(ctx, \"default\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.IdentitySet;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var default_ = new IdentitySet(\"default\");\n\n    }\n}\n```\n```yaml\nresources:\n  default:\n    type: sdm:IdentitySet\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA IdentitySet can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/identitySet:IdentitySet example ig-12345678\n```\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the IdentitySet.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the IdentitySet.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IdentitySet resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the IdentitySet.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sdm:index/node:Node": {
-            "description": "Nodes make up the strongDM network, and allow your users to connect securely to your resources.\n There are two types of nodes:\n 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall\n 1. **Gateways:** a relay that also listens for connections from strongDM clients\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst gateway = new sdm.Node(\"gateway\", {gateway: {\n    bindAddress: \"0.0.0.0:21222\",\n    listenAddress: \"165.23.40.1:21222\",\n    name: \"test-gateway\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst relay = new sdm.Node(\"relay\", {relay: {\n    name: \"test-relay\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ngateway = sdm.Node(\"gateway\", gateway=sdm.NodeGatewayArgs(\n    bind_address=\"0.0.0.0:21222\",\n    listen_address=\"165.23.40.1:21222\",\n    name=\"test-gateway\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\nrelay = sdm.Node(\"relay\", relay=sdm.NodeRelayArgs(\n    name=\"test-relay\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gateway = new Sdm.Node(\"gateway\", new()\n    {\n        Gateway = new Sdm.Inputs.NodeGatewayArgs\n        {\n            BindAddress = \"0.0.0.0:21222\",\n            ListenAddress = \"165.23.40.1:21222\",\n            Name = \"test-gateway\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var relay = new Sdm.Node(\"relay\", new()\n    {\n        Relay = new Sdm.Inputs.NodeRelayArgs\n        {\n            Name = \"test-relay\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewNode(ctx, \"gateway\", \u0026sdm.NodeArgs{\n\t\t\tGateway: \u0026sdm.NodeGatewayArgs{\n\t\t\t\tBindAddress:   pulumi.String(\"0.0.0.0:21222\"),\n\t\t\t\tListenAddress: pulumi.String(\"165.23.40.1:21222\"),\n\t\t\t\tName:          pulumi.String(\"test-gateway\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewNode(ctx, \"relay\", \u0026sdm.NodeArgs{\n\t\t\tRelay: \u0026sdm.NodeRelayArgs{\n\t\t\t\tName: pulumi.String(\"test-relay\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Node;\nimport com.pulumi.sdm.NodeArgs;\nimport com.pulumi.sdm.inputs.NodeGatewayArgs;\nimport com.pulumi.sdm.inputs.NodeRelayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gateway = new Node(\"gateway\", NodeArgs.builder()        \n            .gateway(NodeGatewayArgs.builder()\n                .bindAddress(\"0.0.0.0:21222\")\n                .listenAddress(\"165.23.40.1:21222\")\n                .name(\"test-gateway\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var relay = new Node(\"relay\", NodeArgs.builder()        \n            .relay(NodeRelayArgs.builder()\n                .name(\"test-relay\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gateway:\n    type: sdm:Node\n    properties:\n      gateway:\n        bindAddress: 0.0.0.0:21222\n        listenAddress: 165.23.40.1:21222\n        name: test-gateway\n        tags:\n          env: dev\n          region: us-west\n  relay:\n    type: sdm:Node\n    properties:\n      relay:\n        name: test-relay\n        tags:\n          env: dev\n          region: us-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Node can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/node:Node example n-12345678\n```\n",
+            "description": "Nodes make up the strongDM network, and allow your users to connect securely to your resources.\n There are two types of nodes:\n 1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall\n 1. **Gateways:** a relay that also listens for connections from strongDM clients\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst gateway = new sdm.Node(\"gateway\", {gateway: {\n    bindAddress: \"0.0.0.0:21222\",\n    listenAddress: \"165.23.40.1:21222\",\n    name: \"test-gateway\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\nconst relay = new sdm.Node(\"relay\", {relay: {\n    name: \"test-relay\",\n    tags: {\n        env: \"dev\",\n        region: \"us-west\",\n    },\n}});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ngateway = sdm.Node(\"gateway\", gateway=sdm.NodeGatewayArgs(\n    bind_address=\"0.0.0.0:21222\",\n    listen_address=\"165.23.40.1:21222\",\n    name=\"test-gateway\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\nrelay = sdm.Node(\"relay\", relay=sdm.NodeRelayArgs(\n    name=\"test-relay\",\n    tags={\n        \"env\": \"dev\",\n        \"region\": \"us-west\",\n    },\n))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var gateway = new Sdm.Node(\"gateway\", new()\n    {\n        Gateway = new Sdm.Inputs.NodeGatewayArgs\n        {\n            BindAddress = \"0.0.0.0:21222\",\n            ListenAddress = \"165.23.40.1:21222\",\n            Name = \"test-gateway\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n    var relay = new Sdm.Node(\"relay\", new()\n    {\n        Relay = new Sdm.Inputs.NodeRelayArgs\n        {\n            Name = \"test-relay\",\n            Tags = \n            {\n                { \"env\", \"dev\" },\n                { \"region\", \"us-west\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewNode(ctx, \"gateway\", \u0026sdm.NodeArgs{\n\t\t\tGateway: \u0026sdm.NodeGatewayArgs{\n\t\t\t\tBindAddress:   pulumi.String(\"0.0.0.0:21222\"),\n\t\t\t\tListenAddress: pulumi.String(\"165.23.40.1:21222\"),\n\t\t\t\tName:          pulumi.String(\"test-gateway\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewNode(ctx, \"relay\", \u0026sdm.NodeArgs{\n\t\t\tRelay: \u0026sdm.NodeRelayArgs{\n\t\t\t\tName: pulumi.String(\"test-relay\"),\n\t\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\t\"env\":    pulumi.String(\"dev\"),\n\t\t\t\t\t\"region\": pulumi.String(\"us-west\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Node;\nimport com.pulumi.sdm.NodeArgs;\nimport com.pulumi.sdm.inputs.NodeGatewayArgs;\nimport com.pulumi.sdm.inputs.NodeRelayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var gateway = new Node(\"gateway\", NodeArgs.builder()\n            .gateway(NodeGatewayArgs.builder()\n                .bindAddress(\"0.0.0.0:21222\")\n                .listenAddress(\"165.23.40.1:21222\")\n                .name(\"test-gateway\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n        var relay = new Node(\"relay\", NodeArgs.builder()\n            .relay(NodeRelayArgs.builder()\n                .name(\"test-relay\")\n                .tags(Map.ofEntries(\n                    Map.entry(\"env\", \"dev\"),\n                    Map.entry(\"region\", \"us-west\")\n                ))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  gateway:\n    type: sdm:Node\n    properties:\n      gateway:\n        bindAddress: 0.0.0.0:21222\n        listenAddress: 165.23.40.1:21222\n        name: test-gateway\n        tags:\n          env: dev\n          region: us-west\n  relay:\n    type: sdm:Node\n    properties:\n      relay:\n        name: test-relay\n        tags:\n          env: dev\n          region: us-west\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Node can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/node:Node example n-12345678\n```\n",
             "properties": {
                 "gateway": {
                     "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
@@ -15689,7 +16035,7 @@
             }
         },
         "sdm:index/remoteIdentity:RemoteIdentity": {
-            "description": "RemoteIdentities define the username to be used for a specific account\n when connecting to a remote resource using that group.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.RemoteIdentity;\nimport com.pulumi.sdm.RemoteIdentityArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new RemoteIdentity(\"user\", RemoteIdentityArgs.builder()        \n            .id(\"i-0900909\")\n            .username(\"user\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: sdm:RemoteIdentity\n    properties:\n      id: i-0900909\n      username: user\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA RemoteIdentity can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678\n```\n",
+            "description": "RemoteIdentities define the username to be used for a specific account\n when connecting to a remote resource using that group.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  user:\n    type: sdm:RemoteIdentity\n    properties:\n      id: i-0900909\n      username: user\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA RemoteIdentity can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678\n```\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -16532,7 +16878,7 @@
             }
         },
         "sdm:index/role:Role": {
-            "description": "A Role has a list of access rules which determine which Resources the members\n of the Role have access to. An Account can be a member of multiple Roles via\n AccountAttachments.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst engineers = new sdm.Role(\"engineers\", {tags: {\n    foo: \"bar\",\n}});\nconst example_role = new sdm.Role(\"example-role\", {accessRules: JSON.stringify([\n    {\n        tags: {\n            env: \"staging\",\n        },\n    },\n    {\n        type: \"postgres\",\n        tags: {\n            region: \"us-west\",\n            env: \"dev\",\n        },\n    },\n    {\n        ids: [\"rs-093e6f3061eb4dad\"],\n    },\n])});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nengineers = sdm.Role(\"engineers\", tags={\n    \"foo\": \"bar\",\n})\nexample_role = sdm.Role(\"example-role\", access_rules=json.dumps([\n    {\n        \"tags\": {\n            \"env\": \"staging\",\n        },\n    },\n    {\n        \"type\": \"postgres\",\n        \"tags\": {\n            \"region\": \"us-west\",\n            \"env\": \"dev\",\n        },\n    },\n    {\n        \"ids\": [\"rs-093e6f3061eb4dad\"],\n    },\n]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var engineers = new Sdm.Role(\"engineers\", new()\n    {\n        Tags = \n        {\n            { \"foo\", \"bar\" },\n        },\n    });\n\n    var example_role = new Sdm.Role(\"example-role\", new()\n    {\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"env\"] = \"staging\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"postgres\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-west\",\n                    [\"env\"] = \"dev\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"ids\"] = new[]\n                {\n                    \"rs-093e6f3061eb4dad\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewRole(ctx, \"engineers\", \u0026sdm.RoleArgs{\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"env\": \"staging\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"postgres\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"ids\": []string{\n\t\t\t\t\t\"rs-093e6f3061eb4dad\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewRole(ctx, \"example-role\", \u0026sdm.RoleArgs{\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Role;\nimport com.pulumi.sdm.RoleArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var engineers = new Role(\"engineers\", RoleArgs.builder()        \n            .tags(Map.of(\"foo\", \"bar\"))\n            .build());\n\n        var example_role = new Role(\"example-role\", RoleArgs.builder()        \n            .accessRules(serializeJson(\n                jsonArray(\n                    jsonObject(\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"env\", \"staging\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"type\", \"postgres\"),\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"region\", \"us-west\"),\n                            jsonProperty(\"env\", \"dev\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"ids\", jsonArray(\"rs-093e6f3061eb4dad\"))\n                    )\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  engineers:\n    type: sdm:Role\n    properties:\n      tags:\n        foo: bar\n  example-role:\n    type: sdm:Role\n    properties:\n      accessRules:\n        fn::toJSON:\n          - tags:\n              env: staging\n          - type: postgres\n            tags:\n              region: us-west\n              env: dev\n          - ids:\n              - rs-093e6f3061eb4dad\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Role can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/role:Role example r-12345678\n```\n",
+            "description": "A Role has a list of access rules which determine which Resources the members\n of the Role have access to. An Account can be a member of multiple Roles via\n AccountAttachments.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst engineers = new sdm.Role(\"engineers\", {tags: {\n    foo: \"bar\",\n}});\nconst example_role = new sdm.Role(\"example-role\", {accessRules: JSON.stringify([\n    {\n        tags: {\n            env: \"staging\",\n        },\n    },\n    {\n        type: \"postgres\",\n        tags: {\n            region: \"us-west\",\n            env: \"dev\",\n        },\n    },\n    {\n        ids: [\"rs-093e6f3061eb4dad\"],\n    },\n])});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nengineers = sdm.Role(\"engineers\", tags={\n    \"foo\": \"bar\",\n})\nexample_role = sdm.Role(\"example-role\", access_rules=json.dumps([\n    {\n        \"tags\": {\n            \"env\": \"staging\",\n        },\n    },\n    {\n        \"type\": \"postgres\",\n        \"tags\": {\n            \"region\": \"us-west\",\n            \"env\": \"dev\",\n        },\n    },\n    {\n        \"ids\": [\"rs-093e6f3061eb4dad\"],\n    },\n]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var engineers = new Sdm.Role(\"engineers\", new()\n    {\n        Tags = \n        {\n            { \"foo\", \"bar\" },\n        },\n    });\n\n    var example_role = new Sdm.Role(\"example-role\", new()\n    {\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"env\"] = \"staging\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"postgres\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-west\",\n                    [\"env\"] = \"dev\",\n                },\n            },\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"ids\"] = new[]\n                {\n                    \"rs-093e6f3061eb4dad\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewRole(ctx, \"engineers\", \u0026sdm.RoleArgs{\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"foo\": pulumi.String(\"bar\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON0, err := json.Marshal([]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"env\": \"staging\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"postgres\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-west\",\n\t\t\t\t\t\"env\":    \"dev\",\n\t\t\t\t},\n\t\t\t},\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"ids\": []string{\n\t\t\t\t\t\"rs-093e6f3061eb4dad\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewRole(ctx, \"example-role\", \u0026sdm.RoleArgs{\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Role;\nimport com.pulumi.sdm.RoleArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var engineers = new Role(\"engineers\", RoleArgs.builder()\n            .tags(Map.of(\"foo\", \"bar\"))\n            .build());\n\n        var example_role = new Role(\"example-role\", RoleArgs.builder()\n            .accessRules(serializeJson(\n                jsonArray(\n                    jsonObject(\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"env\", \"staging\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"type\", \"postgres\"),\n                        jsonProperty(\"tags\", jsonObject(\n                            jsonProperty(\"region\", \"us-west\"),\n                            jsonProperty(\"env\", \"dev\")\n                        ))\n                    ), \n                    jsonObject(\n                        jsonProperty(\"ids\", jsonArray(\"rs-093e6f3061eb4dad\"))\n                    )\n                )))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  engineers:\n    type: sdm:Role\n    properties:\n      tags:\n        foo: bar\n  example-role:\n    type: sdm:Role\n    properties:\n      accessRules:\n        fn::toJSON:\n          - tags:\n              env: staging\n          - type: postgres\n            tags:\n              region: us-west\n              env: dev\n          - ids:\n              - rs-093e6f3061eb4dad\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Role can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/role:Role example r-12345678\n```\n",
             "properties": {
                 "accessRules": {
                     "type": "string",
@@ -16636,6 +16982,9 @@
                 "gcpStore": {
                     "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
                 },
+                "keyfactorSshStore": {
+                    "$ref": "#/types/sdm:index/SecretStoreKeyfactorSshStore:SecretStoreKeyfactorSshStore"
+                },
                 "keyfactorX509Store": {
                     "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                 },
@@ -16647,6 +16996,14 @@
                 },
                 "vaultApproleCertX509": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultApproleCertX509:SecretStoreVaultApproleCertX509"
+                },
+                "vaultAwsEc2": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2",
+                    "description": "VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "vaultAwsIam": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam",
+                    "description": "VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "vaultTls": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
@@ -16699,6 +17056,9 @@
                 "gcpStore": {
                     "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
                 },
+                "keyfactorSshStore": {
+                    "$ref": "#/types/sdm:index/SecretStoreKeyfactorSshStore:SecretStoreKeyfactorSshStore"
+                },
                 "keyfactorX509Store": {
                     "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                 },
@@ -16710,6 +17070,14 @@
                 },
                 "vaultApproleCertX509": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultApproleCertX509:SecretStoreVaultApproleCertX509"
+                },
+                "vaultAwsEc2": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2",
+                    "description": "VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "vaultAwsIam": {
+                    "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam",
+                    "description": "VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "vaultTls": {
                     "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
@@ -16764,6 +17132,9 @@
                     "gcpStore": {
                         "$ref": "#/types/sdm:index/SecretStoreGcpStore:SecretStoreGcpStore"
                     },
+                    "keyfactorSshStore": {
+                        "$ref": "#/types/sdm:index/SecretStoreKeyfactorSshStore:SecretStoreKeyfactorSshStore"
+                    },
                     "keyfactorX509Store": {
                         "$ref": "#/types/sdm:index/SecretStoreKeyfactorX509Store:SecretStoreKeyfactorX509Store"
                     },
@@ -16775,6 +17146,14 @@
                     },
                     "vaultApproleCertX509": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultApproleCertX509:SecretStoreVaultApproleCertX509"
+                    },
+                    "vaultAwsEc2": {
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsEc2:SecretStoreVaultAwsEc2",
+                        "description": "VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
+                    "vaultAwsIam": {
+                        "$ref": "#/types/sdm:index/SecretStoreVaultAwsIam:SecretStoreVaultAwsIam",
+                        "description": "VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "vaultTls": {
                         "$ref": "#/types/sdm:index/SecretStoreVaultTls:SecretStoreVaultTls"
@@ -16799,7 +17178,7 @@
             }
         },
         "sdm:index/workflow:Workflow": {
-            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst autoGrantWorkflow = new sdm.Workflow(\"autoGrantWorkflow\", {\n    autoGrant: true,\n    enabled: true,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\nconst manualApprovalWorkflow = new sdm.Workflow(\"manualApprovalWorkflow\", {\n    autoGrant: false,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nauto_grant_workflow = sdm.Workflow(\"autoGrantWorkflow\",\n    auto_grant=True,\n    enabled=True,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\nmanual_approval_workflow = sdm.Workflow(\"manualApprovalWorkflow\",\n    auto_grant=False,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var autoGrantWorkflow = new Sdm.Workflow(\"autoGrantWorkflow\", new()\n    {\n        AutoGrant = true,\n        Enabled = true,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n    var manualApprovalWorkflow = new Sdm.Workflow(\"manualApprovalWorkflow\", new()\n    {\n        AutoGrant = false,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewWorkflow(ctx, \"autoGrantWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tAutoGrant:   pulumi.Bool(true),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = sdm.NewWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tAutoGrant:   pulumi.Bool(false),\n\t\t\tAccessRules: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Workflow;\nimport com.pulumi.sdm.WorkflowArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var autoGrantWorkflow = new Workflow(\"autoGrantWorkflow\", WorkflowArgs.builder()        \n            .autoGrant(true)\n            .enabled(true)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n        var manualApprovalWorkflow = new Workflow(\"manualApprovalWorkflow\", WorkflowArgs.builder()        \n            .autoGrant(false)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  autoGrantWorkflow:\n    type: sdm:Workflow\n    properties:\n      autoGrant: true\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n  manualApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      autoGrant: false\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Workflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflow:Workflow example aw-12345678\n```\n",
+            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst autoGrantWorkflow = new sdm.Workflow(\"autoGrantWorkflow\", {\n    autoGrant: true,\n    enabled: true,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\nconst manualApprovalWorkflow = new sdm.Workflow(\"manualApprovalWorkflow\", {\n    autoGrant: false,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nauto_grant_workflow = sdm.Workflow(\"autoGrantWorkflow\",\n    auto_grant=True,\n    enabled=True,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\nmanual_approval_workflow = sdm.Workflow(\"manualApprovalWorkflow\",\n    auto_grant=False,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var autoGrantWorkflow = new Sdm.Workflow(\"autoGrantWorkflow\", new()\n    {\n        AutoGrant = true,\n        Enabled = true,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n    var manualApprovalWorkflow = new Sdm.Workflow(\"manualApprovalWorkflow\", new()\n    {\n        AutoGrant = false,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewWorkflow(ctx, \"autoGrantWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tAutoGrant:   pulumi.Bool(true),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = sdm.NewWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tAutoGrant:   pulumi.Bool(false),\n\t\t\tAccessRules: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Workflow;\nimport com.pulumi.sdm.WorkflowArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var autoGrantWorkflow = new Workflow(\"autoGrantWorkflow\", WorkflowArgs.builder()\n            .autoGrant(true)\n            .enabled(true)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n        var manualApprovalWorkflow = new Workflow(\"manualApprovalWorkflow\", WorkflowArgs.builder()\n            .autoGrant(false)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  autoGrantWorkflow:\n    type: sdm:Workflow\n    properties:\n      autoGrant: true\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n  manualApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      autoGrant: false\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Workflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflow:Workflow example aw-12345678\n```\n",
             "properties": {
                 "accessRules": {
                     "type": "string",
@@ -16901,7 +17280,7 @@
             }
         },
         "sdm:index/workflowApprover:WorkflowApprover": {
-            "description": "WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowApproverAccountExample = new sdm.WorkflowApprover(\"workflowApproverAccountExample\", {\n    accountId: \"a-234605\",\n    workflowId: \"aw-6799234\",\n});\nconst workflowApproverRoleExample = new sdm.WorkflowApprover(\"workflowApproverRoleExample\", {\n    roleId: \"r-542982\",\n    workflowId: \"aw-1935694\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_approver_account_example = sdm.WorkflowApprover(\"workflowApproverAccountExample\",\n    account_id=\"a-234605\",\n    workflow_id=\"aw-6799234\")\nworkflow_approver_role_example = sdm.WorkflowApprover(\"workflowApproverRoleExample\",\n    role_id=\"r-542982\",\n    workflow_id=\"aw-1935694\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowApproverAccountExample = new Sdm.WorkflowApprover(\"workflowApproverAccountExample\", new()\n    {\n        AccountId = \"a-234605\",\n        WorkflowId = \"aw-6799234\",\n    });\n\n    var workflowApproverRoleExample = new Sdm.WorkflowApprover(\"workflowApproverRoleExample\", new()\n    {\n        RoleId = \"r-542982\",\n        WorkflowId = \"aw-1935694\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowApprover(ctx, \"workflowApproverAccountExample\", \u0026sdm.WorkflowApproverArgs{\n\t\t\tAccountId:  pulumi.String(\"a-234605\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-6799234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewWorkflowApprover(ctx, \"workflowApproverRoleExample\", \u0026sdm.WorkflowApproverArgs{\n\t\t\tRoleId:     pulumi.String(\"r-542982\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-1935694\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowApprover;\nimport com.pulumi.sdm.WorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowApproverAccountExample = new WorkflowApprover(\"workflowApproverAccountExample\", WorkflowApproverArgs.builder()        \n            .accountId(\"a-234605\")\n            .workflowId(\"aw-6799234\")\n            .build());\n\n        var workflowApproverRoleExample = new WorkflowApprover(\"workflowApproverRoleExample\", WorkflowApproverArgs.builder()        \n            .roleId(\"r-542982\")\n            .workflowId(\"aw-1935694\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowApproverAccountExample:\n    type: sdm:WorkflowApprover\n    properties:\n      accountId: a-234605\n      workflowId: aw-6799234\n  workflowApproverRoleExample:\n    type: sdm:WorkflowApprover\n    properties:\n      roleId: r-542982\n      workflowId: aw-1935694\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA WorkflowApprover can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678\n```\n",
+            "description": "WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowApproverAccountExample = new sdm.WorkflowApprover(\"workflowApproverAccountExample\", {\n    accountId: \"a-234605\",\n    workflowId: \"aw-6799234\",\n});\nconst workflowApproverRoleExample = new sdm.WorkflowApprover(\"workflowApproverRoleExample\", {\n    roleId: \"r-542982\",\n    workflowId: \"aw-1935694\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_approver_account_example = sdm.WorkflowApprover(\"workflowApproverAccountExample\",\n    account_id=\"a-234605\",\n    workflow_id=\"aw-6799234\")\nworkflow_approver_role_example = sdm.WorkflowApprover(\"workflowApproverRoleExample\",\n    role_id=\"r-542982\",\n    workflow_id=\"aw-1935694\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowApproverAccountExample = new Sdm.WorkflowApprover(\"workflowApproverAccountExample\", new()\n    {\n        AccountId = \"a-234605\",\n        WorkflowId = \"aw-6799234\",\n    });\n\n    var workflowApproverRoleExample = new Sdm.WorkflowApprover(\"workflowApproverRoleExample\", new()\n    {\n        RoleId = \"r-542982\",\n        WorkflowId = \"aw-1935694\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowApprover(ctx, \"workflowApproverAccountExample\", \u0026sdm.WorkflowApproverArgs{\n\t\t\tAccountId:  pulumi.String(\"a-234605\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-6799234\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = sdm.NewWorkflowApprover(ctx, \"workflowApproverRoleExample\", \u0026sdm.WorkflowApproverArgs{\n\t\t\tRoleId:     pulumi.String(\"r-542982\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-1935694\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowApprover;\nimport com.pulumi.sdm.WorkflowApproverArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowApproverAccountExample = new WorkflowApprover(\"workflowApproverAccountExample\", WorkflowApproverArgs.builder()\n            .accountId(\"a-234605\")\n            .workflowId(\"aw-6799234\")\n            .build());\n\n        var workflowApproverRoleExample = new WorkflowApprover(\"workflowApproverRoleExample\", WorkflowApproverArgs.builder()\n            .roleId(\"r-542982\")\n            .workflowId(\"aw-1935694\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowApproverAccountExample:\n    type: sdm:WorkflowApprover\n    properties:\n      accountId: a-234605\n      workflowId: aw-6799234\n  workflowApproverRoleExample:\n    type: sdm:WorkflowApprover\n    properties:\n      roleId: r-542982\n      workflowId: aw-1935694\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA WorkflowApprover can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflowApprover:WorkflowApprover example nt-12345678\n```\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -16962,7 +17341,7 @@
             }
         },
         "sdm:index/workflowRole:WorkflowRole": {
-            "description": "WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of\n to request access to a resource via the workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowRoleExample = new sdm.WorkflowRole(\"workflowRoleExample\", {\n    roleId: \"r-243561\",\n    workflowId: \"aw-343865\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_role_example = sdm.WorkflowRole(\"workflowRoleExample\",\n    role_id=\"r-243561\",\n    workflow_id=\"aw-343865\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowRoleExample = new Sdm.WorkflowRole(\"workflowRoleExample\", new()\n    {\n        RoleId = \"r-243561\",\n        WorkflowId = \"aw-343865\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowRole(ctx, \"workflowRoleExample\", \u0026sdm.WorkflowRoleArgs{\n\t\t\tRoleId:     pulumi.String(\"r-243561\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-343865\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowRole;\nimport com.pulumi.sdm.WorkflowRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowRoleExample = new WorkflowRole(\"workflowRoleExample\", WorkflowRoleArgs.builder()        \n            .roleId(\"r-243561\")\n            .workflowId(\"aw-343865\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowRoleExample:\n    type: sdm:WorkflowRole\n    properties:\n      roleId: r-243561\n      workflowId: aw-343865\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA WorkflowRole can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678\n```\n",
+            "description": "WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of\n to request access to a resource via the workflow.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst workflowRoleExample = new sdm.WorkflowRole(\"workflowRoleExample\", {\n    roleId: \"r-243561\",\n    workflowId: \"aw-343865\",\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nworkflow_role_example = sdm.WorkflowRole(\"workflowRoleExample\",\n    role_id=\"r-243561\",\n    workflow_id=\"aw-343865\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowRoleExample = new Sdm.WorkflowRole(\"workflowRoleExample\", new()\n    {\n        RoleId = \"r-243561\",\n        WorkflowId = \"aw-343865\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewWorkflowRole(ctx, \"workflowRoleExample\", \u0026sdm.WorkflowRoleArgs{\n\t\t\tRoleId:     pulumi.String(\"r-243561\"),\n\t\t\tWorkflowId: pulumi.String(\"aw-343865\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.WorkflowRole;\nimport com.pulumi.sdm.WorkflowRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var workflowRoleExample = new WorkflowRole(\"workflowRoleExample\", WorkflowRoleArgs.builder()\n            .roleId(\"r-243561\")\n            .workflowId(\"aw-343865\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  workflowRoleExample:\n    type: sdm:WorkflowRole\n    properties:\n      roleId: r-243561\n      workflowId: aw-343865\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA WorkflowRole can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflowRole:WorkflowRole example wr-12345678\n```\n",
             "properties": {
                 "roleId": {
                     "type": "string",
@@ -17386,6 +17765,120 @@
                 "type": "object",
                 "required": [
                     "approvalWorkflowSteps",
+                    "ids"
+                ]
+            }
+        },
+        "sdm:index/getIdentityAlias:getIdentityAlias": {
+            "description": "IdentityAliases define the username to be used for a specific account\n when connecting to a remote resource using that identity set.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst user = sdm.getIdentityAlias({\n    id: \"i-0900909\",\n    username: \"user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nuser = sdm.get_identity_alias(id=\"i-0900909\",\n    username=\"user\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = Sdm.GetIdentityAlias.Invoke(new()\n    {\n        Id = \"i-0900909\",\n        Username = \"user\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupIdentityAlias(ctx, \u0026sdm.LookupIdentityAliasArgs{\n\t\t\tId:       pulumi.StringRef(\"i-0900909\"),\n\t\t\tUsername: pulumi.StringRef(\"user\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetIdentityAliasArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var user = SdmFunctions.getIdentityAlias(GetIdentityAliasArgs.builder()\n            .id(\"i-0900909\")\n            .username(\"user\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  user:\n    fn::invoke:\n      Function: sdm:getIdentityAlias\n      Arguments:\n        id: i-0900909\n        username: user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIdentityAlias.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account for this identity alias.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the IdentityAlias.\n"
+                    },
+                    "identitySetId": {
+                        "type": "string",
+                        "description": "The identity set.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username to be used as the identity alias for this account.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIdentityAlias.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account for this identity alias.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the IdentityAlias.\n"
+                    },
+                    "identityAliases": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getIdentityAliasIdentityAlias:getIdentityAliasIdentityAlias"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "identitySetId": {
+                        "type": "string",
+                        "description": "The identity set.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The username to be used as the identity alias for this account.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identityAliases",
+                    "ids"
+                ]
+            }
+        },
+        "sdm:index/getIdentitySet:getIdentitySet": {
+            "description": "A IdentitySet defines a group of identity aliases.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst default = sdm.getIdentitySet({\n    name: \"default\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\ndefault = sdm.get_identity_set(name=\"default\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @default = Sdm.GetIdentitySet.Invoke(new()\n    {\n        Name = \"default\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupIdentitySet(ctx, \u0026sdm.LookupIdentitySetArgs{\n\t\t\tName: pulumi.StringRef(\"default\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetIdentitySetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var default = SdmFunctions.getIdentitySet(GetIdentitySetArgs.builder()\n            .name(\"default\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  default:\n    fn::invoke:\n      Function: sdm:getIdentitySet\n      Arguments:\n        name: default\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIdentitySet.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the IdentitySet.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the IdentitySet.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIdentitySet.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the IdentitySet.\n"
+                    },
+                    "identitySets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getIdentitySetIdentitySet:getIdentitySetIdentitySet"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the IdentitySet.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "identitySets",
                     "ids"
                 ]
             }

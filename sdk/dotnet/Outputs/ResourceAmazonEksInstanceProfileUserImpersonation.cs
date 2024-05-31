@@ -51,14 +51,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The ID of the remote identity group to use for remote identity connections.
-        /// </summary>
-        public readonly string? RemoteIdentityGroupId;
-        /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        /// </summary>
-        public readonly string? RemoteIdentityHealthcheckUsername;
-        /// <summary>
         /// The role to assume after logging in.
         /// </summary>
         public readonly string? RoleArn;
@@ -99,10 +91,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string region,
 
-            string? remoteIdentityGroupId,
-
-            string? remoteIdentityHealthcheckUsername,
-
             string? roleArn,
 
             string? roleExternalId,
@@ -122,8 +110,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Name = name;
             PortOverride = portOverride;
             Region = region;
-            RemoteIdentityGroupId = remoteIdentityGroupId;
-            RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretStoreId = secretStoreId;

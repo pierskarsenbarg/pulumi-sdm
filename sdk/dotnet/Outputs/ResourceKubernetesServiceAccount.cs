@@ -31,6 +31,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        public readonly string? IdentityAliasHealthcheckUsername;
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        public readonly string? IdentitySetId;
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
@@ -42,14 +50,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The local port used by clients to connect to this resource.
         /// </summary>
         public readonly int? PortOverride;
-        /// <summary>
-        /// The ID of the remote identity group to use for remote identity connections.
-        /// </summary>
-        public readonly string? RemoteIdentityGroupId;
-        /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        /// </summary>
-        public readonly string? RemoteIdentityHealthcheckUsername;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -78,15 +78,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string hostname,
 
+            string? identityAliasHealthcheckUsername,
+
+            string? identitySetId,
+
             string name,
 
             int port,
 
             int? portOverride,
-
-            string? remoteIdentityGroupId,
-
-            string? remoteIdentityHealthcheckUsername,
 
             string? secretStoreId,
 
@@ -100,11 +100,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EgressFilter = egressFilter;
             HealthcheckNamespace = healthcheckNamespace;
             Hostname = hostname;
+            IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
+            IdentitySetId = identitySetId;
             Name = name;
             Port = port;
             PortOverride = portOverride;
-            RemoteIdentityGroupId = remoteIdentityGroupId;
-            RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
