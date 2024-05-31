@@ -61,10 +61,19 @@ export class SecretStore extends pulumi.CustomResource {
     public readonly delineaStore!: pulumi.Output<outputs.SecretStoreDelineaStore | undefined>;
     public readonly gcpCertX509Store!: pulumi.Output<outputs.SecretStoreGcpCertX509Store | undefined>;
     public readonly gcpStore!: pulumi.Output<outputs.SecretStoreGcpStore | undefined>;
+    public readonly keyfactorSshStore!: pulumi.Output<outputs.SecretStoreKeyfactorSshStore | undefined>;
     public readonly keyfactorX509Store!: pulumi.Output<outputs.SecretStoreKeyfactorX509Store | undefined>;
     public readonly vaultApprole!: pulumi.Output<outputs.SecretStoreVaultApprole | undefined>;
     public readonly vaultApproleCertSsh!: pulumi.Output<outputs.SecretStoreVaultApproleCertSsh | undefined>;
     public readonly vaultApproleCertX509!: pulumi.Output<outputs.SecretStoreVaultApproleCertX509 | undefined>;
+    /**
+     * VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly vaultAwsEc2!: pulumi.Output<outputs.SecretStoreVaultAwsEc2 | undefined>;
+    /**
+     * VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly vaultAwsIam!: pulumi.Output<outputs.SecretStoreVaultAwsIam | undefined>;
     public readonly vaultTls!: pulumi.Output<outputs.SecretStoreVaultTls | undefined>;
     public readonly vaultTlsCertSsh!: pulumi.Output<outputs.SecretStoreVaultTlsCertSsh | undefined>;
     public readonly vaultTlsCertX509!: pulumi.Output<outputs.SecretStoreVaultTlsCertX509 | undefined>;
@@ -95,10 +104,13 @@ export class SecretStore extends pulumi.CustomResource {
             resourceInputs["delineaStore"] = state ? state.delineaStore : undefined;
             resourceInputs["gcpCertX509Store"] = state ? state.gcpCertX509Store : undefined;
             resourceInputs["gcpStore"] = state ? state.gcpStore : undefined;
+            resourceInputs["keyfactorSshStore"] = state ? state.keyfactorSshStore : undefined;
             resourceInputs["keyfactorX509Store"] = state ? state.keyfactorX509Store : undefined;
             resourceInputs["vaultApprole"] = state ? state.vaultApprole : undefined;
             resourceInputs["vaultApproleCertSsh"] = state ? state.vaultApproleCertSsh : undefined;
             resourceInputs["vaultApproleCertX509"] = state ? state.vaultApproleCertX509 : undefined;
+            resourceInputs["vaultAwsEc2"] = state ? state.vaultAwsEc2 : undefined;
+            resourceInputs["vaultAwsIam"] = state ? state.vaultAwsIam : undefined;
             resourceInputs["vaultTls"] = state ? state.vaultTls : undefined;
             resourceInputs["vaultTlsCertSsh"] = state ? state.vaultTlsCertSsh : undefined;
             resourceInputs["vaultTlsCertX509"] = state ? state.vaultTlsCertX509 : undefined;
@@ -117,10 +129,13 @@ export class SecretStore extends pulumi.CustomResource {
             resourceInputs["delineaStore"] = args ? args.delineaStore : undefined;
             resourceInputs["gcpCertX509Store"] = args ? args.gcpCertX509Store : undefined;
             resourceInputs["gcpStore"] = args ? args.gcpStore : undefined;
+            resourceInputs["keyfactorSshStore"] = args ? args.keyfactorSshStore : undefined;
             resourceInputs["keyfactorX509Store"] = args ? args.keyfactorX509Store : undefined;
             resourceInputs["vaultApprole"] = args ? args.vaultApprole : undefined;
             resourceInputs["vaultApproleCertSsh"] = args ? args.vaultApproleCertSsh : undefined;
             resourceInputs["vaultApproleCertX509"] = args ? args.vaultApproleCertX509 : undefined;
+            resourceInputs["vaultAwsEc2"] = args ? args.vaultAwsEc2 : undefined;
+            resourceInputs["vaultAwsIam"] = args ? args.vaultAwsIam : undefined;
             resourceInputs["vaultTls"] = args ? args.vaultTls : undefined;
             resourceInputs["vaultTlsCertSsh"] = args ? args.vaultTlsCertSsh : undefined;
             resourceInputs["vaultTlsCertX509"] = args ? args.vaultTlsCertX509 : undefined;
@@ -151,10 +166,19 @@ export interface SecretStoreState {
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
     gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
+    keyfactorSshStore?: pulumi.Input<inputs.SecretStoreKeyfactorSshStore>;
     keyfactorX509Store?: pulumi.Input<inputs.SecretStoreKeyfactorX509Store>;
     vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
     vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh>;
     vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509>;
+    /**
+     * VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    vaultAwsEc2?: pulumi.Input<inputs.SecretStoreVaultAwsEc2>;
+    /**
+     * VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    vaultAwsIam?: pulumi.Input<inputs.SecretStoreVaultAwsIam>;
     vaultTls?: pulumi.Input<inputs.SecretStoreVaultTls>;
     vaultTlsCertSsh?: pulumi.Input<inputs.SecretStoreVaultTlsCertSsh>;
     vaultTlsCertX509?: pulumi.Input<inputs.SecretStoreVaultTlsCertX509>;
@@ -181,10 +205,19 @@ export interface SecretStoreArgs {
     delineaStore?: pulumi.Input<inputs.SecretStoreDelineaStore>;
     gcpCertX509Store?: pulumi.Input<inputs.SecretStoreGcpCertX509Store>;
     gcpStore?: pulumi.Input<inputs.SecretStoreGcpStore>;
+    keyfactorSshStore?: pulumi.Input<inputs.SecretStoreKeyfactorSshStore>;
     keyfactorX509Store?: pulumi.Input<inputs.SecretStoreKeyfactorX509Store>;
     vaultApprole?: pulumi.Input<inputs.SecretStoreVaultApprole>;
     vaultApproleCertSsh?: pulumi.Input<inputs.SecretStoreVaultApproleCertSsh>;
     vaultApproleCertX509?: pulumi.Input<inputs.SecretStoreVaultApproleCertX509>;
+    /**
+     * VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    vaultAwsEc2?: pulumi.Input<inputs.SecretStoreVaultAwsEc2>;
+    /**
+     * VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    vaultAwsIam?: pulumi.Input<inputs.SecretStoreVaultAwsIam>;
     vaultTls?: pulumi.Input<inputs.SecretStoreVaultTls>;
     vaultTlsCertSsh?: pulumi.Input<inputs.SecretStoreVaultTlsCertSsh>;
     vaultTlsCertX509?: pulumi.Input<inputs.SecretStoreVaultTlsCertX509>;

@@ -31,6 +31,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        public readonly string? IdentityAliasHealthcheckUsername;
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        public readonly string? IdentitySetId;
+        /// <summary>
         /// The key type to use e.g. rsa-2048 or ed25519
         /// </summary>
         public readonly string? KeyType;
@@ -50,14 +58,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The local port used by clients to connect to this resource.
         /// </summary>
         public readonly int? PortOverride;
-        /// <summary>
-        /// The ID of the remote identity group to use for remote identity connections.
-        /// </summary>
-        public readonly string? RemoteIdentityGroupId;
-        /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        /// </summary>
-        public readonly string? RemoteIdentityHealthcheckUsername;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -85,6 +85,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string hostname,
 
+            string? identityAliasHealthcheckUsername,
+
+            string? identitySetId,
+
             string? keyType,
 
             string name,
@@ -94,10 +98,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             bool? portForwarding,
 
             int? portOverride,
-
-            string? remoteIdentityGroupId,
-
-            string? remoteIdentityHealthcheckUsername,
 
             string? secretStoreId,
 
@@ -111,13 +111,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Hostname = hostname;
+            IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
+            IdentitySetId = identitySetId;
             KeyType = keyType;
             Name = name;
             Port = port;
             PortForwarding = portForwarding;
             PortOverride = portOverride;
-            RemoteIdentityGroupId = remoteIdentityGroupId;
-            RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;

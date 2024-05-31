@@ -43,6 +43,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? HealthcheckNamespace;
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        public readonly string? IdentityAliasHealthcheckUsername;
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        public readonly string? IdentitySetId;
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
@@ -54,14 +62,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The AWS region to connect to.
         /// </summary>
         public readonly string Region;
-        /// <summary>
-        /// The ID of the remote identity group to use for remote identity connections.
-        /// </summary>
-        public readonly string? RemoteIdentityGroupId;
-        /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        /// </summary>
-        public readonly string? RemoteIdentityHealthcheckUsername;
         /// <summary>
         /// The role to assume after logging in.
         /// </summary>
@@ -103,15 +103,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? healthcheckNamespace,
 
+            string? identityAliasHealthcheckUsername,
+
+            string? identitySetId,
+
             string name,
 
             int? portOverride,
 
             string region,
-
-            string? remoteIdentityGroupId,
-
-            string? remoteIdentityHealthcheckUsername,
 
             string? roleArn,
 
@@ -132,11 +132,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EgressFilter = egressFilter;
             Endpoint = endpoint;
             HealthcheckNamespace = healthcheckNamespace;
+            IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
+            IdentitySetId = identitySetId;
             Name = name;
             PortOverride = portOverride;
             Region = region;
-            RemoteIdentityGroupId = remoteIdentityGroupId;
-            RemoteIdentityHealthcheckUsername = remoteIdentityHealthcheckUsername;
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretAccessKey = secretAccessKey;

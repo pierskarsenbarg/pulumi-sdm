@@ -24,10 +24,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreDelineaStoreResult> DelineaStores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpCertX509StoreResult> GcpCertX509Stores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpStoreResult> GcpStores;
+        public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreKeyfactorSshStoreResult> KeyfactorSshStores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreKeyfactorX509StoreResult> KeyfactorX509Stores;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleCertSshResult> VaultApproleCertSshes;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleCertX509Result> VaultApproleCertX509s;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleResult> VaultApproles;
+        public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultAwsEc2Result> VaultAwsEc2s;
+        public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultAwsIamResult> VaultAwsIams;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultTlResult> VaultTls;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultTlsCertSshResult> VaultTlsCertSshes;
         public readonly ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultTlsCertX509Result> VaultTlsCertX509s;
@@ -57,6 +60,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreGcpStoreResult> gcpStores,
 
+            ImmutableArray<Outputs.GetSecretStoreSecretStoreKeyfactorSshStoreResult> keyfactorSshStores,
+
             ImmutableArray<Outputs.GetSecretStoreSecretStoreKeyfactorX509StoreResult> keyfactorX509Stores,
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleCertSshResult> vaultApproleCertSshes,
@@ -64,6 +69,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleCertX509Result> vaultApproleCertX509s,
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultApproleResult> vaultApproles,
+
+            ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultAwsEc2Result> vaultAwsEc2s,
+
+            ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultAwsIamResult> vaultAwsIams,
 
             ImmutableArray<Outputs.GetSecretStoreSecretStoreVaultTlResult> vaultTls,
 
@@ -87,10 +96,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
             DelineaStores = delineaStores;
             GcpCertX509Stores = gcpCertX509Stores;
             GcpStores = gcpStores;
+            KeyfactorSshStores = keyfactorSshStores;
             KeyfactorX509Stores = keyfactorX509Stores;
             VaultApproleCertSshes = vaultApproleCertSshes;
             VaultApproleCertX509s = vaultApproleCertX509s;
             VaultApproles = vaultApproles;
+            VaultAwsEc2s = vaultAwsEc2s;
+            VaultAwsIams = vaultAwsIams;
             VaultTls = vaultTls;
             VaultTlsCertSshes = vaultTlsCertSshes;
             VaultTlsCertX509s = vaultTlsCertX509s;

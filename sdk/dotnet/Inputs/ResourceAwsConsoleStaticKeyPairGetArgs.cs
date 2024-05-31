@@ -32,6 +32,18 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? EgressFilter { get; set; }
 
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        [Input("identityAliasHealthcheckUsername")]
+        public Input<string>? IdentityAliasHealthcheckUsername { get; set; }
+
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        [Input("identitySetId")]
+        public Input<string>? IdentitySetId { get; set; }
+
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         [Input("name", required: true)]
@@ -48,18 +60,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// The ID of the remote identity group to use for remote identity connections.
-        /// </summary>
-        [Input("remoteIdentityGroupId")]
-        public Input<string>? RemoteIdentityGroupId { get; set; }
-
-        /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        /// </summary>
-        [Input("remoteIdentityHealthcheckUsername")]
-        public Input<string>? RemoteIdentityHealthcheckUsername { get; set; }
 
         /// <summary>
         /// The role to assume after logging in.

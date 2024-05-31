@@ -62,12 +62,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? KeyFilePath { get; set; }
 
         /// <summary>
-        /// optional environment variable housing the password that is used to decrypt the key file.
-        /// </summary>
-        [Input("keyPasswordEnvVar")]
-        public Input<string>? KeyPasswordEnvVar { get; set; }
-
-        /// <summary>
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         [Input("name", required: true)]

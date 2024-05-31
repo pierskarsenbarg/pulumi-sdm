@@ -110,10 +110,13 @@ __all__ = [
     'SecretStoreDelineaStoreArgs',
     'SecretStoreGcpCertX509StoreArgs',
     'SecretStoreGcpStoreArgs',
+    'SecretStoreKeyfactorSshStoreArgs',
     'SecretStoreKeyfactorX509StoreArgs',
     'SecretStoreVaultApproleArgs',
     'SecretStoreVaultApproleCertSshArgs',
     'SecretStoreVaultApproleCertX509Args',
+    'SecretStoreVaultAwsEc2Args',
+    'SecretStoreVaultAwsIamArgs',
     'SecretStoreVaultTlsArgs',
     'SecretStoreVaultTlsCertSshArgs',
     'SecretStoreVaultTlsCertX509Args',
@@ -679,9 +682,9 @@ class ResourceAksArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -695,9 +698,9 @@ class ResourceAksArgs:
         :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -717,12 +720,12 @@ class ResourceAksArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -839,6 +842,30 @@ class ResourceAksArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -849,30 +876,6 @@ class ResourceAksArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -1116,9 +1119,9 @@ class ResourceAksServiceAccountArgs:
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1130,9 +1133,9 @@ class ResourceAksServiceAccountArgs:
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -1148,12 +1151,12 @@ class ResourceAksServiceAccountArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -1236,6 +1239,30 @@ class ResourceAksServiceAccountArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1246,30 +1273,6 @@ class ResourceAksServiceAccountArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -1727,9 +1730,9 @@ class ResourceAmazonEksArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
@@ -1746,9 +1749,9 @@ class ResourceAmazonEksArgs:
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] role_arn: The role to assume after logging in.
         :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
@@ -1770,12 +1773,12 @@ class ResourceAmazonEksArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -1898,6 +1901,30 @@ class ResourceAmazonEksArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1908,30 +1935,6 @@ class ResourceAmazonEksArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="roleArn")
@@ -2017,9 +2020,9 @@ class ResourceAmazonEksInstanceProfileArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
@@ -2034,9 +2037,9 @@ class ResourceAmazonEksInstanceProfileArgs:
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] role_arn: The role to assume after logging in.
         :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -2055,12 +2058,12 @@ class ResourceAmazonEksInstanceProfileArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -2169,6 +2172,30 @@ class ResourceAmazonEksInstanceProfileArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2179,30 +2206,6 @@ class ResourceAmazonEksInstanceProfileArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="roleArn")
@@ -2277,8 +2280,6 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
@@ -2294,8 +2295,6 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] role_arn: The role to assume after logging in.
         :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -2316,10 +2315,6 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -2438,30 +2433,6 @@ class ResourceAmazonEksInstanceProfileUserImpersonationArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="roleArn")
@@ -4280,9 +4251,9 @@ class ResourceAwsConsoleArgs:
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  enable_env_variables: Optional[pulumi.Input[bool]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
@@ -4295,9 +4266,9 @@ class ResourceAwsConsoleArgs:
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[bool] enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] role_arn: The role to assume after logging in.
         :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -4313,12 +4284,12 @@ class ResourceAwsConsoleArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if enable_env_variables is not None:
             pulumi.set(__self__, "enable_env_variables", enable_env_variables)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -4403,6 +4374,30 @@ class ResourceAwsConsoleArgs:
         pulumi.set(self, "enable_env_variables", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -4413,30 +4408,6 @@ class ResourceAwsConsoleArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="roleArn")
@@ -4508,9 +4479,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
                  access_key: Optional[pulumi.Input[str]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  role_arn: Optional[pulumi.Input[str]] = None,
                  role_external_id: Optional[pulumi.Input[str]] = None,
                  secret_access_key: Optional[pulumi.Input[str]] = None,
@@ -4524,9 +4495,9 @@ class ResourceAwsConsoleStaticKeyPairArgs:
         :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] role_arn: The role to assume after logging in.
         :param pulumi.Input[str] role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param pulumi.Input[str] secret_access_key: The Secret Access Key to use to authenticate.
@@ -4543,12 +4514,12 @@ class ResourceAwsConsoleStaticKeyPairArgs:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -4635,6 +4606,30 @@ class ResourceAwsConsoleStaticKeyPairArgs:
         pulumi.set(self, "egress_filter", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -4645,30 +4640,6 @@ class ResourceAwsConsoleStaticKeyPairArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="roleArn")
@@ -8522,9 +8493,9 @@ class ResourceGoogleGkeArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  service_account_key: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
@@ -8536,9 +8507,9 @@ class ResourceGoogleGkeArgs:
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] service_account_key: The service account key to authenticate with.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8554,12 +8525,12 @@ class ResourceGoogleGkeArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if service_account_key is not None:
@@ -8642,6 +8613,30 @@ class ResourceGoogleGkeArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -8652,30 +8647,6 @@ class ResourceGoogleGkeArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -9722,9 +9693,9 @@ class ResourceKubernetesArgs:
                  client_key: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -9738,9 +9709,9 @@ class ResourceKubernetesArgs:
         :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -9760,12 +9731,12 @@ class ResourceKubernetesArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -9882,6 +9853,30 @@ class ResourceKubernetesArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -9892,30 +9887,6 @@ class ResourceKubernetesArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -10159,9 +10130,9 @@ class ResourceKubernetesServiceAccountArgs:
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -10173,9 +10144,9 @@ class ResourceKubernetesServiceAccountArgs:
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -10191,12 +10162,12 @@ class ResourceKubernetesServiceAccountArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -10279,6 +10250,30 @@ class ResourceKubernetesServiceAccountArgs:
         pulumi.set(self, "healthcheck_namespace", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="portOverride")
     def port_override(self) -> Optional[pulumi.Input[int]]:
         """
@@ -10289,30 +10284,6 @@ class ResourceKubernetesServiceAccountArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -14863,10 +14834,10 @@ class ResourceRdpCertArgs:
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -14876,10 +14847,10 @@ class ResourceRdpCertArgs:
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -14891,14 +14862,14 @@ class ResourceRdpCertArgs:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -14957,6 +14928,30 @@ class ResourceRdpCertArgs:
         pulumi.set(self, "egress_filter", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
@@ -14979,30 +14974,6 @@ class ResourceRdpCertArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -17300,11 +17271,11 @@ class ResourceSshCertArgs:
                  allow_deprecated_key_exchanges: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  key_type: Optional[pulumi.Input[str]] = None,
                  port_forwarding: Optional[pulumi.Input[bool]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
-                 remote_identity_group_id: Optional[pulumi.Input[str]] = None,
-                 remote_identity_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  subdomain: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -17316,11 +17287,11 @@ class ResourceSshCertArgs:
         :param pulumi.Input[bool] allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[str] key_type: The key type to use e.g. rsa-2048 or ed25519
         :param pulumi.Input[bool] port_forwarding: Whether port forwarding is allowed through this server.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
-        :param pulumi.Input[str] remote_identity_group_id: The ID of the remote identity group to use for remote identity connections.
-        :param pulumi.Input[str] remote_identity_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[str] subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
@@ -17335,16 +17306,16 @@ class ResourceSshCertArgs:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if key_type is not None:
             pulumi.set(__self__, "key_type", key_type)
         if port_forwarding is not None:
             pulumi.set(__self__, "port_forwarding", port_forwarding)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if remote_identity_group_id is not None:
-            pulumi.set(__self__, "remote_identity_group_id", remote_identity_group_id)
-        if remote_identity_healthcheck_username is not None:
-            pulumi.set(__self__, "remote_identity_healthcheck_username", remote_identity_healthcheck_username)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -17427,6 +17398,30 @@ class ResourceSshCertArgs:
         pulumi.set(self, "egress_filter", value)
 
     @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
+
+    @property
     @pulumi.getter(name="keyType")
     def key_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -17461,30 +17456,6 @@ class ResourceSshCertArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityGroupId")
-    def remote_identity_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the remote identity group to use for remote identity connections.
-        """
-        return pulumi.get(self, "remote_identity_group_id")
-
-    @remote_identity_group_id.setter
-    def remote_identity_group_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_group_id", value)
-
-    @property
-    @pulumi.getter(name="remoteIdentityHealthcheckUsername")
-    def remote_identity_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
-        """
-        The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        """
-        return pulumi.get(self, "remote_identity_healthcheck_username")
-
-    @remote_identity_healthcheck_username.setter
-    def remote_identity_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "remote_identity_healthcheck_username", value)
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -19159,7 +19130,7 @@ class SecretStoreGcpStoreArgs:
 
 
 @pulumi.input_type
-class SecretStoreKeyfactorX509StoreArgs:
+class SecretStoreKeyfactorSshStoreArgs:
     def __init__(__self__, *,
                  certificate_file_path: pulumi.Input[str],
                  default_certificate_authority_name: pulumi.Input[str],
@@ -19171,7 +19142,6 @@ class SecretStoreKeyfactorX509StoreArgs:
                  enrollment_code_env_var: Optional[pulumi.Input[str]] = None,
                  enrollment_username_env_var: Optional[pulumi.Input[str]] = None,
                  key_file_path: Optional[pulumi.Input[str]] = None,
-                 key_password_env_var: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] certificate_file_path: Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
@@ -19184,7 +19154,6 @@ class SecretStoreKeyfactorX509StoreArgs:
         :param pulumi.Input[str] enrollment_code_env_var: code used by EJBCA during enrollment. May be left blank if no code is required.
         :param pulumi.Input[str] enrollment_username_env_var: username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
         :param pulumi.Input[str] key_file_path: Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
-        :param pulumi.Input[str] key_password_env_var: optional environment variable housing the password that is used to decrypt the key file.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "certificate_file_path", certificate_file_path)
@@ -19201,8 +19170,6 @@ class SecretStoreKeyfactorX509StoreArgs:
             pulumi.set(__self__, "enrollment_username_env_var", enrollment_username_env_var)
         if key_file_path is not None:
             pulumi.set(__self__, "key_file_path", key_file_path)
-        if key_password_env_var is not None:
-            pulumi.set(__self__, "key_password_env_var", key_password_env_var)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -19327,16 +19294,181 @@ class SecretStoreKeyfactorX509StoreArgs:
         pulumi.set(self, "key_file_path", value)
 
     @property
-    @pulumi.getter(name="keyPasswordEnvVar")
-    def key_password_env_var(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        optional environment variable housing the password that is used to decrypt the key file.
+        Tags is a map of key, value pairs.
         """
-        return pulumi.get(self, "key_password_env_var")
+        return pulumi.get(self, "tags")
 
-    @key_password_env_var.setter
-    def key_password_env_var(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key_password_env_var", value)
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class SecretStoreKeyfactorX509StoreArgs:
+    def __init__(__self__, *,
+                 certificate_file_path: pulumi.Input[str],
+                 default_certificate_authority_name: pulumi.Input[str],
+                 default_certificate_profile_name: pulumi.Input[str],
+                 default_end_entity_profile_name: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 server_address: pulumi.Input[str],
+                 ca_file_path: Optional[pulumi.Input[str]] = None,
+                 enrollment_code_env_var: Optional[pulumi.Input[str]] = None,
+                 enrollment_username_env_var: Optional[pulumi.Input[str]] = None,
+                 key_file_path: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] certificate_file_path: Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+        :param pulumi.Input[str] default_certificate_authority_name: Name of EJBCA certificate authority that will enroll CSR.
+        :param pulumi.Input[str] default_certificate_profile_name: Certificate profile name that EJBCA will enroll the CSR with.
+        :param pulumi.Input[str] default_end_entity_profile_name: End entity profile that EJBCA will enroll the CSR with.
+        :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] server_address: The URL of the Vault to target
+        :param pulumi.Input[str] ca_file_path: Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+        :param pulumi.Input[str] enrollment_code_env_var: code used by EJBCA during enrollment. May be left blank if no code is required.
+        :param pulumi.Input[str] enrollment_username_env_var: username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+        :param pulumi.Input[str] key_file_path: Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "certificate_file_path", certificate_file_path)
+        pulumi.set(__self__, "default_certificate_authority_name", default_certificate_authority_name)
+        pulumi.set(__self__, "default_certificate_profile_name", default_certificate_profile_name)
+        pulumi.set(__self__, "default_end_entity_profile_name", default_end_entity_profile_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "server_address", server_address)
+        if ca_file_path is not None:
+            pulumi.set(__self__, "ca_file_path", ca_file_path)
+        if enrollment_code_env_var is not None:
+            pulumi.set(__self__, "enrollment_code_env_var", enrollment_code_env_var)
+        if enrollment_username_env_var is not None:
+            pulumi.set(__self__, "enrollment_username_env_var", enrollment_username_env_var)
+        if key_file_path is not None:
+            pulumi.set(__self__, "key_file_path", key_file_path)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="certificateFilePath")
+    def certificate_file_path(self) -> pulumi.Input[str]:
+        """
+        Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+        """
+        return pulumi.get(self, "certificate_file_path")
+
+    @certificate_file_path.setter
+    def certificate_file_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_file_path", value)
+
+    @property
+    @pulumi.getter(name="defaultCertificateAuthorityName")
+    def default_certificate_authority_name(self) -> pulumi.Input[str]:
+        """
+        Name of EJBCA certificate authority that will enroll CSR.
+        """
+        return pulumi.get(self, "default_certificate_authority_name")
+
+    @default_certificate_authority_name.setter
+    def default_certificate_authority_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_certificate_authority_name", value)
+
+    @property
+    @pulumi.getter(name="defaultCertificateProfileName")
+    def default_certificate_profile_name(self) -> pulumi.Input[str]:
+        """
+        Certificate profile name that EJBCA will enroll the CSR with.
+        """
+        return pulumi.get(self, "default_certificate_profile_name")
+
+    @default_certificate_profile_name.setter
+    def default_certificate_profile_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_certificate_profile_name", value)
+
+    @property
+    @pulumi.getter(name="defaultEndEntityProfileName")
+    def default_end_entity_profile_name(self) -> pulumi.Input[str]:
+        """
+        End entity profile that EJBCA will enroll the CSR with.
+        """
+        return pulumi.get(self, "default_end_entity_profile_name")
+
+    @default_end_entity_profile_name.setter
+    def default_end_entity_profile_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_end_entity_profile_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_address", value)
+
+    @property
+    @pulumi.getter(name="caFilePath")
+    def ca_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+        """
+        return pulumi.get(self, "ca_file_path")
+
+    @ca_file_path.setter
+    def ca_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_file_path", value)
+
+    @property
+    @pulumi.getter(name="enrollmentCodeEnvVar")
+    def enrollment_code_env_var(self) -> Optional[pulumi.Input[str]]:
+        """
+        code used by EJBCA during enrollment. May be left blank if no code is required.
+        """
+        return pulumi.get(self, "enrollment_code_env_var")
+
+    @enrollment_code_env_var.setter
+    def enrollment_code_env_var(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enrollment_code_env_var", value)
+
+    @property
+    @pulumi.getter(name="enrollmentUsernameEnvVar")
+    def enrollment_username_env_var(self) -> Optional[pulumi.Input[str]]:
+        """
+        username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+        """
+        return pulumi.get(self, "enrollment_username_env_var")
+
+    @enrollment_username_env_var.setter
+    def enrollment_username_env_var(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enrollment_username_env_var", value)
+
+    @property
+    @pulumi.getter(name="keyFilePath")
+    def key_file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+        """
+        return pulumi.get(self, "key_file_path")
+
+    @key_file_path.setter
+    def key_file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_file_path", value)
 
     @property
     @pulumi.getter
@@ -19622,6 +19754,144 @@ class SecretStoreVaultApproleCertX509Args:
     @signing_role.setter
     def signing_role(self, value: pulumi.Input[str]):
         pulumi.set(self, "signing_role", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to make requests within
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class SecretStoreVaultAwsEc2Args:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 server_address: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] server_address: The URL of the Vault to target
+        :param pulumi.Input[str] namespace: The namespace to make requests within
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "server_address", server_address)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_address", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The namespace to make requests within
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class SecretStoreVaultAwsIamArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 server_address: pulumi.Input[str],
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: Unique human-readable name of the SecretStore.
+        :param pulumi.Input[str] server_address: The URL of the Vault to target
+        :param pulumi.Input[str] namespace: The namespace to make requests within
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "server_address", server_address)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique human-readable name of the SecretStore.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serverAddress")
+    def server_address(self) -> pulumi.Input[str]:
+        """
+        The URL of the Vault to target
+        """
+        return pulumi.get(self, "server_address")
+
+    @server_address.setter
+    def server_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server_address", value)
 
     @property
     @pulumi.getter

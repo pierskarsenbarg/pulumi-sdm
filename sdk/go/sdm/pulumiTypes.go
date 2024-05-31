@@ -1258,16 +1258,16 @@ type ResourceAks struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname string `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1302,16 +1302,16 @@ type ResourceAksArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1432,6 +1432,16 @@ func (o ResourceAksOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAks) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAksOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAks) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAksOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAks) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAksOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAks) string { return v.Name }).(pulumi.StringOutput)
@@ -1445,16 +1455,6 @@ func (o ResourceAksOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAksOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAks) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAksOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAks) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAksOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAks) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -1566,6 +1566,26 @@ func (o ResourceAksPtrOutput) Hostname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAksPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAksPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAksPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAks) *string {
@@ -1594,26 +1614,6 @@ func (o ResourceAksPtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAksPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAksPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -2001,16 +2001,16 @@ type ResourceAksServiceAccount struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname string `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2042,16 +2042,16 @@ type ResourceAksServiceAccountArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2160,6 +2160,16 @@ func (o ResourceAksServiceAccountOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAksServiceAccountOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAksServiceAccountOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAksServiceAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) string { return v.Name }).(pulumi.StringOutput)
@@ -2173,16 +2183,6 @@ func (o ResourceAksServiceAccountOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAksServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAksServiceAccountOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAksServiceAccountOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -2270,6 +2270,26 @@ func (o ResourceAksServiceAccountPtrOutput) Hostname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAksServiceAccountPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAksServiceAccountPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAksServiceAccountPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
@@ -2298,26 +2318,6 @@ func (o ResourceAksServiceAccountPtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAksServiceAccountPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAksServiceAccountPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -3072,16 +3072,16 @@ type ResourceAmazonEks struct {
 	Endpoint string `pulumi:"endpoint"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3122,16 +3122,16 @@ type ResourceAmazonEksArgs struct {
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3258,6 +3258,16 @@ func (o ResourceAmazonEksOutput) HealthcheckNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.HealthcheckNamespace }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAmazonEksOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAmazonEksOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAmazonEksOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) string { return v.Name }).(pulumi.StringOutput)
@@ -3271,16 +3281,6 @@ func (o ResourceAmazonEksOutput) PortOverride() pulumi.IntPtrOutput {
 // The AWS region to connect to.
 func (o ResourceAmazonEksOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAmazonEksOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAmazonEksOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -3407,6 +3407,26 @@ func (o ResourceAmazonEksPtrOutput) HealthcheckNamespace() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAmazonEksPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAmazonEksPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAmazonEksPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEks) *string {
@@ -3434,26 +3454,6 @@ func (o ResourceAmazonEksPtrOutput) Region() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAmazonEksPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAmazonEksPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEks) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3530,16 +3530,16 @@ type ResourceAmazonEksInstanceProfile struct {
 	Endpoint string `pulumi:"endpoint"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3576,16 +3576,16 @@ type ResourceAmazonEksInstanceProfileArgs struct {
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3705,6 +3705,16 @@ func (o ResourceAmazonEksInstanceProfileOutput) HealthcheckNamespace() pulumi.St
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.HealthcheckNamespace }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAmazonEksInstanceProfileOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAmazonEksInstanceProfileOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAmazonEksInstanceProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.Name }).(pulumi.StringOutput)
@@ -3718,16 +3728,6 @@ func (o ResourceAmazonEksInstanceProfileOutput) PortOverride() pulumi.IntPtrOutp
 // The AWS region to connect to.
 func (o ResourceAmazonEksInstanceProfileOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAmazonEksInstanceProfileOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAmazonEksInstanceProfileOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -3839,6 +3839,26 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) HealthcheckNamespace() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAmazonEksInstanceProfilePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
@@ -3866,26 +3886,6 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) Region() pulumi.StringPtrOutp
 			return nil
 		}
 		return &v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAmazonEksInstanceProfilePtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAmazonEksInstanceProfilePtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3958,10 +3958,6 @@ type ResourceAmazonEksInstanceProfileUserImpersonation struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -4004,10 +4000,6 @@ type ResourceAmazonEksInstanceProfileUserImpersonationArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -4140,18 +4132,6 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) PortOverride() 
 // The AWS region to connect to.
 func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -4290,26 +4270,6 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) Region() pul
 			return nil
 		}
 		return &v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7347,16 +7307,16 @@ type ResourceAwsConsole struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
 	EnableEnvVariables *bool `pulumi:"enableEnvVariables"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -7389,16 +7349,16 @@ type ResourceAwsConsoleArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
 	EnableEnvVariables pulumi.BoolPtrInput `pulumi:"enableEnvVariables"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -7505,6 +7465,16 @@ func (o ResourceAwsConsoleOutput) EnableEnvVariables() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ResourceAwsConsole) *bool { return v.EnableEnvVariables }).(pulumi.BoolPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAwsConsoleOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAwsConsoleOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAwsConsoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAwsConsole) string { return v.Name }).(pulumi.StringOutput)
@@ -7518,16 +7488,6 @@ func (o ResourceAwsConsoleOutput) PortOverride() pulumi.IntPtrOutput {
 // The AWS region to connect to.
 func (o ResourceAwsConsoleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAwsConsole) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAwsConsoleOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAwsConsoleOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -7614,6 +7574,26 @@ func (o ResourceAwsConsolePtrOutput) EnableEnvVariables() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAwsConsolePtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAwsConsolePtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAwsConsolePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAwsConsole) *string {
@@ -7641,26 +7621,6 @@ func (o ResourceAwsConsolePtrOutput) Region() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAwsConsolePtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAwsConsolePtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsole) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7731,16 +7691,16 @@ type ResourceAwsConsoleStaticKeyPair struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -7775,16 +7735,16 @@ type ResourceAwsConsoleStaticKeyPairArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -7893,6 +7853,16 @@ func (o ResourceAwsConsoleStaticKeyPairOutput) EgressFilter() pulumi.StringPtrOu
 	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAwsConsoleStaticKeyPairOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAwsConsoleStaticKeyPairOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAwsConsoleStaticKeyPairOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) string { return v.Name }).(pulumi.StringOutput)
@@ -7906,16 +7876,6 @@ func (o ResourceAwsConsoleStaticKeyPairOutput) PortOverride() pulumi.IntPtrOutpu
 // The AWS region to connect to.
 func (o ResourceAwsConsoleStaticKeyPairOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAwsConsoleStaticKeyPairOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAwsConsoleStaticKeyPairOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -8007,6 +7967,26 @@ func (o ResourceAwsConsoleStaticKeyPairPtrOutput) EgressFilter() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
@@ -8034,26 +8014,6 @@ func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Region() pulumi.StringPtrOutpu
 			return nil
 		}
 		return &v.Region
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceAwsConsoleStaticKeyPairPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14758,14 +14718,14 @@ type ResourceGoogleGke struct {
 	Endpoint string `pulumi:"endpoint"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -14798,14 +14758,14 @@ type ResourceGoogleGkeArgs struct {
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -14918,6 +14878,16 @@ func (o ResourceGoogleGkeOutput) HealthcheckNamespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.HealthcheckNamespace }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceGoogleGkeOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceGoogleGkeOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceGoogleGkeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) string { return v.Name }).(pulumi.StringOutput)
@@ -14926,16 +14896,6 @@ func (o ResourceGoogleGkeOutput) Name() pulumi.StringOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceGoogleGkeOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceGoogleGkeOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceGoogleGkeOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -15032,6 +14992,26 @@ func (o ResourceGoogleGkePtrOutput) HealthcheckNamespace() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceGoogleGkePtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGke) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceGoogleGkePtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGke) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceGoogleGkePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGoogleGke) *string {
@@ -15050,26 +15030,6 @@ func (o ResourceGoogleGkePtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceGoogleGkePtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGke) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceGoogleGkePtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceGoogleGke) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -16869,16 +16829,16 @@ type ResourceKubernetes struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname string `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16913,16 +16873,16 @@ type ResourceKubernetesArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17043,6 +17003,16 @@ func (o ResourceKubernetesOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceKubernetes) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceKubernetesOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetes) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceKubernetesOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetes) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceKubernetesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceKubernetes) string { return v.Name }).(pulumi.StringOutput)
@@ -17056,16 +17026,6 @@ func (o ResourceKubernetesOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceKubernetesOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetes) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceKubernetesOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetes) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceKubernetesOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetes) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -17177,6 +17137,26 @@ func (o ResourceKubernetesPtrOutput) Hostname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceKubernetesPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceKubernetesPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceKubernetesPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetes) *string {
@@ -17205,26 +17185,6 @@ func (o ResourceKubernetesPtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceKubernetesPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceKubernetesPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetes) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -17612,16 +17572,16 @@ type ResourceKubernetesServiceAccount struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname string `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17653,16 +17613,16 @@ type ResourceKubernetesServiceAccountArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17771,6 +17731,16 @@ func (o ResourceKubernetesServiceAccountOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceKubernetesServiceAccountOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceKubernetesServiceAccountOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceKubernetesServiceAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) string { return v.Name }).(pulumi.StringOutput)
@@ -17784,16 +17754,6 @@ func (o ResourceKubernetesServiceAccountOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceKubernetesServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceKubernetesServiceAccountOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceKubernetesServiceAccountOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -17881,6 +17841,26 @@ func (o ResourceKubernetesServiceAccountPtrOutput) Hostname() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceKubernetesServiceAccountPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceKubernetesServiceAccountPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceKubernetesServiceAccountPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
@@ -17909,26 +17889,6 @@ func (o ResourceKubernetesServiceAccountPtrOutput) PortOverride() pulumi.IntPtrO
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceKubernetesServiceAccountPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceKubernetesServiceAccountPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -25686,16 +25646,16 @@ type ResourceRdpCert struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname string `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25724,16 +25684,16 @@ type ResourceRdpCertArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25836,6 +25796,16 @@ func (o ResourceRdpCertOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceRdpCert) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceRdpCertOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceRdpCertOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceRdpCertOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceRdpCert) string { return v.Name }).(pulumi.StringOutput)
@@ -25849,16 +25819,6 @@ func (o ResourceRdpCertOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceRdpCertOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRdpCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceRdpCertOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRdpCert) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceRdpCertOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRdpCert) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -25935,6 +25895,26 @@ func (o ResourceRdpCertPtrOutput) Hostname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceRdpCertPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceRdpCertPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceRdpCertPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRdpCert) *string {
@@ -25963,26 +25943,6 @@ func (o ResourceRdpCertPtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceRdpCertPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRdpCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceRdpCertPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceRdpCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -29821,6 +29781,10 @@ type ResourceSshCert struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname string `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// The key type to use e.g. rsa-2048 or ed25519
 	KeyType *string `pulumi:"keyType"`
 	// Unique human-readable name of the Resource.
@@ -29831,10 +29795,6 @@ type ResourceSshCert struct {
 	PortForwarding *bool `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -29865,6 +29825,10 @@ type ResourceSshCertArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The host to dial to initiate a connection from the egress node to this resource.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// The key type to use e.g. rsa-2048 or ed25519
 	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
 	// Unique human-readable name of the Resource.
@@ -29875,10 +29839,6 @@ type ResourceSshCertArgs struct {
 	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -29986,6 +29946,16 @@ func (o ResourceSshCertOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceSshCert) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceSshCertOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshCert) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceSshCertOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshCert) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // The key type to use e.g. rsa-2048 or ed25519
 func (o ResourceSshCertOutput) KeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSshCert) *string { return v.KeyType }).(pulumi.StringPtrOutput)
@@ -30009,16 +29979,6 @@ func (o ResourceSshCertOutput) PortForwarding() pulumi.BoolPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceSshCertOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSshCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceSshCertOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSshCert) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceSshCertOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSshCert) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -30105,6 +30065,26 @@ func (o ResourceSshCertPtrOutput) Hostname() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceSshCertPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceSshCertPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The key type to use e.g. rsa-2048 or ed25519
 func (o ResourceSshCertPtrOutput) KeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSshCert) *string {
@@ -30153,26 +30133,6 @@ func (o ResourceSshCertPtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o ResourceSshCertPtrOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSshCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o ResourceSshCertPtrOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceSshCert) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -33836,6 +33796,333 @@ func (o SecretStoreGcpStorePtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type SecretStoreKeyfactorSshStore struct {
+	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+	CaFilePath *string `pulumi:"caFilePath"`
+	// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+	CertificateFilePath string `pulumi:"certificateFilePath"`
+	// Name of EJBCA certificate authority that will enroll CSR.
+	DefaultCertificateAuthorityName string `pulumi:"defaultCertificateAuthorityName"`
+	// Certificate profile name that EJBCA will enroll the CSR with.
+	DefaultCertificateProfileName string `pulumi:"defaultCertificateProfileName"`
+	// End entity profile that EJBCA will enroll the CSR with.
+	DefaultEndEntityProfileName string `pulumi:"defaultEndEntityProfileName"`
+	// code used by EJBCA during enrollment. May be left blank if no code is required.
+	EnrollmentCodeEnvVar *string `pulumi:"enrollmentCodeEnvVar"`
+	// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+	EnrollmentUsernameEnvVar *string `pulumi:"enrollmentUsernameEnvVar"`
+	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+	KeyFilePath *string `pulumi:"keyFilePath"`
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreKeyfactorSshStoreInput is an input type that accepts SecretStoreKeyfactorSshStoreArgs and SecretStoreKeyfactorSshStoreOutput values.
+// You can construct a concrete instance of `SecretStoreKeyfactorSshStoreInput` via:
+//
+//	SecretStoreKeyfactorSshStoreArgs{...}
+type SecretStoreKeyfactorSshStoreInput interface {
+	pulumi.Input
+
+	ToSecretStoreKeyfactorSshStoreOutput() SecretStoreKeyfactorSshStoreOutput
+	ToSecretStoreKeyfactorSshStoreOutputWithContext(context.Context) SecretStoreKeyfactorSshStoreOutput
+}
+
+type SecretStoreKeyfactorSshStoreArgs struct {
+	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+	CaFilePath pulumi.StringPtrInput `pulumi:"caFilePath"`
+	// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+	CertificateFilePath pulumi.StringInput `pulumi:"certificateFilePath"`
+	// Name of EJBCA certificate authority that will enroll CSR.
+	DefaultCertificateAuthorityName pulumi.StringInput `pulumi:"defaultCertificateAuthorityName"`
+	// Certificate profile name that EJBCA will enroll the CSR with.
+	DefaultCertificateProfileName pulumi.StringInput `pulumi:"defaultCertificateProfileName"`
+	// End entity profile that EJBCA will enroll the CSR with.
+	DefaultEndEntityProfileName pulumi.StringInput `pulumi:"defaultEndEntityProfileName"`
+	// code used by EJBCA during enrollment. May be left blank if no code is required.
+	EnrollmentCodeEnvVar pulumi.StringPtrInput `pulumi:"enrollmentCodeEnvVar"`
+	// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+	EnrollmentUsernameEnvVar pulumi.StringPtrInput `pulumi:"enrollmentUsernameEnvVar"`
+	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+	KeyFilePath pulumi.StringPtrInput `pulumi:"keyFilePath"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreKeyfactorSshStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreKeyfactorSshStore)(nil)).Elem()
+}
+
+func (i SecretStoreKeyfactorSshStoreArgs) ToSecretStoreKeyfactorSshStoreOutput() SecretStoreKeyfactorSshStoreOutput {
+	return i.ToSecretStoreKeyfactorSshStoreOutputWithContext(context.Background())
+}
+
+func (i SecretStoreKeyfactorSshStoreArgs) ToSecretStoreKeyfactorSshStoreOutputWithContext(ctx context.Context) SecretStoreKeyfactorSshStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreKeyfactorSshStoreOutput)
+}
+
+func (i SecretStoreKeyfactorSshStoreArgs) ToSecretStoreKeyfactorSshStorePtrOutput() SecretStoreKeyfactorSshStorePtrOutput {
+	return i.ToSecretStoreKeyfactorSshStorePtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreKeyfactorSshStoreArgs) ToSecretStoreKeyfactorSshStorePtrOutputWithContext(ctx context.Context) SecretStoreKeyfactorSshStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreKeyfactorSshStoreOutput).ToSecretStoreKeyfactorSshStorePtrOutputWithContext(ctx)
+}
+
+// SecretStoreKeyfactorSshStorePtrInput is an input type that accepts SecretStoreKeyfactorSshStoreArgs, SecretStoreKeyfactorSshStorePtr and SecretStoreKeyfactorSshStorePtrOutput values.
+// You can construct a concrete instance of `SecretStoreKeyfactorSshStorePtrInput` via:
+//
+//	        SecretStoreKeyfactorSshStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreKeyfactorSshStorePtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreKeyfactorSshStorePtrOutput() SecretStoreKeyfactorSshStorePtrOutput
+	ToSecretStoreKeyfactorSshStorePtrOutputWithContext(context.Context) SecretStoreKeyfactorSshStorePtrOutput
+}
+
+type secretStoreKeyfactorSshStorePtrType SecretStoreKeyfactorSshStoreArgs
+
+func SecretStoreKeyfactorSshStorePtr(v *SecretStoreKeyfactorSshStoreArgs) SecretStoreKeyfactorSshStorePtrInput {
+	return (*secretStoreKeyfactorSshStorePtrType)(v)
+}
+
+func (*secretStoreKeyfactorSshStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreKeyfactorSshStore)(nil)).Elem()
+}
+
+func (i *secretStoreKeyfactorSshStorePtrType) ToSecretStoreKeyfactorSshStorePtrOutput() SecretStoreKeyfactorSshStorePtrOutput {
+	return i.ToSecretStoreKeyfactorSshStorePtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreKeyfactorSshStorePtrType) ToSecretStoreKeyfactorSshStorePtrOutputWithContext(ctx context.Context) SecretStoreKeyfactorSshStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreKeyfactorSshStorePtrOutput)
+}
+
+type SecretStoreKeyfactorSshStoreOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreKeyfactorSshStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreKeyfactorSshStore)(nil)).Elem()
+}
+
+func (o SecretStoreKeyfactorSshStoreOutput) ToSecretStoreKeyfactorSshStoreOutput() SecretStoreKeyfactorSshStoreOutput {
+	return o
+}
+
+func (o SecretStoreKeyfactorSshStoreOutput) ToSecretStoreKeyfactorSshStoreOutputWithContext(ctx context.Context) SecretStoreKeyfactorSshStoreOutput {
+	return o
+}
+
+func (o SecretStoreKeyfactorSshStoreOutput) ToSecretStoreKeyfactorSshStorePtrOutput() SecretStoreKeyfactorSshStorePtrOutput {
+	return o.ToSecretStoreKeyfactorSshStorePtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreKeyfactorSshStoreOutput) ToSecretStoreKeyfactorSshStorePtrOutputWithContext(ctx context.Context) SecretStoreKeyfactorSshStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreKeyfactorSshStore) *SecretStoreKeyfactorSshStore {
+		return &v
+	}).(SecretStoreKeyfactorSshStorePtrOutput)
+}
+
+// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+func (o SecretStoreKeyfactorSshStoreOutput) CaFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) *string { return v.CaFilePath }).(pulumi.StringPtrOutput)
+}
+
+// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+func (o SecretStoreKeyfactorSshStoreOutput) CertificateFilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) string { return v.CertificateFilePath }).(pulumi.StringOutput)
+}
+
+// Name of EJBCA certificate authority that will enroll CSR.
+func (o SecretStoreKeyfactorSshStoreOutput) DefaultCertificateAuthorityName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) string { return v.DefaultCertificateAuthorityName }).(pulumi.StringOutput)
+}
+
+// Certificate profile name that EJBCA will enroll the CSR with.
+func (o SecretStoreKeyfactorSshStoreOutput) DefaultCertificateProfileName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) string { return v.DefaultCertificateProfileName }).(pulumi.StringOutput)
+}
+
+// End entity profile that EJBCA will enroll the CSR with.
+func (o SecretStoreKeyfactorSshStoreOutput) DefaultEndEntityProfileName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) string { return v.DefaultEndEntityProfileName }).(pulumi.StringOutput)
+}
+
+// code used by EJBCA during enrollment. May be left blank if no code is required.
+func (o SecretStoreKeyfactorSshStoreOutput) EnrollmentCodeEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) *string { return v.EnrollmentCodeEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+func (o SecretStoreKeyfactorSshStoreOutput) EnrollmentUsernameEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) *string { return v.EnrollmentUsernameEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+func (o SecretStoreKeyfactorSshStoreOutput) KeyFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) *string { return v.KeyFilePath }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreKeyfactorSshStoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreKeyfactorSshStoreOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreKeyfactorSshStoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreKeyfactorSshStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreKeyfactorSshStorePtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreKeyfactorSshStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreKeyfactorSshStore)(nil)).Elem()
+}
+
+func (o SecretStoreKeyfactorSshStorePtrOutput) ToSecretStoreKeyfactorSshStorePtrOutput() SecretStoreKeyfactorSshStorePtrOutput {
+	return o
+}
+
+func (o SecretStoreKeyfactorSshStorePtrOutput) ToSecretStoreKeyfactorSshStorePtrOutputWithContext(ctx context.Context) SecretStoreKeyfactorSshStorePtrOutput {
+	return o
+}
+
+func (o SecretStoreKeyfactorSshStorePtrOutput) Elem() SecretStoreKeyfactorSshStoreOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) SecretStoreKeyfactorSshStore {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreKeyfactorSshStore
+		return ret
+	}).(SecretStoreKeyfactorSshStoreOutput)
+}
+
+// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+func (o SecretStoreKeyfactorSshStorePtrOutput) CaFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+func (o SecretStoreKeyfactorSshStorePtrOutput) CertificateFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of EJBCA certificate authority that will enroll CSR.
+func (o SecretStoreKeyfactorSshStorePtrOutput) DefaultCertificateAuthorityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultCertificateAuthorityName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate profile name that EJBCA will enroll the CSR with.
+func (o SecretStoreKeyfactorSshStorePtrOutput) DefaultCertificateProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultCertificateProfileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// End entity profile that EJBCA will enroll the CSR with.
+func (o SecretStoreKeyfactorSshStorePtrOutput) DefaultEndEntityProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultEndEntityProfileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// code used by EJBCA during enrollment. May be left blank if no code is required.
+func (o SecretStoreKeyfactorSshStorePtrOutput) EnrollmentCodeEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnrollmentCodeEnvVar
+	}).(pulumi.StringPtrOutput)
+}
+
+// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+func (o SecretStoreKeyfactorSshStorePtrOutput) EnrollmentUsernameEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnrollmentUsernameEnvVar
+	}).(pulumi.StringPtrOutput)
+}
+
+// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+func (o SecretStoreKeyfactorSshStorePtrOutput) KeyFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyFilePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreKeyfactorSshStorePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreKeyfactorSshStorePtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreKeyfactorSshStorePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreKeyfactorSshStore) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type SecretStoreKeyfactorX509Store struct {
 	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
 	CaFilePath *string `pulumi:"caFilePath"`
@@ -33853,8 +34140,6 @@ type SecretStoreKeyfactorX509Store struct {
 	EnrollmentUsernameEnvVar *string `pulumi:"enrollmentUsernameEnvVar"`
 	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
 	KeyFilePath *string `pulumi:"keyFilePath"`
-	// optional environment variable housing the password that is used to decrypt the key file.
-	KeyPasswordEnvVar *string `pulumi:"keyPasswordEnvVar"`
 	// Unique human-readable name of the SecretStore.
 	Name string `pulumi:"name"`
 	// The URL of the Vault to target
@@ -33891,8 +34176,6 @@ type SecretStoreKeyfactorX509StoreArgs struct {
 	EnrollmentUsernameEnvVar pulumi.StringPtrInput `pulumi:"enrollmentUsernameEnvVar"`
 	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
 	KeyFilePath pulumi.StringPtrInput `pulumi:"keyFilePath"`
-	// optional environment variable housing the password that is used to decrypt the key file.
-	KeyPasswordEnvVar pulumi.StringPtrInput `pulumi:"keyPasswordEnvVar"`
 	// Unique human-readable name of the SecretStore.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The URL of the Vault to target
@@ -34018,11 +34301,6 @@ func (o SecretStoreKeyfactorX509StoreOutput) KeyFilePath() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) *string { return v.KeyFilePath }).(pulumi.StringPtrOutput)
 }
 
-// optional environment variable housing the password that is used to decrypt the key file.
-func (o SecretStoreKeyfactorX509StoreOutput) KeyPasswordEnvVar() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) *string { return v.KeyPasswordEnvVar }).(pulumi.StringPtrOutput)
-}
-
 // Unique human-readable name of the SecretStore.
 func (o SecretStoreKeyfactorX509StoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretStoreKeyfactorX509Store) string { return v.Name }).(pulumi.StringOutput)
@@ -34139,16 +34417,6 @@ func (o SecretStoreKeyfactorX509StorePtrOutput) KeyFilePath() pulumi.StringPtrOu
 			return nil
 		}
 		return v.KeyFilePath
-	}).(pulumi.StringPtrOutput)
-}
-
-// optional environment variable housing the password that is used to decrypt the key file.
-func (o SecretStoreKeyfactorX509StorePtrOutput) KeyPasswordEnvVar() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecretStoreKeyfactorX509Store) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyPasswordEnvVar
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -34871,6 +35139,394 @@ func (o SecretStoreVaultApproleCertX509PtrOutput) SigningRole() pulumi.StringPtr
 // Tags is a map of key, value pairs.
 func (o SecretStoreVaultApproleCertX509PtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SecretStoreVaultApproleCertX509) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultAwsEc2 struct {
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreVaultAwsEc2Input is an input type that accepts SecretStoreVaultAwsEc2Args and SecretStoreVaultAwsEc2Output values.
+// You can construct a concrete instance of `SecretStoreVaultAwsEc2Input` via:
+//
+//	SecretStoreVaultAwsEc2Args{...}
+type SecretStoreVaultAwsEc2Input interface {
+	pulumi.Input
+
+	ToSecretStoreVaultAwsEc2Output() SecretStoreVaultAwsEc2Output
+	ToSecretStoreVaultAwsEc2OutputWithContext(context.Context) SecretStoreVaultAwsEc2Output
+}
+
+type SecretStoreVaultAwsEc2Args struct {
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreVaultAwsEc2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultAwsEc2)(nil)).Elem()
+}
+
+func (i SecretStoreVaultAwsEc2Args) ToSecretStoreVaultAwsEc2Output() SecretStoreVaultAwsEc2Output {
+	return i.ToSecretStoreVaultAwsEc2OutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultAwsEc2Args) ToSecretStoreVaultAwsEc2OutputWithContext(ctx context.Context) SecretStoreVaultAwsEc2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultAwsEc2Output)
+}
+
+func (i SecretStoreVaultAwsEc2Args) ToSecretStoreVaultAwsEc2PtrOutput() SecretStoreVaultAwsEc2PtrOutput {
+	return i.ToSecretStoreVaultAwsEc2PtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultAwsEc2Args) ToSecretStoreVaultAwsEc2PtrOutputWithContext(ctx context.Context) SecretStoreVaultAwsEc2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultAwsEc2Output).ToSecretStoreVaultAwsEc2PtrOutputWithContext(ctx)
+}
+
+// SecretStoreVaultAwsEc2PtrInput is an input type that accepts SecretStoreVaultAwsEc2Args, SecretStoreVaultAwsEc2Ptr and SecretStoreVaultAwsEc2PtrOutput values.
+// You can construct a concrete instance of `SecretStoreVaultAwsEc2PtrInput` via:
+//
+//	        SecretStoreVaultAwsEc2Args{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreVaultAwsEc2PtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultAwsEc2PtrOutput() SecretStoreVaultAwsEc2PtrOutput
+	ToSecretStoreVaultAwsEc2PtrOutputWithContext(context.Context) SecretStoreVaultAwsEc2PtrOutput
+}
+
+type secretStoreVaultAwsEc2PtrType SecretStoreVaultAwsEc2Args
+
+func SecretStoreVaultAwsEc2Ptr(v *SecretStoreVaultAwsEc2Args) SecretStoreVaultAwsEc2PtrInput {
+	return (*secretStoreVaultAwsEc2PtrType)(v)
+}
+
+func (*secretStoreVaultAwsEc2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultAwsEc2)(nil)).Elem()
+}
+
+func (i *secretStoreVaultAwsEc2PtrType) ToSecretStoreVaultAwsEc2PtrOutput() SecretStoreVaultAwsEc2PtrOutput {
+	return i.ToSecretStoreVaultAwsEc2PtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreVaultAwsEc2PtrType) ToSecretStoreVaultAwsEc2PtrOutputWithContext(ctx context.Context) SecretStoreVaultAwsEc2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultAwsEc2PtrOutput)
+}
+
+type SecretStoreVaultAwsEc2Output struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultAwsEc2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultAwsEc2)(nil)).Elem()
+}
+
+func (o SecretStoreVaultAwsEc2Output) ToSecretStoreVaultAwsEc2Output() SecretStoreVaultAwsEc2Output {
+	return o
+}
+
+func (o SecretStoreVaultAwsEc2Output) ToSecretStoreVaultAwsEc2OutputWithContext(ctx context.Context) SecretStoreVaultAwsEc2Output {
+	return o
+}
+
+func (o SecretStoreVaultAwsEc2Output) ToSecretStoreVaultAwsEc2PtrOutput() SecretStoreVaultAwsEc2PtrOutput {
+	return o.ToSecretStoreVaultAwsEc2PtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreVaultAwsEc2Output) ToSecretStoreVaultAwsEc2PtrOutputWithContext(ctx context.Context) SecretStoreVaultAwsEc2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultAwsEc2) *SecretStoreVaultAwsEc2 {
+		return &v
+	}).(SecretStoreVaultAwsEc2PtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultAwsEc2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultAwsEc2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultAwsEc2Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultAwsEc2) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultAwsEc2Output) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultAwsEc2) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultAwsEc2Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreVaultAwsEc2) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultAwsEc2PtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultAwsEc2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultAwsEc2)(nil)).Elem()
+}
+
+func (o SecretStoreVaultAwsEc2PtrOutput) ToSecretStoreVaultAwsEc2PtrOutput() SecretStoreVaultAwsEc2PtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultAwsEc2PtrOutput) ToSecretStoreVaultAwsEc2PtrOutputWithContext(ctx context.Context) SecretStoreVaultAwsEc2PtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultAwsEc2PtrOutput) Elem() SecretStoreVaultAwsEc2Output {
+	return o.ApplyT(func(v *SecretStoreVaultAwsEc2) SecretStoreVaultAwsEc2 {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreVaultAwsEc2
+		return ret
+	}).(SecretStoreVaultAwsEc2Output)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultAwsEc2PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsEc2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultAwsEc2PtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsEc2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultAwsEc2PtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsEc2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultAwsEc2PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsEc2) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultAwsIam struct {
+	// Unique human-readable name of the SecretStore.
+	Name string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// SecretStoreVaultAwsIamInput is an input type that accepts SecretStoreVaultAwsIamArgs and SecretStoreVaultAwsIamOutput values.
+// You can construct a concrete instance of `SecretStoreVaultAwsIamInput` via:
+//
+//	SecretStoreVaultAwsIamArgs{...}
+type SecretStoreVaultAwsIamInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultAwsIamOutput() SecretStoreVaultAwsIamOutput
+	ToSecretStoreVaultAwsIamOutputWithContext(context.Context) SecretStoreVaultAwsIamOutput
+}
+
+type SecretStoreVaultAwsIamArgs struct {
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (SecretStoreVaultAwsIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultAwsIam)(nil)).Elem()
+}
+
+func (i SecretStoreVaultAwsIamArgs) ToSecretStoreVaultAwsIamOutput() SecretStoreVaultAwsIamOutput {
+	return i.ToSecretStoreVaultAwsIamOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultAwsIamArgs) ToSecretStoreVaultAwsIamOutputWithContext(ctx context.Context) SecretStoreVaultAwsIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultAwsIamOutput)
+}
+
+func (i SecretStoreVaultAwsIamArgs) ToSecretStoreVaultAwsIamPtrOutput() SecretStoreVaultAwsIamPtrOutput {
+	return i.ToSecretStoreVaultAwsIamPtrOutputWithContext(context.Background())
+}
+
+func (i SecretStoreVaultAwsIamArgs) ToSecretStoreVaultAwsIamPtrOutputWithContext(ctx context.Context) SecretStoreVaultAwsIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultAwsIamOutput).ToSecretStoreVaultAwsIamPtrOutputWithContext(ctx)
+}
+
+// SecretStoreVaultAwsIamPtrInput is an input type that accepts SecretStoreVaultAwsIamArgs, SecretStoreVaultAwsIamPtr and SecretStoreVaultAwsIamPtrOutput values.
+// You can construct a concrete instance of `SecretStoreVaultAwsIamPtrInput` via:
+//
+//	        SecretStoreVaultAwsIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretStoreVaultAwsIamPtrInput interface {
+	pulumi.Input
+
+	ToSecretStoreVaultAwsIamPtrOutput() SecretStoreVaultAwsIamPtrOutput
+	ToSecretStoreVaultAwsIamPtrOutputWithContext(context.Context) SecretStoreVaultAwsIamPtrOutput
+}
+
+type secretStoreVaultAwsIamPtrType SecretStoreVaultAwsIamArgs
+
+func SecretStoreVaultAwsIamPtr(v *SecretStoreVaultAwsIamArgs) SecretStoreVaultAwsIamPtrInput {
+	return (*secretStoreVaultAwsIamPtrType)(v)
+}
+
+func (*secretStoreVaultAwsIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultAwsIam)(nil)).Elem()
+}
+
+func (i *secretStoreVaultAwsIamPtrType) ToSecretStoreVaultAwsIamPtrOutput() SecretStoreVaultAwsIamPtrOutput {
+	return i.ToSecretStoreVaultAwsIamPtrOutputWithContext(context.Background())
+}
+
+func (i *secretStoreVaultAwsIamPtrType) ToSecretStoreVaultAwsIamPtrOutputWithContext(ctx context.Context) SecretStoreVaultAwsIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretStoreVaultAwsIamPtrOutput)
+}
+
+type SecretStoreVaultAwsIamOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultAwsIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretStoreVaultAwsIam)(nil)).Elem()
+}
+
+func (o SecretStoreVaultAwsIamOutput) ToSecretStoreVaultAwsIamOutput() SecretStoreVaultAwsIamOutput {
+	return o
+}
+
+func (o SecretStoreVaultAwsIamOutput) ToSecretStoreVaultAwsIamOutputWithContext(ctx context.Context) SecretStoreVaultAwsIamOutput {
+	return o
+}
+
+func (o SecretStoreVaultAwsIamOutput) ToSecretStoreVaultAwsIamPtrOutput() SecretStoreVaultAwsIamPtrOutput {
+	return o.ToSecretStoreVaultAwsIamPtrOutputWithContext(context.Background())
+}
+
+func (o SecretStoreVaultAwsIamOutput) ToSecretStoreVaultAwsIamPtrOutputWithContext(ctx context.Context) SecretStoreVaultAwsIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretStoreVaultAwsIam) *SecretStoreVaultAwsIam {
+		return &v
+	}).(SecretStoreVaultAwsIamPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultAwsIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultAwsIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultAwsIamOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretStoreVaultAwsIam) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultAwsIamOutput) ServerAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretStoreVaultAwsIam) string { return v.ServerAddress }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultAwsIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretStoreVaultAwsIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type SecretStoreVaultAwsIamPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretStoreVaultAwsIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretStoreVaultAwsIam)(nil)).Elem()
+}
+
+func (o SecretStoreVaultAwsIamPtrOutput) ToSecretStoreVaultAwsIamPtrOutput() SecretStoreVaultAwsIamPtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultAwsIamPtrOutput) ToSecretStoreVaultAwsIamPtrOutputWithContext(ctx context.Context) SecretStoreVaultAwsIamPtrOutput {
+	return o
+}
+
+func (o SecretStoreVaultAwsIamPtrOutput) Elem() SecretStoreVaultAwsIamOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsIam) SecretStoreVaultAwsIam {
+		if v != nil {
+			return *v
+		}
+		var ret SecretStoreVaultAwsIam
+		return ret
+	}).(SecretStoreVaultAwsIamOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o SecretStoreVaultAwsIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o SecretStoreVaultAwsIamPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o SecretStoreVaultAwsIamPtrOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o SecretStoreVaultAwsIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretStoreVaultAwsIam) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -37496,6 +38152,236 @@ func (o GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput) Index(i pulumi.I
 	}).(GetApprovalWorkflowStepApprovalWorkflowStepOutput)
 }
 
+type GetIdentityAliasIdentityAlias struct {
+	// The account for this identity alias.
+	AccountId *string `pulumi:"accountId"`
+	// Unique identifier of the IdentityAlias.
+	Id *string `pulumi:"id"`
+	// The identity set.
+	IdentitySetId *string `pulumi:"identitySetId"`
+	// The username to be used as the identity alias for this account.
+	Username *string `pulumi:"username"`
+}
+
+// GetIdentityAliasIdentityAliasInput is an input type that accepts GetIdentityAliasIdentityAliasArgs and GetIdentityAliasIdentityAliasOutput values.
+// You can construct a concrete instance of `GetIdentityAliasIdentityAliasInput` via:
+//
+//	GetIdentityAliasIdentityAliasArgs{...}
+type GetIdentityAliasIdentityAliasInput interface {
+	pulumi.Input
+
+	ToGetIdentityAliasIdentityAliasOutput() GetIdentityAliasIdentityAliasOutput
+	ToGetIdentityAliasIdentityAliasOutputWithContext(context.Context) GetIdentityAliasIdentityAliasOutput
+}
+
+type GetIdentityAliasIdentityAliasArgs struct {
+	// The account for this identity alias.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
+	// Unique identifier of the IdentityAlias.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The identity set.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// The username to be used as the identity alias for this account.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetIdentityAliasIdentityAliasArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdentityAliasIdentityAlias)(nil)).Elem()
+}
+
+func (i GetIdentityAliasIdentityAliasArgs) ToGetIdentityAliasIdentityAliasOutput() GetIdentityAliasIdentityAliasOutput {
+	return i.ToGetIdentityAliasIdentityAliasOutputWithContext(context.Background())
+}
+
+func (i GetIdentityAliasIdentityAliasArgs) ToGetIdentityAliasIdentityAliasOutputWithContext(ctx context.Context) GetIdentityAliasIdentityAliasOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdentityAliasIdentityAliasOutput)
+}
+
+// GetIdentityAliasIdentityAliasArrayInput is an input type that accepts GetIdentityAliasIdentityAliasArray and GetIdentityAliasIdentityAliasArrayOutput values.
+// You can construct a concrete instance of `GetIdentityAliasIdentityAliasArrayInput` via:
+//
+//	GetIdentityAliasIdentityAliasArray{ GetIdentityAliasIdentityAliasArgs{...} }
+type GetIdentityAliasIdentityAliasArrayInput interface {
+	pulumi.Input
+
+	ToGetIdentityAliasIdentityAliasArrayOutput() GetIdentityAliasIdentityAliasArrayOutput
+	ToGetIdentityAliasIdentityAliasArrayOutputWithContext(context.Context) GetIdentityAliasIdentityAliasArrayOutput
+}
+
+type GetIdentityAliasIdentityAliasArray []GetIdentityAliasIdentityAliasInput
+
+func (GetIdentityAliasIdentityAliasArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdentityAliasIdentityAlias)(nil)).Elem()
+}
+
+func (i GetIdentityAliasIdentityAliasArray) ToGetIdentityAliasIdentityAliasArrayOutput() GetIdentityAliasIdentityAliasArrayOutput {
+	return i.ToGetIdentityAliasIdentityAliasArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdentityAliasIdentityAliasArray) ToGetIdentityAliasIdentityAliasArrayOutputWithContext(ctx context.Context) GetIdentityAliasIdentityAliasArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdentityAliasIdentityAliasArrayOutput)
+}
+
+type GetIdentityAliasIdentityAliasOutput struct{ *pulumi.OutputState }
+
+func (GetIdentityAliasIdentityAliasOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdentityAliasIdentityAlias)(nil)).Elem()
+}
+
+func (o GetIdentityAliasIdentityAliasOutput) ToGetIdentityAliasIdentityAliasOutput() GetIdentityAliasIdentityAliasOutput {
+	return o
+}
+
+func (o GetIdentityAliasIdentityAliasOutput) ToGetIdentityAliasIdentityAliasOutputWithContext(ctx context.Context) GetIdentityAliasIdentityAliasOutput {
+	return o
+}
+
+// The account for this identity alias.
+func (o GetIdentityAliasIdentityAliasOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIdentityAliasIdentityAlias) *string { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the IdentityAlias.
+func (o GetIdentityAliasIdentityAliasOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIdentityAliasIdentityAlias) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The identity set.
+func (o GetIdentityAliasIdentityAliasOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIdentityAliasIdentityAlias) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// The username to be used as the identity alias for this account.
+func (o GetIdentityAliasIdentityAliasOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIdentityAliasIdentityAlias) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetIdentityAliasIdentityAliasArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdentityAliasIdentityAliasArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdentityAliasIdentityAlias)(nil)).Elem()
+}
+
+func (o GetIdentityAliasIdentityAliasArrayOutput) ToGetIdentityAliasIdentityAliasArrayOutput() GetIdentityAliasIdentityAliasArrayOutput {
+	return o
+}
+
+func (o GetIdentityAliasIdentityAliasArrayOutput) ToGetIdentityAliasIdentityAliasArrayOutputWithContext(ctx context.Context) GetIdentityAliasIdentityAliasArrayOutput {
+	return o
+}
+
+func (o GetIdentityAliasIdentityAliasArrayOutput) Index(i pulumi.IntInput) GetIdentityAliasIdentityAliasOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdentityAliasIdentityAlias {
+		return vs[0].([]GetIdentityAliasIdentityAlias)[vs[1].(int)]
+	}).(GetIdentityAliasIdentityAliasOutput)
+}
+
+type GetIdentitySetIdentitySet struct {
+	// Unique identifier of the IdentitySet.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the IdentitySet.
+	Name *string `pulumi:"name"`
+}
+
+// GetIdentitySetIdentitySetInput is an input type that accepts GetIdentitySetIdentitySetArgs and GetIdentitySetIdentitySetOutput values.
+// You can construct a concrete instance of `GetIdentitySetIdentitySetInput` via:
+//
+//	GetIdentitySetIdentitySetArgs{...}
+type GetIdentitySetIdentitySetInput interface {
+	pulumi.Input
+
+	ToGetIdentitySetIdentitySetOutput() GetIdentitySetIdentitySetOutput
+	ToGetIdentitySetIdentitySetOutputWithContext(context.Context) GetIdentitySetIdentitySetOutput
+}
+
+type GetIdentitySetIdentitySetArgs struct {
+	// Unique identifier of the IdentitySet.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the IdentitySet.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetIdentitySetIdentitySetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdentitySetIdentitySet)(nil)).Elem()
+}
+
+func (i GetIdentitySetIdentitySetArgs) ToGetIdentitySetIdentitySetOutput() GetIdentitySetIdentitySetOutput {
+	return i.ToGetIdentitySetIdentitySetOutputWithContext(context.Background())
+}
+
+func (i GetIdentitySetIdentitySetArgs) ToGetIdentitySetIdentitySetOutputWithContext(ctx context.Context) GetIdentitySetIdentitySetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdentitySetIdentitySetOutput)
+}
+
+// GetIdentitySetIdentitySetArrayInput is an input type that accepts GetIdentitySetIdentitySetArray and GetIdentitySetIdentitySetArrayOutput values.
+// You can construct a concrete instance of `GetIdentitySetIdentitySetArrayInput` via:
+//
+//	GetIdentitySetIdentitySetArray{ GetIdentitySetIdentitySetArgs{...} }
+type GetIdentitySetIdentitySetArrayInput interface {
+	pulumi.Input
+
+	ToGetIdentitySetIdentitySetArrayOutput() GetIdentitySetIdentitySetArrayOutput
+	ToGetIdentitySetIdentitySetArrayOutputWithContext(context.Context) GetIdentitySetIdentitySetArrayOutput
+}
+
+type GetIdentitySetIdentitySetArray []GetIdentitySetIdentitySetInput
+
+func (GetIdentitySetIdentitySetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdentitySetIdentitySet)(nil)).Elem()
+}
+
+func (i GetIdentitySetIdentitySetArray) ToGetIdentitySetIdentitySetArrayOutput() GetIdentitySetIdentitySetArrayOutput {
+	return i.ToGetIdentitySetIdentitySetArrayOutputWithContext(context.Background())
+}
+
+func (i GetIdentitySetIdentitySetArray) ToGetIdentitySetIdentitySetArrayOutputWithContext(ctx context.Context) GetIdentitySetIdentitySetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIdentitySetIdentitySetArrayOutput)
+}
+
+type GetIdentitySetIdentitySetOutput struct{ *pulumi.OutputState }
+
+func (GetIdentitySetIdentitySetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIdentitySetIdentitySet)(nil)).Elem()
+}
+
+func (o GetIdentitySetIdentitySetOutput) ToGetIdentitySetIdentitySetOutput() GetIdentitySetIdentitySetOutput {
+	return o
+}
+
+func (o GetIdentitySetIdentitySetOutput) ToGetIdentitySetIdentitySetOutputWithContext(ctx context.Context) GetIdentitySetIdentitySetOutput {
+	return o
+}
+
+// Unique identifier of the IdentitySet.
+func (o GetIdentitySetIdentitySetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIdentitySetIdentitySet) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the IdentitySet.
+func (o GetIdentitySetIdentitySetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIdentitySetIdentitySet) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetIdentitySetIdentitySetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIdentitySetIdentitySetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIdentitySetIdentitySet)(nil)).Elem()
+}
+
+func (o GetIdentitySetIdentitySetArrayOutput) ToGetIdentitySetIdentitySetArrayOutput() GetIdentitySetIdentitySetArrayOutput {
+	return o
+}
+
+func (o GetIdentitySetIdentitySetArrayOutput) ToGetIdentitySetIdentitySetArrayOutputWithContext(ctx context.Context) GetIdentitySetIdentitySetArrayOutput {
+	return o
+}
+
+func (o GetIdentitySetIdentitySetArrayOutput) Index(i pulumi.IntInput) GetIdentitySetIdentitySetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIdentitySetIdentitySet {
+		return vs[0].([]GetIdentitySetIdentitySet)[vs[1].(int)]
+	}).(GetIdentitySetIdentitySetOutput)
+}
+
 type GetNodeNode struct {
 	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateways []GetNodeNodeGateway `pulumi:"gateways"`
@@ -39452,16 +40338,16 @@ type GetResourceResourceAk struct {
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -39498,16 +40384,16 @@ type GetResourceResourceAkArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -39607,6 +40493,16 @@ func (o GetResourceResourceAkOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceAkOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceAkOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceAkOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -39620,16 +40516,6 @@ func (o GetResourceResourceAkOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceAkOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAk) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceAkOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceAkOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -39883,16 +40769,16 @@ type GetResourceResourceAksServiceAccount struct {
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -39926,16 +40812,16 @@ type GetResourceResourceAksServiceAccountArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -40023,6 +40909,16 @@ func (o GetResourceResourceAksServiceAccountOutput) Id() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceAksServiceAccountOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceAksServiceAccountOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceAksServiceAccountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -40036,16 +40932,6 @@ func (o GetResourceResourceAksServiceAccountOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceAksServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceAksServiceAccountOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceAksServiceAccountOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -40733,16 +41619,16 @@ type GetResourceResourceAmazonEk struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -40785,16 +41671,16 @@ type GetResourceResourceAmazonEkArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -40900,6 +41786,16 @@ func (o GetResourceResourceAmazonEkOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceAmazonEkOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceAmazonEkOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceAmazonEkOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -40913,16 +41809,6 @@ func (o GetResourceResourceAmazonEkOutput) PortOverride() pulumi.IntPtrOutput {
 // The AWS region to connect to.
 func (o GetResourceResourceAmazonEkOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceAmazonEkOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceAmazonEkOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -40990,16 +41876,16 @@ type GetResourceResourceAmazonEksInstanceProfile struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -41038,16 +41924,16 @@ type GetResourceResourceAmazonEksInstanceProfileArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -41146,6 +42032,16 @@ func (o GetResourceResourceAmazonEksInstanceProfileOutput) Id() pulumi.StringPtr
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceAmazonEksInstanceProfileOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -41159,18 +42055,6 @@ func (o GetResourceResourceAmazonEksInstanceProfileOutput) PortOverride() pulumi
 // The AWS region to connect to.
 func (o GetResourceResourceAmazonEksInstanceProfileOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceAmazonEksInstanceProfileOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceAmazonEksInstanceProfileOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string {
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -41239,10 +42123,6 @@ type GetResourceResourceAmazonEksInstanceProfileUserImpersonation struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -41287,10 +42167,6 @@ type GetResourceResourceAmazonEksInstanceProfileUserImpersonationArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -41406,20 +42282,6 @@ func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) Port
 // The AWS region to connect to.
 func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		return v.RemoteIdentityGroupId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *string {
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -43001,16 +43863,16 @@ type GetResourceResourceAwsConsole struct {
 	EnableEnvVariables *bool `pulumi:"enableEnvVariables"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -43045,16 +43907,16 @@ type GetResourceResourceAwsConsoleArgs struct {
 	EnableEnvVariables pulumi.BoolPtrInput `pulumi:"enableEnvVariables"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -43140,6 +44002,16 @@ func (o GetResourceResourceAwsConsoleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceAwsConsoleOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceAwsConsoleOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceAwsConsoleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -43153,16 +44025,6 @@ func (o GetResourceResourceAwsConsoleOutput) PortOverride() pulumi.IntPtrOutput 
 // The AWS region to connect to.
 func (o GetResourceResourceAwsConsoleOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceAwsConsoleOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceAwsConsoleOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -43224,16 +44086,16 @@ type GetResourceResourceAwsConsoleStaticKeyPair struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -43270,16 +44132,16 @@ type GetResourceResourceAwsConsoleStaticKeyPairArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -43367,6 +44229,16 @@ func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Id() pulumi.StringPtrO
 	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -43380,16 +44252,6 @@ func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) PortOverride() pulumi.
 // The AWS region to connect to.
 func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // The role to assume after logging in.
@@ -47379,14 +48241,14 @@ type GetResourceResourceGoogleGke struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -47421,14 +48283,14 @@ type GetResourceResourceGoogleGkeArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -47520,6 +48382,16 @@ func (o GetResourceResourceGoogleGkeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceGoogleGkeOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceGoogleGkeOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceGoogleGkeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -47528,16 +48400,6 @@ func (o GetResourceResourceGoogleGkeOutput) Name() pulumi.StringPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceGoogleGkeOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGke) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceGoogleGkeOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceGoogleGkeOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -48631,16 +49493,16 @@ type GetResourceResourceKubernete struct {
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48677,16 +49539,16 @@ type GetResourceResourceKuberneteArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48786,6 +49648,16 @@ func (o GetResourceResourceKuberneteOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceKuberneteOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceKuberneteOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceKuberneteOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -48799,16 +49671,6 @@ func (o GetResourceResourceKuberneteOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceKuberneteOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernete) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceKuberneteOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceKuberneteOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -49062,16 +49924,16 @@ type GetResourceResourceKubernetesServiceAccount struct {
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49105,16 +49967,16 @@ type GetResourceResourceKubernetesServiceAccountArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49202,6 +50064,16 @@ func (o GetResourceResourceKubernetesServiceAccountOutput) Id() pulumi.StringPtr
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceKubernetesServiceAccountOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceKubernetesServiceAccountOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceKubernetesServiceAccountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -49215,18 +50087,6 @@ func (o GetResourceResourceKubernetesServiceAccountOutput) Port() pulumi.IntPtrO
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceKubernetesServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceKubernetesServiceAccountOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceKubernetesServiceAccountOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string {
-		return v.RemoteIdentityHealthcheckUsername
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -53796,16 +54656,16 @@ type GetResourceResourceRdpCert struct {
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -53836,16 +54696,16 @@ type GetResourceResourceRdpCertArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -53927,6 +54787,16 @@ func (o GetResourceResourceRdpCertOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceRdpCertOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceRdpCertOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o GetResourceResourceRdpCertOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -53940,16 +54810,6 @@ func (o GetResourceResourceRdpCertOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceRdpCertOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdpCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceRdpCertOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceRdpCertOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -56209,6 +57069,10 @@ type GetResourceResourceSshCert struct {
 	Hostname *string `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// The key type to use e.g. rsa-2048 or ed25519
 	KeyType *string `pulumi:"keyType"`
 	// Unique human-readable name of the Resource.
@@ -56219,10 +57083,6 @@ type GetResourceResourceSshCert struct {
 	PortForwarding *bool `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId *string `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername *string `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56255,6 +57115,10 @@ type GetResourceResourceSshCertArgs struct {
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// The key type to use e.g. rsa-2048 or ed25519
 	KeyType pulumi.StringPtrInput `pulumi:"keyType"`
 	// Unique human-readable name of the Resource.
@@ -56265,10 +57129,6 @@ type GetResourceResourceSshCertArgs struct {
 	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The ID of the remote identity group to use for remote identity connections.
-	RemoteIdentityGroupId pulumi.StringPtrInput `pulumi:"remoteIdentityGroupId"`
-	// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-	RemoteIdentityHealthcheckUsername pulumi.StringPtrInput `pulumi:"remoteIdentityHealthcheckUsername"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56355,6 +57215,16 @@ func (o GetResourceResourceSshCertOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSshCert) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceSshCertOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshCert) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceSshCertOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshCert) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // The key type to use e.g. rsa-2048 or ed25519
 func (o GetResourceResourceSshCertOutput) KeyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSshCert) *string { return v.KeyType }).(pulumi.StringPtrOutput)
@@ -56378,16 +57248,6 @@ func (o GetResourceResourceSshCertOutput) PortForwarding() pulumi.BoolPtrOutput 
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceSshCertOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSshCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The ID of the remote identity group to use for remote identity connections.
-func (o GetResourceResourceSshCertOutput) RemoteIdentityGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceSshCert) *string { return v.RemoteIdentityGroupId }).(pulumi.StringPtrOutput)
-}
-
-// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-func (o GetResourceResourceSshCertOutput) RemoteIdentityHealthcheckUsername() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceSshCert) *string { return v.RemoteIdentityHealthcheckUsername }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -57581,10 +58441,13 @@ type GetSecretStoreSecretStore struct {
 	DelineaStores            []GetSecretStoreSecretStoreDelineaStore            `pulumi:"delineaStores"`
 	GcpCertX509Stores        []GetSecretStoreSecretStoreGcpCertX509Store        `pulumi:"gcpCertX509Stores"`
 	GcpStores                []GetSecretStoreSecretStoreGcpStore                `pulumi:"gcpStores"`
+	KeyfactorSshStores       []GetSecretStoreSecretStoreKeyfactorSshStore       `pulumi:"keyfactorSshStores"`
 	KeyfactorX509Stores      []GetSecretStoreSecretStoreKeyfactorX509Store      `pulumi:"keyfactorX509Stores"`
 	VaultApproleCertSshes    []GetSecretStoreSecretStoreVaultApproleCertSsh     `pulumi:"vaultApproleCertSshes"`
 	VaultApproleCertX509s    []GetSecretStoreSecretStoreVaultApproleCertX509    `pulumi:"vaultApproleCertX509s"`
 	VaultApproles            []GetSecretStoreSecretStoreVaultApprole            `pulumi:"vaultApproles"`
+	VaultAwsEc2s             []GetSecretStoreSecretStoreVaultAwsEc2             `pulumi:"vaultAwsEc2s"`
+	VaultAwsIams             []GetSecretStoreSecretStoreVaultAwsIam             `pulumi:"vaultAwsIams"`
 	VaultTls                 []GetSecretStoreSecretStoreVaultTl                 `pulumi:"vaultTls"`
 	VaultTlsCertSshes        []GetSecretStoreSecretStoreVaultTlsCertSsh         `pulumi:"vaultTlsCertSshes"`
 	VaultTlsCertX509s        []GetSecretStoreSecretStoreVaultTlsCertX509        `pulumi:"vaultTlsCertX509s"`
@@ -57615,10 +58478,13 @@ type GetSecretStoreSecretStoreArgs struct {
 	DelineaStores            GetSecretStoreSecretStoreDelineaStoreArrayInput            `pulumi:"delineaStores"`
 	GcpCertX509Stores        GetSecretStoreSecretStoreGcpCertX509StoreArrayInput        `pulumi:"gcpCertX509Stores"`
 	GcpStores                GetSecretStoreSecretStoreGcpStoreArrayInput                `pulumi:"gcpStores"`
+	KeyfactorSshStores       GetSecretStoreSecretStoreKeyfactorSshStoreArrayInput       `pulumi:"keyfactorSshStores"`
 	KeyfactorX509Stores      GetSecretStoreSecretStoreKeyfactorX509StoreArrayInput      `pulumi:"keyfactorX509Stores"`
 	VaultApproleCertSshes    GetSecretStoreSecretStoreVaultApproleCertSshArrayInput     `pulumi:"vaultApproleCertSshes"`
 	VaultApproleCertX509s    GetSecretStoreSecretStoreVaultApproleCertX509ArrayInput    `pulumi:"vaultApproleCertX509s"`
 	VaultApproles            GetSecretStoreSecretStoreVaultApproleArrayInput            `pulumi:"vaultApproles"`
+	VaultAwsEc2s             GetSecretStoreSecretStoreVaultAwsEc2ArrayInput             `pulumi:"vaultAwsEc2s"`
+	VaultAwsIams             GetSecretStoreSecretStoreVaultAwsIamArrayInput             `pulumi:"vaultAwsIams"`
 	VaultTls                 GetSecretStoreSecretStoreVaultTlArrayInput                 `pulumi:"vaultTls"`
 	VaultTlsCertSshes        GetSecretStoreSecretStoreVaultTlsCertSshArrayInput         `pulumi:"vaultTlsCertSshes"`
 	VaultTlsCertX509s        GetSecretStoreSecretStoreVaultTlsCertX509ArrayInput        `pulumi:"vaultTlsCertX509s"`
@@ -57724,6 +58590,12 @@ func (o GetSecretStoreSecretStoreOutput) GcpStores() GetSecretStoreSecretStoreGc
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreGcpStore { return v.GcpStores }).(GetSecretStoreSecretStoreGcpStoreArrayOutput)
 }
 
+func (o GetSecretStoreSecretStoreOutput) KeyfactorSshStores() GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreKeyfactorSshStore {
+		return v.KeyfactorSshStores
+	}).(GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput)
+}
+
 func (o GetSecretStoreSecretStoreOutput) KeyfactorX509Stores() GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreKeyfactorX509Store {
 		return v.KeyfactorX509Stores
@@ -57744,6 +58616,14 @@ func (o GetSecretStoreSecretStoreOutput) VaultApproleCertX509s() GetSecretStoreS
 
 func (o GetSecretStoreSecretStoreOutput) VaultApproles() GetSecretStoreSecretStoreVaultApproleArrayOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultApprole { return v.VaultApproles }).(GetSecretStoreSecretStoreVaultApproleArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) VaultAwsEc2s() GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultAwsEc2 { return v.VaultAwsEc2s }).(GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput)
+}
+
+func (o GetSecretStoreSecretStoreOutput) VaultAwsIams() GetSecretStoreSecretStoreVaultAwsIamArrayOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStore) []GetSecretStoreSecretStoreVaultAwsIam { return v.VaultAwsIams }).(GetSecretStoreSecretStoreVaultAwsIamArrayOutput)
 }
 
 func (o GetSecretStoreSecretStoreOutput) VaultTls() GetSecretStoreSecretStoreVaultTlArrayOutput {
@@ -59125,6 +60005,202 @@ func (o GetSecretStoreSecretStoreGcpStoreArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetSecretStoreSecretStoreGcpStoreOutput)
 }
 
+type GetSecretStoreSecretStoreKeyfactorSshStore struct {
+	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+	CaFilePath *string `pulumi:"caFilePath"`
+	// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+	CertificateFilePath *string `pulumi:"certificateFilePath"`
+	// Name of EJBCA certificate authority that will enroll CSR.
+	DefaultCertificateAuthorityName *string `pulumi:"defaultCertificateAuthorityName"`
+	// Certificate profile name that EJBCA will enroll the CSR with.
+	DefaultCertificateProfileName *string `pulumi:"defaultCertificateProfileName"`
+	// End entity profile that EJBCA will enroll the CSR with.
+	DefaultEndEntityProfileName *string `pulumi:"defaultEndEntityProfileName"`
+	// code used by EJBCA during enrollment. May be left blank if no code is required.
+	EnrollmentCodeEnvVar *string `pulumi:"enrollmentCodeEnvVar"`
+	// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+	EnrollmentUsernameEnvVar *string `pulumi:"enrollmentUsernameEnvVar"`
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+	KeyFilePath *string `pulumi:"keyFilePath"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreKeyfactorSshStoreInput is an input type that accepts GetSecretStoreSecretStoreKeyfactorSshStoreArgs and GetSecretStoreSecretStoreKeyfactorSshStoreOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreKeyfactorSshStoreInput` via:
+//
+//	GetSecretStoreSecretStoreKeyfactorSshStoreArgs{...}
+type GetSecretStoreSecretStoreKeyfactorSshStoreInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreKeyfactorSshStoreOutput() GetSecretStoreSecretStoreKeyfactorSshStoreOutput
+	ToGetSecretStoreSecretStoreKeyfactorSshStoreOutputWithContext(context.Context) GetSecretStoreSecretStoreKeyfactorSshStoreOutput
+}
+
+type GetSecretStoreSecretStoreKeyfactorSshStoreArgs struct {
+	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+	CaFilePath pulumi.StringPtrInput `pulumi:"caFilePath"`
+	// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+	CertificateFilePath pulumi.StringPtrInput `pulumi:"certificateFilePath"`
+	// Name of EJBCA certificate authority that will enroll CSR.
+	DefaultCertificateAuthorityName pulumi.StringPtrInput `pulumi:"defaultCertificateAuthorityName"`
+	// Certificate profile name that EJBCA will enroll the CSR with.
+	DefaultCertificateProfileName pulumi.StringPtrInput `pulumi:"defaultCertificateProfileName"`
+	// End entity profile that EJBCA will enroll the CSR with.
+	DefaultEndEntityProfileName pulumi.StringPtrInput `pulumi:"defaultEndEntityProfileName"`
+	// code used by EJBCA during enrollment. May be left blank if no code is required.
+	EnrollmentCodeEnvVar pulumi.StringPtrInput `pulumi:"enrollmentCodeEnvVar"`
+	// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+	EnrollmentUsernameEnvVar pulumi.StringPtrInput `pulumi:"enrollmentUsernameEnvVar"`
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+	KeyFilePath pulumi.StringPtrInput `pulumi:"keyFilePath"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreKeyfactorSshStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorSshStore)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreKeyfactorSshStoreArgs) ToGetSecretStoreSecretStoreKeyfactorSshStoreOutput() GetSecretStoreSecretStoreKeyfactorSshStoreOutput {
+	return i.ToGetSecretStoreSecretStoreKeyfactorSshStoreOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreKeyfactorSshStoreArgs) ToGetSecretStoreSecretStoreKeyfactorSshStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreKeyfactorSshStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreKeyfactorSshStoreOutput)
+}
+
+// GetSecretStoreSecretStoreKeyfactorSshStoreArrayInput is an input type that accepts GetSecretStoreSecretStoreKeyfactorSshStoreArray and GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreKeyfactorSshStoreArrayInput` via:
+//
+//	GetSecretStoreSecretStoreKeyfactorSshStoreArray{ GetSecretStoreSecretStoreKeyfactorSshStoreArgs{...} }
+type GetSecretStoreSecretStoreKeyfactorSshStoreArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput() GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput
+	ToGetSecretStoreSecretStoreKeyfactorSshStoreArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput
+}
+
+type GetSecretStoreSecretStoreKeyfactorSshStoreArray []GetSecretStoreSecretStoreKeyfactorSshStoreInput
+
+func (GetSecretStoreSecretStoreKeyfactorSshStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreKeyfactorSshStore)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreKeyfactorSshStoreArray) ToGetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput() GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput {
+	return i.ToGetSecretStoreSecretStoreKeyfactorSshStoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreKeyfactorSshStoreArray) ToGetSecretStoreSecretStoreKeyfactorSshStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput)
+}
+
+type GetSecretStoreSecretStoreKeyfactorSshStoreOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreKeyfactorSshStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorSshStore)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) ToGetSecretStoreSecretStoreKeyfactorSshStoreOutput() GetSecretStoreSecretStoreKeyfactorSshStoreOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) ToGetSecretStoreSecretStoreKeyfactorSshStoreOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreKeyfactorSshStoreOutput {
+	return o
+}
+
+// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) CaFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.CaFilePath }).(pulumi.StringPtrOutput)
+}
+
+// Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) CertificateFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.CertificateFilePath }).(pulumi.StringPtrOutput)
+}
+
+// Name of EJBCA certificate authority that will enroll CSR.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) DefaultCertificateAuthorityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.DefaultCertificateAuthorityName }).(pulumi.StringPtrOutput)
+}
+
+// Certificate profile name that EJBCA will enroll the CSR with.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) DefaultCertificateProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.DefaultCertificateProfileName }).(pulumi.StringPtrOutput)
+}
+
+// End entity profile that EJBCA will enroll the CSR with.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) DefaultEndEntityProfileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.DefaultEndEntityProfileName }).(pulumi.StringPtrOutput)
+}
+
+// code used by EJBCA during enrollment. May be left blank if no code is required.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) EnrollmentCodeEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.EnrollmentCodeEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) EnrollmentUsernameEnvVar() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.EnrollmentUsernameEnvVar }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) KeyFilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.KeyFilePath }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorSshStore) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreKeyfactorSshStore)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput) ToGetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput() GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput) ToGetSecretStoreSecretStoreKeyfactorSshStoreArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreKeyfactorSshStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreKeyfactorSshStore {
+		return vs[0].([]GetSecretStoreSecretStoreKeyfactorSshStore)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreKeyfactorSshStoreOutput)
+}
+
 type GetSecretStoreSecretStoreKeyfactorX509Store struct {
 	// Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
 	CaFilePath *string `pulumi:"caFilePath"`
@@ -59144,8 +60220,6 @@ type GetSecretStoreSecretStoreKeyfactorX509Store struct {
 	Id *string `pulumi:"id"`
 	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
 	KeyFilePath *string `pulumi:"keyFilePath"`
-	// optional environment variable housing the password that is used to decrypt the key file.
-	KeyPasswordEnvVar *string `pulumi:"keyPasswordEnvVar"`
 	// Unique human-readable name of the SecretStore.
 	Name *string `pulumi:"name"`
 	// The URL of the Vault to target
@@ -59184,8 +60258,6 @@ type GetSecretStoreSecretStoreKeyfactorX509StoreArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
 	KeyFilePath pulumi.StringPtrInput `pulumi:"keyFilePath"`
-	// optional environment variable housing the password that is used to decrypt the key file.
-	KeyPasswordEnvVar pulumi.StringPtrInput `pulumi:"keyPasswordEnvVar"`
 	// Unique human-readable name of the SecretStore.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The URL of the Vault to target
@@ -59288,11 +60360,6 @@ func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) Id() pulumi.StringPtr
 // Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
 func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) KeyFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.KeyFilePath }).(pulumi.StringPtrOutput)
-}
-
-// optional environment variable housing the password that is used to decrypt the key file.
-func (o GetSecretStoreSecretStoreKeyfactorX509StoreOutput) KeyPasswordEnvVar() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSecretStoreSecretStoreKeyfactorX509Store) *string { return v.KeyPasswordEnvVar }).(pulumi.StringPtrOutput)
 }
 
 // Unique human-readable name of the SecretStore.
@@ -59781,6 +60848,272 @@ func (o GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultApproleCertX509 {
 		return vs[0].([]GetSecretStoreSecretStoreVaultApproleCertX509)[vs[1].(int)]
 	}).(GetSecretStoreSecretStoreVaultApproleCertX509Output)
+}
+
+type GetSecretStoreSecretStoreVaultAwsEc2 struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreVaultAwsEc2Input is an input type that accepts GetSecretStoreSecretStoreVaultAwsEc2Args and GetSecretStoreSecretStoreVaultAwsEc2Output values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultAwsEc2Input` via:
+//
+//	GetSecretStoreSecretStoreVaultAwsEc2Args{...}
+type GetSecretStoreSecretStoreVaultAwsEc2Input interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultAwsEc2Output() GetSecretStoreSecretStoreVaultAwsEc2Output
+	ToGetSecretStoreSecretStoreVaultAwsEc2OutputWithContext(context.Context) GetSecretStoreSecretStoreVaultAwsEc2Output
+}
+
+type GetSecretStoreSecretStoreVaultAwsEc2Args struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreVaultAwsEc2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultAwsEc2)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultAwsEc2Args) ToGetSecretStoreSecretStoreVaultAwsEc2Output() GetSecretStoreSecretStoreVaultAwsEc2Output {
+	return i.ToGetSecretStoreSecretStoreVaultAwsEc2OutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultAwsEc2Args) ToGetSecretStoreSecretStoreVaultAwsEc2OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultAwsEc2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultAwsEc2Output)
+}
+
+// GetSecretStoreSecretStoreVaultAwsEc2ArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultAwsEc2Array and GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultAwsEc2ArrayInput` via:
+//
+//	GetSecretStoreSecretStoreVaultAwsEc2Array{ GetSecretStoreSecretStoreVaultAwsEc2Args{...} }
+type GetSecretStoreSecretStoreVaultAwsEc2ArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultAwsEc2ArrayOutput() GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput
+	ToGetSecretStoreSecretStoreVaultAwsEc2ArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput
+}
+
+type GetSecretStoreSecretStoreVaultAwsEc2Array []GetSecretStoreSecretStoreVaultAwsEc2Input
+
+func (GetSecretStoreSecretStoreVaultAwsEc2Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultAwsEc2)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultAwsEc2Array) ToGetSecretStoreSecretStoreVaultAwsEc2ArrayOutput() GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput {
+	return i.ToGetSecretStoreSecretStoreVaultAwsEc2ArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultAwsEc2Array) ToGetSecretStoreSecretStoreVaultAwsEc2ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput)
+}
+
+type GetSecretStoreSecretStoreVaultAwsEc2Output struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultAwsEc2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultAwsEc2)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsEc2Output) ToGetSecretStoreSecretStoreVaultAwsEc2Output() GetSecretStoreSecretStoreVaultAwsEc2Output {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsEc2Output) ToGetSecretStoreSecretStoreVaultAwsEc2OutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultAwsEc2Output {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultAwsEc2Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsEc2) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultAwsEc2Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsEc2) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o GetSecretStoreSecretStoreVaultAwsEc2Output) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsEc2) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreVaultAwsEc2Output) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsEc2) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreVaultAwsEc2Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsEc2) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultAwsEc2)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput) ToGetSecretStoreSecretStoreVaultAwsEc2ArrayOutput() GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput) ToGetSecretStoreSecretStoreVaultAwsEc2ArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultAwsEc2Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultAwsEc2 {
+		return vs[0].([]GetSecretStoreSecretStoreVaultAwsEc2)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreVaultAwsEc2Output)
+}
+
+type GetSecretStoreSecretStoreVaultAwsIam struct {
+	// Unique identifier of the SecretStore.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name *string `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace *string `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress *string `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetSecretStoreSecretStoreVaultAwsIamInput is an input type that accepts GetSecretStoreSecretStoreVaultAwsIamArgs and GetSecretStoreSecretStoreVaultAwsIamOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultAwsIamInput` via:
+//
+//	GetSecretStoreSecretStoreVaultAwsIamArgs{...}
+type GetSecretStoreSecretStoreVaultAwsIamInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultAwsIamOutput() GetSecretStoreSecretStoreVaultAwsIamOutput
+	ToGetSecretStoreSecretStoreVaultAwsIamOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultAwsIamOutput
+}
+
+type GetSecretStoreSecretStoreVaultAwsIamArgs struct {
+	// Unique identifier of the SecretStore.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the SecretStore.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The namespace to make requests within
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The URL of the Vault to target
+	ServerAddress pulumi.StringPtrInput `pulumi:"serverAddress"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetSecretStoreSecretStoreVaultAwsIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultAwsIam)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultAwsIamArgs) ToGetSecretStoreSecretStoreVaultAwsIamOutput() GetSecretStoreSecretStoreVaultAwsIamOutput {
+	return i.ToGetSecretStoreSecretStoreVaultAwsIamOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultAwsIamArgs) ToGetSecretStoreSecretStoreVaultAwsIamOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultAwsIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultAwsIamOutput)
+}
+
+// GetSecretStoreSecretStoreVaultAwsIamArrayInput is an input type that accepts GetSecretStoreSecretStoreVaultAwsIamArray and GetSecretStoreSecretStoreVaultAwsIamArrayOutput values.
+// You can construct a concrete instance of `GetSecretStoreSecretStoreVaultAwsIamArrayInput` via:
+//
+//	GetSecretStoreSecretStoreVaultAwsIamArray{ GetSecretStoreSecretStoreVaultAwsIamArgs{...} }
+type GetSecretStoreSecretStoreVaultAwsIamArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretStoreSecretStoreVaultAwsIamArrayOutput() GetSecretStoreSecretStoreVaultAwsIamArrayOutput
+	ToGetSecretStoreSecretStoreVaultAwsIamArrayOutputWithContext(context.Context) GetSecretStoreSecretStoreVaultAwsIamArrayOutput
+}
+
+type GetSecretStoreSecretStoreVaultAwsIamArray []GetSecretStoreSecretStoreVaultAwsIamInput
+
+func (GetSecretStoreSecretStoreVaultAwsIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultAwsIam)(nil)).Elem()
+}
+
+func (i GetSecretStoreSecretStoreVaultAwsIamArray) ToGetSecretStoreSecretStoreVaultAwsIamArrayOutput() GetSecretStoreSecretStoreVaultAwsIamArrayOutput {
+	return i.ToGetSecretStoreSecretStoreVaultAwsIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretStoreSecretStoreVaultAwsIamArray) ToGetSecretStoreSecretStoreVaultAwsIamArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultAwsIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretStoreSecretStoreVaultAwsIamArrayOutput)
+}
+
+type GetSecretStoreSecretStoreVaultAwsIamOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultAwsIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretStoreSecretStoreVaultAwsIam)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsIamOutput) ToGetSecretStoreSecretStoreVaultAwsIamOutput() GetSecretStoreSecretStoreVaultAwsIamOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsIamOutput) ToGetSecretStoreSecretStoreVaultAwsIamOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultAwsIamOutput {
+	return o
+}
+
+// Unique identifier of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultAwsIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the SecretStore.
+func (o GetSecretStoreSecretStoreVaultAwsIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The namespace to make requests within
+func (o GetSecretStoreSecretStoreVaultAwsIamOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsIam) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the Vault to target
+func (o GetSecretStoreSecretStoreVaultAwsIamOutput) ServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsIam) *string { return v.ServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetSecretStoreSecretStoreVaultAwsIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSecretStoreSecretStoreVaultAwsIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetSecretStoreSecretStoreVaultAwsIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretStoreSecretStoreVaultAwsIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretStoreSecretStoreVaultAwsIam)(nil)).Elem()
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsIamArrayOutput) ToGetSecretStoreSecretStoreVaultAwsIamArrayOutput() GetSecretStoreSecretStoreVaultAwsIamArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsIamArrayOutput) ToGetSecretStoreSecretStoreVaultAwsIamArrayOutputWithContext(ctx context.Context) GetSecretStoreSecretStoreVaultAwsIamArrayOutput {
+	return o
+}
+
+func (o GetSecretStoreSecretStoreVaultAwsIamArrayOutput) Index(i pulumi.IntInput) GetSecretStoreSecretStoreVaultAwsIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretStoreSecretStoreVaultAwsIam {
+		return vs[0].([]GetSecretStoreSecretStoreVaultAwsIam)[vs[1].(int)]
+	}).(GetSecretStoreSecretStoreVaultAwsIamOutput)
 }
 
 type GetSecretStoreSecretStoreVaultTl struct {
@@ -61370,6 +62703,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpCertX509StorePtrInput)(nil)).Elem(), SecretStoreGcpCertX509StoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpStoreInput)(nil)).Elem(), SecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreGcpStorePtrInput)(nil)).Elem(), SecretStoreGcpStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreKeyfactorSshStoreInput)(nil)).Elem(), SecretStoreKeyfactorSshStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreKeyfactorSshStorePtrInput)(nil)).Elem(), SecretStoreKeyfactorSshStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreKeyfactorX509StoreInput)(nil)).Elem(), SecretStoreKeyfactorX509StoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreKeyfactorX509StorePtrInput)(nil)).Elem(), SecretStoreKeyfactorX509StoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleInput)(nil)).Elem(), SecretStoreVaultApproleArgs{})
@@ -61378,6 +62713,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleCertSshPtrInput)(nil)).Elem(), SecretStoreVaultApproleCertSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleCertX509Input)(nil)).Elem(), SecretStoreVaultApproleCertX509Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultApproleCertX509PtrInput)(nil)).Elem(), SecretStoreVaultApproleCertX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultAwsEc2Input)(nil)).Elem(), SecretStoreVaultAwsEc2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultAwsEc2PtrInput)(nil)).Elem(), SecretStoreVaultAwsEc2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultAwsIamInput)(nil)).Elem(), SecretStoreVaultAwsIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultAwsIamPtrInput)(nil)).Elem(), SecretStoreVaultAwsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsInput)(nil)).Elem(), SecretStoreVaultTlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsPtrInput)(nil)).Elem(), SecretStoreVaultTlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretStoreVaultTlsCertSshInput)(nil)).Elem(), SecretStoreVaultTlsCertSshArgs{})
@@ -61406,6 +62745,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowApproverApprovalWorkflowApproverArrayInput)(nil)).Elem(), GetApprovalWorkflowApproverApprovalWorkflowApproverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStepInput)(nil)).Elem(), GetApprovalWorkflowStepApprovalWorkflowStepArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApprovalWorkflowStepApprovalWorkflowStepArrayInput)(nil)).Elem(), GetApprovalWorkflowStepApprovalWorkflowStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdentityAliasIdentityAliasInput)(nil)).Elem(), GetIdentityAliasIdentityAliasArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdentityAliasIdentityAliasArrayInput)(nil)).Elem(), GetIdentityAliasIdentityAliasArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdentitySetIdentitySetInput)(nil)).Elem(), GetIdentitySetIdentitySetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIdentitySetIdentitySetArrayInput)(nil)).Elem(), GetIdentitySetIdentitySetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeInput)(nil)).Elem(), GetNodeNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeArrayInput)(nil)).Elem(), GetNodeNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeGatewayInput)(nil)).Elem(), GetNodeNodeGatewayArgs{})
@@ -61622,6 +62965,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpCertX509StoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpCertX509StoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreGcpStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreGcpStoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorSshStoreInput)(nil)).Elem(), GetSecretStoreSecretStoreKeyfactorSshStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorSshStoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreKeyfactorSshStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorX509StoreInput)(nil)).Elem(), GetSecretStoreSecretStoreKeyfactorX509StoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreKeyfactorX509StoreArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreKeyfactorX509StoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleArgs{})
@@ -61630,6 +62975,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertSshArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleCertSshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertX509Input)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleCertX509Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultApproleCertX509ArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultApproleCertX509Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultAwsEc2Input)(nil)).Elem(), GetSecretStoreSecretStoreVaultAwsEc2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultAwsEc2ArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultAwsEc2Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultAwsIamInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultAwsIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultAwsIamArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultAwsIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlArrayInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretStoreSecretStoreVaultTlsCertSshInput)(nil)).Elem(), GetSecretStoreSecretStoreVaultTlsCertSshArgs{})
@@ -61848,6 +63197,8 @@ func init() {
 	pulumi.RegisterOutputType(SecretStoreGcpCertX509StorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpStoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreGcpStorePtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreKeyfactorSshStoreOutput{})
+	pulumi.RegisterOutputType(SecretStoreKeyfactorSshStorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreKeyfactorX509StoreOutput{})
 	pulumi.RegisterOutputType(SecretStoreKeyfactorX509StorePtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultApproleOutput{})
@@ -61856,6 +63207,10 @@ func init() {
 	pulumi.RegisterOutputType(SecretStoreVaultApproleCertSshPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultApproleCertX509Output{})
 	pulumi.RegisterOutputType(SecretStoreVaultApproleCertX509PtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultAwsEc2Output{})
+	pulumi.RegisterOutputType(SecretStoreVaultAwsEc2PtrOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultAwsIamOutput{})
+	pulumi.RegisterOutputType(SecretStoreVaultAwsIamPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultTlsOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultTlsPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreVaultTlsCertSshOutput{})
@@ -61884,6 +63239,10 @@ func init() {
 	pulumi.RegisterOutputType(GetApprovalWorkflowApproverApprovalWorkflowApproverArrayOutput{})
 	pulumi.RegisterOutputType(GetApprovalWorkflowStepApprovalWorkflowStepOutput{})
 	pulumi.RegisterOutputType(GetApprovalWorkflowStepApprovalWorkflowStepArrayOutput{})
+	pulumi.RegisterOutputType(GetIdentityAliasIdentityAliasOutput{})
+	pulumi.RegisterOutputType(GetIdentityAliasIdentityAliasArrayOutput{})
+	pulumi.RegisterOutputType(GetIdentitySetIdentitySetOutput{})
+	pulumi.RegisterOutputType(GetIdentitySetIdentitySetArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeGatewayOutput{})
@@ -62100,6 +63459,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpCertX509StoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpStoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreGcpStoreArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreKeyfactorSshStoreOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreKeyfactorSshStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreKeyfactorX509StoreOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreKeyfactorX509StoreArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleOutput{})
@@ -62108,6 +63469,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleCertSshArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleCertX509Output{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultApproleCertX509ArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultAwsEc2Output{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultAwsEc2ArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultAwsIamOutput{})
+	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultAwsIamArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretStoreSecretStoreVaultTlsCertSshOutput{})

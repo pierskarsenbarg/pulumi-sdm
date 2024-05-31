@@ -51,10 +51,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? KeyFilePath;
         /// <summary>
-        /// optional environment variable housing the password that is used to decrypt the key file.
-        /// </summary>
-        public readonly string? KeyPasswordEnvVar;
-        /// <summary>
         /// Unique human-readable name of the SecretStore.
         /// </summary>
         public readonly string? Name;
@@ -87,8 +83,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? keyFilePath,
 
-            string? keyPasswordEnvVar,
-
             string? name,
 
             string? serverAddress,
@@ -104,7 +98,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             EnrollmentUsernameEnvVar = enrollmentUsernameEnvVar;
             Id = id;
             KeyFilePath = keyFilePath;
-            KeyPasswordEnvVar = keyPasswordEnvVar;
             Name = name;
             ServerAddress = serverAddress;
             Tags = tags;

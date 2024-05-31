@@ -236,6 +236,36 @@ export interface GetApprovalWorkflowStepApprovalWorkflowStep {
     id?: string;
 }
 
+export interface GetIdentityAliasIdentityAlias {
+    /**
+     * The account for this identity alias.
+     */
+    accountId?: string;
+    /**
+     * Unique identifier of the IdentityAlias.
+     */
+    id?: string;
+    /**
+     * The identity set.
+     */
+    identitySetId?: string;
+    /**
+     * The username to be used as the identity alias for this account.
+     */
+    username?: string;
+}
+
+export interface GetIdentitySetIdentitySet {
+    /**
+     * Unique identifier of the IdentitySet.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the IdentitySet.
+     */
+    name?: string;
+}
+
 export interface GetNodeNode {
     /**
      * Gateway represents a StrongDM CLI installation running in gateway mode.
@@ -542,6 +572,14 @@ export interface GetResourceResourceAk {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -553,14 +591,6 @@ export interface GetResourceResourceAk {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -652,6 +682,14 @@ export interface GetResourceResourceAksServiceAccount {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -663,14 +701,6 @@ export interface GetResourceResourceAksServiceAccount {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -894,6 +924,14 @@ export interface GetResourceResourceAmazonEk {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -905,14 +943,6 @@ export interface GetResourceResourceAmazonEk {
      * The AWS region to connect to.
      */
     region?: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -969,6 +999,14 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -980,14 +1018,6 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      * The AWS region to connect to.
      */
     region?: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -1051,14 +1081,6 @@ export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
      * The AWS region to connect to.
      */
     region?: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -1524,6 +1546,14 @@ export interface GetResourceResourceAwsConsole {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -1535,14 +1565,6 @@ export interface GetResourceResourceAwsConsole {
      * The AWS region to connect to.
      */
     region?: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -1587,6 +1609,14 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -1598,14 +1628,6 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      * The AWS region to connect to.
      */
     region?: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -2717,6 +2739,14 @@ export interface GetResourceResourceGoogleGke {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -2724,14 +2754,6 @@ export interface GetResourceResourceGoogleGke {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3062,6 +3084,14 @@ export interface GetResourceResourceKubernete {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -3073,14 +3103,6 @@ export interface GetResourceResourceKubernete {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3172,6 +3194,14 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -3183,14 +3213,6 @@ export interface GetResourceResourceKubernetesServiceAccount {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4476,6 +4498,14 @@ export interface GetResourceResourceRdpCert {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -4487,14 +4517,6 @@ export interface GetResourceResourceRdpCert {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5154,6 +5176,14 @@ export interface GetResourceResourceSshCert {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * The key type to use e.g. rsa-2048 or ed25519
      */
     keyType?: string;
@@ -5173,14 +5203,6 @@ export interface GetResourceResourceSshCert {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5500,10 +5522,13 @@ export interface GetSecretStoreSecretStore {
     delineaStores: outputs.GetSecretStoreSecretStoreDelineaStore[];
     gcpCertX509Stores: outputs.GetSecretStoreSecretStoreGcpCertX509Store[];
     gcpStores: outputs.GetSecretStoreSecretStoreGcpStore[];
+    keyfactorSshStores: outputs.GetSecretStoreSecretStoreKeyfactorSshStore[];
     keyfactorX509Stores: outputs.GetSecretStoreSecretStoreKeyfactorX509Store[];
     vaultApproleCertSshes: outputs.GetSecretStoreSecretStoreVaultApproleCertSsh[];
     vaultApproleCertX509s: outputs.GetSecretStoreSecretStoreVaultApproleCertX509[];
     vaultApproles: outputs.GetSecretStoreSecretStoreVaultApprole[];
+    vaultAwsEc2s: outputs.GetSecretStoreSecretStoreVaultAwsEc2[];
+    vaultAwsIams: outputs.GetSecretStoreSecretStoreVaultAwsIam[];
     vaultTls: outputs.GetSecretStoreSecretStoreVaultTl[];
     vaultTlsCertSshes: outputs.GetSecretStoreSecretStoreVaultTlsCertSsh[];
     vaultTlsCertX509s: outputs.GetSecretStoreSecretStoreVaultTlsCertX509[];
@@ -5740,7 +5765,7 @@ export interface GetSecretStoreSecretStoreGcpStore {
     tags?: {[key: string]: string};
 }
 
-export interface GetSecretStoreSecretStoreKeyfactorX509Store {
+export interface GetSecretStoreSecretStoreKeyfactorSshStore {
     /**
      * Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
      */
@@ -5778,9 +5803,56 @@ export interface GetSecretStoreSecretStoreKeyfactorX509Store {
      */
     keyFilePath?: string;
     /**
-     * optional environment variable housing the password that is used to decrypt the key file.
+     * Unique human-readable name of the SecretStore.
      */
-    keyPasswordEnvVar?: string;
+    name?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreKeyfactorX509Store {
+    /**
+     * Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+     */
+    caFilePath?: string;
+    /**
+     * Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+     */
+    certificateFilePath?: string;
+    /**
+     * Name of EJBCA certificate authority that will enroll CSR.
+     */
+    defaultCertificateAuthorityName?: string;
+    /**
+     * Certificate profile name that EJBCA will enroll the CSR with.
+     */
+    defaultCertificateProfileName?: string;
+    /**
+     * End entity profile that EJBCA will enroll the CSR with.
+     */
+    defaultEndEntityProfileName?: string;
+    /**
+     * code used by EJBCA during enrollment. May be left blank if no code is required.
+     */
+    enrollmentCodeEnvVar?: string;
+    /**
+     * username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+     */
+    enrollmentUsernameEnvVar?: string;
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+     */
+    keyFilePath?: string;
     /**
      * Unique human-readable name of the SecretStore.
      */
@@ -5882,6 +5954,52 @@ export interface GetSecretStoreSecretStoreVaultApproleCertX509 {
      * The signing role to be used for signing certificates
      */
     signingRole?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreVaultAwsEc2 {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetSecretStoreSecretStoreVaultAwsIam {
+    /**
+     * Unique identifier of the SecretStore.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name?: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress?: string;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -6291,6 +6409,14 @@ export interface ResourceAks {
      */
     hostname: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -6302,14 +6428,6 @@ export interface ResourceAks {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -6393,6 +6511,14 @@ export interface ResourceAksServiceAccount {
      */
     hostname: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -6404,14 +6530,6 @@ export interface ResourceAksServiceAccount {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -6564,6 +6682,14 @@ export interface ResourceAmazonEks {
      */
     healthcheckNamespace: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -6575,14 +6701,6 @@ export interface ResourceAmazonEks {
      * The AWS region to connect to.
      */
     region: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -6635,6 +6753,14 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     healthcheckNamespace: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -6646,14 +6772,6 @@ export interface ResourceAmazonEksInstanceProfile {
      * The AWS region to connect to.
      */
     region: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -6713,14 +6831,6 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      * The AWS region to connect to.
      */
     region: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -7209,6 +7319,14 @@ export interface ResourceAwsConsole {
      */
     enableEnvVariables?: boolean;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -7220,14 +7338,6 @@ export interface ResourceAwsConsole {
      * The AWS region to connect to.
      */
     region: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -7268,6 +7378,14 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     egressFilter?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -7279,14 +7397,6 @@ export interface ResourceAwsConsoleStaticKeyPair {
      * The AWS region to connect to.
      */
     region: string;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * The role to assume after logging in.
      */
@@ -8318,6 +8428,14 @@ export interface ResourceGoogleGke {
      */
     healthcheckNamespace: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -8325,14 +8443,6 @@ export interface ResourceGoogleGke {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -8639,6 +8749,14 @@ export interface ResourceKubernetes {
      */
     hostname: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -8650,14 +8768,6 @@ export interface ResourceKubernetes {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -8741,6 +8851,14 @@ export interface ResourceKubernetesServiceAccount {
      */
     hostname: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -8752,14 +8870,6 @@ export interface ResourceKubernetesServiceAccount {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9957,6 +10067,14 @@ export interface ResourceRdpCert {
      */
     hostname: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: string;
@@ -9968,14 +10086,6 @@ export interface ResourceRdpCert {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -10591,6 +10701,14 @@ export interface ResourceSshCert {
      */
     hostname: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * The key type to use e.g. rsa-2048 or ed25519
      */
     keyType: string;
@@ -10610,14 +10728,6 @@ export interface ResourceSshCert {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
-    /**
-     * The ID of the remote identity group to use for remote identity connections.
-     */
-    remoteIdentityGroupId?: string;
-    /**
-     * The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-     */
-    remoteIdentityHealthcheckUsername?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -11071,7 +11181,7 @@ export interface SecretStoreGcpStore {
     tags?: {[key: string]: string};
 }
 
-export interface SecretStoreKeyfactorX509Store {
+export interface SecretStoreKeyfactorSshStore {
     /**
      * Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
      */
@@ -11105,9 +11215,52 @@ export interface SecretStoreKeyfactorX509Store {
      */
     keyFilePath?: string;
     /**
-     * optional environment variable housing the password that is used to decrypt the key file.
+     * Unique human-readable name of the SecretStore.
      */
-    keyPasswordEnvVar?: string;
+    name: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreKeyfactorX509Store {
+    /**
+     * Path to the root CA that signed the certificate passed to the client for HTTPS connection. This is not required if the CA is trusted by the host operating system. This should be a PEM formatted certificate, and doesn't necessarily have to be the CA that signed CertificateFile.
+     */
+    caFilePath?: string;
+    /**
+     * Path to client certificate in PEM format. This certificate must contain a client certificate that is recognized by the EJBCA instance represented by Hostname. This PEM file may also contain the private key associated with the certificate, but KeyFile can also be set to configure the private key.
+     */
+    certificateFilePath: string;
+    /**
+     * Name of EJBCA certificate authority that will enroll CSR.
+     */
+    defaultCertificateAuthorityName: string;
+    /**
+     * Certificate profile name that EJBCA will enroll the CSR with.
+     */
+    defaultCertificateProfileName: string;
+    /**
+     * End entity profile that EJBCA will enroll the CSR with.
+     */
+    defaultEndEntityProfileName: string;
+    /**
+     * code used by EJBCA during enrollment. May be left blank if no code is required.
+     */
+    enrollmentCodeEnvVar?: string;
+    /**
+     * username that used by the EJBCA during enrollment. This can be left out.  If so, the username must be auto-generated on the Keyfactor side.
+     */
+    enrollmentUsernameEnvVar?: string;
+    /**
+     * Path to private key in PEM format. This file should contain the private key associated with the client certificate configured in CertificateFile.
+     */
+    keyFilePath?: string;
     /**
      * Unique human-readable name of the SecretStore.
      */
@@ -11197,6 +11350,44 @@ export interface SecretStoreVaultApproleCertX509 {
      * The signing role to be used for signing certificates
      */
     signingRole: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultAwsEc2 {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface SecretStoreVaultAwsIam {
+    /**
+     * Unique human-readable name of the SecretStore.
+     */
+    name: string;
+    /**
+     * The namespace to make requests within
+     */
+    namespace?: string;
+    /**
+     * The URL of the Vault to target
+     */
+    serverAddress: string;
     /**
      * Tags is a map of key, value pairs.
      */

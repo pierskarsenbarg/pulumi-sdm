@@ -55,6 +55,16 @@ export const getApprovalWorkflowStep: typeof import("./getApprovalWorkflowStep")
 export const getApprovalWorkflowStepOutput: typeof import("./getApprovalWorkflowStep").getApprovalWorkflowStepOutput = null as any;
 utilities.lazyLoad(exports, ["getApprovalWorkflowStep","getApprovalWorkflowStepOutput"], () => require("./getApprovalWorkflowStep"));
 
+export { GetIdentityAliasArgs, GetIdentityAliasResult, GetIdentityAliasOutputArgs } from "./getIdentityAlias";
+export const getIdentityAlias: typeof import("./getIdentityAlias").getIdentityAlias = null as any;
+export const getIdentityAliasOutput: typeof import("./getIdentityAlias").getIdentityAliasOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentityAlias","getIdentityAliasOutput"], () => require("./getIdentityAlias"));
+
+export { GetIdentitySetArgs, GetIdentitySetResult, GetIdentitySetOutputArgs } from "./getIdentitySet";
+export const getIdentitySet: typeof import("./getIdentitySet").getIdentitySet = null as any;
+export const getIdentitySetOutput: typeof import("./getIdentitySet").getIdentitySetOutput = null as any;
+utilities.lazyLoad(exports, ["getIdentitySet","getIdentitySetOutput"], () => require("./getIdentitySet"));
+
 export { GetNodeArgs, GetNodeResult, GetNodeOutputArgs } from "./getNode";
 export const getNode: typeof import("./getNode").getNode = null as any;
 export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
@@ -124,6 +134,16 @@ export { GetWorkflowRoleArgs, GetWorkflowRoleResult, GetWorkflowRoleOutputArgs }
 export const getWorkflowRole: typeof import("./getWorkflowRole").getWorkflowRole = null as any;
 export const getWorkflowRoleOutput: typeof import("./getWorkflowRole").getWorkflowRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkflowRole","getWorkflowRoleOutput"], () => require("./getWorkflowRole"));
+
+export { IdentityAliasArgs, IdentityAliasState } from "./identityAlias";
+export type IdentityAlias = import("./identityAlias").IdentityAlias;
+export const IdentityAlias: typeof import("./identityAlias").IdentityAlias = null as any;
+utilities.lazyLoad(exports, ["IdentityAlias"], () => require("./identityAlias"));
+
+export { IdentitySetArgs, IdentitySetState } from "./identitySet";
+export type IdentitySet = import("./identitySet").IdentitySet;
+export const IdentitySet: typeof import("./identitySet").IdentitySet = null as any;
+utilities.lazyLoad(exports, ["IdentitySet"], () => require("./identitySet"));
 
 export { NodeArgs, NodeState } from "./node";
 export type Node = import("./node").Node;
@@ -214,6 +234,10 @@ const _module = {
                 return new ApprovalWorkflowApprover(name, <any>undefined, { urn })
             case "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep":
                 return new ApprovalWorkflowStep(name, <any>undefined, { urn })
+            case "sdm:index/identityAlias:IdentityAlias":
+                return new IdentityAlias(name, <any>undefined, { urn })
+            case "sdm:index/identitySet:IdentitySet":
+                return new IdentitySet(name, <any>undefined, { urn })
             case "sdm:index/node:Node":
                 return new Node(name, <any>undefined, { urn })
             case "sdm:index/peeringGroup:PeeringGroup":
@@ -248,6 +272,8 @@ pulumi.runtime.registerResourceModule("sdm", "index/accountAttachment", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflow", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowApprover", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/approvalWorkflowStep", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/identityAlias", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/identitySet", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/node", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroup", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupNode", _module)

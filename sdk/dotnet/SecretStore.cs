@@ -60,6 +60,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("gcpStore")]
         public Output<Outputs.SecretStoreGcpStore?> GcpStore { get; private set; } = null!;
 
+        [Output("keyfactorSshStore")]
+        public Output<Outputs.SecretStoreKeyfactorSshStore?> KeyfactorSshStore { get; private set; } = null!;
+
         [Output("keyfactorX509Store")]
         public Output<Outputs.SecretStoreKeyfactorX509Store?> KeyfactorX509Store { get; private set; } = null!;
 
@@ -71,6 +74,18 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("vaultApproleCertX509")]
         public Output<Outputs.SecretStoreVaultApproleCertX509?> VaultApproleCertX509 { get; private set; } = null!;
+
+        /// <summary>
+        /// VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("vaultAwsEc2")]
+        public Output<Outputs.SecretStoreVaultAwsEc2?> VaultAwsEc2 { get; private set; } = null!;
+
+        /// <summary>
+        /// VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("vaultAwsIam")]
+        public Output<Outputs.SecretStoreVaultAwsIam?> VaultAwsIam { get; private set; } = null!;
 
         [Output("vaultTls")]
         public Output<Outputs.SecretStoreVaultTls?> VaultTls { get; private set; } = null!;
@@ -171,6 +186,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("gcpStore")]
         public Input<Inputs.SecretStoreGcpStoreArgs>? GcpStore { get; set; }
 
+        [Input("keyfactorSshStore")]
+        public Input<Inputs.SecretStoreKeyfactorSshStoreArgs>? KeyfactorSshStore { get; set; }
+
         [Input("keyfactorX509Store")]
         public Input<Inputs.SecretStoreKeyfactorX509StoreArgs>? KeyfactorX509Store { get; set; }
 
@@ -182,6 +200,18 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("vaultApproleCertX509")]
         public Input<Inputs.SecretStoreVaultApproleCertX509Args>? VaultApproleCertX509 { get; set; }
+
+        /// <summary>
+        /// VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsEc2")]
+        public Input<Inputs.SecretStoreVaultAwsEc2Args>? VaultAwsEc2 { get; set; }
+
+        /// <summary>
+        /// VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsIam")]
+        public Input<Inputs.SecretStoreVaultAwsIamArgs>? VaultAwsIam { get; set; }
 
         [Input("vaultTls")]
         public Input<Inputs.SecretStoreVaultTlsArgs>? VaultTls { get; set; }
@@ -243,6 +273,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("gcpStore")]
         public Input<Inputs.SecretStoreGcpStoreGetArgs>? GcpStore { get; set; }
 
+        [Input("keyfactorSshStore")]
+        public Input<Inputs.SecretStoreKeyfactorSshStoreGetArgs>? KeyfactorSshStore { get; set; }
+
         [Input("keyfactorX509Store")]
         public Input<Inputs.SecretStoreKeyfactorX509StoreGetArgs>? KeyfactorX509Store { get; set; }
 
@@ -254,6 +287,18 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("vaultApproleCertX509")]
         public Input<Inputs.SecretStoreVaultApproleCertX509GetArgs>? VaultApproleCertX509 { get; set; }
+
+        /// <summary>
+        /// VaultAWSEC2Store is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsEc2")]
+        public Input<Inputs.SecretStoreVaultAwsEc2GetArgs>? VaultAwsEc2 { get; set; }
+
+        /// <summary>
+        /// VaultAWSIAMStore is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("vaultAwsIam")]
+        public Input<Inputs.SecretStoreVaultAwsIamGetArgs>? VaultAwsIam { get; set; }
 
         [Input("vaultTls")]
         public Input<Inputs.SecretStoreVaultTlsGetArgs>? VaultTls { get; set; }

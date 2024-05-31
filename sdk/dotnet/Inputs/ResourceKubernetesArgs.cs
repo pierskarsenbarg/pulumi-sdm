@@ -86,6 +86,18 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> Hostname { get; set; } = null!;
 
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        [Input("identityAliasHealthcheckUsername")]
+        public Input<string>? IdentityAliasHealthcheckUsername { get; set; }
+
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        [Input("identitySetId")]
+        public Input<string>? IdentitySetId { get; set; }
+
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         [Input("name", required: true)]
@@ -102,18 +114,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// </summary>
         [Input("portOverride")]
         public Input<int>? PortOverride { get; set; }
-
-        /// <summary>
-        /// The ID of the remote identity group to use for remote identity connections.
-        /// </summary>
-        [Input("remoteIdentityGroupId")]
-        public Input<string>? RemoteIdentityGroupId { get; set; }
-
-        /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own remote identity username.
-        /// </summary>
-        [Input("remoteIdentityHealthcheckUsername")]
-        public Input<string>? RemoteIdentityHealthcheckUsername { get; set; }
 
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.

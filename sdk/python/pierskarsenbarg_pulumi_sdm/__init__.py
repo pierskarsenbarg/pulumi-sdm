@@ -15,6 +15,8 @@ from .get_account_attachment import *
 from .get_approval_workflow import *
 from .get_approval_workflow_approver import *
 from .get_approval_workflow_step import *
+from .get_identity_alias import *
+from .get_identity_set import *
 from .get_node import *
 from .get_peering_group import *
 from .get_peering_group_node import *
@@ -29,6 +31,8 @@ from .get_ssh_ca_pubkey import *
 from .get_workflow import *
 from .get_workflow_approver import *
 from .get_workflow_role import *
+from .identity_alias import *
+from .identity_set import *
 from .node import *
 from .peering_group import *
 from .peering_group_node import *
@@ -93,6 +97,22 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/approvalWorkflowStep:ApprovalWorkflowStep": "ApprovalWorkflowStep"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/identityAlias",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/identityAlias:IdentityAlias": "IdentityAlias"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/identitySet",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/identitySet:IdentitySet": "IdentitySet"
   }
  },
  {
