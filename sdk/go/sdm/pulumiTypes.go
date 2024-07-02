@@ -1252,6 +1252,10 @@ type ResourceAks struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// The key to authenticate TLS connections with.
 	ClientKey *string `pulumi:"clientKey"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -1296,6 +1300,10 @@ type ResourceAksArgs struct {
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// The key to authenticate TLS connections with.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -1417,6 +1425,16 @@ func (o ResourceAksOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAks) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceAksOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAks) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceAksOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAks) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
+}
+
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o ResourceAksOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAks) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
@@ -1533,6 +1551,26 @@ func (o ResourceAksPtrOutput) ClientKey() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceAksPtrOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAks) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceAksPtrOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1995,6 +2033,10 @@ func (o ResourceAksBasicAuthPtrOutput) Username() pulumi.StringPtrOutput {
 type ResourceAksServiceAccount struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -2036,6 +2078,10 @@ type ResourceAksServiceAccountInput interface {
 type ResourceAksServiceAccountArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -2145,6 +2191,16 @@ func (o ResourceAksServiceAccountOutput) BindInterface() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
 }
 
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceAksServiceAccountOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccount) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceAksServiceAccountOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
+}
+
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o ResourceAksServiceAccountOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
@@ -2237,6 +2293,26 @@ func (o ResourceAksServiceAccountPtrOutput) BindInterface() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceAksServiceAccountPtrOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceAksServiceAccountPtrOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3066,6 +3142,10 @@ type ResourceAmazonEks struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// The name of the cluster to connect to.
 	ClusterName string `pulumi:"clusterName"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -3116,6 +3196,10 @@ type ResourceAmazonEksArgs struct {
 	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
 	// The name of the cluster to connect to.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -3241,6 +3325,16 @@ func (o ResourceAmazonEksOutput) CertificateAuthority() pulumi.StringPtrOutput {
 // The name of the cluster to connect to.
 func (o ResourceAmazonEksOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceAmazonEksOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEks) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceAmazonEksOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -3374,6 +3468,26 @@ func (o ResourceAmazonEksPtrOutput) ClusterName() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceAmazonEksPtrOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEks) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceAmazonEksPtrOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3524,6 +3638,10 @@ type ResourceAmazonEksInstanceProfile struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// The name of the cluster to connect to.
 	ClusterName string `pulumi:"clusterName"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -3570,6 +3688,10 @@ type ResourceAmazonEksInstanceProfileArgs struct {
 	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
 	// The name of the cluster to connect to.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -3690,6 +3812,16 @@ func (o ResourceAmazonEksInstanceProfileOutput) ClusterName() pulumi.StringOutpu
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceAmazonEksInstanceProfileOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceAmazonEksInstanceProfileOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
+}
+
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o ResourceAmazonEksInstanceProfileOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
@@ -3806,6 +3938,26 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) ClusterName() pulumi.StringPt
 			return nil
 		}
 		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14712,6 +14864,10 @@ type ResourceGoogleGke struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -14752,6 +14908,10 @@ type ResourceGoogleGkeArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
 	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -14863,6 +15023,16 @@ func (o ResourceGoogleGkeOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
 }
 
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceGoogleGkeOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGke) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceGoogleGkeOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
+}
+
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o ResourceGoogleGkeOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
@@ -14959,6 +15129,26 @@ func (o ResourceGoogleGkePtrOutput) CertificateAuthority() pulumi.StringPtrOutpu
 			return nil
 		}
 		return v.CertificateAuthority
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceGoogleGkePtrOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGke) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceGoogleGkePtrOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGke) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16823,6 +17013,10 @@ type ResourceKubernetes struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// The key to authenticate TLS connections with.
 	ClientKey *string `pulumi:"clientKey"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -16867,6 +17061,10 @@ type ResourceKubernetesArgs struct {
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// The key to authenticate TLS connections with.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -16988,6 +17186,16 @@ func (o ResourceKubernetesOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetes) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
 
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceKubernetesOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetes) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceKubernetesOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetes) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
+}
+
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o ResourceKubernetesOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetes) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
@@ -17104,6 +17312,26 @@ func (o ResourceKubernetesPtrOutput) ClientKey() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.ClientKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceKubernetesPtrOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceKubernetesPtrOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17566,6 +17794,10 @@ func (o ResourceKubernetesBasicAuthPtrOutput) Username() pulumi.StringPtrOutput 
 type ResourceKubernetesServiceAccount struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -17607,6 +17839,10 @@ type ResourceKubernetesServiceAccountInput interface {
 type ResourceKubernetesServiceAccountArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -17716,6 +17952,16 @@ func (o ResourceKubernetesServiceAccountOutput) BindInterface() pulumi.StringPtr
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
 }
 
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceKubernetesServiceAccountOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceKubernetesServiceAccountOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
+}
+
 // A filter applied to the routing logic to pin datasource to nodes.
 func (o ResourceKubernetesServiceAccountOutput) EgressFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
@@ -17808,6 +18054,26 @@ func (o ResourceKubernetesServiceAccountPtrOutput) BindInterface() pulumi.String
 			return nil
 		}
 		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o ResourceKubernetesServiceAccountPtrOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o ResourceKubernetesServiceAccountPtrOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscoveryUsername
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40330,6 +40596,10 @@ type GetResourceResourceAk struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// The key to authenticate TLS connections with.
 	ClientKey *string `pulumi:"clientKey"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -40376,6 +40646,10 @@ type GetResourceResourceAkArgs struct {
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// The key to authenticate TLS connections with.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -40471,6 +40745,16 @@ func (o GetResourceResourceAkOutput) ClientCertificate() pulumi.StringPtrOutput 
 // The key to authenticate TLS connections with.
 func (o GetResourceResourceAkOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o GetResourceResourceAkOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAk) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o GetResourceResourceAkOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -40761,6 +41045,10 @@ func (o GetResourceResourceAksBasicAuthArrayOutput) Index(i pulumi.IntInput) Get
 type GetResourceResourceAksServiceAccount struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -40804,6 +41092,10 @@ type GetResourceResourceAksServiceAccountInput interface {
 type GetResourceResourceAksServiceAccountArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -40887,6 +41179,16 @@ func (o GetResourceResourceAksServiceAccountOutput) ToGetResourceResourceAksServ
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o GetResourceResourceAksServiceAccountOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o GetResourceResourceAksServiceAccountOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o GetResourceResourceAksServiceAccountOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -41611,6 +41913,10 @@ type GetResourceResourceAmazonEk struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// The name of the cluster to connect to.
 	ClusterName *string `pulumi:"clusterName"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -41663,6 +41969,10 @@ type GetResourceResourceAmazonEkArgs struct {
 	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
 	// The name of the cluster to connect to.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -41764,6 +42074,16 @@ func (o GetResourceResourceAmazonEkOutput) CertificateAuthority() pulumi.StringP
 // The name of the cluster to connect to.
 func (o GetResourceResourceAmazonEkOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o GetResourceResourceAmazonEkOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEk) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o GetResourceResourceAmazonEkOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -41868,6 +42188,10 @@ type GetResourceResourceAmazonEksInstanceProfile struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	// The name of the cluster to connect to.
 	ClusterName *string `pulumi:"clusterName"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -41916,6 +42240,10 @@ type GetResourceResourceAmazonEksInstanceProfileArgs struct {
 	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
 	// The name of the cluster to connect to.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -42010,6 +42338,16 @@ func (o GetResourceResourceAmazonEksInstanceProfileOutput) CertificateAuthority(
 // The name of the cluster to connect to.
 func (o GetResourceResourceAmazonEksInstanceProfileOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -48233,6 +48571,10 @@ type GetResourceResourceGoogleGke struct {
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -48275,6 +48617,10 @@ type GetResourceResourceGoogleGkeArgs struct {
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
 	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
@@ -48360,6 +48706,16 @@ func (o GetResourceResourceGoogleGkeOutput) BindInterface() pulumi.StringPtrOutp
 // The CA to authenticate TLS connections with.
 func (o GetResourceResourceGoogleGkeOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o GetResourceResourceGoogleGkeOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGke) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o GetResourceResourceGoogleGkeOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -49485,6 +49841,10 @@ type GetResourceResourceKubernete struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// The key to authenticate TLS connections with.
 	ClientKey *string `pulumi:"clientKey"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -49531,6 +49891,10 @@ type GetResourceResourceKuberneteArgs struct {
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// The key to authenticate TLS connections with.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -49626,6 +49990,16 @@ func (o GetResourceResourceKuberneteOutput) ClientCertificate() pulumi.StringPtr
 // The key to authenticate TLS connections with.
 func (o GetResourceResourceKuberneteOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o GetResourceResourceKuberneteOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernete) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o GetResourceResourceKuberneteOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.
@@ -49916,6 +50290,10 @@ func (o GetResourceResourceKubernetesBasicAuthArrayOutput) Index(i pulumi.IntInp
 type GetResourceResourceKubernetesServiceAccount struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled *bool `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername *string `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -49959,6 +50337,10 @@ type GetResourceResourceKubernetesServiceAccountInput interface {
 type GetResourceResourceKubernetesServiceAccountArgs struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// If true, configures discovery of a cluster to be run from a node.
+	DiscoveryEnabled pulumi.BoolPtrInput `pulumi:"discoveryEnabled"`
+	// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+	DiscoveryUsername pulumi.StringPtrInput `pulumi:"discoveryUsername"`
 	// A filter applied to the routing logic to pin datasource to nodes.
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
@@ -50042,6 +50424,16 @@ func (o GetResourceResourceKubernetesServiceAccountOutput) ToGetResourceResource
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o GetResourceResourceKubernetesServiceAccountOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// If true, configures discovery of a cluster to be run from a node.
+func (o GetResourceResourceKubernetesServiceAccountOutput) DiscoveryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *bool { return v.DiscoveryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+func (o GetResourceResourceKubernetesServiceAccountOutput) DiscoveryUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.DiscoveryUsername }).(pulumi.StringPtrOutput)
 }
 
 // A filter applied to the routing logic to pin datasource to nodes.

@@ -341,6 +341,14 @@
                     "description": "The key to authenticate TLS connections with.\n",
                     "secret": true
                 },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -491,6 +499,14 @@
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -739,6 +755,14 @@
                     "type": "string",
                     "description": "The name of the cluster to connect to.\n"
                 },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -837,6 +861,14 @@
                 "clusterName": {
                     "type": "string",
                     "description": "The name of the cluster to connect to.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -3233,6 +3265,14 @@
                     "description": "The CA to authenticate TLS connections with.\n",
                     "secret": true
                 },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -3696,6 +3736,14 @@
                     "description": "The key to authenticate TLS connections with.\n",
                     "secret": true
                 },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -3846,6 +3894,14 @@
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -8925,6 +8981,14 @@
                     "description": "The key to authenticate TLS connections with.\n",
                     "secret": true
                 },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -9045,6 +9109,14 @@
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -9313,6 +9385,14 @@
                     "type": "string",
                     "description": "The name of the cluster to connect to.\n"
                 },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -9394,6 +9474,14 @@
                 "clusterName": {
                     "type": "string",
                     "description": "The name of the cluster to connect to.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -11312,6 +11400,14 @@
                     "description": "The CA to authenticate TLS connections with.\n",
                     "secret": true
                 },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -11693,6 +11789,14 @@
                     "description": "The key to authenticate TLS connections with.\n",
                     "secret": true
                 },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
+                },
                 "egressFilter": {
                     "type": "string",
                     "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
@@ -11813,6 +11917,14 @@
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "discoveryEnabled": {
+                    "type": "boolean",
+                    "description": "If true, configures discovery of a cluster to be run from a node.\n"
+                },
+                "discoveryUsername": {
+                    "type": "string",
+                    "description": "If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.\n"
                 },
                 "egressFilter": {
                     "type": "string",
@@ -17439,7 +17551,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
@@ -17510,7 +17622,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
@@ -17907,7 +18019,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
@@ -17954,7 +18066,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
@@ -18327,7 +18439,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
@@ -18378,7 +18490,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
@@ -18481,7 +18593,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },
@@ -18520,7 +18632,7 @@
                     "tags": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Tags is a map of key, value pairs.\n"
                     },

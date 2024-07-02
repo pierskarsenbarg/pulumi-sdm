@@ -101,14 +101,14 @@ namespace PiersKarsenbarg.Sdm
         public int? Port { get; set; }
 
         [Input("tags")]
-        private Dictionary<string, object>? _tags;
+        private Dictionary<string, string>? _tags;
 
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
-        public Dictionary<string, object> Tags
+        public Dictionary<string, string> Tags
         {
-            get => _tags ?? (_tags = new Dictionary<string, object>());
+            get => _tags ?? (_tags = new Dictionary<string, string>());
             set => _tags = value;
         }
 
@@ -157,14 +157,14 @@ namespace PiersKarsenbarg.Sdm
         public Input<int>? Port { get; set; }
 
         [Input("tags")]
-        private InputMap<object>? _tags;
+        private InputMap<string>? _tags;
 
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
-        public InputMap<object> Tags
+        public InputMap<string> Tags
         {
-            get => _tags ?? (_tags = new InputMap<object>());
+            get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
 
@@ -218,7 +218,7 @@ namespace PiersKarsenbarg.Sdm
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
-        public readonly ImmutableDictionary<string, object>? Tags;
+        public readonly ImmutableDictionary<string, string>? Tags;
         public readonly string? Type;
         /// <summary>
         /// The username to authenticate with.
@@ -239,7 +239,7 @@ namespace PiersKarsenbarg.Sdm
 
             ImmutableArray<Outputs.GetResourceResourceResult> resources,
 
-            ImmutableDictionary<string, object>? tags,
+            ImmutableDictionary<string, string>? tags,
 
             string? type,
 

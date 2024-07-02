@@ -165,7 +165,7 @@ class GetAccountResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         Tags is a map of key, value pairs.
         """
@@ -209,7 +209,7 @@ def get_account(account_type: Optional[str] = None,
                 permission_level: Optional[str] = None,
                 permissions: Optional[str] = None,
                 suspended: Optional[bool] = None,
-                tags: Optional[Mapping[str, Any]] = None,
+                tags: Optional[Mapping[str, str]] = None,
                 type: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountResult:
     """
@@ -246,7 +246,7 @@ def get_account(account_type: Optional[str] = None,
     :param str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
     :param str permissions: Permissions assigned to the token, e.g. role:create.
     :param bool suspended: Reserved for future use.  Always false for tokens.
-    :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
+    :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     __args__ = dict()
@@ -293,7 +293,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[str]]] = Non
                        permission_level: Optional[pulumi.Input[Optional[str]]] = None,
                        permissions: Optional[pulumi.Input[Optional[str]]] = None,
                        suspended: Optional[pulumi.Input[Optional[bool]]] = None,
-                       tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
     """
@@ -330,7 +330,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[str]]] = Non
     :param str permission_level: PermissionLevel is the user's permission level e.g. admin, DBA, user.
     :param str permissions: Permissions assigned to the token, e.g. role:create.
     :param bool suspended: Reserved for future use.  Always false for tokens.
-    :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
+    :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     ...

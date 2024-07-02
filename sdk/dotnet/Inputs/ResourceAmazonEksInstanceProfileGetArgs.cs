@@ -42,6 +42,18 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
+        /// If true, configures discovery of a cluster to be run from a node.
+        /// </summary>
+        [Input("discoveryEnabled")]
+        public Input<bool>? DiscoveryEnabled { get; set; }
+
+        /// <summary>
+        /// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        /// </summary>
+        [Input("discoveryUsername")]
+        public Input<string>? DiscoveryUsername { get; set; }
+
+        /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         [Input("egressFilter")]

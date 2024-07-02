@@ -156,6 +156,14 @@ export interface ResourceAks {
      */
     clientKey?: pulumi.Input<string>;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: pulumi.Input<string>;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
@@ -257,6 +265,14 @@ export interface ResourceAksServiceAccount {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -429,6 +445,14 @@ export interface ResourceAmazonEks {
      */
     clusterName: pulumi.Input<string>;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: pulumi.Input<string>;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
@@ -499,6 +523,14 @@ export interface ResourceAmazonEksInstanceProfile {
      * The name of the cluster to connect to.
      */
     clusterName: pulumi.Input<string>;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -2175,6 +2207,14 @@ export interface ResourceGoogleGke {
      */
     certificateAuthority?: pulumi.Input<string>;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: pulumi.Input<string>;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
@@ -2496,6 +2536,14 @@ export interface ResourceKubernetes {
      */
     clientKey?: pulumi.Input<string>;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: pulumi.Input<string>;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: pulumi.Input<string>;
@@ -2597,6 +2645,14 @@ export interface ResourceKubernetesServiceAccount {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: pulumi.Input<boolean>;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: pulumi.Input<string>;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */

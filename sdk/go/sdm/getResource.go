@@ -66,7 +66,7 @@ type LookupResourceArgs struct {
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port *int `pulumi:"port"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type *string `pulumi:"type"`
 	// The username to authenticate with.
@@ -89,8 +89,8 @@ type LookupResourceResult struct {
 	// * aks:
 	Resources []GetResourceResource `pulumi:"resources"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 	// The username to authenticate with.
 	Username *string `pulumi:"username"`
 }
@@ -119,7 +119,7 @@ type LookupResourceOutputArgs struct {
 	// The port to dial to initiate a connection from the egress node to this resource.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Tags is a map of key, value pairs.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The username to authenticate with.
@@ -177,8 +177,8 @@ func (o LookupResourceResultOutput) Resources() GetResourceResourceArrayOutput {
 }
 
 // Tags is a map of key, value pairs.
-func (o LookupResourceResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupResourceResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o LookupResourceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupResourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupResourceResultOutput) Type() pulumi.StringPtrOutput {

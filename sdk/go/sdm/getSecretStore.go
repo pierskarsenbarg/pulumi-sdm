@@ -31,7 +31,7 @@ type LookupSecretStoreArgs struct {
 	// Unique human-readable name of the SecretStore.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type *string `pulumi:"type"`
 }
@@ -48,8 +48,8 @@ type LookupSecretStoreResult struct {
 	// * active_directory_store:
 	SecretStores []GetSecretStoreSecretStore `pulumi:"secretStores"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 }
 
 func LookupSecretStoreOutput(ctx *pulumi.Context, args LookupSecretStoreOutputArgs, opts ...pulumi.InvokeOption) LookupSecretStoreResultOutput {
@@ -72,7 +72,7 @@ type LookupSecretStoreOutputArgs struct {
 	// Unique human-readable name of the SecretStore.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -118,8 +118,8 @@ func (o LookupSecretStoreResultOutput) SecretStores() GetSecretStoreSecretStoreA
 }
 
 // Tags is a map of key, value pairs.
-func (o LookupSecretStoreResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupSecretStoreResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o LookupSecretStoreResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretStoreResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecretStoreResultOutput) Type() pulumi.StringPtrOutput {

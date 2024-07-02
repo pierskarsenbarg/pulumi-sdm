@@ -37,7 +37,7 @@ export interface GetSecretStoreArgs {
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: {[key: string]: any};
+    tags?: {[key: string]: string};
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
      */
@@ -68,7 +68,7 @@ export interface GetSecretStoreResult {
     /**
      * Tags is a map of key, value pairs.
      */
-    readonly tags?: {[key: string]: any};
+    readonly tags?: {[key: string]: string};
     readonly type?: string;
 }
 /**
@@ -94,7 +94,7 @@ export interface GetSecretStoreOutputArgs {
     /**
      * Tags is a map of key, value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: any}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
      */
