@@ -102,7 +102,7 @@ class GetResourceResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         Tags is a map of key, value pairs.
         """
@@ -143,7 +143,7 @@ def get_resource(hostname: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
-                 tags: Optional[Mapping[str, Any]] = None,
+                 tags: Optional[Mapping[str, str]] = None,
                  type: Optional[str] = None,
                  username: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceResult:
@@ -169,7 +169,7 @@ def get_resource(hostname: Optional[str] = None,
     :param str id: Unique identifier of the Resource.
     :param str name: Unique human-readable name of the Resource.
     :param int port: The port to dial to initiate a connection from the egress node to this resource.
-    :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
+    :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     :param str username: The username to authenticate with.
     """
@@ -201,7 +201,7 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
                         id: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         port: Optional[pulumi.Input[Optional[int]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         type: Optional[pulumi.Input[Optional[str]]] = None,
                         username: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceResult]:
@@ -227,7 +227,7 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: Unique identifier of the Resource.
     :param str name: Unique human-readable name of the Resource.
     :param int port: The port to dial to initiate a connection from the egress node to this resource.
-    :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
+    :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     :param str username: The username to authenticate with.
     """

@@ -67,7 +67,7 @@ type LookupNodeArgs struct {
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name *string `pulumi:"name"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type *string `pulumi:"type"`
 }
@@ -88,8 +88,8 @@ type LookupNodeResult struct {
 	// * gateway:
 	Nodes []GetNodeNode `pulumi:"nodes"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 }
 
 func LookupNodeOutput(ctx *pulumi.Context, args LookupNodeOutputArgs, opts ...pulumi.InvokeOption) LookupNodeResultOutput {
@@ -116,7 +116,7 @@ type LookupNodeOutputArgs struct {
 	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Tags is a map of key, value pairs.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -172,8 +172,8 @@ func (o LookupNodeResultOutput) Nodes() GetNodeNodeArrayOutput {
 }
 
 // Tags is a map of key, value pairs.
-func (o LookupNodeResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupNodeResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o LookupNodeResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupNodeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupNodeResultOutput) Type() pulumi.StringPtrOutput {

@@ -680,6 +680,8 @@ class ResourceAksArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
+                 discovery_enabled: Optional[pulumi.Input[bool]] = None,
+                 discovery_username: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
@@ -696,6 +698,8 @@ class ResourceAksArgs:
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
         :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
+        :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -716,6 +720,10 @@ class ResourceAksArgs:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if discovery_username is not None:
+            pulumi.set(__self__, "discovery_username", discovery_username)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
@@ -816,6 +824,30 @@ class ResourceAksArgs:
     @client_key.setter
     def client_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @discovery_enabled.setter
+    def discovery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discovery_enabled", value)
+
+    @property
+    @pulumi.getter(name="discoveryUsername")
+    def discovery_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        """
+        return pulumi.get(self, "discovery_username")
+
+    @discovery_username.setter
+    def discovery_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_username", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -1117,6 +1149,8 @@ class ResourceAksServiceAccountArgs:
                  name: pulumi.Input[str],
                  port: pulumi.Input[int],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 discovery_enabled: Optional[pulumi.Input[bool]] = None,
+                 discovery_username: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
@@ -1131,6 +1165,8 @@ class ResourceAksServiceAccountArgs:
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -1147,6 +1183,10 @@ class ResourceAksServiceAccountArgs:
         pulumi.set(__self__, "port", port)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if discovery_username is not None:
+            pulumi.set(__self__, "discovery_username", discovery_username)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
@@ -1213,6 +1253,30 @@ class ResourceAksServiceAccountArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @discovery_enabled.setter
+    def discovery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discovery_enabled", value)
+
+    @property
+    @pulumi.getter(name="discoveryUsername")
+    def discovery_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        """
+        return pulumi.get(self, "discovery_username")
+
+    @discovery_username.setter
+    def discovery_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_username", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -1728,6 +1792,8 @@ class ResourceAmazonEksArgs:
                  access_key: Optional[pulumi.Input[str]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
+                 discovery_enabled: Optional[pulumi.Input[bool]] = None,
+                 discovery_username: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
@@ -1747,6 +1813,8 @@ class ResourceAmazonEksArgs:
         :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -1769,6 +1837,10 @@ class ResourceAmazonEksArgs:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if discovery_username is not None:
+            pulumi.set(__self__, "discovery_username", discovery_username)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
@@ -1875,6 +1947,30 @@ class ResourceAmazonEksArgs:
     @certificate_authority.setter
     def certificate_authority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @discovery_enabled.setter
+    def discovery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discovery_enabled", value)
+
+    @property
+    @pulumi.getter(name="discoveryUsername")
+    def discovery_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        """
+        return pulumi.get(self, "discovery_username")
+
+    @discovery_username.setter
+    def discovery_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_username", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -2018,6 +2114,8 @@ class ResourceAmazonEksInstanceProfileArgs:
                  region: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
+                 discovery_enabled: Optional[pulumi.Input[bool]] = None,
+                 discovery_username: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
@@ -2035,6 +2133,8 @@ class ResourceAmazonEksInstanceProfileArgs:
         :param pulumi.Input[str] region: The AWS region to connect to.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -2054,6 +2154,10 @@ class ResourceAmazonEksInstanceProfileArgs:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if discovery_username is not None:
+            pulumi.set(__self__, "discovery_username", discovery_username)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
@@ -2146,6 +2250,30 @@ class ResourceAmazonEksInstanceProfileArgs:
     @certificate_authority.setter
     def certificate_authority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @discovery_enabled.setter
+    def discovery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discovery_enabled", value)
+
+    @property
+    @pulumi.getter(name="discoveryUsername")
+    def discovery_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        """
+        return pulumi.get(self, "discovery_username")
+
+    @discovery_username.setter
+    def discovery_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_username", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -8491,6 +8619,8 @@ class ResourceGoogleGkeArgs:
                  name: pulumi.Input[str],
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
+                 discovery_enabled: Optional[pulumi.Input[bool]] = None,
+                 discovery_username: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
@@ -8505,6 +8635,8 @@ class ResourceGoogleGkeArgs:
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
+        :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -8521,6 +8653,10 @@ class ResourceGoogleGkeArgs:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if discovery_username is not None:
+            pulumi.set(__self__, "discovery_username", discovery_username)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
@@ -8587,6 +8723,30 @@ class ResourceGoogleGkeArgs:
     @certificate_authority.setter
     def certificate_authority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @discovery_enabled.setter
+    def discovery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discovery_enabled", value)
+
+    @property
+    @pulumi.getter(name="discoveryUsername")
+    def discovery_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        """
+        return pulumi.get(self, "discovery_username")
+
+    @discovery_username.setter
+    def discovery_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_username", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -9691,6 +9851,8 @@ class ResourceKubernetesArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
+                 discovery_enabled: Optional[pulumi.Input[bool]] = None,
+                 discovery_username: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
@@ -9707,6 +9869,8 @@ class ResourceKubernetesArgs:
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
         :param pulumi.Input[str] client_key: The key to authenticate TLS connections with.
+        :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -9727,6 +9891,10 @@ class ResourceKubernetesArgs:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if discovery_username is not None:
+            pulumi.set(__self__, "discovery_username", discovery_username)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
@@ -9827,6 +9995,30 @@ class ResourceKubernetesArgs:
     @client_key.setter
     def client_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_key", value)
+
+    @property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @discovery_enabled.setter
+    def discovery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discovery_enabled", value)
+
+    @property
+    @pulumi.getter(name="discoveryUsername")
+    def discovery_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        """
+        return pulumi.get(self, "discovery_username")
+
+    @discovery_username.setter
+    def discovery_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_username", value)
 
     @property
     @pulumi.getter(name="egressFilter")
@@ -10128,6 +10320,8 @@ class ResourceKubernetesServiceAccountArgs:
                  name: pulumi.Input[str],
                  port: pulumi.Input[int],
                  bind_interface: Optional[pulumi.Input[str]] = None,
+                 discovery_enabled: Optional[pulumi.Input[bool]] = None,
+                 discovery_username: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
@@ -10142,6 +10336,8 @@ class ResourceKubernetesServiceAccountArgs:
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
+        :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
@@ -10158,6 +10354,10 @@ class ResourceKubernetesServiceAccountArgs:
         pulumi.set(__self__, "port", port)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
+        if discovery_enabled is not None:
+            pulumi.set(__self__, "discovery_enabled", discovery_enabled)
+        if discovery_username is not None:
+            pulumi.set(__self__, "discovery_username", discovery_username)
         if egress_filter is not None:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
@@ -10224,6 +10424,30 @@ class ResourceKubernetesServiceAccountArgs:
     @bind_interface.setter
     def bind_interface(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "bind_interface", value)
+
+    @property
+    @pulumi.getter(name="discoveryEnabled")
+    def discovery_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, configures discovery of a cluster to be run from a node.
+        """
+        return pulumi.get(self, "discovery_enabled")
+
+    @discovery_enabled.setter
+    def discovery_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "discovery_enabled", value)
+
+    @property
+    @pulumi.getter(name="discoveryUsername")
+    def discovery_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        """
+        return pulumi.get(self, "discovery_username")
+
+    @discovery_username.setter
+    def discovery_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "discovery_username", value)
 
     @property
     @pulumi.getter(name="egressFilter")

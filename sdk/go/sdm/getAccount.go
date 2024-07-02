@@ -93,7 +93,7 @@ type LookupAccountArgs struct {
 	// Reserved for future use.  Always false for tokens.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
+	Tags map[string]string `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type *string `pulumi:"type"`
 }
@@ -126,8 +126,8 @@ type LookupAccountResult struct {
 	// Suspended is a read only field for the User's suspended state.
 	Suspended *bool `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
-	Tags map[string]interface{} `pulumi:"tags"`
-	Type *string                `pulumi:"type"`
+	Tags map[string]string `pulumi:"tags"`
+	Type *string           `pulumi:"type"`
 }
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
@@ -166,7 +166,7 @@ type LookupAccountOutputArgs struct {
 	// Reserved for future use.  Always false for tokens.
 	Suspended pulumi.BoolPtrInput `pulumi:"suspended"`
 	// Tags is a map of key, value pairs.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -252,8 +252,8 @@ func (o LookupAccountResultOutput) Suspended() pulumi.BoolPtrOutput {
 }
 
 // Tags is a map of key, value pairs.
-func (o LookupAccountResultOutput) Tags() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupAccountResult) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
+func (o LookupAccountResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupAccountResultOutput) Type() pulumi.StringPtrOutput {

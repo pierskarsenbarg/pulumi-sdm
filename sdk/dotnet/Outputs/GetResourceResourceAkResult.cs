@@ -31,6 +31,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>
+        /// If true, configures discovery of a cluster to be run from a node.
+        /// </summary>
+        public readonly bool? DiscoveryEnabled;
+        /// <summary>
+        /// If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+        /// </summary>
+        public readonly string? DiscoveryUsername;
+        /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
@@ -89,6 +97,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? clientKey,
 
+            bool? discoveryEnabled,
+
+            string? discoveryUsername,
+
             string? egressFilter,
 
             string? healthcheckNamespace,
@@ -117,6 +129,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             CertificateAuthority = certificateAuthority;
             ClientCertificate = clientCertificate;
             ClientKey = clientKey;
+            DiscoveryEnabled = discoveryEnabled;
+            DiscoveryUsername = discoveryUsername;
             EgressFilter = egressFilter;
             HealthcheckNamespace = healthcheckNamespace;
             Hostname = hostname;

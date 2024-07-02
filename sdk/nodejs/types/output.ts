@@ -556,6 +556,14 @@ export interface GetResourceResourceAk {
      */
     clientKey?: string;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -665,6 +673,14 @@ export interface GetResourceResourceAksServiceAccount {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -908,6 +924,14 @@ export interface GetResourceResourceAmazonEk {
      */
     clusterName?: string;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -982,6 +1006,14 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      * The name of the cluster to connect to.
      */
     clusterName?: string;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -2723,6 +2755,14 @@ export interface GetResourceResourceGoogleGke {
      */
     certificateAuthority?: string;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -3068,6 +3108,14 @@ export interface GetResourceResourceKubernete {
      */
     clientKey?: string;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -3177,6 +3225,14 @@ export interface GetResourceResourceKubernetesServiceAccount {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -6397,6 +6453,14 @@ export interface ResourceAks {
      */
     clientKey?: string;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -6498,6 +6562,14 @@ export interface ResourceAksServiceAccount {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -6670,6 +6742,14 @@ export interface ResourceAmazonEks {
      */
     clusterName: string;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -6740,6 +6820,14 @@ export interface ResourceAmazonEksInstanceProfile {
      * The name of the cluster to connect to.
      */
     clusterName: string;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
@@ -8416,6 +8504,14 @@ export interface ResourceGoogleGke {
      */
     certificateAuthority?: string;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -8737,6 +8833,14 @@ export interface ResourceKubernetes {
      */
     clientKey?: string;
     /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
+    /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */
     egressFilter?: string;
@@ -8838,6 +8942,14 @@ export interface ResourceKubernetesServiceAccount {
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
+    /**
+     * If true, configures discovery of a cluster to be run from a node.
+     */
+    discoveryEnabled?: boolean;
+    /**
+     * If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
+     */
+    discoveryUsername?: string;
     /**
      * A filter applied to the routing logic to pin datasource to nodes.
      */

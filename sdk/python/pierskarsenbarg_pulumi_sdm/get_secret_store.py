@@ -77,7 +77,7 @@ class GetSecretStoreResult:
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[Mapping[str, Any]]:
+    def tags(self) -> Optional[Mapping[str, str]]:
         """
         Tags is a map of key, value pairs.
         """
@@ -105,7 +105,7 @@ class AwaitableGetSecretStoreResult(GetSecretStoreResult):
 
 def get_secret_store(id: Optional[str] = None,
                      name: Optional[str] = None,
-                     tags: Optional[Mapping[str, Any]] = None,
+                     tags: Optional[Mapping[str, str]] = None,
                      type: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretStoreResult:
     """
@@ -115,7 +115,7 @@ def get_secret_store(id: Optional[str] = None,
 
     :param str id: Unique identifier of the SecretStore.
     :param str name: Unique human-readable name of the SecretStore.
-    :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
+    :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     __args__ = dict()
@@ -138,7 +138,7 @@ def get_secret_store(id: Optional[str] = None,
 @_utilities.lift_output_func(get_secret_store)
 def get_secret_store_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
-                            tags: Optional[pulumi.Input[Optional[Mapping[str, Any]]]] = None,
+                            tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             type: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretStoreResult]:
     """
@@ -148,7 +148,7 @@ def get_secret_store_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str id: Unique identifier of the SecretStore.
     :param str name: Unique human-readable name of the SecretStore.
-    :param Mapping[str, Any] tags: Tags is a map of key, value pairs.
+    :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
     ...
