@@ -47,10 +47,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
-        /// The name of the mongo replicaset.
-        /// </summary>
-        public readonly string? ReplicaSet;
-        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
@@ -89,8 +85,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
-            string? replicaSet,
-
             string? secretStoreId,
 
             string? subdomain,
@@ -109,7 +103,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Password = password;
             Port = port;
             PortOverride = portOverride;
-            ReplicaSet = replicaSet;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;

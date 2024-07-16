@@ -12,12 +12,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetResourceResourceMongoLegacyHostResult
+    public sealed class ResourceSshPassword
     {
         /// <summary>
-        /// The authentication database to use.
+        /// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
         /// </summary>
-        public readonly string? AuthDatabase;
+        public readonly bool? AllowDeprecatedKeyExchanges;
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
@@ -29,15 +29,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// The host to dial to initiate a connection from the egress node to this resource.
         /// </summary>
-        public readonly string? Hostname;
-        /// <summary>
-        /// Unique identifier of the Resource.
-        /// </summary>
-        public readonly string? Id;
+        public readonly string Hostname;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// The password to authenticate with.
         /// </summary>
@@ -45,7 +41,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// The port to dial to initiate a connection from the egress node to this resource.
         /// </summary>
-        public readonly int? Port;
+        public readonly int Port;
+        /// <summary>
+        /// Whether port forwarding is allowed through this server.
+        /// </summary>
+        public readonly bool? PortForwarding;
         /// <summary>
         /// The local port used by clients to connect to this resource.
         /// </summary>
@@ -63,31 +63,27 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// If set, TLS must be used to connect to this resource.
-        /// </summary>
-        public readonly bool? TlsRequired;
-        /// <summary>
         /// The username to authenticate with.
         /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]
-        private GetResourceResourceMongoLegacyHostResult(
-            string? authDatabase,
+        private ResourceSshPassword(
+            bool? allowDeprecatedKeyExchanges,
 
             string? bindInterface,
 
             string? egressFilter,
 
-            string? hostname,
+            string hostname,
 
-            string? id,
-
-            string? name,
+            string name,
 
             string? password,
 
-            int? port,
+            int port,
+
+            bool? portForwarding,
 
             int? portOverride,
 
@@ -97,23 +93,20 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
-            bool? tlsRequired,
-
             string? username)
         {
-            AuthDatabase = authDatabase;
+            AllowDeprecatedKeyExchanges = allowDeprecatedKeyExchanges;
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Hostname = hostname;
-            Id = id;
             Name = name;
             Password = password;
             Port = port;
+            PortForwarding = portForwarding;
             PortOverride = portOverride;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
-            TlsRequired = tlsRequired;
             Username = username;
         }
     }

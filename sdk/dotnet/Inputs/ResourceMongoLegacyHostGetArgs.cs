@@ -72,12 +72,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<int>? PortOverride { get; set; }
 
         /// <summary>
-        /// The name of the mongo replicaset.
-        /// </summary>
-        [Input("replicaSet")]
-        public Input<string>? ReplicaSet { get; set; }
-
-        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]

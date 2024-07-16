@@ -20333,8 +20333,6 @@ type ResourceMongoLegacyHost struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The name of the mongo replicaset.
-	ReplicaSet *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -20375,8 +20373,6 @@ type ResourceMongoLegacyHostArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The name of the mongo replicaset.
-	ReplicaSet pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -20506,11 +20502,6 @@ func (o ResourceMongoLegacyHostOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMongoLegacyHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
-// The name of the mongo replicaset.
-func (o ResourceMongoLegacyHostOutput) ReplicaSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceMongoLegacyHost) *string { return v.ReplicaSet }).(pulumi.StringPtrOutput)
-}
-
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoLegacyHostOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoLegacyHost) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -20638,16 +20629,6 @@ func (o ResourceMongoLegacyHostPtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
-}
-
-// The name of the mongo replicaset.
-func (o ResourceMongoLegacyHostPtrOutput) ReplicaSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ResourceMongoLegacyHost) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ReplicaSet
-	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -30806,6 +30787,371 @@ func (o ResourceSshCustomerKeyPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceSshPassword struct {
+	// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+	AllowDeprecatedKeyExchanges *bool `pulumi:"allowDeprecatedKeyExchanges"`
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port int `pulumi:"port"`
+	// Whether port forwarding is allowed through this server.
+	PortForwarding *bool `pulumi:"portForwarding"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceSshPasswordInput is an input type that accepts ResourceSshPasswordArgs and ResourceSshPasswordOutput values.
+// You can construct a concrete instance of `ResourceSshPasswordInput` via:
+//
+//	ResourceSshPasswordArgs{...}
+type ResourceSshPasswordInput interface {
+	pulumi.Input
+
+	ToResourceSshPasswordOutput() ResourceSshPasswordOutput
+	ToResourceSshPasswordOutputWithContext(context.Context) ResourceSshPasswordOutput
+}
+
+type ResourceSshPasswordArgs struct {
+	// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+	AllowDeprecatedKeyExchanges pulumi.BoolPtrInput `pulumi:"allowDeprecatedKeyExchanges"`
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Whether port forwarding is allowed through this server.
+	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceSshPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceSshPassword)(nil)).Elem()
+}
+
+func (i ResourceSshPasswordArgs) ToResourceSshPasswordOutput() ResourceSshPasswordOutput {
+	return i.ToResourceSshPasswordOutputWithContext(context.Background())
+}
+
+func (i ResourceSshPasswordArgs) ToResourceSshPasswordOutputWithContext(ctx context.Context) ResourceSshPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshPasswordOutput)
+}
+
+func (i ResourceSshPasswordArgs) ToResourceSshPasswordPtrOutput() ResourceSshPasswordPtrOutput {
+	return i.ToResourceSshPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceSshPasswordArgs) ToResourceSshPasswordPtrOutputWithContext(ctx context.Context) ResourceSshPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshPasswordOutput).ToResourceSshPasswordPtrOutputWithContext(ctx)
+}
+
+// ResourceSshPasswordPtrInput is an input type that accepts ResourceSshPasswordArgs, ResourceSshPasswordPtr and ResourceSshPasswordPtrOutput values.
+// You can construct a concrete instance of `ResourceSshPasswordPtrInput` via:
+//
+//	        ResourceSshPasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceSshPasswordPtrInput interface {
+	pulumi.Input
+
+	ToResourceSshPasswordPtrOutput() ResourceSshPasswordPtrOutput
+	ToResourceSshPasswordPtrOutputWithContext(context.Context) ResourceSshPasswordPtrOutput
+}
+
+type resourceSshPasswordPtrType ResourceSshPasswordArgs
+
+func ResourceSshPasswordPtr(v *ResourceSshPasswordArgs) ResourceSshPasswordPtrInput {
+	return (*resourceSshPasswordPtrType)(v)
+}
+
+func (*resourceSshPasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceSshPassword)(nil)).Elem()
+}
+
+func (i *resourceSshPasswordPtrType) ToResourceSshPasswordPtrOutput() ResourceSshPasswordPtrOutput {
+	return i.ToResourceSshPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceSshPasswordPtrType) ToResourceSshPasswordPtrOutputWithContext(ctx context.Context) ResourceSshPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceSshPasswordPtrOutput)
+}
+
+type ResourceSshPasswordOutput struct{ *pulumi.OutputState }
+
+func (ResourceSshPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceSshPassword)(nil)).Elem()
+}
+
+func (o ResourceSshPasswordOutput) ToResourceSshPasswordOutput() ResourceSshPasswordOutput {
+	return o
+}
+
+func (o ResourceSshPasswordOutput) ToResourceSshPasswordOutputWithContext(ctx context.Context) ResourceSshPasswordOutput {
+	return o
+}
+
+func (o ResourceSshPasswordOutput) ToResourceSshPasswordPtrOutput() ResourceSshPasswordPtrOutput {
+	return o.ToResourceSshPasswordPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceSshPasswordOutput) ToResourceSshPasswordPtrOutputWithContext(ctx context.Context) ResourceSshPasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceSshPassword) *ResourceSshPassword {
+		return &v
+	}).(ResourceSshPasswordPtrOutput)
+}
+
+// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+func (o ResourceSshPasswordOutput) AllowDeprecatedKeyExchanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *bool { return v.AllowDeprecatedKeyExchanges }).(pulumi.BoolPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceSshPasswordOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceSshPasswordOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceSshPasswordOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSshPassword) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceSshPasswordOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSshPassword) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceSshPasswordOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceSshPasswordOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourceSshPassword) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Whether port forwarding is allowed through this server.
+func (o ResourceSshPasswordOutput) PortForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *bool { return v.PortForwarding }).(pulumi.BoolPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceSshPasswordOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceSshPasswordOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceSshPasswordOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceSshPasswordOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceSshPassword) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceSshPasswordOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceSshPasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceSshPasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceSshPassword)(nil)).Elem()
+}
+
+func (o ResourceSshPasswordPtrOutput) ToResourceSshPasswordPtrOutput() ResourceSshPasswordPtrOutput {
+	return o
+}
+
+func (o ResourceSshPasswordPtrOutput) ToResourceSshPasswordPtrOutputWithContext(ctx context.Context) ResourceSshPasswordPtrOutput {
+	return o
+}
+
+func (o ResourceSshPasswordPtrOutput) Elem() ResourceSshPasswordOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) ResourceSshPassword {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceSshPassword
+		return ret
+	}).(ResourceSshPasswordOutput)
+}
+
+// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+func (o ResourceSshPasswordPtrOutput) AllowDeprecatedKeyExchanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowDeprecatedKeyExchanges
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceSshPasswordPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceSshPasswordPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceSshPasswordPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceSshPasswordPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceSshPasswordPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceSshPasswordPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether port forwarding is allowed through this server.
+func (o ResourceSshPasswordPtrOutput) PortForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PortForwarding
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceSshPasswordPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceSshPasswordPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceSshPasswordPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceSshPasswordPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceSshPasswordPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceSybase struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -40053,6 +40399,7 @@ type GetResourceResource struct {
 	SqlServers                                 []GetResourceResourceSqlServer                                 `pulumi:"sqlServers"`
 	SshCerts                                   []GetResourceResourceSshCert                                   `pulumi:"sshCerts"`
 	SshCustomerKeys                            []GetResourceResourceSshCustomerKey                            `pulumi:"sshCustomerKeys"`
+	SshPasswords                               []GetResourceResourceSshPassword                               `pulumi:"sshPasswords"`
 	Sshes                                      []GetResourceResourceSsh                                       `pulumi:"sshes"`
 	SybaseIqs                                  []GetResourceResourceSybaseIq                                  `pulumi:"sybaseIqs"`
 	Sybases                                    []GetResourceResourceSybase                                    `pulumi:"sybases"`
@@ -40151,6 +40498,7 @@ type GetResourceResourceArgs struct {
 	SqlServers                                 GetResourceResourceSqlServerArrayInput                                 `pulumi:"sqlServers"`
 	SshCerts                                   GetResourceResourceSshCertArrayInput                                   `pulumi:"sshCerts"`
 	SshCustomerKeys                            GetResourceResourceSshCustomerKeyArrayInput                            `pulumi:"sshCustomerKeys"`
+	SshPasswords                               GetResourceResourceSshPasswordArrayInput                               `pulumi:"sshPasswords"`
 	Sshes                                      GetResourceResourceSshArrayInput                                       `pulumi:"sshes"`
 	SybaseIqs                                  GetResourceResourceSybaseIqArrayInput                                  `pulumi:"sybaseIqs"`
 	Sybases                                    GetResourceResourceSybaseArrayInput                                    `pulumi:"sybases"`
@@ -40545,6 +40893,10 @@ func (o GetResourceResourceOutput) SshCerts() GetResourceResourceSshCertArrayOut
 
 func (o GetResourceResourceOutput) SshCustomerKeys() GetResourceResourceSshCustomerKeyArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceSshCustomerKey { return v.SshCustomerKeys }).(GetResourceResourceSshCustomerKeyArrayOutput)
+}
+
+func (o GetResourceResourceOutput) SshPasswords() GetResourceResourceSshPasswordArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceSshPassword { return v.SshPasswords }).(GetResourceResourceSshPasswordArrayOutput)
 }
 
 func (o GetResourceResourceOutput) Sshes() GetResourceResourceSshArrayOutput {
@@ -51794,8 +52146,6 @@ type GetResourceResourceMongoLegacyHost struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
-	// The name of the mongo replicaset.
-	ReplicaSet *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -51838,8 +52188,6 @@ type GetResourceResourceMongoLegacyHostArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
-	// The name of the mongo replicaset.
-	ReplicaSet pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -51946,11 +52294,6 @@ func (o GetResourceResourceMongoLegacyHostOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceMongoLegacyHostOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoLegacyHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
-}
-
-// The name of the mongo replicaset.
-func (o GetResourceResourceMongoLegacyHostOutput) ReplicaSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetResourceResourceMongoLegacyHost) *string { return v.ReplicaSet }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -57896,6 +58239,220 @@ func (o GetResourceResourceSshCustomerKeyArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetResourceResourceSshCustomerKeyOutput)
 }
 
+type GetResourceResourceSshPassword struct {
+	// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+	AllowDeprecatedKeyExchanges *bool `pulumi:"allowDeprecatedKeyExchanges"`
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// Whether port forwarding is allowed through this server.
+	PortForwarding *bool `pulumi:"portForwarding"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceSshPasswordInput is an input type that accepts GetResourceResourceSshPasswordArgs and GetResourceResourceSshPasswordOutput values.
+// You can construct a concrete instance of `GetResourceResourceSshPasswordInput` via:
+//
+//	GetResourceResourceSshPasswordArgs{...}
+type GetResourceResourceSshPasswordInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceSshPasswordOutput() GetResourceResourceSshPasswordOutput
+	ToGetResourceResourceSshPasswordOutputWithContext(context.Context) GetResourceResourceSshPasswordOutput
+}
+
+type GetResourceResourceSshPasswordArgs struct {
+	// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+	AllowDeprecatedKeyExchanges pulumi.BoolPtrInput `pulumi:"allowDeprecatedKeyExchanges"`
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Whether port forwarding is allowed through this server.
+	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceSshPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceSshPassword)(nil)).Elem()
+}
+
+func (i GetResourceResourceSshPasswordArgs) ToGetResourceResourceSshPasswordOutput() GetResourceResourceSshPasswordOutput {
+	return i.ToGetResourceResourceSshPasswordOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceSshPasswordArgs) ToGetResourceResourceSshPasswordOutputWithContext(ctx context.Context) GetResourceResourceSshPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSshPasswordOutput)
+}
+
+// GetResourceResourceSshPasswordArrayInput is an input type that accepts GetResourceResourceSshPasswordArray and GetResourceResourceSshPasswordArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceSshPasswordArrayInput` via:
+//
+//	GetResourceResourceSshPasswordArray{ GetResourceResourceSshPasswordArgs{...} }
+type GetResourceResourceSshPasswordArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceSshPasswordArrayOutput() GetResourceResourceSshPasswordArrayOutput
+	ToGetResourceResourceSshPasswordArrayOutputWithContext(context.Context) GetResourceResourceSshPasswordArrayOutput
+}
+
+type GetResourceResourceSshPasswordArray []GetResourceResourceSshPasswordInput
+
+func (GetResourceResourceSshPasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceSshPassword)(nil)).Elem()
+}
+
+func (i GetResourceResourceSshPasswordArray) ToGetResourceResourceSshPasswordArrayOutput() GetResourceResourceSshPasswordArrayOutput {
+	return i.ToGetResourceResourceSshPasswordArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceSshPasswordArray) ToGetResourceResourceSshPasswordArrayOutputWithContext(ctx context.Context) GetResourceResourceSshPasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceSshPasswordArrayOutput)
+}
+
+type GetResourceResourceSshPasswordOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceSshPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceSshPassword)(nil)).Elem()
+}
+
+func (o GetResourceResourceSshPasswordOutput) ToGetResourceResourceSshPasswordOutput() GetResourceResourceSshPasswordOutput {
+	return o
+}
+
+func (o GetResourceResourceSshPasswordOutput) ToGetResourceResourceSshPasswordOutputWithContext(ctx context.Context) GetResourceResourceSshPasswordOutput {
+	return o
+}
+
+// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+func (o GetResourceResourceSshPasswordOutput) AllowDeprecatedKeyExchanges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *bool { return v.AllowDeprecatedKeyExchanges }).(pulumi.BoolPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceSshPasswordOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceSshPasswordOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceSshPasswordOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceSshPasswordOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceSshPasswordOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceSshPasswordOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceSshPasswordOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Whether port forwarding is allowed through this server.
+func (o GetResourceResourceSshPasswordOutput) PortForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *bool { return v.PortForwarding }).(pulumi.BoolPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceSshPasswordOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceSshPasswordOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceSshPasswordOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceSshPasswordOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceSshPasswordOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceSshPasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceSshPasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceSshPassword)(nil)).Elem()
+}
+
+func (o GetResourceResourceSshPasswordArrayOutput) ToGetResourceResourceSshPasswordArrayOutput() GetResourceResourceSshPasswordArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceSshPasswordArrayOutput) ToGetResourceResourceSshPasswordArrayOutputWithContext(ctx context.Context) GetResourceResourceSshPasswordArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceSshPasswordArrayOutput) Index(i pulumi.IntInput) GetResourceResourceSshPasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceSshPassword {
+		return vs[0].([]GetResourceResourceSshPassword)[vs[1].(int)]
+	}).(GetResourceResourceSshPasswordOutput)
+}
+
 type GetResourceResourceSybase struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -63067,6 +63624,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshCertPtrInput)(nil)).Elem(), ResourceSshCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshCustomerKeyInput)(nil)).Elem(), ResourceSshCustomerKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshCustomerKeyPtrInput)(nil)).Elem(), ResourceSshCustomerKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshPasswordInput)(nil)).Elem(), ResourceSshPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSshPasswordPtrInput)(nil)).Elem(), ResourceSshPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSybaseInput)(nil)).Elem(), ResourceSybaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSybasePtrInput)(nil)).Elem(), ResourceSybaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSybaseIqInput)(nil)).Elem(), ResourceSybaseIqArgs{})
@@ -63325,6 +63884,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshCertArrayInput)(nil)).Elem(), GetResourceResourceSshCertArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshCustomerKeyInput)(nil)).Elem(), GetResourceResourceSshCustomerKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshCustomerKeyArrayInput)(nil)).Elem(), GetResourceResourceSshCustomerKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshPasswordInput)(nil)).Elem(), GetResourceResourceSshPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSshPasswordArrayInput)(nil)).Elem(), GetResourceResourceSshPasswordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSybaseInput)(nil)).Elem(), GetResourceResourceSybaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSybaseArrayInput)(nil)).Elem(), GetResourceResourceSybaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSybaseIqInput)(nil)).Elem(), GetResourceResourceSybaseIqArgs{})
@@ -63561,6 +64122,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceSshCertPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSshCustomerKeyOutput{})
 	pulumi.RegisterOutputType(ResourceSshCustomerKeyPtrOutput{})
+	pulumi.RegisterOutputType(ResourceSshPasswordOutput{})
+	pulumi.RegisterOutputType(ResourceSshPasswordPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSybaseOutput{})
 	pulumi.RegisterOutputType(ResourceSybasePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSybaseIqOutput{})
@@ -63819,6 +64382,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceSshCertArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSshCustomerKeyOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSshCustomerKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceSshPasswordOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceSshPasswordArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSybaseOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSybaseArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSybaseIqOutput{})

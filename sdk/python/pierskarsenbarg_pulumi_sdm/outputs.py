@@ -97,6 +97,7 @@ __all__ = [
     'ResourceSsh',
     'ResourceSshCert',
     'ResourceSshCustomerKey',
+    'ResourceSshPassword',
     'ResourceSybase',
     'ResourceSybaseIq',
     'ResourceTeradata',
@@ -226,6 +227,7 @@ __all__ = [
     'GetResourceResourceSshResult',
     'GetResourceResourceSshCertResult',
     'GetResourceResourceSshCustomerKeyResult',
+    'GetResourceResourceSshPasswordResult',
     'GetResourceResourceSybaseResult',
     'GetResourceResourceSybaseIqResult',
     'GetResourceResourceTeradataResult',
@@ -10683,8 +10685,6 @@ class ResourceMongoLegacyHost(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
-        elif key == "replicaSet":
-            suggest = "replica_set"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -10710,7 +10710,6 @@ class ResourceMongoLegacyHost(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
-                 replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -10725,7 +10724,6 @@ class ResourceMongoLegacyHost(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
-        :param str replica_set: The name of the mongo replicaset.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -10745,8 +10743,6 @@ class ResourceMongoLegacyHost(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if replica_set is not None:
-            pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -10821,14 +10817,6 @@ class ResourceMongoLegacyHost(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
-
-    @property
-    @pulumi.getter(name="replicaSet")
-    def replica_set(self) -> Optional[str]:
-        """
-        The name of the mongo replicaset.
-        """
-        return pulumi.get(self, "replica_set")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -16109,6 +16097,193 @@ class ResourceSshCustomerKey(dict):
 
 
 @pulumi.output_type
+class ResourceSshPassword(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowDeprecatedKeyExchanges":
+            suggest = "allow_deprecated_key_exchanges"
+        elif key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "portForwarding":
+            suggest = "port_forwarding"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceSshPassword. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceSshPassword.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceSshPassword.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname: str,
+                 name: str,
+                 port: int,
+                 allow_deprecated_key_exchanges: Optional[bool] = None,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port_forwarding: Optional[bool] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 username: Optional[str] = None):
+        """
+        :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str password: The password to authenticate with.
+        :param bool port_forwarding: Whether port forwarding is allowed through this server.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str username: The username to authenticate with.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        if allow_deprecated_key_exchanges is not None:
+            pulumi.set(__self__, "allow_deprecated_key_exchanges", allow_deprecated_key_exchanges)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port_forwarding is not None:
+            pulumi.set(__self__, "port_forwarding", port_forwarding)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="allowDeprecatedKeyExchanges")
+    def allow_deprecated_key_exchanges(self) -> Optional[bool]:
+        """
+        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        """
+        return pulumi.get(self, "allow_deprecated_key_exchanges")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="portForwarding")
+    def port_forwarding(self) -> Optional[bool]:
+        """
+        Whether port forwarding is allowed through this server.
+        """
+        return pulumi.get(self, "port_forwarding")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
 class ResourceSybase(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -20122,6 +20297,7 @@ class GetResourceResourceResult(dict):
                  sql_servers: Sequence['outputs.GetResourceResourceSqlServerResult'],
                  ssh_certs: Sequence['outputs.GetResourceResourceSshCertResult'],
                  ssh_customer_keys: Sequence['outputs.GetResourceResourceSshCustomerKeyResult'],
+                 ssh_passwords: Sequence['outputs.GetResourceResourceSshPasswordResult'],
                  sshes: Sequence['outputs.GetResourceResourceSshResult'],
                  sybase_iqs: Sequence['outputs.GetResourceResourceSybaseIqResult'],
                  sybases: Sequence['outputs.GetResourceResourceSybaseResult'],
@@ -20206,6 +20382,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "sql_servers", sql_servers)
         pulumi.set(__self__, "ssh_certs", ssh_certs)
         pulumi.set(__self__, "ssh_customer_keys", ssh_customer_keys)
+        pulumi.set(__self__, "ssh_passwords", ssh_passwords)
         pulumi.set(__self__, "sshes", sshes)
         pulumi.set(__self__, "sybase_iqs", sybase_iqs)
         pulumi.set(__self__, "sybases", sybases)
@@ -20606,6 +20783,11 @@ class GetResourceResourceResult(dict):
     @pulumi.getter(name="sshCustomerKeys")
     def ssh_customer_keys(self) -> Sequence['outputs.GetResourceResourceSshCustomerKeyResult']:
         return pulumi.get(self, "ssh_customer_keys")
+
+    @property
+    @pulumi.getter(name="sshPasswords")
+    def ssh_passwords(self) -> Sequence['outputs.GetResourceResourceSshPasswordResult']:
+        return pulumi.get(self, "ssh_passwords")
 
     @property
     @pulumi.getter
@@ -29799,7 +29981,6 @@ class GetResourceResourceMongoLegacyHostResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
-                 replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -29815,7 +29996,6 @@ class GetResourceResourceMongoLegacyHostResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
-        :param str replica_set: The name of the mongo replicaset.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -29840,8 +30020,6 @@ class GetResourceResourceMongoLegacyHostResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
-        if replica_set is not None:
-            pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -29924,14 +30102,6 @@ class GetResourceResourceMongoLegacyHostResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
-
-    @property
-    @pulumi.getter(name="replicaSet")
-    def replica_set(self) -> Optional[str]:
-        """
-        The name of the mongo replicaset.
-        """
-        return pulumi.get(self, "replica_set")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -34822,6 +34992,181 @@ class GetResourceResourceSshCustomerKeyResult(dict):
         The private key used to authenticate with the server.
         """
         return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetResourceResourceSshPasswordResult(dict):
+    def __init__(__self__, *,
+                 allow_deprecated_key_exchanges: Optional[bool] = None,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 port_forwarding: Optional[bool] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 username: Optional[str] = None):
+        """
+        :param bool allow_deprecated_key_exchanges: Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param str password: The password to authenticate with.
+        :param int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param bool port_forwarding: Whether port forwarding is allowed through this server.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str username: The username to authenticate with.
+        """
+        if allow_deprecated_key_exchanges is not None:
+            pulumi.set(__self__, "allow_deprecated_key_exchanges", allow_deprecated_key_exchanges)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_forwarding is not None:
+            pulumi.set(__self__, "port_forwarding", port_forwarding)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="allowDeprecatedKeyExchanges")
+    def allow_deprecated_key_exchanges(self) -> Optional[bool]:
+        """
+        Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+        """
+        return pulumi.get(self, "allow_deprecated_key_exchanges")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portForwarding")
+    def port_forwarding(self) -> Optional[bool]:
+        """
+        Whether port forwarding is allowed through this server.
+        """
+        return pulumi.get(self, "port_forwarding")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
 
     @property
     @pulumi.getter(name="secretStoreId")

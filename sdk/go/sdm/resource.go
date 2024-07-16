@@ -77,8 +77,7 @@ type Resource struct {
 	MongoLegacyHost       ResourceMongoLegacyHostPtrOutput       `pulumi:"mongoLegacyHost"`
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrOutput `pulumi:"mongoLegacyReplicaset"`
 	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet ResourceMongoReplicaSetPtrOutput `pulumi:"mongoReplicaSet"`
-	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet     ResourceMongoReplicaSetPtrOutput     `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster ResourceMongoShardedClusterPtrOutput `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           ResourceMtlsMysqlPtrOutput           `pulumi:"mtlsMysql"`
@@ -105,9 +104,11 @@ type Resource struct {
 	Ssh                 ResourceSshPtrOutput                 `pulumi:"ssh"`
 	SshCert             ResourceSshCertPtrOutput             `pulumi:"sshCert"`
 	SshCustomerKey      ResourceSshCustomerKeyPtrOutput      `pulumi:"sshCustomerKey"`
-	Sybase              ResourceSybasePtrOutput              `pulumi:"sybase"`
-	SybaseIq            ResourceSybaseIqPtrOutput            `pulumi:"sybaseIq"`
-	Teradata            ResourceTeradataPtrOutput            `pulumi:"teradata"`
+	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	SshPassword ResourceSshPasswordPtrOutput `pulumi:"sshPassword"`
+	Sybase      ResourceSybasePtrOutput      `pulumi:"sybase"`
+	SybaseIq    ResourceSybaseIqPtrOutput    `pulumi:"sybaseIq"`
+	Teradata    ResourceTeradataPtrOutput    `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrOutput `pulumi:"trino"`
 }
@@ -198,8 +199,7 @@ type resourceState struct {
 	MongoLegacyHost       *ResourceMongoLegacyHost       `pulumi:"mongoLegacyHost"`
 	MongoLegacyReplicaset *ResourceMongoLegacyReplicaset `pulumi:"mongoLegacyReplicaset"`
 	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet *ResourceMongoReplicaSet `pulumi:"mongoReplicaSet"`
-	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet     *ResourceMongoReplicaSet     `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster *ResourceMongoShardedCluster `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           *ResourceMtlsMysql           `pulumi:"mtlsMysql"`
@@ -226,9 +226,11 @@ type resourceState struct {
 	Ssh                 *ResourceSsh                 `pulumi:"ssh"`
 	SshCert             *ResourceSshCert             `pulumi:"sshCert"`
 	SshCustomerKey      *ResourceSshCustomerKey      `pulumi:"sshCustomerKey"`
-	Sybase              *ResourceSybase              `pulumi:"sybase"`
-	SybaseIq            *ResourceSybaseIq            `pulumi:"sybaseIq"`
-	Teradata            *ResourceTeradata            `pulumi:"teradata"`
+	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	SshPassword *ResourceSshPassword `pulumi:"sshPassword"`
+	Sybase      *ResourceSybase      `pulumi:"sybase"`
+	SybaseIq    *ResourceSybaseIq    `pulumi:"sybaseIq"`
+	Teradata    *ResourceTeradata    `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
 }
@@ -290,8 +292,7 @@ type ResourceState struct {
 	MongoLegacyHost       ResourceMongoLegacyHostPtrInput
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrInput
 	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet ResourceMongoReplicaSetPtrInput
-	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet     ResourceMongoReplicaSetPtrInput
 	MongoShardedCluster ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           ResourceMtlsMysqlPtrInput
@@ -318,9 +319,11 @@ type ResourceState struct {
 	Ssh                 ResourceSshPtrInput
 	SshCert             ResourceSshCertPtrInput
 	SshCustomerKey      ResourceSshCustomerKeyPtrInput
-	Sybase              ResourceSybasePtrInput
-	SybaseIq            ResourceSybaseIqPtrInput
-	Teradata            ResourceTeradataPtrInput
+	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	SshPassword ResourceSshPasswordPtrInput
+	Sybase      ResourceSybasePtrInput
+	SybaseIq    ResourceSybaseIqPtrInput
+	Teradata    ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
 }
@@ -386,8 +389,7 @@ type resourceArgs struct {
 	MongoLegacyHost       *ResourceMongoLegacyHost       `pulumi:"mongoLegacyHost"`
 	MongoLegacyReplicaset *ResourceMongoLegacyReplicaset `pulumi:"mongoLegacyReplicaset"`
 	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet *ResourceMongoReplicaSet `pulumi:"mongoReplicaSet"`
-	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet     *ResourceMongoReplicaSet     `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster *ResourceMongoShardedCluster `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           *ResourceMtlsMysql           `pulumi:"mtlsMysql"`
@@ -414,9 +416,11 @@ type resourceArgs struct {
 	Ssh                 *ResourceSsh                 `pulumi:"ssh"`
 	SshCert             *ResourceSshCert             `pulumi:"sshCert"`
 	SshCustomerKey      *ResourceSshCustomerKey      `pulumi:"sshCustomerKey"`
-	Sybase              *ResourceSybase              `pulumi:"sybase"`
-	SybaseIq            *ResourceSybaseIq            `pulumi:"sybaseIq"`
-	Teradata            *ResourceTeradata            `pulumi:"teradata"`
+	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	SshPassword *ResourceSshPassword `pulumi:"sshPassword"`
+	Sybase      *ResourceSybase      `pulumi:"sybase"`
+	SybaseIq    *ResourceSybaseIq    `pulumi:"sybaseIq"`
+	Teradata    *ResourceTeradata    `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
 }
@@ -479,8 +483,7 @@ type ResourceArgs struct {
 	MongoLegacyHost       ResourceMongoLegacyHostPtrInput
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrInput
 	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet ResourceMongoReplicaSetPtrInput
-	// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoReplicaSet     ResourceMongoReplicaSetPtrInput
 	MongoShardedCluster ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           ResourceMtlsMysqlPtrInput
@@ -507,9 +510,11 @@ type ResourceArgs struct {
 	Ssh                 ResourceSshPtrInput
 	SshCert             ResourceSshCertPtrInput
 	SshCustomerKey      ResourceSshCustomerKeyPtrInput
-	Sybase              ResourceSybasePtrInput
-	SybaseIq            ResourceSybaseIqPtrInput
-	Teradata            ResourceTeradataPtrInput
+	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	SshPassword ResourceSshPasswordPtrInput
+	Sybase      ResourceSybasePtrInput
+	SybaseIq    ResourceSybaseIqPtrInput
+	Teradata    ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
 }
@@ -829,7 +834,6 @@ func (o ResourceOutput) MongoReplicaSet() ResourceMongoReplicaSetPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoReplicaSetPtrOutput { return v.MongoReplicaSet }).(ResourceMongoReplicaSetPtrOutput)
 }
 
-// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MongoShardedCluster() ResourceMongoShardedClusterPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoShardedClusterPtrOutput { return v.MongoShardedCluster }).(ResourceMongoShardedClusterPtrOutput)
 }
@@ -929,6 +933,11 @@ func (o ResourceOutput) SshCert() ResourceSshCertPtrOutput {
 
 func (o ResourceOutput) SshCustomerKey() ResourceSshCustomerKeyPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceSshCustomerKeyPtrOutput { return v.SshCustomerKey }).(ResourceSshCustomerKeyPtrOutput)
+}
+
+// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) SshPassword() ResourceSshPasswordPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceSshPasswordPtrOutput { return v.SshPassword }).(ResourceSshPasswordPtrOutput)
 }
 
 func (o ResourceOutput) Sybase() ResourceSybasePtrOutput {
