@@ -12,12 +12,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class GetResourceResourceMongoLegacyHostResult
+    public sealed class GetResourceResourceSshPasswordResult
     {
         /// <summary>
-        /// The authentication database to use.
+        /// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
         /// </summary>
-        public readonly string? AuthDatabase;
+        public readonly bool? AllowDeprecatedKeyExchanges;
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
@@ -47,6 +47,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
+        /// Whether port forwarding is allowed through this server.
+        /// </summary>
+        public readonly bool? PortForwarding;
+        /// <summary>
         /// The local port used by clients to connect to this resource.
         /// </summary>
         public readonly int? PortOverride;
@@ -63,17 +67,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// If set, TLS must be used to connect to this resource.
-        /// </summary>
-        public readonly bool? TlsRequired;
-        /// <summary>
         /// The username to authenticate with.
         /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]
-        private GetResourceResourceMongoLegacyHostResult(
-            string? authDatabase,
+        private GetResourceResourceSshPasswordResult(
+            bool? allowDeprecatedKeyExchanges,
 
             string? bindInterface,
 
@@ -89,6 +89,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? port,
 
+            bool? portForwarding,
+
             int? portOverride,
 
             string? secretStoreId,
@@ -97,11 +99,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags,
 
-            bool? tlsRequired,
-
             string? username)
         {
-            AuthDatabase = authDatabase;
+            AllowDeprecatedKeyExchanges = allowDeprecatedKeyExchanges;
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             Hostname = hostname;
@@ -109,11 +109,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Name = name;
             Password = password;
             Port = port;
+            PortForwarding = portForwarding;
             PortOverride = portOverride;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
-            TlsRequired = tlsRequired;
             Username = username;
         }
     }

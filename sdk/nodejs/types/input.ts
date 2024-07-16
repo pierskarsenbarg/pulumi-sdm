@@ -3053,10 +3053,6 @@ export interface ResourceMongoLegacyHost {
      */
     portOverride?: pulumi.Input<number>;
     /**
-     * The name of the mongo replicaset.
-     */
-    replicaSet?: pulumi.Input<string>;
-    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -4598,6 +4594,61 @@ export interface ResourceSshCustomerKey {
      * The private key used to authenticate with the server.
      */
     privateKey?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ResourceSshPassword {
+    /**
+     * Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
+     */
+    allowDeprecatedKeyExchanges?: pulumi.Input<boolean>;
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Whether port forwarding is allowed through this server.
+     */
+    portForwarding?: pulumi.Input<boolean>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */

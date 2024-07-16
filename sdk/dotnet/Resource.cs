@@ -193,9 +193,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("mongoReplicaSet")]
         public Output<Outputs.ResourceMongoReplicaSet?> MongoReplicaSet { get; private set; } = null!;
 
-        /// <summary>
-        /// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("mongoShardedCluster")]
         public Output<Outputs.ResourceMongoShardedCluster?> MongoShardedCluster { get; private set; } = null!;
 
@@ -273,6 +270,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("sshCustomerKey")]
         public Output<Outputs.ResourceSshCustomerKey?> SshCustomerKey { get; private set; } = null!;
+
+        /// <summary>
+        /// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("sshPassword")]
+        public Output<Outputs.ResourceSshPassword?> SshPassword { get; private set; } = null!;
 
         [Output("sybase")]
         public Output<Outputs.ResourceSybase?> Sybase { get; private set; } = null!;
@@ -507,9 +510,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("mongoReplicaSet")]
         public Input<Inputs.ResourceMongoReplicaSetArgs>? MongoReplicaSet { get; set; }
 
-        /// <summary>
-        /// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mongoShardedCluster")]
         public Input<Inputs.ResourceMongoShardedClusterArgs>? MongoShardedCluster { get; set; }
 
@@ -587,6 +587,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("sshCustomerKey")]
         public Input<Inputs.ResourceSshCustomerKeyArgs>? SshCustomerKey { get; set; }
+
+        /// <summary>
+        /// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("sshPassword")]
+        public Input<Inputs.ResourceSshPasswordArgs>? SshPassword { get; set; }
 
         [Input("sybase")]
         public Input<Inputs.ResourceSybaseArgs>? Sybase { get; set; }
@@ -782,9 +788,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("mongoReplicaSet")]
         public Input<Inputs.ResourceMongoReplicaSetGetArgs>? MongoReplicaSet { get; set; }
 
-        /// <summary>
-        /// MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mongoShardedCluster")]
         public Input<Inputs.ResourceMongoShardedClusterGetArgs>? MongoShardedCluster { get; set; }
 
@@ -862,6 +865,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("sshCustomerKey")]
         public Input<Inputs.ResourceSshCustomerKeyGetArgs>? SshCustomerKey { get; set; }
+
+        /// <summary>
+        /// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("sshPassword")]
+        public Input<Inputs.ResourceSshPasswordGetArgs>? SshPassword { get; set; }
 
         [Input("sybase")]
         public Input<Inputs.ResourceSybaseGetArgs>? Sybase { get; set; }

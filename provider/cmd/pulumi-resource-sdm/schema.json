@@ -4467,10 +4467,6 @@
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
                 },
-                "replicaSet": {
-                    "type": "string",
-                    "description": "The name of the mongo replicaset.\n"
-                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n",
@@ -6686,6 +6682,85 @@
                 }
             }
         },
+        "sdm:index/ResourceSshPassword:ResourceSshPassword": {
+            "properties": {
+                "allowDeprecatedKeyExchanges": {
+                    "type": "boolean",
+                    "description": "Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.\n"
+                },
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portForwarding": {
+                    "type": "boolean",
+                    "description": "Whether port forwarding is allowed through this server.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name",
+                "port"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "port",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceSybase:ResourceSybase": {
             "properties": {
                 "bindInterface": {
@@ -8836,6 +8911,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceSshCustomerKey:getResourceResourceSshCustomerKey"
                     }
                 },
+                "sshPasswords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceSshPassword:getResourceResourceSshPassword"
+                    }
+                },
                 "sshes": {
                     "type": "array",
                     "items": {
@@ -8949,6 +9030,7 @@
                 "sshes",
                 "sshCerts",
                 "sshCustomerKeys",
+                "sshPasswords",
                 "sybases",
                 "sybaseIqs",
                 "teradatas",
@@ -12399,10 +12481,6 @@
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
                 },
-                "replicaSet": {
-                    "type": "string",
-                    "description": "The name of the mongo replicaset.\n"
-                },
                 "secretStoreId": {
                     "type": "string",
                     "description": "ID of the secret store containing credentials for this resource, if any.\n"
@@ -14221,6 +14299,71 @@
                     "type": "string",
                     "description": "The private key used to authenticate with the server.\n",
                     "secret": true
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceSshPassword:getResourceResourceSshPassword": {
+            "properties": {
+                "allowDeprecatedKeyExchanges": {
+                    "type": "boolean",
+                    "description": "Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.\n"
+                },
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portForwarding": {
+                    "type": "boolean",
+                    "description": "Whether port forwarding is allowed through this server.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -16376,8 +16519,7 @@
                     "description": "MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "mongoShardedCluster": {
-                    "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster",
-                    "description": "MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"
                 },
                 "mtlsMysql": {
                     "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
@@ -16451,6 +16593,10 @@
                 },
                 "sshCustomerKey": {
                     "$ref": "#/types/sdm:index/ResourceSshCustomerKey:ResourceSshCustomerKey"
+                },
+                "sshPassword": {
+                    "$ref": "#/types/sdm:index/ResourceSshPassword:ResourceSshPassword",
+                    "description": "SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "sybase": {
                     "$ref": "#/types/sdm:index/ResourceSybase:ResourceSybase"
@@ -16635,8 +16781,7 @@
                     "description": "MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "mongoShardedCluster": {
-                    "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster",
-                    "description": "MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"
                 },
                 "mtlsMysql": {
                     "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
@@ -16710,6 +16855,10 @@
                 },
                 "sshCustomerKey": {
                     "$ref": "#/types/sdm:index/ResourceSshCustomerKey:ResourceSshCustomerKey"
+                },
+                "sshPassword": {
+                    "$ref": "#/types/sdm:index/ResourceSshPassword:ResourceSshPassword",
+                    "description": "SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "sybase": {
                     "$ref": "#/types/sdm:index/ResourceSybase:ResourceSybase"
@@ -16896,8 +17045,7 @@
                         "description": "MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "mongoShardedCluster": {
-                        "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster",
-                        "description": "MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"
                     },
                     "mtlsMysql": {
                         "$ref": "#/types/sdm:index/ResourceMtlsMysql:ResourceMtlsMysql",
@@ -16971,6 +17119,10 @@
                     },
                     "sshCustomerKey": {
                         "$ref": "#/types/sdm:index/ResourceSshCustomerKey:ResourceSshCustomerKey"
+                    },
+                    "sshPassword": {
+                        "$ref": "#/types/sdm:index/ResourceSshPassword:ResourceSshPassword",
+                        "description": "SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "sybase": {
                         "$ref": "#/types/sdm:index/ResourceSybase:ResourceSybase"

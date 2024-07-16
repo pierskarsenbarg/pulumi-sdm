@@ -104,9 +104,6 @@ export class Resource extends pulumi.CustomResource {
      * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     public readonly mongoReplicaSet!: pulumi.Output<outputs.ResourceMongoReplicaSet | undefined>;
-    /**
-     * MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly mongoShardedCluster!: pulumi.Output<outputs.ResourceMongoShardedCluster | undefined>;
     /**
      * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -135,6 +132,10 @@ export class Resource extends pulumi.CustomResource {
     public readonly ssh!: pulumi.Output<outputs.ResourceSsh | undefined>;
     public readonly sshCert!: pulumi.Output<outputs.ResourceSshCert | undefined>;
     public readonly sshCustomerKey!: pulumi.Output<outputs.ResourceSshCustomerKey | undefined>;
+    /**
+     * SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly sshPassword!: pulumi.Output<outputs.ResourceSshPassword | undefined>;
     public readonly sybase!: pulumi.Output<outputs.ResourceSybase | undefined>;
     public readonly sybaseIq!: pulumi.Output<outputs.ResourceSybaseIq | undefined>;
     public readonly teradata!: pulumi.Output<outputs.ResourceTeradata | undefined>;
@@ -236,6 +237,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["ssh"] = state ? state.ssh : undefined;
             resourceInputs["sshCert"] = state ? state.sshCert : undefined;
             resourceInputs["sshCustomerKey"] = state ? state.sshCustomerKey : undefined;
+            resourceInputs["sshPassword"] = state ? state.sshPassword : undefined;
             resourceInputs["sybase"] = state ? state.sybase : undefined;
             resourceInputs["sybaseIq"] = state ? state.sybaseIq : undefined;
             resourceInputs["teradata"] = state ? state.teradata : undefined;
@@ -322,6 +324,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["ssh"] = args ? args.ssh : undefined;
             resourceInputs["sshCert"] = args ? args.sshCert : undefined;
             resourceInputs["sshCustomerKey"] = args ? args.sshCustomerKey : undefined;
+            resourceInputs["sshPassword"] = args ? args.sshPassword : undefined;
             resourceInputs["sybase"] = args ? args.sybase : undefined;
             resourceInputs["sybaseIq"] = args ? args.sybaseIq : undefined;
             resourceInputs["teradata"] = args ? args.teradata : undefined;
@@ -397,9 +400,6 @@ export interface ResourceState {
      * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
-    /**
-     * MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
     /**
      * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -428,6 +428,10 @@ export interface ResourceState {
     ssh?: pulumi.Input<inputs.ResourceSsh>;
     sshCert?: pulumi.Input<inputs.ResourceSshCert>;
     sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey>;
+    /**
+     * SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    sshPassword?: pulumi.Input<inputs.ResourceSshPassword>;
     sybase?: pulumi.Input<inputs.ResourceSybase>;
     sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
     teradata?: pulumi.Input<inputs.ResourceTeradata>;
@@ -502,9 +506,6 @@ export interface ResourceArgs {
      * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
-    /**
-     * MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
     /**
      * MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -533,6 +534,10 @@ export interface ResourceArgs {
     ssh?: pulumi.Input<inputs.ResourceSsh>;
     sshCert?: pulumi.Input<inputs.ResourceSshCert>;
     sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey>;
+    /**
+     * SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    sshPassword?: pulumi.Input<inputs.ResourceSshPassword>;
     sybase?: pulumi.Input<inputs.ResourceSybase>;
     sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
     teradata?: pulumi.Input<inputs.ResourceTeradata>;

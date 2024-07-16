@@ -96,6 +96,7 @@ class ResourceArgs:
                  ssh: Optional[pulumi.Input['ResourceSshArgs']] = None,
                  ssh_cert: Optional[pulumi.Input['ResourceSshCertArgs']] = None,
                  ssh_customer_key: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']] = None,
+                 ssh_password: Optional[pulumi.Input['ResourceSshPasswordArgs']] = None,
                  sybase: Optional[pulumi.Input['ResourceSybaseArgs']] = None,
                  sybase_iq: Optional[pulumi.Input['ResourceSybaseIqArgs']] = None,
                  teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None,
@@ -104,8 +105,8 @@ class ResourceArgs:
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceSshPasswordArgs'] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -268,6 +269,8 @@ class ResourceArgs:
             pulumi.set(__self__, "ssh_cert", ssh_cert)
         if ssh_customer_key is not None:
             pulumi.set(__self__, "ssh_customer_key", ssh_customer_key)
+        if ssh_password is not None:
+            pulumi.set(__self__, "ssh_password", ssh_password)
         if sybase is not None:
             pulumi.set(__self__, "sybase", sybase)
         if sybase_iq is not None:
@@ -781,9 +784,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mongoShardedCluster")
     def mongo_sharded_cluster(self) -> Optional[pulumi.Input['ResourceMongoShardedClusterArgs']]:
-        """
-        MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_sharded_cluster")
 
     @mongo_sharded_cluster.setter
@@ -1008,6 +1008,18 @@ class ResourceArgs:
     @ssh_customer_key.setter
     def ssh_customer_key(self, value: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']]):
         pulumi.set(self, "ssh_customer_key", value)
+
+    @property
+    @pulumi.getter(name="sshPassword")
+    def ssh_password(self) -> Optional[pulumi.Input['ResourceSshPasswordArgs']]:
+        """
+        SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "ssh_password")
+
+    @ssh_password.setter
+    def ssh_password(self, value: Optional[pulumi.Input['ResourceSshPasswordArgs']]):
+        pulumi.set(self, "ssh_password", value)
 
     @property
     @pulumi.getter
@@ -1132,6 +1144,7 @@ class _ResourceState:
                  ssh: Optional[pulumi.Input['ResourceSshArgs']] = None,
                  ssh_cert: Optional[pulumi.Input['ResourceSshCertArgs']] = None,
                  ssh_customer_key: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']] = None,
+                 ssh_password: Optional[pulumi.Input['ResourceSshPasswordArgs']] = None,
                  sybase: Optional[pulumi.Input['ResourceSybaseArgs']] = None,
                  sybase_iq: Optional[pulumi.Input['ResourceSybaseIqArgs']] = None,
                  teradata: Optional[pulumi.Input['ResourceTeradataArgs']] = None,
@@ -1140,8 +1153,8 @@ class _ResourceState:
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceMongoShardedClusterArgs'] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceSshPasswordArgs'] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -1304,6 +1317,8 @@ class _ResourceState:
             pulumi.set(__self__, "ssh_cert", ssh_cert)
         if ssh_customer_key is not None:
             pulumi.set(__self__, "ssh_customer_key", ssh_customer_key)
+        if ssh_password is not None:
+            pulumi.set(__self__, "ssh_password", ssh_password)
         if sybase is not None:
             pulumi.set(__self__, "sybase", sybase)
         if sybase_iq is not None:
@@ -1817,9 +1832,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mongoShardedCluster")
     def mongo_sharded_cluster(self) -> Optional[pulumi.Input['ResourceMongoShardedClusterArgs']]:
-        """
-        MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_sharded_cluster")
 
     @mongo_sharded_cluster.setter
@@ -2044,6 +2056,18 @@ class _ResourceState:
     @ssh_customer_key.setter
     def ssh_customer_key(self, value: Optional[pulumi.Input['ResourceSshCustomerKeyArgs']]):
         pulumi.set(self, "ssh_customer_key", value)
+
+    @property
+    @pulumi.getter(name="sshPassword")
+    def ssh_password(self) -> Optional[pulumi.Input['ResourceSshPasswordArgs']]:
+        """
+        SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "ssh_password")
+
+    @ssh_password.setter
+    def ssh_password(self, value: Optional[pulumi.Input['ResourceSshPasswordArgs']]):
+        pulumi.set(self, "ssh_password", value)
 
     @property
     @pulumi.getter
@@ -2170,6 +2194,7 @@ class Resource(pulumi.CustomResource):
                  ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
                  ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
                  ssh_customer_key: Optional[pulumi.Input[pulumi.InputType['ResourceSshCustomerKeyArgs']]] = None,
+                 ssh_password: Optional[pulumi.Input[pulumi.InputType['ResourceSshPasswordArgs']]] = None,
                  sybase: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseArgs']]] = None,
                  sybase_iq: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseIqArgs']]] = None,
                  teradata: Optional[pulumi.Input[pulumi.InputType['ResourceTeradataArgs']]] = None,
@@ -2188,8 +2213,8 @@ class Resource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceSshPasswordArgs']] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
@@ -2302,6 +2327,7 @@ class Resource(pulumi.CustomResource):
                  ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
                  ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
                  ssh_customer_key: Optional[pulumi.Input[pulumi.InputType['ResourceSshCustomerKeyArgs']]] = None,
+                 ssh_password: Optional[pulumi.Input[pulumi.InputType['ResourceSshPasswordArgs']]] = None,
                  sybase: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseArgs']]] = None,
                  sybase_iq: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseIqArgs']]] = None,
                  teradata: Optional[pulumi.Input[pulumi.InputType['ResourceTeradataArgs']]] = None,
@@ -2395,6 +2421,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["ssh"] = ssh
             __props__.__dict__["ssh_cert"] = ssh_cert
             __props__.__dict__["ssh_customer_key"] = ssh_customer_key
+            __props__.__dict__["ssh_password"] = ssh_password
             __props__.__dict__["sybase"] = sybase
             __props__.__dict__["sybase_iq"] = sybase_iq
             __props__.__dict__["teradata"] = teradata
@@ -2489,6 +2516,7 @@ class Resource(pulumi.CustomResource):
             ssh: Optional[pulumi.Input[pulumi.InputType['ResourceSshArgs']]] = None,
             ssh_cert: Optional[pulumi.Input[pulumi.InputType['ResourceSshCertArgs']]] = None,
             ssh_customer_key: Optional[pulumi.Input[pulumi.InputType['ResourceSshCustomerKeyArgs']]] = None,
+            ssh_password: Optional[pulumi.Input[pulumi.InputType['ResourceSshPasswordArgs']]] = None,
             sybase: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseArgs']]] = None,
             sybase_iq: Optional[pulumi.Input[pulumi.InputType['ResourceSybaseIqArgs']]] = None,
             teradata: Optional[pulumi.Input[pulumi.InputType['ResourceTeradataArgs']]] = None,
@@ -2502,8 +2530,8 @@ class Resource(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceMongoShardedClusterArgs']] mongo_sharded_cluster: MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceSshPasswordArgs']] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2590,6 +2618,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["ssh"] = ssh
         __props__.__dict__["ssh_cert"] = ssh_cert
         __props__.__dict__["ssh_customer_key"] = ssh_customer_key
+        __props__.__dict__["ssh_password"] = ssh_password
         __props__.__dict__["sybase"] = sybase
         __props__.__dict__["sybase_iq"] = sybase_iq
         __props__.__dict__["teradata"] = teradata
@@ -2880,9 +2909,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="mongoShardedCluster")
     def mongo_sharded_cluster(self) -> pulumi.Output[Optional['outputs.ResourceMongoShardedCluster']]:
-        """
-        MongoShardedCluster is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_sharded_cluster")
 
     @property
@@ -3007,6 +3033,14 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="sshCustomerKey")
     def ssh_customer_key(self) -> pulumi.Output[Optional['outputs.ResourceSshCustomerKey']]:
         return pulumi.get(self, "ssh_customer_key")
+
+    @property
+    @pulumi.getter(name="sshPassword")
+    def ssh_password(self) -> pulumi.Output[Optional['outputs.ResourceSshPassword']]:
+        """
+        SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "ssh_password")
 
     @property
     @pulumi.getter

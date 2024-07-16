@@ -93,6 +93,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceSqlServerResult> SqlServers;
         public readonly ImmutableArray<Outputs.GetResourceResourceSshCertResult> SshCerts;
         public readonly ImmutableArray<Outputs.GetResourceResourceSshCustomerKeyResult> SshCustomerKeys;
+        public readonly ImmutableArray<Outputs.GetResourceResourceSshPasswordResult> SshPasswords;
         public readonly ImmutableArray<Outputs.GetResourceResourceSshResult> Sshes;
         public readonly ImmutableArray<Outputs.GetResourceResourceSybaseIqResult> SybaseIqs;
         public readonly ImmutableArray<Outputs.GetResourceResourceSybaseResult> Sybases;
@@ -259,6 +260,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceSshCustomerKeyResult> sshCustomerKeys,
 
+            ImmutableArray<Outputs.GetResourceResourceSshPasswordResult> sshPasswords,
+
             ImmutableArray<Outputs.GetResourceResourceSshResult> sshes,
 
             ImmutableArray<Outputs.GetResourceResourceSybaseIqResult> sybaseIqs,
@@ -348,6 +351,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             SqlServers = sqlServers;
             SshCerts = sshCerts;
             SshCustomerKeys = sshCustomerKeys;
+            SshPasswords = sshPasswords;
             Sshes = sshes;
             SybaseIqs = sybaseIqs;
             Sybases = sybases;

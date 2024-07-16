@@ -11,13 +11,13 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceMongoLegacyHostArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceSshPasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The authentication database to use.
+        /// Whether deprecated, insecure key exchanges are allowed for use to connect to the target ssh server.
         /// </summary>
-        [Input("authDatabase", required: true)]
-        public Input<string> AuthDatabase { get; set; } = null!;
+        [Input("allowDeprecatedKeyExchanges")]
+        public Input<bool>? AllowDeprecatedKeyExchanges { get; set; }
 
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -62,8 +62,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// <summary>
         /// The port to dial to initiate a connection from the egress node to this resource.
         /// </summary>
-        [Input("port")]
-        public Input<int>? Port { get; set; }
+        [Input("port", required: true)]
+        public Input<int> Port { get; set; } = null!;
+
+        /// <summary>
+        /// Whether port forwarding is allowed through this server.
+        /// </summary>
+        [Input("portForwarding")]
+        public Input<bool>? PortForwarding { get; set; }
 
         /// <summary>
         /// The local port used by clients to connect to this resource.
@@ -96,20 +102,14 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// If set, TLS must be used to connect to this resource.
-        /// </summary>
-        [Input("tlsRequired")]
-        public Input<bool>? TlsRequired { get; set; }
-
-        /// <summary>
         /// The username to authenticate with.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 
-        public ResourceMongoLegacyHostArgs()
+        public ResourceSshPasswordArgs()
         {
         }
-        public static new ResourceMongoLegacyHostArgs Empty => new ResourceMongoLegacyHostArgs();
+        public static new ResourceSshPasswordArgs Empty => new ResourceSshPasswordArgs();
     }
 }
