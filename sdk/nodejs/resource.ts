@@ -94,15 +94,15 @@ export class Resource extends pulumi.CustomResource {
     public readonly maria!: pulumi.Output<outputs.ResourceMaria | undefined>;
     public readonly memcached!: pulumi.Output<outputs.ResourceMemcached | undefined>;
     public readonly memsql!: pulumi.Output<outputs.ResourceMemsql | undefined>;
-    /**
-     * MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly mongoHost!: pulumi.Output<outputs.ResourceMongoHost | undefined>;
-    public readonly mongoLegacyHost!: pulumi.Output<outputs.ResourceMongoLegacyHost | undefined>;
-    public readonly mongoLegacyReplicaset!: pulumi.Output<outputs.ResourceMongoLegacyReplicaset | undefined>;
     /**
-     * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
+    public readonly mongoLegacyHost!: pulumi.Output<outputs.ResourceMongoLegacyHost | undefined>;
+    /**
+     * MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly mongoLegacyReplicaset!: pulumi.Output<outputs.ResourceMongoLegacyReplicaset | undefined>;
     public readonly mongoReplicaSet!: pulumi.Output<outputs.ResourceMongoReplicaSet | undefined>;
     public readonly mongoShardedCluster!: pulumi.Output<outputs.ResourceMongoShardedCluster | undefined>;
     /**
@@ -390,15 +390,15 @@ export interface ResourceState {
     maria?: pulumi.Input<inputs.ResourceMaria>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
     memsql?: pulumi.Input<inputs.ResourceMemsql>;
-    /**
-     * MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
-    mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost>;
-    mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
     /**
-     * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
+    mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost>;
+    /**
+     * MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
     mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
     mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
     /**
@@ -496,15 +496,15 @@ export interface ResourceArgs {
     maria?: pulumi.Input<inputs.ResourceMaria>;
     memcached?: pulumi.Input<inputs.ResourceMemcached>;
     memsql?: pulumi.Input<inputs.ResourceMemsql>;
-    /**
-     * MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     mongoHost?: pulumi.Input<inputs.ResourceMongoHost>;
-    mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost>;
-    mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
     /**
-     * MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
+    mongoLegacyHost?: pulumi.Input<inputs.ResourceMongoLegacyHost>;
+    /**
+     * MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    mongoLegacyReplicaset?: pulumi.Input<inputs.ResourceMongoLegacyReplicaset>;
     mongoReplicaSet?: pulumi.Input<inputs.ResourceMongoReplicaSet>;
     mongoShardedCluster?: pulumi.Input<inputs.ResourceMongoShardedCluster>;
     /**

@@ -72,13 +72,13 @@ type Resource struct {
 	Maria                                     ResourceMariaPtrOutput                                     `pulumi:"maria"`
 	Memcached                                 ResourceMemcachedPtrOutput                                 `pulumi:"memcached"`
 	Memsql                                    ResourceMemsqlPtrOutput                                    `pulumi:"memsql"`
-	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoHost             ResourceMongoHostPtrOutput             `pulumi:"mongoHost"`
-	MongoLegacyHost       ResourceMongoLegacyHostPtrOutput       `pulumi:"mongoLegacyHost"`
+	MongoHost                                 ResourceMongoHostPtrOutput                                 `pulumi:"mongoHost"`
+	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoLegacyHost ResourceMongoLegacyHostPtrOutput `pulumi:"mongoLegacyHost"`
+	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrOutput `pulumi:"mongoLegacyReplicaset"`
-	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet     ResourceMongoReplicaSetPtrOutput     `pulumi:"mongoReplicaSet"`
-	MongoShardedCluster ResourceMongoShardedClusterPtrOutput `pulumi:"mongoShardedCluster"`
+	MongoReplicaSet       ResourceMongoReplicaSetPtrOutput       `pulumi:"mongoReplicaSet"`
+	MongoShardedCluster   ResourceMongoShardedClusterPtrOutput   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           ResourceMtlsMysqlPtrOutput           `pulumi:"mtlsMysql"`
 	MtlsPostgres        ResourceMtlsPostgresPtrOutput        `pulumi:"mtlsPostgres"`
@@ -194,13 +194,13 @@ type resourceState struct {
 	Maria                                     *ResourceMaria                                     `pulumi:"maria"`
 	Memcached                                 *ResourceMemcached                                 `pulumi:"memcached"`
 	Memsql                                    *ResourceMemsql                                    `pulumi:"memsql"`
-	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoHost             *ResourceMongoHost             `pulumi:"mongoHost"`
-	MongoLegacyHost       *ResourceMongoLegacyHost       `pulumi:"mongoLegacyHost"`
+	MongoHost                                 *ResourceMongoHost                                 `pulumi:"mongoHost"`
+	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
+	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset *ResourceMongoLegacyReplicaset `pulumi:"mongoLegacyReplicaset"`
-	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet     *ResourceMongoReplicaSet     `pulumi:"mongoReplicaSet"`
-	MongoShardedCluster *ResourceMongoShardedCluster `pulumi:"mongoShardedCluster"`
+	MongoReplicaSet       *ResourceMongoReplicaSet       `pulumi:"mongoReplicaSet"`
+	MongoShardedCluster   *ResourceMongoShardedCluster   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           *ResourceMtlsMysql           `pulumi:"mtlsMysql"`
 	MtlsPostgres        *ResourceMtlsPostgres        `pulumi:"mtlsPostgres"`
@@ -287,13 +287,13 @@ type ResourceState struct {
 	Maria                                     ResourceMariaPtrInput
 	Memcached                                 ResourceMemcachedPtrInput
 	Memsql                                    ResourceMemsqlPtrInput
-	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoHost             ResourceMongoHostPtrInput
-	MongoLegacyHost       ResourceMongoLegacyHostPtrInput
+	MongoHost                                 ResourceMongoHostPtrInput
+	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoLegacyHost ResourceMongoLegacyHostPtrInput
+	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrInput
-	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet     ResourceMongoReplicaSetPtrInput
-	MongoShardedCluster ResourceMongoShardedClusterPtrInput
+	MongoReplicaSet       ResourceMongoReplicaSetPtrInput
+	MongoShardedCluster   ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           ResourceMtlsMysqlPtrInput
 	MtlsPostgres        ResourceMtlsPostgresPtrInput
@@ -384,13 +384,13 @@ type resourceArgs struct {
 	Maria                                     *ResourceMaria                                     `pulumi:"maria"`
 	Memcached                                 *ResourceMemcached                                 `pulumi:"memcached"`
 	Memsql                                    *ResourceMemsql                                    `pulumi:"memsql"`
-	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoHost             *ResourceMongoHost             `pulumi:"mongoHost"`
-	MongoLegacyHost       *ResourceMongoLegacyHost       `pulumi:"mongoLegacyHost"`
+	MongoHost                                 *ResourceMongoHost                                 `pulumi:"mongoHost"`
+	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoLegacyHost *ResourceMongoLegacyHost `pulumi:"mongoLegacyHost"`
+	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset *ResourceMongoLegacyReplicaset `pulumi:"mongoLegacyReplicaset"`
-	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet     *ResourceMongoReplicaSet     `pulumi:"mongoReplicaSet"`
-	MongoShardedCluster *ResourceMongoShardedCluster `pulumi:"mongoShardedCluster"`
+	MongoReplicaSet       *ResourceMongoReplicaSet       `pulumi:"mongoReplicaSet"`
+	MongoShardedCluster   *ResourceMongoShardedCluster   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           *ResourceMtlsMysql           `pulumi:"mtlsMysql"`
 	MtlsPostgres        *ResourceMtlsPostgres        `pulumi:"mtlsPostgres"`
@@ -478,13 +478,13 @@ type ResourceArgs struct {
 	Maria                                     ResourceMariaPtrInput
 	Memcached                                 ResourceMemcachedPtrInput
 	Memsql                                    ResourceMemsqlPtrInput
-	// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoHost             ResourceMongoHostPtrInput
-	MongoLegacyHost       ResourceMongoLegacyHostPtrInput
+	MongoHost                                 ResourceMongoHostPtrInput
+	// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	MongoLegacyHost ResourceMongoLegacyHostPtrInput
+	// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MongoLegacyReplicaset ResourceMongoLegacyReplicasetPtrInput
-	// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MongoReplicaSet     ResourceMongoReplicaSetPtrInput
-	MongoShardedCluster ResourceMongoShardedClusterPtrInput
+	MongoReplicaSet       ResourceMongoReplicaSetPtrInput
+	MongoShardedCluster   ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	MtlsMysql           ResourceMtlsMysqlPtrInput
 	MtlsPostgres        ResourceMtlsPostgresPtrInput
@@ -816,20 +816,20 @@ func (o ResourceOutput) Memsql() ResourceMemsqlPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMemsqlPtrOutput { return v.Memsql }).(ResourceMemsqlPtrOutput)
 }
 
-// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MongoHost() ResourceMongoHostPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoHostPtrOutput { return v.MongoHost }).(ResourceMongoHostPtrOutput)
 }
 
+// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MongoLegacyHost() ResourceMongoLegacyHostPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoLegacyHostPtrOutput { return v.MongoLegacyHost }).(ResourceMongoLegacyHostPtrOutput)
 }
 
+// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MongoLegacyReplicaset() ResourceMongoLegacyReplicasetPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoLegacyReplicasetPtrOutput { return v.MongoLegacyReplicaset }).(ResourceMongoLegacyReplicasetPtrOutput)
 }
 
-// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) MongoReplicaSet() ResourceMongoReplicaSetPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceMongoReplicaSetPtrOutput { return v.MongoReplicaSet }).(ResourceMongoReplicaSetPtrOutput)
 }
