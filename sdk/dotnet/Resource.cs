@@ -175,21 +175,21 @@ namespace PiersKarsenbarg.Sdm
         [Output("memsql")]
         public Output<Outputs.ResourceMemsql?> Memsql { get; private set; } = null!;
 
-        /// <summary>
-        /// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("mongoHost")]
         public Output<Outputs.ResourceMongoHost?> MongoHost { get; private set; } = null!;
 
+        /// <summary>
+        /// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("mongoLegacyHost")]
         public Output<Outputs.ResourceMongoLegacyHost?> MongoLegacyHost { get; private set; } = null!;
 
+        /// <summary>
+        /// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("mongoLegacyReplicaset")]
         public Output<Outputs.ResourceMongoLegacyReplicaset?> MongoLegacyReplicaset { get; private set; } = null!;
 
-        /// <summary>
-        /// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("mongoReplicaSet")]
         public Output<Outputs.ResourceMongoReplicaSet?> MongoReplicaSet { get; private set; } = null!;
 
@@ -492,21 +492,21 @@ namespace PiersKarsenbarg.Sdm
         [Input("memsql")]
         public Input<Inputs.ResourceMemsqlArgs>? Memsql { get; set; }
 
-        /// <summary>
-        /// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mongoHost")]
         public Input<Inputs.ResourceMongoHostArgs>? MongoHost { get; set; }
 
+        /// <summary>
+        /// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoLegacyHost")]
         public Input<Inputs.ResourceMongoLegacyHostArgs>? MongoLegacyHost { get; set; }
 
+        /// <summary>
+        /// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoLegacyReplicaset")]
         public Input<Inputs.ResourceMongoLegacyReplicasetArgs>? MongoLegacyReplicaset { get; set; }
 
-        /// <summary>
-        /// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mongoReplicaSet")]
         public Input<Inputs.ResourceMongoReplicaSetArgs>? MongoReplicaSet { get; set; }
 
@@ -770,21 +770,21 @@ namespace PiersKarsenbarg.Sdm
         [Input("memsql")]
         public Input<Inputs.ResourceMemsqlGetArgs>? Memsql { get; set; }
 
-        /// <summary>
-        /// MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mongoHost")]
         public Input<Inputs.ResourceMongoHostGetArgs>? MongoHost { get; set; }
 
+        /// <summary>
+        /// MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoLegacyHost")]
         public Input<Inputs.ResourceMongoLegacyHostGetArgs>? MongoLegacyHost { get; set; }
 
+        /// <summary>
+        /// MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("mongoLegacyReplicaset")]
         public Input<Inputs.ResourceMongoLegacyReplicasetGetArgs>? MongoLegacyReplicaset { get; set; }
 
-        /// <summary>
-        /// MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("mongoReplicaSet")]
         public Input<Inputs.ResourceMongoReplicaSetGetArgs>? MongoReplicaSet { get; set; }
 

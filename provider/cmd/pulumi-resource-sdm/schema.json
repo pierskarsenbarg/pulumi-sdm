@@ -16505,18 +16505,18 @@
                     "$ref": "#/types/sdm:index/ResourceMemsql:ResourceMemsql"
                 },
                 "mongoHost": {
-                    "$ref": "#/types/sdm:index/ResourceMongoHost:ResourceMongoHost",
-                    "description": "MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceMongoHost:ResourceMongoHost"
                 },
                 "mongoLegacyHost": {
-                    "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost"
+                    "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost",
+                    "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "mongoLegacyReplicaset": {
-                    "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset"
+                    "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset",
+                    "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "mongoReplicaSet": {
-                    "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet",
-                    "description": "MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet"
                 },
                 "mongoShardedCluster": {
                     "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"
@@ -16767,18 +16767,18 @@
                     "$ref": "#/types/sdm:index/ResourceMemsql:ResourceMemsql"
                 },
                 "mongoHost": {
-                    "$ref": "#/types/sdm:index/ResourceMongoHost:ResourceMongoHost",
-                    "description": "MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceMongoHost:ResourceMongoHost"
                 },
                 "mongoLegacyHost": {
-                    "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost"
+                    "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost",
+                    "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "mongoLegacyReplicaset": {
-                    "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset"
+                    "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset",
+                    "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "mongoReplicaSet": {
-                    "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet",
-                    "description": "MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet"
                 },
                 "mongoShardedCluster": {
                     "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"
@@ -17031,18 +17031,18 @@
                         "$ref": "#/types/sdm:index/ResourceMemsql:ResourceMemsql"
                     },
                     "mongoHost": {
-                        "$ref": "#/types/sdm:index/ResourceMongoHost:ResourceMongoHost",
-                        "description": "MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceMongoHost:ResourceMongoHost"
                     },
                     "mongoLegacyHost": {
-                        "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost"
+                        "$ref": "#/types/sdm:index/ResourceMongoLegacyHost:ResourceMongoLegacyHost",
+                        "description": "MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "mongoLegacyReplicaset": {
-                        "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset"
+                        "$ref": "#/types/sdm:index/ResourceMongoLegacyReplicaset:ResourceMongoLegacyReplicaset",
+                        "description": "MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "mongoReplicaSet": {
-                        "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet",
-                        "description": "MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceMongoReplicaSet:ResourceMongoReplicaSet"
                     },
                     "mongoShardedCluster": {
                         "$ref": "#/types/sdm:index/ResourceMongoShardedCluster:ResourceMongoShardedCluster"

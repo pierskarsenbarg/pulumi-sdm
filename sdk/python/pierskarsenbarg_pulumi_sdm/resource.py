@@ -103,8 +103,8 @@ class ResourceArgs:
                  trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
-        :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceSshPasswordArgs'] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -742,9 +742,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mongoHost")
     def mongo_host(self) -> Optional[pulumi.Input['ResourceMongoHostArgs']]:
-        """
-        MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_host")
 
     @mongo_host.setter
@@ -754,6 +751,9 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mongoLegacyHost")
     def mongo_legacy_host(self) -> Optional[pulumi.Input['ResourceMongoLegacyHostArgs']]:
+        """
+        MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_legacy_host")
 
     @mongo_legacy_host.setter
@@ -763,6 +763,9 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mongoLegacyReplicaset")
     def mongo_legacy_replicaset(self) -> Optional[pulumi.Input['ResourceMongoLegacyReplicasetArgs']]:
+        """
+        MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_legacy_replicaset")
 
     @mongo_legacy_replicaset.setter
@@ -772,9 +775,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="mongoReplicaSet")
     def mongo_replica_set(self) -> Optional[pulumi.Input['ResourceMongoReplicaSetArgs']]:
-        """
-        MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_replica_set")
 
     @mongo_replica_set.setter
@@ -1151,8 +1151,8 @@ class _ResourceState:
                  trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
-        :param pulumi.Input['ResourceMongoHostArgs'] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceMongoReplicaSetArgs'] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceSshPasswordArgs'] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1790,9 +1790,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mongoHost")
     def mongo_host(self) -> Optional[pulumi.Input['ResourceMongoHostArgs']]:
-        """
-        MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_host")
 
     @mongo_host.setter
@@ -1802,6 +1799,9 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mongoLegacyHost")
     def mongo_legacy_host(self) -> Optional[pulumi.Input['ResourceMongoLegacyHostArgs']]:
+        """
+        MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_legacy_host")
 
     @mongo_legacy_host.setter
@@ -1811,6 +1811,9 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mongoLegacyReplicaset")
     def mongo_legacy_replicaset(self) -> Optional[pulumi.Input['ResourceMongoLegacyReplicasetArgs']]:
+        """
+        MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_legacy_replicaset")
 
     @mongo_legacy_replicaset.setter
@@ -1820,9 +1823,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="mongoReplicaSet")
     def mongo_replica_set(self) -> Optional[pulumi.Input['ResourceMongoReplicaSetArgs']]:
-        """
-        MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_replica_set")
 
     @mongo_replica_set.setter
@@ -2211,8 +2211,8 @@ class Resource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoLegacyHostArgs']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoLegacyReplicasetArgs']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceSshPasswordArgs']] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2528,8 +2528,8 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourceMongoHostArgs']] mongo_host: MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[pulumi.InputType['ResourceMongoReplicaSetArgs']] mongo_replica_set: MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoLegacyHostArgs']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[pulumi.InputType['ResourceMongoLegacyReplicasetArgs']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceMtlsMysqlArgs']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceSshPasswordArgs']] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[pulumi.InputType['ResourceTrinoArgs']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2883,27 +2883,27 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="mongoHost")
     def mongo_host(self) -> pulumi.Output[Optional['outputs.ResourceMongoHost']]:
-        """
-        MongoHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_host")
 
     @property
     @pulumi.getter(name="mongoLegacyHost")
     def mongo_legacy_host(self) -> pulumi.Output[Optional['outputs.ResourceMongoLegacyHost']]:
+        """
+        MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_legacy_host")
 
     @property
     @pulumi.getter(name="mongoLegacyReplicaset")
     def mongo_legacy_replicaset(self) -> pulumi.Output[Optional['outputs.ResourceMongoLegacyReplicaset']]:
+        """
+        MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "mongo_legacy_replicaset")
 
     @property
     @pulumi.getter(name="mongoReplicaSet")
     def mongo_replica_set(self) -> pulumi.Output[Optional['outputs.ResourceMongoReplicaSet']]:
-        """
-        MongoReplicaSet is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "mongo_replica_set")
 
     @property
