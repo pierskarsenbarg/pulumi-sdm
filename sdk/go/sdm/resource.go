@@ -21,7 +21,8 @@ import (
 type Resource struct {
 	pulumi.CustomResourceState
 
-	Aks                                       ResourceAksPtrOutput                                       `pulumi:"aks"`
+	Aks ResourceAksPtrOutput `pulumi:"aks"`
+	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              ResourceAksBasicAuthPtrOutput                              `pulumi:"aksBasicAuth"`
 	AksServiceAccount                         ResourceAksServiceAccountPtrOutput                         `pulumi:"aksServiceAccount"`
 	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrOutput        `pulumi:"aksServiceAccountUserImpersonation"`
@@ -65,6 +66,7 @@ type Resource struct {
 	HttpBasicAuth                             ResourceHttpBasicAuthPtrOutput                             `pulumi:"httpBasicAuth"`
 	HttpNoAuth                                ResourceHttpNoAuthPtrOutput                                `pulumi:"httpNoAuth"`
 	Kubernetes                                ResourceKubernetesPtrOutput                                `pulumi:"kubernetes"`
+	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrOutput                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrOutput                  `pulumi:"kubernetesServiceAccount"`
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrOutput `pulumi:"kubernetesServiceAccountUserImpersonation"`
@@ -143,7 +145,8 @@ func GetResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Resource resources.
 type resourceState struct {
-	Aks                                       *ResourceAks                                       `pulumi:"aks"`
+	Aks *ResourceAks `pulumi:"aks"`
+	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
 	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
 	AksServiceAccountUserImpersonation        *ResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonation"`
@@ -187,6 +190,7 @@ type resourceState struct {
 	HttpBasicAuth                             *ResourceHttpBasicAuth                             `pulumi:"httpBasicAuth"`
 	HttpNoAuth                                *ResourceHttpNoAuth                                `pulumi:"httpNoAuth"`
 	Kubernetes                                *ResourceKubernetes                                `pulumi:"kubernetes"`
+	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesServiceAccount                  *ResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccount"`
 	KubernetesServiceAccountUserImpersonation *ResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonation"`
@@ -236,7 +240,8 @@ type resourceState struct {
 }
 
 type ResourceState struct {
-	Aks                                       ResourceAksPtrInput
+	Aks ResourceAksPtrInput
+	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              ResourceAksBasicAuthPtrInput
 	AksServiceAccount                         ResourceAksServiceAccountPtrInput
 	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrInput
@@ -280,6 +285,7 @@ type ResourceState struct {
 	HttpBasicAuth                             ResourceHttpBasicAuthPtrInput
 	HttpNoAuth                                ResourceHttpNoAuthPtrInput
 	Kubernetes                                ResourceKubernetesPtrInput
+	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrInput
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrInput
@@ -333,7 +339,8 @@ func (ResourceState) ElementType() reflect.Type {
 }
 
 type resourceArgs struct {
-	Aks                                       *ResourceAks                                       `pulumi:"aks"`
+	Aks *ResourceAks `pulumi:"aks"`
+	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              *ResourceAksBasicAuth                              `pulumi:"aksBasicAuth"`
 	AksServiceAccount                         *ResourceAksServiceAccount                         `pulumi:"aksServiceAccount"`
 	AksServiceAccountUserImpersonation        *ResourceAksServiceAccountUserImpersonation        `pulumi:"aksServiceAccountUserImpersonation"`
@@ -377,6 +384,7 @@ type resourceArgs struct {
 	HttpBasicAuth                             *ResourceHttpBasicAuth                             `pulumi:"httpBasicAuth"`
 	HttpNoAuth                                *ResourceHttpNoAuth                                `pulumi:"httpNoAuth"`
 	Kubernetes                                *ResourceKubernetes                                `pulumi:"kubernetes"`
+	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesServiceAccount                  *ResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccount"`
 	KubernetesServiceAccountUserImpersonation *ResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonation"`
@@ -427,7 +435,8 @@ type resourceArgs struct {
 
 // The set of arguments for constructing a Resource resource.
 type ResourceArgs struct {
-	Aks                                       ResourceAksPtrInput
+	Aks ResourceAksPtrInput
+	// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	AksBasicAuth                              ResourceAksBasicAuthPtrInput
 	AksServiceAccount                         ResourceAksServiceAccountPtrInput
 	AksServiceAccountUserImpersonation        ResourceAksServiceAccountUserImpersonationPtrInput
@@ -471,6 +480,7 @@ type ResourceArgs struct {
 	HttpBasicAuth                             ResourceHttpBasicAuthPtrInput
 	HttpNoAuth                                ResourceHttpNoAuthPtrInput
 	Kubernetes                                ResourceKubernetesPtrInput
+	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrInput
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrInput
@@ -610,6 +620,7 @@ func (o ResourceOutput) Aks() ResourceAksPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAksPtrOutput { return v.Aks }).(ResourceAksPtrOutput)
 }
 
+// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) AksBasicAuth() ResourceAksBasicAuthPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAksBasicAuthPtrOutput { return v.AksBasicAuth }).(ResourceAksBasicAuthPtrOutput)
 }
@@ -786,6 +797,7 @@ func (o ResourceOutput) Kubernetes() ResourceKubernetesPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceKubernetesPtrOutput { return v.Kubernetes }).(ResourceKubernetesPtrOutput)
 }
 
+// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) KubernetesBasicAuth() ResourceKubernetesBasicAuthPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceKubernetesBasicAuthPtrOutput { return v.KubernetesBasicAuth }).(ResourceKubernetesBasicAuthPtrOutput)
 }

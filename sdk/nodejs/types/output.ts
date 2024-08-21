@@ -421,6 +421,25 @@ export interface GetPeeringGroupResourcePeeringGroupResource {
     resourceId?: string;
 }
 
+export interface GetPolicyPolicy {
+    /**
+     * Optional description of the Policy.
+     */
+    description?: string;
+    /**
+     * Unique identifier of the Policy.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Policy.
+     */
+    name?: string;
+    /**
+     * The content of the Policy, in Cedar policy language.
+     */
+    policy?: string;
+}
+
 export interface GetRemoteIdentityGroupRemoteIdentityGroup {
     /**
      * Unique identifier of the RemoteIdentityGroup.
@@ -540,6 +559,10 @@ export interface GetResourceResource {
 }
 
 export interface GetResourceResourceAk {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -670,6 +693,10 @@ export interface GetResourceResourceAksBasicAuth {
 }
 
 export interface GetResourceResourceAksServiceAccount {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -913,6 +940,10 @@ export interface GetResourceResourceAmazonEk {
      */
     accessKey?: string;
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
@@ -995,6 +1026,10 @@ export interface GetResourceResourceAmazonEk {
 }
 
 export interface GetResourceResourceAmazonEksInstanceProfile {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -2748,6 +2783,10 @@ export interface GetResourceResourceGcp {
 
 export interface GetResourceResourceGoogleGke {
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
@@ -3093,6 +3132,10 @@ export interface GetResourceResourceHttpNoAuth {
 
 export interface GetResourceResourceKubernete {
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: string;
@@ -3222,6 +3265,10 @@ export interface GetResourceResourceKubernetesBasicAuth {
 }
 
 export interface GetResourceResourceKubernetesServiceAccount {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -6493,6 +6540,10 @@ export interface NodeRelayMaintenanceWindow {
 
 export interface ResourceAks {
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
@@ -6614,6 +6665,10 @@ export interface ResourceAksBasicAuth {
 }
 
 export interface ResourceAksServiceAccount {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -6786,6 +6841,10 @@ export interface ResourceAmazonEks {
      */
     accessKey?: string;
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
@@ -6864,6 +6923,10 @@ export interface ResourceAmazonEks {
 }
 
 export interface ResourceAmazonEksInstanceProfile {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -8552,6 +8615,10 @@ export interface ResourceGcp {
 
 export interface ResourceGoogleGke {
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
@@ -8873,6 +8940,10 @@ export interface ResourceHttpNoAuth {
 
 export interface ResourceKubernetes {
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface: string;
@@ -8994,6 +9065,10 @@ export interface ResourceKubernetesBasicAuth {
 }
 
 export interface ResourceKubernetesServiceAccount {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */

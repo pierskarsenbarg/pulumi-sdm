@@ -15,6 +15,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetResourceResourceGoogleGkeResult
     {
         /// <summary>
+        /// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        /// </summary>
+        public readonly bool? AllowResourceRoleBypass;
+        /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         public readonly string? BindInterface;
@@ -81,6 +85,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private GetResourceResourceGoogleGkeResult(
+            bool? allowResourceRoleBypass,
+
             string? bindInterface,
 
             string? certificateAuthority,
@@ -113,6 +119,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableDictionary<string, string>? tags)
         {
+            AllowResourceRoleBypass = allowResourceRoleBypass;
             BindInterface = bindInterface;
             CertificateAuthority = certificateAuthority;
             DiscoveryEnabled = discoveryEnabled;

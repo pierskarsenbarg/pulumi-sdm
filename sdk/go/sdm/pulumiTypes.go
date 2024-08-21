@@ -1244,6 +1244,8 @@ func (o NodeRelayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) NodeRela
 }
 
 type ResourceAks struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -1292,6 +1294,8 @@ type ResourceAksInput interface {
 }
 
 type ResourceAksArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -1405,6 +1409,11 @@ func (o ResourceAksOutput) ToResourceAksPtrOutputWithContext(ctx context.Context
 	}).(ResourceAksPtrOutput)
 }
 
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceAksOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAks) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceAksOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAks) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -1512,6 +1521,16 @@ func (o ResourceAksPtrOutput) Elem() ResourceAksOutput {
 		var ret ResourceAks
 		return ret
 	}).(ResourceAksOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceAksPtrOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAks) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowResourceRoleBypass
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -2031,6 +2050,8 @@ func (o ResourceAksBasicAuthPtrOutput) Username() pulumi.StringPtrOutput {
 }
 
 type ResourceAksServiceAccount struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// If true, configures discovery of a cluster to be run from a node.
@@ -2076,6 +2097,8 @@ type ResourceAksServiceAccountInput interface {
 }
 
 type ResourceAksServiceAccountArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// If true, configures discovery of a cluster to be run from a node.
@@ -2186,6 +2209,11 @@ func (o ResourceAksServiceAccountOutput) ToResourceAksServiceAccountPtrOutputWit
 	}).(ResourceAksServiceAccountPtrOutput)
 }
 
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceAksServiceAccountOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccount) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceAksServiceAccountOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -2284,6 +2312,16 @@ func (o ResourceAksServiceAccountPtrOutput) Elem() ResourceAksServiceAccountOutp
 		var ret ResourceAksServiceAccount
 		return ret
 	}).(ResourceAksServiceAccountOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceAksServiceAccountPtrOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowResourceRoleBypass
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -3136,6 +3174,8 @@ func (o ResourceAksUserImpersonationPtrOutput) Tags() pulumi.StringMapOutput {
 type ResourceAmazonEks struct {
 	// The Access Key ID to use to authenticate.
 	AccessKey *string `pulumi:"accessKey"`
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -3190,6 +3230,8 @@ type ResourceAmazonEksInput interface {
 type ResourceAmazonEksArgs struct {
 	// The Access Key ID to use to authenticate.
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -3310,6 +3352,11 @@ func (o ResourceAmazonEksOutput) ToResourceAmazonEksPtrOutputWithContext(ctx con
 // The Access Key ID to use to authenticate.
 func (o ResourceAmazonEksOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceAmazonEksOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEks) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -3439,6 +3486,16 @@ func (o ResourceAmazonEksPtrOutput) AccessKey() pulumi.StringPtrOutput {
 		}
 		return v.AccessKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceAmazonEksPtrOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEks) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowResourceRoleBypass
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -3632,6 +3689,8 @@ func (o ResourceAmazonEksPtrOutput) Tags() pulumi.StringMapOutput {
 }
 
 type ResourceAmazonEksInstanceProfile struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -3682,6 +3741,8 @@ type ResourceAmazonEksInstanceProfileInput interface {
 }
 
 type ResourceAmazonEksInstanceProfileArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -3797,6 +3858,11 @@ func (o ResourceAmazonEksInstanceProfileOutput) ToResourceAmazonEksInstanceProfi
 	}).(ResourceAmazonEksInstanceProfilePtrOutput)
 }
 
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceAmazonEksInstanceProfileOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceAmazonEksInstanceProfileOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -3909,6 +3975,16 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) Elem() ResourceAmazonEksInsta
 		var ret ResourceAmazonEksInstanceProfile
 		return ret
 	}).(ResourceAmazonEksInstanceProfileOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowResourceRoleBypass
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -14860,6 +14936,8 @@ func (o ResourceGcpPtrOutput) Tags() pulumi.StringMapOutput {
 }
 
 type ResourceGoogleGke struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -14904,6 +14982,8 @@ type ResourceGoogleGkeInput interface {
 }
 
 type ResourceGoogleGkeArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -15013,6 +15093,11 @@ func (o ResourceGoogleGkeOutput) ToResourceGoogleGkePtrOutputWithContext(ctx con
 	}).(ResourceGoogleGkePtrOutput)
 }
 
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceGoogleGkeOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGke) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceGoogleGkeOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -15110,6 +15195,16 @@ func (o ResourceGoogleGkePtrOutput) Elem() ResourceGoogleGkeOutput {
 		var ret ResourceGoogleGke
 		return ret
 	}).(ResourceGoogleGkeOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceGoogleGkePtrOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGke) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowResourceRoleBypass
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -17005,6 +17100,8 @@ func (o ResourceHttpNoAuthPtrOutput) Url() pulumi.StringPtrOutput {
 }
 
 type ResourceKubernetes struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -17053,6 +17150,8 @@ type ResourceKubernetesInput interface {
 }
 
 type ResourceKubernetesArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -17166,6 +17265,11 @@ func (o ResourceKubernetesOutput) ToResourceKubernetesPtrOutputWithContext(ctx c
 	}).(ResourceKubernetesPtrOutput)
 }
 
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceKubernetesOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetes) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceKubernetesOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetes) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -17273,6 +17377,16 @@ func (o ResourceKubernetesPtrOutput) Elem() ResourceKubernetesOutput {
 		var ret ResourceKubernetes
 		return ret
 	}).(ResourceKubernetesOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceKubernetesPtrOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowResourceRoleBypass
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -17792,6 +17906,8 @@ func (o ResourceKubernetesBasicAuthPtrOutput) Username() pulumi.StringPtrOutput 
 }
 
 type ResourceKubernetesServiceAccount struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// If true, configures discovery of a cluster to be run from a node.
@@ -17837,6 +17953,8 @@ type ResourceKubernetesServiceAccountInput interface {
 }
 
 type ResourceKubernetesServiceAccountArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// If true, configures discovery of a cluster to be run from a node.
@@ -17947,6 +18065,11 @@ func (o ResourceKubernetesServiceAccountOutput) ToResourceKubernetesServiceAccou
 	}).(ResourceKubernetesServiceAccountPtrOutput)
 }
 
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceKubernetesServiceAccountOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
+}
+
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 func (o ResourceKubernetesServiceAccountOutput) BindInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
@@ -18045,6 +18168,16 @@ func (o ResourceKubernetesServiceAccountPtrOutput) Elem() ResourceKubernetesServ
 		var ret ResourceKubernetesServiceAccount
 		return ret
 	}).(ResourceKubernetesServiceAccountOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceKubernetesServiceAccountPtrOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowResourceRoleBypass
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -40089,6 +40222,130 @@ func (o GetPeeringGroupResourcePeeringGroupResourceArrayOutput) Index(i pulumi.I
 	}).(GetPeeringGroupResourcePeeringGroupResourceOutput)
 }
 
+type GetPolicyPolicy struct {
+	// Optional description of the Policy.
+	Description *string `pulumi:"description"`
+	// Unique identifier of the Policy.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Policy.
+	Name *string `pulumi:"name"`
+	// The content of the Policy, in Cedar policy language.
+	Policy *string `pulumi:"policy"`
+}
+
+// GetPolicyPolicyInput is an input type that accepts GetPolicyPolicyArgs and GetPolicyPolicyOutput values.
+// You can construct a concrete instance of `GetPolicyPolicyInput` via:
+//
+//	GetPolicyPolicyArgs{...}
+type GetPolicyPolicyInput interface {
+	pulumi.Input
+
+	ToGetPolicyPolicyOutput() GetPolicyPolicyOutput
+	ToGetPolicyPolicyOutputWithContext(context.Context) GetPolicyPolicyOutput
+}
+
+type GetPolicyPolicyArgs struct {
+	// Optional description of the Policy.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Unique identifier of the Policy.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Policy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The content of the Policy, in Cedar policy language.
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (GetPolicyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyPolicy)(nil)).Elem()
+}
+
+func (i GetPolicyPolicyArgs) ToGetPolicyPolicyOutput() GetPolicyPolicyOutput {
+	return i.ToGetPolicyPolicyOutputWithContext(context.Background())
+}
+
+func (i GetPolicyPolicyArgs) ToGetPolicyPolicyOutputWithContext(ctx context.Context) GetPolicyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyPolicyOutput)
+}
+
+// GetPolicyPolicyArrayInput is an input type that accepts GetPolicyPolicyArray and GetPolicyPolicyArrayOutput values.
+// You can construct a concrete instance of `GetPolicyPolicyArrayInput` via:
+//
+//	GetPolicyPolicyArray{ GetPolicyPolicyArgs{...} }
+type GetPolicyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyPolicyArrayOutput() GetPolicyPolicyArrayOutput
+	ToGetPolicyPolicyArrayOutputWithContext(context.Context) GetPolicyPolicyArrayOutput
+}
+
+type GetPolicyPolicyArray []GetPolicyPolicyInput
+
+func (GetPolicyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyPolicy)(nil)).Elem()
+}
+
+func (i GetPolicyPolicyArray) ToGetPolicyPolicyArrayOutput() GetPolicyPolicyArrayOutput {
+	return i.ToGetPolicyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyPolicyArray) ToGetPolicyPolicyArrayOutputWithContext(ctx context.Context) GetPolicyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyPolicyArrayOutput)
+}
+
+type GetPolicyPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyPolicy)(nil)).Elem()
+}
+
+func (o GetPolicyPolicyOutput) ToGetPolicyPolicyOutput() GetPolicyPolicyOutput {
+	return o
+}
+
+func (o GetPolicyPolicyOutput) ToGetPolicyPolicyOutputWithContext(ctx context.Context) GetPolicyPolicyOutput {
+	return o
+}
+
+// Optional description of the Policy.
+func (o GetPolicyPolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyPolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Policy.
+func (o GetPolicyPolicyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyPolicy) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Policy.
+func (o GetPolicyPolicyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The content of the Policy, in Cedar policy language.
+func (o GetPolicyPolicyOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPolicyPolicy) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type GetPolicyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyPolicy)(nil)).Elem()
+}
+
+func (o GetPolicyPolicyArrayOutput) ToGetPolicyPolicyArrayOutput() GetPolicyPolicyArrayOutput {
+	return o
+}
+
+func (o GetPolicyPolicyArrayOutput) ToGetPolicyPolicyArrayOutputWithContext(ctx context.Context) GetPolicyPolicyArrayOutput {
+	return o
+}
+
+func (o GetPolicyPolicyArrayOutput) Index(i pulumi.IntInput) GetPolicyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyPolicy {
+		return vs[0].([]GetPolicyPolicy)[vs[1].(int)]
+	}).(GetPolicyPolicyOutput)
+}
+
 type GetRemoteIdentityGroupRemoteIdentityGroup struct {
 	// Unique identifier of the RemoteIdentityGroup.
 	Id *string `pulumi:"id"`
@@ -40940,6 +41197,8 @@ func (o GetResourceResourceArrayOutput) Index(i pulumi.IntInput) GetResourceReso
 }
 
 type GetResourceResourceAk struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -40990,6 +41249,8 @@ type GetResourceResourceAkInput interface {
 }
 
 type GetResourceResourceAkArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -41077,6 +41338,11 @@ func (o GetResourceResourceAkOutput) ToGetResourceResourceAkOutput() GetResource
 
 func (o GetResourceResourceAkOutput) ToGetResourceResourceAkOutputWithContext(ctx context.Context) GetResourceResourceAkOutput {
 	return o
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o GetResourceResourceAkOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAk) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -41395,6 +41661,8 @@ func (o GetResourceResourceAksBasicAuthArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetResourceResourceAksServiceAccount struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// If true, configures discovery of a cluster to be run from a node.
@@ -41442,6 +41710,8 @@ type GetResourceResourceAksServiceAccountInput interface {
 }
 
 type GetResourceResourceAksServiceAccountArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// If true, configures discovery of a cluster to be run from a node.
@@ -41526,6 +41796,11 @@ func (o GetResourceResourceAksServiceAccountOutput) ToGetResourceResourceAksServ
 
 func (o GetResourceResourceAksServiceAccountOutput) ToGetResourceResourceAksServiceAccountOutputWithContext(ctx context.Context) GetResourceResourceAksServiceAccountOutput {
 	return o
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o GetResourceResourceAksServiceAccountOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -42259,6 +42534,8 @@ func (o GetResourceResourceAmazonEArrayOutput) Index(i pulumi.IntInput) GetResou
 type GetResourceResourceAmazonEk struct {
 	// The Access Key ID to use to authenticate.
 	AccessKey *string `pulumi:"accessKey"`
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -42315,6 +42592,8 @@ type GetResourceResourceAmazonEkInput interface {
 type GetResourceResourceAmazonEkArgs struct {
 	// The Access Key ID to use to authenticate.
 	AccessKey pulumi.StringPtrInput `pulumi:"accessKey"`
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -42411,6 +42690,11 @@ func (o GetResourceResourceAmazonEkOutput) ToGetResourceResourceAmazonEkOutputWi
 // The Access Key ID to use to authenticate.
 func (o GetResourceResourceAmazonEkOutput) AccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.AccessKey }).(pulumi.StringPtrOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o GetResourceResourceAmazonEkOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEk) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -42534,6 +42818,8 @@ func (o GetResourceResourceAmazonEkArrayOutput) Index(i pulumi.IntInput) GetReso
 }
 
 type GetResourceResourceAmazonEksInstanceProfile struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -42586,6 +42872,8 @@ type GetResourceResourceAmazonEksInstanceProfileInput interface {
 }
 
 type GetResourceResourceAmazonEksInstanceProfileArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -42675,6 +42963,11 @@ func (o GetResourceResourceAmazonEksInstanceProfileOutput) ToGetResourceResource
 
 func (o GetResourceResourceAmazonEksInstanceProfileOutput) ToGetResourceResourceAmazonEksInstanceProfileOutputWithContext(ctx context.Context) GetResourceResourceAmazonEksInstanceProfileOutput {
 	return o
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -48919,6 +49212,8 @@ func (o GetResourceResourceGcpArrayOutput) Index(i pulumi.IntInput) GetResourceR
 }
 
 type GetResourceResourceGoogleGke struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -48965,6 +49260,8 @@ type GetResourceResourceGoogleGkeInput interface {
 }
 
 type GetResourceResourceGoogleGkeArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -49048,6 +49345,11 @@ func (o GetResourceResourceGoogleGkeOutput) ToGetResourceResourceGoogleGkeOutput
 
 func (o GetResourceResourceGoogleGkeOutput) ToGetResourceResourceGoogleGkeOutputWithContext(ctx context.Context) GetResourceResourceGoogleGkeOutput {
 	return o
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o GetResourceResourceGoogleGkeOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGke) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -50185,6 +50487,8 @@ func (o GetResourceResourceHttpNoAuthArrayOutput) Index(i pulumi.IntInput) GetRe
 }
 
 type GetResourceResourceKubernete struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -50235,6 +50539,8 @@ type GetResourceResourceKuberneteInput interface {
 }
 
 type GetResourceResourceKuberneteArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// The CA to authenticate TLS connections with.
@@ -50322,6 +50628,11 @@ func (o GetResourceResourceKuberneteOutput) ToGetResourceResourceKuberneteOutput
 
 func (o GetResourceResourceKuberneteOutput) ToGetResourceResourceKuberneteOutputWithContext(ctx context.Context) GetResourceResourceKuberneteOutput {
 	return o
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o GetResourceResourceKuberneteOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernete) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -50640,6 +50951,8 @@ func (o GetResourceResourceKubernetesBasicAuthArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetResourceResourceKubernetesServiceAccount struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
 	// If true, configures discovery of a cluster to be run from a node.
@@ -50687,6 +51000,8 @@ type GetResourceResourceKubernetesServiceAccountInput interface {
 }
 
 type GetResourceResourceKubernetesServiceAccountArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
 	// If true, configures discovery of a cluster to be run from a node.
@@ -50771,6 +51086,11 @@ func (o GetResourceResourceKubernetesServiceAccountOutput) ToGetResourceResource
 
 func (o GetResourceResourceKubernetesServiceAccountOutput) ToGetResourceResourceKubernetesServiceAccountOutputWithContext(ctx context.Context) GetResourceResourceKubernetesServiceAccountOutput {
 	return o
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o GetResourceResourceKubernetesServiceAccountOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
 }
 
 // The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -63718,6 +64038,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupPeeringGroupArrayInput)(nil)).Elem(), GetPeeringGroupPeeringGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupResourcePeeringGroupResourceInput)(nil)).Elem(), GetPeeringGroupResourcePeeringGroupResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupResourcePeeringGroupResourceArrayInput)(nil)).Elem(), GetPeeringGroupResourcePeeringGroupResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyPolicyInput)(nil)).Elem(), GetPolicyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyPolicyArrayInput)(nil)).Elem(), GetPolicyPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityGroupRemoteIdentityGroupInput)(nil)).Elem(), GetRemoteIdentityGroupRemoteIdentityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityGroupRemoteIdentityGroupArrayInput)(nil)).Elem(), GetRemoteIdentityGroupRemoteIdentityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityRemoteIdentityInput)(nil)).Elem(), GetRemoteIdentityRemoteIdentityArgs{})
@@ -64216,6 +64538,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPeeringGroupPeeringGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetPeeringGroupResourcePeeringGroupResourceOutput{})
 	pulumi.RegisterOutputType(GetPeeringGroupResourcePeeringGroupResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyPolicyOutput{})
+	pulumi.RegisterOutputType(GetPolicyPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityGroupRemoteIdentityGroupOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityRemoteIdentityOutput{})

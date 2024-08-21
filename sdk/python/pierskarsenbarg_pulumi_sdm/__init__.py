@@ -22,6 +22,7 @@ from .get_peering_group import *
 from .get_peering_group_node import *
 from .get_peering_group_peer import *
 from .get_peering_group_resource import *
+from .get_policy import *
 from .get_remote_identity import *
 from .get_remote_identity_group import *
 from .get_resource import *
@@ -38,6 +39,7 @@ from .peering_group import *
 from .peering_group_node import *
 from .peering_group_peer import *
 from .peering_group_resource import *
+from .policy import *
 from .provider import *
 from .remote_identity import *
 from .resource import *
@@ -153,6 +155,14 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/peeringGroupResource:PeeringGroupResource": "PeeringGroupResource"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/policy",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/policy:Policy": "Policy"
   }
  },
  {

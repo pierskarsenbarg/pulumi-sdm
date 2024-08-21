@@ -90,6 +90,11 @@ export const getPeeringGroupResource: typeof import("./getPeeringGroupResource")
 export const getPeeringGroupResourceOutput: typeof import("./getPeeringGroupResource").getPeeringGroupResourceOutput = null as any;
 utilities.lazyLoad(exports, ["getPeeringGroupResource","getPeeringGroupResourceOutput"], () => require("./getPeeringGroupResource"));
 
+export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
+export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
+export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
+
 export { GetRemoteIdentityArgs, GetRemoteIdentityResult, GetRemoteIdentityOutputArgs } from "./getRemoteIdentity";
 export const getRemoteIdentity: typeof import("./getRemoteIdentity").getRemoteIdentity = null as any;
 export const getRemoteIdentityOutput: typeof import("./getRemoteIdentity").getRemoteIdentityOutput = null as any;
@@ -170,6 +175,11 @@ export type PeeringGroupResource = import("./peeringGroupResource").PeeringGroup
 export const PeeringGroupResource: typeof import("./peeringGroupResource").PeeringGroupResource = null as any;
 utilities.lazyLoad(exports, ["PeeringGroupResource"], () => require("./peeringGroupResource"));
 
+export { PolicyArgs, PolicyState } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+
 export { ProviderArgs } from "./provider";
 export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
@@ -248,6 +258,8 @@ const _module = {
                 return new PeeringGroupPeer(name, <any>undefined, { urn })
             case "sdm:index/peeringGroupResource:PeeringGroupResource":
                 return new PeeringGroupResource(name, <any>undefined, { urn })
+            case "sdm:index/policy:Policy":
+                return new Policy(name, <any>undefined, { urn })
             case "sdm:index/remoteIdentity:RemoteIdentity":
                 return new RemoteIdentity(name, <any>undefined, { urn })
             case "sdm:index/resource:Resource":
@@ -279,6 +291,7 @@ pulumi.runtime.registerResourceModule("sdm", "index/peeringGroup", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupNode", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupPeer", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupResource", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/policy", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/remoteIdentity", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/resource", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/role", _module)

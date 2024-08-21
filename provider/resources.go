@@ -115,6 +115,14 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+			"sdm_policy": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Policy"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"policy": {
+						Name: "policyContent",
+					},
+				},
+			},
 			"sdm_resource": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Resource"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -148,7 +156,7 @@ func Provider() tfbridge.ProviderInfo {
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
+			// Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges

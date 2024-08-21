@@ -322,6 +322,10 @@
         },
         "sdm:index/ResourceAks:ResourceAks": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -496,6 +500,10 @@
         },
         "sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -742,6 +750,10 @@
                     "type": "string",
                     "description": "The Access Key ID to use to authenticate.\n"
                 },
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -849,6 +861,10 @@
         },
         "sdm:index/ResourceAmazonEksInstanceProfile:ResourceAmazonEksInstanceProfile": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -3256,6 +3272,10 @@
         },
         "sdm:index/ResourceGoogleGke:ResourceGoogleGke": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -3717,6 +3737,10 @@
         },
         "sdm:index/ResourceKubernetes:ResourceKubernetes": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -3891,6 +3915,10 @@
         },
         "sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -8401,6 +8429,27 @@
             },
             "type": "object"
         },
+        "sdm:index/getPolicyPolicy:getPolicyPolicy": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Optional description of the Policy.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Policy.\n"
+                },
+                "policy": {
+                    "type": "string",
+                    "description": "The content of the Policy, in Cedar policy language.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getRemoteIdentityGroupRemoteIdentityGroup:getRemoteIdentityGroupRemoteIdentityGroup": {
             "properties": {
                 "id": {
@@ -9044,6 +9093,10 @@
         },
         "sdm:index/getResourceResourceAk:getResourceResourceAk": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -9188,6 +9241,10 @@
         },
         "sdm:index/getResourceResourceAksServiceAccount:getResourceResourceAksServiceAccount": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -9454,6 +9511,10 @@
                     "type": "string",
                     "description": "The Access Key ID to use to authenticate.\n"
                 },
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -9544,6 +9605,10 @@
         },
         "sdm:index/getResourceResourceAmazonEksInstanceProfile:getResourceResourceAmazonEksInstanceProfile": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -11473,6 +11538,10 @@
         },
         "sdm:index/getResourceResourceGoogleGke:getResourceResourceGoogleGke": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -11852,6 +11921,10 @@
         },
         "sdm:index/getResourceResourceKubernete:getResourceResourceKubernete": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -11996,6 +12069,10 @@
         },
         "sdm:index/getResourceResourceKubernetesServiceAccount:getResourceResourceKubernetesServiceAccount": {
             "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
                 "bindInterface": {
                     "type": "string",
                     "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
@@ -16289,6 +16366,58 @@
                 "type": "object"
             }
         },
+        "sdm:index/policy:Policy": {
+            "description": "Policy is a collection of one or more statements that enforce fine-grained access control\n for the users of an organization.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst permitEverything = new sdm.Policy(\"permitEverything\", {\n    description: \"this policy permits everything\",\n    policyContent: `permit(principal, action, resource);\n\n`,\n});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\npermit_everything = sdm.Policy(\"permitEverything\",\n    description=\"this policy permits everything\",\n    policy_content=\"\"\"permit(principal, action, resource);\n\n\"\"\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var permitEverything = new Sdm.Policy(\"permitEverything\", new()\n    {\n        Description = \"this policy permits everything\",\n        PolicyContent = @\"permit(principal, action, resource);\n\n\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewPolicy(ctx, \"permitEverything\", \u0026sdm.PolicyArgs{\n\t\t\tDescription:   pulumi.String(\"this policy permits everything\"),\n\t\t\tPolicyContent: pulumi.String(\"permit(principal, action, resource);\\n\\n\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Policy;\nimport com.pulumi.sdm.PolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var permitEverything = new Policy(\"permitEverything\", PolicyArgs.builder()\n            .description(\"this policy permits everything\")\n            .policyContent(\"\"\"\npermit(principal, action, resource);\n\n            \"\"\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  permitEverything:\n    type: sdm:Policy\n    properties:\n      description: this policy permits everything\n      policyContent: |+\n        permit(principal, action, resource);\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Policy can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/policy:Policy example po-12345678\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Optional description of the Policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Policy.\n"
+                },
+                "policyContent": {
+                    "type": "string",
+                    "description": "The content of the Policy, in Cedar policy language.\n"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Optional description of the Policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Policy.\n"
+                },
+                "policyContent": {
+                    "type": "string",
+                    "description": "The content of the Policy, in Cedar policy language.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Policy resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description of the Policy.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Policy.\n"
+                    },
+                    "policyContent": {
+                        "type": "string",
+                        "description": "The content of the Policy, in Cedar policy language.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sdm:index/remoteIdentity:RemoteIdentity": {
             "description": "RemoteIdentities define the username to be used for a specific account\n when connecting to a remote resource using that group.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  user:\n    type: sdm:RemoteIdentity\n    properties:\n      id: i-0900909\n      username: user\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA RemoteIdentity can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678\n```\n",
             "properties": {
@@ -16355,7 +16484,8 @@
                     "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
                 },
                 "aksBasicAuth": {
-                    "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth"
+                    "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth",
+                    "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "aksServiceAccount": {
                     "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
@@ -16484,7 +16614,8 @@
                     "$ref": "#/types/sdm:index/ResourceKubernetes:ResourceKubernetes"
                 },
                 "kubernetesBasicAuth": {
-                    "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth"
+                    "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
+                    "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "kubernetesServiceAccount": {
                     "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
@@ -16617,7 +16748,8 @@
                     "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
                 },
                 "aksBasicAuth": {
-                    "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth"
+                    "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth",
+                    "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "aksServiceAccount": {
                     "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
@@ -16746,7 +16878,8 @@
                     "$ref": "#/types/sdm:index/ResourceKubernetes:ResourceKubernetes"
                 },
                 "kubernetesBasicAuth": {
-                    "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth"
+                    "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
+                    "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "kubernetesServiceAccount": {
                     "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
@@ -16881,7 +17014,8 @@
                         "$ref": "#/types/sdm:index/ResourceAks:ResourceAks"
                     },
                     "aksBasicAuth": {
-                        "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth"
+                        "$ref": "#/types/sdm:index/ResourceAksBasicAuth:ResourceAksBasicAuth",
+                        "description": "AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "aksServiceAccount": {
                         "$ref": "#/types/sdm:index/ResourceAksServiceAccount:ResourceAksServiceAccount"
@@ -17010,7 +17144,8 @@
                         "$ref": "#/types/sdm:index/ResourceKubernetes:ResourceKubernetes"
                     },
                     "kubernetesBasicAuth": {
-                        "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth"
+                        "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
+                        "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "kubernetesServiceAccount": {
                         "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
@@ -18450,6 +18585,71 @@
                 "required": [
                     "ids",
                     "peeringGroupResources"
+                ]
+            }
+        },
+        "sdm:index/getPolicy:getPolicy": {
+            "description": "Policy is a collection of one or more statements that enforce fine-grained access control\n for the users of an organization.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst policy = sdm.getPolicy({\n    name: \"policy-query\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\npolicy = sdm.get_policy(name=\"policy-query\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var policy = Sdm.GetPolicy.Invoke(new()\n    {\n        Name = \"policy-query\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupPolicy(ctx, \u0026sdm.LookupPolicyArgs{\n\t\t\tName: pulumi.StringRef(\"policy-query\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var policy = SdmFunctions.getPolicy(GetPolicyArgs.builder()\n            .name(\"policy-query\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  policy:\n    fn::invoke:\n      Function: sdm:getPolicy\n      Arguments:\n        name: policy-query\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getPolicy.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description of the Policy.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Policy.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Policy.\n"
+                    },
+                    "policy": {
+                        "type": "string",
+                        "description": "The content of the Policy, in Cedar policy language.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPolicy.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description of the Policy.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Policy.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Unique human-readable name of the Policy.\n"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getPolicyPolicy:getPolicyPolicy"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    },
+                    "policy": {
+                        "type": "string",
+                        "description": "The content of the Policy, in Cedar policy language.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "policies"
                 ]
             }
         },
