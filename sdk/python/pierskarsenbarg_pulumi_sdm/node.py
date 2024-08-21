@@ -98,8 +98,8 @@ class Node(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gateway: Optional[pulumi.Input[pulumi.InputType['NodeGatewayArgs']]] = None,
-                 relay: Optional[pulumi.Input[pulumi.InputType['NodeRelayArgs']]] = None,
+                 gateway: Optional[pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']]] = None,
+                 relay: Optional[pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']]] = None,
                  __props__=None):
         """
         Nodes make up the strongDM network, and allow your users to connect securely to your resources.
@@ -112,22 +112,22 @@ class Node(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        gateway = sdm.Node("gateway", gateway=sdm.NodeGatewayArgs(
-            bind_address="0.0.0.0:21222",
-            listen_address="165.23.40.1:21222",
-            name="test-gateway",
-            tags={
+        gateway = sdm.Node("gateway", gateway={
+            "bind_address": "0.0.0.0:21222",
+            "listen_address": "165.23.40.1:21222",
+            "name": "test-gateway",
+            "tags": {
                 "env": "dev",
                 "region": "us-west",
             },
-        ))
-        relay = sdm.Node("relay", relay=sdm.NodeRelayArgs(
-            name="test-relay",
-            tags={
+        })
+        relay = sdm.Node("relay", relay={
+            "name": "test-relay",
+            "tags": {
                 "env": "dev",
                 "region": "us-west",
             },
-        ))
+        })
         ```
         This resource can be imported using the import command.
 
@@ -141,8 +141,8 @@ class Node(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodeGatewayArgs']] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
-        :param pulumi.Input[pulumi.InputType['NodeRelayArgs']] relay: Relay represents a StrongDM CLI installation running in relay mode.
+        :param pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
+        :param pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']] relay: Relay represents a StrongDM CLI installation running in relay mode.
         """
         ...
     @overload
@@ -161,22 +161,22 @@ class Node(pulumi.CustomResource):
         import pulumi
         import pierskarsenbarg_pulumi_sdm as sdm
 
-        gateway = sdm.Node("gateway", gateway=sdm.NodeGatewayArgs(
-            bind_address="0.0.0.0:21222",
-            listen_address="165.23.40.1:21222",
-            name="test-gateway",
-            tags={
+        gateway = sdm.Node("gateway", gateway={
+            "bind_address": "0.0.0.0:21222",
+            "listen_address": "165.23.40.1:21222",
+            "name": "test-gateway",
+            "tags": {
                 "env": "dev",
                 "region": "us-west",
             },
-        ))
-        relay = sdm.Node("relay", relay=sdm.NodeRelayArgs(
-            name="test-relay",
-            tags={
+        })
+        relay = sdm.Node("relay", relay={
+            "name": "test-relay",
+            "tags": {
                 "env": "dev",
                 "region": "us-west",
             },
-        ))
+        })
         ```
         This resource can be imported using the import command.
 
@@ -203,8 +203,8 @@ class Node(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gateway: Optional[pulumi.Input[pulumi.InputType['NodeGatewayArgs']]] = None,
-                 relay: Optional[pulumi.Input[pulumi.InputType['NodeRelayArgs']]] = None,
+                 gateway: Optional[pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']]] = None,
+                 relay: Optional[pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -226,8 +226,8 @@ class Node(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            gateway: Optional[pulumi.Input[pulumi.InputType['NodeGatewayArgs']]] = None,
-            relay: Optional[pulumi.Input[pulumi.InputType['NodeRelayArgs']]] = None) -> 'Node':
+            gateway: Optional[pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']]] = None,
+            relay: Optional[pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']]] = None) -> 'Node':
         """
         Get an existing Node resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -235,8 +235,8 @@ class Node(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['NodeGatewayArgs']] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
-        :param pulumi.Input[pulumi.InputType['NodeRelayArgs']] relay: Relay represents a StrongDM CLI installation running in relay mode.
+        :param pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
+        :param pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']] relay: Relay represents a StrongDM CLI installation running in relay mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
