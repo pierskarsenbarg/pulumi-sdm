@@ -14,6 +14,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
     public sealed class ResourceKubernetesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        /// </summary>
+        [Input("allowResourceRoleBypass")]
+        public Input<bool>? AllowResourceRoleBypass { get; set; }
+
+        /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
         [Input("bindInterface")]

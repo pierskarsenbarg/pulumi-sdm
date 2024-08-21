@@ -2,12 +2,12 @@ module github.com/pierskarsenbarg/pulumi-sdm/provider
 
 go 1.22
 
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.89.1
 	github.com/pulumi/pulumi/sdk/v3 v3.129.0
-	github.com/strongdm/terraform-provider-sdm v1.0.40-0.20240717164651-63de04ff1f7f
+	github.com/strongdm/terraform-provider-sdm v1.0.40-0.20240814154158-303b841e00fe
 )
 
 require (

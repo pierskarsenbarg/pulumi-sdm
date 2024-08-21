@@ -140,6 +140,10 @@ export interface NodeRelayMaintenanceWindow {
 
 export interface ResourceAks {
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: pulumi.Input<boolean>;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
@@ -261,6 +265,10 @@ export interface ResourceAksBasicAuth {
 }
 
 export interface ResourceAksServiceAccount {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -433,6 +441,10 @@ export interface ResourceAmazonEks {
      */
     accessKey?: pulumi.Input<string>;
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: pulumi.Input<boolean>;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
@@ -511,6 +523,10 @@ export interface ResourceAmazonEks {
 }
 
 export interface ResourceAmazonEksInstanceProfile {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
@@ -2199,6 +2215,10 @@ export interface ResourceGcp {
 
 export interface ResourceGoogleGke {
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: pulumi.Input<boolean>;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
@@ -2520,6 +2540,10 @@ export interface ResourceHttpNoAuth {
 
 export interface ResourceKubernetes {
     /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: pulumi.Input<boolean>;
+    /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */
     bindInterface?: pulumi.Input<string>;
@@ -2641,6 +2665,10 @@ export interface ResourceKubernetesBasicAuth {
 }
 
 export interface ResourceKubernetesServiceAccount {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: pulumi.Input<boolean>;
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
      */

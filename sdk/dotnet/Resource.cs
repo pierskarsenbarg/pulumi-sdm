@@ -25,6 +25,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("aks")]
         public Output<Outputs.ResourceAks?> Aks { get; private set; } = null!;
 
+        /// <summary>
+        /// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("aksBasicAuth")]
         public Output<Outputs.ResourceAksBasicAuth?> AksBasicAuth { get; private set; } = null!;
 
@@ -154,6 +157,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("kubernetes")]
         public Output<Outputs.ResourceKubernetes?> Kubernetes { get; private set; } = null!;
 
+        /// <summary>
+        /// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Output("kubernetesBasicAuth")]
         public Output<Outputs.ResourceKubernetesBasicAuth?> KubernetesBasicAuth { get; private set; } = null!;
 
@@ -342,6 +348,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("aks")]
         public Input<Inputs.ResourceAksArgs>? Aks { get; set; }
 
+        /// <summary>
+        /// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("aksBasicAuth")]
         public Input<Inputs.ResourceAksBasicAuthArgs>? AksBasicAuth { get; set; }
 
@@ -471,6 +480,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("kubernetes")]
         public Input<Inputs.ResourceKubernetesArgs>? Kubernetes { get; set; }
 
+        /// <summary>
+        /// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("kubernetesBasicAuth")]
         public Input<Inputs.ResourceKubernetesBasicAuthArgs>? KubernetesBasicAuth { get; set; }
 
@@ -620,6 +632,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("aks")]
         public Input<Inputs.ResourceAksGetArgs>? Aks { get; set; }
 
+        /// <summary>
+        /// AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("aksBasicAuth")]
         public Input<Inputs.ResourceAksBasicAuthGetArgs>? AksBasicAuth { get; set; }
 
@@ -749,6 +764,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("kubernetes")]
         public Input<Inputs.ResourceKubernetesGetArgs>? Kubernetes { get; set; }
 
+        /// <summary>
+        /// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
         [Input("kubernetesBasicAuth")]
         public Input<Inputs.ResourceKubernetesBasicAuthGetArgs>? KubernetesBasicAuth { get; set; }
 

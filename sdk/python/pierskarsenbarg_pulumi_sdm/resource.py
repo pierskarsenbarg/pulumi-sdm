@@ -103,6 +103,8 @@ class ResourceArgs:
                  trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         The set of arguments for constructing a Resource resource.
+        :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -292,6 +294,9 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="aksBasicAuth")
     def aks_basic_auth(self) -> Optional[pulumi.Input['ResourceAksBasicAuthArgs']]:
+        """
+        AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "aks_basic_auth")
 
     @aks_basic_auth.setter
@@ -679,6 +684,9 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="kubernetesBasicAuth")
     def kubernetes_basic_auth(self) -> Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']]:
+        """
+        KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "kubernetes_basic_auth")
 
     @kubernetes_basic_auth.setter
@@ -1151,6 +1159,8 @@ class _ResourceState:
                  trino: Optional[pulumi.Input['ResourceTrinoArgs']] = None):
         """
         Input properties used for looking up and filtering Resource resources.
+        :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1340,6 +1350,9 @@ class _ResourceState:
     @property
     @pulumi.getter(name="aksBasicAuth")
     def aks_basic_auth(self) -> Optional[pulumi.Input['ResourceAksBasicAuthArgs']]:
+        """
+        AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "aks_basic_auth")
 
     @aks_basic_auth.setter
@@ -1727,6 +1740,9 @@ class _ResourceState:
     @property
     @pulumi.getter(name="kubernetesBasicAuth")
     def kubernetes_basic_auth(self) -> Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']]:
+        """
+        KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "kubernetes_basic_auth")
 
     @kubernetes_basic_auth.setter
@@ -2211,6 +2227,8 @@ class Resource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2528,6 +2546,8 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2633,6 +2653,9 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="aksBasicAuth")
     def aks_basic_auth(self) -> pulumi.Output[Optional['outputs.ResourceAksBasicAuth']]:
+        """
+        AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "aks_basic_auth")
 
     @property
@@ -2848,6 +2871,9 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="kubernetesBasicAuth")
     def kubernetes_basic_auth(self) -> pulumi.Output[Optional['outputs.ResourceKubernetesBasicAuth']]:
+        """
+        KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
         return pulumi.get(self, "kubernetes_basic_auth")
 
     @property

@@ -677,6 +677,7 @@ class ResourceAksArgs:
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  port: pulumi.Input[int],
+                 allow_resource_role_bypass: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
@@ -695,6 +696,7 @@ class ResourceAksArgs:
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[bool] allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
@@ -713,6 +715,8 @@ class ResourceAksArgs:
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
@@ -777,6 +781,18 @@ class ResourceAksArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @allow_resource_role_bypass.setter
+    def allow_resource_role_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_resource_role_bypass", value)
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -1149,6 +1165,7 @@ class ResourceAksServiceAccountArgs:
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  port: pulumi.Input[int],
+                 allow_resource_role_bypass: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  discovery_enabled: Optional[pulumi.Input[bool]] = None,
                  discovery_username: Optional[pulumi.Input[str]] = None,
@@ -1165,6 +1182,7 @@ class ResourceAksServiceAccountArgs:
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[bool] allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
@@ -1182,6 +1200,8 @@ class ResourceAksServiceAccountArgs:
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if discovery_enabled is not None:
@@ -1242,6 +1262,18 @@ class ResourceAksServiceAccountArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @allow_resource_role_bypass.setter
+    def allow_resource_role_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_resource_role_bypass", value)
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -1791,6 +1823,7 @@ class ResourceAmazonEksArgs:
                  name: pulumi.Input[str],
                  region: pulumi.Input[str],
                  access_key: Optional[pulumi.Input[str]] = None,
+                 allow_resource_role_bypass: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  discovery_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1812,6 +1845,7 @@ class ResourceAmazonEksArgs:
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] region: The AWS region to connect to.
         :param pulumi.Input[str] access_key: The Access Key ID to use to authenticate.
+        :param pulumi.Input[bool] allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
@@ -1834,6 +1868,8 @@ class ResourceAmazonEksArgs:
         pulumi.set(__self__, "region", region)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
@@ -1924,6 +1960,18 @@ class ResourceAmazonEksArgs:
     @access_key.setter
     def access_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @allow_resource_role_bypass.setter
+    def allow_resource_role_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_resource_role_bypass", value)
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -2113,6 +2161,7 @@ class ResourceAmazonEksInstanceProfileArgs:
                  endpoint: pulumi.Input[str],
                  name: pulumi.Input[str],
                  region: pulumi.Input[str],
+                 allow_resource_role_bypass: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  discovery_enabled: Optional[pulumi.Input[bool]] = None,
@@ -2132,6 +2181,7 @@ class ResourceAmazonEksInstanceProfileArgs:
         :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[str] region: The AWS region to connect to.
+        :param pulumi.Input[bool] allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
@@ -2151,6 +2201,8 @@ class ResourceAmazonEksInstanceProfileArgs:
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
@@ -2227,6 +2279,18 @@ class ResourceAmazonEksInstanceProfileArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @allow_resource_role_bypass.setter
+    def allow_resource_role_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_resource_role_bypass", value)
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -8618,6 +8682,7 @@ class ResourceGoogleGkeArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[str],
                  name: pulumi.Input[str],
+                 allow_resource_role_bypass: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  discovery_enabled: Optional[pulumi.Input[bool]] = None,
@@ -8634,6 +8699,7 @@ class ResourceGoogleGkeArgs:
         """
         :param pulumi.Input[str] endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
+        :param pulumi.Input[bool] allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
@@ -8650,6 +8716,8 @@ class ResourceGoogleGkeArgs:
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "name", name)
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
@@ -8700,6 +8768,18 @@ class ResourceGoogleGkeArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @allow_resource_role_bypass.setter
+    def allow_resource_role_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_resource_role_bypass", value)
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -9848,6 +9928,7 @@ class ResourceKubernetesArgs:
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  port: pulumi.Input[int],
+                 allow_resource_role_bypass: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
@@ -9866,6 +9947,7 @@ class ResourceKubernetesArgs:
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[bool] allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] client_certificate: The certificate to authenticate TLS connections with.
@@ -9884,6 +9966,8 @@ class ResourceKubernetesArgs:
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if certificate_authority is not None:
@@ -9948,6 +10032,18 @@ class ResourceKubernetesArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @allow_resource_role_bypass.setter
+    def allow_resource_role_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_resource_role_bypass", value)
 
     @property
     @pulumi.getter(name="bindInterface")
@@ -10320,6 +10416,7 @@ class ResourceKubernetesServiceAccountArgs:
                  hostname: pulumi.Input[str],
                  name: pulumi.Input[str],
                  port: pulumi.Input[int],
+                 allow_resource_role_bypass: Optional[pulumi.Input[bool]] = None,
                  bind_interface: Optional[pulumi.Input[str]] = None,
                  discovery_enabled: Optional[pulumi.Input[bool]] = None,
                  discovery_username: Optional[pulumi.Input[str]] = None,
@@ -10336,6 +10433,7 @@ class ResourceKubernetesServiceAccountArgs:
         :param pulumi.Input[str] hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[str] name: Unique human-readable name of the Resource.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
+        :param pulumi.Input[bool] allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
         :param pulumi.Input[str] bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param pulumi.Input[bool] discovery_enabled: If true, configures discovery of a cluster to be run from a node.
         :param pulumi.Input[str] discovery_username: If a cluster is configured for user impersonation, this is the user to impersonate when running discovery.
@@ -10353,6 +10451,8 @@ class ResourceKubernetesServiceAccountArgs:
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "port", port)
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
         if bind_interface is not None:
             pulumi.set(__self__, "bind_interface", bind_interface)
         if discovery_enabled is not None:
@@ -10413,6 +10513,18 @@ class ResourceKubernetesServiceAccountArgs:
     @port.setter
     def port(self, value: pulumi.Input[int]):
         pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @allow_resource_role_bypass.setter
+    def allow_resource_role_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_resource_role_bypass", value)
 
     @property
     @pulumi.getter(name="bindInterface")

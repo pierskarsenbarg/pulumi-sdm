@@ -44,6 +44,9 @@ export class Resource extends pulumi.CustomResource {
     }
 
     public readonly aks!: pulumi.Output<outputs.ResourceAks | undefined>;
+    /**
+     * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     public readonly aksBasicAuth!: pulumi.Output<outputs.ResourceAksBasicAuth | undefined>;
     public readonly aksServiceAccount!: pulumi.Output<outputs.ResourceAksServiceAccount | undefined>;
     public readonly aksServiceAccountUserImpersonation!: pulumi.Output<outputs.ResourceAksServiceAccountUserImpersonation | undefined>;
@@ -87,6 +90,9 @@ export class Resource extends pulumi.CustomResource {
     public readonly httpBasicAuth!: pulumi.Output<outputs.ResourceHttpBasicAuth | undefined>;
     public readonly httpNoAuth!: pulumi.Output<outputs.ResourceHttpNoAuth | undefined>;
     public readonly kubernetes!: pulumi.Output<outputs.ResourceKubernetes | undefined>;
+    /**
+     * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     public readonly kubernetesBasicAuth!: pulumi.Output<outputs.ResourceKubernetesBasicAuth | undefined>;
     public readonly kubernetesServiceAccount!: pulumi.Output<outputs.ResourceKubernetesServiceAccount | undefined>;
     public readonly kubernetesServiceAccountUserImpersonation!: pulumi.Output<outputs.ResourceKubernetesServiceAccountUserImpersonation | undefined>;
@@ -340,6 +346,9 @@ export class Resource extends pulumi.CustomResource {
  */
 export interface ResourceState {
     aks?: pulumi.Input<inputs.ResourceAks>;
+    /**
+     * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     aksBasicAuth?: pulumi.Input<inputs.ResourceAksBasicAuth>;
     aksServiceAccount?: pulumi.Input<inputs.ResourceAksServiceAccount>;
     aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation>;
@@ -383,6 +392,9 @@ export interface ResourceState {
     httpBasicAuth?: pulumi.Input<inputs.ResourceHttpBasicAuth>;
     httpNoAuth?: pulumi.Input<inputs.ResourceHttpNoAuth>;
     kubernetes?: pulumi.Input<inputs.ResourceKubernetes>;
+    /**
+     * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth>;
     kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount>;
     kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation>;
@@ -446,6 +458,9 @@ export interface ResourceState {
  */
 export interface ResourceArgs {
     aks?: pulumi.Input<inputs.ResourceAks>;
+    /**
+     * AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     aksBasicAuth?: pulumi.Input<inputs.ResourceAksBasicAuth>;
     aksServiceAccount?: pulumi.Input<inputs.ResourceAksServiceAccount>;
     aksServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceAksServiceAccountUserImpersonation>;
@@ -489,6 +504,9 @@ export interface ResourceArgs {
     httpBasicAuth?: pulumi.Input<inputs.ResourceHttpBasicAuth>;
     httpNoAuth?: pulumi.Input<inputs.ResourceHttpNoAuth>;
     kubernetes?: pulumi.Input<inputs.ResourceKubernetes>;
+    /**
+     * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
     kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth>;
     kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount>;
     kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation>;

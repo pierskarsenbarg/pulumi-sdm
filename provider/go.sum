@@ -1917,8 +1917,8 @@ github.com/pulumi/schema-tools v0.1.2 h1:Fd9xvUjgck4NA+7/jSk7InqCUT4Kj940+EcnbQK
 github.com/pulumi/schema-tools v0.1.2/go.mod h1:62lgj52Tzq11eqWTIaKd+EVyYAu5dEcDJxMhTjvMO/k=
 github.com/pulumi/terraform-diff-reader v0.0.2 h1:kTE4nEXU3/SYXESvAIem+wyHMI3abqkI3OhJ0G04LLI=
 github.com/pulumi/terraform-diff-reader v0.0.2/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
-github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975 h1:1WBy43K/lHEdS5Hliwf3ylVSfAu5s0KhhEs6wNeP11Y=
-github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975/go.mod h1:H+8tjs9TjV2w57QFVSMBQacf8k/E1XwLXGCARgViC6A=
+github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10 h1:M6Ceq1o6gGeEKxTZgJ2CKLye3p67ZZjnsAwxr5VC32A=
+github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10/go.mod h1:H+8tjs9TjV2w57QFVSMBQacf8k/E1XwLXGCARgViC6A=
 github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0/go.mod h1:qqbHyh8v60DhA7CoWK5oRCqLrMHRGoxYCSS9EjAz6Eo=
 github.com/remyoudompheng/bigfft v0.0.0-20230129092748-24d4a6f8daec/go.mod h1:qqbHyh8v60DhA7CoWK5oRCqLrMHRGoxYCSS9EjAz6Eo=
 github.com/rhysd/go-fakeio v1.0.0 h1:+TjiKCOs32dONY7DaoVz/VPOdvRkPfBkEyUDIpM8FQY=
@@ -1999,8 +1999,8 @@ github.com/stretchr/testify v1.8.3/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXl
 github.com/stretchr/testify v1.8.4/go.mod h1:sz/lmYIOXD/1dqDmKjjqLyZ2RngseejIcXlSw2iwfAo=
 github.com/stretchr/testify v1.9.0 h1:HtqpIVDClZ4nwg75+f6Lvsy/wHu+3BoSGCbBAcpTsTg=
 github.com/stretchr/testify v1.9.0/go.mod h1:r2ic/lqez/lEtzL7wO/rwa5dbSLXVDPFyf8C91i36aY=
-github.com/strongdm/terraform-provider-sdm v1.0.40-0.20240717164651-63de04ff1f7f h1:wt+QmGhr23POseINeKc1Un4sMJWIBhSSpqQWfrKJeaQ=
-github.com/strongdm/terraform-provider-sdm v1.0.40-0.20240717164651-63de04ff1f7f/go.mod h1:+polPO/E3r2Bdf5rwCPXbwNuZAH17myQcq+8N65jKeg=
+github.com/strongdm/terraform-provider-sdm v1.0.40-0.20240814154158-303b841e00fe h1:9U0zVBdkjiE47Cznc7n0alrj0+bhLo4Y0AhUrJn+FtE=
+github.com/strongdm/terraform-provider-sdm v1.0.40-0.20240814154158-303b841e00fe/go.mod h1:+polPO/E3r2Bdf5rwCPXbwNuZAH17myQcq+8N65jKeg=
 github.com/teekennedy/goldmark-markdown v0.3.0 h1:ik9/biVGCwGWFg8dQ3KVm2pQ/wiiG0whYiUcz9xH0W8=
 github.com/teekennedy/goldmark-markdown v0.3.0/go.mod h1:kMhDz8La77A9UHvJGsxejd0QUflN9sS+QXCqnhmxmNo=
 github.com/texttheater/golang-levenshtein v1.0.1 h1:+cRNoVrfiwufQPhoMzB6N0Yf/Mqajr6t1lOv8GyGE2U=
