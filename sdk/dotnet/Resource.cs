@@ -109,6 +109,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("cockroach")]
         public Output<Outputs.ResourceCockroach?> Cockroach { get; private set; } = null!;
 
+        [Output("couchbaseDatabase")]
+        public Output<Outputs.ResourceCouchbaseDatabase?> CouchbaseDatabase { get; private set; } = null!;
+
+        [Output("couchbaseWebUi")]
+        public Output<Outputs.ResourceCouchbaseWebUi?> CouchbaseWebUi { get; private set; } = null!;
+
         [Output("db2I")]
         public Output<Outputs.ResourceDb2I?> Db2I { get; private set; } = null!;
 
@@ -432,6 +438,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("cockroach")]
         public Input<Inputs.ResourceCockroachArgs>? Cockroach { get; set; }
 
+        [Input("couchbaseDatabase")]
+        public Input<Inputs.ResourceCouchbaseDatabaseArgs>? CouchbaseDatabase { get; set; }
+
+        [Input("couchbaseWebUi")]
+        public Input<Inputs.ResourceCouchbaseWebUiArgs>? CouchbaseWebUi { get; set; }
+
         [Input("db2I")]
         public Input<Inputs.ResourceDb2IArgs>? Db2I { get; set; }
 
@@ -715,6 +727,12 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("cockroach")]
         public Input<Inputs.ResourceCockroachGetArgs>? Cockroach { get; set; }
+
+        [Input("couchbaseDatabase")]
+        public Input<Inputs.ResourceCouchbaseDatabaseGetArgs>? CouchbaseDatabase { get; set; }
+
+        [Input("couchbaseWebUi")]
+        public Input<Inputs.ResourceCouchbaseWebUiGetArgs>? CouchbaseWebUi { get; set; }
 
         [Input("db2I")]
         public Input<Inputs.ResourceDb2IGetArgs>? Db2I { get; set; }

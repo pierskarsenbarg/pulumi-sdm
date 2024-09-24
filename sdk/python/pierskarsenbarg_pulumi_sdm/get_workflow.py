@@ -153,15 +153,6 @@ def get_workflow(approval_flow_id: Optional[str] = None,
     Workflows are the collection of rules that define the resources to which access can be requested,
      the users that can request that access, and the mechanism for approving those requests which can either
      but automatic approval or a set of users authorized to approve the requests.
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sdm as sdm
-
-    workflow_query = sdm.get_workflow(auto_grant=True,
-        name="workflow example")
-    ```
 
 
     :param str approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
@@ -208,15 +199,6 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
     Workflows are the collection of rules that define the resources to which access can be requested,
      the users that can request that access, and the mechanism for approving those requests which can either
      but automatic approval or a set of users authorized to approve the requests.
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sdm as sdm
-
-    workflow_query = sdm.get_workflow(auto_grant=True,
-        name="workflow example")
-    ```
 
 
     :param str approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow

@@ -77,6 +77,10 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly gateway!: pulumi.Output<outputs.NodeGateway | undefined>;
     /**
+     * ProxyCluster represents a cluster of StrongDM proxies.
+     */
+    public readonly proxyCluster!: pulumi.Output<outputs.NodeProxyCluster | undefined>;
+    /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
     public readonly relay!: pulumi.Output<outputs.NodeRelay | undefined>;
@@ -95,10 +99,12 @@ export class Node extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
             resourceInputs["gateway"] = state ? state.gateway : undefined;
+            resourceInputs["proxyCluster"] = state ? state.proxyCluster : undefined;
             resourceInputs["relay"] = state ? state.relay : undefined;
         } else {
             const args = argsOrState as NodeArgs | undefined;
             resourceInputs["gateway"] = args ? args.gateway : undefined;
+            resourceInputs["proxyCluster"] = args ? args.proxyCluster : undefined;
             resourceInputs["relay"] = args ? args.relay : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -115,6 +121,10 @@ export interface NodeState {
      */
     gateway?: pulumi.Input<inputs.NodeGateway>;
     /**
+     * ProxyCluster represents a cluster of StrongDM proxies.
+     */
+    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster>;
+    /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
     relay?: pulumi.Input<inputs.NodeRelay>;
@@ -128,6 +138,10 @@ export interface NodeArgs {
      * Gateway represents a StrongDM CLI installation running in gateway mode.
      */
     gateway?: pulumi.Input<inputs.NodeGateway>;
+    /**
+     * ProxyCluster represents a cluster of StrongDM proxies.
+     */
+    proxyCluster?: pulumi.Input<inputs.NodeProxyCluster>;
     /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */

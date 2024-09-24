@@ -76,6 +76,8 @@ type Node struct {
 
 	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateway NodeGatewayPtrOutput `pulumi:"gateway"`
+	// ProxyCluster represents a cluster of StrongDM proxies.
+	ProxyCluster NodeProxyClusterPtrOutput `pulumi:"proxyCluster"`
 	// Relay represents a StrongDM CLI installation running in relay mode.
 	Relay NodeRelayPtrOutput `pulumi:"relay"`
 }
@@ -112,6 +114,8 @@ func GetNode(ctx *pulumi.Context,
 type nodeState struct {
 	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateway *NodeGateway `pulumi:"gateway"`
+	// ProxyCluster represents a cluster of StrongDM proxies.
+	ProxyCluster *NodeProxyCluster `pulumi:"proxyCluster"`
 	// Relay represents a StrongDM CLI installation running in relay mode.
 	Relay *NodeRelay `pulumi:"relay"`
 }
@@ -119,6 +123,8 @@ type nodeState struct {
 type NodeState struct {
 	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateway NodeGatewayPtrInput
+	// ProxyCluster represents a cluster of StrongDM proxies.
+	ProxyCluster NodeProxyClusterPtrInput
 	// Relay represents a StrongDM CLI installation running in relay mode.
 	Relay NodeRelayPtrInput
 }
@@ -130,6 +136,8 @@ func (NodeState) ElementType() reflect.Type {
 type nodeArgs struct {
 	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateway *NodeGateway `pulumi:"gateway"`
+	// ProxyCluster represents a cluster of StrongDM proxies.
+	ProxyCluster *NodeProxyCluster `pulumi:"proxyCluster"`
 	// Relay represents a StrongDM CLI installation running in relay mode.
 	Relay *NodeRelay `pulumi:"relay"`
 }
@@ -138,6 +146,8 @@ type nodeArgs struct {
 type NodeArgs struct {
 	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateway NodeGatewayPtrInput
+	// ProxyCluster represents a cluster of StrongDM proxies.
+	ProxyCluster NodeProxyClusterPtrInput
 	// Relay represents a StrongDM CLI installation running in relay mode.
 	Relay NodeRelayPtrInput
 }
@@ -232,6 +242,11 @@ func (o NodeOutput) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 // Gateway represents a StrongDM CLI installation running in gateway mode.
 func (o NodeOutput) Gateway() NodeGatewayPtrOutput {
 	return o.ApplyT(func(v *Node) NodeGatewayPtrOutput { return v.Gateway }).(NodeGatewayPtrOutput)
+}
+
+// ProxyCluster represents a cluster of StrongDM proxies.
+func (o NodeOutput) ProxyCluster() NodeProxyClusterPtrOutput {
+	return o.ApplyT(func(v *Node) NodeProxyClusterPtrOutput { return v.ProxyCluster }).(NodeProxyClusterPtrOutput)
 }
 
 // Relay represents a StrongDM CLI installation running in relay mode.

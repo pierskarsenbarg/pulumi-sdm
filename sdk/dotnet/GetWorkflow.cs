@@ -16,24 +16,6 @@ namespace PiersKarsenbarg.Sdm
         /// Workflows are the collection of rules that define the resources to which access can be requested,
         ///  the users that can request that access, and the mechanism for approving those requests which can either
         ///  but automatic approval or a set of users authorized to approve the requests.
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Sdm = Pulumi.Sdm;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var workflowQuery = Sdm.GetWorkflow.Invoke(new()
-        ///     {
-        ///         AutoGrant = true,
-        ///         Name = "workflow example",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetWorkflowResult> InvokeAsync(GetWorkflowArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowResult>("sdm:index/getWorkflow:getWorkflow", args ?? new GetWorkflowArgs(), options.WithDefaults());
@@ -42,24 +24,6 @@ namespace PiersKarsenbarg.Sdm
         /// Workflows are the collection of rules that define the resources to which access can be requested,
         ///  the users that can request that access, and the mechanism for approving those requests which can either
         ///  but automatic approval or a set of users authorized to approve the requests.
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Sdm = Pulumi.Sdm;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var workflowQuery = Sdm.GetWorkflow.Invoke(new()
-        ///     {
-        ///         AutoGrant = true,
-        ///         Name = "workflow example",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetWorkflowResult> Invoke(GetWorkflowInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowResult>("sdm:index/getWorkflow:getWorkflow", args ?? new GetWorkflowInvokeArgs(), options.WithDefaults());

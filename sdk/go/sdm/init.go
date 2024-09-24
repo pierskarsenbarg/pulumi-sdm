@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PeeringGroupResource{}
 	case "sdm:index/policy:Policy":
 		r = &Policy{}
+	case "sdm:index/proxyClusterKey:ProxyClusterKey":
+		r = &ProxyClusterKey{}
 	case "sdm:index/remoteIdentity:RemoteIdentity":
 		r = &RemoteIdentity{}
 	case "sdm:index/resource:Resource":
@@ -155,6 +157,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"sdm",
 		"index/policy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"sdm",
+		"index/proxyClusterKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -251,6 +251,60 @@
                 "requireIdleness"
             ]
         },
+        "sdm:index/NodeProxyCluster:NodeProxyCluster": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The public hostname/port tuple at which the proxy cluster will be accessible to clients.\n",
+                    "willReplaceOnChanges": true
+                },
+                "maintenanceWindows": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/NodeProxyClusterMaintenanceWindow:NodeProxyClusterMaintenanceWindow"
+                    },
+                    "description": "Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "address"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "address",
+                        "name"
+                    ]
+                }
+            }
+        },
+        "sdm:index/NodeProxyClusterMaintenanceWindow:NodeProxyClusterMaintenanceWindow": {
+            "properties": {
+                "cronSchedule": {
+                    "type": "string"
+                },
+                "requireIdleness": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cronSchedule",
+                "requireIdleness"
+            ]
+        },
         "sdm:index/NodeRelay:NodeRelay": {
             "properties": {
                 "device": {
@@ -2605,6 +2659,151 @@
                         "name",
                         "portOverride",
                         "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceCouchbaseDatabase:ResourceCouchbaseDatabase": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "n1QlPort": {
+                    "type": "integer",
+                    "description": "The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "n1QlPort",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "n1QlPort",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceCouchbaseWebUi:ResourceCouchbaseWebUi": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "subdomain",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "name",
+                        "portOverride",
+                        "subdomain",
+                        "url"
                     ]
                 }
             }
@@ -8192,6 +8391,13 @@
                     },
                     "description": "Gateway represents a StrongDM CLI installation running in gateway mode.\n"
                 },
+                "proxyClusters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getNodeNodeProxyCluster:getNodeNodeProxyCluster"
+                    },
+                    "description": "ProxyCluster represents a cluster of StrongDM proxies.\n"
+                },
                 "relays": {
                     "type": "array",
                     "items": {
@@ -8203,6 +8409,7 @@
             "type": "object",
             "required": [
                 "gateways",
+                "proxyClusters",
                 "relays"
             ],
             "language": {
@@ -8273,6 +8480,57 @@
             }
         },
         "sdm:index/getNodeNodeGatewayMaintenanceWindow:getNodeNodeGatewayMaintenanceWindow": {
+            "properties": {
+                "cronSchedule": {
+                    "type": "string"
+                },
+                "requireIdleness": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cronSchedule",
+                "requireIdleness"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "sdm:index/getNodeNodeProxyCluster:getNodeNodeProxyCluster": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The public hostname/port tuple at which the proxy cluster will be accessible to clients.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Relay.\n"
+                },
+                "maintenanceWindows": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getNodeNodeProxyClusterMaintenanceWindow:getNodeNodeProxyClusterMaintenanceWindow"
+                    },
+                    "description": "Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getNodeNodeProxyClusterMaintenanceWindow:getNodeNodeProxyClusterMaintenanceWindow": {
             "properties": {
                 "cronSchedule": {
                     "type": "string"
@@ -8446,6 +8704,19 @@
                 "policy": {
                     "type": "string",
                     "description": "The content of the Policy, in Cedar policy language.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getProxyClusterKeyProxyClusterKey:getProxyClusterKeyProxyClusterKey": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Relay.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "The ID of the proxy cluster which this key authenticates to.\n"
                 }
             },
             "type": "object"
@@ -8652,6 +8923,18 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceCockroach:getResourceResourceCockroach"
+                    }
+                },
+                "couchbaseDatabases": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceCouchbaseDatabase:getResourceResourceCouchbaseDatabase"
+                    }
+                },
+                "couchbaseWebUis": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceCouchbaseWebUi:getResourceResourceCouchbaseWebUi"
                     }
                 },
                 "db2Is": {
@@ -9027,6 +9310,8 @@
                 "cituses",
                 "clustrixes",
                 "cockroaches",
+                "couchbaseDatabases",
+                "couchbaseWebUis",
                 "db2Is",
                 "db2Luws",
                 "documentDbHosts",
@@ -10987,6 +11272,124 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceCouchbaseDatabase:getResourceResourceCouchbaseDatabase": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "n1QlPort": {
+                    "type": "integer",
+                    "description": "The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceCouchbaseWebUi:getResourceResourceCouchbaseWebUi": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The base address of your website without the path.\n* kubernetes:\n"
                 },
                 "username": {
                     "type": "string",
@@ -16171,6 +16574,10 @@
                     "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
                     "description": "Gateway represents a StrongDM CLI installation running in gateway mode.\n"
                 },
+                "proxyCluster": {
+                    "$ref": "#/types/sdm:index/NodeProxyCluster:NodeProxyCluster",
+                    "description": "ProxyCluster represents a cluster of StrongDM proxies.\n"
+                },
                 "relay": {
                     "$ref": "#/types/sdm:index/NodeRelay:NodeRelay",
                     "description": "Relay represents a StrongDM CLI installation running in relay mode.\n"
@@ -16180,6 +16587,10 @@
                 "gateway": {
                     "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
                     "description": "Gateway represents a StrongDM CLI installation running in gateway mode.\n"
+                },
+                "proxyCluster": {
+                    "$ref": "#/types/sdm:index/NodeProxyCluster:NodeProxyCluster",
+                    "description": "ProxyCluster represents a cluster of StrongDM proxies.\n"
                 },
                 "relay": {
                     "$ref": "#/types/sdm:index/NodeRelay:NodeRelay",
@@ -16192,6 +16603,10 @@
                     "gateway": {
                         "$ref": "#/types/sdm:index/NodeGateway:NodeGateway",
                         "description": "Gateway represents a StrongDM CLI installation running in gateway mode.\n"
+                    },
+                    "proxyCluster": {
+                        "$ref": "#/types/sdm:index/NodeProxyCluster:NodeProxyCluster",
+                        "description": "ProxyCluster represents a cluster of StrongDM proxies.\n"
                     },
                     "relay": {
                         "$ref": "#/types/sdm:index/NodeRelay:NodeRelay",
@@ -16418,6 +16833,48 @@
                 "type": "object"
             }
         },
+        "sdm:index/proxyClusterKey:ProxyClusterKey": {
+            "description": "Proxy Cluster Keys are authentication keys for all proxies within a cluster.\n The proxies within a cluster share the same key. One cluster can have\n multiple keys in order to facilitate key rotation.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst testProxyClusterKey = new sdm.ProxyClusterKey(\"testProxyClusterKey\", {proxyClusterId: \"n-12345123\"});\n```\n```python\nimport pulumi\nimport pierskarsenbarg_pulumi_sdm as sdm\n\ntest_proxy_cluster_key = sdm.ProxyClusterKey(\"testProxyClusterKey\", proxy_cluster_id=\"n-12345123\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testProxyClusterKey = new Sdm.ProxyClusterKey(\"testProxyClusterKey\", new()\n    {\n        ProxyClusterId = \"n-12345123\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.NewProxyClusterKey(ctx, \"testProxyClusterKey\", \u0026sdm.ProxyClusterKeyArgs{\n\t\t\tProxyClusterId: pulumi.String(\"n-12345123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.ProxyClusterKey;\nimport com.pulumi.sdm.ProxyClusterKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testProxyClusterKey = new ProxyClusterKey(\"testProxyClusterKey\", ProxyClusterKeyArgs.builder()\n            .proxyClusterId(\"n-12345123\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testProxyClusterKey:\n    type: sdm:ProxyClusterKey\n    properties:\n      proxyClusterId: n-12345123\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA ProxyClusterKey can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/proxyClusterKey:ProxyClusterKey example gk-12345678\n```\n",
+            "properties": {
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "The ID of the proxy cluster which this key authenticates to.\n"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "secret": true
+                }
+            },
+            "required": [
+                "proxyClusterId",
+                "secretKey"
+            ],
+            "inputProperties": {
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "The ID of the proxy cluster which this key authenticates to.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "proxyClusterId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ProxyClusterKey resources.\n",
+                "properties": {
+                    "proxyClusterId": {
+                        "type": "string",
+                        "description": "The ID of the proxy cluster which this key authenticates to.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "secretKey": {
+                        "type": "string",
+                        "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "sdm:index/remoteIdentity:RemoteIdentity": {
             "description": "RemoteIdentities define the username to be used for a specific account\n when connecting to a remote resource using that group.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  user:\n    type: sdm:RemoteIdentity\n    properties:\n      id: i-0900909\n      username: user\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA RemoteIdentity can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/remoteIdentity:RemoteIdentity example i-12345678\n```\n",
             "properties": {
@@ -16564,6 +17021,12 @@
                 },
                 "cockroach": {
                     "$ref": "#/types/sdm:index/ResourceCockroach:ResourceCockroach"
+                },
+                "couchbaseDatabase": {
+                    "$ref": "#/types/sdm:index/ResourceCouchbaseDatabase:ResourceCouchbaseDatabase"
+                },
+                "couchbaseWebUi": {
+                    "$ref": "#/types/sdm:index/ResourceCouchbaseWebUi:ResourceCouchbaseWebUi"
                 },
                 "db2I": {
                     "$ref": "#/types/sdm:index/ResourceDb2I:ResourceDb2I"
@@ -16828,6 +17291,12 @@
                 },
                 "cockroach": {
                     "$ref": "#/types/sdm:index/ResourceCockroach:ResourceCockroach"
+                },
+                "couchbaseDatabase": {
+                    "$ref": "#/types/sdm:index/ResourceCouchbaseDatabase:ResourceCouchbaseDatabase"
+                },
+                "couchbaseWebUi": {
+                    "$ref": "#/types/sdm:index/ResourceCouchbaseWebUi:ResourceCouchbaseWebUi"
                 },
                 "db2I": {
                     "$ref": "#/types/sdm:index/ResourceDb2I:ResourceDb2I"
@@ -17094,6 +17563,12 @@
                     },
                     "cockroach": {
                         "$ref": "#/types/sdm:index/ResourceCockroach:ResourceCockroach"
+                    },
+                    "couchbaseDatabase": {
+                        "$ref": "#/types/sdm:index/ResourceCouchbaseDatabase:ResourceCouchbaseDatabase"
+                    },
+                    "couchbaseWebUi": {
+                        "$ref": "#/types/sdm:index/ResourceCouchbaseWebUi:ResourceCouchbaseWebUi"
                     },
                     "db2I": {
                         "$ref": "#/types/sdm:index/ResourceDb2I:ResourceDb2I"
@@ -17577,7 +18052,7 @@
             }
         },
         "sdm:index/workflow:Workflow": {
-            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pierskarsenbarg/sdm\";\n\nconst autoGrantWorkflow = new sdm.Workflow(\"autoGrantWorkflow\", {\n    autoGrant: true,\n    enabled: true,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\nconst manualApprovalWorkflow = new sdm.Workflow(\"manualApprovalWorkflow\", {\n    autoGrant: false,\n    accessRules: JSON.stringify([{\n        type: \"redis\",\n        tags: {\n            region: \"us-east\",\n        },\n    }]),\n});\n```\n```python\nimport pulumi\nimport json\nimport pierskarsenbarg_pulumi_sdm as sdm\n\nauto_grant_workflow = sdm.Workflow(\"autoGrantWorkflow\",\n    auto_grant=True,\n    enabled=True,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\nmanual_approval_workflow = sdm.Workflow(\"manualApprovalWorkflow\",\n    auto_grant=False,\n    access_rules=json.dumps([{\n        \"type\": \"redis\",\n        \"tags\": {\n            \"region\": \"us-east\",\n        },\n    }]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing System.Text.Json;\nusing Pulumi;\nusing Sdm = PiersKarsenbarg.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var autoGrantWorkflow = new Sdm.Workflow(\"autoGrantWorkflow\", new()\n    {\n        AutoGrant = true,\n        Enabled = true,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n    var manualApprovalWorkflow = new Sdm.Workflow(\"manualApprovalWorkflow\", new()\n    {\n        AutoGrant = false,\n        AccessRules = JsonSerializer.Serialize(new[]\n        {\n            new Dictionary\u003cstring, object?\u003e\n            {\n                [\"type\"] = \"redis\",\n                [\"tags\"] = new Dictionary\u003cstring, object?\u003e\n                {\n                    [\"region\"] = \"us-east\",\n                },\n            },\n        }),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"encoding/json\"\n\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttmpJSON0, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson0 := string(tmpJSON0)\n\t\t_, err = sdm.NewWorkflow(ctx, \"autoGrantWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tAutoGrant:   pulumi.Bool(true),\n\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\tAccessRules: pulumi.String(json0),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttmpJSON1, err := json.Marshal([]map[string]interface{}{\n\t\t\tmap[string]interface{}{\n\t\t\t\t\"type\": \"redis\",\n\t\t\t\t\"tags\": map[string]interface{}{\n\t\t\t\t\t\"region\": \"us-east\",\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tjson1 := string(tmpJSON1)\n\t\t_, err = sdm.NewWorkflow(ctx, \"manualApprovalWorkflow\", \u0026sdm.WorkflowArgs{\n\t\t\tAutoGrant:   pulumi.Bool(false),\n\t\t\tAccessRules: pulumi.String(json1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.Workflow;\nimport com.pulumi.sdm.WorkflowArgs;\nimport static com.pulumi.codegen.internal.Serialization.*;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var autoGrantWorkflow = new Workflow(\"autoGrantWorkflow\", WorkflowArgs.builder()\n            .autoGrant(true)\n            .enabled(true)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n        var manualApprovalWorkflow = new Workflow(\"manualApprovalWorkflow\", WorkflowArgs.builder()\n            .autoGrant(false)\n            .accessRules(serializeJson(\n                jsonArray(jsonObject(\n                    jsonProperty(\"type\", \"redis\"),\n                    jsonProperty(\"tags\", jsonObject(\n                        jsonProperty(\"region\", \"us-east\")\n                    ))\n                ))))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  autoGrantWorkflow:\n    type: sdm:Workflow\n    properties:\n      autoGrant: true\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n  manualApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      autoGrant: false\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Workflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflow:Workflow example aw-12345678\n```\n",
+            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  autoGrantApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      approvalMode: automatic\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n  manualApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      approvalMode: manual\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Workflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflow:Workflow example aw-12345678\n```\n",
             "properties": {
                 "accessRules": {
                     "type": "string",
@@ -18653,6 +19128,55 @@
                 ]
             }
         },
+        "sdm:index/getProxyClusterKey:getProxyClusterKey": {
+            "description": "Proxy Cluster Keys are authentication keys for all proxies within a cluster.\n The proxies within a cluster share the same key. One cluster can have\n multiple keys in order to facilitate key rotation.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst proxyClusterKeyQuery = sdm.getProxyClusterKey({\n    proxyClusterId: \"n-233332245\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nproxy_cluster_key_query = sdm.get_proxy_cluster_key(proxy_cluster_id=\"n-233332245\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var proxyClusterKeyQuery = Sdm.GetProxyClusterKey.Invoke(new()\n    {\n        ProxyClusterId = \"n-233332245\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupProxyClusterKey(ctx, \u0026sdm.LookupProxyClusterKeyArgs{\n\t\t\tProxyClusterId: pulumi.StringRef(\"n-233332245\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetProxyClusterKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var proxyClusterKeyQuery = SdmFunctions.getProxyClusterKey(GetProxyClusterKeyArgs.builder()\n            .proxyClusterId(\"n-233332245\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  proxyClusterKeyQuery:\n    fn::invoke:\n      Function: sdm:getProxyClusterKey\n      Arguments:\n        proxyClusterId: n-233332245\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getProxyClusterKey.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Relay.\n"
+                    },
+                    "proxyClusterId": {
+                        "type": "string",
+                        "description": "The ID of the proxy cluster which this key authenticates to.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getProxyClusterKey.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the Relay.\n"
+                    },
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "a list of strings of ids of data sources that match the given arguments.\n"
+                    },
+                    "proxyClusterId": {
+                        "type": "string",
+                        "description": "The ID of the proxy cluster which this key authenticates to.\n"
+                    },
+                    "proxyClusterKeys": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/sdm:index/getProxyClusterKeyProxyClusterKey:getProxyClusterKeyProxyClusterKey"
+                        },
+                        "description": "A list where each element has the following attributes:\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "ids",
+                    "proxyClusterKeys"
+                ]
+            }
+        },
         "sdm:index/getRemoteIdentity:getRemoteIdentity": {
             "description": "RemoteIdentities define the username to be used for a specific account\n when connecting to a remote resource using that group.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst user = sdm.getRemoteIdentity({\n    id: \"i-0900909\",\n    username: \"user\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nuser = sdm.get_remote_identity(id=\"i-0900909\",\n    username=\"user\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = Sdm.GetRemoteIdentity.Invoke(new()\n    {\n        Id = \"i-0900909\",\n        Username = \"user\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupRemoteIdentity(ctx, \u0026sdm.LookupRemoteIdentityArgs{\n\t\t\tId:       pulumi.StringRef(\"i-0900909\"),\n\t\t\tUsername: pulumi.StringRef(\"user\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetRemoteIdentityArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var user = SdmFunctions.getRemoteIdentity(GetRemoteIdentityArgs.builder()\n            .id(\"i-0900909\")\n            .username(\"user\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  user:\n    fn::invoke:\n      Function: sdm:getRemoteIdentity\n      Arguments:\n        id: i-0900909\n        username: user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -19031,7 +19555,7 @@
             }
         },
         "sdm:index/getWorkflow:getWorkflow": {
-            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as sdm from \"@pulumi/sdm\";\n\nconst workflowQuery = sdm.getWorkflow({\n    autoGrant: true,\n    name: \"workflow example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_sdm as sdm\n\nworkflow_query = sdm.get_workflow(auto_grant=True,\n    name=\"workflow example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Sdm = Pulumi.Sdm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var workflowQuery = Sdm.GetWorkflow.Invoke(new()\n    {\n        AutoGrant = true,\n        Name = \"workflow example\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := sdm.LookupWorkflow(ctx, \u0026sdm.LookupWorkflowArgs{\n\t\t\tAutoGrant: pulumi.BoolRef(true),\n\t\t\tName:      pulumi.StringRef(\"workflow example\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowQuery = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()\n            .autoGrant(true)\n            .name(\"workflow example\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowQuery:\n    fn::invoke:\n      Function: sdm:getWorkflow\n      Arguments:\n        autoGrant: true\n        name: workflow example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.sdm.SdmFunctions;\nimport com.pulumi.sdm.inputs.GetWorkflowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var workflowQuery = SdmFunctions.getWorkflow(GetWorkflowArgs.builder()\n            .approvalMode(\"automatic\")\n            .name(\"workflow example\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  workflowQuery:\n    fn::invoke:\n      Function: sdm:getWorkflow\n      Arguments:\n        approvalMode: automatic\n        name: workflow example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflow.\n",
                 "properties": {

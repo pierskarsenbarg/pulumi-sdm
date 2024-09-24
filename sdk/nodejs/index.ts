@@ -95,6 +95,11 @@ export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
 export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
 
+export { GetProxyClusterKeyArgs, GetProxyClusterKeyResult, GetProxyClusterKeyOutputArgs } from "./getProxyClusterKey";
+export const getProxyClusterKey: typeof import("./getProxyClusterKey").getProxyClusterKey = null as any;
+export const getProxyClusterKeyOutput: typeof import("./getProxyClusterKey").getProxyClusterKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getProxyClusterKey","getProxyClusterKeyOutput"], () => require("./getProxyClusterKey"));
+
 export { GetRemoteIdentityArgs, GetRemoteIdentityResult, GetRemoteIdentityOutputArgs } from "./getRemoteIdentity";
 export const getRemoteIdentity: typeof import("./getRemoteIdentity").getRemoteIdentity = null as any;
 export const getRemoteIdentityOutput: typeof import("./getRemoteIdentity").getRemoteIdentityOutput = null as any;
@@ -185,6 +190,11 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
+export { ProxyClusterKeyArgs, ProxyClusterKeyState } from "./proxyClusterKey";
+export type ProxyClusterKey = import("./proxyClusterKey").ProxyClusterKey;
+export const ProxyClusterKey: typeof import("./proxyClusterKey").ProxyClusterKey = null as any;
+utilities.lazyLoad(exports, ["ProxyClusterKey"], () => require("./proxyClusterKey"));
+
 export { RemoteIdentityArgs, RemoteIdentityState } from "./remoteIdentity";
 export type RemoteIdentity = import("./remoteIdentity").RemoteIdentity;
 export const RemoteIdentity: typeof import("./remoteIdentity").RemoteIdentity = null as any;
@@ -260,6 +270,8 @@ const _module = {
                 return new PeeringGroupResource(name, <any>undefined, { urn })
             case "sdm:index/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
+            case "sdm:index/proxyClusterKey:ProxyClusterKey":
+                return new ProxyClusterKey(name, <any>undefined, { urn })
             case "sdm:index/remoteIdentity:RemoteIdentity":
                 return new RemoteIdentity(name, <any>undefined, { urn })
             case "sdm:index/resource:Resource":
@@ -292,6 +304,7 @@ pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupNode", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupPeer", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/peeringGroupResource", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/policy", _module)
+pulumi.runtime.registerResourceModule("sdm", "index/proxyClusterKey", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/remoteIdentity", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/resource", _module)
 pulumi.runtime.registerResourceModule("sdm", "index/role", _module)

@@ -15,6 +15,8 @@ __all__ = [
     'AccountUser',
     'NodeGateway',
     'NodeGatewayMaintenanceWindow',
+    'NodeProxyCluster',
+    'NodeProxyClusterMaintenanceWindow',
     'NodeRelay',
     'NodeRelayMaintenanceWindow',
     'ResourceAks',
@@ -45,6 +47,8 @@ __all__ = [
     'ResourceCitus',
     'ResourceClustrix',
     'ResourceCockroach',
+    'ResourceCouchbaseDatabase',
+    'ResourceCouchbaseWebUi',
     'ResourceDb2I',
     'ResourceDb2Luw',
     'ResourceDocumentDbHost',
@@ -138,6 +142,8 @@ __all__ = [
     'GetNodeNodeResult',
     'GetNodeNodeGatewayResult',
     'GetNodeNodeGatewayMaintenanceWindowResult',
+    'GetNodeNodeProxyClusterResult',
+    'GetNodeNodeProxyClusterMaintenanceWindowResult',
     'GetNodeNodeRelayResult',
     'GetNodeNodeRelayMaintenanceWindowResult',
     'GetPeeringGroupNodePeeringGroupNodeResult',
@@ -145,6 +151,7 @@ __all__ = [
     'GetPeeringGroupPeeringGroupResult',
     'GetPeeringGroupResourcePeeringGroupResourceResult',
     'GetPolicyPolicyResult',
+    'GetProxyClusterKeyProxyClusterKeyResult',
     'GetRemoteIdentityGroupRemoteIdentityGroupResult',
     'GetRemoteIdentityRemoteIdentityResult',
     'GetResourceResourceResult',
@@ -176,6 +183,8 @@ __all__ = [
     'GetResourceResourceCitusResult',
     'GetResourceResourceClustrixResult',
     'GetResourceResourceCockroachResult',
+    'GetResourceResourceCouchbaseDatabaseResult',
+    'GetResourceResourceCouchbaseWebUiResult',
     'GetResourceResourceDb2IResult',
     'GetResourceResourceDb2LuwResult',
     'GetResourceResourceDocumentDbHostResult',
@@ -602,6 +611,115 @@ class NodeGatewayMaintenanceWindow(dict):
 
     def get(self, key: str, default = None) -> Any:
         NodeGatewayMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_schedule: str,
+                 require_idleness: bool):
+        pulumi.set(__self__, "cron_schedule", cron_schedule)
+        pulumi.set(__self__, "require_idleness", require_idleness)
+
+    @property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> str:
+        return pulumi.get(self, "cron_schedule")
+
+    @property
+    @pulumi.getter(name="requireIdleness")
+    def require_idleness(self) -> bool:
+        return pulumi.get(self, "require_idleness")
+
+
+@pulumi.output_type
+class NodeProxyCluster(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceWindows":
+            suggest = "maintenance_windows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeProxyCluster. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeProxyCluster.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeProxyCluster.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: str,
+                 maintenance_windows: Optional[Sequence['outputs.NodeProxyClusterMaintenanceWindow']] = None,
+                 name: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str address: The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+        :param Sequence['NodeProxyClusterMaintenanceWindowArgs'] maintenance_windows: Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+        :param str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "address", address)
+        if maintenance_windows is not None:
+            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def address(self) -> str:
+        """
+        The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[Sequence['outputs.NodeProxyClusterMaintenanceWindow']]:
+        """
+        Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class NodeProxyClusterMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronSchedule":
+            suggest = "cron_schedule"
+        elif key == "requireIdleness":
+            suggest = "require_idleness"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeProxyClusterMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeProxyClusterMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeProxyClusterMaintenanceWindow.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -6346,6 +6464,342 @@ class ResourceCockroach(dict):
         Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         """
         return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ResourceCouchbaseDatabase(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "n1QlPort":
+            suggest = "n1_ql_port"
+        elif key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+        elif key == "tlsRequired":
+            suggest = "tls_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceCouchbaseDatabase. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceCouchbaseDatabase.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceCouchbaseDatabase.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname: str,
+                 n1_ql_port: int,
+                 name: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 tls_required: Optional[bool] = None,
+                 username: Optional[str] = None):
+        """
+        :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param int n1_ql_port: The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+        :param str name: Unique human-readable name of the Resource.
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str password: The password to authenticate with.
+        :param int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param bool tls_required: If set, TLS must be used to connect to this resource.
+        :param str username: The username to authenticate with.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "n1_ql_port", n1_ql_port)
+        pulumi.set(__self__, "name", name)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tls_required is not None:
+            pulumi.set(__self__, "tls_required", tls_required)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter(name="n1QlPort")
+    def n1_ql_port(self) -> int:
+        """
+        The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+        """
+        return pulumi.get(self, "n1_ql_port")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tlsRequired")
+    def tls_required(self) -> Optional[bool]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
+        return pulumi.get(self, "tls_required")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ResourceCouchbaseWebUi(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceCouchbaseWebUi. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceCouchbaseWebUi.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceCouchbaseWebUi.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 subdomain: str,
+                 url: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 username: Optional[str] = None):
+        """
+        :param str name: Unique human-readable name of the Resource.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param str url: The base address of your website without the path.
+               * kubernetes:
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str password: The password to authenticate with.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str username: The username to authenticate with.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subdomain", subdomain)
+        pulumi.set(__self__, "url", url)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> str:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The base address of your website without the path.
+        * kubernetes:
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
 
     @property
     @pulumi.getter
@@ -19781,12 +20235,15 @@ class GetIdentitySetIdentitySetResult(dict):
 class GetNodeNodeResult(dict):
     def __init__(__self__, *,
                  gateways: Sequence['outputs.GetNodeNodeGatewayResult'],
+                 proxy_clusters: Sequence['outputs.GetNodeNodeProxyClusterResult'],
                  relays: Sequence['outputs.GetNodeNodeRelayResult']):
         """
         :param Sequence['GetNodeNodeGatewayArgs'] gateways: Gateway represents a StrongDM CLI installation running in gateway mode.
+        :param Sequence['GetNodeNodeProxyClusterArgs'] proxy_clusters: ProxyCluster represents a cluster of StrongDM proxies.
         :param Sequence['GetNodeNodeRelayArgs'] relays: Relay represents a StrongDM CLI installation running in relay mode.
         """
         pulumi.set(__self__, "gateways", gateways)
+        pulumi.set(__self__, "proxy_clusters", proxy_clusters)
         pulumi.set(__self__, "relays", relays)
 
     @property
@@ -19796,6 +20253,14 @@ class GetNodeNodeResult(dict):
         Gateway represents a StrongDM CLI installation running in gateway mode.
         """
         return pulumi.get(self, "gateways")
+
+    @property
+    @pulumi.getter(name="proxyClusters")
+    def proxy_clusters(self) -> Sequence['outputs.GetNodeNodeProxyClusterResult']:
+        """
+        ProxyCluster represents a cluster of StrongDM proxies.
+        """
+        return pulumi.get(self, "proxy_clusters")
 
     @property
     @pulumi.getter
@@ -19932,6 +20397,92 @@ class GetNodeNodeGatewayResult(dict):
 
 @pulumi.output_type
 class GetNodeNodeGatewayMaintenanceWindowResult(dict):
+    def __init__(__self__, *,
+                 cron_schedule: str,
+                 require_idleness: bool):
+        pulumi.set(__self__, "cron_schedule", cron_schedule)
+        pulumi.set(__self__, "require_idleness", require_idleness)
+
+    @property
+    @pulumi.getter(name="cronSchedule")
+    def cron_schedule(self) -> str:
+        return pulumi.get(self, "cron_schedule")
+
+    @property
+    @pulumi.getter(name="requireIdleness")
+    def require_idleness(self) -> bool:
+        return pulumi.get(self, "require_idleness")
+
+
+@pulumi.output_type
+class GetNodeNodeProxyClusterResult(dict):
+    def __init__(__self__, *,
+                 address: Optional[str] = None,
+                 id: Optional[str] = None,
+                 maintenance_windows: Optional[Sequence['outputs.GetNodeNodeProxyClusterMaintenanceWindowResult']] = None,
+                 name: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str address: The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+        :param str id: Unique identifier of the Relay.
+        :param Sequence['GetNodeNodeProxyClusterMaintenanceWindowArgs'] maintenance_windows: Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+        :param str name: Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if maintenance_windows is not None:
+            pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        """
+        The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Relay.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="maintenanceWindows")
+    def maintenance_windows(self) -> Optional[Sequence['outputs.GetNodeNodeProxyClusterMaintenanceWindowResult']]:
+        """
+        Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+        """
+        return pulumi.get(self, "maintenance_windows")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetNodeNodeProxyClusterMaintenanceWindowResult(dict):
     def __init__(__self__, *,
                  cron_schedule: str,
                  require_idleness: bool):
@@ -20284,6 +20835,37 @@ class GetPolicyPolicyResult(dict):
 
 
 @pulumi.output_type
+class GetProxyClusterKeyProxyClusterKeyResult(dict):
+    def __init__(__self__, *,
+                 id: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None):
+        """
+        :param str id: Unique identifier of the Relay.
+        :param str proxy_cluster_id: The ID of the proxy cluster which this key authenticates to.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Relay.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        The ID of the proxy cluster which this key authenticates to.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+
+@pulumi.output_type
 class GetRemoteIdentityGroupRemoteIdentityGroupResult(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
@@ -20400,6 +20982,8 @@ class GetResourceResourceResult(dict):
                  cituses: Sequence['outputs.GetResourceResourceCitusResult'],
                  clustrixes: Sequence['outputs.GetResourceResourceClustrixResult'],
                  cockroaches: Sequence['outputs.GetResourceResourceCockroachResult'],
+                 couchbase_databases: Sequence['outputs.GetResourceResourceCouchbaseDatabaseResult'],
+                 couchbase_web_uis: Sequence['outputs.GetResourceResourceCouchbaseWebUiResult'],
                  db2_is: Sequence['outputs.GetResourceResourceDb2IResult'],
                  db2_luws: Sequence['outputs.GetResourceResourceDb2LuwResult'],
                  document_db_hosts: Sequence['outputs.GetResourceResourceDocumentDbHostResult'],
@@ -20485,6 +21069,8 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "cituses", cituses)
         pulumi.set(__self__, "clustrixes", clustrixes)
         pulumi.set(__self__, "cockroaches", cockroaches)
+        pulumi.set(__self__, "couchbase_databases", couchbase_databases)
+        pulumi.set(__self__, "couchbase_web_uis", couchbase_web_uis)
         pulumi.set(__self__, "db2_is", db2_is)
         pulumi.set(__self__, "db2_luws", db2_luws)
         pulumi.set(__self__, "document_db_hosts", document_db_hosts)
@@ -20682,6 +21268,16 @@ class GetResourceResourceResult(dict):
     @pulumi.getter
     def cockroaches(self) -> Sequence['outputs.GetResourceResourceCockroachResult']:
         return pulumi.get(self, "cockroaches")
+
+    @property
+    @pulumi.getter(name="couchbaseDatabases")
+    def couchbase_databases(self) -> Sequence['outputs.GetResourceResourceCouchbaseDatabaseResult']:
+        return pulumi.get(self, "couchbase_databases")
+
+    @property
+    @pulumi.getter(name="couchbaseWebUis")
+    def couchbase_web_uis(self) -> Sequence['outputs.GetResourceResourceCouchbaseWebUiResult']:
+        return pulumi.get(self, "couchbase_web_uis")
 
     @property
     @pulumi.getter(name="db2Is")
@@ -26107,6 +26703,322 @@ class GetResourceResourceCockroachResult(dict):
         Tags is a map of key, value pairs.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetResourceResourceCouchbaseDatabaseResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 id: Optional[str] = None,
+                 n1_ql_port: Optional[int] = None,
+                 name: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 tls_required: Optional[bool] = None,
+                 username: Optional[str] = None):
+        """
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param str id: Unique identifier of the Resource.
+        :param int n1_ql_port: The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+        :param str name: Unique human-readable name of the Resource.
+        :param str password: The password to authenticate with.
+        :param int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param bool tls_required: If set, TLS must be used to connect to this resource.
+        :param str username: The username to authenticate with.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if n1_ql_port is not None:
+            pulumi.set(__self__, "n1_ql_port", n1_ql_port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tls_required is not None:
+            pulumi.set(__self__, "tls_required", tls_required)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="n1QlPort")
+    def n1_ql_port(self) -> Optional[int]:
+        """
+        The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+        """
+        return pulumi.get(self, "n1_ql_port")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tlsRequired")
+    def tls_required(self) -> Optional[bool]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
+        return pulumi.get(self, "tls_required")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to authenticate with.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetResourceResourceCouchbaseWebUiResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 url: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param str password: The password to authenticate with.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str url: The base address of your website without the path.
+               * kubernetes:
+        :param str username: The username to authenticate with.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        The password to authenticate with.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The base address of your website without the path.
+        * kubernetes:
+        """
+        return pulumi.get(self, "url")
 
     @property
     @pulumi.getter

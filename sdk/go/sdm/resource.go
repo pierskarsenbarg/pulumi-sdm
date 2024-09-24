@@ -50,6 +50,8 @@ type Resource struct {
 	Citus                                     ResourceCitusPtrOutput                                     `pulumi:"citus"`
 	Clustrix                                  ResourceClustrixPtrOutput                                  `pulumi:"clustrix"`
 	Cockroach                                 ResourceCockroachPtrOutput                                 `pulumi:"cockroach"`
+	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrOutput                         `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrOutput                            `pulumi:"couchbaseWebUi"`
 	Db2I                                      ResourceDb2IPtrOutput                                      `pulumi:"db2I"`
 	Db2Luw                                    ResourceDb2LuwPtrOutput                                    `pulumi:"db2Luw"`
 	DocumentDbHost                            ResourceDocumentDbHostPtrOutput                            `pulumi:"documentDbHost"`
@@ -174,6 +176,8 @@ type resourceState struct {
 	Citus                                     *ResourceCitus                                     `pulumi:"citus"`
 	Clustrix                                  *ResourceClustrix                                  `pulumi:"clustrix"`
 	Cockroach                                 *ResourceCockroach                                 `pulumi:"cockroach"`
+	CouchbaseDatabase                         *ResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi                            *ResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUi"`
 	Db2I                                      *ResourceDb2I                                      `pulumi:"db2I"`
 	Db2Luw                                    *ResourceDb2Luw                                    `pulumi:"db2Luw"`
 	DocumentDbHost                            *ResourceDocumentDbHost                            `pulumi:"documentDbHost"`
@@ -269,6 +273,8 @@ type ResourceState struct {
 	Citus                                     ResourceCitusPtrInput
 	Clustrix                                  ResourceClustrixPtrInput
 	Cockroach                                 ResourceCockroachPtrInput
+	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrInput
+	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrInput
 	Db2I                                      ResourceDb2IPtrInput
 	Db2Luw                                    ResourceDb2LuwPtrInput
 	DocumentDbHost                            ResourceDocumentDbHostPtrInput
@@ -368,6 +374,8 @@ type resourceArgs struct {
 	Citus                                     *ResourceCitus                                     `pulumi:"citus"`
 	Clustrix                                  *ResourceClustrix                                  `pulumi:"clustrix"`
 	Cockroach                                 *ResourceCockroach                                 `pulumi:"cockroach"`
+	CouchbaseDatabase                         *ResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabase"`
+	CouchbaseWebUi                            *ResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUi"`
 	Db2I                                      *ResourceDb2I                                      `pulumi:"db2I"`
 	Db2Luw                                    *ResourceDb2Luw                                    `pulumi:"db2Luw"`
 	DocumentDbHost                            *ResourceDocumentDbHost                            `pulumi:"documentDbHost"`
@@ -464,6 +472,8 @@ type ResourceArgs struct {
 	Citus                                     ResourceCitusPtrInput
 	Clustrix                                  ResourceClustrixPtrInput
 	Cockroach                                 ResourceCockroachPtrInput
+	CouchbaseDatabase                         ResourceCouchbaseDatabasePtrInput
+	CouchbaseWebUi                            ResourceCouchbaseWebUiPtrInput
 	Db2I                                      ResourceDb2IPtrInput
 	Db2Luw                                    ResourceDb2LuwPtrInput
 	DocumentDbHost                            ResourceDocumentDbHostPtrInput
@@ -731,6 +741,14 @@ func (o ResourceOutput) Clustrix() ResourceClustrixPtrOutput {
 
 func (o ResourceOutput) Cockroach() ResourceCockroachPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceCockroachPtrOutput { return v.Cockroach }).(ResourceCockroachPtrOutput)
+}
+
+func (o ResourceOutput) CouchbaseDatabase() ResourceCouchbaseDatabasePtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceCouchbaseDatabasePtrOutput { return v.CouchbaseDatabase }).(ResourceCouchbaseDatabasePtrOutput)
+}
+
+func (o ResourceOutput) CouchbaseWebUi() ResourceCouchbaseWebUiPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceCouchbaseWebUiPtrOutput { return v.CouchbaseWebUi }).(ResourceCouchbaseWebUiPtrOutput)
 }
 
 func (o ResourceOutput) Db2I() ResourceDb2IPtrOutput {

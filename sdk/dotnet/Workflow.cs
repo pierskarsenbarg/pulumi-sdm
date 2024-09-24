@@ -14,54 +14,6 @@ namespace PiersKarsenbarg.Sdm
     /// Workflows are the collection of rules that define the resources to which access can be requested,
     ///  the users that can request that access, and the mechanism for approving those requests which can either
     ///  but automatic approval or a set of users authorized to approve the requests.
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Sdm = PiersKarsenbarg.Sdm;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var autoGrantWorkflow = new Sdm.Workflow("autoGrantWorkflow", new()
-    ///     {
-    ///         AutoGrant = true,
-    ///         Enabled = true,
-    ///         AccessRules = JsonSerializer.Serialize(new[]
-    ///         {
-    ///             new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["type"] = "redis",
-    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["region"] = "us-east",
-    ///                 },
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    ///     var manualApprovalWorkflow = new Sdm.Workflow("manualApprovalWorkflow", new()
-    ///     {
-    ///         AutoGrant = false,
-    ///         AccessRules = JsonSerializer.Serialize(new[]
-    ///         {
-    ///             new Dictionary&lt;string, object?&gt;
-    ///             {
-    ///                 ["type"] = "redis",
-    ///                 ["tags"] = new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["region"] = "us-east",
-    ///                 },
-    ///             },
-    ///         }),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// This resource can be imported using the import command.
-    /// 
     /// ## Import
     /// 
     /// A Workflow can be imported using the id, e.g.,

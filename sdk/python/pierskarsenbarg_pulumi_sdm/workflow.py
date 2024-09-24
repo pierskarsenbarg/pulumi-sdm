@@ -268,33 +268,6 @@ class Workflow(pulumi.CustomResource):
         Workflows are the collection of rules that define the resources to which access can be requested,
          the users that can request that access, and the mechanism for approving those requests which can either
          but automatic approval or a set of users authorized to approve the requests.
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pierskarsenbarg_pulumi_sdm as sdm
-
-        auto_grant_workflow = sdm.Workflow("autoGrantWorkflow",
-            auto_grant=True,
-            enabled=True,
-            access_rules=json.dumps([{
-                "type": "redis",
-                "tags": {
-                    "region": "us-east",
-                },
-            }]))
-        manual_approval_workflow = sdm.Workflow("manualApprovalWorkflow",
-            auto_grant=False,
-            access_rules=json.dumps([{
-                "type": "redis",
-                "tags": {
-                    "region": "us-east",
-                },
-            }]))
-        ```
-        This resource can be imported using the import command.
-
         ## Import
 
         A Workflow can be imported using the id, e.g.,
@@ -323,33 +296,6 @@ class Workflow(pulumi.CustomResource):
         Workflows are the collection of rules that define the resources to which access can be requested,
          the users that can request that access, and the mechanism for approving those requests which can either
          but automatic approval or a set of users authorized to approve the requests.
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pierskarsenbarg_pulumi_sdm as sdm
-
-        auto_grant_workflow = sdm.Workflow("autoGrantWorkflow",
-            auto_grant=True,
-            enabled=True,
-            access_rules=json.dumps([{
-                "type": "redis",
-                "tags": {
-                    "region": "us-east",
-                },
-            }]))
-        manual_approval_workflow = sdm.Workflow("manualApprovalWorkflow",
-            auto_grant=False,
-            access_rules=json.dumps([{
-                "type": "redis",
-                "tags": {
-                    "region": "us-east",
-                },
-            }]))
-        ```
-        This resource can be imported using the import command.
-
         ## Import
 
         A Workflow can be imported using the id, e.g.,

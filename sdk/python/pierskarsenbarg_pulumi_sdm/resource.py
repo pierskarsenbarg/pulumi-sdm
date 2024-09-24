@@ -44,6 +44,8 @@ class ResourceArgs:
                  citus: Optional[pulumi.Input['ResourceCitusArgs']] = None,
                  clustrix: Optional[pulumi.Input['ResourceClustrixArgs']] = None,
                  cockroach: Optional[pulumi.Input['ResourceCockroachArgs']] = None,
+                 couchbase_database: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']] = None,
+                 couchbase_web_ui: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']] = None,
                  db2_i: Optional[pulumi.Input['ResourceDb2IArgs']] = None,
                  db2_luw: Optional[pulumi.Input['ResourceDb2LuwArgs']] = None,
                  document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
@@ -167,6 +169,10 @@ class ResourceArgs:
             pulumi.set(__self__, "clustrix", clustrix)
         if cockroach is not None:
             pulumi.set(__self__, "cockroach", cockroach)
+        if couchbase_database is not None:
+            pulumi.set(__self__, "couchbase_database", couchbase_database)
+        if couchbase_web_ui is not None:
+            pulumi.set(__self__, "couchbase_web_ui", couchbase_web_ui)
         if db2_i is not None:
             pulumi.set(__self__, "db2_i", db2_i)
         if db2_luw is not None:
@@ -536,6 +542,24 @@ class ResourceArgs:
     @cockroach.setter
     def cockroach(self, value: Optional[pulumi.Input['ResourceCockroachArgs']]):
         pulumi.set(self, "cockroach", value)
+
+    @property
+    @pulumi.getter(name="couchbaseDatabase")
+    def couchbase_database(self) -> Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']]:
+        return pulumi.get(self, "couchbase_database")
+
+    @couchbase_database.setter
+    def couchbase_database(self, value: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']]):
+        pulumi.set(self, "couchbase_database", value)
+
+    @property
+    @pulumi.getter(name="couchbaseWebUi")
+    def couchbase_web_ui(self) -> Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']]:
+        return pulumi.get(self, "couchbase_web_ui")
+
+    @couchbase_web_ui.setter
+    def couchbase_web_ui(self, value: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']]):
+        pulumi.set(self, "couchbase_web_ui", value)
 
     @property
     @pulumi.getter(name="db2I")
@@ -1100,6 +1124,8 @@ class _ResourceState:
                  citus: Optional[pulumi.Input['ResourceCitusArgs']] = None,
                  clustrix: Optional[pulumi.Input['ResourceClustrixArgs']] = None,
                  cockroach: Optional[pulumi.Input['ResourceCockroachArgs']] = None,
+                 couchbase_database: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']] = None,
+                 couchbase_web_ui: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']] = None,
                  db2_i: Optional[pulumi.Input['ResourceDb2IArgs']] = None,
                  db2_luw: Optional[pulumi.Input['ResourceDb2LuwArgs']] = None,
                  document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
@@ -1223,6 +1249,10 @@ class _ResourceState:
             pulumi.set(__self__, "clustrix", clustrix)
         if cockroach is not None:
             pulumi.set(__self__, "cockroach", cockroach)
+        if couchbase_database is not None:
+            pulumi.set(__self__, "couchbase_database", couchbase_database)
+        if couchbase_web_ui is not None:
+            pulumi.set(__self__, "couchbase_web_ui", couchbase_web_ui)
         if db2_i is not None:
             pulumi.set(__self__, "db2_i", db2_i)
         if db2_luw is not None:
@@ -1592,6 +1622,24 @@ class _ResourceState:
     @cockroach.setter
     def cockroach(self, value: Optional[pulumi.Input['ResourceCockroachArgs']]):
         pulumi.set(self, "cockroach", value)
+
+    @property
+    @pulumi.getter(name="couchbaseDatabase")
+    def couchbase_database(self) -> Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']]:
+        return pulumi.get(self, "couchbase_database")
+
+    @couchbase_database.setter
+    def couchbase_database(self, value: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']]):
+        pulumi.set(self, "couchbase_database", value)
+
+    @property
+    @pulumi.getter(name="couchbaseWebUi")
+    def couchbase_web_ui(self) -> Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']]:
+        return pulumi.get(self, "couchbase_web_ui")
+
+    @couchbase_web_ui.setter
+    def couchbase_web_ui(self, value: Optional[pulumi.Input['ResourceCouchbaseWebUiArgs']]):
+        pulumi.set(self, "couchbase_web_ui", value)
 
     @property
     @pulumi.getter(name="db2I")
@@ -2158,6 +2206,8 @@ class Resource(pulumi.CustomResource):
                  citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
                  clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
                  cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
+                 couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
+                 couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
                  db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
                  db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
                  document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
@@ -2293,6 +2343,8 @@ class Resource(pulumi.CustomResource):
                  citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
                  clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
                  cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
+                 couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
+                 couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
                  db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
                  db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
                  document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
@@ -2387,6 +2439,8 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["citus"] = citus
             __props__.__dict__["clustrix"] = clustrix
             __props__.__dict__["cockroach"] = cockroach
+            __props__.__dict__["couchbase_database"] = couchbase_database
+            __props__.__dict__["couchbase_web_ui"] = couchbase_web_ui
             __props__.__dict__["db2_i"] = db2_i
             __props__.__dict__["db2_luw"] = db2_luw
             __props__.__dict__["document_db_host"] = document_db_host
@@ -2482,6 +2536,8 @@ class Resource(pulumi.CustomResource):
             citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
             clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
             cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
+            couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
+            couchbase_web_ui: Optional[pulumi.Input[Union['ResourceCouchbaseWebUiArgs', 'ResourceCouchbaseWebUiArgsDict']]] = None,
             db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
             db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
             document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
@@ -2586,6 +2642,8 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["citus"] = citus
         __props__.__dict__["clustrix"] = clustrix
         __props__.__dict__["cockroach"] = cockroach
+        __props__.__dict__["couchbase_database"] = couchbase_database
+        __props__.__dict__["couchbase_web_ui"] = couchbase_web_ui
         __props__.__dict__["db2_i"] = db2_i
         __props__.__dict__["db2_luw"] = db2_luw
         __props__.__dict__["document_db_host"] = document_db_host
@@ -2787,6 +2845,16 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter
     def cockroach(self) -> pulumi.Output[Optional['outputs.ResourceCockroach']]:
         return pulumi.get(self, "cockroach")
+
+    @property
+    @pulumi.getter(name="couchbaseDatabase")
+    def couchbase_database(self) -> pulumi.Output[Optional['outputs.ResourceCouchbaseDatabase']]:
+        return pulumi.get(self, "couchbase_database")
+
+    @property
+    @pulumi.getter(name="couchbaseWebUi")
+    def couchbase_web_ui(self) -> pulumi.Output[Optional['outputs.ResourceCouchbaseWebUi']]:
+        return pulumi.get(self, "couchbase_web_ui")
 
     @property
     @pulumi.getter(name="db2I")
