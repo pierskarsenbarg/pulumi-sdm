@@ -19,6 +19,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNodeNodeGatewayResult> Gateways;
         /// <summary>
+        /// ProxyCluster represents a cluster of StrongDM proxies.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNodeNodeProxyClusterResult> ProxyClusters;
+        /// <summary>
         /// Relay represents a StrongDM CLI installation running in relay mode.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNodeNodeRelayResult> Relays;
@@ -27,9 +31,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
         private GetNodeNodeResult(
             ImmutableArray<Outputs.GetNodeNodeGatewayResult> gateways,
 
+            ImmutableArray<Outputs.GetNodeNodeProxyClusterResult> proxyClusters,
+
             ImmutableArray<Outputs.GetNodeNodeRelayResult> relays)
         {
             Gateways = gateways;
+            ProxyClusters = proxyClusters;
             Relays = relays;
         }
     }

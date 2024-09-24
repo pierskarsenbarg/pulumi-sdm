@@ -74,6 +74,8 @@ export class Resource extends pulumi.CustomResource {
     public readonly citus!: pulumi.Output<outputs.ResourceCitus | undefined>;
     public readonly clustrix!: pulumi.Output<outputs.ResourceClustrix | undefined>;
     public readonly cockroach!: pulumi.Output<outputs.ResourceCockroach | undefined>;
+    public readonly couchbaseDatabase!: pulumi.Output<outputs.ResourceCouchbaseDatabase | undefined>;
+    public readonly couchbaseWebUi!: pulumi.Output<outputs.ResourceCouchbaseWebUi | undefined>;
     public readonly db2I!: pulumi.Output<outputs.ResourceDb2I | undefined>;
     public readonly db2Luw!: pulumi.Output<outputs.ResourceDb2Luw | undefined>;
     public readonly documentDbHost!: pulumi.Output<outputs.ResourceDocumentDbHost | undefined>;
@@ -191,6 +193,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["citus"] = state ? state.citus : undefined;
             resourceInputs["clustrix"] = state ? state.clustrix : undefined;
             resourceInputs["cockroach"] = state ? state.cockroach : undefined;
+            resourceInputs["couchbaseDatabase"] = state ? state.couchbaseDatabase : undefined;
+            resourceInputs["couchbaseWebUi"] = state ? state.couchbaseWebUi : undefined;
             resourceInputs["db2I"] = state ? state.db2I : undefined;
             resourceInputs["db2Luw"] = state ? state.db2Luw : undefined;
             resourceInputs["documentDbHost"] = state ? state.documentDbHost : undefined;
@@ -278,6 +282,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["citus"] = args ? args.citus : undefined;
             resourceInputs["clustrix"] = args ? args.clustrix : undefined;
             resourceInputs["cockroach"] = args ? args.cockroach : undefined;
+            resourceInputs["couchbaseDatabase"] = args ? args.couchbaseDatabase : undefined;
+            resourceInputs["couchbaseWebUi"] = args ? args.couchbaseWebUi : undefined;
             resourceInputs["db2I"] = args ? args.db2I : undefined;
             resourceInputs["db2Luw"] = args ? args.db2Luw : undefined;
             resourceInputs["documentDbHost"] = args ? args.documentDbHost : undefined;
@@ -376,6 +382,8 @@ export interface ResourceState {
     citus?: pulumi.Input<inputs.ResourceCitus>;
     clustrix?: pulumi.Input<inputs.ResourceClustrix>;
     cockroach?: pulumi.Input<inputs.ResourceCockroach>;
+    couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase>;
+    couchbaseWebUi?: pulumi.Input<inputs.ResourceCouchbaseWebUi>;
     db2I?: pulumi.Input<inputs.ResourceDb2I>;
     db2Luw?: pulumi.Input<inputs.ResourceDb2Luw>;
     documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
@@ -488,6 +496,8 @@ export interface ResourceArgs {
     citus?: pulumi.Input<inputs.ResourceCitus>;
     clustrix?: pulumi.Input<inputs.ResourceClustrix>;
     cockroach?: pulumi.Input<inputs.ResourceCockroach>;
+    couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase>;
+    couchbaseWebUi?: pulumi.Input<inputs.ResourceCouchbaseWebUi>;
     db2I?: pulumi.Input<inputs.ResourceDb2I>;
     db2Luw?: pulumi.Input<inputs.ResourceDb2Luw>;
     documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;

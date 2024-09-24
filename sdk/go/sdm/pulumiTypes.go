@@ -877,6 +877,300 @@ func (o NodeGatewayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) NodeGa
 	}).(NodeGatewayMaintenanceWindowOutput)
 }
 
+type NodeProxyCluster struct {
+	// The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+	Address string `pulumi:"address"`
+	// Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+	MaintenanceWindows []NodeProxyClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
+	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+	Name *string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// NodeProxyClusterInput is an input type that accepts NodeProxyClusterArgs and NodeProxyClusterOutput values.
+// You can construct a concrete instance of `NodeProxyClusterInput` via:
+//
+//	NodeProxyClusterArgs{...}
+type NodeProxyClusterInput interface {
+	pulumi.Input
+
+	ToNodeProxyClusterOutput() NodeProxyClusterOutput
+	ToNodeProxyClusterOutputWithContext(context.Context) NodeProxyClusterOutput
+}
+
+type NodeProxyClusterArgs struct {
+	// The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+	MaintenanceWindows NodeProxyClusterMaintenanceWindowArrayInput `pulumi:"maintenanceWindows"`
+	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (NodeProxyClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeProxyCluster)(nil)).Elem()
+}
+
+func (i NodeProxyClusterArgs) ToNodeProxyClusterOutput() NodeProxyClusterOutput {
+	return i.ToNodeProxyClusterOutputWithContext(context.Background())
+}
+
+func (i NodeProxyClusterArgs) ToNodeProxyClusterOutputWithContext(ctx context.Context) NodeProxyClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeProxyClusterOutput)
+}
+
+func (i NodeProxyClusterArgs) ToNodeProxyClusterPtrOutput() NodeProxyClusterPtrOutput {
+	return i.ToNodeProxyClusterPtrOutputWithContext(context.Background())
+}
+
+func (i NodeProxyClusterArgs) ToNodeProxyClusterPtrOutputWithContext(ctx context.Context) NodeProxyClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeProxyClusterOutput).ToNodeProxyClusterPtrOutputWithContext(ctx)
+}
+
+// NodeProxyClusterPtrInput is an input type that accepts NodeProxyClusterArgs, NodeProxyClusterPtr and NodeProxyClusterPtrOutput values.
+// You can construct a concrete instance of `NodeProxyClusterPtrInput` via:
+//
+//	        NodeProxyClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodeProxyClusterPtrInput interface {
+	pulumi.Input
+
+	ToNodeProxyClusterPtrOutput() NodeProxyClusterPtrOutput
+	ToNodeProxyClusterPtrOutputWithContext(context.Context) NodeProxyClusterPtrOutput
+}
+
+type nodeProxyClusterPtrType NodeProxyClusterArgs
+
+func NodeProxyClusterPtr(v *NodeProxyClusterArgs) NodeProxyClusterPtrInput {
+	return (*nodeProxyClusterPtrType)(v)
+}
+
+func (*nodeProxyClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeProxyCluster)(nil)).Elem()
+}
+
+func (i *nodeProxyClusterPtrType) ToNodeProxyClusterPtrOutput() NodeProxyClusterPtrOutput {
+	return i.ToNodeProxyClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeProxyClusterPtrType) ToNodeProxyClusterPtrOutputWithContext(ctx context.Context) NodeProxyClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeProxyClusterPtrOutput)
+}
+
+type NodeProxyClusterOutput struct{ *pulumi.OutputState }
+
+func (NodeProxyClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeProxyCluster)(nil)).Elem()
+}
+
+func (o NodeProxyClusterOutput) ToNodeProxyClusterOutput() NodeProxyClusterOutput {
+	return o
+}
+
+func (o NodeProxyClusterOutput) ToNodeProxyClusterOutputWithContext(ctx context.Context) NodeProxyClusterOutput {
+	return o
+}
+
+func (o NodeProxyClusterOutput) ToNodeProxyClusterPtrOutput() NodeProxyClusterPtrOutput {
+	return o.ToNodeProxyClusterPtrOutputWithContext(context.Background())
+}
+
+func (o NodeProxyClusterOutput) ToNodeProxyClusterPtrOutputWithContext(ctx context.Context) NodeProxyClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeProxyCluster) *NodeProxyCluster {
+		return &v
+	}).(NodeProxyClusterPtrOutput)
+}
+
+// The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+func (o NodeProxyClusterOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeProxyCluster) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+func (o NodeProxyClusterOutput) MaintenanceWindows() NodeProxyClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v NodeProxyCluster) []NodeProxyClusterMaintenanceWindow { return v.MaintenanceWindows }).(NodeProxyClusterMaintenanceWindowArrayOutput)
+}
+
+// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+func (o NodeProxyClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeProxyCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o NodeProxyClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeProxyCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type NodeProxyClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeProxyClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeProxyCluster)(nil)).Elem()
+}
+
+func (o NodeProxyClusterPtrOutput) ToNodeProxyClusterPtrOutput() NodeProxyClusterPtrOutput {
+	return o
+}
+
+func (o NodeProxyClusterPtrOutput) ToNodeProxyClusterPtrOutputWithContext(ctx context.Context) NodeProxyClusterPtrOutput {
+	return o
+}
+
+func (o NodeProxyClusterPtrOutput) Elem() NodeProxyClusterOutput {
+	return o.ApplyT(func(v *NodeProxyCluster) NodeProxyCluster {
+		if v != nil {
+			return *v
+		}
+		var ret NodeProxyCluster
+		return ret
+	}).(NodeProxyClusterOutput)
+}
+
+// The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+func (o NodeProxyClusterPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeProxyCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+func (o NodeProxyClusterPtrOutput) MaintenanceWindows() NodeProxyClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v *NodeProxyCluster) []NodeProxyClusterMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceWindows
+	}).(NodeProxyClusterMaintenanceWindowArrayOutput)
+}
+
+// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+func (o NodeProxyClusterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeProxyCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o NodeProxyClusterPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeProxyCluster) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type NodeProxyClusterMaintenanceWindow struct {
+	CronSchedule    string `pulumi:"cronSchedule"`
+	RequireIdleness bool   `pulumi:"requireIdleness"`
+}
+
+// NodeProxyClusterMaintenanceWindowInput is an input type that accepts NodeProxyClusterMaintenanceWindowArgs and NodeProxyClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `NodeProxyClusterMaintenanceWindowInput` via:
+//
+//	NodeProxyClusterMaintenanceWindowArgs{...}
+type NodeProxyClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToNodeProxyClusterMaintenanceWindowOutput() NodeProxyClusterMaintenanceWindowOutput
+	ToNodeProxyClusterMaintenanceWindowOutputWithContext(context.Context) NodeProxyClusterMaintenanceWindowOutput
+}
+
+type NodeProxyClusterMaintenanceWindowArgs struct {
+	CronSchedule    pulumi.StringInput `pulumi:"cronSchedule"`
+	RequireIdleness pulumi.BoolInput   `pulumi:"requireIdleness"`
+}
+
+func (NodeProxyClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeProxyClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i NodeProxyClusterMaintenanceWindowArgs) ToNodeProxyClusterMaintenanceWindowOutput() NodeProxyClusterMaintenanceWindowOutput {
+	return i.ToNodeProxyClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i NodeProxyClusterMaintenanceWindowArgs) ToNodeProxyClusterMaintenanceWindowOutputWithContext(ctx context.Context) NodeProxyClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeProxyClusterMaintenanceWindowOutput)
+}
+
+// NodeProxyClusterMaintenanceWindowArrayInput is an input type that accepts NodeProxyClusterMaintenanceWindowArray and NodeProxyClusterMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `NodeProxyClusterMaintenanceWindowArrayInput` via:
+//
+//	NodeProxyClusterMaintenanceWindowArray{ NodeProxyClusterMaintenanceWindowArgs{...} }
+type NodeProxyClusterMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToNodeProxyClusterMaintenanceWindowArrayOutput() NodeProxyClusterMaintenanceWindowArrayOutput
+	ToNodeProxyClusterMaintenanceWindowArrayOutputWithContext(context.Context) NodeProxyClusterMaintenanceWindowArrayOutput
+}
+
+type NodeProxyClusterMaintenanceWindowArray []NodeProxyClusterMaintenanceWindowInput
+
+func (NodeProxyClusterMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeProxyClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i NodeProxyClusterMaintenanceWindowArray) ToNodeProxyClusterMaintenanceWindowArrayOutput() NodeProxyClusterMaintenanceWindowArrayOutput {
+	return i.ToNodeProxyClusterMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i NodeProxyClusterMaintenanceWindowArray) ToNodeProxyClusterMaintenanceWindowArrayOutputWithContext(ctx context.Context) NodeProxyClusterMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeProxyClusterMaintenanceWindowArrayOutput)
+}
+
+type NodeProxyClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (NodeProxyClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeProxyClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o NodeProxyClusterMaintenanceWindowOutput) ToNodeProxyClusterMaintenanceWindowOutput() NodeProxyClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o NodeProxyClusterMaintenanceWindowOutput) ToNodeProxyClusterMaintenanceWindowOutputWithContext(ctx context.Context) NodeProxyClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o NodeProxyClusterMaintenanceWindowOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeProxyClusterMaintenanceWindow) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+func (o NodeProxyClusterMaintenanceWindowOutput) RequireIdleness() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeProxyClusterMaintenanceWindow) bool { return v.RequireIdleness }).(pulumi.BoolOutput)
+}
+
+type NodeProxyClusterMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeProxyClusterMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeProxyClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o NodeProxyClusterMaintenanceWindowArrayOutput) ToNodeProxyClusterMaintenanceWindowArrayOutput() NodeProxyClusterMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o NodeProxyClusterMaintenanceWindowArrayOutput) ToNodeProxyClusterMaintenanceWindowArrayOutputWithContext(ctx context.Context) NodeProxyClusterMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o NodeProxyClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) NodeProxyClusterMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeProxyClusterMaintenanceWindow {
+		return vs[0].([]NodeProxyClusterMaintenanceWindow)[vs[1].(int)]
+	}).(NodeProxyClusterMaintenanceWindowOutput)
+}
+
 type NodeRelay struct {
 	// Device is a read only device name uploaded by the gateway process when it comes online.
 	Device *string `pulumi:"device"`
@@ -11852,6 +12146,683 @@ func (o ResourceCockroachPtrOutput) Tags() pulumi.StringMapOutput {
 // The username to authenticate with.
 func (o ResourceCockroachPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCockroach) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceCouchbaseDatabase struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+	N1QlPort int `pulumi:"n1QlPort"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceCouchbaseDatabaseInput is an input type that accepts ResourceCouchbaseDatabaseArgs and ResourceCouchbaseDatabaseOutput values.
+// You can construct a concrete instance of `ResourceCouchbaseDatabaseInput` via:
+//
+//	ResourceCouchbaseDatabaseArgs{...}
+type ResourceCouchbaseDatabaseInput interface {
+	pulumi.Input
+
+	ToResourceCouchbaseDatabaseOutput() ResourceCouchbaseDatabaseOutput
+	ToResourceCouchbaseDatabaseOutputWithContext(context.Context) ResourceCouchbaseDatabaseOutput
+}
+
+type ResourceCouchbaseDatabaseArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+	N1QlPort pulumi.IntInput `pulumi:"n1QlPort"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceCouchbaseDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceCouchbaseDatabase)(nil)).Elem()
+}
+
+func (i ResourceCouchbaseDatabaseArgs) ToResourceCouchbaseDatabaseOutput() ResourceCouchbaseDatabaseOutput {
+	return i.ToResourceCouchbaseDatabaseOutputWithContext(context.Background())
+}
+
+func (i ResourceCouchbaseDatabaseArgs) ToResourceCouchbaseDatabaseOutputWithContext(ctx context.Context) ResourceCouchbaseDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceCouchbaseDatabaseOutput)
+}
+
+func (i ResourceCouchbaseDatabaseArgs) ToResourceCouchbaseDatabasePtrOutput() ResourceCouchbaseDatabasePtrOutput {
+	return i.ToResourceCouchbaseDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceCouchbaseDatabaseArgs) ToResourceCouchbaseDatabasePtrOutputWithContext(ctx context.Context) ResourceCouchbaseDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceCouchbaseDatabaseOutput).ToResourceCouchbaseDatabasePtrOutputWithContext(ctx)
+}
+
+// ResourceCouchbaseDatabasePtrInput is an input type that accepts ResourceCouchbaseDatabaseArgs, ResourceCouchbaseDatabasePtr and ResourceCouchbaseDatabasePtrOutput values.
+// You can construct a concrete instance of `ResourceCouchbaseDatabasePtrInput` via:
+//
+//	        ResourceCouchbaseDatabaseArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceCouchbaseDatabasePtrInput interface {
+	pulumi.Input
+
+	ToResourceCouchbaseDatabasePtrOutput() ResourceCouchbaseDatabasePtrOutput
+	ToResourceCouchbaseDatabasePtrOutputWithContext(context.Context) ResourceCouchbaseDatabasePtrOutput
+}
+
+type resourceCouchbaseDatabasePtrType ResourceCouchbaseDatabaseArgs
+
+func ResourceCouchbaseDatabasePtr(v *ResourceCouchbaseDatabaseArgs) ResourceCouchbaseDatabasePtrInput {
+	return (*resourceCouchbaseDatabasePtrType)(v)
+}
+
+func (*resourceCouchbaseDatabasePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceCouchbaseDatabase)(nil)).Elem()
+}
+
+func (i *resourceCouchbaseDatabasePtrType) ToResourceCouchbaseDatabasePtrOutput() ResourceCouchbaseDatabasePtrOutput {
+	return i.ToResourceCouchbaseDatabasePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceCouchbaseDatabasePtrType) ToResourceCouchbaseDatabasePtrOutputWithContext(ctx context.Context) ResourceCouchbaseDatabasePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceCouchbaseDatabasePtrOutput)
+}
+
+type ResourceCouchbaseDatabaseOutput struct{ *pulumi.OutputState }
+
+func (ResourceCouchbaseDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceCouchbaseDatabase)(nil)).Elem()
+}
+
+func (o ResourceCouchbaseDatabaseOutput) ToResourceCouchbaseDatabaseOutput() ResourceCouchbaseDatabaseOutput {
+	return o
+}
+
+func (o ResourceCouchbaseDatabaseOutput) ToResourceCouchbaseDatabaseOutputWithContext(ctx context.Context) ResourceCouchbaseDatabaseOutput {
+	return o
+}
+
+func (o ResourceCouchbaseDatabaseOutput) ToResourceCouchbaseDatabasePtrOutput() ResourceCouchbaseDatabasePtrOutput {
+	return o.ToResourceCouchbaseDatabasePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceCouchbaseDatabaseOutput) ToResourceCouchbaseDatabasePtrOutputWithContext(ctx context.Context) ResourceCouchbaseDatabasePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceCouchbaseDatabase) *ResourceCouchbaseDatabase {
+		return &v
+	}).(ResourceCouchbaseDatabasePtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceCouchbaseDatabaseOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceCouchbaseDatabaseOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceCouchbaseDatabaseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+func (o ResourceCouchbaseDatabaseOutput) N1QlPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) int { return v.N1QlPort }).(pulumi.IntOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceCouchbaseDatabaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceCouchbaseDatabaseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceCouchbaseDatabaseOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceCouchbaseDatabaseOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceCouchbaseDatabaseOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceCouchbaseDatabaseOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceCouchbaseDatabaseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceCouchbaseDatabaseOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceCouchbaseDatabaseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceCouchbaseDatabasePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceCouchbaseDatabasePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceCouchbaseDatabase)(nil)).Elem()
+}
+
+func (o ResourceCouchbaseDatabasePtrOutput) ToResourceCouchbaseDatabasePtrOutput() ResourceCouchbaseDatabasePtrOutput {
+	return o
+}
+
+func (o ResourceCouchbaseDatabasePtrOutput) ToResourceCouchbaseDatabasePtrOutputWithContext(ctx context.Context) ResourceCouchbaseDatabasePtrOutput {
+	return o
+}
+
+func (o ResourceCouchbaseDatabasePtrOutput) Elem() ResourceCouchbaseDatabaseOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) ResourceCouchbaseDatabase {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceCouchbaseDatabase
+		return ret
+	}).(ResourceCouchbaseDatabaseOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceCouchbaseDatabasePtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceCouchbaseDatabasePtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceCouchbaseDatabasePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+func (o ResourceCouchbaseDatabasePtrOutput) N1QlPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.N1QlPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceCouchbaseDatabasePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceCouchbaseDatabasePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceCouchbaseDatabasePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceCouchbaseDatabasePtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceCouchbaseDatabasePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceCouchbaseDatabasePtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceCouchbaseDatabasePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceCouchbaseDatabasePtrOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TlsRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceCouchbaseDatabasePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceCouchbaseWebUi struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The base address of your website without the path.
+	// * kubernetes:
+	Url string `pulumi:"url"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceCouchbaseWebUiInput is an input type that accepts ResourceCouchbaseWebUiArgs and ResourceCouchbaseWebUiOutput values.
+// You can construct a concrete instance of `ResourceCouchbaseWebUiInput` via:
+//
+//	ResourceCouchbaseWebUiArgs{...}
+type ResourceCouchbaseWebUiInput interface {
+	pulumi.Input
+
+	ToResourceCouchbaseWebUiOutput() ResourceCouchbaseWebUiOutput
+	ToResourceCouchbaseWebUiOutputWithContext(context.Context) ResourceCouchbaseWebUiOutput
+}
+
+type ResourceCouchbaseWebUiArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The base address of your website without the path.
+	// * kubernetes:
+	Url pulumi.StringInput `pulumi:"url"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceCouchbaseWebUiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceCouchbaseWebUi)(nil)).Elem()
+}
+
+func (i ResourceCouchbaseWebUiArgs) ToResourceCouchbaseWebUiOutput() ResourceCouchbaseWebUiOutput {
+	return i.ToResourceCouchbaseWebUiOutputWithContext(context.Background())
+}
+
+func (i ResourceCouchbaseWebUiArgs) ToResourceCouchbaseWebUiOutputWithContext(ctx context.Context) ResourceCouchbaseWebUiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceCouchbaseWebUiOutput)
+}
+
+func (i ResourceCouchbaseWebUiArgs) ToResourceCouchbaseWebUiPtrOutput() ResourceCouchbaseWebUiPtrOutput {
+	return i.ToResourceCouchbaseWebUiPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceCouchbaseWebUiArgs) ToResourceCouchbaseWebUiPtrOutputWithContext(ctx context.Context) ResourceCouchbaseWebUiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceCouchbaseWebUiOutput).ToResourceCouchbaseWebUiPtrOutputWithContext(ctx)
+}
+
+// ResourceCouchbaseWebUiPtrInput is an input type that accepts ResourceCouchbaseWebUiArgs, ResourceCouchbaseWebUiPtr and ResourceCouchbaseWebUiPtrOutput values.
+// You can construct a concrete instance of `ResourceCouchbaseWebUiPtrInput` via:
+//
+//	        ResourceCouchbaseWebUiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceCouchbaseWebUiPtrInput interface {
+	pulumi.Input
+
+	ToResourceCouchbaseWebUiPtrOutput() ResourceCouchbaseWebUiPtrOutput
+	ToResourceCouchbaseWebUiPtrOutputWithContext(context.Context) ResourceCouchbaseWebUiPtrOutput
+}
+
+type resourceCouchbaseWebUiPtrType ResourceCouchbaseWebUiArgs
+
+func ResourceCouchbaseWebUiPtr(v *ResourceCouchbaseWebUiArgs) ResourceCouchbaseWebUiPtrInput {
+	return (*resourceCouchbaseWebUiPtrType)(v)
+}
+
+func (*resourceCouchbaseWebUiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceCouchbaseWebUi)(nil)).Elem()
+}
+
+func (i *resourceCouchbaseWebUiPtrType) ToResourceCouchbaseWebUiPtrOutput() ResourceCouchbaseWebUiPtrOutput {
+	return i.ToResourceCouchbaseWebUiPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceCouchbaseWebUiPtrType) ToResourceCouchbaseWebUiPtrOutputWithContext(ctx context.Context) ResourceCouchbaseWebUiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceCouchbaseWebUiPtrOutput)
+}
+
+type ResourceCouchbaseWebUiOutput struct{ *pulumi.OutputState }
+
+func (ResourceCouchbaseWebUiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceCouchbaseWebUi)(nil)).Elem()
+}
+
+func (o ResourceCouchbaseWebUiOutput) ToResourceCouchbaseWebUiOutput() ResourceCouchbaseWebUiOutput {
+	return o
+}
+
+func (o ResourceCouchbaseWebUiOutput) ToResourceCouchbaseWebUiOutputWithContext(ctx context.Context) ResourceCouchbaseWebUiOutput {
+	return o
+}
+
+func (o ResourceCouchbaseWebUiOutput) ToResourceCouchbaseWebUiPtrOutput() ResourceCouchbaseWebUiPtrOutput {
+	return o.ToResourceCouchbaseWebUiPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceCouchbaseWebUiOutput) ToResourceCouchbaseWebUiPtrOutputWithContext(ctx context.Context) ResourceCouchbaseWebUiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceCouchbaseWebUi) *ResourceCouchbaseWebUi {
+		return &v
+	}).(ResourceCouchbaseWebUiPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceCouchbaseWebUiOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceCouchbaseWebUiOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceCouchbaseWebUiOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceCouchbaseWebUiOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceCouchbaseWebUiOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceCouchbaseWebUiOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceCouchbaseWebUiOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceCouchbaseWebUiOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The base address of your website without the path.
+// * kubernetes:
+func (o ResourceCouchbaseWebUiOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceCouchbaseWebUiOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceCouchbaseWebUiPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceCouchbaseWebUiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceCouchbaseWebUi)(nil)).Elem()
+}
+
+func (o ResourceCouchbaseWebUiPtrOutput) ToResourceCouchbaseWebUiPtrOutput() ResourceCouchbaseWebUiPtrOutput {
+	return o
+}
+
+func (o ResourceCouchbaseWebUiPtrOutput) ToResourceCouchbaseWebUiPtrOutputWithContext(ctx context.Context) ResourceCouchbaseWebUiPtrOutput {
+	return o
+}
+
+func (o ResourceCouchbaseWebUiPtrOutput) Elem() ResourceCouchbaseWebUiOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) ResourceCouchbaseWebUi {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceCouchbaseWebUi
+		return ret
+	}).(ResourceCouchbaseWebUiOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceCouchbaseWebUiPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceCouchbaseWebUiPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceCouchbaseWebUiPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceCouchbaseWebUiPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceCouchbaseWebUiPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceCouchbaseWebUiPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceCouchbaseWebUiPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceCouchbaseWebUiPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The base address of your website without the path.
+// * kubernetes:
+func (o ResourceCouchbaseWebUiPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceCouchbaseWebUiPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
 		if v == nil {
 			return nil
 		}
@@ -39130,6 +40101,8 @@ func (o GetIdentitySetIdentitySetArrayOutput) Index(i pulumi.IntInput) GetIdenti
 type GetNodeNode struct {
 	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateways []GetNodeNodeGateway `pulumi:"gateways"`
+	// ProxyCluster represents a cluster of StrongDM proxies.
+	ProxyClusters []GetNodeNodeProxyCluster `pulumi:"proxyClusters"`
 	// Relay represents a StrongDM CLI installation running in relay mode.
 	Relays []GetNodeNodeRelay `pulumi:"relays"`
 }
@@ -39148,6 +40121,8 @@ type GetNodeNodeInput interface {
 type GetNodeNodeArgs struct {
 	// Gateway represents a StrongDM CLI installation running in gateway mode.
 	Gateways GetNodeNodeGatewayArrayInput `pulumi:"gateways"`
+	// ProxyCluster represents a cluster of StrongDM proxies.
+	ProxyClusters GetNodeNodeProxyClusterArrayInput `pulumi:"proxyClusters"`
 	// Relay represents a StrongDM CLI installation running in relay mode.
 	Relays GetNodeNodeRelayArrayInput `pulumi:"relays"`
 }
@@ -39206,6 +40181,11 @@ func (o GetNodeNodeOutput) ToGetNodeNodeOutputWithContext(ctx context.Context) G
 // Gateway represents a StrongDM CLI installation running in gateway mode.
 func (o GetNodeNodeOutput) Gateways() GetNodeNodeGatewayArrayOutput {
 	return o.ApplyT(func(v GetNodeNode) []GetNodeNodeGateway { return v.Gateways }).(GetNodeNodeGatewayArrayOutput)
+}
+
+// ProxyCluster represents a cluster of StrongDM proxies.
+func (o GetNodeNodeOutput) ProxyClusters() GetNodeNodeProxyClusterArrayOutput {
+	return o.ApplyT(func(v GetNodeNode) []GetNodeNodeProxyCluster { return v.ProxyClusters }).(GetNodeNodeProxyClusterArrayOutput)
 }
 
 // Relay represents a StrongDM CLI installation running in relay mode.
@@ -39509,6 +40489,241 @@ func (o GetNodeNodeGatewayMaintenanceWindowArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeNodeGatewayMaintenanceWindow {
 		return vs[0].([]GetNodeNodeGatewayMaintenanceWindow)[vs[1].(int)]
 	}).(GetNodeNodeGatewayMaintenanceWindowOutput)
+}
+
+type GetNodeNodeProxyCluster struct {
+	// The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+	Address *string `pulumi:"address"`
+	// Unique identifier of the Relay.
+	Id *string `pulumi:"id"`
+	// Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+	MaintenanceWindows []GetNodeNodeProxyClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
+	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+	Name *string `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetNodeNodeProxyClusterInput is an input type that accepts GetNodeNodeProxyClusterArgs and GetNodeNodeProxyClusterOutput values.
+// You can construct a concrete instance of `GetNodeNodeProxyClusterInput` via:
+//
+//	GetNodeNodeProxyClusterArgs{...}
+type GetNodeNodeProxyClusterInput interface {
+	pulumi.Input
+
+	ToGetNodeNodeProxyClusterOutput() GetNodeNodeProxyClusterOutput
+	ToGetNodeNodeProxyClusterOutputWithContext(context.Context) GetNodeNodeProxyClusterOutput
+}
+
+type GetNodeNodeProxyClusterArgs struct {
+	// The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Unique identifier of the Relay.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+	MaintenanceWindows GetNodeNodeProxyClusterMaintenanceWindowArrayInput `pulumi:"maintenanceWindows"`
+	// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetNodeNodeProxyClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeNodeProxyCluster)(nil)).Elem()
+}
+
+func (i GetNodeNodeProxyClusterArgs) ToGetNodeNodeProxyClusterOutput() GetNodeNodeProxyClusterOutput {
+	return i.ToGetNodeNodeProxyClusterOutputWithContext(context.Background())
+}
+
+func (i GetNodeNodeProxyClusterArgs) ToGetNodeNodeProxyClusterOutputWithContext(ctx context.Context) GetNodeNodeProxyClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeProxyClusterOutput)
+}
+
+// GetNodeNodeProxyClusterArrayInput is an input type that accepts GetNodeNodeProxyClusterArray and GetNodeNodeProxyClusterArrayOutput values.
+// You can construct a concrete instance of `GetNodeNodeProxyClusterArrayInput` via:
+//
+//	GetNodeNodeProxyClusterArray{ GetNodeNodeProxyClusterArgs{...} }
+type GetNodeNodeProxyClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeNodeProxyClusterArrayOutput() GetNodeNodeProxyClusterArrayOutput
+	ToGetNodeNodeProxyClusterArrayOutputWithContext(context.Context) GetNodeNodeProxyClusterArrayOutput
+}
+
+type GetNodeNodeProxyClusterArray []GetNodeNodeProxyClusterInput
+
+func (GetNodeNodeProxyClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeNodeProxyCluster)(nil)).Elem()
+}
+
+func (i GetNodeNodeProxyClusterArray) ToGetNodeNodeProxyClusterArrayOutput() GetNodeNodeProxyClusterArrayOutput {
+	return i.ToGetNodeNodeProxyClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeNodeProxyClusterArray) ToGetNodeNodeProxyClusterArrayOutputWithContext(ctx context.Context) GetNodeNodeProxyClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeProxyClusterArrayOutput)
+}
+
+type GetNodeNodeProxyClusterOutput struct{ *pulumi.OutputState }
+
+func (GetNodeNodeProxyClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeNodeProxyCluster)(nil)).Elem()
+}
+
+func (o GetNodeNodeProxyClusterOutput) ToGetNodeNodeProxyClusterOutput() GetNodeNodeProxyClusterOutput {
+	return o
+}
+
+func (o GetNodeNodeProxyClusterOutput) ToGetNodeNodeProxyClusterOutputWithContext(ctx context.Context) GetNodeNodeProxyClusterOutput {
+	return o
+}
+
+// The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+func (o GetNodeNodeProxyClusterOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeNodeProxyCluster) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Relay.
+func (o GetNodeNodeProxyClusterOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeNodeProxyCluster) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+func (o GetNodeNodeProxyClusterOutput) MaintenanceWindows() GetNodeNodeProxyClusterMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v GetNodeNodeProxyCluster) []GetNodeNodeProxyClusterMaintenanceWindow {
+		return v.MaintenanceWindows
+	}).(GetNodeNodeProxyClusterMaintenanceWindowArrayOutput)
+}
+
+// Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+func (o GetNodeNodeProxyClusterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNodeNodeProxyCluster) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetNodeNodeProxyClusterOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNodeNodeProxyCluster) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetNodeNodeProxyClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeNodeProxyClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeNodeProxyCluster)(nil)).Elem()
+}
+
+func (o GetNodeNodeProxyClusterArrayOutput) ToGetNodeNodeProxyClusterArrayOutput() GetNodeNodeProxyClusterArrayOutput {
+	return o
+}
+
+func (o GetNodeNodeProxyClusterArrayOutput) ToGetNodeNodeProxyClusterArrayOutputWithContext(ctx context.Context) GetNodeNodeProxyClusterArrayOutput {
+	return o
+}
+
+func (o GetNodeNodeProxyClusterArrayOutput) Index(i pulumi.IntInput) GetNodeNodeProxyClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeNodeProxyCluster {
+		return vs[0].([]GetNodeNodeProxyCluster)[vs[1].(int)]
+	}).(GetNodeNodeProxyClusterOutput)
+}
+
+type GetNodeNodeProxyClusterMaintenanceWindow struct {
+	CronSchedule    string `pulumi:"cronSchedule"`
+	RequireIdleness bool   `pulumi:"requireIdleness"`
+}
+
+// GetNodeNodeProxyClusterMaintenanceWindowInput is an input type that accepts GetNodeNodeProxyClusterMaintenanceWindowArgs and GetNodeNodeProxyClusterMaintenanceWindowOutput values.
+// You can construct a concrete instance of `GetNodeNodeProxyClusterMaintenanceWindowInput` via:
+//
+//	GetNodeNodeProxyClusterMaintenanceWindowArgs{...}
+type GetNodeNodeProxyClusterMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToGetNodeNodeProxyClusterMaintenanceWindowOutput() GetNodeNodeProxyClusterMaintenanceWindowOutput
+	ToGetNodeNodeProxyClusterMaintenanceWindowOutputWithContext(context.Context) GetNodeNodeProxyClusterMaintenanceWindowOutput
+}
+
+type GetNodeNodeProxyClusterMaintenanceWindowArgs struct {
+	CronSchedule    pulumi.StringInput `pulumi:"cronSchedule"`
+	RequireIdleness pulumi.BoolInput   `pulumi:"requireIdleness"`
+}
+
+func (GetNodeNodeProxyClusterMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeNodeProxyClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetNodeNodeProxyClusterMaintenanceWindowArgs) ToGetNodeNodeProxyClusterMaintenanceWindowOutput() GetNodeNodeProxyClusterMaintenanceWindowOutput {
+	return i.ToGetNodeNodeProxyClusterMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i GetNodeNodeProxyClusterMaintenanceWindowArgs) ToGetNodeNodeProxyClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetNodeNodeProxyClusterMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeProxyClusterMaintenanceWindowOutput)
+}
+
+// GetNodeNodeProxyClusterMaintenanceWindowArrayInput is an input type that accepts GetNodeNodeProxyClusterMaintenanceWindowArray and GetNodeNodeProxyClusterMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `GetNodeNodeProxyClusterMaintenanceWindowArrayInput` via:
+//
+//	GetNodeNodeProxyClusterMaintenanceWindowArray{ GetNodeNodeProxyClusterMaintenanceWindowArgs{...} }
+type GetNodeNodeProxyClusterMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeNodeProxyClusterMaintenanceWindowArrayOutput() GetNodeNodeProxyClusterMaintenanceWindowArrayOutput
+	ToGetNodeNodeProxyClusterMaintenanceWindowArrayOutputWithContext(context.Context) GetNodeNodeProxyClusterMaintenanceWindowArrayOutput
+}
+
+type GetNodeNodeProxyClusterMaintenanceWindowArray []GetNodeNodeProxyClusterMaintenanceWindowInput
+
+func (GetNodeNodeProxyClusterMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeNodeProxyClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (i GetNodeNodeProxyClusterMaintenanceWindowArray) ToGetNodeNodeProxyClusterMaintenanceWindowArrayOutput() GetNodeNodeProxyClusterMaintenanceWindowArrayOutput {
+	return i.ToGetNodeNodeProxyClusterMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeNodeProxyClusterMaintenanceWindowArray) ToGetNodeNodeProxyClusterMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetNodeNodeProxyClusterMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeNodeProxyClusterMaintenanceWindowArrayOutput)
+}
+
+type GetNodeNodeProxyClusterMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (GetNodeNodeProxyClusterMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeNodeProxyClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetNodeNodeProxyClusterMaintenanceWindowOutput) ToGetNodeNodeProxyClusterMaintenanceWindowOutput() GetNodeNodeProxyClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetNodeNodeProxyClusterMaintenanceWindowOutput) ToGetNodeNodeProxyClusterMaintenanceWindowOutputWithContext(ctx context.Context) GetNodeNodeProxyClusterMaintenanceWindowOutput {
+	return o
+}
+
+func (o GetNodeNodeProxyClusterMaintenanceWindowOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeNodeProxyClusterMaintenanceWindow) string { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+func (o GetNodeNodeProxyClusterMaintenanceWindowOutput) RequireIdleness() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNodeNodeProxyClusterMaintenanceWindow) bool { return v.RequireIdleness }).(pulumi.BoolOutput)
+}
+
+type GetNodeNodeProxyClusterMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeNodeProxyClusterMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeNodeProxyClusterMaintenanceWindow)(nil)).Elem()
+}
+
+func (o GetNodeNodeProxyClusterMaintenanceWindowArrayOutput) ToGetNodeNodeProxyClusterMaintenanceWindowArrayOutput() GetNodeNodeProxyClusterMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetNodeNodeProxyClusterMaintenanceWindowArrayOutput) ToGetNodeNodeProxyClusterMaintenanceWindowArrayOutputWithContext(ctx context.Context) GetNodeNodeProxyClusterMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o GetNodeNodeProxyClusterMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) GetNodeNodeProxyClusterMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeNodeProxyClusterMaintenanceWindow {
+		return vs[0].([]GetNodeNodeProxyClusterMaintenanceWindow)[vs[1].(int)]
+	}).(GetNodeNodeProxyClusterMaintenanceWindowOutput)
 }
 
 type GetNodeNodeRelay struct {
@@ -40346,6 +41561,112 @@ func (o GetPolicyPolicyArrayOutput) Index(i pulumi.IntInput) GetPolicyPolicyOutp
 	}).(GetPolicyPolicyOutput)
 }
 
+type GetProxyClusterKeyProxyClusterKey struct {
+	// Unique identifier of the Relay.
+	Id *string `pulumi:"id"`
+	// The ID of the proxy cluster which this key authenticates to.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+}
+
+// GetProxyClusterKeyProxyClusterKeyInput is an input type that accepts GetProxyClusterKeyProxyClusterKeyArgs and GetProxyClusterKeyProxyClusterKeyOutput values.
+// You can construct a concrete instance of `GetProxyClusterKeyProxyClusterKeyInput` via:
+//
+//	GetProxyClusterKeyProxyClusterKeyArgs{...}
+type GetProxyClusterKeyProxyClusterKeyInput interface {
+	pulumi.Input
+
+	ToGetProxyClusterKeyProxyClusterKeyOutput() GetProxyClusterKeyProxyClusterKeyOutput
+	ToGetProxyClusterKeyProxyClusterKeyOutputWithContext(context.Context) GetProxyClusterKeyProxyClusterKeyOutput
+}
+
+type GetProxyClusterKeyProxyClusterKeyArgs struct {
+	// Unique identifier of the Relay.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The ID of the proxy cluster which this key authenticates to.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+}
+
+func (GetProxyClusterKeyProxyClusterKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProxyClusterKeyProxyClusterKey)(nil)).Elem()
+}
+
+func (i GetProxyClusterKeyProxyClusterKeyArgs) ToGetProxyClusterKeyProxyClusterKeyOutput() GetProxyClusterKeyProxyClusterKeyOutput {
+	return i.ToGetProxyClusterKeyProxyClusterKeyOutputWithContext(context.Background())
+}
+
+func (i GetProxyClusterKeyProxyClusterKeyArgs) ToGetProxyClusterKeyProxyClusterKeyOutputWithContext(ctx context.Context) GetProxyClusterKeyProxyClusterKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProxyClusterKeyProxyClusterKeyOutput)
+}
+
+// GetProxyClusterKeyProxyClusterKeyArrayInput is an input type that accepts GetProxyClusterKeyProxyClusterKeyArray and GetProxyClusterKeyProxyClusterKeyArrayOutput values.
+// You can construct a concrete instance of `GetProxyClusterKeyProxyClusterKeyArrayInput` via:
+//
+//	GetProxyClusterKeyProxyClusterKeyArray{ GetProxyClusterKeyProxyClusterKeyArgs{...} }
+type GetProxyClusterKeyProxyClusterKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetProxyClusterKeyProxyClusterKeyArrayOutput() GetProxyClusterKeyProxyClusterKeyArrayOutput
+	ToGetProxyClusterKeyProxyClusterKeyArrayOutputWithContext(context.Context) GetProxyClusterKeyProxyClusterKeyArrayOutput
+}
+
+type GetProxyClusterKeyProxyClusterKeyArray []GetProxyClusterKeyProxyClusterKeyInput
+
+func (GetProxyClusterKeyProxyClusterKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProxyClusterKeyProxyClusterKey)(nil)).Elem()
+}
+
+func (i GetProxyClusterKeyProxyClusterKeyArray) ToGetProxyClusterKeyProxyClusterKeyArrayOutput() GetProxyClusterKeyProxyClusterKeyArrayOutput {
+	return i.ToGetProxyClusterKeyProxyClusterKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetProxyClusterKeyProxyClusterKeyArray) ToGetProxyClusterKeyProxyClusterKeyArrayOutputWithContext(ctx context.Context) GetProxyClusterKeyProxyClusterKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProxyClusterKeyProxyClusterKeyArrayOutput)
+}
+
+type GetProxyClusterKeyProxyClusterKeyOutput struct{ *pulumi.OutputState }
+
+func (GetProxyClusterKeyProxyClusterKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProxyClusterKeyProxyClusterKey)(nil)).Elem()
+}
+
+func (o GetProxyClusterKeyProxyClusterKeyOutput) ToGetProxyClusterKeyProxyClusterKeyOutput() GetProxyClusterKeyProxyClusterKeyOutput {
+	return o
+}
+
+func (o GetProxyClusterKeyProxyClusterKeyOutput) ToGetProxyClusterKeyProxyClusterKeyOutputWithContext(ctx context.Context) GetProxyClusterKeyProxyClusterKeyOutput {
+	return o
+}
+
+// Unique identifier of the Relay.
+func (o GetProxyClusterKeyProxyClusterKeyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProxyClusterKeyProxyClusterKey) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the proxy cluster which this key authenticates to.
+func (o GetProxyClusterKeyProxyClusterKeyOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProxyClusterKeyProxyClusterKey) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+type GetProxyClusterKeyProxyClusterKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProxyClusterKeyProxyClusterKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProxyClusterKeyProxyClusterKey)(nil)).Elem()
+}
+
+func (o GetProxyClusterKeyProxyClusterKeyArrayOutput) ToGetProxyClusterKeyProxyClusterKeyArrayOutput() GetProxyClusterKeyProxyClusterKeyArrayOutput {
+	return o
+}
+
+func (o GetProxyClusterKeyProxyClusterKeyArrayOutput) ToGetProxyClusterKeyProxyClusterKeyArrayOutputWithContext(ctx context.Context) GetProxyClusterKeyProxyClusterKeyArrayOutput {
+	return o
+}
+
+func (o GetProxyClusterKeyProxyClusterKeyArrayOutput) Index(i pulumi.IntInput) GetProxyClusterKeyProxyClusterKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProxyClusterKeyProxyClusterKey {
+		return vs[0].([]GetProxyClusterKeyProxyClusterKey)[vs[1].(int)]
+	}).(GetProxyClusterKeyProxyClusterKeyOutput)
+}
+
 type GetRemoteIdentityGroupRemoteIdentityGroup struct {
 	// Unique identifier of the RemoteIdentityGroup.
 	Id *string `pulumi:"id"`
@@ -40605,6 +41926,8 @@ type GetResourceResource struct {
 	Cituses                                    []GetResourceResourceCitus                                     `pulumi:"cituses"`
 	Clustrixes                                 []GetResourceResourceClustrix                                  `pulumi:"clustrixes"`
 	Cockroaches                                []GetResourceResourceCockroach                                 `pulumi:"cockroaches"`
+	CouchbaseDatabases                         []GetResourceResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabases"`
+	CouchbaseWebUis                            []GetResourceResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUis"`
 	Db2Is                                      []GetResourceResourceDb2I                                      `pulumi:"db2Is"`
 	Db2Luws                                    []GetResourceResourceDb2Luw                                    `pulumi:"db2Luws"`
 	DocumentDbHosts                            []GetResourceResourceDocumentDbHost                            `pulumi:"documentDbHosts"`
@@ -40704,6 +42027,8 @@ type GetResourceResourceArgs struct {
 	Cituses                                    GetResourceResourceCitusArrayInput                                     `pulumi:"cituses"`
 	Clustrixes                                 GetResourceResourceClustrixArrayInput                                  `pulumi:"clustrixes"`
 	Cockroaches                                GetResourceResourceCockroachArrayInput                                 `pulumi:"cockroaches"`
+	CouchbaseDatabases                         GetResourceResourceCouchbaseDatabaseArrayInput                         `pulumi:"couchbaseDatabases"`
+	CouchbaseWebUis                            GetResourceResourceCouchbaseWebUiArrayInput                            `pulumi:"couchbaseWebUis"`
 	Db2Is                                      GetResourceResourceDb2IArrayInput                                      `pulumi:"db2Is"`
 	Db2Luws                                    GetResourceResourceDb2LuwArrayInput                                    `pulumi:"db2Luws"`
 	DocumentDbHosts                            GetResourceResourceDocumentDbHostArrayInput                            `pulumi:"documentDbHosts"`
@@ -40936,6 +42261,14 @@ func (o GetResourceResourceOutput) Clustrixes() GetResourceResourceClustrixArray
 
 func (o GetResourceResourceOutput) Cockroaches() GetResourceResourceCockroachArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceCockroach { return v.Cockroaches }).(GetResourceResourceCockroachArrayOutput)
+}
+
+func (o GetResourceResourceOutput) CouchbaseDatabases() GetResourceResourceCouchbaseDatabaseArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceCouchbaseDatabase { return v.CouchbaseDatabases }).(GetResourceResourceCouchbaseDatabaseArrayOutput)
+}
+
+func (o GetResourceResourceOutput) CouchbaseWebUis() GetResourceResourceCouchbaseWebUiArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceCouchbaseWebUi { return v.CouchbaseWebUis }).(GetResourceResourceCouchbaseWebUiArrayOutput)
 }
 
 func (o GetResourceResourceOutput) Db2Is() GetResourceResourceDb2IArrayOutput {
@@ -47382,6 +48715,410 @@ func (o GetResourceResourceCockroachArrayOutput) Index(i pulumi.IntInput) GetRes
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceCockroach {
 		return vs[0].([]GetResourceResourceCockroach)[vs[1].(int)]
 	}).(GetResourceResourceCockroachOutput)
+}
+
+type GetResourceResourceCouchbaseDatabase struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+	N1QlPort *int `pulumi:"n1QlPort"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceCouchbaseDatabaseInput is an input type that accepts GetResourceResourceCouchbaseDatabaseArgs and GetResourceResourceCouchbaseDatabaseOutput values.
+// You can construct a concrete instance of `GetResourceResourceCouchbaseDatabaseInput` via:
+//
+//	GetResourceResourceCouchbaseDatabaseArgs{...}
+type GetResourceResourceCouchbaseDatabaseInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceCouchbaseDatabaseOutput() GetResourceResourceCouchbaseDatabaseOutput
+	ToGetResourceResourceCouchbaseDatabaseOutputWithContext(context.Context) GetResourceResourceCouchbaseDatabaseOutput
+}
+
+type GetResourceResourceCouchbaseDatabaseArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+	N1QlPort pulumi.IntPtrInput `pulumi:"n1QlPort"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceCouchbaseDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceCouchbaseDatabase)(nil)).Elem()
+}
+
+func (i GetResourceResourceCouchbaseDatabaseArgs) ToGetResourceResourceCouchbaseDatabaseOutput() GetResourceResourceCouchbaseDatabaseOutput {
+	return i.ToGetResourceResourceCouchbaseDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceCouchbaseDatabaseArgs) ToGetResourceResourceCouchbaseDatabaseOutputWithContext(ctx context.Context) GetResourceResourceCouchbaseDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCouchbaseDatabaseOutput)
+}
+
+// GetResourceResourceCouchbaseDatabaseArrayInput is an input type that accepts GetResourceResourceCouchbaseDatabaseArray and GetResourceResourceCouchbaseDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceCouchbaseDatabaseArrayInput` via:
+//
+//	GetResourceResourceCouchbaseDatabaseArray{ GetResourceResourceCouchbaseDatabaseArgs{...} }
+type GetResourceResourceCouchbaseDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceCouchbaseDatabaseArrayOutput() GetResourceResourceCouchbaseDatabaseArrayOutput
+	ToGetResourceResourceCouchbaseDatabaseArrayOutputWithContext(context.Context) GetResourceResourceCouchbaseDatabaseArrayOutput
+}
+
+type GetResourceResourceCouchbaseDatabaseArray []GetResourceResourceCouchbaseDatabaseInput
+
+func (GetResourceResourceCouchbaseDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceCouchbaseDatabase)(nil)).Elem()
+}
+
+func (i GetResourceResourceCouchbaseDatabaseArray) ToGetResourceResourceCouchbaseDatabaseArrayOutput() GetResourceResourceCouchbaseDatabaseArrayOutput {
+	return i.ToGetResourceResourceCouchbaseDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceCouchbaseDatabaseArray) ToGetResourceResourceCouchbaseDatabaseArrayOutputWithContext(ctx context.Context) GetResourceResourceCouchbaseDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCouchbaseDatabaseArrayOutput)
+}
+
+type GetResourceResourceCouchbaseDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceCouchbaseDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceCouchbaseDatabase)(nil)).Elem()
+}
+
+func (o GetResourceResourceCouchbaseDatabaseOutput) ToGetResourceResourceCouchbaseDatabaseOutput() GetResourceResourceCouchbaseDatabaseOutput {
+	return o
+}
+
+func (o GetResourceResourceCouchbaseDatabaseOutput) ToGetResourceResourceCouchbaseDatabaseOutputWithContext(ctx context.Context) GetResourceResourceCouchbaseDatabaseOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceCouchbaseDatabaseOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceCouchbaseDatabaseOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceCouchbaseDatabaseOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceCouchbaseDatabaseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+func (o GetResourceResourceCouchbaseDatabaseOutput) N1QlPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *int { return v.N1QlPort }).(pulumi.IntPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceCouchbaseDatabaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceCouchbaseDatabaseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceCouchbaseDatabaseOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceCouchbaseDatabaseOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceCouchbaseDatabaseOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceCouchbaseDatabaseOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceCouchbaseDatabaseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o GetResourceResourceCouchbaseDatabaseOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceCouchbaseDatabaseOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceCouchbaseDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceCouchbaseDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceCouchbaseDatabase)(nil)).Elem()
+}
+
+func (o GetResourceResourceCouchbaseDatabaseArrayOutput) ToGetResourceResourceCouchbaseDatabaseArrayOutput() GetResourceResourceCouchbaseDatabaseArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceCouchbaseDatabaseArrayOutput) ToGetResourceResourceCouchbaseDatabaseArrayOutputWithContext(ctx context.Context) GetResourceResourceCouchbaseDatabaseArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceCouchbaseDatabaseArrayOutput) Index(i pulumi.IntInput) GetResourceResourceCouchbaseDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceCouchbaseDatabase {
+		return vs[0].([]GetResourceResourceCouchbaseDatabase)[vs[1].(int)]
+	}).(GetResourceResourceCouchbaseDatabaseOutput)
+}
+
+type GetResourceResourceCouchbaseWebUi struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The base address of your website without the path.
+	// * kubernetes:
+	Url *string `pulumi:"url"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceCouchbaseWebUiInput is an input type that accepts GetResourceResourceCouchbaseWebUiArgs and GetResourceResourceCouchbaseWebUiOutput values.
+// You can construct a concrete instance of `GetResourceResourceCouchbaseWebUiInput` via:
+//
+//	GetResourceResourceCouchbaseWebUiArgs{...}
+type GetResourceResourceCouchbaseWebUiInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceCouchbaseWebUiOutput() GetResourceResourceCouchbaseWebUiOutput
+	ToGetResourceResourceCouchbaseWebUiOutputWithContext(context.Context) GetResourceResourceCouchbaseWebUiOutput
+}
+
+type GetResourceResourceCouchbaseWebUiArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The base address of your website without the path.
+	// * kubernetes:
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceCouchbaseWebUiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceCouchbaseWebUi)(nil)).Elem()
+}
+
+func (i GetResourceResourceCouchbaseWebUiArgs) ToGetResourceResourceCouchbaseWebUiOutput() GetResourceResourceCouchbaseWebUiOutput {
+	return i.ToGetResourceResourceCouchbaseWebUiOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceCouchbaseWebUiArgs) ToGetResourceResourceCouchbaseWebUiOutputWithContext(ctx context.Context) GetResourceResourceCouchbaseWebUiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCouchbaseWebUiOutput)
+}
+
+// GetResourceResourceCouchbaseWebUiArrayInput is an input type that accepts GetResourceResourceCouchbaseWebUiArray and GetResourceResourceCouchbaseWebUiArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceCouchbaseWebUiArrayInput` via:
+//
+//	GetResourceResourceCouchbaseWebUiArray{ GetResourceResourceCouchbaseWebUiArgs{...} }
+type GetResourceResourceCouchbaseWebUiArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceCouchbaseWebUiArrayOutput() GetResourceResourceCouchbaseWebUiArrayOutput
+	ToGetResourceResourceCouchbaseWebUiArrayOutputWithContext(context.Context) GetResourceResourceCouchbaseWebUiArrayOutput
+}
+
+type GetResourceResourceCouchbaseWebUiArray []GetResourceResourceCouchbaseWebUiInput
+
+func (GetResourceResourceCouchbaseWebUiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceCouchbaseWebUi)(nil)).Elem()
+}
+
+func (i GetResourceResourceCouchbaseWebUiArray) ToGetResourceResourceCouchbaseWebUiArrayOutput() GetResourceResourceCouchbaseWebUiArrayOutput {
+	return i.ToGetResourceResourceCouchbaseWebUiArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceCouchbaseWebUiArray) ToGetResourceResourceCouchbaseWebUiArrayOutputWithContext(ctx context.Context) GetResourceResourceCouchbaseWebUiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceCouchbaseWebUiArrayOutput)
+}
+
+type GetResourceResourceCouchbaseWebUiOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceCouchbaseWebUiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceCouchbaseWebUi)(nil)).Elem()
+}
+
+func (o GetResourceResourceCouchbaseWebUiOutput) ToGetResourceResourceCouchbaseWebUiOutput() GetResourceResourceCouchbaseWebUiOutput {
+	return o
+}
+
+func (o GetResourceResourceCouchbaseWebUiOutput) ToGetResourceResourceCouchbaseWebUiOutputWithContext(ctx context.Context) GetResourceResourceCouchbaseWebUiOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceCouchbaseWebUiOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceCouchbaseWebUiOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceCouchbaseWebUiOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceCouchbaseWebUiOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceCouchbaseWebUiOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceCouchbaseWebUiOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceCouchbaseWebUiOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceCouchbaseWebUiOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceCouchbaseWebUiOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The base address of your website without the path.
+// * kubernetes:
+func (o GetResourceResourceCouchbaseWebUiOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceCouchbaseWebUiOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceCouchbaseWebUiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceCouchbaseWebUiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceCouchbaseWebUi)(nil)).Elem()
+}
+
+func (o GetResourceResourceCouchbaseWebUiArrayOutput) ToGetResourceResourceCouchbaseWebUiArrayOutput() GetResourceResourceCouchbaseWebUiArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceCouchbaseWebUiArrayOutput) ToGetResourceResourceCouchbaseWebUiArrayOutputWithContext(ctx context.Context) GetResourceResourceCouchbaseWebUiArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceCouchbaseWebUiArrayOutput) Index(i pulumi.IntInput) GetResourceResourceCouchbaseWebUiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceCouchbaseWebUi {
+		return vs[0].([]GetResourceResourceCouchbaseWebUi)[vs[1].(int)]
+	}).(GetResourceResourceCouchbaseWebUiOutput)
 }
 
 type GetResourceResourceDb2I struct {
@@ -63780,6 +65517,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGatewayPtrInput)(nil)).Elem(), NodeGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGatewayMaintenanceWindowInput)(nil)).Elem(), NodeGatewayMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGatewayMaintenanceWindowArrayInput)(nil)).Elem(), NodeGatewayMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeProxyClusterInput)(nil)).Elem(), NodeProxyClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeProxyClusterPtrInput)(nil)).Elem(), NodeProxyClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeProxyClusterMaintenanceWindowInput)(nil)).Elem(), NodeProxyClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeProxyClusterMaintenanceWindowArrayInput)(nil)).Elem(), NodeProxyClusterMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeRelayInput)(nil)).Elem(), NodeRelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeRelayPtrInput)(nil)).Elem(), NodeRelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeRelayMaintenanceWindowInput)(nil)).Elem(), NodeRelayMaintenanceWindowArgs{})
@@ -63840,6 +65581,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClustrixPtrInput)(nil)).Elem(), ResourceClustrixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCockroachInput)(nil)).Elem(), ResourceCockroachArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCockroachPtrInput)(nil)).Elem(), ResourceCockroachArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCouchbaseDatabaseInput)(nil)).Elem(), ResourceCouchbaseDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCouchbaseDatabasePtrInput)(nil)).Elem(), ResourceCouchbaseDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCouchbaseWebUiInput)(nil)).Elem(), ResourceCouchbaseWebUiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCouchbaseWebUiPtrInput)(nil)).Elem(), ResourceCouchbaseWebUiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDb2IInput)(nil)).Elem(), ResourceDb2IArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDb2IPtrInput)(nil)).Elem(), ResourceDb2IArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDb2LuwInput)(nil)).Elem(), ResourceDb2LuwArgs{})
@@ -64026,6 +65771,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeGatewayArrayInput)(nil)).Elem(), GetNodeNodeGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeGatewayMaintenanceWindowInput)(nil)).Elem(), GetNodeNodeGatewayMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeGatewayMaintenanceWindowArrayInput)(nil)).Elem(), GetNodeNodeGatewayMaintenanceWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeProxyClusterInput)(nil)).Elem(), GetNodeNodeProxyClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeProxyClusterArrayInput)(nil)).Elem(), GetNodeNodeProxyClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeProxyClusterMaintenanceWindowInput)(nil)).Elem(), GetNodeNodeProxyClusterMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeProxyClusterMaintenanceWindowArrayInput)(nil)).Elem(), GetNodeNodeProxyClusterMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeRelayInput)(nil)).Elem(), GetNodeNodeRelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeRelayArrayInput)(nil)).Elem(), GetNodeNodeRelayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeNodeRelayMaintenanceWindowInput)(nil)).Elem(), GetNodeNodeRelayMaintenanceWindowArgs{})
@@ -64040,6 +65789,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPeeringGroupResourcePeeringGroupResourceArrayInput)(nil)).Elem(), GetPeeringGroupResourcePeeringGroupResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyPolicyInput)(nil)).Elem(), GetPolicyPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyPolicyArrayInput)(nil)).Elem(), GetPolicyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProxyClusterKeyProxyClusterKeyInput)(nil)).Elem(), GetProxyClusterKeyProxyClusterKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProxyClusterKeyProxyClusterKeyArrayInput)(nil)).Elem(), GetProxyClusterKeyProxyClusterKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityGroupRemoteIdentityGroupInput)(nil)).Elem(), GetRemoteIdentityGroupRemoteIdentityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityGroupRemoteIdentityGroupArrayInput)(nil)).Elem(), GetRemoteIdentityGroupRemoteIdentityGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRemoteIdentityRemoteIdentityInput)(nil)).Elem(), GetRemoteIdentityRemoteIdentityArgs{})
@@ -64102,6 +65853,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClustrixArrayInput)(nil)).Elem(), GetResourceResourceClustrixArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCockroachInput)(nil)).Elem(), GetResourceResourceCockroachArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCockroachArrayInput)(nil)).Elem(), GetResourceResourceCockroachArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCouchbaseDatabaseInput)(nil)).Elem(), GetResourceResourceCouchbaseDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCouchbaseDatabaseArrayInput)(nil)).Elem(), GetResourceResourceCouchbaseDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCouchbaseWebUiInput)(nil)).Elem(), GetResourceResourceCouchbaseWebUiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCouchbaseWebUiArrayInput)(nil)).Elem(), GetResourceResourceCouchbaseWebUiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDb2IInput)(nil)).Elem(), GetResourceResourceDb2IArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDb2IArrayInput)(nil)).Elem(), GetResourceResourceDb2IArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDb2LuwInput)(nil)).Elem(), GetResourceResourceDb2LuwArgs{})
@@ -64280,6 +66035,10 @@ func init() {
 	pulumi.RegisterOutputType(NodeGatewayPtrOutput{})
 	pulumi.RegisterOutputType(NodeGatewayMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(NodeGatewayMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(NodeProxyClusterOutput{})
+	pulumi.RegisterOutputType(NodeProxyClusterPtrOutput{})
+	pulumi.RegisterOutputType(NodeProxyClusterMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(NodeProxyClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(NodeRelayOutput{})
 	pulumi.RegisterOutputType(NodeRelayPtrOutput{})
 	pulumi.RegisterOutputType(NodeRelayMaintenanceWindowOutput{})
@@ -64340,6 +66099,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceClustrixPtrOutput{})
 	pulumi.RegisterOutputType(ResourceCockroachOutput{})
 	pulumi.RegisterOutputType(ResourceCockroachPtrOutput{})
+	pulumi.RegisterOutputType(ResourceCouchbaseDatabaseOutput{})
+	pulumi.RegisterOutputType(ResourceCouchbaseDatabasePtrOutput{})
+	pulumi.RegisterOutputType(ResourceCouchbaseWebUiOutput{})
+	pulumi.RegisterOutputType(ResourceCouchbaseWebUiPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDb2IOutput{})
 	pulumi.RegisterOutputType(ResourceDb2IPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDb2LuwOutput{})
@@ -64526,6 +66289,10 @@ func init() {
 	pulumi.RegisterOutputType(GetNodeNodeGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeGatewayMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeGatewayMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeNodeProxyClusterOutput{})
+	pulumi.RegisterOutputType(GetNodeNodeProxyClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeNodeProxyClusterMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(GetNodeNodeProxyClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeRelayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeRelayArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeNodeRelayMaintenanceWindowOutput{})
@@ -64540,6 +66307,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPeeringGroupResourcePeeringGroupResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetPolicyPolicyOutput{})
 	pulumi.RegisterOutputType(GetPolicyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetProxyClusterKeyProxyClusterKeyOutput{})
+	pulumi.RegisterOutputType(GetProxyClusterKeyProxyClusterKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityGroupRemoteIdentityGroupOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityGroupRemoteIdentityGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetRemoteIdentityRemoteIdentityOutput{})
@@ -64602,6 +66371,10 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceClustrixArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceCockroachOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceCockroachArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceCouchbaseDatabaseOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceCouchbaseDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceCouchbaseWebUiOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceCouchbaseWebUiArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDb2IOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDb2IArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDb2LuwOutput{})

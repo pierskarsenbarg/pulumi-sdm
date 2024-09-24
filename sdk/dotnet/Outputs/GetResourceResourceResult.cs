@@ -42,6 +42,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceCitusResult> Cituses;
         public readonly ImmutableArray<Outputs.GetResourceResourceClustrixResult> Clustrixes;
         public readonly ImmutableArray<Outputs.GetResourceResourceCockroachResult> Cockroaches;
+        public readonly ImmutableArray<Outputs.GetResourceResourceCouchbaseDatabaseResult> CouchbaseDatabases;
+        public readonly ImmutableArray<Outputs.GetResourceResourceCouchbaseWebUiResult> CouchbaseWebUis;
         public readonly ImmutableArray<Outputs.GetResourceResourceDb2IResult> Db2Is;
         public readonly ImmutableArray<Outputs.GetResourceResourceDb2LuwResult> Db2Luws;
         public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbHostResult> DocumentDbHosts;
@@ -157,6 +159,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceClustrixResult> clustrixes,
 
             ImmutableArray<Outputs.GetResourceResourceCockroachResult> cockroaches,
+
+            ImmutableArray<Outputs.GetResourceResourceCouchbaseDatabaseResult> couchbaseDatabases,
+
+            ImmutableArray<Outputs.GetResourceResourceCouchbaseWebUiResult> couchbaseWebUis,
 
             ImmutableArray<Outputs.GetResourceResourceDb2IResult> db2Is,
 
@@ -300,6 +306,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Cituses = cituses;
             Clustrixes = clustrixes;
             Cockroaches = cockroaches;
+            CouchbaseDatabases = couchbaseDatabases;
+            CouchbaseWebUis = couchbaseWebUis;
             Db2Is = db2Is;
             Db2Luws = db2Luws;
             DocumentDbHosts = documentDbHosts;

@@ -272,6 +272,10 @@ export interface GetNodeNode {
      */
     gateways: outputs.GetNodeNodeGateway[];
     /**
+     * ProxyCluster represents a cluster of StrongDM proxies.
+     */
+    proxyClusters: outputs.GetNodeNodeProxyCluster[];
+    /**
      * Relay represents a StrongDM CLI installation running in relay mode.
      */
     relays: outputs.GetNodeNodeRelay[];
@@ -321,6 +325,34 @@ export interface GetNodeNodeGateway {
 }
 
 export interface GetNodeNodeGatewayMaintenanceWindow {
+    cronSchedule: string;
+    requireIdleness: boolean;
+}
+
+export interface GetNodeNodeProxyCluster {
+    /**
+     * The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+     */
+    address?: string;
+    /**
+     * Unique identifier of the Relay.
+     */
+    id?: string;
+    /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: outputs.GetNodeNodeProxyClusterMaintenanceWindow[];
+    /**
+     * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+     */
+    name?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetNodeNodeProxyClusterMaintenanceWindow {
     cronSchedule: string;
     requireIdleness: boolean;
 }
@@ -440,6 +472,17 @@ export interface GetPolicyPolicy {
     policy?: string;
 }
 
+export interface GetProxyClusterKeyProxyClusterKey {
+    /**
+     * Unique identifier of the Relay.
+     */
+    id?: string;
+    /**
+     * The ID of the proxy cluster which this key authenticates to.
+     */
+    proxyClusterId?: string;
+}
+
 export interface GetRemoteIdentityGroupRemoteIdentityGroup {
     /**
      * Unique identifier of the RemoteIdentityGroup.
@@ -499,6 +542,8 @@ export interface GetResourceResource {
     cituses: outputs.GetResourceResourceCitus[];
     clustrixes: outputs.GetResourceResourceClustrix[];
     cockroaches: outputs.GetResourceResourceCockroach[];
+    couchbaseDatabases: outputs.GetResourceResourceCouchbaseDatabase[];
+    couchbaseWebUis: outputs.GetResourceResourceCouchbaseWebUi[];
     db2Is: outputs.GetResourceResourceDb2I[];
     db2Luws: outputs.GetResourceResourceDb2Luw[];
     documentDbHosts: outputs.GetResourceResourceDocumentDbHost[];
@@ -2288,6 +2333,113 @@ export interface GetResourceResourceCockroach {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceCouchbaseDatabase {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+     */
+    n1QlPort?: number;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceCouchbaseWebUi {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The base address of your website without the path.
+     * * kubernetes:
+     */
+    url?: string;
     /**
      * The username to authenticate with.
      */
@@ -6501,6 +6653,30 @@ export interface NodeGatewayMaintenanceWindow {
     requireIdleness: boolean;
 }
 
+export interface NodeProxyCluster {
+    /**
+     * The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+     */
+    address: string;
+    /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: outputs.NodeProxyClusterMaintenanceWindow[];
+    /**
+     * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+     */
+    name: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface NodeProxyClusterMaintenanceWindow {
+    cronSchedule: string;
+    requireIdleness: boolean;
+}
+
 export interface NodeRelay {
     /**
      * Device is a read only device name uploaded by the gateway process when it comes online.
@@ -8156,6 +8332,105 @@ export interface ResourceCockroach {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceCouchbaseDatabase {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+     */
+    n1QlPort: number;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceCouchbaseWebUi {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The base address of your website without the path.
+     * * kubernetes:
+     */
+    url: string;
     /**
      * The username to authenticate with.
      */

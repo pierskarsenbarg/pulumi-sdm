@@ -15,33 +15,6 @@ import (
 //
 //	the users that can request that access, and the mechanism for approving those requests which can either
 //	but automatic approval or a set of users authorized to approve the requests.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pierskarsenbarg/pulumi-sdm/sdk/go/sdm"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.LookupWorkflow(ctx, &sdm.LookupWorkflowArgs{
-//				AutoGrant: pulumi.BoolRef(true),
-//				Name:      pulumi.StringRef("workflow example"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowResult

@@ -75,6 +75,12 @@ namespace PiersKarsenbarg.Sdm
         public Output<Outputs.NodeGateway?> Gateway { get; private set; } = null!;
 
         /// <summary>
+        /// ProxyCluster represents a cluster of StrongDM proxies.
+        /// </summary>
+        [Output("proxyCluster")]
+        public Output<Outputs.NodeProxyCluster?> ProxyCluster { get; private set; } = null!;
+
+        /// <summary>
         /// Relay represents a StrongDM CLI installation running in relay mode.
         /// </summary>
         [Output("relay")]
@@ -134,6 +140,12 @@ namespace PiersKarsenbarg.Sdm
         public Input<Inputs.NodeGatewayArgs>? Gateway { get; set; }
 
         /// <summary>
+        /// ProxyCluster represents a cluster of StrongDM proxies.
+        /// </summary>
+        [Input("proxyCluster")]
+        public Input<Inputs.NodeProxyClusterArgs>? ProxyCluster { get; set; }
+
+        /// <summary>
         /// Relay represents a StrongDM CLI installation running in relay mode.
         /// </summary>
         [Input("relay")]
@@ -152,6 +164,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         [Input("gateway")]
         public Input<Inputs.NodeGatewayGetArgs>? Gateway { get; set; }
+
+        /// <summary>
+        /// ProxyCluster represents a cluster of StrongDM proxies.
+        /// </summary>
+        [Input("proxyCluster")]
+        public Input<Inputs.NodeProxyClusterGetArgs>? ProxyCluster { get; set; }
 
         /// <summary>
         /// Relay represents a StrongDM CLI installation running in relay mode.

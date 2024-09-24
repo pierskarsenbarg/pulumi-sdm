@@ -17,14 +17,18 @@ __all__ = ['NodeArgs', 'Node']
 class NodeArgs:
     def __init__(__self__, *,
                  gateway: Optional[pulumi.Input['NodeGatewayArgs']] = None,
+                 proxy_cluster: Optional[pulumi.Input['NodeProxyClusterArgs']] = None,
                  relay: Optional[pulumi.Input['NodeRelayArgs']] = None):
         """
         The set of arguments for constructing a Node resource.
         :param pulumi.Input['NodeGatewayArgs'] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
+        :param pulumi.Input['NodeProxyClusterArgs'] proxy_cluster: ProxyCluster represents a cluster of StrongDM proxies.
         :param pulumi.Input['NodeRelayArgs'] relay: Relay represents a StrongDM CLI installation running in relay mode.
         """
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
+        if proxy_cluster is not None:
+            pulumi.set(__self__, "proxy_cluster", proxy_cluster)
         if relay is not None:
             pulumi.set(__self__, "relay", relay)
 
@@ -39,6 +43,18 @@ class NodeArgs:
     @gateway.setter
     def gateway(self, value: Optional[pulumi.Input['NodeGatewayArgs']]):
         pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter(name="proxyCluster")
+    def proxy_cluster(self) -> Optional[pulumi.Input['NodeProxyClusterArgs']]:
+        """
+        ProxyCluster represents a cluster of StrongDM proxies.
+        """
+        return pulumi.get(self, "proxy_cluster")
+
+    @proxy_cluster.setter
+    def proxy_cluster(self, value: Optional[pulumi.Input['NodeProxyClusterArgs']]):
+        pulumi.set(self, "proxy_cluster", value)
 
     @property
     @pulumi.getter
@@ -57,14 +73,18 @@ class NodeArgs:
 class _NodeState:
     def __init__(__self__, *,
                  gateway: Optional[pulumi.Input['NodeGatewayArgs']] = None,
+                 proxy_cluster: Optional[pulumi.Input['NodeProxyClusterArgs']] = None,
                  relay: Optional[pulumi.Input['NodeRelayArgs']] = None):
         """
         Input properties used for looking up and filtering Node resources.
         :param pulumi.Input['NodeGatewayArgs'] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
+        :param pulumi.Input['NodeProxyClusterArgs'] proxy_cluster: ProxyCluster represents a cluster of StrongDM proxies.
         :param pulumi.Input['NodeRelayArgs'] relay: Relay represents a StrongDM CLI installation running in relay mode.
         """
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
+        if proxy_cluster is not None:
+            pulumi.set(__self__, "proxy_cluster", proxy_cluster)
         if relay is not None:
             pulumi.set(__self__, "relay", relay)
 
@@ -79,6 +99,18 @@ class _NodeState:
     @gateway.setter
     def gateway(self, value: Optional[pulumi.Input['NodeGatewayArgs']]):
         pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter(name="proxyCluster")
+    def proxy_cluster(self) -> Optional[pulumi.Input['NodeProxyClusterArgs']]:
+        """
+        ProxyCluster represents a cluster of StrongDM proxies.
+        """
+        return pulumi.get(self, "proxy_cluster")
+
+    @proxy_cluster.setter
+    def proxy_cluster(self, value: Optional[pulumi.Input['NodeProxyClusterArgs']]):
+        pulumi.set(self, "proxy_cluster", value)
 
     @property
     @pulumi.getter
@@ -99,6 +131,7 @@ class Node(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  gateway: Optional[pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']]] = None,
+                 proxy_cluster: Optional[pulumi.Input[Union['NodeProxyClusterArgs', 'NodeProxyClusterArgsDict']]] = None,
                  relay: Optional[pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']]] = None,
                  __props__=None):
         """
@@ -142,6 +175,7 @@ class Node(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
+        :param pulumi.Input[Union['NodeProxyClusterArgs', 'NodeProxyClusterArgsDict']] proxy_cluster: ProxyCluster represents a cluster of StrongDM proxies.
         :param pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']] relay: Relay represents a StrongDM CLI installation running in relay mode.
         """
         ...
@@ -204,6 +238,7 @@ class Node(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  gateway: Optional[pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']]] = None,
+                 proxy_cluster: Optional[pulumi.Input[Union['NodeProxyClusterArgs', 'NodeProxyClusterArgsDict']]] = None,
                  relay: Optional[pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -215,6 +250,7 @@ class Node(pulumi.CustomResource):
             __props__ = NodeArgs.__new__(NodeArgs)
 
             __props__.__dict__["gateway"] = gateway
+            __props__.__dict__["proxy_cluster"] = proxy_cluster
             __props__.__dict__["relay"] = relay
         super(Node, __self__).__init__(
             'sdm:index/node:Node',
@@ -227,6 +263,7 @@ class Node(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             gateway: Optional[pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']]] = None,
+            proxy_cluster: Optional[pulumi.Input[Union['NodeProxyClusterArgs', 'NodeProxyClusterArgsDict']]] = None,
             relay: Optional[pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']]] = None) -> 'Node':
         """
         Get an existing Node resource's state with the given name, id, and optional extra
@@ -236,6 +273,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NodeGatewayArgs', 'NodeGatewayArgsDict']] gateway: Gateway represents a StrongDM CLI installation running in gateway mode.
+        :param pulumi.Input[Union['NodeProxyClusterArgs', 'NodeProxyClusterArgsDict']] proxy_cluster: ProxyCluster represents a cluster of StrongDM proxies.
         :param pulumi.Input[Union['NodeRelayArgs', 'NodeRelayArgsDict']] relay: Relay represents a StrongDM CLI installation running in relay mode.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -243,6 +281,7 @@ class Node(pulumi.CustomResource):
         __props__ = _NodeState.__new__(_NodeState)
 
         __props__.__dict__["gateway"] = gateway
+        __props__.__dict__["proxy_cluster"] = proxy_cluster
         __props__.__dict__["relay"] = relay
         return Node(resource_name, opts=opts, __props__=__props__)
 
@@ -253,6 +292,14 @@ class Node(pulumi.CustomResource):
         Gateway represents a StrongDM CLI installation running in gateway mode.
         """
         return pulumi.get(self, "gateway")
+
+    @property
+    @pulumi.getter(name="proxyCluster")
+    def proxy_cluster(self) -> pulumi.Output[Optional['outputs.NodeProxyCluster']]:
+        """
+        ProxyCluster represents a cluster of StrongDM proxies.
+        """
+        return pulumi.get(self, "proxy_cluster")
 
     @property
     @pulumi.getter

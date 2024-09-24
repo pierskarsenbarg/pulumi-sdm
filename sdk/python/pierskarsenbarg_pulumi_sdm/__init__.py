@@ -23,6 +23,7 @@ from .get_peering_group_node import *
 from .get_peering_group_peer import *
 from .get_peering_group_resource import *
 from .get_policy import *
+from .get_proxy_cluster_key import *
 from .get_remote_identity import *
 from .get_remote_identity_group import *
 from .get_resource import *
@@ -41,6 +42,7 @@ from .peering_group_peer import *
 from .peering_group_resource import *
 from .policy import *
 from .provider import *
+from .proxy_cluster_key import *
 from .remote_identity import *
 from .resource import *
 from .role import *
@@ -163,6 +165,14 @@ _utilities.register(
   "fqn": "pierskarsenbarg_pulumi_sdm",
   "classes": {
    "sdm:index/policy:Policy": "Policy"
+  }
+ },
+ {
+  "pkg": "sdm",
+  "mod": "index/proxyClusterKey",
+  "fqn": "pierskarsenbarg_pulumi_sdm",
+  "classes": {
+   "sdm:index/proxyClusterKey:ProxyClusterKey": "ProxyClusterKey"
   }
  },
  {

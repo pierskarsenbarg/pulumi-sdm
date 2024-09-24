@@ -101,6 +101,30 @@ export interface NodeGatewayMaintenanceWindow {
     requireIdleness: pulumi.Input<boolean>;
 }
 
+export interface NodeProxyCluster {
+    /**
+     * The public hostname/port tuple at which the proxy cluster will be accessible to clients.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * Maintenance Windows define when this node is allowed to restart. If a node is requested to restart, it will check each window to determine if any of them permit it to restart, and if any do, it will. This check is repeated per window until the restart is successfully completed.  If not set here, may be set on the command line or via an environment variable on the process itself; any server setting will take precedence over local settings. This setting is ineffective for nodes below version 38.44.0.  If this setting is not applied via this remote configuration or via local configuration, the default setting is used: always allow restarts if serving no connections, and allow a restart even if serving connections between 7-8 UTC, any day.
+     */
+    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.NodeProxyClusterMaintenanceWindow>[]>;
+    /**
+     * Unique human-readable name of the Relay. Node names must include only letters, numbers, and hyphens (no spaces, underscores, or other special characters). Generated if not provided on create.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface NodeProxyClusterMaintenanceWindow {
+    cronSchedule: pulumi.Input<string>;
+    requireIdleness: pulumi.Input<boolean>;
+}
+
 export interface NodeRelay {
     /**
      * Device is a read only device name uploaded by the gateway process when it comes online.
@@ -1756,6 +1780,105 @@ export interface ResourceCockroach {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ResourceCouchbaseDatabase {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * The port number for N1QL queries. Default HTTP is 8093. Default HTTPS is 18093.
+     */
+    n1QlPort: pulumi.Input<number>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ResourceCouchbaseWebUi {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The base address of your website without the path.
+     * * kubernetes:
+     */
+    url: pulumi.Input<string>;
     /**
      * The username to authenticate with.
      */

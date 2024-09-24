@@ -10,17 +10,6 @@ import * as utilities from "./utilities";
  * Workflows are the collection of rules that define the resources to which access can be requested,
  *  the users that can request that access, and the mechanism for approving those requests which can either
  *  but automatic approval or a set of users authorized to approve the requests.
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sdm from "@pulumi/sdm";
- *
- * const workflowQuery = sdm.getWorkflow({
- *     autoGrant: true,
- *     name: "workflow example",
- * });
- * ```
  */
 export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     args = args || {};
@@ -115,17 +104,6 @@ export interface GetWorkflowResult {
  * Workflows are the collection of rules that define the resources to which access can be requested,
  *  the users that can request that access, and the mechanism for approving those requests which can either
  *  but automatic approval or a set of users authorized to approve the requests.
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sdm from "@pulumi/sdm";
- *
- * const workflowQuery = sdm.getWorkflow({
- *     autoGrant: true,
- *     name: "workflow example",
- * });
- * ```
  */
 export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowResult> {
     args = args || {};
