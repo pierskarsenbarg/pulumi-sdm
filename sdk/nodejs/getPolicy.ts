@@ -22,7 +22,6 @@ import * as utilities from "./utilities";
  */
 export function getPolicy(args?: GetPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getPolicy:getPolicy", {
         "description": args.description,
@@ -98,7 +97,14 @@ export interface GetPolicyResult {
  * ```
  */
 export function getPolicyOutput(args?: GetPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getPolicy(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getPolicy:getPolicy", {
+        "description": args.description,
+        "id": args.id,
+        "name": args.name,
+        "policy": args.policy,
+    }, opts);
 }
 
 /**

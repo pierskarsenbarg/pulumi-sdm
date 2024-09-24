@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  */
 export function getPeeringGroupPeer(args?: GetPeeringGroupPeerArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringGroupPeerResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getPeeringGroupPeer:getPeeringGroupPeer", {
         "groupId": args.groupId,
@@ -67,7 +66,13 @@ export interface GetPeeringGroupPeerResult {
  * PeeringGroupPeer represents the link between two PeeringGroups
  */
 export function getPeeringGroupPeerOutput(args?: GetPeeringGroupPeerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringGroupPeerResult> {
-    return pulumi.output(args).apply((a: any) => getPeeringGroupPeer(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getPeeringGroupPeer:getPeeringGroupPeer", {
+        "groupId": args.groupId,
+        "id": args.id,
+        "peersWithGroupId": args.peersWithGroupId,
+    }, opts);
 }
 
 /**

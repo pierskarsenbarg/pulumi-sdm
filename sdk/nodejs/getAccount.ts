@@ -37,7 +37,6 @@ import * as utilities from "./utilities";
  */
 export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getAccount:getAccount", {
         "accountType": args.accountType,
@@ -198,7 +197,22 @@ export interface GetAccountResult {
  * ```
  */
 export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
-    return pulumi.output(args).apply((a: any) => getAccount(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getAccount:getAccount", {
+        "accountType": args.accountType,
+        "email": args.email,
+        "externalId": args.externalId,
+        "firstName": args.firstName,
+        "id": args.id,
+        "lastName": args.lastName,
+        "name": args.name,
+        "permissionLevel": args.permissionLevel,
+        "permissions": args.permissions,
+        "suspended": args.suspended,
+        "tags": args.tags,
+        "type": args.type,
+    }, opts);
 }
 
 /**

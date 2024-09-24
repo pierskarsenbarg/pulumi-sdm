@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  */
 export function getAccountAttachment(args?: GetAccountAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAttachmentResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getAccountAttachment:getAccountAttachment", {
         "accountId": args.accountId,
@@ -87,7 +86,13 @@ export interface GetAccountAttachmentResult {
  * ```
  */
 export function getAccountAttachmentOutput(args?: GetAccountAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAttachmentResult> {
-    return pulumi.output(args).apply((a: any) => getAccountAttachment(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getAccountAttachment:getAccountAttachment", {
+        "accountId": args.accountId,
+        "id": args.id,
+        "roleId": args.roleId,
+    }, opts);
 }
 
 /**

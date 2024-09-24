@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  */
 export function getSshCaPubkey(args?: GetSshCaPubkeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshCaPubkeyResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getSshCaPubkey:getSshCaPubkey", {
         "id": args.id,
@@ -64,7 +63,12 @@ export interface GetSshCaPubkeyResult {
  * ```
  */
 export function getSshCaPubkeyOutput(args?: GetSshCaPubkeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshCaPubkeyResult> {
-    return pulumi.output(args).apply((a: any) => getSshCaPubkey(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getSshCaPubkey:getSshCaPubkey", {
+        "id": args.id,
+        "publicKey": args.publicKey,
+    }, opts);
 }
 
 /**

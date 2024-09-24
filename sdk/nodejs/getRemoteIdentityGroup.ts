@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  */
 export function getRemoteIdentityGroup(args?: GetRemoteIdentityGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRemoteIdentityGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", {
         "id": args.id,
@@ -78,7 +77,12 @@ export interface GetRemoteIdentityGroupResult {
  * ```
  */
 export function getRemoteIdentityGroupOutput(args?: GetRemoteIdentityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteIdentityGroupResult> {
-    return pulumi.output(args).apply((a: any) => getRemoteIdentityGroup(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

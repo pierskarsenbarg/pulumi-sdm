@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  */
 export function getPeeringGroup(args?: GetPeeringGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getPeeringGroup:getPeeringGroup", {
         "id": args.id,
@@ -60,7 +59,12 @@ export interface GetPeeringGroupResult {
  *  They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.
  */
 export function getPeeringGroupOutput(args?: GetPeeringGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringGroupResult> {
-    return pulumi.output(args).apply((a: any) => getPeeringGroup(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getPeeringGroup:getPeeringGroup", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**

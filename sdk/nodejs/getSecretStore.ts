@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  */
 export function getSecretStore(args?: GetSecretStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretStoreResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getSecretStore:getSecretStore", {
         "id": args.id,
@@ -76,7 +75,14 @@ export interface GetSecretStoreResult {
  *  Coming soon support for HashiCorp Vault and AWS Secret Store.
  */
 export function getSecretStoreOutput(args?: GetSecretStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretStoreResult> {
-    return pulumi.output(args).apply((a: any) => getSecretStore(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getSecretStore:getSecretStore", {
+        "id": args.id,
+        "name": args.name,
+        "tags": args.tags,
+        "type": args.type,
+    }, opts);
 }
 
 /**

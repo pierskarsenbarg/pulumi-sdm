@@ -69,14 +69,20 @@ type LookupApprovalWorkflowStepResult struct {
 
 func LookupApprovalWorkflowStepOutput(ctx *pulumi.Context, args LookupApprovalWorkflowStepOutputArgs, opts ...pulumi.InvokeOption) LookupApprovalWorkflowStepResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupApprovalWorkflowStepResult, error) {
+		ApplyT(func(v interface{}) (LookupApprovalWorkflowStepResultOutput, error) {
 			args := v.(LookupApprovalWorkflowStepArgs)
-			r, err := LookupApprovalWorkflowStep(ctx, &args, opts...)
-			var s LookupApprovalWorkflowStepResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupApprovalWorkflowStepResult
+			secret, err := ctx.InvokePackageRaw("sdm:index/getApprovalWorkflowStep:getApprovalWorkflowStep", args, &rv, "", opts...)
+			if err != nil {
+				return LookupApprovalWorkflowStepResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupApprovalWorkflowStepResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupApprovalWorkflowStepResultOutput), nil
+			}
+			return output, nil
 		}).(LookupApprovalWorkflowStepResultOutput)
 }
 

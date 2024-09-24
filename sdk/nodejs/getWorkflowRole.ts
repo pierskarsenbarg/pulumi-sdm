@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  */
 export function getWorkflowRole(args?: GetWorkflowRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowRoleResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getWorkflowRole:getWorkflowRole", {
         "id": args.id,
@@ -91,7 +90,13 @@ export interface GetWorkflowRoleResult {
  * ```
  */
 export function getWorkflowRoleOutput(args?: GetWorkflowRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowRoleResult> {
-    return pulumi.output(args).apply((a: any) => getWorkflowRole(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getWorkflowRole:getWorkflowRole", {
+        "id": args.id,
+        "roleId": args.roleId,
+        "workflowId": args.workflowId,
+    }, opts);
 }
 
 /**

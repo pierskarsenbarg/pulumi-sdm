@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  */
 export function getApprovalWorkflow(args?: GetApprovalWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetApprovalWorkflowResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getApprovalWorkflow:getApprovalWorkflow", {
         "approvalMode": args.approvalMode,
@@ -108,7 +107,14 @@ export interface GetApprovalWorkflowResult {
  * ```
  */
 export function getApprovalWorkflowOutput(args?: GetApprovalWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApprovalWorkflowResult> {
-    return pulumi.output(args).apply((a: any) => getApprovalWorkflow(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getApprovalWorkflow:getApprovalWorkflow", {
+        "approvalMode": args.approvalMode,
+        "description": args.description,
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**
