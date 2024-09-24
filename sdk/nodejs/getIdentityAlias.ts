@@ -23,7 +23,6 @@ import * as utilities from "./utilities";
  */
 export function getIdentityAlias(args?: GetIdentityAliasArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityAliasResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getIdentityAlias:getIdentityAlias", {
         "accountId": args.accountId,
@@ -100,7 +99,14 @@ export interface GetIdentityAliasResult {
  * ```
  */
 export function getIdentityAliasOutput(args?: GetIdentityAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityAliasResult> {
-    return pulumi.output(args).apply((a: any) => getIdentityAlias(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getIdentityAlias:getIdentityAlias", {
+        "accountId": args.accountId,
+        "id": args.id,
+        "identitySetId": args.identitySetId,
+        "username": args.username,
+    }, opts);
 }
 
 /**

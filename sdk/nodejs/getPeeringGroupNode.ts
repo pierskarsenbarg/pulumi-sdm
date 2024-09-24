@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  */
 export function getPeeringGroupNode(args?: GetPeeringGroupNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringGroupNodeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getPeeringGroupNode:getPeeringGroupNode", {
         "groupId": args.groupId,
@@ -67,7 +66,13 @@ export interface GetPeeringGroupNodeResult {
  * PeeringGroupNode represents the attachment between a PeeringGroup and a Node.
  */
 export function getPeeringGroupNodeOutput(args?: GetPeeringGroupNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringGroupNodeResult> {
-    return pulumi.output(args).apply((a: any) => getPeeringGroupNode(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getPeeringGroupNode:getPeeringGroupNode", {
+        "groupId": args.groupId,
+        "id": args.id,
+        "nodeId": args.nodeId,
+    }, opts);
 }
 
 /**

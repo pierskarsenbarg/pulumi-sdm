@@ -28,7 +28,6 @@ import * as utilities from "./utilities";
  */
 export function getNode(args?: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getNode:getNode", {
         "bindAddress": args.bindAddress,
@@ -126,7 +125,16 @@ export interface GetNodeResult {
  * ```
  */
 export function getNodeOutput(args?: GetNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeResult> {
-    return pulumi.output(args).apply((a: any) => getNode(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getNode:getNode", {
+        "bindAddress": args.bindAddress,
+        "id": args.id,
+        "listenAddress": args.listenAddress,
+        "name": args.name,
+        "tags": args.tags,
+        "type": args.type,
+    }, opts);
 }
 
 /**

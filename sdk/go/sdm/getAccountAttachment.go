@@ -73,14 +73,20 @@ type LookupAccountAttachmentResult struct {
 
 func LookupAccountAttachmentOutput(ctx *pulumi.Context, args LookupAccountAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAttachmentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAccountAttachmentResult, error) {
+		ApplyT(func(v interface{}) (LookupAccountAttachmentResultOutput, error) {
 			args := v.(LookupAccountAttachmentArgs)
-			r, err := LookupAccountAttachment(ctx, &args, opts...)
-			var s LookupAccountAttachmentResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAccountAttachmentResult
+			secret, err := ctx.InvokePackageRaw("sdm:index/getAccountAttachment:getAccountAttachment", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAccountAttachmentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAccountAttachmentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAccountAttachmentResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAccountAttachmentResultOutput)
 }
 

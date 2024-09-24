@@ -27,7 +27,6 @@ import * as utilities from "./utilities";
  */
 export function getResource(args?: GetResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getResource:getResource", {
         "hostname": args.hostname,
@@ -133,7 +132,17 @@ export interface GetResourceResult {
  * ```
  */
 export function getResourceOutput(args?: GetResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceResult> {
-    return pulumi.output(args).apply((a: any) => getResource(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getResource:getResource", {
+        "hostname": args.hostname,
+        "id": args.id,
+        "name": args.name,
+        "port": args.port,
+        "tags": args.tags,
+        "type": args.type,
+        "username": args.username,
+    }, opts);
 }
 
 /**

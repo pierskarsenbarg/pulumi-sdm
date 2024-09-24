@@ -81,14 +81,20 @@ type LookupIdentityAliasResult struct {
 
 func LookupIdentityAliasOutput(ctx *pulumi.Context, args LookupIdentityAliasOutputArgs, opts ...pulumi.InvokeOption) LookupIdentityAliasResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupIdentityAliasResult, error) {
+		ApplyT(func(v interface{}) (LookupIdentityAliasResultOutput, error) {
 			args := v.(LookupIdentityAliasArgs)
-			r, err := LookupIdentityAlias(ctx, &args, opts...)
-			var s LookupIdentityAliasResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupIdentityAliasResult
+			secret, err := ctx.InvokePackageRaw("sdm:index/getIdentityAlias:getIdentityAlias", args, &rv, "", opts...)
+			if err != nil {
+				return LookupIdentityAliasResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupIdentityAliasResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupIdentityAliasResultOutput), nil
+			}
+			return output, nil
 		}).(LookupIdentityAliasResultOutput)
 }
 

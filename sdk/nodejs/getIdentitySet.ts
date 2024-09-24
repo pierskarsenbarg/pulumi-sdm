@@ -21,7 +21,6 @@ import * as utilities from "./utilities";
  */
 export function getIdentitySet(args?: GetIdentitySetArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentitySetResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getIdentitySet:getIdentitySet", {
         "id": args.id,
@@ -78,7 +77,12 @@ export interface GetIdentitySetResult {
  * ```
  */
 export function getIdentitySetOutput(args?: GetIdentitySetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentitySetResult> {
-    return pulumi.output(args).apply((a: any) => getIdentitySet(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("sdm:index/getIdentitySet:getIdentitySet", {
+        "id": args.id,
+        "name": args.name,
+    }, opts);
 }
 
 /**
