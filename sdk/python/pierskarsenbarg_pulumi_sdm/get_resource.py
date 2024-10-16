@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -194,9 +199,6 @@ def get_resource(hostname: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_resource)
 def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
                         id: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -231,4 +233,23 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     :param str username: The username to authenticate with.
     """
-    ...
+    __args__ = dict()
+    __args__['hostname'] = hostname
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['port'] = port
+    __args__['tags'] = tags
+    __args__['type'] = type
+    __args__['username'] = username
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getResource:getResource', __args__, opts=opts, typ=GetResourceResult)
+    return __ret__.apply(lambda __response__: GetResourceResult(
+        hostname=pulumi.get(__response__, 'hostname'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name'),
+        port=pulumi.get(__response__, 'port'),
+        resources=pulumi.get(__response__, 'resources'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type'),
+        username=pulumi.get(__response__, 'username')))

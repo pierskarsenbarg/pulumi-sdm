@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -118,9 +123,6 @@ def get_peering_group_resource(group_id: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         peering_group_resources=pulumi.get(__ret__, 'peering_group_resources'),
         resource_id=pulumi.get(__ret__, 'resource_id'))
-
-
-@_utilities.lift_output_func(get_peering_group_resource)
 def get_peering_group_resource_output(group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       id: Optional[pulumi.Input[Optional[str]]] = None,
                                       resource_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -133,4 +135,15 @@ def get_peering_group_resource_output(group_id: Optional[pulumi.Input[Optional[s
     :param str id: Unique identifier of the Attachment.
     :param str resource_id: Resource ID to be attached.
     """
-    ...
+    __args__ = dict()
+    __args__['groupId'] = group_id
+    __args__['id'] = id
+    __args__['resourceId'] = resource_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getPeeringGroupResource:getPeeringGroupResource', __args__, opts=opts, typ=GetPeeringGroupResourceResult)
+    return __ret__.apply(lambda __response__: GetPeeringGroupResourceResult(
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        peering_group_resources=pulumi.get(__response__, 'peering_group_resources'),
+        resource_id=pulumi.get(__response__, 'resource_id')))

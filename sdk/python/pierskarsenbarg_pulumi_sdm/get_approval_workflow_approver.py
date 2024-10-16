@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -163,9 +168,6 @@ def get_approval_workflow_approver(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         role_id=pulumi.get(__ret__, 'role_id'))
-
-
-@_utilities.lift_output_func(get_approval_workflow_approver)
 def get_approval_workflow_approver_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                           approval_flow_id: Optional[pulumi.Input[Optional[str]]] = None,
                                           approval_step_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -195,4 +197,19 @@ def get_approval_workflow_approver_output(account_id: Optional[pulumi.Input[Opti
     :param str id: Unique identifier of the ApprovalWorkflowApprover.
     :param str role_id: The approver role id
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['approvalFlowId'] = approval_flow_id
+    __args__['approvalStepId'] = approval_step_id
+    __args__['id'] = id
+    __args__['roleId'] = role_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getApprovalWorkflowApprover:getApprovalWorkflowApprover', __args__, opts=opts, typ=GetApprovalWorkflowApproverResult)
+    return __ret__.apply(lambda __response__: GetApprovalWorkflowApproverResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        approval_flow_id=pulumi.get(__response__, 'approval_flow_id'),
+        approval_step_id=pulumi.get(__response__, 'approval_step_id'),
+        approval_workflow_approvers=pulumi.get(__response__, 'approval_workflow_approvers'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        role_id=pulumi.get(__response__, 'role_id')))

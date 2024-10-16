@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -133,9 +138,6 @@ def get_role(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         roles=pulumi.get(__ret__, 'roles'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_role)
 def get_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
@@ -150,4 +152,16 @@ def get_role_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: Unique human-readable name of the Role.
     :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getRole:getRole', __args__, opts=opts, typ=GetRoleResult)
+    return __ret__.apply(lambda __response__: GetRoleResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        managed_by=pulumi.get(__response__, 'managed_by'),
+        name=pulumi.get(__response__, 'name'),
+        roles=pulumi.get(__response__, 'roles'),
+        tags=pulumi.get(__response__, 'tags')))

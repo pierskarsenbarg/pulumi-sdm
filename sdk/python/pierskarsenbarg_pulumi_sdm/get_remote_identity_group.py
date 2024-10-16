@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -110,9 +115,6 @@ def get_remote_identity_group(id: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         name=pulumi.get(__ret__, 'name'),
         remote_identity_groups=pulumi.get(__ret__, 'remote_identity_groups'))
-
-
-@_utilities.lift_output_func(get_remote_identity_group)
 def get_remote_identity_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                      name: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRemoteIdentityGroupResult]:
@@ -131,4 +133,13 @@ def get_remote_identity_group_output(id: Optional[pulumi.Input[Optional[str]]] =
     :param str id: Unique identifier of the RemoteIdentityGroup.
     :param str name: Unique human-readable name of the RemoteIdentityGroup.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup', __args__, opts=opts, typ=GetRemoteIdentityGroupResult)
+    return __ret__.apply(lambda __response__: GetRemoteIdentityGroupResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name'),
+        remote_identity_groups=pulumi.get(__response__, 'remote_identity_groups')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -118,9 +123,6 @@ def get_peering_group_node(group_id: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         node_id=pulumi.get(__ret__, 'node_id'),
         peering_group_nodes=pulumi.get(__ret__, 'peering_group_nodes'))
-
-
-@_utilities.lift_output_func(get_peering_group_node)
 def get_peering_group_node_output(group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   id: Optional[pulumi.Input[Optional[str]]] = None,
                                   node_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -133,4 +135,15 @@ def get_peering_group_node_output(group_id: Optional[pulumi.Input[Optional[str]]
     :param str id: Unique identifier of the Attachment.
     :param str node_id: Node ID to be attached.
     """
-    ...
+    __args__ = dict()
+    __args__['groupId'] = group_id
+    __args__['id'] = id
+    __args__['nodeId'] = node_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getPeeringGroupNode:getPeeringGroupNode', __args__, opts=opts, typ=GetPeeringGroupNodeResult)
+    return __ret__.apply(lambda __response__: GetPeeringGroupNodeResult(
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        node_id=pulumi.get(__response__, 'node_id'),
+        peering_group_nodes=pulumi.get(__response__, 'peering_group_nodes')))

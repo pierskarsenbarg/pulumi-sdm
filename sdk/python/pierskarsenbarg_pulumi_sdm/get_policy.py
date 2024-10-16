@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -143,9 +148,6 @@ def get_policy(description: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         policies=pulumi.get(__ret__, 'policies'),
         policy=pulumi.get(__ret__, 'policy'))
-
-
-@_utilities.lift_output_func(get_policy)
 def get_policy_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                       id: Optional[pulumi.Input[Optional[str]]] = None,
                       name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -169,4 +171,17 @@ def get_policy_output(description: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name: Unique human-readable name of the Policy.
     :param str policy: The content of the Policy, in Cedar policy language.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['policy'] = policy
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult)
+    return __ret__.apply(lambda __response__: GetPolicyResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name'),
+        policies=pulumi.get(__response__, 'policies'),
+        policy=pulumi.get(__response__, 'policy')))
