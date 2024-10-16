@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdm.GetSshCaPubkey(ctx, nil, nil)
+//			_, err := sdm.GetSshCaPubkey(ctx, &sdm.GetSshCaPubkeyArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

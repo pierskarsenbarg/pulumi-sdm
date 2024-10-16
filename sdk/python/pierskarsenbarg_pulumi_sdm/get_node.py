@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -179,9 +184,6 @@ def get_node(bind_address: Optional[str] = None,
         nodes=pulumi.get(__ret__, 'nodes'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_node)
 def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
                     id: Optional[pulumi.Input[Optional[str]]] = None,
                     listen_address: Optional[pulumi.Input[Optional[str]]] = None,
@@ -215,4 +217,21 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
     :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
-    ...
+    __args__ = dict()
+    __args__['bindAddress'] = bind_address
+    __args__['id'] = id
+    __args__['listenAddress'] = listen_address
+    __args__['name'] = name
+    __args__['tags'] = tags
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getNode:getNode', __args__, opts=opts, typ=GetNodeResult)
+    return __ret__.apply(lambda __response__: GetNodeResult(
+        bind_address=pulumi.get(__response__, 'bind_address'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        listen_address=pulumi.get(__response__, 'listen_address'),
+        name=pulumi.get(__response__, 'name'),
+        nodes=pulumi.get(__response__, 'nodes'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type')))

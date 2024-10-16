@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -280,9 +285,6 @@ def get_account(account_type: Optional[str] = None,
         suspended=pulumi.get(__ret__, 'suspended'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_account)
 def get_account_output(account_type: Optional[pulumi.Input[Optional[str]]] = None,
                        email: Optional[pulumi.Input[Optional[str]]] = None,
                        external_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -333,4 +335,33 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[str]]] = Non
     :param Mapping[str, str] tags: Tags is a map of key, value pairs.
     :param str type: a filter to select all items of a certain subtype. See the [filter documentation](https://www.strongdm.com/docs/automation/getting-started/filters) for more information.
     """
-    ...
+    __args__ = dict()
+    __args__['accountType'] = account_type
+    __args__['email'] = email
+    __args__['externalId'] = external_id
+    __args__['firstName'] = first_name
+    __args__['id'] = id
+    __args__['lastName'] = last_name
+    __args__['name'] = name
+    __args__['permissionLevel'] = permission_level
+    __args__['permissions'] = permissions
+    __args__['suspended'] = suspended
+    __args__['tags'] = tags
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
+    return __ret__.apply(lambda __response__: GetAccountResult(
+        account_type=pulumi.get(__response__, 'account_type'),
+        accounts=pulumi.get(__response__, 'accounts'),
+        email=pulumi.get(__response__, 'email'),
+        external_id=pulumi.get(__response__, 'external_id'),
+        first_name=pulumi.get(__response__, 'first_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        last_name=pulumi.get(__response__, 'last_name'),
+        name=pulumi.get(__response__, 'name'),
+        permission_level=pulumi.get(__response__, 'permission_level'),
+        permissions=pulumi.get(__response__, 'permissions'),
+        suspended=pulumi.get(__response__, 'suspended'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type')))

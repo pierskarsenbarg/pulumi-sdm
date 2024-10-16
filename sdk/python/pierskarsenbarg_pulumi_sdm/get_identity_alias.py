@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -144,9 +149,6 @@ def get_identity_alias(account_id: Optional[str] = None,
         identity_set_id=pulumi.get(__ret__, 'identity_set_id'),
         ids=pulumi.get(__ret__, 'ids'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_identity_alias)
 def get_identity_alias_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                               id: Optional[pulumi.Input[Optional[str]]] = None,
                               identity_set_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -171,4 +173,17 @@ def get_identity_alias_output(account_id: Optional[pulumi.Input[Optional[str]]] 
     :param str identity_set_id: The identity set.
     :param str username: The username to be used as the identity alias for this account.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['id'] = id
+    __args__['identitySetId'] = identity_set_id
+    __args__['username'] = username
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getIdentityAlias:getIdentityAlias', __args__, opts=opts, typ=GetIdentityAliasResult)
+    return __ret__.apply(lambda __response__: GetIdentityAliasResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        id=pulumi.get(__response__, 'id'),
+        identity_aliases=pulumi.get(__response__, 'identity_aliases'),
+        identity_set_id=pulumi.get(__response__, 'identity_set_id'),
+        ids=pulumi.get(__response__, 'ids'),
+        username=pulumi.get(__response__, 'username')))

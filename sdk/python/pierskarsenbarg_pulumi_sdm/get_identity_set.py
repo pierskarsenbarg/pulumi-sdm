@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -110,9 +115,6 @@ def get_identity_set(id: Optional[str] = None,
         identity_sets=pulumi.get(__ret__, 'identity_sets'),
         ids=pulumi.get(__ret__, 'ids'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_identity_set)
 def get_identity_set_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentitySetResult]:
@@ -131,4 +133,13 @@ def get_identity_set_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str id: Unique identifier of the IdentitySet.
     :param str name: Unique human-readable name of the IdentitySet.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getIdentitySet:getIdentitySet', __args__, opts=opts, typ=GetIdentitySetResult)
+    return __ret__.apply(lambda __response__: GetIdentitySetResult(
+        id=pulumi.get(__response__, 'id'),
+        identity_sets=pulumi.get(__response__, 'identity_sets'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name')))

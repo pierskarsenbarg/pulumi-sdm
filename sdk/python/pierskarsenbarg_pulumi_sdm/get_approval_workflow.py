@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -146,9 +151,6 @@ def get_approval_workflow(approval_mode: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_approval_workflow)
 def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[str]]] = None,
                                  description: Optional[pulumi.Input[Optional[str]]] = None,
                                  id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -175,4 +177,17 @@ def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[s
     :param str id: Unique identifier of the ApprovalWorkflow.
     :param str name: Unique human-readable name of the ApprovalWorkflow.
     """
-    ...
+    __args__ = dict()
+    __args__['approvalMode'] = approval_mode
+    __args__['description'] = description
+    __args__['id'] = id
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getApprovalWorkflow:getApprovalWorkflow', __args__, opts=opts, typ=GetApprovalWorkflowResult)
+    return __ret__.apply(lambda __response__: GetApprovalWorkflowResult(
+        approval_mode=pulumi.get(__response__, 'approval_mode'),
+        approval_workflows=pulumi.get(__response__, 'approval_workflows'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name')))

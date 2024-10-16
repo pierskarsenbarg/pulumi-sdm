@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -112,9 +117,6 @@ def get_proxy_cluster_key(id: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         proxy_cluster_id=pulumi.get(__ret__, 'proxy_cluster_id'),
         proxy_cluster_keys=pulumi.get(__ret__, 'proxy_cluster_keys'))
-
-
-@_utilities.lift_output_func(get_proxy_cluster_key)
 def get_proxy_cluster_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                  proxy_cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProxyClusterKeyResult]:
@@ -135,4 +137,13 @@ def get_proxy_cluster_key_output(id: Optional[pulumi.Input[Optional[str]]] = Non
     :param str id: Unique identifier of the Relay.
     :param str proxy_cluster_id: The ID of the proxy cluster which this key authenticates to.
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    __args__['proxyClusterId'] = proxy_cluster_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getProxyClusterKey:getProxyClusterKey', __args__, opts=opts, typ=GetProxyClusterKeyResult)
+    return __ret__.apply(lambda __response__: GetProxyClusterKeyResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        proxy_cluster_id=pulumi.get(__response__, 'proxy_cluster_id'),
+        proxy_cluster_keys=pulumi.get(__response__, 'proxy_cluster_keys')))

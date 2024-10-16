@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -144,9 +149,6 @@ def get_remote_identity(account_id: Optional[str] = None,
         remote_identities=pulumi.get(__ret__, 'remote_identities'),
         remote_identity_group_id=pulumi.get(__ret__, 'remote_identity_group_id'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_remote_identity)
 def get_remote_identity_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                id: Optional[pulumi.Input[Optional[str]]] = None,
                                remote_identity_group_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -171,4 +173,17 @@ def get_remote_identity_output(account_id: Optional[pulumi.Input[Optional[str]]]
     :param str remote_identity_group_id: The remote identity group.
     :param str username: The username to be used as the remote identity for this account.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['id'] = id
+    __args__['remoteIdentityGroupId'] = remote_identity_group_id
+    __args__['username'] = username
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getRemoteIdentity:getRemoteIdentity', __args__, opts=opts, typ=GetRemoteIdentityResult)
+    return __ret__.apply(lambda __response__: GetRemoteIdentityResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        remote_identities=pulumi.get(__response__, 'remote_identities'),
+        remote_identity_group_id=pulumi.get(__response__, 'remote_identity_group_id'),
+        username=pulumi.get(__response__, 'username')))

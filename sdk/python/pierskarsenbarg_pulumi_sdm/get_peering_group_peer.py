@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -118,9 +123,6 @@ def get_peering_group_peer(group_id: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         peering_group_peers=pulumi.get(__ret__, 'peering_group_peers'),
         peers_with_group_id=pulumi.get(__ret__, 'peers_with_group_id'))
-
-
-@_utilities.lift_output_func(get_peering_group_peer)
 def get_peering_group_peer_output(group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   id: Optional[pulumi.Input[Optional[str]]] = None,
                                   peers_with_group_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -133,4 +135,15 @@ def get_peering_group_peer_output(group_id: Optional[pulumi.Input[Optional[str]]
     :param str id: Unique identifier of the Attachment.
     :param str peers_with_group_id: Peering Group ID to which Group ID will link.
     """
-    ...
+    __args__ = dict()
+    __args__['groupId'] = group_id
+    __args__['id'] = id
+    __args__['peersWithGroupId'] = peers_with_group_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getPeeringGroupPeer:getPeeringGroupPeer', __args__, opts=opts, typ=GetPeeringGroupPeerResult)
+    return __ret__.apply(lambda __response__: GetPeeringGroupPeerResult(
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        peering_group_peers=pulumi.get(__response__, 'peering_group_peers'),
+        peers_with_group_id=pulumi.get(__response__, 'peers_with_group_id')))

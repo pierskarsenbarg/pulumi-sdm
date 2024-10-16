@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -184,9 +189,6 @@ def get_workflow(approval_flow_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         weight=pulumi.get(__ret__, 'weight'),
         workflows=pulumi.get(__ret__, 'workflows'))
-
-
-@_utilities.lift_output_func(get_workflow)
 def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] = None,
                         auto_grant: Optional[pulumi.Input[Optional[bool]]] = None,
                         description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -209,4 +211,23 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
     :param str name: Unique human-readable name of the Workflow.
     :param int weight: Optional weight for workflow to specify it's priority in matching a request.
     """
-    ...
+    __args__ = dict()
+    __args__['approvalFlowId'] = approval_flow_id
+    __args__['autoGrant'] = auto_grant
+    __args__['description'] = description
+    __args__['enabled'] = enabled
+    __args__['id'] = id
+    __args__['name'] = name
+    __args__['weight'] = weight
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('sdm:index/getWorkflow:getWorkflow', __args__, opts=opts, typ=GetWorkflowResult)
+    return __ret__.apply(lambda __response__: GetWorkflowResult(
+        approval_flow_id=pulumi.get(__response__, 'approval_flow_id'),
+        auto_grant=pulumi.get(__response__, 'auto_grant'),
+        description=pulumi.get(__response__, 'description'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name'),
+        weight=pulumi.get(__response__, 'weight'),
+        workflows=pulumi.get(__response__, 'workflows')))
