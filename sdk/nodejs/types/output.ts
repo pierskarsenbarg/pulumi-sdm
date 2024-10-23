@@ -669,6 +669,10 @@ export interface GetResourceResourceAk {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -719,6 +723,10 @@ export interface GetResourceResourceAksBasicAuth {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -791,6 +799,10 @@ export interface GetResourceResourceAksServiceAccount {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -842,6 +854,10 @@ export interface GetResourceResourceAksServiceAccountUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -907,6 +923,10 @@ export interface GetResourceResourceAksUserImpersonation {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -949,6 +969,10 @@ export interface GetResourceResourceAmazonE {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -1041,6 +1065,10 @@ export interface GetResourceResourceAmazonEk {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region?: string;
@@ -1128,6 +1156,10 @@ export interface GetResourceResourceAmazonEksInstanceProfile {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region?: string;
@@ -1190,6 +1222,10 @@ export interface GetResourceResourceAmazonEksInstanceProfileUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -1258,6 +1294,10 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region?: string;
@@ -1321,6 +1361,10 @@ export interface GetResourceResourceAmazonmqAmqp091 {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -1371,6 +1415,10 @@ export interface GetResourceResourceAthena {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -1439,6 +1487,10 @@ export interface GetResourceResourceAuroraMysql {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
     requireNativeAuth?: boolean;
@@ -1506,6 +1558,10 @@ export interface GetResourceResourceAuroraPostgre {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -1561,6 +1617,10 @@ export interface GetResourceResourceAuroraPostgresIam {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region?: string;
@@ -1615,6 +1675,10 @@ export interface GetResourceResourceAw {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The role to assume after logging in.
      */
@@ -1674,6 +1738,10 @@ export interface GetResourceResourceAwsConsole {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -1738,6 +1806,10 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region?: string;
@@ -1801,6 +1873,10 @@ export interface GetResourceResourceAzure {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -1848,6 +1924,10 @@ export interface GetResourceResourceAzureCertificate {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1904,6 +1984,10 @@ export interface GetResourceResourceAzureMysql {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -1972,6 +2056,10 @@ export interface GetResourceResourceAzurePostgre {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2031,6 +2119,10 @@ export interface GetResourceResourceAzurePostgresManagedIdentity {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2086,6 +2178,10 @@ export interface GetResourceResourceBigQuery {
      */
     project?: string;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2136,6 +2232,10 @@ export interface GetResourceResourceCassandra {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2200,6 +2300,10 @@ export interface GetResourceResourceCitus {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2254,6 +2358,10 @@ export interface GetResourceResourceClustrix {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -2322,6 +2430,10 @@ export interface GetResourceResourceCockroach {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2377,6 +2489,10 @@ export interface GetResourceResourceCouchbaseDatabase {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2423,6 +2539,10 @@ export interface GetResourceResourceCouchbaseWebUi {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2479,6 +2599,10 @@ export interface GetResourceResourceDb2I {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2539,6 +2663,10 @@ export interface GetResourceResourceDb2Luw {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2593,6 +2721,10 @@ export interface GetResourceResourceDocumentDbHost {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2649,6 +2781,10 @@ export interface GetResourceResourceDocumentDbReplicaSet {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The name of the mongo replicaset.
      */
     replicaSet?: string;
@@ -2704,6 +2840,10 @@ export interface GetResourceResourceDruid {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2750,6 +2890,10 @@ export interface GetResourceResourceDynamoDb {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -2814,6 +2958,10 @@ export interface GetResourceResourceElastic {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2869,6 +3017,10 @@ export interface GetResourceResourceElasticacheRedi {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -2915,6 +3067,10 @@ export interface GetResourceResourceGcp {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Space separated scopes that this login should assume into when authenticating.
      */
@@ -2987,6 +3143,10 @@ export interface GetResourceResourceGoogleGke {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -3037,6 +3197,10 @@ export interface GetResourceResourceGoogleGkeUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3097,6 +3261,10 @@ export interface GetResourceResourceGreenplum {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -3151,6 +3319,10 @@ export interface GetResourceResourceHttpAuth {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3208,6 +3380,10 @@ export interface GetResourceResourceHttpBasicAuth {
      */
     password?: string;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -3263,6 +3439,10 @@ export interface GetResourceResourceHttpNoAuth {
      * Unique human-readable name of the Resource.
      */
     name?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3348,6 +3528,10 @@ export interface GetResourceResourceKubernete {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -3398,6 +3582,10 @@ export interface GetResourceResourceKubernetesBasicAuth {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3470,6 +3658,10 @@ export interface GetResourceResourceKubernetesServiceAccount {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -3521,6 +3713,10 @@ export interface GetResourceResourceKubernetesServiceAccountUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3586,6 +3782,10 @@ export interface GetResourceResourceKubernetesUserImpersonation {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -3636,6 +3836,10 @@ export interface GetResourceResourceMaria {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -3692,6 +3896,10 @@ export interface GetResourceResourceMemcached {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -3742,6 +3950,10 @@ export interface GetResourceResourceMemsql {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -3806,6 +4018,10 @@ export interface GetResourceResourceMongoHost {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -3864,6 +4080,10 @@ export interface GetResourceResourceMongoLegacyHost {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3927,6 +4147,10 @@ export interface GetResourceResourceMongoLegacyReplicaset {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The name of the mongo replicaset.
      */
@@ -3995,6 +4219,10 @@ export interface GetResourceResourceMongoReplicaSet {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The name of the mongo replicaset.
      */
     replicaSet?: string;
@@ -4053,6 +4281,10 @@ export interface GetResourceResourceMongoShardedCluster {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4124,6 +4356,10 @@ export interface GetResourceResourceMtlsMysql {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -4208,6 +4444,10 @@ export interface GetResourceResourceMtlsPostgre {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -4267,6 +4507,10 @@ export interface GetResourceResourceMysql {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
     requireNativeAuth?: boolean;
@@ -4322,6 +4566,10 @@ export interface GetResourceResourceNeptune {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -4368,6 +4616,10 @@ export interface GetResourceResourceNeptuneIam {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -4436,6 +4688,10 @@ export interface GetResourceResourceOracle {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -4499,6 +4755,10 @@ export interface GetResourceResourcePostgre {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -4553,6 +4813,10 @@ export interface GetResourceResourcePresto {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4609,6 +4873,10 @@ export interface GetResourceResourceRabbitmqAmqp091 {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -4659,6 +4927,10 @@ export interface GetResourceResourceRawTcp {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4715,6 +4987,10 @@ export interface GetResourceResourceRdp {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -4770,6 +5046,10 @@ export interface GetResourceResourceRdpCert {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -4824,6 +5104,10 @@ export interface GetResourceResourceRdsPostgresIam {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -4883,6 +5167,10 @@ export interface GetResourceResourceRedi {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4947,6 +5235,10 @@ export interface GetResourceResourceRedshift {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -5001,6 +5293,10 @@ export interface GetResourceResourceSingleStore {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -5061,6 +5357,10 @@ export interface GetResourceResourceSnowflake {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The Schema to use to direct initial requests.
      */
     schema?: string;
@@ -5107,6 +5407,10 @@ export interface GetResourceResourceSnowsight {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The Metadata for your snowflake IDP integration
      */
@@ -5170,6 +5474,10 @@ export interface GetResourceResourceSqlServer {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The Schema to use to direct initial requests.
      */
@@ -5237,6 +5545,10 @@ export interface GetResourceResourceSqlServerAzureAd {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The Schema to use to direct initial requests.
      */
@@ -5314,6 +5626,10 @@ export interface GetResourceResourceSqlServerKerberosAd {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The Active Directory domain (realm) to which the configured username belongs.
      */
     realm?: string;
@@ -5384,6 +5700,10 @@ export interface GetResourceResourceSsh {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The public key to append to a server's authorized keys. This will be generated after resource creation.
      */
@@ -5456,6 +5776,10 @@ export interface GetResourceResourceSshCert {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -5514,6 +5838,10 @@ export interface GetResourceResourceSshCustomerKey {
      * The private key used to authenticate with the server.
      */
     privateKey?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5574,6 +5902,10 @@ export interface GetResourceResourceSshPassword {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -5624,6 +5956,10 @@ export interface GetResourceResourceSybase {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5676,6 +6012,10 @@ export interface GetResourceResourceSybaseIq {
      */
     portOverride?: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -5726,6 +6066,10 @@ export interface GetResourceResourceTeradata {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -5781,6 +6125,10 @@ export interface GetResourceResourceTrino {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -6776,6 +7124,10 @@ export interface ResourceAks {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -6822,6 +7174,10 @@ export interface ResourceAksBasicAuth {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -6890,6 +7246,10 @@ export interface ResourceAksServiceAccount {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -6937,6 +7297,10 @@ export interface ResourceAksServiceAccountUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -6997,6 +7361,10 @@ export interface ResourceAksUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -7068,6 +7436,10 @@ export interface ResourceAmazonEks {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -7152,6 +7524,10 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region: string;
@@ -7210,6 +7586,10 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -7274,6 +7654,10 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region: string;
@@ -7328,6 +7712,10 @@ export interface ResourceAmazonEs {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -7388,6 +7776,10 @@ export interface ResourceAmazonmqAmqp091 {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -7434,6 +7826,10 @@ export interface ResourceAthena {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -7498,6 +7894,10 @@ export interface ResourceAuroraMysql {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
     requireNativeAuth?: boolean;
@@ -7561,6 +7961,10 @@ export interface ResourceAuroraPostgres {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -7612,6 +8016,10 @@ export interface ResourceAuroraPostgresIam {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region: string;
@@ -7662,6 +8070,10 @@ export interface ResourceAws {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The role to assume after logging in.
      */
@@ -7717,6 +8129,10 @@ export interface ResourceAwsConsole {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -7777,6 +8193,10 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The AWS region to connect to.
      */
     region: string;
@@ -7836,6 +8256,10 @@ export interface ResourceAzure {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -7879,6 +8303,10 @@ export interface ResourceAzureCertificate {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -7931,6 +8359,10 @@ export interface ResourceAzureMysql {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -7995,6 +8427,10 @@ export interface ResourceAzurePostgres {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8050,6 +8486,10 @@ export interface ResourceAzurePostgresManagedIdentity {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8101,6 +8541,10 @@ export interface ResourceBigQuery {
      */
     project: string;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8147,6 +8591,10 @@ export interface ResourceCassandra {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -8207,6 +8655,10 @@ export interface ResourceCitus {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8257,6 +8709,10 @@ export interface ResourceClustrix {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -8321,6 +8777,10 @@ export interface ResourceCockroach {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8372,6 +8832,10 @@ export interface ResourceCouchbaseDatabase {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8414,6 +8878,10 @@ export interface ResourceCouchbaseWebUi {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -8466,6 +8934,10 @@ export interface ResourceDb2I {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -8522,6 +8994,10 @@ export interface ResourceDb2Luw {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8572,6 +9048,10 @@ export interface ResourceDocumentDbHost {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -8624,6 +9104,10 @@ export interface ResourceDocumentDbReplicaSet {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The name of the mongo replicaset.
      */
     replicaSet: string;
@@ -8675,6 +9159,10 @@ export interface ResourceDruid {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8717,6 +9205,10 @@ export interface ResourceDynamoDb {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -8777,6 +9269,10 @@ export interface ResourceElastic {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8828,6 +9324,10 @@ export interface ResourceElasticacheRedis {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8870,6 +9370,10 @@ export interface ResourceGcp {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Space separated scopes that this login should assume into when authenticating.
      */
@@ -8938,6 +9442,10 @@ export interface ResourceGoogleGke {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -8984,6 +9492,10 @@ export interface ResourceGoogleGkeUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9040,6 +9552,10 @@ export interface ResourceGreenplum {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -9090,6 +9606,10 @@ export interface ResourceHttpAuth {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9143,6 +9663,10 @@ export interface ResourceHttpBasicAuth {
      */
     password?: string;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -9194,6 +9718,10 @@ export interface ResourceHttpNoAuth {
      * Unique human-readable name of the Resource.
      */
     name: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9275,6 +9803,10 @@ export interface ResourceKubernetes {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -9321,6 +9853,10 @@ export interface ResourceKubernetesBasicAuth {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9389,6 +9925,10 @@ export interface ResourceKubernetesServiceAccount {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -9436,6 +9976,10 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9497,6 +10041,10 @@ export interface ResourceKubernetesUserImpersonation {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -9543,6 +10091,10 @@ export interface ResourceMaria {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -9595,6 +10147,10 @@ export interface ResourceMemcached {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -9641,6 +10197,10 @@ export interface ResourceMemsql {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -9701,6 +10261,10 @@ export interface ResourceMongoHost {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -9755,6 +10319,10 @@ export interface ResourceMongoLegacyHost {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9814,6 +10382,10 @@ export interface ResourceMongoLegacyReplicaset {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The name of the mongo replicaset.
      */
@@ -9878,6 +10450,10 @@ export interface ResourceMongoReplicaSet {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The name of the mongo replicaset.
      */
     replicaSet: string;
@@ -9932,6 +10508,10 @@ export interface ResourceMongoShardedCluster {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -9999,6 +10579,10 @@ export interface ResourceMtlsMysql {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -10079,6 +10663,10 @@ export interface ResourceMtlsPostgres {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -10134,6 +10722,10 @@ export interface ResourceMysql {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
     requireNativeAuth?: boolean;
@@ -10185,6 +10777,10 @@ export interface ResourceNeptune {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -10227,6 +10823,10 @@ export interface ResourceNeptuneIam {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -10291,6 +10891,10 @@ export interface ResourceOracle {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -10350,6 +10954,10 @@ export interface ResourcePostgres {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -10400,6 +11008,10 @@ export interface ResourcePresto {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -10452,6 +11064,10 @@ export interface ResourceRabbitmqAmqp091 {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -10498,6 +11114,10 @@ export interface ResourceRawTcp {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -10550,6 +11170,10 @@ export interface ResourceRdp {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -10601,6 +11225,10 @@ export interface ResourceRdpCert {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -10651,6 +11279,10 @@ export interface ResourceRdsPostgresIam {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The AWS region to connect to.
      */
@@ -10706,6 +11338,10 @@ export interface ResourceRedis {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -10766,6 +11402,10 @@ export interface ResourceRedshift {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -10816,6 +11456,10 @@ export interface ResourceSingleStore {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -10872,6 +11516,10 @@ export interface ResourceSnowflake {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The Schema to use to direct initial requests.
      */
     schema?: string;
@@ -10914,6 +11562,10 @@ export interface ResourceSnowsight {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The Metadata for your snowflake IDP integration
      */
@@ -10973,6 +11625,10 @@ export interface ResourceSqlServer {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The Schema to use to direct initial requests.
      */
@@ -11036,6 +11692,10 @@ export interface ResourceSqlServerAzureAd {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The Schema to use to direct initial requests.
      */
@@ -11109,6 +11769,10 @@ export interface ResourceSqlServerKerberosAd {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * The Active Directory domain (realm) to which the configured username belongs.
      */
     realm?: string;
@@ -11175,6 +11839,10 @@ export interface ResourceSsh {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * The public key to append to a server's authorized keys. This will be generated after resource creation.
      */
@@ -11243,6 +11911,10 @@ export interface ResourceSshCert {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -11297,6 +11969,10 @@ export interface ResourceSshCustomerKey {
      * The private key used to authenticate with the server.
      */
     privateKey?: string;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -11353,6 +12029,10 @@ export interface ResourceSshPassword {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -11399,6 +12079,10 @@ export interface ResourceSybase {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -11447,6 +12131,10 @@ export interface ResourceSybaseIq {
      */
     portOverride: number;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: string;
@@ -11493,6 +12181,10 @@ export interface ResourceTeradata {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -11544,6 +12236,10 @@ export interface ResourceTrino {
      * The local port used by clients to connect to this resource.
      */
     portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */

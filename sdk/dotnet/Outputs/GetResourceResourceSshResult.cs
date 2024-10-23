@@ -55,6 +55,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// The public key to append to a server's authorized keys. This will be generated after resource creation.
         /// </summary>
         public readonly string PublicKey;
@@ -97,6 +101,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             string publicKey,
 
             string? secretStoreId,
@@ -117,6 +123,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Port = port;
             PortForwarding = portForwarding;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             PublicKey = publicKey;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;

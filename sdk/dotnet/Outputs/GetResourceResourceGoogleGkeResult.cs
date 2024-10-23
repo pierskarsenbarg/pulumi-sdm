@@ -67,6 +67,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
@@ -111,6 +115,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             string? secretStoreId,
 
             string? serviceAccountKey,
@@ -132,6 +138,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             IdentitySetId = identitySetId;
             Name = name;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             SecretStoreId = secretStoreId;
             ServiceAccountKey = serviceAccountKey;
             Subdomain = subdomain;

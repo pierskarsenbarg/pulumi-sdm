@@ -50,6 +50,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<int>? PortOverride { get; set; }
 
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        [Input("proxyClusterId")]
+        public Input<string>? ProxyClusterId { get; set; }
+
+        /// <summary>
         /// The AWS region to connect to.
         /// </summary>
         [Input("region", required: true)]

@@ -224,6 +224,10 @@ export interface ResourceAks {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -270,6 +274,10 @@ export interface ResourceAksBasicAuth {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -338,6 +346,10 @@ export interface ResourceAksServiceAccount {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -385,6 +397,10 @@ export interface ResourceAksServiceAccountUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -445,6 +461,10 @@ export interface ResourceAksUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -516,6 +536,10 @@ export interface ResourceAmazonEks {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The AWS region to connect to.
      */
@@ -600,6 +624,10 @@ export interface ResourceAmazonEksInstanceProfile {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * The AWS region to connect to.
      */
     region: pulumi.Input<string>;
@@ -658,6 +686,10 @@ export interface ResourceAmazonEksInstanceProfileUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The AWS region to connect to.
      */
@@ -722,6 +754,10 @@ export interface ResourceAmazonEksUserImpersonation {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * The AWS region to connect to.
      */
     region: pulumi.Input<string>;
@@ -776,6 +812,10 @@ export interface ResourceAmazonEs {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The AWS region to connect to.
      */
@@ -836,6 +876,10 @@ export interface ResourceAmazonmqAmqp091 {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -882,6 +926,10 @@ export interface ResourceAthena {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The AWS region to connect to.
      */
@@ -946,6 +994,10 @@ export interface ResourceAuroraMysql {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
     requireNativeAuth?: pulumi.Input<boolean>;
@@ -1009,6 +1061,10 @@ export interface ResourceAuroraPostgres {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -1060,6 +1116,10 @@ export interface ResourceAuroraPostgresIam {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * The AWS region to connect to.
      */
     region: pulumi.Input<string>;
@@ -1110,6 +1170,10 @@ export interface ResourceAws {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The role to assume after logging in.
      */
@@ -1165,6 +1229,10 @@ export interface ResourceAwsConsole {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The AWS region to connect to.
      */
@@ -1225,6 +1293,10 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * The AWS region to connect to.
      */
     region: pulumi.Input<string>;
@@ -1284,6 +1356,10 @@ export interface ResourceAzure {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -1327,6 +1403,10 @@ export interface ResourceAzureCertificate {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1379,6 +1459,10 @@ export interface ResourceAzureMysql {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -1443,6 +1527,10 @@ export interface ResourceAzurePostgres {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -1498,6 +1586,10 @@ export interface ResourceAzurePostgresManagedIdentity {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -1549,6 +1641,10 @@ export interface ResourceBigQuery {
      */
     project: pulumi.Input<string>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -1595,6 +1691,10 @@ export interface ResourceCassandra {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1655,6 +1755,10 @@ export interface ResourceCitus {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -1705,6 +1809,10 @@ export interface ResourceClustrix {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -1769,6 +1877,10 @@ export interface ResourceCockroach {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -1820,6 +1932,10 @@ export interface ResourceCouchbaseDatabase {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -1862,6 +1978,10 @@ export interface ResourceCouchbaseWebUi {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1914,6 +2034,10 @@ export interface ResourceDb2I {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -1970,6 +2094,10 @@ export interface ResourceDb2Luw {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2020,6 +2148,10 @@ export interface ResourceDocumentDbHost {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2072,6 +2204,10 @@ export interface ResourceDocumentDbReplicaSet {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * The name of the mongo replicaset.
      */
     replicaSet: pulumi.Input<string>;
@@ -2123,6 +2259,10 @@ export interface ResourceDruid {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2165,6 +2305,10 @@ export interface ResourceDynamoDb {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The AWS region to connect to.
      */
@@ -2225,6 +2369,10 @@ export interface ResourceElastic {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2276,6 +2424,10 @@ export interface ResourceElasticacheRedis {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2318,6 +2470,10 @@ export interface ResourceGcp {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * Space separated scopes that this login should assume into when authenticating.
      */
@@ -2386,6 +2542,10 @@ export interface ResourceGoogleGke {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2432,6 +2592,10 @@ export interface ResourceGoogleGkeUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2488,6 +2652,10 @@ export interface ResourceGreenplum {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2538,6 +2706,10 @@ export interface ResourceHttpAuth {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2591,6 +2763,10 @@ export interface ResourceHttpBasicAuth {
      */
     password?: pulumi.Input<string>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2642,6 +2818,10 @@ export interface ResourceHttpNoAuth {
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2723,6 +2903,10 @@ export interface ResourceKubernetes {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2769,6 +2953,10 @@ export interface ResourceKubernetesBasicAuth {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2837,6 +3025,10 @@ export interface ResourceKubernetesServiceAccount {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2884,6 +3076,10 @@ export interface ResourceKubernetesServiceAccountUserImpersonation {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2945,6 +3141,10 @@ export interface ResourceKubernetesUserImpersonation {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -2991,6 +3191,10 @@ export interface ResourceMaria {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -3043,6 +3247,10 @@ export interface ResourceMemcached {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -3089,6 +3297,10 @@ export interface ResourceMemsql {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -3149,6 +3361,10 @@ export interface ResourceMongoHost {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -3203,6 +3419,10 @@ export interface ResourceMongoLegacyHost {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3262,6 +3482,10 @@ export interface ResourceMongoLegacyReplicaset {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The name of the mongo replicaset.
      */
@@ -3326,6 +3550,10 @@ export interface ResourceMongoReplicaSet {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * The name of the mongo replicaset.
      */
     replicaSet: pulumi.Input<string>;
@@ -3380,6 +3608,10 @@ export interface ResourceMongoShardedCluster {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3447,6 +3679,10 @@ export interface ResourceMtlsMysql {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -3527,6 +3763,10 @@ export interface ResourceMtlsPostgres {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -3582,6 +3822,10 @@ export interface ResourceMysql {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
     requireNativeAuth?: pulumi.Input<boolean>;
@@ -3633,6 +3877,10 @@ export interface ResourceNeptune {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -3675,6 +3923,10 @@ export interface ResourceNeptuneIam {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The AWS region to connect to.
      */
@@ -3739,6 +3991,10 @@ export interface ResourceOracle {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -3798,6 +4054,10 @@ export interface ResourcePostgres {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -3848,6 +4108,10 @@ export interface ResourcePresto {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3900,6 +4164,10 @@ export interface ResourceRabbitmqAmqp091 {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -3946,6 +4214,10 @@ export interface ResourceRawTcp {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -3998,6 +4270,10 @@ export interface ResourceRdp {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -4049,6 +4325,10 @@ export interface ResourceRdpCert {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -4099,6 +4379,10 @@ export interface ResourceRdsPostgresIam {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The AWS region to connect to.
      */
@@ -4154,6 +4438,10 @@ export interface ResourceRedis {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4214,6 +4502,10 @@ export interface ResourceRedshift {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -4264,6 +4556,10 @@ export interface ResourceSingleStore {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
      */
@@ -4320,6 +4616,10 @@ export interface ResourceSnowflake {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * The Schema to use to direct initial requests.
      */
     schema?: pulumi.Input<string>;
@@ -4362,6 +4662,10 @@ export interface ResourceSnowsight {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The Metadata for your snowflake IDP integration
      */
@@ -4421,6 +4725,10 @@ export interface ResourceSqlServer {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The Schema to use to direct initial requests.
      */
@@ -4484,6 +4792,10 @@ export interface ResourceSqlServerAzureAd {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The Schema to use to direct initial requests.
      */
@@ -4557,6 +4869,10 @@ export interface ResourceSqlServerKerberosAd {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * The Active Directory domain (realm) to which the configured username belongs.
      */
     realm?: pulumi.Input<string>;
@@ -4623,6 +4939,10 @@ export interface ResourceSsh {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * The public key to append to a server's authorized keys. This will be generated after resource creation.
      */
@@ -4691,6 +5011,10 @@ export interface ResourceSshCert {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -4745,6 +5069,10 @@ export interface ResourceSshCustomerKey {
      * The private key used to authenticate with the server.
      */
     privateKey?: pulumi.Input<string>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4801,6 +5129,10 @@ export interface ResourceSshPassword {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -4847,6 +5179,10 @@ export interface ResourceSybase {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4895,6 +5231,10 @@ export interface ResourceSybaseIq {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
      * ID of the secret store containing credentials for this resource, if any.
      */
     secretStoreId?: pulumi.Input<string>;
@@ -4941,6 +5281,10 @@ export interface ResourceTeradata {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -4992,6 +5336,10 @@ export interface ResourceTrino {
      * The local port used by clients to connect to this resource.
      */
     portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */

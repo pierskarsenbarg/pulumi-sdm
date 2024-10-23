@@ -283,9 +283,6 @@ namespace PiersKarsenbarg.Sdm
         [Output("sshCustomerKey")]
         public Output<Outputs.ResourceSshCustomerKey?> SshCustomerKey { get; private set; } = null!;
 
-        /// <summary>
-        /// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("sshPassword")]
         public Output<Outputs.ResourceSshPassword?> SshPassword { get; private set; } = null!;
 
@@ -612,9 +609,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("sshCustomerKey")]
         public Input<Inputs.ResourceSshCustomerKeyArgs>? SshCustomerKey { get; set; }
 
-        /// <summary>
-        /// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("sshPassword")]
         public Input<Inputs.ResourceSshPasswordArgs>? SshPassword { get; set; }
 
@@ -902,9 +896,6 @@ namespace PiersKarsenbarg.Sdm
         [Input("sshCustomerKey")]
         public Input<Inputs.ResourceSshCustomerKeyGetArgs>? SshCustomerKey { get; set; }
 
-        /// <summary>
-        /// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("sshPassword")]
         public Input<Inputs.ResourceSshPasswordGetArgs>? SshPassword { get; set; }
 

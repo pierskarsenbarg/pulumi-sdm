@@ -39,6 +39,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// The Metadata for your snowflake IDP integration
         /// </summary>
         public readonly string? SamlMetadata;
@@ -69,6 +73,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             string? samlMetadata,
 
             string? secretStoreId,
@@ -83,6 +89,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Id = id;
             Name = name;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             SamlMetadata = samlMetadata;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;

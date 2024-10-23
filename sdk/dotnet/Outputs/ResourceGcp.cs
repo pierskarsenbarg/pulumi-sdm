@@ -35,6 +35,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// Space separated scopes that this login should assume into when authenticating.
         /// </summary>
         public readonly string Scopes;
@@ -63,6 +67,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             string scopes,
 
             string? secretStoreId,
@@ -76,6 +82,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Keyfile = keyfile;
             Name = name;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             Scopes = scopes;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;

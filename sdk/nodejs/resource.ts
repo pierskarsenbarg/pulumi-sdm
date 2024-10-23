@@ -140,9 +140,6 @@ export class Resource extends pulumi.CustomResource {
     public readonly ssh!: pulumi.Output<outputs.ResourceSsh | undefined>;
     public readonly sshCert!: pulumi.Output<outputs.ResourceSshCert | undefined>;
     public readonly sshCustomerKey!: pulumi.Output<outputs.ResourceSshCustomerKey | undefined>;
-    /**
-     * SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly sshPassword!: pulumi.Output<outputs.ResourceSshPassword | undefined>;
     public readonly sybase!: pulumi.Output<outputs.ResourceSybase | undefined>;
     public readonly sybaseIq!: pulumi.Output<outputs.ResourceSybaseIq | undefined>;
@@ -448,9 +445,6 @@ export interface ResourceState {
     ssh?: pulumi.Input<inputs.ResourceSsh>;
     sshCert?: pulumi.Input<inputs.ResourceSshCert>;
     sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey>;
-    /**
-     * SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     sshPassword?: pulumi.Input<inputs.ResourceSshPassword>;
     sybase?: pulumi.Input<inputs.ResourceSybase>;
     sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;
@@ -562,9 +556,6 @@ export interface ResourceArgs {
     ssh?: pulumi.Input<inputs.ResourceSsh>;
     sshCert?: pulumi.Input<inputs.ResourceSshCert>;
     sshCustomerKey?: pulumi.Input<inputs.ResourceSshCustomerKey>;
-    /**
-     * SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     sshPassword?: pulumi.Input<inputs.ResourceSshPassword>;
     sybase?: pulumi.Input<inputs.ResourceSybase>;
     sybaseIq?: pulumi.Input<inputs.ResourceSybaseIq>;

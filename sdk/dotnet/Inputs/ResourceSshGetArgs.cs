@@ -68,6 +68,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<int>? PortOverride { get; set; }
 
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        [Input("proxyClusterId")]
+        public Input<string>? ProxyClusterId { get; set; }
+
+        /// <summary>
         /// The public key to append to a server's authorized keys. This will be generated after resource creation.
         /// </summary>
         [Input("publicKey")]

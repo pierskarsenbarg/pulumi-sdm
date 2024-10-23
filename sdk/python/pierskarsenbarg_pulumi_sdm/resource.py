@@ -115,7 +115,6 @@ class ResourceArgs:
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceSshPasswordArgs'] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -1049,9 +1048,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="sshPassword")
     def ssh_password(self) -> Optional[pulumi.Input['ResourceSshPasswordArgs']]:
-        """
-        SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "ssh_password")
 
     @ssh_password.setter
@@ -1195,7 +1191,6 @@ class _ResourceState:
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceSshPasswordArgs'] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -2129,9 +2124,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="sshPassword")
     def ssh_password(self) -> Optional[pulumi.Input['ResourceSshPasswordArgs']]:
-        """
-        SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "ssh_password")
 
     @ssh_password.setter
@@ -2287,7 +2279,6 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceSshPasswordArgs', 'ResourceSshPasswordArgsDict']] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
@@ -2612,7 +2603,6 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceSshPasswordArgs', 'ResourceSshPasswordArgsDict']] ssh_password: SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -3136,9 +3126,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="sshPassword")
     def ssh_password(self) -> pulumi.Output[Optional['outputs.ResourceSshPassword']]:
-        """
-        SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "ssh_password")
 
     @property

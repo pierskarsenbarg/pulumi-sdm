@@ -55,6 +55,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? PrivateKey;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
@@ -93,6 +97,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? privateKey,
 
+            string? proxyClusterId,
+
             string? secretStoreId,
 
             string? subdomain,
@@ -111,6 +117,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             PortForwarding = portForwarding;
             PortOverride = portOverride;
             PrivateKey = privateKey;
+            ProxyClusterId = proxyClusterId;
             SecretStoreId = secretStoreId;
             Subdomain = subdomain;
             Tags = tags;
