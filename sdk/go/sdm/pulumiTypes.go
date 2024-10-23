@@ -1568,6 +1568,8 @@ type ResourceAks struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1618,6 +1620,8 @@ type ResourceAksArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -1776,6 +1780,11 @@ func (o ResourceAksOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAksOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAks) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAks) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -1967,6 +1976,16 @@ func (o ResourceAksPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAks) *string {
@@ -2014,6 +2033,8 @@ type ResourceAksBasicAuth struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2052,6 +2073,8 @@ type ResourceAksBasicAuthArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2179,6 +2202,11 @@ func (o ResourceAksBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAksBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksBasicAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAksBasicAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -2303,6 +2331,16 @@ func (o ResourceAksBasicAuthPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksBasicAuthPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAksBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksBasicAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksBasicAuth) *string {
@@ -2368,6 +2406,8 @@ type ResourceAksServiceAccount struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2415,6 +2455,8 @@ type ResourceAksServiceAccountArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2561,6 +2603,11 @@ func (o ResourceAksServiceAccountOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAksServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksServiceAccountOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccount) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -2728,6 +2775,16 @@ func (o ResourceAksServiceAccountPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksServiceAccountPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksServiceAccountPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccount) *string {
@@ -2784,6 +2841,8 @@ type ResourceAksServiceAccountUserImpersonation struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2821,6 +2880,8 @@ type ResourceAksServiceAccountUserImpersonationArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -2944,6 +3005,11 @@ func (o ResourceAksServiceAccountUserImpersonationOutput) PortOverride() pulumi.
 	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksServiceAccountUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksServiceAccountUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAksServiceAccountUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -3059,6 +3125,16 @@ func (o ResourceAksServiceAccountUserImpersonationPtrOutput) PortOverride() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksServiceAccountUserImpersonationPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAksServiceAccountUserImpersonation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksServiceAccountUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksServiceAccountUserImpersonation) *string {
@@ -3121,6 +3197,8 @@ type ResourceAksUserImpersonation struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3161,6 +3239,8 @@ type ResourceAksUserImpersonationArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3294,6 +3374,11 @@ func (o ResourceAksUserImpersonationOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAksUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAksUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -3435,6 +3520,16 @@ func (o ResourceAksUserImpersonationPtrOutput) PortOverride() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAksUserImpersonationPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAksUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAksUserImpersonation) *string {
@@ -3494,6 +3589,8 @@ type ResourceAmazonEks struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -3550,6 +3647,8 @@ type ResourceAmazonEksArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -3711,6 +3810,11 @@ func (o ResourceAmazonEksOutput) Name() pulumi.StringOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAmazonEksOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEks) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEksOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEks) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -3912,6 +4016,16 @@ func (o ResourceAmazonEksPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEksPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEks) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAmazonEksPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEks) *string {
@@ -4009,6 +4123,8 @@ type ResourceAmazonEksInstanceProfile struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -4061,6 +4177,8 @@ type ResourceAmazonEksInstanceProfileArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -4215,6 +4333,11 @@ func (o ResourceAmazonEksInstanceProfileOutput) Name() pulumi.StringOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAmazonEksInstanceProfileOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEksInstanceProfileOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfile) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -4401,6 +4524,16 @@ func (o ResourceAmazonEksInstanceProfilePtrOutput) PortOverride() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEksInstanceProfilePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAmazonEksInstanceProfilePtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfile) *string {
@@ -4478,6 +4611,8 @@ type ResourceAmazonEksInstanceProfileUserImpersonation struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -4520,6 +4655,8 @@ type ResourceAmazonEksInstanceProfileUserImpersonationArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -4649,6 +4786,11 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) Name() pulumi.S
 // The local port used by clients to connect to this resource.
 func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEksInstanceProfileUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -4785,6 +4927,16 @@ func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) PortOverride
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksInstanceProfileUserImpersonation) *string {
@@ -4864,6 +5016,8 @@ type ResourceAmazonEksUserImpersonation struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -4910,6 +5064,8 @@ type ResourceAmazonEksUserImpersonationArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -5046,6 +5202,11 @@ func (o ResourceAmazonEksUserImpersonationOutput) Name() pulumi.StringOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAmazonEksUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEksUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEksUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -5197,6 +5358,16 @@ func (o ResourceAmazonEksUserImpersonationPtrOutput) PortOverride() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEksUserImpersonationPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAmazonEksUserImpersonationPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEksUserImpersonation) *string {
@@ -5280,6 +5451,8 @@ type ResourceAmazonEs struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -5320,6 +5493,8 @@ type ResourceAmazonEsArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -5443,6 +5618,11 @@ func (o ResourceAmazonEsOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonEs) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEsOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEs) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAmazonEsOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceAmazonEs) string { return v.Region }).(pulumi.StringOutput)
@@ -5562,6 +5742,16 @@ func (o ResourceAmazonEsPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEsPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAmazonEsPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonEs) *string {
@@ -5647,6 +5837,8 @@ type ResourceAmazonmqAmqp091 struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5685,6 +5877,8 @@ type ResourceAmazonmqAmqp091Args struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5809,6 +6003,11 @@ func (o ResourceAmazonmqAmqp091Output) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonmqAmqp091Output) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonmqAmqp091Output) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAmazonmqAmqp091) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -5928,6 +6127,16 @@ func (o ResourceAmazonmqAmqp091PtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonmqAmqp091PtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonmqAmqp091) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAmazonmqAmqp091PtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAmazonmqAmqp091) *string {
@@ -5991,6 +6200,8 @@ type ResourceAthena struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -6031,6 +6242,8 @@ type ResourceAthenaArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -6154,6 +6367,11 @@ func (o ResourceAthenaOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAthena) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAthenaOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthena) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAthenaOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAthena) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -6273,6 +6491,16 @@ func (o ResourceAthenaPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAthenaPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthena) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAthenaPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAthena) *string {
@@ -6360,6 +6588,8 @@ type ResourceAuroraMysql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -6402,6 +6632,8 @@ type ResourceAuroraMysqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -6531,6 +6763,11 @@ func (o ResourceAuroraMysqlOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAuroraMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAuroraMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAuroraMysqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
@@ -6667,6 +6904,16 @@ func (o ResourceAuroraMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAuroraMysqlPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o ResourceAuroraMysqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceAuroraMysql) *bool {
@@ -6746,6 +6993,8 @@ type ResourceAuroraPostgres struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6786,6 +7035,8 @@ type ResourceAuroraPostgresArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6916,6 +7167,11 @@ func (o ResourceAuroraPostgresOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAuroraPostgresOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAuroraPostgres) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAuroraPostgresOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgres) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -7052,6 +7308,16 @@ func (o ResourceAuroraPostgresPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAuroraPostgresPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgres) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAuroraPostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAuroraPostgres) *string {
@@ -7109,6 +7375,8 @@ type ResourceAuroraPostgresIam struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -7151,6 +7419,8 @@ type ResourceAuroraPostgresIamArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -7280,6 +7550,11 @@ func (o ResourceAuroraPostgresIamOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAuroraPostgresIamOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAuroraPostgresIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAuroraPostgresIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraPostgresIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -7416,6 +7691,16 @@ func (o ResourceAuroraPostgresIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAuroraPostgresIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAuroraPostgresIamPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAuroraPostgresIam) *string {
@@ -7489,6 +7774,8 @@ type ResourceAws struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -7527,6 +7814,8 @@ type ResourceAwsArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -7648,6 +7937,11 @@ func (o ResourceAwsOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAws) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAwsOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAws) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The role to assume after logging in.
 func (o ResourceAwsOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAws) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
@@ -7762,6 +8056,16 @@ func (o ResourceAwsPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAwsPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAws) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The role to assume after logging in.
 func (o ResourceAwsPtrOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAws) *string {
@@ -7837,6 +8141,8 @@ type ResourceAwsConsole struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -7879,6 +8185,8 @@ type ResourceAwsConsoleArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -8005,6 +8313,11 @@ func (o ResourceAwsConsoleOutput) Name() pulumi.StringOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAwsConsoleOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAwsConsole) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAwsConsoleOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -8136,6 +8449,16 @@ func (o ResourceAwsConsolePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAwsConsolePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAwsConsolePtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAwsConsole) *string {
@@ -8221,6 +8544,8 @@ type ResourceAwsConsoleStaticKeyPair struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -8265,6 +8590,8 @@ type ResourceAwsConsoleStaticKeyPairArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -8393,6 +8720,11 @@ func (o ResourceAwsConsoleStaticKeyPairOutput) Name() pulumi.StringOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAwsConsoleStaticKeyPairOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAwsConsoleStaticKeyPairOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -8529,6 +8861,16 @@ func (o ResourceAwsConsoleStaticKeyPairPtrOutput) PortOverride() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAwsConsoleStaticKeyPairPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *string {
@@ -8622,6 +8964,8 @@ type ResourceAzure struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8657,6 +9001,8 @@ type ResourceAzureArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8775,6 +9121,11 @@ func (o ResourceAzureOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAzure) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzure) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzureOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzure) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -8880,6 +9231,16 @@ func (o ResourceAzurePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzurePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzurePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzure) *string {
@@ -8934,6 +9295,8 @@ type ResourceAzureCertificate struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8969,6 +9332,8 @@ type ResourceAzureCertificateArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9087,6 +9452,11 @@ func (o ResourceAzureCertificateOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAzureCertificate) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureCertificateOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzureCertificateOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAzureCertificate) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -9192,6 +9562,16 @@ func (o ResourceAzureCertificatePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureCertificatePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzureCertificatePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzureCertificate) *string {
@@ -9250,6 +9630,8 @@ type ResourceAzureMysql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -9292,6 +9674,8 @@ type ResourceAzureMysqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -9421,6 +9805,11 @@ func (o ResourceAzureMysqlOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAzureMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAzureMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureMysqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzureMysql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
@@ -9557,6 +9946,16 @@ func (o ResourceAzureMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzureMysqlPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzureMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o ResourceAzureMysqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceAzureMysql) *bool {
@@ -9636,6 +10035,8 @@ type ResourceAzurePostgres struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9676,6 +10077,8 @@ type ResourceAzurePostgresArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -9806,6 +10209,11 @@ func (o ResourceAzurePostgresOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAzurePostgresOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAzurePostgres) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzurePostgresOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzurePostgres) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -9942,6 +10350,16 @@ func (o ResourceAzurePostgresPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzurePostgresPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzurePostgres) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzurePostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzurePostgres) *string {
@@ -10001,6 +10419,8 @@ type ResourceAzurePostgresManagedIdentity struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10043,6 +10463,8 @@ type ResourceAzurePostgresManagedIdentityArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10175,6 +10597,11 @@ func (o ResourceAzurePostgresManagedIdentityOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceAzurePostgresManagedIdentityOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAzurePostgresManagedIdentity) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzurePostgresManagedIdentityOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAzurePostgresManagedIdentity) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -10316,6 +10743,16 @@ func (o ResourceAzurePostgresManagedIdentityPtrOutput) PortOverride() pulumi.Int
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAzurePostgresManagedIdentityPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAzurePostgresManagedIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceAzurePostgresManagedIdentityPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceAzurePostgresManagedIdentity) *string {
@@ -10381,6 +10818,8 @@ type ResourceBigQuery struct {
 	PrivateKey *string `pulumi:"privateKey"`
 	// The project to connect to.
 	Project string `pulumi:"project"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10417,6 +10856,8 @@ type ResourceBigQueryArgs struct {
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// The project to connect to.
 	Project pulumi.StringInput `pulumi:"project"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10539,6 +10980,11 @@ func (o ResourceBigQueryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceBigQuery) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceBigQueryOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceBigQuery) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceBigQueryOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceBigQuery) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -10653,6 +11099,16 @@ func (o ResourceBigQueryPtrOutput) Project() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceBigQueryPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceBigQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceBigQueryPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceBigQuery) *string {
@@ -10708,6 +11164,8 @@ type ResourceCassandra struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10746,6 +11204,8 @@ type ResourceCassandraArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10870,6 +11330,11 @@ func (o ResourceCassandraOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceCassandra) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCassandraOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCassandra) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCassandraOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceCassandra) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -10989,6 +11454,16 @@ func (o ResourceCassandraPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCassandraPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCassandra) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCassandraPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCassandra) *string {
@@ -11058,6 +11533,8 @@ type ResourceCitus struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11098,6 +11575,8 @@ type ResourceCitusArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11228,6 +11707,11 @@ func (o ResourceCitusOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceCitusOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceCitus) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCitusOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCitus) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -11364,6 +11848,16 @@ func (o ResourceCitusPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCitusPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCitus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCitusPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCitus) *string {
@@ -11421,6 +11915,8 @@ type ResourceClustrix struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -11463,6 +11959,8 @@ type ResourceClustrixArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -11592,6 +12090,11 @@ func (o ResourceClustrixOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceClustrixOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceClustrix) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceClustrixOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClustrix) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
@@ -11728,6 +12231,16 @@ func (o ResourceClustrixPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceClustrixPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClustrix) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o ResourceClustrixPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceClustrix) *bool {
@@ -11807,6 +12320,8 @@ type ResourceCockroach struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11847,6 +12362,8 @@ type ResourceCockroachArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -11977,6 +12494,11 @@ func (o ResourceCockroachOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceCockroachOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceCockroach) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCockroachOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCockroach) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -12113,6 +12635,16 @@ func (o ResourceCockroachPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCockroachPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCockroach) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCockroachPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCockroach) *string {
@@ -12170,6 +12702,8 @@ type ResourceCouchbaseDatabase struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12210,6 +12744,8 @@ type ResourceCouchbaseDatabaseArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12337,6 +12873,11 @@ func (o ResourceCouchbaseDatabaseOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceCouchbaseDatabaseOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceCouchbaseDatabase) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCouchbaseDatabaseOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseDatabase) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -12468,6 +13009,16 @@ func (o ResourceCouchbaseDatabasePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCouchbaseDatabasePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCouchbaseDatabasePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCouchbaseDatabase) *string {
@@ -12529,6 +13080,8 @@ type ResourceCouchbaseWebUi struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12564,6 +13117,8 @@ type ResourceCouchbaseWebUiArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12679,6 +13234,11 @@ func (o ResourceCouchbaseWebUiOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceCouchbaseWebUi) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCouchbaseWebUiOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceCouchbaseWebUi) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCouchbaseWebUiOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceCouchbaseWebUi) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -12779,6 +13339,16 @@ func (o ResourceCouchbaseWebUiPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceCouchbaseWebUiPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceCouchbaseWebUiPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceCouchbaseWebUi) *string {
@@ -12845,6 +13415,8 @@ type ResourceDb2I struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12883,6 +13455,8 @@ type ResourceDb2IArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13007,6 +13581,11 @@ func (o ResourceDb2IOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceDb2I) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDb2IOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDb2I) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDb2IOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDb2I) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -13126,6 +13705,16 @@ func (o ResourceDb2IPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDb2IPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDb2I) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDb2IPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDb2I) *string {
@@ -13193,6 +13782,8 @@ type ResourceDb2Luw struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13231,6 +13822,8 @@ type ResourceDb2LuwArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13358,6 +13951,11 @@ func (o ResourceDb2LuwOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceDb2Luw) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDb2LuwOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDb2Luw) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDb2LuwOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDb2Luw) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -13482,6 +14080,16 @@ func (o ResourceDb2LuwPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDb2LuwPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDb2Luw) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDb2LuwPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDb2Luw) *string {
@@ -13539,6 +14147,8 @@ type ResourceDocumentDbHost struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13577,6 +14187,8 @@ type ResourceDocumentDbHostArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -13704,6 +14316,11 @@ func (o ResourceDocumentDbHostOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceDocumentDbHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDocumentDbHostOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHost) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDocumentDbHostOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDocumentDbHost) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -13828,6 +14445,16 @@ func (o ResourceDocumentDbHostPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDocumentDbHostPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHost) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDocumentDbHostPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDocumentDbHost) *string {
@@ -13885,6 +14512,8 @@ type ResourceDocumentDbReplicaSet struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -13925,6 +14554,8 @@ type ResourceDocumentDbReplicaSetArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet pulumi.StringInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -14052,6 +14683,11 @@ func (o ResourceDocumentDbReplicaSetOutput) Password() pulumi.StringPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceDocumentDbReplicaSetOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceDocumentDbReplicaSet) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDocumentDbReplicaSetOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbReplicaSet) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the mongo replicaset.
@@ -14183,6 +14819,16 @@ func (o ResourceDocumentDbReplicaSetPtrOutput) PortOverride() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDocumentDbReplicaSetPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbReplicaSet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The name of the mongo replicaset.
 func (o ResourceDocumentDbReplicaSetPtrOutput) ReplicaSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDocumentDbReplicaSet) *string {
@@ -14248,6 +14894,8 @@ type ResourceDruid struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14284,6 +14932,8 @@ type ResourceDruidArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14406,6 +15056,11 @@ func (o ResourceDruidOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceDruid) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDruidOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDruid) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDruidOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceDruid) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -14520,6 +15175,16 @@ func (o ResourceDruidPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDruidPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDruid) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceDruidPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDruid) *string {
@@ -14573,6 +15238,8 @@ type ResourceDynamoDb struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -14613,6 +15280,8 @@ type ResourceDynamoDbArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -14736,6 +15405,11 @@ func (o ResourceDynamoDbOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceDynamoDb) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDynamoDbOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDb) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceDynamoDbOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceDynamoDb) string { return v.Region }).(pulumi.StringOutput)
@@ -14855,6 +15529,16 @@ func (o ResourceDynamoDbPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDynamoDbPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDb) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceDynamoDbPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceDynamoDb) *string {
@@ -14940,6 +15624,8 @@ type ResourceElastic struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14978,6 +15664,8 @@ type ResourceElasticArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -15102,6 +15790,11 @@ func (o ResourceElasticOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceElastic) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceElasticOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceElastic) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceElasticOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceElastic) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -15221,6 +15914,16 @@ func (o ResourceElasticPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceElasticPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceElastic) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceElasticPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceElastic) *string {
@@ -15286,6 +15989,8 @@ type ResourceElasticacheRedis struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -15324,6 +16029,8 @@ type ResourceElasticacheRedisArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -15448,6 +16155,11 @@ func (o ResourceElasticacheRedisOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceElasticacheRedis) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceElasticacheRedisOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceElasticacheRedisOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceElasticacheRedis) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -15567,6 +16279,16 @@ func (o ResourceElasticacheRedisPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceElasticacheRedisPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceElasticacheRedisPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceElasticacheRedis) *string {
@@ -15628,6 +16350,8 @@ type ResourceGcp struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Space separated scopes that this login should assume into when authenticating.
 	Scopes string `pulumi:"scopes"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -15660,6 +16384,8 @@ type ResourceGcpArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Space separated scopes that this login should assume into when authenticating.
 	Scopes pulumi.StringInput `pulumi:"scopes"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -15772,6 +16498,11 @@ func (o ResourceGcpOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceGcp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGcpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Space separated scopes that this login should assume into when authenticating.
 func (o ResourceGcpOutput) Scopes() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceGcp) string { return v.Scopes }).(pulumi.StringOutput)
@@ -15866,6 +16597,16 @@ func (o ResourceGcpPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGcpPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Space separated scopes that this login should assume into when authenticating.
 func (o ResourceGcpPtrOutput) Scopes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGcp) *string {
@@ -15931,6 +16672,8 @@ type ResourceGoogleGke struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -15977,6 +16720,8 @@ type ResourceGoogleGkeArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -16122,6 +16867,11 @@ func (o ResourceGoogleGkeOutput) Name() pulumi.StringOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceGoogleGkeOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGke) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGoogleGkeOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGke) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -16288,6 +17038,16 @@ func (o ResourceGoogleGkePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGoogleGkePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGke) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGoogleGkePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGoogleGke) *string {
@@ -16343,6 +17103,8 @@ type ResourceGoogleGkeUserImpersonation struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -16379,6 +17141,8 @@ type ResourceGoogleGkeUserImpersonationArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -16501,6 +17265,11 @@ func (o ResourceGoogleGkeUserImpersonationOutput) PortOverride() pulumi.IntPtrOu
 	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGoogleGkeUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGoogleGkeUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGoogleGkeUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -16615,6 +17384,16 @@ func (o ResourceGoogleGkeUserImpersonationPtrOutput) PortOverride() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGoogleGkeUserImpersonationPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGoogleGkeUserImpersonation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGoogleGkeUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGoogleGkeUserImpersonation) *string {
@@ -16674,6 +17453,8 @@ type ResourceGreenplum struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16714,6 +17495,8 @@ type ResourceGreenplumArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16844,6 +17627,11 @@ func (o ResourceGreenplumOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceGreenplumOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceGreenplum) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGreenplumOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGreenplum) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -16980,6 +17768,16 @@ func (o ResourceGreenplumPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGreenplumPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGreenplum) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceGreenplumPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGreenplum) *string {
@@ -17037,6 +17835,8 @@ type ResourceHttpAuth struct {
 	HostOverride *string `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17076,6 +17876,8 @@ type ResourceHttpAuthArgs struct {
 	HostOverride pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17204,6 +18006,11 @@ func (o ResourceHttpAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpAuth) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceHttpAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceHttpAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceHttpAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceHttpAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -17329,6 +18136,16 @@ func (o ResourceHttpAuthPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceHttpAuthPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceHttpAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceHttpAuth) *string {
@@ -17387,6 +18204,8 @@ type ResourceHttpBasicAuth struct {
 	Name string `pulumi:"name"`
 	// The password to authenticate with.
 	Password *string `pulumi:"password"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17428,6 +18247,8 @@ type ResourceHttpBasicAuthArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The password to authenticate with.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17556,6 +18377,11 @@ func (o ResourceHttpBasicAuthOutput) Name() pulumi.StringOutput {
 // The password to authenticate with.
 func (o ResourceHttpBasicAuthOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceHttpBasicAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceHttpBasicAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -17688,6 +18514,16 @@ func (o ResourceHttpBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceHttpBasicAuthPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceHttpBasicAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceHttpBasicAuth) *string {
@@ -17754,6 +18590,8 @@ type ResourceHttpNoAuth struct {
 	HostOverride *string `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17791,6 +18629,8 @@ type ResourceHttpNoAuthArgs struct {
 	HostOverride pulumi.StringPtrInput `pulumi:"hostOverride"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -17914,6 +18754,11 @@ func (o ResourceHttpNoAuthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceHttpNoAuth) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceHttpNoAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceHttpNoAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceHttpNoAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceHttpNoAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -18029,6 +18874,16 @@ func (o ResourceHttpNoAuthPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceHttpNoAuthPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceHttpNoAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceHttpNoAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceHttpNoAuth) *string {
@@ -18101,6 +18956,8 @@ type ResourceKubernetes struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18151,6 +19008,8 @@ type ResourceKubernetesArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18309,6 +19168,11 @@ func (o ResourceKubernetesOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceKubernetesOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetes) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetes) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -18500,6 +19364,16 @@ func (o ResourceKubernetesPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetes) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetes) *string {
@@ -18547,6 +19421,8 @@ type ResourceKubernetesBasicAuth struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18585,6 +19461,8 @@ type ResourceKubernetesBasicAuthArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18712,6 +19590,11 @@ func (o ResourceKubernetesBasicAuthOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesBasicAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -18836,6 +19719,16 @@ func (o ResourceKubernetesBasicAuthPtrOutput) PortOverride() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesBasicAuthPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesBasicAuthPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesBasicAuth) *string {
@@ -18901,6 +19794,8 @@ type ResourceKubernetesServiceAccount struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -18948,6 +19843,8 @@ type ResourceKubernetesServiceAccountArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19094,6 +19991,11 @@ func (o ResourceKubernetesServiceAccountOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceKubernetesServiceAccountOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesServiceAccountOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccount) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -19261,6 +20163,16 @@ func (o ResourceKubernetesServiceAccountPtrOutput) PortOverride() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesServiceAccountPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesServiceAccountPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccount) *string {
@@ -19317,6 +20229,8 @@ type ResourceKubernetesServiceAccountUserImpersonation struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19354,6 +20268,8 @@ type ResourceKubernetesServiceAccountUserImpersonationArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19477,6 +20393,11 @@ func (o ResourceKubernetesServiceAccountUserImpersonationOutput) PortOverride() 
 	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesServiceAccountUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesServiceAccountUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesServiceAccountUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -19592,6 +20513,16 @@ func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) PortOverride
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesServiceAccountUserImpersonation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesServiceAccountUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesServiceAccountUserImpersonation) *string {
@@ -19654,6 +20585,8 @@ type ResourceKubernetesUserImpersonation struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19694,6 +20627,8 @@ type ResourceKubernetesUserImpersonationArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -19827,6 +20762,11 @@ func (o ResourceKubernetesUserImpersonationOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceKubernetesUserImpersonationOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -19968,6 +20908,16 @@ func (o ResourceKubernetesUserImpersonationPtrOutput) PortOverride() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesUserImpersonationPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceKubernetesUserImpersonationPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceKubernetesUserImpersonation) *string {
@@ -20015,6 +20965,8 @@ type ResourceMaria struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -20057,6 +21009,8 @@ type ResourceMariaArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -20186,6 +21140,11 @@ func (o ResourceMariaOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMariaOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMaria) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMariaOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMaria) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
@@ -20322,6 +21281,16 @@ func (o ResourceMariaPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMariaPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMaria) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o ResourceMariaPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceMaria) *bool {
@@ -20395,6 +21364,8 @@ type ResourceMemcached struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -20427,6 +21398,8 @@ type ResourceMemcachedArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -20542,6 +21515,11 @@ func (o ResourceMemcachedOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMemcached) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMemcachedOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMemcached) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMemcachedOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMemcached) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -20641,6 +21619,16 @@ func (o ResourceMemcachedPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMemcachedPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMemcached) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMemcachedPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMemcached) *string {
@@ -20688,6 +21676,8 @@ type ResourceMemsql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -20730,6 +21720,8 @@ type ResourceMemsqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -20859,6 +21851,11 @@ func (o ResourceMemsqlOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMemsqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMemsql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMemsqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMemsql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
@@ -20995,6 +21992,16 @@ func (o ResourceMemsqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMemsqlPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMemsql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o ResourceMemsqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceMemsql) *bool {
@@ -21072,6 +22079,8 @@ type ResourceMongoHost struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -21112,6 +22121,8 @@ type ResourceMongoHostArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -21239,6 +22250,11 @@ func (o ResourceMongoHostOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMongoHostOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMongoHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoHostOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMongoHost) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -21370,6 +22386,16 @@ func (o ResourceMongoHostPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoHostPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMongoHost) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoHostPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoHost) *string {
@@ -21437,6 +22463,8 @@ type ResourceMongoLegacyHost struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -21477,6 +22505,8 @@ type ResourceMongoLegacyHostArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -21604,6 +22634,11 @@ func (o ResourceMongoLegacyHostOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMongoLegacyHostOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMongoLegacyHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoLegacyHostOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMongoLegacyHost) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -21735,6 +22770,16 @@ func (o ResourceMongoLegacyHostPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoLegacyHostPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMongoLegacyHost) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoLegacyHostPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoLegacyHost) *string {
@@ -21804,6 +22849,8 @@ type ResourceMongoLegacyReplicaset struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -21848,6 +22895,8 @@ type ResourceMongoLegacyReplicasetArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet pulumi.StringInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -21982,6 +23031,11 @@ func (o ResourceMongoLegacyReplicasetOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMongoLegacyReplicasetOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMongoLegacyReplicaset) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoLegacyReplicasetOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMongoLegacyReplicaset) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the mongo replicaset.
@@ -22128,6 +23182,16 @@ func (o ResourceMongoLegacyReplicasetPtrOutput) PortOverride() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoLegacyReplicasetPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMongoLegacyReplicaset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The name of the mongo replicaset.
 func (o ResourceMongoLegacyReplicasetPtrOutput) ReplicaSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoLegacyReplicaset) *string {
@@ -22207,6 +23271,8 @@ type ResourceMongoReplicaSet struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -22251,6 +23317,8 @@ type ResourceMongoReplicaSetArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet pulumi.StringInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -22385,6 +23453,11 @@ func (o ResourceMongoReplicaSetOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMongoReplicaSetOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMongoReplicaSet) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoReplicaSetOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMongoReplicaSet) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the mongo replicaset.
@@ -22531,6 +23604,16 @@ func (o ResourceMongoReplicaSetPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoReplicaSetPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The name of the mongo replicaset.
 func (o ResourceMongoReplicaSetPtrOutput) ReplicaSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoReplicaSet) *string {
@@ -22606,6 +23689,8 @@ type ResourceMongoShardedCluster struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -22644,6 +23729,8 @@ type ResourceMongoShardedClusterArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -22768,6 +23855,11 @@ func (o ResourceMongoShardedClusterOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMongoShardedCluster) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoShardedClusterOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoShardedClusterOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceMongoShardedCluster) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -22887,6 +23979,16 @@ func (o ResourceMongoShardedClusterPtrOutput) PortOverride() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMongoShardedClusterPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMongoShardedCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMongoShardedClusterPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMongoShardedCluster) *string {
@@ -22960,6 +24062,8 @@ type ResourceMtlsMysql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -23010,6 +24114,8 @@ type ResourceMtlsMysqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -23156,6 +24262,11 @@ func (o ResourceMtlsMysqlOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMtlsMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMtlsMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMtlsMysqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMtlsMysql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
@@ -23327,6 +24438,16 @@ func (o ResourceMtlsMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMtlsMysqlPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMtlsMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o ResourceMtlsMysqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceMtlsMysql) *bool {
@@ -23422,6 +24543,8 @@ type ResourceMtlsPostgres struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Server name for TLS verification (unverified by StrongDM if empty)
@@ -23470,6 +24593,8 @@ type ResourceMtlsPostgresArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Server name for TLS verification (unverified by StrongDM if empty)
@@ -23617,6 +24742,11 @@ func (o ResourceMtlsPostgresOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMtlsPostgresOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMtlsPostgres) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMtlsPostgresOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMtlsPostgres) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -23788,6 +24918,16 @@ func (o ResourceMtlsPostgresPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMtlsPostgresPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceMtlsPostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceMtlsPostgres) *string {
@@ -23855,6 +24995,8 @@ type ResourceMysql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -23897,6 +25039,8 @@ type ResourceMysqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -24026,6 +25170,11 @@ func (o ResourceMysqlOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMysqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceMysql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
@@ -24162,6 +25311,16 @@ func (o ResourceMysqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceMysqlPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceMysql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o ResourceMysqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceMysql) *bool {
@@ -24235,6 +25394,8 @@ type ResourceNeptune struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -24267,6 +25428,8 @@ type ResourceNeptuneArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -24382,6 +25545,11 @@ func (o ResourceNeptuneOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceNeptune) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceNeptuneOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceNeptune) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceNeptuneOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceNeptune) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -24481,6 +25649,16 @@ func (o ResourceNeptunePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceNeptunePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceNeptune) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceNeptunePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceNeptune) *string {
@@ -24526,6 +25704,8 @@ type ResourceNeptuneIam struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -24568,6 +25748,8 @@ type ResourceNeptuneIamArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -24694,6 +25876,11 @@ func (o ResourceNeptuneIamOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceNeptuneIamOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceNeptuneIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceNeptuneIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceNeptuneIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -24825,6 +26012,16 @@ func (o ResourceNeptuneIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceNeptuneIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceNeptuneIamPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceNeptuneIam) *string {
@@ -24912,6 +26109,8 @@ type ResourceOracle struct {
 	Port int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -24952,6 +26151,8 @@ type ResourceOracleArgs struct {
 	Port pulumi.IntInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25079,6 +26280,11 @@ func (o ResourceOracleOutput) Port() pulumi.IntOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceOracleOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceOracle) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceOracleOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceOracle) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -25210,6 +26416,16 @@ func (o ResourceOraclePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceOraclePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceOracle) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceOraclePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceOracle) *string {
@@ -25279,6 +26495,8 @@ type ResourcePostgres struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25319,6 +26537,8 @@ type ResourcePostgresArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25449,6 +26669,11 @@ func (o ResourcePostgresOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourcePostgresOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourcePostgres) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourcePostgresOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePostgres) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -25585,6 +26810,16 @@ func (o ResourcePostgresPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourcePostgresPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePostgres) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourcePostgresPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePostgres) *string {
@@ -25642,6 +26877,8 @@ type ResourcePresto struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25682,6 +26919,8 @@ type ResourcePrestoArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25809,6 +27048,11 @@ func (o ResourcePrestoOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourcePrestoOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourcePresto) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourcePrestoOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourcePresto) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -25940,6 +27184,16 @@ func (o ResourcePrestoPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourcePrestoPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourcePresto) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourcePrestoPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePresto) *string {
@@ -26005,6 +27259,8 @@ type ResourceRabbitmqAmqp091 struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -26043,6 +27299,8 @@ type ResourceRabbitmqAmqp091Args struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -26167,6 +27425,11 @@ func (o ResourceRabbitmqAmqp091Output) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRabbitmqAmqp091Output) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRabbitmqAmqp091Output) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRabbitmqAmqp091) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -26286,6 +27549,16 @@ func (o ResourceRabbitmqAmqp091PtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRabbitmqAmqp091PtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRabbitmqAmqp091) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRabbitmqAmqp091PtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRabbitmqAmqp091) *string {
@@ -26349,6 +27622,8 @@ type ResourceRawTcp struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -26381,6 +27656,8 @@ type ResourceRawTcpArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -26496,6 +27773,11 @@ func (o ResourceRawTcpOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRawTcp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRawTcpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRawTcp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRawTcpOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRawTcp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -26595,6 +27877,16 @@ func (o ResourceRawTcpPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRawTcpPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRawTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRawTcpPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRawTcp) *string {
@@ -26644,6 +27936,8 @@ type ResourceRdp struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -26684,6 +27978,8 @@ type ResourceRdpArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -26814,6 +28110,11 @@ func (o ResourceRdpOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceRdpOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRdp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRdpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -26950,6 +28251,16 @@ func (o ResourceRdpPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRdpPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRdpPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRdp) *string {
@@ -27007,6 +28318,8 @@ type ResourceRdpCert struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -27045,6 +28358,8 @@ type ResourceRdpCertArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -27172,6 +28487,11 @@ func (o ResourceRdpCertOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRdpCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRdpCertOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRdpCertOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRdpCert) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -27296,6 +28616,16 @@ func (o ResourceRdpCertPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRdpCertPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRdpCertPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRdpCert) *string {
@@ -27353,6 +28683,8 @@ type ResourceRdsPostgresIam struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region string `pulumi:"region"`
 	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -27395,6 +28727,8 @@ type ResourceRdsPostgresIamArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringInput `pulumi:"region"`
 	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -27524,6 +28858,11 @@ func (o ResourceRdsPostgresIamOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceRdsPostgresIamOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRdsPostgresIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRdsPostgresIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRdsPostgresIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The AWS region to connect to.
@@ -27660,6 +28999,16 @@ func (o ResourceRdsPostgresIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRdsPostgresIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o ResourceRdsPostgresIamPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRdsPostgresIam) *string {
@@ -27735,6 +29084,8 @@ type ResourceRedis struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -27773,6 +29124,8 @@ type ResourceRedisArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -27897,6 +29250,11 @@ func (o ResourceRedisOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRedis) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedisOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedis) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRedisOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRedis) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -28016,6 +29374,16 @@ func (o ResourceRedisPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedisPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedis) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRedisPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRedis) *string {
@@ -28085,6 +29453,8 @@ type ResourceRedshift struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28125,6 +29495,8 @@ type ResourceRedshiftArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28255,6 +29627,11 @@ func (o ResourceRedshiftOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceRedshiftOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceRedshift) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedshiftOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshift) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -28391,6 +29768,16 @@ func (o ResourceRedshiftPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedshiftPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshift) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceRedshiftPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceRedshift) *string {
@@ -28448,6 +29835,8 @@ type ResourceSingleStore struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -28490,6 +29879,8 @@ type ResourceSingleStoreArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -28619,6 +30010,11 @@ func (o ResourceSingleStoreOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceSingleStoreOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSingleStore) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSingleStoreOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSingleStore) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
@@ -28755,6 +30151,16 @@ func (o ResourceSingleStorePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSingleStorePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSingleStore) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o ResourceSingleStorePtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ResourceSingleStore) *bool {
@@ -28830,6 +30236,8 @@ type ResourceSnowflake struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema *string `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -28868,6 +30276,8 @@ type ResourceSnowflakeArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -28992,6 +30402,11 @@ func (o ResourceSnowflakeOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSnowflake) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSnowflakeOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowflake) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The Schema to use to direct initial requests.
 func (o ResourceSnowflakeOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSnowflake) *string { return v.Schema }).(pulumi.StringPtrOutput)
@@ -29111,6 +30526,16 @@ func (o ResourceSnowflakePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSnowflakePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowflake) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Schema to use to direct initial requests.
 func (o ResourceSnowflakePtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSnowflake) *string {
@@ -29172,6 +30597,8 @@ type ResourceSnowsight struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Metadata for your snowflake IDP integration
 	SamlMetadata *string `pulumi:"samlMetadata"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -29204,6 +30631,8 @@ type ResourceSnowsightArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Metadata for your snowflake IDP integration
 	SamlMetadata pulumi.StringPtrInput `pulumi:"samlMetadata"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -29316,6 +30745,11 @@ func (o ResourceSnowsightOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSnowsight) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSnowsightOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSnowsight) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The Metadata for your snowflake IDP integration
 func (o ResourceSnowsightOutput) SamlMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSnowsight) *string { return v.SamlMetadata }).(pulumi.StringPtrOutput)
@@ -29410,6 +30844,16 @@ func (o ResourceSnowsightPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSnowsightPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSnowsight) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Metadata for your snowflake IDP integration
 func (o ResourceSnowsightPtrOutput) SamlMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSnowsight) *string {
@@ -29471,6 +30915,8 @@ type ResourceSqlServer struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema *string `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -29515,6 +30961,8 @@ type ResourceSqlServerArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -29652,6 +31100,11 @@ func (o ResourceSqlServerOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceSqlServerOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSqlServer) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSqlServerOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServer) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The Schema to use to direct initial requests.
@@ -29803,6 +31256,16 @@ func (o ResourceSqlServerPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSqlServerPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Schema to use to direct initial requests.
 func (o ResourceSqlServerPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSqlServer) *string {
@@ -29874,6 +31337,8 @@ type ResourceSqlServerAzureAd struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema *string `pulumi:"schema"`
 	// The Azure AD client secret (application password) with which to authenticate.
@@ -29921,6 +31386,8 @@ type ResourceSqlServerAzureAdArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The Azure AD client secret (application password) with which to authenticate.
@@ -30061,6 +31528,11 @@ func (o ResourceSqlServerAzureAdOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceSqlServerAzureAdOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSqlServerAzureAd) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSqlServerAzureAdOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerAzureAd) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The Schema to use to direct initial requests.
@@ -30218,6 +31690,16 @@ func (o ResourceSqlServerAzureAdPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSqlServerAzureAdPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Schema to use to direct initial requests.
 func (o ResourceSqlServerAzureAdPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSqlServerAzureAd) *string {
@@ -30302,6 +31784,8 @@ type ResourceSqlServerKerberosAd struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Active Directory domain (realm) to which the configured username belongs.
 	Realm *string `pulumi:"realm"`
 	// The Schema to use to direct initial requests.
@@ -30352,6 +31836,8 @@ type ResourceSqlServerKerberosAdArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Active Directory domain (realm) to which the configured username belongs.
 	Realm pulumi.StringPtrInput `pulumi:"realm"`
 	// The Schema to use to direct initial requests.
@@ -30498,6 +31984,11 @@ func (o ResourceSqlServerKerberosAdOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceSqlServerKerberosAdOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSqlServerKerberosAdOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The Active Directory domain (realm) to which the configured username belongs.
@@ -30669,6 +32160,16 @@ func (o ResourceSqlServerKerberosAdPtrOutput) PortOverride() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSqlServerKerberosAdPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Active Directory domain (realm) to which the configured username belongs.
 func (o ResourceSqlServerKerberosAdPtrOutput) Realm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSqlServerKerberosAd) *string {
@@ -30758,6 +32259,8 @@ type ResourceSsh struct {
 	PortForwarding *bool `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The public key to append to a server's authorized keys. This will be generated after resource creation.
 	PublicKey *string `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -30800,6 +32303,8 @@ type ResourceSshArgs struct {
 	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The public key to append to a server's authorized keys. This will be generated after resource creation.
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -30932,6 +32437,11 @@ func (o ResourceSshOutput) PortForwarding() pulumi.BoolPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceSshOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSsh) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSshOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSsh) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The public key to append to a server's authorized keys. This will be generated after resource creation.
@@ -31073,6 +32583,16 @@ func (o ResourceSshPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSshPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The public key to append to a server's authorized keys. This will be generated after resource creation.
 func (o ResourceSshPtrOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSsh) *string {
@@ -31146,6 +32666,8 @@ type ResourceSshCert struct {
 	PortForwarding *bool `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -31190,6 +32712,8 @@ type ResourceSshCertArgs struct {
 	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -31330,6 +32854,11 @@ func (o ResourceSshCertOutput) PortForwarding() pulumi.BoolPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceSshCertOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSshCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSshCertOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshCert) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -31486,6 +33015,16 @@ func (o ResourceSshCertPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSshCertPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshCert) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSshCertPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSshCert) *string {
@@ -31545,6 +33084,8 @@ type ResourceSshCustomerKey struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// The private key used to authenticate with the server.
 	PrivateKey *string `pulumi:"privateKey"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -31585,6 +33126,8 @@ type ResourceSshCustomerKeyArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The private key used to authenticate with the server.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -31715,6 +33258,11 @@ func (o ResourceSshCustomerKeyOutput) PortOverride() pulumi.IntPtrOutput {
 // The private key used to authenticate with the server.
 func (o ResourceSshCustomerKeyOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSshCustomerKeyOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshCustomerKey) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -31851,6 +33399,16 @@ func (o ResourceSshCustomerKeyPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSshCustomerKeyPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSshCustomerKeyPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSshCustomerKey) *string {
@@ -31910,6 +33468,8 @@ type ResourceSshPassword struct {
 	PortForwarding *bool `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -31950,6 +33510,8 @@ type ResourceSshPasswordArgs struct {
 	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32080,6 +33642,11 @@ func (o ResourceSshPasswordOutput) PortForwarding() pulumi.BoolPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o ResourceSshPasswordOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSshPassword) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSshPasswordOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSshPassword) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -32216,6 +33783,16 @@ func (o ResourceSshPasswordPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSshPasswordPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSshPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSshPasswordPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSshPassword) *string {
@@ -32271,6 +33848,8 @@ type ResourceSybase struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32307,6 +33886,8 @@ type ResourceSybaseArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32429,6 +34010,11 @@ func (o ResourceSybaseOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSybase) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSybaseOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSybase) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSybaseOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSybase) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -32543,6 +34129,16 @@ func (o ResourceSybasePtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSybasePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSybase) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSybasePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSybase) *string {
@@ -32598,6 +34194,8 @@ type ResourceSybaseIq struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32634,6 +34232,8 @@ type ResourceSybaseIqArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32756,6 +34356,11 @@ func (o ResourceSybaseIqOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceSybaseIq) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSybaseIqOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceSybaseIq) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSybaseIqOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceSybaseIq) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -32870,6 +34475,16 @@ func (o ResourceSybaseIqPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceSybaseIqPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceSybaseIq) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceSybaseIqPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceSybaseIq) *string {
@@ -32925,6 +34540,8 @@ type ResourceTeradata struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32961,6 +34578,8 @@ type ResourceTeradataArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -33083,6 +34702,11 @@ func (o ResourceTeradataOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceTeradata) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceTeradataOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTeradata) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceTeradataOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTeradata) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -33197,6 +34821,16 @@ func (o ResourceTeradataPtrOutput) PortOverride() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceTeradataPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTeradata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceTeradataPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceTeradata) *string {
@@ -33254,6 +34888,8 @@ type ResourceTrino struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -33292,6 +34928,8 @@ type ResourceTrinoArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -33419,6 +35057,11 @@ func (o ResourceTrinoOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceTrino) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceTrinoOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceTrino) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o ResourceTrinoOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceTrino) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -33541,6 +35184,16 @@ func (o ResourceTrinoPtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceTrinoPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceTrino) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.
@@ -42562,6 +44215,8 @@ type GetResourceResourceAk struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -42614,6 +44269,8 @@ type GetResourceResourceAkArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -42753,6 +44410,11 @@ func (o GetResourceResourceAkOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAk) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAkOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAkOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAk) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -42807,6 +44469,8 @@ type GetResourceResourceAksBasicAuth struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -42847,6 +44511,8 @@ type GetResourceResourceAksBasicAuthArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -42953,6 +44619,11 @@ func (o GetResourceResourceAksBasicAuthOutput) PortOverride() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v GetResourceResourceAksBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAksBasicAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksBasicAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAksBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -43020,6 +44691,8 @@ type GetResourceResourceAksServiceAccount struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43069,6 +44742,8 @@ type GetResourceResourceAksServiceAccountArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43196,6 +44871,11 @@ func (o GetResourceResourceAksServiceAccountOutput) PortOverride() pulumi.IntPtr
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAksServiceAccountOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAksServiceAccountOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccount) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -43254,6 +44934,8 @@ type GetResourceResourceAksServiceAccountUserImpersonation struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43293,6 +44975,8 @@ type GetResourceResourceAksServiceAccountUserImpersonationArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43395,6 +45079,11 @@ func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) PortOverrid
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccountUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksServiceAccountUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAksServiceAccountUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksServiceAccountUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -43459,6 +45148,8 @@ type GetResourceResourceAksUserImpersonation struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43501,6 +45192,8 @@ type GetResourceResourceAksUserImpersonationArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -43615,6 +45308,11 @@ func (o GetResourceResourceAksUserImpersonationOutput) PortOverride() pulumi.Int
 	return o.ApplyT(func(v GetResourceResourceAksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAksUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAksUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAksUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAksUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -43665,6 +45363,8 @@ type GetResourceResourceAmazonE struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -43707,6 +45407,8 @@ type GetResourceResourceAmazonEArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -43809,6 +45511,11 @@ func (o GetResourceResourceAmazonEOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonE) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAmazonEOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonE) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAmazonEOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonE) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -43895,6 +45602,8 @@ type GetResourceResourceAmazonEk struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -43953,6 +45662,8 @@ type GetResourceResourceAmazonEkArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -44095,6 +45806,11 @@ func (o GetResourceResourceAmazonEkOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAmazonEkOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAmazonEkOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEk) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -44179,6 +45895,8 @@ type GetResourceResourceAmazonEksInstanceProfile struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -44233,6 +45951,8 @@ type GetResourceResourceAmazonEksInstanceProfileArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -44368,6 +46088,11 @@ func (o GetResourceResourceAmazonEksInstanceProfileOutput) PortOverride() pulumi
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAmazonEksInstanceProfileOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAmazonEksInstanceProfileOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfile) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -44437,6 +46162,8 @@ type GetResourceResourceAmazonEksInstanceProfileUserImpersonation struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -44481,6 +46208,8 @@ type GetResourceResourceAmazonEksInstanceProfileUserImpersonationArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -44595,6 +46324,11 @@ func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) Port
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAmazonEksInstanceProfileUserImpersonationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksInstanceProfileUserImpersonation) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -44666,6 +46400,8 @@ type GetResourceResourceAmazonEksUserImpersonation struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -44714,6 +46450,8 @@ type GetResourceResourceAmazonEksUserImpersonationArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -44831,6 +46569,11 @@ func (o GetResourceResourceAmazonEksUserImpersonationOutput) PortOverride() pulu
 	return o.ApplyT(func(v GetResourceResourceAmazonEksUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAmazonEksUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEksUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAmazonEksUserImpersonationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonEksUserImpersonation) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -44903,6 +46646,8 @@ type GetResourceResourceAmazonmqAmqp091 struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -44943,6 +46688,8 @@ type GetResourceResourceAmazonmqAmqp091Args struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -45046,6 +46793,11 @@ func (o GetResourceResourceAmazonmqAmqp091Output) PortOverride() pulumi.IntPtrOu
 	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp091) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAmazonmqAmqp091Output) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp091) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAmazonmqAmqp091Output) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAmazonmqAmqp091) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -45106,6 +46858,8 @@ type GetResourceResourceAthena struct {
 	Output *string `pulumi:"output"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -45148,6 +46902,8 @@ type GetResourceResourceAthenaArgs struct {
 	Output pulumi.StringPtrInput `pulumi:"output"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -45250,6 +47006,11 @@ func (o GetResourceResourceAthenaOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAthena) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAthenaOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthena) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAthenaOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAthena) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -45324,6 +47085,8 @@ type GetResourceResourceAuroraMysql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -45368,6 +47131,8 @@ type GetResourceResourceAuroraMysqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -45478,6 +47243,11 @@ func (o GetResourceResourceAuroraMysqlOutput) PortOverride() pulumi.IntPtrOutput
 	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAuroraMysqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o GetResourceResourceAuroraMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAuroraMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
@@ -45549,6 +47319,8 @@ type GetResourceResourceAuroraPostgre struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -45591,6 +47363,8 @@ type GetResourceResourceAuroraPostgreArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -45702,6 +47476,11 @@ func (o GetResourceResourceAuroraPostgreOutput) PortOverride() pulumi.IntPtrOutp
 	return o.ApplyT(func(v GetResourceResourceAuroraPostgre) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAuroraPostgreOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgre) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAuroraPostgreOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAuroraPostgre) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -45761,6 +47540,8 @@ type GetResourceResourceAuroraPostgresIam struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -45805,6 +47586,8 @@ type GetResourceResourceAuroraPostgresIamArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -45915,6 +47698,11 @@ func (o GetResourceResourceAuroraPostgresIamOutput) PortOverride() pulumi.IntPtr
 	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAuroraPostgresIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAuroraPostgresIamOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAuroraPostgresIam) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -45980,6 +47768,8 @@ type GetResourceResourceAw struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The role to assume after logging in.
 	RoleArn *string `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -46020,6 +47810,8 @@ type GetResourceResourceAwArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The role to assume after logging in.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -46120,6 +47912,11 @@ func (o GetResourceResourceAwOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAw) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAwOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAw) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The role to assume after logging in.
 func (o GetResourceResourceAwOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAw) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
@@ -46187,6 +47984,8 @@ type GetResourceResourceAwsConsole struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -46231,6 +48030,8 @@ type GetResourceResourceAwsConsoleArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -46338,6 +48139,11 @@ func (o GetResourceResourceAwsConsoleOutput) PortOverride() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v GetResourceResourceAwsConsole) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAwsConsoleOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAwsConsoleOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -46410,6 +48216,8 @@ type GetResourceResourceAwsConsoleStaticKeyPair struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -46456,6 +48264,8 @@ type GetResourceResourceAwsConsoleStaticKeyPairArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -46565,6 +48375,11 @@ func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) PortOverride() pulumi.
 	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -46640,6 +48455,8 @@ type GetResourceResourceAzure struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -46677,6 +48494,8 @@ type GetResourceResourceAzureArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -46774,6 +48593,11 @@ func (o GetResourceResourceAzureOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzure) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAzureOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzure) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAzureOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzure) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -46830,6 +48654,8 @@ type GetResourceResourceAzureCertificate struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -46867,6 +48693,8 @@ type GetResourceResourceAzureCertificateArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -46964,6 +48792,11 @@ func (o GetResourceResourceAzureCertificateOutput) PortOverride() pulumi.IntPtrO
 	return o.ApplyT(func(v GetResourceResourceAzureCertificate) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAzureCertificateOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureCertificate) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAzureCertificateOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzureCertificate) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -47024,6 +48857,8 @@ type GetResourceResourceAzureMysql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -47068,6 +48903,8 @@ type GetResourceResourceAzureMysqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -47178,6 +49015,11 @@ func (o GetResourceResourceAzureMysqlOutput) PortOverride() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v GetResourceResourceAzureMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAzureMysqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzureMysql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o GetResourceResourceAzureMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzureMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
@@ -47249,6 +49091,8 @@ type GetResourceResourceAzurePostgre struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47291,6 +49135,8 @@ type GetResourceResourceAzurePostgreArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47402,6 +49248,11 @@ func (o GetResourceResourceAzurePostgreOutput) PortOverride() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v GetResourceResourceAzurePostgre) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAzurePostgreOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzurePostgre) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAzurePostgreOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzurePostgre) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -47463,6 +49314,8 @@ type GetResourceResourceAzurePostgresManagedIdentity struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47507,6 +49360,8 @@ type GetResourceResourceAzurePostgresManagedIdentityArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47620,6 +49475,11 @@ func (o GetResourceResourceAzurePostgresManagedIdentityOutput) PortOverride() pu
 	return o.ApplyT(func(v GetResourceResourceAzurePostgresManagedIdentity) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAzurePostgresManagedIdentityOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAzurePostgresManagedIdentity) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceAzurePostgresManagedIdentityOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAzurePostgresManagedIdentity) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -47682,6 +49542,8 @@ type GetResourceResourceBigQuery struct {
 	PrivateKey *string `pulumi:"privateKey"`
 	// The project to connect to.
 	Project *string `pulumi:"project"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47720,6 +49582,8 @@ type GetResourceResourceBigQueryArgs struct {
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// The project to connect to.
 	Project pulumi.StringPtrInput `pulumi:"project"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47821,6 +49685,11 @@ func (o GetResourceResourceBigQueryOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceBigQuery) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceBigQueryOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceBigQuery) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceBigQueryOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceBigQuery) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -47878,6 +49747,8 @@ type GetResourceResourceCassandra struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -47918,6 +49789,8 @@ type GetResourceResourceCassandraArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48021,6 +49894,11 @@ func (o GetResourceResourceCassandraOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCassandra) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceCassandraOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCassandra) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceCassandraOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCassandra) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -48087,6 +49965,8 @@ type GetResourceResourceCitus struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48129,6 +50009,8 @@ type GetResourceResourceCitusArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48240,6 +50122,11 @@ func (o GetResourceResourceCitusOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCitus) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceCitusOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCitus) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceCitusOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCitus) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -48299,6 +50186,8 @@ type GetResourceResourceClustrix struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -48343,6 +50232,8 @@ type GetResourceResourceClustrixArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -48453,6 +50344,11 @@ func (o GetResourceResourceClustrixOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceClustrix) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceClustrixOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClustrix) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o GetResourceResourceClustrixOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceClustrix) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
@@ -48524,6 +50420,8 @@ type GetResourceResourceCockroach struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48566,6 +50464,8 @@ type GetResourceResourceCockroachArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48677,6 +50577,11 @@ func (o GetResourceResourceCockroachOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCockroach) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceCockroachOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCockroach) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceCockroachOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCockroach) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -48736,6 +50641,8 @@ type GetResourceResourceCouchbaseDatabase struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48778,6 +50685,8 @@ type GetResourceResourceCouchbaseDatabaseArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48886,6 +50795,11 @@ func (o GetResourceResourceCouchbaseDatabaseOutput) PortOverride() pulumi.IntPtr
 	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceCouchbaseDatabaseOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceCouchbaseDatabaseOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCouchbaseDatabase) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -48944,6 +50858,8 @@ type GetResourceResourceCouchbaseWebUi struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -48981,6 +50897,8 @@ type GetResourceResourceCouchbaseWebUiArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49075,6 +50993,11 @@ func (o GetResourceResourceCouchbaseWebUiOutput) PortOverride() pulumi.IntPtrOut
 	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceCouchbaseWebUiOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceCouchbaseWebUiOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceCouchbaseWebUi) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -49138,6 +51061,8 @@ type GetResourceResourceDb2I struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49178,6 +51103,8 @@ type GetResourceResourceDb2IArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49281,6 +51208,11 @@ func (o GetResourceResourceDb2IOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDb2I) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDb2IOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDb2I) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceDb2IOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDb2I) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -49345,6 +51277,8 @@ type GetResourceResourceDb2Luw struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49385,6 +51319,8 @@ type GetResourceResourceDb2LuwArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49491,6 +51427,11 @@ func (o GetResourceResourceDb2LuwOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDb2Luw) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDb2LuwOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDb2Luw) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceDb2LuwOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDb2Luw) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -49550,6 +51491,8 @@ type GetResourceResourceDocumentDbHost struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49590,6 +51533,8 @@ type GetResourceResourceDocumentDbHostArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -49696,6 +51641,11 @@ func (o GetResourceResourceDocumentDbHostOutput) PortOverride() pulumi.IntPtrOut
 	return o.ApplyT(func(v GetResourceResourceDocumentDbHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDocumentDbHostOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHost) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceDocumentDbHostOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDocumentDbHost) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -49755,6 +51705,8 @@ type GetResourceResourceDocumentDbReplicaSet struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -49797,6 +51749,8 @@ type GetResourceResourceDocumentDbReplicaSetArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -49905,6 +51859,11 @@ func (o GetResourceResourceDocumentDbReplicaSetOutput) PortOverride() pulumi.Int
 	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSet) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDocumentDbReplicaSetOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSet) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The name of the mongo replicaset.
 func (o GetResourceResourceDocumentDbReplicaSetOutput) ReplicaSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDocumentDbReplicaSet) *string { return v.ReplicaSet }).(pulumi.StringPtrOutput)
@@ -49967,6 +51926,8 @@ type GetResourceResourceDruid struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -50005,6 +51966,8 @@ type GetResourceResourceDruidArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -50106,6 +52069,11 @@ func (o GetResourceResourceDruidOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDruid) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDruidOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDruid) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceDruidOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDruid) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -50161,6 +52129,8 @@ type GetResourceResourceDynamoDb struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -50203,6 +52173,8 @@ type GetResourceResourceDynamoDbArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -50305,6 +52277,11 @@ func (o GetResourceResourceDynamoDbOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDynamoDb) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDynamoDbOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDb) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceDynamoDbOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceDynamoDb) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -50377,6 +52354,8 @@ type GetResourceResourceElastic struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -50417,6 +52396,8 @@ type GetResourceResourceElasticArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -50520,6 +52501,11 @@ func (o GetResourceResourceElasticOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceElastic) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceElasticOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceElastic) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceElasticOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceElastic) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -50582,6 +52568,8 @@ type GetResourceResourceElasticacheRedi struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -50622,6 +52610,8 @@ type GetResourceResourceElasticacheRediArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -50725,6 +52715,11 @@ func (o GetResourceResourceElasticacheRediOutput) PortOverride() pulumi.IntPtrOu
 	return o.ApplyT(func(v GetResourceResourceElasticacheRedi) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceElasticacheRediOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceElasticacheRedi) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceElasticacheRediOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceElasticacheRedi) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -50783,6 +52778,8 @@ type GetResourceResourceGcp struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Space separated scopes that this login should assume into when authenticating.
 	Scopes *string `pulumi:"scopes"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -50817,6 +52814,8 @@ type GetResourceResourceGcpArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Space separated scopes that this login should assume into when authenticating.
 	Scopes pulumi.StringPtrInput `pulumi:"scopes"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -50908,6 +52907,11 @@ func (o GetResourceResourceGcpOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGcp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceGcpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Space separated scopes that this login should assume into when authenticating.
 func (o GetResourceResourceGcpOutput) Scopes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGcp) *string { return v.Scopes }).(pulumi.StringPtrOutput)
@@ -50975,6 +52979,8 @@ type GetResourceResourceGoogleGke struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -51023,6 +53029,8 @@ type GetResourceResourceGoogleGkeArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -51149,6 +53157,11 @@ func (o GetResourceResourceGoogleGkeOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGke) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceGoogleGkeOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceGoogleGkeOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGke) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -51206,6 +53219,8 @@ type GetResourceResourceGoogleGkeUserImpersonation struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -51244,6 +53259,8 @@ type GetResourceResourceGoogleGkeUserImpersonationArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The service account key to authenticate with.
@@ -51345,6 +53362,11 @@ func (o GetResourceResourceGoogleGkeUserImpersonationOutput) PortOverride() pulu
 	return o.ApplyT(func(v GetResourceResourceGoogleGkeUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceGoogleGkeUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGoogleGkeUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceGoogleGkeUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGoogleGkeUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -51406,6 +53428,8 @@ type GetResourceResourceGreenplum struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -51448,6 +53472,8 @@ type GetResourceResourceGreenplumArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -51559,6 +53585,11 @@ func (o GetResourceResourceGreenplumOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGreenplum) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceGreenplumOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGreenplum) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceGreenplumOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGreenplum) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -51618,6 +53649,8 @@ type GetResourceResourceHttpAuth struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -51659,6 +53692,8 @@ type GetResourceResourceHttpAuthArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -51766,6 +53801,11 @@ func (o GetResourceResourceHttpAuthOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpAuth) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceHttpAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceHttpAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -51826,6 +53866,8 @@ type GetResourceResourceHttpBasicAuth struct {
 	Name *string `pulumi:"name"`
 	// The password to authenticate with.
 	Password *string `pulumi:"password"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -51869,6 +53911,8 @@ type GetResourceResourceHttpBasicAuthArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The password to authenticate with.
 	Password pulumi.StringPtrInput `pulumi:"password"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -51978,6 +54022,11 @@ func (o GetResourceResourceHttpBasicAuthOutput) Password() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceHttpBasicAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceHttpBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -52041,6 +54090,8 @@ type GetResourceResourceHttpNoAuth struct {
 	Id *string `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52080,6 +54131,8 @@ type GetResourceResourceHttpNoAuthArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52182,6 +54235,11 @@ func (o GetResourceResourceHttpNoAuthOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpNoAuth) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceHttpNoAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceHttpNoAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceHttpNoAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceHttpNoAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -52256,6 +54314,8 @@ type GetResourceResourceKubernete struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52308,6 +54368,8 @@ type GetResourceResourceKuberneteArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52447,6 +54509,11 @@ func (o GetResourceResourceKuberneteOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernete) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceKuberneteOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceKuberneteOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernete) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -52501,6 +54568,8 @@ type GetResourceResourceKubernetesBasicAuth struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52541,6 +54610,8 @@ type GetResourceResourceKubernetesBasicAuthArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52647,6 +54718,11 @@ func (o GetResourceResourceKubernetesBasicAuthOutput) PortOverride() pulumi.IntP
 	return o.ApplyT(func(v GetResourceResourceKubernetesBasicAuth) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceKubernetesBasicAuthOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesBasicAuth) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceKubernetesBasicAuthOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesBasicAuth) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -52714,6 +54790,8 @@ type GetResourceResourceKubernetesServiceAccount struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52763,6 +54841,8 @@ type GetResourceResourceKubernetesServiceAccountArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52890,6 +54970,11 @@ func (o GetResourceResourceKubernetesServiceAccountOutput) PortOverride() pulumi
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceKubernetesServiceAccountOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceKubernetesServiceAccountOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccount) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -52948,6 +55033,8 @@ type GetResourceResourceKubernetesServiceAccountUserImpersonation struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -52987,6 +55074,8 @@ type GetResourceResourceKubernetesServiceAccountUserImpersonationArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -53091,6 +55180,11 @@ func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) Port
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccountUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccountUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceKubernetesServiceAccountUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesServiceAccountUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -53155,6 +55249,8 @@ type GetResourceResourceKubernetesUserImpersonation struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -53197,6 +55293,8 @@ type GetResourceResourceKubernetesUserImpersonationArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -53311,6 +55409,11 @@ func (o GetResourceResourceKubernetesUserImpersonationOutput) PortOverride() pul
 	return o.ApplyT(func(v GetResourceResourceKubernetesUserImpersonation) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceKubernetesUserImpersonationOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesUserImpersonation) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceKubernetesUserImpersonationOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesUserImpersonation) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -53365,6 +55468,8 @@ type GetResourceResourceMaria struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -53409,6 +55514,8 @@ type GetResourceResourceMariaArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -53519,6 +55626,11 @@ func (o GetResourceResourceMariaOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMaria) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMariaOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMaria) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o GetResourceResourceMariaOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMaria) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
@@ -53584,6 +55696,8 @@ type GetResourceResourceMemcached struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -53618,6 +55732,8 @@ type GetResourceResourceMemcachedArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -53712,6 +55828,11 @@ func (o GetResourceResourceMemcachedOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMemcached) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMemcachedOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMemcached) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMemcachedOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMemcached) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -53766,6 +55887,8 @@ type GetResourceResourceMemsql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -53810,6 +55933,8 @@ type GetResourceResourceMemsqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -53920,6 +56045,11 @@ func (o GetResourceResourceMemsqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMemsql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMemsqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMemsql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o GetResourceResourceMemsqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMemsql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
@@ -53989,6 +56119,8 @@ type GetResourceResourceMongoHost struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -54031,6 +56163,8 @@ type GetResourceResourceMongoHostArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -54139,6 +56273,11 @@ func (o GetResourceResourceMongoHostOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMongoHostOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoHost) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMongoHostOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoHost) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -54203,6 +56342,8 @@ type GetResourceResourceMongoLegacyHost struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -54245,6 +56386,8 @@ type GetResourceResourceMongoLegacyHostArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -54353,6 +56496,11 @@ func (o GetResourceResourceMongoLegacyHostOutput) PortOverride() pulumi.IntPtrOu
 	return o.ApplyT(func(v GetResourceResourceMongoLegacyHost) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMongoLegacyHostOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoLegacyHost) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMongoLegacyHostOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoLegacyHost) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -54419,6 +56567,8 @@ type GetResourceResourceMongoLegacyReplicaset struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -54465,6 +56615,8 @@ type GetResourceResourceMongoLegacyReplicasetArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -54580,6 +56732,11 @@ func (o GetResourceResourceMongoLegacyReplicasetOutput) PortOverride() pulumi.In
 	return o.ApplyT(func(v GetResourceResourceMongoLegacyReplicaset) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMongoLegacyReplicasetOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoLegacyReplicaset) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The name of the mongo replicaset.
 func (o GetResourceResourceMongoLegacyReplicasetOutput) ReplicaSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoLegacyReplicaset) *string { return v.ReplicaSet }).(pulumi.StringPtrOutput)
@@ -54651,6 +56808,8 @@ type GetResourceResourceMongoReplicaSet struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet *string `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -54697,6 +56856,8 @@ type GetResourceResourceMongoReplicaSetArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The name of the mongo replicaset.
 	ReplicaSet pulumi.StringPtrInput `pulumi:"replicaSet"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -54812,6 +56973,11 @@ func (o GetResourceResourceMongoReplicaSetOutput) PortOverride() pulumi.IntPtrOu
 	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMongoReplicaSetOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The name of the mongo replicaset.
 func (o GetResourceResourceMongoReplicaSetOutput) ReplicaSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoReplicaSet) *string { return v.ReplicaSet }).(pulumi.StringPtrOutput)
@@ -54879,6 +57045,8 @@ type GetResourceResourceMongoShardedCluster struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -54919,6 +57087,8 @@ type GetResourceResourceMongoShardedClusterArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -55022,6 +57192,11 @@ func (o GetResourceResourceMongoShardedClusterOutput) PortOverride() pulumi.IntP
 	return o.ApplyT(func(v GetResourceResourceMongoShardedCluster) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMongoShardedClusterOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMongoShardedCluster) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMongoShardedClusterOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMongoShardedCluster) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -55092,6 +57267,8 @@ type GetResourceResourceMtlsMysql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -55144,6 +57321,8 @@ type GetResourceResourceMtlsMysqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -55271,6 +57450,11 @@ func (o GetResourceResourceMtlsMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMtlsMysqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o GetResourceResourceMtlsMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMtlsMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
@@ -55353,6 +57537,8 @@ type GetResourceResourceMtlsPostgre struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Server name for TLS verification (unverified by StrongDM if empty)
@@ -55403,6 +57589,8 @@ type GetResourceResourceMtlsPostgreArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Server name for TLS verification (unverified by StrongDM if empty)
@@ -55531,6 +57719,11 @@ func (o GetResourceResourceMtlsPostgreOutput) PortOverride() pulumi.IntPtrOutput
 	return o.ApplyT(func(v GetResourceResourceMtlsPostgre) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMtlsPostgreOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMtlsPostgre) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceMtlsPostgreOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMtlsPostgre) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -55595,6 +57788,8 @@ type GetResourceResourceMysql struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -55639,6 +57834,8 @@ type GetResourceResourceMysqlArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -55749,6 +57946,11 @@ func (o GetResourceResourceMysqlOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMysql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceMysqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceMysql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o GetResourceResourceMysqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceMysql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
@@ -55814,6 +58016,8 @@ type GetResourceResourceNeptune struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -55848,6 +58052,8 @@ type GetResourceResourceNeptuneArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -55942,6 +58148,11 @@ func (o GetResourceResourceNeptuneOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceNeptune) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceNeptuneOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceNeptune) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceNeptuneOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceNeptune) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -55994,6 +58205,8 @@ type GetResourceResourceNeptuneIam struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// The role to assume after logging in.
@@ -56038,6 +58251,8 @@ type GetResourceResourceNeptuneIamArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The role to assume after logging in.
@@ -56145,6 +58360,11 @@ func (o GetResourceResourceNeptuneIamOutput) PortOverride() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v GetResourceResourceNeptuneIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceNeptuneIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceNeptuneIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceNeptuneIamOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceNeptuneIam) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -56219,6 +58439,8 @@ type GetResourceResourceOracle struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56261,6 +58483,8 @@ type GetResourceResourceOracleArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56369,6 +58593,11 @@ func (o GetResourceResourceOracleOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceOracle) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceOracleOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceOracle) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceOracleOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceOracle) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -56435,6 +58664,8 @@ type GetResourceResourcePostgre struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56477,6 +58708,8 @@ type GetResourceResourcePostgreArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56588,6 +58821,11 @@ func (o GetResourceResourcePostgreOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourcePostgre) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourcePostgreOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourcePostgre) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourcePostgreOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourcePostgre) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -56647,6 +58885,8 @@ type GetResourceResourcePresto struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56689,6 +58929,8 @@ type GetResourceResourcePrestoArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56797,6 +59039,11 @@ func (o GetResourceResourcePrestoOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourcePresto) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourcePrestoOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourcePresto) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourcePrestoOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourcePresto) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -56859,6 +59106,8 @@ type GetResourceResourceRabbitmqAmqp091 struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -56899,6 +59148,8 @@ type GetResourceResourceRabbitmqAmqp091Args struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -57002,6 +59253,11 @@ func (o GetResourceResourceRabbitmqAmqp091Output) PortOverride() pulumi.IntPtrOu
 	return o.ApplyT(func(v GetResourceResourceRabbitmqAmqp091) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRabbitmqAmqp091Output) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRabbitmqAmqp091) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceRabbitmqAmqp091Output) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRabbitmqAmqp091) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -57062,6 +59318,8 @@ type GetResourceResourceRawTcp struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -57096,6 +59354,8 @@ type GetResourceResourceRawTcpArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -57190,6 +59450,11 @@ func (o GetResourceResourceRawTcpOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRawTcp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRawTcpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRawTcp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceRawTcpOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRawTcp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -57246,6 +59511,8 @@ type GetResourceResourceRdp struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -57288,6 +59555,8 @@ type GetResourceResourceRdpArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -57399,6 +59668,11 @@ func (o GetResourceResourceRdpOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRdpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceRdpOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -57458,6 +59732,8 @@ type GetResourceResourceRdpCert struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -57498,6 +59774,8 @@ type GetResourceResourceRdpCertArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -57604,6 +59882,11 @@ func (o GetResourceResourceRdpCertOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdpCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRdpCertOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceRdpCertOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -57663,6 +59946,8 @@ type GetResourceResourceRdsPostgresIam struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region *string `pulumi:"region"`
 	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -57707,6 +59992,8 @@ type GetResourceResourceRdsPostgresIamArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The AWS region to connect to.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
@@ -57817,6 +60104,11 @@ func (o GetResourceResourceRdsPostgresIamOutput) PortOverride() pulumi.IntPtrOut
 	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRdsPostgresIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The AWS region to connect to.
 func (o GetResourceResourceRdsPostgresIamOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdsPostgresIam) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -57884,6 +60176,8 @@ type GetResourceResourceRedi struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -57924,6 +60218,8 @@ type GetResourceResourceRediArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -58027,6 +60323,11 @@ func (o GetResourceResourceRediOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRedi) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRediOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedi) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceRediOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRedi) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -58093,6 +60394,8 @@ type GetResourceResourceRedshift struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -58135,6 +60438,8 @@ type GetResourceResourceRedshiftArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -58246,6 +60551,11 @@ func (o GetResourceResourceRedshiftOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRedshift) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRedshiftOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshift) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceRedshiftOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRedshift) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -58305,6 +60615,8 @@ type GetResourceResourceSingleStore struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -58349,6 +60661,8 @@ type GetResourceResourceSingleStoreArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -58459,6 +60773,11 @@ func (o GetResourceResourceSingleStoreOutput) PortOverride() pulumi.IntPtrOutput
 	return o.ApplyT(func(v GetResourceResourceSingleStore) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSingleStoreOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSingleStore) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
 func (o GetResourceResourceSingleStoreOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSingleStore) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
@@ -58526,6 +60845,8 @@ type GetResourceResourceSnowflake struct {
 	Password *string `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema *string `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -58566,6 +60887,8 @@ type GetResourceResourceSnowflakeArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -58669,6 +60992,11 @@ func (o GetResourceResourceSnowflakeOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSnowflake) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSnowflakeOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowflake) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The Schema to use to direct initial requests.
 func (o GetResourceResourceSnowflakeOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSnowflake) *string { return v.Schema }).(pulumi.StringPtrOutput)
@@ -58727,6 +61055,8 @@ type GetResourceResourceSnowsight struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Metadata for your snowflake IDP integration
 	SamlMetadata *string `pulumi:"samlMetadata"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -58761,6 +61091,8 @@ type GetResourceResourceSnowsightArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Metadata for your snowflake IDP integration
 	SamlMetadata pulumi.StringPtrInput `pulumi:"samlMetadata"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -58852,6 +61184,11 @@ func (o GetResourceResourceSnowsightOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSnowsight) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSnowsightOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The Metadata for your snowflake IDP integration
 func (o GetResourceResourceSnowsightOutput) SamlMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSnowsight) *string { return v.SamlMetadata }).(pulumi.StringPtrOutput)
@@ -58915,6 +61252,8 @@ type GetResourceResourceSqlServer struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema *string `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -58961,6 +61300,8 @@ type GetResourceResourceSqlServerArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -59079,6 +61420,11 @@ func (o GetResourceResourceSqlServerOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSqlServer) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSqlServerOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServer) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The Schema to use to direct initial requests.
 func (o GetResourceResourceSqlServerOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSqlServer) *string { return v.Schema }).(pulumi.StringPtrOutput)
@@ -59147,6 +61493,8 @@ type GetResourceResourceSqlServerAzureAd struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema *string `pulumi:"schema"`
 	// The Azure AD client secret (application password) with which to authenticate.
@@ -59196,6 +61544,8 @@ type GetResourceResourceSqlServerAzureAdArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Schema to use to direct initial requests.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The Azure AD client secret (application password) with which to authenticate.
@@ -59317,6 +61667,11 @@ func (o GetResourceResourceSqlServerAzureAdOutput) PortOverride() pulumi.IntPtrO
 	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSqlServerAzureAdOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The Schema to use to direct initial requests.
 func (o GetResourceResourceSqlServerAzureAdOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSqlServerAzureAd) *string { return v.Schema }).(pulumi.StringPtrOutput)
@@ -59393,6 +61748,8 @@ type GetResourceResourceSqlServerKerberosAd struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The Active Directory domain (realm) to which the configured username belongs.
 	Realm *string `pulumi:"realm"`
 	// The Schema to use to direct initial requests.
@@ -59445,6 +61802,8 @@ type GetResourceResourceSqlServerKerberosAdArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The Active Directory domain (realm) to which the configured username belongs.
 	Realm pulumi.StringPtrInput `pulumi:"realm"`
 	// The Schema to use to direct initial requests.
@@ -59572,6 +61931,11 @@ func (o GetResourceResourceSqlServerKerberosAdOutput) PortOverride() pulumi.IntP
 	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSqlServerKerberosAdOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The Active Directory domain (realm) to which the configured username belongs.
 func (o GetResourceResourceSqlServerKerberosAdOutput) Realm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSqlServerKerberosAd) *string { return v.Realm }).(pulumi.StringPtrOutput)
@@ -59648,6 +62012,8 @@ type GetResourceResourceSsh struct {
 	PortForwarding *bool `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// The public key to append to a server's authorized keys. This will be generated after resource creation.
 	PublicKey string `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -59692,6 +62058,8 @@ type GetResourceResourceSshArgs struct {
 	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// The public key to append to a server's authorized keys. This will be generated after resource creation.
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
 	// ID of the secret store containing credentials for this resource, if any.
@@ -59805,6 +62173,11 @@ func (o GetResourceResourceSshOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSsh) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSshOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSsh) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // The public key to append to a server's authorized keys. This will be generated after resource creation.
 func (o GetResourceResourceSshOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceResourceSsh) string { return v.PublicKey }).(pulumi.StringOutput)
@@ -59875,6 +62248,8 @@ type GetResourceResourceSshCert struct {
 	PortForwarding *bool `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -59921,6 +62296,8 @@ type GetResourceResourceSshCertArgs struct {
 	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60042,6 +62419,11 @@ func (o GetResourceResourceSshCertOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSshCert) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSshCertOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshCert) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceSshCertOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSshCert) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -60103,6 +62485,8 @@ type GetResourceResourceSshCustomerKey struct {
 	PortOverride *int `pulumi:"portOverride"`
 	// The private key used to authenticate with the server.
 	PrivateKey *string `pulumi:"privateKey"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60145,6 +62529,8 @@ type GetResourceResourceSshCustomerKeyArgs struct {
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
 	// The private key used to authenticate with the server.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60256,6 +62642,11 @@ func (o GetResourceResourceSshCustomerKeyOutput) PrivateKey() pulumi.StringPtrOu
 	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSshCustomerKeyOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceSshCustomerKeyOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSshCustomerKey) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -60317,6 +62708,8 @@ type GetResourceResourceSshPassword struct {
 	PortForwarding *bool `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60359,6 +62752,8 @@ type GetResourceResourceSshPasswordArgs struct {
 	PortForwarding pulumi.BoolPtrInput `pulumi:"portForwarding"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60470,6 +62865,11 @@ func (o GetResourceResourceSshPasswordOutput) PortOverride() pulumi.IntPtrOutput
 	return o.ApplyT(func(v GetResourceResourceSshPassword) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSshPasswordOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceSshPasswordOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSshPassword) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -60527,6 +62927,8 @@ type GetResourceResourceSybase struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60565,6 +62967,8 @@ type GetResourceResourceSybaseArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60666,6 +63070,11 @@ func (o GetResourceResourceSybaseOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSybase) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSybaseOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSybase) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceSybaseOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSybase) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -60723,6 +63132,8 @@ type GetResourceResourceSybaseIq struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60761,6 +63172,8 @@ type GetResourceResourceSybaseIqArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60862,6 +63275,11 @@ func (o GetResourceResourceSybaseIqOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSybaseIq) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceSybaseIqOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceSybaseIq) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceSybaseIqOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceSybaseIq) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -60919,6 +63337,8 @@ type GetResourceResourceTeradata struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -60957,6 +63377,8 @@ type GetResourceResourceTeradataArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -61058,6 +63480,11 @@ func (o GetResourceResourceTeradataOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceTeradata) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceTeradataOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceTeradata) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the secret store containing credentials for this resource, if any.
 func (o GetResourceResourceTeradataOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceTeradata) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
@@ -61117,6 +63544,8 @@ type GetResourceResourceTrino struct {
 	Port *int `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -61157,6 +63586,8 @@ type GetResourceResourceTrinoArgs struct {
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -61261,6 +63692,11 @@ func (o GetResourceResourceTrinoOutput) Port() pulumi.IntPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceTrinoOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceTrino) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceTrinoOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceTrino) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the secret store containing credentials for this resource, if any.

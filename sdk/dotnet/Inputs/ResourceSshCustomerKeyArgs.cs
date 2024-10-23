@@ -78,6 +78,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        [Input("proxyClusterId")]
+        public Input<string>? ProxyClusterId { get; set; }
+
+        /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]

@@ -47,6 +47,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// The AWS region to connect to.
         /// </summary>
         public readonly string Region;
@@ -89,6 +93,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             string region,
 
             string? roleAssumptionArn,
@@ -109,6 +115,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             OverrideDatabase = overrideDatabase;
             Port = port;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             Region = region;
             RoleAssumptionArn = roleAssumptionArn;
             SecretStoreId = secretStoreId;

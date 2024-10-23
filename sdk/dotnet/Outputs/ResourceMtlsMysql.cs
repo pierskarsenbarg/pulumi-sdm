@@ -59,6 +59,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         /// </summary>
         public readonly bool? RequireNativeAuth;
@@ -111,6 +115,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             bool? requireNativeAuth,
 
             string? secretStoreId,
@@ -136,6 +142,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Password = password;
             Port = port;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             RequireNativeAuth = requireNativeAuth;
             SecretStoreId = secretStoreId;
             ServerName = serverName;

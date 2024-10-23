@@ -59,6 +59,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// The Schema to use to direct initial requests.
         /// </summary>
         public readonly string? Schema;
@@ -108,6 +112,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             string? schema,
 
             string? secret,
@@ -131,6 +137,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             OverrideDatabase = overrideDatabase;
             Port = port;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             Schema = schema;
             Secret = secret;
             SecretStoreId = secretStoreId;

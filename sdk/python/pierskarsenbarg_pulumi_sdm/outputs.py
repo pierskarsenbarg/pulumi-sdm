@@ -929,6 +929,8 @@ class ResourceAks(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -959,6 +961,7 @@ class ResourceAks(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -978,6 +981,7 @@ class ResourceAks(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -1009,6 +1013,8 @@ class ResourceAks(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -1137,6 +1143,14 @@ class ResourceAks(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -1174,6 +1188,8 @@ class ResourceAksBasicAuth(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -1197,6 +1213,7 @@ class ResourceAksBasicAuth(dict):
                  healthcheck_namespace: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -1210,6 +1227,7 @@ class ResourceAksBasicAuth(dict):
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -1228,6 +1246,8 @@ class ResourceAksBasicAuth(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -1302,6 +1322,14 @@ class ResourceAksBasicAuth(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -1357,6 +1385,8 @@ class ResourceAksServiceAccount(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -1384,6 +1414,7 @@ class ResourceAksServiceAccount(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -1401,6 +1432,7 @@ class ResourceAksServiceAccount(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -1428,6 +1460,8 @@ class ResourceAksServiceAccount(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -1534,6 +1568,14 @@ class ResourceAksServiceAccount(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -1580,6 +1622,8 @@ class ResourceAksServiceAccountUserImpersonation(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -1602,6 +1646,7 @@ class ResourceAksServiceAccountUserImpersonation(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -1614,6 +1659,7 @@ class ResourceAksServiceAccountUserImpersonation(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -1631,6 +1677,8 @@ class ResourceAksServiceAccountUserImpersonation(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -1697,6 +1745,14 @@ class ResourceAksServiceAccountUserImpersonation(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -1749,6 +1805,8 @@ class ResourceAksUserImpersonation(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -1774,6 +1832,7 @@ class ResourceAksUserImpersonation(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -1788,6 +1847,7 @@ class ResourceAksUserImpersonation(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -1809,6 +1869,8 @@ class ResourceAksUserImpersonation(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -1897,6 +1959,14 @@ class ResourceAksUserImpersonation(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -1950,6 +2020,8 @@ class ResourceAmazonEks(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -1986,6 +2058,7 @@ class ResourceAmazonEks(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -2008,6 +2081,7 @@ class ResourceAmazonEks(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
@@ -2041,6 +2115,8 @@ class ResourceAmazonEks(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -2173,6 +2249,14 @@ class ResourceAmazonEks(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -2250,6 +2334,8 @@ class ResourceAmazonEksInstanceProfile(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -2283,6 +2369,7 @@ class ResourceAmazonEksInstanceProfile(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -2303,6 +2390,7 @@ class ResourceAmazonEksInstanceProfile(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -2333,6 +2421,8 @@ class ResourceAmazonEksInstanceProfile(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -2457,6 +2547,14 @@ class ResourceAmazonEksInstanceProfile(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -2514,6 +2612,8 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -2542,6 +2642,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -2557,6 +2658,7 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -2577,6 +2679,8 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -2661,6 +2765,14 @@ class ResourceAmazonEksInstanceProfileUserImpersonation(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -2720,6 +2832,8 @@ class ResourceAmazonEksUserImpersonation(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -2751,6 +2865,7 @@ class ResourceAmazonEksUserImpersonation(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -2768,6 +2883,7 @@ class ResourceAmazonEksUserImpersonation(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
@@ -2791,6 +2907,8 @@ class ResourceAmazonEksUserImpersonation(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -2885,6 +3003,14 @@ class ResourceAmazonEksUserImpersonation(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -2946,6 +3072,8 @@ class ResourceAmazonEs(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -2974,6 +3102,7 @@ class ResourceAmazonEs(dict):
                  egress_filter: Optional[str] = None,
                  endpoint: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -2988,6 +3117,7 @@ class ResourceAmazonEs(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
@@ -3007,6 +3137,8 @@ class ResourceAmazonEs(dict):
             pulumi.set(__self__, "endpoint", endpoint)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -3077,6 +3209,14 @@ class ResourceAmazonEs(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -3136,6 +3276,8 @@ class ResourceAmazonmqAmqp091(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -3160,6 +3302,7 @@ class ResourceAmazonmqAmqp091(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -3173,6 +3316,7 @@ class ResourceAmazonmqAmqp091(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -3191,6 +3335,8 @@ class ResourceAmazonmqAmqp091(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -3259,6 +3405,14 @@ class ResourceAmazonmqAmqp091(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -3314,6 +3468,8 @@ class ResourceAthena(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -3341,6 +3497,7 @@ class ResourceAthena(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -3355,6 +3512,7 @@ class ResourceAthena(dict):
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -3373,6 +3531,8 @@ class ResourceAthena(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -3435,6 +3595,14 @@ class ResourceAthena(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter
@@ -3504,6 +3672,8 @@ class ResourceAuroraMysql(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "requireNativeAuth":
             suggest = "require_native_auth"
         elif key == "secretStoreId":
@@ -3531,6 +3701,7 @@ class ResourceAuroraMysql(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -3546,6 +3717,7 @@ class ResourceAuroraMysql(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3567,6 +3739,8 @@ class ResourceAuroraMysql(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -3645,6 +3819,14 @@ class ResourceAuroraMysql(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -3706,6 +3888,8 @@ class ResourceAuroraPostgres(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -3730,6 +3914,7 @@ class ResourceAuroraPostgres(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -3744,6 +3929,7 @@ class ResourceAuroraPostgres(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -3764,6 +3950,8 @@ class ResourceAuroraPostgres(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -3846,6 +4034,14 @@ class ResourceAuroraPostgres(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -3891,6 +4087,8 @@ class ResourceAuroraPostgresIam(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleAssumptionArn":
             suggest = "role_assumption_arn"
         elif key == "secretStoreId":
@@ -3917,6 +4115,7 @@ class ResourceAuroraPostgresIam(dict):
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_assumption_arn: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -3932,6 +4131,7 @@ class ResourceAuroraPostgresIam(dict):
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -3952,6 +4152,8 @@ class ResourceAuroraPostgresIam(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_assumption_arn is not None:
             pulumi.set(__self__, "role_assumption_arn", role_assumption_arn)
         if secret_store_id is not None:
@@ -4036,6 +4238,14 @@ class ResourceAuroraPostgresIam(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleAssumptionArn")
     def role_assumption_arn(self) -> Optional[str]:
         """
@@ -4091,6 +4301,8 @@ class ResourceAws(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -4118,6 +4330,7 @@ class ResourceAws(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -4131,6 +4344,7 @@ class ResourceAws(dict):
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
@@ -4148,6 +4362,8 @@ class ResourceAws(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -4208,6 +4424,14 @@ class ResourceAws(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="roleArn")
@@ -4275,6 +4499,8 @@ class ResourceAwsConsole(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -4305,6 +4531,7 @@ class ResourceAwsConsole(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -4320,6 +4547,7 @@ class ResourceAwsConsole(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -4341,6 +4569,8 @@ class ResourceAwsConsole(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -4425,6 +4655,14 @@ class ResourceAwsConsole(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -4482,6 +4720,8 @@ class ResourceAwsConsoleStaticKeyPair(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -4514,6 +4754,7 @@ class ResourceAwsConsoleStaticKeyPair(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -4530,6 +4771,7 @@ class ResourceAwsConsoleStaticKeyPair(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
@@ -4552,6 +4794,8 @@ class ResourceAwsConsoleStaticKeyPair(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -4638,6 +4882,14 @@ class ResourceAwsConsoleStaticKeyPair(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -4699,6 +4951,8 @@ class ResourceAzure(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tenantId":
@@ -4722,6 +4976,7 @@ class ResourceAzure(dict):
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -4733,6 +4988,7 @@ class ResourceAzure(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -4750,6 +5006,8 @@ class ResourceAzure(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -4808,6 +5066,14 @@ class ResourceAzure(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -4856,6 +5122,8 @@ class ResourceAzureCertificate(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tenantId":
@@ -4879,6 +5147,7 @@ class ResourceAzureCertificate(dict):
                  client_certificate: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -4890,6 +5159,7 @@ class ResourceAzureCertificate(dict):
         :param str client_certificate: The certificate to authenticate TLS connections with.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -4907,6 +5177,8 @@ class ResourceAzureCertificate(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -4965,6 +5237,14 @@ class ResourceAzureCertificate(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -5009,6 +5289,8 @@ class ResourceAzureMysql(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "requireNativeAuth":
             suggest = "require_native_auth"
         elif key == "secretStoreId":
@@ -5036,6 +5318,7 @@ class ResourceAzureMysql(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -5051,6 +5334,7 @@ class ResourceAzureMysql(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -5072,6 +5356,8 @@ class ResourceAzureMysql(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -5150,6 +5436,14 @@ class ResourceAzureMysql(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -5211,6 +5505,8 @@ class ResourceAzurePostgres(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -5235,6 +5531,7 @@ class ResourceAzurePostgres(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -5249,6 +5546,7 @@ class ResourceAzurePostgres(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -5269,6 +5567,8 @@ class ResourceAzurePostgres(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -5351,6 +5651,14 @@ class ResourceAzurePostgres(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -5396,6 +5704,8 @@ class ResourceAzurePostgresManagedIdentity(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "useAzureSingleServerUsernames":
@@ -5422,6 +5732,7 @@ class ResourceAzurePostgresManagedIdentity(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -5437,6 +5748,7 @@ class ResourceAzurePostgresManagedIdentity(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -5458,6 +5770,8 @@ class ResourceAzurePostgresManagedIdentity(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -5542,6 +5856,14 @@ class ResourceAzurePostgresManagedIdentity(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -5595,6 +5917,8 @@ class ResourceBigQuery(dict):
             suggest = "port_override"
         elif key == "privateKey":
             suggest = "private_key"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -5617,6 +5941,7 @@ class ResourceBigQuery(dict):
                  egress_filter: Optional[str] = None,
                  port_override: Optional[int] = None,
                  private_key: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -5629,6 +5954,7 @@ class ResourceBigQuery(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port_override: The local port used by clients to connect to this resource.
         :param str private_key: The private key used to authenticate with the server.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -5645,6 +5971,8 @@ class ResourceBigQuery(dict):
             pulumi.set(__self__, "port_override", port_override)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -5711,6 +6039,14 @@ class ResourceBigQuery(dict):
         return pulumi.get(self, "private_key")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -5754,6 +6090,8 @@ class ResourceCassandra(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -5778,6 +6116,7 @@ class ResourceCassandra(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -5791,6 +6130,7 @@ class ResourceCassandra(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -5809,6 +6149,8 @@ class ResourceCassandra(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -5877,6 +6219,14 @@ class ResourceCassandra(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -5930,6 +6280,8 @@ class ResourceCitus(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -5954,6 +6306,7 @@ class ResourceCitus(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -5968,6 +6321,7 @@ class ResourceCitus(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -5988,6 +6342,8 @@ class ResourceCitus(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -6070,6 +6426,14 @@ class ResourceCitus(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -6113,6 +6477,8 @@ class ResourceClustrix(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "requireNativeAuth":
             suggest = "require_native_auth"
         elif key == "secretStoreId":
@@ -6140,6 +6506,7 @@ class ResourceClustrix(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -6155,6 +6522,7 @@ class ResourceClustrix(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -6176,6 +6544,8 @@ class ResourceClustrix(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -6254,6 +6624,14 @@ class ResourceClustrix(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -6315,6 +6693,8 @@ class ResourceCockroach(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -6339,6 +6719,7 @@ class ResourceCockroach(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -6353,6 +6734,7 @@ class ResourceCockroach(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -6373,6 +6755,8 @@ class ResourceCockroach(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -6455,6 +6839,14 @@ class ResourceCockroach(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -6500,6 +6892,8 @@ class ResourceCouchbaseDatabase(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -6525,6 +6919,7 @@ class ResourceCouchbaseDatabase(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -6539,6 +6934,7 @@ class ResourceCouchbaseDatabase(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -6558,6 +6954,8 @@ class ResourceCouchbaseDatabase(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -6634,6 +7032,14 @@ class ResourceCouchbaseDatabase(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -6685,6 +7091,8 @@ class ResourceCouchbaseWebUi(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -6707,6 +7115,7 @@ class ResourceCouchbaseWebUi(dict):
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -6719,6 +7128,7 @@ class ResourceCouchbaseWebUi(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str username: The username to authenticate with.
@@ -6734,6 +7144,8 @@ class ResourceCouchbaseWebUi(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -6799,6 +7211,14 @@ class ResourceCouchbaseWebUi(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -6834,6 +7254,8 @@ class ResourceDb2I(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -6858,6 +7280,7 @@ class ResourceDb2I(dict):
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -6871,6 +7294,7 @@ class ResourceDb2I(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -6888,6 +7312,8 @@ class ResourceDb2I(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -6956,6 +7382,14 @@ class ResourceDb2I(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -7007,6 +7441,8 @@ class ResourceDb2Luw(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -7030,6 +7466,7 @@ class ResourceDb2Luw(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -7043,6 +7480,7 @@ class ResourceDb2Luw(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -7061,6 +7499,8 @@ class ResourceDb2Luw(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -7135,6 +7575,14 @@ class ResourceDb2Luw(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -7180,6 +7628,8 @@ class ResourceDocumentDbHost(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -7203,6 +7653,7 @@ class ResourceDocumentDbHost(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -7216,6 +7667,7 @@ class ResourceDocumentDbHost(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -7234,6 +7686,8 @@ class ResourceDocumentDbHost(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -7308,6 +7762,14 @@ class ResourceDocumentDbHost(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -7357,6 +7819,8 @@ class ResourceDocumentDbReplicaSet(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -7381,6 +7845,7 @@ class ResourceDocumentDbReplicaSet(dict):
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -7395,6 +7860,7 @@ class ResourceDocumentDbReplicaSet(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -7414,6 +7880,8 @@ class ResourceDocumentDbReplicaSet(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -7496,6 +7964,14 @@ class ResourceDocumentDbReplicaSet(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -7539,6 +8015,8 @@ class ResourceDruid(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -7561,6 +8039,7 @@ class ResourceDruid(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -7573,6 +8052,7 @@ class ResourceDruid(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -7590,6 +8070,8 @@ class ResourceDruid(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -7656,6 +8138,14 @@ class ResourceDruid(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -7701,6 +8191,8 @@ class ResourceDynamoDb(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -7729,6 +8221,7 @@ class ResourceDynamoDb(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -7743,6 +8236,7 @@ class ResourceDynamoDb(dict):
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
@@ -7761,6 +8255,8 @@ class ResourceDynamoDb(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -7831,6 +8327,14 @@ class ResourceDynamoDb(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -7890,6 +8394,8 @@ class ResourceElastic(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -7914,6 +8420,7 @@ class ResourceElastic(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -7927,6 +8434,7 @@ class ResourceElastic(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -7945,6 +8453,8 @@ class ResourceElastic(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -8011,6 +8521,14 @@ class ResourceElastic(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -8064,6 +8582,8 @@ class ResourceElasticacheRedis(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -8088,6 +8608,7 @@ class ResourceElasticacheRedis(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -8101,6 +8622,7 @@ class ResourceElasticacheRedis(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -8119,6 +8641,8 @@ class ResourceElasticacheRedis(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -8187,6 +8711,14 @@ class ResourceElasticacheRedis(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -8238,6 +8770,8 @@ class ResourceGcp(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -8259,6 +8793,7 @@ class ResourceGcp(dict):
                  egress_filter: Optional[str] = None,
                  keyfile: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -8269,6 +8804,7 @@ class ResourceGcp(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str keyfile: The service account keyfile to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -8283,6 +8819,8 @@ class ResourceGcp(dict):
             pulumi.set(__self__, "keyfile", keyfile)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -8339,6 +8877,14 @@ class ResourceGcp(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -8388,6 +8934,8 @@ class ResourceGoogleGke(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "serviceAccountKey":
@@ -8417,6 +8965,7 @@ class ResourceGoogleGke(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  service_account_key: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -8434,6 +8983,7 @@ class ResourceGoogleGke(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str service_account_key: The service account key to authenticate with.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8461,6 +9011,8 @@ class ResourceGoogleGke(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if service_account_key is not None:
@@ -8567,6 +9119,14 @@ class ResourceGoogleGke(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -8614,6 +9174,8 @@ class ResourceGoogleGkeUserImpersonation(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "serviceAccountKey":
@@ -8638,6 +9200,7 @@ class ResourceGoogleGkeUserImpersonation(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  service_account_key: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -8650,6 +9213,7 @@ class ResourceGoogleGkeUserImpersonation(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str service_account_key: The service account key to authenticate with.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -8667,6 +9231,8 @@ class ResourceGoogleGkeUserImpersonation(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if service_account_key is not None:
@@ -8733,6 +9299,14 @@ class ResourceGoogleGkeUserImpersonation(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -8778,6 +9352,8 @@ class ResourceGreenplum(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -8802,6 +9378,7 @@ class ResourceGreenplum(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -8816,6 +9393,7 @@ class ResourceGreenplum(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -8836,6 +9414,8 @@ class ResourceGreenplum(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -8918,6 +9498,14 @@ class ResourceGreenplum(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -8969,6 +9557,8 @@ class ResourceHttpAuth(dict):
             suggest = "headers_blacklist"
         elif key == "hostOverride":
             suggest = "host_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -8994,6 +9584,7 @@ class ResourceHttpAuth(dict):
                  egress_filter: Optional[str] = None,
                  headers_blacklist: Optional[str] = None,
                  host_override: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
@@ -9008,6 +9599,7 @@ class ResourceHttpAuth(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
         :param str host_override: The host header will be overwritten with this field if provided.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -9027,6 +9619,8 @@ class ResourceHttpAuth(dict):
             pulumi.set(__self__, "headers_blacklist", headers_blacklist)
         if host_override is not None:
             pulumi.set(__self__, "host_override", host_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -9114,6 +9708,14 @@ class ResourceHttpAuth(dict):
         return pulumi.get(self, "host_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -9147,6 +9749,8 @@ class ResourceHttpBasicAuth(dict):
             suggest = "headers_blacklist"
         elif key == "hostOverride":
             suggest = "host_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -9172,6 +9776,7 @@ class ResourceHttpBasicAuth(dict):
                  headers_blacklist: Optional[str] = None,
                  host_override: Optional[str] = None,
                  password: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
@@ -9187,6 +9792,7 @@ class ResourceHttpBasicAuth(dict):
         :param str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
         :param str host_override: The host header will be overwritten with this field if provided.
         :param str password: The password to authenticate with.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str username: The username to authenticate with.
@@ -9207,6 +9813,8 @@ class ResourceHttpBasicAuth(dict):
             pulumi.set(__self__, "host_override", host_override)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -9296,6 +9904,14 @@ class ResourceHttpBasicAuth(dict):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -9337,6 +9953,8 @@ class ResourceHttpNoAuth(dict):
             suggest = "headers_blacklist"
         elif key == "hostOverride":
             suggest = "host_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -9361,6 +9979,7 @@ class ResourceHttpNoAuth(dict):
                  egress_filter: Optional[str] = None,
                  headers_blacklist: Optional[str] = None,
                  host_override: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
         """
@@ -9374,6 +9993,7 @@ class ResourceHttpNoAuth(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str headers_blacklist: Header names (e.g. Authorization), to omit from logs.
         :param str host_override: The host header will be overwritten with this field if provided.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -9391,6 +10011,8 @@ class ResourceHttpNoAuth(dict):
             pulumi.set(__self__, "headers_blacklist", headers_blacklist)
         if host_override is not None:
             pulumi.set(__self__, "host_override", host_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if tags is not None:
@@ -9470,6 +10092,14 @@ class ResourceHttpNoAuth(dict):
         return pulumi.get(self, "host_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -9515,6 +10145,8 @@ class ResourceKubernetes(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -9545,6 +10177,7 @@ class ResourceKubernetes(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -9564,6 +10197,7 @@ class ResourceKubernetes(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -9595,6 +10229,8 @@ class ResourceKubernetes(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -9723,6 +10359,14 @@ class ResourceKubernetes(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -9760,6 +10404,8 @@ class ResourceKubernetesBasicAuth(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -9783,6 +10429,7 @@ class ResourceKubernetesBasicAuth(dict):
                  healthcheck_namespace: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -9796,6 +10443,7 @@ class ResourceKubernetesBasicAuth(dict):
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -9814,6 +10462,8 @@ class ResourceKubernetesBasicAuth(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -9886,6 +10536,14 @@ class ResourceKubernetesBasicAuth(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -9943,6 +10601,8 @@ class ResourceKubernetesServiceAccount(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -9970,6 +10630,7 @@ class ResourceKubernetesServiceAccount(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -9987,6 +10648,7 @@ class ResourceKubernetesServiceAccount(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -10014,6 +10676,8 @@ class ResourceKubernetesServiceAccount(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -10120,6 +10784,14 @@ class ResourceKubernetesServiceAccount(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -10166,6 +10838,8 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -10188,6 +10862,7 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -10200,6 +10875,7 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -10217,6 +10893,8 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -10283,6 +10961,14 @@ class ResourceKubernetesServiceAccountUserImpersonation(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -10335,6 +11021,8 @@ class ResourceKubernetesUserImpersonation(dict):
             suggest = "healthcheck_namespace"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -10360,6 +11048,7 @@ class ResourceKubernetesUserImpersonation(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -10374,6 +11063,7 @@ class ResourceKubernetesUserImpersonation(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -10395,6 +11085,8 @@ class ResourceKubernetesUserImpersonation(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -10483,6 +11175,14 @@ class ResourceKubernetesUserImpersonation(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -10518,6 +11218,8 @@ class ResourceMaria(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "requireNativeAuth":
             suggest = "require_native_auth"
         elif key == "secretStoreId":
@@ -10545,6 +11247,7 @@ class ResourceMaria(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -10560,6 +11263,7 @@ class ResourceMaria(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10581,6 +11285,8 @@ class ResourceMaria(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -10657,6 +11363,14 @@ class ResourceMaria(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="requireNativeAuth")
@@ -10718,6 +11432,8 @@ class ResourceMemcached(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -10739,6 +11455,7 @@ class ResourceMemcached(dict):
                  egress_filter: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -10749,6 +11466,7 @@ class ResourceMemcached(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -10763,6 +11481,8 @@ class ResourceMemcached(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -10819,6 +11539,14 @@ class ResourceMemcached(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -10854,6 +11582,8 @@ class ResourceMemsql(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "requireNativeAuth":
             suggest = "require_native_auth"
         elif key == "secretStoreId":
@@ -10881,6 +11611,7 @@ class ResourceMemsql(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -10896,6 +11627,7 @@ class ResourceMemsql(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -10917,6 +11649,8 @@ class ResourceMemsql(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -10993,6 +11727,14 @@ class ResourceMemsql(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="requireNativeAuth")
@@ -11056,6 +11798,8 @@ class ResourceMongoHost(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -11081,6 +11825,7 @@ class ResourceMongoHost(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -11095,6 +11840,7 @@ class ResourceMongoHost(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -11114,6 +11860,8 @@ class ResourceMongoHost(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -11188,6 +11936,14 @@ class ResourceMongoHost(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -11243,6 +11999,8 @@ class ResourceMongoLegacyHost(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -11268,6 +12026,7 @@ class ResourceMongoLegacyHost(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -11282,6 +12041,7 @@ class ResourceMongoLegacyHost(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -11301,6 +12061,8 @@ class ResourceMongoLegacyHost(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -11375,6 +12137,14 @@ class ResourceMongoLegacyHost(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -11434,6 +12204,8 @@ class ResourceMongoLegacyReplicaset(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -11461,6 +12233,7 @@ class ResourceMongoLegacyReplicaset(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -11477,6 +12250,7 @@ class ResourceMongoLegacyReplicaset(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -11499,6 +12273,8 @@ class ResourceMongoLegacyReplicaset(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -11589,6 +12365,14 @@ class ResourceMongoLegacyReplicaset(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -11648,6 +12432,8 @@ class ResourceMongoReplicaSet(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -11675,6 +12461,7 @@ class ResourceMongoReplicaSet(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -11691,6 +12478,7 @@ class ResourceMongoReplicaSet(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -11713,6 +12501,8 @@ class ResourceMongoReplicaSet(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -11805,6 +12595,14 @@ class ResourceMongoReplicaSet(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -11858,6 +12656,8 @@ class ResourceMongoShardedCluster(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -11882,6 +12682,7 @@ class ResourceMongoShardedCluster(dict):
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -11895,6 +12696,7 @@ class ResourceMongoShardedCluster(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -11912,6 +12714,8 @@ class ResourceMongoShardedCluster(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -11980,6 +12784,14 @@ class ResourceMongoShardedCluster(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -12037,6 +12849,8 @@ class ResourceMtlsMysql(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "requireNativeAuth":
             suggest = "require_native_auth"
         elif key == "secretStoreId":
@@ -12069,6 +12883,7 @@ class ResourceMtlsMysql(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  server_name: Optional[str] = None,
@@ -12088,6 +12903,7 @@ class ResourceMtlsMysql(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str server_name: Server name for TLS verification (unverified by StrongDM if empty)
@@ -12116,6 +12932,8 @@ class ResourceMtlsMysql(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -12220,6 +13038,14 @@ class ResourceMtlsMysql(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -12295,6 +13121,8 @@ class ResourceMtlsPostgres(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "serverName":
@@ -12324,6 +13152,7 @@ class ResourceMtlsPostgres(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  server_name: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -12342,6 +13171,7 @@ class ResourceMtlsPostgres(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str server_name: Server name for TLS verification (unverified by StrongDM if empty)
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12369,6 +13199,8 @@ class ResourceMtlsPostgres(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if server_name is not None:
@@ -12477,6 +13309,14 @@ class ResourceMtlsPostgres(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -12528,6 +13368,8 @@ class ResourceMysql(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "requireNativeAuth":
             suggest = "require_native_auth"
         elif key == "secretStoreId":
@@ -12555,6 +13397,7 @@ class ResourceMysql(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -12570,6 +13413,7 @@ class ResourceMysql(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -12591,6 +13435,8 @@ class ResourceMysql(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -12669,6 +13515,14 @@ class ResourceMysql(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -12728,6 +13582,8 @@ class ResourceNeptune(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -12749,6 +13605,7 @@ class ResourceNeptune(dict):
                  egress_filter: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -12759,6 +13616,7 @@ class ResourceNeptune(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -12773,6 +13631,8 @@ class ResourceNeptune(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -12829,6 +13689,14 @@ class ResourceNeptune(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -12866,6 +13734,8 @@ class ResourceNeptuneIam(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleArn":
             suggest = "role_arn"
         elif key == "roleExternalId":
@@ -12895,6 +13765,7 @@ class ResourceNeptuneIam(dict):
                  egress_filter: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -12910,6 +13781,7 @@ class ResourceNeptuneIam(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
@@ -12930,6 +13802,8 @@ class ResourceNeptuneIam(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -13008,6 +13882,14 @@ class ResourceNeptuneIam(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -13067,6 +13949,8 @@ class ResourceOracle(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -13092,6 +13976,7 @@ class ResourceOracle(dict):
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -13106,6 +13991,7 @@ class ResourceOracle(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -13124,6 +14010,8 @@ class ResourceOracle(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -13200,6 +14088,14 @@ class ResourceOracle(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -13253,6 +14149,8 @@ class ResourcePostgres(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -13277,6 +14175,7 @@ class ResourcePostgres(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -13291,6 +14190,7 @@ class ResourcePostgres(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -13311,6 +14211,8 @@ class ResourcePostgres(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -13393,6 +14295,14 @@ class ResourcePostgres(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -13436,6 +14346,8 @@ class ResourcePresto(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -13461,6 +14373,7 @@ class ResourcePresto(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -13475,6 +14388,7 @@ class ResourcePresto(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -13494,6 +14408,8 @@ class ResourcePresto(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -13570,6 +14486,14 @@ class ResourcePresto(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -13621,6 +14545,8 @@ class ResourceRabbitmqAmqp091(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -13645,6 +14571,7 @@ class ResourceRabbitmqAmqp091(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -13658,6 +14585,7 @@ class ResourceRabbitmqAmqp091(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -13676,6 +14604,8 @@ class ResourceRabbitmqAmqp091(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -13744,6 +14674,14 @@ class ResourceRabbitmqAmqp091(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -13795,6 +14733,8 @@ class ResourceRawTcp(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -13816,6 +14756,7 @@ class ResourceRawTcp(dict):
                  egress_filter: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -13826,6 +14767,7 @@ class ResourceRawTcp(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -13840,6 +14782,8 @@ class ResourceRawTcp(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -13896,6 +14840,14 @@ class ResourceRawTcp(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -13935,6 +14887,8 @@ class ResourceRdp(dict):
             suggest = "lock_required"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -13959,6 +14913,7 @@ class ResourceRdp(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -13973,6 +14928,7 @@ class ResourceRdp(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -13994,6 +14950,8 @@ class ResourceRdp(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -14076,6 +15034,14 @@ class ResourceRdp(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -14123,6 +15089,8 @@ class ResourceRdpCert(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -14146,6 +15114,7 @@ class ResourceRdpCert(dict):
                  identity_set_id: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -14159,6 +15128,7 @@ class ResourceRdpCert(dict):
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -14178,6 +15148,8 @@ class ResourceRdpCert(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -14252,6 +15224,14 @@ class ResourceRdpCert(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -14297,6 +15277,8 @@ class ResourceRdsPostgresIam(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "roleAssumptionArn":
             suggest = "role_assumption_arn"
         elif key == "secretStoreId":
@@ -14323,6 +15305,7 @@ class ResourceRdsPostgresIam(dict):
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_assumption_arn: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -14338,6 +15321,7 @@ class ResourceRdsPostgresIam(dict):
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14358,6 +15342,8 @@ class ResourceRdsPostgresIam(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_assumption_arn is not None:
             pulumi.set(__self__, "role_assumption_arn", role_assumption_arn)
         if secret_store_id is not None:
@@ -14442,6 +15428,14 @@ class ResourceRdsPostgresIam(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleAssumptionArn")
     def role_assumption_arn(self) -> Optional[str]:
         """
@@ -14493,6 +15487,8 @@ class ResourceRedis(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tlsRequired":
@@ -14517,6 +15513,7 @@ class ResourceRedis(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -14530,6 +15527,7 @@ class ResourceRedis(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -14548,6 +15546,8 @@ class ResourceRedis(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -14616,6 +15616,14 @@ class ResourceRedis(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -14669,6 +15677,8 @@ class ResourceRedshift(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -14693,6 +15703,7 @@ class ResourceRedshift(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -14707,6 +15718,7 @@ class ResourceRedshift(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -14727,6 +15739,8 @@ class ResourceRedshift(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -14809,6 +15823,14 @@ class ResourceRedshift(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -14852,6 +15874,8 @@ class ResourceSingleStore(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "requireNativeAuth":
             suggest = "require_native_auth"
         elif key == "secretStoreId":
@@ -14879,6 +15903,7 @@ class ResourceSingleStore(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -14894,6 +15919,7 @@ class ResourceSingleStore(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -14915,6 +15941,8 @@ class ResourceSingleStore(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -14993,6 +16021,14 @@ class ResourceSingleStore(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -15052,6 +16088,8 @@ class ResourceSnowflake(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -15074,6 +16112,7 @@ class ResourceSnowflake(dict):
                  egress_filter: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -15087,6 +16126,7 @@ class ResourceSnowflake(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -15104,6 +16144,8 @@ class ResourceSnowflake(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
@@ -15172,6 +16214,14 @@ class ResourceSnowflake(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
         """
@@ -15225,6 +16275,8 @@ class ResourceSnowsight(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "samlMetadata":
             suggest = "saml_metadata"
         elif key == "secretStoreId":
@@ -15248,6 +16300,7 @@ class ResourceSnowsight(dict):
                  bind_interface: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  saml_metadata: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -15258,6 +16311,7 @@ class ResourceSnowsight(dict):
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str saml_metadata: The Metadata for your snowflake IDP integration
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -15271,6 +16325,8 @@ class ResourceSnowsight(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if saml_metadata is not None:
             pulumi.set(__self__, "saml_metadata", saml_metadata)
         if secret_store_id is not None:
@@ -15327,6 +16383,14 @@ class ResourceSnowsight(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="samlMetadata")
     def saml_metadata(self) -> Optional[str]:
         """
@@ -15366,6 +16430,8 @@ class ResourceSqlServer(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -15391,6 +16457,7 @@ class ResourceSqlServer(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -15407,6 +16474,7 @@ class ResourceSqlServer(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -15431,6 +16499,8 @@ class ResourceSqlServer(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
@@ -15523,6 +16593,14 @@ class ResourceSqlServer(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
         """
@@ -15580,6 +16658,8 @@ class ResourceSqlServerAzureAd(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "tenantId":
@@ -15607,6 +16687,7 @@ class ResourceSqlServerAzureAd(dict):
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -15624,6 +16705,7 @@ class ResourceSqlServerAzureAd(dict):
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret: The Azure AD client secret (application password) with which to authenticate.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -15650,6 +16732,8 @@ class ResourceSqlServerAzureAd(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if secret is not None:
@@ -15744,6 +16828,14 @@ class ResourceSqlServerAzureAd(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
         """
@@ -15810,6 +16902,8 @@ class ResourceSqlServerKerberosAd(dict):
             suggest = "override_database"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
         elif key == "serverSpn":
@@ -15838,6 +16932,7 @@ class ResourceSqlServerKerberosAd(dict):
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  realm: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -15857,6 +16952,7 @@ class ResourceSqlServerKerberosAd(dict):
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str realm: The Active Directory domain (realm) to which the configured username belongs.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -15885,6 +16981,8 @@ class ResourceSqlServerKerberosAd(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if realm is not None:
             pulumi.set(__self__, "realm", realm)
         if schema is not None:
@@ -15989,6 +17087,14 @@ class ResourceSqlServerKerberosAd(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def realm(self) -> Optional[str]:
         """
@@ -16062,6 +17168,8 @@ class ResourceSsh(dict):
             suggest = "port_forwarding"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "publicKey":
             suggest = "public_key"
         elif key == "secretStoreId":
@@ -16088,6 +17196,7 @@ class ResourceSsh(dict):
                  key_type: Optional[str] = None,
                  port_forwarding: Optional[bool] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  public_key: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -16103,6 +17212,7 @@ class ResourceSsh(dict):
         :param str key_type: The key type to use e.g. rsa-2048 or ed25519
         :param bool port_forwarding: Whether port forwarding is allowed through this server.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str public_key: The public key to append to a server's authorized keys. This will be generated after resource creation.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -16124,6 +17234,8 @@ class ResourceSsh(dict):
             pulumi.set(__self__, "port_forwarding", port_forwarding)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if secret_store_id is not None:
@@ -16208,6 +17320,14 @@ class ResourceSsh(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[str]:
         """
@@ -16269,6 +17389,8 @@ class ResourceSshCert(dict):
             suggest = "port_forwarding"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -16295,6 +17417,7 @@ class ResourceSshCert(dict):
                  key_type: Optional[str] = None,
                  port_forwarding: Optional[bool] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -16311,6 +17434,7 @@ class ResourceSshCert(dict):
         :param str key_type: The key type to use e.g. rsa-2048 or ed25519
         :param bool port_forwarding: Whether port forwarding is allowed through this server.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -16335,6 +17459,8 @@ class ResourceSshCert(dict):
             pulumi.set(__self__, "port_forwarding", port_forwarding)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -16433,6 +17559,14 @@ class ResourceSshCert(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -16482,6 +17616,8 @@ class ResourceSshCustomerKey(dict):
             suggest = "port_override"
         elif key == "privateKey":
             suggest = "private_key"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -16506,6 +17642,7 @@ class ResourceSshCustomerKey(dict):
                  port_forwarding: Optional[bool] = None,
                  port_override: Optional[int] = None,
                  private_key: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -16520,6 +17657,7 @@ class ResourceSshCustomerKey(dict):
         :param bool port_forwarding: Whether port forwarding is allowed through this server.
         :param int port_override: The local port used by clients to connect to this resource.
         :param str private_key: The private key used to authenticate with the server.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -16540,6 +17678,8 @@ class ResourceSshCustomerKey(dict):
             pulumi.set(__self__, "port_override", port_override)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -16622,6 +17762,14 @@ class ResourceSshCustomerKey(dict):
         return pulumi.get(self, "private_key")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -16669,6 +17817,8 @@ class ResourceSshPassword(dict):
             suggest = "port_forwarding"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -16693,6 +17843,7 @@ class ResourceSshPassword(dict):
                  password: Optional[str] = None,
                  port_forwarding: Optional[bool] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -16707,6 +17858,7 @@ class ResourceSshPassword(dict):
         :param str password: The password to authenticate with.
         :param bool port_forwarding: Whether port forwarding is allowed through this server.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -16727,6 +17879,8 @@ class ResourceSshPassword(dict):
             pulumi.set(__self__, "port_forwarding", port_forwarding)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -16809,6 +17963,14 @@ class ResourceSshPassword(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -16852,6 +18014,8 @@ class ResourceSybase(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -16874,6 +18038,7 @@ class ResourceSybase(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -16886,6 +18051,7 @@ class ResourceSybase(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -16903,6 +18069,8 @@ class ResourceSybase(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -16967,6 +18135,14 @@ class ResourceSybase(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -17012,6 +18188,8 @@ class ResourceSybaseIq(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -17034,6 +18212,7 @@ class ResourceSybaseIq(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -17046,6 +18225,7 @@ class ResourceSybaseIq(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -17063,6 +18243,8 @@ class ResourceSybaseIq(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -17127,6 +18309,14 @@ class ResourceSybaseIq(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -17172,6 +18362,8 @@ class ResourceTeradata(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -17194,6 +18386,7 @@ class ResourceTeradata(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -17206,6 +18399,7 @@ class ResourceTeradata(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -17223,6 +18417,8 @@ class ResourceTeradata(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -17289,6 +18485,14 @@ class ResourceTeradata(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -17332,6 +18536,8 @@ class ResourceTrino(dict):
             suggest = "egress_filter"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
 
@@ -17355,6 +18561,7 @@ class ResourceTrino(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -17368,6 +18575,7 @@ class ResourceTrino(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -17386,6 +18594,8 @@ class ResourceTrino(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -17458,6 +18668,14 @@ class ResourceTrino(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -21589,6 +22807,7 @@ class GetResourceResourceAkResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -21609,6 +22828,7 @@ class GetResourceResourceAkResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -21645,6 +22865,8 @@ class GetResourceResourceAkResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -21781,6 +23003,14 @@ class GetResourceResourceAkResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -21817,6 +23047,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -21831,6 +23062,7 @@ class GetResourceResourceAksBasicAuthResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -21854,6 +23086,8 @@ class GetResourceResourceAksBasicAuthResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -21936,6 +23170,14 @@ class GetResourceResourceAksBasicAuthResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -21984,6 +23226,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -22002,6 +23245,7 @@ class GetResourceResourceAksServiceAccountResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -22034,6 +23278,8 @@ class GetResourceResourceAksServiceAccountResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -22148,6 +23394,14 @@ class GetResourceResourceAksServiceAccountResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22192,6 +23446,7 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -22205,6 +23460,7 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -22227,6 +23483,8 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -22301,6 +23559,14 @@ class GetResourceResourceAksServiceAccountUserImpersonationResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22348,6 +23614,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -22363,6 +23630,7 @@ class GetResourceResourceAksUserImpersonationResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -22389,6 +23657,8 @@ class GetResourceResourceAksUserImpersonationResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -22485,6 +23755,14 @@ class GetResourceResourceAksUserImpersonationResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -22519,6 +23797,7 @@ class GetResourceResourceAmazonEResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -22534,6 +23813,7 @@ class GetResourceResourceAmazonEResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -22556,6 +23836,8 @@ class GetResourceResourceAmazonEResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -22626,6 +23908,14 @@ class GetResourceResourceAmazonEResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter
@@ -22702,6 +23992,7 @@ class GetResourceResourceAmazonEkResult(dict):
                  identity_set_id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -22725,6 +24016,7 @@ class GetResourceResourceAmazonEkResult(dict):
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -22763,6 +24055,8 @@ class GetResourceResourceAmazonEkResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -22897,6 +24191,14 @@ class GetResourceResourceAmazonEkResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter
@@ -22972,6 +24274,7 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
                  identity_set_id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -22993,6 +24296,7 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -23028,6 +24332,8 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -23154,6 +24460,14 @@ class GetResourceResourceAmazonEksInstanceProfileResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -23214,6 +24528,7 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -23230,6 +24545,7 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -23255,6 +24571,8 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -23341,6 +24659,14 @@ class GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -23402,6 +24728,7 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -23420,6 +24747,7 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -23448,6 +24776,8 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -23544,6 +24874,14 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -23611,6 +24949,7 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -23625,6 +24964,7 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -23647,6 +24987,8 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -23723,6 +25065,14 @@ class GetResourceResourceAmazonmqAmqp091Result(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -23773,6 +25123,7 @@ class GetResourceResourceAthenaResult(dict):
                  name: Optional[str] = None,
                  output: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -23788,6 +25139,7 @@ class GetResourceResourceAthenaResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str output: The AWS S3 output location.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -23810,6 +25162,8 @@ class GetResourceResourceAthenaResult(dict):
             pulumi.set(__self__, "output", output)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -23882,6 +25236,14 @@ class GetResourceResourceAthenaResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -23950,6 +25312,7 @@ class GetResourceResourceAuroraMysqlResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -23966,6 +25329,7 @@ class GetResourceResourceAuroraMysqlResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -23991,6 +25355,8 @@ class GetResourceResourceAuroraMysqlResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -24077,6 +25443,14 @@ class GetResourceResourceAuroraMysqlResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -24138,6 +25512,7 @@ class GetResourceResourceAuroraPostgreResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -24153,6 +25528,7 @@ class GetResourceResourceAuroraPostgreResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -24178,6 +25554,8 @@ class GetResourceResourceAuroraPostgreResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -24268,6 +25646,14 @@ class GetResourceResourceAuroraPostgreResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -24312,6 +25698,7 @@ class GetResourceResourceAuroraPostgresIamResult(dict):
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_assumption_arn: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -24328,6 +25715,7 @@ class GetResourceResourceAuroraPostgresIamResult(dict):
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -24353,6 +25741,8 @@ class GetResourceResourceAuroraPostgresIamResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_assumption_arn is not None:
@@ -24439,6 +25829,14 @@ class GetResourceResourceAuroraPostgresIamResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -24497,6 +25895,7 @@ class GetResourceResourceAwResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
                  secret_access_key: Optional[str] = None,
@@ -24511,6 +25910,7 @@ class GetResourceResourceAwResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
@@ -24532,6 +25932,8 @@ class GetResourceResourceAwResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
         if role_external_id is not None:
@@ -24602,6 +26004,14 @@ class GetResourceResourceAwResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[str]:
         """
@@ -24661,6 +26071,7 @@ class GetResourceResourceAwsConsoleResult(dict):
                  identity_set_id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -24677,6 +26088,7 @@ class GetResourceResourceAwsConsoleResult(dict):
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -24701,6 +26113,8 @@ class GetResourceResourceAwsConsoleResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -24781,6 +26195,14 @@ class GetResourceResourceAwsConsoleResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -24848,6 +26270,7 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
                  identity_set_id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -24865,6 +26288,7 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -24890,6 +26314,8 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -24972,6 +26398,14 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -25046,6 +26480,7 @@ class GetResourceResourceAzureResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -25058,6 +26493,7 @@ class GetResourceResourceAzureResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -25078,6 +26514,8 @@ class GetResourceResourceAzureResult(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -25144,6 +26582,14 @@ class GetResourceResourceAzureResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -25187,6 +26633,7 @@ class GetResourceResourceAzureCertificateResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -25199,6 +26646,7 @@ class GetResourceResourceAzureCertificateResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -25219,6 +26667,8 @@ class GetResourceResourceAzureCertificateResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -25285,6 +26735,14 @@ class GetResourceResourceAzureCertificateResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -25330,6 +26788,7 @@ class GetResourceResourceAzureMysqlResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -25346,6 +26805,7 @@ class GetResourceResourceAzureMysqlResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -25371,6 +26831,8 @@ class GetResourceResourceAzureMysqlResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -25457,6 +26919,14 @@ class GetResourceResourceAzureMysqlResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -25518,6 +26988,7 @@ class GetResourceResourceAzurePostgreResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -25533,6 +27004,7 @@ class GetResourceResourceAzurePostgreResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -25558,6 +27030,8 @@ class GetResourceResourceAzurePostgreResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -25648,6 +27122,14 @@ class GetResourceResourceAzurePostgreResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -25693,6 +27175,7 @@ class GetResourceResourceAzurePostgresManagedIdentityResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -25709,6 +27192,7 @@ class GetResourceResourceAzurePostgresManagedIdentityResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -25735,6 +27219,8 @@ class GetResourceResourceAzurePostgresManagedIdentityResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -25827,6 +27313,14 @@ class GetResourceResourceAzurePostgresManagedIdentityResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -25878,6 +27372,7 @@ class GetResourceResourceBigQueryResult(dict):
                  port_override: Optional[int] = None,
                  private_key: Optional[str] = None,
                  project: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -25891,6 +27386,7 @@ class GetResourceResourceBigQueryResult(dict):
         :param int port_override: The local port used by clients to connect to this resource.
         :param str private_key: The private key used to authenticate with the server.
         :param str project: The project to connect to.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -25912,6 +27408,8 @@ class GetResourceResourceBigQueryResult(dict):
             pulumi.set(__self__, "private_key", private_key)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -25986,6 +27484,14 @@ class GetResourceResourceBigQueryResult(dict):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -26029,6 +27535,7 @@ class GetResourceResourceCassandraResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -26043,6 +27550,7 @@ class GetResourceResourceCassandraResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -26065,6 +27573,8 @@ class GetResourceResourceCassandraResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -26141,6 +27651,14 @@ class GetResourceResourceCassandraResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -26194,6 +27712,7 @@ class GetResourceResourceCitusResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -26209,6 +27728,7 @@ class GetResourceResourceCitusResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -26234,6 +27754,8 @@ class GetResourceResourceCitusResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -26324,6 +27846,14 @@ class GetResourceResourceCitusResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -26368,6 +27898,7 @@ class GetResourceResourceClustrixResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -26384,6 +27915,7 @@ class GetResourceResourceClustrixResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -26409,6 +27941,8 @@ class GetResourceResourceClustrixResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -26495,6 +28029,14 @@ class GetResourceResourceClustrixResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -26556,6 +28098,7 @@ class GetResourceResourceCockroachResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -26571,6 +28114,7 @@ class GetResourceResourceCockroachResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -26596,6 +28140,8 @@ class GetResourceResourceCockroachResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -26686,6 +28232,14 @@ class GetResourceResourceCockroachResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -26730,6 +28284,7 @@ class GetResourceResourceCouchbaseDatabaseResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -26745,6 +28300,7 @@ class GetResourceResourceCouchbaseDatabaseResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -26769,6 +28325,8 @@ class GetResourceResourceCouchbaseDatabaseResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -26853,6 +28411,14 @@ class GetResourceResourceCouchbaseDatabaseResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -26902,6 +28468,7 @@ class GetResourceResourceCouchbaseWebUiResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -26914,6 +28481,7 @@ class GetResourceResourceCouchbaseWebUiResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -26933,6 +28501,8 @@ class GetResourceResourceCouchbaseWebUiResult(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -26993,6 +28563,14 @@ class GetResourceResourceCouchbaseWebUiResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -27045,6 +28623,7 @@ class GetResourceResourceDb2IResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -27059,6 +28638,7 @@ class GetResourceResourceDb2IResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -27081,6 +28661,8 @@ class GetResourceResourceDb2IResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -27157,6 +28739,14 @@ class GetResourceResourceDb2IResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -27209,6 +28799,7 @@ class GetResourceResourceDb2LuwResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -27223,6 +28814,7 @@ class GetResourceResourceDb2LuwResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -27246,6 +28838,8 @@ class GetResourceResourceDb2LuwResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -27328,6 +28922,14 @@ class GetResourceResourceDb2LuwResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -27372,6 +28974,7 @@ class GetResourceResourceDocumentDbHostResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -27386,6 +28989,7 @@ class GetResourceResourceDocumentDbHostResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -27409,6 +29013,8 @@ class GetResourceResourceDocumentDbHostResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -27491,6 +29097,14 @@ class GetResourceResourceDocumentDbHostResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -27535,6 +29149,7 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -27550,6 +29165,7 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str replica_set: The name of the mongo replicaset.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -27574,6 +29190,8 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if replica_set is not None:
             pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
@@ -27658,6 +29276,14 @@ class GetResourceResourceDocumentDbReplicaSetResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="replicaSet")
     def replica_set(self) -> Optional[str]:
         """
@@ -27709,6 +29335,7 @@ class GetResourceResourceDruidResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -27722,6 +29349,7 @@ class GetResourceResourceDruidResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -27743,6 +29371,8 @@ class GetResourceResourceDruidResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -27817,6 +29447,14 @@ class GetResourceResourceDruidResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -27859,6 +29497,7 @@ class GetResourceResourceDynamoDbResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -27874,6 +29513,7 @@ class GetResourceResourceDynamoDbResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -27896,6 +29536,8 @@ class GetResourceResourceDynamoDbResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -27968,6 +29610,14 @@ class GetResourceResourceDynamoDbResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -28035,6 +29685,7 @@ class GetResourceResourceElasticResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -28049,6 +29700,7 @@ class GetResourceResourceElasticResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -28071,6 +29723,8 @@ class GetResourceResourceElasticResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -28145,6 +29799,14 @@ class GetResourceResourceElasticResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -28198,6 +29860,7 @@ class GetResourceResourceElasticacheRediResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -28212,6 +29875,7 @@ class GetResourceResourceElasticacheRediResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -28234,6 +29898,8 @@ class GetResourceResourceElasticacheRediResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -28310,6 +29976,14 @@ class GetResourceResourceElasticacheRediResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -28359,6 +30033,7 @@ class GetResourceResourceGcpResult(dict):
                  keyfile: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  scopes: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -28370,6 +30045,7 @@ class GetResourceResourceGcpResult(dict):
         :param str keyfile: The service account keyfile to authenticate with.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str scopes: Space separated scopes that this login should assume into when authenticating.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28387,6 +30063,8 @@ class GetResourceResourceGcpResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if secret_store_id is not None:
@@ -28445,6 +30123,14 @@ class GetResourceResourceGcpResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def scopes(self) -> Optional[str]:
         """
@@ -28493,6 +30179,7 @@ class GetResourceResourceGoogleGkeResult(dict):
                  identity_set_id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  service_account_key: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -28511,6 +30198,7 @@ class GetResourceResourceGoogleGkeResult(dict):
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str service_account_key: The service account key to authenticate with.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28542,6 +30230,8 @@ class GetResourceResourceGoogleGkeResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if service_account_key is not None:
@@ -28656,6 +30346,14 @@ class GetResourceResourceGoogleGkeResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -28699,6 +30397,7 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  service_account_key: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -28712,6 +30411,7 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str service_account_key: The service account key to authenticate with.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -28733,6 +30433,8 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if service_account_key is not None:
@@ -28807,6 +30509,14 @@ class GetResourceResourceGoogleGkeUserImpersonationResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -28852,6 +30562,7 @@ class GetResourceResourceGreenplumResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -28867,6 +30578,7 @@ class GetResourceResourceGreenplumResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -28892,6 +30604,8 @@ class GetResourceResourceGreenplumResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -28982,6 +30696,14 @@ class GetResourceResourceGreenplumResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -29026,6 +30748,7 @@ class GetResourceResourceHttpAuthResult(dict):
                  host_override: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -29040,6 +30763,7 @@ class GetResourceResourceHttpAuthResult(dict):
         :param str host_override: The host header will be overwritten with this field if provided.
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -29064,6 +30788,8 @@ class GetResourceResourceHttpAuthResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -29146,6 +30872,14 @@ class GetResourceResourceHttpAuthResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -29191,6 +30925,7 @@ class GetResourceResourceHttpBasicAuthResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  password: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -29206,6 +30941,7 @@ class GetResourceResourceHttpBasicAuthResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param str password: The password to authenticate with.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -29231,6 +30967,8 @@ class GetResourceResourceHttpBasicAuthResult(dict):
             pulumi.set(__self__, "name", name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -29313,6 +31051,14 @@ class GetResourceResourceHttpBasicAuthResult(dict):
         The password to authenticate with.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -29367,6 +31113,7 @@ class GetResourceResourceHttpNoAuthResult(dict):
                  host_override: Optional[str] = None,
                  id: Optional[str] = None,
                  name: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -29380,6 +31127,7 @@ class GetResourceResourceHttpNoAuthResult(dict):
         :param str host_override: The host header will be overwritten with this field if provided.
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -29402,6 +31150,8 @@ class GetResourceResourceHttpNoAuthResult(dict):
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -29476,6 +31226,14 @@ class GetResourceResourceHttpNoAuthResult(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -29528,6 +31286,7 @@ class GetResourceResourceKuberneteResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -29548,6 +31307,7 @@ class GetResourceResourceKuberneteResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -29584,6 +31344,8 @@ class GetResourceResourceKuberneteResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -29720,6 +31482,14 @@ class GetResourceResourceKuberneteResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -29756,6 +31526,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -29770,6 +31541,7 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -29793,6 +31565,8 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -29875,6 +31649,14 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -29923,6 +31705,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -29941,6 +31724,7 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -29973,6 +31757,8 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -30087,6 +31873,14 @@ class GetResourceResourceKubernetesServiceAccountResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -30131,6 +31925,7 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -30144,6 +31939,7 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -30166,6 +31962,8 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -30240,6 +32038,14 @@ class GetResourceResourceKubernetesServiceAccountUserImpersonationResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -30287,6 +32093,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -30302,6 +32109,7 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -30328,6 +32136,8 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -30424,6 +32234,14 @@ class GetResourceResourceKubernetesUserImpersonationResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -30460,6 +32278,7 @@ class GetResourceResourceMariaResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -30476,6 +32295,7 @@ class GetResourceResourceMariaResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -30501,6 +32321,8 @@ class GetResourceResourceMariaResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -30585,6 +32407,14 @@ class GetResourceResourceMariaResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="requireNativeAuth")
@@ -30645,6 +32475,7 @@ class GetResourceResourceMemcachedResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -30656,6 +32487,7 @@ class GetResourceResourceMemcachedResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -30674,6 +32506,8 @@ class GetResourceResourceMemcachedResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -30738,6 +32572,14 @@ class GetResourceResourceMemcachedResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -30774,6 +32616,7 @@ class GetResourceResourceMemsqlResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -30790,6 +32633,7 @@ class GetResourceResourceMemsqlResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -30815,6 +32659,8 @@ class GetResourceResourceMemsqlResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -30899,6 +32745,14 @@ class GetResourceResourceMemsqlResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="requireNativeAuth")
@@ -30961,6 +32815,7 @@ class GetResourceResourceMongoHostResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -30976,6 +32831,7 @@ class GetResourceResourceMongoHostResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -31000,6 +32856,8 @@ class GetResourceResourceMongoHostResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -31082,6 +32940,14 @@ class GetResourceResourceMongoHostResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -31136,6 +33002,7 @@ class GetResourceResourceMongoLegacyHostResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -31151,6 +33018,7 @@ class GetResourceResourceMongoLegacyHostResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -31175,6 +33043,8 @@ class GetResourceResourceMongoLegacyHostResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -31257,6 +33127,14 @@ class GetResourceResourceMongoLegacyHostResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -31312,6 +33190,7 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -31329,6 +33208,7 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str replica_set: The name of the mongo replicaset.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -31356,6 +33236,8 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if replica_set is not None:
             pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
@@ -31448,6 +33330,14 @@ class GetResourceResourceMongoLegacyReplicasetResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="replicaSet")
@@ -31511,6 +33401,7 @@ class GetResourceResourceMongoReplicaSetResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  replica_set: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -31528,6 +33419,7 @@ class GetResourceResourceMongoReplicaSetResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str replica_set: The name of the mongo replicaset.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -31555,6 +33447,8 @@ class GetResourceResourceMongoReplicaSetResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if replica_set is not None:
             pulumi.set(__self__, "replica_set", replica_set)
         if secret_store_id is not None:
@@ -31649,6 +33543,14 @@ class GetResourceResourceMongoReplicaSetResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="replicaSet")
     def replica_set(self) -> Optional[str]:
         """
@@ -31708,6 +33610,7 @@ class GetResourceResourceMongoShardedClusterResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -31722,6 +33625,7 @@ class GetResourceResourceMongoShardedClusterResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -31744,6 +33648,8 @@ class GetResourceResourceMongoShardedClusterResult(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -31820,6 +33726,14 @@ class GetResourceResourceMongoShardedClusterResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -31875,6 +33789,7 @@ class GetResourceResourceMtlsMysqlResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  server_name: Optional[str] = None,
@@ -31895,6 +33810,7 @@ class GetResourceResourceMtlsMysqlResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str server_name: Server name for TLS verification (unverified by StrongDM if empty)
@@ -31927,6 +33843,8 @@ class GetResourceResourceMtlsMysqlResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -32039,6 +33957,14 @@ class GetResourceResourceMtlsMysqlResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -32111,6 +34037,7 @@ class GetResourceResourceMtlsPostgreResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  server_name: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -32130,6 +34057,7 @@ class GetResourceResourceMtlsPostgreResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str server_name: Server name for TLS verification (unverified by StrongDM if empty)
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32162,6 +34090,8 @@ class GetResourceResourceMtlsPostgreResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if server_name is not None:
@@ -32278,6 +34208,14 @@ class GetResourceResourceMtlsPostgreResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -32330,6 +34268,7 @@ class GetResourceResourceMysqlResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -32346,6 +34285,7 @@ class GetResourceResourceMysqlResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -32371,6 +34311,8 @@ class GetResourceResourceMysqlResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -32457,6 +34399,14 @@ class GetResourceResourceMysqlResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -32515,6 +34465,7 @@ class GetResourceResourceNeptuneResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -32526,6 +34477,7 @@ class GetResourceResourceNeptuneResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -32544,6 +34496,8 @@ class GetResourceResourceNeptuneResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -32608,6 +34562,14 @@ class GetResourceResourceNeptuneResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -32643,6 +34605,7 @@ class GetResourceResourceNeptuneIamResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_arn: Optional[str] = None,
                  role_external_id: Optional[str] = None,
@@ -32659,6 +34622,7 @@ class GetResourceResourceNeptuneIamResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
@@ -32683,6 +34647,8 @@ class GetResourceResourceNeptuneIamResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_arn is not None:
@@ -32763,6 +34729,14 @@ class GetResourceResourceNeptuneIamResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -32831,6 +34805,7 @@ class GetResourceResourceOracleResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -32846,6 +34821,7 @@ class GetResourceResourceOracleResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -32870,6 +34846,8 @@ class GetResourceResourceOracleResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -32954,6 +34932,14 @@ class GetResourceResourceOracleResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -33007,6 +34993,7 @@ class GetResourceResourcePostgreResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -33022,6 +35009,7 @@ class GetResourceResourcePostgreResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -33047,6 +35035,8 @@ class GetResourceResourcePostgreResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -33137,6 +35127,14 @@ class GetResourceResourcePostgreResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -33181,6 +35179,7 @@ class GetResourceResourcePrestoResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -33196,6 +35195,7 @@ class GetResourceResourcePrestoResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -33220,6 +35220,8 @@ class GetResourceResourcePrestoResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -33304,6 +35306,14 @@ class GetResourceResourcePrestoResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -33355,6 +35365,7 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -33369,6 +35380,7 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -33391,6 +35403,8 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -33467,6 +35481,14 @@ class GetResourceResourceRabbitmqAmqp091Result(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -33517,6 +35539,7 @@ class GetResourceResourceRawTcpResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None):
@@ -33528,6 +35551,7 @@ class GetResourceResourceRawTcpResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -33546,6 +35570,8 @@ class GetResourceResourceRawTcpResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -33610,6 +35636,14 @@ class GetResourceResourceRawTcpResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -33647,6 +35681,7 @@ class GetResourceResourceRdpResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -33662,6 +35697,7 @@ class GetResourceResourceRdpResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -33687,6 +35723,8 @@ class GetResourceResourceRdpResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -33777,6 +35815,14 @@ class GetResourceResourceRdpResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -33821,6 +35867,7 @@ class GetResourceResourceRdpCertResult(dict):
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -33835,6 +35882,7 @@ class GetResourceResourceRdpCertResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -33858,6 +35906,8 @@ class GetResourceResourceRdpCertResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -33940,6 +35990,14 @@ class GetResourceResourceRdpCertResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -33984,6 +36042,7 @@ class GetResourceResourceRdsPostgresIamResult(dict):
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  region: Optional[str] = None,
                  role_assumption_arn: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -34000,6 +36059,7 @@ class GetResourceResourceRdsPostgresIamResult(dict):
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str region: The AWS region to connect to.
         :param str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -34025,6 +36085,8 @@ class GetResourceResourceRdsPostgresIamResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if role_assumption_arn is not None:
@@ -34111,6 +36173,14 @@ class GetResourceResourceRdsPostgresIamResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[str]:
         """
@@ -34170,6 +36240,7 @@ class GetResourceResourceRediResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -34184,6 +36255,7 @@ class GetResourceResourceRediResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -34206,6 +36278,8 @@ class GetResourceResourceRediResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -34282,6 +36356,14 @@ class GetResourceResourceRediResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -34335,6 +36417,7 @@ class GetResourceResourceRedshiftResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -34350,6 +36433,7 @@ class GetResourceResourceRedshiftResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -34375,6 +36459,8 @@ class GetResourceResourceRedshiftResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -34465,6 +36551,14 @@ class GetResourceResourceRedshiftResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -34509,6 +36603,7 @@ class GetResourceResourceSingleStoreResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  require_native_auth: Optional[bool] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -34525,6 +36620,7 @@ class GetResourceResourceSingleStoreResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param bool require_native_auth: Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -34550,6 +36646,8 @@ class GetResourceResourceSingleStoreResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if require_native_auth is not None:
             pulumi.set(__self__, "require_native_auth", require_native_auth)
         if secret_store_id is not None:
@@ -34636,6 +36734,14 @@ class GetResourceResourceSingleStoreResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="requireNativeAuth")
     def require_native_auth(self) -> Optional[bool]:
         """
@@ -34695,6 +36801,7 @@ class GetResourceResourceSnowflakeResult(dict):
                  name: Optional[str] = None,
                  password: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -34709,6 +36816,7 @@ class GetResourceResourceSnowflakeResult(dict):
         :param str name: Unique human-readable name of the Resource.
         :param str password: The password to authenticate with.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -34731,6 +36839,8 @@ class GetResourceResourceSnowflakeResult(dict):
             pulumi.set(__self__, "password", password)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
@@ -34807,6 +36917,14 @@ class GetResourceResourceSnowflakeResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
         """
@@ -34856,6 +36974,7 @@ class GetResourceResourceSnowsightResult(dict):
                  id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  saml_metadata: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -34867,6 +36986,7 @@ class GetResourceResourceSnowsightResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str saml_metadata: The Metadata for your snowflake IDP integration
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -34884,6 +37004,8 @@ class GetResourceResourceSnowsightResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if saml_metadata is not None:
             pulumi.set(__self__, "saml_metadata", saml_metadata)
         if secret_store_id is not None:
@@ -34942,6 +37064,14 @@ class GetResourceResourceSnowsightResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="samlMetadata")
     def saml_metadata(self) -> Optional[str]:
         """
@@ -34988,6 +37118,7 @@ class GetResourceResourceSqlServerResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
@@ -35005,6 +37136,7 @@ class GetResourceResourceSqlServerResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -35033,6 +37165,8 @@ class GetResourceResourceSqlServerResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
@@ -35133,6 +37267,14 @@ class GetResourceResourceSqlServerResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
         """
@@ -35187,6 +37329,7 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -35205,6 +37348,7 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret: The Azure AD client secret (application password) with which to authenticate.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -35235,6 +37379,8 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if secret is not None:
@@ -35337,6 +37483,14 @@ class GetResourceResourceSqlServerAzureAdResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def schema(self) -> Optional[str]:
         """
@@ -35401,6 +37555,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
                  override_database: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  realm: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -35421,6 +37576,7 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
         :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str realm: The Active Directory domain (realm) to which the configured username belongs.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -35453,6 +37609,8 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if realm is not None:
             pulumi.set(__self__, "realm", realm)
         if schema is not None:
@@ -35565,6 +37723,14 @@ class GetResourceResourceSqlServerKerberosAdResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter
     def realm(self) -> Optional[str]:
         """
@@ -35635,6 +37801,7 @@ class GetResourceResourceSshResult(dict):
                  port: Optional[int] = None,
                  port_forwarding: Optional[bool] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -35651,6 +37818,7 @@ class GetResourceResourceSshResult(dict):
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param bool port_forwarding: Whether port forwarding is allowed through this server.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -35677,6 +37845,8 @@ class GetResourceResourceSshResult(dict):
             pulumi.set(__self__, "port_forwarding", port_forwarding)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -35775,6 +37945,14 @@ class GetResourceResourceSshResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -35822,6 +38000,7 @@ class GetResourceResourceSshCertResult(dict):
                  port: Optional[int] = None,
                  port_forwarding: Optional[bool] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -35839,6 +38018,7 @@ class GetResourceResourceSshCertResult(dict):
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param bool port_forwarding: Whether port forwarding is allowed through this server.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -35868,6 +38048,8 @@ class GetResourceResourceSshCertResult(dict):
             pulumi.set(__self__, "port_forwarding", port_forwarding)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -35974,6 +38156,14 @@ class GetResourceResourceSshCertResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -36019,6 +38209,7 @@ class GetResourceResourceSshCustomerKeyResult(dict):
                  port_forwarding: Optional[bool] = None,
                  port_override: Optional[int] = None,
                  private_key: Optional[str] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -36034,6 +38225,7 @@ class GetResourceResourceSshCustomerKeyResult(dict):
         :param bool port_forwarding: Whether port forwarding is allowed through this server.
         :param int port_override: The local port used by clients to connect to this resource.
         :param str private_key: The private key used to authenticate with the server.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -36059,6 +38251,8 @@ class GetResourceResourceSshCustomerKeyResult(dict):
             pulumi.set(__self__, "port_override", port_override)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -36149,6 +38343,14 @@ class GetResourceResourceSshCustomerKeyResult(dict):
         return pulumi.get(self, "private_key")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -36194,6 +38396,7 @@ class GetResourceResourceSshPasswordResult(dict):
                  port: Optional[int] = None,
                  port_forwarding: Optional[bool] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -36209,6 +38412,7 @@ class GetResourceResourceSshPasswordResult(dict):
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param bool port_forwarding: Whether port forwarding is allowed through this server.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -36234,6 +38438,8 @@ class GetResourceResourceSshPasswordResult(dict):
             pulumi.set(__self__, "port_forwarding", port_forwarding)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -36324,6 +38530,14 @@ class GetResourceResourceSshPasswordResult(dict):
         return pulumi.get(self, "port_override")
 
     @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
     @pulumi.getter(name="secretStoreId")
     def secret_store_id(self) -> Optional[str]:
         """
@@ -36367,6 +38581,7 @@ class GetResourceResourceSybaseResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -36380,6 +38595,7 @@ class GetResourceResourceSybaseResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -36401,6 +38617,8 @@ class GetResourceResourceSybaseResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -36473,6 +38691,14 @@ class GetResourceResourceSybaseResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -36518,6 +38744,7 @@ class GetResourceResourceSybaseIqResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -36531,6 +38758,7 @@ class GetResourceResourceSybaseIqResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -36552,6 +38780,8 @@ class GetResourceResourceSybaseIqResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -36624,6 +38854,14 @@ class GetResourceResourceSybaseIqResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -36669,6 +38907,7 @@ class GetResourceResourceTeradataResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -36682,6 +38921,7 @@ class GetResourceResourceTeradataResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -36703,6 +38943,8 @@ class GetResourceResourceTeradataResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -36775,6 +39017,14 @@ class GetResourceResourceTeradataResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")
@@ -36821,6 +39071,7 @@ class GetResourceResourceTrinoResult(dict):
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -36835,6 +39086,7 @@ class GetResourceResourceTrinoResult(dict):
         :param str password: The password to authenticate with.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
@@ -36858,6 +39110,8 @@ class GetResourceResourceTrinoResult(dict):
             pulumi.set(__self__, "port", port)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
         if subdomain is not None:
@@ -36938,6 +39192,14 @@ class GetResourceResourceTrinoResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
 
     @property
     @pulumi.getter(name="secretStoreId")

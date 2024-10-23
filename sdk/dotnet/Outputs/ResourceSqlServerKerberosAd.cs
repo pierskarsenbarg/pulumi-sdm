@@ -59,6 +59,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// The Active Directory domain (realm) to which the configured username belongs.
         /// </summary>
         public readonly string? Realm;
@@ -111,6 +115,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             string? realm,
 
             string? schema,
@@ -136,6 +142,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             OverrideDatabase = overrideDatabase;
             Port = port;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             Realm = realm;
             Schema = schema;
             SecretStoreId = secretStoreId;

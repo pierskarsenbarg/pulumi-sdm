@@ -54,6 +54,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<int>? PortOverride { get; set; }
 
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        [Input("proxyClusterId")]
+        public Input<string>? ProxyClusterId { get; set; }
+
+        /// <summary>
         /// Space separated scopes that this login should assume into when authenticating.
         /// </summary>
         [Input("scopes", required: true)]

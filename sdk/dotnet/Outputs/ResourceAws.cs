@@ -39,6 +39,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// ID of the proxy cluster for this resource, if any.
+        /// </summary>
+        public readonly string? ProxyClusterId;
+        /// <summary>
         /// The role to assume after logging in.
         /// </summary>
         public readonly string? RoleArn;
@@ -77,6 +81,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? proxyClusterId,
+
             string? roleArn,
 
             string? roleExternalId,
@@ -95,6 +101,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             HealthcheckRegion = healthcheckRegion;
             Name = name;
             PortOverride = portOverride;
+            ProxyClusterId = proxyClusterId;
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretAccessKey = secretAccessKey;

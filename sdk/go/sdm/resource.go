@@ -108,11 +108,10 @@ type Resource struct {
 	Ssh                 ResourceSshPtrOutput                 `pulumi:"ssh"`
 	SshCert             ResourceSshCertPtrOutput             `pulumi:"sshCert"`
 	SshCustomerKey      ResourceSshCustomerKeyPtrOutput      `pulumi:"sshCustomerKey"`
-	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	SshPassword ResourceSshPasswordPtrOutput `pulumi:"sshPassword"`
-	Sybase      ResourceSybasePtrOutput      `pulumi:"sybase"`
-	SybaseIq    ResourceSybaseIqPtrOutput    `pulumi:"sybaseIq"`
-	Teradata    ResourceTeradataPtrOutput    `pulumi:"teradata"`
+	SshPassword         ResourceSshPasswordPtrOutput         `pulumi:"sshPassword"`
+	Sybase              ResourceSybasePtrOutput              `pulumi:"sybase"`
+	SybaseIq            ResourceSybaseIqPtrOutput            `pulumi:"sybaseIq"`
+	Teradata            ResourceTeradataPtrOutput            `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrOutput `pulumi:"trino"`
 }
@@ -234,11 +233,10 @@ type resourceState struct {
 	Ssh                 *ResourceSsh                 `pulumi:"ssh"`
 	SshCert             *ResourceSshCert             `pulumi:"sshCert"`
 	SshCustomerKey      *ResourceSshCustomerKey      `pulumi:"sshCustomerKey"`
-	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	SshPassword *ResourceSshPassword `pulumi:"sshPassword"`
-	Sybase      *ResourceSybase      `pulumi:"sybase"`
-	SybaseIq    *ResourceSybaseIq    `pulumi:"sybaseIq"`
-	Teradata    *ResourceTeradata    `pulumi:"teradata"`
+	SshPassword         *ResourceSshPassword         `pulumi:"sshPassword"`
+	Sybase              *ResourceSybase              `pulumi:"sybase"`
+	SybaseIq            *ResourceSybaseIq            `pulumi:"sybaseIq"`
+	Teradata            *ResourceTeradata            `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
 }
@@ -331,11 +329,10 @@ type ResourceState struct {
 	Ssh                 ResourceSshPtrInput
 	SshCert             ResourceSshCertPtrInput
 	SshCustomerKey      ResourceSshCustomerKeyPtrInput
-	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	SshPassword ResourceSshPasswordPtrInput
-	Sybase      ResourceSybasePtrInput
-	SybaseIq    ResourceSybaseIqPtrInput
-	Teradata    ResourceTeradataPtrInput
+	SshPassword         ResourceSshPasswordPtrInput
+	Sybase              ResourceSybasePtrInput
+	SybaseIq            ResourceSybaseIqPtrInput
+	Teradata            ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
 }
@@ -432,11 +429,10 @@ type resourceArgs struct {
 	Ssh                 *ResourceSsh                 `pulumi:"ssh"`
 	SshCert             *ResourceSshCert             `pulumi:"sshCert"`
 	SshCustomerKey      *ResourceSshCustomerKey      `pulumi:"sshCustomerKey"`
-	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	SshPassword *ResourceSshPassword `pulumi:"sshPassword"`
-	Sybase      *ResourceSybase      `pulumi:"sybase"`
-	SybaseIq    *ResourceSybaseIq    `pulumi:"sybaseIq"`
-	Teradata    *ResourceTeradata    `pulumi:"teradata"`
+	SshPassword         *ResourceSshPassword         `pulumi:"sshPassword"`
+	Sybase              *ResourceSybase              `pulumi:"sybase"`
+	SybaseIq            *ResourceSybaseIq            `pulumi:"sybaseIq"`
+	Teradata            *ResourceTeradata            `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
 }
@@ -530,11 +526,10 @@ type ResourceArgs struct {
 	Ssh                 ResourceSshPtrInput
 	SshCert             ResourceSshCertPtrInput
 	SshCustomerKey      ResourceSshCustomerKeyPtrInput
-	// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	SshPassword ResourceSshPasswordPtrInput
-	Sybase      ResourceSybasePtrInput
-	SybaseIq    ResourceSybaseIqPtrInput
-	Teradata    ResourceTeradataPtrInput
+	SshPassword         ResourceSshPasswordPtrInput
+	Sybase              ResourceSybasePtrInput
+	SybaseIq            ResourceSybaseIqPtrInput
+	Teradata            ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
 }
@@ -965,7 +960,6 @@ func (o ResourceOutput) SshCustomerKey() ResourceSshCustomerKeyPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceSshCustomerKeyPtrOutput { return v.SshCustomerKey }).(ResourceSshCustomerKeyPtrOutput)
 }
 
-// SSHPassword is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) SshPassword() ResourceSshPasswordPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceSshPasswordPtrOutput { return v.SshPassword }).(ResourceSshPasswordPtrOutput)
 }
