@@ -11,14 +11,8 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAwsConsoleStaticKeyPairGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceAwsInstanceProfileGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Access Key ID to use to authenticate.
-        /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
-
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
@@ -32,16 +26,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? EgressFilter { get; set; }
 
         /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
         /// </summary>
-        [Input("identityAliasHealthcheckUsername")]
-        public Input<string>? IdentityAliasHealthcheckUsername { get; set; }
-
-        /// <summary>
-        /// The ID of the identity set to use for identity connections.
-        /// </summary>
-        [Input("identitySetId")]
-        public Input<string>? IdentitySetId { get; set; }
+        [Input("enableEnvVariables")]
+        public Input<bool>? EnableEnvVariables { get; set; }
 
         /// <summary>
         /// Unique human-readable name of the Resource.
@@ -79,22 +67,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         [Input("roleExternalId")]
         public Input<string>? RoleExternalId { get; set; }
 
-        [Input("secretAccessKey")]
-        private Input<string>? _secretAccessKey;
-
-        /// <summary>
-        /// The Secret Access Key to use to authenticate.
-        /// </summary>
-        public Input<string>? SecretAccessKey
-        {
-            get => _secretAccessKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -102,16 +74,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? SecretStoreId { get; set; }
 
         /// <summary>
-        /// The length of time in seconds console sessions will live before needing to reauthenticate.
-        /// </summary>
-        [Input("sessionExpiry")]
-        public Input<int>? SessionExpiry { get; set; }
-
-        /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
-        [Input("subdomain", required: true)]
-        public Input<string> Subdomain { get; set; } = null!;
+        [Input("subdomain")]
+        public Input<string>? Subdomain { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -125,9 +91,9 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
-        public ResourceAwsConsoleStaticKeyPairGetArgs()
+        public ResourceAwsInstanceProfileGetArgs()
         {
         }
-        public static new ResourceAwsConsoleStaticKeyPairGetArgs Empty => new ResourceAwsConsoleStaticKeyPairGetArgs();
+        public static new ResourceAwsInstanceProfileGetArgs Empty => new ResourceAwsInstanceProfileGetArgs();
     }
 }

@@ -42,6 +42,7 @@ __all__ = [
     'ResourceAws',
     'ResourceAwsConsole',
     'ResourceAwsConsoleStaticKeyPair',
+    'ResourceAwsInstanceProfile',
     'ResourceAzure',
     'ResourceAzureCertificate',
     'ResourceAzureMysql',
@@ -63,6 +64,8 @@ __all__ = [
     'ResourceElastic',
     'ResourceElasticacheRedis',
     'ResourceGcp',
+    'ResourceGcpConsole',
+    'ResourceGcpwif',
     'ResourceGoogleGke',
     'ResourceGoogleGkeUserImpersonation',
     'ResourceGreenplum',
@@ -178,6 +181,7 @@ __all__ = [
     'GetResourceResourceAwResult',
     'GetResourceResourceAwsConsoleResult',
     'GetResourceResourceAwsConsoleStaticKeyPairResult',
+    'GetResourceResourceAwsInstanceProfileResult',
     'GetResourceResourceAzureResult',
     'GetResourceResourceAzureCertificateResult',
     'GetResourceResourceAzureMysqlResult',
@@ -199,6 +203,8 @@ __all__ = [
     'GetResourceResourceElasticResult',
     'GetResourceResourceElasticacheRediResult',
     'GetResourceResourceGcpResult',
+    'GetResourceResourceGcpConsoleResult',
+    'GetResourceResourceGcpwifResult',
     'GetResourceResourceGoogleGkeResult',
     'GetResourceResourceGoogleGkeUserImpersonationResult',
     'GetResourceResourceGreenplumResult',
@@ -4551,7 +4557,7 @@ class ResourceAwsConsole(dict):
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param int session_expiry: The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -4690,7 +4696,7 @@ class ResourceAwsConsole(dict):
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> Optional[int]:
         """
-        The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        The length of time in seconds console sessions will live before needing to reauthenticate.
         """
         return pulumi.get(self, "session_expiry")
 
@@ -4776,7 +4782,7 @@ class ResourceAwsConsoleStaticKeyPair(dict):
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param int session_expiry: The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
         pulumi.set(__self__, "name", name)
@@ -4925,9 +4931,189 @@ class ResourceAwsConsoleStaticKeyPair(dict):
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> Optional[int]:
         """
-        The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        The length of time in seconds console sessions will live before needing to reauthenticate.
         """
         return pulumi.get(self, "session_expiry")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ResourceAwsInstanceProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "enableEnvVariables":
+            suggest = "enable_env_variables"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "roleExternalId":
+            suggest = "role_external_id"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceAwsInstanceProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceAwsInstanceProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceAwsInstanceProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 region: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 enable_env_variables: Optional[bool] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 role_external_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: Unique human-readable name of the Resource.
+        :param str region: The AWS region to connect to.
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param bool enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str role_arn: The role to assume after logging in.
+        :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if enable_env_variables is not None:
+            pulumi.set(__self__, "enable_env_variables", enable_env_variables)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if role_external_id is not None:
+            pulumi.set(__self__, "role_external_id", role_external_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="enableEnvVariables")
+    def enable_env_variables(self) -> Optional[bool]:
+        """
+        If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+        """
+        return pulumi.get(self, "enable_env_variables")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        The role to assume after logging in.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="roleExternalId")
+    def role_external_id(self) -> Optional[str]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
+        return pulumi.get(self, "role_external_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
 
     @property
     @pulumi.getter
@@ -8891,6 +9077,410 @@ class ResourceGcp(dict):
         ID of the secret store containing credentials for this resource, if any.
         """
         return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ResourceGcpConsole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workforcePoolId":
+            suggest = "workforce_pool_id"
+        elif key == "workforceProviderId":
+            suggest = "workforce_provider_id"
+        elif key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "identityAliasHealthcheckUsername":
+            suggest = "identity_alias_healthcheck_username"
+        elif key == "identitySetId":
+            suggest = "identity_set_id"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+        elif key == "sessionExpiry":
+            suggest = "session_expiry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceGcpConsole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceGcpConsole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceGcpConsole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 subdomain: str,
+                 workforce_pool_id: str,
+                 workforce_provider_id: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 identity_alias_healthcheck_username: Optional[str] = None,
+                 identity_set_id: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 session_expiry: Optional[int] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: Unique human-readable name of the Resource.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param str workforce_pool_id: The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        :param str workforce_provider_id: The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+               * google_gke:
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param str identity_set_id: The ID of the identity set to use for identity connections.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subdomain", subdomain)
+        pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+        pulumi.set(__self__, "workforce_provider_id", workforce_provider_id)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if session_expiry is not None:
+            pulumi.set(__self__, "session_expiry", session_expiry)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> str:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter(name="workforcePoolId")
+    def workforce_pool_id(self) -> str:
+        """
+        The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        """
+        return pulumi.get(self, "workforce_pool_id")
+
+    @property
+    @pulumi.getter(name="workforceProviderId")
+    def workforce_provider_id(self) -> str:
+        """
+        The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+        * google_gke:
+        """
+        return pulumi.get(self, "workforce_provider_id")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[str]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[str]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter(name="sessionExpiry")
+    def session_expiry(self) -> Optional[int]:
+        """
+        The length of time in seconds console sessions will live before needing to reauthenticate.
+        """
+        return pulumi.get(self, "session_expiry")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ResourceGcpwif(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "workforcePoolId":
+            suggest = "workforce_pool_id"
+        elif key == "workforceProviderId":
+            suggest = "workforce_provider_id"
+        elif key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "identityAliasHealthcheckUsername":
+            suggest = "identity_alias_healthcheck_username"
+        elif key == "identitySetId":
+            suggest = "identity_set_id"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+        elif key == "sessionExpiry":
+            suggest = "session_expiry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceGcpwif. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceGcpwif.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceGcpwif.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 scopes: str,
+                 workforce_pool_id: str,
+                 workforce_provider_id: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 identity_alias_healthcheck_username: Optional[str] = None,
+                 identity_set_id: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 session_expiry: Optional[int] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: Unique human-readable name of the Resource.
+        :param str scopes: Space separated scopes that this login should assume into when authenticating.
+        :param str workforce_pool_id: The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        :param str workforce_provider_id: The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+               * google_gke:
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param str identity_set_id: The ID of the identity set to use for identity connections.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "scopes", scopes)
+        pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+        pulumi.set(__self__, "workforce_provider_id", workforce_provider_id)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if session_expiry is not None:
+            pulumi.set(__self__, "session_expiry", session_expiry)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> str:
+        """
+        Space separated scopes that this login should assume into when authenticating.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="workforcePoolId")
+    def workforce_pool_id(self) -> str:
+        """
+        The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        """
+        return pulumi.get(self, "workforce_pool_id")
+
+    @property
+    @pulumi.getter(name="workforceProviderId")
+    def workforce_provider_id(self) -> str:
+        """
+        The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+        * google_gke:
+        """
+        return pulumi.get(self, "workforce_provider_id")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[str]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[str]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter(name="sessionExpiry")
+    def session_expiry(self) -> Optional[int]:
+        """
+        The length of time in seconds console sessions will live before needing to reauthenticate.
+        """
+        return pulumi.get(self, "session_expiry")
 
     @property
     @pulumi.getter
@@ -22195,6 +22785,7 @@ class GetResourceResourceResult(dict):
                  aws: Sequence['outputs.GetResourceResourceAwResult'],
                  aws_console_static_key_pairs: Sequence['outputs.GetResourceResourceAwsConsoleStaticKeyPairResult'],
                  aws_consoles: Sequence['outputs.GetResourceResourceAwsConsoleResult'],
+                 aws_instance_profiles: Sequence['outputs.GetResourceResourceAwsInstanceProfileResult'],
                  azure_certificates: Sequence['outputs.GetResourceResourceAzureCertificateResult'],
                  azure_mysqls: Sequence['outputs.GetResourceResourceAzureMysqlResult'],
                  azure_postgres: Sequence['outputs.GetResourceResourceAzurePostgreResult'],
@@ -22215,7 +22806,9 @@ class GetResourceResourceResult(dict):
                  dynamo_dbs: Sequence['outputs.GetResourceResourceDynamoDbResult'],
                  elasticache_redis: Sequence['outputs.GetResourceResourceElasticacheRediResult'],
                  elastics: Sequence['outputs.GetResourceResourceElasticResult'],
+                 gcp_consoles: Sequence['outputs.GetResourceResourceGcpConsoleResult'],
                  gcps: Sequence['outputs.GetResourceResourceGcpResult'],
+                 gcpwifs: Sequence['outputs.GetResourceResourceGcpwifResult'],
                  google_gke_user_impersonations: Sequence['outputs.GetResourceResourceGoogleGkeUserImpersonationResult'],
                  google_gkes: Sequence['outputs.GetResourceResourceGoogleGkeResult'],
                  greenplums: Sequence['outputs.GetResourceResourceGreenplumResult'],
@@ -22282,6 +22875,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "aws", aws)
         pulumi.set(__self__, "aws_console_static_key_pairs", aws_console_static_key_pairs)
         pulumi.set(__self__, "aws_consoles", aws_consoles)
+        pulumi.set(__self__, "aws_instance_profiles", aws_instance_profiles)
         pulumi.set(__self__, "azure_certificates", azure_certificates)
         pulumi.set(__self__, "azure_mysqls", azure_mysqls)
         pulumi.set(__self__, "azure_postgres", azure_postgres)
@@ -22302,7 +22896,9 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "dynamo_dbs", dynamo_dbs)
         pulumi.set(__self__, "elasticache_redis", elasticache_redis)
         pulumi.set(__self__, "elastics", elastics)
+        pulumi.set(__self__, "gcp_consoles", gcp_consoles)
         pulumi.set(__self__, "gcps", gcps)
+        pulumi.set(__self__, "gcpwifs", gcpwifs)
         pulumi.set(__self__, "google_gke_user_impersonations", google_gke_user_impersonations)
         pulumi.set(__self__, "google_gkes", google_gkes)
         pulumi.set(__self__, "greenplums", greenplums)
@@ -22443,6 +23039,11 @@ class GetResourceResourceResult(dict):
         return pulumi.get(self, "aws_consoles")
 
     @property
+    @pulumi.getter(name="awsInstanceProfiles")
+    def aws_instance_profiles(self) -> Sequence['outputs.GetResourceResourceAwsInstanceProfileResult']:
+        return pulumi.get(self, "aws_instance_profiles")
+
+    @property
     @pulumi.getter(name="azureCertificates")
     def azure_certificates(self) -> Sequence['outputs.GetResourceResourceAzureCertificateResult']:
         return pulumi.get(self, "azure_certificates")
@@ -22543,9 +23144,19 @@ class GetResourceResourceResult(dict):
         return pulumi.get(self, "elastics")
 
     @property
+    @pulumi.getter(name="gcpConsoles")
+    def gcp_consoles(self) -> Sequence['outputs.GetResourceResourceGcpConsoleResult']:
+        return pulumi.get(self, "gcp_consoles")
+
+    @property
     @pulumi.getter
     def gcps(self) -> Sequence['outputs.GetResourceResourceGcpResult']:
         return pulumi.get(self, "gcps")
+
+    @property
+    @pulumi.getter
+    def gcpwifs(self) -> Sequence['outputs.GetResourceResourceGcpwifResult']:
+        return pulumi.get(self, "gcpwifs")
 
     @property
     @pulumi.getter(name="googleGkeUserImpersonations")
@@ -26093,7 +26704,7 @@ class GetResourceResourceAwsConsoleResult(dict):
         :param str role_arn: The role to assume after logging in.
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param int session_expiry: The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -26238,7 +26849,7 @@ class GetResourceResourceAwsConsoleResult(dict):
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> Optional[int]:
         """
-        The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        The length of time in seconds console sessions will live before needing to reauthenticate.
         """
         return pulumi.get(self, "session_expiry")
 
@@ -26294,7 +26905,7 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
         :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
         :param str secret_access_key: The Secret Access Key to use to authenticate.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param int session_expiry: The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         """
@@ -26449,9 +27060,172 @@ class GetResourceResourceAwsConsoleStaticKeyPairResult(dict):
     @pulumi.getter(name="sessionExpiry")
     def session_expiry(self) -> Optional[int]:
         """
-        The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        The length of time in seconds console sessions will live before needing to reauthenticate.
         """
         return pulumi.get(self, "session_expiry")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetResourceResourceAwsInstanceProfileResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 enable_env_variables: Optional[bool] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 role_external_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param bool enable_env_variables: If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str region: The AWS region to connect to.
+        :param str role_arn: The role to assume after logging in.
+        :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if enable_env_variables is not None:
+            pulumi.set(__self__, "enable_env_variables", enable_env_variables)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if role_external_id is not None:
+            pulumi.set(__self__, "role_external_id", role_external_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="enableEnvVariables")
+    def enable_env_variables(self) -> Optional[bool]:
+        """
+        If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+        """
+        return pulumi.get(self, "enable_env_variables")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        The role to assume after logging in.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="roleExternalId")
+    def role_external_id(self) -> Optional[str]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
+        return pulumi.get(self, "role_external_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
 
     @property
     @pulumi.getter
@@ -30161,6 +30935,372 @@ class GetResourceResourceGcpResult(dict):
         Tags is a map of key, value pairs.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetResourceResourceGcpConsoleResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 id: Optional[str] = None,
+                 identity_alias_healthcheck_username: Optional[str] = None,
+                 identity_set_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 session_expiry: Optional[int] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 workforce_pool_id: Optional[str] = None,
+                 workforce_provider_id: Optional[str] = None):
+        """
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str id: Unique identifier of the Resource.
+        :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param str identity_set_id: The ID of the identity set to use for identity connections.
+        :param str name: Unique human-readable name of the Resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str workforce_pool_id: The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        :param str workforce_provider_id: The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+               * google_gke:
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if session_expiry is not None:
+            pulumi.set(__self__, "session_expiry", session_expiry)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if workforce_pool_id is not None:
+            pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+        if workforce_provider_id is not None:
+            pulumi.set(__self__, "workforce_provider_id", workforce_provider_id)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[str]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[str]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter(name="sessionExpiry")
+    def session_expiry(self) -> Optional[int]:
+        """
+        The length of time in seconds console sessions will live before needing to reauthenticate.
+        """
+        return pulumi.get(self, "session_expiry")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="workforcePoolId")
+    def workforce_pool_id(self) -> Optional[str]:
+        """
+        The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        """
+        return pulumi.get(self, "workforce_pool_id")
+
+    @property
+    @pulumi.getter(name="workforceProviderId")
+    def workforce_provider_id(self) -> Optional[str]:
+        """
+        The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+        * google_gke:
+        """
+        return pulumi.get(self, "workforce_provider_id")
+
+
+@pulumi.output_type
+class GetResourceResourceGcpwifResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 id: Optional[str] = None,
+                 identity_alias_healthcheck_username: Optional[str] = None,
+                 identity_set_id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 scopes: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 session_expiry: Optional[int] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 workforce_pool_id: Optional[str] = None,
+                 workforce_provider_id: Optional[str] = None):
+        """
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str id: Unique identifier of the Resource.
+        :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param str identity_set_id: The ID of the identity set to use for identity connections.
+        :param str name: Unique human-readable name of the Resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str scopes: Space separated scopes that this login should assume into when authenticating.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str workforce_pool_id: The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        :param str workforce_provider_id: The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+               * google_gke:
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if session_expiry is not None:
+            pulumi.set(__self__, "session_expiry", session_expiry)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if workforce_pool_id is not None:
+            pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+        if workforce_provider_id is not None:
+            pulumi.set(__self__, "workforce_provider_id", workforce_provider_id)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[str]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[str]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[str]:
+        """
+        Space separated scopes that this login should assume into when authenticating.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter(name="sessionExpiry")
+    def session_expiry(self) -> Optional[int]:
+        """
+        The length of time in seconds console sessions will live before needing to reauthenticate.
+        """
+        return pulumi.get(self, "session_expiry")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="workforcePoolId")
+    def workforce_pool_id(self) -> Optional[str]:
+        """
+        The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        """
+        return pulumi.get(self, "workforce_pool_id")
+
+    @property
+    @pulumi.getter(name="workforceProviderId")
+    def workforce_provider_id(self) -> Optional[str]:
+        """
+        The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+        * google_gke:
+        """
+        return pulumi.get(self, "workforce_provider_id")
 
 
 @pulumi.output_type

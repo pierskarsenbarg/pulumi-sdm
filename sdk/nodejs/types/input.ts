@@ -1250,7 +1250,7 @@ export interface ResourceAwsConsole {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
      */
     sessionExpiry?: pulumi.Input<number>;
     /**
@@ -1317,13 +1317,64 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     secretStoreId?: pulumi.Input<string>;
     /**
-     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
      */
     sessionExpiry?: pulumi.Input<number>;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
     subdomain: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface ResourceAwsInstanceProfile {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+     */
+    enableEnvVariables?: pulumi.Input<boolean>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * The AWS region to connect to.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
     /**
      * Tags is a map of key, value pairs.
      */
@@ -2490,6 +2541,122 @@ export interface ResourceGcp {
      * Tags is a map of key, value pairs.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface ResourceGcpConsole {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
+     */
+    sessionExpiry?: pulumi.Input<number>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+     */
+    workforcePoolId: pulumi.Input<string>;
+    /**
+     * The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+     * * google_gke:
+     */
+    workforceProviderId: pulumi.Input<string>;
+}
+
+export interface ResourceGcpwif {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * Space separated scopes that this login should assume into when authenticating.
+     */
+    scopes: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
+     */
+    sessionExpiry?: pulumi.Input<number>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+     */
+    workforcePoolId: pulumi.Input<string>;
+    /**
+     * The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+     * * google_gke:
+     */
+    workforceProviderId: pulumi.Input<string>;
 }
 
 export interface ResourceGoogleGke {

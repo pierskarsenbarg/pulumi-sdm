@@ -86,7 +86,7 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? SecretStoreId { get; set; }
 
         /// <summary>
-        /// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        /// The length of time in seconds console sessions will live before needing to reauthenticate.
         /// </summary>
         [Input("sessionExpiry")]
         public Input<int>? SessionExpiry { get; set; }

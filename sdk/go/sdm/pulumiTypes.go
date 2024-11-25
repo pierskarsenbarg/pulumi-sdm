@@ -8151,7 +8151,7 @@ type ResourceAwsConsole struct {
 	RoleExternalId *string `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
 	SessionExpiry *int `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain string `pulumi:"subdomain"`
@@ -8195,7 +8195,7 @@ type ResourceAwsConsoleArgs struct {
 	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
 	SessionExpiry pulumi.IntPtrInput `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringInput `pulumi:"subdomain"`
@@ -8340,7 +8340,7 @@ func (o ResourceAwsConsoleOutput) SecretStoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceAwsConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+// The length of time in seconds console sessions will live before needing to reauthenticate.
 func (o ResourceAwsConsoleOutput) SessionExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAwsConsole) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
 }
@@ -8499,7 +8499,7 @@ func (o ResourceAwsConsolePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+// The length of time in seconds console sessions will live before needing to reauthenticate.
 func (o ResourceAwsConsolePtrOutput) SessionExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourceAwsConsole) *int {
 		if v == nil {
@@ -8556,7 +8556,7 @@ type ResourceAwsConsoleStaticKeyPair struct {
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
 	SessionExpiry *int `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain string `pulumi:"subdomain"`
@@ -8602,7 +8602,7 @@ type ResourceAwsConsoleStaticKeyPairArgs struct {
 	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
 	SessionExpiry pulumi.IntPtrInput `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringInput `pulumi:"subdomain"`
@@ -8752,7 +8752,7 @@ func (o ResourceAwsConsoleStaticKeyPairOutput) SecretStoreId() pulumi.StringPtrO
 	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+// The length of time in seconds console sessions will live before needing to reauthenticate.
 func (o ResourceAwsConsoleStaticKeyPairOutput) SessionExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceAwsConsoleStaticKeyPair) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
 }
@@ -8921,7 +8921,7 @@ func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SecretStoreId() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+// The length of time in seconds console sessions will live before needing to reauthenticate.
 func (o ResourceAwsConsoleStaticKeyPairPtrOutput) SessionExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) *int {
 		if v == nil {
@@ -8944,6 +8944,352 @@ func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Subdomain() pulumi.StringPtrOu
 // Tags is a map of key, value pairs.
 func (o ResourceAwsConsoleStaticKeyPairPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceAwsConsoleStaticKeyPair) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type ResourceAwsInstanceProfile struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+	EnableEnvVariables *bool `pulumi:"enableEnvVariables"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn *string `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceAwsInstanceProfileInput is an input type that accepts ResourceAwsInstanceProfileArgs and ResourceAwsInstanceProfileOutput values.
+// You can construct a concrete instance of `ResourceAwsInstanceProfileInput` via:
+//
+//	ResourceAwsInstanceProfileArgs{...}
+type ResourceAwsInstanceProfileInput interface {
+	pulumi.Input
+
+	ToResourceAwsInstanceProfileOutput() ResourceAwsInstanceProfileOutput
+	ToResourceAwsInstanceProfileOutputWithContext(context.Context) ResourceAwsInstanceProfileOutput
+}
+
+type ResourceAwsInstanceProfileArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+	EnableEnvVariables pulumi.BoolPtrInput `pulumi:"enableEnvVariables"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceAwsInstanceProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAwsInstanceProfile)(nil)).Elem()
+}
+
+func (i ResourceAwsInstanceProfileArgs) ToResourceAwsInstanceProfileOutput() ResourceAwsInstanceProfileOutput {
+	return i.ToResourceAwsInstanceProfileOutputWithContext(context.Background())
+}
+
+func (i ResourceAwsInstanceProfileArgs) ToResourceAwsInstanceProfileOutputWithContext(ctx context.Context) ResourceAwsInstanceProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsInstanceProfileOutput)
+}
+
+func (i ResourceAwsInstanceProfileArgs) ToResourceAwsInstanceProfilePtrOutput() ResourceAwsInstanceProfilePtrOutput {
+	return i.ToResourceAwsInstanceProfilePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAwsInstanceProfileArgs) ToResourceAwsInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAwsInstanceProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsInstanceProfileOutput).ToResourceAwsInstanceProfilePtrOutputWithContext(ctx)
+}
+
+// ResourceAwsInstanceProfilePtrInput is an input type that accepts ResourceAwsInstanceProfileArgs, ResourceAwsInstanceProfilePtr and ResourceAwsInstanceProfilePtrOutput values.
+// You can construct a concrete instance of `ResourceAwsInstanceProfilePtrInput` via:
+//
+//	        ResourceAwsInstanceProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAwsInstanceProfilePtrInput interface {
+	pulumi.Input
+
+	ToResourceAwsInstanceProfilePtrOutput() ResourceAwsInstanceProfilePtrOutput
+	ToResourceAwsInstanceProfilePtrOutputWithContext(context.Context) ResourceAwsInstanceProfilePtrOutput
+}
+
+type resourceAwsInstanceProfilePtrType ResourceAwsInstanceProfileArgs
+
+func ResourceAwsInstanceProfilePtr(v *ResourceAwsInstanceProfileArgs) ResourceAwsInstanceProfilePtrInput {
+	return (*resourceAwsInstanceProfilePtrType)(v)
+}
+
+func (*resourceAwsInstanceProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAwsInstanceProfile)(nil)).Elem()
+}
+
+func (i *resourceAwsInstanceProfilePtrType) ToResourceAwsInstanceProfilePtrOutput() ResourceAwsInstanceProfilePtrOutput {
+	return i.ToResourceAwsInstanceProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAwsInstanceProfilePtrType) ToResourceAwsInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAwsInstanceProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAwsInstanceProfilePtrOutput)
+}
+
+type ResourceAwsInstanceProfileOutput struct{ *pulumi.OutputState }
+
+func (ResourceAwsInstanceProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAwsInstanceProfile)(nil)).Elem()
+}
+
+func (o ResourceAwsInstanceProfileOutput) ToResourceAwsInstanceProfileOutput() ResourceAwsInstanceProfileOutput {
+	return o
+}
+
+func (o ResourceAwsInstanceProfileOutput) ToResourceAwsInstanceProfileOutputWithContext(ctx context.Context) ResourceAwsInstanceProfileOutput {
+	return o
+}
+
+func (o ResourceAwsInstanceProfileOutput) ToResourceAwsInstanceProfilePtrOutput() ResourceAwsInstanceProfilePtrOutput {
+	return o.ToResourceAwsInstanceProfilePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAwsInstanceProfileOutput) ToResourceAwsInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAwsInstanceProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAwsInstanceProfile) *ResourceAwsInstanceProfile {
+		return &v
+	}).(ResourceAwsInstanceProfilePtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAwsInstanceProfileOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAwsInstanceProfileOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+func (o ResourceAwsInstanceProfileOutput) EnableEnvVariables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *bool { return v.EnableEnvVariables }).(pulumi.BoolPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAwsInstanceProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAwsInstanceProfileOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAwsInstanceProfileOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAwsInstanceProfileOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The role to assume after logging in.
+func (o ResourceAwsInstanceProfileOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o ResourceAwsInstanceProfileOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAwsInstanceProfileOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAwsInstanceProfileOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAwsInstanceProfileOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAwsInstanceProfile) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceAwsInstanceProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAwsInstanceProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAwsInstanceProfile)(nil)).Elem()
+}
+
+func (o ResourceAwsInstanceProfilePtrOutput) ToResourceAwsInstanceProfilePtrOutput() ResourceAwsInstanceProfilePtrOutput {
+	return o
+}
+
+func (o ResourceAwsInstanceProfilePtrOutput) ToResourceAwsInstanceProfilePtrOutputWithContext(ctx context.Context) ResourceAwsInstanceProfilePtrOutput {
+	return o
+}
+
+func (o ResourceAwsInstanceProfilePtrOutput) Elem() ResourceAwsInstanceProfileOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) ResourceAwsInstanceProfile {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAwsInstanceProfile
+		return ret
+	}).(ResourceAwsInstanceProfileOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAwsInstanceProfilePtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAwsInstanceProfilePtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+func (o ResourceAwsInstanceProfilePtrOutput) EnableEnvVariables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableEnvVariables
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAwsInstanceProfilePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAwsInstanceProfilePtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAwsInstanceProfilePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAwsInstanceProfilePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o ResourceAwsInstanceProfilePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o ResourceAwsInstanceProfilePtrOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAwsInstanceProfilePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAwsInstanceProfilePtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAwsInstanceProfilePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAwsInstanceProfile) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -16645,6 +16991,763 @@ func (o ResourceGcpPtrOutput) Tags() pulumi.StringMapOutput {
 		}
 		return v.Tags
 	}).(pulumi.StringMapOutput)
+}
+
+type ResourceGcpConsole struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
+	SessionExpiry *int `pulumi:"sessionExpiry"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+	WorkforcePoolId string `pulumi:"workforcePoolId"`
+	// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+	// * google_gke:
+	WorkforceProviderId string `pulumi:"workforceProviderId"`
+}
+
+// ResourceGcpConsoleInput is an input type that accepts ResourceGcpConsoleArgs and ResourceGcpConsoleOutput values.
+// You can construct a concrete instance of `ResourceGcpConsoleInput` via:
+//
+//	ResourceGcpConsoleArgs{...}
+type ResourceGcpConsoleInput interface {
+	pulumi.Input
+
+	ToResourceGcpConsoleOutput() ResourceGcpConsoleOutput
+	ToResourceGcpConsoleOutputWithContext(context.Context) ResourceGcpConsoleOutput
+}
+
+type ResourceGcpConsoleArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
+	SessionExpiry pulumi.IntPtrInput `pulumi:"sessionExpiry"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+	WorkforcePoolId pulumi.StringInput `pulumi:"workforcePoolId"`
+	// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+	// * google_gke:
+	WorkforceProviderId pulumi.StringInput `pulumi:"workforceProviderId"`
+}
+
+func (ResourceGcpConsoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGcpConsole)(nil)).Elem()
+}
+
+func (i ResourceGcpConsoleArgs) ToResourceGcpConsoleOutput() ResourceGcpConsoleOutput {
+	return i.ToResourceGcpConsoleOutputWithContext(context.Background())
+}
+
+func (i ResourceGcpConsoleArgs) ToResourceGcpConsoleOutputWithContext(ctx context.Context) ResourceGcpConsoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGcpConsoleOutput)
+}
+
+func (i ResourceGcpConsoleArgs) ToResourceGcpConsolePtrOutput() ResourceGcpConsolePtrOutput {
+	return i.ToResourceGcpConsolePtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGcpConsoleArgs) ToResourceGcpConsolePtrOutputWithContext(ctx context.Context) ResourceGcpConsolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGcpConsoleOutput).ToResourceGcpConsolePtrOutputWithContext(ctx)
+}
+
+// ResourceGcpConsolePtrInput is an input type that accepts ResourceGcpConsoleArgs, ResourceGcpConsolePtr and ResourceGcpConsolePtrOutput values.
+// You can construct a concrete instance of `ResourceGcpConsolePtrInput` via:
+//
+//	        ResourceGcpConsoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceGcpConsolePtrInput interface {
+	pulumi.Input
+
+	ToResourceGcpConsolePtrOutput() ResourceGcpConsolePtrOutput
+	ToResourceGcpConsolePtrOutputWithContext(context.Context) ResourceGcpConsolePtrOutput
+}
+
+type resourceGcpConsolePtrType ResourceGcpConsoleArgs
+
+func ResourceGcpConsolePtr(v *ResourceGcpConsoleArgs) ResourceGcpConsolePtrInput {
+	return (*resourceGcpConsolePtrType)(v)
+}
+
+func (*resourceGcpConsolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGcpConsole)(nil)).Elem()
+}
+
+func (i *resourceGcpConsolePtrType) ToResourceGcpConsolePtrOutput() ResourceGcpConsolePtrOutput {
+	return i.ToResourceGcpConsolePtrOutputWithContext(context.Background())
+}
+
+func (i *resourceGcpConsolePtrType) ToResourceGcpConsolePtrOutputWithContext(ctx context.Context) ResourceGcpConsolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGcpConsolePtrOutput)
+}
+
+type ResourceGcpConsoleOutput struct{ *pulumi.OutputState }
+
+func (ResourceGcpConsoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGcpConsole)(nil)).Elem()
+}
+
+func (o ResourceGcpConsoleOutput) ToResourceGcpConsoleOutput() ResourceGcpConsoleOutput {
+	return o
+}
+
+func (o ResourceGcpConsoleOutput) ToResourceGcpConsoleOutputWithContext(ctx context.Context) ResourceGcpConsoleOutput {
+	return o
+}
+
+func (o ResourceGcpConsoleOutput) ToResourceGcpConsolePtrOutput() ResourceGcpConsolePtrOutput {
+	return o.ToResourceGcpConsolePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGcpConsoleOutput) ToResourceGcpConsolePtrOutputWithContext(ctx context.Context) ResourceGcpConsolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGcpConsole) *ResourceGcpConsole {
+		return &v
+	}).(ResourceGcpConsolePtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceGcpConsoleOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceGcpConsoleOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceGcpConsoleOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceGcpConsoleOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceGcpConsoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceGcpConsoleOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGcpConsoleOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceGcpConsoleOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// The length of time in seconds console sessions will live before needing to reauthenticate.
+func (o ResourceGcpConsoleOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceGcpConsoleOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) string { return v.Subdomain }).(pulumi.StringOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceGcpConsoleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+func (o ResourceGcpConsoleOutput) WorkforcePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) string { return v.WorkforcePoolId }).(pulumi.StringOutput)
+}
+
+// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+// * google_gke:
+func (o ResourceGcpConsoleOutput) WorkforceProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGcpConsole) string { return v.WorkforceProviderId }).(pulumi.StringOutput)
+}
+
+type ResourceGcpConsolePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGcpConsolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGcpConsole)(nil)).Elem()
+}
+
+func (o ResourceGcpConsolePtrOutput) ToResourceGcpConsolePtrOutput() ResourceGcpConsolePtrOutput {
+	return o
+}
+
+func (o ResourceGcpConsolePtrOutput) ToResourceGcpConsolePtrOutputWithContext(ctx context.Context) ResourceGcpConsolePtrOutput {
+	return o
+}
+
+func (o ResourceGcpConsolePtrOutput) Elem() ResourceGcpConsoleOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) ResourceGcpConsole {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGcpConsole
+		return ret
+	}).(ResourceGcpConsoleOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceGcpConsolePtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceGcpConsolePtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceGcpConsolePtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceGcpConsolePtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceGcpConsolePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceGcpConsolePtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGcpConsolePtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceGcpConsolePtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The length of time in seconds console sessions will live before needing to reauthenticate.
+func (o ResourceGcpConsolePtrOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionExpiry
+	}).(pulumi.IntPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceGcpConsolePtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceGcpConsolePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+func (o ResourceGcpConsolePtrOutput) WorkforcePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkforcePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+// * google_gke:
+func (o ResourceGcpConsolePtrOutput) WorkforceProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkforceProviderId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceGcpwif struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// Space separated scopes that this login should assume into when authenticating.
+	Scopes string `pulumi:"scopes"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
+	SessionExpiry *int `pulumi:"sessionExpiry"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+	WorkforcePoolId string `pulumi:"workforcePoolId"`
+	// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+	// * google_gke:
+	WorkforceProviderId string `pulumi:"workforceProviderId"`
+}
+
+// ResourceGcpwifInput is an input type that accepts ResourceGcpwifArgs and ResourceGcpwifOutput values.
+// You can construct a concrete instance of `ResourceGcpwifInput` via:
+//
+//	ResourceGcpwifArgs{...}
+type ResourceGcpwifInput interface {
+	pulumi.Input
+
+	ToResourceGcpwifOutput() ResourceGcpwifOutput
+	ToResourceGcpwifOutputWithContext(context.Context) ResourceGcpwifOutput
+}
+
+type ResourceGcpwifArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// Space separated scopes that this login should assume into when authenticating.
+	Scopes pulumi.StringInput `pulumi:"scopes"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
+	SessionExpiry pulumi.IntPtrInput `pulumi:"sessionExpiry"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+	WorkforcePoolId pulumi.StringInput `pulumi:"workforcePoolId"`
+	// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+	// * google_gke:
+	WorkforceProviderId pulumi.StringInput `pulumi:"workforceProviderId"`
+}
+
+func (ResourceGcpwifArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGcpwif)(nil)).Elem()
+}
+
+func (i ResourceGcpwifArgs) ToResourceGcpwifOutput() ResourceGcpwifOutput {
+	return i.ToResourceGcpwifOutputWithContext(context.Background())
+}
+
+func (i ResourceGcpwifArgs) ToResourceGcpwifOutputWithContext(ctx context.Context) ResourceGcpwifOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGcpwifOutput)
+}
+
+func (i ResourceGcpwifArgs) ToResourceGcpwifPtrOutput() ResourceGcpwifPtrOutput {
+	return i.ToResourceGcpwifPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceGcpwifArgs) ToResourceGcpwifPtrOutputWithContext(ctx context.Context) ResourceGcpwifPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGcpwifOutput).ToResourceGcpwifPtrOutputWithContext(ctx)
+}
+
+// ResourceGcpwifPtrInput is an input type that accepts ResourceGcpwifArgs, ResourceGcpwifPtr and ResourceGcpwifPtrOutput values.
+// You can construct a concrete instance of `ResourceGcpwifPtrInput` via:
+//
+//	        ResourceGcpwifArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceGcpwifPtrInput interface {
+	pulumi.Input
+
+	ToResourceGcpwifPtrOutput() ResourceGcpwifPtrOutput
+	ToResourceGcpwifPtrOutputWithContext(context.Context) ResourceGcpwifPtrOutput
+}
+
+type resourceGcpwifPtrType ResourceGcpwifArgs
+
+func ResourceGcpwifPtr(v *ResourceGcpwifArgs) ResourceGcpwifPtrInput {
+	return (*resourceGcpwifPtrType)(v)
+}
+
+func (*resourceGcpwifPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGcpwif)(nil)).Elem()
+}
+
+func (i *resourceGcpwifPtrType) ToResourceGcpwifPtrOutput() ResourceGcpwifPtrOutput {
+	return i.ToResourceGcpwifPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceGcpwifPtrType) ToResourceGcpwifPtrOutputWithContext(ctx context.Context) ResourceGcpwifPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceGcpwifPtrOutput)
+}
+
+type ResourceGcpwifOutput struct{ *pulumi.OutputState }
+
+func (ResourceGcpwifOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGcpwif)(nil)).Elem()
+}
+
+func (o ResourceGcpwifOutput) ToResourceGcpwifOutput() ResourceGcpwifOutput {
+	return o
+}
+
+func (o ResourceGcpwifOutput) ToResourceGcpwifOutputWithContext(ctx context.Context) ResourceGcpwifOutput {
+	return o
+}
+
+func (o ResourceGcpwifOutput) ToResourceGcpwifPtrOutput() ResourceGcpwifPtrOutput {
+	return o.ToResourceGcpwifPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGcpwifOutput) ToResourceGcpwifPtrOutputWithContext(ctx context.Context) ResourceGcpwifPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGcpwif) *ResourceGcpwif {
+		return &v
+	}).(ResourceGcpwifPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceGcpwifOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceGcpwifOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceGcpwifOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceGcpwifOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceGcpwifOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGcpwif) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceGcpwifOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGcpwifOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// Space separated scopes that this login should assume into when authenticating.
+func (o ResourceGcpwifOutput) Scopes() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGcpwif) string { return v.Scopes }).(pulumi.StringOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceGcpwifOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// The length of time in seconds console sessions will live before needing to reauthenticate.
+func (o ResourceGcpwifOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceGcpwifOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceGcpwifOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceGcpwif) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+func (o ResourceGcpwifOutput) WorkforcePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGcpwif) string { return v.WorkforcePoolId }).(pulumi.StringOutput)
+}
+
+// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+// * google_gke:
+func (o ResourceGcpwifOutput) WorkforceProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceGcpwif) string { return v.WorkforceProviderId }).(pulumi.StringOutput)
+}
+
+type ResourceGcpwifPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGcpwifPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceGcpwif)(nil)).Elem()
+}
+
+func (o ResourceGcpwifPtrOutput) ToResourceGcpwifPtrOutput() ResourceGcpwifPtrOutput {
+	return o
+}
+
+func (o ResourceGcpwifPtrOutput) ToResourceGcpwifPtrOutputWithContext(ctx context.Context) ResourceGcpwifPtrOutput {
+	return o
+}
+
+func (o ResourceGcpwifPtrOutput) Elem() ResourceGcpwifOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) ResourceGcpwif {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceGcpwif
+		return ret
+	}).(ResourceGcpwifOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceGcpwifPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceGcpwifPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceGcpwifPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceGcpwifPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceGcpwifPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceGcpwifPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceGcpwifPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Space separated scopes that this login should assume into when authenticating.
+func (o ResourceGcpwifPtrOutput) Scopes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scopes
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceGcpwifPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The length of time in seconds console sessions will live before needing to reauthenticate.
+func (o ResourceGcpwifPtrOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SessionExpiry
+	}).(pulumi.IntPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceGcpwifPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceGcpwifPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+func (o ResourceGcpwifPtrOutput) WorkforcePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkforcePoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+// * google_gke:
+func (o ResourceGcpwifPtrOutput) WorkforceProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WorkforceProviderId
+	}).(pulumi.StringPtrOutput)
 }
 
 type ResourceGoogleGke struct {
@@ -43569,6 +44672,7 @@ type GetResourceResource struct {
 	Aws                                        []GetResourceResourceAw                                        `pulumi:"aws"`
 	AwsConsoleStaticKeyPairs                   []GetResourceResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPairs"`
 	AwsConsoles                                []GetResourceResourceAwsConsole                                `pulumi:"awsConsoles"`
+	AwsInstanceProfiles                        []GetResourceResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfiles"`
 	AzureCertificates                          []GetResourceResourceAzureCertificate                          `pulumi:"azureCertificates"`
 	AzureMysqls                                []GetResourceResourceAzureMysql                                `pulumi:"azureMysqls"`
 	AzurePostgres                              []GetResourceResourceAzurePostgre                              `pulumi:"azurePostgres"`
@@ -43589,7 +44693,9 @@ type GetResourceResource struct {
 	DynamoDbs                                  []GetResourceResourceDynamoDb                                  `pulumi:"dynamoDbs"`
 	ElasticacheRedis                           []GetResourceResourceElasticacheRedi                           `pulumi:"elasticacheRedis"`
 	Elastics                                   []GetResourceResourceElastic                                   `pulumi:"elastics"`
+	GcpConsoles                                []GetResourceResourceGcpConsole                                `pulumi:"gcpConsoles"`
 	Gcps                                       []GetResourceResourceGcp                                       `pulumi:"gcps"`
+	Gcpwifs                                    []GetResourceResourceGcpwif                                    `pulumi:"gcpwifs"`
 	GoogleGkeUserImpersonations                []GetResourceResourceGoogleGkeUserImpersonation                `pulumi:"googleGkeUserImpersonations"`
 	GoogleGkes                                 []GetResourceResourceGoogleGke                                 `pulumi:"googleGkes"`
 	Greenplums                                 []GetResourceResourceGreenplum                                 `pulumi:"greenplums"`
@@ -43670,6 +44776,7 @@ type GetResourceResourceArgs struct {
 	Aws                                        GetResourceResourceAwArrayInput                                        `pulumi:"aws"`
 	AwsConsoleStaticKeyPairs                   GetResourceResourceAwsConsoleStaticKeyPairArrayInput                   `pulumi:"awsConsoleStaticKeyPairs"`
 	AwsConsoles                                GetResourceResourceAwsConsoleArrayInput                                `pulumi:"awsConsoles"`
+	AwsInstanceProfiles                        GetResourceResourceAwsInstanceProfileArrayInput                        `pulumi:"awsInstanceProfiles"`
 	AzureCertificates                          GetResourceResourceAzureCertificateArrayInput                          `pulumi:"azureCertificates"`
 	AzureMysqls                                GetResourceResourceAzureMysqlArrayInput                                `pulumi:"azureMysqls"`
 	AzurePostgres                              GetResourceResourceAzurePostgreArrayInput                              `pulumi:"azurePostgres"`
@@ -43690,7 +44797,9 @@ type GetResourceResourceArgs struct {
 	DynamoDbs                                  GetResourceResourceDynamoDbArrayInput                                  `pulumi:"dynamoDbs"`
 	ElasticacheRedis                           GetResourceResourceElasticacheRediArrayInput                           `pulumi:"elasticacheRedis"`
 	Elastics                                   GetResourceResourceElasticArrayInput                                   `pulumi:"elastics"`
+	GcpConsoles                                GetResourceResourceGcpConsoleArrayInput                                `pulumi:"gcpConsoles"`
 	Gcps                                       GetResourceResourceGcpArrayInput                                       `pulumi:"gcps"`
+	Gcpwifs                                    GetResourceResourceGcpwifArrayInput                                    `pulumi:"gcpwifs"`
 	GoogleGkeUserImpersonations                GetResourceResourceGoogleGkeUserImpersonationArrayInput                `pulumi:"googleGkeUserImpersonations"`
 	GoogleGkes                                 GetResourceResourceGoogleGkeArrayInput                                 `pulumi:"googleGkes"`
 	Greenplums                                 GetResourceResourceGreenplumArrayInput                                 `pulumi:"greenplums"`
@@ -43874,6 +44983,10 @@ func (o GetResourceResourceOutput) AwsConsoles() GetResourceResourceAwsConsoleAr
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAwsConsole { return v.AwsConsoles }).(GetResourceResourceAwsConsoleArrayOutput)
 }
 
+func (o GetResourceResourceOutput) AwsInstanceProfiles() GetResourceResourceAwsInstanceProfileArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAwsInstanceProfile { return v.AwsInstanceProfiles }).(GetResourceResourceAwsInstanceProfileArrayOutput)
+}
+
 func (o GetResourceResourceOutput) AzureCertificates() GetResourceResourceAzureCertificateArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAzureCertificate { return v.AzureCertificates }).(GetResourceResourceAzureCertificateArrayOutput)
 }
@@ -43956,8 +45069,16 @@ func (o GetResourceResourceOutput) Elastics() GetResourceResourceElasticArrayOut
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceElastic { return v.Elastics }).(GetResourceResourceElasticArrayOutput)
 }
 
+func (o GetResourceResourceOutput) GcpConsoles() GetResourceResourceGcpConsoleArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceGcpConsole { return v.GcpConsoles }).(GetResourceResourceGcpConsoleArrayOutput)
+}
+
 func (o GetResourceResourceOutput) Gcps() GetResourceResourceGcpArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceGcp { return v.Gcps }).(GetResourceResourceGcpArrayOutput)
+}
+
+func (o GetResourceResourceOutput) Gcpwifs() GetResourceResourceGcpwifArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceGcpwif { return v.Gcpwifs }).(GetResourceResourceGcpwifArrayOutput)
 }
 
 func (o GetResourceResourceOutput) GoogleGkeUserImpersonations() GetResourceResourceGoogleGkeUserImpersonationArrayOutput {
@@ -47994,7 +49115,7 @@ type GetResourceResourceAwsConsole struct {
 	RoleExternalId *string `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
 	SessionExpiry *int `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
@@ -48040,7 +49161,7 @@ type GetResourceResourceAwsConsoleArgs struct {
 	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
 	SessionExpiry pulumi.IntPtrInput `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
@@ -48164,7 +49285,7 @@ func (o GetResourceResourceAwsConsoleOutput) SecretStoreId() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetResourceResourceAwsConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+// The length of time in seconds console sessions will live before needing to reauthenticate.
 func (o GetResourceResourceAwsConsoleOutput) SessionExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsole) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
 }
@@ -48228,7 +49349,7 @@ type GetResourceResourceAwsConsoleStaticKeyPair struct {
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
-	// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
 	SessionExpiry *int `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
@@ -48276,7 +49397,7 @@ type GetResourceResourceAwsConsoleStaticKeyPairArgs struct {
 	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
-	// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
 	SessionExpiry pulumi.IntPtrInput `pulumi:"sessionExpiry"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
@@ -48405,7 +49526,7 @@ func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) SecretStoreId() pulumi
 	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
 }
 
-// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+// The length of time in seconds console sessions will live before needing to reauthenticate.
 func (o GetResourceResourceAwsConsoleStaticKeyPairOutput) SessionExpiry() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceAwsConsoleStaticKeyPair) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
 }
@@ -48438,6 +49559,211 @@ func (o GetResourceResourceAwsConsoleStaticKeyPairArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAwsConsoleStaticKeyPair {
 		return vs[0].([]GetResourceResourceAwsConsoleStaticKeyPair)[vs[1].(int)]
 	}).(GetResourceResourceAwsConsoleStaticKeyPairOutput)
+}
+
+type GetResourceResourceAwsInstanceProfile struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+	EnableEnvVariables *bool `pulumi:"enableEnvVariables"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn *string `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceAwsInstanceProfileInput is an input type that accepts GetResourceResourceAwsInstanceProfileArgs and GetResourceResourceAwsInstanceProfileOutput values.
+// You can construct a concrete instance of `GetResourceResourceAwsInstanceProfileInput` via:
+//
+//	GetResourceResourceAwsInstanceProfileArgs{...}
+type GetResourceResourceAwsInstanceProfileInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAwsInstanceProfileOutput() GetResourceResourceAwsInstanceProfileOutput
+	ToGetResourceResourceAwsInstanceProfileOutputWithContext(context.Context) GetResourceResourceAwsInstanceProfileOutput
+}
+
+type GetResourceResourceAwsInstanceProfileArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+	EnableEnvVariables pulumi.BoolPtrInput `pulumi:"enableEnvVariables"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceAwsInstanceProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAwsInstanceProfile)(nil)).Elem()
+}
+
+func (i GetResourceResourceAwsInstanceProfileArgs) ToGetResourceResourceAwsInstanceProfileOutput() GetResourceResourceAwsInstanceProfileOutput {
+	return i.ToGetResourceResourceAwsInstanceProfileOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAwsInstanceProfileArgs) ToGetResourceResourceAwsInstanceProfileOutputWithContext(ctx context.Context) GetResourceResourceAwsInstanceProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsInstanceProfileOutput)
+}
+
+// GetResourceResourceAwsInstanceProfileArrayInput is an input type that accepts GetResourceResourceAwsInstanceProfileArray and GetResourceResourceAwsInstanceProfileArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAwsInstanceProfileArrayInput` via:
+//
+//	GetResourceResourceAwsInstanceProfileArray{ GetResourceResourceAwsInstanceProfileArgs{...} }
+type GetResourceResourceAwsInstanceProfileArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAwsInstanceProfileArrayOutput() GetResourceResourceAwsInstanceProfileArrayOutput
+	ToGetResourceResourceAwsInstanceProfileArrayOutputWithContext(context.Context) GetResourceResourceAwsInstanceProfileArrayOutput
+}
+
+type GetResourceResourceAwsInstanceProfileArray []GetResourceResourceAwsInstanceProfileInput
+
+func (GetResourceResourceAwsInstanceProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAwsInstanceProfile)(nil)).Elem()
+}
+
+func (i GetResourceResourceAwsInstanceProfileArray) ToGetResourceResourceAwsInstanceProfileArrayOutput() GetResourceResourceAwsInstanceProfileArrayOutput {
+	return i.ToGetResourceResourceAwsInstanceProfileArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAwsInstanceProfileArray) ToGetResourceResourceAwsInstanceProfileArrayOutputWithContext(ctx context.Context) GetResourceResourceAwsInstanceProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAwsInstanceProfileArrayOutput)
+}
+
+type GetResourceResourceAwsInstanceProfileOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAwsInstanceProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAwsInstanceProfile)(nil)).Elem()
+}
+
+func (o GetResourceResourceAwsInstanceProfileOutput) ToGetResourceResourceAwsInstanceProfileOutput() GetResourceResourceAwsInstanceProfileOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsInstanceProfileOutput) ToGetResourceResourceAwsInstanceProfileOutputWithContext(ctx context.Context) GetResourceResourceAwsInstanceProfileOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAwsInstanceProfileOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAwsInstanceProfileOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+func (o GetResourceResourceAwsInstanceProfileOutput) EnableEnvVariables() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *bool { return v.EnableEnvVariables }).(pulumi.BoolPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAwsInstanceProfileOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAwsInstanceProfileOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceAwsInstanceProfileOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAwsInstanceProfileOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceAwsInstanceProfileOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o GetResourceResourceAwsInstanceProfileOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o GetResourceResourceAwsInstanceProfileOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAwsInstanceProfileOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAwsInstanceProfileOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAwsInstanceProfileOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAwsInstanceProfile) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceAwsInstanceProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAwsInstanceProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAwsInstanceProfile)(nil)).Elem()
+}
+
+func (o GetResourceResourceAwsInstanceProfileArrayOutput) ToGetResourceResourceAwsInstanceProfileArrayOutput() GetResourceResourceAwsInstanceProfileArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsInstanceProfileArrayOutput) ToGetResourceResourceAwsInstanceProfileArrayOutputWithContext(ctx context.Context) GetResourceResourceAwsInstanceProfileArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAwsInstanceProfileArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAwsInstanceProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAwsInstanceProfile {
+		return vs[0].([]GetResourceResourceAwsInstanceProfile)[vs[1].(int)]
+	}).(GetResourceResourceAwsInstanceProfileOutput)
 }
 
 type GetResourceResourceAzure struct {
@@ -52950,6 +54276,449 @@ func (o GetResourceResourceGcpArrayOutput) Index(i pulumi.IntInput) GetResourceR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceGcp {
 		return vs[0].([]GetResourceResourceGcp)[vs[1].(int)]
 	}).(GetResourceResourceGcpOutput)
+}
+
+type GetResourceResourceGcpConsole struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
+	SessionExpiry *int `pulumi:"sessionExpiry"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+	WorkforcePoolId *string `pulumi:"workforcePoolId"`
+	// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+	// * google_gke:
+	WorkforceProviderId *string `pulumi:"workforceProviderId"`
+}
+
+// GetResourceResourceGcpConsoleInput is an input type that accepts GetResourceResourceGcpConsoleArgs and GetResourceResourceGcpConsoleOutput values.
+// You can construct a concrete instance of `GetResourceResourceGcpConsoleInput` via:
+//
+//	GetResourceResourceGcpConsoleArgs{...}
+type GetResourceResourceGcpConsoleInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceGcpConsoleOutput() GetResourceResourceGcpConsoleOutput
+	ToGetResourceResourceGcpConsoleOutputWithContext(context.Context) GetResourceResourceGcpConsoleOutput
+}
+
+type GetResourceResourceGcpConsoleArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
+	SessionExpiry pulumi.IntPtrInput `pulumi:"sessionExpiry"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+	WorkforcePoolId pulumi.StringPtrInput `pulumi:"workforcePoolId"`
+	// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+	// * google_gke:
+	WorkforceProviderId pulumi.StringPtrInput `pulumi:"workforceProviderId"`
+}
+
+func (GetResourceResourceGcpConsoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceGcpConsole)(nil)).Elem()
+}
+
+func (i GetResourceResourceGcpConsoleArgs) ToGetResourceResourceGcpConsoleOutput() GetResourceResourceGcpConsoleOutput {
+	return i.ToGetResourceResourceGcpConsoleOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceGcpConsoleArgs) ToGetResourceResourceGcpConsoleOutputWithContext(ctx context.Context) GetResourceResourceGcpConsoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGcpConsoleOutput)
+}
+
+// GetResourceResourceGcpConsoleArrayInput is an input type that accepts GetResourceResourceGcpConsoleArray and GetResourceResourceGcpConsoleArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceGcpConsoleArrayInput` via:
+//
+//	GetResourceResourceGcpConsoleArray{ GetResourceResourceGcpConsoleArgs{...} }
+type GetResourceResourceGcpConsoleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceGcpConsoleArrayOutput() GetResourceResourceGcpConsoleArrayOutput
+	ToGetResourceResourceGcpConsoleArrayOutputWithContext(context.Context) GetResourceResourceGcpConsoleArrayOutput
+}
+
+type GetResourceResourceGcpConsoleArray []GetResourceResourceGcpConsoleInput
+
+func (GetResourceResourceGcpConsoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceGcpConsole)(nil)).Elem()
+}
+
+func (i GetResourceResourceGcpConsoleArray) ToGetResourceResourceGcpConsoleArrayOutput() GetResourceResourceGcpConsoleArrayOutput {
+	return i.ToGetResourceResourceGcpConsoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceGcpConsoleArray) ToGetResourceResourceGcpConsoleArrayOutputWithContext(ctx context.Context) GetResourceResourceGcpConsoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGcpConsoleArrayOutput)
+}
+
+type GetResourceResourceGcpConsoleOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceGcpConsoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceGcpConsole)(nil)).Elem()
+}
+
+func (o GetResourceResourceGcpConsoleOutput) ToGetResourceResourceGcpConsoleOutput() GetResourceResourceGcpConsoleOutput {
+	return o
+}
+
+func (o GetResourceResourceGcpConsoleOutput) ToGetResourceResourceGcpConsoleOutputWithContext(ctx context.Context) GetResourceResourceGcpConsoleOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceGcpConsoleOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceGcpConsoleOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceGcpConsoleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceGcpConsoleOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceGcpConsoleOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceGcpConsoleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceGcpConsoleOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceGcpConsoleOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceGcpConsoleOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// The length of time in seconds console sessions will live before needing to reauthenticate.
+func (o GetResourceResourceGcpConsoleOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceGcpConsoleOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceGcpConsoleOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+func (o GetResourceResourceGcpConsoleOutput) WorkforcePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.WorkforcePoolId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+// * google_gke:
+func (o GetResourceResourceGcpConsoleOutput) WorkforceProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpConsole) *string { return v.WorkforceProviderId }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceGcpConsoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceGcpConsoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceGcpConsole)(nil)).Elem()
+}
+
+func (o GetResourceResourceGcpConsoleArrayOutput) ToGetResourceResourceGcpConsoleArrayOutput() GetResourceResourceGcpConsoleArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceGcpConsoleArrayOutput) ToGetResourceResourceGcpConsoleArrayOutputWithContext(ctx context.Context) GetResourceResourceGcpConsoleArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceGcpConsoleArrayOutput) Index(i pulumi.IntInput) GetResourceResourceGcpConsoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceGcpConsole {
+		return vs[0].([]GetResourceResourceGcpConsole)[vs[1].(int)]
+	}).(GetResourceResourceGcpConsoleOutput)
+}
+
+type GetResourceResourceGcpwif struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// Space separated scopes that this login should assume into when authenticating.
+	Scopes *string `pulumi:"scopes"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
+	SessionExpiry *int `pulumi:"sessionExpiry"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+	WorkforcePoolId *string `pulumi:"workforcePoolId"`
+	// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+	// * google_gke:
+	WorkforceProviderId *string `pulumi:"workforceProviderId"`
+}
+
+// GetResourceResourceGcpwifInput is an input type that accepts GetResourceResourceGcpwifArgs and GetResourceResourceGcpwifOutput values.
+// You can construct a concrete instance of `GetResourceResourceGcpwifInput` via:
+//
+//	GetResourceResourceGcpwifArgs{...}
+type GetResourceResourceGcpwifInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceGcpwifOutput() GetResourceResourceGcpwifOutput
+	ToGetResourceResourceGcpwifOutputWithContext(context.Context) GetResourceResourceGcpwifOutput
+}
+
+type GetResourceResourceGcpwifArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// Space separated scopes that this login should assume into when authenticating.
+	Scopes pulumi.StringPtrInput `pulumi:"scopes"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// The length of time in seconds console sessions will live before needing to reauthenticate.
+	SessionExpiry pulumi.IntPtrInput `pulumi:"sessionExpiry"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+	WorkforcePoolId pulumi.StringPtrInput `pulumi:"workforcePoolId"`
+	// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+	// * google_gke:
+	WorkforceProviderId pulumi.StringPtrInput `pulumi:"workforceProviderId"`
+}
+
+func (GetResourceResourceGcpwifArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceGcpwif)(nil)).Elem()
+}
+
+func (i GetResourceResourceGcpwifArgs) ToGetResourceResourceGcpwifOutput() GetResourceResourceGcpwifOutput {
+	return i.ToGetResourceResourceGcpwifOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceGcpwifArgs) ToGetResourceResourceGcpwifOutputWithContext(ctx context.Context) GetResourceResourceGcpwifOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGcpwifOutput)
+}
+
+// GetResourceResourceGcpwifArrayInput is an input type that accepts GetResourceResourceGcpwifArray and GetResourceResourceGcpwifArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceGcpwifArrayInput` via:
+//
+//	GetResourceResourceGcpwifArray{ GetResourceResourceGcpwifArgs{...} }
+type GetResourceResourceGcpwifArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceGcpwifArrayOutput() GetResourceResourceGcpwifArrayOutput
+	ToGetResourceResourceGcpwifArrayOutputWithContext(context.Context) GetResourceResourceGcpwifArrayOutput
+}
+
+type GetResourceResourceGcpwifArray []GetResourceResourceGcpwifInput
+
+func (GetResourceResourceGcpwifArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceGcpwif)(nil)).Elem()
+}
+
+func (i GetResourceResourceGcpwifArray) ToGetResourceResourceGcpwifArrayOutput() GetResourceResourceGcpwifArrayOutput {
+	return i.ToGetResourceResourceGcpwifArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceGcpwifArray) ToGetResourceResourceGcpwifArrayOutputWithContext(ctx context.Context) GetResourceResourceGcpwifArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceGcpwifArrayOutput)
+}
+
+type GetResourceResourceGcpwifOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceGcpwifOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceGcpwif)(nil)).Elem()
+}
+
+func (o GetResourceResourceGcpwifOutput) ToGetResourceResourceGcpwifOutput() GetResourceResourceGcpwifOutput {
+	return o
+}
+
+func (o GetResourceResourceGcpwifOutput) ToGetResourceResourceGcpwifOutputWithContext(ctx context.Context) GetResourceResourceGcpwifOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceGcpwifOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceGcpwifOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceGcpwifOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceGcpwifOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceGcpwifOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceGcpwifOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceGcpwifOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceGcpwifOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// Space separated scopes that this login should assume into when authenticating.
+func (o GetResourceResourceGcpwifOutput) Scopes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.Scopes }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceGcpwifOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// The length of time in seconds console sessions will live before needing to reauthenticate.
+func (o GetResourceResourceGcpwifOutput) SessionExpiry() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *int { return v.SessionExpiry }).(pulumi.IntPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceGcpwifOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceGcpwifOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+func (o GetResourceResourceGcpwifOutput) WorkforcePoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.WorkforcePoolId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+// * google_gke:
+func (o GetResourceResourceGcpwifOutput) WorkforceProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.WorkforceProviderId }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceGcpwifArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceGcpwifArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceGcpwif)(nil)).Elem()
+}
+
+func (o GetResourceResourceGcpwifArrayOutput) ToGetResourceResourceGcpwifArrayOutput() GetResourceResourceGcpwifArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceGcpwifArrayOutput) ToGetResourceResourceGcpwifArrayOutputWithContext(ctx context.Context) GetResourceResourceGcpwifArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceGcpwifArrayOutput) Index(i pulumi.IntInput) GetResourceResourceGcpwifOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceGcpwif {
+		return vs[0].([]GetResourceResourceGcpwif)[vs[1].(int)]
+	}).(GetResourceResourceGcpwifOutput)
 }
 
 type GetResourceResourceGoogleGke struct {
@@ -67997,6 +69766,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsConsolePtrInput)(nil)).Elem(), ResourceAwsConsoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsConsoleStaticKeyPairInput)(nil)).Elem(), ResourceAwsConsoleStaticKeyPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsConsoleStaticKeyPairPtrInput)(nil)).Elem(), ResourceAwsConsoleStaticKeyPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsInstanceProfileInput)(nil)).Elem(), ResourceAwsInstanceProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAwsInstanceProfilePtrInput)(nil)).Elem(), ResourceAwsInstanceProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureInput)(nil)).Elem(), ResourceAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzurePtrInput)(nil)).Elem(), ResourceAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAzureCertificateInput)(nil)).Elem(), ResourceAzureCertificateArgs{})
@@ -68039,6 +69810,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceElasticacheRedisPtrInput)(nil)).Elem(), ResourceElasticacheRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGcpInput)(nil)).Elem(), ResourceGcpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGcpPtrInput)(nil)).Elem(), ResourceGcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGcpConsoleInput)(nil)).Elem(), ResourceGcpConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGcpConsolePtrInput)(nil)).Elem(), ResourceGcpConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGcpwifInput)(nil)).Elem(), ResourceGcpwifArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGcpwifPtrInput)(nil)).Elem(), ResourceGcpwifArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleGkeInput)(nil)).Elem(), ResourceGoogleGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleGkePtrInput)(nil)).Elem(), ResourceGoogleGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGoogleGkeUserImpersonationInput)(nil)).Elem(), ResourceGoogleGkeUserImpersonationArgs{})
@@ -68269,6 +70044,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsConsoleArrayInput)(nil)).Elem(), GetResourceResourceAwsConsoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsConsoleStaticKeyPairInput)(nil)).Elem(), GetResourceResourceAwsConsoleStaticKeyPairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsConsoleStaticKeyPairArrayInput)(nil)).Elem(), GetResourceResourceAwsConsoleStaticKeyPairArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsInstanceProfileInput)(nil)).Elem(), GetResourceResourceAwsInstanceProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAwsInstanceProfileArrayInput)(nil)).Elem(), GetResourceResourceAwsInstanceProfileArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureInput)(nil)).Elem(), GetResourceResourceAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureArrayInput)(nil)).Elem(), GetResourceResourceAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAzureCertificateInput)(nil)).Elem(), GetResourceResourceAzureCertificateArgs{})
@@ -68311,6 +70088,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceElasticacheRediArrayInput)(nil)).Elem(), GetResourceResourceElasticacheRediArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGcpInput)(nil)).Elem(), GetResourceResourceGcpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGcpArrayInput)(nil)).Elem(), GetResourceResourceGcpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGcpConsoleInput)(nil)).Elem(), GetResourceResourceGcpConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGcpConsoleArrayInput)(nil)).Elem(), GetResourceResourceGcpConsoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGcpwifInput)(nil)).Elem(), GetResourceResourceGcpwifArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGcpwifArrayInput)(nil)).Elem(), GetResourceResourceGcpwifArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleGkeInput)(nil)).Elem(), GetResourceResourceGoogleGkeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleGkeArrayInput)(nil)).Elem(), GetResourceResourceGoogleGkeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceGoogleGkeUserImpersonationInput)(nil)).Elem(), GetResourceResourceGoogleGkeUserImpersonationArgs{})
@@ -68515,6 +70296,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAwsConsolePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAwsConsoleStaticKeyPairOutput{})
 	pulumi.RegisterOutputType(ResourceAwsConsoleStaticKeyPairPtrOutput{})
+	pulumi.RegisterOutputType(ResourceAwsInstanceProfileOutput{})
+	pulumi.RegisterOutputType(ResourceAwsInstanceProfilePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzureOutput{})
 	pulumi.RegisterOutputType(ResourceAzurePtrOutput{})
 	pulumi.RegisterOutputType(ResourceAzureCertificateOutput{})
@@ -68557,6 +70340,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceElasticacheRedisPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGcpOutput{})
 	pulumi.RegisterOutputType(ResourceGcpPtrOutput{})
+	pulumi.RegisterOutputType(ResourceGcpConsoleOutput{})
+	pulumi.RegisterOutputType(ResourceGcpConsolePtrOutput{})
+	pulumi.RegisterOutputType(ResourceGcpwifOutput{})
+	pulumi.RegisterOutputType(ResourceGcpwifPtrOutput{})
 	pulumi.RegisterOutputType(ResourceGoogleGkeOutput{})
 	pulumi.RegisterOutputType(ResourceGoogleGkePtrOutput{})
 	pulumi.RegisterOutputType(ResourceGoogleGkeUserImpersonationOutput{})
@@ -68787,6 +70574,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAwsConsoleArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAwsConsoleStaticKeyPairOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAwsConsoleStaticKeyPairArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAwsInstanceProfileOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAwsInstanceProfileArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAzureCertificateOutput{})
@@ -68829,6 +70618,10 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceElasticacheRediArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGcpOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGcpArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceGcpConsoleOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceGcpConsoleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceGcpwifOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceGcpwifArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGoogleGkeOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGoogleGkeArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceGoogleGkeUserImpersonationOutput{})

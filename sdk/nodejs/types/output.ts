@@ -532,6 +532,7 @@ export interface GetResourceResource {
     aws: outputs.GetResourceResourceAw[];
     awsConsoleStaticKeyPairs: outputs.GetResourceResourceAwsConsoleStaticKeyPair[];
     awsConsoles: outputs.GetResourceResourceAwsConsole[];
+    awsInstanceProfiles: outputs.GetResourceResourceAwsInstanceProfile[];
     azureCertificates: outputs.GetResourceResourceAzureCertificate[];
     azureMysqls: outputs.GetResourceResourceAzureMysql[];
     azurePostgres: outputs.GetResourceResourceAzurePostgre[];
@@ -552,7 +553,9 @@ export interface GetResourceResource {
     dynamoDbs: outputs.GetResourceResourceDynamoDb[];
     elasticacheRedis: outputs.GetResourceResourceElasticacheRedi[];
     elastics: outputs.GetResourceResourceElastic[];
+    gcpConsoles: outputs.GetResourceResourceGcpConsole[];
     gcps: outputs.GetResourceResourceGcp[];
+    gcpwifs: outputs.GetResourceResourceGcpwif[];
     googleGkeUserImpersonations: outputs.GetResourceResourceGoogleGkeUserImpersonation[];
     googleGkes: outputs.GetResourceResourceGoogleGke[];
     greenplums: outputs.GetResourceResourceGreenplum[];
@@ -1759,7 +1762,7 @@ export interface GetResourceResourceAwsConsole {
      */
     secretStoreId?: string;
     /**
-     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
      */
     sessionExpiry?: number;
     /**
@@ -1830,9 +1833,64 @@ export interface GetResourceResourceAwsConsoleStaticKeyPair {
      */
     secretStoreId?: string;
     /**
-     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
      */
     sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceAwsInstanceProfile {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+     */
+    enableEnvVariables?: boolean;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -3087,6 +3145,130 @@ export interface GetResourceResourceGcp {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceGcpConsole {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
+     */
+    sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+     */
+    workforcePoolId?: string;
+    /**
+     * The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+     * * google_gke:
+     */
+    workforceProviderId?: string;
+}
+
+export interface GetResourceResourceGcpwif {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * Space separated scopes that this login should assume into when authenticating.
+     */
+    scopes?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
+     */
+    sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+     */
+    workforcePoolId?: string;
+    /**
+     * The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+     * * google_gke:
+     */
+    workforceProviderId?: string;
 }
 
 export interface GetResourceResourceGoogleGke {
@@ -8150,7 +8332,7 @@ export interface ResourceAwsConsole {
      */
     secretStoreId?: string;
     /**
-     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
      */
     sessionExpiry?: number;
     /**
@@ -8217,9 +8399,60 @@ export interface ResourceAwsConsoleStaticKeyPair {
      */
     secretStoreId?: string;
     /**
-     * The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
      */
     sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface ResourceAwsInstanceProfile {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
+     */
+    enableEnvVariables?: boolean;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */
@@ -9390,6 +9623,122 @@ export interface ResourceGcp {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+}
+
+export interface ResourceGcpConsole {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
+     */
+    sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+     */
+    workforcePoolId: string;
+    /**
+     * The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+     * * google_gke:
+     */
+    workforceProviderId: string;
+}
+
+export interface ResourceGcpwif {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * Space separated scopes that this login should assume into when authenticating.
+     */
+    scopes: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * The length of time in seconds console sessions will live before needing to reauthenticate.
+     */
+    sessionExpiry?: number;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+     */
+    workforcePoolId: string;
+    /**
+     * The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+     * * google_gke:
+     */
+    workforceProviderId: string;
 }
 
 export interface ResourceGoogleGke {

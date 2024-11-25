@@ -64,6 +64,7 @@ export class Resource extends pulumi.CustomResource {
     public readonly aws!: pulumi.Output<outputs.ResourceAws | undefined>;
     public readonly awsConsole!: pulumi.Output<outputs.ResourceAwsConsole | undefined>;
     public readonly awsConsoleStaticKeyPair!: pulumi.Output<outputs.ResourceAwsConsoleStaticKeyPair | undefined>;
+    public readonly awsInstanceProfile!: pulumi.Output<outputs.ResourceAwsInstanceProfile | undefined>;
     public readonly azure!: pulumi.Output<outputs.ResourceAzure | undefined>;
     public readonly azureCertificate!: pulumi.Output<outputs.ResourceAzureCertificate | undefined>;
     public readonly azureMysql!: pulumi.Output<outputs.ResourceAzureMysql | undefined>;
@@ -85,6 +86,14 @@ export class Resource extends pulumi.CustomResource {
     public readonly elastic!: pulumi.Output<outputs.ResourceElastic | undefined>;
     public readonly elasticacheRedis!: pulumi.Output<outputs.ResourceElasticacheRedis | undefined>;
     public readonly gcp!: pulumi.Output<outputs.ResourceGcp | undefined>;
+    /**
+     * GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly gcpConsole!: pulumi.Output<outputs.ResourceGcpConsole | undefined>;
+    /**
+     * GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly gcpwif!: pulumi.Output<outputs.ResourceGcpwif | undefined>;
     public readonly googleGke!: pulumi.Output<outputs.ResourceGoogleGke | undefined>;
     public readonly googleGkeUserImpersonation!: pulumi.Output<outputs.ResourceGoogleGkeUserImpersonation | undefined>;
     public readonly greenplum!: pulumi.Output<outputs.ResourceGreenplum | undefined>;
@@ -180,6 +189,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["aws"] = state ? state.aws : undefined;
             resourceInputs["awsConsole"] = state ? state.awsConsole : undefined;
             resourceInputs["awsConsoleStaticKeyPair"] = state ? state.awsConsoleStaticKeyPair : undefined;
+            resourceInputs["awsInstanceProfile"] = state ? state.awsInstanceProfile : undefined;
             resourceInputs["azure"] = state ? state.azure : undefined;
             resourceInputs["azureCertificate"] = state ? state.azureCertificate : undefined;
             resourceInputs["azureMysql"] = state ? state.azureMysql : undefined;
@@ -201,6 +211,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["elastic"] = state ? state.elastic : undefined;
             resourceInputs["elasticacheRedis"] = state ? state.elasticacheRedis : undefined;
             resourceInputs["gcp"] = state ? state.gcp : undefined;
+            resourceInputs["gcpConsole"] = state ? state.gcpConsole : undefined;
+            resourceInputs["gcpwif"] = state ? state.gcpwif : undefined;
             resourceInputs["googleGke"] = state ? state.googleGke : undefined;
             resourceInputs["googleGkeUserImpersonation"] = state ? state.googleGkeUserImpersonation : undefined;
             resourceInputs["greenplum"] = state ? state.greenplum : undefined;
@@ -269,6 +281,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["aws"] = args ? args.aws : undefined;
             resourceInputs["awsConsole"] = args ? args.awsConsole : undefined;
             resourceInputs["awsConsoleStaticKeyPair"] = args ? args.awsConsoleStaticKeyPair : undefined;
+            resourceInputs["awsInstanceProfile"] = args ? args.awsInstanceProfile : undefined;
             resourceInputs["azure"] = args ? args.azure : undefined;
             resourceInputs["azureCertificate"] = args ? args.azureCertificate : undefined;
             resourceInputs["azureMysql"] = args ? args.azureMysql : undefined;
@@ -290,6 +303,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["elastic"] = args ? args.elastic : undefined;
             resourceInputs["elasticacheRedis"] = args ? args.elasticacheRedis : undefined;
             resourceInputs["gcp"] = args ? args.gcp : undefined;
+            resourceInputs["gcpConsole"] = args ? args.gcpConsole : undefined;
+            resourceInputs["gcpwif"] = args ? args.gcpwif : undefined;
             resourceInputs["googleGke"] = args ? args.googleGke : undefined;
             resourceInputs["googleGkeUserImpersonation"] = args ? args.googleGkeUserImpersonation : undefined;
             resourceInputs["greenplum"] = args ? args.greenplum : undefined;
@@ -369,6 +384,7 @@ export interface ResourceState {
     aws?: pulumi.Input<inputs.ResourceAws>;
     awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
     awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
+    awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
@@ -390,6 +406,14 @@ export interface ResourceState {
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
+    /**
+     * GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
+    /**
+     * GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
     googleGke?: pulumi.Input<inputs.ResourceGoogleGke>;
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum>;
@@ -480,6 +504,7 @@ export interface ResourceArgs {
     aws?: pulumi.Input<inputs.ResourceAws>;
     awsConsole?: pulumi.Input<inputs.ResourceAwsConsole>;
     awsConsoleStaticKeyPair?: pulumi.Input<inputs.ResourceAwsConsoleStaticKeyPair>;
+    awsInstanceProfile?: pulumi.Input<inputs.ResourceAwsInstanceProfile>;
     azure?: pulumi.Input<inputs.ResourceAzure>;
     azureCertificate?: pulumi.Input<inputs.ResourceAzureCertificate>;
     azureMysql?: pulumi.Input<inputs.ResourceAzureMysql>;
@@ -501,6 +526,14 @@ export interface ResourceArgs {
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
+    /**
+     * GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
+    /**
+     * GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
     googleGke?: pulumi.Input<inputs.ResourceGoogleGke>;
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
     greenplum?: pulumi.Input<inputs.ResourceGreenplum>;

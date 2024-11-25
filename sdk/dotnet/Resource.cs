@@ -79,6 +79,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("awsConsoleStaticKeyPair")]
         public Output<Outputs.ResourceAwsConsoleStaticKeyPair?> AwsConsoleStaticKeyPair { get; private set; } = null!;
 
+        [Output("awsInstanceProfile")]
+        public Output<Outputs.ResourceAwsInstanceProfile?> AwsInstanceProfile { get; private set; } = null!;
+
         [Output("azure")]
         public Output<Outputs.ResourceAzure?> Azure { get; private set; } = null!;
 
@@ -141,6 +144,18 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("gcp")]
         public Output<Outputs.ResourceGcp?> Gcp { get; private set; } = null!;
+
+        /// <summary>
+        /// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("gcpConsole")]
+        public Output<Outputs.ResourceGcpConsole?> GcpConsole { get; private set; } = null!;
+
+        /// <summary>
+        /// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("gcpwif")]
+        public Output<Outputs.ResourceGcpwif?> Gcpwif { get; private set; } = null!;
 
         [Output("googleGke")]
         public Output<Outputs.ResourceGoogleGke?> GoogleGke { get; private set; } = null!;
@@ -405,6 +420,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("awsConsoleStaticKeyPair")]
         public Input<Inputs.ResourceAwsConsoleStaticKeyPairArgs>? AwsConsoleStaticKeyPair { get; set; }
 
+        [Input("awsInstanceProfile")]
+        public Input<Inputs.ResourceAwsInstanceProfileArgs>? AwsInstanceProfile { get; set; }
+
         [Input("azure")]
         public Input<Inputs.ResourceAzureArgs>? Azure { get; set; }
 
@@ -467,6 +485,18 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("gcp")]
         public Input<Inputs.ResourceGcpArgs>? Gcp { get; set; }
+
+        /// <summary>
+        /// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("gcpConsole")]
+        public Input<Inputs.ResourceGcpConsoleArgs>? GcpConsole { get; set; }
+
+        /// <summary>
+        /// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("gcpwif")]
+        public Input<Inputs.ResourceGcpwifArgs>? Gcpwif { get; set; }
 
         [Input("googleGke")]
         public Input<Inputs.ResourceGoogleGkeArgs>? GoogleGke { get; set; }
@@ -692,6 +722,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("awsConsoleStaticKeyPair")]
         public Input<Inputs.ResourceAwsConsoleStaticKeyPairGetArgs>? AwsConsoleStaticKeyPair { get; set; }
 
+        [Input("awsInstanceProfile")]
+        public Input<Inputs.ResourceAwsInstanceProfileGetArgs>? AwsInstanceProfile { get; set; }
+
         [Input("azure")]
         public Input<Inputs.ResourceAzureGetArgs>? Azure { get; set; }
 
@@ -754,6 +787,18 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("gcp")]
         public Input<Inputs.ResourceGcpGetArgs>? Gcp { get; set; }
+
+        /// <summary>
+        /// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("gcpConsole")]
+        public Input<Inputs.ResourceGcpConsoleGetArgs>? GcpConsole { get; set; }
+
+        /// <summary>
+        /// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("gcpwif")]
+        public Input<Inputs.ResourceGcpwifGetArgs>? Gcpwif { get; set; }
 
         [Input("googleGke")]
         public Input<Inputs.ResourceGoogleGkeGetArgs>? GoogleGke { get; set; }
