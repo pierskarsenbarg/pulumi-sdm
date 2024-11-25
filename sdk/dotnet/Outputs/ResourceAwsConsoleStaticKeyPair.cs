@@ -67,7 +67,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreId;
         /// <summary>
-        /// The length of time in seconds AWS console sessions will live before needing to reauthenticate.
+        /// The length of time in seconds console sessions will live before needing to reauthenticate.
         /// </summary>
         public readonly int? SessionExpiry;
         /// <summary>

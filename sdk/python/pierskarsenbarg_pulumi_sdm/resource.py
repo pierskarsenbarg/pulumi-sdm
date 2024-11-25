@@ -39,6 +39,7 @@ class ResourceArgs:
                  aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
                  aws_console: Optional[pulumi.Input['ResourceAwsConsoleArgs']] = None,
                  aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
+                 aws_instance_profile: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']] = None,
                  azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
                  azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
@@ -60,6 +61,8 @@ class ResourceArgs:
                  elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
                  elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
                  gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
+                 gcp_console: Optional[pulumi.Input['ResourceGcpConsoleArgs']] = None,
+                 gcpwif: Optional[pulumi.Input['ResourceGcpwifArgs']] = None,
                  google_gke: Optional[pulumi.Input['ResourceGoogleGkeArgs']] = None,
                  google_gke_user_impersonation: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']] = None,
                  greenplum: Optional[pulumi.Input['ResourceGreenplumArgs']] = None,
@@ -111,6 +114,8 @@ class ResourceArgs:
         """
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceGcpConsoleArgs'] gcp_console: GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceGcpwifArgs'] gcpwif: GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -153,6 +158,8 @@ class ResourceArgs:
             pulumi.set(__self__, "aws_console", aws_console)
         if aws_console_static_key_pair is not None:
             pulumi.set(__self__, "aws_console_static_key_pair", aws_console_static_key_pair)
+        if aws_instance_profile is not None:
+            pulumi.set(__self__, "aws_instance_profile", aws_instance_profile)
         if azure is not None:
             pulumi.set(__self__, "azure", azure)
         if azure_certificate is not None:
@@ -195,6 +202,10 @@ class ResourceArgs:
             pulumi.set(__self__, "elasticache_redis", elasticache_redis)
         if gcp is not None:
             pulumi.set(__self__, "gcp", gcp)
+        if gcp_console is not None:
+            pulumi.set(__self__, "gcp_console", gcp_console)
+        if gcpwif is not None:
+            pulumi.set(__self__, "gcpwif", gcpwif)
         if google_gke is not None:
             pulumi.set(__self__, "google_gke", google_gke)
         if google_gke_user_impersonation is not None:
@@ -458,6 +469,15 @@ class ResourceArgs:
         pulumi.set(self, "aws_console_static_key_pair", value)
 
     @property
+    @pulumi.getter(name="awsInstanceProfile")
+    def aws_instance_profile(self) -> Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']]:
+        return pulumi.get(self, "aws_instance_profile")
+
+    @aws_instance_profile.setter
+    def aws_instance_profile(self, value: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']]):
+        pulumi.set(self, "aws_instance_profile", value)
+
+    @property
     @pulumi.getter
     def azure(self) -> Optional[pulumi.Input['ResourceAzureArgs']]:
         return pulumi.get(self, "azure")
@@ -645,6 +665,30 @@ class ResourceArgs:
     @gcp.setter
     def gcp(self, value: Optional[pulumi.Input['ResourceGcpArgs']]):
         pulumi.set(self, "gcp", value)
+
+    @property
+    @pulumi.getter(name="gcpConsole")
+    def gcp_console(self) -> Optional[pulumi.Input['ResourceGcpConsoleArgs']]:
+        """
+        GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "gcp_console")
+
+    @gcp_console.setter
+    def gcp_console(self, value: Optional[pulumi.Input['ResourceGcpConsoleArgs']]):
+        pulumi.set(self, "gcp_console", value)
+
+    @property
+    @pulumi.getter
+    def gcpwif(self) -> Optional[pulumi.Input['ResourceGcpwifArgs']]:
+        """
+        GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "gcpwif")
+
+    @gcpwif.setter
+    def gcpwif(self, value: Optional[pulumi.Input['ResourceGcpwifArgs']]):
+        pulumi.set(self, "gcpwif", value)
 
     @property
     @pulumi.getter(name="googleGke")
@@ -1115,6 +1159,7 @@ class _ResourceState:
                  aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
                  aws_console: Optional[pulumi.Input['ResourceAwsConsoleArgs']] = None,
                  aws_console_static_key_pair: Optional[pulumi.Input['ResourceAwsConsoleStaticKeyPairArgs']] = None,
+                 aws_instance_profile: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']] = None,
                  azure: Optional[pulumi.Input['ResourceAzureArgs']] = None,
                  azure_certificate: Optional[pulumi.Input['ResourceAzureCertificateArgs']] = None,
                  azure_mysql: Optional[pulumi.Input['ResourceAzureMysqlArgs']] = None,
@@ -1136,6 +1181,8 @@ class _ResourceState:
                  elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
                  elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
                  gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
+                 gcp_console: Optional[pulumi.Input['ResourceGcpConsoleArgs']] = None,
+                 gcpwif: Optional[pulumi.Input['ResourceGcpwifArgs']] = None,
                  google_gke: Optional[pulumi.Input['ResourceGoogleGkeArgs']] = None,
                  google_gke_user_impersonation: Optional[pulumi.Input['ResourceGoogleGkeUserImpersonationArgs']] = None,
                  greenplum: Optional[pulumi.Input['ResourceGreenplumArgs']] = None,
@@ -1187,6 +1234,8 @@ class _ResourceState:
         """
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceGcpConsoleArgs'] gcp_console: GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceGcpwifArgs'] gcpwif: GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1229,6 +1278,8 @@ class _ResourceState:
             pulumi.set(__self__, "aws_console", aws_console)
         if aws_console_static_key_pair is not None:
             pulumi.set(__self__, "aws_console_static_key_pair", aws_console_static_key_pair)
+        if aws_instance_profile is not None:
+            pulumi.set(__self__, "aws_instance_profile", aws_instance_profile)
         if azure is not None:
             pulumi.set(__self__, "azure", azure)
         if azure_certificate is not None:
@@ -1271,6 +1322,10 @@ class _ResourceState:
             pulumi.set(__self__, "elasticache_redis", elasticache_redis)
         if gcp is not None:
             pulumi.set(__self__, "gcp", gcp)
+        if gcp_console is not None:
+            pulumi.set(__self__, "gcp_console", gcp_console)
+        if gcpwif is not None:
+            pulumi.set(__self__, "gcpwif", gcpwif)
         if google_gke is not None:
             pulumi.set(__self__, "google_gke", google_gke)
         if google_gke_user_impersonation is not None:
@@ -1534,6 +1589,15 @@ class _ResourceState:
         pulumi.set(self, "aws_console_static_key_pair", value)
 
     @property
+    @pulumi.getter(name="awsInstanceProfile")
+    def aws_instance_profile(self) -> Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']]:
+        return pulumi.get(self, "aws_instance_profile")
+
+    @aws_instance_profile.setter
+    def aws_instance_profile(self, value: Optional[pulumi.Input['ResourceAwsInstanceProfileArgs']]):
+        pulumi.set(self, "aws_instance_profile", value)
+
+    @property
     @pulumi.getter
     def azure(self) -> Optional[pulumi.Input['ResourceAzureArgs']]:
         return pulumi.get(self, "azure")
@@ -1721,6 +1785,30 @@ class _ResourceState:
     @gcp.setter
     def gcp(self, value: Optional[pulumi.Input['ResourceGcpArgs']]):
         pulumi.set(self, "gcp", value)
+
+    @property
+    @pulumi.getter(name="gcpConsole")
+    def gcp_console(self) -> Optional[pulumi.Input['ResourceGcpConsoleArgs']]:
+        """
+        GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "gcp_console")
+
+    @gcp_console.setter
+    def gcp_console(self, value: Optional[pulumi.Input['ResourceGcpConsoleArgs']]):
+        pulumi.set(self, "gcp_console", value)
+
+    @property
+    @pulumi.getter
+    def gcpwif(self) -> Optional[pulumi.Input['ResourceGcpwifArgs']]:
+        """
+        GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "gcpwif")
+
+    @gcpwif.setter
+    def gcpwif(self, value: Optional[pulumi.Input['ResourceGcpwifArgs']]):
+        pulumi.set(self, "gcpwif", value)
 
     @property
     @pulumi.getter(name="googleGke")
@@ -2193,6 +2281,7 @@ class Resource(pulumi.CustomResource):
                  aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
                  aws_console: Optional[pulumi.Input[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
                  aws_console_static_key_pair: Optional[pulumi.Input[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
+                 aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
                  azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
                  azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
                  azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
@@ -2214,6 +2303,8 @@ class Resource(pulumi.CustomResource):
                  elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
                  elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
                  gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
+                 gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
+                 gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
                  google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
                  google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
                  greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
@@ -2275,6 +2366,8 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']] gcp_console: GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']] gcpwif: GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2329,6 +2422,7 @@ class Resource(pulumi.CustomResource):
                  aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
                  aws_console: Optional[pulumi.Input[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
                  aws_console_static_key_pair: Optional[pulumi.Input[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
+                 aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
                  azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
                  azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
                  azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
@@ -2350,6 +2444,8 @@ class Resource(pulumi.CustomResource):
                  elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
                  elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
                  gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
+                 gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
+                 gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
                  google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
                  google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
                  greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
@@ -2425,6 +2521,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["aws"] = aws
             __props__.__dict__["aws_console"] = aws_console
             __props__.__dict__["aws_console_static_key_pair"] = aws_console_static_key_pair
+            __props__.__dict__["aws_instance_profile"] = aws_instance_profile
             __props__.__dict__["azure"] = azure
             __props__.__dict__["azure_certificate"] = azure_certificate
             __props__.__dict__["azure_mysql"] = azure_mysql
@@ -2446,6 +2543,8 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["elastic"] = elastic
             __props__.__dict__["elasticache_redis"] = elasticache_redis
             __props__.__dict__["gcp"] = gcp
+            __props__.__dict__["gcp_console"] = gcp_console
+            __props__.__dict__["gcpwif"] = gcpwif
             __props__.__dict__["google_gke"] = google_gke
             __props__.__dict__["google_gke_user_impersonation"] = google_gke_user_impersonation
             __props__.__dict__["greenplum"] = greenplum
@@ -2522,6 +2621,7 @@ class Resource(pulumi.CustomResource):
             aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
             aws_console: Optional[pulumi.Input[Union['ResourceAwsConsoleArgs', 'ResourceAwsConsoleArgsDict']]] = None,
             aws_console_static_key_pair: Optional[pulumi.Input[Union['ResourceAwsConsoleStaticKeyPairArgs', 'ResourceAwsConsoleStaticKeyPairArgsDict']]] = None,
+            aws_instance_profile: Optional[pulumi.Input[Union['ResourceAwsInstanceProfileArgs', 'ResourceAwsInstanceProfileArgsDict']]] = None,
             azure: Optional[pulumi.Input[Union['ResourceAzureArgs', 'ResourceAzureArgsDict']]] = None,
             azure_certificate: Optional[pulumi.Input[Union['ResourceAzureCertificateArgs', 'ResourceAzureCertificateArgsDict']]] = None,
             azure_mysql: Optional[pulumi.Input[Union['ResourceAzureMysqlArgs', 'ResourceAzureMysqlArgsDict']]] = None,
@@ -2543,6 +2643,8 @@ class Resource(pulumi.CustomResource):
             elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
             elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
             gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
+            gcp_console: Optional[pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']]] = None,
+            gcpwif: Optional[pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']]] = None,
             google_gke: Optional[pulumi.Input[Union['ResourceGoogleGkeArgs', 'ResourceGoogleGkeArgsDict']]] = None,
             google_gke_user_impersonation: Optional[pulumi.Input[Union['ResourceGoogleGkeUserImpersonationArgs', 'ResourceGoogleGkeUserImpersonationArgsDict']]] = None,
             greenplum: Optional[pulumi.Input[Union['ResourceGreenplumArgs', 'ResourceGreenplumArgsDict']]] = None,
@@ -2599,6 +2701,8 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']] gcp_console: GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']] gcpwif: GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2627,6 +2731,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["aws"] = aws
         __props__.__dict__["aws_console"] = aws_console
         __props__.__dict__["aws_console_static_key_pair"] = aws_console_static_key_pair
+        __props__.__dict__["aws_instance_profile"] = aws_instance_profile
         __props__.__dict__["azure"] = azure
         __props__.__dict__["azure_certificate"] = azure_certificate
         __props__.__dict__["azure_mysql"] = azure_mysql
@@ -2648,6 +2753,8 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["elastic"] = elastic
         __props__.__dict__["elasticache_redis"] = elasticache_redis
         __props__.__dict__["gcp"] = gcp
+        __props__.__dict__["gcp_console"] = gcp_console
+        __props__.__dict__["gcpwif"] = gcpwif
         __props__.__dict__["google_gke"] = google_gke
         __props__.__dict__["google_gke_user_impersonation"] = google_gke_user_impersonation
         __props__.__dict__["greenplum"] = greenplum
@@ -2792,6 +2899,11 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "aws_console_static_key_pair")
 
     @property
+    @pulumi.getter(name="awsInstanceProfile")
+    def aws_instance_profile(self) -> pulumi.Output[Optional['outputs.ResourceAwsInstanceProfile']]:
+        return pulumi.get(self, "aws_instance_profile")
+
+    @property
     @pulumi.getter
     def azure(self) -> pulumi.Output[Optional['outputs.ResourceAzure']]:
         return pulumi.get(self, "azure")
@@ -2895,6 +3007,22 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter
     def gcp(self) -> pulumi.Output[Optional['outputs.ResourceGcp']]:
         return pulumi.get(self, "gcp")
+
+    @property
+    @pulumi.getter(name="gcpConsole")
+    def gcp_console(self) -> pulumi.Output[Optional['outputs.ResourceGcpConsole']]:
+        """
+        GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "gcp_console")
+
+    @property
+    @pulumi.getter
+    def gcpwif(self) -> pulumi.Output[Optional['outputs.ResourceGcpwif']]:
+        """
+        GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "gcpwif")
 
     @property
     @pulumi.getter(name="googleGke")

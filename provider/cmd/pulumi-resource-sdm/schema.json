@@ -1860,7 +1860,7 @@
                 },
                 "sessionExpiry": {
                     "type": "integer",
-                    "description": "The length of time in seconds AWS console sessions will live before needing to reauthenticate.\n"
+                    "description": "The length of time in seconds console sessions will live before needing to reauthenticate.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1950,7 +1950,7 @@
                 },
                 "sessionExpiry": {
                     "type": "integer",
-                    "description": "The length of time in seconds AWS console sessions will live before needing to reauthenticate.\n"
+                    "description": "The length of time in seconds console sessions will live before needing to reauthenticate.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -1969,6 +1969,78 @@
                 "name",
                 "region",
                 "subdomain"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceAwsInstanceProfile:ResourceAwsInstanceProfile": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "enableEnvVariables": {
+                    "type": "boolean",
+                    "description": "If true, prefer environment variables to authenticate connection even if EC2 roles are configured.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "region"
             ],
             "language": {
                 "nodejs": {
@@ -3620,6 +3692,169 @@
                         "portOverride",
                         "scopes",
                         "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceGcpConsole:ResourceGcpConsole": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "sessionExpiry": {
+                    "type": "integer",
+                    "description": "The length of time in seconds console sessions will live before needing to reauthenticate.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "workforcePoolId": {
+                    "type": "string",
+                    "description": "The ID of the Workforce Identity Pool in GCP to use for federated authentication.\n"
+                },
+                "workforceProviderId": {
+                    "type": "string",
+                    "description": "The ID of the Workforce Identity Provider in GCP to use for federated authentication.\n* google_gke:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "subdomain",
+                "workforcePoolId",
+                "workforceProviderId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "name",
+                        "portOverride",
+                        "subdomain",
+                        "workforcePoolId",
+                        "workforceProviderId"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceGcpwif:ResourceGcpwif": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "scopes": {
+                    "type": "string",
+                    "description": "Space separated scopes that this login should assume into when authenticating.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "sessionExpiry": {
+                    "type": "integer",
+                    "description": "The length of time in seconds console sessions will live before needing to reauthenticate.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "workforcePoolId": {
+                    "type": "string",
+                    "description": "The ID of the Workforce Identity Pool in GCP to use for federated authentication.\n"
+                },
+                "workforceProviderId": {
+                    "type": "string",
+                    "description": "The ID of the Workforce Identity Provider in GCP to use for federated authentication.\n* google_gke:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "scopes",
+                "workforcePoolId",
+                "workforceProviderId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "name",
+                        "portOverride",
+                        "scopes",
+                        "subdomain",
+                        "workforcePoolId",
+                        "workforceProviderId"
                     ]
                 }
             }
@@ -9212,6 +9447,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceAwsConsole:getResourceResourceAwsConsole"
                     }
                 },
+                "awsInstanceProfiles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAwsInstanceProfile:getResourceResourceAwsInstanceProfile"
+                    }
+                },
                 "azureCertificates": {
                     "type": "array",
                     "items": {
@@ -9332,10 +9573,22 @@
                         "$ref": "#/types/sdm:index/getResourceResourceElastic:getResourceResourceElastic"
                     }
                 },
+                "gcpConsoles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceGcpConsole:getResourceResourceGcpConsole"
+                    }
+                },
                 "gcps": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceGcp:getResourceResourceGcp"
+                    }
+                },
+                "gcpwifs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceGcpwif:getResourceResourceGcpwif"
                     }
                 },
                 "googleGkeUserImpersonations": {
@@ -9647,6 +9900,7 @@
                 "aws",
                 "awsConsoles",
                 "awsConsoleStaticKeyPairs",
+                "awsInstanceProfiles",
                 "azures",
                 "azureCertificates",
                 "azureMysqls",
@@ -9668,6 +9922,8 @@
                 "elastics",
                 "elasticacheRedis",
                 "gcps",
+                "gcpConsoles",
+                "gcpwifs",
                 "googleGkes",
                 "googleGkeUserImpersonations",
                 "greenplums",
@@ -10980,7 +11236,7 @@
                 },
                 "sessionExpiry": {
                     "type": "integer",
-                    "description": "The length of time in seconds AWS console sessions will live before needing to reauthenticate.\n"
+                    "description": "The length of time in seconds console sessions will live before needing to reauthenticate.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -11057,7 +11313,67 @@
                 },
                 "sessionExpiry": {
                     "type": "integer",
-                    "description": "The length of time in seconds AWS console sessions will live before needing to reauthenticate.\n"
+                    "description": "The length of time in seconds console sessions will live before needing to reauthenticate.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAwsInstanceProfile:getResourceResourceAwsInstanceProfile": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "enableEnvVariables": {
+                    "type": "boolean",
+                    "description": "If true, prefer environment variables to authenticate connection even if EC2 roles are configured.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
                 },
                 "subdomain": {
                     "type": "string",
@@ -12438,6 +12754,138 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceGcpConsole:getResourceResourceGcpConsole": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "sessionExpiry": {
+                    "type": "integer",
+                    "description": "The length of time in seconds console sessions will live before needing to reauthenticate.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "workforcePoolId": {
+                    "type": "string",
+                    "description": "The ID of the Workforce Identity Pool in GCP to use for federated authentication.\n"
+                },
+                "workforceProviderId": {
+                    "type": "string",
+                    "description": "The ID of the Workforce Identity Provider in GCP to use for federated authentication.\n* google_gke:\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceGcpwif:getResourceResourceGcpwif": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "scopes": {
+                    "type": "string",
+                    "description": "Space separated scopes that this login should assume into when authenticating.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "sessionExpiry": {
+                    "type": "integer",
+                    "description": "The length of time in seconds console sessions will live before needing to reauthenticate.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "workforcePoolId": {
+                    "type": "string",
+                    "description": "The ID of the Workforce Identity Pool in GCP to use for federated authentication.\n"
+                },
+                "workforceProviderId": {
+                    "type": "string",
+                    "description": "The ID of the Workforce Identity Provider in GCP to use for federated authentication.\n* google_gke:\n"
                 }
             },
             "type": "object"
@@ -17687,6 +18135,9 @@
                 "awsConsoleStaticKeyPair": {
                     "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair"
                 },
+                "awsInstanceProfile": {
+                    "$ref": "#/types/sdm:index/ResourceAwsInstanceProfile:ResourceAwsInstanceProfile"
+                },
                 "azure": {
                     "$ref": "#/types/sdm:index/ResourceAzure:ResourceAzure"
                 },
@@ -17749,6 +18200,14 @@
                 },
                 "gcp": {
                     "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"
+                },
+                "gcpConsole": {
+                    "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole",
+                    "description": "GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "gcpwif": {
+                    "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif",
+                    "description": "GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "googleGke": {
                     "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"
@@ -17956,6 +18415,9 @@
                 "awsConsoleStaticKeyPair": {
                     "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair"
                 },
+                "awsInstanceProfile": {
+                    "$ref": "#/types/sdm:index/ResourceAwsInstanceProfile:ResourceAwsInstanceProfile"
+                },
                 "azure": {
                     "$ref": "#/types/sdm:index/ResourceAzure:ResourceAzure"
                 },
@@ -18018,6 +18480,14 @@
                 },
                 "gcp": {
                     "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"
+                },
+                "gcpConsole": {
+                    "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole",
+                    "description": "GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "gcpwif": {
+                    "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif",
+                    "description": "GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "googleGke": {
                     "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"
@@ -18227,6 +18697,9 @@
                     "awsConsoleStaticKeyPair": {
                         "$ref": "#/types/sdm:index/ResourceAwsConsoleStaticKeyPair:ResourceAwsConsoleStaticKeyPair"
                     },
+                    "awsInstanceProfile": {
+                        "$ref": "#/types/sdm:index/ResourceAwsInstanceProfile:ResourceAwsInstanceProfile"
+                    },
                     "azure": {
                         "$ref": "#/types/sdm:index/ResourceAzure:ResourceAzure"
                     },
@@ -18289,6 +18762,14 @@
                     },
                     "gcp": {
                         "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"
+                    },
+                    "gcpConsole": {
+                        "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole",
+                        "description": "GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
+                    "gcpwif": {
+                        "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif",
+                        "description": "GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "googleGke": {
                         "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"

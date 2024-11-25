@@ -32,6 +32,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAwResult> Aws;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleStaticKeyPairResult> AwsConsoleStaticKeyPairs;
         public readonly ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> AwsConsoles;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAwsInstanceProfileResult> AwsInstanceProfiles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> AzureCertificates;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> AzureMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAzurePostgreResult> AzurePostgres;
@@ -52,7 +53,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceDynamoDbResult> DynamoDbs;
         public readonly ImmutableArray<Outputs.GetResourceResourceElasticacheRediResult> ElasticacheRedis;
         public readonly ImmutableArray<Outputs.GetResourceResourceElasticResult> Elastics;
+        public readonly ImmutableArray<Outputs.GetResourceResourceGcpConsoleResult> GcpConsoles;
         public readonly ImmutableArray<Outputs.GetResourceResourceGcpResult> Gcps;
+        public readonly ImmutableArray<Outputs.GetResourceResourceGcpwifResult> Gcpwifs;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGkeUserImpersonationResult> GoogleGkeUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceGoogleGkeResult> GoogleGkes;
         public readonly ImmutableArray<Outputs.GetResourceResourceGreenplumResult> Greenplums;
@@ -140,6 +143,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceAwsConsoleResult> awsConsoles,
 
+            ImmutableArray<Outputs.GetResourceResourceAwsInstanceProfileResult> awsInstanceProfiles,
+
             ImmutableArray<Outputs.GetResourceResourceAzureCertificateResult> azureCertificates,
 
             ImmutableArray<Outputs.GetResourceResourceAzureMysqlResult> azureMysqls,
@@ -180,7 +185,11 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceElasticResult> elastics,
 
+            ImmutableArray<Outputs.GetResourceResourceGcpConsoleResult> gcpConsoles,
+
             ImmutableArray<Outputs.GetResourceResourceGcpResult> gcps,
+
+            ImmutableArray<Outputs.GetResourceResourceGcpwifResult> gcpwifs,
 
             ImmutableArray<Outputs.GetResourceResourceGoogleGkeUserImpersonationResult> googleGkeUserImpersonations,
 
@@ -296,6 +305,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Aws = aws;
             AwsConsoleStaticKeyPairs = awsConsoleStaticKeyPairs;
             AwsConsoles = awsConsoles;
+            AwsInstanceProfiles = awsInstanceProfiles;
             AzureCertificates = azureCertificates;
             AzureMysqls = azureMysqls;
             AzurePostgres = azurePostgres;
@@ -316,7 +326,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
             DynamoDbs = dynamoDbs;
             ElasticacheRedis = elasticacheRedis;
             Elastics = elastics;
+            GcpConsoles = gcpConsoles;
             Gcps = gcps;
+            Gcpwifs = gcpwifs;
             GoogleGkeUserImpersonations = googleGkeUserImpersonations;
             GoogleGkes = googleGkes;
             Greenplums = greenplums;

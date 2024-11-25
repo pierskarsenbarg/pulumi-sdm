@@ -40,6 +40,7 @@ type Resource struct {
 	Aws                                       ResourceAwsPtrOutput                                       `pulumi:"aws"`
 	AwsConsole                                ResourceAwsConsolePtrOutput                                `pulumi:"awsConsole"`
 	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrOutput                   `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrOutput                        `pulumi:"awsInstanceProfile"`
 	Azure                                     ResourceAzurePtrOutput                                     `pulumi:"azure"`
 	AzureCertificate                          ResourceAzureCertificatePtrOutput                          `pulumi:"azureCertificate"`
 	AzureMysql                                ResourceAzureMysqlPtrOutput                                `pulumi:"azureMysql"`
@@ -61,13 +62,17 @@ type Resource struct {
 	Elastic                                   ResourceElasticPtrOutput                                   `pulumi:"elastic"`
 	ElasticacheRedis                          ResourceElasticacheRedisPtrOutput                          `pulumi:"elasticacheRedis"`
 	Gcp                                       ResourceGcpPtrOutput                                       `pulumi:"gcp"`
-	GoogleGke                                 ResourceGoogleGkePtrOutput                                 `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrOutput                `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                                 ResourceGreenplumPtrOutput                                 `pulumi:"greenplum"`
-	HttpAuth                                  ResourceHttpAuthPtrOutput                                  `pulumi:"httpAuth"`
-	HttpBasicAuth                             ResourceHttpBasicAuthPtrOutput                             `pulumi:"httpBasicAuth"`
-	HttpNoAuth                                ResourceHttpNoAuthPtrOutput                                `pulumi:"httpNoAuth"`
-	Kubernetes                                ResourceKubernetesPtrOutput                                `pulumi:"kubernetes"`
+	// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GcpConsole ResourceGcpConsolePtrOutput `pulumi:"gcpConsole"`
+	// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Gcpwif                     ResourceGcpwifPtrOutput                     `pulumi:"gcpwif"`
+	GoogleGke                  ResourceGoogleGkePtrOutput                  `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrOutput `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                  ResourceGreenplumPtrOutput                  `pulumi:"greenplum"`
+	HttpAuth                   ResourceHttpAuthPtrOutput                   `pulumi:"httpAuth"`
+	HttpBasicAuth              ResourceHttpBasicAuthPtrOutput              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 ResourceHttpNoAuthPtrOutput                 `pulumi:"httpNoAuth"`
+	Kubernetes                 ResourceKubernetesPtrOutput                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrOutput                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrOutput                  `pulumi:"kubernetesServiceAccount"`
@@ -165,6 +170,7 @@ type resourceState struct {
 	Aws                                       *ResourceAws                                       `pulumi:"aws"`
 	AwsConsole                                *ResourceAwsConsole                                `pulumi:"awsConsole"`
 	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile                        *ResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfile"`
 	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
 	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
 	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
@@ -186,13 +192,17 @@ type resourceState struct {
 	Elastic                                   *ResourceElastic                                   `pulumi:"elastic"`
 	ElasticacheRedis                          *ResourceElasticacheRedis                          `pulumi:"elasticacheRedis"`
 	Gcp                                       *ResourceGcp                                       `pulumi:"gcp"`
-	GoogleGke                                 *ResourceGoogleGke                                 `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation                *ResourceGoogleGkeUserImpersonation                `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                                 *ResourceGreenplum                                 `pulumi:"greenplum"`
-	HttpAuth                                  *ResourceHttpAuth                                  `pulumi:"httpAuth"`
-	HttpBasicAuth                             *ResourceHttpBasicAuth                             `pulumi:"httpBasicAuth"`
-	HttpNoAuth                                *ResourceHttpNoAuth                                `pulumi:"httpNoAuth"`
-	Kubernetes                                *ResourceKubernetes                                `pulumi:"kubernetes"`
+	// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GcpConsole *ResourceGcpConsole `pulumi:"gcpConsole"`
+	// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Gcpwif                     *ResourceGcpwif                     `pulumi:"gcpwif"`
+	GoogleGke                  *ResourceGoogleGke                  `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
+	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
+	HttpBasicAuth              *ResourceHttpBasicAuth              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
+	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesServiceAccount                  *ResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccount"`
@@ -261,6 +271,7 @@ type ResourceState struct {
 	Aws                                       ResourceAwsPtrInput
 	AwsConsole                                ResourceAwsConsolePtrInput
 	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
+	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrInput
 	Azure                                     ResourceAzurePtrInput
 	AzureCertificate                          ResourceAzureCertificatePtrInput
 	AzureMysql                                ResourceAzureMysqlPtrInput
@@ -282,13 +293,17 @@ type ResourceState struct {
 	Elastic                                   ResourceElasticPtrInput
 	ElasticacheRedis                          ResourceElasticacheRedisPtrInput
 	Gcp                                       ResourceGcpPtrInput
-	GoogleGke                                 ResourceGoogleGkePtrInput
-	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrInput
-	Greenplum                                 ResourceGreenplumPtrInput
-	HttpAuth                                  ResourceHttpAuthPtrInput
-	HttpBasicAuth                             ResourceHttpBasicAuthPtrInput
-	HttpNoAuth                                ResourceHttpNoAuthPtrInput
-	Kubernetes                                ResourceKubernetesPtrInput
+	// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GcpConsole ResourceGcpConsolePtrInput
+	// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Gcpwif                     ResourceGcpwifPtrInput
+	GoogleGke                  ResourceGoogleGkePtrInput
+	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
+	Greenplum                  ResourceGreenplumPtrInput
+	HttpAuth                   ResourceHttpAuthPtrInput
+	HttpBasicAuth              ResourceHttpBasicAuthPtrInput
+	HttpNoAuth                 ResourceHttpNoAuthPtrInput
+	Kubernetes                 ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrInput
@@ -361,6 +376,7 @@ type resourceArgs struct {
 	Aws                                       *ResourceAws                                       `pulumi:"aws"`
 	AwsConsole                                *ResourceAwsConsole                                `pulumi:"awsConsole"`
 	AwsConsoleStaticKeyPair                   *ResourceAwsConsoleStaticKeyPair                   `pulumi:"awsConsoleStaticKeyPair"`
+	AwsInstanceProfile                        *ResourceAwsInstanceProfile                        `pulumi:"awsInstanceProfile"`
 	Azure                                     *ResourceAzure                                     `pulumi:"azure"`
 	AzureCertificate                          *ResourceAzureCertificate                          `pulumi:"azureCertificate"`
 	AzureMysql                                *ResourceAzureMysql                                `pulumi:"azureMysql"`
@@ -382,13 +398,17 @@ type resourceArgs struct {
 	Elastic                                   *ResourceElastic                                   `pulumi:"elastic"`
 	ElasticacheRedis                          *ResourceElasticacheRedis                          `pulumi:"elasticacheRedis"`
 	Gcp                                       *ResourceGcp                                       `pulumi:"gcp"`
-	GoogleGke                                 *ResourceGoogleGke                                 `pulumi:"googleGke"`
-	GoogleGkeUserImpersonation                *ResourceGoogleGkeUserImpersonation                `pulumi:"googleGkeUserImpersonation"`
-	Greenplum                                 *ResourceGreenplum                                 `pulumi:"greenplum"`
-	HttpAuth                                  *ResourceHttpAuth                                  `pulumi:"httpAuth"`
-	HttpBasicAuth                             *ResourceHttpBasicAuth                             `pulumi:"httpBasicAuth"`
-	HttpNoAuth                                *ResourceHttpNoAuth                                `pulumi:"httpNoAuth"`
-	Kubernetes                                *ResourceKubernetes                                `pulumi:"kubernetes"`
+	// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GcpConsole *ResourceGcpConsole `pulumi:"gcpConsole"`
+	// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Gcpwif                     *ResourceGcpwif                     `pulumi:"gcpwif"`
+	GoogleGke                  *ResourceGoogleGke                  `pulumi:"googleGke"`
+	GoogleGkeUserImpersonation *ResourceGoogleGkeUserImpersonation `pulumi:"googleGkeUserImpersonation"`
+	Greenplum                  *ResourceGreenplum                  `pulumi:"greenplum"`
+	HttpAuth                   *ResourceHttpAuth                   `pulumi:"httpAuth"`
+	HttpBasicAuth              *ResourceHttpBasicAuth              `pulumi:"httpBasicAuth"`
+	HttpNoAuth                 *ResourceHttpNoAuth                 `pulumi:"httpNoAuth"`
+	Kubernetes                 *ResourceKubernetes                 `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
 	KubernetesServiceAccount                  *ResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccount"`
@@ -458,6 +478,7 @@ type ResourceArgs struct {
 	Aws                                       ResourceAwsPtrInput
 	AwsConsole                                ResourceAwsConsolePtrInput
 	AwsConsoleStaticKeyPair                   ResourceAwsConsoleStaticKeyPairPtrInput
+	AwsInstanceProfile                        ResourceAwsInstanceProfilePtrInput
 	Azure                                     ResourceAzurePtrInput
 	AzureCertificate                          ResourceAzureCertificatePtrInput
 	AzureMysql                                ResourceAzureMysqlPtrInput
@@ -479,13 +500,17 @@ type ResourceArgs struct {
 	Elastic                                   ResourceElasticPtrInput
 	ElasticacheRedis                          ResourceElasticacheRedisPtrInput
 	Gcp                                       ResourceGcpPtrInput
-	GoogleGke                                 ResourceGoogleGkePtrInput
-	GoogleGkeUserImpersonation                ResourceGoogleGkeUserImpersonationPtrInput
-	Greenplum                                 ResourceGreenplumPtrInput
-	HttpAuth                                  ResourceHttpAuthPtrInput
-	HttpBasicAuth                             ResourceHttpBasicAuthPtrInput
-	HttpNoAuth                                ResourceHttpNoAuthPtrInput
-	Kubernetes                                ResourceKubernetesPtrInput
+	// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	GcpConsole ResourceGcpConsolePtrInput
+	// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	Gcpwif                     ResourceGcpwifPtrInput
+	GoogleGke                  ResourceGoogleGkePtrInput
+	GoogleGkeUserImpersonation ResourceGoogleGkeUserImpersonationPtrInput
+	Greenplum                  ResourceGreenplumPtrInput
+	HttpAuth                   ResourceHttpAuthPtrInput
+	HttpBasicAuth              ResourceHttpBasicAuthPtrInput
+	HttpNoAuth                 ResourceHttpNoAuthPtrInput
+	Kubernetes                 ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrInput
@@ -698,6 +723,10 @@ func (o ResourceOutput) AwsConsoleStaticKeyPair() ResourceAwsConsoleStaticKeyPai
 	return o.ApplyT(func(v *Resource) ResourceAwsConsoleStaticKeyPairPtrOutput { return v.AwsConsoleStaticKeyPair }).(ResourceAwsConsoleStaticKeyPairPtrOutput)
 }
 
+func (o ResourceOutput) AwsInstanceProfile() ResourceAwsInstanceProfilePtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAwsInstanceProfilePtrOutput { return v.AwsInstanceProfile }).(ResourceAwsInstanceProfilePtrOutput)
+}
+
 func (o ResourceOutput) Azure() ResourceAzurePtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAzurePtrOutput { return v.Azure }).(ResourceAzurePtrOutput)
 }
@@ -780,6 +809,16 @@ func (o ResourceOutput) ElasticacheRedis() ResourceElasticacheRedisPtrOutput {
 
 func (o ResourceOutput) Gcp() ResourceGcpPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceGcpPtrOutput { return v.Gcp }).(ResourceGcpPtrOutput)
+}
+
+// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) GcpConsole() ResourceGcpConsolePtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceGcpConsolePtrOutput { return v.GcpConsole }).(ResourceGcpConsolePtrOutput)
+}
+
+// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) Gcpwif() ResourceGcpwifPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceGcpwifPtrOutput { return v.Gcpwif }).(ResourceGcpwifPtrOutput)
 }
 
 func (o ResourceOutput) GoogleGke() ResourceGoogleGkePtrOutput {

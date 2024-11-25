@@ -11,14 +11,8 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceAwsConsoleStaticKeyPairGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceGcpwifGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The Access Key ID to use to authenticate.
-        /// </summary>
-        [Input("accessKey")]
-        public Input<string>? AccessKey { get; set; }
-
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
@@ -62,38 +56,10 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? ProxyClusterId { get; set; }
 
         /// <summary>
-        /// The AWS region to connect to.
+        /// Space separated scopes that this login should assume into when authenticating.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        /// <summary>
-        /// The role to assume after logging in.
-        /// </summary>
-        [Input("roleArn")]
-        public Input<string>? RoleArn { get; set; }
-
-        /// <summary>
-        /// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        /// </summary>
-        [Input("roleExternalId")]
-        public Input<string>? RoleExternalId { get; set; }
-
-        [Input("secretAccessKey")]
-        private Input<string>? _secretAccessKey;
-
-        /// <summary>
-        /// The Secret Access Key to use to authenticate.
-        /// </summary>
-        public Input<string>? SecretAccessKey
-        {
-            get => _secretAccessKey;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _secretAccessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("scopes", required: true)]
+        public Input<string> Scopes { get; set; } = null!;
 
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
@@ -110,8 +76,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
-        [Input("subdomain", required: true)]
-        public Input<string> Subdomain { get; set; } = null!;
+        [Input("subdomain")]
+        public Input<string>? Subdomain { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -125,9 +91,22 @@ namespace PiersKarsenbarg.Sdm.Inputs
             set => _tags = value;
         }
 
-        public ResourceAwsConsoleStaticKeyPairGetArgs()
+        /// <summary>
+        /// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        /// </summary>
+        [Input("workforcePoolId", required: true)]
+        public Input<string> WorkforcePoolId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+        /// * google_gke:
+        /// </summary>
+        [Input("workforceProviderId", required: true)]
+        public Input<string> WorkforceProviderId { get; set; } = null!;
+
+        public ResourceGcpwifGetArgs()
         {
         }
-        public static new ResourceAwsConsoleStaticKeyPairGetArgs Empty => new ResourceAwsConsoleStaticKeyPairGetArgs();
+        public static new ResourceGcpwifGetArgs Empty => new ResourceGcpwifGetArgs();
     }
 }

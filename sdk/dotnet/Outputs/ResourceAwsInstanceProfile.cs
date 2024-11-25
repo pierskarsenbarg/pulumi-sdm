@@ -12,7 +12,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceAwsConsole
+    public sealed class ResourceAwsInstanceProfile
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -26,14 +26,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
         /// </summary>
         public readonly bool? EnableEnvVariables;
-        /// <summary>
-        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
-        /// </summary>
-        public readonly string? IdentityAliasHealthcheckUsername;
-        /// <summary>
-        /// The ID of the identity set to use for identity connections.
-        /// </summary>
-        public readonly string? IdentitySetId;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
@@ -63,29 +55,21 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? SecretStoreId;
         /// <summary>
-        /// The length of time in seconds console sessions will live before needing to reauthenticate.
-        /// </summary>
-        public readonly int? SessionExpiry;
-        /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
-        public readonly string Subdomain;
+        public readonly string? Subdomain;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 
         [OutputConstructor]
-        private ResourceAwsConsole(
+        private ResourceAwsInstanceProfile(
             string? bindInterface,
 
             string? egressFilter,
 
             bool? enableEnvVariables,
-
-            string? identityAliasHealthcheckUsername,
-
-            string? identitySetId,
 
             string name,
 
@@ -101,17 +85,13 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? secretStoreId,
 
-            int? sessionExpiry,
-
-            string subdomain,
+            string? subdomain,
 
             ImmutableDictionary<string, string>? tags)
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
             EnableEnvVariables = enableEnvVariables;
-            IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
-            IdentitySetId = identitySetId;
             Name = name;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
@@ -119,7 +99,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
             RoleArn = roleArn;
             RoleExternalId = roleExternalId;
             SecretStoreId = secretStoreId;
-            SessionExpiry = sessionExpiry;
             Subdomain = subdomain;
             Tags = tags;
         }

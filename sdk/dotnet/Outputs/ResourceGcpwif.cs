@@ -12,7 +12,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceAwsConsole
+    public sealed class ResourceGcpwif
     {
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -22,10 +22,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
         public readonly string? EgressFilter;
-        /// <summary>
-        /// If true, prefer environment variables to authenticate connection even if EC2 roles are configured.
-        /// </summary>
-        public readonly bool? EnableEnvVariables;
         /// <summary>
         /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         /// </summary>
@@ -47,17 +43,9 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? ProxyClusterId;
         /// <summary>
-        /// The AWS region to connect to.
+        /// Space separated scopes that this login should assume into when authenticating.
         /// </summary>
-        public readonly string Region;
-        /// <summary>
-        /// The role to assume after logging in.
-        /// </summary>
-        public readonly string? RoleArn;
-        /// <summary>
-        /// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
-        /// </summary>
-        public readonly string? RoleExternalId;
+        public readonly string Scopes;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
@@ -69,19 +57,26 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
-        public readonly string Subdomain;
+        public readonly string? Subdomain;
         /// <summary>
         /// Tags is a map of key, value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The ID of the Workforce Identity Pool in GCP to use for federated authentication.
+        /// </summary>
+        public readonly string WorkforcePoolId;
+        /// <summary>
+        /// The ID of the Workforce Identity Provider in GCP to use for federated authentication.
+        /// * google_gke:
+        /// </summary>
+        public readonly string WorkforceProviderId;
 
         [OutputConstructor]
-        private ResourceAwsConsole(
+        private ResourceGcpwif(
             string? bindInterface,
 
             string? egressFilter,
-
-            bool? enableEnvVariables,
 
             string? identityAliasHealthcheckUsername,
 
@@ -93,35 +88,34 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? proxyClusterId,
 
-            string region,
-
-            string? roleArn,
-
-            string? roleExternalId,
+            string scopes,
 
             string? secretStoreId,
 
             int? sessionExpiry,
 
-            string subdomain,
+            string? subdomain,
 
-            ImmutableDictionary<string, string>? tags)
+            ImmutableDictionary<string, string>? tags,
+
+            string workforcePoolId,
+
+            string workforceProviderId)
         {
             BindInterface = bindInterface;
             EgressFilter = egressFilter;
-            EnableEnvVariables = enableEnvVariables;
             IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
             IdentitySetId = identitySetId;
             Name = name;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
-            Region = region;
-            RoleArn = roleArn;
-            RoleExternalId = roleExternalId;
+            Scopes = scopes;
             SecretStoreId = secretStoreId;
             SessionExpiry = sessionExpiry;
             Subdomain = subdomain;
             Tags = tags;
+            WorkforcePoolId = workforcePoolId;
+            WorkforceProviderId = workforceProviderId;
         }
     }
 }
