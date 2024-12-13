@@ -74,7 +74,7 @@ export interface GetSecretStoreResult {
  * A SecretStore is a server where resource secrets (passwords, keys) are stored.
  *  Coming soon support for HashiCorp Vault and AWS Secret Store.
  */
-export function getSecretStoreOutput(args?: GetSecretStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretStoreResult> {
+export function getSecretStoreOutput(args?: GetSecretStoreOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretStoreResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getSecretStore:getSecretStore", {

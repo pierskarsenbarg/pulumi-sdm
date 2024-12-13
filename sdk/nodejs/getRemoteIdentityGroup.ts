@@ -76,7 +76,7 @@ export interface GetRemoteIdentityGroupResult {
  * });
  * ```
  */
-export function getRemoteIdentityGroupOutput(args?: GetRemoteIdentityGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteIdentityGroupResult> {
+export function getRemoteIdentityGroupOutput(args?: GetRemoteIdentityGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRemoteIdentityGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", {

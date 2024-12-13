@@ -131,7 +131,7 @@ export interface GetResourceResult {
  * });
  * ```
  */
-export function getResourceOutput(args?: GetResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceResult> {
+export function getResourceOutput(args?: GetResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getResource:getResource", {

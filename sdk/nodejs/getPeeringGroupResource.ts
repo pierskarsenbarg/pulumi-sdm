@@ -65,7 +65,7 @@ export interface GetPeeringGroupResourceResult {
 /**
  * PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.
  */
-export function getPeeringGroupResourceOutput(args?: GetPeeringGroupResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringGroupResourceResult> {
+export function getPeeringGroupResourceOutput(args?: GetPeeringGroupResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeringGroupResourceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getPeeringGroupResource:getPeeringGroupResource", {

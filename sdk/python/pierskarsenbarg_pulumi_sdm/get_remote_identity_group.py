@@ -117,7 +117,7 @@ def get_remote_identity_group(id: Optional[str] = None,
         remote_identity_groups=pulumi.get(__ret__, 'remote_identity_groups'))
 def get_remote_identity_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                      name: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRemoteIdentityGroupResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRemoteIdentityGroupResult]:
     """
     A RemoteIdentityGroup defines a group of remote identities.
     ## Example Usage
@@ -136,7 +136,7 @@ def get_remote_identity_group_output(id: Optional[pulumi.Input[Optional[str]]] =
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup', __args__, opts=opts, typ=GetRemoteIdentityGroupResult)
     return __ret__.apply(lambda __response__: GetRemoteIdentityGroupResult(
         id=pulumi.get(__response__, 'id'),

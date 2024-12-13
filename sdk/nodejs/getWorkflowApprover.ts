@@ -104,7 +104,7 @@ export interface GetWorkflowApproverResult {
  * });
  * ```
  */
-export function getWorkflowApproverOutput(args?: GetWorkflowApproverOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowApproverResult> {
+export function getWorkflowApproverOutput(args?: GetWorkflowApproverOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowApproverResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getWorkflowApprover:getWorkflowApprover", {

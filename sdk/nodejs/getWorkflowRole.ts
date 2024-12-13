@@ -89,7 +89,7 @@ export interface GetWorkflowRoleResult {
  * });
  * ```
  */
-export function getWorkflowRoleOutput(args?: GetWorkflowRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowRoleResult> {
+export function getWorkflowRoleOutput(args?: GetWorkflowRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getWorkflowRole:getWorkflowRole", {

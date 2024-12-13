@@ -155,7 +155,7 @@ def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[s
                                  description: Optional[pulumi.Input[Optional[str]]] = None,
                                  id: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApprovalWorkflowResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApprovalWorkflowResult]:
     """
     ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized
      approvers and be approved or denied.
@@ -182,7 +182,7 @@ def get_approval_workflow_output(approval_mode: Optional[pulumi.Input[Optional[s
     __args__['description'] = description
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getApprovalWorkflow:getApprovalWorkflow', __args__, opts=opts, typ=GetApprovalWorkflowResult)
     return __ret__.apply(lambda __response__: GetApprovalWorkflowResult(
         approval_mode=pulumi.get(__response__, 'approval_mode'),

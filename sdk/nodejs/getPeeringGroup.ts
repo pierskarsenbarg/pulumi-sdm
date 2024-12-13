@@ -58,7 +58,7 @@ export interface GetPeeringGroupResult {
  * PeeringGroups are the building blocks used for explicit network topology making.
  *  They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.
  */
-export function getPeeringGroupOutput(args?: GetPeeringGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringGroupResult> {
+export function getPeeringGroupOutput(args?: GetPeeringGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeringGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getPeeringGroup:getPeeringGroup", {

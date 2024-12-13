@@ -65,7 +65,7 @@ export interface GetPeeringGroupPeerResult {
 /**
  * PeeringGroupPeer represents the link between two PeeringGroups
  */
-export function getPeeringGroupPeerOutput(args?: GetPeeringGroupPeerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringGroupPeerResult> {
+export function getPeeringGroupPeerOutput(args?: GetPeeringGroupPeerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeringGroupPeerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getPeeringGroupPeer:getPeeringGroupPeer", {

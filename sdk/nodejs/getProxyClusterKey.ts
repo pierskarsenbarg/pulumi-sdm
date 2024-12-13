@@ -80,7 +80,7 @@ export interface GetProxyClusterKeyResult {
  * });
  * ```
  */
-export function getProxyClusterKeyOutput(args?: GetProxyClusterKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProxyClusterKeyResult> {
+export function getProxyClusterKeyOutput(args?: GetProxyClusterKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProxyClusterKeyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getProxyClusterKey:getProxyClusterKey", {

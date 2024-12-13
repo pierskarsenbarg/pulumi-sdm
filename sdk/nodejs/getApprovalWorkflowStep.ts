@@ -76,7 +76,7 @@ export interface GetApprovalWorkflowStepResult {
  * });
  * ```
  */
-export function getApprovalWorkflowStepOutput(args?: GetApprovalWorkflowStepOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApprovalWorkflowStepResult> {
+export function getApprovalWorkflowStepOutput(args?: GetApprovalWorkflowStepOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApprovalWorkflowStepResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getApprovalWorkflowStep:getApprovalWorkflowStep", {

@@ -126,7 +126,7 @@ def get_peering_group_peer(group_id: Optional[str] = None,
 def get_peering_group_peer_output(group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   id: Optional[pulumi.Input[Optional[str]]] = None,
                                   peers_with_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringGroupPeerResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringGroupPeerResult]:
     """
     PeeringGroupPeer represents the link between two PeeringGroups
 
@@ -139,7 +139,7 @@ def get_peering_group_peer_output(group_id: Optional[pulumi.Input[Optional[str]]
     __args__['groupId'] = group_id
     __args__['id'] = id
     __args__['peersWithGroupId'] = peers_with_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getPeeringGroupPeer:getPeeringGroupPeer', __args__, opts=opts, typ=GetPeeringGroupPeerResult)
     return __ret__.apply(lambda __response__: GetPeeringGroupPeerResult(
         group_id=pulumi.get(__response__, 'group_id'),

@@ -105,7 +105,7 @@ export interface GetWorkflowResult {
  *  the users that can request that access, and the mechanism for approving those requests which can either
  *  but automatic approval or a set of users authorized to approve the requests.
  */
-export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowResult> {
+export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkflowResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getWorkflow:getWorkflow", {

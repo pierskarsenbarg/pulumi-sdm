@@ -73,7 +73,7 @@ export interface GetRoleResult {
  *  of the Role have access to. An Account can be a member of multiple Roles via
  *  AccountAttachments.
  */
-export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
+export function getRoleOutput(args?: GetRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getRole:getRole", {

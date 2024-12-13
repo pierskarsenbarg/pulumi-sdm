@@ -126,7 +126,7 @@ def get_peering_group_resource(group_id: Optional[str] = None,
 def get_peering_group_resource_output(group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       id: Optional[pulumi.Input[Optional[str]]] = None,
                                       resource_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringGroupResourceResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringGroupResourceResult]:
     """
     PeeringGroupResource represents the attachment between a PeeringGroup and a Resource.
 
@@ -139,7 +139,7 @@ def get_peering_group_resource_output(group_id: Optional[pulumi.Input[Optional[s
     __args__['groupId'] = group_id
     __args__['id'] = id
     __args__['resourceId'] = resource_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getPeeringGroupResource:getPeeringGroupResource', __args__, opts=opts, typ=GetPeeringGroupResourceResult)
     return __ret__.apply(lambda __response__: GetPeeringGroupResourceResult(
         group_id=pulumi.get(__response__, 'group_id'),

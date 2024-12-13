@@ -110,7 +110,7 @@ def get_peering_group(id: Optional[str] = None,
         peering_groups=pulumi.get(__ret__, 'peering_groups'))
 def get_peering_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                              name: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeringGroupResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeringGroupResult]:
     """
     PeeringGroups are the building blocks used for explicit network topology making.
      They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.
@@ -122,7 +122,7 @@ def get_peering_group_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getPeeringGroup:getPeeringGroup', __args__, opts=opts, typ=GetPeeringGroupResult)
     return __ret__.apply(lambda __response__: GetPeeringGroupResult(
         id=pulumi.get(__response__, 'id'),

@@ -190,7 +190,7 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
                     name: Optional[pulumi.Input[Optional[str]]] = None,
                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                     type: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeResult]:
     """
     Nodes make up the strongDM network, and allow your users to connect securely to your resources.
      There are two types of nodes:
@@ -224,7 +224,7 @@ def get_node_output(bind_address: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['name'] = name
     __args__['tags'] = tags
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getNode:getNode', __args__, opts=opts, typ=GetNodeResult)
     return __ret__.apply(lambda __response__: GetNodeResult(
         bind_address=pulumi.get(__response__, 'bind_address'),

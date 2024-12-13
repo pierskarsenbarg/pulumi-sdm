@@ -297,7 +297,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[str]]] = Non
                        suspended: Optional[pulumi.Input[Optional[bool]]] = None,
                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Accounts are users that have access to strongDM. The types of accounts are:
      1. **Users:** humans who are authenticated through username and password or SSO.
@@ -348,7 +348,7 @@ def get_account_output(account_type: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['suspended'] = suspended
     __args__['tags'] = tags
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
     return __ret__.apply(lambda __response__: GetAccountResult(
         account_type=pulumi.get(__response__, 'account_type'),

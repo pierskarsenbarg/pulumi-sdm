@@ -76,7 +76,7 @@ export interface GetIdentitySetResult {
  * });
  * ```
  */
-export function getIdentitySetOutput(args?: GetIdentitySetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentitySetResult> {
+export function getIdentitySetOutput(args?: GetIdentitySetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentitySetResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getIdentitySet:getIdentitySet", {
