@@ -85,7 +85,7 @@ export interface GetAccountAttachmentResult {
  * });
  * ```
  */
-export function getAccountAttachmentOutput(args?: GetAccountAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAttachmentResult> {
+export function getAccountAttachmentOutput(args?: GetAccountAttachmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountAttachmentResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getAccountAttachment:getAccountAttachment", {

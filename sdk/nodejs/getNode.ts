@@ -124,7 +124,7 @@ export interface GetNodeResult {
  * });
  * ```
  */
-export function getNodeOutput(args?: GetNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeResult> {
+export function getNodeOutput(args?: GetNodeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getNode:getNode", {

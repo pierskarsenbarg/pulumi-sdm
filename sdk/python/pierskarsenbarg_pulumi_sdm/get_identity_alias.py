@@ -153,7 +153,7 @@ def get_identity_alias_output(account_id: Optional[pulumi.Input[Optional[str]]] 
                               id: Optional[pulumi.Input[Optional[str]]] = None,
                               identity_set_id: Optional[pulumi.Input[Optional[str]]] = None,
                               username: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentityAliasResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentityAliasResult]:
     """
     IdentityAliases define the username to be used for a specific account
      when connecting to a remote resource using that identity set.
@@ -178,7 +178,7 @@ def get_identity_alias_output(account_id: Optional[pulumi.Input[Optional[str]]] 
     __args__['id'] = id
     __args__['identitySetId'] = identity_set_id
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getIdentityAlias:getIdentityAlias', __args__, opts=opts, typ=GetIdentityAliasResult)
     return __ret__.apply(lambda __response__: GetIdentityAliasResult(
         account_id=pulumi.get(__response__, 'account_id'),

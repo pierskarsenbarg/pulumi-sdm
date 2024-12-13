@@ -206,7 +206,7 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                         type: Optional[pulumi.Input[Optional[str]]] = None,
                         username: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceResult]:
     """
     A Resource is a database, server, cluster, website, or cloud that strongDM
      delegates access to.
@@ -241,7 +241,7 @@ def get_resource_output(hostname: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['tags'] = tags
     __args__['type'] = type
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getResource:getResource', __args__, opts=opts, typ=GetResourceResult)
     return __ret__.apply(lambda __response__: GetResourceResult(
         hostname=pulumi.get(__response__, 'hostname'),

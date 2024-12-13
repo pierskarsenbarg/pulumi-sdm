@@ -62,7 +62,7 @@ export interface GetSshCaPubkeyResult {
  * const sshPubkeyQuery = sdm.getSshCaPubkey({});
  * ```
  */
-export function getSshCaPubkeyOutput(args?: GetSshCaPubkeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshCaPubkeyResult> {
+export function getSshCaPubkeyOutput(args?: GetSshCaPubkeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSshCaPubkeyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getSshCaPubkey:getSshCaPubkey", {

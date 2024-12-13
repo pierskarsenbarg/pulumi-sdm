@@ -98,7 +98,7 @@ export interface GetIdentityAliasResult {
  * });
  * ```
  */
-export function getIdentityAliasOutput(args?: GetIdentityAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityAliasResult> {
+export function getIdentityAliasOutput(args?: GetIdentityAliasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIdentityAliasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getIdentityAlias:getIdentityAlias", {

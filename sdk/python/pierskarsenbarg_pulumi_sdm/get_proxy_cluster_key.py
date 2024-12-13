@@ -119,7 +119,7 @@ def get_proxy_cluster_key(id: Optional[str] = None,
         proxy_cluster_keys=pulumi.get(__ret__, 'proxy_cluster_keys'))
 def get_proxy_cluster_key_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                                  proxy_cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProxyClusterKeyResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProxyClusterKeyResult]:
     """
     Proxy Cluster Keys are authentication keys for all proxies within a cluster.
      The proxies within a cluster share the same key. One cluster can have
@@ -140,7 +140,7 @@ def get_proxy_cluster_key_output(id: Optional[pulumi.Input[Optional[str]]] = Non
     __args__ = dict()
     __args__['id'] = id
     __args__['proxyClusterId'] = proxy_cluster_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getProxyClusterKey:getProxyClusterKey', __args__, opts=opts, typ=GetProxyClusterKeyResult)
     return __ret__.apply(lambda __response__: GetProxyClusterKeyResult(
         id=pulumi.get(__response__, 'id'),

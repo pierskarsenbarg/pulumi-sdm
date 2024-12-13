@@ -196,7 +196,7 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
                         id: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
                         weight: Optional[pulumi.Input[Optional[int]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkflowResult]:
     """
     Workflows are the collection of rules that define the resources to which access can be requested,
      the users that can request that access, and the mechanism for approving those requests which can either
@@ -219,7 +219,7 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
     __args__['id'] = id
     __args__['name'] = name
     __args__['weight'] = weight
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getWorkflow:getWorkflow', __args__, opts=opts, typ=GetWorkflowResult)
     return __ret__.apply(lambda __response__: GetWorkflowResult(
         approval_flow_id=pulumi.get(__response__, 'approval_flow_id'),

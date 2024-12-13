@@ -134,7 +134,7 @@ def get_account_attachment(account_id: Optional[str] = None,
 def get_account_attachment_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   id: Optional[pulumi.Input[Optional[str]]] = None,
                                   role_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAttachmentResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAttachmentResult]:
     """
     AccountAttachments assign an account to a role.
     ## Example Usage
@@ -155,7 +155,7 @@ def get_account_attachment_output(account_id: Optional[pulumi.Input[Optional[str
     __args__['accountId'] = account_id
     __args__['id'] = id
     __args__['roleId'] = role_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getAccountAttachment:getAccountAttachment', __args__, opts=opts, typ=GetAccountAttachmentResult)
     return __ret__.apply(lambda __response__: GetAccountAttachmentResult(
         account_attachments=pulumi.get(__response__, 'account_attachments'),

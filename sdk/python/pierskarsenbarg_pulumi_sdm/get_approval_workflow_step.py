@@ -117,7 +117,7 @@ def get_approval_workflow_step(approval_flow_id: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'))
 def get_approval_workflow_step_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApprovalWorkflowStepResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApprovalWorkflowStepResult]:
     """
     ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
     ## Example Usage
@@ -136,7 +136,7 @@ def get_approval_workflow_step_output(approval_flow_id: Optional[pulumi.Input[Op
     __args__ = dict()
     __args__['approvalFlowId'] = approval_flow_id
     __args__['id'] = id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getApprovalWorkflowStep:getApprovalWorkflowStep', __args__, opts=opts, typ=GetApprovalWorkflowStepResult)
     return __ret__.apply(lambda __response__: GetApprovalWorkflowStepResult(
         approval_flow_id=pulumi.get(__response__, 'approval_flow_id'),

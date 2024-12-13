@@ -142,7 +142,7 @@ def get_secret_store_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             type: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretStoreResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretStoreResult]:
     """
     A SecretStore is a server where resource secrets (passwords, keys) are stored.
      Coming soon support for HashiCorp Vault and AWS Secret Store.
@@ -158,7 +158,7 @@ def get_secret_store_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['name'] = name
     __args__['tags'] = tags
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getSecretStore:getSecretStore', __args__, opts=opts, typ=GetSecretStoreResult)
     return __ret__.apply(lambda __response__: GetSecretStoreResult(
         id=pulumi.get(__response__, 'id'),

@@ -153,7 +153,7 @@ def get_remote_identity_output(account_id: Optional[pulumi.Input[Optional[str]]]
                                id: Optional[pulumi.Input[Optional[str]]] = None,
                                remote_identity_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                username: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRemoteIdentityResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRemoteIdentityResult]:
     """
     RemoteIdentities define the username to be used for a specific account
      when connecting to a remote resource using that group.
@@ -178,7 +178,7 @@ def get_remote_identity_output(account_id: Optional[pulumi.Input[Optional[str]]]
     __args__['id'] = id
     __args__['remoteIdentityGroupId'] = remote_identity_group_id
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getRemoteIdentity:getRemoteIdentity', __args__, opts=opts, typ=GetRemoteIdentityResult)
     return __ret__.apply(lambda __response__: GetRemoteIdentityResult(
         account_id=pulumi.get(__response__, 'account_id'),

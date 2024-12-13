@@ -117,7 +117,7 @@ def get_identity_set(id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'))
 def get_identity_set_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIdentitySetResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIdentitySetResult]:
     """
     A IdentitySet defines a group of identity aliases.
     ## Example Usage
@@ -136,7 +136,7 @@ def get_identity_set_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['id'] = id
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getIdentitySet:getIdentitySet', __args__, opts=opts, typ=GetIdentitySetResult)
     return __ret__.apply(lambda __response__: GetIdentitySetResult(
         id=pulumi.get(__response__, 'id'),

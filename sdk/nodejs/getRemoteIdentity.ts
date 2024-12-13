@@ -98,7 +98,7 @@ export interface GetRemoteIdentityResult {
  * });
  * ```
  */
-export function getRemoteIdentityOutput(args?: GetRemoteIdentityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteIdentityResult> {
+export function getRemoteIdentityOutput(args?: GetRemoteIdentityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRemoteIdentityResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getRemoteIdentity:getRemoteIdentity", {
