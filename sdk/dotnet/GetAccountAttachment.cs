@@ -57,6 +57,29 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetAccountAttachmentResult> Invoke(GetAccountAttachmentInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAttachmentResult>("sdm:index/getAccountAttachment:getAccountAttachment", args ?? new GetAccountAttachmentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// AccountAttachments assign an account to a role.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var accountAttachmentQuery = Sdm.GetAccountAttachment.Invoke(new()
+        ///     {
+        ///         AccountId = "a-00000054",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountAttachmentResult> Invoke(GetAccountAttachmentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAttachmentResult>("sdm:index/getAccountAttachment:getAccountAttachment", args ?? new GetAccountAttachmentInvokeArgs(), options.WithDefaults());
     }
 
 

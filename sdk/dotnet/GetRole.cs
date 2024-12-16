@@ -27,6 +27,14 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A Role has a list of access rules which determine which Resources the members
+        ///  of the Role have access to. An Account can be a member of multiple Roles via
+        ///  AccountAttachments.
+        /// </summary>
+        public static Output<GetRoleResult> Invoke(GetRoleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRoleResult>("sdm:index/getRole:getRole", args ?? new GetRoleInvokeArgs(), options.WithDefaults());
     }
 
 

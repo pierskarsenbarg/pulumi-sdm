@@ -57,6 +57,29 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetRemoteIdentityGroupResult> Invoke(GetRemoteIdentityGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityGroupResult>("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args ?? new GetRemoteIdentityGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A RemoteIdentityGroup defines a group of remote identities.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Sdm.GetRemoteIdentityGroup.Invoke(new()
+        ///     {
+        ///         Name = "default",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRemoteIdentityGroupResult> Invoke(GetRemoteIdentityGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityGroupResult>("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args ?? new GetRemoteIdentityGroupInvokeArgs(), options.WithDefaults());
     }
 
 

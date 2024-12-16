@@ -57,6 +57,29 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetApprovalWorkflowStepResult> Invoke(GetApprovalWorkflowStepInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowStepResult>("sdm:index/getApprovalWorkflowStep:getApprovalWorkflowStep", args ?? new GetApprovalWorkflowStepInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ApprovalWorkflowStep links an approval workflow step to an ApprovalWorkflow
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var approvalWorkflowStepQuery = Sdm.GetApprovalWorkflowStep.Invoke(new()
+        ///     {
+        ///         ApprovalFlowId = "af-7935485",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApprovalWorkflowStepResult> Invoke(GetApprovalWorkflowStepInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowStepResult>("sdm:index/getApprovalWorkflowStep:getApprovalWorkflowStep", args ?? new GetApprovalWorkflowStepInvokeArgs(), options.WithDefaults());
     }
 
 

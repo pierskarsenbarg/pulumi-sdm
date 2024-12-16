@@ -51,6 +51,26 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetSshCaPubkeyResult> Invoke(GetSshCaPubkeyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// The SSH CA Pubkey is a public key used for setting up SSH resources.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sshPubkeyQuery = Sdm.GetSshCaPubkey.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSshCaPubkeyResult> Invoke(GetSshCaPubkeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSshCaPubkeyResult>("sdm:index/getSshCaPubkey:getSshCaPubkey", args ?? new GetSshCaPubkeyInvokeArgs(), options.WithDefaults());
     }
 
 

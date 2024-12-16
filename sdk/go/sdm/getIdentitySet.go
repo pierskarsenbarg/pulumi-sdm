@@ -68,21 +68,11 @@ type LookupIdentitySetResult struct {
 }
 
 func LookupIdentitySetOutput(ctx *pulumi.Context, args LookupIdentitySetOutputArgs, opts ...pulumi.InvokeOption) LookupIdentitySetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIdentitySetResultOutput, error) {
 			args := v.(LookupIdentitySetArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupIdentitySetResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getIdentitySet:getIdentitySet", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIdentitySetResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIdentitySetResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIdentitySetResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getIdentitySet:getIdentitySet", args, LookupIdentitySetResultOutput{}, options).(LookupIdentitySetResultOutput), nil
 		}).(LookupIdentitySetResultOutput)
 }
 

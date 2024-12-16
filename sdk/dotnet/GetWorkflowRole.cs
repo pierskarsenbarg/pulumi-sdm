@@ -61,6 +61,31 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetWorkflowRoleResult> Invoke(GetWorkflowRoleInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowRoleResult>("sdm:index/getWorkflowRole:getWorkflowRole", args ?? new GetWorkflowRoleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// WorkflowRole links a role to a workflow. The linked roles indicate which roles a user must be a part of
+        ///  to request access to a resource via the workflow.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var workflowRoleQuery = Sdm.GetWorkflowRole.Invoke(new()
+        ///     {
+        ///         RoleId = "r-9862923",
+        ///         WorkflowId = "aw-7935485",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetWorkflowRoleResult> Invoke(GetWorkflowRoleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowRoleResult>("sdm:index/getWorkflowRole:getWorkflowRole", args ?? new GetWorkflowRoleInvokeArgs(), options.WithDefaults());
     }
 
 

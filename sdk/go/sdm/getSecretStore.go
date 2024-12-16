@@ -53,21 +53,11 @@ type LookupSecretStoreResult struct {
 }
 
 func LookupSecretStoreOutput(ctx *pulumi.Context, args LookupSecretStoreOutputArgs, opts ...pulumi.InvokeOption) LookupSecretStoreResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSecretStoreResultOutput, error) {
 			args := v.(LookupSecretStoreArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupSecretStoreResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getSecretStore:getSecretStore", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSecretStoreResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSecretStoreResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSecretStoreResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getSecretStore:getSecretStore", args, LookupSecretStoreResultOutput{}, options).(LookupSecretStoreResultOutput), nil
 		}).(LookupSecretStoreResultOutput)
 }
 

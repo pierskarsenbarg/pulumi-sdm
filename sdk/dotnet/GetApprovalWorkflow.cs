@@ -73,6 +73,37 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetApprovalWorkflowResult> Invoke(GetApprovalWorkflowInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowResult>("sdm:index/getApprovalWorkflow:getApprovalWorkflow", args ?? new GetApprovalWorkflowInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ApprovalWorkflows are the mechanism by which requests for access can be viewed by authorized
+        ///  approvers and be approved or denied.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var manualApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
+        ///     {
+        ///         ApprovalMode = "manual",
+        ///         Name = "approval workflow manual",
+        ///     });
+        /// 
+        ///     var autoGrantApprovalWorkflowQuery = Sdm.GetApprovalWorkflow.Invoke(new()
+        ///     {
+        ///         ApprovalMode = "automatic",
+        ///         Name = "approval workflow auto",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApprovalWorkflowResult> Invoke(GetApprovalWorkflowInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowResult>("sdm:index/getApprovalWorkflow:getApprovalWorkflow", args ?? new GetApprovalWorkflowInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -99,6 +99,50 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Accounts are users that have access to strongDM. The types of accounts are:
+        ///  1. **Users:** humans who are authenticated through username and password or SSO.
+        ///  2. **Service Accounts:** machines that are authenticated using a service token.
+        ///  3. **Tokens** are access keys with permissions that can be used for authentication.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user_queries = Sdm.GetAccount.Invoke(new()
+        ///     {
+        ///         Email = "*@strongdm.com",
+        ///         Tags = 
+        ///         {
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "user",
+        ///     });
+        /// 
+        ///     var api_key_queries = Sdm.GetAccount.Invoke(new()
+        ///     {
+        ///         Name = "*-dev",
+        ///         Type = "api",
+        ///     });
+        /// 
+        ///     var admin_token_queries = Sdm.GetAccount.Invoke(new()
+        ///     {
+        ///         Name = "*-prod",
+        ///         Type = "admin-token",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("sdm:index/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -62,21 +62,11 @@ type GetSshCaPubkeyResult struct {
 }
 
 func GetSshCaPubkeyOutput(ctx *pulumi.Context, args GetSshCaPubkeyOutputArgs, opts ...pulumi.InvokeOption) GetSshCaPubkeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSshCaPubkeyResultOutput, error) {
 			args := v.(GetSshCaPubkeyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSshCaPubkeyResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getSshCaPubkey:getSshCaPubkey", args, &rv, "", opts...)
-			if err != nil {
-				return GetSshCaPubkeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSshCaPubkeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSshCaPubkeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getSshCaPubkey:getSshCaPubkey", args, GetSshCaPubkeyResultOutput{}, options).(GetSshCaPubkeyResultOutput), nil
 		}).(GetSshCaPubkeyResultOutput)
 }
 

@@ -47,21 +47,11 @@ type LookupPeeringGroupResourceResult struct {
 }
 
 func LookupPeeringGroupResourceOutput(ctx *pulumi.Context, args LookupPeeringGroupResourceOutputArgs, opts ...pulumi.InvokeOption) LookupPeeringGroupResourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPeeringGroupResourceResultOutput, error) {
 			args := v.(LookupPeeringGroupResourceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupPeeringGroupResourceResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getPeeringGroupResource:getPeeringGroupResource", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPeeringGroupResourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPeeringGroupResourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPeeringGroupResourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getPeeringGroupResource:getPeeringGroupResource", args, LookupPeeringGroupResourceResultOutput{}, options).(LookupPeeringGroupResourceResultOutput), nil
 		}).(LookupPeeringGroupResourceResultOutput)
 }
 

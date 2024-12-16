@@ -75,6 +75,38 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetApprovalWorkflowApproverResult> Invoke(GetApprovalWorkflowApproverInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowApproverResult>("sdm:index/getApprovalWorkflowApprover:getApprovalWorkflowApprover", args ?? new GetApprovalWorkflowApproverInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ApprovalWorkflowApprover links an approval workflow approver to an ApprovalWorkflowStep
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var approvalWorkflowApproverAccountQuery = Sdm.GetApprovalWorkflowApprover.Invoke(new()
+        ///     {
+        ///         AccountId = "a-234605",
+        ///         ApprovalFlowId = "af-6799234",
+        ///         ApprovalStepId = "afs-2956266",
+        ///     });
+        /// 
+        ///     var approvalWorkflowApproverRoleQuery = Sdm.GetApprovalWorkflowApprover.Invoke(new()
+        ///     {
+        ///         ApprovalFlowId = "af-1935694",
+        ///         ApprovalStepId = "afs-9245942",
+        ///         RoleId = "r-542982",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApprovalWorkflowApproverResult> Invoke(GetApprovalWorkflowApproverInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApprovalWorkflowApproverResult>("sdm:index/getApprovalWorkflowApprover:getApprovalWorkflowApprover", args ?? new GetApprovalWorkflowApproverInvokeArgs(), options.WithDefaults());
     }
 
 

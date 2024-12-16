@@ -25,6 +25,13 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetPeeringGroupResult> Invoke(GetPeeringGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPeeringGroupResult>("sdm:index/getPeeringGroup:getPeeringGroup", args ?? new GetPeeringGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// PeeringGroups are the building blocks used for explicit network topology making.
+        ///  They may be linked to other peering groups. Sets of PeeringGroupResource and PeeringGroupNode can be attached to a peering group.
+        /// </summary>
+        public static Output<GetPeeringGroupResult> Invoke(GetPeeringGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPeeringGroupResult>("sdm:index/getPeeringGroup:getPeeringGroup", args ?? new GetPeeringGroupInvokeArgs(), options.WithDefaults());
     }
 
 

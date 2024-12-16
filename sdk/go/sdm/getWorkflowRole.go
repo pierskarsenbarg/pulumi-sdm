@@ -76,21 +76,11 @@ type LookupWorkflowRoleResult struct {
 }
 
 func LookupWorkflowRoleOutput(ctx *pulumi.Context, args LookupWorkflowRoleOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowRoleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkflowRoleResultOutput, error) {
 			args := v.(LookupWorkflowRoleArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkflowRoleResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getWorkflowRole:getWorkflowRole", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkflowRoleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkflowRoleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkflowRoleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getWorkflowRole:getWorkflowRole", args, LookupWorkflowRoleResultOutput{}, options).(LookupWorkflowRoleResultOutput), nil
 		}).(LookupWorkflowRoleResultOutput)
 }
 
