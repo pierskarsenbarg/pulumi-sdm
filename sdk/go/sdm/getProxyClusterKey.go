@@ -72,21 +72,11 @@ type LookupProxyClusterKeyResult struct {
 }
 
 func LookupProxyClusterKeyOutput(ctx *pulumi.Context, args LookupProxyClusterKeyOutputArgs, opts ...pulumi.InvokeOption) LookupProxyClusterKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProxyClusterKeyResultOutput, error) {
 			args := v.(LookupProxyClusterKeyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupProxyClusterKeyResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getProxyClusterKey:getProxyClusterKey", args, &rv, "", opts...)
-			if err != nil {
-				return LookupProxyClusterKeyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupProxyClusterKeyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupProxyClusterKeyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getProxyClusterKey:getProxyClusterKey", args, LookupProxyClusterKeyResultOutput{}, options).(LookupProxyClusterKeyResultOutput), nil
 		}).(LookupProxyClusterKeyResultOutput)
 }
 

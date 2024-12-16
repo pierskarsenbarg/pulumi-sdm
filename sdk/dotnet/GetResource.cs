@@ -71,6 +71,36 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetResourceResult> Invoke(GetResourceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A Resource is a database, server, cluster, website, or cloud that strongDM
+        ///  delegates access to.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mysqlDatasources = Sdm.GetResource.Invoke(new()
+        ///     {
+        ///         Name = "us-west*",
+        ///         Tags = 
+        ///         {
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "mysql",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetResourceResult> Invoke(GetResourceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetResourceResult>("sdm:index/getResource:getResource", args ?? new GetResourceInvokeArgs(), options.WithDefaults());
     }
 
 

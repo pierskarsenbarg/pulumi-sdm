@@ -80,21 +80,11 @@ type LookupRemoteIdentityResult struct {
 }
 
 func LookupRemoteIdentityOutput(ctx *pulumi.Context, args LookupRemoteIdentityOutputArgs, opts ...pulumi.InvokeOption) LookupRemoteIdentityResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRemoteIdentityResultOutput, error) {
 			args := v.(LookupRemoteIdentityArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRemoteIdentityResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getRemoteIdentity:getRemoteIdentity", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRemoteIdentityResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRemoteIdentityResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRemoteIdentityResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getRemoteIdentity:getRemoteIdentity", args, LookupRemoteIdentityResultOutput{}, options).(LookupRemoteIdentityResultOutput), nil
 		}).(LookupRemoteIdentityResultOutput)
 }
 

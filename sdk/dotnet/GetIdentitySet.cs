@@ -57,6 +57,29 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetIdentitySetResult> Invoke(GetIdentitySetInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIdentitySetResult>("sdm:index/getIdentitySet:getIdentitySet", args ?? new GetIdentitySetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A IdentitySet defines a group of identity aliases.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Sdm.GetIdentitySet.Invoke(new()
+        ///     {
+        ///         Name = "default",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIdentitySetResult> Invoke(GetIdentitySetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIdentitySetResult>("sdm:index/getIdentitySet:getIdentitySet", args ?? new GetIdentitySetInvokeArgs(), options.WithDefaults());
     }
 
 

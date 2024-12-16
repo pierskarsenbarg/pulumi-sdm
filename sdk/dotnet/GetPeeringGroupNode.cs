@@ -23,6 +23,12 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetPeeringGroupNodeResult> Invoke(GetPeeringGroupNodeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPeeringGroupNodeResult>("sdm:index/getPeeringGroupNode:getPeeringGroupNode", args ?? new GetPeeringGroupNodeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// PeeringGroupNode represents the attachment between a PeeringGroup and a Node.
+        /// </summary>
+        public static Output<GetPeeringGroupNodeResult> Invoke(GetPeeringGroupNodeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPeeringGroupNodeResult>("sdm:index/getPeeringGroupNode:getPeeringGroupNode", args ?? new GetPeeringGroupNodeInvokeArgs(), options.WithDefaults());
     }
 
 

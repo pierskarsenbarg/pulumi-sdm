@@ -61,6 +61,31 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetRemoteIdentityResult> Invoke(GetRemoteIdentityInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// RemoteIdentities define the username to be used for a specific account
+        ///  when connecting to a remote resource using that group.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var user = Sdm.GetRemoteIdentity.Invoke(new()
+        ///     {
+        ///         Id = "i-0900909",
+        ///         Username = "user",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRemoteIdentityResult> Invoke(GetRemoteIdentityInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRemoteIdentityResult>("sdm:index/getRemoteIdentity:getRemoteIdentity", args ?? new GetRemoteIdentityInvokeArgs(), options.WithDefaults());
     }
 
 

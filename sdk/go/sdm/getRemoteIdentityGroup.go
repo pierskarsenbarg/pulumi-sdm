@@ -68,21 +68,11 @@ type GetRemoteIdentityGroupResult struct {
 }
 
 func GetRemoteIdentityGroupOutput(ctx *pulumi.Context, args GetRemoteIdentityGroupOutputArgs, opts ...pulumi.InvokeOption) GetRemoteIdentityGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRemoteIdentityGroupResultOutput, error) {
 			args := v.(GetRemoteIdentityGroupArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRemoteIdentityGroupResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args, &rv, "", opts...)
-			if err != nil {
-				return GetRemoteIdentityGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRemoteIdentityGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRemoteIdentityGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getRemoteIdentityGroup:getRemoteIdentityGroup", args, GetRemoteIdentityGroupResultOutput{}, options).(GetRemoteIdentityGroupResultOutput), nil
 		}).(GetRemoteIdentityGroupResultOutput)
 }
 

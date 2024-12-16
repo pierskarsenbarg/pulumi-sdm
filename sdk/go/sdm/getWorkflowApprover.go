@@ -84,21 +84,11 @@ type LookupWorkflowApproverResult struct {
 }
 
 func LookupWorkflowApproverOutput(ctx *pulumi.Context, args LookupWorkflowApproverOutputArgs, opts ...pulumi.InvokeOption) LookupWorkflowApproverResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkflowApproverResultOutput, error) {
 			args := v.(LookupWorkflowApproverArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupWorkflowApproverResult
-			secret, err := ctx.InvokePackageRaw("sdm:index/getWorkflowApprover:getWorkflowApprover", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWorkflowApproverResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWorkflowApproverResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWorkflowApproverResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("sdm:index/getWorkflowApprover:getWorkflowApprover", args, LookupWorkflowApproverResultOutput{}, options).(LookupWorkflowApproverResultOutput), nil
 		}).(LookupWorkflowApproverResultOutput)
 }
 

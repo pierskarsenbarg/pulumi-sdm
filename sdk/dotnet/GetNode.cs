@@ -73,6 +73,37 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Nodes make up the strongDM network, and allow your users to connect securely to your resources.
+        ///  There are two types of nodes:
+        ///  1. **Relay:** creates connectivity to your datasources, while maintaining the egress-only nature of your firewall
+        ///  1. **Gateways:** a relay that also listens for connections from strongDM clients
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var gatewayQuery = Sdm.GetNode.Invoke(new()
+        ///     {
+        ///         Tags = 
+        ///         {
+        ///             { "env", "dev" },
+        ///             { "region", "us-west" },
+        ///         },
+        ///         Type = "gateway",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNodeResult> Invoke(GetNodeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("sdm:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
     }
 
 

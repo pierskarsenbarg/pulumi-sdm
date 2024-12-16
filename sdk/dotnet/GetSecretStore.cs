@@ -25,6 +25,13 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetSecretStoreResult> Invoke(GetSecretStoreInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretStoreResult>("sdm:index/getSecretStore:getSecretStore", args ?? new GetSecretStoreInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A SecretStore is a server where resource secrets (passwords, keys) are stored.
+        ///  Coming soon support for HashiCorp Vault and AWS Secret Store.
+        /// </summary>
+        public static Output<GetSecretStoreResult> Invoke(GetSecretStoreInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretStoreResult>("sdm:index/getSecretStore:getSecretStore", args ?? new GetSecretStoreInvokeArgs(), options.WithDefaults());
     }
 
 

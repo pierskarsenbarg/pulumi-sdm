@@ -71,6 +71,36 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetWorkflowApproverResult> Invoke(GetWorkflowApproverInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowApproverResult>("sdm:index/getWorkflowApprover:getWorkflowApprover", args ?? new GetWorkflowApproverInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// WorkflowApprover is an account or a role with the ability to approve requests bound to a workflow.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var workflowApproverAccountQuery = Sdm.GetWorkflowApprover.Invoke(new()
+        ///     {
+        ///         AccountId = "a-2496542",
+        ///         WorkflowId = "aw-541894",
+        ///     });
+        /// 
+        ///     var workflowApproverRoleQuery = Sdm.GetWorkflowApprover.Invoke(new()
+        ///     {
+        ///         RoleId = "r-417345",
+        ///         WorkflowId = "aw-679923",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetWorkflowApproverResult> Invoke(GetWorkflowApproverInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowApproverResult>("sdm:index/getWorkflowApprover:getWorkflowApprover", args ?? new GetWorkflowApproverInvokeArgs(), options.WithDefaults());
     }
 
 

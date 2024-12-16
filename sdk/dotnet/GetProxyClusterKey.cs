@@ -61,6 +61,31 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetProxyClusterKeyResult> Invoke(GetProxyClusterKeyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProxyClusterKeyResult>("sdm:index/getProxyClusterKey:getProxyClusterKey", args ?? new GetProxyClusterKeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Proxy Cluster Keys are authentication keys for all proxies within a cluster.
+        ///  The proxies within a cluster share the same key. One cluster can have
+        ///  multiple keys in order to facilitate key rotation.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var proxyClusterKeyQuery = Sdm.GetProxyClusterKey.Invoke(new()
+        ///     {
+        ///         ProxyClusterId = "n-233332245",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProxyClusterKeyResult> Invoke(GetProxyClusterKeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProxyClusterKeyResult>("sdm:index/getProxyClusterKey:getProxyClusterKey", args ?? new GetProxyClusterKeyInvokeArgs(), options.WithDefaults());
     }
 
 

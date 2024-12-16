@@ -59,6 +59,30 @@ namespace PiersKarsenbarg.Sdm
         /// </summary>
         public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("sdm:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Policy is a collection of one or more statements that enforce fine-grained access control
+        ///  for the users of an organization.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Sdm = Pulumi.Sdm;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Sdm.GetPolicy.Invoke(new()
+        ///     {
+        ///         Name = "policy-query",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyResult> Invoke(GetPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyResult>("sdm:index/getPolicy:getPolicy", args ?? new GetPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
