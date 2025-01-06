@@ -13052,6 +13052,10 @@ if not MYPY:
         """
         The local port used by clients to connect to this resource.
         """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+        """
         proxy_cluster_id: NotRequired[pulumi.Input[str]]
         """
         ID of the proxy cluster for this resource, if any.
@@ -13087,6 +13091,7 @@ class ResourceGcpwifArgs:
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  proxy_cluster_id: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
                  session_expiry: Optional[pulumi.Input[int]] = None,
@@ -13103,6 +13108,7 @@ class ResourceGcpwifArgs:
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
+        :param pulumi.Input[str] project_id: When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
         :param pulumi.Input[str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param pulumi.Input[int] session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
@@ -13123,6 +13129,8 @@ class ResourceGcpwifArgs:
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if proxy_cluster_id is not None:
             pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
@@ -13242,6 +13250,18 @@ class ResourceGcpwifArgs:
     @port_override.setter
     def port_override(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port_override", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="proxyClusterId")
@@ -22140,6 +22160,10 @@ if not MYPY:
         """
         The ID of the identity set to use for identity connections.
         """
+        lock_required: NotRequired[pulumi.Input[bool]]
+        """
+        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+        """
         port: NotRequired[pulumi.Input[int]]
         """
         The port to dial to initiate a connection from the egress node to this resource.
@@ -22180,6 +22204,7 @@ class ResourceRdpCertArgs:
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
                  identity_set_id: Optional[pulumi.Input[str]] = None,
+                 lock_required: Optional[pulumi.Input[bool]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  proxy_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -22194,6 +22219,7 @@ class ResourceRdpCertArgs:
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
+        :param pulumi.Input[bool] lock_required: When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
         :param pulumi.Input[int] port: The port to dial to initiate a connection from the egress node to this resource.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -22212,6 +22238,8 @@ class ResourceRdpCertArgs:
             pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
         if identity_set_id is not None:
             pulumi.set(__self__, "identity_set_id", identity_set_id)
+        if lock_required is not None:
+            pulumi.set(__self__, "lock_required", lock_required)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
@@ -22298,6 +22326,18 @@ class ResourceRdpCertArgs:
     @identity_set_id.setter
     def identity_set_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_set_id", value)
+
+    @property
+    @pulumi.getter(name="lockRequired")
+    def lock_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+        """
+        return pulumi.get(self, "lock_required")
+
+    @lock_required.setter
+    def lock_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "lock_required", value)
 
     @property
     @pulumi.getter

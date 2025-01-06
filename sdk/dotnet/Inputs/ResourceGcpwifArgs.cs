@@ -50,6 +50,12 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<int>? PortOverride { get; set; }
 
         /// <summary>
+        /// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
         [Input("proxyClusterId")]

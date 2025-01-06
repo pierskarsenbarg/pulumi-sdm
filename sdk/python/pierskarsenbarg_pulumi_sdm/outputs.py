@@ -9310,6 +9310,8 @@ class ResourceGcpwif(dict):
             suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
+        elif key == "projectId":
+            suggest = "project_id"
         elif key == "proxyClusterId":
             suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
@@ -9338,6 +9340,7 @@ class ResourceGcpwif(dict):
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 project_id: Optional[str] = None,
                  proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
                  session_expiry: Optional[int] = None,
@@ -9354,6 +9357,7 @@ class ResourceGcpwif(dict):
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str project_id: When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
         :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
         :param int session_expiry: The length of time in seconds console sessions will live before needing to reauthenticate.
@@ -9374,6 +9378,8 @@ class ResourceGcpwif(dict):
             pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if proxy_cluster_id is not None:
             pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if secret_store_id is not None:
@@ -9457,6 +9463,14 @@ class ResourceGcpwif(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="proxyClusterId")
@@ -15677,6 +15691,8 @@ class ResourceRdpCert(dict):
             suggest = "identity_alias_healthcheck_username"
         elif key == "identitySetId":
             suggest = "identity_set_id"
+        elif key == "lockRequired":
+            suggest = "lock_required"
         elif key == "portOverride":
             suggest = "port_override"
         elif key == "proxyClusterId":
@@ -15702,6 +15718,7 @@ class ResourceRdpCert(dict):
                  egress_filter: Optional[str] = None,
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
+                 lock_required: Optional[bool] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
                  proxy_cluster_id: Optional[str] = None,
@@ -15716,6 +15733,7 @@ class ResourceRdpCert(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
+        :param bool lock_required: When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
         :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -15734,6 +15752,8 @@ class ResourceRdpCert(dict):
             pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
         if identity_set_id is not None:
             pulumi.set(__self__, "identity_set_id", identity_set_id)
+        if lock_required is not None:
+            pulumi.set(__self__, "lock_required", lock_required)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if port_override is not None:
@@ -15796,6 +15816,14 @@ class ResourceRdpCert(dict):
         The ID of the identity set to use for identity connections.
         """
         return pulumi.get(self, "identity_set_id")
+
+    @property
+    @pulumi.getter(name="lockRequired")
+    def lock_required(self) -> Optional[bool]:
+        """
+        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+        """
+        return pulumi.get(self, "lock_required")
 
     @property
     @pulumi.getter
@@ -31124,6 +31152,7 @@ class GetResourceResourceGcpwifResult(dict):
                  identity_set_id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
+                 project_id: Optional[str] = None,
                  proxy_cluster_id: Optional[str] = None,
                  scopes: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -31140,6 +31169,7 @@ class GetResourceResourceGcpwifResult(dict):
         :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
+        :param str project_id: When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
         :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str scopes: Space separated scopes that this login should assume into when authenticating.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -31164,6 +31194,8 @@ class GetResourceResourceGcpwifResult(dict):
             pulumi.set(__self__, "name", name)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if proxy_cluster_id is not None:
             pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
         if scopes is not None:
@@ -31236,6 +31268,14 @@ class GetResourceResourceGcpwifResult(dict):
         The local port used by clients to connect to this resource.
         """
         return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+        """
+        return pulumi.get(self, "project_id")
 
     @property
     @pulumi.getter(name="proxyClusterId")
@@ -37004,6 +37044,7 @@ class GetResourceResourceRdpCertResult(dict):
                  id: Optional[str] = None,
                  identity_alias_healthcheck_username: Optional[str] = None,
                  identity_set_id: Optional[str] = None,
+                 lock_required: Optional[bool] = None,
                  name: Optional[str] = None,
                  port: Optional[int] = None,
                  port_override: Optional[int] = None,
@@ -37019,6 +37060,7 @@ class GetResourceResourceRdpCertResult(dict):
         :param str id: Unique identifier of the Resource.
         :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
         :param str identity_set_id: The ID of the identity set to use for identity connections.
+        :param bool lock_required: When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
         :param str name: Unique human-readable name of the Resource.
         :param int port: The port to dial to initiate a connection from the egress node to this resource.
         :param int port_override: The local port used by clients to connect to this resource.
@@ -37040,6 +37082,8 @@ class GetResourceResourceRdpCertResult(dict):
             pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
         if identity_set_id is not None:
             pulumi.set(__self__, "identity_set_id", identity_set_id)
+        if lock_required is not None:
+            pulumi.set(__self__, "lock_required", lock_required)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if port is not None:
@@ -37104,6 +37148,14 @@ class GetResourceResourceRdpCertResult(dict):
         The ID of the identity set to use for identity connections.
         """
         return pulumi.get(self, "identity_set_id")
+
+    @property
+    @pulumi.getter(name="lockRequired")
+    def lock_required(self) -> Optional[bool]:
+        """
+        When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+        """
+        return pulumi.get(self, "lock_required")
 
     @property
     @pulumi.getter

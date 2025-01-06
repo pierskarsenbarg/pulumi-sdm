@@ -17375,6 +17375,8 @@ type ResourceGcpwif struct {
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+	ProjectId *string `pulumi:"projectId"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Space separated scopes that this login should assume into when authenticating.
@@ -17418,6 +17420,8 @@ type ResourceGcpwifArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Space separated scopes that this login should assume into when authenticating.
@@ -17544,6 +17548,11 @@ func (o ResourceGcpwifOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourceGcpwif) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
 }
 
+// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+func (o ResourceGcpwifOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceGcpwif) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
 // ID of the proxy cluster for this resource, if any.
 func (o ResourceGcpwifOutput) ProxyClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceGcpwif) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
@@ -17667,6 +17676,16 @@ func (o ResourceGcpwifPtrOutput) PortOverride() pulumi.IntPtrOutput {
 		}
 		return v.PortOverride
 	}).(pulumi.IntPtrOutput)
+}
+
+// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+func (o ResourceGcpwifPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceGcpwif) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
 }
 
 // ID of the proxy cluster for this resource, if any.
@@ -29415,6 +29434,8 @@ type ResourceRdpCert struct {
 	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
 	// The ID of the identity set to use for identity connections.
 	IdentitySetId *string `pulumi:"identitySetId"`
+	// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+	LockRequired *bool `pulumi:"lockRequired"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
@@ -29455,6 +29476,8 @@ type ResourceRdpCertArgs struct {
 	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
 	// The ID of the identity set to use for identity connections.
 	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+	LockRequired pulumi.BoolPtrInput `pulumi:"lockRequired"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
@@ -29575,6 +29598,11 @@ func (o ResourceRdpCertOutput) IdentitySetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceRdpCert) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
 }
 
+// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+func (o ResourceRdpCertOutput) LockRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceRdpCert) *bool { return v.LockRequired }).(pulumi.BoolPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceRdpCertOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceRdpCert) string { return v.Name }).(pulumi.StringOutput)
@@ -29687,6 +29715,16 @@ func (o ResourceRdpCertPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
 		}
 		return v.IdentitySetId
 	}).(pulumi.StringPtrOutput)
+}
+
+// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+func (o ResourceRdpCertPtrOutput) LockRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceRdpCert) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LockRequired
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Unique human-readable name of the Resource.
@@ -54510,6 +54548,8 @@ type GetResourceResourceGcpwif struct {
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride *int `pulumi:"portOverride"`
+	// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+	ProjectId *string `pulumi:"projectId"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId *string `pulumi:"proxyClusterId"`
 	// Space separated scopes that this login should assume into when authenticating.
@@ -54555,6 +54595,8 @@ type GetResourceResourceGcpwifArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
 	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// ID of the proxy cluster for this resource, if any.
 	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
 	// Space separated scopes that this login should assume into when authenticating.
@@ -54658,6 +54700,11 @@ func (o GetResourceResourceGcpwifOutput) Name() pulumi.StringPtrOutput {
 // The local port used by clients to connect to this resource.
 func (o GetResourceResourceGcpwifOutput) PortOverride() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceGcpwif) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+func (o GetResourceResourceGcpwifOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceGcpwif) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // ID of the proxy cluster for this resource, if any.
@@ -61495,6 +61542,8 @@ type GetResourceResourceRdpCert struct {
 	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
 	// The ID of the identity set to use for identity connections.
 	IdentitySetId *string `pulumi:"identitySetId"`
+	// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+	LockRequired *bool `pulumi:"lockRequired"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
@@ -61537,6 +61586,8 @@ type GetResourceResourceRdpCertArgs struct {
 	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
 	// The ID of the identity set to use for identity connections.
 	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
+	// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+	LockRequired pulumi.BoolPtrInput `pulumi:"lockRequired"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The port to dial to initiate a connection from the egress node to this resource.
@@ -61634,6 +61685,11 @@ func (o GetResourceResourceRdpCertOutput) IdentityAliasHealthcheckUsername() pul
 // The ID of the identity set to use for identity connections.
 func (o GetResourceResourceRdpCertOutput) IdentitySetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceRdpCert) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
+// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+func (o GetResourceResourceRdpCertOutput) LockRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRdpCert) *bool { return v.LockRequired }).(pulumi.BoolPtrOutput)
 }
 
 // Unique human-readable name of the Resource.

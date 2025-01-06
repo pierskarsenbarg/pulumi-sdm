@@ -2625,6 +2625,10 @@ export interface ResourceGcpwif {
      */
     portOverride?: pulumi.Input<number>;
     /**
+     * When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+     */
+    projectId?: pulumi.Input<string>;
+    /**
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: pulumi.Input<string>;
@@ -4479,6 +4483,10 @@ export interface ResourceRdpCert {
      * The ID of the identity set to use for identity connections.
      */
     identitySetId?: pulumi.Input<string>;
+    /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: pulumi.Input<boolean>;
     /**
      * Unique human-readable name of the Resource.
      */
