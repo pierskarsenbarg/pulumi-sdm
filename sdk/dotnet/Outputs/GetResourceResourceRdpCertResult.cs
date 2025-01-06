@@ -39,6 +39,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? IdentitySetId;
         /// <summary>
+        /// When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+        /// </summary>
+        public readonly bool? LockRequired;
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string? Name;
@@ -85,6 +89,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? identitySetId,
 
+            bool? lockRequired,
+
             string? name,
 
             int? port,
@@ -107,6 +113,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Id = id;
             IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
             IdentitySetId = identitySetId;
+            LockRequired = lockRequired;
             Name = name;
             Port = port;
             PortOverride = portOverride;

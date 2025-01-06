@@ -3801,6 +3801,10 @@
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
                 },
+                "projectId": {
+                    "type": "string",
+                    "description": "When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients\n"
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
@@ -6393,6 +6397,10 @@
                 "identitySetId": {
                     "type": "string",
                     "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
                 },
                 "name": {
                     "type": "string",
@@ -12852,6 +12860,10 @@
                     "type": "integer",
                     "description": "The local port used by clients to connect to this resource.\n"
                 },
+                "projectId": {
+                    "type": "string",
+                    "description": "When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients\n"
+                },
                 "proxyClusterId": {
                     "type": "string",
                     "description": "ID of the proxy cluster for this resource, if any.\n"
@@ -15017,6 +15029,10 @@
                 "identitySetId": {
                     "type": "string",
                     "description": "The ID of the identity set to use for identity connections.\n"
+                },
+                "lockRequired": {
+                    "type": "boolean",
+                    "description": "When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.\n"
                 },
                 "name": {
                     "type": "string",

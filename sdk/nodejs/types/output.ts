@@ -3237,6 +3237,10 @@ export interface GetResourceResourceGcpwif {
      */
     portOverride?: number;
     /**
+     * When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+     */
+    projectId?: string;
+    /**
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
@@ -5215,6 +5219,10 @@ export interface GetResourceResourceRdpCert {
      * The ID of the identity set to use for identity connections.
      */
     identitySetId?: string;
+    /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
     /**
      * Unique human-readable name of the Resource.
      */
@@ -9707,6 +9715,10 @@ export interface ResourceGcpwif {
      */
     portOverride: number;
     /**
+     * When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+     */
+    projectId?: string;
+    /**
      * ID of the proxy cluster for this resource, if any.
      */
     proxyClusterId?: string;
@@ -11561,6 +11573,10 @@ export interface ResourceRdpCert {
      * The ID of the identity set to use for identity connections.
      */
     identitySetId?: string;
+    /**
+     * When set, require a resource lock to access the resource to ensure it can only be used by one user at a time.
+     */
+    lockRequired?: boolean;
     /**
      * Unique human-readable name of the Resource.
      */

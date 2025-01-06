@@ -39,6 +39,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly int? PortOverride;
         /// <summary>
+        /// When specified, all project scoped requests will use this Project ID, overriding the project ID specified by clients
+        /// </summary>
+        public readonly string? ProjectId;
+        /// <summary>
         /// ID of the proxy cluster for this resource, if any.
         /// </summary>
         public readonly string? ProxyClusterId;
@@ -86,6 +90,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? portOverride,
 
+            string? projectId,
+
             string? proxyClusterId,
 
             string scopes,
@@ -108,6 +114,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             IdentitySetId = identitySetId;
             Name = name;
             PortOverride = portOverride;
+            ProjectId = projectId;
             ProxyClusterId = proxyClusterId;
             Scopes = scopes;
             SecretStoreId = secretStoreId;
