@@ -27,6 +27,10 @@ func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulum
 
 // A collection of arguments for invoking getWorkflow.
 type LookupWorkflowArgs struct {
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestFixedDuration *string `pulumi:"accessRequestFixedDuration"`
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestMaxDuration *string `pulumi:"accessRequestMaxDuration"`
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
 	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -45,6 +49,10 @@ type LookupWorkflowArgs struct {
 
 // A collection of values returned by getWorkflow.
 type LookupWorkflowResult struct {
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestFixedDuration *string `pulumi:"accessRequestFixedDuration"`
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestMaxDuration *string `pulumi:"accessRequestMaxDuration"`
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
 	ApprovalFlowId *string `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -76,6 +84,10 @@ func LookupWorkflowOutput(ctx *pulumi.Context, args LookupWorkflowOutputArgs, op
 
 // A collection of arguments for invoking getWorkflow.
 type LookupWorkflowOutputArgs struct {
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestFixedDuration pulumi.StringPtrInput `pulumi:"accessRequestFixedDuration"`
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestMaxDuration pulumi.StringPtrInput `pulumi:"accessRequestMaxDuration"`
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
 	ApprovalFlowId pulumi.StringPtrInput `pulumi:"approvalFlowId"`
 	// Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -109,6 +121,16 @@ func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutput() LookupWorkflo
 
 func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx context.Context) LookupWorkflowResultOutput {
 	return o
+}
+
+// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+func (o LookupWorkflowResultOutput) AccessRequestFixedDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.AccessRequestFixedDuration }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+func (o LookupWorkflowResultOutput) AccessRequestMaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWorkflowResult) *string { return v.AccessRequestMaxDuration }).(pulumi.StringPtrOutput)
 }
 
 // Optional approval flow ID identifies an approval flow that linked to the workflow

@@ -27,7 +27,13 @@ class GetWorkflowResult:
     """
     A collection of values returned by getWorkflow.
     """
-    def __init__(__self__, approval_flow_id=None, auto_grant=None, description=None, enabled=None, id=None, ids=None, name=None, weight=None, workflows=None):
+    def __init__(__self__, access_request_fixed_duration=None, access_request_max_duration=None, approval_flow_id=None, auto_grant=None, description=None, enabled=None, id=None, ids=None, name=None, weight=None, workflows=None):
+        if access_request_fixed_duration and not isinstance(access_request_fixed_duration, str):
+            raise TypeError("Expected argument 'access_request_fixed_duration' to be a str")
+        pulumi.set(__self__, "access_request_fixed_duration", access_request_fixed_duration)
+        if access_request_max_duration and not isinstance(access_request_max_duration, str):
+            raise TypeError("Expected argument 'access_request_max_duration' to be a str")
+        pulumi.set(__self__, "access_request_max_duration", access_request_max_duration)
         if approval_flow_id and not isinstance(approval_flow_id, str):
             raise TypeError("Expected argument 'approval_flow_id' to be a str")
         pulumi.set(__self__, "approval_flow_id", approval_flow_id)
@@ -55,6 +61,22 @@ class GetWorkflowResult:
         if workflows and not isinstance(workflows, list):
             raise TypeError("Expected argument 'workflows' to be a list")
         pulumi.set(__self__, "workflows", workflows)
+
+    @property
+    @pulumi.getter(name="accessRequestFixedDuration")
+    def access_request_fixed_duration(self) -> Optional[str]:
+        """
+        Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        """
+        return pulumi.get(self, "access_request_fixed_duration")
+
+    @property
+    @pulumi.getter(name="accessRequestMaxDuration")
+    def access_request_max_duration(self) -> Optional[str]:
+        """
+        Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        """
+        return pulumi.get(self, "access_request_max_duration")
 
     @property
     @pulumi.getter(name="approvalFlowId")
@@ -135,6 +157,8 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
         if False:
             yield self
         return GetWorkflowResult(
+            access_request_fixed_duration=self.access_request_fixed_duration,
+            access_request_max_duration=self.access_request_max_duration,
             approval_flow_id=self.approval_flow_id,
             auto_grant=self.auto_grant,
             description=self.description,
@@ -146,7 +170,9 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
             workflows=self.workflows)
 
 
-def get_workflow(approval_flow_id: Optional[str] = None,
+def get_workflow(access_request_fixed_duration: Optional[str] = None,
+                 access_request_max_duration: Optional[str] = None,
+                 approval_flow_id: Optional[str] = None,
                  auto_grant: Optional[bool] = None,
                  description: Optional[str] = None,
                  enabled: Optional[bool] = None,
@@ -160,6 +186,8 @@ def get_workflow(approval_flow_id: Optional[str] = None,
      but automatic approval or a set of users authorized to approve the requests.
 
 
+    :param str access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+    :param str access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
     :param str approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
     :param bool auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
     :param str description: Optional description of the Workflow.
@@ -169,6 +197,8 @@ def get_workflow(approval_flow_id: Optional[str] = None,
     :param int weight: Optional weight for workflow to specify it's priority in matching a request.
     """
     __args__ = dict()
+    __args__['accessRequestFixedDuration'] = access_request_fixed_duration
+    __args__['accessRequestMaxDuration'] = access_request_max_duration
     __args__['approvalFlowId'] = approval_flow_id
     __args__['autoGrant'] = auto_grant
     __args__['description'] = description
@@ -180,6 +210,8 @@ def get_workflow(approval_flow_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('sdm:index/getWorkflow:getWorkflow', __args__, opts=opts, typ=GetWorkflowResult).value
 
     return AwaitableGetWorkflowResult(
+        access_request_fixed_duration=pulumi.get(__ret__, 'access_request_fixed_duration'),
+        access_request_max_duration=pulumi.get(__ret__, 'access_request_max_duration'),
         approval_flow_id=pulumi.get(__ret__, 'approval_flow_id'),
         auto_grant=pulumi.get(__ret__, 'auto_grant'),
         description=pulumi.get(__ret__, 'description'),
@@ -189,7 +221,9 @@ def get_workflow(approval_flow_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         weight=pulumi.get(__ret__, 'weight'),
         workflows=pulumi.get(__ret__, 'workflows'))
-def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] = None,
+def get_workflow_output(access_request_fixed_duration: Optional[pulumi.Input[Optional[str]]] = None,
+                        access_request_max_duration: Optional[pulumi.Input[Optional[str]]] = None,
+                        approval_flow_id: Optional[pulumi.Input[Optional[str]]] = None,
                         auto_grant: Optional[pulumi.Input[Optional[bool]]] = None,
                         description: Optional[pulumi.Input[Optional[str]]] = None,
                         enabled: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -203,6 +237,8 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
      but automatic approval or a set of users authorized to approve the requests.
 
 
+    :param str access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+    :param str access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
     :param str approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
     :param bool auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
     :param str description: Optional description of the Workflow.
@@ -212,6 +248,8 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
     :param int weight: Optional weight for workflow to specify it's priority in matching a request.
     """
     __args__ = dict()
+    __args__['accessRequestFixedDuration'] = access_request_fixed_duration
+    __args__['accessRequestMaxDuration'] = access_request_max_duration
     __args__['approvalFlowId'] = approval_flow_id
     __args__['autoGrant'] = auto_grant
     __args__['description'] = description
@@ -222,6 +260,8 @@ def get_workflow_output(approval_flow_id: Optional[pulumi.Input[Optional[str]]] 
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('sdm:index/getWorkflow:getWorkflow', __args__, opts=opts, typ=GetWorkflowResult)
     return __ret__.apply(lambda __response__: GetWorkflowResult(
+        access_request_fixed_duration=pulumi.get(__response__, 'access_request_fixed_duration'),
+        access_request_max_duration=pulumi.get(__response__, 'access_request_max_duration'),
         approval_flow_id=pulumi.get(__response__, 'approval_flow_id'),
         auto_grant=pulumi.get(__response__, 'auto_grant'),
         description=pulumi.get(__response__, 'description'),

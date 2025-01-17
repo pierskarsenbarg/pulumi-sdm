@@ -41,6 +41,18 @@ namespace PiersKarsenbarg.Sdm
     public sealed class GetWorkflowArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        /// </summary>
+        [Input("accessRequestFixedDuration")]
+        public string? AccessRequestFixedDuration { get; set; }
+
+        /// <summary>
+        /// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        /// </summary>
+        [Input("accessRequestMaxDuration")]
+        public string? AccessRequestMaxDuration { get; set; }
+
+        /// <summary>
         /// Optional approval flow ID identifies an approval flow that linked to the workflow
         /// </summary>
         [Input("approvalFlowId")]
@@ -90,6 +102,18 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class GetWorkflowInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        /// </summary>
+        [Input("accessRequestFixedDuration")]
+        public Input<string>? AccessRequestFixedDuration { get; set; }
+
+        /// <summary>
+        /// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        /// </summary>
+        [Input("accessRequestMaxDuration")]
+        public Input<string>? AccessRequestMaxDuration { get; set; }
+
         /// <summary>
         /// Optional approval flow ID identifies an approval flow that linked to the workflow
         /// </summary>
@@ -143,6 +167,14 @@ namespace PiersKarsenbarg.Sdm
     public sealed class GetWorkflowResult
     {
         /// <summary>
+        /// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        /// </summary>
+        public readonly string? AccessRequestFixedDuration;
+        /// <summary>
+        /// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        /// </summary>
+        public readonly string? AccessRequestMaxDuration;
+        /// <summary>
         /// Optional approval flow ID identifies an approval flow that linked to the workflow
         /// </summary>
         public readonly string? ApprovalFlowId;
@@ -181,6 +213,10 @@ namespace PiersKarsenbarg.Sdm
 
         [OutputConstructor]
         private GetWorkflowResult(
+            string? accessRequestFixedDuration,
+
+            string? accessRequestMaxDuration,
+
             string? approvalFlowId,
 
             bool? autoGrant,
@@ -199,6 +235,8 @@ namespace PiersKarsenbarg.Sdm
 
             ImmutableArray<Outputs.GetWorkflowWorkflowResult> workflows)
         {
+            AccessRequestFixedDuration = accessRequestFixedDuration;
+            AccessRequestMaxDuration = accessRequestMaxDuration;
             ApprovalFlowId = approvalFlowId;
             AutoGrant = autoGrant;
             Description = description;

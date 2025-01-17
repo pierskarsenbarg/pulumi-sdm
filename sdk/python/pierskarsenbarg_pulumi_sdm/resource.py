@@ -34,6 +34,7 @@ class ResourceArgs:
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
                  aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
+                 aurora_mysql_iam: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']] = None,
                  aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
                  aurora_postgres_iam: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']] = None,
                  aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
@@ -114,8 +115,7 @@ class ResourceArgs:
         """
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceGcpConsoleArgs'] gcp_console: GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceGcpwifArgs'] gcpwif: GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAuroraMysqlIamArgs'] aurora_mysql_iam: AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -148,6 +148,8 @@ class ResourceArgs:
             pulumi.set(__self__, "athena", athena)
         if aurora_mysql is not None:
             pulumi.set(__self__, "aurora_mysql", aurora_mysql)
+        if aurora_mysql_iam is not None:
+            pulumi.set(__self__, "aurora_mysql_iam", aurora_mysql_iam)
         if aurora_postgres is not None:
             pulumi.set(__self__, "aurora_postgres", aurora_postgres)
         if aurora_postgres_iam is not None:
@@ -424,6 +426,18 @@ class ResourceArgs:
         pulumi.set(self, "aurora_mysql", value)
 
     @property
+    @pulumi.getter(name="auroraMysqlIam")
+    def aurora_mysql_iam(self) -> Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]:
+        """
+        AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aurora_mysql_iam")
+
+    @aurora_mysql_iam.setter
+    def aurora_mysql_iam(self, value: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]):
+        pulumi.set(self, "aurora_mysql_iam", value)
+
+    @property
     @pulumi.getter(name="auroraPostgres")
     def aurora_postgres(self) -> Optional[pulumi.Input['ResourceAuroraPostgresArgs']]:
         return pulumi.get(self, "aurora_postgres")
@@ -669,9 +683,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="gcpConsole")
     def gcp_console(self) -> Optional[pulumi.Input['ResourceGcpConsoleArgs']]:
-        """
-        GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "gcp_console")
 
     @gcp_console.setter
@@ -681,9 +692,6 @@ class ResourceArgs:
     @property
     @pulumi.getter
     def gcpwif(self) -> Optional[pulumi.Input['ResourceGcpwifArgs']]:
-        """
-        GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "gcpwif")
 
     @gcpwif.setter
@@ -1154,6 +1162,7 @@ class _ResourceState:
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
                  aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
+                 aurora_mysql_iam: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']] = None,
                  aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
                  aurora_postgres_iam: Optional[pulumi.Input['ResourceAuroraPostgresIamArgs']] = None,
                  aws: Optional[pulumi.Input['ResourceAwsArgs']] = None,
@@ -1234,8 +1243,7 @@ class _ResourceState:
         """
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceGcpConsoleArgs'] gcp_console: GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceGcpwifArgs'] gcpwif: GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAuroraMysqlIamArgs'] aurora_mysql_iam: AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1268,6 +1276,8 @@ class _ResourceState:
             pulumi.set(__self__, "athena", athena)
         if aurora_mysql is not None:
             pulumi.set(__self__, "aurora_mysql", aurora_mysql)
+        if aurora_mysql_iam is not None:
+            pulumi.set(__self__, "aurora_mysql_iam", aurora_mysql_iam)
         if aurora_postgres is not None:
             pulumi.set(__self__, "aurora_postgres", aurora_postgres)
         if aurora_postgres_iam is not None:
@@ -1544,6 +1554,18 @@ class _ResourceState:
         pulumi.set(self, "aurora_mysql", value)
 
     @property
+    @pulumi.getter(name="auroraMysqlIam")
+    def aurora_mysql_iam(self) -> Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]:
+        """
+        AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aurora_mysql_iam")
+
+    @aurora_mysql_iam.setter
+    def aurora_mysql_iam(self, value: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]):
+        pulumi.set(self, "aurora_mysql_iam", value)
+
+    @property
     @pulumi.getter(name="auroraPostgres")
     def aurora_postgres(self) -> Optional[pulumi.Input['ResourceAuroraPostgresArgs']]:
         return pulumi.get(self, "aurora_postgres")
@@ -1789,9 +1811,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="gcpConsole")
     def gcp_console(self) -> Optional[pulumi.Input['ResourceGcpConsoleArgs']]:
-        """
-        GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "gcp_console")
 
     @gcp_console.setter
@@ -1801,9 +1820,6 @@ class _ResourceState:
     @property
     @pulumi.getter
     def gcpwif(self) -> Optional[pulumi.Input['ResourceGcpwifArgs']]:
-        """
-        GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "gcpwif")
 
     @gcpwif.setter
@@ -2276,6 +2292,7 @@ class Resource(pulumi.CustomResource):
                  amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
                  athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
                  aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
+                 aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
                  aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
                  aurora_postgres_iam: Optional[pulumi.Input[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
                  aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
@@ -2366,8 +2383,7 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']] gcp_console: GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']] gcpwif: GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']] aurora_mysql_iam: AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2417,6 +2433,7 @@ class Resource(pulumi.CustomResource):
                  amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
                  athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
                  aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
+                 aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
                  aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
                  aurora_postgres_iam: Optional[pulumi.Input[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
                  aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
@@ -2516,6 +2533,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
             __props__.__dict__["athena"] = athena
             __props__.__dict__["aurora_mysql"] = aurora_mysql
+            __props__.__dict__["aurora_mysql_iam"] = aurora_mysql_iam
             __props__.__dict__["aurora_postgres"] = aurora_postgres
             __props__.__dict__["aurora_postgres_iam"] = aurora_postgres_iam
             __props__.__dict__["aws"] = aws
@@ -2616,6 +2634,7 @@ class Resource(pulumi.CustomResource):
             amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
             athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
             aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
+            aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
             aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
             aurora_postgres_iam: Optional[pulumi.Input[Union['ResourceAuroraPostgresIamArgs', 'ResourceAuroraPostgresIamArgsDict']]] = None,
             aws: Optional[pulumi.Input[Union['ResourceAwsArgs', 'ResourceAwsArgsDict']]] = None,
@@ -2701,8 +2720,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceGcpConsoleArgs', 'ResourceGcpConsoleArgsDict']] gcp_console: GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceGcpwifArgs', 'ResourceGcpwifArgsDict']] gcpwif: GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']] aurora_mysql_iam: AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2726,6 +2744,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
         __props__.__dict__["athena"] = athena
         __props__.__dict__["aurora_mysql"] = aurora_mysql
+        __props__.__dict__["aurora_mysql_iam"] = aurora_mysql_iam
         __props__.__dict__["aurora_postgres"] = aurora_postgres
         __props__.__dict__["aurora_postgres_iam"] = aurora_postgres_iam
         __props__.__dict__["aws"] = aws
@@ -2874,6 +2893,14 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "aurora_mysql")
 
     @property
+    @pulumi.getter(name="auroraMysqlIam")
+    def aurora_mysql_iam(self) -> pulumi.Output[Optional['outputs.ResourceAuroraMysqlIam']]:
+        """
+        AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "aurora_mysql_iam")
+
+    @property
     @pulumi.getter(name="auroraPostgres")
     def aurora_postgres(self) -> pulumi.Output[Optional['outputs.ResourceAuroraPostgres']]:
         return pulumi.get(self, "aurora_postgres")
@@ -3011,17 +3038,11 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="gcpConsole")
     def gcp_console(self) -> pulumi.Output[Optional['outputs.ResourceGcpConsole']]:
-        """
-        GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "gcp_console")
 
     @property
     @pulumi.getter
     def gcpwif(self) -> pulumi.Output[Optional['outputs.ResourceGcpwif']]:
-        """
-        GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "gcpwif")
 
     @property
