@@ -15,6 +15,8 @@ export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions)
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sdm:index/getWorkflow:getWorkflow", {
+        "accessRequestFixedDuration": args.accessRequestFixedDuration,
+        "accessRequestMaxDuration": args.accessRequestMaxDuration,
         "approvalFlowId": args.approvalFlowId,
         "autoGrant": args.autoGrant,
         "description": args.description,
@@ -29,6 +31,14 @@ export function getWorkflow(args?: GetWorkflowArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowArgs {
+    /**
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+     */
+    accessRequestFixedDuration?: string;
+    /**
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+     */
+    accessRequestMaxDuration?: string;
     /**
      * Optional approval flow ID identifies an approval flow that linked to the workflow
      */
@@ -63,6 +73,14 @@ export interface GetWorkflowArgs {
  * A collection of values returned by getWorkflow.
  */
 export interface GetWorkflowResult {
+    /**
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+     */
+    readonly accessRequestFixedDuration?: string;
+    /**
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+     */
+    readonly accessRequestMaxDuration?: string;
     /**
      * Optional approval flow ID identifies an approval flow that linked to the workflow
      */
@@ -109,6 +127,8 @@ export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.In
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sdm:index/getWorkflow:getWorkflow", {
+        "accessRequestFixedDuration": args.accessRequestFixedDuration,
+        "accessRequestMaxDuration": args.accessRequestMaxDuration,
         "approvalFlowId": args.approvalFlowId,
         "autoGrant": args.autoGrant,
         "description": args.description,
@@ -123,6 +143,14 @@ export function getWorkflowOutput(args?: GetWorkflowOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getWorkflow.
  */
 export interface GetWorkflowOutputArgs {
+    /**
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+     */
+    accessRequestFixedDuration?: pulumi.Input<string>;
+    /**
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+     */
+    accessRequestMaxDuration?: pulumi.Input<string>;
     /**
      * Optional approval flow ID identifies an approval flow that linked to the workflow
      */

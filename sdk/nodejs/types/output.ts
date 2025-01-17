@@ -526,6 +526,7 @@ export interface GetResourceResource {
     amazonEs: outputs.GetResourceResourceAmazonE[];
     amazonmqAmqp091s: outputs.GetResourceResourceAmazonmqAmqp091[];
     athenas: outputs.GetResourceResourceAthena[];
+    auroraMysqlIams: outputs.GetResourceResourceAuroraMysqlIam[];
     auroraMysqls: outputs.GetResourceResourceAuroraMysql[];
     auroraPostgres: outputs.GetResourceResourceAuroraPostgre[];
     auroraPostgresIams: outputs.GetResourceResourceAuroraPostgresIam[];
@@ -1513,6 +1514,69 @@ export interface GetResourceResourceAuroraMysql {
      * If true, appends the hostname to the username when hitting a database.azure.com address
      */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceAuroraMysqlIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
     /**
      * The username to authenticate with.
      */
@@ -7113,6 +7177,14 @@ export interface GetWorkflowRoleWorkflowRole {
 
 export interface GetWorkflowWorkflow {
     /**
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+     */
+    accessRequestFixedDuration?: string;
+    /**
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+     */
+    accessRequestMaxDuration?: string;
+    /**
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */
     accessRules?: string;
@@ -8107,6 +8179,65 @@ export interface ResourceAuroraMysql {
      * If true, appends the hostname to the username when hitting a database.azure.com address
      */
     useAzureSingleServerUsernames?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceAuroraMysqlIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
     /**
      * The username to authenticate with.
      */

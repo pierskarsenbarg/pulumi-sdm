@@ -26,6 +26,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEResult> AmazonEs;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> AmazonmqAmqp091s;
         public readonly ImmutableArray<Outputs.GetResourceResourceAthenaResult> Athenas;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAuroraMysqlIamResult> AuroraMysqlIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraMysqlResult> AuroraMysqls;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraPostgreResult> AuroraPostgres;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraPostgresIamResult> AuroraPostgresIams;
@@ -130,6 +131,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> amazonmqAmqp091s,
 
             ImmutableArray<Outputs.GetResourceResourceAthenaResult> athenas,
+
+            ImmutableArray<Outputs.GetResourceResourceAuroraMysqlIamResult> auroraMysqlIams,
 
             ImmutableArray<Outputs.GetResourceResourceAuroraMysqlResult> auroraMysqls,
 
@@ -299,6 +302,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AmazonEs = amazonEs;
             AmazonmqAmqp091s = amazonmqAmqp091s;
             Athenas = athenas;
+            AuroraMysqlIams = auroraMysqlIams;
             AuroraMysqls = auroraMysqls;
             AuroraPostgres = auroraPostgres;
             AuroraPostgresIams = auroraPostgresIams;

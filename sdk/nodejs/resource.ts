@@ -59,6 +59,10 @@ export class Resource extends pulumi.CustomResource {
     public readonly amazonmqAmqp091!: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
     public readonly athena!: pulumi.Output<outputs.ResourceAthena | undefined>;
     public readonly auroraMysql!: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
+    /**
+     * AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly auroraMysqlIam!: pulumi.Output<outputs.ResourceAuroraMysqlIam | undefined>;
     public readonly auroraPostgres!: pulumi.Output<outputs.ResourceAuroraPostgres | undefined>;
     public readonly auroraPostgresIam!: pulumi.Output<outputs.ResourceAuroraPostgresIam | undefined>;
     public readonly aws!: pulumi.Output<outputs.ResourceAws | undefined>;
@@ -86,13 +90,7 @@ export class Resource extends pulumi.CustomResource {
     public readonly elastic!: pulumi.Output<outputs.ResourceElastic | undefined>;
     public readonly elasticacheRedis!: pulumi.Output<outputs.ResourceElasticacheRedis | undefined>;
     public readonly gcp!: pulumi.Output<outputs.ResourceGcp | undefined>;
-    /**
-     * GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly gcpConsole!: pulumi.Output<outputs.ResourceGcpConsole | undefined>;
-    /**
-     * GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly gcpwif!: pulumi.Output<outputs.ResourceGcpwif | undefined>;
     public readonly googleGke!: pulumi.Output<outputs.ResourceGoogleGke | undefined>;
     public readonly googleGkeUserImpersonation!: pulumi.Output<outputs.ResourceGoogleGkeUserImpersonation | undefined>;
@@ -184,6 +182,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["amazonmqAmqp091"] = state ? state.amazonmqAmqp091 : undefined;
             resourceInputs["athena"] = state ? state.athena : undefined;
             resourceInputs["auroraMysql"] = state ? state.auroraMysql : undefined;
+            resourceInputs["auroraMysqlIam"] = state ? state.auroraMysqlIam : undefined;
             resourceInputs["auroraPostgres"] = state ? state.auroraPostgres : undefined;
             resourceInputs["auroraPostgresIam"] = state ? state.auroraPostgresIam : undefined;
             resourceInputs["aws"] = state ? state.aws : undefined;
@@ -276,6 +275,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["amazonmqAmqp091"] = args ? args.amazonmqAmqp091 : undefined;
             resourceInputs["athena"] = args ? args.athena : undefined;
             resourceInputs["auroraMysql"] = args ? args.auroraMysql : undefined;
+            resourceInputs["auroraMysqlIam"] = args ? args.auroraMysqlIam : undefined;
             resourceInputs["auroraPostgres"] = args ? args.auroraPostgres : undefined;
             resourceInputs["auroraPostgresIam"] = args ? args.auroraPostgresIam : undefined;
             resourceInputs["aws"] = args ? args.aws : undefined;
@@ -379,6 +379,10 @@ export interface ResourceState {
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
+    /**
+     * AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
     auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
     aws?: pulumi.Input<inputs.ResourceAws>;
@@ -406,13 +410,7 @@ export interface ResourceState {
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
-    /**
-     * GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
-    /**
-     * GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
     googleGke?: pulumi.Input<inputs.ResourceGoogleGke>;
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;
@@ -499,6 +497,10 @@ export interface ResourceArgs {
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
+    /**
+     * AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
     auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
     aws?: pulumi.Input<inputs.ResourceAws>;
@@ -526,13 +528,7 @@ export interface ResourceArgs {
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
-    /**
-     * GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     gcpConsole?: pulumi.Input<inputs.ResourceGcpConsole>;
-    /**
-     * GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     gcpwif?: pulumi.Input<inputs.ResourceGcpwif>;
     googleGke?: pulumi.Input<inputs.ResourceGoogleGke>;
     googleGkeUserImpersonation?: pulumi.Input<inputs.ResourceGoogleGkeUserImpersonation>;

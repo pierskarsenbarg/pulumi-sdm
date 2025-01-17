@@ -26,6 +26,22 @@ namespace PiersKarsenbarg.Sdm
     public partial class Workflow : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
+        /// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+        /// settings.
+        /// </summary>
+        [Output("accessRequestFixedDuration")]
+        public Output<string?> AccessRequestFixedDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
+        /// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+        /// settings.
+        /// </summary>
+        [Output("accessRequestMaxDuration")]
+        public Output<string?> AccessRequestMaxDuration { get; private set; } = null!;
+
+        /// <summary>
         /// AccessRules is a list of access rules defining the resources this Workflow provides access to.
         /// </summary>
         [Output("accessRules")]
@@ -115,6 +131,22 @@ namespace PiersKarsenbarg.Sdm
     public sealed class WorkflowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
+        /// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+        /// settings.
+        /// </summary>
+        [Input("accessRequestFixedDuration")]
+        public Input<string>? AccessRequestFixedDuration { get; set; }
+
+        /// <summary>
+        /// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
+        /// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+        /// settings.
+        /// </summary>
+        [Input("accessRequestMaxDuration")]
+        public Input<string>? AccessRequestMaxDuration { get; set; }
+
+        /// <summary>
         /// AccessRules is a list of access rules defining the resources this Workflow provides access to.
         /// </summary>
         [Input("accessRules")]
@@ -164,6 +196,22 @@ namespace PiersKarsenbarg.Sdm
 
     public sealed class WorkflowState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
+        /// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+        /// settings.
+        /// </summary>
+        [Input("accessRequestFixedDuration")]
+        public Input<string>? AccessRequestFixedDuration { get; set; }
+
+        /// <summary>
+        /// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
+        /// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+        /// settings.
+        /// </summary>
+        [Input("accessRequestMaxDuration")]
+        public Input<string>? AccessRequestMaxDuration { get; set; }
+
         /// <summary>
         /// AccessRules is a list of access rules defining the resources this Workflow provides access to.
         /// </summary>

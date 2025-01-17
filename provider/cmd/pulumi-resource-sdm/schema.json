@@ -1559,6 +1559,88 @@
                 }
             }
         },
+        "sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres": {
             "properties": {
                 "bindInterface": {
@@ -9419,6 +9501,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceAthena:getResourceResourceAthena"
                     }
                 },
+                "auroraMysqlIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAuroraMysqlIam:getResourceResourceAuroraMysqlIam"
+                    }
+                },
                 "auroraMysqls": {
                     "type": "array",
                     "items": {
@@ -9903,6 +9991,7 @@
                 "amazonmqAmqp091s",
                 "athenas",
                 "auroraMysqls",
+                "auroraMysqlIams",
                 "auroraPostgres",
                 "auroraPostgresIams",
                 "aws",
@@ -10974,6 +11063,74 @@
                 "useAzureSingleServerUsernames": {
                     "type": "boolean",
                     "description": "If true, appends the hostname to the username when hitting a database.azure.com address\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAuroraMysqlIam:getResourceResourceAuroraMysqlIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
                 },
                 "username": {
                     "type": "string",
@@ -17311,6 +17468,14 @@
         },
         "sdm:index/getWorkflowWorkflow:getWorkflowWorkflow": {
             "properties": {
+                "accessRequestFixedDuration": {
+                    "type": "string",
+                    "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
+                },
+                "accessRequestMaxDuration": {
+                    "type": "string",
+                    "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
+                },
                 "accessRules": {
                     "type": "string",
                     "description": "AccessRules is a list of access rules defining the resources this Workflow provides access to.\n"
@@ -18136,6 +18301,10 @@
                 "auroraMysql": {
                     "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
                 },
+                "auroraMysqlIam": {
+                    "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam",
+                    "description": "AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "auroraPostgres": {
                     "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                 },
@@ -18218,12 +18387,10 @@
                     "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"
                 },
                 "gcpConsole": {
-                    "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole",
-                    "description": "GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole"
                 },
                 "gcpwif": {
-                    "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif",
-                    "description": "GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif"
                 },
                 "googleGke": {
                     "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"
@@ -18416,6 +18583,10 @@
                 "auroraMysql": {
                     "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
                 },
+                "auroraMysqlIam": {
+                    "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam",
+                    "description": "AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "auroraPostgres": {
                     "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                 },
@@ -18498,12 +18669,10 @@
                     "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"
                 },
                 "gcpConsole": {
-                    "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole",
-                    "description": "GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole"
                 },
                 "gcpwif": {
-                    "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif",
-                    "description": "GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif"
                 },
                 "googleGke": {
                     "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"
@@ -18698,6 +18867,10 @@
                     "auroraMysql": {
                         "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
                     },
+                    "auroraMysqlIam": {
+                        "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam",
+                        "description": "AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
                     "auroraPostgres": {
                         "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
                     },
@@ -18780,12 +18953,10 @@
                         "$ref": "#/types/sdm:index/ResourceGcp:ResourceGcp"
                     },
                     "gcpConsole": {
-                        "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole",
-                        "description": "GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceGcpConsole:ResourceGcpConsole"
                     },
                     "gcpwif": {
-                        "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif",
-                        "description": "GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceGcpwif:ResourceGcpwif"
                     },
                     "googleGke": {
                         "$ref": "#/types/sdm:index/ResourceGoogleGke:ResourceGoogleGke"
@@ -19243,6 +19414,14 @@
         "sdm:index/workflow:Workflow": {
             "description": "Workflows are the collection of rules that define the resources to which access can be requested,\n the users that can request that access, and the mechanism for approving those requests which can either\n but automatic approval or a set of users authorized to approve the requests.\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  autoGrantApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      approvalMode: automatic\n      enabled: true\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n  manualApprovalWorkflow:\n    type: sdm:Workflow\n    properties:\n      approvalMode: manual\n      accessRules:\n        fn::toJSON:\n          - type: redis\n            tags:\n              region: us-east\n```\n\u003c!--End PulumiCodeChooser --\u003e\nThis resource can be imported using the import command.\n\n## Import\n\nA Workflow can be imported using the id, e.g.,\n\n```sh\n$ pulumi import sdm:index/workflow:Workflow example aw-12345678\n```\n",
             "properties": {
+                "accessRequestFixedDuration": {
+                    "type": "string",
+                    "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If\nneither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                },
+                "accessRequestMaxDuration": {
+                    "type": "string",
+                    "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.\nIf neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                },
                 "accessRules": {
                     "type": "string",
                     "description": "AccessRules is a list of access rules defining the resources this Workflow provides access to.\n"
@@ -19278,6 +19457,14 @@
                 "weight"
             ],
             "inputProperties": {
+                "accessRequestFixedDuration": {
+                    "type": "string",
+                    "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If\nneither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                },
+                "accessRequestMaxDuration": {
+                    "type": "string",
+                    "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.\nIf neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                },
                 "accessRules": {
                     "type": "string",
                     "description": "AccessRules is a list of access rules defining the resources this Workflow provides access to.\n"
@@ -19310,6 +19497,14 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Workflow resources.\n",
                 "properties": {
+                    "accessRequestFixedDuration": {
+                        "type": "string",
+                        "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If\nneither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                    },
+                    "accessRequestMaxDuration": {
+                        "type": "string",
+                        "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.\nIf neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                    },
                     "accessRules": {
                         "type": "string",
                         "description": "AccessRules is a list of access rules defining the resources this Workflow provides access to.\n"
@@ -20748,6 +20943,14 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getWorkflow.\n",
                 "properties": {
+                    "accessRequestFixedDuration": {
+                        "type": "string",
+                        "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
+                    },
+                    "accessRequestMaxDuration": {
+                        "type": "string",
+                        "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
+                    },
                     "approvalFlowId": {
                         "type": "string",
                         "description": "Optional approval flow ID identifies an approval flow that linked to the workflow\n"
@@ -20782,6 +20985,14 @@
             "outputs": {
                 "description": "A collection of values returned by getWorkflow.\n",
                 "properties": {
+                    "accessRequestFixedDuration": {
+                        "type": "string",
+                        "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
+                    },
+                    "accessRequestMaxDuration": {
+                        "type": "string",
+                        "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
+                    },
                     "approvalFlowId": {
                         "type": "string",
                         "description": "Optional approval flow ID identifies an approval flow that linked to the workflow\n"

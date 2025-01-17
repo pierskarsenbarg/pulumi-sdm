@@ -6974,6 +6974,390 @@ func (o ResourceAuroraMysqlPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceAuroraMysqlIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceAuroraMysqlIamInput is an input type that accepts ResourceAuroraMysqlIamArgs and ResourceAuroraMysqlIamOutput values.
+// You can construct a concrete instance of `ResourceAuroraMysqlIamInput` via:
+//
+//	ResourceAuroraMysqlIamArgs{...}
+type ResourceAuroraMysqlIamInput interface {
+	pulumi.Input
+
+	ToResourceAuroraMysqlIamOutput() ResourceAuroraMysqlIamOutput
+	ToResourceAuroraMysqlIamOutputWithContext(context.Context) ResourceAuroraMysqlIamOutput
+}
+
+type ResourceAuroraMysqlIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceAuroraMysqlIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAuroraMysqlIam)(nil)).Elem()
+}
+
+func (i ResourceAuroraMysqlIamArgs) ToResourceAuroraMysqlIamOutput() ResourceAuroraMysqlIamOutput {
+	return i.ToResourceAuroraMysqlIamOutputWithContext(context.Background())
+}
+
+func (i ResourceAuroraMysqlIamArgs) ToResourceAuroraMysqlIamOutputWithContext(ctx context.Context) ResourceAuroraMysqlIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraMysqlIamOutput)
+}
+
+func (i ResourceAuroraMysqlIamArgs) ToResourceAuroraMysqlIamPtrOutput() ResourceAuroraMysqlIamPtrOutput {
+	return i.ToResourceAuroraMysqlIamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAuroraMysqlIamArgs) ToResourceAuroraMysqlIamPtrOutputWithContext(ctx context.Context) ResourceAuroraMysqlIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraMysqlIamOutput).ToResourceAuroraMysqlIamPtrOutputWithContext(ctx)
+}
+
+// ResourceAuroraMysqlIamPtrInput is an input type that accepts ResourceAuroraMysqlIamArgs, ResourceAuroraMysqlIamPtr and ResourceAuroraMysqlIamPtrOutput values.
+// You can construct a concrete instance of `ResourceAuroraMysqlIamPtrInput` via:
+//
+//	        ResourceAuroraMysqlIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAuroraMysqlIamPtrInput interface {
+	pulumi.Input
+
+	ToResourceAuroraMysqlIamPtrOutput() ResourceAuroraMysqlIamPtrOutput
+	ToResourceAuroraMysqlIamPtrOutputWithContext(context.Context) ResourceAuroraMysqlIamPtrOutput
+}
+
+type resourceAuroraMysqlIamPtrType ResourceAuroraMysqlIamArgs
+
+func ResourceAuroraMysqlIamPtr(v *ResourceAuroraMysqlIamArgs) ResourceAuroraMysqlIamPtrInput {
+	return (*resourceAuroraMysqlIamPtrType)(v)
+}
+
+func (*resourceAuroraMysqlIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAuroraMysqlIam)(nil)).Elem()
+}
+
+func (i *resourceAuroraMysqlIamPtrType) ToResourceAuroraMysqlIamPtrOutput() ResourceAuroraMysqlIamPtrOutput {
+	return i.ToResourceAuroraMysqlIamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAuroraMysqlIamPtrType) ToResourceAuroraMysqlIamPtrOutputWithContext(ctx context.Context) ResourceAuroraMysqlIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAuroraMysqlIamPtrOutput)
+}
+
+type ResourceAuroraMysqlIamOutput struct{ *pulumi.OutputState }
+
+func (ResourceAuroraMysqlIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAuroraMysqlIam)(nil)).Elem()
+}
+
+func (o ResourceAuroraMysqlIamOutput) ToResourceAuroraMysqlIamOutput() ResourceAuroraMysqlIamOutput {
+	return o
+}
+
+func (o ResourceAuroraMysqlIamOutput) ToResourceAuroraMysqlIamOutputWithContext(ctx context.Context) ResourceAuroraMysqlIamOutput {
+	return o
+}
+
+func (o ResourceAuroraMysqlIamOutput) ToResourceAuroraMysqlIamPtrOutput() ResourceAuroraMysqlIamPtrOutput {
+	return o.ToResourceAuroraMysqlIamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAuroraMysqlIamOutput) ToResourceAuroraMysqlIamPtrOutputWithContext(ctx context.Context) ResourceAuroraMysqlIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAuroraMysqlIam) *ResourceAuroraMysqlIam {
+		return &v
+	}).(ResourceAuroraMysqlIamPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAuroraMysqlIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceAuroraMysqlIamOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAuroraMysqlIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAuroraMysqlIamOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAuroraMysqlIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAuroraMysqlIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAuroraMysqlIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAuroraMysqlIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAuroraMysqlIamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceAuroraMysqlIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAuroraMysqlIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAuroraMysqlIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAuroraMysqlIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAuroraMysqlIamOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAuroraMysqlIam) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceAuroraMysqlIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAuroraMysqlIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAuroraMysqlIam)(nil)).Elem()
+}
+
+func (o ResourceAuroraMysqlIamPtrOutput) ToResourceAuroraMysqlIamPtrOutput() ResourceAuroraMysqlIamPtrOutput {
+	return o
+}
+
+func (o ResourceAuroraMysqlIamPtrOutput) ToResourceAuroraMysqlIamPtrOutputWithContext(ctx context.Context) ResourceAuroraMysqlIamPtrOutput {
+	return o
+}
+
+func (o ResourceAuroraMysqlIamPtrOutput) Elem() ResourceAuroraMysqlIamOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) ResourceAuroraMysqlIam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAuroraMysqlIam
+		return ret
+	}).(ResourceAuroraMysqlIamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAuroraMysqlIamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceAuroraMysqlIamPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAuroraMysqlIamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAuroraMysqlIamPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAuroraMysqlIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceAuroraMysqlIamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAuroraMysqlIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAuroraMysqlIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAuroraMysqlIamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceAuroraMysqlIamPtrOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleAssumptionArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAuroraMysqlIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAuroraMysqlIamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAuroraMysqlIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceAuroraMysqlIamPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAuroraMysqlIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceAuroraPostgres struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -44704,6 +45088,7 @@ type GetResourceResource struct {
 	AmazonEs                                   []GetResourceResourceAmazonE                                   `pulumi:"amazonEs"`
 	AmazonmqAmqp091s                           []GetResourceResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091s"`
 	Athenas                                    []GetResourceResourceAthena                                    `pulumi:"athenas"`
+	AuroraMysqlIams                            []GetResourceResourceAuroraMysqlIam                            `pulumi:"auroraMysqlIams"`
 	AuroraMysqls                               []GetResourceResourceAuroraMysql                               `pulumi:"auroraMysqls"`
 	AuroraPostgres                             []GetResourceResourceAuroraPostgre                             `pulumi:"auroraPostgres"`
 	AuroraPostgresIams                         []GetResourceResourceAuroraPostgresIam                         `pulumi:"auroraPostgresIams"`
@@ -44808,6 +45193,7 @@ type GetResourceResourceArgs struct {
 	AmazonEs                                   GetResourceResourceAmazonEArrayInput                                   `pulumi:"amazonEs"`
 	AmazonmqAmqp091s                           GetResourceResourceAmazonmqAmqp091ArrayInput                           `pulumi:"amazonmqAmqp091s"`
 	Athenas                                    GetResourceResourceAthenaArrayInput                                    `pulumi:"athenas"`
+	AuroraMysqlIams                            GetResourceResourceAuroraMysqlIamArrayInput                            `pulumi:"auroraMysqlIams"`
 	AuroraMysqls                               GetResourceResourceAuroraMysqlArrayInput                               `pulumi:"auroraMysqls"`
 	AuroraPostgres                             GetResourceResourceAuroraPostgreArrayInput                             `pulumi:"auroraPostgres"`
 	AuroraPostgresIams                         GetResourceResourceAuroraPostgresIamArrayInput                         `pulumi:"auroraPostgresIams"`
@@ -44993,6 +45379,10 @@ func (o GetResourceResourceOutput) AmazonmqAmqp091s() GetResourceResourceAmazonm
 
 func (o GetResourceResourceOutput) Athenas() GetResourceResourceAthenaArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAthena { return v.Athenas }).(GetResourceResourceAthenaArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AuroraMysqlIams() GetResourceResourceAuroraMysqlIamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAuroraMysqlIam { return v.AuroraMysqlIams }).(GetResourceResourceAuroraMysqlIamArrayOutput)
 }
 
 func (o GetResourceResourceOutput) AuroraMysqls() GetResourceResourceAuroraMysqlArrayOutput {
@@ -48455,6 +48845,229 @@ func (o GetResourceResourceAuroraMysqlArrayOutput) Index(i pulumi.IntInput) GetR
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAuroraMysql {
 		return vs[0].([]GetResourceResourceAuroraMysql)[vs[1].(int)]
 	}).(GetResourceResourceAuroraMysqlOutput)
+}
+
+type GetResourceResourceAuroraMysqlIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceAuroraMysqlIamInput is an input type that accepts GetResourceResourceAuroraMysqlIamArgs and GetResourceResourceAuroraMysqlIamOutput values.
+// You can construct a concrete instance of `GetResourceResourceAuroraMysqlIamInput` via:
+//
+//	GetResourceResourceAuroraMysqlIamArgs{...}
+type GetResourceResourceAuroraMysqlIamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAuroraMysqlIamOutput() GetResourceResourceAuroraMysqlIamOutput
+	ToGetResourceResourceAuroraMysqlIamOutputWithContext(context.Context) GetResourceResourceAuroraMysqlIamOutput
+}
+
+type GetResourceResourceAuroraMysqlIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceAuroraMysqlIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAuroraMysqlIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceAuroraMysqlIamArgs) ToGetResourceResourceAuroraMysqlIamOutput() GetResourceResourceAuroraMysqlIamOutput {
+	return i.ToGetResourceResourceAuroraMysqlIamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAuroraMysqlIamArgs) ToGetResourceResourceAuroraMysqlIamOutputWithContext(ctx context.Context) GetResourceResourceAuroraMysqlIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAuroraMysqlIamOutput)
+}
+
+// GetResourceResourceAuroraMysqlIamArrayInput is an input type that accepts GetResourceResourceAuroraMysqlIamArray and GetResourceResourceAuroraMysqlIamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAuroraMysqlIamArrayInput` via:
+//
+//	GetResourceResourceAuroraMysqlIamArray{ GetResourceResourceAuroraMysqlIamArgs{...} }
+type GetResourceResourceAuroraMysqlIamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAuroraMysqlIamArrayOutput() GetResourceResourceAuroraMysqlIamArrayOutput
+	ToGetResourceResourceAuroraMysqlIamArrayOutputWithContext(context.Context) GetResourceResourceAuroraMysqlIamArrayOutput
+}
+
+type GetResourceResourceAuroraMysqlIamArray []GetResourceResourceAuroraMysqlIamInput
+
+func (GetResourceResourceAuroraMysqlIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAuroraMysqlIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceAuroraMysqlIamArray) ToGetResourceResourceAuroraMysqlIamArrayOutput() GetResourceResourceAuroraMysqlIamArrayOutput {
+	return i.ToGetResourceResourceAuroraMysqlIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAuroraMysqlIamArray) ToGetResourceResourceAuroraMysqlIamArrayOutputWithContext(ctx context.Context) GetResourceResourceAuroraMysqlIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAuroraMysqlIamArrayOutput)
+}
+
+type GetResourceResourceAuroraMysqlIamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAuroraMysqlIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAuroraMysqlIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceAuroraMysqlIamOutput) ToGetResourceResourceAuroraMysqlIamOutput() GetResourceResourceAuroraMysqlIamOutput {
+	return o
+}
+
+func (o GetResourceResourceAuroraMysqlIamOutput) ToGetResourceResourceAuroraMysqlIamOutputWithContext(ctx context.Context) GetResourceResourceAuroraMysqlIamOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAuroraMysqlIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceAuroraMysqlIamOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAuroraMysqlIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAuroraMysqlIamOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAuroraMysqlIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAuroraMysqlIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceAuroraMysqlIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceAuroraMysqlIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAuroraMysqlIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceAuroraMysqlIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o GetResourceResourceAuroraMysqlIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAuroraMysqlIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAuroraMysqlIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAuroraMysqlIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceAuroraMysqlIamOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAuroraMysqlIam) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceAuroraMysqlIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAuroraMysqlIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAuroraMysqlIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceAuroraMysqlIamArrayOutput) ToGetResourceResourceAuroraMysqlIamArrayOutput() GetResourceResourceAuroraMysqlIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAuroraMysqlIamArrayOutput) ToGetResourceResourceAuroraMysqlIamArrayOutputWithContext(ctx context.Context) GetResourceResourceAuroraMysqlIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAuroraMysqlIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAuroraMysqlIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAuroraMysqlIam {
+		return vs[0].([]GetResourceResourceAuroraMysqlIam)[vs[1].(int)]
+	}).(GetResourceResourceAuroraMysqlIamOutput)
 }
 
 type GetResourceResourceAuroraPostgre struct {
@@ -69610,6 +70223,10 @@ func (o GetWorkflowRoleWorkflowRoleArrayOutput) Index(i pulumi.IntInput) GetWork
 }
 
 type GetWorkflowWorkflow struct {
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestFixedDuration *string `pulumi:"accessRequestFixedDuration"`
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestMaxDuration *string `pulumi:"accessRequestMaxDuration"`
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules *string `pulumi:"accessRules"`
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
@@ -69640,6 +70257,10 @@ type GetWorkflowWorkflowInput interface {
 }
 
 type GetWorkflowWorkflowArgs struct {
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestFixedDuration pulumi.StringPtrInput `pulumi:"accessRequestFixedDuration"`
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+	AccessRequestMaxDuration pulumi.StringPtrInput `pulumi:"accessRequestMaxDuration"`
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules pulumi.StringPtrInput `pulumi:"accessRules"`
 	// Optional approval flow ID identifies an approval flow that linked to the workflow
@@ -69707,6 +70328,16 @@ func (o GetWorkflowWorkflowOutput) ToGetWorkflowWorkflowOutput() GetWorkflowWork
 
 func (o GetWorkflowWorkflowOutput) ToGetWorkflowWorkflowOutputWithContext(ctx context.Context) GetWorkflowWorkflowOutput {
 	return o
+}
+
+// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+func (o GetWorkflowWorkflowOutput) AccessRequestFixedDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *string { return v.AccessRequestFixedDuration }).(pulumi.StringPtrOutput)
+}
+
+// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+func (o GetWorkflowWorkflowOutput) AccessRequestMaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWorkflowWorkflow) *string { return v.AccessRequestMaxDuration }).(pulumi.StringPtrOutput)
 }
 
 // AccessRules is a list of access rules defining the resources this Workflow provides access to.
@@ -69812,6 +70443,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaPtrInput)(nil)).Elem(), ResourceAthenaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraMysqlInput)(nil)).Elem(), ResourceAuroraMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraMysqlPtrInput)(nil)).Elem(), ResourceAuroraMysqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraMysqlIamInput)(nil)).Elem(), ResourceAuroraMysqlIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraMysqlIamPtrInput)(nil)).Elem(), ResourceAuroraMysqlIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraPostgresInput)(nil)).Elem(), ResourceAuroraPostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraPostgresPtrInput)(nil)).Elem(), ResourceAuroraPostgresArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraPostgresIamInput)(nil)).Elem(), ResourceAuroraPostgresIamArgs{})
@@ -70090,6 +70723,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaArrayInput)(nil)).Elem(), GetResourceResourceAthenaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraMysqlInput)(nil)).Elem(), GetResourceResourceAuroraMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraMysqlArrayInput)(nil)).Elem(), GetResourceResourceAuroraMysqlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraMysqlIamInput)(nil)).Elem(), GetResourceResourceAuroraMysqlIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraMysqlIamArrayInput)(nil)).Elem(), GetResourceResourceAuroraMysqlIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraPostgreInput)(nil)).Elem(), GetResourceResourceAuroraPostgreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraPostgreArrayInput)(nil)).Elem(), GetResourceResourceAuroraPostgreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraPostgresIamInput)(nil)).Elem(), GetResourceResourceAuroraPostgresIamArgs{})
@@ -70342,6 +70977,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAthenaPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraMysqlOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraMysqlPtrOutput{})
+	pulumi.RegisterOutputType(ResourceAuroraMysqlIamOutput{})
+	pulumi.RegisterOutputType(ResourceAuroraMysqlIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraPostgresOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraPostgresPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraPostgresIamOutput{})
@@ -70620,6 +71257,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAthenaArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraMysqlOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraMysqlArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAuroraMysqlIamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAuroraMysqlIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraPostgreOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraPostgreArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraPostgresIamOutput{})

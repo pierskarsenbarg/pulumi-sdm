@@ -15,6 +15,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
     public sealed class GetWorkflowWorkflowResult
     {
         /// <summary>
+        /// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        /// </summary>
+        public readonly string? AccessRequestFixedDuration;
+        /// <summary>
+        /// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        /// </summary>
+        public readonly string? AccessRequestMaxDuration;
+        /// <summary>
         /// AccessRules is a list of access rules defining the resources this Workflow provides access to.
         /// </summary>
         public readonly string? AccessRules;
@@ -49,6 +57,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
         [OutputConstructor]
         private GetWorkflowWorkflowResult(
+            string? accessRequestFixedDuration,
+
+            string? accessRequestMaxDuration,
+
             string? accessRules,
 
             string? approvalFlowId,
@@ -65,6 +77,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             int? weight)
         {
+            AccessRequestFixedDuration = accessRequestFixedDuration;
+            AccessRequestMaxDuration = accessRequestMaxDuration;
             AccessRules = accessRules;
             ApprovalFlowId = approvalFlowId;
             AutoGrant = autoGrant;

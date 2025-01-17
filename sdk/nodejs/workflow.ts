@@ -45,6 +45,18 @@ export class Workflow extends pulumi.CustomResource {
     }
 
     /**
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
+     * neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+     * settings.
+     */
+    public readonly accessRequestFixedDuration!: pulumi.Output<string | undefined>;
+    /**
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
+     * If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+     * settings.
+     */
+    public readonly accessRequestMaxDuration!: pulumi.Output<string | undefined>;
+    /**
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */
     public readonly accessRules!: pulumi.Output<string>;
@@ -86,6 +98,8 @@ export class Workflow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkflowState | undefined;
+            resourceInputs["accessRequestFixedDuration"] = state ? state.accessRequestFixedDuration : undefined;
+            resourceInputs["accessRequestMaxDuration"] = state ? state.accessRequestMaxDuration : undefined;
             resourceInputs["accessRules"] = state ? state.accessRules : undefined;
             resourceInputs["approvalFlowId"] = state ? state.approvalFlowId : undefined;
             resourceInputs["autoGrant"] = state ? state.autoGrant : undefined;
@@ -95,6 +109,8 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as WorkflowArgs | undefined;
+            resourceInputs["accessRequestFixedDuration"] = args ? args.accessRequestFixedDuration : undefined;
+            resourceInputs["accessRequestMaxDuration"] = args ? args.accessRequestMaxDuration : undefined;
             resourceInputs["accessRules"] = args ? args.accessRules : undefined;
             resourceInputs["approvalFlowId"] = args ? args.approvalFlowId : undefined;
             resourceInputs["autoGrant"] = args ? args.autoGrant : undefined;
@@ -112,6 +128,18 @@ export class Workflow extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Workflow resources.
  */
 export interface WorkflowState {
+    /**
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
+     * neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+     * settings.
+     */
+    accessRequestFixedDuration?: pulumi.Input<string>;
+    /**
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
+     * If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+     * settings.
+     */
+    accessRequestMaxDuration?: pulumi.Input<string>;
     /**
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */
@@ -146,6 +174,18 @@ export interface WorkflowState {
  * The set of arguments for constructing a Workflow resource.
  */
 export interface WorkflowArgs {
+    /**
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
+     * neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+     * settings.
+     */
+    accessRequestFixedDuration?: pulumi.Input<string>;
+    /**
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
+     * If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
+     * settings.
+     */
+    accessRequestMaxDuration?: pulumi.Input<string>;
     /**
      * AccessRules is a list of access rules defining the resources this Workflow provides access to.
      */

@@ -64,6 +64,12 @@ namespace PiersKarsenbarg.Sdm
         [Output("auroraMysql")]
         public Output<Outputs.ResourceAuroraMysql?> AuroraMysql { get; private set; } = null!;
 
+        /// <summary>
+        /// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("auroraMysqlIam")]
+        public Output<Outputs.ResourceAuroraMysqlIam?> AuroraMysqlIam { get; private set; } = null!;
+
         [Output("auroraPostgres")]
         public Output<Outputs.ResourceAuroraPostgres?> AuroraPostgres { get; private set; } = null!;
 
@@ -145,15 +151,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("gcp")]
         public Output<Outputs.ResourceGcp?> Gcp { get; private set; } = null!;
 
-        /// <summary>
-        /// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("gcpConsole")]
         public Output<Outputs.ResourceGcpConsole?> GcpConsole { get; private set; } = null!;
 
-        /// <summary>
-        /// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("gcpwif")]
         public Output<Outputs.ResourceGcpwif?> Gcpwif { get; private set; } = null!;
 
@@ -405,6 +405,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("auroraMysql")]
         public Input<Inputs.ResourceAuroraMysqlArgs>? AuroraMysql { get; set; }
 
+        /// <summary>
+        /// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("auroraMysqlIam")]
+        public Input<Inputs.ResourceAuroraMysqlIamArgs>? AuroraMysqlIam { get; set; }
+
         [Input("auroraPostgres")]
         public Input<Inputs.ResourceAuroraPostgresArgs>? AuroraPostgres { get; set; }
 
@@ -486,15 +492,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("gcp")]
         public Input<Inputs.ResourceGcpArgs>? Gcp { get; set; }
 
-        /// <summary>
-        /// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("gcpConsole")]
         public Input<Inputs.ResourceGcpConsoleArgs>? GcpConsole { get; set; }
 
-        /// <summary>
-        /// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("gcpwif")]
         public Input<Inputs.ResourceGcpwifArgs>? Gcpwif { get; set; }
 
@@ -707,6 +707,12 @@ namespace PiersKarsenbarg.Sdm
         [Input("auroraMysql")]
         public Input<Inputs.ResourceAuroraMysqlGetArgs>? AuroraMysql { get; set; }
 
+        /// <summary>
+        /// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("auroraMysqlIam")]
+        public Input<Inputs.ResourceAuroraMysqlIamGetArgs>? AuroraMysqlIam { get; set; }
+
         [Input("auroraPostgres")]
         public Input<Inputs.ResourceAuroraPostgresGetArgs>? AuroraPostgres { get; set; }
 
@@ -788,15 +794,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("gcp")]
         public Input<Inputs.ResourceGcpGetArgs>? Gcp { get; set; }
 
-        /// <summary>
-        /// GCPConsole is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("gcpConsole")]
         public Input<Inputs.ResourceGcpConsoleGetArgs>? GcpConsole { get; set; }
 
-        /// <summary>
-        /// GCPWIF is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("gcpwif")]
         public Input<Inputs.ResourceGcpwifGetArgs>? Gcpwif { get; set; }
 
