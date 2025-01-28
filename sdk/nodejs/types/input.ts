@@ -960,6 +960,57 @@ export interface ResourceAthena {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
+export interface ResourceAthenaIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The AWS S3 output location.
+     */
+    output: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface ResourceAuroraMysql {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -1886,6 +1937,172 @@ export interface ResourceCitus {
     username?: pulumi.Input<string>;
 }
 
+export interface ResourceClickHouseHttp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The base address of your website without the path.
+     * * kubernetes:
+     */
+    url: pulumi.Input<string>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ResourceClickHouseMySql {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
+    requireNativeAuth?: pulumi.Input<boolean>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface ResourceClickHouseTcp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The password to authenticate with.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: pulumi.Input<boolean>;
+    /**
+     * The username to authenticate with.
+     */
+    username?: pulumi.Input<string>;
+}
+
 export interface ResourceClustrix {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -2280,6 +2497,53 @@ export interface ResourceDocumentDbHost {
     username?: pulumi.Input<string>;
 }
 
+export interface ResourceDocumentDbHostIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * The AWS region to connect to.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface ResourceDocumentDbReplicaSet {
     /**
      * The authentication database to use.
@@ -2435,6 +2699,57 @@ export interface ResourceDynamoDb {
      * The Secret Access Key to use to authenticate.
      */
     secretAccessKey?: pulumi.Input<string>;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: pulumi.Input<string>;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: pulumi.Input<string>;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface ResourceDynamoDbiam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: pulumi.Input<string>;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: pulumi.Input<string>;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
+    endpoint: pulumi.Input<string>;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: pulumi.Input<number>;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: pulumi.Input<string>;
+    /**
+     * The AWS region to connect to.
+     */
+    region: pulumi.Input<string>;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: pulumi.Input<string>;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: pulumi.Input<string>;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */

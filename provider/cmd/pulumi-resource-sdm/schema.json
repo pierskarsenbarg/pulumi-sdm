@@ -1474,6 +1474,78 @@
                 }
             }
         },
+        "sdm:index/ResourceAthenaIam:ResourceAthenaIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "output": {
+                    "type": "string",
+                    "description": "The AWS S3 output location.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "output"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "name",
+                        "output",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceAuroraMysql:ResourceAuroraMysql": {
             "properties": {
                 "bindInterface": {
@@ -2760,6 +2832,238 @@
                 }
             }
         },
+        "sdm:index/ResourceClickHouseHttp:ResourceClickHouseHttp": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "name",
+                        "portOverride",
+                        "url"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceClickHouseMySql:ResourceClickHouseMySql": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "requireNativeAuth": {
+                    "type": "boolean",
+                    "description": "Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceClickHouseTcp:ResourceClickHouseTcp": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name",
+                "port"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "port",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceClustrix:ResourceClustrix": {
             "properties": {
                 "bindInterface": {
@@ -3318,6 +3622,76 @@
                 }
             }
         },
+        "sdm:index/ResourceDocumentDbHostIam:ResourceDocumentDbHostIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceDocumentDbReplicaSet:ResourceDocumentDbReplicaSet": {
             "properties": {
                 "authDatabase": {
@@ -3522,6 +3896,80 @@
                     "type": "string",
                     "description": "The Secret Access Key to use to authenticate.\n",
                     "secret": true
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoint",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "endpoint",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceDynamoDbiam:ResourceDynamoDbiam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -9495,6 +9943,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceAmazonmqAmqp091:getResourceResourceAmazonmqAmqp091"
                     }
                 },
+                "athenaIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAthenaIam:getResourceResourceAthenaIam"
+                    }
+                },
                 "athenas": {
                     "type": "array",
                     "items": {
@@ -9597,6 +10051,24 @@
                         "$ref": "#/types/sdm:index/getResourceResourceCitus:getResourceResourceCitus"
                     }
                 },
+                "clickHouseHttps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceClickHouseHttp:getResourceResourceClickHouseHttp"
+                    }
+                },
+                "clickHouseMySqls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceClickHouseMySql:getResourceResourceClickHouseMySql"
+                    }
+                },
+                "clickHouseTcps": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceClickHouseTcp:getResourceResourceClickHouseTcp"
+                    }
+                },
                 "clustrixes": {
                     "type": "array",
                     "items": {
@@ -9633,6 +10105,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceDb2Luw:getResourceResourceDb2Luw"
                     }
                 },
+                "documentDbHostIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceDocumentDbHostIam:getResourceResourceDocumentDbHostIam"
+                    }
+                },
                 "documentDbHosts": {
                     "type": "array",
                     "items": {
@@ -9649,6 +10127,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/sdm:index/getResourceResourceDruid:getResourceResourceDruid"
+                    }
+                },
+                "dynamoDbiams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceDynamoDbiam:getResourceResourceDynamoDbiam"
                     }
                 },
                 "dynamoDbs": {
@@ -9990,6 +10474,7 @@
                 "amazonEs",
                 "amazonmqAmqp091s",
                 "athenas",
+                "athenaIams",
                 "auroraMysqls",
                 "auroraMysqlIams",
                 "auroraPostgres",
@@ -10006,6 +10491,9 @@
                 "bigQueries",
                 "cassandras",
                 "cituses",
+                "clickHouseHttps",
+                "clickHouseMySqls",
+                "clickHouseTcps",
                 "clustrixes",
                 "cockroaches",
                 "couchbaseDatabases",
@@ -10013,9 +10501,11 @@
                 "db2Is",
                 "db2Luws",
                 "documentDbHosts",
+                "documentDbHostIams",
                 "documentDbReplicaSets",
                 "druids",
                 "dynamoDbs",
+                "dynamoDbiams",
                 "elastics",
                 "elasticacheRedis",
                 "gcps",
@@ -10979,6 +11469,66 @@
                     "type": "string",
                     "description": "The Secret Access Key to use to authenticate.\n",
                     "secret": true
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAthenaIam:getResourceResourceAthenaIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "output": {
+                    "type": "string",
+                    "description": "The AWS S3 output location.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -12078,6 +12628,201 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceClickHouseHttp:getResourceResourceClickHouseHttp": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The base address of your website without the path.\n* kubernetes:\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceClickHouseMySql:getResourceResourceClickHouseMySql": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "requireNativeAuth": {
+                    "type": "boolean",
+                    "description": "Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceClickHouseTcp:getResourceResourceClickHouseTcp": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password to authenticate with.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceClustrix:getResourceResourceClustrix": {
             "properties": {
                 "bindInterface": {
@@ -12541,6 +13286,62 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceDocumentDbHostIam:getResourceResourceDocumentDbHostIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceDocumentDbReplicaSet:getResourceResourceDocumentDbReplicaSet": {
             "properties": {
                 "authDatabase": {
@@ -12721,6 +13522,66 @@
                     "type": "string",
                     "description": "The Secret Access Key to use to authenticate.\n",
                     "secret": true
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceDynamoDbiam:getResourceResourceDynamoDbiam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
                 },
                 "secretStoreId": {
                     "type": "string",
@@ -18298,12 +19159,15 @@
                 "athena": {
                     "$ref": "#/types/sdm:index/ResourceAthena:ResourceAthena"
                 },
+                "athenaIam": {
+                    "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam",
+                    "description": "AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "auroraMysql": {
                     "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
                 },
                 "auroraMysqlIam": {
-                    "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam",
-                    "description": "AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam"
                 },
                 "auroraPostgres": {
                     "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
@@ -18347,6 +19211,15 @@
                 "citus": {
                     "$ref": "#/types/sdm:index/ResourceCitus:ResourceCitus"
                 },
+                "clickHouseHttp": {
+                    "$ref": "#/types/sdm:index/ResourceClickHouseHttp:ResourceClickHouseHttp"
+                },
+                "clickHouseMySql": {
+                    "$ref": "#/types/sdm:index/ResourceClickHouseMySql:ResourceClickHouseMySql"
+                },
+                "clickHouseTcp": {
+                    "$ref": "#/types/sdm:index/ResourceClickHouseTcp:ResourceClickHouseTcp"
+                },
                 "clustrix": {
                     "$ref": "#/types/sdm:index/ResourceClustrix:ResourceClustrix"
                 },
@@ -18368,6 +19241,9 @@
                 "documentDbHost": {
                     "$ref": "#/types/sdm:index/ResourceDocumentDbHost:ResourceDocumentDbHost"
                 },
+                "documentDbHostIam": {
+                    "$ref": "#/types/sdm:index/ResourceDocumentDbHostIam:ResourceDocumentDbHostIam"
+                },
                 "documentDbReplicaSet": {
                     "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSet:ResourceDocumentDbReplicaSet"
                 },
@@ -18376,6 +19252,9 @@
                 },
                 "dynamoDb": {
                     "$ref": "#/types/sdm:index/ResourceDynamoDb:ResourceDynamoDb"
+                },
+                "dynamoDbiam": {
+                    "$ref": "#/types/sdm:index/ResourceDynamoDbiam:ResourceDynamoDbiam"
                 },
                 "elastic": {
                     "$ref": "#/types/sdm:index/ResourceElastic:ResourceElastic"
@@ -18580,12 +19459,15 @@
                 "athena": {
                     "$ref": "#/types/sdm:index/ResourceAthena:ResourceAthena"
                 },
+                "athenaIam": {
+                    "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam",
+                    "description": "AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "auroraMysql": {
                     "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
                 },
                 "auroraMysqlIam": {
-                    "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam",
-                    "description": "AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam"
                 },
                 "auroraPostgres": {
                     "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
@@ -18629,6 +19511,15 @@
                 "citus": {
                     "$ref": "#/types/sdm:index/ResourceCitus:ResourceCitus"
                 },
+                "clickHouseHttp": {
+                    "$ref": "#/types/sdm:index/ResourceClickHouseHttp:ResourceClickHouseHttp"
+                },
+                "clickHouseMySql": {
+                    "$ref": "#/types/sdm:index/ResourceClickHouseMySql:ResourceClickHouseMySql"
+                },
+                "clickHouseTcp": {
+                    "$ref": "#/types/sdm:index/ResourceClickHouseTcp:ResourceClickHouseTcp"
+                },
                 "clustrix": {
                     "$ref": "#/types/sdm:index/ResourceClustrix:ResourceClustrix"
                 },
@@ -18650,6 +19541,9 @@
                 "documentDbHost": {
                     "$ref": "#/types/sdm:index/ResourceDocumentDbHost:ResourceDocumentDbHost"
                 },
+                "documentDbHostIam": {
+                    "$ref": "#/types/sdm:index/ResourceDocumentDbHostIam:ResourceDocumentDbHostIam"
+                },
                 "documentDbReplicaSet": {
                     "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSet:ResourceDocumentDbReplicaSet"
                 },
@@ -18658,6 +19552,9 @@
                 },
                 "dynamoDb": {
                     "$ref": "#/types/sdm:index/ResourceDynamoDb:ResourceDynamoDb"
+                },
+                "dynamoDbiam": {
+                    "$ref": "#/types/sdm:index/ResourceDynamoDbiam:ResourceDynamoDbiam"
                 },
                 "elastic": {
                     "$ref": "#/types/sdm:index/ResourceElastic:ResourceElastic"
@@ -18864,12 +19761,15 @@
                     "athena": {
                         "$ref": "#/types/sdm:index/ResourceAthena:ResourceAthena"
                     },
+                    "athenaIam": {
+                        "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam",
+                        "description": "AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
                     "auroraMysql": {
                         "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
                     },
                     "auroraMysqlIam": {
-                        "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam",
-                        "description": "AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAuroraMysqlIam:ResourceAuroraMysqlIam"
                     },
                     "auroraPostgres": {
                         "$ref": "#/types/sdm:index/ResourceAuroraPostgres:ResourceAuroraPostgres"
@@ -18913,6 +19813,15 @@
                     "citus": {
                         "$ref": "#/types/sdm:index/ResourceCitus:ResourceCitus"
                     },
+                    "clickHouseHttp": {
+                        "$ref": "#/types/sdm:index/ResourceClickHouseHttp:ResourceClickHouseHttp"
+                    },
+                    "clickHouseMySql": {
+                        "$ref": "#/types/sdm:index/ResourceClickHouseMySql:ResourceClickHouseMySql"
+                    },
+                    "clickHouseTcp": {
+                        "$ref": "#/types/sdm:index/ResourceClickHouseTcp:ResourceClickHouseTcp"
+                    },
                     "clustrix": {
                         "$ref": "#/types/sdm:index/ResourceClustrix:ResourceClustrix"
                     },
@@ -18934,6 +19843,9 @@
                     "documentDbHost": {
                         "$ref": "#/types/sdm:index/ResourceDocumentDbHost:ResourceDocumentDbHost"
                     },
+                    "documentDbHostIam": {
+                        "$ref": "#/types/sdm:index/ResourceDocumentDbHostIam:ResourceDocumentDbHostIam"
+                    },
                     "documentDbReplicaSet": {
                         "$ref": "#/types/sdm:index/ResourceDocumentDbReplicaSet:ResourceDocumentDbReplicaSet"
                     },
@@ -18942,6 +19854,9 @@
                     },
                     "dynamoDb": {
                         "$ref": "#/types/sdm:index/ResourceDynamoDb:ResourceDynamoDb"
+                    },
+                    "dynamoDbiam": {
+                        "$ref": "#/types/sdm:index/ResourceDynamoDbiam:ResourceDynamoDbiam"
                     },
                     "elastic": {
                         "$ref": "#/types/sdm:index/ResourceElastic:ResourceElastic"

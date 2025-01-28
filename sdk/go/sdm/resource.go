@@ -34,8 +34,9 @@ type Resource struct {
 	AmazonEs                                  ResourceAmazonEsPtrOutput                                  `pulumi:"amazonEs"`
 	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrOutput                           `pulumi:"amazonmqAmqp091"`
 	Athena                                    ResourceAthenaPtrOutput                                    `pulumi:"athena"`
-	AuroraMysql                               ResourceAuroraMysqlPtrOutput                               `pulumi:"auroraMysql"`
-	// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AthenaIam                    ResourceAthenaIamPtrOutput                    `pulumi:"athenaIam"`
+	AuroraMysql                  ResourceAuroraMysqlPtrOutput                  `pulumi:"auroraMysql"`
 	AuroraMysqlIam               ResourceAuroraMysqlIamPtrOutput               `pulumi:"auroraMysqlIam"`
 	AuroraPostgres               ResourceAuroraPostgresPtrOutput               `pulumi:"auroraPostgres"`
 	AuroraPostgresIam            ResourceAuroraPostgresIamPtrOutput            `pulumi:"auroraPostgresIam"`
@@ -51,6 +52,9 @@ type Resource struct {
 	BigQuery                     ResourceBigQueryPtrOutput                     `pulumi:"bigQuery"`
 	Cassandra                    ResourceCassandraPtrOutput                    `pulumi:"cassandra"`
 	Citus                        ResourceCitusPtrOutput                        `pulumi:"citus"`
+	ClickHouseHttp               ResourceClickHouseHttpPtrOutput               `pulumi:"clickHouseHttp"`
+	ClickHouseMySql              ResourceClickHouseMySqlPtrOutput              `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                ResourceClickHouseTcpPtrOutput                `pulumi:"clickHouseTcp"`
 	Clustrix                     ResourceClustrixPtrOutput                     `pulumi:"clustrix"`
 	Cockroach                    ResourceCockroachPtrOutput                    `pulumi:"cockroach"`
 	CouchbaseDatabase            ResourceCouchbaseDatabasePtrOutput            `pulumi:"couchbaseDatabase"`
@@ -58,9 +62,11 @@ type Resource struct {
 	Db2I                         ResourceDb2IPtrOutput                         `pulumi:"db2I"`
 	Db2Luw                       ResourceDb2LuwPtrOutput                       `pulumi:"db2Luw"`
 	DocumentDbHost               ResourceDocumentDbHostPtrOutput               `pulumi:"documentDbHost"`
+	DocumentDbHostIam            ResourceDocumentDbHostIamPtrOutput            `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrOutput         `pulumi:"documentDbReplicaSet"`
 	Druid                        ResourceDruidPtrOutput                        `pulumi:"druid"`
 	DynamoDb                     ResourceDynamoDbPtrOutput                     `pulumi:"dynamoDb"`
+	DynamoDbiam                  ResourceDynamoDbiamPtrOutput                  `pulumi:"dynamoDbiam"`
 	Elastic                      ResourceElasticPtrOutput                      `pulumi:"elastic"`
 	ElasticacheRedis             ResourceElasticacheRedisPtrOutput             `pulumi:"elasticacheRedis"`
 	Gcp                          ResourceGcpPtrOutput                          `pulumi:"gcp"`
@@ -164,8 +170,9 @@ type resourceState struct {
 	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
 	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
 	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
-	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
-	// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AthenaIam                    *ResourceAthenaIam                    `pulumi:"athenaIam"`
+	AuroraMysql                  *ResourceAuroraMysql                  `pulumi:"auroraMysql"`
 	AuroraMysqlIam               *ResourceAuroraMysqlIam               `pulumi:"auroraMysqlIam"`
 	AuroraPostgres               *ResourceAuroraPostgres               `pulumi:"auroraPostgres"`
 	AuroraPostgresIam            *ResourceAuroraPostgresIam            `pulumi:"auroraPostgresIam"`
@@ -181,6 +188,9 @@ type resourceState struct {
 	BigQuery                     *ResourceBigQuery                     `pulumi:"bigQuery"`
 	Cassandra                    *ResourceCassandra                    `pulumi:"cassandra"`
 	Citus                        *ResourceCitus                        `pulumi:"citus"`
+	ClickHouseHttp               *ResourceClickHouseHttp               `pulumi:"clickHouseHttp"`
+	ClickHouseMySql              *ResourceClickHouseMySql              `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                *ResourceClickHouseTcp                `pulumi:"clickHouseTcp"`
 	Clustrix                     *ResourceClustrix                     `pulumi:"clustrix"`
 	Cockroach                    *ResourceCockroach                    `pulumi:"cockroach"`
 	CouchbaseDatabase            *ResourceCouchbaseDatabase            `pulumi:"couchbaseDatabase"`
@@ -188,9 +198,11 @@ type resourceState struct {
 	Db2I                         *ResourceDb2I                         `pulumi:"db2I"`
 	Db2Luw                       *ResourceDb2Luw                       `pulumi:"db2Luw"`
 	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
+	DocumentDbHostIam            *ResourceDocumentDbHostIam            `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
 	Druid                        *ResourceDruid                        `pulumi:"druid"`
 	DynamoDb                     *ResourceDynamoDb                     `pulumi:"dynamoDb"`
+	DynamoDbiam                  *ResourceDynamoDbiam                  `pulumi:"dynamoDbiam"`
 	Elastic                      *ResourceElastic                      `pulumi:"elastic"`
 	ElasticacheRedis             *ResourceElasticacheRedis             `pulumi:"elasticacheRedis"`
 	Gcp                          *ResourceGcp                          `pulumi:"gcp"`
@@ -265,8 +277,9 @@ type ResourceState struct {
 	AmazonEs                                  ResourceAmazonEsPtrInput
 	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
 	Athena                                    ResourceAthenaPtrInput
-	AuroraMysql                               ResourceAuroraMysqlPtrInput
-	// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AthenaIam                    ResourceAthenaIamPtrInput
+	AuroraMysql                  ResourceAuroraMysqlPtrInput
 	AuroraMysqlIam               ResourceAuroraMysqlIamPtrInput
 	AuroraPostgres               ResourceAuroraPostgresPtrInput
 	AuroraPostgresIam            ResourceAuroraPostgresIamPtrInput
@@ -282,6 +295,9 @@ type ResourceState struct {
 	BigQuery                     ResourceBigQueryPtrInput
 	Cassandra                    ResourceCassandraPtrInput
 	Citus                        ResourceCitusPtrInput
+	ClickHouseHttp               ResourceClickHouseHttpPtrInput
+	ClickHouseMySql              ResourceClickHouseMySqlPtrInput
+	ClickHouseTcp                ResourceClickHouseTcpPtrInput
 	Clustrix                     ResourceClustrixPtrInput
 	Cockroach                    ResourceCockroachPtrInput
 	CouchbaseDatabase            ResourceCouchbaseDatabasePtrInput
@@ -289,9 +305,11 @@ type ResourceState struct {
 	Db2I                         ResourceDb2IPtrInput
 	Db2Luw                       ResourceDb2LuwPtrInput
 	DocumentDbHost               ResourceDocumentDbHostPtrInput
+	DocumentDbHostIam            ResourceDocumentDbHostIamPtrInput
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
 	Druid                        ResourceDruidPtrInput
 	DynamoDb                     ResourceDynamoDbPtrInput
+	DynamoDbiam                  ResourceDynamoDbiamPtrInput
 	Elastic                      ResourceElasticPtrInput
 	ElasticacheRedis             ResourceElasticacheRedisPtrInput
 	Gcp                          ResourceGcpPtrInput
@@ -370,8 +388,9 @@ type resourceArgs struct {
 	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
 	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
 	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
-	AuroraMysql                               *ResourceAuroraMysql                               `pulumi:"auroraMysql"`
-	// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AthenaIam                    *ResourceAthenaIam                    `pulumi:"athenaIam"`
+	AuroraMysql                  *ResourceAuroraMysql                  `pulumi:"auroraMysql"`
 	AuroraMysqlIam               *ResourceAuroraMysqlIam               `pulumi:"auroraMysqlIam"`
 	AuroraPostgres               *ResourceAuroraPostgres               `pulumi:"auroraPostgres"`
 	AuroraPostgresIam            *ResourceAuroraPostgresIam            `pulumi:"auroraPostgresIam"`
@@ -387,6 +406,9 @@ type resourceArgs struct {
 	BigQuery                     *ResourceBigQuery                     `pulumi:"bigQuery"`
 	Cassandra                    *ResourceCassandra                    `pulumi:"cassandra"`
 	Citus                        *ResourceCitus                        `pulumi:"citus"`
+	ClickHouseHttp               *ResourceClickHouseHttp               `pulumi:"clickHouseHttp"`
+	ClickHouseMySql              *ResourceClickHouseMySql              `pulumi:"clickHouseMySql"`
+	ClickHouseTcp                *ResourceClickHouseTcp                `pulumi:"clickHouseTcp"`
 	Clustrix                     *ResourceClustrix                     `pulumi:"clustrix"`
 	Cockroach                    *ResourceCockroach                    `pulumi:"cockroach"`
 	CouchbaseDatabase            *ResourceCouchbaseDatabase            `pulumi:"couchbaseDatabase"`
@@ -394,9 +416,11 @@ type resourceArgs struct {
 	Db2I                         *ResourceDb2I                         `pulumi:"db2I"`
 	Db2Luw                       *ResourceDb2Luw                       `pulumi:"db2Luw"`
 	DocumentDbHost               *ResourceDocumentDbHost               `pulumi:"documentDbHost"`
+	DocumentDbHostIam            *ResourceDocumentDbHostIam            `pulumi:"documentDbHostIam"`
 	DocumentDbReplicaSet         *ResourceDocumentDbReplicaSet         `pulumi:"documentDbReplicaSet"`
 	Druid                        *ResourceDruid                        `pulumi:"druid"`
 	DynamoDb                     *ResourceDynamoDb                     `pulumi:"dynamoDb"`
+	DynamoDbiam                  *ResourceDynamoDbiam                  `pulumi:"dynamoDbiam"`
 	Elastic                      *ResourceElastic                      `pulumi:"elastic"`
 	ElasticacheRedis             *ResourceElasticacheRedis             `pulumi:"elasticacheRedis"`
 	Gcp                          *ResourceGcp                          `pulumi:"gcp"`
@@ -472,8 +496,9 @@ type ResourceArgs struct {
 	AmazonEs                                  ResourceAmazonEsPtrInput
 	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
 	Athena                                    ResourceAthenaPtrInput
-	AuroraMysql                               ResourceAuroraMysqlPtrInput
-	// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AthenaIam                    ResourceAthenaIamPtrInput
+	AuroraMysql                  ResourceAuroraMysqlPtrInput
 	AuroraMysqlIam               ResourceAuroraMysqlIamPtrInput
 	AuroraPostgres               ResourceAuroraPostgresPtrInput
 	AuroraPostgresIam            ResourceAuroraPostgresIamPtrInput
@@ -489,6 +514,9 @@ type ResourceArgs struct {
 	BigQuery                     ResourceBigQueryPtrInput
 	Cassandra                    ResourceCassandraPtrInput
 	Citus                        ResourceCitusPtrInput
+	ClickHouseHttp               ResourceClickHouseHttpPtrInput
+	ClickHouseMySql              ResourceClickHouseMySqlPtrInput
+	ClickHouseTcp                ResourceClickHouseTcpPtrInput
 	Clustrix                     ResourceClustrixPtrInput
 	Cockroach                    ResourceCockroachPtrInput
 	CouchbaseDatabase            ResourceCouchbaseDatabasePtrInput
@@ -496,9 +524,11 @@ type ResourceArgs struct {
 	Db2I                         ResourceDb2IPtrInput
 	Db2Luw                       ResourceDb2LuwPtrInput
 	DocumentDbHost               ResourceDocumentDbHostPtrInput
+	DocumentDbHostIam            ResourceDocumentDbHostIamPtrInput
 	DocumentDbReplicaSet         ResourceDocumentDbReplicaSetPtrInput
 	Druid                        ResourceDruidPtrInput
 	DynamoDb                     ResourceDynamoDbPtrInput
+	DynamoDbiam                  ResourceDynamoDbiamPtrInput
 	Elastic                      ResourceElasticPtrInput
 	ElasticacheRedis             ResourceElasticacheRedisPtrInput
 	Gcp                          ResourceGcpPtrInput
@@ -699,11 +729,15 @@ func (o ResourceOutput) Athena() ResourceAthenaPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAthenaPtrOutput { return v.Athena }).(ResourceAthenaPtrOutput)
 }
 
+// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) AthenaIam() ResourceAthenaIamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAthenaIamPtrOutput { return v.AthenaIam }).(ResourceAthenaIamPtrOutput)
+}
+
 func (o ResourceOutput) AuroraMysql() ResourceAuroraMysqlPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAuroraMysqlPtrOutput { return v.AuroraMysql }).(ResourceAuroraMysqlPtrOutput)
 }
 
-// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) AuroraMysqlIam() ResourceAuroraMysqlIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAuroraMysqlIamPtrOutput { return v.AuroraMysqlIam }).(ResourceAuroraMysqlIamPtrOutput)
 }
@@ -764,6 +798,18 @@ func (o ResourceOutput) Citus() ResourceCitusPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceCitusPtrOutput { return v.Citus }).(ResourceCitusPtrOutput)
 }
 
+func (o ResourceOutput) ClickHouseHttp() ResourceClickHouseHttpPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceClickHouseHttpPtrOutput { return v.ClickHouseHttp }).(ResourceClickHouseHttpPtrOutput)
+}
+
+func (o ResourceOutput) ClickHouseMySql() ResourceClickHouseMySqlPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceClickHouseMySqlPtrOutput { return v.ClickHouseMySql }).(ResourceClickHouseMySqlPtrOutput)
+}
+
+func (o ResourceOutput) ClickHouseTcp() ResourceClickHouseTcpPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceClickHouseTcpPtrOutput { return v.ClickHouseTcp }).(ResourceClickHouseTcpPtrOutput)
+}
+
 func (o ResourceOutput) Clustrix() ResourceClustrixPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceClustrixPtrOutput { return v.Clustrix }).(ResourceClustrixPtrOutput)
 }
@@ -792,6 +838,10 @@ func (o ResourceOutput) DocumentDbHost() ResourceDocumentDbHostPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceDocumentDbHostPtrOutput { return v.DocumentDbHost }).(ResourceDocumentDbHostPtrOutput)
 }
 
+func (o ResourceOutput) DocumentDbHostIam() ResourceDocumentDbHostIamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceDocumentDbHostIamPtrOutput { return v.DocumentDbHostIam }).(ResourceDocumentDbHostIamPtrOutput)
+}
+
 func (o ResourceOutput) DocumentDbReplicaSet() ResourceDocumentDbReplicaSetPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceDocumentDbReplicaSetPtrOutput { return v.DocumentDbReplicaSet }).(ResourceDocumentDbReplicaSetPtrOutput)
 }
@@ -802,6 +852,10 @@ func (o ResourceOutput) Druid() ResourceDruidPtrOutput {
 
 func (o ResourceOutput) DynamoDb() ResourceDynamoDbPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceDynamoDbPtrOutput { return v.DynamoDb }).(ResourceDynamoDbPtrOutput)
+}
+
+func (o ResourceOutput) DynamoDbiam() ResourceDynamoDbiamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceDynamoDbiamPtrOutput { return v.DynamoDbiam }).(ResourceDynamoDbiamPtrOutput)
 }
 
 func (o ResourceOutput) Elastic() ResourceElasticPtrOutput {

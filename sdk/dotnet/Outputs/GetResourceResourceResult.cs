@@ -25,6 +25,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksUserImpersonationResult> AmazonEksUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEResult> AmazonEs;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> AmazonmqAmqp091s;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAthenaIamResult> AthenaIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceAthenaResult> Athenas;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraMysqlIamResult> AuroraMysqlIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceAuroraMysqlResult> AuroraMysqls;
@@ -42,15 +43,20 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceBigQueryResult> BigQueries;
         public readonly ImmutableArray<Outputs.GetResourceResourceCassandraResult> Cassandras;
         public readonly ImmutableArray<Outputs.GetResourceResourceCitusResult> Cituses;
+        public readonly ImmutableArray<Outputs.GetResourceResourceClickHouseHttpResult> ClickHouseHttps;
+        public readonly ImmutableArray<Outputs.GetResourceResourceClickHouseMySqlResult> ClickHouseMySqls;
+        public readonly ImmutableArray<Outputs.GetResourceResourceClickHouseTcpResult> ClickHouseTcps;
         public readonly ImmutableArray<Outputs.GetResourceResourceClustrixResult> Clustrixes;
         public readonly ImmutableArray<Outputs.GetResourceResourceCockroachResult> Cockroaches;
         public readonly ImmutableArray<Outputs.GetResourceResourceCouchbaseDatabaseResult> CouchbaseDatabases;
         public readonly ImmutableArray<Outputs.GetResourceResourceCouchbaseWebUiResult> CouchbaseWebUis;
         public readonly ImmutableArray<Outputs.GetResourceResourceDb2IResult> Db2Is;
         public readonly ImmutableArray<Outputs.GetResourceResourceDb2LuwResult> Db2Luws;
+        public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbHostIamResult> DocumentDbHostIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbHostResult> DocumentDbHosts;
         public readonly ImmutableArray<Outputs.GetResourceResourceDocumentDbReplicaSetResult> DocumentDbReplicaSets;
         public readonly ImmutableArray<Outputs.GetResourceResourceDruidResult> Druids;
+        public readonly ImmutableArray<Outputs.GetResourceResourceDynamoDbiamResult> DynamoDbiams;
         public readonly ImmutableArray<Outputs.GetResourceResourceDynamoDbResult> DynamoDbs;
         public readonly ImmutableArray<Outputs.GetResourceResourceElasticacheRediResult> ElasticacheRedis;
         public readonly ImmutableArray<Outputs.GetResourceResourceElasticResult> Elastics;
@@ -130,6 +136,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> amazonmqAmqp091s,
 
+            ImmutableArray<Outputs.GetResourceResourceAthenaIamResult> athenaIams,
+
             ImmutableArray<Outputs.GetResourceResourceAthenaResult> athenas,
 
             ImmutableArray<Outputs.GetResourceResourceAuroraMysqlIamResult> auroraMysqlIams,
@@ -164,6 +172,12 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceCitusResult> cituses,
 
+            ImmutableArray<Outputs.GetResourceResourceClickHouseHttpResult> clickHouseHttps,
+
+            ImmutableArray<Outputs.GetResourceResourceClickHouseMySqlResult> clickHouseMySqls,
+
+            ImmutableArray<Outputs.GetResourceResourceClickHouseTcpResult> clickHouseTcps,
+
             ImmutableArray<Outputs.GetResourceResourceClustrixResult> clustrixes,
 
             ImmutableArray<Outputs.GetResourceResourceCockroachResult> cockroaches,
@@ -176,11 +190,15 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceDb2LuwResult> db2Luws,
 
+            ImmutableArray<Outputs.GetResourceResourceDocumentDbHostIamResult> documentDbHostIams,
+
             ImmutableArray<Outputs.GetResourceResourceDocumentDbHostResult> documentDbHosts,
 
             ImmutableArray<Outputs.GetResourceResourceDocumentDbReplicaSetResult> documentDbReplicaSets,
 
             ImmutableArray<Outputs.GetResourceResourceDruidResult> druids,
+
+            ImmutableArray<Outputs.GetResourceResourceDynamoDbiamResult> dynamoDbiams,
 
             ImmutableArray<Outputs.GetResourceResourceDynamoDbResult> dynamoDbs,
 
@@ -301,6 +319,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AmazonEksUserImpersonations = amazonEksUserImpersonations;
             AmazonEs = amazonEs;
             AmazonmqAmqp091s = amazonmqAmqp091s;
+            AthenaIams = athenaIams;
             Athenas = athenas;
             AuroraMysqlIams = auroraMysqlIams;
             AuroraMysqls = auroraMysqls;
@@ -318,15 +337,20 @@ namespace PiersKarsenbarg.Sdm.Outputs
             BigQueries = bigQueries;
             Cassandras = cassandras;
             Cituses = cituses;
+            ClickHouseHttps = clickHouseHttps;
+            ClickHouseMySqls = clickHouseMySqls;
+            ClickHouseTcps = clickHouseTcps;
             Clustrixes = clustrixes;
             Cockroaches = cockroaches;
             CouchbaseDatabases = couchbaseDatabases;
             CouchbaseWebUis = couchbaseWebUis;
             Db2Is = db2Is;
             Db2Luws = db2Luws;
+            DocumentDbHostIams = documentDbHostIams;
             DocumentDbHosts = documentDbHosts;
             DocumentDbReplicaSets = documentDbReplicaSets;
             Druids = druids;
+            DynamoDbiams = dynamoDbiams;
             DynamoDbs = dynamoDbs;
             ElasticacheRedis = elasticacheRedis;
             Elastics = elastics;

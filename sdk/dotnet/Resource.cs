@@ -61,12 +61,15 @@ namespace PiersKarsenbarg.Sdm
         [Output("athena")]
         public Output<Outputs.ResourceAthena?> Athena { get; private set; } = null!;
 
+        /// <summary>
+        /// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("athenaIam")]
+        public Output<Outputs.ResourceAthenaIam?> AthenaIam { get; private set; } = null!;
+
         [Output("auroraMysql")]
         public Output<Outputs.ResourceAuroraMysql?> AuroraMysql { get; private set; } = null!;
 
-        /// <summary>
-        /// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("auroraMysqlIam")]
         public Output<Outputs.ResourceAuroraMysqlIam?> AuroraMysqlIam { get; private set; } = null!;
 
@@ -112,6 +115,15 @@ namespace PiersKarsenbarg.Sdm
         [Output("citus")]
         public Output<Outputs.ResourceCitus?> Citus { get; private set; } = null!;
 
+        [Output("clickHouseHttp")]
+        public Output<Outputs.ResourceClickHouseHttp?> ClickHouseHttp { get; private set; } = null!;
+
+        [Output("clickHouseMySql")]
+        public Output<Outputs.ResourceClickHouseMySql?> ClickHouseMySql { get; private set; } = null!;
+
+        [Output("clickHouseTcp")]
+        public Output<Outputs.ResourceClickHouseTcp?> ClickHouseTcp { get; private set; } = null!;
+
         [Output("clustrix")]
         public Output<Outputs.ResourceClustrix?> Clustrix { get; private set; } = null!;
 
@@ -133,6 +145,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("documentDbHost")]
         public Output<Outputs.ResourceDocumentDbHost?> DocumentDbHost { get; private set; } = null!;
 
+        [Output("documentDbHostIam")]
+        public Output<Outputs.ResourceDocumentDbHostIam?> DocumentDbHostIam { get; private set; } = null!;
+
         [Output("documentDbReplicaSet")]
         public Output<Outputs.ResourceDocumentDbReplicaSet?> DocumentDbReplicaSet { get; private set; } = null!;
 
@@ -141,6 +156,9 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("dynamoDb")]
         public Output<Outputs.ResourceDynamoDb?> DynamoDb { get; private set; } = null!;
+
+        [Output("dynamoDbiam")]
+        public Output<Outputs.ResourceDynamoDbiam?> DynamoDbiam { get; private set; } = null!;
 
         [Output("elastic")]
         public Output<Outputs.ResourceElastic?> Elastic { get; private set; } = null!;
@@ -402,12 +420,15 @@ namespace PiersKarsenbarg.Sdm
         [Input("athena")]
         public Input<Inputs.ResourceAthenaArgs>? Athena { get; set; }
 
+        /// <summary>
+        /// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("athenaIam")]
+        public Input<Inputs.ResourceAthenaIamArgs>? AthenaIam { get; set; }
+
         [Input("auroraMysql")]
         public Input<Inputs.ResourceAuroraMysqlArgs>? AuroraMysql { get; set; }
 
-        /// <summary>
-        /// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("auroraMysqlIam")]
         public Input<Inputs.ResourceAuroraMysqlIamArgs>? AuroraMysqlIam { get; set; }
 
@@ -453,6 +474,15 @@ namespace PiersKarsenbarg.Sdm
         [Input("citus")]
         public Input<Inputs.ResourceCitusArgs>? Citus { get; set; }
 
+        [Input("clickHouseHttp")]
+        public Input<Inputs.ResourceClickHouseHttpArgs>? ClickHouseHttp { get; set; }
+
+        [Input("clickHouseMySql")]
+        public Input<Inputs.ResourceClickHouseMySqlArgs>? ClickHouseMySql { get; set; }
+
+        [Input("clickHouseTcp")]
+        public Input<Inputs.ResourceClickHouseTcpArgs>? ClickHouseTcp { get; set; }
+
         [Input("clustrix")]
         public Input<Inputs.ResourceClustrixArgs>? Clustrix { get; set; }
 
@@ -474,6 +504,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("documentDbHost")]
         public Input<Inputs.ResourceDocumentDbHostArgs>? DocumentDbHost { get; set; }
 
+        [Input("documentDbHostIam")]
+        public Input<Inputs.ResourceDocumentDbHostIamArgs>? DocumentDbHostIam { get; set; }
+
         [Input("documentDbReplicaSet")]
         public Input<Inputs.ResourceDocumentDbReplicaSetArgs>? DocumentDbReplicaSet { get; set; }
 
@@ -482,6 +515,9 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("dynamoDb")]
         public Input<Inputs.ResourceDynamoDbArgs>? DynamoDb { get; set; }
+
+        [Input("dynamoDbiam")]
+        public Input<Inputs.ResourceDynamoDbiamArgs>? DynamoDbiam { get; set; }
 
         [Input("elastic")]
         public Input<Inputs.ResourceElasticArgs>? Elastic { get; set; }
@@ -704,12 +740,15 @@ namespace PiersKarsenbarg.Sdm
         [Input("athena")]
         public Input<Inputs.ResourceAthenaGetArgs>? Athena { get; set; }
 
+        /// <summary>
+        /// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("athenaIam")]
+        public Input<Inputs.ResourceAthenaIamGetArgs>? AthenaIam { get; set; }
+
         [Input("auroraMysql")]
         public Input<Inputs.ResourceAuroraMysqlGetArgs>? AuroraMysql { get; set; }
 
-        /// <summary>
-        /// AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("auroraMysqlIam")]
         public Input<Inputs.ResourceAuroraMysqlIamGetArgs>? AuroraMysqlIam { get; set; }
 
@@ -755,6 +794,15 @@ namespace PiersKarsenbarg.Sdm
         [Input("citus")]
         public Input<Inputs.ResourceCitusGetArgs>? Citus { get; set; }
 
+        [Input("clickHouseHttp")]
+        public Input<Inputs.ResourceClickHouseHttpGetArgs>? ClickHouseHttp { get; set; }
+
+        [Input("clickHouseMySql")]
+        public Input<Inputs.ResourceClickHouseMySqlGetArgs>? ClickHouseMySql { get; set; }
+
+        [Input("clickHouseTcp")]
+        public Input<Inputs.ResourceClickHouseTcpGetArgs>? ClickHouseTcp { get; set; }
+
         [Input("clustrix")]
         public Input<Inputs.ResourceClustrixGetArgs>? Clustrix { get; set; }
 
@@ -776,6 +824,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("documentDbHost")]
         public Input<Inputs.ResourceDocumentDbHostGetArgs>? DocumentDbHost { get; set; }
 
+        [Input("documentDbHostIam")]
+        public Input<Inputs.ResourceDocumentDbHostIamGetArgs>? DocumentDbHostIam { get; set; }
+
         [Input("documentDbReplicaSet")]
         public Input<Inputs.ResourceDocumentDbReplicaSetGetArgs>? DocumentDbReplicaSet { get; set; }
 
@@ -784,6 +835,9 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("dynamoDb")]
         public Input<Inputs.ResourceDynamoDbGetArgs>? DynamoDb { get; set; }
+
+        [Input("dynamoDbiam")]
+        public Input<Inputs.ResourceDynamoDbiamGetArgs>? DynamoDbiam { get; set; }
 
         [Input("elastic")]
         public Input<Inputs.ResourceElasticGetArgs>? Elastic { get; set; }

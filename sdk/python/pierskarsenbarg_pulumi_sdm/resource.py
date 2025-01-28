@@ -33,6 +33,7 @@ class ResourceArgs:
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
+                 athena_iam: Optional[pulumi.Input['ResourceAthenaIamArgs']] = None,
                  aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
                  aurora_mysql_iam: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']] = None,
                  aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
@@ -49,6 +50,9 @@ class ResourceArgs:
                  big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
                  cassandra: Optional[pulumi.Input['ResourceCassandraArgs']] = None,
                  citus: Optional[pulumi.Input['ResourceCitusArgs']] = None,
+                 click_house_http: Optional[pulumi.Input['ResourceClickHouseHttpArgs']] = None,
+                 click_house_my_sql: Optional[pulumi.Input['ResourceClickHouseMySqlArgs']] = None,
+                 click_house_tcp: Optional[pulumi.Input['ResourceClickHouseTcpArgs']] = None,
                  clustrix: Optional[pulumi.Input['ResourceClustrixArgs']] = None,
                  cockroach: Optional[pulumi.Input['ResourceCockroachArgs']] = None,
                  couchbase_database: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']] = None,
@@ -56,9 +60,11 @@ class ResourceArgs:
                  db2_i: Optional[pulumi.Input['ResourceDb2IArgs']] = None,
                  db2_luw: Optional[pulumi.Input['ResourceDb2LuwArgs']] = None,
                  document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
+                 document_db_host_iam: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']] = None,
                  document_db_replica_set: Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']] = None,
                  druid: Optional[pulumi.Input['ResourceDruidArgs']] = None,
                  dynamo_db: Optional[pulumi.Input['ResourceDynamoDbArgs']] = None,
+                 dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
                  elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
                  elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
                  gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
@@ -115,7 +121,7 @@ class ResourceArgs:
         """
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAuroraMysqlIamArgs'] aurora_mysql_iam: AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAthenaIamArgs'] athena_iam: AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -146,6 +152,8 @@ class ResourceArgs:
             pulumi.set(__self__, "amazonmq_amqp091", amazonmq_amqp091)
         if athena is not None:
             pulumi.set(__self__, "athena", athena)
+        if athena_iam is not None:
+            pulumi.set(__self__, "athena_iam", athena_iam)
         if aurora_mysql is not None:
             pulumi.set(__self__, "aurora_mysql", aurora_mysql)
         if aurora_mysql_iam is not None:
@@ -178,6 +186,12 @@ class ResourceArgs:
             pulumi.set(__self__, "cassandra", cassandra)
         if citus is not None:
             pulumi.set(__self__, "citus", citus)
+        if click_house_http is not None:
+            pulumi.set(__self__, "click_house_http", click_house_http)
+        if click_house_my_sql is not None:
+            pulumi.set(__self__, "click_house_my_sql", click_house_my_sql)
+        if click_house_tcp is not None:
+            pulumi.set(__self__, "click_house_tcp", click_house_tcp)
         if clustrix is not None:
             pulumi.set(__self__, "clustrix", clustrix)
         if cockroach is not None:
@@ -192,12 +206,16 @@ class ResourceArgs:
             pulumi.set(__self__, "db2_luw", db2_luw)
         if document_db_host is not None:
             pulumi.set(__self__, "document_db_host", document_db_host)
+        if document_db_host_iam is not None:
+            pulumi.set(__self__, "document_db_host_iam", document_db_host_iam)
         if document_db_replica_set is not None:
             pulumi.set(__self__, "document_db_replica_set", document_db_replica_set)
         if druid is not None:
             pulumi.set(__self__, "druid", druid)
         if dynamo_db is not None:
             pulumi.set(__self__, "dynamo_db", dynamo_db)
+        if dynamo_dbiam is not None:
+            pulumi.set(__self__, "dynamo_dbiam", dynamo_dbiam)
         if elastic is not None:
             pulumi.set(__self__, "elastic", elastic)
         if elasticache_redis is not None:
@@ -417,6 +435,18 @@ class ResourceArgs:
         pulumi.set(self, "athena", value)
 
     @property
+    @pulumi.getter(name="athenaIam")
+    def athena_iam(self) -> Optional[pulumi.Input['ResourceAthenaIamArgs']]:
+        """
+        AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "athena_iam")
+
+    @athena_iam.setter
+    def athena_iam(self, value: Optional[pulumi.Input['ResourceAthenaIamArgs']]):
+        pulumi.set(self, "athena_iam", value)
+
+    @property
     @pulumi.getter(name="auroraMysql")
     def aurora_mysql(self) -> Optional[pulumi.Input['ResourceAuroraMysqlArgs']]:
         return pulumi.get(self, "aurora_mysql")
@@ -428,9 +458,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="auroraMysqlIam")
     def aurora_mysql_iam(self) -> Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]:
-        """
-        AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aurora_mysql_iam")
 
     @aurora_mysql_iam.setter
@@ -564,6 +591,33 @@ class ResourceArgs:
         pulumi.set(self, "citus", value)
 
     @property
+    @pulumi.getter(name="clickHouseHttp")
+    def click_house_http(self) -> Optional[pulumi.Input['ResourceClickHouseHttpArgs']]:
+        return pulumi.get(self, "click_house_http")
+
+    @click_house_http.setter
+    def click_house_http(self, value: Optional[pulumi.Input['ResourceClickHouseHttpArgs']]):
+        pulumi.set(self, "click_house_http", value)
+
+    @property
+    @pulumi.getter(name="clickHouseMySql")
+    def click_house_my_sql(self) -> Optional[pulumi.Input['ResourceClickHouseMySqlArgs']]:
+        return pulumi.get(self, "click_house_my_sql")
+
+    @click_house_my_sql.setter
+    def click_house_my_sql(self, value: Optional[pulumi.Input['ResourceClickHouseMySqlArgs']]):
+        pulumi.set(self, "click_house_my_sql", value)
+
+    @property
+    @pulumi.getter(name="clickHouseTcp")
+    def click_house_tcp(self) -> Optional[pulumi.Input['ResourceClickHouseTcpArgs']]:
+        return pulumi.get(self, "click_house_tcp")
+
+    @click_house_tcp.setter
+    def click_house_tcp(self, value: Optional[pulumi.Input['ResourceClickHouseTcpArgs']]):
+        pulumi.set(self, "click_house_tcp", value)
+
+    @property
     @pulumi.getter
     def clustrix(self) -> Optional[pulumi.Input['ResourceClustrixArgs']]:
         return pulumi.get(self, "clustrix")
@@ -627,6 +681,15 @@ class ResourceArgs:
         pulumi.set(self, "document_db_host", value)
 
     @property
+    @pulumi.getter(name="documentDbHostIam")
+    def document_db_host_iam(self) -> Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']]:
+        return pulumi.get(self, "document_db_host_iam")
+
+    @document_db_host_iam.setter
+    def document_db_host_iam(self, value: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']]):
+        pulumi.set(self, "document_db_host_iam", value)
+
+    @property
     @pulumi.getter(name="documentDbReplicaSet")
     def document_db_replica_set(self) -> Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']]:
         return pulumi.get(self, "document_db_replica_set")
@@ -652,6 +715,15 @@ class ResourceArgs:
     @dynamo_db.setter
     def dynamo_db(self, value: Optional[pulumi.Input['ResourceDynamoDbArgs']]):
         pulumi.set(self, "dynamo_db", value)
+
+    @property
+    @pulumi.getter(name="dynamoDbiam")
+    def dynamo_dbiam(self) -> Optional[pulumi.Input['ResourceDynamoDbiamArgs']]:
+        return pulumi.get(self, "dynamo_dbiam")
+
+    @dynamo_dbiam.setter
+    def dynamo_dbiam(self, value: Optional[pulumi.Input['ResourceDynamoDbiamArgs']]):
+        pulumi.set(self, "dynamo_dbiam", value)
 
     @property
     @pulumi.getter
@@ -1161,6 +1233,7 @@ class _ResourceState:
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
+                 athena_iam: Optional[pulumi.Input['ResourceAthenaIamArgs']] = None,
                  aurora_mysql: Optional[pulumi.Input['ResourceAuroraMysqlArgs']] = None,
                  aurora_mysql_iam: Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']] = None,
                  aurora_postgres: Optional[pulumi.Input['ResourceAuroraPostgresArgs']] = None,
@@ -1177,6 +1250,9 @@ class _ResourceState:
                  big_query: Optional[pulumi.Input['ResourceBigQueryArgs']] = None,
                  cassandra: Optional[pulumi.Input['ResourceCassandraArgs']] = None,
                  citus: Optional[pulumi.Input['ResourceCitusArgs']] = None,
+                 click_house_http: Optional[pulumi.Input['ResourceClickHouseHttpArgs']] = None,
+                 click_house_my_sql: Optional[pulumi.Input['ResourceClickHouseMySqlArgs']] = None,
+                 click_house_tcp: Optional[pulumi.Input['ResourceClickHouseTcpArgs']] = None,
                  clustrix: Optional[pulumi.Input['ResourceClustrixArgs']] = None,
                  cockroach: Optional[pulumi.Input['ResourceCockroachArgs']] = None,
                  couchbase_database: Optional[pulumi.Input['ResourceCouchbaseDatabaseArgs']] = None,
@@ -1184,9 +1260,11 @@ class _ResourceState:
                  db2_i: Optional[pulumi.Input['ResourceDb2IArgs']] = None,
                  db2_luw: Optional[pulumi.Input['ResourceDb2LuwArgs']] = None,
                  document_db_host: Optional[pulumi.Input['ResourceDocumentDbHostArgs']] = None,
+                 document_db_host_iam: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']] = None,
                  document_db_replica_set: Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']] = None,
                  druid: Optional[pulumi.Input['ResourceDruidArgs']] = None,
                  dynamo_db: Optional[pulumi.Input['ResourceDynamoDbArgs']] = None,
+                 dynamo_dbiam: Optional[pulumi.Input['ResourceDynamoDbiamArgs']] = None,
                  elastic: Optional[pulumi.Input['ResourceElasticArgs']] = None,
                  elasticache_redis: Optional[pulumi.Input['ResourceElasticacheRedisArgs']] = None,
                  gcp: Optional[pulumi.Input['ResourceGcpArgs']] = None,
@@ -1243,7 +1321,7 @@ class _ResourceState:
         """
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAuroraMysqlIamArgs'] aurora_mysql_iam: AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAthenaIamArgs'] athena_iam: AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -1274,6 +1352,8 @@ class _ResourceState:
             pulumi.set(__self__, "amazonmq_amqp091", amazonmq_amqp091)
         if athena is not None:
             pulumi.set(__self__, "athena", athena)
+        if athena_iam is not None:
+            pulumi.set(__self__, "athena_iam", athena_iam)
         if aurora_mysql is not None:
             pulumi.set(__self__, "aurora_mysql", aurora_mysql)
         if aurora_mysql_iam is not None:
@@ -1306,6 +1386,12 @@ class _ResourceState:
             pulumi.set(__self__, "cassandra", cassandra)
         if citus is not None:
             pulumi.set(__self__, "citus", citus)
+        if click_house_http is not None:
+            pulumi.set(__self__, "click_house_http", click_house_http)
+        if click_house_my_sql is not None:
+            pulumi.set(__self__, "click_house_my_sql", click_house_my_sql)
+        if click_house_tcp is not None:
+            pulumi.set(__self__, "click_house_tcp", click_house_tcp)
         if clustrix is not None:
             pulumi.set(__self__, "clustrix", clustrix)
         if cockroach is not None:
@@ -1320,12 +1406,16 @@ class _ResourceState:
             pulumi.set(__self__, "db2_luw", db2_luw)
         if document_db_host is not None:
             pulumi.set(__self__, "document_db_host", document_db_host)
+        if document_db_host_iam is not None:
+            pulumi.set(__self__, "document_db_host_iam", document_db_host_iam)
         if document_db_replica_set is not None:
             pulumi.set(__self__, "document_db_replica_set", document_db_replica_set)
         if druid is not None:
             pulumi.set(__self__, "druid", druid)
         if dynamo_db is not None:
             pulumi.set(__self__, "dynamo_db", dynamo_db)
+        if dynamo_dbiam is not None:
+            pulumi.set(__self__, "dynamo_dbiam", dynamo_dbiam)
         if elastic is not None:
             pulumi.set(__self__, "elastic", elastic)
         if elasticache_redis is not None:
@@ -1545,6 +1635,18 @@ class _ResourceState:
         pulumi.set(self, "athena", value)
 
     @property
+    @pulumi.getter(name="athenaIam")
+    def athena_iam(self) -> Optional[pulumi.Input['ResourceAthenaIamArgs']]:
+        """
+        AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "athena_iam")
+
+    @athena_iam.setter
+    def athena_iam(self, value: Optional[pulumi.Input['ResourceAthenaIamArgs']]):
+        pulumi.set(self, "athena_iam", value)
+
+    @property
     @pulumi.getter(name="auroraMysql")
     def aurora_mysql(self) -> Optional[pulumi.Input['ResourceAuroraMysqlArgs']]:
         return pulumi.get(self, "aurora_mysql")
@@ -1556,9 +1658,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="auroraMysqlIam")
     def aurora_mysql_iam(self) -> Optional[pulumi.Input['ResourceAuroraMysqlIamArgs']]:
-        """
-        AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aurora_mysql_iam")
 
     @aurora_mysql_iam.setter
@@ -1692,6 +1791,33 @@ class _ResourceState:
         pulumi.set(self, "citus", value)
 
     @property
+    @pulumi.getter(name="clickHouseHttp")
+    def click_house_http(self) -> Optional[pulumi.Input['ResourceClickHouseHttpArgs']]:
+        return pulumi.get(self, "click_house_http")
+
+    @click_house_http.setter
+    def click_house_http(self, value: Optional[pulumi.Input['ResourceClickHouseHttpArgs']]):
+        pulumi.set(self, "click_house_http", value)
+
+    @property
+    @pulumi.getter(name="clickHouseMySql")
+    def click_house_my_sql(self) -> Optional[pulumi.Input['ResourceClickHouseMySqlArgs']]:
+        return pulumi.get(self, "click_house_my_sql")
+
+    @click_house_my_sql.setter
+    def click_house_my_sql(self, value: Optional[pulumi.Input['ResourceClickHouseMySqlArgs']]):
+        pulumi.set(self, "click_house_my_sql", value)
+
+    @property
+    @pulumi.getter(name="clickHouseTcp")
+    def click_house_tcp(self) -> Optional[pulumi.Input['ResourceClickHouseTcpArgs']]:
+        return pulumi.get(self, "click_house_tcp")
+
+    @click_house_tcp.setter
+    def click_house_tcp(self, value: Optional[pulumi.Input['ResourceClickHouseTcpArgs']]):
+        pulumi.set(self, "click_house_tcp", value)
+
+    @property
     @pulumi.getter
     def clustrix(self) -> Optional[pulumi.Input['ResourceClustrixArgs']]:
         return pulumi.get(self, "clustrix")
@@ -1755,6 +1881,15 @@ class _ResourceState:
         pulumi.set(self, "document_db_host", value)
 
     @property
+    @pulumi.getter(name="documentDbHostIam")
+    def document_db_host_iam(self) -> Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']]:
+        return pulumi.get(self, "document_db_host_iam")
+
+    @document_db_host_iam.setter
+    def document_db_host_iam(self, value: Optional[pulumi.Input['ResourceDocumentDbHostIamArgs']]):
+        pulumi.set(self, "document_db_host_iam", value)
+
+    @property
     @pulumi.getter(name="documentDbReplicaSet")
     def document_db_replica_set(self) -> Optional[pulumi.Input['ResourceDocumentDbReplicaSetArgs']]:
         return pulumi.get(self, "document_db_replica_set")
@@ -1780,6 +1915,15 @@ class _ResourceState:
     @dynamo_db.setter
     def dynamo_db(self, value: Optional[pulumi.Input['ResourceDynamoDbArgs']]):
         pulumi.set(self, "dynamo_db", value)
+
+    @property
+    @pulumi.getter(name="dynamoDbiam")
+    def dynamo_dbiam(self) -> Optional[pulumi.Input['ResourceDynamoDbiamArgs']]:
+        return pulumi.get(self, "dynamo_dbiam")
+
+    @dynamo_dbiam.setter
+    def dynamo_dbiam(self, value: Optional[pulumi.Input['ResourceDynamoDbiamArgs']]):
+        pulumi.set(self, "dynamo_dbiam", value)
 
     @property
     @pulumi.getter
@@ -2291,6 +2435,7 @@ class Resource(pulumi.CustomResource):
                  amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
                  athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
+                 athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
                  aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
                  aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
                  aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
@@ -2307,6 +2452,9 @@ class Resource(pulumi.CustomResource):
                  big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
                  cassandra: Optional[pulumi.Input[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
                  citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
+                 click_house_http: Optional[pulumi.Input[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
+                 click_house_my_sql: Optional[pulumi.Input[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
+                 click_house_tcp: Optional[pulumi.Input[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
                  clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
                  cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
                  couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
@@ -2314,9 +2462,11 @@ class Resource(pulumi.CustomResource):
                  db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
                  db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
                  document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
+                 document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
                  document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
                  druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
                  dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
+                 dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
                  elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
                  elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
                  gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
@@ -2383,7 +2533,7 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']] aurora_mysql_iam: AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']] athena_iam: AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2432,6 +2582,7 @@ class Resource(pulumi.CustomResource):
                  amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
                  athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
+                 athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
                  aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
                  aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
                  aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
@@ -2448,6 +2599,9 @@ class Resource(pulumi.CustomResource):
                  big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
                  cassandra: Optional[pulumi.Input[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
                  citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
+                 click_house_http: Optional[pulumi.Input[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
+                 click_house_my_sql: Optional[pulumi.Input[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
+                 click_house_tcp: Optional[pulumi.Input[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
                  clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
                  cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
                  couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
@@ -2455,9 +2609,11 @@ class Resource(pulumi.CustomResource):
                  db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
                  db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
                  document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
+                 document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
                  document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
                  druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
                  dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
+                 dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
                  elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
                  elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
                  gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
@@ -2532,6 +2688,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["amazon_es"] = amazon_es
             __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
             __props__.__dict__["athena"] = athena
+            __props__.__dict__["athena_iam"] = athena_iam
             __props__.__dict__["aurora_mysql"] = aurora_mysql
             __props__.__dict__["aurora_mysql_iam"] = aurora_mysql_iam
             __props__.__dict__["aurora_postgres"] = aurora_postgres
@@ -2548,6 +2705,9 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["big_query"] = big_query
             __props__.__dict__["cassandra"] = cassandra
             __props__.__dict__["citus"] = citus
+            __props__.__dict__["click_house_http"] = click_house_http
+            __props__.__dict__["click_house_my_sql"] = click_house_my_sql
+            __props__.__dict__["click_house_tcp"] = click_house_tcp
             __props__.__dict__["clustrix"] = clustrix
             __props__.__dict__["cockroach"] = cockroach
             __props__.__dict__["couchbase_database"] = couchbase_database
@@ -2555,9 +2715,11 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["db2_i"] = db2_i
             __props__.__dict__["db2_luw"] = db2_luw
             __props__.__dict__["document_db_host"] = document_db_host
+            __props__.__dict__["document_db_host_iam"] = document_db_host_iam
             __props__.__dict__["document_db_replica_set"] = document_db_replica_set
             __props__.__dict__["druid"] = druid
             __props__.__dict__["dynamo_db"] = dynamo_db
+            __props__.__dict__["dynamo_dbiam"] = dynamo_dbiam
             __props__.__dict__["elastic"] = elastic
             __props__.__dict__["elasticache_redis"] = elasticache_redis
             __props__.__dict__["gcp"] = gcp
@@ -2633,6 +2795,7 @@ class Resource(pulumi.CustomResource):
             amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
             amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
             athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
+            athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
             aurora_mysql: Optional[pulumi.Input[Union['ResourceAuroraMysqlArgs', 'ResourceAuroraMysqlArgsDict']]] = None,
             aurora_mysql_iam: Optional[pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']]] = None,
             aurora_postgres: Optional[pulumi.Input[Union['ResourceAuroraPostgresArgs', 'ResourceAuroraPostgresArgsDict']]] = None,
@@ -2649,6 +2812,9 @@ class Resource(pulumi.CustomResource):
             big_query: Optional[pulumi.Input[Union['ResourceBigQueryArgs', 'ResourceBigQueryArgsDict']]] = None,
             cassandra: Optional[pulumi.Input[Union['ResourceCassandraArgs', 'ResourceCassandraArgsDict']]] = None,
             citus: Optional[pulumi.Input[Union['ResourceCitusArgs', 'ResourceCitusArgsDict']]] = None,
+            click_house_http: Optional[pulumi.Input[Union['ResourceClickHouseHttpArgs', 'ResourceClickHouseHttpArgsDict']]] = None,
+            click_house_my_sql: Optional[pulumi.Input[Union['ResourceClickHouseMySqlArgs', 'ResourceClickHouseMySqlArgsDict']]] = None,
+            click_house_tcp: Optional[pulumi.Input[Union['ResourceClickHouseTcpArgs', 'ResourceClickHouseTcpArgsDict']]] = None,
             clustrix: Optional[pulumi.Input[Union['ResourceClustrixArgs', 'ResourceClustrixArgsDict']]] = None,
             cockroach: Optional[pulumi.Input[Union['ResourceCockroachArgs', 'ResourceCockroachArgsDict']]] = None,
             couchbase_database: Optional[pulumi.Input[Union['ResourceCouchbaseDatabaseArgs', 'ResourceCouchbaseDatabaseArgsDict']]] = None,
@@ -2656,9 +2822,11 @@ class Resource(pulumi.CustomResource):
             db2_i: Optional[pulumi.Input[Union['ResourceDb2IArgs', 'ResourceDb2IArgsDict']]] = None,
             db2_luw: Optional[pulumi.Input[Union['ResourceDb2LuwArgs', 'ResourceDb2LuwArgsDict']]] = None,
             document_db_host: Optional[pulumi.Input[Union['ResourceDocumentDbHostArgs', 'ResourceDocumentDbHostArgsDict']]] = None,
+            document_db_host_iam: Optional[pulumi.Input[Union['ResourceDocumentDbHostIamArgs', 'ResourceDocumentDbHostIamArgsDict']]] = None,
             document_db_replica_set: Optional[pulumi.Input[Union['ResourceDocumentDbReplicaSetArgs', 'ResourceDocumentDbReplicaSetArgsDict']]] = None,
             druid: Optional[pulumi.Input[Union['ResourceDruidArgs', 'ResourceDruidArgsDict']]] = None,
             dynamo_db: Optional[pulumi.Input[Union['ResourceDynamoDbArgs', 'ResourceDynamoDbArgsDict']]] = None,
+            dynamo_dbiam: Optional[pulumi.Input[Union['ResourceDynamoDbiamArgs', 'ResourceDynamoDbiamArgsDict']]] = None,
             elastic: Optional[pulumi.Input[Union['ResourceElasticArgs', 'ResourceElasticArgsDict']]] = None,
             elasticache_redis: Optional[pulumi.Input[Union['ResourceElasticacheRedisArgs', 'ResourceElasticacheRedisArgsDict']]] = None,
             gcp: Optional[pulumi.Input[Union['ResourceGcpArgs', 'ResourceGcpArgsDict']]] = None,
@@ -2720,7 +2888,7 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAuroraMysqlIamArgs', 'ResourceAuroraMysqlIamArgsDict']] aurora_mysql_iam: AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']] athena_iam: AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
@@ -2743,6 +2911,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["amazon_es"] = amazon_es
         __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
         __props__.__dict__["athena"] = athena
+        __props__.__dict__["athena_iam"] = athena_iam
         __props__.__dict__["aurora_mysql"] = aurora_mysql
         __props__.__dict__["aurora_mysql_iam"] = aurora_mysql_iam
         __props__.__dict__["aurora_postgres"] = aurora_postgres
@@ -2759,6 +2928,9 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["big_query"] = big_query
         __props__.__dict__["cassandra"] = cassandra
         __props__.__dict__["citus"] = citus
+        __props__.__dict__["click_house_http"] = click_house_http
+        __props__.__dict__["click_house_my_sql"] = click_house_my_sql
+        __props__.__dict__["click_house_tcp"] = click_house_tcp
         __props__.__dict__["clustrix"] = clustrix
         __props__.__dict__["cockroach"] = cockroach
         __props__.__dict__["couchbase_database"] = couchbase_database
@@ -2766,9 +2938,11 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["db2_i"] = db2_i
         __props__.__dict__["db2_luw"] = db2_luw
         __props__.__dict__["document_db_host"] = document_db_host
+        __props__.__dict__["document_db_host_iam"] = document_db_host_iam
         __props__.__dict__["document_db_replica_set"] = document_db_replica_set
         __props__.__dict__["druid"] = druid
         __props__.__dict__["dynamo_db"] = dynamo_db
+        __props__.__dict__["dynamo_dbiam"] = dynamo_dbiam
         __props__.__dict__["elastic"] = elastic
         __props__.__dict__["elasticache_redis"] = elasticache_redis
         __props__.__dict__["gcp"] = gcp
@@ -2888,6 +3062,14 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "athena")
 
     @property
+    @pulumi.getter(name="athenaIam")
+    def athena_iam(self) -> pulumi.Output[Optional['outputs.ResourceAthenaIam']]:
+        """
+        AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "athena_iam")
+
+    @property
     @pulumi.getter(name="auroraMysql")
     def aurora_mysql(self) -> pulumi.Output[Optional['outputs.ResourceAuroraMysql']]:
         return pulumi.get(self, "aurora_mysql")
@@ -2895,9 +3077,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="auroraMysqlIam")
     def aurora_mysql_iam(self) -> pulumi.Output[Optional['outputs.ResourceAuroraMysqlIam']]:
-        """
-        AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "aurora_mysql_iam")
 
     @property
@@ -2971,6 +3150,21 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "citus")
 
     @property
+    @pulumi.getter(name="clickHouseHttp")
+    def click_house_http(self) -> pulumi.Output[Optional['outputs.ResourceClickHouseHttp']]:
+        return pulumi.get(self, "click_house_http")
+
+    @property
+    @pulumi.getter(name="clickHouseMySql")
+    def click_house_my_sql(self) -> pulumi.Output[Optional['outputs.ResourceClickHouseMySql']]:
+        return pulumi.get(self, "click_house_my_sql")
+
+    @property
+    @pulumi.getter(name="clickHouseTcp")
+    def click_house_tcp(self) -> pulumi.Output[Optional['outputs.ResourceClickHouseTcp']]:
+        return pulumi.get(self, "click_house_tcp")
+
+    @property
     @pulumi.getter
     def clustrix(self) -> pulumi.Output[Optional['outputs.ResourceClustrix']]:
         return pulumi.get(self, "clustrix")
@@ -3006,6 +3200,11 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "document_db_host")
 
     @property
+    @pulumi.getter(name="documentDbHostIam")
+    def document_db_host_iam(self) -> pulumi.Output[Optional['outputs.ResourceDocumentDbHostIam']]:
+        return pulumi.get(self, "document_db_host_iam")
+
+    @property
     @pulumi.getter(name="documentDbReplicaSet")
     def document_db_replica_set(self) -> pulumi.Output[Optional['outputs.ResourceDocumentDbReplicaSet']]:
         return pulumi.get(self, "document_db_replica_set")
@@ -3019,6 +3218,11 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter(name="dynamoDb")
     def dynamo_db(self) -> pulumi.Output[Optional['outputs.ResourceDynamoDb']]:
         return pulumi.get(self, "dynamo_db")
+
+    @property
+    @pulumi.getter(name="dynamoDbiam")
+    def dynamo_dbiam(self) -> pulumi.Output[Optional['outputs.ResourceDynamoDbiam']]:
+        return pulumi.get(self, "dynamo_dbiam")
 
     @property
     @pulumi.getter
