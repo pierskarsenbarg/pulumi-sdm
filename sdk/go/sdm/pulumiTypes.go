@@ -6571,6 +6571,352 @@ func (o ResourceAthenaPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type ResourceAthenaIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The AWS S3 output location.
+	Output string `pulumi:"output"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn *string `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceAthenaIamInput is an input type that accepts ResourceAthenaIamArgs and ResourceAthenaIamOutput values.
+// You can construct a concrete instance of `ResourceAthenaIamInput` via:
+//
+//	ResourceAthenaIamArgs{...}
+type ResourceAthenaIamInput interface {
+	pulumi.Input
+
+	ToResourceAthenaIamOutput() ResourceAthenaIamOutput
+	ToResourceAthenaIamOutputWithContext(context.Context) ResourceAthenaIamOutput
+}
+
+type ResourceAthenaIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The AWS S3 output location.
+	Output pulumi.StringInput `pulumi:"output"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceAthenaIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAthenaIam)(nil)).Elem()
+}
+
+func (i ResourceAthenaIamArgs) ToResourceAthenaIamOutput() ResourceAthenaIamOutput {
+	return i.ToResourceAthenaIamOutputWithContext(context.Background())
+}
+
+func (i ResourceAthenaIamArgs) ToResourceAthenaIamOutputWithContext(ctx context.Context) ResourceAthenaIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAthenaIamOutput)
+}
+
+func (i ResourceAthenaIamArgs) ToResourceAthenaIamPtrOutput() ResourceAthenaIamPtrOutput {
+	return i.ToResourceAthenaIamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAthenaIamArgs) ToResourceAthenaIamPtrOutputWithContext(ctx context.Context) ResourceAthenaIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAthenaIamOutput).ToResourceAthenaIamPtrOutputWithContext(ctx)
+}
+
+// ResourceAthenaIamPtrInput is an input type that accepts ResourceAthenaIamArgs, ResourceAthenaIamPtr and ResourceAthenaIamPtrOutput values.
+// You can construct a concrete instance of `ResourceAthenaIamPtrInput` via:
+//
+//	        ResourceAthenaIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAthenaIamPtrInput interface {
+	pulumi.Input
+
+	ToResourceAthenaIamPtrOutput() ResourceAthenaIamPtrOutput
+	ToResourceAthenaIamPtrOutputWithContext(context.Context) ResourceAthenaIamPtrOutput
+}
+
+type resourceAthenaIamPtrType ResourceAthenaIamArgs
+
+func ResourceAthenaIamPtr(v *ResourceAthenaIamArgs) ResourceAthenaIamPtrInput {
+	return (*resourceAthenaIamPtrType)(v)
+}
+
+func (*resourceAthenaIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAthenaIam)(nil)).Elem()
+}
+
+func (i *resourceAthenaIamPtrType) ToResourceAthenaIamPtrOutput() ResourceAthenaIamPtrOutput {
+	return i.ToResourceAthenaIamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAthenaIamPtrType) ToResourceAthenaIamPtrOutputWithContext(ctx context.Context) ResourceAthenaIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAthenaIamPtrOutput)
+}
+
+type ResourceAthenaIamOutput struct{ *pulumi.OutputState }
+
+func (ResourceAthenaIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAthenaIam)(nil)).Elem()
+}
+
+func (o ResourceAthenaIamOutput) ToResourceAthenaIamOutput() ResourceAthenaIamOutput {
+	return o
+}
+
+func (o ResourceAthenaIamOutput) ToResourceAthenaIamOutputWithContext(ctx context.Context) ResourceAthenaIamOutput {
+	return o
+}
+
+func (o ResourceAthenaIamOutput) ToResourceAthenaIamPtrOutput() ResourceAthenaIamPtrOutput {
+	return o.ToResourceAthenaIamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAthenaIamOutput) ToResourceAthenaIamPtrOutputWithContext(ctx context.Context) ResourceAthenaIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAthenaIam) *ResourceAthenaIam {
+		return &v
+	}).(ResourceAthenaIamPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAthenaIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAthenaIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAthenaIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The AWS S3 output location.
+func (o ResourceAthenaIamOutput) Output() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) string { return v.Output }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAthenaIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAthenaIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAthenaIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o ResourceAthenaIamOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o ResourceAthenaIamOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAthenaIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAthenaIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAthenaIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAthenaIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceAthenaIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAthenaIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAthenaIam)(nil)).Elem()
+}
+
+func (o ResourceAthenaIamPtrOutput) ToResourceAthenaIamPtrOutput() ResourceAthenaIamPtrOutput {
+	return o
+}
+
+func (o ResourceAthenaIamPtrOutput) ToResourceAthenaIamPtrOutputWithContext(ctx context.Context) ResourceAthenaIamPtrOutput {
+	return o
+}
+
+func (o ResourceAthenaIamPtrOutput) Elem() ResourceAthenaIamOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) ResourceAthenaIam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAthenaIam
+		return ret
+	}).(ResourceAthenaIamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAthenaIamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAthenaIamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAthenaIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS S3 output location.
+func (o ResourceAthenaIamPtrOutput) Output() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Output
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAthenaIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAthenaIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAthenaIamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o ResourceAthenaIamPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o ResourceAthenaIamPtrOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAthenaIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAthenaIamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAthenaIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAthenaIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type ResourceAuroraMysql struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -12628,6 +12974,1105 @@ func (o ResourceCitusPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceClickHouseHttp struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The base address of your website without the path.
+	// * kubernetes:
+	Url string `pulumi:"url"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceClickHouseHttpInput is an input type that accepts ResourceClickHouseHttpArgs and ResourceClickHouseHttpOutput values.
+// You can construct a concrete instance of `ResourceClickHouseHttpInput` via:
+//
+//	ResourceClickHouseHttpArgs{...}
+type ResourceClickHouseHttpInput interface {
+	pulumi.Input
+
+	ToResourceClickHouseHttpOutput() ResourceClickHouseHttpOutput
+	ToResourceClickHouseHttpOutputWithContext(context.Context) ResourceClickHouseHttpOutput
+}
+
+type ResourceClickHouseHttpArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The base address of your website without the path.
+	// * kubernetes:
+	Url pulumi.StringInput `pulumi:"url"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceClickHouseHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceClickHouseHttp)(nil)).Elem()
+}
+
+func (i ResourceClickHouseHttpArgs) ToResourceClickHouseHttpOutput() ResourceClickHouseHttpOutput {
+	return i.ToResourceClickHouseHttpOutputWithContext(context.Background())
+}
+
+func (i ResourceClickHouseHttpArgs) ToResourceClickHouseHttpOutputWithContext(ctx context.Context) ResourceClickHouseHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseHttpOutput)
+}
+
+func (i ResourceClickHouseHttpArgs) ToResourceClickHouseHttpPtrOutput() ResourceClickHouseHttpPtrOutput {
+	return i.ToResourceClickHouseHttpPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceClickHouseHttpArgs) ToResourceClickHouseHttpPtrOutputWithContext(ctx context.Context) ResourceClickHouseHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseHttpOutput).ToResourceClickHouseHttpPtrOutputWithContext(ctx)
+}
+
+// ResourceClickHouseHttpPtrInput is an input type that accepts ResourceClickHouseHttpArgs, ResourceClickHouseHttpPtr and ResourceClickHouseHttpPtrOutput values.
+// You can construct a concrete instance of `ResourceClickHouseHttpPtrInput` via:
+//
+//	        ResourceClickHouseHttpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceClickHouseHttpPtrInput interface {
+	pulumi.Input
+
+	ToResourceClickHouseHttpPtrOutput() ResourceClickHouseHttpPtrOutput
+	ToResourceClickHouseHttpPtrOutputWithContext(context.Context) ResourceClickHouseHttpPtrOutput
+}
+
+type resourceClickHouseHttpPtrType ResourceClickHouseHttpArgs
+
+func ResourceClickHouseHttpPtr(v *ResourceClickHouseHttpArgs) ResourceClickHouseHttpPtrInput {
+	return (*resourceClickHouseHttpPtrType)(v)
+}
+
+func (*resourceClickHouseHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceClickHouseHttp)(nil)).Elem()
+}
+
+func (i *resourceClickHouseHttpPtrType) ToResourceClickHouseHttpPtrOutput() ResourceClickHouseHttpPtrOutput {
+	return i.ToResourceClickHouseHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceClickHouseHttpPtrType) ToResourceClickHouseHttpPtrOutputWithContext(ctx context.Context) ResourceClickHouseHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseHttpPtrOutput)
+}
+
+type ResourceClickHouseHttpOutput struct{ *pulumi.OutputState }
+
+func (ResourceClickHouseHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceClickHouseHttp)(nil)).Elem()
+}
+
+func (o ResourceClickHouseHttpOutput) ToResourceClickHouseHttpOutput() ResourceClickHouseHttpOutput {
+	return o
+}
+
+func (o ResourceClickHouseHttpOutput) ToResourceClickHouseHttpOutputWithContext(ctx context.Context) ResourceClickHouseHttpOutput {
+	return o
+}
+
+func (o ResourceClickHouseHttpOutput) ToResourceClickHouseHttpPtrOutput() ResourceClickHouseHttpPtrOutput {
+	return o.ToResourceClickHouseHttpPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceClickHouseHttpOutput) ToResourceClickHouseHttpPtrOutputWithContext(ctx context.Context) ResourceClickHouseHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceClickHouseHttp) *ResourceClickHouseHttp {
+		return &v
+	}).(ResourceClickHouseHttpPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceClickHouseHttpOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceClickHouseHttpOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceClickHouseHttpOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceClickHouseHttpOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceClickHouseHttpOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceClickHouseHttpOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceClickHouseHttpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceClickHouseHttpOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceClickHouseHttpOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The base address of your website without the path.
+// * kubernetes:
+func (o ResourceClickHouseHttpOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceClickHouseHttpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceClickHouseHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceClickHouseHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceClickHouseHttp)(nil)).Elem()
+}
+
+func (o ResourceClickHouseHttpPtrOutput) ToResourceClickHouseHttpPtrOutput() ResourceClickHouseHttpPtrOutput {
+	return o
+}
+
+func (o ResourceClickHouseHttpPtrOutput) ToResourceClickHouseHttpPtrOutputWithContext(ctx context.Context) ResourceClickHouseHttpPtrOutput {
+	return o
+}
+
+func (o ResourceClickHouseHttpPtrOutput) Elem() ResourceClickHouseHttpOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) ResourceClickHouseHttp {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceClickHouseHttp
+		return ret
+	}).(ResourceClickHouseHttpOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceClickHouseHttpPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceClickHouseHttpPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceClickHouseHttpPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceClickHouseHttpPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceClickHouseHttpPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceClickHouseHttpPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceClickHouseHttpPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceClickHouseHttpPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceClickHouseHttpPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The base address of your website without the path.
+// * kubernetes:
+func (o ResourceClickHouseHttpPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceClickHouseHttpPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceClickHouseMySql struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceClickHouseMySqlInput is an input type that accepts ResourceClickHouseMySqlArgs and ResourceClickHouseMySqlOutput values.
+// You can construct a concrete instance of `ResourceClickHouseMySqlInput` via:
+//
+//	ResourceClickHouseMySqlArgs{...}
+type ResourceClickHouseMySqlInput interface {
+	pulumi.Input
+
+	ToResourceClickHouseMySqlOutput() ResourceClickHouseMySqlOutput
+	ToResourceClickHouseMySqlOutputWithContext(context.Context) ResourceClickHouseMySqlOutput
+}
+
+type ResourceClickHouseMySqlArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceClickHouseMySqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceClickHouseMySql)(nil)).Elem()
+}
+
+func (i ResourceClickHouseMySqlArgs) ToResourceClickHouseMySqlOutput() ResourceClickHouseMySqlOutput {
+	return i.ToResourceClickHouseMySqlOutputWithContext(context.Background())
+}
+
+func (i ResourceClickHouseMySqlArgs) ToResourceClickHouseMySqlOutputWithContext(ctx context.Context) ResourceClickHouseMySqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseMySqlOutput)
+}
+
+func (i ResourceClickHouseMySqlArgs) ToResourceClickHouseMySqlPtrOutput() ResourceClickHouseMySqlPtrOutput {
+	return i.ToResourceClickHouseMySqlPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceClickHouseMySqlArgs) ToResourceClickHouseMySqlPtrOutputWithContext(ctx context.Context) ResourceClickHouseMySqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseMySqlOutput).ToResourceClickHouseMySqlPtrOutputWithContext(ctx)
+}
+
+// ResourceClickHouseMySqlPtrInput is an input type that accepts ResourceClickHouseMySqlArgs, ResourceClickHouseMySqlPtr and ResourceClickHouseMySqlPtrOutput values.
+// You can construct a concrete instance of `ResourceClickHouseMySqlPtrInput` via:
+//
+//	        ResourceClickHouseMySqlArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceClickHouseMySqlPtrInput interface {
+	pulumi.Input
+
+	ToResourceClickHouseMySqlPtrOutput() ResourceClickHouseMySqlPtrOutput
+	ToResourceClickHouseMySqlPtrOutputWithContext(context.Context) ResourceClickHouseMySqlPtrOutput
+}
+
+type resourceClickHouseMySqlPtrType ResourceClickHouseMySqlArgs
+
+func ResourceClickHouseMySqlPtr(v *ResourceClickHouseMySqlArgs) ResourceClickHouseMySqlPtrInput {
+	return (*resourceClickHouseMySqlPtrType)(v)
+}
+
+func (*resourceClickHouseMySqlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceClickHouseMySql)(nil)).Elem()
+}
+
+func (i *resourceClickHouseMySqlPtrType) ToResourceClickHouseMySqlPtrOutput() ResourceClickHouseMySqlPtrOutput {
+	return i.ToResourceClickHouseMySqlPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceClickHouseMySqlPtrType) ToResourceClickHouseMySqlPtrOutputWithContext(ctx context.Context) ResourceClickHouseMySqlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseMySqlPtrOutput)
+}
+
+type ResourceClickHouseMySqlOutput struct{ *pulumi.OutputState }
+
+func (ResourceClickHouseMySqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceClickHouseMySql)(nil)).Elem()
+}
+
+func (o ResourceClickHouseMySqlOutput) ToResourceClickHouseMySqlOutput() ResourceClickHouseMySqlOutput {
+	return o
+}
+
+func (o ResourceClickHouseMySqlOutput) ToResourceClickHouseMySqlOutputWithContext(ctx context.Context) ResourceClickHouseMySqlOutput {
+	return o
+}
+
+func (o ResourceClickHouseMySqlOutput) ToResourceClickHouseMySqlPtrOutput() ResourceClickHouseMySqlPtrOutput {
+	return o.ToResourceClickHouseMySqlPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceClickHouseMySqlOutput) ToResourceClickHouseMySqlPtrOutputWithContext(ctx context.Context) ResourceClickHouseMySqlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceClickHouseMySql) *ResourceClickHouseMySql {
+		return &v
+	}).(ResourceClickHouseMySqlPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceClickHouseMySqlOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceClickHouseMySqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceClickHouseMySqlOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceClickHouseMySqlOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceClickHouseMySqlOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceClickHouseMySqlOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceClickHouseMySqlOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceClickHouseMySqlOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceClickHouseMySqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+func (o ResourceClickHouseMySqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceClickHouseMySqlOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceClickHouseMySqlOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceClickHouseMySqlOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceClickHouseMySqlOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseMySql) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceClickHouseMySqlPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceClickHouseMySqlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceClickHouseMySql)(nil)).Elem()
+}
+
+func (o ResourceClickHouseMySqlPtrOutput) ToResourceClickHouseMySqlPtrOutput() ResourceClickHouseMySqlPtrOutput {
+	return o
+}
+
+func (o ResourceClickHouseMySqlPtrOutput) ToResourceClickHouseMySqlPtrOutputWithContext(ctx context.Context) ResourceClickHouseMySqlPtrOutput {
+	return o
+}
+
+func (o ResourceClickHouseMySqlPtrOutput) Elem() ResourceClickHouseMySqlOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) ResourceClickHouseMySql {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceClickHouseMySql
+		return ret
+	}).(ResourceClickHouseMySqlOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceClickHouseMySqlPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceClickHouseMySqlPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceClickHouseMySqlPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceClickHouseMySqlPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceClickHouseMySqlPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceClickHouseMySqlPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceClickHouseMySqlPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceClickHouseMySqlPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceClickHouseMySqlPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+func (o ResourceClickHouseMySqlPtrOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequireNativeAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceClickHouseMySqlPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceClickHouseMySqlPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceClickHouseMySqlPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceClickHouseMySqlPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseMySql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceClickHouseTcp struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// ResourceClickHouseTcpInput is an input type that accepts ResourceClickHouseTcpArgs and ResourceClickHouseTcpOutput values.
+// You can construct a concrete instance of `ResourceClickHouseTcpInput` via:
+//
+//	ResourceClickHouseTcpArgs{...}
+type ResourceClickHouseTcpInput interface {
+	pulumi.Input
+
+	ToResourceClickHouseTcpOutput() ResourceClickHouseTcpOutput
+	ToResourceClickHouseTcpOutputWithContext(context.Context) ResourceClickHouseTcpOutput
+}
+
+type ResourceClickHouseTcpArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ResourceClickHouseTcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceClickHouseTcp)(nil)).Elem()
+}
+
+func (i ResourceClickHouseTcpArgs) ToResourceClickHouseTcpOutput() ResourceClickHouseTcpOutput {
+	return i.ToResourceClickHouseTcpOutputWithContext(context.Background())
+}
+
+func (i ResourceClickHouseTcpArgs) ToResourceClickHouseTcpOutputWithContext(ctx context.Context) ResourceClickHouseTcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseTcpOutput)
+}
+
+func (i ResourceClickHouseTcpArgs) ToResourceClickHouseTcpPtrOutput() ResourceClickHouseTcpPtrOutput {
+	return i.ToResourceClickHouseTcpPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceClickHouseTcpArgs) ToResourceClickHouseTcpPtrOutputWithContext(ctx context.Context) ResourceClickHouseTcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseTcpOutput).ToResourceClickHouseTcpPtrOutputWithContext(ctx)
+}
+
+// ResourceClickHouseTcpPtrInput is an input type that accepts ResourceClickHouseTcpArgs, ResourceClickHouseTcpPtr and ResourceClickHouseTcpPtrOutput values.
+// You can construct a concrete instance of `ResourceClickHouseTcpPtrInput` via:
+//
+//	        ResourceClickHouseTcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceClickHouseTcpPtrInput interface {
+	pulumi.Input
+
+	ToResourceClickHouseTcpPtrOutput() ResourceClickHouseTcpPtrOutput
+	ToResourceClickHouseTcpPtrOutputWithContext(context.Context) ResourceClickHouseTcpPtrOutput
+}
+
+type resourceClickHouseTcpPtrType ResourceClickHouseTcpArgs
+
+func ResourceClickHouseTcpPtr(v *ResourceClickHouseTcpArgs) ResourceClickHouseTcpPtrInput {
+	return (*resourceClickHouseTcpPtrType)(v)
+}
+
+func (*resourceClickHouseTcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceClickHouseTcp)(nil)).Elem()
+}
+
+func (i *resourceClickHouseTcpPtrType) ToResourceClickHouseTcpPtrOutput() ResourceClickHouseTcpPtrOutput {
+	return i.ToResourceClickHouseTcpPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceClickHouseTcpPtrType) ToResourceClickHouseTcpPtrOutputWithContext(ctx context.Context) ResourceClickHouseTcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceClickHouseTcpPtrOutput)
+}
+
+type ResourceClickHouseTcpOutput struct{ *pulumi.OutputState }
+
+func (ResourceClickHouseTcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceClickHouseTcp)(nil)).Elem()
+}
+
+func (o ResourceClickHouseTcpOutput) ToResourceClickHouseTcpOutput() ResourceClickHouseTcpOutput {
+	return o
+}
+
+func (o ResourceClickHouseTcpOutput) ToResourceClickHouseTcpOutputWithContext(ctx context.Context) ResourceClickHouseTcpOutput {
+	return o
+}
+
+func (o ResourceClickHouseTcpOutput) ToResourceClickHouseTcpPtrOutput() ResourceClickHouseTcpPtrOutput {
+	return o.ToResourceClickHouseTcpPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceClickHouseTcpOutput) ToResourceClickHouseTcpPtrOutputWithContext(ctx context.Context) ResourceClickHouseTcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceClickHouseTcp) *ResourceClickHouseTcp {
+		return &v
+	}).(ResourceClickHouseTcpPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceClickHouseTcpOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceClickHouseTcpOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceClickHouseTcpOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceClickHouseTcpOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceClickHouseTcpOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceClickHouseTcpOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceClickHouseTcpOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceClickHouseTcpOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceClickHouseTcpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceClickHouseTcpOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceClickHouseTcpOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceClickHouseTcpOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceClickHouseTcpOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceClickHouseTcpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceClickHouseTcp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ResourceClickHouseTcpPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceClickHouseTcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceClickHouseTcp)(nil)).Elem()
+}
+
+func (o ResourceClickHouseTcpPtrOutput) ToResourceClickHouseTcpPtrOutput() ResourceClickHouseTcpPtrOutput {
+	return o
+}
+
+func (o ResourceClickHouseTcpPtrOutput) ToResourceClickHouseTcpPtrOutputWithContext(ctx context.Context) ResourceClickHouseTcpPtrOutput {
+	return o
+}
+
+func (o ResourceClickHouseTcpPtrOutput) Elem() ResourceClickHouseTcpOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) ResourceClickHouseTcp {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceClickHouseTcp
+		return ret
+	}).(ResourceClickHouseTcpOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceClickHouseTcpPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceClickHouseTcpPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceClickHouseTcpPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceClickHouseTcpPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceClickHouseTcpPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o ResourceClickHouseTcpPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceClickHouseTcpPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceClickHouseTcpPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceClickHouseTcpPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceClickHouseTcpPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceClickHouseTcpPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceClickHouseTcpPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceClickHouseTcpPtrOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TlsRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o ResourceClickHouseTcpPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceClickHouseTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceClustrix struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -15225,6 +16670,333 @@ func (o ResourceDocumentDbHostPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceDocumentDbHostIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceDocumentDbHostIamInput is an input type that accepts ResourceDocumentDbHostIamArgs and ResourceDocumentDbHostIamOutput values.
+// You can construct a concrete instance of `ResourceDocumentDbHostIamInput` via:
+//
+//	ResourceDocumentDbHostIamArgs{...}
+type ResourceDocumentDbHostIamInput interface {
+	pulumi.Input
+
+	ToResourceDocumentDbHostIamOutput() ResourceDocumentDbHostIamOutput
+	ToResourceDocumentDbHostIamOutputWithContext(context.Context) ResourceDocumentDbHostIamOutput
+}
+
+type ResourceDocumentDbHostIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceDocumentDbHostIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDocumentDbHostIam)(nil)).Elem()
+}
+
+func (i ResourceDocumentDbHostIamArgs) ToResourceDocumentDbHostIamOutput() ResourceDocumentDbHostIamOutput {
+	return i.ToResourceDocumentDbHostIamOutputWithContext(context.Background())
+}
+
+func (i ResourceDocumentDbHostIamArgs) ToResourceDocumentDbHostIamOutputWithContext(ctx context.Context) ResourceDocumentDbHostIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbHostIamOutput)
+}
+
+func (i ResourceDocumentDbHostIamArgs) ToResourceDocumentDbHostIamPtrOutput() ResourceDocumentDbHostIamPtrOutput {
+	return i.ToResourceDocumentDbHostIamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceDocumentDbHostIamArgs) ToResourceDocumentDbHostIamPtrOutputWithContext(ctx context.Context) ResourceDocumentDbHostIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbHostIamOutput).ToResourceDocumentDbHostIamPtrOutputWithContext(ctx)
+}
+
+// ResourceDocumentDbHostIamPtrInput is an input type that accepts ResourceDocumentDbHostIamArgs, ResourceDocumentDbHostIamPtr and ResourceDocumentDbHostIamPtrOutput values.
+// You can construct a concrete instance of `ResourceDocumentDbHostIamPtrInput` via:
+//
+//	        ResourceDocumentDbHostIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceDocumentDbHostIamPtrInput interface {
+	pulumi.Input
+
+	ToResourceDocumentDbHostIamPtrOutput() ResourceDocumentDbHostIamPtrOutput
+	ToResourceDocumentDbHostIamPtrOutputWithContext(context.Context) ResourceDocumentDbHostIamPtrOutput
+}
+
+type resourceDocumentDbHostIamPtrType ResourceDocumentDbHostIamArgs
+
+func ResourceDocumentDbHostIamPtr(v *ResourceDocumentDbHostIamArgs) ResourceDocumentDbHostIamPtrInput {
+	return (*resourceDocumentDbHostIamPtrType)(v)
+}
+
+func (*resourceDocumentDbHostIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDocumentDbHostIam)(nil)).Elem()
+}
+
+func (i *resourceDocumentDbHostIamPtrType) ToResourceDocumentDbHostIamPtrOutput() ResourceDocumentDbHostIamPtrOutput {
+	return i.ToResourceDocumentDbHostIamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceDocumentDbHostIamPtrType) ToResourceDocumentDbHostIamPtrOutputWithContext(ctx context.Context) ResourceDocumentDbHostIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDocumentDbHostIamPtrOutput)
+}
+
+type ResourceDocumentDbHostIamOutput struct{ *pulumi.OutputState }
+
+func (ResourceDocumentDbHostIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDocumentDbHostIam)(nil)).Elem()
+}
+
+func (o ResourceDocumentDbHostIamOutput) ToResourceDocumentDbHostIamOutput() ResourceDocumentDbHostIamOutput {
+	return o
+}
+
+func (o ResourceDocumentDbHostIamOutput) ToResourceDocumentDbHostIamOutputWithContext(ctx context.Context) ResourceDocumentDbHostIamOutput {
+	return o
+}
+
+func (o ResourceDocumentDbHostIamOutput) ToResourceDocumentDbHostIamPtrOutput() ResourceDocumentDbHostIamPtrOutput {
+	return o.ToResourceDocumentDbHostIamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceDocumentDbHostIamOutput) ToResourceDocumentDbHostIamPtrOutputWithContext(ctx context.Context) ResourceDocumentDbHostIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDocumentDbHostIam) *ResourceDocumentDbHostIam {
+		return &v
+	}).(ResourceDocumentDbHostIamPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceDocumentDbHostIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceDocumentDbHostIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceDocumentDbHostIamOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceDocumentDbHostIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceDocumentDbHostIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceDocumentDbHostIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDocumentDbHostIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceDocumentDbHostIamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceDocumentDbHostIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceDocumentDbHostIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceDocumentDbHostIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceDocumentDbHostIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceDocumentDbHostIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceDocumentDbHostIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDocumentDbHostIam)(nil)).Elem()
+}
+
+func (o ResourceDocumentDbHostIamPtrOutput) ToResourceDocumentDbHostIamPtrOutput() ResourceDocumentDbHostIamPtrOutput {
+	return o
+}
+
+func (o ResourceDocumentDbHostIamPtrOutput) ToResourceDocumentDbHostIamPtrOutputWithContext(ctx context.Context) ResourceDocumentDbHostIamPtrOutput {
+	return o
+}
+
+func (o ResourceDocumentDbHostIamPtrOutput) Elem() ResourceDocumentDbHostIamOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) ResourceDocumentDbHostIam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceDocumentDbHostIam
+		return ret
+	}).(ResourceDocumentDbHostIamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceDocumentDbHostIamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceDocumentDbHostIamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceDocumentDbHostIamPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceDocumentDbHostIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceDocumentDbHostIamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceDocumentDbHostIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDocumentDbHostIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceDocumentDbHostIamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceDocumentDbHostIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceDocumentDbHostIamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceDocumentDbHostIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceDocumentDbHostIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type ResourceDocumentDbReplicaSet struct {
 	// The authentication database to use.
 	AuthDatabase string `pulumi:"authDatabase"`
@@ -16332,6 +18104,352 @@ func (o ResourceDynamoDbPtrOutput) Subdomain() pulumi.StringPtrOutput {
 // Tags is a map of key, value pairs.
 func (o ResourceDynamoDbPtrOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ResourceDynamoDb) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type ResourceDynamoDbiam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+	Endpoint string `pulumi:"endpoint"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn *string `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceDynamoDbiamInput is an input type that accepts ResourceDynamoDbiamArgs and ResourceDynamoDbiamOutput values.
+// You can construct a concrete instance of `ResourceDynamoDbiamInput` via:
+//
+//	ResourceDynamoDbiamArgs{...}
+type ResourceDynamoDbiamInput interface {
+	pulumi.Input
+
+	ToResourceDynamoDbiamOutput() ResourceDynamoDbiamOutput
+	ToResourceDynamoDbiamOutputWithContext(context.Context) ResourceDynamoDbiamOutput
+}
+
+type ResourceDynamoDbiamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceDynamoDbiamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDynamoDbiam)(nil)).Elem()
+}
+
+func (i ResourceDynamoDbiamArgs) ToResourceDynamoDbiamOutput() ResourceDynamoDbiamOutput {
+	return i.ToResourceDynamoDbiamOutputWithContext(context.Background())
+}
+
+func (i ResourceDynamoDbiamArgs) ToResourceDynamoDbiamOutputWithContext(ctx context.Context) ResourceDynamoDbiamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDynamoDbiamOutput)
+}
+
+func (i ResourceDynamoDbiamArgs) ToResourceDynamoDbiamPtrOutput() ResourceDynamoDbiamPtrOutput {
+	return i.ToResourceDynamoDbiamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceDynamoDbiamArgs) ToResourceDynamoDbiamPtrOutputWithContext(ctx context.Context) ResourceDynamoDbiamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDynamoDbiamOutput).ToResourceDynamoDbiamPtrOutputWithContext(ctx)
+}
+
+// ResourceDynamoDbiamPtrInput is an input type that accepts ResourceDynamoDbiamArgs, ResourceDynamoDbiamPtr and ResourceDynamoDbiamPtrOutput values.
+// You can construct a concrete instance of `ResourceDynamoDbiamPtrInput` via:
+//
+//	        ResourceDynamoDbiamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceDynamoDbiamPtrInput interface {
+	pulumi.Input
+
+	ToResourceDynamoDbiamPtrOutput() ResourceDynamoDbiamPtrOutput
+	ToResourceDynamoDbiamPtrOutputWithContext(context.Context) ResourceDynamoDbiamPtrOutput
+}
+
+type resourceDynamoDbiamPtrType ResourceDynamoDbiamArgs
+
+func ResourceDynamoDbiamPtr(v *ResourceDynamoDbiamArgs) ResourceDynamoDbiamPtrInput {
+	return (*resourceDynamoDbiamPtrType)(v)
+}
+
+func (*resourceDynamoDbiamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDynamoDbiam)(nil)).Elem()
+}
+
+func (i *resourceDynamoDbiamPtrType) ToResourceDynamoDbiamPtrOutput() ResourceDynamoDbiamPtrOutput {
+	return i.ToResourceDynamoDbiamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceDynamoDbiamPtrType) ToResourceDynamoDbiamPtrOutputWithContext(ctx context.Context) ResourceDynamoDbiamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceDynamoDbiamPtrOutput)
+}
+
+type ResourceDynamoDbiamOutput struct{ *pulumi.OutputState }
+
+func (ResourceDynamoDbiamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceDynamoDbiam)(nil)).Elem()
+}
+
+func (o ResourceDynamoDbiamOutput) ToResourceDynamoDbiamOutput() ResourceDynamoDbiamOutput {
+	return o
+}
+
+func (o ResourceDynamoDbiamOutput) ToResourceDynamoDbiamOutputWithContext(ctx context.Context) ResourceDynamoDbiamOutput {
+	return o
+}
+
+func (o ResourceDynamoDbiamOutput) ToResourceDynamoDbiamPtrOutput() ResourceDynamoDbiamPtrOutput {
+	return o.ToResourceDynamoDbiamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceDynamoDbiamOutput) ToResourceDynamoDbiamPtrOutputWithContext(ctx context.Context) ResourceDynamoDbiamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceDynamoDbiam) *ResourceDynamoDbiam {
+		return &v
+	}).(ResourceDynamoDbiamPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceDynamoDbiamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceDynamoDbiamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+func (o ResourceDynamoDbiamOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceDynamoDbiamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceDynamoDbiamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDynamoDbiamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceDynamoDbiamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The role to assume after logging in.
+func (o ResourceDynamoDbiamOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o ResourceDynamoDbiamOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceDynamoDbiamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceDynamoDbiamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceDynamoDbiamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceDynamoDbiam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceDynamoDbiamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceDynamoDbiamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceDynamoDbiam)(nil)).Elem()
+}
+
+func (o ResourceDynamoDbiamPtrOutput) ToResourceDynamoDbiamPtrOutput() ResourceDynamoDbiamPtrOutput {
+	return o
+}
+
+func (o ResourceDynamoDbiamPtrOutput) ToResourceDynamoDbiamPtrOutputWithContext(ctx context.Context) ResourceDynamoDbiamPtrOutput {
+	return o
+}
+
+func (o ResourceDynamoDbiamPtrOutput) Elem() ResourceDynamoDbiamOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) ResourceDynamoDbiam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceDynamoDbiam
+		return ret
+	}).(ResourceDynamoDbiamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceDynamoDbiamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceDynamoDbiamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+func (o ResourceDynamoDbiamPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceDynamoDbiamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceDynamoDbiamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceDynamoDbiamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceDynamoDbiamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o ResourceDynamoDbiamPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o ResourceDynamoDbiamPtrOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceDynamoDbiamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceDynamoDbiamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceDynamoDbiamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceDynamoDbiam) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -45087,6 +47205,7 @@ type GetResourceResource struct {
 	AmazonEksUserImpersonations                []GetResourceResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonations"`
 	AmazonEs                                   []GetResourceResourceAmazonE                                   `pulumi:"amazonEs"`
 	AmazonmqAmqp091s                           []GetResourceResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091s"`
+	AthenaIams                                 []GetResourceResourceAthenaIam                                 `pulumi:"athenaIams"`
 	Athenas                                    []GetResourceResourceAthena                                    `pulumi:"athenas"`
 	AuroraMysqlIams                            []GetResourceResourceAuroraMysqlIam                            `pulumi:"auroraMysqlIams"`
 	AuroraMysqls                               []GetResourceResourceAuroraMysql                               `pulumi:"auroraMysqls"`
@@ -45104,15 +47223,20 @@ type GetResourceResource struct {
 	BigQueries                                 []GetResourceResourceBigQuery                                  `pulumi:"bigQueries"`
 	Cassandras                                 []GetResourceResourceCassandra                                 `pulumi:"cassandras"`
 	Cituses                                    []GetResourceResourceCitus                                     `pulumi:"cituses"`
+	ClickHouseHttps                            []GetResourceResourceClickHouseHttp                            `pulumi:"clickHouseHttps"`
+	ClickHouseMySqls                           []GetResourceResourceClickHouseMySql                           `pulumi:"clickHouseMySqls"`
+	ClickHouseTcps                             []GetResourceResourceClickHouseTcp                             `pulumi:"clickHouseTcps"`
 	Clustrixes                                 []GetResourceResourceClustrix                                  `pulumi:"clustrixes"`
 	Cockroaches                                []GetResourceResourceCockroach                                 `pulumi:"cockroaches"`
 	CouchbaseDatabases                         []GetResourceResourceCouchbaseDatabase                         `pulumi:"couchbaseDatabases"`
 	CouchbaseWebUis                            []GetResourceResourceCouchbaseWebUi                            `pulumi:"couchbaseWebUis"`
 	Db2Is                                      []GetResourceResourceDb2I                                      `pulumi:"db2Is"`
 	Db2Luws                                    []GetResourceResourceDb2Luw                                    `pulumi:"db2Luws"`
+	DocumentDbHostIams                         []GetResourceResourceDocumentDbHostIam                         `pulumi:"documentDbHostIams"`
 	DocumentDbHosts                            []GetResourceResourceDocumentDbHost                            `pulumi:"documentDbHosts"`
 	DocumentDbReplicaSets                      []GetResourceResourceDocumentDbReplicaSet                      `pulumi:"documentDbReplicaSets"`
 	Druids                                     []GetResourceResourceDruid                                     `pulumi:"druids"`
+	DynamoDbiams                               []GetResourceResourceDynamoDbiam                               `pulumi:"dynamoDbiams"`
 	DynamoDbs                                  []GetResourceResourceDynamoDb                                  `pulumi:"dynamoDbs"`
 	ElasticacheRedis                           []GetResourceResourceElasticacheRedi                           `pulumi:"elasticacheRedis"`
 	Elastics                                   []GetResourceResourceElastic                                   `pulumi:"elastics"`
@@ -45192,6 +47316,7 @@ type GetResourceResourceArgs struct {
 	AmazonEksUserImpersonations                GetResourceResourceAmazonEksUserImpersonationArrayInput                `pulumi:"amazonEksUserImpersonations"`
 	AmazonEs                                   GetResourceResourceAmazonEArrayInput                                   `pulumi:"amazonEs"`
 	AmazonmqAmqp091s                           GetResourceResourceAmazonmqAmqp091ArrayInput                           `pulumi:"amazonmqAmqp091s"`
+	AthenaIams                                 GetResourceResourceAthenaIamArrayInput                                 `pulumi:"athenaIams"`
 	Athenas                                    GetResourceResourceAthenaArrayInput                                    `pulumi:"athenas"`
 	AuroraMysqlIams                            GetResourceResourceAuroraMysqlIamArrayInput                            `pulumi:"auroraMysqlIams"`
 	AuroraMysqls                               GetResourceResourceAuroraMysqlArrayInput                               `pulumi:"auroraMysqls"`
@@ -45209,15 +47334,20 @@ type GetResourceResourceArgs struct {
 	BigQueries                                 GetResourceResourceBigQueryArrayInput                                  `pulumi:"bigQueries"`
 	Cassandras                                 GetResourceResourceCassandraArrayInput                                 `pulumi:"cassandras"`
 	Cituses                                    GetResourceResourceCitusArrayInput                                     `pulumi:"cituses"`
+	ClickHouseHttps                            GetResourceResourceClickHouseHttpArrayInput                            `pulumi:"clickHouseHttps"`
+	ClickHouseMySqls                           GetResourceResourceClickHouseMySqlArrayInput                           `pulumi:"clickHouseMySqls"`
+	ClickHouseTcps                             GetResourceResourceClickHouseTcpArrayInput                             `pulumi:"clickHouseTcps"`
 	Clustrixes                                 GetResourceResourceClustrixArrayInput                                  `pulumi:"clustrixes"`
 	Cockroaches                                GetResourceResourceCockroachArrayInput                                 `pulumi:"cockroaches"`
 	CouchbaseDatabases                         GetResourceResourceCouchbaseDatabaseArrayInput                         `pulumi:"couchbaseDatabases"`
 	CouchbaseWebUis                            GetResourceResourceCouchbaseWebUiArrayInput                            `pulumi:"couchbaseWebUis"`
 	Db2Is                                      GetResourceResourceDb2IArrayInput                                      `pulumi:"db2Is"`
 	Db2Luws                                    GetResourceResourceDb2LuwArrayInput                                    `pulumi:"db2Luws"`
+	DocumentDbHostIams                         GetResourceResourceDocumentDbHostIamArrayInput                         `pulumi:"documentDbHostIams"`
 	DocumentDbHosts                            GetResourceResourceDocumentDbHostArrayInput                            `pulumi:"documentDbHosts"`
 	DocumentDbReplicaSets                      GetResourceResourceDocumentDbReplicaSetArrayInput                      `pulumi:"documentDbReplicaSets"`
 	Druids                                     GetResourceResourceDruidArrayInput                                     `pulumi:"druids"`
+	DynamoDbiams                               GetResourceResourceDynamoDbiamArrayInput                               `pulumi:"dynamoDbiams"`
 	DynamoDbs                                  GetResourceResourceDynamoDbArrayInput                                  `pulumi:"dynamoDbs"`
 	ElasticacheRedis                           GetResourceResourceElasticacheRediArrayInput                           `pulumi:"elasticacheRedis"`
 	Elastics                                   GetResourceResourceElasticArrayInput                                   `pulumi:"elastics"`
@@ -45377,6 +47507,10 @@ func (o GetResourceResourceOutput) AmazonmqAmqp091s() GetResourceResourceAmazonm
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonmqAmqp091 { return v.AmazonmqAmqp091s }).(GetResourceResourceAmazonmqAmqp091ArrayOutput)
 }
 
+func (o GetResourceResourceOutput) AthenaIams() GetResourceResourceAthenaIamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAthenaIam { return v.AthenaIams }).(GetResourceResourceAthenaIamArrayOutput)
+}
+
 func (o GetResourceResourceOutput) Athenas() GetResourceResourceAthenaArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAthena { return v.Athenas }).(GetResourceResourceAthenaArrayOutput)
 }
@@ -45449,6 +47583,18 @@ func (o GetResourceResourceOutput) Cituses() GetResourceResourceCitusArrayOutput
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceCitus { return v.Cituses }).(GetResourceResourceCitusArrayOutput)
 }
 
+func (o GetResourceResourceOutput) ClickHouseHttps() GetResourceResourceClickHouseHttpArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceClickHouseHttp { return v.ClickHouseHttps }).(GetResourceResourceClickHouseHttpArrayOutput)
+}
+
+func (o GetResourceResourceOutput) ClickHouseMySqls() GetResourceResourceClickHouseMySqlArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceClickHouseMySql { return v.ClickHouseMySqls }).(GetResourceResourceClickHouseMySqlArrayOutput)
+}
+
+func (o GetResourceResourceOutput) ClickHouseTcps() GetResourceResourceClickHouseTcpArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceClickHouseTcp { return v.ClickHouseTcps }).(GetResourceResourceClickHouseTcpArrayOutput)
+}
+
 func (o GetResourceResourceOutput) Clustrixes() GetResourceResourceClustrixArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceClustrix { return v.Clustrixes }).(GetResourceResourceClustrixArrayOutput)
 }
@@ -45473,6 +47619,10 @@ func (o GetResourceResourceOutput) Db2Luws() GetResourceResourceDb2LuwArrayOutpu
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceDb2Luw { return v.Db2Luws }).(GetResourceResourceDb2LuwArrayOutput)
 }
 
+func (o GetResourceResourceOutput) DocumentDbHostIams() GetResourceResourceDocumentDbHostIamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceDocumentDbHostIam { return v.DocumentDbHostIams }).(GetResourceResourceDocumentDbHostIamArrayOutput)
+}
+
 func (o GetResourceResourceOutput) DocumentDbHosts() GetResourceResourceDocumentDbHostArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceDocumentDbHost { return v.DocumentDbHosts }).(GetResourceResourceDocumentDbHostArrayOutput)
 }
@@ -45483,6 +47633,10 @@ func (o GetResourceResourceOutput) DocumentDbReplicaSets() GetResourceResourceDo
 
 func (o GetResourceResourceOutput) Druids() GetResourceResourceDruidArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceDruid { return v.Druids }).(GetResourceResourceDruidArrayOutput)
+}
+
+func (o GetResourceResourceOutput) DynamoDbiams() GetResourceResourceDynamoDbiamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceDynamoDbiam { return v.DynamoDbiams }).(GetResourceResourceDynamoDbiamArrayOutput)
 }
 
 func (o GetResourceResourceOutput) DynamoDbs() GetResourceResourceDynamoDbArrayOutput {
@@ -48613,6 +50767,211 @@ func (o GetResourceResourceAthenaArrayOutput) Index(i pulumi.IntInput) GetResour
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAthena {
 		return vs[0].([]GetResourceResourceAthena)[vs[1].(int)]
 	}).(GetResourceResourceAthenaOutput)
+}
+
+type GetResourceResourceAthenaIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The AWS S3 output location.
+	Output *string `pulumi:"output"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn *string `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceAthenaIamInput is an input type that accepts GetResourceResourceAthenaIamArgs and GetResourceResourceAthenaIamOutput values.
+// You can construct a concrete instance of `GetResourceResourceAthenaIamInput` via:
+//
+//	GetResourceResourceAthenaIamArgs{...}
+type GetResourceResourceAthenaIamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAthenaIamOutput() GetResourceResourceAthenaIamOutput
+	ToGetResourceResourceAthenaIamOutputWithContext(context.Context) GetResourceResourceAthenaIamOutput
+}
+
+type GetResourceResourceAthenaIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The AWS S3 output location.
+	Output pulumi.StringPtrInput `pulumi:"output"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceAthenaIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAthenaIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceAthenaIamArgs) ToGetResourceResourceAthenaIamOutput() GetResourceResourceAthenaIamOutput {
+	return i.ToGetResourceResourceAthenaIamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAthenaIamArgs) ToGetResourceResourceAthenaIamOutputWithContext(ctx context.Context) GetResourceResourceAthenaIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAthenaIamOutput)
+}
+
+// GetResourceResourceAthenaIamArrayInput is an input type that accepts GetResourceResourceAthenaIamArray and GetResourceResourceAthenaIamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAthenaIamArrayInput` via:
+//
+//	GetResourceResourceAthenaIamArray{ GetResourceResourceAthenaIamArgs{...} }
+type GetResourceResourceAthenaIamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAthenaIamArrayOutput() GetResourceResourceAthenaIamArrayOutput
+	ToGetResourceResourceAthenaIamArrayOutputWithContext(context.Context) GetResourceResourceAthenaIamArrayOutput
+}
+
+type GetResourceResourceAthenaIamArray []GetResourceResourceAthenaIamInput
+
+func (GetResourceResourceAthenaIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAthenaIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceAthenaIamArray) ToGetResourceResourceAthenaIamArrayOutput() GetResourceResourceAthenaIamArrayOutput {
+	return i.ToGetResourceResourceAthenaIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAthenaIamArray) ToGetResourceResourceAthenaIamArrayOutputWithContext(ctx context.Context) GetResourceResourceAthenaIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAthenaIamArrayOutput)
+}
+
+type GetResourceResourceAthenaIamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAthenaIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAthenaIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceAthenaIamOutput) ToGetResourceResourceAthenaIamOutput() GetResourceResourceAthenaIamOutput {
+	return o
+}
+
+func (o GetResourceResourceAthenaIamOutput) ToGetResourceResourceAthenaIamOutputWithContext(ctx context.Context) GetResourceResourceAthenaIamOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAthenaIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAthenaIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAthenaIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAthenaIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The AWS S3 output location.
+func (o GetResourceResourceAthenaIamOutput) Output() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.Output }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceAthenaIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAthenaIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceAthenaIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o GetResourceResourceAthenaIamOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o GetResourceResourceAthenaIamOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAthenaIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAthenaIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAthenaIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAthenaIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceAthenaIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAthenaIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAthenaIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceAthenaIamArrayOutput) ToGetResourceResourceAthenaIamArrayOutput() GetResourceResourceAthenaIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAthenaIamArrayOutput) ToGetResourceResourceAthenaIamArrayOutputWithContext(ctx context.Context) GetResourceResourceAthenaIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAthenaIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAthenaIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAthenaIam {
+		return vs[0].([]GetResourceResourceAthenaIam)[vs[1].(int)]
+	}).(GetResourceResourceAthenaIamOutput)
 }
 
 type GetResourceResourceAuroraMysql struct {
@@ -52144,6 +54503,651 @@ func (o GetResourceResourceCitusArrayOutput) Index(i pulumi.IntInput) GetResourc
 	}).(GetResourceResourceCitusOutput)
 }
 
+type GetResourceResourceClickHouseHttp struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The base address of your website without the path.
+	// * kubernetes:
+	Url *string `pulumi:"url"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceClickHouseHttpInput is an input type that accepts GetResourceResourceClickHouseHttpArgs and GetResourceResourceClickHouseHttpOutput values.
+// You can construct a concrete instance of `GetResourceResourceClickHouseHttpInput` via:
+//
+//	GetResourceResourceClickHouseHttpArgs{...}
+type GetResourceResourceClickHouseHttpInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceClickHouseHttpOutput() GetResourceResourceClickHouseHttpOutput
+	ToGetResourceResourceClickHouseHttpOutputWithContext(context.Context) GetResourceResourceClickHouseHttpOutput
+}
+
+type GetResourceResourceClickHouseHttpArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The base address of your website without the path.
+	// * kubernetes:
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceClickHouseHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceClickHouseHttp)(nil)).Elem()
+}
+
+func (i GetResourceResourceClickHouseHttpArgs) ToGetResourceResourceClickHouseHttpOutput() GetResourceResourceClickHouseHttpOutput {
+	return i.ToGetResourceResourceClickHouseHttpOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceClickHouseHttpArgs) ToGetResourceResourceClickHouseHttpOutputWithContext(ctx context.Context) GetResourceResourceClickHouseHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceClickHouseHttpOutput)
+}
+
+// GetResourceResourceClickHouseHttpArrayInput is an input type that accepts GetResourceResourceClickHouseHttpArray and GetResourceResourceClickHouseHttpArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceClickHouseHttpArrayInput` via:
+//
+//	GetResourceResourceClickHouseHttpArray{ GetResourceResourceClickHouseHttpArgs{...} }
+type GetResourceResourceClickHouseHttpArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceClickHouseHttpArrayOutput() GetResourceResourceClickHouseHttpArrayOutput
+	ToGetResourceResourceClickHouseHttpArrayOutputWithContext(context.Context) GetResourceResourceClickHouseHttpArrayOutput
+}
+
+type GetResourceResourceClickHouseHttpArray []GetResourceResourceClickHouseHttpInput
+
+func (GetResourceResourceClickHouseHttpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceClickHouseHttp)(nil)).Elem()
+}
+
+func (i GetResourceResourceClickHouseHttpArray) ToGetResourceResourceClickHouseHttpArrayOutput() GetResourceResourceClickHouseHttpArrayOutput {
+	return i.ToGetResourceResourceClickHouseHttpArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceClickHouseHttpArray) ToGetResourceResourceClickHouseHttpArrayOutputWithContext(ctx context.Context) GetResourceResourceClickHouseHttpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceClickHouseHttpArrayOutput)
+}
+
+type GetResourceResourceClickHouseHttpOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceClickHouseHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceClickHouseHttp)(nil)).Elem()
+}
+
+func (o GetResourceResourceClickHouseHttpOutput) ToGetResourceResourceClickHouseHttpOutput() GetResourceResourceClickHouseHttpOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseHttpOutput) ToGetResourceResourceClickHouseHttpOutputWithContext(ctx context.Context) GetResourceResourceClickHouseHttpOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceClickHouseHttpOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceClickHouseHttpOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceClickHouseHttpOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceClickHouseHttpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceClickHouseHttpOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceClickHouseHttpOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceClickHouseHttpOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceClickHouseHttpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceClickHouseHttpOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceClickHouseHttpOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The base address of your website without the path.
+// * kubernetes:
+func (o GetResourceResourceClickHouseHttpOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceClickHouseHttpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseHttp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceClickHouseHttpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceClickHouseHttpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceClickHouseHttp)(nil)).Elem()
+}
+
+func (o GetResourceResourceClickHouseHttpArrayOutput) ToGetResourceResourceClickHouseHttpArrayOutput() GetResourceResourceClickHouseHttpArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseHttpArrayOutput) ToGetResourceResourceClickHouseHttpArrayOutputWithContext(ctx context.Context) GetResourceResourceClickHouseHttpArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseHttpArrayOutput) Index(i pulumi.IntInput) GetResourceResourceClickHouseHttpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceClickHouseHttp {
+		return vs[0].([]GetResourceResourceClickHouseHttp)[vs[1].(int)]
+	}).(GetResourceResourceClickHouseHttpOutput)
+}
+
+type GetResourceResourceClickHouseMySql struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+	RequireNativeAuth *bool `pulumi:"requireNativeAuth"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceClickHouseMySqlInput is an input type that accepts GetResourceResourceClickHouseMySqlArgs and GetResourceResourceClickHouseMySqlOutput values.
+// You can construct a concrete instance of `GetResourceResourceClickHouseMySqlInput` via:
+//
+//	GetResourceResourceClickHouseMySqlArgs{...}
+type GetResourceResourceClickHouseMySqlInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceClickHouseMySqlOutput() GetResourceResourceClickHouseMySqlOutput
+	ToGetResourceResourceClickHouseMySqlOutputWithContext(context.Context) GetResourceResourceClickHouseMySqlOutput
+}
+
+type GetResourceResourceClickHouseMySqlArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+	RequireNativeAuth pulumi.BoolPtrInput `pulumi:"requireNativeAuth"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceClickHouseMySqlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceClickHouseMySql)(nil)).Elem()
+}
+
+func (i GetResourceResourceClickHouseMySqlArgs) ToGetResourceResourceClickHouseMySqlOutput() GetResourceResourceClickHouseMySqlOutput {
+	return i.ToGetResourceResourceClickHouseMySqlOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceClickHouseMySqlArgs) ToGetResourceResourceClickHouseMySqlOutputWithContext(ctx context.Context) GetResourceResourceClickHouseMySqlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceClickHouseMySqlOutput)
+}
+
+// GetResourceResourceClickHouseMySqlArrayInput is an input type that accepts GetResourceResourceClickHouseMySqlArray and GetResourceResourceClickHouseMySqlArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceClickHouseMySqlArrayInput` via:
+//
+//	GetResourceResourceClickHouseMySqlArray{ GetResourceResourceClickHouseMySqlArgs{...} }
+type GetResourceResourceClickHouseMySqlArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceClickHouseMySqlArrayOutput() GetResourceResourceClickHouseMySqlArrayOutput
+	ToGetResourceResourceClickHouseMySqlArrayOutputWithContext(context.Context) GetResourceResourceClickHouseMySqlArrayOutput
+}
+
+type GetResourceResourceClickHouseMySqlArray []GetResourceResourceClickHouseMySqlInput
+
+func (GetResourceResourceClickHouseMySqlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceClickHouseMySql)(nil)).Elem()
+}
+
+func (i GetResourceResourceClickHouseMySqlArray) ToGetResourceResourceClickHouseMySqlArrayOutput() GetResourceResourceClickHouseMySqlArrayOutput {
+	return i.ToGetResourceResourceClickHouseMySqlArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceClickHouseMySqlArray) ToGetResourceResourceClickHouseMySqlArrayOutputWithContext(ctx context.Context) GetResourceResourceClickHouseMySqlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceClickHouseMySqlArrayOutput)
+}
+
+type GetResourceResourceClickHouseMySqlOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceClickHouseMySqlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceClickHouseMySql)(nil)).Elem()
+}
+
+func (o GetResourceResourceClickHouseMySqlOutput) ToGetResourceResourceClickHouseMySqlOutput() GetResourceResourceClickHouseMySqlOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseMySqlOutput) ToGetResourceResourceClickHouseMySqlOutputWithContext(ctx context.Context) GetResourceResourceClickHouseMySqlOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceClickHouseMySqlOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceClickHouseMySqlOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceClickHouseMySqlOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceClickHouseMySqlOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceClickHouseMySqlOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceClickHouseMySqlOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceClickHouseMySqlOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceClickHouseMySqlOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceClickHouseMySqlOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceClickHouseMySqlOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+func (o GetResourceResourceClickHouseMySqlOutput) RequireNativeAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *bool { return v.RequireNativeAuth }).(pulumi.BoolPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceClickHouseMySqlOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceClickHouseMySqlOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceClickHouseMySqlOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceClickHouseMySqlOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseMySql) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceClickHouseMySqlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceClickHouseMySqlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceClickHouseMySql)(nil)).Elem()
+}
+
+func (o GetResourceResourceClickHouseMySqlArrayOutput) ToGetResourceResourceClickHouseMySqlArrayOutput() GetResourceResourceClickHouseMySqlArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseMySqlArrayOutput) ToGetResourceResourceClickHouseMySqlArrayOutputWithContext(ctx context.Context) GetResourceResourceClickHouseMySqlArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseMySqlArrayOutput) Index(i pulumi.IntInput) GetResourceResourceClickHouseMySqlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceClickHouseMySql {
+		return vs[0].([]GetResourceResourceClickHouseMySql)[vs[1].(int)]
+	}).(GetResourceResourceClickHouseMySqlOutput)
+}
+
+type GetResourceResourceClickHouseTcp struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The password to authenticate with.
+	Password *string `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username *string `pulumi:"username"`
+}
+
+// GetResourceResourceClickHouseTcpInput is an input type that accepts GetResourceResourceClickHouseTcpArgs and GetResourceResourceClickHouseTcpOutput values.
+// You can construct a concrete instance of `GetResourceResourceClickHouseTcpInput` via:
+//
+//	GetResourceResourceClickHouseTcpArgs{...}
+type GetResourceResourceClickHouseTcpInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceClickHouseTcpOutput() GetResourceResourceClickHouseTcpOutput
+	ToGetResourceResourceClickHouseTcpOutputWithContext(context.Context) GetResourceResourceClickHouseTcpOutput
+}
+
+type GetResourceResourceClickHouseTcpArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The password to authenticate with.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+	// The username to authenticate with.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GetResourceResourceClickHouseTcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceClickHouseTcp)(nil)).Elem()
+}
+
+func (i GetResourceResourceClickHouseTcpArgs) ToGetResourceResourceClickHouseTcpOutput() GetResourceResourceClickHouseTcpOutput {
+	return i.ToGetResourceResourceClickHouseTcpOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceClickHouseTcpArgs) ToGetResourceResourceClickHouseTcpOutputWithContext(ctx context.Context) GetResourceResourceClickHouseTcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceClickHouseTcpOutput)
+}
+
+// GetResourceResourceClickHouseTcpArrayInput is an input type that accepts GetResourceResourceClickHouseTcpArray and GetResourceResourceClickHouseTcpArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceClickHouseTcpArrayInput` via:
+//
+//	GetResourceResourceClickHouseTcpArray{ GetResourceResourceClickHouseTcpArgs{...} }
+type GetResourceResourceClickHouseTcpArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceClickHouseTcpArrayOutput() GetResourceResourceClickHouseTcpArrayOutput
+	ToGetResourceResourceClickHouseTcpArrayOutputWithContext(context.Context) GetResourceResourceClickHouseTcpArrayOutput
+}
+
+type GetResourceResourceClickHouseTcpArray []GetResourceResourceClickHouseTcpInput
+
+func (GetResourceResourceClickHouseTcpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceClickHouseTcp)(nil)).Elem()
+}
+
+func (i GetResourceResourceClickHouseTcpArray) ToGetResourceResourceClickHouseTcpArrayOutput() GetResourceResourceClickHouseTcpArrayOutput {
+	return i.ToGetResourceResourceClickHouseTcpArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceClickHouseTcpArray) ToGetResourceResourceClickHouseTcpArrayOutputWithContext(ctx context.Context) GetResourceResourceClickHouseTcpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceClickHouseTcpArrayOutput)
+}
+
+type GetResourceResourceClickHouseTcpOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceClickHouseTcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceClickHouseTcp)(nil)).Elem()
+}
+
+func (o GetResourceResourceClickHouseTcpOutput) ToGetResourceResourceClickHouseTcpOutput() GetResourceResourceClickHouseTcpOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseTcpOutput) ToGetResourceResourceClickHouseTcpOutputWithContext(ctx context.Context) GetResourceResourceClickHouseTcpOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceClickHouseTcpOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceClickHouseTcpOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceClickHouseTcpOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceClickHouseTcpOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceClickHouseTcpOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceClickHouseTcpOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The password to authenticate with.
+func (o GetResourceResourceClickHouseTcpOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceClickHouseTcpOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceClickHouseTcpOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceClickHouseTcpOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceClickHouseTcpOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceClickHouseTcpOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceClickHouseTcpOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o GetResourceResourceClickHouseTcpOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The username to authenticate with.
+func (o GetResourceResourceClickHouseTcpOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceClickHouseTcp) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceClickHouseTcpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceClickHouseTcpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceClickHouseTcp)(nil)).Elem()
+}
+
+func (o GetResourceResourceClickHouseTcpArrayOutput) ToGetResourceResourceClickHouseTcpArrayOutput() GetResourceResourceClickHouseTcpArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseTcpArrayOutput) ToGetResourceResourceClickHouseTcpArrayOutputWithContext(ctx context.Context) GetResourceResourceClickHouseTcpArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceClickHouseTcpArrayOutput) Index(i pulumi.IntInput) GetResourceResourceClickHouseTcpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceClickHouseTcp {
+		return vs[0].([]GetResourceResourceClickHouseTcp)[vs[1].(int)]
+	}).(GetResourceResourceClickHouseTcpOutput)
+}
+
 type GetResourceResourceClustrix struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -53663,6 +56667,202 @@ func (o GetResourceResourceDocumentDbHostArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetResourceResourceDocumentDbHostOutput)
 }
 
+type GetResourceResourceDocumentDbHostIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceDocumentDbHostIamInput is an input type that accepts GetResourceResourceDocumentDbHostIamArgs and GetResourceResourceDocumentDbHostIamOutput values.
+// You can construct a concrete instance of `GetResourceResourceDocumentDbHostIamInput` via:
+//
+//	GetResourceResourceDocumentDbHostIamArgs{...}
+type GetResourceResourceDocumentDbHostIamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceDocumentDbHostIamOutput() GetResourceResourceDocumentDbHostIamOutput
+	ToGetResourceResourceDocumentDbHostIamOutputWithContext(context.Context) GetResourceResourceDocumentDbHostIamOutput
+}
+
+type GetResourceResourceDocumentDbHostIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceDocumentDbHostIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceDocumentDbHostIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceDocumentDbHostIamArgs) ToGetResourceResourceDocumentDbHostIamOutput() GetResourceResourceDocumentDbHostIamOutput {
+	return i.ToGetResourceResourceDocumentDbHostIamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceDocumentDbHostIamArgs) ToGetResourceResourceDocumentDbHostIamOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbHostIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDocumentDbHostIamOutput)
+}
+
+// GetResourceResourceDocumentDbHostIamArrayInput is an input type that accepts GetResourceResourceDocumentDbHostIamArray and GetResourceResourceDocumentDbHostIamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceDocumentDbHostIamArrayInput` via:
+//
+//	GetResourceResourceDocumentDbHostIamArray{ GetResourceResourceDocumentDbHostIamArgs{...} }
+type GetResourceResourceDocumentDbHostIamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceDocumentDbHostIamArrayOutput() GetResourceResourceDocumentDbHostIamArrayOutput
+	ToGetResourceResourceDocumentDbHostIamArrayOutputWithContext(context.Context) GetResourceResourceDocumentDbHostIamArrayOutput
+}
+
+type GetResourceResourceDocumentDbHostIamArray []GetResourceResourceDocumentDbHostIamInput
+
+func (GetResourceResourceDocumentDbHostIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceDocumentDbHostIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceDocumentDbHostIamArray) ToGetResourceResourceDocumentDbHostIamArrayOutput() GetResourceResourceDocumentDbHostIamArrayOutput {
+	return i.ToGetResourceResourceDocumentDbHostIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceDocumentDbHostIamArray) ToGetResourceResourceDocumentDbHostIamArrayOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbHostIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDocumentDbHostIamArrayOutput)
+}
+
+type GetResourceResourceDocumentDbHostIamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceDocumentDbHostIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceDocumentDbHostIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceDocumentDbHostIamOutput) ToGetResourceResourceDocumentDbHostIamOutput() GetResourceResourceDocumentDbHostIamOutput {
+	return o
+}
+
+func (o GetResourceResourceDocumentDbHostIamOutput) ToGetResourceResourceDocumentDbHostIamOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbHostIamOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceDocumentDbHostIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceDocumentDbHostIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceDocumentDbHostIamOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceDocumentDbHostIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceDocumentDbHostIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceDocumentDbHostIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceDocumentDbHostIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDocumentDbHostIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceDocumentDbHostIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceDocumentDbHostIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceDocumentDbHostIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceDocumentDbHostIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceDocumentDbHostIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceDocumentDbHostIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceDocumentDbHostIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceDocumentDbHostIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceDocumentDbHostIamArrayOutput) ToGetResourceResourceDocumentDbHostIamArrayOutput() GetResourceResourceDocumentDbHostIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceDocumentDbHostIamArrayOutput) ToGetResourceResourceDocumentDbHostIamArrayOutputWithContext(ctx context.Context) GetResourceResourceDocumentDbHostIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceDocumentDbHostIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDocumentDbHostIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceDocumentDbHostIam {
+		return vs[0].([]GetResourceResourceDocumentDbHostIam)[vs[1].(int)]
+	}).(GetResourceResourceDocumentDbHostIamOutput)
+}
+
 type GetResourceResourceDocumentDbReplicaSet struct {
 	// The authentication database to use.
 	AuthDatabase *string `pulumi:"authDatabase"`
@@ -54312,6 +57512,211 @@ func (o GetResourceResourceDynamoDbArrayOutput) Index(i pulumi.IntInput) GetReso
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceDynamoDb {
 		return vs[0].([]GetResourceResourceDynamoDb)[vs[1].(int)]
 	}).(GetResourceResourceDynamoDbOutput)
+}
+
+type GetResourceResourceDynamoDbiam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+	Endpoint *string `pulumi:"endpoint"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn *string `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceDynamoDbiamInput is an input type that accepts GetResourceResourceDynamoDbiamArgs and GetResourceResourceDynamoDbiamOutput values.
+// You can construct a concrete instance of `GetResourceResourceDynamoDbiamInput` via:
+//
+//	GetResourceResourceDynamoDbiamArgs{...}
+type GetResourceResourceDynamoDbiamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceDynamoDbiamOutput() GetResourceResourceDynamoDbiamOutput
+	ToGetResourceResourceDynamoDbiamOutputWithContext(context.Context) GetResourceResourceDynamoDbiamOutput
+}
+
+type GetResourceResourceDynamoDbiamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceDynamoDbiamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceDynamoDbiam)(nil)).Elem()
+}
+
+func (i GetResourceResourceDynamoDbiamArgs) ToGetResourceResourceDynamoDbiamOutput() GetResourceResourceDynamoDbiamOutput {
+	return i.ToGetResourceResourceDynamoDbiamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceDynamoDbiamArgs) ToGetResourceResourceDynamoDbiamOutputWithContext(ctx context.Context) GetResourceResourceDynamoDbiamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDynamoDbiamOutput)
+}
+
+// GetResourceResourceDynamoDbiamArrayInput is an input type that accepts GetResourceResourceDynamoDbiamArray and GetResourceResourceDynamoDbiamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceDynamoDbiamArrayInput` via:
+//
+//	GetResourceResourceDynamoDbiamArray{ GetResourceResourceDynamoDbiamArgs{...} }
+type GetResourceResourceDynamoDbiamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceDynamoDbiamArrayOutput() GetResourceResourceDynamoDbiamArrayOutput
+	ToGetResourceResourceDynamoDbiamArrayOutputWithContext(context.Context) GetResourceResourceDynamoDbiamArrayOutput
+}
+
+type GetResourceResourceDynamoDbiamArray []GetResourceResourceDynamoDbiamInput
+
+func (GetResourceResourceDynamoDbiamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceDynamoDbiam)(nil)).Elem()
+}
+
+func (i GetResourceResourceDynamoDbiamArray) ToGetResourceResourceDynamoDbiamArrayOutput() GetResourceResourceDynamoDbiamArrayOutput {
+	return i.ToGetResourceResourceDynamoDbiamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceDynamoDbiamArray) ToGetResourceResourceDynamoDbiamArrayOutputWithContext(ctx context.Context) GetResourceResourceDynamoDbiamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceDynamoDbiamArrayOutput)
+}
+
+type GetResourceResourceDynamoDbiamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceDynamoDbiamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceDynamoDbiam)(nil)).Elem()
+}
+
+func (o GetResourceResourceDynamoDbiamOutput) ToGetResourceResourceDynamoDbiamOutput() GetResourceResourceDynamoDbiamOutput {
+	return o
+}
+
+func (o GetResourceResourceDynamoDbiamOutput) ToGetResourceResourceDynamoDbiamOutputWithContext(ctx context.Context) GetResourceResourceDynamoDbiamOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceDynamoDbiamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceDynamoDbiamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+func (o GetResourceResourceDynamoDbiamOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceDynamoDbiamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceDynamoDbiamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceDynamoDbiamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceDynamoDbiamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceDynamoDbiamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o GetResourceResourceDynamoDbiamOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o GetResourceResourceDynamoDbiamOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceDynamoDbiamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceDynamoDbiamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceDynamoDbiamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceDynamoDbiam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceDynamoDbiamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceDynamoDbiamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceDynamoDbiam)(nil)).Elem()
+}
+
+func (o GetResourceResourceDynamoDbiamArrayOutput) ToGetResourceResourceDynamoDbiamArrayOutput() GetResourceResourceDynamoDbiamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceDynamoDbiamArrayOutput) ToGetResourceResourceDynamoDbiamArrayOutputWithContext(ctx context.Context) GetResourceResourceDynamoDbiamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceDynamoDbiamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceDynamoDbiamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceDynamoDbiam {
+		return vs[0].([]GetResourceResourceDynamoDbiam)[vs[1].(int)]
+	}).(GetResourceResourceDynamoDbiamOutput)
 }
 
 type GetResourceResourceElastic struct {
@@ -70441,6 +73846,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonmqAmqp091PtrInput)(nil)).Elem(), ResourceAmazonmqAmqp091Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaInput)(nil)).Elem(), ResourceAthenaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaPtrInput)(nil)).Elem(), ResourceAthenaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaIamInput)(nil)).Elem(), ResourceAthenaIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaIamPtrInput)(nil)).Elem(), ResourceAthenaIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraMysqlInput)(nil)).Elem(), ResourceAuroraMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraMysqlPtrInput)(nil)).Elem(), ResourceAuroraMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAuroraMysqlIamInput)(nil)).Elem(), ResourceAuroraMysqlIamArgs{})
@@ -70473,6 +73880,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCassandraPtrInput)(nil)).Elem(), ResourceCassandraArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCitusInput)(nil)).Elem(), ResourceCitusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCitusPtrInput)(nil)).Elem(), ResourceCitusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClickHouseHttpInput)(nil)).Elem(), ResourceClickHouseHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClickHouseHttpPtrInput)(nil)).Elem(), ResourceClickHouseHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClickHouseMySqlInput)(nil)).Elem(), ResourceClickHouseMySqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClickHouseMySqlPtrInput)(nil)).Elem(), ResourceClickHouseMySqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClickHouseTcpInput)(nil)).Elem(), ResourceClickHouseTcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClickHouseTcpPtrInput)(nil)).Elem(), ResourceClickHouseTcpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClustrixInput)(nil)).Elem(), ResourceClustrixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceClustrixPtrInput)(nil)).Elem(), ResourceClustrixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCockroachInput)(nil)).Elem(), ResourceCockroachArgs{})
@@ -70487,12 +73900,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDb2LuwPtrInput)(nil)).Elem(), ResourceDb2LuwArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbHostInput)(nil)).Elem(), ResourceDocumentDbHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbHostPtrInput)(nil)).Elem(), ResourceDocumentDbHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbHostIamInput)(nil)).Elem(), ResourceDocumentDbHostIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbHostIamPtrInput)(nil)).Elem(), ResourceDocumentDbHostIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbReplicaSetInput)(nil)).Elem(), ResourceDocumentDbReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDocumentDbReplicaSetPtrInput)(nil)).Elem(), ResourceDocumentDbReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDruidInput)(nil)).Elem(), ResourceDruidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDruidPtrInput)(nil)).Elem(), ResourceDruidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDynamoDbInput)(nil)).Elem(), ResourceDynamoDbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDynamoDbPtrInput)(nil)).Elem(), ResourceDynamoDbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDynamoDbiamInput)(nil)).Elem(), ResourceDynamoDbiamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceDynamoDbiamPtrInput)(nil)).Elem(), ResourceDynamoDbiamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceElasticInput)(nil)).Elem(), ResourceElasticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceElasticPtrInput)(nil)).Elem(), ResourceElasticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceElasticacheRedisInput)(nil)).Elem(), ResourceElasticacheRedisArgs{})
@@ -70721,6 +74138,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonmqAmqp091ArrayInput)(nil)).Elem(), GetResourceResourceAmazonmqAmqp091Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaInput)(nil)).Elem(), GetResourceResourceAthenaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaArrayInput)(nil)).Elem(), GetResourceResourceAthenaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaIamInput)(nil)).Elem(), GetResourceResourceAthenaIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaIamArrayInput)(nil)).Elem(), GetResourceResourceAthenaIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraMysqlInput)(nil)).Elem(), GetResourceResourceAuroraMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraMysqlArrayInput)(nil)).Elem(), GetResourceResourceAuroraMysqlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAuroraMysqlIamInput)(nil)).Elem(), GetResourceResourceAuroraMysqlIamArgs{})
@@ -70753,6 +74172,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCassandraArrayInput)(nil)).Elem(), GetResourceResourceCassandraArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCitusInput)(nil)).Elem(), GetResourceResourceCitusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCitusArrayInput)(nil)).Elem(), GetResourceResourceCitusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClickHouseHttpInput)(nil)).Elem(), GetResourceResourceClickHouseHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClickHouseHttpArrayInput)(nil)).Elem(), GetResourceResourceClickHouseHttpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClickHouseMySqlInput)(nil)).Elem(), GetResourceResourceClickHouseMySqlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClickHouseMySqlArrayInput)(nil)).Elem(), GetResourceResourceClickHouseMySqlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClickHouseTcpInput)(nil)).Elem(), GetResourceResourceClickHouseTcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClickHouseTcpArrayInput)(nil)).Elem(), GetResourceResourceClickHouseTcpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClustrixInput)(nil)).Elem(), GetResourceResourceClustrixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceClustrixArrayInput)(nil)).Elem(), GetResourceResourceClustrixArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceCockroachInput)(nil)).Elem(), GetResourceResourceCockroachArgs{})
@@ -70767,12 +74192,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDb2LuwArrayInput)(nil)).Elem(), GetResourceResourceDb2LuwArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbHostInput)(nil)).Elem(), GetResourceResourceDocumentDbHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbHostArrayInput)(nil)).Elem(), GetResourceResourceDocumentDbHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbHostIamInput)(nil)).Elem(), GetResourceResourceDocumentDbHostIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbHostIamArrayInput)(nil)).Elem(), GetResourceResourceDocumentDbHostIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbReplicaSetInput)(nil)).Elem(), GetResourceResourceDocumentDbReplicaSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDocumentDbReplicaSetArrayInput)(nil)).Elem(), GetResourceResourceDocumentDbReplicaSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDruidInput)(nil)).Elem(), GetResourceResourceDruidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDruidArrayInput)(nil)).Elem(), GetResourceResourceDruidArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDynamoDbInput)(nil)).Elem(), GetResourceResourceDynamoDbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDynamoDbArrayInput)(nil)).Elem(), GetResourceResourceDynamoDbArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDynamoDbiamInput)(nil)).Elem(), GetResourceResourceDynamoDbiamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceDynamoDbiamArrayInput)(nil)).Elem(), GetResourceResourceDynamoDbiamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceElasticInput)(nil)).Elem(), GetResourceResourceElasticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceElasticArrayInput)(nil)).Elem(), GetResourceResourceElasticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceElasticacheRediInput)(nil)).Elem(), GetResourceResourceElasticacheRediArgs{})
@@ -70975,6 +74404,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAmazonmqAmqp091PtrOutput{})
 	pulumi.RegisterOutputType(ResourceAthenaOutput{})
 	pulumi.RegisterOutputType(ResourceAthenaPtrOutput{})
+	pulumi.RegisterOutputType(ResourceAthenaIamOutput{})
+	pulumi.RegisterOutputType(ResourceAthenaIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraMysqlOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraMysqlPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAuroraMysqlIamOutput{})
@@ -71007,6 +74438,12 @@ func init() {
 	pulumi.RegisterOutputType(ResourceCassandraPtrOutput{})
 	pulumi.RegisterOutputType(ResourceCitusOutput{})
 	pulumi.RegisterOutputType(ResourceCitusPtrOutput{})
+	pulumi.RegisterOutputType(ResourceClickHouseHttpOutput{})
+	pulumi.RegisterOutputType(ResourceClickHouseHttpPtrOutput{})
+	pulumi.RegisterOutputType(ResourceClickHouseMySqlOutput{})
+	pulumi.RegisterOutputType(ResourceClickHouseMySqlPtrOutput{})
+	pulumi.RegisterOutputType(ResourceClickHouseTcpOutput{})
+	pulumi.RegisterOutputType(ResourceClickHouseTcpPtrOutput{})
 	pulumi.RegisterOutputType(ResourceClustrixOutput{})
 	pulumi.RegisterOutputType(ResourceClustrixPtrOutput{})
 	pulumi.RegisterOutputType(ResourceCockroachOutput{})
@@ -71021,12 +74458,16 @@ func init() {
 	pulumi.RegisterOutputType(ResourceDb2LuwPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDocumentDbHostOutput{})
 	pulumi.RegisterOutputType(ResourceDocumentDbHostPtrOutput{})
+	pulumi.RegisterOutputType(ResourceDocumentDbHostIamOutput{})
+	pulumi.RegisterOutputType(ResourceDocumentDbHostIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDocumentDbReplicaSetOutput{})
 	pulumi.RegisterOutputType(ResourceDocumentDbReplicaSetPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDruidOutput{})
 	pulumi.RegisterOutputType(ResourceDruidPtrOutput{})
 	pulumi.RegisterOutputType(ResourceDynamoDbOutput{})
 	pulumi.RegisterOutputType(ResourceDynamoDbPtrOutput{})
+	pulumi.RegisterOutputType(ResourceDynamoDbiamOutput{})
+	pulumi.RegisterOutputType(ResourceDynamoDbiamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceElasticOutput{})
 	pulumi.RegisterOutputType(ResourceElasticPtrOutput{})
 	pulumi.RegisterOutputType(ResourceElasticacheRedisOutput{})
@@ -71255,6 +74696,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAmazonmqAmqp091ArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAthenaOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAthenaArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAthenaIamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAthenaIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraMysqlOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraMysqlArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAuroraMysqlIamOutput{})
@@ -71287,6 +74730,12 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceCassandraArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceCitusOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceCitusArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceClickHouseHttpOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceClickHouseHttpArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceClickHouseMySqlOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceClickHouseMySqlArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceClickHouseTcpOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceClickHouseTcpArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceClustrixOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceClustrixArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceCockroachOutput{})
@@ -71301,12 +74750,16 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceDb2LuwArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDocumentDbHostOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDocumentDbHostArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceDocumentDbHostIamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceDocumentDbHostIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDocumentDbReplicaSetOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDocumentDbReplicaSetArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDruidOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDruidArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDynamoDbOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceDynamoDbArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceDynamoDbiamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceDynamoDbiamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceElasticOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceElasticArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceElasticacheRediOutput{})

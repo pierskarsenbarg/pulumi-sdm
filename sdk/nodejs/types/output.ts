@@ -525,6 +525,7 @@ export interface GetResourceResource {
     amazonEksUserImpersonations: outputs.GetResourceResourceAmazonEksUserImpersonation[];
     amazonEs: outputs.GetResourceResourceAmazonE[];
     amazonmqAmqp091s: outputs.GetResourceResourceAmazonmqAmqp091[];
+    athenaIams: outputs.GetResourceResourceAthenaIam[];
     athenas: outputs.GetResourceResourceAthena[];
     auroraMysqlIams: outputs.GetResourceResourceAuroraMysqlIam[];
     auroraMysqls: outputs.GetResourceResourceAuroraMysql[];
@@ -542,15 +543,20 @@ export interface GetResourceResource {
     bigQueries: outputs.GetResourceResourceBigQuery[];
     cassandras: outputs.GetResourceResourceCassandra[];
     cituses: outputs.GetResourceResourceCitus[];
+    clickHouseHttps: outputs.GetResourceResourceClickHouseHttp[];
+    clickHouseMySqls: outputs.GetResourceResourceClickHouseMySql[];
+    clickHouseTcps: outputs.GetResourceResourceClickHouseTcp[];
     clustrixes: outputs.GetResourceResourceClustrix[];
     cockroaches: outputs.GetResourceResourceCockroach[];
     couchbaseDatabases: outputs.GetResourceResourceCouchbaseDatabase[];
     couchbaseWebUis: outputs.GetResourceResourceCouchbaseWebUi[];
     db2Is: outputs.GetResourceResourceDb2I[];
     db2Luws: outputs.GetResourceResourceDb2Luw[];
+    documentDbHostIams: outputs.GetResourceResourceDocumentDbHostIam[];
     documentDbHosts: outputs.GetResourceResourceDocumentDbHost[];
     documentDbReplicaSets: outputs.GetResourceResourceDocumentDbReplicaSet[];
     druids: outputs.GetResourceResourceDruid[];
+    dynamoDbiams: outputs.GetResourceResourceDynamoDbiam[];
     dynamoDbs: outputs.GetResourceResourceDynamoDb[];
     elasticacheRedis: outputs.GetResourceResourceElasticacheRedi[];
     elastics: outputs.GetResourceResourceElastic[];
@@ -1439,6 +1445,61 @@ export interface GetResourceResourceAthena {
      * The Secret Access Key to use to authenticate.
      */
     secretAccessKey?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceAthenaIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The AWS S3 output location.
+     */
+    output?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -2443,6 +2504,184 @@ export interface GetResourceResourceCitus {
     username?: string;
 }
 
+export interface GetResourceResourceClickHouseHttp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The base address of your website without the path.
+     * * kubernetes:
+     */
+    url?: string;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceClickHouseMySql {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
+    requireNativeAuth?: boolean;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface GetResourceResourceClickHouseTcp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface GetResourceResourceClustrix {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -2865,6 +3104,57 @@ export interface GetResourceResourceDocumentDbHost {
     username?: string;
 }
 
+export interface GetResourceResourceDocumentDbHostIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetResourceResourceDocumentDbReplicaSet {
     /**
      * The authentication database to use.
@@ -3032,6 +3322,61 @@ export interface GetResourceResourceDynamoDb {
      * The Secret Access Key to use to authenticate.
      */
     secretAccessKey?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceDynamoDbiam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
+    endpoint?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */
@@ -8122,6 +8467,57 @@ export interface ResourceAthena {
     tags?: {[key: string]: string};
 }
 
+export interface ResourceAthenaIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The AWS S3 output location.
+     */
+    output: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ResourceAuroraMysql {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -9048,6 +9444,172 @@ export interface ResourceCitus {
     username?: string;
 }
 
+export interface ResourceClickHouseHttp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The base address of your website without the path.
+     * * kubernetes:
+     */
+    url: string;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceClickHouseMySql {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * Whether native auth (mysql_native_password) is used for all connections (for backwards compatibility)
+     */
+    requireNativeAuth?: boolean;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
+export interface ResourceClickHouseTcp {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The password to authenticate with.
+     */
+    password?: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
+    /**
+     * The username to authenticate with.
+     */
+    username?: string;
+}
+
 export interface ResourceClustrix {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -9442,6 +10004,53 @@ export interface ResourceDocumentDbHost {
     username?: string;
 }
 
+export interface ResourceDocumentDbHostIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ResourceDocumentDbReplicaSet {
     /**
      * The authentication database to use.
@@ -9597,6 +10206,57 @@ export interface ResourceDynamoDb {
      * The Secret Access Key to use to authenticate.
      */
     secretAccessKey?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface ResourceDynamoDbiam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
+    endpoint: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
     /**
      * ID of the secret store containing credentials for this resource, if any.
      */

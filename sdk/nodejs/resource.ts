@@ -58,10 +58,11 @@ export class Resource extends pulumi.CustomResource {
     public readonly amazonEs!: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
     public readonly amazonmqAmqp091!: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
     public readonly athena!: pulumi.Output<outputs.ResourceAthena | undefined>;
-    public readonly auroraMysql!: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
     /**
-     * AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
+    public readonly athenaIam!: pulumi.Output<outputs.ResourceAthenaIam | undefined>;
+    public readonly auroraMysql!: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
     public readonly auroraMysqlIam!: pulumi.Output<outputs.ResourceAuroraMysqlIam | undefined>;
     public readonly auroraPostgres!: pulumi.Output<outputs.ResourceAuroraPostgres | undefined>;
     public readonly auroraPostgresIam!: pulumi.Output<outputs.ResourceAuroraPostgresIam | undefined>;
@@ -77,6 +78,9 @@ export class Resource extends pulumi.CustomResource {
     public readonly bigQuery!: pulumi.Output<outputs.ResourceBigQuery | undefined>;
     public readonly cassandra!: pulumi.Output<outputs.ResourceCassandra | undefined>;
     public readonly citus!: pulumi.Output<outputs.ResourceCitus | undefined>;
+    public readonly clickHouseHttp!: pulumi.Output<outputs.ResourceClickHouseHttp | undefined>;
+    public readonly clickHouseMySql!: pulumi.Output<outputs.ResourceClickHouseMySql | undefined>;
+    public readonly clickHouseTcp!: pulumi.Output<outputs.ResourceClickHouseTcp | undefined>;
     public readonly clustrix!: pulumi.Output<outputs.ResourceClustrix | undefined>;
     public readonly cockroach!: pulumi.Output<outputs.ResourceCockroach | undefined>;
     public readonly couchbaseDatabase!: pulumi.Output<outputs.ResourceCouchbaseDatabase | undefined>;
@@ -84,9 +88,11 @@ export class Resource extends pulumi.CustomResource {
     public readonly db2I!: pulumi.Output<outputs.ResourceDb2I | undefined>;
     public readonly db2Luw!: pulumi.Output<outputs.ResourceDb2Luw | undefined>;
     public readonly documentDbHost!: pulumi.Output<outputs.ResourceDocumentDbHost | undefined>;
+    public readonly documentDbHostIam!: pulumi.Output<outputs.ResourceDocumentDbHostIam | undefined>;
     public readonly documentDbReplicaSet!: pulumi.Output<outputs.ResourceDocumentDbReplicaSet | undefined>;
     public readonly druid!: pulumi.Output<outputs.ResourceDruid | undefined>;
     public readonly dynamoDb!: pulumi.Output<outputs.ResourceDynamoDb | undefined>;
+    public readonly dynamoDbiam!: pulumi.Output<outputs.ResourceDynamoDbiam | undefined>;
     public readonly elastic!: pulumi.Output<outputs.ResourceElastic | undefined>;
     public readonly elasticacheRedis!: pulumi.Output<outputs.ResourceElasticacheRedis | undefined>;
     public readonly gcp!: pulumi.Output<outputs.ResourceGcp | undefined>;
@@ -181,6 +187,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["amazonEs"] = state ? state.amazonEs : undefined;
             resourceInputs["amazonmqAmqp091"] = state ? state.amazonmqAmqp091 : undefined;
             resourceInputs["athena"] = state ? state.athena : undefined;
+            resourceInputs["athenaIam"] = state ? state.athenaIam : undefined;
             resourceInputs["auroraMysql"] = state ? state.auroraMysql : undefined;
             resourceInputs["auroraMysqlIam"] = state ? state.auroraMysqlIam : undefined;
             resourceInputs["auroraPostgres"] = state ? state.auroraPostgres : undefined;
@@ -197,6 +204,9 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["bigQuery"] = state ? state.bigQuery : undefined;
             resourceInputs["cassandra"] = state ? state.cassandra : undefined;
             resourceInputs["citus"] = state ? state.citus : undefined;
+            resourceInputs["clickHouseHttp"] = state ? state.clickHouseHttp : undefined;
+            resourceInputs["clickHouseMySql"] = state ? state.clickHouseMySql : undefined;
+            resourceInputs["clickHouseTcp"] = state ? state.clickHouseTcp : undefined;
             resourceInputs["clustrix"] = state ? state.clustrix : undefined;
             resourceInputs["cockroach"] = state ? state.cockroach : undefined;
             resourceInputs["couchbaseDatabase"] = state ? state.couchbaseDatabase : undefined;
@@ -204,9 +214,11 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["db2I"] = state ? state.db2I : undefined;
             resourceInputs["db2Luw"] = state ? state.db2Luw : undefined;
             resourceInputs["documentDbHost"] = state ? state.documentDbHost : undefined;
+            resourceInputs["documentDbHostIam"] = state ? state.documentDbHostIam : undefined;
             resourceInputs["documentDbReplicaSet"] = state ? state.documentDbReplicaSet : undefined;
             resourceInputs["druid"] = state ? state.druid : undefined;
             resourceInputs["dynamoDb"] = state ? state.dynamoDb : undefined;
+            resourceInputs["dynamoDbiam"] = state ? state.dynamoDbiam : undefined;
             resourceInputs["elastic"] = state ? state.elastic : undefined;
             resourceInputs["elasticacheRedis"] = state ? state.elasticacheRedis : undefined;
             resourceInputs["gcp"] = state ? state.gcp : undefined;
@@ -274,6 +286,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["amazonEs"] = args ? args.amazonEs : undefined;
             resourceInputs["amazonmqAmqp091"] = args ? args.amazonmqAmqp091 : undefined;
             resourceInputs["athena"] = args ? args.athena : undefined;
+            resourceInputs["athenaIam"] = args ? args.athenaIam : undefined;
             resourceInputs["auroraMysql"] = args ? args.auroraMysql : undefined;
             resourceInputs["auroraMysqlIam"] = args ? args.auroraMysqlIam : undefined;
             resourceInputs["auroraPostgres"] = args ? args.auroraPostgres : undefined;
@@ -290,6 +303,9 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["bigQuery"] = args ? args.bigQuery : undefined;
             resourceInputs["cassandra"] = args ? args.cassandra : undefined;
             resourceInputs["citus"] = args ? args.citus : undefined;
+            resourceInputs["clickHouseHttp"] = args ? args.clickHouseHttp : undefined;
+            resourceInputs["clickHouseMySql"] = args ? args.clickHouseMySql : undefined;
+            resourceInputs["clickHouseTcp"] = args ? args.clickHouseTcp : undefined;
             resourceInputs["clustrix"] = args ? args.clustrix : undefined;
             resourceInputs["cockroach"] = args ? args.cockroach : undefined;
             resourceInputs["couchbaseDatabase"] = args ? args.couchbaseDatabase : undefined;
@@ -297,9 +313,11 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["db2I"] = args ? args.db2I : undefined;
             resourceInputs["db2Luw"] = args ? args.db2Luw : undefined;
             resourceInputs["documentDbHost"] = args ? args.documentDbHost : undefined;
+            resourceInputs["documentDbHostIam"] = args ? args.documentDbHostIam : undefined;
             resourceInputs["documentDbReplicaSet"] = args ? args.documentDbReplicaSet : undefined;
             resourceInputs["druid"] = args ? args.druid : undefined;
             resourceInputs["dynamoDb"] = args ? args.dynamoDb : undefined;
+            resourceInputs["dynamoDbiam"] = args ? args.dynamoDbiam : undefined;
             resourceInputs["elastic"] = args ? args.elastic : undefined;
             resourceInputs["elasticacheRedis"] = args ? args.elasticacheRedis : undefined;
             resourceInputs["gcp"] = args ? args.gcp : undefined;
@@ -378,10 +396,11 @@ export interface ResourceState {
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
-    auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     /**
-     * AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
+    athenaIam?: pulumi.Input<inputs.ResourceAthenaIam>;
+    auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
     auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
@@ -397,6 +416,9 @@ export interface ResourceState {
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
     cassandra?: pulumi.Input<inputs.ResourceCassandra>;
     citus?: pulumi.Input<inputs.ResourceCitus>;
+    clickHouseHttp?: pulumi.Input<inputs.ResourceClickHouseHttp>;
+    clickHouseMySql?: pulumi.Input<inputs.ResourceClickHouseMySql>;
+    clickHouseTcp?: pulumi.Input<inputs.ResourceClickHouseTcp>;
     clustrix?: pulumi.Input<inputs.ResourceClustrix>;
     cockroach?: pulumi.Input<inputs.ResourceCockroach>;
     couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase>;
@@ -404,9 +426,11 @@ export interface ResourceState {
     db2I?: pulumi.Input<inputs.ResourceDb2I>;
     db2Luw?: pulumi.Input<inputs.ResourceDb2Luw>;
     documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
+    documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam>;
     documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet>;
     druid?: pulumi.Input<inputs.ResourceDruid>;
     dynamoDb?: pulumi.Input<inputs.ResourceDynamoDb>;
+    dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
@@ -496,10 +520,11 @@ export interface ResourceArgs {
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
-    auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     /**
-     * AuroraMysqlIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     * AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
+    athenaIam?: pulumi.Input<inputs.ResourceAthenaIam>;
+    auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam>;
     auroraPostgres?: pulumi.Input<inputs.ResourceAuroraPostgres>;
     auroraPostgresIam?: pulumi.Input<inputs.ResourceAuroraPostgresIam>;
@@ -515,6 +540,9 @@ export interface ResourceArgs {
     bigQuery?: pulumi.Input<inputs.ResourceBigQuery>;
     cassandra?: pulumi.Input<inputs.ResourceCassandra>;
     citus?: pulumi.Input<inputs.ResourceCitus>;
+    clickHouseHttp?: pulumi.Input<inputs.ResourceClickHouseHttp>;
+    clickHouseMySql?: pulumi.Input<inputs.ResourceClickHouseMySql>;
+    clickHouseTcp?: pulumi.Input<inputs.ResourceClickHouseTcp>;
     clustrix?: pulumi.Input<inputs.ResourceClustrix>;
     cockroach?: pulumi.Input<inputs.ResourceCockroach>;
     couchbaseDatabase?: pulumi.Input<inputs.ResourceCouchbaseDatabase>;
@@ -522,9 +550,11 @@ export interface ResourceArgs {
     db2I?: pulumi.Input<inputs.ResourceDb2I>;
     db2Luw?: pulumi.Input<inputs.ResourceDb2Luw>;
     documentDbHost?: pulumi.Input<inputs.ResourceDocumentDbHost>;
+    documentDbHostIam?: pulumi.Input<inputs.ResourceDocumentDbHostIam>;
     documentDbReplicaSet?: pulumi.Input<inputs.ResourceDocumentDbReplicaSet>;
     druid?: pulumi.Input<inputs.ResourceDruid>;
     dynamoDb?: pulumi.Input<inputs.ResourceDynamoDb>;
+    dynamoDbiam?: pulumi.Input<inputs.ResourceDynamoDbiam>;
     elastic?: pulumi.Input<inputs.ResourceElastic>;
     elasticacheRedis?: pulumi.Input<inputs.ResourceElasticacheRedis>;
     gcp?: pulumi.Input<inputs.ResourceGcp>;
