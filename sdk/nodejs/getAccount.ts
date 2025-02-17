@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const user-queries = sdm.getAccount({
+ * const user_queries = sdm.getAccount({
  *     email: "*@strongdm.com",
  *     tags: {
  *         env: "dev",
@@ -25,11 +25,11 @@ import * as utilities from "./utilities";
  *     },
  *     type: "user",
  * });
- * const api-key-queries = sdm.getAccount({
+ * const api_key_queries = sdm.getAccount({
  *     name: "*-dev",
  *     type: "api",
  * });
- * const admin-token-queries = sdm.getAccount({
+ * const admin_token_queries = sdm.getAccount({
  *     name: "*-prod",
  *     type: "admin-token",
  * });
@@ -178,7 +178,7 @@ export interface GetAccountResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const user-queries = sdm.getAccount({
+ * const user_queries = sdm.getAccount({
  *     email: "*@strongdm.com",
  *     tags: {
  *         env: "dev",
@@ -186,11 +186,11 @@ export interface GetAccountResult {
  *     },
  *     type: "user",
  * });
- * const api-key-queries = sdm.getAccount({
+ * const api_key_queries = sdm.getAccount({
  *     name: "*-dev",
  *     type: "api",
  * });
- * const admin-token-queries = sdm.getAccount({
+ * const admin_token_queries = sdm.getAccount({
  *     name: "*-prod",
  *     type: "admin-token",
  * });
