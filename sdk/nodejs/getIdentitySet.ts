@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const default = sdm.getIdentitySet({
+ * const _default = sdm.getIdentitySet({
  *     name: "default",
  * });
  * ```
@@ -71,7 +71,7 @@ export interface GetIdentitySetResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const default = sdm.getIdentitySet({
+ * const _default = sdm.getIdentitySet({
  *     name: "default",
  * });
  * ```

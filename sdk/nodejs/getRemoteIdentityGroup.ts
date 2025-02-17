@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const default = sdm.getRemoteIdentityGroup({
+ * const _default = sdm.getRemoteIdentityGroup({
  *     name: "default",
  * });
  * ```
@@ -71,7 +71,7 @@ export interface GetRemoteIdentityGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as sdm from "@pulumi/sdm";
  *
- * const default = sdm.getRemoteIdentityGroup({
+ * const _default = sdm.getRemoteIdentityGroup({
  *     name: "default",
  * });
  * ```
