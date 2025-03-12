@@ -34,6 +34,7 @@ __all__ = [
     'ResourceAmazonEksInstanceProfileUserImpersonation',
     'ResourceAmazonEksUserImpersonation',
     'ResourceAmazonEs',
+    'ResourceAmazonEsiam',
     'ResourceAmazonmqAmqp091',
     'ResourceAthena',
     'ResourceAthenaIam',
@@ -81,6 +82,7 @@ __all__ = [
     'ResourceHttpNoAuth',
     'ResourceKubernetes',
     'ResourceKubernetesBasicAuth',
+    'ResourceKubernetesPodIdentity',
     'ResourceKubernetesServiceAccount',
     'ResourceKubernetesServiceAccountUserImpersonation',
     'ResourceKubernetesUserImpersonation',
@@ -107,6 +109,8 @@ __all__ = [
     'ResourceRdsPostgresIam',
     'ResourceRedis',
     'ResourceRedshift',
+    'ResourceRedshiftIam',
+    'ResourceRedshiftServerlessIam',
     'ResourceSingleStore',
     'ResourceSnowflake',
     'ResourceSnowsight',
@@ -180,6 +184,7 @@ __all__ = [
     'GetResourceResourceAmazonEksInstanceProfileResult',
     'GetResourceResourceAmazonEksInstanceProfileUserImpersonationResult',
     'GetResourceResourceAmazonEksUserImpersonationResult',
+    'GetResourceResourceAmazonEsiamResult',
     'GetResourceResourceAmazonmqAmqp091Result',
     'GetResourceResourceAthenaResult',
     'GetResourceResourceAthenaIamResult',
@@ -227,6 +232,7 @@ __all__ = [
     'GetResourceResourceHttpNoAuthResult',
     'GetResourceResourceKuberneteResult',
     'GetResourceResourceKubernetesBasicAuthResult',
+    'GetResourceResourceKubernetesPodIdentityResult',
     'GetResourceResourceKubernetesServiceAccountResult',
     'GetResourceResourceKubernetesServiceAccountUserImpersonationResult',
     'GetResourceResourceKubernetesUserImpersonationResult',
@@ -253,6 +259,8 @@ __all__ = [
     'GetResourceResourceRdsPostgresIamResult',
     'GetResourceResourceRediResult',
     'GetResourceResourceRedshiftResult',
+    'GetResourceResourceRedshiftIamResult',
+    'GetResourceResourceRedshiftServerlessIamResult',
     'GetResourceResourceSingleStoreResult',
     'GetResourceResourceSnowflakeResult',
     'GetResourceResourceSnowsightResult',
@@ -3283,6 +3291,197 @@ class ResourceAmazonEs(dict):
         Tags is a map of key, value pairs.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ResourceAmazonEsiam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "roleArn":
+            suggest = "role_arn"
+        elif key == "roleExternalId":
+            suggest = "role_external_id"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+        elif key == "tlsRequired":
+            suggest = "tls_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceAmazonEsiam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceAmazonEsiam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceAmazonEsiam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: str,
+                 name: str,
+                 region: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 role_external_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 tls_required: Optional[bool] = None):
+        """
+        :param str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        :param str name: Unique human-readable name of the Resource.
+        :param str region: The AWS region to connect to.
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str role_arn: The role to assume after logging in.
+        :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param bool tls_required: If set, TLS must be used to connect to this resource.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if role_external_id is not None:
+            pulumi.set(__self__, "role_external_id", role_external_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tls_required is not None:
+            pulumi.set(__self__, "tls_required", tls_required)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        The role to assume after logging in.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="roleExternalId")
+    def role_external_id(self) -> Optional[str]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
+        return pulumi.get(self, "role_external_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tlsRequired")
+    def tls_required(self) -> Optional[bool]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
+        return pulumi.get(self, "tls_required")
 
 
 @pulumi.output_type
@@ -12475,6 +12674,175 @@ class ResourceKubernetesBasicAuth(dict):
 
 
 @pulumi.output_type
+class ResourceKubernetesPodIdentity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowResourceRoleBypass":
+            suggest = "allow_resource_role_bypass"
+        elif key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "certificateAuthority":
+            suggest = "certificate_authority"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "healthcheckNamespace":
+            suggest = "healthcheck_namespace"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceKubernetesPodIdentity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceKubernetesPodIdentity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceKubernetesPodIdentity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 allow_resource_role_bypass: Optional[bool] = None,
+                 bind_interface: Optional[str] = None,
+                 certificate_authority: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 healthcheck_namespace: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: Unique human-readable name of the Resource.
+        :param bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str certificate_authority: The CA to authenticate TLS connections with.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "name", name)
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if healthcheck_namespace is not None:
+            pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[bool]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[str]:
+        """
+        The CA to authenticate TLS connections with.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="healthcheckNamespace")
+    def healthcheck_namespace(self) -> Optional[str]:
+        """
+        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        """
+        return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class ResourceKubernetesServiceAccount(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -17774,6 +18142,432 @@ class ResourceRedshift(dict):
 
 
 @pulumi.output_type
+class ResourceRedshiftIam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterId":
+            suggest = "cluster_id"
+        elif key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "overrideDatabase":
+            suggest = "override_database"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "roleAssumptionArn":
+            suggest = "role_assumption_arn"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceRedshiftIam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceRedshiftIam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceRedshiftIam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 database: str,
+                 hostname: str,
+                 name: str,
+                 region: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 override_database: Optional[bool] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 role_assumption_arn: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str cluster_id: Cluster Identified of Redshift cluster
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param str region: The AWS region to connect to.
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if override_database is not None:
+            pulumi.set(__self__, "override_database", override_database)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if role_assumption_arn is not None:
+            pulumi.set(__self__, "role_assumption_arn", role_assumption_arn)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        Cluster Identified of Redshift cluster
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="overrideDatabase")
+    def override_database(self) -> Optional[bool]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
+        return pulumi.get(self, "override_database")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="roleAssumptionArn")
+    def role_assumption_arn(self) -> Optional[str]:
+        """
+        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+        """
+        return pulumi.get(self, "role_assumption_arn")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class ResourceRedshiftServerlessIam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindInterface":
+            suggest = "bind_interface"
+        elif key == "egressFilter":
+            suggest = "egress_filter"
+        elif key == "overrideDatabase":
+            suggest = "override_database"
+        elif key == "portOverride":
+            suggest = "port_override"
+        elif key == "proxyClusterId":
+            suggest = "proxy_cluster_id"
+        elif key == "roleAssumptionArn":
+            suggest = "role_assumption_arn"
+        elif key == "secretStoreId":
+            suggest = "secret_store_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceRedshiftServerlessIam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceRedshiftServerlessIam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceRedshiftServerlessIam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database: str,
+                 hostname: str,
+                 name: str,
+                 region: str,
+                 workgroup: str,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 override_database: Optional[bool] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 role_assumption_arn: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param str region: The AWS region to connect to.
+        :param str workgroup: Workgroup name in the serverless Redshift
+               * single_store:
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "workgroup", workgroup)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if override_database is not None:
+            pulumi.set(__self__, "override_database", override_database)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if role_assumption_arn is not None:
+            pulumi.set(__self__, "role_assumption_arn", role_assumption_arn)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def workgroup(self) -> str:
+        """
+        Workgroup name in the serverless Redshift
+        * single_store:
+        """
+        return pulumi.get(self, "workgroup")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="overrideDatabase")
+    def override_database(self) -> Optional[bool]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
+        return pulumi.get(self, "override_database")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="roleAssumptionArn")
+    def role_assumption_arn(self) -> Optional[str]:
+        """
+        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+        """
+        return pulumi.get(self, "role_assumption_arn")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class ResourceSingleStore(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18800,7 +19594,9 @@ class ResourceSqlServerKerberosAd(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "allowDeprecatedEncryption":
+        if key == "serverSpn":
+            suggest = "server_spn"
+        elif key == "allowDeprecatedEncryption":
             suggest = "allow_deprecated_encryption"
         elif key == "bindInterface":
             suggest = "bind_interface"
@@ -18816,8 +19612,6 @@ class ResourceSqlServerKerberosAd(dict):
             suggest = "proxy_cluster_id"
         elif key == "secretStoreId":
             suggest = "secret_store_id"
-        elif key == "serverSpn":
-            suggest = "server_spn"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ResourceSqlServerKerberosAd. Access the value via the '{suggest}' property getter instead.")
@@ -18833,6 +19627,7 @@ class ResourceSqlServerKerberosAd(dict):
     def __init__(__self__, *,
                  hostname: str,
                  name: str,
+                 server_spn: str,
                  allow_deprecated_encryption: Optional[bool] = None,
                  bind_interface: Optional[str] = None,
                  database: Optional[str] = None,
@@ -18846,13 +19641,13 @@ class ResourceSqlServerKerberosAd(dict):
                  realm: Optional[str] = None,
                  schema: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
-                 server_spn: Optional[str] = None,
                  subdomain: Optional[str] = None,
                  tags: Optional[Mapping[str, str]] = None,
                  username: Optional[str] = None):
         """
         :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
         :param str name: Unique human-readable name of the Resource.
+        :param str server_spn: The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
         :param bool allow_deprecated_encryption: Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
         :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
@@ -18866,13 +19661,13 @@ class ResourceSqlServerKerberosAd(dict):
         :param str realm: The Active Directory domain (realm) to which the configured username belongs.
         :param str schema: The Schema to use to direct initial requests.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
-        :param str server_spn: The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
         :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         :param Mapping[str, str] tags: Tags is a map of key, value pairs.
         :param str username: The username to authenticate with.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "server_spn", server_spn)
         if allow_deprecated_encryption is not None:
             pulumi.set(__self__, "allow_deprecated_encryption", allow_deprecated_encryption)
         if bind_interface is not None:
@@ -18899,8 +19694,6 @@ class ResourceSqlServerKerberosAd(dict):
             pulumi.set(__self__, "schema", schema)
         if secret_store_id is not None:
             pulumi.set(__self__, "secret_store_id", secret_store_id)
-        if server_spn is not None:
-            pulumi.set(__self__, "server_spn", server_spn)
         if subdomain is not None:
             pulumi.set(__self__, "subdomain", subdomain)
         if tags is not None:
@@ -18923,6 +19716,14 @@ class ResourceSqlServerKerberosAd(dict):
         Unique human-readable name of the Resource.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serverSpn")
+    def server_spn(self) -> str:
+        """
+        The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
+        """
+        return pulumi.get(self, "server_spn")
 
     @property
     @pulumi.getter(name="allowDeprecatedEncryption")
@@ -19027,14 +19828,6 @@ class ResourceSqlServerKerberosAd(dict):
         ID of the secret store containing credentials for this resource, if any.
         """
         return pulumi.get(self, "secret_store_id")
-
-    @property
-    @pulumi.getter(name="serverSpn")
-    def server_spn(self) -> Optional[str]:
-        """
-        The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
-        """
-        return pulumi.get(self, "server_spn")
 
     @property
     @pulumi.getter
@@ -24097,6 +24890,7 @@ class GetResourceResourceResult(dict):
                  amazon_eks_instance_profiles: Sequence['outputs.GetResourceResourceAmazonEksInstanceProfileResult'],
                  amazon_eks_user_impersonations: Sequence['outputs.GetResourceResourceAmazonEksUserImpersonationResult'],
                  amazon_es: Sequence['outputs.GetResourceResourceAmazonEResult'],
+                 amazon_esiams: Sequence['outputs.GetResourceResourceAmazonEsiamResult'],
                  amazonmq_amqp091s: Sequence['outputs.GetResourceResourceAmazonmqAmqp091Result'],
                  athena_iams: Sequence['outputs.GetResourceResourceAthenaIamResult'],
                  athenas: Sequence['outputs.GetResourceResourceAthenaResult'],
@@ -24144,6 +24938,7 @@ class GetResourceResourceResult(dict):
                  http_no_auths: Sequence['outputs.GetResourceResourceHttpNoAuthResult'],
                  kubernetes: Sequence['outputs.GetResourceResourceKuberneteResult'],
                  kubernetes_basic_auths: Sequence['outputs.GetResourceResourceKubernetesBasicAuthResult'],
+                 kubernetes_pod_identities: Sequence['outputs.GetResourceResourceKubernetesPodIdentityResult'],
                  kubernetes_service_account_user_impersonations: Sequence['outputs.GetResourceResourceKubernetesServiceAccountUserImpersonationResult'],
                  kubernetes_service_accounts: Sequence['outputs.GetResourceResourceKubernetesServiceAccountResult'],
                  kubernetes_user_impersonations: Sequence['outputs.GetResourceResourceKubernetesUserImpersonationResult'],
@@ -24169,6 +24964,8 @@ class GetResourceResourceResult(dict):
                  rdps: Sequence['outputs.GetResourceResourceRdpResult'],
                  rds_postgres_iams: Sequence['outputs.GetResourceResourceRdsPostgresIamResult'],
                  redis: Sequence['outputs.GetResourceResourceRediResult'],
+                 redshift_iams: Sequence['outputs.GetResourceResourceRedshiftIamResult'],
+                 redshift_serverless_iams: Sequence['outputs.GetResourceResourceRedshiftServerlessIamResult'],
                  redshifts: Sequence['outputs.GetResourceResourceRedshiftResult'],
                  single_stores: Sequence['outputs.GetResourceResourceSingleStoreResult'],
                  snowflakes: Sequence['outputs.GetResourceResourceSnowflakeResult'],
@@ -24194,6 +24991,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "amazon_eks_instance_profiles", amazon_eks_instance_profiles)
         pulumi.set(__self__, "amazon_eks_user_impersonations", amazon_eks_user_impersonations)
         pulumi.set(__self__, "amazon_es", amazon_es)
+        pulumi.set(__self__, "amazon_esiams", amazon_esiams)
         pulumi.set(__self__, "amazonmq_amqp091s", amazonmq_amqp091s)
         pulumi.set(__self__, "athena_iams", athena_iams)
         pulumi.set(__self__, "athenas", athenas)
@@ -24241,6 +25039,7 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "http_no_auths", http_no_auths)
         pulumi.set(__self__, "kubernetes", kubernetes)
         pulumi.set(__self__, "kubernetes_basic_auths", kubernetes_basic_auths)
+        pulumi.set(__self__, "kubernetes_pod_identities", kubernetes_pod_identities)
         pulumi.set(__self__, "kubernetes_service_account_user_impersonations", kubernetes_service_account_user_impersonations)
         pulumi.set(__self__, "kubernetes_service_accounts", kubernetes_service_accounts)
         pulumi.set(__self__, "kubernetes_user_impersonations", kubernetes_user_impersonations)
@@ -24266,6 +25065,8 @@ class GetResourceResourceResult(dict):
         pulumi.set(__self__, "rdps", rdps)
         pulumi.set(__self__, "rds_postgres_iams", rds_postgres_iams)
         pulumi.set(__self__, "redis", redis)
+        pulumi.set(__self__, "redshift_iams", redshift_iams)
+        pulumi.set(__self__, "redshift_serverless_iams", redshift_serverless_iams)
         pulumi.set(__self__, "redshifts", redshifts)
         pulumi.set(__self__, "single_stores", single_stores)
         pulumi.set(__self__, "snowflakes", snowflakes)
@@ -24331,6 +25132,11 @@ class GetResourceResourceResult(dict):
     @pulumi.getter(name="amazonEs")
     def amazon_es(self) -> Sequence['outputs.GetResourceResourceAmazonEResult']:
         return pulumi.get(self, "amazon_es")
+
+    @property
+    @pulumi.getter(name="amazonEsiams")
+    def amazon_esiams(self) -> Sequence['outputs.GetResourceResourceAmazonEsiamResult']:
+        return pulumi.get(self, "amazon_esiams")
 
     @property
     @pulumi.getter(name="amazonmqAmqp091s")
@@ -24568,6 +25374,11 @@ class GetResourceResourceResult(dict):
         return pulumi.get(self, "kubernetes_basic_auths")
 
     @property
+    @pulumi.getter(name="kubernetesPodIdentities")
+    def kubernetes_pod_identities(self) -> Sequence['outputs.GetResourceResourceKubernetesPodIdentityResult']:
+        return pulumi.get(self, "kubernetes_pod_identities")
+
+    @property
     @pulumi.getter(name="kubernetesServiceAccountUserImpersonations")
     def kubernetes_service_account_user_impersonations(self) -> Sequence['outputs.GetResourceResourceKubernetesServiceAccountUserImpersonationResult']:
         return pulumi.get(self, "kubernetes_service_account_user_impersonations")
@@ -24691,6 +25502,16 @@ class GetResourceResourceResult(dict):
     @pulumi.getter
     def redis(self) -> Sequence['outputs.GetResourceResourceRediResult']:
         return pulumi.get(self, "redis")
+
+    @property
+    @pulumi.getter(name="redshiftIams")
+    def redshift_iams(self) -> Sequence['outputs.GetResourceResourceRedshiftIamResult']:
+        return pulumi.get(self, "redshift_iams")
+
+    @property
+    @pulumi.getter(name="redshiftServerlessIams")
+    def redshift_serverless_iams(self) -> Sequence['outputs.GetResourceResourceRedshiftServerlessIamResult']:
+        return pulumi.get(self, "redshift_serverless_iams")
 
     @property
     @pulumi.getter
@@ -26916,6 +27737,181 @@ class GetResourceResourceAmazonEksUserImpersonationResult(dict):
         Tags is a map of key, value pairs.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetResourceResourceAmazonEsiamResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 endpoint: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_arn: Optional[str] = None,
+                 role_external_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 tls_required: Optional[bool] = None):
+        """
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str endpoint: The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str region: The AWS region to connect to.
+        :param str role_arn: The role to assume after logging in.
+        :param str role_external_id: The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param bool tls_required: If set, TLS must be used to connect to this resource.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_arn is not None:
+            pulumi.set(__self__, "role_arn", role_arn)
+        if role_external_id is not None:
+            pulumi.set(__self__, "role_external_id", role_external_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tls_required is not None:
+            pulumi.set(__self__, "tls_required", tls_required)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[str]:
+        """
+        The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleArn")
+    def role_arn(self) -> Optional[str]:
+        """
+        The role to assume after logging in.
+        """
+        return pulumi.get(self, "role_arn")
+
+    @property
+    @pulumi.getter(name="roleExternalId")
+    def role_external_id(self) -> Optional[str]:
+        """
+        The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+        """
+        return pulumi.get(self, "role_external_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="tlsRequired")
+    def tls_required(self) -> Optional[bool]:
+        """
+        If set, TLS must be used to connect to this resource.
+        """
+        return pulumi.get(self, "tls_required")
 
 
 @pulumi.output_type
@@ -35402,6 +36398,157 @@ class GetResourceResourceKubernetesBasicAuthResult(dict):
 
 
 @pulumi.output_type
+class GetResourceResourceKubernetesPodIdentityResult(dict):
+    def __init__(__self__, *,
+                 allow_resource_role_bypass: Optional[bool] = None,
+                 bind_interface: Optional[str] = None,
+                 certificate_authority: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 healthcheck_namespace: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param bool allow_resource_role_bypass: If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str certificate_authority: The CA to authenticate TLS connections with.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if allow_resource_role_bypass is not None:
+            pulumi.set(__self__, "allow_resource_role_bypass", allow_resource_role_bypass)
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if healthcheck_namespace is not None:
+            pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="allowResourceRoleBypass")
+    def allow_resource_role_bypass(self) -> Optional[bool]:
+        """
+        If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+        """
+        return pulumi.get(self, "allow_resource_role_bypass")
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[str]:
+        """
+        The CA to authenticate TLS connections with.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter(name="healthcheckNamespace")
+    def healthcheck_namespace(self) -> Optional[str]:
+        """
+        The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        """
+        return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class GetResourceResourceKubernetesServiceAccountResult(dict):
     def __init__(__self__, *,
                  allow_resource_role_bypass: Optional[bool] = None,
@@ -40313,6 +41460,406 @@ class GetResourceResourceRedshiftResult(dict):
         The username to authenticate with.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetResourceResourceRedshiftIamResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 cluster_id: Optional[str] = None,
+                 database: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 override_database: Optional[bool] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_assumption_arn: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None):
+        """
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str cluster_id: Cluster Identified of Redshift cluster
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str region: The AWS region to connect to.
+        :param str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if override_database is not None:
+            pulumi.set(__self__, "override_database", override_database)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_assumption_arn is not None:
+            pulumi.set(__self__, "role_assumption_arn", role_assumption_arn)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[str]:
+        """
+        Cluster Identified of Redshift cluster
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="overrideDatabase")
+    def override_database(self) -> Optional[bool]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
+        return pulumi.get(self, "override_database")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleAssumptionArn")
+    def role_assumption_arn(self) -> Optional[str]:
+        """
+        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+        """
+        return pulumi.get(self, "role_assumption_arn")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetResourceResourceRedshiftServerlessIamResult(dict):
+    def __init__(__self__, *,
+                 bind_interface: Optional[str] = None,
+                 database: Optional[str] = None,
+                 egress_filter: Optional[str] = None,
+                 hostname: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None,
+                 override_database: Optional[bool] = None,
+                 port: Optional[int] = None,
+                 port_override: Optional[int] = None,
+                 proxy_cluster_id: Optional[str] = None,
+                 region: Optional[str] = None,
+                 role_assumption_arn: Optional[str] = None,
+                 secret_store_id: Optional[str] = None,
+                 subdomain: Optional[str] = None,
+                 tags: Optional[Mapping[str, str]] = None,
+                 workgroup: Optional[str] = None):
+        """
+        :param str bind_interface: The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        :param str database: The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
+        :param str hostname: The host to dial to initiate a connection from the egress node to this resource.
+        :param str id: Unique identifier of the Resource.
+        :param str name: Unique human-readable name of the Resource.
+        :param bool override_database: If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        :param int port: The port to dial to initiate a connection from the egress node to this resource.
+        :param int port_override: The local port used by clients to connect to this resource.
+        :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
+        :param str region: The AWS region to connect to.
+        :param str role_assumption_arn: If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+        :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
+        :param str subdomain: Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        :param Mapping[str, str] tags: Tags is a map of key, value pairs.
+        :param str workgroup: Workgroup name in the serverless Redshift
+               * single_store:
+        """
+        if bind_interface is not None:
+            pulumi.set(__self__, "bind_interface", bind_interface)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if egress_filter is not None:
+            pulumi.set(__self__, "egress_filter", egress_filter)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if override_database is not None:
+            pulumi.set(__self__, "override_database", override_database)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if port_override is not None:
+            pulumi.set(__self__, "port_override", port_override)
+        if proxy_cluster_id is not None:
+            pulumi.set(__self__, "proxy_cluster_id", proxy_cluster_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role_assumption_arn is not None:
+            pulumi.set(__self__, "role_assumption_arn", role_assumption_arn)
+        if secret_store_id is not None:
+            pulumi.set(__self__, "secret_store_id", secret_store_id)
+        if subdomain is not None:
+            pulumi.set(__self__, "subdomain", subdomain)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if workgroup is not None:
+            pulumi.set(__self__, "workgroup", workgroup)
+
+    @property
+    @pulumi.getter(name="bindInterface")
+    def bind_interface(self) -> Optional[str]:
+        """
+        The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+        """
+        return pulumi.get(self, "bind_interface")
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="egressFilter")
+    def egress_filter(self) -> Optional[str]:
+        """
+        A filter applied to the routing logic to pin datasource to nodes.
+        """
+        return pulumi.get(self, "egress_filter")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        The host to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Unique identifier of the Resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Unique human-readable name of the Resource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="overrideDatabase")
+    def override_database(self) -> Optional[bool]:
+        """
+        If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+        """
+        return pulumi.get(self, "override_database")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        The port to dial to initiate a connection from the egress node to this resource.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portOverride")
+    def port_override(self) -> Optional[int]:
+        """
+        The local port used by clients to connect to this resource.
+        """
+        return pulumi.get(self, "port_override")
+
+    @property
+    @pulumi.getter(name="proxyClusterId")
+    def proxy_cluster_id(self) -> Optional[str]:
+        """
+        ID of the proxy cluster for this resource, if any.
+        """
+        return pulumi.get(self, "proxy_cluster_id")
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[str]:
+        """
+        The AWS region to connect to.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="roleAssumptionArn")
+    def role_assumption_arn(self) -> Optional[str]:
+        """
+        If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+        """
+        return pulumi.get(self, "role_assumption_arn")
+
+    @property
+    @pulumi.getter(name="secretStoreId")
+    def secret_store_id(self) -> Optional[str]:
+        """
+        ID of the secret store containing credentials for this resource, if any.
+        """
+        return pulumi.get(self, "secret_store_id")
+
+    @property
+    @pulumi.getter
+    def subdomain(self) -> Optional[str]:
+        """
+        Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+        """
+        return pulumi.get(self, "subdomain")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        Tags is a map of key, value pairs.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def workgroup(self) -> Optional[str]:
+        """
+        Workgroup name in the serverless Redshift
+        * single_store:
+        """
+        return pulumi.get(self, "workgroup")
 
 
 @pulumi.output_type

@@ -32,9 +32,10 @@ type Resource struct {
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrOutput `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrOutput                `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                                  ResourceAmazonEsPtrOutput                                  `pulumi:"amazonEs"`
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrOutput                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    ResourceAthenaPtrOutput                                    `pulumi:"athena"`
-	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEsiam                  ResourceAmazonEsiamPtrOutput                  `pulumi:"amazonEsiam"`
+	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrOutput              `pulumi:"amazonmqAmqp091"`
+	Athena                       ResourceAthenaPtrOutput                       `pulumi:"athena"`
 	AthenaIam                    ResourceAthenaIamPtrOutput                    `pulumi:"athenaIam"`
 	AuroraMysql                  ResourceAuroraMysqlPtrOutput                  `pulumi:"auroraMysql"`
 	AuroraMysqlIam               ResourceAuroraMysqlIamPtrOutput               `pulumi:"auroraMysqlIam"`
@@ -81,6 +82,7 @@ type Resource struct {
 	Kubernetes                   ResourceKubernetesPtrOutput                   `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrOutput                       `pulumi:"kubernetesBasicAuth"`
+	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrOutput                     `pulumi:"kubernetesPodIdentity"`
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrOutput                  `pulumi:"kubernetesServiceAccount"`
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrOutput `pulumi:"kubernetesServiceAccountUserImpersonation"`
 	KubernetesUserImpersonation               ResourceKubernetesUserImpersonationPtrOutput               `pulumi:"kubernetesUserImpersonation"`
@@ -95,34 +97,38 @@ type Resource struct {
 	MongoReplicaSet       ResourceMongoReplicaSetPtrOutput       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   ResourceMongoShardedClusterPtrOutput   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql           ResourceMtlsMysqlPtrOutput           `pulumi:"mtlsMysql"`
-	MtlsPostgres        ResourceMtlsPostgresPtrOutput        `pulumi:"mtlsPostgres"`
-	Mysql               ResourceMysqlPtrOutput               `pulumi:"mysql"`
-	Neptune             ResourceNeptunePtrOutput             `pulumi:"neptune"`
-	NeptuneIam          ResourceNeptuneIamPtrOutput          `pulumi:"neptuneIam"`
-	Oracle              ResourceOraclePtrOutput              `pulumi:"oracle"`
-	Postgres            ResourcePostgresPtrOutput            `pulumi:"postgres"`
-	Presto              ResourcePrestoPtrOutput              `pulumi:"presto"`
-	RabbitmqAmqp091     ResourceRabbitmqAmqp091PtrOutput     `pulumi:"rabbitmqAmqp091"`
-	RawTcp              ResourceRawTcpPtrOutput              `pulumi:"rawTcp"`
-	Rdp                 ResourceRdpPtrOutput                 `pulumi:"rdp"`
-	RdpCert             ResourceRdpCertPtrOutput             `pulumi:"rdpCert"`
-	RdsPostgresIam      ResourceRdsPostgresIamPtrOutput      `pulumi:"rdsPostgresIam"`
-	Redis               ResourceRedisPtrOutput               `pulumi:"redis"`
-	Redshift            ResourceRedshiftPtrOutput            `pulumi:"redshift"`
-	SingleStore         ResourceSingleStorePtrOutput         `pulumi:"singleStore"`
-	Snowflake           ResourceSnowflakePtrOutput           `pulumi:"snowflake"`
-	Snowsight           ResourceSnowsightPtrOutput           `pulumi:"snowsight"`
-	SqlServer           ResourceSqlServerPtrOutput           `pulumi:"sqlServer"`
-	SqlServerAzureAd    ResourceSqlServerAzureAdPtrOutput    `pulumi:"sqlServerAzureAd"`
-	SqlServerKerberosAd ResourceSqlServerKerberosAdPtrOutput `pulumi:"sqlServerKerberosAd"`
-	Ssh                 ResourceSshPtrOutput                 `pulumi:"ssh"`
-	SshCert             ResourceSshCertPtrOutput             `pulumi:"sshCert"`
-	SshCustomerKey      ResourceSshCustomerKeyPtrOutput      `pulumi:"sshCustomerKey"`
-	SshPassword         ResourceSshPasswordPtrOutput         `pulumi:"sshPassword"`
-	Sybase              ResourceSybasePtrOutput              `pulumi:"sybase"`
-	SybaseIq            ResourceSybaseIqPtrOutput            `pulumi:"sybaseIq"`
-	Teradata            ResourceTeradataPtrOutput            `pulumi:"teradata"`
+	MtlsMysql       ResourceMtlsMysqlPtrOutput       `pulumi:"mtlsMysql"`
+	MtlsPostgres    ResourceMtlsPostgresPtrOutput    `pulumi:"mtlsPostgres"`
+	Mysql           ResourceMysqlPtrOutput           `pulumi:"mysql"`
+	Neptune         ResourceNeptunePtrOutput         `pulumi:"neptune"`
+	NeptuneIam      ResourceNeptuneIamPtrOutput      `pulumi:"neptuneIam"`
+	Oracle          ResourceOraclePtrOutput          `pulumi:"oracle"`
+	Postgres        ResourcePostgresPtrOutput        `pulumi:"postgres"`
+	Presto          ResourcePrestoPtrOutput          `pulumi:"presto"`
+	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrOutput `pulumi:"rabbitmqAmqp091"`
+	RawTcp          ResourceRawTcpPtrOutput          `pulumi:"rawTcp"`
+	Rdp             ResourceRdpPtrOutput             `pulumi:"rdp"`
+	RdpCert         ResourceRdpCertPtrOutput         `pulumi:"rdpCert"`
+	RdsPostgresIam  ResourceRdsPostgresIamPtrOutput  `pulumi:"rdsPostgresIam"`
+	Redis           ResourceRedisPtrOutput           `pulumi:"redis"`
+	Redshift        ResourceRedshiftPtrOutput        `pulumi:"redshift"`
+	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftIam ResourceRedshiftIamPtrOutput `pulumi:"redshiftIam"`
+	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftServerlessIam ResourceRedshiftServerlessIamPtrOutput `pulumi:"redshiftServerlessIam"`
+	SingleStore           ResourceSingleStorePtrOutput           `pulumi:"singleStore"`
+	Snowflake             ResourceSnowflakePtrOutput             `pulumi:"snowflake"`
+	Snowsight             ResourceSnowsightPtrOutput             `pulumi:"snowsight"`
+	SqlServer             ResourceSqlServerPtrOutput             `pulumi:"sqlServer"`
+	SqlServerAzureAd      ResourceSqlServerAzureAdPtrOutput      `pulumi:"sqlServerAzureAd"`
+	SqlServerKerberosAd   ResourceSqlServerKerberosAdPtrOutput   `pulumi:"sqlServerKerberosAd"`
+	Ssh                   ResourceSshPtrOutput                   `pulumi:"ssh"`
+	SshCert               ResourceSshCertPtrOutput               `pulumi:"sshCert"`
+	SshCustomerKey        ResourceSshCustomerKeyPtrOutput        `pulumi:"sshCustomerKey"`
+	SshPassword           ResourceSshPasswordPtrOutput           `pulumi:"sshPassword"`
+	Sybase                ResourceSybasePtrOutput                `pulumi:"sybase"`
+	SybaseIq              ResourceSybaseIqPtrOutput              `pulumi:"sybaseIq"`
+	Teradata              ResourceTeradataPtrOutput              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrOutput `pulumi:"trino"`
 }
@@ -168,9 +174,10 @@ type resourceState struct {
 	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
-	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
-	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEsiam                  *ResourceAmazonEsiam                  `pulumi:"amazonEsiam"`
+	AmazonmqAmqp091              *ResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091"`
+	Athena                       *ResourceAthena                       `pulumi:"athena"`
 	AthenaIam                    *ResourceAthenaIam                    `pulumi:"athenaIam"`
 	AuroraMysql                  *ResourceAuroraMysql                  `pulumi:"auroraMysql"`
 	AuroraMysqlIam               *ResourceAuroraMysqlIam               `pulumi:"auroraMysqlIam"`
@@ -217,6 +224,7 @@ type resourceState struct {
 	Kubernetes                   *ResourceKubernetes                   `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
+	KubernetesPodIdentity                     *ResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentity"`
 	KubernetesServiceAccount                  *ResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccount"`
 	KubernetesServiceAccountUserImpersonation *ResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonation"`
 	KubernetesUserImpersonation               *ResourceKubernetesUserImpersonation               `pulumi:"kubernetesUserImpersonation"`
@@ -231,34 +239,38 @@ type resourceState struct {
 	MongoReplicaSet       *ResourceMongoReplicaSet       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   *ResourceMongoShardedCluster   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql           *ResourceMtlsMysql           `pulumi:"mtlsMysql"`
-	MtlsPostgres        *ResourceMtlsPostgres        `pulumi:"mtlsPostgres"`
-	Mysql               *ResourceMysql               `pulumi:"mysql"`
-	Neptune             *ResourceNeptune             `pulumi:"neptune"`
-	NeptuneIam          *ResourceNeptuneIam          `pulumi:"neptuneIam"`
-	Oracle              *ResourceOracle              `pulumi:"oracle"`
-	Postgres            *ResourcePostgres            `pulumi:"postgres"`
-	Presto              *ResourcePresto              `pulumi:"presto"`
-	RabbitmqAmqp091     *ResourceRabbitmqAmqp091     `pulumi:"rabbitmqAmqp091"`
-	RawTcp              *ResourceRawTcp              `pulumi:"rawTcp"`
-	Rdp                 *ResourceRdp                 `pulumi:"rdp"`
-	RdpCert             *ResourceRdpCert             `pulumi:"rdpCert"`
-	RdsPostgresIam      *ResourceRdsPostgresIam      `pulumi:"rdsPostgresIam"`
-	Redis               *ResourceRedis               `pulumi:"redis"`
-	Redshift            *ResourceRedshift            `pulumi:"redshift"`
-	SingleStore         *ResourceSingleStore         `pulumi:"singleStore"`
-	Snowflake           *ResourceSnowflake           `pulumi:"snowflake"`
-	Snowsight           *ResourceSnowsight           `pulumi:"snowsight"`
-	SqlServer           *ResourceSqlServer           `pulumi:"sqlServer"`
-	SqlServerAzureAd    *ResourceSqlServerAzureAd    `pulumi:"sqlServerAzureAd"`
-	SqlServerKerberosAd *ResourceSqlServerKerberosAd `pulumi:"sqlServerKerberosAd"`
-	Ssh                 *ResourceSsh                 `pulumi:"ssh"`
-	SshCert             *ResourceSshCert             `pulumi:"sshCert"`
-	SshCustomerKey      *ResourceSshCustomerKey      `pulumi:"sshCustomerKey"`
-	SshPassword         *ResourceSshPassword         `pulumi:"sshPassword"`
-	Sybase              *ResourceSybase              `pulumi:"sybase"`
-	SybaseIq            *ResourceSybaseIq            `pulumi:"sybaseIq"`
-	Teradata            *ResourceTeradata            `pulumi:"teradata"`
+	MtlsMysql       *ResourceMtlsMysql       `pulumi:"mtlsMysql"`
+	MtlsPostgres    *ResourceMtlsPostgres    `pulumi:"mtlsPostgres"`
+	Mysql           *ResourceMysql           `pulumi:"mysql"`
+	Neptune         *ResourceNeptune         `pulumi:"neptune"`
+	NeptuneIam      *ResourceNeptuneIam      `pulumi:"neptuneIam"`
+	Oracle          *ResourceOracle          `pulumi:"oracle"`
+	Postgres        *ResourcePostgres        `pulumi:"postgres"`
+	Presto          *ResourcePresto          `pulumi:"presto"`
+	RabbitmqAmqp091 *ResourceRabbitmqAmqp091 `pulumi:"rabbitmqAmqp091"`
+	RawTcp          *ResourceRawTcp          `pulumi:"rawTcp"`
+	Rdp             *ResourceRdp             `pulumi:"rdp"`
+	RdpCert         *ResourceRdpCert         `pulumi:"rdpCert"`
+	RdsPostgresIam  *ResourceRdsPostgresIam  `pulumi:"rdsPostgresIam"`
+	Redis           *ResourceRedis           `pulumi:"redis"`
+	Redshift        *ResourceRedshift        `pulumi:"redshift"`
+	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftIam *ResourceRedshiftIam `pulumi:"redshiftIam"`
+	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftServerlessIam *ResourceRedshiftServerlessIam `pulumi:"redshiftServerlessIam"`
+	SingleStore           *ResourceSingleStore           `pulumi:"singleStore"`
+	Snowflake             *ResourceSnowflake             `pulumi:"snowflake"`
+	Snowsight             *ResourceSnowsight             `pulumi:"snowsight"`
+	SqlServer             *ResourceSqlServer             `pulumi:"sqlServer"`
+	SqlServerAzureAd      *ResourceSqlServerAzureAd      `pulumi:"sqlServerAzureAd"`
+	SqlServerKerberosAd   *ResourceSqlServerKerberosAd   `pulumi:"sqlServerKerberosAd"`
+	Ssh                   *ResourceSsh                   `pulumi:"ssh"`
+	SshCert               *ResourceSshCert               `pulumi:"sshCert"`
+	SshCustomerKey        *ResourceSshCustomerKey        `pulumi:"sshCustomerKey"`
+	SshPassword           *ResourceSshPassword           `pulumi:"sshPassword"`
+	Sybase                *ResourceSybase                `pulumi:"sybase"`
+	SybaseIq              *ResourceSybaseIq              `pulumi:"sybaseIq"`
+	Teradata              *ResourceTeradata              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
 }
@@ -275,9 +287,10 @@ type ResourceState struct {
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
 	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
 	AmazonEs                                  ResourceAmazonEsPtrInput
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
-	Athena                                    ResourceAthenaPtrInput
-	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEsiam                  ResourceAmazonEsiamPtrInput
+	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrInput
+	Athena                       ResourceAthenaPtrInput
 	AthenaIam                    ResourceAthenaIamPtrInput
 	AuroraMysql                  ResourceAuroraMysqlPtrInput
 	AuroraMysqlIam               ResourceAuroraMysqlIamPtrInput
@@ -324,6 +337,7 @@ type ResourceState struct {
 	Kubernetes                   ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
+	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrInput
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrInput
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrInput
 	KubernetesUserImpersonation               ResourceKubernetesUserImpersonationPtrInput
@@ -338,34 +352,38 @@ type ResourceState struct {
 	MongoReplicaSet       ResourceMongoReplicaSetPtrInput
 	MongoShardedCluster   ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql           ResourceMtlsMysqlPtrInput
-	MtlsPostgres        ResourceMtlsPostgresPtrInput
-	Mysql               ResourceMysqlPtrInput
-	Neptune             ResourceNeptunePtrInput
-	NeptuneIam          ResourceNeptuneIamPtrInput
-	Oracle              ResourceOraclePtrInput
-	Postgres            ResourcePostgresPtrInput
-	Presto              ResourcePrestoPtrInput
-	RabbitmqAmqp091     ResourceRabbitmqAmqp091PtrInput
-	RawTcp              ResourceRawTcpPtrInput
-	Rdp                 ResourceRdpPtrInput
-	RdpCert             ResourceRdpCertPtrInput
-	RdsPostgresIam      ResourceRdsPostgresIamPtrInput
-	Redis               ResourceRedisPtrInput
-	Redshift            ResourceRedshiftPtrInput
-	SingleStore         ResourceSingleStorePtrInput
-	Snowflake           ResourceSnowflakePtrInput
-	Snowsight           ResourceSnowsightPtrInput
-	SqlServer           ResourceSqlServerPtrInput
-	SqlServerAzureAd    ResourceSqlServerAzureAdPtrInput
-	SqlServerKerberosAd ResourceSqlServerKerberosAdPtrInput
-	Ssh                 ResourceSshPtrInput
-	SshCert             ResourceSshCertPtrInput
-	SshCustomerKey      ResourceSshCustomerKeyPtrInput
-	SshPassword         ResourceSshPasswordPtrInput
-	Sybase              ResourceSybasePtrInput
-	SybaseIq            ResourceSybaseIqPtrInput
-	Teradata            ResourceTeradataPtrInput
+	MtlsMysql       ResourceMtlsMysqlPtrInput
+	MtlsPostgres    ResourceMtlsPostgresPtrInput
+	Mysql           ResourceMysqlPtrInput
+	Neptune         ResourceNeptunePtrInput
+	NeptuneIam      ResourceNeptuneIamPtrInput
+	Oracle          ResourceOraclePtrInput
+	Postgres        ResourcePostgresPtrInput
+	Presto          ResourcePrestoPtrInput
+	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrInput
+	RawTcp          ResourceRawTcpPtrInput
+	Rdp             ResourceRdpPtrInput
+	RdpCert         ResourceRdpCertPtrInput
+	RdsPostgresIam  ResourceRdsPostgresIamPtrInput
+	Redis           ResourceRedisPtrInput
+	Redshift        ResourceRedshiftPtrInput
+	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftIam ResourceRedshiftIamPtrInput
+	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftServerlessIam ResourceRedshiftServerlessIamPtrInput
+	SingleStore           ResourceSingleStorePtrInput
+	Snowflake             ResourceSnowflakePtrInput
+	Snowsight             ResourceSnowsightPtrInput
+	SqlServer             ResourceSqlServerPtrInput
+	SqlServerAzureAd      ResourceSqlServerAzureAdPtrInput
+	SqlServerKerberosAd   ResourceSqlServerKerberosAdPtrInput
+	Ssh                   ResourceSshPtrInput
+	SshCert               ResourceSshCertPtrInput
+	SshCustomerKey        ResourceSshCustomerKeyPtrInput
+	SshPassword           ResourceSshPasswordPtrInput
+	Sybase                ResourceSybasePtrInput
+	SybaseIq              ResourceSybaseIqPtrInput
+	Teradata              ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
 }
@@ -386,9 +404,10 @@ type resourceArgs struct {
 	AmazonEksInstanceProfileUserImpersonation *ResourceAmazonEksInstanceProfileUserImpersonation `pulumi:"amazonEksInstanceProfileUserImpersonation"`
 	AmazonEksUserImpersonation                *ResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonation"`
 	AmazonEs                                  *ResourceAmazonEs                                  `pulumi:"amazonEs"`
-	AmazonmqAmqp091                           *ResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091"`
-	Athena                                    *ResourceAthena                                    `pulumi:"athena"`
-	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEsiam                  *ResourceAmazonEsiam                  `pulumi:"amazonEsiam"`
+	AmazonmqAmqp091              *ResourceAmazonmqAmqp091              `pulumi:"amazonmqAmqp091"`
+	Athena                       *ResourceAthena                       `pulumi:"athena"`
 	AthenaIam                    *ResourceAthenaIam                    `pulumi:"athenaIam"`
 	AuroraMysql                  *ResourceAuroraMysql                  `pulumi:"auroraMysql"`
 	AuroraMysqlIam               *ResourceAuroraMysqlIam               `pulumi:"auroraMysqlIam"`
@@ -435,6 +454,7 @@ type resourceArgs struct {
 	Kubernetes                   *ResourceKubernetes                   `pulumi:"kubernetes"`
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       *ResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuth"`
+	KubernetesPodIdentity                     *ResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentity"`
 	KubernetesServiceAccount                  *ResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccount"`
 	KubernetesServiceAccountUserImpersonation *ResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonation"`
 	KubernetesUserImpersonation               *ResourceKubernetesUserImpersonation               `pulumi:"kubernetesUserImpersonation"`
@@ -449,34 +469,38 @@ type resourceArgs struct {
 	MongoReplicaSet       *ResourceMongoReplicaSet       `pulumi:"mongoReplicaSet"`
 	MongoShardedCluster   *ResourceMongoShardedCluster   `pulumi:"mongoShardedCluster"`
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql           *ResourceMtlsMysql           `pulumi:"mtlsMysql"`
-	MtlsPostgres        *ResourceMtlsPostgres        `pulumi:"mtlsPostgres"`
-	Mysql               *ResourceMysql               `pulumi:"mysql"`
-	Neptune             *ResourceNeptune             `pulumi:"neptune"`
-	NeptuneIam          *ResourceNeptuneIam          `pulumi:"neptuneIam"`
-	Oracle              *ResourceOracle              `pulumi:"oracle"`
-	Postgres            *ResourcePostgres            `pulumi:"postgres"`
-	Presto              *ResourcePresto              `pulumi:"presto"`
-	RabbitmqAmqp091     *ResourceRabbitmqAmqp091     `pulumi:"rabbitmqAmqp091"`
-	RawTcp              *ResourceRawTcp              `pulumi:"rawTcp"`
-	Rdp                 *ResourceRdp                 `pulumi:"rdp"`
-	RdpCert             *ResourceRdpCert             `pulumi:"rdpCert"`
-	RdsPostgresIam      *ResourceRdsPostgresIam      `pulumi:"rdsPostgresIam"`
-	Redis               *ResourceRedis               `pulumi:"redis"`
-	Redshift            *ResourceRedshift            `pulumi:"redshift"`
-	SingleStore         *ResourceSingleStore         `pulumi:"singleStore"`
-	Snowflake           *ResourceSnowflake           `pulumi:"snowflake"`
-	Snowsight           *ResourceSnowsight           `pulumi:"snowsight"`
-	SqlServer           *ResourceSqlServer           `pulumi:"sqlServer"`
-	SqlServerAzureAd    *ResourceSqlServerAzureAd    `pulumi:"sqlServerAzureAd"`
-	SqlServerKerberosAd *ResourceSqlServerKerberosAd `pulumi:"sqlServerKerberosAd"`
-	Ssh                 *ResourceSsh                 `pulumi:"ssh"`
-	SshCert             *ResourceSshCert             `pulumi:"sshCert"`
-	SshCustomerKey      *ResourceSshCustomerKey      `pulumi:"sshCustomerKey"`
-	SshPassword         *ResourceSshPassword         `pulumi:"sshPassword"`
-	Sybase              *ResourceSybase              `pulumi:"sybase"`
-	SybaseIq            *ResourceSybaseIq            `pulumi:"sybaseIq"`
-	Teradata            *ResourceTeradata            `pulumi:"teradata"`
+	MtlsMysql       *ResourceMtlsMysql       `pulumi:"mtlsMysql"`
+	MtlsPostgres    *ResourceMtlsPostgres    `pulumi:"mtlsPostgres"`
+	Mysql           *ResourceMysql           `pulumi:"mysql"`
+	Neptune         *ResourceNeptune         `pulumi:"neptune"`
+	NeptuneIam      *ResourceNeptuneIam      `pulumi:"neptuneIam"`
+	Oracle          *ResourceOracle          `pulumi:"oracle"`
+	Postgres        *ResourcePostgres        `pulumi:"postgres"`
+	Presto          *ResourcePresto          `pulumi:"presto"`
+	RabbitmqAmqp091 *ResourceRabbitmqAmqp091 `pulumi:"rabbitmqAmqp091"`
+	RawTcp          *ResourceRawTcp          `pulumi:"rawTcp"`
+	Rdp             *ResourceRdp             `pulumi:"rdp"`
+	RdpCert         *ResourceRdpCert         `pulumi:"rdpCert"`
+	RdsPostgresIam  *ResourceRdsPostgresIam  `pulumi:"rdsPostgresIam"`
+	Redis           *ResourceRedis           `pulumi:"redis"`
+	Redshift        *ResourceRedshift        `pulumi:"redshift"`
+	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftIam *ResourceRedshiftIam `pulumi:"redshiftIam"`
+	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftServerlessIam *ResourceRedshiftServerlessIam `pulumi:"redshiftServerlessIam"`
+	SingleStore           *ResourceSingleStore           `pulumi:"singleStore"`
+	Snowflake             *ResourceSnowflake             `pulumi:"snowflake"`
+	Snowsight             *ResourceSnowsight             `pulumi:"snowsight"`
+	SqlServer             *ResourceSqlServer             `pulumi:"sqlServer"`
+	SqlServerAzureAd      *ResourceSqlServerAzureAd      `pulumi:"sqlServerAzureAd"`
+	SqlServerKerberosAd   *ResourceSqlServerKerberosAd   `pulumi:"sqlServerKerberosAd"`
+	Ssh                   *ResourceSsh                   `pulumi:"ssh"`
+	SshCert               *ResourceSshCert               `pulumi:"sshCert"`
+	SshCustomerKey        *ResourceSshCustomerKey        `pulumi:"sshCustomerKey"`
+	SshPassword           *ResourceSshPassword           `pulumi:"sshPassword"`
+	Sybase                *ResourceSybase                `pulumi:"sybase"`
+	SybaseIq              *ResourceSybaseIq              `pulumi:"sybaseIq"`
+	Teradata              *ResourceTeradata              `pulumi:"teradata"`
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino *ResourceTrino `pulumi:"trino"`
 }
@@ -494,9 +518,10 @@ type ResourceArgs struct {
 	AmazonEksInstanceProfileUserImpersonation ResourceAmazonEksInstanceProfileUserImpersonationPtrInput
 	AmazonEksUserImpersonation                ResourceAmazonEksUserImpersonationPtrInput
 	AmazonEs                                  ResourceAmazonEsPtrInput
-	AmazonmqAmqp091                           ResourceAmazonmqAmqp091PtrInput
-	Athena                                    ResourceAthenaPtrInput
-	// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	AmazonEsiam                  ResourceAmazonEsiamPtrInput
+	AmazonmqAmqp091              ResourceAmazonmqAmqp091PtrInput
+	Athena                       ResourceAthenaPtrInput
 	AthenaIam                    ResourceAthenaIamPtrInput
 	AuroraMysql                  ResourceAuroraMysqlPtrInput
 	AuroraMysqlIam               ResourceAuroraMysqlIamPtrInput
@@ -543,6 +568,7 @@ type ResourceArgs struct {
 	Kubernetes                   ResourceKubernetesPtrInput
 	// KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	KubernetesBasicAuth                       ResourceKubernetesBasicAuthPtrInput
+	KubernetesPodIdentity                     ResourceKubernetesPodIdentityPtrInput
 	KubernetesServiceAccount                  ResourceKubernetesServiceAccountPtrInput
 	KubernetesServiceAccountUserImpersonation ResourceKubernetesServiceAccountUserImpersonationPtrInput
 	KubernetesUserImpersonation               ResourceKubernetesUserImpersonationPtrInput
@@ -557,34 +583,38 @@ type ResourceArgs struct {
 	MongoReplicaSet       ResourceMongoReplicaSetPtrInput
 	MongoShardedCluster   ResourceMongoShardedClusterPtrInput
 	// MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
-	MtlsMysql           ResourceMtlsMysqlPtrInput
-	MtlsPostgres        ResourceMtlsPostgresPtrInput
-	Mysql               ResourceMysqlPtrInput
-	Neptune             ResourceNeptunePtrInput
-	NeptuneIam          ResourceNeptuneIamPtrInput
-	Oracle              ResourceOraclePtrInput
-	Postgres            ResourcePostgresPtrInput
-	Presto              ResourcePrestoPtrInput
-	RabbitmqAmqp091     ResourceRabbitmqAmqp091PtrInput
-	RawTcp              ResourceRawTcpPtrInput
-	Rdp                 ResourceRdpPtrInput
-	RdpCert             ResourceRdpCertPtrInput
-	RdsPostgresIam      ResourceRdsPostgresIamPtrInput
-	Redis               ResourceRedisPtrInput
-	Redshift            ResourceRedshiftPtrInput
-	SingleStore         ResourceSingleStorePtrInput
-	Snowflake           ResourceSnowflakePtrInput
-	Snowsight           ResourceSnowsightPtrInput
-	SqlServer           ResourceSqlServerPtrInput
-	SqlServerAzureAd    ResourceSqlServerAzureAdPtrInput
-	SqlServerKerberosAd ResourceSqlServerKerberosAdPtrInput
-	Ssh                 ResourceSshPtrInput
-	SshCert             ResourceSshCertPtrInput
-	SshCustomerKey      ResourceSshCustomerKeyPtrInput
-	SshPassword         ResourceSshPasswordPtrInput
-	Sybase              ResourceSybasePtrInput
-	SybaseIq            ResourceSybaseIqPtrInput
-	Teradata            ResourceTeradataPtrInput
+	MtlsMysql       ResourceMtlsMysqlPtrInput
+	MtlsPostgres    ResourceMtlsPostgresPtrInput
+	Mysql           ResourceMysqlPtrInput
+	Neptune         ResourceNeptunePtrInput
+	NeptuneIam      ResourceNeptuneIamPtrInput
+	Oracle          ResourceOraclePtrInput
+	Postgres        ResourcePostgresPtrInput
+	Presto          ResourcePrestoPtrInput
+	RabbitmqAmqp091 ResourceRabbitmqAmqp091PtrInput
+	RawTcp          ResourceRawTcpPtrInput
+	Rdp             ResourceRdpPtrInput
+	RdpCert         ResourceRdpCertPtrInput
+	RdsPostgresIam  ResourceRdsPostgresIamPtrInput
+	Redis           ResourceRedisPtrInput
+	Redshift        ResourceRedshiftPtrInput
+	// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftIam ResourceRedshiftIamPtrInput
+	// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+	RedshiftServerlessIam ResourceRedshiftServerlessIamPtrInput
+	SingleStore           ResourceSingleStorePtrInput
+	Snowflake             ResourceSnowflakePtrInput
+	Snowsight             ResourceSnowsightPtrInput
+	SqlServer             ResourceSqlServerPtrInput
+	SqlServerAzureAd      ResourceSqlServerAzureAdPtrInput
+	SqlServerKerberosAd   ResourceSqlServerKerberosAdPtrInput
+	Ssh                   ResourceSshPtrInput
+	SshCert               ResourceSshCertPtrInput
+	SshCustomerKey        ResourceSshCustomerKeyPtrInput
+	SshPassword           ResourceSshPasswordPtrInput
+	Sybase                ResourceSybasePtrInput
+	SybaseIq              ResourceSybaseIqPtrInput
+	Teradata              ResourceTeradataPtrInput
 	// Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
 	Trino ResourceTrinoPtrInput
 }
@@ -721,6 +751,11 @@ func (o ResourceOutput) AmazonEs() ResourceAmazonEsPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonEsPtrOutput { return v.AmazonEs }).(ResourceAmazonEsPtrOutput)
 }
 
+// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) AmazonEsiam() ResourceAmazonEsiamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceAmazonEsiamPtrOutput { return v.AmazonEsiam }).(ResourceAmazonEsiamPtrOutput)
+}
+
 func (o ResourceOutput) AmazonmqAmqp091() ResourceAmazonmqAmqp091PtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAmazonmqAmqp091PtrOutput { return v.AmazonmqAmqp091 }).(ResourceAmazonmqAmqp091PtrOutput)
 }
@@ -729,7 +764,6 @@ func (o ResourceOutput) Athena() ResourceAthenaPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAthenaPtrOutput { return v.Athena }).(ResourceAthenaPtrOutput)
 }
 
-// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
 func (o ResourceOutput) AthenaIam() ResourceAthenaIamPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceAthenaIamPtrOutput { return v.AthenaIam }).(ResourceAthenaIamPtrOutput)
 }
@@ -911,6 +945,10 @@ func (o ResourceOutput) KubernetesBasicAuth() ResourceKubernetesBasicAuthPtrOutp
 	return o.ApplyT(func(v *Resource) ResourceKubernetesBasicAuthPtrOutput { return v.KubernetesBasicAuth }).(ResourceKubernetesBasicAuthPtrOutput)
 }
 
+func (o ResourceOutput) KubernetesPodIdentity() ResourceKubernetesPodIdentityPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceKubernetesPodIdentityPtrOutput { return v.KubernetesPodIdentity }).(ResourceKubernetesPodIdentityPtrOutput)
+}
+
 func (o ResourceOutput) KubernetesServiceAccount() ResourceKubernetesServiceAccountPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceKubernetesServiceAccountPtrOutput { return v.KubernetesServiceAccount }).(ResourceKubernetesServiceAccountPtrOutput)
 }
@@ -1018,6 +1056,16 @@ func (o ResourceOutput) Redis() ResourceRedisPtrOutput {
 
 func (o ResourceOutput) Redshift() ResourceRedshiftPtrOutput {
 	return o.ApplyT(func(v *Resource) ResourceRedshiftPtrOutput { return v.Redshift }).(ResourceRedshiftPtrOutput)
+}
+
+// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) RedshiftIam() ResourceRedshiftIamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceRedshiftIamPtrOutput { return v.RedshiftIam }).(ResourceRedshiftIamPtrOutput)
+}
+
+// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+func (o ResourceOutput) RedshiftServerlessIam() ResourceRedshiftServerlessIamPtrOutput {
+	return o.ApplyT(func(v *Resource) ResourceRedshiftServerlessIamPtrOutput { return v.RedshiftServerlessIam }).(ResourceRedshiftServerlessIamPtrOutput)
 }
 
 func (o ResourceOutput) SingleStore() ResourceSingleStorePtrOutput {

@@ -11,14 +11,8 @@ using Pulumi;
 namespace PiersKarsenbarg.Sdm.Inputs
 {
 
-    public sealed class ResourceSqlServerKerberosAdGetArgs : global::Pulumi.ResourceArgs
+    public sealed class ResourceRedshiftServerlessIamGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        /// </summary>
-        [Input("allowDeprecatedEncryption")]
-        public Input<bool>? AllowDeprecatedEncryption { get; set; }
-
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
@@ -28,8 +22,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// <summary>
         /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         /// </summary>
-        [Input("database")]
-        public Input<string>? Database { get; set; }
+        [Input("database", required: true)]
+        public Input<string> Database { get; set; } = null!;
 
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
@@ -42,38 +36,6 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// </summary>
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
-
-        [Input("keytab")]
-        private Input<string>? _keytab;
-
-        /// <summary>
-        /// The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
-        /// </summary>
-        public Input<string>? Keytab
-        {
-            get => _keytab;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _keytab = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        [Input("krbConfig")]
-        private Input<string>? _krbConfig;
-
-        /// <summary>
-        /// The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
-        /// </summary>
-        public Input<string>? KrbConfig
-        {
-            get => _krbConfig;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _krbConfig = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
 
         /// <summary>
         /// Unique human-readable name of the Resource.
@@ -106,28 +68,22 @@ namespace PiersKarsenbarg.Sdm.Inputs
         public Input<string>? ProxyClusterId { get; set; }
 
         /// <summary>
-        /// The Active Directory domain (realm) to which the configured username belongs.
+        /// The AWS region to connect to.
         /// </summary>
-        [Input("realm")]
-        public Input<string>? Realm { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The Schema to use to direct initial requests.
+        /// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         /// </summary>
-        [Input("schema")]
-        public Input<string>? Schema { get; set; }
+        [Input("roleAssumptionArn")]
+        public Input<string>? RoleAssumptionArn { get; set; }
 
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         [Input("secretStoreId")]
         public Input<string>? SecretStoreId { get; set; }
-
-        /// <summary>
-        /// The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
-        /// </summary>
-        [Input("serverSpn", required: true)]
-        public Input<string> ServerSpn { get; set; } = null!;
 
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -148,14 +104,15 @@ namespace PiersKarsenbarg.Sdm.Inputs
         }
 
         /// <summary>
-        /// The username to authenticate with.
+        /// Workgroup name in the serverless Redshift
+        /// * single_store:
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        [Input("workgroup", required: true)]
+        public Input<string> Workgroup { get; set; } = null!;
 
-        public ResourceSqlServerKerberosAdGetArgs()
+        public ResourceRedshiftServerlessIamGetArgs()
         {
         }
-        public static new ResourceSqlServerKerberosAdGetArgs Empty => new ResourceSqlServerKerberosAdGetArgs();
+        public static new ResourceRedshiftServerlessIamGetArgs Empty => new ResourceRedshiftServerlessIamGetArgs();
     }
 }

@@ -12,12 +12,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 {
 
     [OutputType]
-    public sealed class ResourceSqlServerKerberosAd
+    public sealed class ResourceRedshiftServerlessIam
     {
-        /// <summary>
-        /// Whether to allow deprecated encryption protocols to be used for this resource. For example, TLS 1.0.
-        /// </summary>
-        public readonly bool? AllowDeprecatedEncryption;
         /// <summary>
         /// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
         /// </summary>
@@ -25,7 +21,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// <summary>
         /// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
         /// </summary>
-        public readonly string? Database;
+        public readonly string Database;
         /// <summary>
         /// A filter applied to the routing logic to pin datasource to nodes.
         /// </summary>
@@ -34,14 +30,6 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// The host to dial to initiate a connection from the egress node to this resource.
         /// </summary>
         public readonly string Hostname;
-        /// <summary>
-        /// The keytab file in base64 format containing an entry with the principal name (username@realm) and key version number with which to authenticate.
-        /// </summary>
-        public readonly string? Keytab;
-        /// <summary>
-        /// The Kerberos 5 configuration file (krb5.conf) specifying the Active Directory server (KDC) for the configured realm.
-        /// </summary>
-        public readonly string? KrbConfig;
         /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
@@ -63,21 +51,17 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? ProxyClusterId;
         /// <summary>
-        /// The Active Directory domain (realm) to which the configured username belongs.
+        /// The AWS region to connect to.
         /// </summary>
-        public readonly string? Realm;
+        public readonly string Region;
         /// <summary>
-        /// The Schema to use to direct initial requests.
+        /// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
         /// </summary>
-        public readonly string? Schema;
+        public readonly string? RoleAssumptionArn;
         /// <summary>
         /// ID of the secret store containing credentials for this resource, if any.
         /// </summary>
         public readonly string? SecretStoreId;
-        /// <summary>
-        /// The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
-        /// </summary>
-        public readonly string ServerSpn;
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
         /// </summary>
@@ -87,25 +71,20 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
         /// <summary>
-        /// The username to authenticate with.
+        /// Workgroup name in the serverless Redshift
+        /// * single_store:
         /// </summary>
-        public readonly string? Username;
+        public readonly string Workgroup;
 
         [OutputConstructor]
-        private ResourceSqlServerKerberosAd(
-            bool? allowDeprecatedEncryption,
-
+        private ResourceRedshiftServerlessIam(
             string? bindInterface,
 
-            string? database,
+            string database,
 
             string? egressFilter,
 
             string hostname,
-
-            string? keytab,
-
-            string? krbConfig,
 
             string name,
 
@@ -117,39 +96,33 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? proxyClusterId,
 
-            string? realm,
+            string region,
 
-            string? schema,
+            string? roleAssumptionArn,
 
             string? secretStoreId,
-
-            string serverSpn,
 
             string? subdomain,
 
             ImmutableDictionary<string, string>? tags,
 
-            string? username)
+            string workgroup)
         {
-            AllowDeprecatedEncryption = allowDeprecatedEncryption;
             BindInterface = bindInterface;
             Database = database;
             EgressFilter = egressFilter;
             Hostname = hostname;
-            Keytab = keytab;
-            KrbConfig = krbConfig;
             Name = name;
             OverrideDatabase = overrideDatabase;
             Port = port;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;
-            Realm = realm;
-            Schema = schema;
+            Region = region;
+            RoleAssumptionArn = roleAssumptionArn;
             SecretStoreId = secretStoreId;
-            ServerSpn = serverSpn;
             Subdomain = subdomain;
             Tags = tags;
-            Username = username;
+            Workgroup = workgroup;
         }
     }
 }

@@ -31,6 +31,7 @@ class ResourceArgs:
                  amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
+                 amazon_esiam: Optional[pulumi.Input['ResourceAmazonEsiamArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
                  athena_iam: Optional[pulumi.Input['ResourceAthenaIamArgs']] = None,
@@ -78,6 +79,7 @@ class ResourceArgs:
                  http_no_auth: Optional[pulumi.Input['ResourceHttpNoAuthArgs']] = None,
                  kubernetes: Optional[pulumi.Input['ResourceKubernetesArgs']] = None,
                  kubernetes_basic_auth: Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']] = None,
+                 kubernetes_pod_identity: Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']] = None,
                  kubernetes_service_account: Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']] = None,
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']] = None,
@@ -104,6 +106,8 @@ class ResourceArgs:
                  rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
                  redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
+                 redshift_iam: Optional[pulumi.Input['ResourceRedshiftIamArgs']] = None,
+                 redshift_serverless_iam: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']] = None,
                  single_store: Optional[pulumi.Input['ResourceSingleStoreArgs']] = None,
                  snowflake: Optional[pulumi.Input['ResourceSnowflakeArgs']] = None,
                  snowsight: Optional[pulumi.Input['ResourceSnowsightArgs']] = None,
@@ -121,11 +125,13 @@ class ResourceArgs:
         """
         The set of arguments for constructing a Resource resource.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAthenaIamArgs'] athena_iam: AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAmazonEsiamArgs'] amazon_esiam: AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceRedshiftIamArgs'] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceRedshiftServerlessIamArgs'] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -148,6 +154,8 @@ class ResourceArgs:
             pulumi.set(__self__, "amazon_eks_user_impersonation", amazon_eks_user_impersonation)
         if amazon_es is not None:
             pulumi.set(__self__, "amazon_es", amazon_es)
+        if amazon_esiam is not None:
+            pulumi.set(__self__, "amazon_esiam", amazon_esiam)
         if amazonmq_amqp091 is not None:
             pulumi.set(__self__, "amazonmq_amqp091", amazonmq_amqp091)
         if athena is not None:
@@ -242,6 +250,8 @@ class ResourceArgs:
             pulumi.set(__self__, "kubernetes", kubernetes)
         if kubernetes_basic_auth is not None:
             pulumi.set(__self__, "kubernetes_basic_auth", kubernetes_basic_auth)
+        if kubernetes_pod_identity is not None:
+            pulumi.set(__self__, "kubernetes_pod_identity", kubernetes_pod_identity)
         if kubernetes_service_account is not None:
             pulumi.set(__self__, "kubernetes_service_account", kubernetes_service_account)
         if kubernetes_service_account_user_impersonation is not None:
@@ -294,6 +304,10 @@ class ResourceArgs:
             pulumi.set(__self__, "redis", redis)
         if redshift is not None:
             pulumi.set(__self__, "redshift", redshift)
+        if redshift_iam is not None:
+            pulumi.set(__self__, "redshift_iam", redshift_iam)
+        if redshift_serverless_iam is not None:
+            pulumi.set(__self__, "redshift_serverless_iam", redshift_serverless_iam)
         if single_store is not None:
             pulumi.set(__self__, "single_store", single_store)
         if snowflake is not None:
@@ -417,6 +431,18 @@ class ResourceArgs:
         pulumi.set(self, "amazon_es", value)
 
     @property
+    @pulumi.getter(name="amazonEsiam")
+    def amazon_esiam(self) -> Optional[pulumi.Input['ResourceAmazonEsiamArgs']]:
+        """
+        AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "amazon_esiam")
+
+    @amazon_esiam.setter
+    def amazon_esiam(self, value: Optional[pulumi.Input['ResourceAmazonEsiamArgs']]):
+        pulumi.set(self, "amazon_esiam", value)
+
+    @property
     @pulumi.getter(name="amazonmqAmqp091")
     def amazonmq_amqp091(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']]:
         return pulumi.get(self, "amazonmq_amqp091")
@@ -437,9 +463,6 @@ class ResourceArgs:
     @property
     @pulumi.getter(name="athenaIam")
     def athena_iam(self) -> Optional[pulumi.Input['ResourceAthenaIamArgs']]:
-        """
-        AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "athena_iam")
 
     @athena_iam.setter
@@ -846,6 +869,15 @@ class ResourceArgs:
         pulumi.set(self, "kubernetes_basic_auth", value)
 
     @property
+    @pulumi.getter(name="kubernetesPodIdentity")
+    def kubernetes_pod_identity(self) -> Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']]:
+        return pulumi.get(self, "kubernetes_pod_identity")
+
+    @kubernetes_pod_identity.setter
+    def kubernetes_pod_identity(self, value: Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']]):
+        pulumi.set(self, "kubernetes_pod_identity", value)
+
+    @property
     @pulumi.getter(name="kubernetesServiceAccount")
     def kubernetes_service_account(self) -> Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']]:
         return pulumi.get(self, "kubernetes_service_account")
@@ -1087,6 +1119,30 @@ class ResourceArgs:
     @redshift.setter
     def redshift(self, value: Optional[pulumi.Input['ResourceRedshiftArgs']]):
         pulumi.set(self, "redshift", value)
+
+    @property
+    @pulumi.getter(name="redshiftIam")
+    def redshift_iam(self) -> Optional[pulumi.Input['ResourceRedshiftIamArgs']]:
+        """
+        RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "redshift_iam")
+
+    @redshift_iam.setter
+    def redshift_iam(self, value: Optional[pulumi.Input['ResourceRedshiftIamArgs']]):
+        pulumi.set(self, "redshift_iam", value)
+
+    @property
+    @pulumi.getter(name="redshiftServerlessIam")
+    def redshift_serverless_iam(self) -> Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]:
+        """
+        RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "redshift_serverless_iam")
+
+    @redshift_serverless_iam.setter
+    def redshift_serverless_iam(self, value: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]):
+        pulumi.set(self, "redshift_serverless_iam", value)
 
     @property
     @pulumi.getter(name="singleStore")
@@ -1231,6 +1287,7 @@ class _ResourceState:
                  amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksInstanceProfileUserImpersonationArgs']] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input['ResourceAmazonEksUserImpersonationArgs']] = None,
                  amazon_es: Optional[pulumi.Input['ResourceAmazonEsArgs']] = None,
+                 amazon_esiam: Optional[pulumi.Input['ResourceAmazonEsiamArgs']] = None,
                  amazonmq_amqp091: Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']] = None,
                  athena: Optional[pulumi.Input['ResourceAthenaArgs']] = None,
                  athena_iam: Optional[pulumi.Input['ResourceAthenaIamArgs']] = None,
@@ -1278,6 +1335,7 @@ class _ResourceState:
                  http_no_auth: Optional[pulumi.Input['ResourceHttpNoAuthArgs']] = None,
                  kubernetes: Optional[pulumi.Input['ResourceKubernetesArgs']] = None,
                  kubernetes_basic_auth: Optional[pulumi.Input['ResourceKubernetesBasicAuthArgs']] = None,
+                 kubernetes_pod_identity: Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']] = None,
                  kubernetes_service_account: Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']] = None,
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input['ResourceKubernetesServiceAccountUserImpersonationArgs']] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input['ResourceKubernetesUserImpersonationArgs']] = None,
@@ -1304,6 +1362,8 @@ class _ResourceState:
                  rds_postgres_iam: Optional[pulumi.Input['ResourceRdsPostgresIamArgs']] = None,
                  redis: Optional[pulumi.Input['ResourceRedisArgs']] = None,
                  redshift: Optional[pulumi.Input['ResourceRedshiftArgs']] = None,
+                 redshift_iam: Optional[pulumi.Input['ResourceRedshiftIamArgs']] = None,
+                 redshift_serverless_iam: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']] = None,
                  single_store: Optional[pulumi.Input['ResourceSingleStoreArgs']] = None,
                  snowflake: Optional[pulumi.Input['ResourceSnowflakeArgs']] = None,
                  snowsight: Optional[pulumi.Input['ResourceSnowsightArgs']] = None,
@@ -1321,11 +1381,13 @@ class _ResourceState:
         """
         Input properties used for looking up and filtering Resource resources.
         :param pulumi.Input['ResourceAksBasicAuthArgs'] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input['ResourceAthenaIamArgs'] athena_iam: AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceAmazonEsiamArgs'] amazon_esiam: AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceKubernetesBasicAuthArgs'] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyHostArgs'] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMongoLegacyReplicasetArgs'] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceMtlsMysqlArgs'] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceRedshiftIamArgs'] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input['ResourceRedshiftServerlessIamArgs'] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input['ResourceTrinoArgs'] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         if aks is not None:
@@ -1348,6 +1410,8 @@ class _ResourceState:
             pulumi.set(__self__, "amazon_eks_user_impersonation", amazon_eks_user_impersonation)
         if amazon_es is not None:
             pulumi.set(__self__, "amazon_es", amazon_es)
+        if amazon_esiam is not None:
+            pulumi.set(__self__, "amazon_esiam", amazon_esiam)
         if amazonmq_amqp091 is not None:
             pulumi.set(__self__, "amazonmq_amqp091", amazonmq_amqp091)
         if athena is not None:
@@ -1442,6 +1506,8 @@ class _ResourceState:
             pulumi.set(__self__, "kubernetes", kubernetes)
         if kubernetes_basic_auth is not None:
             pulumi.set(__self__, "kubernetes_basic_auth", kubernetes_basic_auth)
+        if kubernetes_pod_identity is not None:
+            pulumi.set(__self__, "kubernetes_pod_identity", kubernetes_pod_identity)
         if kubernetes_service_account is not None:
             pulumi.set(__self__, "kubernetes_service_account", kubernetes_service_account)
         if kubernetes_service_account_user_impersonation is not None:
@@ -1494,6 +1560,10 @@ class _ResourceState:
             pulumi.set(__self__, "redis", redis)
         if redshift is not None:
             pulumi.set(__self__, "redshift", redshift)
+        if redshift_iam is not None:
+            pulumi.set(__self__, "redshift_iam", redshift_iam)
+        if redshift_serverless_iam is not None:
+            pulumi.set(__self__, "redshift_serverless_iam", redshift_serverless_iam)
         if single_store is not None:
             pulumi.set(__self__, "single_store", single_store)
         if snowflake is not None:
@@ -1617,6 +1687,18 @@ class _ResourceState:
         pulumi.set(self, "amazon_es", value)
 
     @property
+    @pulumi.getter(name="amazonEsiam")
+    def amazon_esiam(self) -> Optional[pulumi.Input['ResourceAmazonEsiamArgs']]:
+        """
+        AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "amazon_esiam")
+
+    @amazon_esiam.setter
+    def amazon_esiam(self, value: Optional[pulumi.Input['ResourceAmazonEsiamArgs']]):
+        pulumi.set(self, "amazon_esiam", value)
+
+    @property
     @pulumi.getter(name="amazonmqAmqp091")
     def amazonmq_amqp091(self) -> Optional[pulumi.Input['ResourceAmazonmqAmqp091Args']]:
         return pulumi.get(self, "amazonmq_amqp091")
@@ -1637,9 +1719,6 @@ class _ResourceState:
     @property
     @pulumi.getter(name="athenaIam")
     def athena_iam(self) -> Optional[pulumi.Input['ResourceAthenaIamArgs']]:
-        """
-        AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "athena_iam")
 
     @athena_iam.setter
@@ -2046,6 +2125,15 @@ class _ResourceState:
         pulumi.set(self, "kubernetes_basic_auth", value)
 
     @property
+    @pulumi.getter(name="kubernetesPodIdentity")
+    def kubernetes_pod_identity(self) -> Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']]:
+        return pulumi.get(self, "kubernetes_pod_identity")
+
+    @kubernetes_pod_identity.setter
+    def kubernetes_pod_identity(self, value: Optional[pulumi.Input['ResourceKubernetesPodIdentityArgs']]):
+        pulumi.set(self, "kubernetes_pod_identity", value)
+
+    @property
     @pulumi.getter(name="kubernetesServiceAccount")
     def kubernetes_service_account(self) -> Optional[pulumi.Input['ResourceKubernetesServiceAccountArgs']]:
         return pulumi.get(self, "kubernetes_service_account")
@@ -2287,6 +2375,30 @@ class _ResourceState:
     @redshift.setter
     def redshift(self, value: Optional[pulumi.Input['ResourceRedshiftArgs']]):
         pulumi.set(self, "redshift", value)
+
+    @property
+    @pulumi.getter(name="redshiftIam")
+    def redshift_iam(self) -> Optional[pulumi.Input['ResourceRedshiftIamArgs']]:
+        """
+        RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "redshift_iam")
+
+    @redshift_iam.setter
+    def redshift_iam(self, value: Optional[pulumi.Input['ResourceRedshiftIamArgs']]):
+        pulumi.set(self, "redshift_iam", value)
+
+    @property
+    @pulumi.getter(name="redshiftServerlessIam")
+    def redshift_serverless_iam(self) -> Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]:
+        """
+        RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "redshift_serverless_iam")
+
+    @redshift_serverless_iam.setter
+    def redshift_serverless_iam(self, value: Optional[pulumi.Input['ResourceRedshiftServerlessIamArgs']]):
+        pulumi.set(self, "redshift_serverless_iam", value)
 
     @property
     @pulumi.getter(name="singleStore")
@@ -2433,6 +2545,7 @@ class Resource(pulumi.CustomResource):
                  amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
                  amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
+                 amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
                  athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
                  athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
@@ -2480,6 +2593,7 @@ class Resource(pulumi.CustomResource):
                  http_no_auth: Optional[pulumi.Input[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
                  kubernetes: Optional[pulumi.Input[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
                  kubernetes_basic_auth: Optional[pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
+                 kubernetes_pod_identity: Optional[pulumi.Input[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
                  kubernetes_service_account: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
@@ -2506,6 +2620,8 @@ class Resource(pulumi.CustomResource):
                  rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
                  redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
                  redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
+                 redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
+                 redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
                  single_store: Optional[pulumi.Input[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
                  snowflake: Optional[pulumi.Input[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
                  snowsight: Optional[pulumi.Input[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
@@ -2533,11 +2649,13 @@ class Resource(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']] athena_iam: AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']] amazon_esiam: AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         ...
@@ -2580,6 +2698,7 @@ class Resource(pulumi.CustomResource):
                  amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
                  amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
                  amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
+                 amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
                  amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
                  athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
                  athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
@@ -2627,6 +2746,7 @@ class Resource(pulumi.CustomResource):
                  http_no_auth: Optional[pulumi.Input[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
                  kubernetes: Optional[pulumi.Input[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
                  kubernetes_basic_auth: Optional[pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
+                 kubernetes_pod_identity: Optional[pulumi.Input[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
                  kubernetes_service_account: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
                  kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
                  kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
@@ -2653,6 +2773,8 @@ class Resource(pulumi.CustomResource):
                  rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
                  redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
                  redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
+                 redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
+                 redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
                  single_store: Optional[pulumi.Input[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
                  snowflake: Optional[pulumi.Input[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
                  snowsight: Optional[pulumi.Input[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
@@ -2686,6 +2808,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["amazon_eks_instance_profile_user_impersonation"] = amazon_eks_instance_profile_user_impersonation
             __props__.__dict__["amazon_eks_user_impersonation"] = amazon_eks_user_impersonation
             __props__.__dict__["amazon_es"] = amazon_es
+            __props__.__dict__["amazon_esiam"] = amazon_esiam
             __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
             __props__.__dict__["athena"] = athena
             __props__.__dict__["athena_iam"] = athena_iam
@@ -2733,6 +2856,7 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["http_no_auth"] = http_no_auth
             __props__.__dict__["kubernetes"] = kubernetes
             __props__.__dict__["kubernetes_basic_auth"] = kubernetes_basic_auth
+            __props__.__dict__["kubernetes_pod_identity"] = kubernetes_pod_identity
             __props__.__dict__["kubernetes_service_account"] = kubernetes_service_account
             __props__.__dict__["kubernetes_service_account_user_impersonation"] = kubernetes_service_account_user_impersonation
             __props__.__dict__["kubernetes_user_impersonation"] = kubernetes_user_impersonation
@@ -2759,6 +2883,8 @@ class Resource(pulumi.CustomResource):
             __props__.__dict__["rds_postgres_iam"] = rds_postgres_iam
             __props__.__dict__["redis"] = redis
             __props__.__dict__["redshift"] = redshift
+            __props__.__dict__["redshift_iam"] = redshift_iam
+            __props__.__dict__["redshift_serverless_iam"] = redshift_serverless_iam
             __props__.__dict__["single_store"] = single_store
             __props__.__dict__["snowflake"] = snowflake
             __props__.__dict__["snowsight"] = snowsight
@@ -2793,6 +2919,7 @@ class Resource(pulumi.CustomResource):
             amazon_eks_instance_profile_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksInstanceProfileUserImpersonationArgs', 'ResourceAmazonEksInstanceProfileUserImpersonationArgsDict']]] = None,
             amazon_eks_user_impersonation: Optional[pulumi.Input[Union['ResourceAmazonEksUserImpersonationArgs', 'ResourceAmazonEksUserImpersonationArgsDict']]] = None,
             amazon_es: Optional[pulumi.Input[Union['ResourceAmazonEsArgs', 'ResourceAmazonEsArgsDict']]] = None,
+            amazon_esiam: Optional[pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']]] = None,
             amazonmq_amqp091: Optional[pulumi.Input[Union['ResourceAmazonmqAmqp091Args', 'ResourceAmazonmqAmqp091ArgsDict']]] = None,
             athena: Optional[pulumi.Input[Union['ResourceAthenaArgs', 'ResourceAthenaArgsDict']]] = None,
             athena_iam: Optional[pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']]] = None,
@@ -2840,6 +2967,7 @@ class Resource(pulumi.CustomResource):
             http_no_auth: Optional[pulumi.Input[Union['ResourceHttpNoAuthArgs', 'ResourceHttpNoAuthArgsDict']]] = None,
             kubernetes: Optional[pulumi.Input[Union['ResourceKubernetesArgs', 'ResourceKubernetesArgsDict']]] = None,
             kubernetes_basic_auth: Optional[pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']]] = None,
+            kubernetes_pod_identity: Optional[pulumi.Input[Union['ResourceKubernetesPodIdentityArgs', 'ResourceKubernetesPodIdentityArgsDict']]] = None,
             kubernetes_service_account: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountArgs', 'ResourceKubernetesServiceAccountArgsDict']]] = None,
             kubernetes_service_account_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesServiceAccountUserImpersonationArgs', 'ResourceKubernetesServiceAccountUserImpersonationArgsDict']]] = None,
             kubernetes_user_impersonation: Optional[pulumi.Input[Union['ResourceKubernetesUserImpersonationArgs', 'ResourceKubernetesUserImpersonationArgsDict']]] = None,
@@ -2866,6 +2994,8 @@ class Resource(pulumi.CustomResource):
             rds_postgres_iam: Optional[pulumi.Input[Union['ResourceRdsPostgresIamArgs', 'ResourceRdsPostgresIamArgsDict']]] = None,
             redis: Optional[pulumi.Input[Union['ResourceRedisArgs', 'ResourceRedisArgsDict']]] = None,
             redshift: Optional[pulumi.Input[Union['ResourceRedshiftArgs', 'ResourceRedshiftArgsDict']]] = None,
+            redshift_iam: Optional[pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']]] = None,
+            redshift_serverless_iam: Optional[pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']]] = None,
             single_store: Optional[pulumi.Input[Union['ResourceSingleStoreArgs', 'ResourceSingleStoreArgsDict']]] = None,
             snowflake: Optional[pulumi.Input[Union['ResourceSnowflakeArgs', 'ResourceSnowflakeArgsDict']]] = None,
             snowsight: Optional[pulumi.Input[Union['ResourceSnowsightArgs', 'ResourceSnowsightArgsDict']]] = None,
@@ -2888,11 +3018,13 @@ class Resource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ResourceAksBasicAuthArgs', 'ResourceAksBasicAuthArgsDict']] aks_basic_auth: AKSBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        :param pulumi.Input[Union['ResourceAthenaIamArgs', 'ResourceAthenaIamArgsDict']] athena_iam: AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceAmazonEsiamArgs', 'ResourceAmazonEsiamArgsDict']] amazon_esiam: AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceKubernetesBasicAuthArgs', 'ResourceKubernetesBasicAuthArgsDict']] kubernetes_basic_auth: KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyHostArgs', 'ResourceMongoLegacyHostArgsDict']] mongo_legacy_host: MongoLegacyHost is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMongoLegacyReplicasetArgs', 'ResourceMongoLegacyReplicasetArgsDict']] mongo_legacy_replicaset: MongoLegacyReplicaset is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceMtlsMysqlArgs', 'ResourceMtlsMysqlArgsDict']] mtls_mysql: MTLSMysql is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceRedshiftIamArgs', 'ResourceRedshiftIamArgsDict']] redshift_iam: RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        :param pulumi.Input[Union['ResourceRedshiftServerlessIamArgs', 'ResourceRedshiftServerlessIamArgsDict']] redshift_serverless_iam: RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
         :param pulumi.Input[Union['ResourceTrinoArgs', 'ResourceTrinoArgsDict']] trino: Trino is currently unstable, and its API may change, or it may be removed, without a major version bump.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2909,6 +3041,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["amazon_eks_instance_profile_user_impersonation"] = amazon_eks_instance_profile_user_impersonation
         __props__.__dict__["amazon_eks_user_impersonation"] = amazon_eks_user_impersonation
         __props__.__dict__["amazon_es"] = amazon_es
+        __props__.__dict__["amazon_esiam"] = amazon_esiam
         __props__.__dict__["amazonmq_amqp091"] = amazonmq_amqp091
         __props__.__dict__["athena"] = athena
         __props__.__dict__["athena_iam"] = athena_iam
@@ -2956,6 +3089,7 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["http_no_auth"] = http_no_auth
         __props__.__dict__["kubernetes"] = kubernetes
         __props__.__dict__["kubernetes_basic_auth"] = kubernetes_basic_auth
+        __props__.__dict__["kubernetes_pod_identity"] = kubernetes_pod_identity
         __props__.__dict__["kubernetes_service_account"] = kubernetes_service_account
         __props__.__dict__["kubernetes_service_account_user_impersonation"] = kubernetes_service_account_user_impersonation
         __props__.__dict__["kubernetes_user_impersonation"] = kubernetes_user_impersonation
@@ -2982,6 +3116,8 @@ class Resource(pulumi.CustomResource):
         __props__.__dict__["rds_postgres_iam"] = rds_postgres_iam
         __props__.__dict__["redis"] = redis
         __props__.__dict__["redshift"] = redshift
+        __props__.__dict__["redshift_iam"] = redshift_iam
+        __props__.__dict__["redshift_serverless_iam"] = redshift_serverless_iam
         __props__.__dict__["single_store"] = single_store
         __props__.__dict__["snowflake"] = snowflake
         __props__.__dict__["snowsight"] = snowsight
@@ -3052,6 +3188,14 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "amazon_es")
 
     @property
+    @pulumi.getter(name="amazonEsiam")
+    def amazon_esiam(self) -> pulumi.Output[Optional['outputs.ResourceAmazonEsiam']]:
+        """
+        AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "amazon_esiam")
+
+    @property
     @pulumi.getter(name="amazonmqAmqp091")
     def amazonmq_amqp091(self) -> pulumi.Output[Optional['outputs.ResourceAmazonmqAmqp091']]:
         return pulumi.get(self, "amazonmq_amqp091")
@@ -3064,9 +3208,6 @@ class Resource(pulumi.CustomResource):
     @property
     @pulumi.getter(name="athenaIam")
     def athena_iam(self) -> pulumi.Output[Optional['outputs.ResourceAthenaIam']]:
-        """
-        AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        """
         return pulumi.get(self, "athena_iam")
 
     @property
@@ -3293,6 +3434,11 @@ class Resource(pulumi.CustomResource):
         return pulumi.get(self, "kubernetes_basic_auth")
 
     @property
+    @pulumi.getter(name="kubernetesPodIdentity")
+    def kubernetes_pod_identity(self) -> pulumi.Output[Optional['outputs.ResourceKubernetesPodIdentity']]:
+        return pulumi.get(self, "kubernetes_pod_identity")
+
+    @property
     @pulumi.getter(name="kubernetesServiceAccount")
     def kubernetes_service_account(self) -> pulumi.Output[Optional['outputs.ResourceKubernetesServiceAccount']]:
         return pulumi.get(self, "kubernetes_service_account")
@@ -3430,6 +3576,22 @@ class Resource(pulumi.CustomResource):
     @pulumi.getter
     def redshift(self) -> pulumi.Output[Optional['outputs.ResourceRedshift']]:
         return pulumi.get(self, "redshift")
+
+    @property
+    @pulumi.getter(name="redshiftIam")
+    def redshift_iam(self) -> pulumi.Output[Optional['outputs.ResourceRedshiftIam']]:
+        """
+        RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "redshift_iam")
+
+    @property
+    @pulumi.getter(name="redshiftServerlessIam")
+    def redshift_serverless_iam(self) -> pulumi.Output[Optional['outputs.ResourceRedshiftServerlessIam']]:
+        """
+        RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        """
+        return pulumi.get(self, "redshift_serverless_iam")
 
     @property
     @pulumi.getter(name="singleStore")

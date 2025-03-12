@@ -524,6 +524,7 @@ export interface GetResourceResource {
     amazonEksInstanceProfiles: outputs.GetResourceResourceAmazonEksInstanceProfile[];
     amazonEksUserImpersonations: outputs.GetResourceResourceAmazonEksUserImpersonation[];
     amazonEs: outputs.GetResourceResourceAmazonE[];
+    amazonEsiams: outputs.GetResourceResourceAmazonEsiam[];
     amazonmqAmqp091s: outputs.GetResourceResourceAmazonmqAmqp091[];
     athenaIams: outputs.GetResourceResourceAthenaIam[];
     athenas: outputs.GetResourceResourceAthena[];
@@ -571,6 +572,7 @@ export interface GetResourceResource {
     httpNoAuths: outputs.GetResourceResourceHttpNoAuth[];
     kubernetes: outputs.GetResourceResourceKubernete[];
     kubernetesBasicAuths: outputs.GetResourceResourceKubernetesBasicAuth[];
+    kubernetesPodIdentities: outputs.GetResourceResourceKubernetesPodIdentity[];
     kubernetesServiceAccountUserImpersonations: outputs.GetResourceResourceKubernetesServiceAccountUserImpersonation[];
     kubernetesServiceAccounts: outputs.GetResourceResourceKubernetesServiceAccount[];
     kubernetesUserImpersonations: outputs.GetResourceResourceKubernetesUserImpersonation[];
@@ -596,6 +598,8 @@ export interface GetResourceResource {
     rdps: outputs.GetResourceResourceRdp[];
     rdsPostgresIams: outputs.GetResourceResourceRdsPostgresIam[];
     redis: outputs.GetResourceResourceRedi[];
+    redshiftIams: outputs.GetResourceResourceRedshiftIam[];
+    redshiftServerlessIams: outputs.GetResourceResourceRedshiftServerlessIam[];
     redshifts: outputs.GetResourceResourceRedshift[];
     singleStores: outputs.GetResourceResourceSingleStore[];
     snowflakes: outputs.GetResourceResourceSnowflake[];
@@ -1335,6 +1339,65 @@ export interface GetResourceResourceAmazonEksUserImpersonation {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceAmazonEsiam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
+    endpoint?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
 }
 
 export interface GetResourceResourceAmazonmqAmqp091 {
@@ -4199,6 +4262,57 @@ export interface GetResourceResourceKubernetesBasicAuth {
     username?: string;
 }
 
+export interface GetResourceResourceKubernetesPodIdentity {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
+    certificateAuthority?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+     */
+    healthcheckNamespace?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface GetResourceResourceKubernetesServiceAccount {
     /**
      * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
@@ -5853,6 +5967,141 @@ export interface GetResourceResourceRedshift {
      * The username to authenticate with.
      */
     username?: string;
+}
+
+export interface GetResourceResourceRedshiftIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * Cluster Identified of Redshift cluster
+     */
+    clusterId?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface GetResourceResourceRedshiftServerlessIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface?: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname?: string;
+    /**
+     * Unique identifier of the Resource.
+     */
+    id?: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name?: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride?: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region?: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain?: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Workgroup name in the serverless Redshift
+     * * single_store:
+     */
+    workgroup?: string;
 }
 
 export interface GetResourceResourceSingleStore {
@@ -8351,6 +8600,61 @@ export interface ResourceAmazonEs {
      * Tags is a map of key, value pairs.
      */
     tags?: {[key: string]: string};
+}
+
+export interface ResourceAmazonEsiam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+     */
+    endpoint: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * The role to assume after logging in.
+     */
+    roleArn?: string;
+    /**
+     * The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+     */
+    roleExternalId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * If set, TLS must be used to connect to this resource.
+     */
+    tlsRequired?: boolean;
 }
 
 export interface ResourceAmazonmqAmqp091 {
@@ -11027,6 +11331,53 @@ export interface ResourceKubernetesBasicAuth {
     username?: string;
 }
 
+export interface ResourceKubernetesPodIdentity {
+    /**
+     * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+     */
+    allowResourceRoleBypass?: boolean;
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The CA to authenticate TLS connections with.
+     */
+    certificateAuthority?: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+     */
+    healthcheckNamespace: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
 export interface ResourceKubernetesServiceAccount {
     /**
      * If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
@@ -12579,6 +12930,133 @@ export interface ResourceRedshift {
     username?: string;
 }
 
+export interface ResourceRedshiftIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * Cluster Identified of Redshift cluster
+     */
+    clusterId: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+}
+
+export interface ResourceRedshiftServerlessIam {
+    /**
+     * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+     */
+    bindInterface: string;
+    /**
+     * The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+     */
+    database: string;
+    /**
+     * A filter applied to the routing logic to pin datasource to nodes.
+     */
+    egressFilter?: string;
+    /**
+     * The host to dial to initiate a connection from the egress node to this resource.
+     */
+    hostname: string;
+    /**
+     * Unique human-readable name of the Resource.
+     */
+    name: string;
+    /**
+     * If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+     */
+    overrideDatabase?: boolean;
+    /**
+     * The port to dial to initiate a connection from the egress node to this resource.
+     */
+    port?: number;
+    /**
+     * The local port used by clients to connect to this resource.
+     */
+    portOverride: number;
+    /**
+     * ID of the proxy cluster for this resource, if any.
+     */
+    proxyClusterId?: string;
+    /**
+     * The AWS region to connect to.
+     */
+    region: string;
+    /**
+     * If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+     */
+    roleAssumptionArn?: string;
+    /**
+     * ID of the secret store containing credentials for this resource, if any.
+     */
+    secretStoreId?: string;
+    /**
+     * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+     */
+    subdomain: string;
+    /**
+     * Tags is a map of key, value pairs.
+     */
+    tags?: {[key: string]: string};
+    /**
+     * Workgroup name in the serverless Redshift
+     * * single_store:
+     */
+    workgroup: string;
+}
+
 export interface ResourceSingleStore {
     /**
      * The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
@@ -12943,7 +13421,7 @@ export interface ResourceSqlServerKerberosAd {
     /**
      * The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
      */
-    serverSpn?: string;
+    serverSpn: string;
     /**
      * Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
      */

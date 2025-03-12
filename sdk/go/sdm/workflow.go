@@ -26,13 +26,9 @@ import (
 type Workflow struct {
 	pulumi.CustomResourceState
 
-	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-	// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestFixedDuration pulumi.StringPtrOutput `pulumi:"accessRequestFixedDuration"`
-	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-	// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestMaxDuration pulumi.StringPtrOutput `pulumi:"accessRequestMaxDuration"`
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules pulumi.StringOutput `pulumi:"accessRules"`
@@ -80,13 +76,9 @@ func GetWorkflow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workflow resources.
 type workflowState struct {
-	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-	// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestFixedDuration *string `pulumi:"accessRequestFixedDuration"`
-	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-	// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestMaxDuration *string `pulumi:"accessRequestMaxDuration"`
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules *string `pulumi:"accessRules"`
@@ -105,13 +97,9 @@ type workflowState struct {
 }
 
 type WorkflowState struct {
-	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-	// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestFixedDuration pulumi.StringPtrInput
-	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-	// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestMaxDuration pulumi.StringPtrInput
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules pulumi.StringPtrInput
@@ -134,13 +122,9 @@ func (WorkflowState) ElementType() reflect.Type {
 }
 
 type workflowArgs struct {
-	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-	// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestFixedDuration *string `pulumi:"accessRequestFixedDuration"`
-	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-	// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestMaxDuration *string `pulumi:"accessRequestMaxDuration"`
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules *string `pulumi:"accessRules"`
@@ -160,13 +144,9 @@ type workflowArgs struct {
 
 // The set of arguments for constructing a Workflow resource.
 type WorkflowArgs struct {
-	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-	// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestFixedDuration pulumi.StringPtrInput
-	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-	// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-	// settings.
+	// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 	AccessRequestMaxDuration pulumi.StringPtrInput
 	// AccessRules is a list of access rules defining the resources this Workflow provides access to.
 	AccessRules pulumi.StringPtrInput
@@ -271,16 +251,12 @@ func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) Workflo
 	return o
 }
 
-// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-// neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-// settings.
+// Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 func (o WorkflowOutput) AccessRequestFixedDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.AccessRequestFixedDuration }).(pulumi.StringPtrOutput)
 }
 
-// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-// If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-// settings.
+// Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
 func (o WorkflowOutput) AccessRequestMaxDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.AccessRequestMaxDuration }).(pulumi.StringPtrOutput)
 }

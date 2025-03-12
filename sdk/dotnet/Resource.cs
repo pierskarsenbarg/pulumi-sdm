@@ -55,15 +55,18 @@ namespace PiersKarsenbarg.Sdm
         [Output("amazonEs")]
         public Output<Outputs.ResourceAmazonEs?> AmazonEs { get; private set; } = null!;
 
+        /// <summary>
+        /// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("amazonEsiam")]
+        public Output<Outputs.ResourceAmazonEsiam?> AmazonEsiam { get; private set; } = null!;
+
         [Output("amazonmqAmqp091")]
         public Output<Outputs.ResourceAmazonmqAmqp091?> AmazonmqAmqp091 { get; private set; } = null!;
 
         [Output("athena")]
         public Output<Outputs.ResourceAthena?> Athena { get; private set; } = null!;
 
-        /// <summary>
-        /// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Output("athenaIam")]
         public Output<Outputs.ResourceAthenaIam?> AthenaIam { get; private set; } = null!;
 
@@ -202,6 +205,9 @@ namespace PiersKarsenbarg.Sdm
         [Output("kubernetesBasicAuth")]
         public Output<Outputs.ResourceKubernetesBasicAuth?> KubernetesBasicAuth { get; private set; } = null!;
 
+        [Output("kubernetesPodIdentity")]
+        public Output<Outputs.ResourceKubernetesPodIdentity?> KubernetesPodIdentity { get; private set; } = null!;
+
         [Output("kubernetesServiceAccount")]
         public Output<Outputs.ResourceKubernetesServiceAccount?> KubernetesServiceAccount { get; private set; } = null!;
 
@@ -288,6 +294,18 @@ namespace PiersKarsenbarg.Sdm
 
         [Output("redshift")]
         public Output<Outputs.ResourceRedshift?> Redshift { get; private set; } = null!;
+
+        /// <summary>
+        /// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("redshiftIam")]
+        public Output<Outputs.ResourceRedshiftIam?> RedshiftIam { get; private set; } = null!;
+
+        /// <summary>
+        /// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Output("redshiftServerlessIam")]
+        public Output<Outputs.ResourceRedshiftServerlessIam?> RedshiftServerlessIam { get; private set; } = null!;
 
         [Output("singleStore")]
         public Output<Outputs.ResourceSingleStore?> SingleStore { get; private set; } = null!;
@@ -414,15 +432,18 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEs")]
         public Input<Inputs.ResourceAmazonEsArgs>? AmazonEs { get; set; }
 
+        /// <summary>
+        /// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("amazonEsiam")]
+        public Input<Inputs.ResourceAmazonEsiamArgs>? AmazonEsiam { get; set; }
+
         [Input("amazonmqAmqp091")]
         public Input<Inputs.ResourceAmazonmqAmqp091Args>? AmazonmqAmqp091 { get; set; }
 
         [Input("athena")]
         public Input<Inputs.ResourceAthenaArgs>? Athena { get; set; }
 
-        /// <summary>
-        /// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("athenaIam")]
         public Input<Inputs.ResourceAthenaIamArgs>? AthenaIam { get; set; }
 
@@ -561,6 +582,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("kubernetesBasicAuth")]
         public Input<Inputs.ResourceKubernetesBasicAuthArgs>? KubernetesBasicAuth { get; set; }
 
+        [Input("kubernetesPodIdentity")]
+        public Input<Inputs.ResourceKubernetesPodIdentityArgs>? KubernetesPodIdentity { get; set; }
+
         [Input("kubernetesServiceAccount")]
         public Input<Inputs.ResourceKubernetesServiceAccountArgs>? KubernetesServiceAccount { get; set; }
 
@@ -648,6 +672,18 @@ namespace PiersKarsenbarg.Sdm
         [Input("redshift")]
         public Input<Inputs.ResourceRedshiftArgs>? Redshift { get; set; }
 
+        /// <summary>
+        /// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("redshiftIam")]
+        public Input<Inputs.ResourceRedshiftIamArgs>? RedshiftIam { get; set; }
+
+        /// <summary>
+        /// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("redshiftServerlessIam")]
+        public Input<Inputs.ResourceRedshiftServerlessIamArgs>? RedshiftServerlessIam { get; set; }
+
         [Input("singleStore")]
         public Input<Inputs.ResourceSingleStoreArgs>? SingleStore { get; set; }
 
@@ -734,15 +770,18 @@ namespace PiersKarsenbarg.Sdm
         [Input("amazonEs")]
         public Input<Inputs.ResourceAmazonEsGetArgs>? AmazonEs { get; set; }
 
+        /// <summary>
+        /// AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("amazonEsiam")]
+        public Input<Inputs.ResourceAmazonEsiamGetArgs>? AmazonEsiam { get; set; }
+
         [Input("amazonmqAmqp091")]
         public Input<Inputs.ResourceAmazonmqAmqp091GetArgs>? AmazonmqAmqp091 { get; set; }
 
         [Input("athena")]
         public Input<Inputs.ResourceAthenaGetArgs>? Athena { get; set; }
 
-        /// <summary>
-        /// AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-        /// </summary>
         [Input("athenaIam")]
         public Input<Inputs.ResourceAthenaIamGetArgs>? AthenaIam { get; set; }
 
@@ -881,6 +920,9 @@ namespace PiersKarsenbarg.Sdm
         [Input("kubernetesBasicAuth")]
         public Input<Inputs.ResourceKubernetesBasicAuthGetArgs>? KubernetesBasicAuth { get; set; }
 
+        [Input("kubernetesPodIdentity")]
+        public Input<Inputs.ResourceKubernetesPodIdentityGetArgs>? KubernetesPodIdentity { get; set; }
+
         [Input("kubernetesServiceAccount")]
         public Input<Inputs.ResourceKubernetesServiceAccountGetArgs>? KubernetesServiceAccount { get; set; }
 
@@ -967,6 +1009,18 @@ namespace PiersKarsenbarg.Sdm
 
         [Input("redshift")]
         public Input<Inputs.ResourceRedshiftGetArgs>? Redshift { get; set; }
+
+        /// <summary>
+        /// RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("redshiftIam")]
+        public Input<Inputs.ResourceRedshiftIamGetArgs>? RedshiftIam { get; set; }
+
+        /// <summary>
+        /// RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+        /// </summary>
+        [Input("redshiftServerlessIam")]
+        public Input<Inputs.ResourceRedshiftServerlessIamGetArgs>? RedshiftServerlessIam { get; set; }
 
         [Input("singleStore")]
         public Input<Inputs.ResourceSingleStoreGetArgs>? SingleStore { get; set; }

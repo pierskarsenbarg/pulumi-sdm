@@ -1316,6 +1316,84 @@
                 }
             }
         },
+        "sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoint",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "endpoint",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091": {
             "properties": {
                 "bindInterface": {
@@ -5068,6 +5146,74 @@
                 }
             }
         },
+        "sdm:index/ResourceKubernetesPodIdentity:ResourceKubernetesPodIdentity": {
+            "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "certificateAuthority": {
+                    "type": "string",
+                    "description": "The CA to authenticate TLS connections with.\n",
+                    "secret": true
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "healthcheckNamespace": {
+                    "type": "string",
+                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "healthcheckNamespace",
+                        "name",
+                        "portOverride",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount": {
             "properties": {
                 "allowResourceRoleBypass": {
@@ -7234,6 +7380,186 @@
                 }
             }
         },
+        "sdm:index/ResourceRedshiftIam:ResourceRedshiftIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "Cluster Identified of Redshift cluster\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean",
+                    "description": "If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "clusterId",
+                "database",
+                "hostname",
+                "name",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "clusterId",
+                        "database",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain"
+                    ]
+                }
+            }
+        },
+        "sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean",
+                    "description": "If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n",
+                    "willReplaceOnChanges": true
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "workgroup": {
+                    "type": "string",
+                    "description": "Workgroup name in the serverless Redshift\n* single_store:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "hostname",
+                "name",
+                "region",
+                "workgroup"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "bindInterface",
+                        "database",
+                        "hostname",
+                        "name",
+                        "portOverride",
+                        "region",
+                        "subdomain",
+                        "workgroup"
+                    ]
+                }
+            }
+        },
         "sdm:index/ResourceSingleStore:ResourceSingleStore": {
             "properties": {
                 "bindInterface": {
@@ -7733,7 +8059,8 @@
             "type": "object",
             "required": [
                 "hostname",
-                "name"
+                "name",
+                "serverSpn"
             ],
             "language": {
                 "nodejs": {
@@ -7742,6 +8069,7 @@
                         "hostname",
                         "name",
                         "portOverride",
+                        "serverSpn",
                         "subdomain"
                     ]
                 }
@@ -9937,6 +10265,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceAmazonE:getResourceResourceAmazonE"
                     }
                 },
+                "amazonEsiams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceAmazonEsiam:getResourceResourceAmazonEsiam"
+                    }
+                },
                 "amazonmqAmqp091s": {
                     "type": "array",
                     "items": {
@@ -10219,6 +10553,12 @@
                         "$ref": "#/types/sdm:index/getResourceResourceKubernetesBasicAuth:getResourceResourceKubernetesBasicAuth"
                     }
                 },
+                "kubernetesPodIdentities": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceKubernetesPodIdentity:getResourceResourceKubernetesPodIdentity"
+                    }
+                },
                 "kubernetesServiceAccountUserImpersonations": {
                     "type": "array",
                     "items": {
@@ -10369,6 +10709,18 @@
                         "$ref": "#/types/sdm:index/getResourceResourceRedi:getResourceResourceRedi"
                     }
                 },
+                "redshiftIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceRedshiftIam:getResourceResourceRedshiftIam"
+                    }
+                },
+                "redshiftServerlessIams": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/sdm:index/getResourceResourceRedshiftServerlessIam:getResourceResourceRedshiftServerlessIam"
+                    }
+                },
                 "redshifts": {
                     "type": "array",
                     "items": {
@@ -10472,6 +10824,7 @@
                 "amazonEksInstanceProfileUserImpersonations",
                 "amazonEksUserImpersonations",
                 "amazonEs",
+                "amazonEsiams",
                 "amazonmqAmqp091s",
                 "athenas",
                 "athenaIams",
@@ -10519,6 +10872,7 @@
                 "httpNoAuths",
                 "kubernetes",
                 "kubernetesBasicAuths",
+                "kubernetesPodIdentities",
                 "kubernetesServiceAccounts",
                 "kubernetesServiceAccountUserImpersonations",
                 "kubernetesUserImpersonations",
@@ -10545,6 +10899,8 @@
                 "rdsPostgresIams",
                 "redis",
                 "redshifts",
+                "redshiftIams",
+                "redshiftServerlessIams",
                 "singleStores",
                 "snowflakes",
                 "snowsights",
@@ -11350,6 +11706,70 @@
                         "type": "string"
                     },
                     "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceAmazonEsiam:getResourceResourceAmazonEsiam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleArn": {
+                    "type": "string",
+                    "description": "The role to assume after logging in.\n"
+                },
+                "roleExternalId": {
+                    "type": "string",
+                    "description": "The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "tlsRequired": {
+                    "type": "boolean",
+                    "description": "If set, TLS must be used to connect to this resource.\n"
                 }
             },
             "type": "object"
@@ -14483,6 +14903,63 @@
             },
             "type": "object"
         },
+        "sdm:index/getResourceResourceKubernetesPodIdentity:getResourceResourceKubernetesPodIdentity": {
+            "properties": {
+                "allowResourceRoleBypass": {
+                    "type": "boolean",
+                    "description": "If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.\n"
+                },
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "certificateAuthority": {
+                    "type": "string",
+                    "description": "The CA to authenticate TLS connections with.\n",
+                    "secret": true
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "healthcheckNamespace": {
+                    "type": "string",
+                    "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
         "sdm:index/getResourceResourceKubernetesServiceAccount:getResourceResourceKubernetesServiceAccount": {
             "properties": {
                 "allowResourceRoleBypass": {
@@ -16292,6 +16769,150 @@
                 "username": {
                     "type": "string",
                     "description": "The username to authenticate with.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceRedshiftIam:getResourceResourceRedshiftIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "Cluster Identified of Redshift cluster\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean",
+                    "description": "If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                }
+            },
+            "type": "object"
+        },
+        "sdm:index/getResourceResourceRedshiftServerlessIam:getResourceResourceRedshiftServerlessIam": {
+            "properties": {
+                "bindInterface": {
+                    "type": "string",
+                    "description": "The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.\n"
+                },
+                "database": {
+                    "type": "string",
+                    "description": "The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.\n"
+                },
+                "egressFilter": {
+                    "type": "string",
+                    "description": "A filter applied to the routing logic to pin datasource to nodes.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The host to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the Resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique human-readable name of the Resource.\n"
+                },
+                "overrideDatabase": {
+                    "type": "boolean",
+                    "description": "If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port to dial to initiate a connection from the egress node to this resource.\n"
+                },
+                "portOverride": {
+                    "type": "integer",
+                    "description": "The local port used by clients to connect to this resource.\n"
+                },
+                "proxyClusterId": {
+                    "type": "string",
+                    "description": "ID of the proxy cluster for this resource, if any.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The AWS region to connect to.\n"
+                },
+                "roleAssumptionArn": {
+                    "type": "string",
+                    "description": "If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.\n"
+                },
+                "secretStoreId": {
+                    "type": "string",
+                    "description": "ID of the secret store containing credentials for this resource, if any.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Tags is a map of key, value pairs.\n"
+                },
+                "workgroup": {
+                    "type": "string",
+                    "description": "Workgroup name in the serverless Redshift\n* single_store:\n"
                 }
             },
             "type": "object"
@@ -19153,6 +19774,10 @@
                 "amazonEs": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                 },
+                "amazonEsiam": {
+                    "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam",
+                    "description": "AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
                 },
@@ -19160,8 +19785,7 @@
                     "$ref": "#/types/sdm:index/ResourceAthena:ResourceAthena"
                 },
                 "athenaIam": {
-                    "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam",
-                    "description": "AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam"
                 },
                 "auroraMysql": {
                     "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
@@ -19296,6 +19920,9 @@
                     "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
                     "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
+                "kubernetesPodIdentity": {
+                    "$ref": "#/types/sdm:index/ResourceKubernetesPodIdentity:ResourceKubernetesPodIdentity"
+                },
                 "kubernetesServiceAccount": {
                     "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
                 },
@@ -19376,6 +20003,14 @@
                 },
                 "redshift": {
                     "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
+                },
+                "redshiftIam": {
+                    "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam",
+                    "description": "RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "redshiftServerlessIam": {
+                    "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam",
+                    "description": "RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "singleStore": {
                     "$ref": "#/types/sdm:index/ResourceSingleStore:ResourceSingleStore"
@@ -19453,6 +20088,10 @@
                 "amazonEs": {
                     "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                 },
+                "amazonEsiam": {
+                    "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam",
+                    "description": "AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
                 "amazonmqAmqp091": {
                     "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
                 },
@@ -19460,8 +20099,7 @@
                     "$ref": "#/types/sdm:index/ResourceAthena:ResourceAthena"
                 },
                 "athenaIam": {
-                    "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam",
-                    "description": "AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam"
                 },
                 "auroraMysql": {
                     "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
@@ -19596,6 +20234,9 @@
                     "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
                     "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
+                "kubernetesPodIdentity": {
+                    "$ref": "#/types/sdm:index/ResourceKubernetesPodIdentity:ResourceKubernetesPodIdentity"
+                },
                 "kubernetesServiceAccount": {
                     "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
                 },
@@ -19676,6 +20317,14 @@
                 },
                 "redshift": {
                     "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
+                },
+                "redshiftIam": {
+                    "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam",
+                    "description": "RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                },
+                "redshiftServerlessIam": {
+                    "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam",
+                    "description": "RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                 },
                 "singleStore": {
                     "$ref": "#/types/sdm:index/ResourceSingleStore:ResourceSingleStore"
@@ -19755,6 +20404,10 @@
                     "amazonEs": {
                         "$ref": "#/types/sdm:index/ResourceAmazonEs:ResourceAmazonEs"
                     },
+                    "amazonEsiam": {
+                        "$ref": "#/types/sdm:index/ResourceAmazonEsiam:ResourceAmazonEsiam",
+                        "description": "AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
                     "amazonmqAmqp091": {
                         "$ref": "#/types/sdm:index/ResourceAmazonmqAmqp091:ResourceAmazonmqAmqp091"
                     },
@@ -19762,8 +20415,7 @@
                         "$ref": "#/types/sdm:index/ResourceAthena:ResourceAthena"
                     },
                     "athenaIam": {
-                        "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam",
-                        "description": "AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                        "$ref": "#/types/sdm:index/ResourceAthenaIam:ResourceAthenaIam"
                     },
                     "auroraMysql": {
                         "$ref": "#/types/sdm:index/ResourceAuroraMysql:ResourceAuroraMysql"
@@ -19898,6 +20550,9 @@
                         "$ref": "#/types/sdm:index/ResourceKubernetesBasicAuth:ResourceKubernetesBasicAuth",
                         "description": "KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
+                    "kubernetesPodIdentity": {
+                        "$ref": "#/types/sdm:index/ResourceKubernetesPodIdentity:ResourceKubernetesPodIdentity"
+                    },
                     "kubernetesServiceAccount": {
                         "$ref": "#/types/sdm:index/ResourceKubernetesServiceAccount:ResourceKubernetesServiceAccount"
                     },
@@ -19978,6 +20633,14 @@
                     },
                     "redshift": {
                         "$ref": "#/types/sdm:index/ResourceRedshift:ResourceRedshift"
+                    },
+                    "redshiftIam": {
+                        "$ref": "#/types/sdm:index/ResourceRedshiftIam:ResourceRedshiftIam",
+                        "description": "RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
+                    },
+                    "redshiftServerlessIam": {
+                        "$ref": "#/types/sdm:index/ResourceRedshiftServerlessIam:ResourceRedshiftServerlessIam",
+                        "description": "RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.\n"
                     },
                     "singleStore": {
                         "$ref": "#/types/sdm:index/ResourceSingleStore:ResourceSingleStore"
@@ -20331,11 +20994,11 @@
             "properties": {
                 "accessRequestFixedDuration": {
                     "type": "string",
-                    "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If\nneither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                    "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
                 },
                 "accessRequestMaxDuration": {
                     "type": "string",
-                    "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.\nIf neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                    "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
                 },
                 "accessRules": {
                     "type": "string",
@@ -20374,11 +21037,11 @@
             "inputProperties": {
                 "accessRequestFixedDuration": {
                     "type": "string",
-                    "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If\nneither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                    "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
                 },
                 "accessRequestMaxDuration": {
                     "type": "string",
-                    "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.\nIf neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                    "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
                 },
                 "accessRules": {
                     "type": "string",
@@ -20414,11 +21077,11 @@
                 "properties": {
                     "accessRequestFixedDuration": {
                         "type": "string",
-                        "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If\nneither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                        "description": "Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
                     },
                     "accessRequestMaxDuration": {
                         "type": "string",
-                        "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.\nIf neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level\nsettings.\n"
+                        "description": "Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.\n"
                     },
                     "accessRules": {
                         "type": "string",
