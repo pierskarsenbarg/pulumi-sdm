@@ -45,15 +45,11 @@ export class Workflow extends pulumi.CustomResource {
     }
 
     /**
-     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-     * neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-     * settings.
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
     public readonly accessRequestFixedDuration!: pulumi.Output<string | undefined>;
     /**
-     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-     * If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-     * settings.
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
     public readonly accessRequestMaxDuration!: pulumi.Output<string | undefined>;
     /**
@@ -129,15 +125,11 @@ export class Workflow extends pulumi.CustomResource {
  */
 export interface WorkflowState {
     /**
-     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-     * neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-     * settings.
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
     accessRequestFixedDuration?: pulumi.Input<string>;
     /**
-     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-     * If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-     * settings.
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
     accessRequestMaxDuration?: pulumi.Input<string>;
     /**
@@ -175,15 +167,11 @@ export interface WorkflowState {
  */
 export interface WorkflowArgs {
     /**
-     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-     * neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-     * settings.
+     * Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
     accessRequestFixedDuration?: pulumi.Input<string>;
     /**
-     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-     * If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-     * settings.
+     * Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
      */
     accessRequestMaxDuration?: pulumi.Input<string>;
     /**

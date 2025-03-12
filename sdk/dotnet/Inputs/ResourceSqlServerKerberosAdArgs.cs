@@ -126,8 +126,8 @@ namespace PiersKarsenbarg.Sdm.Inputs
         /// <summary>
         /// The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
         /// </summary>
-        [Input("serverSpn")]
-        public Input<string>? ServerSpn { get; set; }
+        [Input("serverSpn", required: true)]
+        public Input<string> ServerSpn { get; set; } = null!;
 
         /// <summary>
         /// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)

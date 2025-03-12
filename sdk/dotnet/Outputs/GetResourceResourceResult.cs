@@ -24,6 +24,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksInstanceProfileResult> AmazonEksInstanceProfiles;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEksUserImpersonationResult> AmazonEksUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEResult> AmazonEs;
+        public readonly ImmutableArray<Outputs.GetResourceResourceAmazonEsiamResult> AmazonEsiams;
         public readonly ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> AmazonmqAmqp091s;
         public readonly ImmutableArray<Outputs.GetResourceResourceAthenaIamResult> AthenaIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceAthenaResult> Athenas;
@@ -71,6 +72,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceHttpNoAuthResult> HttpNoAuths;
         public readonly ImmutableArray<Outputs.GetResourceResourceKuberneteResult> Kubernetes;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesBasicAuthResult> KubernetesBasicAuths;
+        public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesPodIdentityResult> KubernetesPodIdentities;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountUserImpersonationResult> KubernetesServiceAccountUserImpersonations;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountResult> KubernetesServiceAccounts;
         public readonly ImmutableArray<Outputs.GetResourceResourceKubernetesUserImpersonationResult> KubernetesUserImpersonations;
@@ -96,6 +98,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
         public readonly ImmutableArray<Outputs.GetResourceResourceRdpResult> Rdps;
         public readonly ImmutableArray<Outputs.GetResourceResourceRdsPostgresIamResult> RdsPostgresIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceRediResult> Redis;
+        public readonly ImmutableArray<Outputs.GetResourceResourceRedshiftIamResult> RedshiftIams;
+        public readonly ImmutableArray<Outputs.GetResourceResourceRedshiftServerlessIamResult> RedshiftServerlessIams;
         public readonly ImmutableArray<Outputs.GetResourceResourceRedshiftResult> Redshifts;
         public readonly ImmutableArray<Outputs.GetResourceResourceSingleStoreResult> SingleStores;
         public readonly ImmutableArray<Outputs.GetResourceResourceSnowflakeResult> Snowflakes;
@@ -133,6 +137,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             ImmutableArray<Outputs.GetResourceResourceAmazonEksUserImpersonationResult> amazonEksUserImpersonations,
 
             ImmutableArray<Outputs.GetResourceResourceAmazonEResult> amazonEs,
+
+            ImmutableArray<Outputs.GetResourceResourceAmazonEsiamResult> amazonEsiams,
 
             ImmutableArray<Outputs.GetResourceResourceAmazonmqAmqp091Result> amazonmqAmqp091s,
 
@@ -228,6 +234,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceKubernetesBasicAuthResult> kubernetesBasicAuths,
 
+            ImmutableArray<Outputs.GetResourceResourceKubernetesPodIdentityResult> kubernetesPodIdentities,
+
             ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountUserImpersonationResult> kubernetesServiceAccountUserImpersonations,
 
             ImmutableArray<Outputs.GetResourceResourceKubernetesServiceAccountResult> kubernetesServiceAccounts,
@@ -278,6 +286,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             ImmutableArray<Outputs.GetResourceResourceRediResult> redis,
 
+            ImmutableArray<Outputs.GetResourceResourceRedshiftIamResult> redshiftIams,
+
+            ImmutableArray<Outputs.GetResourceResourceRedshiftServerlessIamResult> redshiftServerlessIams,
+
             ImmutableArray<Outputs.GetResourceResourceRedshiftResult> redshifts,
 
             ImmutableArray<Outputs.GetResourceResourceSingleStoreResult> singleStores,
@@ -318,6 +330,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             AmazonEksInstanceProfiles = amazonEksInstanceProfiles;
             AmazonEksUserImpersonations = amazonEksUserImpersonations;
             AmazonEs = amazonEs;
+            AmazonEsiams = amazonEsiams;
             AmazonmqAmqp091s = amazonmqAmqp091s;
             AthenaIams = athenaIams;
             Athenas = athenas;
@@ -365,6 +378,7 @@ namespace PiersKarsenbarg.Sdm.Outputs
             HttpNoAuths = httpNoAuths;
             Kubernetes = kubernetes;
             KubernetesBasicAuths = kubernetesBasicAuths;
+            KubernetesPodIdentities = kubernetesPodIdentities;
             KubernetesServiceAccountUserImpersonations = kubernetesServiceAccountUserImpersonations;
             KubernetesServiceAccounts = kubernetesServiceAccounts;
             KubernetesUserImpersonations = kubernetesUserImpersonations;
@@ -390,6 +404,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             Rdps = rdps;
             RdsPostgresIams = rdsPostgresIams;
             Redis = redis;
+            RedshiftIams = redshiftIams;
+            RedshiftServerlessIams = redshiftServerlessIams;
             Redshifts = redshifts;
             SingleStores = singleStores;
             Snowflakes = snowflakes;

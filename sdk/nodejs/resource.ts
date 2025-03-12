@@ -56,11 +56,12 @@ export class Resource extends pulumi.CustomResource {
     public readonly amazonEksInstanceProfileUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksInstanceProfileUserImpersonation | undefined>;
     public readonly amazonEksUserImpersonation!: pulumi.Output<outputs.ResourceAmazonEksUserImpersonation | undefined>;
     public readonly amazonEs!: pulumi.Output<outputs.ResourceAmazonEs | undefined>;
+    /**
+     * AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly amazonEsiam!: pulumi.Output<outputs.ResourceAmazonEsiam | undefined>;
     public readonly amazonmqAmqp091!: pulumi.Output<outputs.ResourceAmazonmqAmqp091 | undefined>;
     public readonly athena!: pulumi.Output<outputs.ResourceAthena | undefined>;
-    /**
-     * AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     public readonly athenaIam!: pulumi.Output<outputs.ResourceAthenaIam | undefined>;
     public readonly auroraMysql!: pulumi.Output<outputs.ResourceAuroraMysql | undefined>;
     public readonly auroraMysqlIam!: pulumi.Output<outputs.ResourceAuroraMysqlIam | undefined>;
@@ -109,6 +110,7 @@ export class Resource extends pulumi.CustomResource {
      * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     public readonly kubernetesBasicAuth!: pulumi.Output<outputs.ResourceKubernetesBasicAuth | undefined>;
+    public readonly kubernetesPodIdentity!: pulumi.Output<outputs.ResourceKubernetesPodIdentity | undefined>;
     public readonly kubernetesServiceAccount!: pulumi.Output<outputs.ResourceKubernetesServiceAccount | undefined>;
     public readonly kubernetesServiceAccountUserImpersonation!: pulumi.Output<outputs.ResourceKubernetesServiceAccountUserImpersonation | undefined>;
     public readonly kubernetesUserImpersonation!: pulumi.Output<outputs.ResourceKubernetesUserImpersonation | undefined>;
@@ -144,6 +146,14 @@ export class Resource extends pulumi.CustomResource {
     public readonly rdsPostgresIam!: pulumi.Output<outputs.ResourceRdsPostgresIam | undefined>;
     public readonly redis!: pulumi.Output<outputs.ResourceRedis | undefined>;
     public readonly redshift!: pulumi.Output<outputs.ResourceRedshift | undefined>;
+    /**
+     * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly redshiftIam!: pulumi.Output<outputs.ResourceRedshiftIam | undefined>;
+    /**
+     * RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    public readonly redshiftServerlessIam!: pulumi.Output<outputs.ResourceRedshiftServerlessIam | undefined>;
     public readonly singleStore!: pulumi.Output<outputs.ResourceSingleStore | undefined>;
     public readonly snowflake!: pulumi.Output<outputs.ResourceSnowflake | undefined>;
     public readonly snowsight!: pulumi.Output<outputs.ResourceSnowsight | undefined>;
@@ -185,6 +195,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["amazonEksInstanceProfileUserImpersonation"] = state ? state.amazonEksInstanceProfileUserImpersonation : undefined;
             resourceInputs["amazonEksUserImpersonation"] = state ? state.amazonEksUserImpersonation : undefined;
             resourceInputs["amazonEs"] = state ? state.amazonEs : undefined;
+            resourceInputs["amazonEsiam"] = state ? state.amazonEsiam : undefined;
             resourceInputs["amazonmqAmqp091"] = state ? state.amazonmqAmqp091 : undefined;
             resourceInputs["athena"] = state ? state.athena : undefined;
             resourceInputs["athenaIam"] = state ? state.athenaIam : undefined;
@@ -232,6 +243,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["httpNoAuth"] = state ? state.httpNoAuth : undefined;
             resourceInputs["kubernetes"] = state ? state.kubernetes : undefined;
             resourceInputs["kubernetesBasicAuth"] = state ? state.kubernetesBasicAuth : undefined;
+            resourceInputs["kubernetesPodIdentity"] = state ? state.kubernetesPodIdentity : undefined;
             resourceInputs["kubernetesServiceAccount"] = state ? state.kubernetesServiceAccount : undefined;
             resourceInputs["kubernetesServiceAccountUserImpersonation"] = state ? state.kubernetesServiceAccountUserImpersonation : undefined;
             resourceInputs["kubernetesUserImpersonation"] = state ? state.kubernetesUserImpersonation : undefined;
@@ -258,6 +270,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["rdsPostgresIam"] = state ? state.rdsPostgresIam : undefined;
             resourceInputs["redis"] = state ? state.redis : undefined;
             resourceInputs["redshift"] = state ? state.redshift : undefined;
+            resourceInputs["redshiftIam"] = state ? state.redshiftIam : undefined;
+            resourceInputs["redshiftServerlessIam"] = state ? state.redshiftServerlessIam : undefined;
             resourceInputs["singleStore"] = state ? state.singleStore : undefined;
             resourceInputs["snowflake"] = state ? state.snowflake : undefined;
             resourceInputs["snowsight"] = state ? state.snowsight : undefined;
@@ -284,6 +298,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["amazonEksInstanceProfileUserImpersonation"] = args ? args.amazonEksInstanceProfileUserImpersonation : undefined;
             resourceInputs["amazonEksUserImpersonation"] = args ? args.amazonEksUserImpersonation : undefined;
             resourceInputs["amazonEs"] = args ? args.amazonEs : undefined;
+            resourceInputs["amazonEsiam"] = args ? args.amazonEsiam : undefined;
             resourceInputs["amazonmqAmqp091"] = args ? args.amazonmqAmqp091 : undefined;
             resourceInputs["athena"] = args ? args.athena : undefined;
             resourceInputs["athenaIam"] = args ? args.athenaIam : undefined;
@@ -331,6 +346,7 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["httpNoAuth"] = args ? args.httpNoAuth : undefined;
             resourceInputs["kubernetes"] = args ? args.kubernetes : undefined;
             resourceInputs["kubernetesBasicAuth"] = args ? args.kubernetesBasicAuth : undefined;
+            resourceInputs["kubernetesPodIdentity"] = args ? args.kubernetesPodIdentity : undefined;
             resourceInputs["kubernetesServiceAccount"] = args ? args.kubernetesServiceAccount : undefined;
             resourceInputs["kubernetesServiceAccountUserImpersonation"] = args ? args.kubernetesServiceAccountUserImpersonation : undefined;
             resourceInputs["kubernetesUserImpersonation"] = args ? args.kubernetesUserImpersonation : undefined;
@@ -357,6 +373,8 @@ export class Resource extends pulumi.CustomResource {
             resourceInputs["rdsPostgresIam"] = args ? args.rdsPostgresIam : undefined;
             resourceInputs["redis"] = args ? args.redis : undefined;
             resourceInputs["redshift"] = args ? args.redshift : undefined;
+            resourceInputs["redshiftIam"] = args ? args.redshiftIam : undefined;
+            resourceInputs["redshiftServerlessIam"] = args ? args.redshiftServerlessIam : undefined;
             resourceInputs["singleStore"] = args ? args.singleStore : undefined;
             resourceInputs["snowflake"] = args ? args.snowflake : undefined;
             resourceInputs["snowsight"] = args ? args.snowsight : undefined;
@@ -394,11 +412,12 @@ export interface ResourceState {
     amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
+    /**
+     * AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
-    /**
-     * AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     athenaIam?: pulumi.Input<inputs.ResourceAthenaIam>;
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam>;
@@ -447,6 +466,7 @@ export interface ResourceState {
      * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth>;
+    kubernetesPodIdentity?: pulumi.Input<inputs.ResourceKubernetesPodIdentity>;
     kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount>;
     kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation>;
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
@@ -482,6 +502,14 @@ export interface ResourceState {
     rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
+    /**
+     * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    redshiftIam?: pulumi.Input<inputs.ResourceRedshiftIam>;
+    /**
+     * RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    redshiftServerlessIam?: pulumi.Input<inputs.ResourceRedshiftServerlessIam>;
     singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
     snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
     snowsight?: pulumi.Input<inputs.ResourceSnowsight>;
@@ -518,11 +546,12 @@ export interface ResourceArgs {
     amazonEksInstanceProfileUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksInstanceProfileUserImpersonation>;
     amazonEksUserImpersonation?: pulumi.Input<inputs.ResourceAmazonEksUserImpersonation>;
     amazonEs?: pulumi.Input<inputs.ResourceAmazonEs>;
+    /**
+     * AmazonESIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    amazonEsiam?: pulumi.Input<inputs.ResourceAmazonEsiam>;
     amazonmqAmqp091?: pulumi.Input<inputs.ResourceAmazonmqAmqp091>;
     athena?: pulumi.Input<inputs.ResourceAthena>;
-    /**
-     * AthenaIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
-     */
     athenaIam?: pulumi.Input<inputs.ResourceAthenaIam>;
     auroraMysql?: pulumi.Input<inputs.ResourceAuroraMysql>;
     auroraMysqlIam?: pulumi.Input<inputs.ResourceAuroraMysqlIam>;
@@ -571,6 +600,7 @@ export interface ResourceArgs {
      * KubernetesBasicAuth is currently unstable, and its API may change, or it may be removed, without a major version bump.
      */
     kubernetesBasicAuth?: pulumi.Input<inputs.ResourceKubernetesBasicAuth>;
+    kubernetesPodIdentity?: pulumi.Input<inputs.ResourceKubernetesPodIdentity>;
     kubernetesServiceAccount?: pulumi.Input<inputs.ResourceKubernetesServiceAccount>;
     kubernetesServiceAccountUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesServiceAccountUserImpersonation>;
     kubernetesUserImpersonation?: pulumi.Input<inputs.ResourceKubernetesUserImpersonation>;
@@ -606,6 +636,14 @@ export interface ResourceArgs {
     rdsPostgresIam?: pulumi.Input<inputs.ResourceRdsPostgresIam>;
     redis?: pulumi.Input<inputs.ResourceRedis>;
     redshift?: pulumi.Input<inputs.ResourceRedshift>;
+    /**
+     * RedshiftIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    redshiftIam?: pulumi.Input<inputs.ResourceRedshiftIam>;
+    /**
+     * RedshiftServerlessIAM is currently unstable, and its API may change, or it may be removed, without a major version bump.
+     */
+    redshiftServerlessIam?: pulumi.Input<inputs.ResourceRedshiftServerlessIam>;
     singleStore?: pulumi.Input<inputs.ResourceSingleStore>;
     snowflake?: pulumi.Input<inputs.ResourceSnowflake>;
     snowsight?: pulumi.Input<inputs.ResourceSnowsight>;

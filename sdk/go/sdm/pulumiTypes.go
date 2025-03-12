@@ -5822,6 +5822,371 @@ func (o ResourceAmazonEsPtrOutput) Tags() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+type ResourceAmazonEsiam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+	Endpoint string `pulumi:"endpoint"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn *string `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+}
+
+// ResourceAmazonEsiamInput is an input type that accepts ResourceAmazonEsiamArgs and ResourceAmazonEsiamOutput values.
+// You can construct a concrete instance of `ResourceAmazonEsiamInput` via:
+//
+//	ResourceAmazonEsiamArgs{...}
+type ResourceAmazonEsiamInput interface {
+	pulumi.Input
+
+	ToResourceAmazonEsiamOutput() ResourceAmazonEsiamOutput
+	ToResourceAmazonEsiamOutputWithContext(context.Context) ResourceAmazonEsiamOutput
+}
+
+type ResourceAmazonEsiamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+}
+
+func (ResourceAmazonEsiamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAmazonEsiam)(nil)).Elem()
+}
+
+func (i ResourceAmazonEsiamArgs) ToResourceAmazonEsiamOutput() ResourceAmazonEsiamOutput {
+	return i.ToResourceAmazonEsiamOutputWithContext(context.Background())
+}
+
+func (i ResourceAmazonEsiamArgs) ToResourceAmazonEsiamOutputWithContext(ctx context.Context) ResourceAmazonEsiamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEsiamOutput)
+}
+
+func (i ResourceAmazonEsiamArgs) ToResourceAmazonEsiamPtrOutput() ResourceAmazonEsiamPtrOutput {
+	return i.ToResourceAmazonEsiamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceAmazonEsiamArgs) ToResourceAmazonEsiamPtrOutputWithContext(ctx context.Context) ResourceAmazonEsiamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEsiamOutput).ToResourceAmazonEsiamPtrOutputWithContext(ctx)
+}
+
+// ResourceAmazonEsiamPtrInput is an input type that accepts ResourceAmazonEsiamArgs, ResourceAmazonEsiamPtr and ResourceAmazonEsiamPtrOutput values.
+// You can construct a concrete instance of `ResourceAmazonEsiamPtrInput` via:
+//
+//	        ResourceAmazonEsiamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceAmazonEsiamPtrInput interface {
+	pulumi.Input
+
+	ToResourceAmazonEsiamPtrOutput() ResourceAmazonEsiamPtrOutput
+	ToResourceAmazonEsiamPtrOutputWithContext(context.Context) ResourceAmazonEsiamPtrOutput
+}
+
+type resourceAmazonEsiamPtrType ResourceAmazonEsiamArgs
+
+func ResourceAmazonEsiamPtr(v *ResourceAmazonEsiamArgs) ResourceAmazonEsiamPtrInput {
+	return (*resourceAmazonEsiamPtrType)(v)
+}
+
+func (*resourceAmazonEsiamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAmazonEsiam)(nil)).Elem()
+}
+
+func (i *resourceAmazonEsiamPtrType) ToResourceAmazonEsiamPtrOutput() ResourceAmazonEsiamPtrOutput {
+	return i.ToResourceAmazonEsiamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceAmazonEsiamPtrType) ToResourceAmazonEsiamPtrOutputWithContext(ctx context.Context) ResourceAmazonEsiamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceAmazonEsiamPtrOutput)
+}
+
+type ResourceAmazonEsiamOutput struct{ *pulumi.OutputState }
+
+func (ResourceAmazonEsiamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceAmazonEsiam)(nil)).Elem()
+}
+
+func (o ResourceAmazonEsiamOutput) ToResourceAmazonEsiamOutput() ResourceAmazonEsiamOutput {
+	return o
+}
+
+func (o ResourceAmazonEsiamOutput) ToResourceAmazonEsiamOutputWithContext(ctx context.Context) ResourceAmazonEsiamOutput {
+	return o
+}
+
+func (o ResourceAmazonEsiamOutput) ToResourceAmazonEsiamPtrOutput() ResourceAmazonEsiamPtrOutput {
+	return o.ToResourceAmazonEsiamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceAmazonEsiamOutput) ToResourceAmazonEsiamPtrOutputWithContext(ctx context.Context) ResourceAmazonEsiamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceAmazonEsiam) *ResourceAmazonEsiam {
+		return &v
+	}).(ResourceAmazonEsiamPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAmazonEsiamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAmazonEsiamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+func (o ResourceAmazonEsiamOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAmazonEsiamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAmazonEsiamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEsiamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAmazonEsiamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The role to assume after logging in.
+func (o ResourceAmazonEsiamOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o ResourceAmazonEsiamOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAmazonEsiamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAmazonEsiamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAmazonEsiamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceAmazonEsiamOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceAmazonEsiam) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+type ResourceAmazonEsiamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceAmazonEsiamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceAmazonEsiam)(nil)).Elem()
+}
+
+func (o ResourceAmazonEsiamPtrOutput) ToResourceAmazonEsiamPtrOutput() ResourceAmazonEsiamPtrOutput {
+	return o
+}
+
+func (o ResourceAmazonEsiamPtrOutput) ToResourceAmazonEsiamPtrOutputWithContext(ctx context.Context) ResourceAmazonEsiamPtrOutput {
+	return o
+}
+
+func (o ResourceAmazonEsiamPtrOutput) Elem() ResourceAmazonEsiamOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) ResourceAmazonEsiam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceAmazonEsiam
+		return ret
+	}).(ResourceAmazonEsiamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceAmazonEsiamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceAmazonEsiamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+func (o ResourceAmazonEsiamPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceAmazonEsiamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceAmazonEsiamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceAmazonEsiamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceAmazonEsiamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o ResourceAmazonEsiamPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o ResourceAmazonEsiamPtrOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleExternalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceAmazonEsiamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceAmazonEsiamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceAmazonEsiamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o ResourceAmazonEsiamPtrOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceAmazonEsiam) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TlsRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ResourceAmazonmqAmqp091 struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -23393,6 +23758,333 @@ func (o ResourceKubernetesBasicAuthPtrOutput) Username() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceKubernetesPodIdentity struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The CA to authenticate TLS connections with.
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceKubernetesPodIdentityInput is an input type that accepts ResourceKubernetesPodIdentityArgs and ResourceKubernetesPodIdentityOutput values.
+// You can construct a concrete instance of `ResourceKubernetesPodIdentityInput` via:
+//
+//	ResourceKubernetesPodIdentityArgs{...}
+type ResourceKubernetesPodIdentityInput interface {
+	pulumi.Input
+
+	ToResourceKubernetesPodIdentityOutput() ResourceKubernetesPodIdentityOutput
+	ToResourceKubernetesPodIdentityOutputWithContext(context.Context) ResourceKubernetesPodIdentityOutput
+}
+
+type ResourceKubernetesPodIdentityArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The CA to authenticate TLS connections with.
+	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceKubernetesPodIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceKubernetesPodIdentity)(nil)).Elem()
+}
+
+func (i ResourceKubernetesPodIdentityArgs) ToResourceKubernetesPodIdentityOutput() ResourceKubernetesPodIdentityOutput {
+	return i.ToResourceKubernetesPodIdentityOutputWithContext(context.Background())
+}
+
+func (i ResourceKubernetesPodIdentityArgs) ToResourceKubernetesPodIdentityOutputWithContext(ctx context.Context) ResourceKubernetesPodIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesPodIdentityOutput)
+}
+
+func (i ResourceKubernetesPodIdentityArgs) ToResourceKubernetesPodIdentityPtrOutput() ResourceKubernetesPodIdentityPtrOutput {
+	return i.ToResourceKubernetesPodIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceKubernetesPodIdentityArgs) ToResourceKubernetesPodIdentityPtrOutputWithContext(ctx context.Context) ResourceKubernetesPodIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesPodIdentityOutput).ToResourceKubernetesPodIdentityPtrOutputWithContext(ctx)
+}
+
+// ResourceKubernetesPodIdentityPtrInput is an input type that accepts ResourceKubernetesPodIdentityArgs, ResourceKubernetesPodIdentityPtr and ResourceKubernetesPodIdentityPtrOutput values.
+// You can construct a concrete instance of `ResourceKubernetesPodIdentityPtrInput` via:
+//
+//	        ResourceKubernetesPodIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceKubernetesPodIdentityPtrInput interface {
+	pulumi.Input
+
+	ToResourceKubernetesPodIdentityPtrOutput() ResourceKubernetesPodIdentityPtrOutput
+	ToResourceKubernetesPodIdentityPtrOutputWithContext(context.Context) ResourceKubernetesPodIdentityPtrOutput
+}
+
+type resourceKubernetesPodIdentityPtrType ResourceKubernetesPodIdentityArgs
+
+func ResourceKubernetesPodIdentityPtr(v *ResourceKubernetesPodIdentityArgs) ResourceKubernetesPodIdentityPtrInput {
+	return (*resourceKubernetesPodIdentityPtrType)(v)
+}
+
+func (*resourceKubernetesPodIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceKubernetesPodIdentity)(nil)).Elem()
+}
+
+func (i *resourceKubernetesPodIdentityPtrType) ToResourceKubernetesPodIdentityPtrOutput() ResourceKubernetesPodIdentityPtrOutput {
+	return i.ToResourceKubernetesPodIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceKubernetesPodIdentityPtrType) ToResourceKubernetesPodIdentityPtrOutputWithContext(ctx context.Context) ResourceKubernetesPodIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceKubernetesPodIdentityPtrOutput)
+}
+
+type ResourceKubernetesPodIdentityOutput struct{ *pulumi.OutputState }
+
+func (ResourceKubernetesPodIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceKubernetesPodIdentity)(nil)).Elem()
+}
+
+func (o ResourceKubernetesPodIdentityOutput) ToResourceKubernetesPodIdentityOutput() ResourceKubernetesPodIdentityOutput {
+	return o
+}
+
+func (o ResourceKubernetesPodIdentityOutput) ToResourceKubernetesPodIdentityOutputWithContext(ctx context.Context) ResourceKubernetesPodIdentityOutput {
+	return o
+}
+
+func (o ResourceKubernetesPodIdentityOutput) ToResourceKubernetesPodIdentityPtrOutput() ResourceKubernetesPodIdentityPtrOutput {
+	return o.ToResourceKubernetesPodIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceKubernetesPodIdentityOutput) ToResourceKubernetesPodIdentityPtrOutputWithContext(ctx context.Context) ResourceKubernetesPodIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceKubernetesPodIdentity) *ResourceKubernetesPodIdentity {
+		return &v
+	}).(ResourceKubernetesPodIdentityPtrOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceKubernetesPodIdentityOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceKubernetesPodIdentityOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The CA to authenticate TLS connections with.
+func (o ResourceKubernetesPodIdentityOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceKubernetesPodIdentityOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+func (o ResourceKubernetesPodIdentityOutput) HealthcheckNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.HealthcheckNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceKubernetesPodIdentityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceKubernetesPodIdentityOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesPodIdentityOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceKubernetesPodIdentityOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceKubernetesPodIdentityOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceKubernetesPodIdentityOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceKubernetesPodIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceKubernetesPodIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceKubernetesPodIdentity)(nil)).Elem()
+}
+
+func (o ResourceKubernetesPodIdentityPtrOutput) ToResourceKubernetesPodIdentityPtrOutput() ResourceKubernetesPodIdentityPtrOutput {
+	return o
+}
+
+func (o ResourceKubernetesPodIdentityPtrOutput) ToResourceKubernetesPodIdentityPtrOutputWithContext(ctx context.Context) ResourceKubernetesPodIdentityPtrOutput {
+	return o
+}
+
+func (o ResourceKubernetesPodIdentityPtrOutput) Elem() ResourceKubernetesPodIdentityOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) ResourceKubernetesPodIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceKubernetesPodIdentity
+		return ret
+	}).(ResourceKubernetesPodIdentityOutput)
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o ResourceKubernetesPodIdentityPtrOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowResourceRoleBypass
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceKubernetesPodIdentityPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CA to authenticate TLS connections with.
+func (o ResourceKubernetesPodIdentityPtrOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthority
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceKubernetesPodIdentityPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+func (o ResourceKubernetesPodIdentityPtrOutput) HealthcheckNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthcheckNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceKubernetesPodIdentityPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceKubernetesPodIdentityPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceKubernetesPodIdentityPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceKubernetesPodIdentityPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceKubernetesPodIdentityPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceKubernetesPodIdentityPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
 type ResourceKubernetesServiceAccount struct {
 	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
 	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
@@ -33461,6 +34153,816 @@ func (o ResourceRedshiftPtrOutput) Username() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ResourceRedshiftIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// Cluster Identified of Redshift cluster
+	ClusterId string `pulumi:"clusterId"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase *bool `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// ResourceRedshiftIamInput is an input type that accepts ResourceRedshiftIamArgs and ResourceRedshiftIamOutput values.
+// You can construct a concrete instance of `ResourceRedshiftIamInput` via:
+//
+//	ResourceRedshiftIamArgs{...}
+type ResourceRedshiftIamInput interface {
+	pulumi.Input
+
+	ToResourceRedshiftIamOutput() ResourceRedshiftIamOutput
+	ToResourceRedshiftIamOutputWithContext(context.Context) ResourceRedshiftIamOutput
+}
+
+type ResourceRedshiftIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// Cluster Identified of Redshift cluster
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase pulumi.BoolPtrInput `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (ResourceRedshiftIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRedshiftIam)(nil)).Elem()
+}
+
+func (i ResourceRedshiftIamArgs) ToResourceRedshiftIamOutput() ResourceRedshiftIamOutput {
+	return i.ToResourceRedshiftIamOutputWithContext(context.Background())
+}
+
+func (i ResourceRedshiftIamArgs) ToResourceRedshiftIamOutputWithContext(ctx context.Context) ResourceRedshiftIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedshiftIamOutput)
+}
+
+func (i ResourceRedshiftIamArgs) ToResourceRedshiftIamPtrOutput() ResourceRedshiftIamPtrOutput {
+	return i.ToResourceRedshiftIamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceRedshiftIamArgs) ToResourceRedshiftIamPtrOutputWithContext(ctx context.Context) ResourceRedshiftIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedshiftIamOutput).ToResourceRedshiftIamPtrOutputWithContext(ctx)
+}
+
+// ResourceRedshiftIamPtrInput is an input type that accepts ResourceRedshiftIamArgs, ResourceRedshiftIamPtr and ResourceRedshiftIamPtrOutput values.
+// You can construct a concrete instance of `ResourceRedshiftIamPtrInput` via:
+//
+//	        ResourceRedshiftIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceRedshiftIamPtrInput interface {
+	pulumi.Input
+
+	ToResourceRedshiftIamPtrOutput() ResourceRedshiftIamPtrOutput
+	ToResourceRedshiftIamPtrOutputWithContext(context.Context) ResourceRedshiftIamPtrOutput
+}
+
+type resourceRedshiftIamPtrType ResourceRedshiftIamArgs
+
+func ResourceRedshiftIamPtr(v *ResourceRedshiftIamArgs) ResourceRedshiftIamPtrInput {
+	return (*resourceRedshiftIamPtrType)(v)
+}
+
+func (*resourceRedshiftIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRedshiftIam)(nil)).Elem()
+}
+
+func (i *resourceRedshiftIamPtrType) ToResourceRedshiftIamPtrOutput() ResourceRedshiftIamPtrOutput {
+	return i.ToResourceRedshiftIamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceRedshiftIamPtrType) ToResourceRedshiftIamPtrOutputWithContext(ctx context.Context) ResourceRedshiftIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedshiftIamPtrOutput)
+}
+
+type ResourceRedshiftIamOutput struct{ *pulumi.OutputState }
+
+func (ResourceRedshiftIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRedshiftIam)(nil)).Elem()
+}
+
+func (o ResourceRedshiftIamOutput) ToResourceRedshiftIamOutput() ResourceRedshiftIamOutput {
+	return o
+}
+
+func (o ResourceRedshiftIamOutput) ToResourceRedshiftIamOutputWithContext(ctx context.Context) ResourceRedshiftIamOutput {
+	return o
+}
+
+func (o ResourceRedshiftIamOutput) ToResourceRedshiftIamPtrOutput() ResourceRedshiftIamPtrOutput {
+	return o.ToResourceRedshiftIamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceRedshiftIamOutput) ToResourceRedshiftIamPtrOutputWithContext(ctx context.Context) ResourceRedshiftIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRedshiftIam) *ResourceRedshiftIam {
+		return &v
+	}).(ResourceRedshiftIamPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRedshiftIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// Cluster Identified of Redshift cluster
+func (o ResourceRedshiftIamOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceRedshiftIamOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRedshiftIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedshiftIamOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRedshiftIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o ResourceRedshiftIamOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedshiftIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRedshiftIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedshiftIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceRedshiftIamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceRedshiftIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRedshiftIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRedshiftIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRedshiftIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceRedshiftIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type ResourceRedshiftIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRedshiftIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRedshiftIam)(nil)).Elem()
+}
+
+func (o ResourceRedshiftIamPtrOutput) ToResourceRedshiftIamPtrOutput() ResourceRedshiftIamPtrOutput {
+	return o
+}
+
+func (o ResourceRedshiftIamPtrOutput) ToResourceRedshiftIamPtrOutputWithContext(ctx context.Context) ResourceRedshiftIamPtrOutput {
+	return o
+}
+
+func (o ResourceRedshiftIamPtrOutput) Elem() ResourceRedshiftIamOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) ResourceRedshiftIam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRedshiftIam
+		return ret
+	}).(ResourceRedshiftIamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRedshiftIamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster Identified of Redshift cluster
+func (o ResourceRedshiftIamPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceRedshiftIamPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRedshiftIamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedshiftIamPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRedshiftIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o ResourceRedshiftIamPtrOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideDatabase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedshiftIamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRedshiftIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedshiftIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceRedshiftIamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceRedshiftIamPtrOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleAssumptionArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRedshiftIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRedshiftIamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRedshiftIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceRedshiftIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+type ResourceRedshiftServerlessIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname string `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name string `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase *bool `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Workgroup name in the serverless Redshift
+	// * single_store:
+	Workgroup string `pulumi:"workgroup"`
+}
+
+// ResourceRedshiftServerlessIamInput is an input type that accepts ResourceRedshiftServerlessIamArgs and ResourceRedshiftServerlessIamOutput values.
+// You can construct a concrete instance of `ResourceRedshiftServerlessIamInput` via:
+//
+//	ResourceRedshiftServerlessIamArgs{...}
+type ResourceRedshiftServerlessIamInput interface {
+	pulumi.Input
+
+	ToResourceRedshiftServerlessIamOutput() ResourceRedshiftServerlessIamOutput
+	ToResourceRedshiftServerlessIamOutputWithContext(context.Context) ResourceRedshiftServerlessIamOutput
+}
+
+type ResourceRedshiftServerlessIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase pulumi.BoolPtrInput `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Workgroup name in the serverless Redshift
+	// * single_store:
+	Workgroup pulumi.StringInput `pulumi:"workgroup"`
+}
+
+func (ResourceRedshiftServerlessIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRedshiftServerlessIam)(nil)).Elem()
+}
+
+func (i ResourceRedshiftServerlessIamArgs) ToResourceRedshiftServerlessIamOutput() ResourceRedshiftServerlessIamOutput {
+	return i.ToResourceRedshiftServerlessIamOutputWithContext(context.Background())
+}
+
+func (i ResourceRedshiftServerlessIamArgs) ToResourceRedshiftServerlessIamOutputWithContext(ctx context.Context) ResourceRedshiftServerlessIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedshiftServerlessIamOutput)
+}
+
+func (i ResourceRedshiftServerlessIamArgs) ToResourceRedshiftServerlessIamPtrOutput() ResourceRedshiftServerlessIamPtrOutput {
+	return i.ToResourceRedshiftServerlessIamPtrOutputWithContext(context.Background())
+}
+
+func (i ResourceRedshiftServerlessIamArgs) ToResourceRedshiftServerlessIamPtrOutputWithContext(ctx context.Context) ResourceRedshiftServerlessIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedshiftServerlessIamOutput).ToResourceRedshiftServerlessIamPtrOutputWithContext(ctx)
+}
+
+// ResourceRedshiftServerlessIamPtrInput is an input type that accepts ResourceRedshiftServerlessIamArgs, ResourceRedshiftServerlessIamPtr and ResourceRedshiftServerlessIamPtrOutput values.
+// You can construct a concrete instance of `ResourceRedshiftServerlessIamPtrInput` via:
+//
+//	        ResourceRedshiftServerlessIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourceRedshiftServerlessIamPtrInput interface {
+	pulumi.Input
+
+	ToResourceRedshiftServerlessIamPtrOutput() ResourceRedshiftServerlessIamPtrOutput
+	ToResourceRedshiftServerlessIamPtrOutputWithContext(context.Context) ResourceRedshiftServerlessIamPtrOutput
+}
+
+type resourceRedshiftServerlessIamPtrType ResourceRedshiftServerlessIamArgs
+
+func ResourceRedshiftServerlessIamPtr(v *ResourceRedshiftServerlessIamArgs) ResourceRedshiftServerlessIamPtrInput {
+	return (*resourceRedshiftServerlessIamPtrType)(v)
+}
+
+func (*resourceRedshiftServerlessIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRedshiftServerlessIam)(nil)).Elem()
+}
+
+func (i *resourceRedshiftServerlessIamPtrType) ToResourceRedshiftServerlessIamPtrOutput() ResourceRedshiftServerlessIamPtrOutput {
+	return i.ToResourceRedshiftServerlessIamPtrOutputWithContext(context.Background())
+}
+
+func (i *resourceRedshiftServerlessIamPtrType) ToResourceRedshiftServerlessIamPtrOutputWithContext(ctx context.Context) ResourceRedshiftServerlessIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourceRedshiftServerlessIamPtrOutput)
+}
+
+type ResourceRedshiftServerlessIamOutput struct{ *pulumi.OutputState }
+
+func (ResourceRedshiftServerlessIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceRedshiftServerlessIam)(nil)).Elem()
+}
+
+func (o ResourceRedshiftServerlessIamOutput) ToResourceRedshiftServerlessIamOutput() ResourceRedshiftServerlessIamOutput {
+	return o
+}
+
+func (o ResourceRedshiftServerlessIamOutput) ToResourceRedshiftServerlessIamOutputWithContext(ctx context.Context) ResourceRedshiftServerlessIamOutput {
+	return o
+}
+
+func (o ResourceRedshiftServerlessIamOutput) ToResourceRedshiftServerlessIamPtrOutput() ResourceRedshiftServerlessIamPtrOutput {
+	return o.ToResourceRedshiftServerlessIamPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceRedshiftServerlessIamOutput) ToResourceRedshiftServerlessIamPtrOutputWithContext(ctx context.Context) ResourceRedshiftServerlessIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceRedshiftServerlessIam) *ResourceRedshiftServerlessIam {
+		return &v
+	}).(ResourceRedshiftServerlessIamPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRedshiftServerlessIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceRedshiftServerlessIamOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRedshiftServerlessIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedshiftServerlessIamOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRedshiftServerlessIamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o ResourceRedshiftServerlessIamOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedshiftServerlessIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRedshiftServerlessIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedshiftServerlessIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceRedshiftServerlessIamOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceRedshiftServerlessIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRedshiftServerlessIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRedshiftServerlessIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRedshiftServerlessIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Workgroup name in the serverless Redshift
+// * single_store:
+func (o ResourceRedshiftServerlessIamOutput) Workgroup() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceRedshiftServerlessIam) string { return v.Workgroup }).(pulumi.StringOutput)
+}
+
+type ResourceRedshiftServerlessIamPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceRedshiftServerlessIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourceRedshiftServerlessIam)(nil)).Elem()
+}
+
+func (o ResourceRedshiftServerlessIamPtrOutput) ToResourceRedshiftServerlessIamPtrOutput() ResourceRedshiftServerlessIamPtrOutput {
+	return o
+}
+
+func (o ResourceRedshiftServerlessIamPtrOutput) ToResourceRedshiftServerlessIamPtrOutputWithContext(ctx context.Context) ResourceRedshiftServerlessIamPtrOutput {
+	return o
+}
+
+func (o ResourceRedshiftServerlessIamPtrOutput) Elem() ResourceRedshiftServerlessIamOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) ResourceRedshiftServerlessIam {
+		if v != nil {
+			return *v
+		}
+		var ret ResourceRedshiftServerlessIam
+		return ret
+	}).(ResourceRedshiftServerlessIamOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o ResourceRedshiftServerlessIamPtrOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BindInterface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o ResourceRedshiftServerlessIamPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o ResourceRedshiftServerlessIamPtrOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EgressFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedshiftServerlessIamPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o ResourceRedshiftServerlessIamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o ResourceRedshiftServerlessIamPtrOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideDatabase
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o ResourceRedshiftServerlessIamPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o ResourceRedshiftServerlessIamPtrOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PortOverride
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o ResourceRedshiftServerlessIamPtrOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o ResourceRedshiftServerlessIamPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o ResourceRedshiftServerlessIamPtrOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleAssumptionArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o ResourceRedshiftServerlessIamPtrOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretStoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o ResourceRedshiftServerlessIamPtrOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subdomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o ResourceRedshiftServerlessIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Workgroup name in the serverless Redshift
+// * single_store:
+func (o ResourceRedshiftServerlessIamPtrOutput) Workgroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceRedshiftServerlessIam) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Workgroup
+	}).(pulumi.StringPtrOutput)
+}
+
 type ResourceSingleStore struct {
 	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
 	BindInterface *string `pulumi:"bindInterface"`
@@ -35436,7 +36938,7 @@ type ResourceSqlServerKerberosAd struct {
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId *string `pulumi:"secretStoreId"`
 	// The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
-	ServerSpn *string `pulumi:"serverSpn"`
+	ServerSpn string `pulumi:"serverSpn"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain *string `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -35488,7 +36990,7 @@ type ResourceSqlServerKerberosAdArgs struct {
 	// ID of the secret store containing credentials for this resource, if any.
 	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
 	// The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
-	ServerSpn pulumi.StringPtrInput `pulumi:"serverSpn"`
+	ServerSpn pulumi.StringInput `pulumi:"serverSpn"`
 	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
 	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
 	// Tags is a map of key, value pairs.
@@ -35650,8 +37152,8 @@ func (o ResourceSqlServerKerberosAdOutput) SecretStoreId() pulumi.StringPtrOutpu
 }
 
 // The Service Principal Name of the Microsoft SQL Server instance in Active Directory.
-func (o ResourceSqlServerKerberosAdOutput) ServerSpn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceSqlServerKerberosAd) *string { return v.ServerSpn }).(pulumi.StringPtrOutput)
+func (o ResourceSqlServerKerberosAdOutput) ServerSpn() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceSqlServerKerberosAd) string { return v.ServerSpn }).(pulumi.StringOutput)
 }
 
 // Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
@@ -35849,7 +37351,7 @@ func (o ResourceSqlServerKerberosAdPtrOutput) ServerSpn() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return v.ServerSpn
+		return &v.ServerSpn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -47204,6 +48706,7 @@ type GetResourceResource struct {
 	AmazonEksInstanceProfiles                  []GetResourceResourceAmazonEksInstanceProfile                  `pulumi:"amazonEksInstanceProfiles"`
 	AmazonEksUserImpersonations                []GetResourceResourceAmazonEksUserImpersonation                `pulumi:"amazonEksUserImpersonations"`
 	AmazonEs                                   []GetResourceResourceAmazonE                                   `pulumi:"amazonEs"`
+	AmazonEsiams                               []GetResourceResourceAmazonEsiam                               `pulumi:"amazonEsiams"`
 	AmazonmqAmqp091s                           []GetResourceResourceAmazonmqAmqp091                           `pulumi:"amazonmqAmqp091s"`
 	AthenaIams                                 []GetResourceResourceAthenaIam                                 `pulumi:"athenaIams"`
 	Athenas                                    []GetResourceResourceAthena                                    `pulumi:"athenas"`
@@ -47251,6 +48754,7 @@ type GetResourceResource struct {
 	HttpNoAuths                                []GetResourceResourceHttpNoAuth                                `pulumi:"httpNoAuths"`
 	Kubernetes                                 []GetResourceResourceKubernete                                 `pulumi:"kubernetes"`
 	KubernetesBasicAuths                       []GetResourceResourceKubernetesBasicAuth                       `pulumi:"kubernetesBasicAuths"`
+	KubernetesPodIdentities                    []GetResourceResourceKubernetesPodIdentity                     `pulumi:"kubernetesPodIdentities"`
 	KubernetesServiceAccountUserImpersonations []GetResourceResourceKubernetesServiceAccountUserImpersonation `pulumi:"kubernetesServiceAccountUserImpersonations"`
 	KubernetesServiceAccounts                  []GetResourceResourceKubernetesServiceAccount                  `pulumi:"kubernetesServiceAccounts"`
 	KubernetesUserImpersonations               []GetResourceResourceKubernetesUserImpersonation               `pulumi:"kubernetesUserImpersonations"`
@@ -47276,6 +48780,8 @@ type GetResourceResource struct {
 	Rdps                                       []GetResourceResourceRdp                                       `pulumi:"rdps"`
 	RdsPostgresIams                            []GetResourceResourceRdsPostgresIam                            `pulumi:"rdsPostgresIams"`
 	Redis                                      []GetResourceResourceRedi                                      `pulumi:"redis"`
+	RedshiftIams                               []GetResourceResourceRedshiftIam                               `pulumi:"redshiftIams"`
+	RedshiftServerlessIams                     []GetResourceResourceRedshiftServerlessIam                     `pulumi:"redshiftServerlessIams"`
 	Redshifts                                  []GetResourceResourceRedshift                                  `pulumi:"redshifts"`
 	SingleStores                               []GetResourceResourceSingleStore                               `pulumi:"singleStores"`
 	Snowflakes                                 []GetResourceResourceSnowflake                                 `pulumi:"snowflakes"`
@@ -47315,6 +48821,7 @@ type GetResourceResourceArgs struct {
 	AmazonEksInstanceProfiles                  GetResourceResourceAmazonEksInstanceProfileArrayInput                  `pulumi:"amazonEksInstanceProfiles"`
 	AmazonEksUserImpersonations                GetResourceResourceAmazonEksUserImpersonationArrayInput                `pulumi:"amazonEksUserImpersonations"`
 	AmazonEs                                   GetResourceResourceAmazonEArrayInput                                   `pulumi:"amazonEs"`
+	AmazonEsiams                               GetResourceResourceAmazonEsiamArrayInput                               `pulumi:"amazonEsiams"`
 	AmazonmqAmqp091s                           GetResourceResourceAmazonmqAmqp091ArrayInput                           `pulumi:"amazonmqAmqp091s"`
 	AthenaIams                                 GetResourceResourceAthenaIamArrayInput                                 `pulumi:"athenaIams"`
 	Athenas                                    GetResourceResourceAthenaArrayInput                                    `pulumi:"athenas"`
@@ -47362,6 +48869,7 @@ type GetResourceResourceArgs struct {
 	HttpNoAuths                                GetResourceResourceHttpNoAuthArrayInput                                `pulumi:"httpNoAuths"`
 	Kubernetes                                 GetResourceResourceKuberneteArrayInput                                 `pulumi:"kubernetes"`
 	KubernetesBasicAuths                       GetResourceResourceKubernetesBasicAuthArrayInput                       `pulumi:"kubernetesBasicAuths"`
+	KubernetesPodIdentities                    GetResourceResourceKubernetesPodIdentityArrayInput                     `pulumi:"kubernetesPodIdentities"`
 	KubernetesServiceAccountUserImpersonations GetResourceResourceKubernetesServiceAccountUserImpersonationArrayInput `pulumi:"kubernetesServiceAccountUserImpersonations"`
 	KubernetesServiceAccounts                  GetResourceResourceKubernetesServiceAccountArrayInput                  `pulumi:"kubernetesServiceAccounts"`
 	KubernetesUserImpersonations               GetResourceResourceKubernetesUserImpersonationArrayInput               `pulumi:"kubernetesUserImpersonations"`
@@ -47387,6 +48895,8 @@ type GetResourceResourceArgs struct {
 	Rdps                                       GetResourceResourceRdpArrayInput                                       `pulumi:"rdps"`
 	RdsPostgresIams                            GetResourceResourceRdsPostgresIamArrayInput                            `pulumi:"rdsPostgresIams"`
 	Redis                                      GetResourceResourceRediArrayInput                                      `pulumi:"redis"`
+	RedshiftIams                               GetResourceResourceRedshiftIamArrayInput                               `pulumi:"redshiftIams"`
+	RedshiftServerlessIams                     GetResourceResourceRedshiftServerlessIamArrayInput                     `pulumi:"redshiftServerlessIams"`
 	Redshifts                                  GetResourceResourceRedshiftArrayInput                                  `pulumi:"redshifts"`
 	SingleStores                               GetResourceResourceSingleStoreArrayInput                               `pulumi:"singleStores"`
 	Snowflakes                                 GetResourceResourceSnowflakeArrayInput                                 `pulumi:"snowflakes"`
@@ -47501,6 +49011,10 @@ func (o GetResourceResourceOutput) AmazonEksUserImpersonations() GetResourceReso
 
 func (o GetResourceResourceOutput) AmazonEs() GetResourceResourceAmazonEArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonE { return v.AmazonEs }).(GetResourceResourceAmazonEArrayOutput)
+}
+
+func (o GetResourceResourceOutput) AmazonEsiams() GetResourceResourceAmazonEsiamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceAmazonEsiam { return v.AmazonEsiams }).(GetResourceResourceAmazonEsiamArrayOutput)
 }
 
 func (o GetResourceResourceOutput) AmazonmqAmqp091s() GetResourceResourceAmazonmqAmqp091ArrayOutput {
@@ -47697,6 +49211,12 @@ func (o GetResourceResourceOutput) KubernetesBasicAuths() GetResourceResourceKub
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceKubernetesBasicAuth { return v.KubernetesBasicAuths }).(GetResourceResourceKubernetesBasicAuthArrayOutput)
 }
 
+func (o GetResourceResourceOutput) KubernetesPodIdentities() GetResourceResourceKubernetesPodIdentityArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceKubernetesPodIdentity {
+		return v.KubernetesPodIdentities
+	}).(GetResourceResourceKubernetesPodIdentityArrayOutput)
+}
+
 func (o GetResourceResourceOutput) KubernetesServiceAccountUserImpersonations() GetResourceResourceKubernetesServiceAccountUserImpersonationArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceKubernetesServiceAccountUserImpersonation {
 		return v.KubernetesServiceAccountUserImpersonations
@@ -47803,6 +49323,16 @@ func (o GetResourceResourceOutput) RdsPostgresIams() GetResourceResourceRdsPostg
 
 func (o GetResourceResourceOutput) Redis() GetResourceResourceRediArrayOutput {
 	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRedi { return v.Redis }).(GetResourceResourceRediArrayOutput)
+}
+
+func (o GetResourceResourceOutput) RedshiftIams() GetResourceResourceRedshiftIamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRedshiftIam { return v.RedshiftIams }).(GetResourceResourceRedshiftIamArrayOutput)
+}
+
+func (o GetResourceResourceOutput) RedshiftServerlessIams() GetResourceResourceRedshiftServerlessIamArrayOutput {
+	return o.ApplyT(func(v GetResourceResource) []GetResourceResourceRedshiftServerlessIam {
+		return v.RedshiftServerlessIams
+	}).(GetResourceResourceRedshiftServerlessIamArrayOutput)
 }
 
 func (o GetResourceResourceOutput) Redshifts() GetResourceResourceRedshiftArrayOutput {
@@ -50330,6 +51860,220 @@ func (o GetResourceResourceAmazonEksUserImpersonationArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAmazonEksUserImpersonation {
 		return vs[0].([]GetResourceResourceAmazonEksUserImpersonation)[vs[1].(int)]
 	}).(GetResourceResourceAmazonEksUserImpersonationOutput)
+}
+
+type GetResourceResourceAmazonEsiam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+	Endpoint *string `pulumi:"endpoint"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn *string `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId *string `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired *bool `pulumi:"tlsRequired"`
+}
+
+// GetResourceResourceAmazonEsiamInput is an input type that accepts GetResourceResourceAmazonEsiamArgs and GetResourceResourceAmazonEsiamOutput values.
+// You can construct a concrete instance of `GetResourceResourceAmazonEsiamInput` via:
+//
+//	GetResourceResourceAmazonEsiamArgs{...}
+type GetResourceResourceAmazonEsiamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAmazonEsiamOutput() GetResourceResourceAmazonEsiamOutput
+	ToGetResourceResourceAmazonEsiamOutputWithContext(context.Context) GetResourceResourceAmazonEsiamOutput
+}
+
+type GetResourceResourceAmazonEsiamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The role to assume after logging in.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
+	// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+	RoleExternalId pulumi.StringPtrInput `pulumi:"roleExternalId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// If set, TLS must be used to connect to this resource.
+	TlsRequired pulumi.BoolPtrInput `pulumi:"tlsRequired"`
+}
+
+func (GetResourceResourceAmazonEsiamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAmazonEsiam)(nil)).Elem()
+}
+
+func (i GetResourceResourceAmazonEsiamArgs) ToGetResourceResourceAmazonEsiamOutput() GetResourceResourceAmazonEsiamOutput {
+	return i.ToGetResourceResourceAmazonEsiamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAmazonEsiamArgs) ToGetResourceResourceAmazonEsiamOutputWithContext(ctx context.Context) GetResourceResourceAmazonEsiamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEsiamOutput)
+}
+
+// GetResourceResourceAmazonEsiamArrayInput is an input type that accepts GetResourceResourceAmazonEsiamArray and GetResourceResourceAmazonEsiamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceAmazonEsiamArrayInput` via:
+//
+//	GetResourceResourceAmazonEsiamArray{ GetResourceResourceAmazonEsiamArgs{...} }
+type GetResourceResourceAmazonEsiamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceAmazonEsiamArrayOutput() GetResourceResourceAmazonEsiamArrayOutput
+	ToGetResourceResourceAmazonEsiamArrayOutputWithContext(context.Context) GetResourceResourceAmazonEsiamArrayOutput
+}
+
+type GetResourceResourceAmazonEsiamArray []GetResourceResourceAmazonEsiamInput
+
+func (GetResourceResourceAmazonEsiamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAmazonEsiam)(nil)).Elem()
+}
+
+func (i GetResourceResourceAmazonEsiamArray) ToGetResourceResourceAmazonEsiamArrayOutput() GetResourceResourceAmazonEsiamArrayOutput {
+	return i.ToGetResourceResourceAmazonEsiamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceAmazonEsiamArray) ToGetResourceResourceAmazonEsiamArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonEsiamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceAmazonEsiamArrayOutput)
+}
+
+type GetResourceResourceAmazonEsiamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAmazonEsiamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceAmazonEsiam)(nil)).Elem()
+}
+
+func (o GetResourceResourceAmazonEsiamOutput) ToGetResourceResourceAmazonEsiamOutput() GetResourceResourceAmazonEsiamOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonEsiamOutput) ToGetResourceResourceAmazonEsiamOutputWithContext(ctx context.Context) GetResourceResourceAmazonEsiamOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceAmazonEsiamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceAmazonEsiamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The neptune endpoint to connect to as in endpoint.region.neptune.amazonaws.com
+func (o GetResourceResourceAmazonEsiamOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceAmazonEsiamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceAmazonEsiamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceAmazonEsiamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceAmazonEsiamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceAmazonEsiamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The role to assume after logging in.
+func (o GetResourceResourceAmazonEsiamOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
+}
+
+// The external ID to associate with assume role requests. Does nothing if a role ARN is not provided.
+func (o GetResourceResourceAmazonEsiamOutput) RoleExternalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.RoleExternalId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceAmazonEsiamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceAmazonEsiamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceAmazonEsiamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// If set, TLS must be used to connect to this resource.
+func (o GetResourceResourceAmazonEsiamOutput) TlsRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceAmazonEsiam) *bool { return v.TlsRequired }).(pulumi.BoolPtrOutput)
+}
+
+type GetResourceResourceAmazonEsiamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceAmazonEsiamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceAmazonEsiam)(nil)).Elem()
+}
+
+func (o GetResourceResourceAmazonEsiamArrayOutput) ToGetResourceResourceAmazonEsiamArrayOutput() GetResourceResourceAmazonEsiamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonEsiamArrayOutput) ToGetResourceResourceAmazonEsiamArrayOutputWithContext(ctx context.Context) GetResourceResourceAmazonEsiamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceAmazonEsiamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceAmazonEsiamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceAmazonEsiam {
+		return vs[0].([]GetResourceResourceAmazonEsiam)[vs[1].(int)]
+	}).(GetResourceResourceAmazonEsiamOutput)
 }
 
 type GetResourceResourceAmazonmqAmqp091 struct {
@@ -60597,6 +62341,202 @@ func (o GetResourceResourceKubernetesBasicAuthArrayOutput) Index(i pulumi.IntInp
 	}).(GetResourceResourceKubernetesBasicAuthOutput)
 }
 
+type GetResourceResourceKubernetesPodIdentity struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The CA to authenticate TLS connections with.
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceKubernetesPodIdentityInput is an input type that accepts GetResourceResourceKubernetesPodIdentityArgs and GetResourceResourceKubernetesPodIdentityOutput values.
+// You can construct a concrete instance of `GetResourceResourceKubernetesPodIdentityInput` via:
+//
+//	GetResourceResourceKubernetesPodIdentityArgs{...}
+type GetResourceResourceKubernetesPodIdentityInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceKubernetesPodIdentityOutput() GetResourceResourceKubernetesPodIdentityOutput
+	ToGetResourceResourceKubernetesPodIdentityOutputWithContext(context.Context) GetResourceResourceKubernetesPodIdentityOutput
+}
+
+type GetResourceResourceKubernetesPodIdentityArgs struct {
+	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+	AllowResourceRoleBypass pulumi.BoolPtrInput `pulumi:"allowResourceRoleBypass"`
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The CA to authenticate TLS connections with.
+	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceKubernetesPodIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceKubernetesPodIdentity)(nil)).Elem()
+}
+
+func (i GetResourceResourceKubernetesPodIdentityArgs) ToGetResourceResourceKubernetesPodIdentityOutput() GetResourceResourceKubernetesPodIdentityOutput {
+	return i.ToGetResourceResourceKubernetesPodIdentityOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceKubernetesPodIdentityArgs) ToGetResourceResourceKubernetesPodIdentityOutputWithContext(ctx context.Context) GetResourceResourceKubernetesPodIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesPodIdentityOutput)
+}
+
+// GetResourceResourceKubernetesPodIdentityArrayInput is an input type that accepts GetResourceResourceKubernetesPodIdentityArray and GetResourceResourceKubernetesPodIdentityArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceKubernetesPodIdentityArrayInput` via:
+//
+//	GetResourceResourceKubernetesPodIdentityArray{ GetResourceResourceKubernetesPodIdentityArgs{...} }
+type GetResourceResourceKubernetesPodIdentityArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceKubernetesPodIdentityArrayOutput() GetResourceResourceKubernetesPodIdentityArrayOutput
+	ToGetResourceResourceKubernetesPodIdentityArrayOutputWithContext(context.Context) GetResourceResourceKubernetesPodIdentityArrayOutput
+}
+
+type GetResourceResourceKubernetesPodIdentityArray []GetResourceResourceKubernetesPodIdentityInput
+
+func (GetResourceResourceKubernetesPodIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceKubernetesPodIdentity)(nil)).Elem()
+}
+
+func (i GetResourceResourceKubernetesPodIdentityArray) ToGetResourceResourceKubernetesPodIdentityArrayOutput() GetResourceResourceKubernetesPodIdentityArrayOutput {
+	return i.ToGetResourceResourceKubernetesPodIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceKubernetesPodIdentityArray) ToGetResourceResourceKubernetesPodIdentityArrayOutputWithContext(ctx context.Context) GetResourceResourceKubernetesPodIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceKubernetesPodIdentityArrayOutput)
+}
+
+type GetResourceResourceKubernetesPodIdentityOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceKubernetesPodIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceKubernetesPodIdentity)(nil)).Elem()
+}
+
+func (o GetResourceResourceKubernetesPodIdentityOutput) ToGetResourceResourceKubernetesPodIdentityOutput() GetResourceResourceKubernetesPodIdentityOutput {
+	return o
+}
+
+func (o GetResourceResourceKubernetesPodIdentityOutput) ToGetResourceResourceKubernetesPodIdentityOutputWithContext(ctx context.Context) GetResourceResourceKubernetesPodIdentityOutput {
+	return o
+}
+
+// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
+func (o GetResourceResourceKubernetesPodIdentityOutput) AllowResourceRoleBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *bool { return v.AllowResourceRoleBypass }).(pulumi.BoolPtrOutput)
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceKubernetesPodIdentityOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The CA to authenticate TLS connections with.
+func (o GetResourceResourceKubernetesPodIdentityOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceKubernetesPodIdentityOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+func (o GetResourceResourceKubernetesPodIdentityOutput) HealthcheckNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.HealthcheckNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceKubernetesPodIdentityOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceKubernetesPodIdentityOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceKubernetesPodIdentityOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceKubernetesPodIdentityOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceKubernetesPodIdentityOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceKubernetesPodIdentityOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceKubernetesPodIdentityOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceKubernetesPodIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceKubernetesPodIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceKubernetesPodIdentity)(nil)).Elem()
+}
+
+func (o GetResourceResourceKubernetesPodIdentityArrayOutput) ToGetResourceResourceKubernetesPodIdentityArrayOutput() GetResourceResourceKubernetesPodIdentityArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceKubernetesPodIdentityArrayOutput) ToGetResourceResourceKubernetesPodIdentityArrayOutputWithContext(ctx context.Context) GetResourceResourceKubernetesPodIdentityArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceKubernetesPodIdentityArrayOutput) Index(i pulumi.IntInput) GetResourceResourceKubernetesPodIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceKubernetesPodIdentity {
+		return vs[0].([]GetResourceResourceKubernetesPodIdentity)[vs[1].(int)]
+	}).(GetResourceResourceKubernetesPodIdentityOutput)
+}
+
 type GetResourceResourceKubernetesServiceAccount struct {
 	// If true, allows users to fallback to the existing authentication mode (Leased Credential or Identity Set) when a resource role is not provided.
 	AllowResourceRoleBypass *bool `pulumi:"allowResourceRoleBypass"`
@@ -66437,6 +68377,473 @@ func (o GetResourceResourceRedshiftArrayOutput) Index(i pulumi.IntInput) GetReso
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRedshift {
 		return vs[0].([]GetResourceResourceRedshift)[vs[1].(int)]
 	}).(GetResourceResourceRedshiftOutput)
+}
+
+type GetResourceResourceRedshiftIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// Cluster Identified of Redshift cluster
+	ClusterId *string `pulumi:"clusterId"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase *bool `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// GetResourceResourceRedshiftIamInput is an input type that accepts GetResourceResourceRedshiftIamArgs and GetResourceResourceRedshiftIamOutput values.
+// You can construct a concrete instance of `GetResourceResourceRedshiftIamInput` via:
+//
+//	GetResourceResourceRedshiftIamArgs{...}
+type GetResourceResourceRedshiftIamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRedshiftIamOutput() GetResourceResourceRedshiftIamOutput
+	ToGetResourceResourceRedshiftIamOutputWithContext(context.Context) GetResourceResourceRedshiftIamOutput
+}
+
+type GetResourceResourceRedshiftIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// Cluster Identified of Redshift cluster
+	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase pulumi.BoolPtrInput `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+func (GetResourceResourceRedshiftIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRedshiftIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceRedshiftIamArgs) ToGetResourceResourceRedshiftIamOutput() GetResourceResourceRedshiftIamOutput {
+	return i.ToGetResourceResourceRedshiftIamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRedshiftIamArgs) ToGetResourceResourceRedshiftIamOutputWithContext(ctx context.Context) GetResourceResourceRedshiftIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRedshiftIamOutput)
+}
+
+// GetResourceResourceRedshiftIamArrayInput is an input type that accepts GetResourceResourceRedshiftIamArray and GetResourceResourceRedshiftIamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceRedshiftIamArrayInput` via:
+//
+//	GetResourceResourceRedshiftIamArray{ GetResourceResourceRedshiftIamArgs{...} }
+type GetResourceResourceRedshiftIamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRedshiftIamArrayOutput() GetResourceResourceRedshiftIamArrayOutput
+	ToGetResourceResourceRedshiftIamArrayOutputWithContext(context.Context) GetResourceResourceRedshiftIamArrayOutput
+}
+
+type GetResourceResourceRedshiftIamArray []GetResourceResourceRedshiftIamInput
+
+func (GetResourceResourceRedshiftIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRedshiftIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceRedshiftIamArray) ToGetResourceResourceRedshiftIamArrayOutput() GetResourceResourceRedshiftIamArrayOutput {
+	return i.ToGetResourceResourceRedshiftIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRedshiftIamArray) ToGetResourceResourceRedshiftIamArrayOutputWithContext(ctx context.Context) GetResourceResourceRedshiftIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRedshiftIamArrayOutput)
+}
+
+type GetResourceResourceRedshiftIamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRedshiftIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRedshiftIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceRedshiftIamOutput) ToGetResourceResourceRedshiftIamOutput() GetResourceResourceRedshiftIamOutput {
+	return o
+}
+
+func (o GetResourceResourceRedshiftIamOutput) ToGetResourceResourceRedshiftIamOutputWithContext(ctx context.Context) GetResourceResourceRedshiftIamOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceRedshiftIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// Cluster Identified of Redshift cluster
+func (o GetResourceResourceRedshiftIamOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceRedshiftIamOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceRedshiftIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRedshiftIamOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceRedshiftIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceRedshiftIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o GetResourceResourceRedshiftIamOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRedshiftIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceRedshiftIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRedshiftIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceRedshiftIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o GetResourceResourceRedshiftIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceRedshiftIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceRedshiftIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceRedshiftIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type GetResourceResourceRedshiftIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRedshiftIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRedshiftIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceRedshiftIamArrayOutput) ToGetResourceResourceRedshiftIamArrayOutput() GetResourceResourceRedshiftIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRedshiftIamArrayOutput) ToGetResourceResourceRedshiftIamArrayOutputWithContext(ctx context.Context) GetResourceResourceRedshiftIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRedshiftIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRedshiftIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRedshiftIam {
+		return vs[0].([]GetResourceResourceRedshiftIam)[vs[1].(int)]
+	}).(GetResourceResourceRedshiftIamOutput)
+}
+
+type GetResourceResourceRedshiftServerlessIam struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface *string `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database *string `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter *string `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname *string `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id *string `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name *string `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase *bool `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port *int `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride *int `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId *string `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region *string `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn *string `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId *string `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain *string `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags map[string]string `pulumi:"tags"`
+	// Workgroup name in the serverless Redshift
+	// * single_store:
+	Workgroup *string `pulumi:"workgroup"`
+}
+
+// GetResourceResourceRedshiftServerlessIamInput is an input type that accepts GetResourceResourceRedshiftServerlessIamArgs and GetResourceResourceRedshiftServerlessIamOutput values.
+// You can construct a concrete instance of `GetResourceResourceRedshiftServerlessIamInput` via:
+//
+//	GetResourceResourceRedshiftServerlessIamArgs{...}
+type GetResourceResourceRedshiftServerlessIamInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRedshiftServerlessIamOutput() GetResourceResourceRedshiftServerlessIamOutput
+	ToGetResourceResourceRedshiftServerlessIamOutputWithContext(context.Context) GetResourceResourceRedshiftServerlessIamOutput
+}
+
+type GetResourceResourceRedshiftServerlessIamArgs struct {
+	// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+	BindInterface pulumi.StringPtrInput `pulumi:"bindInterface"`
+	// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// A filter applied to the routing logic to pin datasource to nodes.
+	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
+	// The host to dial to initiate a connection from the egress node to this resource.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// Unique identifier of the Resource.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique human-readable name of the Resource.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+	OverrideDatabase pulumi.BoolPtrInput `pulumi:"overrideDatabase"`
+	// The port to dial to initiate a connection from the egress node to this resource.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The local port used by clients to connect to this resource.
+	PortOverride pulumi.IntPtrInput `pulumi:"portOverride"`
+	// ID of the proxy cluster for this resource, if any.
+	ProxyClusterId pulumi.StringPtrInput `pulumi:"proxyClusterId"`
+	// The AWS region to connect to.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+	RoleAssumptionArn pulumi.StringPtrInput `pulumi:"roleAssumptionArn"`
+	// ID of the secret store containing credentials for this resource, if any.
+	SecretStoreId pulumi.StringPtrInput `pulumi:"secretStoreId"`
+	// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+	Subdomain pulumi.StringPtrInput `pulumi:"subdomain"`
+	// Tags is a map of key, value pairs.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Workgroup name in the serverless Redshift
+	// * single_store:
+	Workgroup pulumi.StringPtrInput `pulumi:"workgroup"`
+}
+
+func (GetResourceResourceRedshiftServerlessIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRedshiftServerlessIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceRedshiftServerlessIamArgs) ToGetResourceResourceRedshiftServerlessIamOutput() GetResourceResourceRedshiftServerlessIamOutput {
+	return i.ToGetResourceResourceRedshiftServerlessIamOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRedshiftServerlessIamArgs) ToGetResourceResourceRedshiftServerlessIamOutputWithContext(ctx context.Context) GetResourceResourceRedshiftServerlessIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRedshiftServerlessIamOutput)
+}
+
+// GetResourceResourceRedshiftServerlessIamArrayInput is an input type that accepts GetResourceResourceRedshiftServerlessIamArray and GetResourceResourceRedshiftServerlessIamArrayOutput values.
+// You can construct a concrete instance of `GetResourceResourceRedshiftServerlessIamArrayInput` via:
+//
+//	GetResourceResourceRedshiftServerlessIamArray{ GetResourceResourceRedshiftServerlessIamArgs{...} }
+type GetResourceResourceRedshiftServerlessIamArrayInput interface {
+	pulumi.Input
+
+	ToGetResourceResourceRedshiftServerlessIamArrayOutput() GetResourceResourceRedshiftServerlessIamArrayOutput
+	ToGetResourceResourceRedshiftServerlessIamArrayOutputWithContext(context.Context) GetResourceResourceRedshiftServerlessIamArrayOutput
+}
+
+type GetResourceResourceRedshiftServerlessIamArray []GetResourceResourceRedshiftServerlessIamInput
+
+func (GetResourceResourceRedshiftServerlessIamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRedshiftServerlessIam)(nil)).Elem()
+}
+
+func (i GetResourceResourceRedshiftServerlessIamArray) ToGetResourceResourceRedshiftServerlessIamArrayOutput() GetResourceResourceRedshiftServerlessIamArrayOutput {
+	return i.ToGetResourceResourceRedshiftServerlessIamArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourceResourceRedshiftServerlessIamArray) ToGetResourceResourceRedshiftServerlessIamArrayOutputWithContext(ctx context.Context) GetResourceResourceRedshiftServerlessIamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourceResourceRedshiftServerlessIamArrayOutput)
+}
+
+type GetResourceResourceRedshiftServerlessIamOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRedshiftServerlessIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourceResourceRedshiftServerlessIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceRedshiftServerlessIamOutput) ToGetResourceResourceRedshiftServerlessIamOutput() GetResourceResourceRedshiftServerlessIamOutput {
+	return o
+}
+
+func (o GetResourceResourceRedshiftServerlessIamOutput) ToGetResourceResourceRedshiftServerlessIamOutputWithContext(ctx context.Context) GetResourceResourceRedshiftServerlessIamOutput {
+	return o
+}
+
+// The bind interface is the IP address to which the port override of a resource is bound (for example, 127.0.0.1). It is automatically generated if not provided.
+func (o GetResourceResourceRedshiftServerlessIamOutput) BindInterface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.BindInterface }).(pulumi.StringPtrOutput)
+}
+
+// The initial database to connect to. This setting does not by itself prevent switching to another database after connecting.
+func (o GetResourceResourceRedshiftServerlessIamOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// A filter applied to the routing logic to pin datasource to nodes.
+func (o GetResourceResourceRedshiftServerlessIamOutput) EgressFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.EgressFilter }).(pulumi.StringPtrOutput)
+}
+
+// The host to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRedshiftServerlessIamOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the Resource.
+func (o GetResourceResourceRedshiftServerlessIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Unique human-readable name of the Resource.
+func (o GetResourceResourceRedshiftServerlessIamOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// If set, the database configured cannot be changed by users. This setting is not recommended for most use cases, as some clients will insist their database has changed when it has not, leading to user confusion.
+func (o GetResourceResourceRedshiftServerlessIamOutput) OverrideDatabase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *bool { return v.OverrideDatabase }).(pulumi.BoolPtrOutput)
+}
+
+// The port to dial to initiate a connection from the egress node to this resource.
+func (o GetResourceResourceRedshiftServerlessIamOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The local port used by clients to connect to this resource.
+func (o GetResourceResourceRedshiftServerlessIamOutput) PortOverride() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *int { return v.PortOverride }).(pulumi.IntPtrOutput)
+}
+
+// ID of the proxy cluster for this resource, if any.
+func (o GetResourceResourceRedshiftServerlessIamOutput) ProxyClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.ProxyClusterId }).(pulumi.StringPtrOutput)
+}
+
+// The AWS region to connect to.
+func (o GetResourceResourceRedshiftServerlessIamOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// If provided, the gateway/relay will try to assume this role instead of the underlying compute's role.
+func (o GetResourceResourceRedshiftServerlessIamOutput) RoleAssumptionArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.RoleAssumptionArn }).(pulumi.StringPtrOutput)
+}
+
+// ID of the secret store containing credentials for this resource, if any.
+func (o GetResourceResourceRedshiftServerlessIamOutput) SecretStoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.SecretStoreId }).(pulumi.StringPtrOutput)
+}
+
+// Subdomain is the local DNS address.  (e.g. app-prod1 turns into app-prod1.your-org-name.sdm.network)
+func (o GetResourceResourceRedshiftServerlessIamOutput) Subdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.Subdomain }).(pulumi.StringPtrOutput)
+}
+
+// Tags is a map of key, value pairs.
+func (o GetResourceResourceRedshiftServerlessIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Workgroup name in the serverless Redshift
+// * single_store:
+func (o GetResourceResourceRedshiftServerlessIamOutput) Workgroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceRedshiftServerlessIam) *string { return v.Workgroup }).(pulumi.StringPtrOutput)
+}
+
+type GetResourceResourceRedshiftServerlessIamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourceResourceRedshiftServerlessIamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourceResourceRedshiftServerlessIam)(nil)).Elem()
+}
+
+func (o GetResourceResourceRedshiftServerlessIamArrayOutput) ToGetResourceResourceRedshiftServerlessIamArrayOutput() GetResourceResourceRedshiftServerlessIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRedshiftServerlessIamArrayOutput) ToGetResourceResourceRedshiftServerlessIamArrayOutputWithContext(ctx context.Context) GetResourceResourceRedshiftServerlessIamArrayOutput {
+	return o
+}
+
+func (o GetResourceResourceRedshiftServerlessIamArrayOutput) Index(i pulumi.IntInput) GetResourceResourceRedshiftServerlessIamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourceResourceRedshiftServerlessIam {
+		return vs[0].([]GetResourceResourceRedshiftServerlessIam)[vs[1].(int)]
+	}).(GetResourceResourceRedshiftServerlessIamOutput)
 }
 
 type GetResourceResourceSingleStore struct {
@@ -73842,6 +76249,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEksUserImpersonationPtrInput)(nil)).Elem(), ResourceAmazonEksUserImpersonationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEsInput)(nil)).Elem(), ResourceAmazonEsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEsPtrInput)(nil)).Elem(), ResourceAmazonEsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEsiamInput)(nil)).Elem(), ResourceAmazonEsiamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonEsiamPtrInput)(nil)).Elem(), ResourceAmazonEsiamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonmqAmqp091Input)(nil)).Elem(), ResourceAmazonmqAmqp091Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAmazonmqAmqp091PtrInput)(nil)).Elem(), ResourceAmazonmqAmqp091Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceAthenaInput)(nil)).Elem(), ResourceAthenaArgs{})
@@ -73936,6 +76345,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceKubernetesPtrInput)(nil)).Elem(), ResourceKubernetesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceKubernetesBasicAuthInput)(nil)).Elem(), ResourceKubernetesBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceKubernetesBasicAuthPtrInput)(nil)).Elem(), ResourceKubernetesBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceKubernetesPodIdentityInput)(nil)).Elem(), ResourceKubernetesPodIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceKubernetesPodIdentityPtrInput)(nil)).Elem(), ResourceKubernetesPodIdentityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceKubernetesServiceAccountInput)(nil)).Elem(), ResourceKubernetesServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceKubernetesServiceAccountPtrInput)(nil)).Elem(), ResourceKubernetesServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceKubernetesServiceAccountUserImpersonationInput)(nil)).Elem(), ResourceKubernetesServiceAccountUserImpersonationArgs{})
@@ -73988,6 +76399,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedisPtrInput)(nil)).Elem(), ResourceRedisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftInput)(nil)).Elem(), ResourceRedshiftArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftPtrInput)(nil)).Elem(), ResourceRedshiftArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftIamInput)(nil)).Elem(), ResourceRedshiftIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftIamPtrInput)(nil)).Elem(), ResourceRedshiftIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftServerlessIamInput)(nil)).Elem(), ResourceRedshiftServerlessIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRedshiftServerlessIamPtrInput)(nil)).Elem(), ResourceRedshiftServerlessIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSingleStoreInput)(nil)).Elem(), ResourceSingleStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSingleStorePtrInput)(nil)).Elem(), ResourceSingleStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceSnowflakeInput)(nil)).Elem(), ResourceSnowflakeArgs{})
@@ -74134,6 +76549,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayInput)(nil)).Elem(), GetResourceResourceAmazonEksInstanceProfileUserImpersonationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEksUserImpersonationInput)(nil)).Elem(), GetResourceResourceAmazonEksUserImpersonationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEksUserImpersonationArrayInput)(nil)).Elem(), GetResourceResourceAmazonEksUserImpersonationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEsiamInput)(nil)).Elem(), GetResourceResourceAmazonEsiamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonEsiamArrayInput)(nil)).Elem(), GetResourceResourceAmazonEsiamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonmqAmqp091Input)(nil)).Elem(), GetResourceResourceAmazonmqAmqp091Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAmazonmqAmqp091ArrayInput)(nil)).Elem(), GetResourceResourceAmazonmqAmqp091Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceAthenaInput)(nil)).Elem(), GetResourceResourceAthenaArgs{})
@@ -74228,6 +76645,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceKuberneteArrayInput)(nil)).Elem(), GetResourceResourceKuberneteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceKubernetesBasicAuthInput)(nil)).Elem(), GetResourceResourceKubernetesBasicAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceKubernetesBasicAuthArrayInput)(nil)).Elem(), GetResourceResourceKubernetesBasicAuthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceKubernetesPodIdentityInput)(nil)).Elem(), GetResourceResourceKubernetesPodIdentityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceKubernetesPodIdentityArrayInput)(nil)).Elem(), GetResourceResourceKubernetesPodIdentityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceKubernetesServiceAccountInput)(nil)).Elem(), GetResourceResourceKubernetesServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceKubernetesServiceAccountArrayInput)(nil)).Elem(), GetResourceResourceKubernetesServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceKubernetesServiceAccountUserImpersonationInput)(nil)).Elem(), GetResourceResourceKubernetesServiceAccountUserImpersonationArgs{})
@@ -74280,6 +76699,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRediArrayInput)(nil)).Elem(), GetResourceResourceRediArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftInput)(nil)).Elem(), GetResourceResourceRedshiftArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftArrayInput)(nil)).Elem(), GetResourceResourceRedshiftArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftIamInput)(nil)).Elem(), GetResourceResourceRedshiftIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftIamArrayInput)(nil)).Elem(), GetResourceResourceRedshiftIamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftServerlessIamInput)(nil)).Elem(), GetResourceResourceRedshiftServerlessIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceRedshiftServerlessIamArrayInput)(nil)).Elem(), GetResourceResourceRedshiftServerlessIamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSingleStoreInput)(nil)).Elem(), GetResourceResourceSingleStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSingleStoreArrayInput)(nil)).Elem(), GetResourceResourceSingleStoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourceResourceSnowflakeInput)(nil)).Elem(), GetResourceResourceSnowflakeArgs{})
@@ -74400,6 +76823,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceAmazonEksUserImpersonationPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonEsOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonEsPtrOutput{})
+	pulumi.RegisterOutputType(ResourceAmazonEsiamOutput{})
+	pulumi.RegisterOutputType(ResourceAmazonEsiamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceAmazonmqAmqp091Output{})
 	pulumi.RegisterOutputType(ResourceAmazonmqAmqp091PtrOutput{})
 	pulumi.RegisterOutputType(ResourceAthenaOutput{})
@@ -74494,6 +76919,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceKubernetesPtrOutput{})
 	pulumi.RegisterOutputType(ResourceKubernetesBasicAuthOutput{})
 	pulumi.RegisterOutputType(ResourceKubernetesBasicAuthPtrOutput{})
+	pulumi.RegisterOutputType(ResourceKubernetesPodIdentityOutput{})
+	pulumi.RegisterOutputType(ResourceKubernetesPodIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ResourceKubernetesServiceAccountOutput{})
 	pulumi.RegisterOutputType(ResourceKubernetesServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(ResourceKubernetesServiceAccountUserImpersonationOutput{})
@@ -74546,6 +76973,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRedisPtrOutput{})
 	pulumi.RegisterOutputType(ResourceRedshiftOutput{})
 	pulumi.RegisterOutputType(ResourceRedshiftPtrOutput{})
+	pulumi.RegisterOutputType(ResourceRedshiftIamOutput{})
+	pulumi.RegisterOutputType(ResourceRedshiftIamPtrOutput{})
+	pulumi.RegisterOutputType(ResourceRedshiftServerlessIamOutput{})
+	pulumi.RegisterOutputType(ResourceRedshiftServerlessIamPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSingleStoreOutput{})
 	pulumi.RegisterOutputType(ResourceSingleStorePtrOutput{})
 	pulumi.RegisterOutputType(ResourceSnowflakeOutput{})
@@ -74692,6 +77123,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEksInstanceProfileUserImpersonationArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEksUserImpersonationOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonEksUserImpersonationArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAmazonEsiamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceAmazonEsiamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonmqAmqp091Output{})
 	pulumi.RegisterOutputType(GetResourceResourceAmazonmqAmqp091ArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceAthenaOutput{})
@@ -74786,6 +77219,8 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceKuberneteArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceKubernetesBasicAuthOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceKubernetesBasicAuthArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceKubernetesPodIdentityOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceKubernetesPodIdentityArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceKubernetesServiceAccountOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceKubernetesServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceKubernetesServiceAccountUserImpersonationOutput{})
@@ -74838,6 +77273,10 @@ func init() {
 	pulumi.RegisterOutputType(GetResourceResourceRediArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRedshiftOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceRedshiftArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRedshiftIamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRedshiftIamArrayOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRedshiftServerlessIamOutput{})
+	pulumi.RegisterOutputType(GetResourceResourceRedshiftServerlessIamArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSingleStoreOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSingleStoreArrayOutput{})
 	pulumi.RegisterOutputType(GetResourceResourceSnowflakeOutput{})

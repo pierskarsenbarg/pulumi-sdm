@@ -30,12 +30,8 @@ class WorkflowArgs:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Workflow resource.
-        :param pulumi.Input[str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-               neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-               settings.
-        :param pulumi.Input[str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-               If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-               settings.
+        :param pulumi.Input[str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        :param pulumi.Input[str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
         :param pulumi.Input[str] approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
         :param pulumi.Input[bool] auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -67,9 +63,7 @@ class WorkflowArgs:
     @pulumi.getter(name="accessRequestFixedDuration")
     def access_request_fixed_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-        neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-        settings.
+        Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_fixed_duration")
 
@@ -81,9 +75,7 @@ class WorkflowArgs:
     @pulumi.getter(name="accessRequestMaxDuration")
     def access_request_max_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-        If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-        settings.
+        Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_max_duration")
 
@@ -190,12 +182,8 @@ class _WorkflowState:
                  weight: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Workflow resources.
-        :param pulumi.Input[str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-               neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-               settings.
-        :param pulumi.Input[str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-               If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-               settings.
+        :param pulumi.Input[str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        :param pulumi.Input[str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
         :param pulumi.Input[str] approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
         :param pulumi.Input[bool] auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -227,9 +215,7 @@ class _WorkflowState:
     @pulumi.getter(name="accessRequestFixedDuration")
     def access_request_fixed_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-        neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-        settings.
+        Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_fixed_duration")
 
@@ -241,9 +227,7 @@ class _WorkflowState:
     @pulumi.getter(name="accessRequestMaxDuration")
     def access_request_max_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-        If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-        settings.
+        Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_max_duration")
 
@@ -365,12 +349,8 @@ class Workflow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-               neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-               settings.
-        :param pulumi.Input[str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-               If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-               settings.
+        :param pulumi.Input[str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        :param pulumi.Input[str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
         :param pulumi.Input[str] approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
         :param pulumi.Input[bool] auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -465,12 +445,8 @@ class Workflow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-               neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-               settings.
-        :param pulumi.Input[str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-               If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-               settings.
+        :param pulumi.Input[str] access_request_fixed_duration: Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
+        :param pulumi.Input[str] access_request_max_duration: Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         :param pulumi.Input[str] access_rules: AccessRules is a list of access rules defining the resources this Workflow provides access to.
         :param pulumi.Input[str] approval_flow_id: Optional approval flow ID identifies an approval flow that linked to the workflow
         :param pulumi.Input[bool] auto_grant: Optional auto grant setting to automatically approve requests or not, defaults to false.
@@ -498,9 +474,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="accessRequestFixedDuration")
     def access_request_fixed_duration(self) -> pulumi.Output[Optional[str]]:
         """
-        Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If
-        neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-        settings.
+        Fixed Duration of access requests bound to this workflow. If fixed duration is provided, max duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_fixed_duration")
 
@@ -508,9 +482,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="accessRequestMaxDuration")
     def access_request_max_duration(self) -> pulumi.Output[Optional[str]]:
         """
-        Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty.
-        If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level
-        settings.
+        Maximum Duration of access requests bound to this workflow. If max duration is provided, fixed duration must be empty. If neither max nor fixed duration are provided, requests that bind to this workflow will use the organization-level settings.
         """
         return pulumi.get(self, "access_request_max_duration")
 
