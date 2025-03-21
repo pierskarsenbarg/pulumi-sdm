@@ -23769,6 +23769,10 @@ type ResourceKubernetesPodIdentity struct {
 	EgressFilter *string `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
@@ -23805,6 +23809,10 @@ type ResourceKubernetesPodIdentityArgs struct {
 	EgressFilter pulumi.StringPtrInput `pulumi:"egressFilter"`
 	// The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
@@ -23921,6 +23929,16 @@ func (o ResourceKubernetesPodIdentityOutput) HealthcheckNamespace() pulumi.Strin
 	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.HealthcheckNamespace }).(pulumi.StringPtrOutput)
 }
 
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceKubernetesPodIdentityOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceKubernetesPodIdentityOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceKubernetesPodIdentity) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
+}
+
 // Unique human-readable name of the Resource.
 func (o ResourceKubernetesPodIdentityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceKubernetesPodIdentity) string { return v.Name }).(pulumi.StringOutput)
@@ -24022,6 +24040,26 @@ func (o ResourceKubernetesPodIdentityPtrOutput) HealthcheckNamespace() pulumi.St
 			return nil
 		}
 		return v.HealthcheckNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o ResourceKubernetesPodIdentityPtrOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityAliasHealthcheckUsername
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o ResourceKubernetesPodIdentityPtrOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ResourceKubernetesPodIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySetId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -62354,6 +62392,10 @@ type GetResourceResourceKubernetesPodIdentity struct {
 	HealthcheckNamespace *string `pulumi:"healthcheckNamespace"`
 	// Unique identifier of the Resource.
 	Id *string `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername *string `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId *string `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name *string `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
@@ -62392,6 +62434,10 @@ type GetResourceResourceKubernetesPodIdentityArgs struct {
 	HealthcheckNamespace pulumi.StringPtrInput `pulumi:"healthcheckNamespace"`
 	// Unique identifier of the Resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+	IdentityAliasHealthcheckUsername pulumi.StringPtrInput `pulumi:"identityAliasHealthcheckUsername"`
+	// The ID of the identity set to use for identity connections.
+	IdentitySetId pulumi.StringPtrInput `pulumi:"identitySetId"`
 	// Unique human-readable name of the Resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The local port used by clients to connect to this resource.
@@ -62485,6 +62531,16 @@ func (o GetResourceResourceKubernetesPodIdentityOutput) HealthcheckNamespace() p
 // Unique identifier of the Resource.
 func (o GetResourceResourceKubernetesPodIdentityOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+func (o GetResourceResourceKubernetesPodIdentityOutput) IdentityAliasHealthcheckUsername() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.IdentityAliasHealthcheckUsername }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the identity set to use for identity connections.
+func (o GetResourceResourceKubernetesPodIdentityOutput) IdentitySetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetResourceResourceKubernetesPodIdentity) *string { return v.IdentitySetId }).(pulumi.StringPtrOutput)
 }
 
 // Unique human-readable name of the Resource.

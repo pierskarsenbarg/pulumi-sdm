@@ -3597,6 +3597,14 @@ export interface ResourceKubernetesPodIdentity {
      */
     healthcheckNamespace?: pulumi.Input<string>;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: pulumi.Input<string>;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: pulumi.Input<string>;
+    /**
      * Unique human-readable name of the Resource.
      */
     name: pulumi.Input<string>;

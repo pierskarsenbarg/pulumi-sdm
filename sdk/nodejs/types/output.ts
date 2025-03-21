@@ -4288,6 +4288,14 @@ export interface GetResourceResourceKubernetesPodIdentity {
      */
     id?: string;
     /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
+    /**
      * Unique human-readable name of the Resource.
      */
     name?: string;
@@ -11352,6 +11360,14 @@ export interface ResourceKubernetesPodIdentity {
      * The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
      */
     healthcheckNamespace: string;
+    /**
+     * The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+     */
+    identityAliasHealthcheckUsername?: string;
+    /**
+     * The ID of the identity set to use for identity connections.
+     */
+    identitySetId?: string;
     /**
      * Unique human-readable name of the Resource.
      */
