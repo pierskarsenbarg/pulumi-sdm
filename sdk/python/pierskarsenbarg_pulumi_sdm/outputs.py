@@ -12688,6 +12688,10 @@ class ResourceKubernetesPodIdentity(dict):
             suggest = "egress_filter"
         elif key == "healthcheckNamespace":
             suggest = "healthcheck_namespace"
+        elif key == "identityAliasHealthcheckUsername":
+            suggest = "identity_alias_healthcheck_username"
+        elif key == "identitySetId":
+            suggest = "identity_set_id"
         elif key == "portOverride":
             suggest = "port_override"
         elif key == "proxyClusterId":
@@ -12713,6 +12717,8 @@ class ResourceKubernetesPodIdentity(dict):
                  certificate_authority: Optional[str] = None,
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
+                 identity_alias_healthcheck_username: Optional[str] = None,
+                 identity_set_id: Optional[str] = None,
                  port_override: Optional[int] = None,
                  proxy_cluster_id: Optional[str] = None,
                  secret_store_id: Optional[str] = None,
@@ -12725,6 +12731,8 @@ class ResourceKubernetesPodIdentity(dict):
         :param str certificate_authority: The CA to authenticate TLS connections with.
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param int port_override: The local port used by clients to connect to this resource.
         :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param str secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -12742,6 +12750,10 @@ class ResourceKubernetesPodIdentity(dict):
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
         if proxy_cluster_id is not None:
@@ -12800,6 +12812,22 @@ class ResourceKubernetesPodIdentity(dict):
         The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         """
         return pulumi.get(self, "healthcheck_namespace")
+
+    @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[str]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[str]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
 
     @property
     @pulumi.getter(name="portOverride")
@@ -36406,6 +36434,8 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
                  egress_filter: Optional[str] = None,
                  healthcheck_namespace: Optional[str] = None,
                  id: Optional[str] = None,
+                 identity_alias_healthcheck_username: Optional[str] = None,
+                 identity_set_id: Optional[str] = None,
                  name: Optional[str] = None,
                  port_override: Optional[int] = None,
                  proxy_cluster_id: Optional[str] = None,
@@ -36419,6 +36449,8 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
         :param str egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param str healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         :param str id: Unique identifier of the Resource.
+        :param str identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param str identity_set_id: The ID of the identity set to use for identity connections.
         :param str name: Unique human-readable name of the Resource.
         :param int port_override: The local port used by clients to connect to this resource.
         :param str proxy_cluster_id: ID of the proxy cluster for this resource, if any.
@@ -36438,6 +36470,10 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if port_override is not None:
@@ -36498,6 +36534,22 @@ class GetResourceResourceKubernetesPodIdentityResult(dict):
         Unique identifier of the Resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[str]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[str]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
 
     @property
     @pulumi.getter

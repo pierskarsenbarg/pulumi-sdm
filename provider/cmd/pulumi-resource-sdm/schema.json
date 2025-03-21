@@ -5169,6 +5169,14 @@
                     "type": "string",
                     "description": "The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.\n"
                 },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Unique human-readable name of the Resource.\n"
@@ -14929,6 +14937,14 @@
                 "id": {
                     "type": "string",
                     "description": "Unique identifier of the Resource.\n"
+                },
+                "identityAliasHealthcheckUsername": {
+                    "type": "string",
+                    "description": "The username to use for healthchecks, when clients otherwise connect with their own identity alias username.\n"
+                },
+                "identitySetId": {
+                    "type": "string",
+                    "description": "The ID of the identity set to use for identity connections.\n"
                 },
                 "name": {
                     "type": "string",

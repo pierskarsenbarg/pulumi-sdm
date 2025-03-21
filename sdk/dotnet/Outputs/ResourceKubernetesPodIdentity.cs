@@ -35,6 +35,14 @@ namespace PiersKarsenbarg.Sdm.Outputs
         /// </summary>
         public readonly string? HealthcheckNamespace;
         /// <summary>
+        /// The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        /// </summary>
+        public readonly string? IdentityAliasHealthcheckUsername;
+        /// <summary>
+        /// The ID of the identity set to use for identity connections.
+        /// </summary>
+        public readonly string? IdentitySetId;
+        /// <summary>
         /// Unique human-readable name of the Resource.
         /// </summary>
         public readonly string Name;
@@ -71,6 +79,10 @@ namespace PiersKarsenbarg.Sdm.Outputs
 
             string? healthcheckNamespace,
 
+            string? identityAliasHealthcheckUsername,
+
+            string? identitySetId,
+
             string name,
 
             int? portOverride,
@@ -88,6 +100,8 @@ namespace PiersKarsenbarg.Sdm.Outputs
             CertificateAuthority = certificateAuthority;
             EgressFilter = egressFilter;
             HealthcheckNamespace = healthcheckNamespace;
+            IdentityAliasHealthcheckUsername = identityAliasHealthcheckUsername;
+            IdentitySetId = identitySetId;
             Name = name;
             PortOverride = portOverride;
             ProxyClusterId = proxyClusterId;

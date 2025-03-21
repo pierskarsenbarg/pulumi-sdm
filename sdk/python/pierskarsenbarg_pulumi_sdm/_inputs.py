@@ -17830,6 +17830,14 @@ if not MYPY:
         """
         The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
         """
+        identity_alias_healthcheck_username: NotRequired[pulumi.Input[str]]
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        identity_set_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the identity set to use for identity connections.
+        """
         port_override: NotRequired[pulumi.Input[int]]
         """
         The local port used by clients to connect to this resource.
@@ -17862,6 +17870,8 @@ class ResourceKubernetesPodIdentityArgs:
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  egress_filter: Optional[pulumi.Input[str]] = None,
                  healthcheck_namespace: Optional[pulumi.Input[str]] = None,
+                 identity_alias_healthcheck_username: Optional[pulumi.Input[str]] = None,
+                 identity_set_id: Optional[pulumi.Input[str]] = None,
                  port_override: Optional[pulumi.Input[int]] = None,
                  proxy_cluster_id: Optional[pulumi.Input[str]] = None,
                  secret_store_id: Optional[pulumi.Input[str]] = None,
@@ -17874,6 +17884,8 @@ class ResourceKubernetesPodIdentityArgs:
         :param pulumi.Input[str] certificate_authority: The CA to authenticate TLS connections with.
         :param pulumi.Input[str] egress_filter: A filter applied to the routing logic to pin datasource to nodes.
         :param pulumi.Input[str] healthcheck_namespace: The path used to check the health of your connection.  Defaults to `default`.  This field is required, and is only marked as optional for backwards compatibility.
+        :param pulumi.Input[str] identity_alias_healthcheck_username: The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        :param pulumi.Input[str] identity_set_id: The ID of the identity set to use for identity connections.
         :param pulumi.Input[int] port_override: The local port used by clients to connect to this resource.
         :param pulumi.Input[str] proxy_cluster_id: ID of the proxy cluster for this resource, if any.
         :param pulumi.Input[str] secret_store_id: ID of the secret store containing credentials for this resource, if any.
@@ -17891,6 +17903,10 @@ class ResourceKubernetesPodIdentityArgs:
             pulumi.set(__self__, "egress_filter", egress_filter)
         if healthcheck_namespace is not None:
             pulumi.set(__self__, "healthcheck_namespace", healthcheck_namespace)
+        if identity_alias_healthcheck_username is not None:
+            pulumi.set(__self__, "identity_alias_healthcheck_username", identity_alias_healthcheck_username)
+        if identity_set_id is not None:
+            pulumi.set(__self__, "identity_set_id", identity_set_id)
         if port_override is not None:
             pulumi.set(__self__, "port_override", port_override)
         if proxy_cluster_id is not None:
@@ -17973,6 +17989,30 @@ class ResourceKubernetesPodIdentityArgs:
     @healthcheck_namespace.setter
     def healthcheck_namespace(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "healthcheck_namespace", value)
+
+    @property
+    @pulumi.getter(name="identityAliasHealthcheckUsername")
+    def identity_alias_healthcheck_username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to use for healthchecks, when clients otherwise connect with their own identity alias username.
+        """
+        return pulumi.get(self, "identity_alias_healthcheck_username")
+
+    @identity_alias_healthcheck_username.setter
+    def identity_alias_healthcheck_username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_alias_healthcheck_username", value)
+
+    @property
+    @pulumi.getter(name="identitySetId")
+    def identity_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the identity set to use for identity connections.
+        """
+        return pulumi.get(self, "identity_set_id")
+
+    @identity_set_id.setter
+    def identity_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_set_id", value)
 
     @property
     @pulumi.getter(name="portOverride")
